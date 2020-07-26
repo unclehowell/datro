@@ -1,20 +1,24 @@
 body {
  overflow:hidden;
+ background-color:black;
 }
 .google-slides-container{
     position: relative;
-    width: 100%;
-    height: 100vh;
-    padding-top: 60%;
+    width: 97vw;
+    height: 96vh;
+    padding-top: 0;
     overflow: hidden;
+    left: 0.25vw;
+    top: 1vh;
+    bottom: -2vh;
 }
 
 .google-slides-container iframe{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 99vh;
-    max-width: 100vw;
-    max-height: 100vh;
+position: absolute;
+    top: -1vh;
+    left: 0.5vw;
+    width: 97vw;
+    height: 97vh;
+    max-width: 97.25vw;
+    max-height: 97vh;
 }
