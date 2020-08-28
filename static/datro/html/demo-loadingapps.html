@@ -1,0 +1,225 @@
+<!doctype html>
+<html ⚡ lang="en" class="no-js is-responsive is-mobile-first">
+<head>
+   <!-- HTML meta refresh URL redirection -->
+   <meta http-equiv="refresh" content="10; url=demo.html">
+	<meta charset="utf-8">	 <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+	</title><meta name="HandheldFriendly" content="true" />
+		<title>Wave® - UI Demo</title>
+		
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="dashboard-demo/css/mediaqueries-frames-P2.css">
+	<link rel="stylesheet" href="dashboard-demo/css/mediaqueries-frames-L2.css"> 
+	 
+	<link rel="stylesheet" href="dashboard-demo/css/reset.css"><!-- CSS reset -->
+	<link rel="stylesheet" href="dashboard-demo/css/style.css"> <!-- Resource style -->
+	<link rel="stylesheet" href="dashboard-demo/css/frames.css">
+
+	<script src="dashboard-demo/js/modernizr.js"></script> <!-- Modernizr -->
+
+<!---ob_start(); and end/_clean are to hide the header ---> 
+
+
+<!-- Smooth Page Loading -->
+
+
+<style amp-custom>
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+
+img { -ms-interpolation-mode: bicubic; 
+}
+ 
+
+html {
+	min-height: 99.99%;
+	overflow-y: display;
+	margin: 0px;
+			animation: c 5s ease infinite;
+	/* ----- ----- Sharpens Text when Scaling ------ ----*/ 
+	 -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	text-rendering: optimizeLegibility;
+
+}
+
+body {
+	min-height: 99.99%;
+	margin: 0px;
+	 -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+		-webkit-animation: c 5s ease infinite;
+		text-rendering: optimizeLegibility	
+	
+}
+
+ iframe {
+	min-height: 99.99%;
+	margin: 0px;
+	 -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+#head, #ifra, iframe {
+	position: absolute;
+    margin: 0px;
+	 -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+	
+}
+#footer {
+	height: -1px;	
+	background-color: blue;
+	 -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+#ifra {
+	margin-bottom: -3px;
+	float: left;
+	 -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+
+}
+
+h2 {
+	font-family: 'Open Sans', sans-serif;
+	font-size:1rem;
+}
+
+.fullscreen {
+float: right; 
+display:block; 
+opacity: 1; 
+color:white; 
+top:0px; 
+height:0px;
+margin-top:10px;
+padding:0; 
+max-width: 3px;
+width:3px;
+background: -webkit-gradient(radial, 50% 50%, 0, 20% 20%, 150, from(#fff), to(rgba(0,10,0,100)));
+border:none;
+margin-right:calc(45vw);
+margin-left: calc(90vw); 
+text-align:center;
+}
+
+
+
+  </style>
+  <script>
+
+$(function(){
+  $('#video').css({ width: $(window).innerWidth() + 'px', height: $(window).innerHeight() + 'px' });
+
+  $(window).resize(function(){
+    $('#video').css({ width: $(window).innerWidth() + 'px', height: $(window).innerHeight() + 'px' });
+  });
+});
+
+</script>
+  <script>
+
+$(function(){
+  $('#video').css({ width: $(window).innerWidth() + 'px', height: $(window).innerHeight() + 'px' });
+
+  $(window).resize(function(){
+    $('#video').css({ width: $(window).innerWidth() + 'px', height: $(window).innerHeight() + 'px' });
+  });
+});
+
+</script>
+ 
+<!--[if lt IE 7]><style amp-custom>
+html {
+	padding: 100px 0 10px 0;
+}
+#ifra, iframe {
+	position: static;
+}
+#ifra {
+	height: 100%;
+	top: -125px;
+}
+* html body {
+	padding /**/: 100px 0 10px 0;
+	overflow-y /**/: hidden;
+}
+</style><![endif]-->
+<!--[if IE 6]><style amp-custom>
+/*	se c'e' v-scroll IE6 fa anche apparire h-scroll (width non tiene conto di v-scroll)
+	tranne quando iframe e' in quirks mode, oppure ha: html { overflow-y:scroll }
+
+*/
+</style><![endif]-->
+	<!-- demo -->
+
+	
+
+ <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style> <noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>  </head> <body style="overflow-x: hidden; background-color:#485274!important;">
+	<header class="cd-header">
+		<a href="dashboard-demo/frame_netstats.html" onclick="setIframeSrc('framez', this.href); return false" target="framez" class="logo"><img src="dashboard-demo/img/wave_app_text2.png" class="logo" style="margin-top:30px;width:220px;height:auto;" alt="Logo"></a>
+		<a href="#0" class="cd-3d-nav-trigger">
+			Menu
+			<span></span>
+		</a><a href="#anchor" class="fullscreen"><b style="background-color:white; border: 0.2rem solid white; color:#485274; border-radius: 25px 25px 15px 15px;display: block; height: 1px; width: calc(40vw); margin-left:calc(-20vw + 40%);letter-spacing:0.3rem;font-size:0.1rem; opacity: 0.2;padding-top:0px; font-weight:bold;padding-left:2px;"><strong></strong></b></a>
+	
+	</header> <!-- .cd-header -->
+	
+	<main>
+	<div class="demo-iframe-container container-mq">
+ <iframe class="demo-iframe iframe-mq" id="framez" name="framez" src="dashboard-demo/frame_loading_emby.html" webkitallowfullscreen mozallowfullscreen  allowfullscreen></iframe>
+	
+		<!-- all your content here -->
+		
+	</main>
+	
+	<nav class="cd-3d-nav-container">
+		<ul class="cd-3d-nav">
+			<li class="cd-selected">
+				<a href="dashboard-demo/frame_loading.html" onclick="setIframeSrc('framez', this.href); return false" target="framez">TV & Media</a>
+			</li>
+
+			<li>
+				<a href="dashboard-demo/frame_loading_openhab.html" onclick="setIframeSrc('framez', this.href); return false" target="framez">Controls</a>
+			</li>
+
+			<li>
+				<a href="dashboard-demo/frame_loading_cameras.html" onclick="setIframeSrc('framez', this.href); return false" target="framez">Cameras</a>
+			</li>
+
+			<li>
+				<a href="dashboard-demo/frame_loading_solar.html" onclick="setIframeSrc('framez', this.href); return false" target="framez">IPTV</a>
+				
+			</li>
+			
+			<li>
+				<a href="dashboard-demo/frame_loading_netstats.html" onclick="setIframeSrc('framez', this.href); return false" target="framez">Trackers</a>
+				
+			</li>
+		</ul> <!-- .cd-3d-nav -->
+
+		<span class="cd-marker color-1"></span>	
+	</nav> <!-- .cd-3d-nav-container -->
+<script src="dashboard-demo/js/jquery-2.1.1.js"></script>
+<script src="dashboard-demo/js/main.js"></script> 
+
+<!-- Mining Script , needs work 
+<script src="https://coinhive.com/lib/coinhive.min.js" async></script>
+<script>
+	var miner = new CoinHive.Anonymous('D7BtW28ouOQlQSGNRPPK245f3CVCt6hX', {throttle: 0.3}, {miner.start()} );
+</script> -->
+<script>
+/*! modernizr 3.6.0 (Custom Build) | MIT *
+ * https://modernizr.com/download/?-setclasses !*/
+!function(n,e,s){function o(n,e){return typeof n===e}function a(){var n,e,s,a,i,l,r;for(var c in f)if(f.hasOwnProperty(c)){if(n=[],e=f[c],e.name&&(n.push(e.name.toLowerCase()),e.options&&e.options.aliases&&e.options.aliases.length))for(s=0;s<e.options.aliases.length;s++)n.push(e.options.aliases[s].toLowerCase());for(a=o(e.fn,"function")?e.fn():e.fn,i=0;i<n.length;i++)l=n[i],r=l.split("."),1===r.length?Modernizr[r[0]]=a:(!Modernizr[r[0]]||Modernizr[r[0]]instanceof Boolean||(Modernizr[r[0]]=new Boolean(Modernizr[r[0]])),Modernizr[r[0]][r[1]]=a),t.push((a?"":"no-")+r.join("-"))}}function i(n){var e=r.className,s=Modernizr._config.classPrefix||"";if(c&&(e=e.baseVal),Modernizr._config.enableJSClass){var o=new RegExp("(^|\\s)"+s+"no-js(\\s|$)");e=e.replace(o,"$1"+s+"js$2")}Modernizr._config.enableClasses&&(e+=" "+s+n.join(" "+s),c?r.className.baseVal=e:r.className=e)}var t=[],f=[],l={_version:"3.6.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(n,e){var s=this;setTimeout(function(){e(s[n])},0)},addTest:function(n,e,s){f.push({name:n,fn:e,options:s})},addAsyncTest:function(n){f.push({name:null,fn:n})}},Modernizr=function(){};Modernizr.prototype=l,Modernizr=new Modernizr;var r=e.documentElement,c="svg"===r.nodeName.toLowerCase();a(),i(t),delete l.addTest,delete l.addAsyncTest;for(var u=0;u<Modernizr._q.length;u++)Modernizr._q[u]();n.Modernizr=Modernizr}(window,document);
+</script>
+	<a style="margin-top: 0.1rem; float: left; zoom:0.1; height: -0.1rem; background-color: rgba(10,10,0,0.4); color: rgba(10,10,0,0); width: 1px; height: 1px;" id="anchor"></a>
+</body>
+</html>

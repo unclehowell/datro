@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <!-- HTML meta refresh URL redirection -->
+     <link rel="stylesheet" href="../css/progress.css">
+     <script>
+     // This script is used to animate the progress bar
+
+var increment = 0; //set a value of zero for the progress bar
+
+ window.setInterval( // loop adding 1
+ function () {
+        increment = increment + Math.round(Math.random()) * 5;
+        document.getElementById("determinate").value = increment;
+        document.getElementById("determinate-value").textContent = increment;
+        document.getElementById("progress3").value = increment * 1.25;
+        document.getElementById("progress4").value = increment * 0.85;
+
+        if (increment >= 100) {
+                increment = 0;
+        }
+ }, 500);
+     </script>
+	 
+	<style amp-custom>
+	
+	html {
+
+	}
+	body {
+	
+background-color:white;
+
+}
+
+h2 {
+	font-family: 'Open Sans', sans-serif;
+	font-size:1rem;
+}
+
+	/*slideshow styles*/
+
+.slideshow {
+  width: calc(62.5vw);
+  margin: 0 auto;
+  overflow: hidden;
+  border: solid 1px grey;
+  filter: invert(100%); -webkit-filter: invert(100%);
+}
+
+.slideshow-container {
+  width: calc(250vw);
+  font-size: 0;
+  transition: 1s ease;
+  height: calc(68.5vh);
+}
+
+.slideshow-container:hover {
+  animation-play-state: paused;
+}
+
+img, .text-container {
+  width: calc(62.5vw);
+  height: auto;
+  display: inline-block;
+  font-size: 16px;
+  text-align: center;
+  
+}
+
+.text-container {
+  height: 225px;
+  position: relative;
+  filter: invert(100%); -webkit-filter: invert(100%);
+}
+
+
+p {
+  position: relative;
+  top: -45%;
+  padding: 5px;
+}
+
+.slide {
+  animation: slide 24s ease infinite;
+}
+
+@keyframes slide {
+filter: invert(100%); -webkit-filter: invert(100%);
+  0% {
+    transform: translateX(0%);
+  }
+  
+  12.5% {
+    transform: translateX(0%);
+  }
+  
+  25% {
+    transform: translateX(-25%);
+  }
+  
+  37.5% {
+    transform: translateX(-25%);
+  }
+  
+  50% {
+    transform: translateX(-50%);
+  }
+  
+  62.5% {
+    transform: translateX(-50%);
+  }
+  
+  75% {
+    transform: translateX(-75%);
+  }
+  
+  87.5% {
+    transform: translateX(-75%);
+  }
+  
+  99% {
+    transform: translateX(-75%);
+  }
+  
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.p {
+  margin-top: 140px;
+  text-align: center;
+  color:white;
+}
+</style>
+
+<body >
+        <div class="card">
+                   <h2 style="color:grey; opacity:0.6;text-align:center;line-height:20px; margin-top:100px;color:black;">Dashboard Installed! </br></br>Configuring Media App<p></p><progress id="determinate" max="100" value="0" style="margin-left:20px;"></progress></h2> 
+				   <p style="text-align: center; color: grey;opacity:0.7;margin-top:15px; margin-bottom:-10px;"> <strong style="color:yellow; opacity:0.5;"></strong>  Come back in a few moments ... </p>
+				   </br></br><div style="text-align:center;">		  
+        </div>
+		<section class="slideshow">
+  <div class="slideshow-container slide">
+    <img src="https://emby.media/resources/Cbe2ee8.png" height="100px" width="800px" style="width:calc(62.5vw);height:calc(70vh);"/>
+    <img src="https://s3.amazonaws.com/poly-screenshots.angel.co/Project/e0/578860/36fbbd2e5554e7f1f63bacbf26983dea-original.png"  height="100px" width="800px" style="width:calc(62.5vw);height:calc(70vh);"/>
+    <img src="https://cdn-images-1.medium.com/max/1600/1*lMvuhssRwEG5srCtO-U1Og@2x.png"  height="100px" width="800px" style="width:calc(62.5vw);height:calc(70vh);"/>
+	<img src="https://denglend.github.io/decode345/habpanel.png"  height="100px" width="800px" style="width:calc(62.5vw);height:calc(70vh);"/>
+    
+ </div>
+</section>
+</body>
+</html>
