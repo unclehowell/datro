@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<script type="text/javascript">
+	__wbhack.init('https://web.archive.org/web');
+	</script>
+	<link href="./index_files/banner-styles.css" rel="stylesheet" type="text/css">
+	<link href="./index_files/iconochive.css" rel="stylesheet" type="text/css"><!-- End Wayback Rewrite JS Include -->
+	<!-- InstanceBeginEditable name="doctitle" -->
+	<title>Vale life</title><!-- InstanceEndEditable -->
+
+	<style type="text/css">
+	<!--
+	body {
+	   margin-left: 0px;
+	   margin-top: 0px;
+	   margin-right: 0px;
+	   margin-bottom: 0px;
+
+	-->
+	</style>
+	<script type="text/javascript">
+	/***********************************************
+	* Ultimate Fade-In Slideshow (v1.5): © Dynamic Drive (http://www.dynamicdrive.com)
+	* This notice MUST stay intact for legal use
+	* Visit http://www.dynamicdrive.com/ for this script and 100s more.
+	***********************************************/
+
+	var fadeimages=new Array()
+	//SET IMAGE PATHS. Extend or contract array as needed
+	fadeimages[0]=["images/jack/1.jpg", "", ""] //plain image syntax
+	fadeimages[1]=["images/jack/2.jpg", "", ""] //plain image syntax
+	fadeimages[2]=["images/jack/3.jpg", "", ""] //plain image syntax
+	fadeimages[3]=["images/jack/4.jpg", "", ""] //plain image syntax
+	fadeimages[4]=["images/jack/5.jpg", "", ""] //plain image syntax
+	fadeimages[5]=["images/jack/6.jpg", "", ""] //plain image syntax
+	fadeimages[6]=["images/jack/5.jpg", "", ""] //plain image syntax
+	fadeimages[7]=["images/jack/4.jpg", "", ""] //plain image syntax
+	fadeimages[8]=["images/jack/3.jpg", "", ""] //plain image syntax
+	fadeimages[9]=["images/jack/2.jpg", "", ""] //plain image syntax
+
+	var fadebgcolor="white"
+
+	////NO need to edit beyond here/////////////
+
+	var fadearray=new Array() //array to cache fadeshow instances
+	var fadeclear=new Array() //array to cache corresponding clearinterval pointers
+
+	var dom=(document.getElementById) //modern dom browsers
+	var iebrowser=document.all
+
+	function fadeshow(theimages, fadewidth, fadeheight, borderwidth, delay, pause, displayorder){
+	this.pausecheck=pause
+	this.mouseovercheck=0
+	this.delay=delay
+	this.degree=10 //initial opacity degree (10%)
+	this.curimageindex=0
+	this.nextimageindex=1
+	fadearray[fadearray.length]=this
+	this.slideshowid=fadearray.length-1
+	this.canvasbase="canvas"+this.slideshowid
+	this.curcanvas=this.canvasbase+"_0"
+	if (typeof displayorder!="undefined")
+	theimages.sort(function() {return 0.5 - Math.random();}) //thanks to Mike (aka Mwinter) :)
+	this.theimages=theimages
+	this.imageborder=parseInt(borderwidth)
+	this.postimages=new Array() //preload images
+	for (p=0;p<theimages.length;p++){
+	this.postimages[p]=new Image()
+	this.postimages[p].src=theimages[p][0]
+	}
+
+	var fadewidth=fadewidth+this.imageborder*2
+	var fadeheight=fadeheight+this.imageborder*2
+
+	if (iebrowser&&dom||dom) //if IE5+ or modern browsers (ie: Firefox)
+	document.write('<div id="master'+this.slideshowid+'" style="position:relative;width:'+fadewidth+'px;height:'+fadeheight+'px;overflow:hidden;"><div id="'+this.canvasbase+'_0" style="position:absolute;width:'+fadewidth+'px;height:'+fadeheight+'px;top:0;left:0;filter:progid:DXImageTransform.Microsoft.alpha(opacity=10);-moz-opacity:10;-khtml-opacity:10;background-color:'+fadebgcolor+'"><\/div><div id="'+this.canvasbase+'_1" style="position:absolute;width:'+fadewidth+'px;height:'+fadeheight+'px;top:0;left:0;filter:progid:DXImageTransform.Microsoft.alpha(opacity=10);-moz-opacity:10;background-color:'+fadebgcolor+'"><\/div><\/div>')
+	else
+	document.write('<div><img name="defaultslide'+this.slideshowid+'" src="'+this.postimages[0].src+'"><\/div>')
+
+	if (iebrowser&&dom||dom) //if IE5+ or modern browsers such as Firefox
+	this.startit()
+	else{
+	this.curimageindex++
+	setInterval("fadearray["+this.slideshowid+"].rotateimage()", this.delay)
+	}
+	}
+
+	function fadepic(obj){
+	if (obj.degree<100){
+	obj.degree+=10
+	if (obj.tempobj.filters&&obj.tempobj.filters[0]){
+	if (typeof obj.tempobj.filters[0].opacity=="number") //if IE6+
+	obj.tempobj.filters[0].opacity=obj.degree
+	else //else if IE5.5-
+	obj.tempobj.style.filter="alpha(opacity="+obj.degree+")"
+	}
+	else if (obj.tempobj.style.MozOpacity)
+	obj.tempobj.style.MozOpacity=obj.degree/101
+	else if (obj.tempobj.style.KhtmlOpacity)
+	obj.tempobj.style.KhtmlOpacity=obj.degree/100
+	}
+	else{
+	clearInterval(fadeclear[obj.slideshowid])
+	obj.nextcanvas=(obj.curcanvas==obj.canvasbase+"_0")? obj.canvasbase+"_0" : obj.canvasbase+"_1"
+	obj.tempobj=iebrowser? iebrowser[obj.nextcanvas] : document.getElementById(obj.nextcanvas)
+	obj.populateslide(obj.tempobj, obj.nextimageindex)
+	obj.nextimageindex=(obj.nextimageindex<obj.postimages.length-1)? obj.nextimageindex+1 : 0
+	setTimeout("fadearray["+obj.slideshowid+"].rotateimage()", obj.delay)
+	}
+	}
+
+	fadeshow.prototype.populateslide=function(picobj, picindex){
+	var slideHTML=""
+	if (this.theimages[picindex][1]!="") //if associated link exists for image
+	slideHTML='<a href="'+this.theimages[picindex][1]+'" target="'+this.theimages[picindex][2]+'">'
+	slideHTML+='<img src="'+this.postimages[picindex].src+'" border="'+this.imageborder+'px">'
+	if (this.theimages[picindex][1]!="") //if associated link exists for image
+	slideHTML+='<\/a>'
+	picobj.innerHTML=slideHTML
+	}
+
+
+	fadeshow.prototype.rotateimage=function(){
+	if (this.pausecheck==1) //if pause onMouseover enabled, cache object
+	var cacheobj=this
+	if (this.mouseovercheck==1)
+	setTimeout(function(){cacheobj.rotateimage()}, 100)
+	else if (iebrowser&&dom||dom){
+	this.resetit()
+	var crossobj=this.tempobj=iebrowser? iebrowser[this.curcanvas] : document.getElementById(this.curcanvas)
+	crossobj.style.zIndex++
+	fadeclear[this.slideshowid]=setInterval("fadepic(fadearray["+this.slideshowid+"])",50)
+	this.curcanvas=(this.curcanvas==this.canvasbase+"_0")? this.canvasbase+"_1" : this.canvasbase+"_0"
+	}
+	else{
+	var ns4imgobj=document.images['defaultslide'+this.slideshowid]
+	ns4imgobj.src=this.postimages[this.curimageindex].src
+	}
+	this.curimageindex=(this.curimageindex<this.postimages.length-1)? this.curimageindex+1 : 0
+	}
+
+	fadeshow.prototype.resetit=function(){
+	this.degree=10
+	var crossobj=iebrowser? iebrowser[this.curcanvas] : document.getElementById(this.curcanvas)
+	if (crossobj.filters&&crossobj.filters[0]){
+	if (typeof crossobj.filters[0].opacity=="number") //if IE6+
+	crossobj.filters(0).opacity=this.degree
+	else //else if IE5.5-
+	crossobj.style.filter="alpha(opacity="+this.degree+")"
+	}
+	else if (crossobj.style.MozOpacity)
+	crossobj.style.MozOpacity=this.degree/101
+	else if (crossobj.style.KhtmlOpacity)
+	crossobj.style.KhtmlOpacity=obj.degree/100
+	}
+
+
+	fadeshow.prototype.startit=function(){
+	var crossobj=iebrowser? iebrowser[this.curcanvas] : document.getElementById(this.curcanvas)
+	this.populateslide(crossobj, this.curimageindex)
+	if (this.pausecheck==1){ //IF SLIDESHOW SHOULD PAUSE ONMOUSEOVER
+	var cacheobj=this
+	var crossobjcontainer=iebrowser? iebrowser["master"+this.slideshowid] : document.getElementById("master"+this.slideshowid)
+	crossobjcontainer.onmouseover=function(){cacheobj.mouseovercheck=1}
+	crossobjcontainer.onmouseout=function(){cacheobj.mouseovercheck=0}
+	}
+	this.rotateimage()
+	}
+
+	</script>
+	<script src="./index_files/p7popmenu.js.download" type="text/javascript">
+	</script>
+	<style type="text/css">
+	#p7PMnav ul {position:absolute;left:-9000px;}
+	#p7PMnav ul ul {position:absolute;left:-9000px;}
+	#p7PMnav ul ul ul {position:absolute;left:-9000px;}
+	#p7PMnav ul ul ul ul {position:absolute;left:-9000px;}
+	#p7PMnav ul ul ul ul ul {position:absolute;left:-9000px;}
+	#p7PMnav ul ul ul ul ul ul {position:absolute;left:-9000px;}
+	#p7PMnav ul ul ul ul ul ul ul {position:absolute;left:-9000px;}
+	#p7PMnav ul ul ul ul ul ul ul ul {position:absolute;left:-9000px;}
+	#p7PMnav ul ul ul ul ul ul ul ul ul {position:absolute;left:-9000px;}
+	#p7PMnav ul ul ul ul ul ul ul ul ul ul {position:absolute;left:-9000px;}
+	#p7PMnav ul ul ul ul ul ul ul ul ul ul ul {position:absolute;left:-9000px;}
+	#p7PMnav ul ul ul ul ul ul ul ul ul ul ul ul {position:absolute;left:-9000px;}
+	#p7PMnav ul ul ul ul ul ul ul ul ul ul ul ul ul {position:absolute;left:-9000px;}
+	#p7PMnav ul ul ul ul ul ul ul ul ul ul ul ul ul ul {position:absolute;left:-9000px;}
+	#p7PMnav ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {position:absolute;left:-9000px;}
+	#p7PMnav ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {position:absolute;left:-9000px;}
+	#p7PMnav ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {position:absolute;left:-9000px;}
+	#p7PMnav ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {position:absolute;left:-9000px;}
+	#p7PMnav ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {position:absolute;left:-9000px;}
+	</style>
+	<style media="screen" type="text/css">
+	<!--
+	@import url("https://web.archive.org/web/20071108232432cs_/http://www.valelife.co.uk/p7pm/p7pmh5.css");
+	-->
+	</style>
+	<link href="./index_files/s.css" rel="stylesheet" type="text/css">
+	<script language="JavaScript" type="text/JavaScript">
+	<!--
+	function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+	 if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+	   document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+	 else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+	}
+	MM_reloadPage(true);
+
+	function MM_openBrWindow(theURL,winName,features) { //v2.0
+	 window.open(theURL,winName,features);
+	}
+	//-->
+	</script>
+	<style type="text/css">
+	<!--
+	.style4 {font-size: 10px}
+	.style6 {font-family: Verdana, Arial, Helvetica, sans-serif}
+	-->
+	</style><!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+ 
+ <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style> <noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>  </head> <body onload="P7_initPM(1,5,1,1,1)">
+	<div class="" id="wm-ipp" lang="en" style="display: none; direction: ltr;">
+		<div style="position:fixed;left:0;top:0;right:0;">
+			<div id="wm-ipp-inside">
+				<div id="wm-capinfo" style="border-top:1px solid #777;display:none; overflow: hidden">
+					<div style="background-color:#666;color:#fff;font-weight:bold;text-align:center">
+						COLLECTED BY
+					</div>
+					<div id="wm-collected-by-content" style="padding:3px;position:relative">
+						<div style="display:inline-block;vertical-align:top;width:50%;">
+							<span class="c-logo" style="background-image:url(https://archive.org/services/img/alexacrawls);"></span> Organization: <a href="https://archive.org/details/alexacrawls" style="color:#33f;" target="_new"><span class="wm-title">Alexa Crawls</span></a>
+							<div style="max-height:75px;overflow:hidden;position:relative;">
+								<div style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);"></div>Starting in 1996, <a href="http://www.alexa.com/">Alexa Internet</a> has been donating their crawl data to the Internet Archive. Flowing in every day, these data are added to the <a href="http://web.archive.org/">Wayback Machine</a> after an embargo period.
+							</div>
+						</div>
+						<div style="display:inline-block;vertical-align:top;width:49%;">
+							<span class="c-logo" style="background-image:url(https://archive.org/services/img/52_crawl)"></span>
+							<div>
+								Collection: <a href="https://archive.org/details/52_crawl" style="color:#33f;" target="_new"><span class="wm-title">52_crawl</span></a>
+							</div>
+							<div style="max-height:75px;overflow:hidden;position:relative;">
+								<div style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);"></div>this data is currently not publicly accessible.
+							</div>
+						</div>
+					</div>
+					<div style="background-color:#666;color:#fff;font-weight:bold;text-align:center" title="Timestamps for the elements of this page">
+						TIMESTAMPS
+					</div>
+					<div>
+						<div id="wm-capresources" style="margin:0 5px 5px 5px;max-height:250px;overflow-y:scroll !important"></div>
+						<div id="wm-capresources-loading" style="text-align:left;margin:0 20px 5px 5px;display:none"><img alt="loading" src="./index_files/loading.gif"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- BEGIN WAYBACK TOOLBAR INSERT -->
+	<script charset="utf-8" src="./index_files/timestamp.js.download" type="text/javascript">
+	</script> 
+	<script charset="utf-8" src="./index_files/graph-calc.js.download" type="text/javascript">
+	</script> 
+	<script charset="utf-8" src="./index_files/auto-complete.js.download" type="text/javascript">
+	</script> 
+	<script charset="utf-8" src="./index_files/toolbar.js.download" type="text/javascript">
+	</script>
+	<style type="text/css">
+	body {
+	 margin-top:0 !important;
+	 padding-top:0 !important;
+	 /*min-width:800px !important;*/
+	}
+	.wb-autocomplete-suggestions {
+	   text-align: left; cursor: default; border: 1px solid #ccc; border-top: 0; background: #fff; box-shadow: -1px 1px 3px rgba(0,0,0,.1);
+	   position: absolute; display: none; z-index: 2147483647; max-height: 254px; overflow: hidden; overflow-y: auto; box-sizing: border-box;
+	}
+	.wb-autocomplete-suggestion { position: relative; padding: 0 .6em; line-height: 23px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 1.02em; color: #333; }
+	.wb-autocomplete-suggestion b { font-weight: bold; }
+	.wb-autocomplete-suggestion.selected { background: #f0f0f0; }
+	</style>
+	<script type="text/javascript">
+	__wm.bt(575,27,25,2,"web","http://www.valelife.co.uk:80/aut_07/features/media.htm","2007-11-08",1996);
+	</script>
+	<div class="wb-autocomplete-suggestions" style="left: 0px; top: 1px; width: 0px;"></div><!-- END WAYBACK TOOLBAR INSERT -->
+	<div align="right">
+		<br>
+		<br>
+		<br>
+		<table align="center" border="0" cellpadding="0" cellspacing="0" width="800">
+			<tbody>
+				<tr>
+					<td bgcolor="#FFFFFF">
+						<div align="center">
+							<strong class="green"><img height="110" src="./index_files/top.gif" width="760"></strong>
+							<table align="center" bgcolor="#666600" border="0" cellpadding="1" cellspacing="0" width="760">
+								<tbody>
+									<tr>
+										<td>
+											<table border="0" cellpadding="0" cellspacing="0" width="760">
+												<tbody>
+													<tr>
+														<td>
+															<div align="left"></div>
+															<div align="right"></div>
+														</td>
+													</tr>
+													
+													<tr>
+														<td bgcolor="#FFFFFF" height="26" valign="top">
+															<br>
+															<!-- InstanceBeginEditable name="main" -->
+															<table border="0" cellpadding="0" cellspacing="0" width="760">
+																<tbody>
+																	<tr>
+																		<td width="16">&nbsp;</td>
+																		<td valign="top" width="235"><img height="155" src="./index_files/media.jpg" width="235">
+																		<img height="155" src="./index_files/media3.jpg" width="235">
+																		<img height="155" src="./index_files/media0.jpg" width="235">
+																		<p style="margin:0; padding:1em;text-align:center; line-height: 1.5em;">The Team (above) & </br> Company Offices/ Info (below)</p>
+																		<img height="155" src="./index_files/media2.jpg" width="235">
+																		<img height="155" src="./index_files/media4.jpg" width="235"></br></br>
+																	
+																		<td width="25">&nbsp;</td>
+																		<td valign="top" width="467">
+																			<div align="left" class="bigbl">
+																				<span class="biG"><img src="../../../img/datro_logo.jpg" style="margin-left: 7%; text-align:center; max-width: 400px; width:40vw; margin-bottom:-20px;"><br>
+																				 <h1 style="text-align:center;">&#8220;MORE THAN JUST MEDIA&#8221;</h1></span>
+																			
+																				<p style="text-align:justify;"><span class="green"><strong>An exciting tech-startup is being launched. Wave® (formerly 'Media Receive') provides a single solution for all the technologies in our homes. The all-in-one Media Center solutions deliver ‘more than just media’.</strong><br>
+																				<br>
+																				Wave® began with four Ex-Forces technicians who served as Corporals in the Royal Corps of Signals. The only female of the team also Ex Royal Air Force.<br>
+																				<br>
+																				Network, satellite, telecommunications and multimedia expert Siôn H. Buckler founded Wave® before hanging up his uniform, with the initial team comprising of former electronic warfare co-workers: James Stewart, James Lawland and Mark Simpson (also ex-military specialists in networking, mobile telecommunications and surveillance). Joining later was Jackie Burns - a linguist who speaks many languages and secretary Beth Sutton. Newer team members include gifted civilian engineers Daryl Khan and Armani Vashi who manage the development, development teams and partnerships.<br>
+																				<br>
+																				In a nutshell these Microsoft, Ceida and Prince2 Certified Partners are able to provide a complete smart-home solution like no other, delivering all the latest technologies from their list of prestigious suppliers which include Bose, Sonos, Samsung and other brand names in the Smart Home Sector. </br> 
+																				
+																				</br>The latest technology from the team are called Single Board Computers (SBC's), which fit in the palm of your hand, use minimal IPTV and cost next to nothing. Anything these little devices physically connect with, will appear on an all-in-one Dashboard, enabling users to monitor and control everything in their home, both locally and remotely e.g. Wi-Fi Router, Power Inverter, Televisions and even vehicles (tracking). Since the devices are also Wi-Fi Hotspots, anything connecting to them wirelessly also appear on your smart home dashboard with the ability to monitor and control e.g. smart plug sockets, blinds/ curtains, lighting, gas & water sensors etc.  There isn't a microphone (so no listening into conversations) and the remote control is your mobile web browser (so not apps to install).  
+																				<br></br>
+																				Siôn H. Buckler, also a fluent Welsh speaker from Cardiff, said “Wave® aims to develop our own product and software using our wealth of expertise: Creating the highest-end, lowest-cost & simplest-to-install smart home technology on the market. Wave® is not about the hardware, it's about creating the dream smart home experience, a journey for us and a destination for our customers. Windows and many other other operating systems aren't making smart homes easy, compatable or cheap enough for regular people or even smart home installers. We aim to remedy this in our near future, injecting our knowledge and expertise into our own Smart Home Product & Software Solution &#8221;<br>
+																				<br>
+																				James Steward, a triathlete who served with Siôn in his last Electronic Warfare Post and co-founded and financed the company from his home in Sutton, London - said &#8220;We are the only business of our kind&#8221;<br>
+																				<br>
+																				The team of engineers at the company have also bought several properties in the region, become involved in their community at a local-level (providing technical support for the opening of a local skate park "The Knap" and sourcing technology prizes) and even participate in Road Safety Campaigns with the Vale Council outside of office hours.<br>
+																				<br></br></span></p><span class="green"></span>
+																				<table bgcolor="#999966" border="0" cellpadding="10" cellspacing="0" width="465">
+																					<tbody>
+																						<tr>
+																							<td class="green">
+																								For more information please contact:<br>
+																								Email <a href="mailto:wavefreeinternet@gmail.com">wavefreeinternet@gmail.com</a> </br>
+																								Website: <a href="https://datro.xyz">datro.xyz</a>
+																							</td>
+																						</tr>
+																					</tbody>
+																				</table><br>
+																			</div>
+																		</td>
+																		<td width="17">&nbsp;</td>
+																	</tr>
+																</tbody>
+															</table><!-- InstanceEndEditable -->
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table><br>
+							<br>
+							© Copyright Vale Life 2007. All rights reserved. Nothing in this magazine (including adverts) may be reproduced in any shape or form
+							(in whole or part) without the express written permission of the publishers</span>.<br></span><br>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table><br>
+		<br>
+	</div><!-- InstanceEnd -->
+	<!--
+     FILE ARCHIVED ON 23:24:32 Nov 08, 2007 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 16:21:19 Jul 28, 2018.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+	<!--
+playback timings (ms):
+  LoadShardBlock: 75.411 (3)
+  esindex: 0.008
+  captures_list: 185.787
+  CDXLines.iter: 12.545 (3)
+  PetaboxLoader3.datanode: 106.718 (4)
+  exclusion.robots.fetch: 91.151 (4)
+  exclusion.robots: 91.833
+  exclusion.robots.policy: 0.322
+  RedisCDXSource: 2.918
+  PetaboxLoader3.resolve: 638.388
+  load_resource: 721.227
+-->
+</body>
+</html>

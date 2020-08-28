@@ -1,0 +1,91 @@
+/*  2018 Copyright - WaveOS
+                 ..                   
+..   ..          ..   ........                     .........     .......     ........                      .........    ......................
+..   ...           ..  ........                   .........     .........     ........                    .........    ......................
+ .......         .....  ........                 .........     ...........     ........                  .........    ......................
+ .......       ........  ........               .........     .............     ........                .........    ......................
+ .......       ...        ........             .........     ...............     ........              .........    .......
+  ......       ........   .........           .........     ........   ......     ........            .........    .......
+  ......       .......   ...........         .........     ........     ......     ........          .........    .................
+   .....        .....   .............       .........     .......    .   ......     ........        .........    .................
+   .........    ....   ...............     .........     .......   .....  ......     ........      .........    .................
+    .......... . ..   ......   ........   .........     .........................     ........    .........    .................
+       ......... .   ......     ..................     ........     ...     ......     ...................    ........
+        .........   ......       ................     ........       .       ......     .................    ........
+          ......   ......         ..............     ........                 ......     ...............    ...........................
+            ...   ......           ............     ........                   ......     .............    ...........................
+             .   ......             ..........     ........                     ......     ...........    ........................... 
+
+                        
+						 ............................................................................................
+						           WaveOS by Unclehowell -  Wave Telecom Ltd 2019  - All Rights Reserved 
+					     ............................................................................................ 
+                             GitHub:https://github.com/unclehowell/WaveOS -  Website:https://datro.xyz
+					     ..........................................................................................   */
+
+/*  Classes:     A. .container {}
+				 B. .carousel-maintitle {}
+				 C. .carousel-maintitle-link {}
+				 D. .carousel-maintitle-link:hover {}
+				 E. .carousel-title {}
+				 F. .carousel-title-link {}
+				 G. .carousel-title-link:hover {} 
+				 H. .carousel-subtitle {}
+				 I. .carousel-item {}
+				 J. .appstore-img-button-play {}
+				 K. .appstore-img-button-apple  {}
+				 L. .payment-button-img-paypal {}
+				 M. .button-text-paypal {}
+				 N. .payment-button-img-stripe {}
+				 O. .button-text-stripe {}
+				 P. .button-block {}
+				 Q. .button-block-left {}
+				 R. .button-block-right {}
+				 S. .tick-box-holder {}
+				 T. .tick-box {}
+				 U. .moreinfo {}
+				 V.  #image1>img,#image2>img,#image3>img,#image4>img,#image4>img {}			 
+	  
+    Structure:  01. .class-1 {}  .class-2 {} ... etc
+				02. @media all and (min-width:1024px) 							                       {.class-1 {}.class-2 {} ... etc}
+				03. @media all and (min-width:960px) 												   {.class-1 {}.class-2 {} ... etc}
+				04. @media all and (min-width:960px) and (max-width:1123px)							   {.class-1 {}.class-2 {} ... etc}
+				05. @media all and (min-width:960px) and (max-width:1123px)and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
+				06. @media all and (min-width:960px) and (max-width:1123px)and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
+				07. @media all and (min-width:768px)												   {.class-1 {}.class-2 {} ... etc}
+				08. @media all and (min-width:768px) and (max-width:959px)  						   {.class-1 {}.class-2 {} ... etc}
+				09. @media all and (min-width:768px) and (max-width:959px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
+				10. @media all and (min-width:768px) and (max-width:959px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
+				11. @media all and (min-width:480px) 					 							   {.class-1 {}.class-2 {} ... etc}
+				12. @media all and (min-width:480px) and (max-width:767px) 							   {.class-1 {}.class-2 {} ... etc}
+				13. @media all and (min-width:480px) and (max-width:767px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
+				14. @media all and (min-width:480px) and (max-width:767px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
+				15. 					  @media all and (max-width:479px)                             {.class-1 {}.class-2 {} ... etc} 
+				16. 			       	  @media all and (max-width:479px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
+				17. 					  @media all and (max-width:479px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}     
+				18. @media(-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:3/2), (min-resolution:1.5dppx) {}
+				19. @media print {}
+ 01:> */ 
+
+
+@font-face{font-family:'Glyphicons Halflings';src:url('../fonts/glyphicons-halflings-regular.eot');src:url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),url('../fonts/glyphicons-halflings-regular.woff') format('woff'),url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'),url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg')}
+
+.btn-info2 , .btn-info2:hover, .btn-info2:focus, .btn-info2:active, .btn-info2.active, .open .dropdown-toggle.btn-info2 {color: #fff!important; background-color: #5bc0de!important; border-color: #46b8da!important;}
+.btn {display: inline-block!important; padding: 6px 12px!important; margin-bottom: 0!important; font-size: 14px!important; font-weight: normal!important; line-height: 1.428571429!important; text-align: center!important; white-space: nowrap!important; vertical-align: middle!important; cursor: pointer!important; border: 1px solid transparent!important; border-radius: 4px!important; -webkit-user-select: none!important; -moz-user-select: none!important; -ms-user-select: none!important; -o-user-select: none!important; user-select: none!important;}
+*, *:before, *:after {-webkit-box-sizing: border-box!important; -moz-box-sizing: border-box!important; box-sizing: border-box!important;}
+.btn-lg {padding: 10px 16px!important; font-size: 18px!important; line-height: 1.33!important; border-radius: 6px!important; display: flex!important; justify-content: center!Important; object-position: left!important; align-content: center!important; margin: 1rem 0rem 1rem 0rem!important; min-width: 190px!important;}
+.btn-group, .btn-group-vertical {position: relative!important; display: inline-block; vertical-align: middle!important; vertical-align: middle!important; object-position: center!Important; align-content: center!important; justify-content: center!important; max-width: 320px!important; text-align: center!Important;}
+.fl-page .btn-download {float: right!important; margin-top: -40px!important;}
+:focus {outline: -webkit-focus-ring-color auto 5px!important;}
+.btn-group .btn+.btn, .btn-group .btn+.btn-group, .btn-group .btn-group+.btn, .btn-group .btn-group+.btn-group, .btn-group-vertical .btn+.btn, .btn-group-vertical .btn+.btn-group, .btn-group-vertical .btn-group+.btn, .btn-group-vertical .btn-group+.btn-group {margin-left:0!important;}
+
+.dropdown-toggle.btn-danger{color:#fff;background-color:#d2322d;border-color:#ac2925}
+.btn-danger:active,.btn-danger.active,.open .dropdown-toggle.btn-danger{background-image:none}                                   
+.btn-success{color:#fff;background-color:#5cb85c;border-color:#4cae4c}
+.btn-success:hover,.btn-success:focus,.btn-success:active,.btn-success.active,.open .dropdown-toggle.btn-success{color:#fff;background-color:#47a447;border-color:#398439}
+.btn-success:active,.btn-success.active,.open .dropdown-toggle.btn-success{background-image:none}                   
+.btn-success.disabled,.btn-success[disabled],fieldset[disabled] .btn-success,.btn-success.disabled:hover,.btn-success[disabled]:hover,fieldset[disabled] .btn-success:hover,.btn-success.disabled:focus,.btn-success[disabled]:focus,fieldset[disabled] .btn-success:focus,.btn-success.disabled:active,.btn-success[disabled]:active,fieldset[disabled] .btn-success:active,.btn-success.disabled.active,.btn-success[disabled].active,fieldset[disabled] .btn-success.active{background-color:#5cb85c;border-color:#4cae4c}    
+.glyphicon-arrow-down:before{content:"\e094"} 
+.glyphicon-compressed:before{content:"\e181"}
+.glyphicon-eye-open:before{content:"\e105"}
+.glyphicon{position:relative;top:1px;display:inline-block;font-family:'Glyphicons Halflings';-webkit-font-smoothing:antialiased;font-style:normal;font-weight:normal;line-height:1}  
