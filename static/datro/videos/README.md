@@ -2,37 +2,42 @@
 
 ## This directory contains the DATRO videos
 
-noise cancellation on mic: wget -qO - https://bit.ly/2mBJSJo | sudo bash && pulseaudio -k && pulseaudio --start
-(reboot after running)
+### Audio Quality Methodology
+
+There's two parts, recording the audio and the settings for that.
+Then rendering the recording with ffmpeg and ffmpeg-normalize.
+
+The consensus so far (after a week messing) seems to be to do the following:
+record, use noise canceling. It'll be quiet, but sound ok.
+Then use ffmpeg and ffmpeg-normalize to boost and normalize the sound afterwards.
+
+### Getting Started - Screen Recording
 
 OBS is a good screen recorder. Whatever you use to screen record, save it in raw AVI format.
-Get the sound profile from the raw file and then normalizing it:
-`ffmpeg -i input.mkv -af loudnorm=I=-16:TP=-1.5:LRA=11:print_format=json -f null -`
-Then enter the results into this script and run it (it also makes the file small):
-`ffmpeg -i input.mkv -af loudnorm=I=-16:TP=-1.5:LRA=6:measured_I=-23.01:measured_LRA=6.40:measured_TP=-5.22:measured_thresh=-33.96:offset=0.01:linear=true:print_format=summary -ar 48k output.mkv`
+noise cancellation on mic: `wget -qO - https://bit.ly/2mBJSJo | sudo bash`
+(reboot after running/ or try `sudo alsa force-reload`). New Mic Options will appear:
+`Built-in Audio Analog Stereo (echo canceled with built in audio stereo)`
 
-finally convert the output from mkv to webm (takes hours): `ffmpeg -i output.mkv output.webm`
-The sound should be improved and the filesize should be small.
+* If you get duplicate mic options, remove the duplicates in here.
+/etc/pulse/default.pa (at the bottom of the file)
 
-Hmmmm - Don't think it worked as well as the last method I tried:
+* trying to fight the filter by boosting your mic in OBS or in alsamixer is pointless.
+  the filter does it's own thing. And it's best to just let it do what it does best.
 
-1. converted to webm using this command `ffmpeg -i input.avi output.webm`
-This reduced my 17 minute video from 12GB to 40MB.
-The run these commands in this order to further improve size and sound quality:
-`ffmpeg-normalize output.webm -o output2.webm`
-`ffmpeg-normalize *.webm -c:a aac -b:a 192k`
-This creates a directory called Normalize and the video can be found inside it.
+### Getting Started - Video Editing
 
-Then we want to sample that video to get the sound profile (output2.mkv)
-`ffmpeg -i output2.mkv -af loudnorm=I=-16:TP=-1.5:LRA=11:print_format=json -f null -`
-This outputs a load of numbers, which you need to chuck into the next line of code to get the normalization algo acurate:
-`ffmpeg -i output2.mkv -af loudnorm=I=-16:TP=-1.5:LRA=6:measured_I=-23.01:measured_LRA=6.40:measured_TP=-5.22:measured_thresh=-33.96:offset=0.01:linear=true:print_format=summary -ar 48k output3.mkv`
+Openshot does the job.
+- Background music should be licensed for common/ general public use)
+- Perhaps save in mp4 since you'll need to normalize and boost audio with ffmpeg,
+before final compression to webm (for hosting in the monorepo)
 
-1. ffmpeg -i 2020-08-26_09-33-53.avi -filter:a "volume=15.6dB" output.webm
-2. ffmpeg -i output.webm -filter:a "volume=11dB" output-new.webm
-3. ffmpeg -i output.webm -af loudnorm=I=-16:TP=-1.5:LRA=11:print_format=json -f null -
+### Getting Started - improve the recording
 
-	"input_i" : "-8.23",
+#### Manually Normalize sound
+Get the sound profile from the source:
+`ffmpeg -i input.webm -af loudnorm=I=-16:TP=-1.5:LRA=11:print_format=json -f null -`
+
+`	"input_i" : "-8.23",
 	"input_tp" : "6.90",
 	"input_lra" : "8.00",
 	"input_thresh" : "-19.54",
@@ -41,12 +46,27 @@ This outputs a load of numbers, which you need to chuck into the next line of co
 	"output_lra" : "7.30",
 	"output_thresh" : "-27.00",
 	"normalization_type" : "dynamic",
-	"target_offset" : "-0.10"
+	"target_offset" : "-0.10" `
 
-  ffmpeg -i output-new.webm -af loudnorm=I=-16:TP=-1.5:LRA=7:measured_I=-8.23:measured_LRA=8.00:measured_TP=6.9:measured_thresh=-27.00:offset=0.10:linear=true:print_format=summary -ar 48k output-final.webm
+Put results into this script and run it:
+  `ffmpeg -i input.webm -af loudnorm=I=-16:TP=-1.5:LRA=7:measured_I=-8.23:measured_LRA=8.00:measured_TP=6.9:measured_thresh=-27.00:offset=0.10:linear=true:print_format=summary -ar 48k output.webm`
 
-There's a blog that has some code to do the job: https://medium.com/@jud.dagnall/dynamic-range-compression-for-audio-with-ffmpeg-and-compand-621fe2b1a892
-It may need tweaking for my mic & laptop, the article has intructions:
-  ffmpeg -i output-final.webm -filter_complex "compand=attacks=0:points=-80/-900|-45/-15|-27/-9|0/-7|20/-7:gain=5" output-final2.webm
+#### Automatically Normalize sound
+`ffmpeg-normalize input.webm -o output.webm` (may fail depending on webm codecs - maybe convert to mp4 first)
+This produces an mkv output and creates a directory called Normalize where it's placed automatically.
+`ffmpeg-normalize *.webm -c:a aac -b:a 192k`
 
-  1. ffmpeg -i 2020-08-26_09-33-53.avi -filter:a "volume=15.6dB" output.webm
+#### Handy other commands:
+convert mkv/avi to webm (takes hours but makes it small):
+`ffmpeg -i input.mkv output.webm`
+`ffmpeg -i input.avi output.webm`
+
+boost volume
+`ffmpeg -i input.avi -filter:a "volume=15.6dB" output.webm`
+`ffmpeg -i input.webm -filter:a "volume=11dB" output-new.webm`
+
+
+#### Next Level Stuff
+so i read this blog: https://medium.com/@jud.dagnall/dynamic-range-compression-for-audio-with-ffmpeg-and-compand-621fe2b1a892
+It gives a more feature packed script to try:
+`ffmpeg -i input.webm -filter_complex "compand=attacks=0:points=-80/-900|-45/-15|-27/-9|0/-7|20/-7:gain=5" output.webm`

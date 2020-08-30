@@ -1,0 +1,279 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Loyverse &amp; ScrCpy (LaS) &mdash; Loyverse and ScrCpy (LaS) 0.1.0rc1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Release Notes and Notices" href="releasenotes.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> Loyverse and ScrCpy (LaS)
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version"> Document Version : 
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes and Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terminology.html">Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preperation.html">Pre-Usage Preparation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="productmaint.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developers</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Loyverse and ScrCpy (LaS)</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Loyverse &amp; ScrCpy (LaS)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> </a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="loyverse-scrcpy-las">
+<h1>Loyverse &amp; ScrCpy (LaS)<a class="headerlink" href="#loyverse-scrcpy-las" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="user-guide">
+<h2>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/hardware.png" src="_images/hardware.png" />
+<p>Welcome to the Loyverse &amp; ScrCpy (LaS) User Guide.
+Contained in this document is clear and helpful information to assist you understand, operate and enjoy LaS.</p>
+<p>Loyverse and ScrCpy (LaS) is a free ‘purpose built’ software solution that permits the Loyverse EPOS (Android-only) Application to run on older computers which may not support running Android applications e.g. via a virtual environment (the official solution currently being suggested by the Loyverse support team). The current recommended workaround “solution”, for non-Android Operating Systems such as Windows and Mac, is not only painfully slow to interact with, but also tedious to configure and complex to operate - not ideal for your average fast paced, service industry businesses e.g. Bars, Restaraunts etc.</p>
+<p>As the title suggests, LaS utalises a software called ScreenCopy (ScrCpy) in order to launch a java interface window, which is not only lightweight but extreamily fast, even on older machines. Android is also hosted on a second ‘headless’ machine, not the PC. The headless (screenless) machine is a low cost, highly popular Single Board Computer called a Raspberry Pi (RPi). This Raspberry Pi connects to the PC via Ethernet. The Android Operating System, which will run the Loyverse application, also runs on the Raspberry Pi in developer mode, which permits a remote viewing feature to be utalised called Android Debugging.</p>
+<p>So Raspberry Pi is actually running Android (or in this case a customised version entitled LineageOS), with the sole purpose of running the Loyverse Application. Whereas the PC runs Linux (Ubuntu) for bespoke printer and touchscreen LaS scripts to run, then uses the ScrCpy application as a means of remotely viewing and interacting with the Raspberry Pi, Android OS and Loyverse Application.</p>
+<p>The final solution is a desktop icon which upon selection, simulates the Loyverse application is running on the PC, when in fact its running on a seperate machine and is only visible on the PC thanks to the Android Debugging background service and the low-latency ScrCpy java interface.</p>
+<p>Index:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes and Notices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="releasenotes.html#version-0-1-0-alpha">Version 0.1.0 (Alpha)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="releasenotes.html#known-and-corrected-issues">Known and Corrected Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="terminology.html">Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preperation.html">Pre-Usage Preparation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preperation.html#dependancies">Dependancies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="productmaint.html">Maintenance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="productmaint.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="productmaint.html#hardware">Hardware</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#android-rpi-desktop-application-fails-to-launch">Android-RPi Desktop Application Fails to Launch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#touchscreen-issues-interface-is-frozen">Touchscreen Issues/ Interface is Frozen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#unexpected-event">Unexpected Event</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="developers.html#introduction">Introduction</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="document-author-s">
+<h3><strong>Document Author(s):</strong><a class="headerlink" href="#document-author-s" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="wave-telecom-limited">
+<h4>Wave Telecom Limited<a class="headerlink" href="#wave-telecom-limited" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="releasenotes.html" class="btn btn-neutral float-right" title="Release Notes and Notices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, Wave Telecom Limited
+
+    </p>
+  </div>
+    
+    
+      Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'0.1.0rc1',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
