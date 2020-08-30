@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Developers &mdash; Loyverse and ScrCpy (LaS) 0.1.0rc1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Troubleshooting" href="troubleshooting.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Loyverse and ScrCpy (LaS)
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version"> Document Version : 
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes and Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terminology.html">Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preperation.html">Pre-Usage Preparation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="productmaint.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sample-script">Sample Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#desktop-icon">.desktop icon</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Loyverse and ScrCpy (LaS)</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Developers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/developers.rst.txt" rel="nofollow"> </a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="developers">
+<h1>Developers<a class="headerlink" href="#developers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The source code for the Wave Operating System can be found by visiting Github at this repo  <a class="reference external" href="https://github.com/unclehowell/WaveOS">unclehowell/waveos</a>,</p>
+<p>A downloadable image will be made avaliable from wave.hotspotbnb.com, which can be easily copied to portable storage devices (MicroSD Card &amp; USB) so the End-User can be up and running in seconds. But at this stage we are only offering the solution as a manually built process, which in summary goes as follows:</p>
+<p>Step 1. Install LineageOS to the Raspberry Pi and using a HDMI display and keyboard/mouse enable developer mode and Debugging, install Loyverse and a StartUp App (and configure to make Loyverse boot on startup).  Then disable the Wi-Fi and connect the Raspberry Pi to the PC via Ethernet.</p>
+<p>Step 2. Install Ubuntu to the PC and ensure all display, touchscreen &amp; networking drivers etc are installed.</p>
+<p>Step 3. Share the PC´s Wireless connection to the ethernet port and take note of the IP address it assigns the RPi.</p>
+<p>Step 4. Install scrcpy and all its dependancies (snap etc). Install using snap for automated install.</p>
+<p>Step 5. Put this script into /etc/profile.d and call it <code class="docutils literal notranslate"><span class="pre">launcher.sh</span></code>, remembering to use the RPi IP and/or adb devices output. The example IP in this sample script is <code class="docutils literal notranslate"><span class="pre">10.42.0.52</span></code>.</p>
+<div class="section" id="sample-script">
+<h3>Sample Script<a class="headerlink" href="#sample-script" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># restart all network adaptors</span>
+<span class="n">sudo</span> <span class="n">service</span> <span class="n">network</span><span class="o">-</span><span class="n">manager</span> <span class="n">restart</span> <span class="o">&amp;&amp;</span>
+<span class="n">sleep</span> <span class="mi">4</span> <span class="o">&amp;&amp;</span>
+<span class="c1"># share the PC´s Wi-Fi to its Ethernet Port</span>
+<span class="n">nmcli</span> <span class="n">c</span> <span class="n">modify</span> <span class="n">netplan</span><span class="o">-</span><span class="n">enp1s8</span> <span class="n">ipv4</span><span class="o">.</span><span class="n">method</span> <span class="n">shared</span> <span class="o">&amp;&amp;</span>
+<span class="n">sleep</span> <span class="mi">4</span> <span class="o">&amp;&amp;</span>
+<span class="c1"># connect the adb service to Android - * ideally we want to explore ´adb device &gt; .txt´ at this juncture</span>
+<span class="c1">#incase a different IP address is assigned</span>
+<span class="n">sudo</span> <span class="n">adb</span> <span class="n">connect</span> <span class="mf">10.42</span><span class="o">.</span><span class="mf">0.52</span><span class="p">:</span><span class="mi">5555</span>  <span class="o">&amp;&amp;</span>
+<span class="c1"># match the screensizes - again we may want to explore ´randr --listdisplays &gt; .txt´ here</span>
+<span class="c1"># incase the users changed the PC´s default display dimensions</span>
+<span class="n">adb</span> <span class="n">shell</span> <span class="n">wm</span> <span class="n">size</span> <span class="mi">1024</span><span class="n">x768</span> <span class="o">&amp;&amp;</span>
+<span class="c1"># launch scrcpy at a rate that will run smooth and fullscreen</span>
+<span class="n">sudo</span> <span class="n">scrcpy</span> <span class="o">-</span><span class="n">b2M</span> <span class="o">-</span><span class="n">m800</span> <span class="o">-</span><span class="n">f</span>
+</pre></div>
+</div>
+<p>Step 6. Give the script root permissions with the command <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">launcher.sh</span></code></p>
+<p>Step 7. Create a .desktop icon to launch the script. Here´s a sample:</p>
+</div>
+<div class="section" id="desktop-icon">
+<h3>.desktop icon<a class="headerlink" href="#desktop-icon" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env</span>
+<span class="p">[</span><span class="n">Desktop</span> <span class="n">Entry</span><span class="p">]</span>
+<span class="n">Icon</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">onelove</span><span class="o">/</span><span class="n">Pictures</span><span class="o">/</span><span class="n">icons</span><span class="o">/</span><span class="n">icon</span><span class="o">.</span><span class="n">png</span>
+<span class="n">Categories</span><span class="o">=</span><span class="n">Utility</span><span class="p">;</span><span class="n">Application</span><span class="p">;</span>
+<span class="n">Comment</span><span class="o">=</span><span class="n">use</span> <span class="n">CTL</span> <span class="o">+</span> <span class="n">F</span> <span class="n">to</span> <span class="n">escape</span> <span class="n">fullscreen</span>
+<span class="n">Exec</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">launcher</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">Name</span><span class="p">[</span><span class="n">en_US</span><span class="p">]</span><span class="o">=</span><span class="n">Android</span><span class="o">-</span><span class="n">RPI3</span>
+<span class="n">Name</span><span class="o">=</span><span class="n">CTL</span> <span class="o">+</span> <span class="n">F</span> <span class="n">to</span> <span class="n">escape</span> <span class="n">fullscreen</span>
+<span class="n">Terminal</span><span class="o">=</span><span class="n">true</span>
+<span class="n">Type</span><span class="o">=</span><span class="n">Application</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="troubleshooting.html" class="btn btn-neutral float-left" title="Troubleshooting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, Wave Telecom Limited
+
+    </p>
+  </div>
+    
+    
+      Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'0.1.0rc1',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
