@@ -101,7 +101,7 @@
 /* 01:AA */	 html { overflow-x:hidden;     background: -webkit-gradient(radial, 50% 50%, 450, 50% 50%, 860, from(#F3F5F8), to(#fff)); }
 /* 01:AB */	 body {color: #5a5a5a;transition: 2s opacity;background-color: rgba(245,255,255,0.2); font-size:100%!important; }
 /* 01:AC */	 body.fade-out {opacity: 0;transition: none;}
-/* 01:AD */ .main {padding-top:0px; min-height: calc(100vh - 55px);    background: -webkit-gradient(radial, 50% 50%, 450, 50% 50%, 860, from(#F3F5F8), to(#fff)); margin-bottom:-50px;}
+/* 01:AD */ .main {padding-top:0px; min-height: calc(100vh - 55px);background: -webkit-gradient(radial, 50% 50%, 450, 50% 50%, 860, from(#333434), to(#33335D)); margin-bottom:-50px;}
 /* 01:AE */ .bold {	font-weight:600!important;}
 /* 01:AF */ .inline-copyright {position:static; font-weight: lighter!important; vertical-align: top; display:inline-block; float:center; margin-left:-0.5em; padding-left:10px; font-size: 0.75rem; opacity:0.8;}
 /* 01:AG */ .copyright {float:left;}
@@ -122,11 +122,11 @@
 /* 01:BD */ .bg-dark {background-color: #333366!important; max-width: 100.5vw!important; /* stops jumping when slider changes */  overflow:hidden;}
 
 /* 01:CA */ .segment-top {height: inherit; margin:0 0 0 0; padding-top:65px; padding-bottom:0; background: -webkit-gradient(radial, 50% 50%, 450, 50% 50%, 860, from(#F3F5F8), to(#fff)); verticle-align:top; }
-/* 01:CB */ .segment { padding-left:5vw; padding-right:5vw; height: inherit; padding-top:2rem; padding-bottom:2rem; background: -webkit-gradient(radial, 50% 50%, 450, 50% 50%, 860, from(#F3F5F8), to(#fff)); verticle-align:top;}
+/* 01:CB */ .segment { padding-left:5vw; padding-right:5vw; height: inherit; padding-top:2rem; padding-bottom:2rem; background: -webkit-gradient(radial, 50% 50%, 450, 50% 50%, 860, from(#333434), to(#33335D)); verticle-align:top;}
 /* 01:CC */ .segment-bottom {display:flex; white-space:nowrap; justify-content: center; align-items: center; height: inherit; padding-top: calc(10vh); padding-bottom:1rem; /*background: -webkit-gradient(radial, 50% 50%, 450, 50% 50%, 860, from(#F3F5F8), to(#fff)); */ background: transparent; verticle-align:top;}
-/* 01:CD */ .segment-title {display:flex; white-space:pre-line; justify-content: center; align-items: center; padding:5rem 2rem 5rem 2rem; margin:0; width:auto; overflow: visible;  max-height:4rem; text-align:center; font-size:1.5rem; font-weight: lighter!important; background-image: url(../img/wavee.png); background-repeat: no-repeat; background-size: contain; background-position-x: center; background-position-y: center;}
+/* 01:CD */ .segment-title {color: lightgrey; font-weight: 800!important; display:flex; white-space:pre-line; justify-content: center; align-items: center; padding:5rem 2rem 5rem 2rem; margin:0; width:auto; overflow: visible;  max-height:4rem; text-align:center; font-size:1.5rem; background-image: url(../img/wavee.png); background-repeat: no-repeat; background-size: contain; background-position-x: center; background-position-y: center;}
 /* 01:CE */ .segment-subtitle {font-size: 1.4rem;  margin: 1rem 1rem 1rem 0rem;font-weight: lighter;}
-/* 01:CF */ .segment-paragraph {font-size: larger!important; font-weight: lighter; margin-top: 0rem; padding-left: 5vw; overflow: visible; display:block; justify-content: center; align-items: normal; text-align: justify; padding-right: 5vw; word-spacing: -0.1rem;}
+/* 01:CF */ .segment-paragraph {font-size: 110%!important; font-weight: lighter; margin-top: 0rem; padding-left: 5vw; overflow: visible; display: block; justify-content: center; align-items: normal; text-align: justify!Important; padding-right: 5vw; word-spacing: -0.1rem; color: rgba(255,255,255,0.7); font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
 /* 01:CG */ .segment-col-paragraph {font-weight: lighter!important; text-align: justify!important; word-spacing: 0.05rem; min-height: 160px; max-height: 200px; padding-left: 1rem; padding-right:1rem; margin-bottom:66px; font-size:larger!important;}
 /* 01:CI */ .sexy_line {display: block; border: none; color: white; height: 1px; background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#000), to(transparent));}
 /* 01:CJ */ .sexy_line2 {display: block; border: 1px solid transparent; color: white; height: 3px; background: -webkit-gradient(radial, 50% 12%, 10, 50% 87%, 148, from(grey), to(#fff));}
@@ -175,7 +175,7 @@
 /* 02:AA */	 html  {}
 /* 02:AB */	 body  {}
 /* 02:AC */	 body.fade-out  {}
-/* 02:AD */ .main  {padding-top:50px;}
+/* 02:AD */ .main  {}
 /* 02:AE */ .bold  {}
 /* 02:AF */ .inline-copyright  {}
 /* 02:AG */ .copyright  {}
@@ -198,7 +198,7 @@
 /* 02:CA */ .segment-top  {margin-top:-4rem; padding-bottom:1rem;}
 /* 02:CB */ .segment  {padding-top:2rem;}
 /* 02:CC */ .segment-bottom  {}
-/* 02:CD */ .segment-title  {font-size: 2.5rem; margin: 2rem 0 2rem 0; background-size: contain;  }
+/* 02:CD */ .segment-title  {font-size: 2.5rem; margin: 4rem 0 2rem 0!important; background-size: contain; color: lightgray; font-weight: 800!important;  }
 			.midcontent-title {margin:-2rem 0rem 4rem 0rem!important;}
 /* 02:CE */ .segment-subtitle  {}
 /* 02:CF */ .segment-paragraph  {text-align:justify;}

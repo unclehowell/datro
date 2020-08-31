@@ -143,7 +143,7 @@
 /* 01:AF */	h1, h2, h3, h4, h5, h6 {font-weight:normal;font-size:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
 /* 01:AG */	.message {display:block; margin:0.5em 0; color:red;}
 /* 01:AH */	#paypal-form {	margin:1.5em 0;}
-/* 01:AI */	.row li {display:block;}
+/* 01:AI */	.row li {display:block; border: 4px outset #333585; border-radius: 19px;}
 /* 01:AJ */	.shift-down {margin-top:69px;}
 /* 01:AK */	.store-button-footer {float: left; left: 0; width: 105vw; height: 3.5rem!important; overflow: hidden; position: fixed; bottom: 0; border-top: 1px solid grey; background-color: #333366!important;  margin-left: -5vw!important; padding:0 1em -1em 1em; }
 /* 01:?? */	.checkout-button-footer {float: left; left: 0; width: 105vw; height: 3.5rem!important; overflow: hidden; position: fixed; bottom: 0; border-top: 1px solid grey; background-color: #333366!important;  margin-left: -5vw!important; padding:0 1em 0em 1em; }
@@ -254,13 +254,13 @@
 }
 /* 01:FD */	#pricing #sub-total{margin:1em 0;}
 /* 01:FE */	#pricing #shipping {margin:1em 0;}
-			.same-addresses {    float: left; position: absolute; left: 0; text-align: left; padding: 2rem 1rem 0rem 1rem; max-width: 25vw; padding-bottom: 1rem; padding-top: 0.6rem; margin-left: 10vw; white-space: unset; line-height: 2; background-color: transparent; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; font-size: small; max-height: 89px; overflow: hidden; min-width: 132px; display: flex; object-position: center; justify-content: center; align-items: center;	}
+			.same-addresses {float: left; position: absolute; left: 0; text-align: left; padding: 2rem 1rem 0rem 1rem; max-width: 25vw; padding-bottom: 1rem; padding-top: 0.6rem; margin-left: 10vw; white-space: unset; line-height: 2; background-color: transparent; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; font-size: small; max-height: 89px; overflow: hidden; min-width: 132px; display: flex; object-position: center; justify-content: center; align-items: center;	}
 
-/* 01:GA */	.product-paragraph {text-align:justify; font-weight:lighter; font-size:100%; padding-left:1rem; padding-right:1rem; }
+/* 01:GA */	.product-paragraph {text-align:justify; font-weight:lighter; font-size:100%;  font-size: 0.9rem!important; line-height: 1.8; color: white; font-weight: normal; padding-left:1rem; padding-right:1rem; }
 /* 01:GB */	.product-image {width:100%; margin:0 auto 1em auto; overflow:hidden; display:block; border-radius:12px 12px 0px 0px; padding-bottom:0; margin-bottom:0;}
 /* 01:GC */	.product-image-reveal {display:none;}
 /* 01:GD */	.product-image-reveal:hover {opacity:1; cursor:pointer!important;}
-/* 01:GE */	.product-description {padding:1em; background:#333366; color:#fff; border-radius:15px 15px 15px 15px;}
+/* 01:GE */	.product-description {padding:1em; background:#333354; color:#fff; border-radius:15px 15px 15px 15px;}
 /* 01:GF */	.product-name {text-align:center; color:lightsteelblue; margin:0; font-size:1.25rem; padding-bottom:1rem; text-transform:uppercase; letter-spacing:0.1em; font-weight:200;    border-bottom:1px solid grey; border-radius:10px 10px 0px 0px; }
 /* 01:GG */	.product-name-subtitle {font-size:0.85rem; font-weight:200; text-transform:uppercase!important;}
 /* 01:GH */	.product-price {width:6em; height:auto; font-size:1.2em; text-align:center; margin:1em auto; background:transparent; color:white; border-radius:10px; display:inline-block;}
