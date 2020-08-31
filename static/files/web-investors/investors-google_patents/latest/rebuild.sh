@@ -5,7 +5,7 @@ unset CDPATH
 
 
 #.......................................................
-#  HotspotBnB - 2020 Copyright - Wave Telecom Limited
+#             2020 Copyright - unclehowell
 #.......................................................
 #       HotspotBnB Document Library - rebuild.sh
 #.......................................................
@@ -14,6 +14,7 @@ unset CDPATH
 #
 #                     Version 0.4
 #          view _source-files/README.md changelog
+#
 #.......................................................
 
 
