@@ -1,10 +1,17 @@
 # Videos
 
 ## This directory contains the DATRO videos
+## Also included is the methodology/ guideline for producing videos consistent with the others
 
-### Audio Quality Methodology
-
-There's two parts, recording the audio and the settings for that.
+There's few parts to producing the videos:
+- Doing the screen record/ presentation
+- Cleaning the Audio with Audacity
+  - EQ: graphic equalize the sound
+  - normalize (sets the overal optimum db's - either boosts or reduces)
+  - compressor (levels voice fluctuation e.g. peaks and drops)
+  - noise removal
+   - de-esser, normalize)
+-
 Then rendering the recording with ffmpeg and ffmpeg-normalize.
 
 The consensus so far (after a week messing) seems to be to do the following:

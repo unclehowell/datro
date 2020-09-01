@@ -1,5 +1,5 @@
 /*  2018 Copyright - WaveOS
-                 ..                   
+                 ..
 ..   ..          ..   ........                     .........     .......     ........                      .........    ......................
 ..   ...           ..  ........                   .........     .........     ........                    .........    ......................
  .......         .....  ........                 .........     ...........     ........                  .........    ......................
@@ -14,16 +14,16 @@
         .........   ......       ................     ........       .       ......     .................    ........
           ......   ......         ..............     ........                 ......     ...............    ...........................
             ...   ......           ............     ........                   ......     .............    ...........................
-             .   ......             ..........     ........                     ......     ...........    ........................... 
+             .   ......             ..........     ........                     ......     ...........    ...........................
 
-                        
+
 						 ............................................................................................
-						           WaveOS by Unclehowell -  DATRO CONSORTIUM 2019  - All Rights Reserved 
-					     ............................................................................................ 
+						           WaveOS by Unclehowell -  DATRO CONSORTIUM 2019  - All Rights Reserved
+					     ............................................................................................
                              GitHub:https://github.com/unclehowell/WaveOS -  Website:https://datro.xyz
 					     ..........................................................................................   */
 
-/*  Classes:    
+/*  Classes:
 
 
     Structure:  01. .class-1 {}  .class-2 {} ... etc
@@ -40,9 +40,9 @@
 				12. @media all and (min-width:480px) and (max-width:767px) 							   {.class-1 {}.class-2 {} ... etc}
 				13. @media all and (min-width:480px) and (max-width:767px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
 				14. @media all and (min-width:480px) and (max-width:767px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
-				15. 					  @media all and (max-width:479px)                             {.class-1 {}.class-2 {} ... etc} 
+				15. 					  @media all and (max-width:479px)                             {.class-1 {}.class-2 {} ... etc}
 				16. 			       	  @media all and (max-width:479px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
-				17. 					  @media all and (max-width:479px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}     
+				17. 					  @media all and (max-width:479px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
 				18. @media(-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:3/2), (min-resolution:1.5dppx) {}
 				19. @media print {}
 */
@@ -166,7 +166,7 @@ input:focus,textarea:focus{outline:0}
 a{text-decoration:none;color:inherit;cursor:pointer;-webkit-transition:color .1s ease-out;transition:color .1s ease-out}
 a:hover{text-decoration:underline;color:inherit;}
 a:focus{outline:1px dotted inherit;outline-offset:-1px}
-a:active,a:hover{outline:0}
+a:active,a:hover{outline:0;    text-decoration: none!Important;}
 h1{font-size:32px;font-size:2rem;line-height:1.37;margin-bottom:26px;font-weight:700}
 h2{margin-bottom:22px;font-size:32px;font-size:2rem;line-height:1.37}
 h3{margin-bottom:20px;font-size:24px;font-size:1.5rem;line-height:1.33}
@@ -929,7 +929,7 @@ html.is-mobile-first:not(.is-responsive) .search-table,html.is-mobile-first:not(
 .large-form.has-numbers>ol>li::before{top:-2px;width:30px;height:30px;font-size:14px;font-size:.875rem;line-height:1.43;line-height:29px;font-weight:900}
 .large-form.has-numbers>ol>li legend{margin-bottom:22px;font-size:22px}
 .pinky-template {    margin-top: -10px!important;
-    float: left;} 
+    float: left;}
 .pinky-template .pull-right{float:right}
 .pinky-template .pull-left{float:left}
 .pinky-template .hide{display:none}
@@ -1911,7 +1911,7 @@ html:not(.is-responsive) .pinky-template .navigation-section-inner{padding-left:
 }
 
 /* 03:> */  @media all and (min-width: 960px)                                                    {
-	
+
 	.Grid-col--desktopSmall-1{-webkit-flex-basis:8.33333333%;-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}
 	.Grid-col--desktopSmall-2{-webkit-flex-basis:16.66666667%!important;-ms-flex-preferred-size:16.66666667%!important;flex-basis:16.66666667%!important;max-width:16.66666667%!important;}
 	.Grid-col--desktopSmall-3{-webkit-flex-basis:25%!important;-ms-flex-preferred-size:25%;flex-basis:25%!important;max-width:25%!important;}
@@ -1927,7 +1927,7 @@ html:not(.is-responsive) .pinky-template .navigation-section-inner{padding-left:
 	.Grid-col--desktopSmallOrder-1{-webkit-box-ordinal-group:2;-webkit-order:1;-ms-flex-order:1;order:1}
 	.Grid-col--desktopSmallOrder-2{-webkit-box-ordinal-group:3;-webkit-order:2;-ms-flex-order:2;order:2}
 	.Grid-col--desktopSmallOrder-3{-webkit-box-ordinal-group:4;-webkit-order:3;-ms-flex-order:3;order:3}
-	
+
 	html.is-responsive .search-table,html.is-responsive .section-inner,html.is-responsive .site-section-inner{width:100%;max-width:1176px}
 	html.is-responsive .search-table,html.is-responsive .section-inner,html.is-responsive .site-section-inner{width:100%;max-width:1176px}
 	html.is-responsive .pinky-template .navigation-section-inner{width:100%;max-width:1176px}
@@ -2020,7 +2020,7 @@ html:not(.is-responsive) .pinky-template .navigation-section-inner{padding-left:
 
 /* 12:> */  @media all and (min-width: 480px) and (max-width: 767px)                             {
 }
- 
+
 /* 13:> */  @media all and (min-width: 480px) and (max-width: 767px) and  (orientation:portrait) {
 }
 
@@ -2047,4 +2047,3 @@ html:not(.is-responsive) .pinky-template .navigation-section-inner{padding-left:
 
 /* 19:> */  @media print {
 }
-

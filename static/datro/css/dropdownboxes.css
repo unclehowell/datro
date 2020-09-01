@@ -1,5 +1,5 @@
 /*  2018 Copyright - WaveOS
-                 ..                   
+                 ..
 ..   ..          ..   ........                     .........     .......     ........                      .........    ......................
 ..   ...           ..  ........                   .........     .........     ........                    .........    ......................
  .......         .....  ........                 .........     ...........     ........                  .........    ......................
@@ -14,12 +14,12 @@
         .........   ......       ................     ........       .       ......     .................    ........
           ......   ......         ..............     ........                 ......     ...............    ...........................
             ...   ......           ............     ........                   ......     .............    ...........................
-             .   ......             ..........     ........                     ......     ...........    ........................... 
+             .   ......             ..........     ........                     ......     ...........    ...........................
 
-                        
+
 						 ............................................................................................
-						           WaveOS by Unclehowell -  DATRO CONSORTIUM 2019  - All Rights Reserved 
-					     ............................................................................................ 
+						           WaveOS by Unclehowell -  DATRO CONSORTIUM 2019  - All Rights Reserved
+					     ............................................................................................
                              GitHub:https://github.com/unclehowell/WaveOS -  Website:https://datro.xyz
 					     ..........................................................................................   */
 
@@ -29,7 +29,7 @@
 				 D. .carousel-maintitle-link:hover {}
 				 E. .carousel-title {}
 				 F. .carousel-title-link {}
-				 G. .carousel-title-link:hover {} 
+				 G. .carousel-title-link:hover {}
 				 H. .carousel-subtitle {}
 				 I. .carousel-item {}
 				 J. .appstore-img-button-play {}
@@ -44,8 +44,8 @@
 				 S. .tick-box-holder {}
 				 T. .tick-box {}
 				 U. .moreinfo {}
-				 V.  #image1>img,#image2>img,#image3>img,#image4>img,#image4>img {}			 
-	  
+				 V.  #image1>img,#image2>img,#image3>img,#image4>img,#image4>img {}
+
     Structure:  01. .class-1 {}  .class-2 {} ... etc
 				02. @media all and (min-width:1024px) 							                       {.class-1 {}.class-2 {} ... etc}
 				03. @media all and (min-width:960px) 												   {.class-1 {}.class-2 {} ... etc}
@@ -60,14 +60,14 @@
 				12. @media all and (min-width:480px) and (max-width:767px) 							   {.class-1 {}.class-2 {} ... etc}
 				13. @media all and (min-width:480px) and (max-width:767px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
 				14. @media all and (min-width:480px) and (max-width:767px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
-				15. 					  @media all and (max-width:479px)                             {.class-1 {}.class-2 {} ... etc} 
+				15. 					  @media all and (max-width:479px)                             {.class-1 {}.class-2 {} ... etc}
 				16. 			       	  @media all and (max-width:479px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
-				17. 					  @media all and (max-width:479px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}     
+				17. 					  @media all and (max-width:479px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
 				18. @media(-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:3/2), (min-resolution:1.5dppx) {}
 				19. @media print {}
-	
-	01:> */ 
-	
+
+	01:> */
+
 .wrapperwrapper2 {position:static; padding-top:1rem; text-align: center!important;}
 .wrapper2 {	width:300px;margin:3% auto;}
 .dropdown2 dd ul li a span:first-child, .dropdown2 dt a span span:first-child {background-image: url('../img/flags/all.png'); background-repeat: no-repeat; width: 16px; height: 11px; display: inline-block; margin:5px; vertical-align: top; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
@@ -93,7 +93,7 @@ dl.dropdown2 {display: inline-block; width: 240px; margin: -3px 0 0 1px;}
 dl.dropdown2 > span:nth-child(3) {color: rgba(0,0,0,0.4)}
 dl.dropdown2 dt span:nth-child(3) {display: none;}
 dl.dropdown2 > span:nth-child(2) {overflow: hidden; white-space: nowrap; display: inline-block;}
-dl.dropdown2 dt span:nth-child(2) {color: rgba(0, 0, 0, 0.6); font-size: 18px; font-weight: lighter; line-height: 1.6em;}
+dl.dropdown2 dt span:nth-child(2) {color: rgba(0, 0, 0, 0.6); font-size: 18px; font-weight: 300; line-height: 1.6em;}
 .countryFlag {padding: 0; background-image: url("https://i.imgur.com/OQiDoZe.png"); background-repeat: no-repeat; display: inline-block; height: 11px; margin-right: 4px; width: 16px; cursor: pointer; white-space: nowrap; -moz-border-bottom-colors: none; -moz-border-left-colors: none; -moz-border-right-colors: none; -moz-border-top-colors: none; border-color: #BFBFC1 #B6B6B6 #969696; border-image: none; border-radius: 2px 2px 2px 2px; border-style: solid; border-width: 1px; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.09);}
 dl.dropdown2>img {display:hidden; display:none;}
 .dropdown2 dt a:after {content: ''; background: #343A40; position: absolute; height: 32px; position: absolute; right: 0; top: 0; width: 35px;}
@@ -112,7 +112,7 @@ font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue"
     min-height: 40px;
     max-height: 20px;
     padding-top: 0.5px;
-    font-weight: lighter;
+    font-weight: 300;
     color: white;
     overflow: hidden;
     border-right: 1px solid transparent;
@@ -129,7 +129,7 @@ font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue"
 .carousel-dropdown dt a span span:first-child {padding: 0; width:3px; height:1px; visibility: hidden;}
 .carousel-dropdown dd {position: relative;}
 .carousel-dropdown a, .carousel-dropdown a:visited {font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-    font-weight: lighter; 
+    font-weight: 300;
     text-decoration: none!important;
     outline: none;
     text-align: left;
@@ -155,7 +155,7 @@ font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue"
     width: 100%!important;
     max-height: 40px;
 	}
-	
+
 .dropdown-subtitle {
 	      max-width: 100%;
     letter-spacing: 1px;
@@ -180,7 +180,7 @@ dl.carousel-dropdown dt span:nth-child(2) {color: white;
     font-size: 1rem;
     background-color: transparent;
     text-align: left;
-    font-weight: lighter;
+    font-weight: 300;
     padding-top: 0.3rem;}
 dl.carousel-dropdown dt span:nth-child(3) {	display: none;}
 dl.carousel-dropdown>img {display:hidden; display:none;}
@@ -266,7 +266,7 @@ dl.allfeaturesdrop {display: inline-block; width: 100px; margin: -18px 0 0 1px; 
 dl.allfeaturesdrop > span:nth-child(3) {color: rgba(0,0,0,0.4)}
 dl.allfeaturesdrop dt span:nth-child(3) {display: none;}
 dl.allfeaturesdrop > span:nth-child(2) {overflow: hidden; white-space: nowrap; display: inline-block;}
-dl.allfeaturesdrop dt span:nth-child(2) {color: #61CFF7; font-size: 0.75rem; font-weight: lighter; margin-top: 0.25rem; background-color: transparent; position: absolute; margin-left: -0.1px;}
+dl.allfeaturesdrop dt span:nth-child(2) {color: #61CFF7; font-size: 0.75rem; font-weight: 300; margin-top: 0.25rem; background-color: transparent; position: absolute; margin-left: -0.1px;}
 .countryFlag {padding: 0; background-image: url("https://i.imgur.com/OQiDoZe.png"); background-repeat: no-repeat; display: inline-block; height: 11px; margin-right: 4px; width: 16px; cursor: pointer; white-space: nowrap; -moz-border-bottom-colors: none; -moz-border-left-colors: none; -moz-border-right-colors: none; -moz-border-top-colors: none; border-color: #BFBFC1 #B6B6B6 #969696; border-image: none; border-radius: 2px 2px 2px 2px; border-style: solid; border-width: 1px; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.09);}
 dl.allfeaturesdrop>img {display:hidden; display:none;}
 .allfeaturesdrop dt a:after {content: ''; background: transparent; position: absolute; height: 22px; position: absolute; right: 0; top: 0; width: 35px;}
@@ -303,7 +303,7 @@ dl.currencydrop {display: inline-block; width: 100px; margin: -18px 0 0 1px; flo
 dl.currencydrop > span:nth-child(3) {color: rgba(0,0,0,0.4)}
 dl.currencydrop dt span:nth-child(3) {display: none;}
 dl.currencydrop > span:nth-child(2) {overflow: hidden; white-space: nowrap; display: inline-block;}
-dl.currencydrop dt span:nth-child(2) {color: #61CFF7; font-size: 0.75rem; font-weight: lighter; margin-top: 0.25rem; background-color: transparent; position: absolute; margin-left: -0.1px;}
+dl.currencydrop dt span:nth-child(2) {color: #61CFF7; font-size: 0.75rem; font-weight: 300; margin-top: 0.25rem; background-color: transparent; position: absolute; margin-left: -0.1px;}
 .countryFlag {padding: 0; background-image: url("https://i.imgur.com/OQiDoZe.png"); background-repeat: no-repeat; display: inline-block; height: 11px; margin-right: 4px; width: 16px; cursor: pointer; white-space: nowrap; -moz-border-bottom-colors: none; -moz-border-left-colors: none; -moz-border-right-colors: none; -moz-border-top-colors: none; border-color: #BFBFC1 #B6B6B6 #969696; border-image: none; border-radius: 2px 2px 2px 2px; border-style: solid; border-width: 1px; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.09);}
 dl.currencydrop>img {display:hidden; display:none;}
 .currencydrop dt a:after {content: ''; background: transparent; position: absolute; height: 22px; position: absolute; right: 0; top: 0; width: 35px;}
