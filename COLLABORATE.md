@@ -239,3 +239,11 @@ GitHub will notify you if there's a comment to respond to or when the administra
 
       # any issues, look for support here https://github.com/ingydotnet/git-subrepo
       ````
+
+
+      ## Handy Commands
+
+      ### Change permission of all files in the repo.
+      Handy when you want to use Atom instead of Notepad C++ 
+
+      find /xxxx/xxxx -type f -exec chown user:user {} \;
