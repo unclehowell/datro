@@ -62,7 +62,7 @@ video {
   bottom: 0;
   transition: all 0.2s ease;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
-  opacity:0.5;
+  opacity:0;
 }
 
 .video-controls:hover {

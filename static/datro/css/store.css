@@ -245,7 +245,18 @@
 /* 01:GC */	.product-image-reveal {display:none;}
 /* 01:GD */	.product-image-reveal:hover {opacity:1; cursor:pointer!important;}
 /* 01:GE */	.product-description {padding:1em; background:#333354; color:#fff; border-radius:15px 15px 15px 15px;}
-/* 01:GF */	.product-name {text-align:center; color:lightsteelblue; margin:0; font-size:1.25rem; padding-bottom:1rem; text-transform:uppercase; letter-spacing:0.1em; font-weight:200;    border-bottom:1px solid grey; border-radius:10px 10px 0px 0px; }
+/* 01:GF */	.product-name-version {opacity: 0.75; font-weight:300; color:lightgreen;}
+/* 01:GF */	.product-name {    text-align: center;
+    color: lightsteelblue;
+    margin: 0;
+    line-height: 2em;
+    font-weight: bolder!important;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid grey;
+    border-radius: 10px 10px 0px 0px;
+    padding-top: 17px!Important;
+    padding-bottom: 0px!important; }
 /* 01:GG */	.product-name-subtitle {font-size:0.85rem; font-weight:200; text-transform:uppercase!important;}
 /* 01:GH */	.product-price {width:6em; height:auto; font-size:1.2em; text-align:center; margin:1em auto; background:transparent; color:white; border-radius:10px; display:inline-block;}
 
