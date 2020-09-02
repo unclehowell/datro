@@ -1,17 +1,14 @@
-/*  2018 Copyright - Wave®
+/*  2020 Copyleft - DATRO
 
-	 	  __          __    ___   __   __ ___ ®
-	    /\  \   ___ /\  \ /' _'\/\  \/  /'__`\
-		\ \  \ /   \ /  \/\ \_\ \ \  \ /\  __/
-	     \ \____/\ \____/\ \_\ \_\ \__/\ \____\
-		  \/___/  \/___/  \/_/\/_/\/_/  \/____/
+
 ........................................................................................
- WaveOS by Unclehowell -  DATRO CONSORTIUM 2019  - All Rights Reserved
+   DATRO by Unclehowell -  DATRO CONSORTIUM 2020  - All Wrongs Reserved
 ........................................................................................
- GitHub:https://github.com/unclehowell/WaveOS -  Website:https://datro.xyz
+ GitHub:https://github.com/unclehowell/datro -  Website:https://datro.xyz
 ........................................................................................   */
 
-/*  Classes:                    AA.  html {}
+/*  Classes:
+        AA.  html {}
 				AB.  body {}
 				AC.  body.fade-out {}
 				AD. .main {}
@@ -68,38 +65,39 @@
 				XC. .footer link:hover {}
 				XD. .footer link:visited {}
 				XE. .footer a {}
-                                XF. .footer a:visited {}
+        XF. .footer a:visited {}
 
 				---  TWEAKS  ---
 				YA. .download-tweak0002 {}
 				YB. .sexyline-tweak0001 {}
 				YC. .segment-tweak0001 {}
-                                YD. .video-iframe {}
+        YD. .video-iframe {}
 
-		    Structure:  01. .class-1 {}  .class-2 {} ... etc
-				02. @media all and (min-width:1024px) 							                       {.class-1 {}.class-2 {} ... etc}
-				03. @media all and (min-width:960px) 												   {.class-1 {}.class-2 {} ... etc}
-				04. @media all and (min-width:960px) and (max-width:1123px)							   {.class-1 {}.class-2 {} ... etc}
+Structure:
+        01. .class-1 {}  .class-2 {} ... etc
+				02. @media all and (min-width:1024px) 							                                   {.class-1 {}.class-2 {} ... etc}
+				03. @media all and (min-width:960px) 												                           {.class-1 {}.class-2 {} ... etc}
+				04. @media all and (min-width:960px) and (max-width:1123px)							               {.class-1 {}.class-2 {} ... etc}
 				05. @media all and (min-width:960px) and (max-width:1123px)and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
 				06. @media all and (min-width:960px) and (max-width:1123px)and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
-				07. @media all and (min-width:768px)												   {.class-1 {}.class-2 {} ... etc}
-				08. @media all and (min-width:768px) and (max-width:959px)  						   {.class-1 {}.class-2 {} ... etc}
+				07. @media all and (min-width:768px)												                           {.class-1 {}.class-2 {} ... etc}
+				08. @media all and (min-width:768px) and (max-width:959px)  						               {.class-1 {}.class-2 {} ... etc}
 				09. @media all and (min-width:768px) and (max-width:959px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
 				10. @media all and (min-width:768px) and (max-width:959px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
-				11. @media all and (min-width:480px) 					 							   {.class-1 {}.class-2 {} ... etc}
-				12. @media all and (min-width:480px) and (max-width:767px) 							   {.class-1 {}.class-2 {} ... etc}
+				11. @media all and (min-width:480px) 					 							                           {.class-1 {}.class-2 {} ... etc}
+				12. @media all and (min-width:480px) and (max-width:767px) 							               {.class-1 {}.class-2 {} ... etc}
 				13. @media all and (min-width:480px) and (max-width:767px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
 				14. @media all and (min-width:480px) and (max-width:767px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
-				15. 					  @media all and (max-width:479px)                             {.class-1 {}.class-2 {} ... etc}
-				16. 			       	  @media all and (max-width:479px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
-				17. 					  @media all and (max-width:479px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
+				15. 					  @media all and (max-width:479px)                                       {.class-1 {}.class-2 {} ... etc}
+				16. 			       	  @media all and (max-width:479px) and  (orientation:portrait)       {.class-1 {}.class-2 {} ... etc}
+				17. 					  @media all and (max-width:479px) and (orientation:landscape)           {.class-1 {}.class-2 {} ... etc}
 				18. @media(-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:3/2), (min-resolution:1.5dppx) {}
 				19. @media print {}
 */
-/*! normalize.css v2.1.2 | MIT License | git.io/normalize */article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden],template{display:none}script{display:none!important}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}a{background:0 0}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:.67em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}mark{background:#ff0;color:#000}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em}pre{white-space:pre-wrap}q{quotes:"\201C" "\201D" "\2018" "\2019"}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}figure{margin:0}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}button,input{line-height:normal}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
+/*! normalize.css v2.1.2 | MIT License | git.io/normalize */article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden],template{display:none}script{display:none!important}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}a{background:0 0}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:.67em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}mark{background:#ff0;color:#000}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em}pre{white-space:pre-wrap}q{quotes:"\201C" "\201D" "\2018" "\2020"}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}figure{margin:0}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}button,input{line-height:normal}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
 /* 01:>  */  @import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
 /* 01:AA */	 html { overflow-x:hidden;     background: -webkit-gradient(radial, 50% 50%, 450, 50% 50%, 860, from(#F3F5F8), to(#fff)); }
-/* 01:AB */	 body {color: #5a5a5a;transition: 2s opacity;background-color: rgba(245,255,255,0.2); font-size:100%!important; }
+/* 01:AB */	 body {color: white; text-align:justify:transition: 2s opacity;background-color: rgba(245,255,255,0.2); font-size:100%!important; }
 /* 01:AC */	 body.fade-out {opacity: 0;transition: none;}
 /* 01:AD */ .main {padding-top:0px; min-height: calc(100vh - 55px);background: -webkit-gradient(radial, 50% 50%, 450, 50% 50%, 860, from(#333434), to(#33335D)); margin-bottom:-50px;}
 /* 01:AE */ .bold {	font-weight:600!important;}
@@ -121,7 +119,7 @@
 /* 01:BC */ .navbar-expand-md .navbar-nav .nav-link {min-height: 35px; box-shadow: inset 0 -21px 20px rgba(255,255,255,0.05); color: rgba(255,255,255,1); padding: auto!important;}
 /* 01:BD */ .bg-dark {background-color: #333366!important; max-width: 100.5vw!important; /* stops jumping when slider changes */  overflow:hidden;}
 
-/* 01:CA */ .segment-top {height: inherit; margin:0 0 0 0; padding-top:65px; padding-bottom:0; background: -webkit-gradient(radial, 50% 50%, 450, 50% 50%, 860, from(#F3F5F8), to(#fff)); verticle-align:top; }
+/* 01:CA */ .segment-top {height: inherit; margin:0 0 0 0; padding-top:63.5px; padding-bottom:0; background: -webkit-gradient(radial, 50% 50%, 450, 50% 50%, 860, from(#F3F5F8), to(#fff)); verticle-align:top; }
 /* 01:CB */ .segment { padding-left:5vw; padding-right:5vw; height: inherit; padding-top:2rem; padding-bottom:2rem; background: -webkit-gradient(radial, 50% 50%, 450, 50% 50%, 860, from(#333434), to(#33335D)); verticle-align:top;}
 /* 01:CC */ .segment-bottom {display:flex; white-space:nowrap; justify-content: center; align-items: center; height: inherit; padding-top: calc(10vh); padding-bottom:1rem; /*background: -webkit-gradient(radial, 50% 50%, 450, 50% 50%, 860, from(#F3F5F8), to(#fff)); */ background: transparent; verticle-align:top;}
 /* 01:CD */ .segment-title {color: lightgrey; font-weight: 800!important; display:flex; white-space:pre-line; justify-content: center; align-items: center; padding:5rem 2rem 5rem 2rem; margin:0; width:auto; overflow: visible;  max-height:4rem; text-align:center; font-size:1.5rem; background-image: url(../img/wavee.png); background-repeat: no-repeat; background-size: contain; background-position-x: center; background-position-y: center;}
@@ -130,7 +128,7 @@
 /* 01:CG */ .segment-col-paragraph {font-weight: 300!important; text-align: justify!important; word-spacing: 0.05rem; min-height: 160px; max-height: 200px; padding-left: 1rem; padding-right:1rem; margin-bottom:66px; font-size:larger!important;}
 /* 01:CI */ .sexy_line {display: block; border: none; color: white; height: 1px; background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#000), to(transparent));}
 /* 01:CJ */ .sexy_line2 {display: block; border: 1px solid transparent; color: white; height: 3px; background: -webkit-gradient(radial, 50% 12%, 10, 50% 87%, 148, from(grey), to(#fff));}
-/* 01:CK */ .col-lg-4 {text-align: center; border-bottom: 1px solid rgba(0,0,0,0.0); }
+/* 01:CK */ .col-lg-4 {text-align: center; border-bottom: 1px solid rgba(0,0,0,0.0);padding:1rem!important; }
 /* 01:CL */ .midcontent-title {}
 
 /* 01:DA */ .video-frame {box-shadow: 0px 0px 8px -1px #fff!important;}

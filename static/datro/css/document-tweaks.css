@@ -1,0 +1,154 @@
+/*  2020 Copyleft - DATRO Consortium
+
+............................................................................................
+       DATRO by Unclehowell -  DATRO CONSORTIUM 2020  - All Wrongs Reserved
+............................................................................................
+      GitHub:https://github.com/unclehowell/datro -  Website:https://datro.xyz
+..........................................................................................   */
+
+/*  Classes:
+        AA.  html {}
+				AB.  body {}
+				AC.  body.fade-out {}
+				AD. .main {}
+				AE. .bold {}
+				AF. .inline-copyright {}
+				AG. .copyright {}
+				AH. .img {}
+				AI. .sexy_line {}
+				AJ. .spacer-block {}
+				AK. .a {}
+				AL. .underrevolvingtext {}
+				AM. .u {}
+				AN. .u:after {}
+				AO.  v {}
+				AP.  v:after {}
+				AQ. .nowrap h3  {}
+				AR. .navbar-toggler {}
+				AS. .nav {}
+
+				---  NAVBAR  ---
+				BA. .navbar-brand {}
+				BB. .nav-link {}
+				BC. .navbar-expand-md .navbar-nav .nav-link {}
+				BD. .bg-dark
+
+				---  SEGMENTS  ---
+				CA. .segment-top {}
+				CB. .segment {}
+				CI. .sexy_line {}
+				CJ. .sexy_line2 {}
+				CK. .col-lg-4 {}
+				CL. .midcontent-title {}
+
+				DA. .segment-video {}
+				DB. .video-frame {}
+				DC. .video-wrapper {}
+				DD. .video-close {}
+				DE. .video-link {}
+
+				EA. .news-link {}
+				EB. .news-link:hover {}
+				EC. .news-link:visited {}
+				ED. .news-title-div {}
+				EE. .news-title {}
+				EF. .news-block {}
+				EG. .news-subtitle {}
+				EH. .year {}
+				FA. .download-buttons-div {}
+				FB. .rounded-circle {}
+
+				---  FOOTER  ---
+				XA. .footer {}
+				XB. .footer>p {}
+				XC. .footer link:hover {}
+				XD. .footer link:visited {}
+				XE. .footer a {}
+        XF. .footer a:visited {}
+
+				---  TWEAKS  ---
+				YA. .download-tweak0002 {}
+				YB. .sexyline-tweak0001 {}
+				YC. .segment-tweak0001 {}
+        YD. .video-iframe {}
+
+Structure:
+        01. .class-1 {}  .class-2 {} ... etc
+				02. @media all and (min-width:1024px) 							                                   {.class-1 {}.class-2 {} ... etc}
+				03. @media all and (min-width:960px) 												                           {.class-1 {}.class-2 {} ... etc}
+				04. @media all and (min-width:960px) and (max-width:1123px)							               {.class-1 {}.class-2 {} ... etc}
+				05. @media all and (min-width:960px) and (max-width:1123px)and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
+				06. @media all and (min-width:960px) and (max-width:1123px)and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
+				07. @media all and (min-width:768px)												                           {.class-1 {}.class-2 {} ... etc}
+				08. @media all and (min-width:768px) and (max-width:959px)  						               {.class-1 {}.class-2 {} ... etc}
+				09. @media all and (min-width:768px) and (max-width:959px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
+				10. @media all and (min-width:768px) and (max-width:959px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
+				11. @media all and (min-width:480px) 					 							                           {.class-1 {}.class-2 {} ... etc}
+				12. @media all and (min-width:480px) and (max-width:767px) 							               {.class-1 {}.class-2 {} ... etc}
+				13. @media all and (min-width:480px) and (max-width:767px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
+				14. @media all and (min-width:480px) and (max-width:767px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
+				15. 					  @media all and (max-width:479px)                                       {.class-1 {}.class-2 {} ... etc}
+				16. 			       	  @media all and (max-width:479px) and  (orientation:portrait)       {.class-1 {}.class-2 {} ... etc}
+				17. 					  @media all and (max-width:479px) and (orientation:landscape)           {.class-1 {}.class-2 {} ... etc}
+				18. @media(-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:3/2), (min-resolution:1.5dppx) {}
+				19. @media print {}
+*/
+
+/* 01:> */
+
+/* 02:> */  @media all and (min-width:1024px) 												                           {
+}
+
+/* ??:> */  @media         (min-width:1000px)                                                    {
+}
+
+/* 03:> */  @media all and (min-width: 960px)                                                    {
+}
+
+/* 04:> */  @media all and (min-width: 960px) and (max-width: 1123px)                            {
+}
+
+/* 05:> */  @media all and (min-width: 960px) and (max-width: 1123px)and  (orientation:portrait) {
+}
+
+/* 06:> */  @media all and (min-width: 960px) and (max-width: 1123px)and (orientation:landscape) {
+}
+
+/* 07:> */  @media all and (min-width: 768px)                                                    {
+}
+
+/* 08:> */  @media all and (min-width: 768px) and (max-width: 959px)                             {
+}
+
+/* 09:> */  @media all and (min-width: 768px) and (max-width: 959px) and  (orientation:portrait) {
+}
+
+/* 10:> */  @media all and (min-width: 768px) and (max-width: 959px) and (orientation:landscape) {
+}
+
+/* 11:> */  @media all and (min-width: 480px)                                                    {
+}
+
+/* 12:> */  @media all and (min-width: 480px) and (max-width: 767px)                             {
+}
+
+/* 13:> */  @media all and (min-width: 480px) and (max-width: 767px) and  (orientation:portrait) {
+}
+
+/* 14:> */  @media all and (min-width: 480px) and (max-width: 767px) and (orientation:landscape) {
+}
+
+/* 15:> */  @media all and (max-width: 479px) 							                                     {
+}
+
+/* 16:> */  @media all and (max-width: 479px) and  (orientation:portrait)                        {
+}
+
+/* 17:> */  @media all and (max-width: 479px) and (orientation:landscape)                        {
+}
+
+/* 18:> */  @media(-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:3/2), (min-resolution:1.5dppx) {
+}
+
+/* 19:> */  @media print {
+}

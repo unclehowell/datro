@@ -1,5 +1,5 @@
-/*  2018 Copyright - WaveOS
-                 ..                   
+/*  2020 Copyleft - DATRO Consortium
+                 ..
 ..   ..          ..   ........                     .........     .......     ........                      .........    ......................
 ..   ...           ..  ........                   .........     .........     ........                    .........    ......................
  .......         .....  ........                 .........     ...........     ........                  .........    ......................
@@ -14,13 +14,13 @@
         .........   ......       ................     ........       .       ......     .................    ........
           ......   ......         ..............     ........                 ......     ...............    ...........................
             ...   ......           ............     ........                   ......     .............    ...........................
-             .   ......             ..........     ........                     ......     ...........    ........................... 
+             .   ......             ..........     ........                     ......     ...........    ...........................
 
-                        
+
 						 ............................................................................................
-						           WaveOS by Unclehowell -  DATRO CONSORTIUM 2019  - All Rights Reserved 
-					     ............................................................................................ 
-                             GitHub:https://github.com/unclehowell/WaveOS -  Website:https://datro.xyz
+						             DATRO by Unclehowell -  DATRO CONSORTIUM 2020  - All Wrongs Reserved
+					     ............................................................................................
+                           GitHub:https://github.com/unclehowell/datro -  Website:https://datro.xyz
 					     ..........................................................................................   */
 
 /*  Classes:     A. .container {}
@@ -29,7 +29,7 @@
 				 D. .carousel-maintitle-link:hover {}
 				 E. .carousel-title {}
 				 F. .carousel-title-link {}
-				 G. .carousel-title-link:hover {} 
+				 G. .carousel-title-link:hover {}
 				 H. .carousel-subtitle {}
 				 I. .carousel-item {}
 				 J. .appstore-img-button-play {}
@@ -44,8 +44,8 @@
 				 S. .tick-box-holder {}
 				 T. .tick-box {}
 				 U. .moreinfo {}
-				 V.  #image1>img,#image2>img,#image3>img,#image4>img,#image4>img {}			
-	
+				 V.  #image1>img,#image2>img,#image3>img,#image4>img,#image4>img {}
+
 	Structure:  01. .class-1 {}  .class-2 {} ... etc
 				02. @media all and (min-width:1024px) 							                       {.class-1 {}.class-2 {} ... etc}
 				03. @media all and (min-width:960px) 												   {.class-1 {}.class-2 {} ... etc}
@@ -60,12 +60,12 @@
 				12. @media all and (min-width:480px) and (max-width:767px) 							   {.class-1 {}.class-2 {} ... etc}
 				13. @media all and (min-width:480px) and (max-width:767px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
 				14. @media all and (min-width:480px) and (max-width:767px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
-				15. 					  @media all and (max-width:479px)                             {.class-1 {}.class-2 {} ... etc} 
+				15. 					  @media all and (max-width:479px)                             {.class-1 {}.class-2 {} ... etc}
 				16. 			       	  @media all and (max-width:479px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
-				17. 					  @media all and (max-width:479px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}     
+				17. 					  @media all and (max-width:479px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
 				18. @media(-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:3/2), (min-resolution:1.5dppx) {}
 				19. @media print {}
-    01:> */ 
+    01:> */
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
 
@@ -84,7 +84,7 @@
 @media all and (min-width:1024px) {
 	.paragraph-textarea {}
 	.paragraph-content {padding: 1rem 2rem 1rem 2rem;}
-	.title {font-size:4rem!important;}	
+	.title {font-size:4rem!important;}
 }
 
 
@@ -106,4 +106,3 @@
 @media(-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:3/2), (min-resolution:1.5dppx) {
 
 }
-
