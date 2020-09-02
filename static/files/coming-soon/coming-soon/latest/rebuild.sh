@@ -5,15 +5,15 @@ unset CDPATH
 
 
 #.......................................................
-#  HotspotBnB - 2020 Copyright - Wave Telecom Limited
+#           2020 Copyleft - DATRO Consortium
 #.......................................................
-#       HotspotBnB Document Library - rebuild.sh
+#       DATRO Document Library by Unclehowell
 #.......................................................
-#             https://docs.hotspotbnb.com
+#                   https://datro.xyz/
 #.......................................................
 #
-#                     Version 0.4
-#          view _source-files/README.md changelog
+#                      Version 0.5
+#  ../../../ _source-files/README.md & CHANGELOG.md
 #.......................................................
 
 
@@ -42,6 +42,7 @@ do
         ProgressBar ${number} ${_end}
 done
 
+# custom e.g. pull in cryptocurrency data etc
 sh custom.sh 2> /dev/null &&
 touch build.log
 make clean > build.log 2>&1
@@ -75,19 +76,22 @@ cd ../../
 
 printf "\e[2;3;33m Done! \n\e[0m"
 
-printf "\n\e[2;3;33m 4. Changing HTML Theme from Default to HotspotBnB \n\e[0m\n"
+printf "\n\e[2;3;33m 4. Changing HTML Theme from Default to DATRO \n\e[0m\n"
 for number in $(seq ${_60} ${_80})
 do
        sleep 0.1
        ProgressBar ${number} ${_end}
 done
 
-cd build
+cd build 
+pwd
 cd html
+pwd
 sed -i 's/ View page source/ /g' *.html
 sed -i 's/<div class="version">/<div class="version"> Document Version : /g' *.html
 cd _static/css
-sed -i 's/#d9d9d9/grey/g' theme.css
+pwd
+sed -i 's/#d9d9d9/initial/g' theme.css
 sed -i 's/#2980B9/#303c42/g' theme.css
 sed -i 's/#2980B9/#1a73e8/g' theme.css
 sed -i 's/#9B59B6/#a3a3a3/g' theme.css
@@ -102,7 +106,7 @@ sed -i 's/h2,/h2 {text-align:left!important;} h2,/g' theme.css
 sed -i 's/.rst-content img{/ @media all and (min-width: 680px) { .rst-content img {margin-left:24px!important;} } .rst-content img{ /g' theme.css
 sed -i 's/a:visited{color:#a3a3a3}/a:visited{color:#5F9EA0;}/g' theme.css
 cd ../../../../
-
+pwd
 printf "\e[2;3;33m Done! \n\e[0m"
 
 printf "\n\e[2;3;33m 5. Grabbing the latest auto-rebuilder \n\e[0m\n"
@@ -120,4 +124,3 @@ bash ../../../_source-files/update.sh &&
 cp -r ../../../_source-files/auto-rebuild-master.sh auto-rebuild.sh &&
 
 printf "\e[2;3;33m Finished! \n\e[0m\n"
-

@@ -2,7 +2,13 @@
                        
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
-## [Unreleased]                                                                    
+## [Unreleased]
+
+## [0.0.5] - 2020-09-02                                                                    
+
+ - rebranded - hotspotbnb.com is now a subsidiary of the DATRO consortium. 
+ - moved repo to github.com/unclehowell/datro
+ - updated the update.sh to make sure it pulls latest from there now instead
 
 ## [0.0.4] - 2020-01-10 
 

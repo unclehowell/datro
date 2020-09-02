@@ -5,15 +5,15 @@ unset CDPATH
 
 
 #............................................................
-#           HotspotBnB - 2020 Copyright
+#               2020 Copyleft - DATRO Consortium
 #............................................................
-#    HotspotBnB Documentation - by  Wave Telecom Limited
+#          DATRO Docs Library - by Unclehowell
 #............................................................
-#            docs.hotspotbnb.com - auto-update.sh
+#                      https://datro.xyz
 #............................................................
 #
-#                         version 0.4
-#            view _source-files/README.md changelog
+#                       Version 0.5
+#        ../../../_source-files/README.md & CHANGELOG.md
 #
 #............................................................
 

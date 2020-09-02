@@ -4,21 +4,19 @@
 unset CDPATH
 
 #.......................................................
-#                2020 Copyright unclehowell
+#         2020 DATRO Copyleft DATRO Consortium
 #.......................................................
-#    HotspotBnB Documentation - by Wave Telecom Limited
+#         DATRO Documentation - by unclehowell
 #.......................................................
-#            docs.hotspotbnb.com - update.sh
+#                   https://datro.xyz
 #.......................................................
 #
-#                        version 0.4
-#          view _source-files/README.md changelog
+#                     version 0.5
+#   ../../../_source-files/README.md & CHANGELOG.md
 #
 #........................................................
 
 
-# CHANGELOG
-# version 0.2 - disabled the progress bar - doesn't work out the box, has dependancies
 lasttime=$(awk 'date -u -d "0 $FinalDate seconds - $StartDate seconds" +"%H%M%S"' ../../../_source-files/datetime.log 2> /dev/null)
 
 timecalc=$(date -u -d "0 $FinalDate seconds - $StartDate seconds" +"%H%M%S") 2> /dev/null &
@@ -35,9 +33,9 @@ then
 
 	printf "\n\e[2;3;33m Update in Progress \n\e[0m\n"
 
-	curl https://raw.githubusercontent.com/unclehowell/gh-docs.hotspotbnb.com/master/docs/_source-files/rebuild-master.sh > ../../../_source-files/rebuild-master.sh
-	curl https://raw.githubusercontent.com/unclehowell/gh-docs.hotspotbnb.com/master/docs/_source-files/auto-rebuild-master.sh > ../../../_source-files/auto-rebuild-master.sh
-	curl https://raw.githubusercontent.com/unclehowell/gh-docs.hotspotbnb.com/master/docs/_source-files/README.md > ../../../_source-files/README.md
+	curl https://raw.githubusercontent.com/unclehowell/datro/gh-pages/static/files/_source-files/rebuild-master.sh > ../../../_source-files/rebuild-master.sh
+	curl https://raw.githubusercontent.com/unclehowell/datro/gh-pages/static/files/_source-files/auto-rebuild-master.sh > ../../../_source-files/auto-rebuild-master.sh
+	curl https://raw.githubusercontent.com/unclehowell/datro/gh-pages/static/files//_source-files/README.md > ../../../_source-files/README.md
 
 else
 

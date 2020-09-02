@@ -1,6 +1,6 @@
 
-project = u'DATRO Sample Document'
-copyright = u'2020, DATRO Consortium'
+project = u'DATO'
+copyleft = u'2020, DATRO Consortium'
 author = u'unclehowell'
 
 version = u'0.0.1'
@@ -36,7 +36,7 @@ latex_elements = { 'classoptions': ',openany,oneside', 'babel' : '\\usepackage[e
 
 
 latex_documents = [
-    (master_doc, 'coming-soon.tex', u'unclehowell',
+    (master_doc, 'coming-soon.tex', u'DATRO',
      u'Author(s): unclehowell', 'manual'),
 ]
 
@@ -49,7 +49,7 @@ man_pages = [
 
 
 texinfo_documents = [
-    (master_doc, 'coming-soon', u'unclehowell',
+    (master_doc, 'coming-soon', u'DATRO',
      author, 'coming-soon', 'unclehowell',
      'manual'),
 ]
