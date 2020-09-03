@@ -12,9 +12,9 @@
 	                if {{ host == window.location.host} && {window.location.protocol != "https:""}}
 	                window.location.protocol = "https";
 	</script><!-- SEO -->
-	<meta content="DATR🄯 Documentation" name="description">
+	<meta content="DATR🄯 Documents" name="description">
 	<meta content="DATR🄯 Consortium" name="author">
-	<title>DATR🄯 Docs</title>
+	<title>DATR🄯 Documents</title>
 	<link href="img/favicons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
 	<link href="img/favicons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
 	<link href="img/favicons/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
@@ -99,7 +99,7 @@
 
 	      .segment-col-paragraph {min-height:unset!important;}
 	      .cart-amount { word-spacing:-3px;}
-	      .col-lg-4 { padding:1rem!important;}
+	      .col-lg-4 { padding:1rem!important;min-height:950px!important;}
 	      .row {margin-top: -40px; padding-bottom: 26px;}
 	      #sub-total {all:unset; color:white; font-weight:200;}
 	      .add-to-cart {font-size:0.75rem; color:white!important;opacity:1!important;}
@@ -109,7 +109,6 @@
 	      .info-button-text {display:block; padding:0px 0px 0px 2px!important; margin:0; width:85px; background-color:transparent; text-align:left!important;  font-size:0.75rem;}
 	      .info-button-text2 {display:block; padding:0px 0px 0px 6px!important; margin:0; width:85px; background-color:transparent; text-align:left!important;  font-size:0.75rem;}
 	      .product-paragraph {margin-top:15px;)
-
 
 	</style><!-- Java -->
 
@@ -158,7 +157,7 @@
 <body bgcolor="#333366" onload="pageLoad()" style="font-size: 125%;">
 	<header id="mainWrapper" style="visibility: visible;">
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-			<a data-content="DATR🄯 Documents" href="../../index.html" title="DATRO Documents"><img alt="DATR🄯 Documents" class="navbar-brand" src="img/datro_logo.jpg"></a>
+			<a data-content="DATRO Documents" href="../../index.html" title="DATRO Documents"><img alt="DATR🄯 Documents" class="navbar-brand" src="img/datro_logo.jpg"></a>
 
 			<button aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarCollapse" data-toggle="collapse" type="button">
 				<span class="navbar-toggler-icon"></span>
@@ -169,11 +168,11 @@
 
 					<li class="nav-item"></li>
 					<li class="nav-item">
-						<a class="nav-link" href="download.html">Technologies</a>
+						<a class="nav-link" href="download.html">Technology</a>
 					</li>
 					<li class="nav-item"></li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Documentation</a>
+						<a class="nav-link" href="#">Documents</a>
 					</li>
 					<li class="nav-item"></li>
 					<li class="nav-item">
@@ -187,73 +186,137 @@
 	</header>
 	<main class="main" role="main">
 	<div class="segment-top" > </div>
-		<h1 class="segment-title" >Document Library</h1>
+		<h1 class="segment-title" >Documents</h1>
 
 			<div class="container marketing" style="margin-top:-2em;margin-bottom:3em;">
 				<div class="container">
 
-		<p class="product-paragraph" style="margin-top:11px!important;margin-bottom: 7em!important;">See below DATRO<b style="font-size:40%;color:white;margin: 18px auto 0 auto;position: relative;text-align: center;vertical-align:text-top;opacity:0.8;">&#x1f12f;</b>'s growing technology library. Each technical document is downloadable in PDF format, or it can browsed directly in the website in HTML format. All of the technical documents for our various technologies are kept in raw RST (RestructuredText) format in our source-code monorepo. Our methodolgy is to edit the docs in RST format, then re-build them into HTML/PDF format. Semantic version control is used and the older document is saved and referenced in the new version. See our guide on maintaing this technical document library for more information.</p>
-		<p></p>
+		<p class="product-paragraph" style="margin-top:11px!important;margin-bottom: 7em!important;">Welcome to DATRO<b style="font-size:40%;color:white;margin: 18px auto 0 auto;position: relative;text-align: center;vertical-align:text-top;opacity:0.8;">&#x1f12f;</b>'s growing document library. Each technical document can be viewed in the webpage or as a downlable PDF. For a brief summary of how our semantic version control methodology and document library management process work &nbsp;<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="html/docs-intro.html" style=""><u>click here</u></a>
 		</div>
 		</div>
 			<div class="container" id="products">
-				<ul class="row">
+				<ul class="row" style="min-height:950px!important;">
 					<li class="col-lg-4">
-						<div class="product-description"><p style="font-size:200%;margin-bottom:10px;">Hotspot<strong>β</strong>n<strong>β</strong><b style="font-size:40%;color:white;margin: 18px auto 0 auto;position: relative;text-align: center;vertical-align:text-top;opacity:0.8;">&#x1f12f;</b></p>
-						<!--	<img class="navbar-brand" src="img/datro_logo.jpg"> -->
-									<iframe src="html/videos/intro-hbnb.html" class="video-iframe"></iframe>
+						<div class="product-description">
+						<p style="font-size:200%;margin-bottom:10px;">Hotspot<strong>β</strong>n<strong>β</strong><b style="font-size:40%;color:white;margin: 18px auto 0 auto;position: relative;text-align: center;vertical-align:text-top;opacity:0.8;">&#x1f12f;</b></p><!--    <img class="navbar-brand" src="img/datro_logo.jpg"> -->
 
-							<h3 class="product-name" style="font-size:95%;margin-top:10px;"> Wi-Fi Access Point </br>Software Upgrade </br></br><strong>V0.0.1-rc.7</strong></p>
-							<b class="product-name-subtitle"></b></h3>
+						<h3 class="product-name" style="font-size:95%;margin-top:10px; border-bottom: 1px solid transparent;">Wi-Fi Access Point</br>Software Upgrade<br>
 
-							<div style="height:62px!important;">
-								<table style="left:0; right:0; width:70%; margin-left:auto; margin-right:auto;">
-									<tbody>
-										<tr>
-											<th class="add-to-cart-columb-title" scope="col" style="width: 49.9097%; height:inherit; padding:0px; margin:0px;">
-												<br>
-												<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="../files/client-os/client-os-guide/build/html/index.html"  style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-book" style=" margin-left: 2px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <span>User Guide</span></b><span></span></a>
-											</th>
-											<th class="add-to-cart-columb-title" scope="col" style="width: 49.9097%; height:inherit; padding:0px; margin:0px;">
-												<br>
-												<a onclick="window.open('https://github.com/unclehowell/HBnB/releases/')" style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-compressed" style=" margin-left: 1px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <strong>Download</strong><span>&nbsp; </span></b><span></span></a>
-											</th>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<p class="product-paragraph" style="margin-top:11px!important;">Host Applications on your Wireless Access Point. Hotspot<strong>β</strong>n<strong>β</strong><b style="font-size:40%;color:white;margin: 18px auto 0 auto;position: relative;text-align: center;vertical-align:text-top;opacity:0.8;">&#x1f12f;</b> is a Free and Universal Wi-Fi Access Point software upgrade, designed to give your wi-fi access point the ability to host applications from the Hotspot<strong>β</strong>n<strong>β</strong><b style="font-size:40%;color:white;margin: 18px auto 0 auto;position: relative;text-align: center;vertical-align:text-top;opacity:0.8;">&#x1f12f;</b> App Store.</p>
-							<p></p><a class="btn add-to-cart-btn add-to-cart2" onclick="window.open('https://github.com/unclehowell/WaveOS/blob/master/README.md')" style="margin-left:-5px;"><span style="background-image: url(img/git-footer.png); background-repeat: no-repeat; background-position: 2px 0px; display: inline-block; zoom: 1; width: 41px; background-size: 17px; margin-right: -4px; margin-left: -2px; float: left;"></span> &nbsp; <b class="info-button-text2" style="margin-top:1px; margin-left:-1px;">Code</b></a> <a class="btn add-to-cart-btn add-to-cart2" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="datro/files/software/dev_guide/build/html/index.html"><span class="glyphicon glyphicon-globe"></span> &nbsp; <b class="info-button-text" style="margin-left:5px;">Site</b></a> <a class="btn add-to-cart-btn add-to-cart2" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="html/statistics/waveos.html"><span class="glyphicon glyphicon-stats"></span> &nbsp; <b class="info-button-text" style="margin-left:0px;">Stats</b></a><div>
-
-</div>
-						</div>
-					</li>
-					<li class="col-lg-4">
-
-					<div class="product-description"><p style="font-size:200%;margin-bottom:10px;">Wave<b style="font-size:40%;color:white;margin: 18px auto 0 auto;position: relative;text-align: center;vertical-align:text-top;opacity:0.8;">&#x1f12f;</b></p>
-					<!--	<img class="navbar-brand" src="img/datro_logo.jpg"> -->
-								<iframe src="html/videos/intro-hbnb.html" class="video-iframe"></iframe>
-
-						<h3 class="product-name" style="font-size:95%;margin-top:10px;"> Internet for Free </br>Hotspotβnβ DApp </br></br><strong>Version 0.0.1-rtw.6</strong></p>
+						<p class="product-paragraph" style="margin-top:11px!important;"></p>
+						<p></p>
+						<h3 class="product-name" style="font-size: 95%; margin-top: -1px; height: 3.5em; background: rgba(0,0,0,0.1); border: 0.1px solid steelblue;"><i class="glyphicon glyphicon-book" style=" margin-left: 2px; margin-right: -7px; margin-top: 0px;">&nbsp;</i>User Guide <strong>(0.1)</strong>
 						<b class="product-name-subtitle"></b></h3>
-						<div style="height:62px!important;">
+						<div style="height: 126px!important; line-height: 0.65em; background-color: rgba(0,0,0,0.05); border-radius: 0 0 20px 20px!important; border-bottom: 6px solid rgba(0,0,0,0.1); border: 0.1px solid steelblue;">
+							<br>
 							<table style="left:0; right:0; width:70%; margin-left:auto; margin-right:auto;">
 								<tbody>
 									<tr>
 										<th class="add-to-cart-columb-title" scope="col" style="width: 49.9097%; height:inherit; padding:0px; margin:0px;">
 											<br>
-											<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="datro/files/software/wave_os/build/html/index.html"  style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-book" style=" margin-left: 2px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <span>User Guide</span></b><span></span></a>
+											<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="../files/coming-soon/coming-soon/latest/build/html/index.html"  style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-globe" style=" margin-left: 2px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <span>View as HTML</span></b><span></span></a>
 										</th>
 										<th class="add-to-cart-columb-title" scope="col" style="width: 49.9097%; height:inherit; padding:0px; margin:0px;">
 											<br>
-											<a onclick="window.open('https://github.com/unclehowell/HBnB/releases/')" style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-compressed" style=" margin-left: 1px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <strong>Download</strong><span>&nbsp; </span></b><span></span></a>
+											<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="../files/coming-soon/coming-soon/latest/build/latex/coming-soon.pdf" style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-floppy-save" style=" margin-left: 1px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <strong>View as PDF</strong><span>&nbsp; </span></b><span></span></a>
 										</th>
 									</tr>
 								</tbody>
 							</table>
+
+</br>
+        <b style="font-size:70%; color:lightgrey;font-weight:300; margin-bottom:20px; line-height:1.6em;">Where's it from ? : <strong><a href="https://github.com/unclehowell/datro/releases" style="font-weight:normal;color:white;opacity:1;" target="_popup">Platform V0.0.1-RTW-1</a></strong></br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;What's it for ? : <strong><a href="https://github.com/unclehowell/datro/releases" target="_popup">Software V0.0.1-RC.1</strong></a></b></br>
+
+
+				<p class="product-paragraph" style="margin-top:11px!important;"></p>
+				<p></p>
+					<h3 class="product-name" style="font-size: 95%; margin-top: -1px; height: 3.5em; background: rgba(0,0,0,0.3);">Developer Guide <strong>(0.1)</strong>
+					<b class="product-name-subtitle"></b></h3>
+					<div style="height: 126px!important; line-height: 0.65em; background-color: rgba(0,0,0,0.2); border-radius: 0 0 20px 20px!important; border-bottom: 6px solid rgba(0,0,0,0.1);">
+						<br>
+						<table style="left:0; right:0; width:70%; margin-left:auto; margin-right:auto;">
+							<tbody>
+								<tr>
+									<th class="add-to-cart-columb-title" scope="col" style="width: 49.9097%; height:inherit; padding:0px; margin:0px;">
+										<br>
+										<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="../files/coming-soon/coming-soon/latest/build/html/index.html"  style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-globe" style=" margin-left: 2px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <span>View as HTML</span></b><span></span></a>
+									</th>
+									<th class="add-to-cart-columb-title" scope="col" style="width: 49.9097%; height:inherit; padding:0px; margin:0px;">
+										<br>
+										<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="../files/coming-soon/coming-soon/latest/build/latex/coming-soon.pdf" style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-floppy-save" style=" margin-left: 1px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <strong>View as PDF</strong><span>&nbsp; </span></b><span></span></a>
+									</th>
+								</tr>
+							</tbody>
+						</table>
+
+				</br>
+				<b style="font-size:70%; color:lightgrey;font-weight:lighter; margin-bottom:20px; line-height:1.6em;">&nbsp;&nbsp;What's it for? : <strong><a href="https://github.com/unclehowell/datro/releases"  style="font-weight:normal;color:white;opacity:1;"  target="_popup">Platform V0.0.1-RTW-1</a></strong></br>Destination: <strong><a href="https://github.com/unclehowell/datro/releases" target="_popup">Software V0.0.1-RC.1</a></strong></b></br>
+
+				<p class="product-paragraph" style="margin-top:11px!important;"></p>
+				<p></p>
+					<h3 class="product-name" style="font-size: 95%; margin-top: -1px; height: 3.5em; background: rgba(0,0,0,0.3);">Developer Guide <strong>(0.1)</strong>
+					<b class="product-name-subtitle"></b></h3>
+					<div style="height: 126px!important; line-height: 0.65em; background-color: rgba(0,0,0,0.2); border-radius: 0 0 20px 20px!important; border-bottom: 6px solid rgba(0,0,0,0.1);">
+						<br>
+						<table style="left:0; right:0; width:70%; margin-left:auto; margin-right:auto;">
+							<tbody>
+								<tr>
+									<th class="add-to-cart-columb-title" scope="col" style="width: 49.9097%; height:inherit; padding:0px; margin:0px;">
+										<br>
+										<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="../files/coming-soon/coming-soon/latest/build/html/index.html"  style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-globe" style=" margin-left: 2px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <span>View as HTML</span></b><span></span></a>
+									</th>
+									<th class="add-to-cart-columb-title" scope="col" style="width: 49.9097%; height:inherit; padding:0px; margin:0px;">
+										<br>
+										<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="../files/coming-soon/coming-soon/latest/build/latex/coming-soon.pdf" style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-floppy-save" style=" margin-left: 1px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <strong>View as PDF</strong><span>&nbsp; </span></b><span></span></a>
+									</th>
+								</tr>
+							</tbody>
+						</table>
+
+				</br>
+				<b style="font-size:70%; color:lightgrey;font-weight:lighter; margin-bottom:20px; line-height:1.6em;">Where's it from ? : <strong>Platform V0.0.1-RTW-1</strong></br>Destination: <strong>Software V0.0.1-RC.1</strong></b></br>
+
+
+			<div>
+</div>
 						</div>
-						<p class="product-paragraph" style="margin-top:11px!important;">Wave is a Decentralised Application (DApp) on the Hotspotβnβ App Store. The application allows users to redirect cryptocurrency generated from their network, to their ISP, resulting in discounted even free internet access.</p>
-						<p></p><a class="btn add-to-cart-btn add-to-cart2" onclick="window.open('https://github.com/unclehowell/WaveOS/blob/master/README.md')" style="margin-left:-5px;"><span style="background-image: url(img/git-footer.png); background-repeat: no-repeat; background-position: 2px 0px; display: inline-block; zoom: 1; width: 41px; background-size: 17px; margin-right: -4px; margin-left: -2px; float: left;"></span> &nbsp; <b class="info-button-text2" style="margin-top:1px; margin-left:-1px;">Code</b></a> <a class="btn add-to-cart-btn add-to-cart2" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="datro/files/software/dev_guide/build/html/index.html"><span class="glyphicon glyphicon-book"></span> &nbsp; <b class="info-button-text" style="margin-left:5px;">Docs</b></a> <a class="btn add-to-cart-btn add-to-cart2" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="html/statistics/waveos.html"><span class="glyphicon glyphicon-stats"></span> &nbsp; <b class="info-button-text" style="margin-left:0px;">Stats</b></a>
+					</li>
+					<li class="col-lg-4">
+
+					<div class="product-description">
+				  <p style="font-size:200%;margin-bottom:10px;">Wave<b style="font-size:40%;color:white;margin: 18px auto 0 auto;position: relative;text-align: center;vertical-align:text-top;opacity:0.8;">&#x1f12f;</b></p><!--    <img class="navbar-brand" src="img/datro_logo.jpg"> -->
+
+					<h3 class="product-name" style="font-size:95%;margin-top:10px;">Internet for Free<br>
+					Hotspotβnβ DApp<br>
+					<br>
+					<strong class="product-name-version">Version 0.0.1-rtw.6</strong><br>
+					<br>
+					<b class="product-name-subtitle"></b></h3>
+					<p class="product-paragraph" style="margin-top:11px!important;">Wave is a Decentralised Application (DApp) on the Hotspotβnβ App Store. The application allows users to redirect cryptocurrency generated from their network, to their ISP, resulting in discounted even free internet access.</p>
+					<p></p>
+					<h3 class="product-name" style="font-size:95%;margin-top:10px; height:3.5em;">Solutions Consultant<br>
+					<br>
+					<b class="product-name-subtitle"></b></h3>
+					<div style="height:82px!important;line-height:0.65em;">
+						<br>
+						<table style="left:0; right:0; width:70%; margin-left:auto; margin-right:auto;">
+							<tbody>
+								<tr>
+									<th class="add-to-cart-columb-title" scope="col" style="width: 49.9097%; height:inherit; padding:0px; margin:0px;">
+										<br>
+										<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="../files/coming-soon/coming-soon/latest/build/html/index.html"  style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-globe" style=" margin-left: 2px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <span>View as HTML</span></b><span></span></a>
+									</th>
+									<th class="add-to-cart-columb-title" scope="col" style="width: 49.9097%; height:inherit; padding:0px; margin:0px;">
+										<br>
+										<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="../files/coming-soon/coming-soon/latest/build/latex/coming-soon.pdf" style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-floppy-save" style=" margin-left: 1px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <strong>View as PDF</strong><span>&nbsp; </span></b><span></span></a>
+									</th>
+								</tr>
+							</tbody>
+						</table>
+
+
+				<div>
+
+</div>
 					</div>
 					</li>
 
@@ -262,119 +325,119 @@
 
 				<div class="product-description"><p style="font-size:200%;margin-bottom:10px;">DAO Society<b style="font-size:40%;color:white;margin: 18px auto 0 auto;position: relative;text-align: center;vertical-align:text-top;opacity:0.8;">&#x1f12f;</b></p>
 				<!--	<img class="navbar-brand" src="img/datro_logo.jpg"> -->
-							<iframe src="html/videos/intro-hbnb.html" class="video-iframe"></iframe>
 
-					<h3 class="product-name" style="font-size:95%;margin-top:10px;"> Decentralized </br>Autonomous Society </br></br><strong>Version 0.0.1-rtw.6</strong></p>
+
+					<h3 class="product-name" style="font-size:95%;margin-top:10px;"> Decentralized </br>Autonomous Society </br></br><strong class="product-name-version">Version 0.0.1-rtw.6</strong></p>
 
 			<b class="product-name-subtitle"></b></h3>
-					<div style="height:62px!important;">
+					<div style="height:auto;">
 						<table style="left:0; right:0; width:70%; margin-left:auto; margin-right:auto;">
 							<tbody>
 								<tr>
 									<th class="add-to-cart-columb-title" scope="col" style="width: 49.9097%; height:inherit; padding:0px; margin:0px;">
 										<br>
-										<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="datro/files/software/wave_os/build/html/index.html"  style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-book" style=" margin-left: 2px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <span>User Guide</span></b><span></span></a>
+										<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="datro/files/software/wave_os/build/html/index.html"  style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-globe" style=" margin-left: 2px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <span>View as HTML</span></b><span></span></a>
 									</th>
 									<th class="add-to-cart-columb-title" scope="col" style="width: 49.9097%; height:inherit; padding:0px; margin:0px;">
 										<br>
-										<a onclick="window.open('https://github.com/unclehowell/HBnB/releases/')" style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-compressed" style=" margin-left: 1px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <strong>Download</strong><span>&nbsp; </span></b><span></span></a>
+										<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="../files/coming-soon/coming-soon/latest/build/latex/coming-soon.pdf" style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-floppy-save" style=" margin-left: 1px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <strong>View as PDF</strong><span>&nbsp; </span></b><span></span></a>
 									</th>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 					<p class="product-paragraph" style="margin-top:11px!important;">A Decentralised Autonomous Organisation (DAO) is a series of Blockchain-based smart contracts, assembled in a such a way that the organisation itself can run autonomously and self-govern with complete anonymity. Since stakeholder in our network exceed 5,000, our solution constitutes a Society. hence the title. </p>
-					<p></p><a class="btn add-to-cart-btn add-to-cart2" onclick="window.open('https://github.com/unclehowell/WaveOS/blob/master/README.md')" style="margin-left:-5px;"><span style="background-image: url(img/git-footer.png); background-repeat: no-repeat; background-position: 2px 0px; display: inline-block; zoom: 1; width: 41px; background-size: 17px; margin-right: -4px; margin-left: -2px; float: left;"></span> &nbsp; <b class="info-button-text2" style="margin-top:1px; margin-left:-1px;">Code</b></a> <a class="btn add-to-cart-btn add-to-cart2" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="datro/files/software/dev_guide/build/html/index.html"><span class="glyphicon glyphicon-book"></span> &nbsp; <b class="info-button-text" style="margin-left:5px;">Docs</b></a> <a class="btn add-to-cart-btn add-to-cart2" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="html/statistics/waveos.html"><span class="glyphicon glyphicon-stats"></span> &nbsp; <b class="info-button-text" style="margin-left:0px;">Stats</b></a>
+					<p></p>
 				</div>
 					</li>
 				</ul>
 			</div>
 		</div>
 		<div class="container" id="products">
-			<ul class="row">
+				<ul class="row" style="min-height:950px!important;">
 				<li class="col-lg-4">
 				<div class="product-description"><p style="font-size:200%;margin-bottom:10px;">NΞΩ DΩMΞ<b style="font-size:40%;color:white;margin: 18px auto 0 auto;position: relative;text-align: center;vertical-align:text-top;opacity:0.8;">&#x1f12f;</b></p>
 				<!--	<img class="navbar-brand" src="img/datro_logo.jpg"> -->
-							<iframe src="html/videos/intro-hbnb.html" class="video-iframe"></iframe>
 
-					<h3 class="product-name" style="font-size:95%;margin-top:10px;"> Geodesic Equipment Room </br>Self-Assembly Guide </br></br><strong>Version 0.0.1-rtw.6</strong></p>
+
+					<h3 class="product-name" style="font-size:95%;margin-top:10px;"> Geodesic Equipment Room </br>Self-Assembly Guide </br></br><strong class="product-name-version">Version 0.0.1-rtw.6</strong></p>
 							<b class="product-name-subtitle"></b></h3>
 
-						<div style="height:62px!important;">
+						<div style="height:auto;">
 							<table style="left:0; right:0; width:70%; margin-left:auto; margin-right:auto;">
 								<tbody>
 									<tr>
 										<th class="add-to-cart-columb-title" scope="col" style="width: 49.9097%; height:inherit; padding:0px; margin:0px;">
 											<br>
-											<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="datro/files/software/wave_os/build/html/index.html"  style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-book" style=" margin-left: 2px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <span>User Guide</span></b><span></span></a>
+											<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="datro/files/software/wave_os/build/html/index.html"  style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-globe" style=" margin-left: 2px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <span>View as HTML</span></b><span></span></a>
 										</th>
 										<th class="add-to-cart-columb-title" scope="col" style="width: 49.9097%; height:inherit; padding:0px; margin:0px;">
 											<br>
-											<a onclick="window.open('https://github.com/unclehowell/HBnB/releases/')" style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-compressed" style=" margin-left: 1px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <strong>Download</strong><span>&nbsp; </span></b><span></span></a>
+											<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="../files/coming-soon/coming-soon/latest/build/latex/coming-soon.pdf" style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-floppy-save" style=" margin-left: 1px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <strong>View as PDF</strong><span>&nbsp; </span></b><span></span></a>
 										</th>
 									</tr>
 								</tbody>
 							</table>
 						</div>
 						<p class="product-paragraph" style="margin-top:11px!important;">The latest version of the FREE DATR🄯 Operating System (Hotspotβnβ). Including Source Code & Operation Manual. Transforms almost any Single Board Computer into a DATR🄯 Smart Home Device. Copy Hotspotβnβ to your devices Micro SD Card using the 2 Minute QuickStart Guide <a href="#quickstart"><u>below</u></a>.</p>
-						<p></p><a class="btn add-to-cart-btn add-to-cart2" onclick="window.open('https://github.com/unclehowell/WaveOS/blob/master/README.md')" style="margin-left:-5px;"><span style="background-image: url(img/git-footer.png); background-repeat: no-repeat; background-position: 2px 0px; display: inline-block; zoom: 1; width: 41px; background-size: 17px; margin-right: -4px; margin-left: -2px; float: left;"></span> &nbsp; <b class="info-button-text2" style="margin-top:1px; margin-left:-1px;">Code</b></a> <a class="btn add-to-cart-btn add-to-cart2" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="datro/files/software/dev_guide/build/html/index.html"><span class="glyphicon glyphicon-book"></span> &nbsp; <b class="info-button-text" style="margin-left:5px;">Docs</b></a> <a class="btn add-to-cart-btn add-to-cart2" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="html/statistics/waveos.html"><span class="glyphicon glyphicon-stats"></span> &nbsp; <b class="info-button-text" style="margin-left:0px;">Stats</b></a>
+						<p></p>
 					</div>
 				</li>
 				<li class="col-lg-4">
 				<div class="product-description"><p style="font-size:200%;margin-bottom:10px;">Monorepo<b style="font-size:40%;color:white;margin: 18px auto 0 auto;position: relative;text-align: center;vertical-align:text-top;opacity:0.8;">&#x1f12f;</b></p>
 				<!--	<img class="navbar-brand" src="img/datro_logo.jpg"> -->
-							<iframe src="html/videos/intro-hbnb.html" class="video-iframe"></iframe>
+
 
 					<h3 class="product-name" style="font-size:95%;margin-top:10px;"> Source Code </br>Structure & Management</br></br><strong></strong></p>
 										<b class="product-name-subtitle"></b></h3>
 												<b class="product-name-subtitle"></b></h3>
-					<div style="height:62px!important;">
+					<div style="height:auto;">
 						<table style="left:0; right:0; width:70%; margin-left:auto; margin-right:auto;">
 							<tbody>
 								<tr>
 									<th class="add-to-cart-columb-title" scope="col" style="width: 49.9097%; height:inherit; padding:0px; margin:0px;">
 										<br>
-										<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="datro/files/software/wave_os/build/html/index.html"  style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-book" style=" margin-left: 2px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <span>User Guide</span></b><span></span></a>
+										<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="datro/files/software/wave_os/build/html/index.html"  style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-globe" style=" margin-left: 2px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <span>View as HTML</span></b><span></span></a>
 									</th>
 									<th class="add-to-cart-columb-title" scope="col" style="width: 49.9097%; height:inherit; padding:0px; margin:0px;">
 										<br>
-										<a onclick="window.open('https://github.com/unclehowell/HBnB/releases/')" style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-compressed" style=" margin-left: 1px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <strong>Download</strong><span>&nbsp; </span></b><span></span></a>
+										<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="../files/coming-soon/coming-soon/latest/build/latex/coming-soon.pdf" style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-floppy-save" style=" margin-left: 1px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <strong>View as PDF</strong><span>&nbsp; </span></b><span></span></a>
 									</th>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 					<p class="product-paragraph" style="margin-top:11px!important;">The latest version of the FREE DATR🄯 Operating System (Hotspotβnβ). Including Source Code & Operation Manual. Transforms almost any Single Board Computer into a DATR🄯 Smart Home Device. Copy Hotspotβnβ to your devices Micro SD Card using the 2 Minute QuickStart Guide <a href="#quickstart"><u>below</u></a>.</p>
-					<p></p><a class="btn add-to-cart-btn add-to-cart2" onclick="window.open('https://github.com/unclehowell/WaveOS/blob/master/README.md')" style="margin-left:-5px;"><span style="background-image: url(img/git-footer.png); background-repeat: no-repeat; background-position: 2px 0px; display: inline-block; zoom: 1; width: 41px; background-size: 17px; margin-right: -4px; margin-left: -2px; float: left;"></span> &nbsp; <b class="info-button-text2" style="margin-top:1px; margin-left:-1px;">Code</b></a> <a class="btn add-to-cart-btn add-to-cart2" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="datro/files/software/dev_guide/build/html/index.html"><span class="glyphicon glyphicon-book"></span> &nbsp; <b class="info-button-text" style="margin-left:5px;">Docs</b></a> <a class="btn add-to-cart-btn add-to-cart2" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="html/statistics/waveos.html"><span class="glyphicon glyphicon-stats"></span> &nbsp; <b class="info-button-text" style="margin-left:0px;">Stats</b></a>
+					<p></p>
 				</div>
 				</li>
 
 			<li class="col-lg-4">
 			<div class="product-description"><p style="font-size:200%;margin-bottom:10px;">To-Go USB<b style="font-size:40%;color:white;margin: 18px auto 0 auto;position: relative;text-align: center;vertical-align:text-top;opacity:0.8;">&#x1f12f;</b></p>
 			<!--	<img class="navbar-brand" src="img/datro_logo.jpg"> -->
-						<iframe src="html/videos/intro-hbnb.html" class="video-iframe"></iframe>
 
-				<h3 class="product-name" style="font-size:95%;margin-top:10px;"> Persistent Live </br>Disk Image </br></br><strong>Version 0.0.1-rtm.6</strong></p>
+
+				<h3 class="product-name" style="font-size:95%;margin-top:10px;"> Persistent Live </br>Disk Image </br></br><strong class="product-name-version">Version 0.0.1-rtm.6</strong></p>
 	<b class="product-name-subtitle"></b></h3>
 			<b class="product-name-subtitle"></b></h3>
-				<div style="height:62px!important;">
-					<table style="left:0; right:0; width:70%; margin-left:auto; margin-right:auto;">
-						<tbody>
-							<tr>
-								<th class="add-to-cart-columb-title" scope="col" style="width: 49.9097%; height:inherit; padding:0px; margin:0px;">
-									<br>
-									<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="datro/files/software/wave_os/build/html/index.html"  style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-book" style=" margin-left: 2px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <span>User Guide</span></b><span></span></a>
-								</th>
-								<th class="add-to-cart-columb-title" scope="col" style="width: 49.9097%; height:inherit; padding:0px; margin:0px;">
-									<br>
-									<a onclick="window.open('https://github.com/unclehowell/HBnB/releases/')" style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-compressed" style=" margin-left: 1px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <strong>Download</strong><span>&nbsp; </span></b><span></span></a>
-								</th>
-							</tr>
-						</tbody>
-					</table>
+				<div style="height:auto;">
+				<table style="left:0; right:0; top:0px; position:relative; width:70%; margin-left:auto; margin-right:auto;">
+					<tbody>
+						<tr>
+							<th class="add-to-cart-columb-title" scope="col" style="width: 49.9097%; height:inherit; padding:0px; margin:0px;">
+								<br>
+								<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="datro/files/software/wave_os/build/html/index.html"  style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-globe" style=" margin-left: 2px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <span>View as HTML</span></b><span></span></a>
+							</th>
+							<th class="add-to-cart-columb-title" scope="col" style="width: 49.9097%; height:inherit; padding:0px; margin:0px;">
+								<br>
+								<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="../files/coming-soon/coming-soon/latest/build/latex/coming-soon.pdf" style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;"><b style="font-size:12.5px; color:white;"><i class="glyphicon glyphicon-floppy-save" style=" margin-left: 1px; margin-right: -7px; margin-top: 5px;">&nbsp;</i> <strong>View as PDF</strong><span>&nbsp; </span></b><span></span></a>
+							</th>
+						</tr>
+					</tbody>
+				</table>
+
 				</div>
-				<p class="product-paragraph" style="margin-top:11px!important;">The latest version of the FREE DATR🄯 Operating System (Hotspotβnβ). Including Source Code & Operation Manual. Transforms almost any Single Board Computer into a DATR🄯 Smart Home Device. Copy Hotspotβnβ to your devices Micro SD Card using the 2 Minute QuickStart Guide <a href="#quickstart"><u>below</u></a>.</p>
-				<p></p><a class="btn add-to-cart-btn add-to-cart2" onclick="window.open('https://github.com/unclehowell/WaveOS/blob/master/README.md')" style="margin-left:-5px;"><span style="background-image: url(img/git-footer.png); background-repeat: no-repeat; background-position: 2px 0px; display: inline-block; zoom: 1; width: 41px; background-size: 17px; margin-right: -4px; margin-left: -2px; float: left;"></span> &nbsp; <b class="info-button-text2" style="margin-top:1px; margin-left:-1px;">Code</b></a> <a class="btn add-to-cart-btn add-to-cart2" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="datro/files/software/dev_guide/build/html/index.html"><span class="glyphicon glyphicon-book"></span> &nbsp; <b class="info-button-text" style="margin-left:5px;">Docs</b></a> <a class="btn add-to-cart-btn add-to-cart2" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="html/statistics/waveos.html"><span class="glyphicon glyphicon-stats"></span> &nbsp; <b class="info-button-text" style="margin-left:0px;">Stats</b></a>
+
 			</div>
 				</li>
 			</ul>
@@ -385,7 +448,7 @@
 	</div>
 	<div class="segment-bottom"></div>
 	<div class="pinky-template">
-		<div class="sexy_line" style="filter:invert(100%)"></div><a data-content="DATR🄯" id="wavefooter" title="DATRO"></a>
+		<div class="sexy_line" style="filter:invert(100%)"></div><a data-content="DATRO" id="wavefooter" title="DATRO"></a>
 		<footer class="FooterNew">
 			<div class="FooterNew-content">
 				<div class="FooterNew-content-inner">
@@ -394,10 +457,10 @@
 							<div class="Grid">
 								<div class="Grid-col Grid-col--desktopSmall-4">
 									<div class="FooterNew-info-section">
-										<a class="FooterNew-logo" data-content="DATR🄯 Logo" href="index.html" title="DATRO Logo"><img alt="DATR🄯 Logo" class="FooterNew-logo-img" src="img/datro_logo.jpg"></a>
+										<a class="FooterNew-logo" data-content="DATRO Logo" href="index.html" title="DATRO Logo"><img alt="DATR🄯 Logo" class="FooterNew-logo-img" src="img/datro_logo.jpg"></a>
 									</div>
 									<div class="FooterNew-info-section">
-										<a class="FooterNew-subTitle" data-content="DATR🄯 Language Selector" data-qtsb-label="GoToLanguageSelector" data-qtsb-section="footer" data-qtsb-subsection="LanguageSelector" data-robots="LocaleSelector" href="#wavefooter" id="locale-selector" role="button" title="DATRO Language Selector"><span class="Icon--light Icon FooterNew-subTitle-icon"><svg class="Icon-image" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+										<a class="FooterNew-subTitle" data-content="DATRO Language Selector" data-qtsb-label="GoToLanguageSelector" data-qtsb-section="footer" data-qtsb-subsection="LanguageSelector" data-robots="LocaleSelector" href="#wavefooter" id="locale-selector" role="button" title="DATRO Language Selector"><span class="Icon--light Icon FooterNew-subTitle-icon"><svg class="Icon-image" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 										<path d="M0 0h24v24H0z" fill="none"></path>
 										<path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"></path></svg></span> Language: English</a>
 									</div>
@@ -421,33 +484,33 @@
 										</li>
 
 																					<li>
-																						<a class="FooterNew-link" href="download.html"  data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" data-qtsb-section="footer" data-qtsb-subsection="Network" data-qtsb-label="GoToNeoDome"  title="DATRO Neo Dome" data-content="DATR🄯 Neo Dome">
+																						<a class="FooterNew-link" href="download.html"  data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" data-qtsb-section="footer" data-qtsb-subsection="Network" data-qtsb-label="GoToNeoDome"  title="DATRO Neo Dome" data-content="DATRO Neo Dome">
 																								Neo Dome<b style="font-size:40%;color:white; position:relative;vertical-align:text-top!important;opacity:0.8;">&#x1f12f;</b>
 																						</a>
 																					</li>
 
 																					<li>
-																						<a class="FooterNew-link" href="download.html"  data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" data-qtsb-section="footer" data-qtsb-subsection="Network" data-qtsb-label="GoToToGoUSB"  title="DATRO To-Go USB" data-content="DATR🄯 To-Go USB">
+																						<a class="FooterNew-link" href="download.html"  data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" data-qtsb-section="footer" data-qtsb-subsection="Network" data-qtsb-label="GoToToGoUSB"  title="DATRO To-Go USB" data-content="DATRO To-Go USB">
 																								To-Go USB<b style="font-size:40%;color:white; position:relative;vertical-align:text-top!important;opacity:0.8;">&#x1f12f;</b>
 																						</a>
 																					</li>
 
 											<li>
-												<a class="FooterNew-link" data-content="DATR🄯 Hotspotβnβ" data-qtsb-label="GoToDownloadCenter" data-qtsb-section="footer" data-qtsb-subsection="Network" data-uitest-target="GoToHotspotBnB" href="technologies.html" title="DATRO Hotspotβnβ">HotspotBnB
+												<a class="FooterNew-link" data-content="DATRO Hotspotβnβ" data-qtsb-label="GoToDownloadCenter" data-qtsb-section="footer" data-qtsb-subsection="Network" data-uitest-target="GoToHotspotBnB" href="technologies.html" title="DATRO Hotspotβnβ">HotspotBnB
 												   <b style="font-size:40%;color:white; position:relative;vertical-align:text-top!important;opacity:0.8;">&#x1f12f;</b>
 												</a>
 											</li>
 
 
 											<li>
-												<a class="FooterNew-link" href="download.html" data-uitest-target="GoToWave" data-qtsb-section="footer" data-qtsb-subsection="Network" data-qtsb-label="GoToWave" title="DATRO Wave" data-content="DATR🄯 Wave">
+												<a class="FooterNew-link" href="download.html" data-uitest-target="GoToWave" data-qtsb-section="footer" data-qtsb-subsection="Network" data-qtsb-label="GoToWave" title="DATRO Wave" data-content="DATRO Wave">
 														Wave<b style="font-size:40%;color:white; position:relative;vertical-align:text-top!important;opacity:0.8;">&#x1f12f;</b> DApp
 											 </a>
 											</li>
 
 
 											<li>
-												<a class="FooterNew-link" href="download.html"  data-qtsb-section="footer" data-qtsb-subsection="Network" data-qtsb-label="GoToMiningNetwork" title="DATRO DAO Society" data-content="DATR🄯 Society">
+												<a class="FooterNew-link" href="download.html"  data-qtsb-section="footer" data-qtsb-subsection="Network" data-qtsb-label="GoToMiningNetwork" title="DATRO DAO Society" data-content="DATRO Society">
 														 DAO Society<b style="font-size:40%;color:white; position:relative;vertical-align:text-top!important;opacity:0.8;">&#x1f12f;</b>
 												</a>
 											</li>
@@ -470,20 +533,20 @@
 									<div class="FooterNew-link-content">
 										<ul class="FooterNew-links">
 											<li>
-												<a class="FooterNew-link" data-content="DATR🄯 News & Press Releases" data-qtsb-label="GoToNews" data-qtsb-section="footer" data-qtsb-subsection="About" data-uitest-target="GoToNews" href="news.html" title="DATRO News & Press Releases">DATR🄯 News & Press</a>
+												<a class="FooterNew-link" data-content="DATRO News & Press Releases" data-qtsb-label="GoToNews" data-qtsb-section="footer" data-qtsb-subsection="About" data-uitest-target="GoToNews" href="news.html" title="DATRO News & Press Releases">DATR🄯 News & Press</a>
 											</li>
 											<li>
-												<a class="FooterNew-link" data-content="DATR🄯 Technical Document Library" data-qtsb-label="GoToDocuments" data-qtsb-section="footer" data-qtsb-subsection="About" data-uitest-target="GoToDocuments" href="documents.html" title="DATRO Technical Document Library">DATR🄯 Documents</a>
+												<a class="FooterNew-link" data-content="DATRO Technical Document Library" data-qtsb-label="GoToDocuments" data-qtsb-section="footer" data-qtsb-subsection="About" data-uitest-target="GoToDocuments" href="documents.html" title="DATRO Technical Document Library">DATR🄯 Documents</a>
 											</li>
 											<li>
 												<a class="FooterNew-link" data-content="Contact DATR🄯" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" data-qtsb-label="GoToContact" data-qtsb-section="footer" data-qtsb-subsection="Network" data-uitest-target="GoToContact" href="html/contactus.html" title="Contact DATR🄯">DATR🄯 Contacts</a>
 											</li>
 											<li>
-												<a class="FooterNew-link" data-content="DATR🄯 History - The history of DATR🄯" data-qtsb-label="GoToHistory" data-qtsb-section="footer" data-qtsb-subsection="About" data-uitest-target="GoToHistory" href="history.html" title="DATRO History - The DATR🄯 History">DATR🄯 History</a>
+												<a class="FooterNew-link" data-content="DATRO History" data-qtsb-label="GoToHistory" data-qtsb-section="footer" data-qtsb-subsection="About" data-uitest-target="GoToHistory" href="history.html" title="DATRO History">DATR🄯 History</a>
 											</li>
 
 											<li>
-												<a class="FooterNew-link" data-content="The DATR🄯 Team" data-qtsb-label="GoToTeam" data-qtsb-section="footer" data-qtsb-subsection="Network" data-uitest-target="GoToTeam" href="team.html" title="The DATR🄯 Team">DATR🄯 Team</a>
+												<a class="FooterNew-link" data-content="DATRO Team" data-qtsb-label="GoToTeam" data-qtsb-section="footer" data-qtsb-subsection="Network" data-uitest-target="GoToTeam" href="team.html" title="The DATR🄯 Team">DATR🄯 Team</a>
 											</li>
 
 
@@ -497,17 +560,17 @@
 									<div class="FooterNew-link-content">
 										<ul class="FooterNew-links">
 										<li>
-											<a class="FooterNew-link" data-content="DATR🄯 Privacy Policy" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" data-qtsb-label="GoToPrivacyPolicy" data-qtsb-section="footer" data-qtsb-subsection="CorporateLinks" data-uitest-target="GoToPrivacyPolicy" href="datro/files/organisation/privacy/build/html/website.html" rel="nofollow" title="DATRO Privacy Policy">Privacy Policy</a>
+											<a class="FooterNew-link" data-content="DATRO Privacy Policy" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" data-qtsb-label="GoToPrivacyPolicy" data-qtsb-section="footer" data-qtsb-subsection="CorporateLinks" data-uitest-target="GoToPrivacyPolicy" href="datro/files/organisation/privacy/build/html/website.html" rel="nofollow" title="DATRO Privacy Policy">Privacy Policy</a>
 										</li>
 											<li>
-												<a class="FooterNew-link" data-content="DATR🄯 Act of Union" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" data-qtsb-label="GoToIncorporation" data-qtsb-section="footer" data-qtsb-subsection="CorporateLinks" data-uitest-target="GoToIncorporation" href="datro/files/organisation/memorandum-articles/build/html/index.html" rel="nofollow" title="DATRO Act of Union">Act of Union</a>
+												<a class="FooterNew-link" data-content="DATRO Act of Union" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" data-qtsb-label="GoToIncorporation" data-qtsb-section="footer" data-qtsb-subsection="CorporateLinks" data-uitest-target="GoToIncorporation" href="datro/files/organisation/memorandum-articles/build/html/index.html" rel="nofollow" title="DATRO Act of Union">Act of Union</a>
 											</li>
 
 										<li>
-												<a class="FooterNew-link" data-content="DATR🄯 Copyleft Policy" data-qtsb-label="GoToCopyleft" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true"  href="datro/files/organisation/Copyleft/build/html/index.html" data-qtsb-section="footer" data-qtsb-subsection="CorporateLinks" data-uitest-target="GoToCopyleft" href="#wavefooter" rel="nofollow" title="DATRO Copyleft">Copyleft</a>
+												<a class="FooterNew-link" data-content="DATRO Copyleft Policy" data-qtsb-label="GoToCopyleft" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true"  href="datro/files/organisation/Copyleft/build/html/index.html" data-qtsb-section="footer" data-qtsb-subsection="CorporateLinks" data-uitest-target="GoToCopyleft" href="#wavefooter" rel="nofollow" title="DATRO Copyleft">Copyleft</a>
 											</li>
 											<li>
-												<a class="FooterNew-link" data-content="DATR🄯 Terms of Service" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" data-qtsb-label="GoToTerms" data-qtsb-section="footer" data-qtsb-subsection="CorporateLinks" data-uitest-target="GoToTerms" href="datro/files/organisation/terms/build/html/index.html" rel="nofollow" title="DATRO Terms of Service">Terms</a>
+												<a class="FooterNew-link" data-content="DATRO Terms of Service" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" data-qtsb-label="GoToTerms" data-qtsb-section="footer" data-qtsb-subsection="CorporateLinks" data-uitest-target="GoToTerms" href="datro/files/organisation/terms/build/html/index.html" rel="nofollow" title="DATRO Terms of Service">Terms</a>
 											</li>
 										</ul>
 									</div>
@@ -516,15 +579,15 @@
 									<h5 class="FooterNew-link-title FooterNew-link-title--hideMobile" style="margin-left:20px;">Get Started<b style="font-size:40%;color:lightgrey;margin-bottom:18px;margin-right:10px;vertical-align:text-top;opacity:0.8;">&#x1f12f; </b> </h5>
 									<div class="FooterNew-appStoreIcons">
 										<a onclick="window.open('https://github.com/unclehowell/HBnB/releases/')" style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;">
-											<b data-content="Hotspotβnβ 7-ZIP Latest Version, Direct Download - Freer Internet Solution" data-qtsb-label="GoToWaveZIP" data-qtsb-section="footer" data-qtsb-subsection="AppsAndSocial" style="font-size:12.5px; color:white;" title="Hotspotβnβ 7-ZIP Latest Version, Direct Download - Freer Internet Solution">
-												<i class="glyphicon glyphicon-compressed" style="margin-left: 16px; margin-right: -6px; margin-top: 5px;">&nbsp;</i>
+											<b data-content="Hotspotβnβ 7-ZIP Latest Version, Direct Download - Freer Internet Solution" data-qtsb-label="GoToWaveZIP" data-qtsb-section="footer" data-qtsb-subsection="AppsAndSocial" style="font-size:12.5px; color:white;" title="Hotspotβnβ Latest Version">
+												<i class="glyphicon glyphicon-download" style="margin-left: 16px; margin-right: -6px; margin-top: 5px;">&nbsp;</i>
 												<strong>Download</strong>
 											</b><span></span>
 										</a>
 
-										<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="files/client-os/client-os-guide/build/html/index.html" style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;">
-											<b data-content="DATR🄯 Whitepaper" data-qtsb-label="GoToWaveISO" data-qtsb-section="footer" data-qtsb-subsection="AppsAndSocial" style="font-size:12.5px; color:white;" title="DATRO Whitepaper">
-											  <i class="glyphicon glyphicon-book" style="margin-left: 5px; margin-right: -7px; margin-top: 5px;">&nbsp;</i>
+										<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="../files/coming-soon/coming-soon/latest/build/html/index.html" style="filter:invert(10%); width:120px; display:block; min-height: 32.5px; margin:5px; background-color:transparent; border:1px solid white; border-radius:5px; padding:2px;">
+											<b data-content="DATRO Whitepaper" data-qtsb-label="GoToWaveISO" data-qtsb-section="footer" data-qtsb-subsection="AppsAndSocial" style="font-size:12.5px; color:white;" title="HotspotBnB User Guide">
+											  <i class="glyphicon glyphicon-book" style="margin-left: 7px; margin-right: -7px; margin-top: 5px;">&nbsp;</i>
 											  <span>User Manual</span>
 											</b> <span></span>
 							    </a>
@@ -561,7 +624,7 @@
 								</div>
 								<div class="Grid-col Grid-col--desktopSmall-6">
 									<p class="FooterNew-siteStat-term"><strong>Copyleft 🄯 2020 DATRO</strong>  |  <b style="opacity:0.7;font-weight:300;">Decentralized, Democratized, Free Communications Network</b></p>
-									<p class="FooterNew-siteStat-term"><b style="opacity:0.7;font-weight:300;font-size:95%;">GNU Public Licence</b> | <strong>datro.xyz</strong>  <b style="opacity:0.7;font-weight:300;font-size:95%;"> 0.0.1-rc.7</b> | <a data-content="DATR🄯 Decentralized, Democratized, Free Communications - datro.xyz" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="html/statistics/website.html" style="color: white; display: inline-block; border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; padding: 5px;" title="DATRO Decentralized, Democratized, Free Communications - datro.xyz"><span class="glyphicon glyphicon-stats"></span> &nbsp; Stats</a> <a data-content="DATR🄯 Decentralized, Democratized, Free Communications - datro.xyz" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="datro/files/organisation/webmaster/build/html/releasenotes.html" style="color: white; display: inline-block; border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; padding: 5px;" title="DATRO Decentralized, Democratized, Free Communications - datro.xyz"><span class="glyphicon glyphicon-book"></span> &nbsp;Docs</a> <a data-content="DATR🄯 Decentralized, Democratized, Free Communications - datro.xyz" href="https://github.com/unclehowell/datro" style="color: white; display: inline-block; border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; max-height: 29px!important; padding: 5px!important;" target="_popup" title="DATRO Decentralized, Democratized, Free Communications - datro.xyz"><img alt="GitHub Badge" class="Icon-image" height="24" src="img/git-footer.png" style="height: 18px; vertical-align: middle; width: 18px; zoom: 0.8; margin-right: 3px!important; margin-bottom: 4px!important;" width="24">Code</a> <a data-content="DATR🄯 on GitHub" href="https://github.com/unclehowell/datro/blob/master/docs/" style="color: white; display: inline-block; border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; padding: 5px;" target="_popup" title="DATRO GitHub Edit"><span class="glyphicon glyphicon-edit"></span> &nbsp; Edit</a></p>
+									<p class="FooterNew-siteStat-term"><b style="opacity:0.7;font-weight:300;font-size:95%;">GNU Public Licence</b> | <strong>datro.xyz</strong>  <b style="opacity:0.7;font-weight:300;font-size:95%;"> 0.0.1-rc.7</b> | <a data-content="DATRO Decentralized, Democratized, Free Communications - datro.xyz" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="html/statistics/website.html" style="color: white; display: inline-block; border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; padding: 5px;" title="DATRO Decentralized, Democratized, Free Communications - datro.xyz"><span class="glyphicon glyphicon-stats"></span> &nbsp; Stats</a> <a data-content="DATRO Decentralized, Democratized, Free Communications - datro.xyz" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="datro/files/organisation/webmaster/build/html/releasenotes.html" style="color: white; display: inline-block; border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; padding: 5px;" title="DATRO Decentralized, Democratized, Free Communications - datro.xyz"><span class="glyphicon glyphicon-globe"></span> &nbsp;Docs</a> <a data-content="DATRO Decentralized, Democratized, Free Communications - datro.xyz" href="https://github.com/unclehowell/datro" style="color: white; display: inline-block; border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; max-height: 29px!important; padding: 5px!important;" target="_popup" title="DATRO Decentralized, Democratized, Free Communications - datro.xyz"><img alt="GitHub Badge" class="Icon-image" height="24" src="img/git-footer.png" style="height: 18px; vertical-align: middle; width: 18px; zoom: 0.8; margin-right: 3px!important; margin-bottom: 4px!important;" width="24">Code</a> <a data-content="DATRO on GitHub" href="https://github.com/unclehowell/datro/tree/gh-pages" style="color: white; display: inline-block; border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; padding: 5px;" target="_popup" title="DATRO GitHub Edit"><span class="glyphicon glyphicon-edit"></span> &nbsp; Edit</a></p>
 								</div>
 							</div>
 						</div>

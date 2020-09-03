@@ -83,14 +83,12 @@ do
        ProgressBar ${number} ${_end}
 done
 
-cd build 
-pwd
+cd build
 cd html
-pwd
 sed -i 's/ View page source/ /g' *.html
 sed -i 's/<div class="version">/<div class="version"> Document Version : /g' *.html
+sed -i 's/<div role="contentinfo"/<div role="contentinfo" style="visibility:hidden!important;opacity:0!important;"/g' *.html
 cd _static/css
-pwd
 sed -i 's/#d9d9d9/initial/g' theme.css
 sed -i 's/#2980B9/#303c42/g' theme.css
 sed -i 's/#2980B9/#1a73e8/g' theme.css
@@ -106,7 +104,6 @@ sed -i 's/h2,/h2 {text-align:left!important;} h2,/g' theme.css
 sed -i 's/.rst-content img{/ @media all and (min-width: 680px) { .rst-content img {margin-left:24px!important;} } .rst-content img{ /g' theme.css
 sed -i 's/a:visited{color:#a3a3a3}/a:visited{color:#5F9EA0;}/g' theme.css
 cd ../../../../
-pwd
 printf "\e[2;3;33m Done! \n\e[0m"
 
 printf "\n\e[2;3;33m 5. Grabbing the latest auto-rebuilder \n\e[0m\n"

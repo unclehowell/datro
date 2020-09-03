@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.1-rtw.8] - 2020-09-03
+### Added
+    - GNU General Public Licence
+
+### Changed
+    - Changed `href="#myCarousel"` to `data-target="#myCarousel"` on the splashpage, to fix a bug (page was scrolling)
+    - Moved the entire repo from `github.com/unclehowell/HBnB` to `github.com/unclehowell/datro`
+    - Re-structured directory (ongoing) and re-branded, from Wave, to HotspotBnB, to DATRO
+    - HotspotBnB and Wave are now spin-off projects and subsidiaries of DATRO
+
+### Removed
+    - Remove Copyright from Sphinx html docs
+
+### Fixed
+
+### To Do
+
+    - Add Copyleft to Sphinx html docs
+### Issues
+
 ## [0.0.1-rtw.7] - 2020-06-24
 ### Added
 - two important folders introduced, dynamic and static. static is for all the static websites, dynamic for the server-side backend/ CMS's etc. 

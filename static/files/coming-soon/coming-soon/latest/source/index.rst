@@ -1,5 +1,5 @@
-DATRO  Document - Coming Soon
-==========================================
+DATRO Sample Document
+====================================
 
 
 .. toctree::
@@ -10,9 +10,9 @@ DATRO  Document - Coming Soon
    
    
 
-**Document Author:** 
+**Document Author(s):** 
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 =====================
- DATRO CONSORTIUM
+ DATRO Consortium
 =====================

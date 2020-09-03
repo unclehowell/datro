@@ -119,7 +119,7 @@
 
 /* 01:>  */
 /* 01:AA */	a:active, :focus {outline-style:none;}
-/* 01:AB */	a:hover{color:lightgreen!important;}
+/* 01:AB */	a:hover{color:lightgreen!important;} a:hover strong{color:lightgreen!important;} a:hover span{color:lightgreen!important;}
 /* 01:AC */	a:-webkit-any-link {cursor:pointer!important;}
 /* 01:AD */	body#checkout-page #site-info {position:static;}
 /* 01:AE */	.btn, a.btn {    display: inline-flex!important;
@@ -244,19 +244,9 @@
 /* 01:GB */	.product-image {width:100%; margin:0 auto 1em auto; overflow:hidden; display:block; border-radius:12px 12px 0px 0px; padding-bottom:0; margin-bottom:0;}
 /* 01:GC */	.product-image-reveal {display:none;}
 /* 01:GD */	.product-image-reveal:hover {opacity:1; cursor:pointer!important;}
-/* 01:GE */	.product-description {padding:1em; background:#333354; color:#fff; border-radius:15px 15px 15px 15px;}
+/* 01:GE */	.product-description {min-height:100%;padding:1em; background:#333354; color:#fff; border-radius:15px 15px 15px 15px;}
 /* 01:GF */	.product-name-version {opacity: 0.75; font-weight:300; color:lightgreen;}
-/* 01:GF */	.product-name {    text-align: center;
-    color: lightsteelblue;
-    margin: 0;
-    line-height: 2em;
-    font-weight: bolder!important;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    border-bottom: 1px solid grey;
-    border-radius: 10px 10px 0px 0px;
-    padding-top: 17px!Important;
-    padding-bottom: 0px!important; }
+/* 01:GF */	.product-name {  text-align: center; color: lightsteelblue; margin: 0; line-height: 1.5em; font-weight: 400!important; text-transform: initial; letter-spacing: 0.1em; border-bottom: 1px solid grey; border-radius: 15px 15px 0px 0px; padding-top: 17px!Important; padding-bottom: 0px!important; }
 /* 01:GG */	.product-name-subtitle {font-size:0.85rem; font-weight:200; text-transform:uppercase!important;}
 /* 01:GH */	.product-price {width:6em; height:auto; font-size:1.2em; text-align:center; margin:1em auto; background:transparent; color:white; border-radius:10px; display:inline-block;}
 

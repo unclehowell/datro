@@ -1489,7 +1489,7 @@ html.is-mobile-first:not(.is-responsive) .pinky-template .navigation-section-inn
 .pinky-template .Footer-country-link{display:inline-block;float:left;width:50%}
 .pinky-template .FooterNew{font-size:14px;font-size:.875rem;line-height:1.43;color:#F7F7F7;position:relative}
 .pinky-template .FooterNew-logo{display:inline-block}
-.pinky-template .FooterNew-logo-img{heigh:18px; width:auto; opacity:0;}
+.pinky-template .FooterNew-logo-img{max-height:0px!important; width:auto; opacity:0;}
 .pinky-template .FooterNew-info-section{border-bottom:1px solid rgba(255,255,255,.1);display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;margin-left:-12px;margin-right:-12px;padding:16px 12px}
 .pinky-template .FooterNew-info-section:first-child{padding-top:0}
 .pinky-template .FooterNew-subTitle{font-size:125%;line-height:1.2;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;color:inherit;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;font-weight:200;line-height:1}

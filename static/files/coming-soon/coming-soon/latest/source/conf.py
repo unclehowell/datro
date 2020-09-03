@@ -1,10 +1,10 @@
 
-project = u'DATO'
+project = u'DATRO Sample Document'
 copyleft = u'2020, DATRO Consortium'
-author = u'unclehowell'
+author = u'DATRO Consortium'
 
 version = u'0.0.1'
-release = u'0.0.1rc1'
+release = u'0.0.1-XX.1'
 
 extensions = ['sphinx.ext.autosectionlabel']
 
@@ -36,13 +36,13 @@ latex_elements = { 'classoptions': ',openany,oneside', 'babel' : '\\usepackage[e
 
 
 latex_documents = [
-    (master_doc, 'coming-soon.tex', u'DATRO',
-     u'Author(s): unclehowell', 'manual'),
+    (master_doc, 'coming-soon.tex', u'DATRO Sample Document',
+     u'Author(s): Datro Consortium', 'manual'),
 ]
 
 
 man_pages = [
-    (master_doc, 'coming-soon', u'unclehowell',
+    (master_doc, 'coming-soon', u'Datro Sample Document',
      [author], 1)
 ]
 
@@ -50,7 +50,7 @@ man_pages = [
 
 texinfo_documents = [
     (master_doc, 'coming-soon', u'DATRO',
-     author, 'coming-soon', 'unclehowell',
+     author, 'coming-soon', 'DATRO Consortium',
      'manual'),
 ]
 

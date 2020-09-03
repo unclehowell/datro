@@ -166,7 +166,7 @@ Remember in both cases to following the file structure, as explained at the top 
 
 ### New Version
 
-Before a new version of a document can be produced, you must archieve the current version.
+Before a new version of a document can be produced, you must archive the current version.
 If there are existing versions, you will see them as the titles of the sub-directories in the sphinx document directory e.g. 0-0-1, 0-0-2 etc
 Obviously the current version you are archieving, will be labelled as the next in the sequence e.g. 0-0-3
 
@@ -174,7 +174,7 @@ Obviously the current version you are archieving, will be labelled as the next i
 
 2. Copy the content of the 'latest' directory to it.
 
-The content of the RST/PDF and HTML files should also indicate the version, so no adjustments to the archieved content should be required.
+The content of the RST/PDF and HTML files should also indicate the version, so no adjustments to the archived content should be required.
 
 3. Go into the 'latest' directory and change the version number in the .py file (as well as making updates to the changelog, olderversions.csv and *.rst files)
 
