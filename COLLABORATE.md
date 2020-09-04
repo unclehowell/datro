@@ -244,6 +244,9 @@ GitHub will notify you if there's a comment to respond to or when the administra
       ## Handy Commands
 
       ### Change permission of all files in the repo.
-      Handy when you want to use Atom instead of Notepad C++ 
+      Handy when you want to use Atom instead of Notepad C++
 
       find /xxxx/xxxx -type f -exec chown user:user {} \;
+
+      ### When you just need a bunch of files in a repo (no pull, sparse-checout - just files, quick and dirty)
+      svn co --depth files https://github.com/unclehowell/hbnb/branches/gh-pages/static/splashpage/img/
