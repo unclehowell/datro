@@ -1,5 +1,5 @@
 /*  2020 Copyleft - DATRO Consortium
-                 ..                   
+                 ..
 ..   ..          ..   ........                     .........     .......     ........                      .........    ......................
 ..   ...           ..  ........                   .........     .........     ........                    .........    ......................
  .......         .....  ........                 .........     ...........     ........                  .........    ......................
@@ -14,12 +14,12 @@
         .........   ......       ................     ........       .       ......     .................    ........
           ......   ......         ..............     ........                 ......     ...............    ...........................
             ...   ......           ............     ........                   ......     .............    ...........................
-             .   ......             ..........     ........                     ......     ...........    ........................... 
+             .   ......             ..........     ........                     ......     ...........    ...........................
 
-                        
+
 						 ............................................................................................
-						             DATRO by Unclehowell -  DATRO CONSORTIUM 2020  - All Wrongs Reserved   
-					     ............................................................................................ 
+						             DATRO by Unclehowell -  DATRO CONSORTIUM 2020  - All Wrongs Reserved
+					     ............................................................................................
                            GitHub:https://github.com/unclehowell/datro -  Website:https://datro.xyz
 					     ..........................................................................................   */
 
@@ -39,8 +39,8 @@
 				 N. .featherlight .featherlight-close-icon::-moz-focus-inner {}
 				 O. .featherlight .featherlight-image {}
 				 P. .featherlight iframe {}
-				 Q. .featherlight-iframe .featherlight-content {}        
-				 
+				 Q. .featherlight-iframe .featherlight-content {}
+
 	Structure:  01. .class-1 {}  .class-2 {} ... etc
 				02. @media all and (min-width:1024px) 							                       {.class-1 {}.class-2 {} ... etc}
 				03. @media all and (min-width:960px) 												   {.class-1 {}.class-2 {} ... etc}
@@ -55,12 +55,12 @@
 				12. @media all and (min-width:480px) and (max-width:767px) 							   {.class-1 {}.class-2 {} ... etc}
 				13. @media all and (min-width:480px) and (max-width:767px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
 				14. @media all and (min-width:480px) and (max-width:767px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
-				15. 					  @media all and (max-width:479px)                             {.class-1 {}.class-2 {} ... etc} 
+				15. 					  @media all and (max-width:479px)                             {.class-1 {}.class-2 {} ... etc}
 				16. 			       	  @media all and (max-width:479px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
-				17. 					  @media all and (max-width:479px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}     
+				17. 					  @media all and (max-width:479px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
 				18. @media(-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:3/2), (min-resolution:1.5dppx) {}
 				19. @media print {}
-   01:> */  		
+   01:> */
 /* 01:A */	html.with-featherlight { overflow:hidden; }
 /* 01:B */ .featherlight { overflow-y: hidden; /* z-index: 2147483647;*/ cursor: pointer; overflow: hidden; float: left!important; max-height: 100vh; height: 100vh!important; bottom: 0px!important; position: sticky; display: inline-flex!important; width: 100%; padding-bottom: 0rem; text-rendering: optimizeLegibility!important;}
 /* 01:C */ .featherlight * { -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; text-rendering: optimizeLegibility!important;}
@@ -77,16 +77,16 @@
 /* 01:N */ .featherlight .featherlight-close-icon::-moz-focus-inner { }
 /* 01:O */ .featherlight .featherlight-image { }
 /* 01:P */ .featherlight iframe { }
-/* 01:Q */ .featherlight-iframe .featherlight-content {-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; -ms-transform-origin: 0 0; -moz-transform-origin: 0 0; width: 98%; overflow: hidden; transform-origin: 0 0; display: inline-flex; border: 0.1rem solid rgba(255,255,255,0.15); border-radius: 14px; left: 0; margin: 5rem 2% 2% 2%!important; padding: 1px; box-shadow: 0rem 0rem 0.51rem 0rem rgba(0,0,0,0.3); top: 0!important; position:relative;}  
+/* 01:Q */ .featherlight-iframe .featherlight-content {-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; -ms-transform-origin: 0 0; -moz-transform-origin: 0 0; width: 98%; overflow: hidden; transform-origin: 0 0; display: inline-flex; border: 0.1rem solid rgba(255,255,255,0.15); border-radius: 14px; left: 0; margin: 5rem 2% 2% 2%!important; padding: 1px; box-shadow: 0rem 0rem 0.51rem 0rem rgba(0,0,0,0.3); top: 0!important; position:relative;}
 
-/* 02:> */  												  @media all and (min-width:1024px) {	
+/* 02:> */  												  @media all and (min-width:1024px) {
 /* 02:A */  html.with-featherlight {}
 /* 02:B */ .featherlight {    max-height: 92vh;}
 /* 02:C */ .featherlight * {}
 /* 02:D */ .featherlight:last-of-type {background:#333366}
-/* 02:E */ .featherlight:before {content:''; display:inline-block; height:100vh; vertical-align:middle; }
-/* 02:F */ .featherlight link.featherlight-inner {} 
-/* 02:G */ .featherlight script.featherlight-inner {} 
+/* 02:E */ .featherlight:before {content:''; display:inline-block; max-height:100vh; vertical-align:middle; }
+/* 02:F */ .featherlight link.featherlight-inner {}
+/* 02:G */ .featherlight script.featherlight-inner {}
 /* 02:H */ .featherlight style.featherlight-inner {}
 /* 02:I */ .featherlight .featherlight-content { }
 /* 02:J */ .featherlight-content {	margin-top: -2rem; background-color:#333366;}
@@ -105,8 +105,8 @@
 /* 03:C */ .featherlight * {}
 /* 03:D */ .featherlight:last-of-type {}
 /* 03:E */ .featherlight:before {}
-/* 03:F */ .featherlight link.featherlight-inner {} 
-/* 03:G */ .featherlight script.featherlight-inner {} 
+/* 03:F */ .featherlight link.featherlight-inner {}
+/* 03:G */ .featherlight script.featherlight-inner {}
 /* 03:H */ .featherlight style.featherlight-inner {}
 /* 03:I */ .featherlight .featherlight-content {}
 /* 03:J */ .featherlight-content {}
@@ -119,14 +119,14 @@
 /* 03:Q */ .featherlight-iframe .featherlight-content { }
 /* 03 ! */  }
 
-/* 04:> */  @media all and (min-width:960px) and (max-width:1123px) and (orientation:landscape) {	
+/* 04:> */  @media all and (min-width:960px) and (max-width:1123px) and (orientation:landscape) {
 /* 04:A */  html.with-featherlight {}
 /* 04:B */ .featherlight {}
 /* 04:C */ .featherlight * {}
 /* 04:D */ .featherlight:last-of-type {}
 /* 04:E */ .featherlight:before {}
-/* 04:F */ .featherlight link.featherlight-inner {} 
-/* 04:G */ .featherlight script.featherlight-inner {} 
+/* 04:F */ .featherlight link.featherlight-inner {}
+/* 04:G */ .featherlight script.featherlight-inner {}
 /* 04:H */ .featherlight style.featherlight-inner {}
 /* 04:I */ .featherlight .featherlight-content {}
 /* 04:J */ .featherlight-content {}
@@ -145,8 +145,8 @@
 /* 05:C */ .featherlight * {}
 /* 05:D */ .featherlight:last-of-type {}
 /* 05:E */ .featherlight:before {}
-/* 05:F */ .featherlight link.featherlight-inner {} 
-/* 05:G */ .featherlight script.featherlight-inner {} 
+/* 05:F */ .featherlight link.featherlight-inner {}
+/* 05:G */ .featherlight script.featherlight-inner {}
 /* 05:H */ .featherlight style.featherlight-inner {}
 /* 05:I */ .featherlight .featherlight-content { }
 /* 05:J */ .featherlight-content {}
@@ -165,8 +165,8 @@
 /* 06:C */ .featherlight * {}
 /* 06:D */ .featherlight:last-of-type {}
 /* 06:E */ .featherlight:before {}
-/* 06:F */ .featherlight link.featherlight-inner {} 
-/* 06:G */ .featherlight script.featherlight-inner {} 
+/* 06:F */ .featherlight link.featherlight-inner {}
+/* 06:G */ .featherlight script.featherlight-inner {}
 /* 06:H */ .featherlight style.featherlight-inner {}
 /* 06:I */ .featherlight .featherlight-content { }
 /* 06:J */ .featherlight-content {}
@@ -185,8 +185,8 @@
 /* 07:C */ .featherlight * {}
 /* 07:D */ .featherlight:last-of-type {}
 /* 07:E */ .featherlight:before {}
-/* 07:F */ .featherlight link.featherlight-inner {} 
-/* 07:G */ .featherlight script.featherlight-inner {} 
+/* 07:F */ .featherlight link.featherlight-inner {}
+/* 07:G */ .featherlight script.featherlight-inner {}
 /* 07:H */ .featherlight style.featherlight-inner {}
 /* 07:I */ .featherlight .featherlight-content {}
 /* 07:J */ .featherlight-content {}
@@ -205,8 +205,8 @@
 /* 08:C */ .featherlight * {}
 /* 08:D */ .featherlight:last-of-type {}
 /* 08:E */ .featherlight:before {}
-/* 08:F */ .featherlight link.featherlight-inner {} 
-/* 08:G */ .featherlight script.featherlight-inner {} 
+/* 08:F */ .featherlight link.featherlight-inner {}
+/* 08:G */ .featherlight script.featherlight-inner {}
 /* 08:H */ .featherlight style.featherlight-inner {}
 /* 08:I */ .featherlight .featherlight-content {}
 /* 08:J */ .featherlight-content {margin-top:-2rem; }
@@ -225,8 +225,8 @@
 /* 09:C */ .featherlight * {}
 /* 09:D */ .featherlight:last-of-type {background:#333366}
 /* 09:E */ .featherlight:before {content:''; display:inline-block; height:100vh; vertical-align:middle; }
-/* 09:F */ .featherlight link.featherlight-inner {} 
-/* 09:G */ .featherlight script.featherlight-inner {} 
+/* 09:F */ .featherlight link.featherlight-inner {}
+/* 09:G */ .featherlight script.featherlight-inner {}
 /* 09:H */ .featherlight style.featherlight-inner {}
 /* 09:I */ .featherlight .featherlight-content { }
 /* 09:J */ .featherlight-content {	margin-top: -2rem; background-color:transparent;}
@@ -245,8 +245,8 @@
 /* 10:C */ .featherlight * {}
 /* 10:D */ .featherlight:last-of-type {}
 /* 10:E */ .featherlight:before {}
-/* 10:F */ .featherlight link.featherlight-inner {} 
-/* 10:G */ .featherlight script.featherlight-inner {} 
+/* 10:F */ .featherlight link.featherlight-inner {}
+/* 10:G */ .featherlight script.featherlight-inner {}
 /* 10:H */ .featherlight style.featherlight-inner {}
 /* 10:I */ .featherlight .featherlight-content { }
 /* 10:K */ .featherlight .featherlight-inner { box-shadow:inset -13px -14px 25px calc(100vh) rgba(255,255,255,0.4); }
@@ -264,8 +264,8 @@
 /* 11:C */ .featherlight * {}
 /* 11:D */ .featherlight:last-of-type {}
 /* 11:E */ .featherlight:before {}
-/* 11:F */ .featherlight link.featherlight-inner {} 
-/* 11:G */ .featherlight script.featherlight-inner {} 
+/* 11:F */ .featherlight link.featherlight-inner {}
+/* 11:G */ .featherlight script.featherlight-inner {}
 /* 11:H */ .featherlight style.featherlight-inner {}
 /* 11:I */ .featherlight .featherlight-content {}
 /* 11:J */ .featherlight-content {}
@@ -284,8 +284,8 @@
 /* 12:C */ .featherlight * {}
 /* 12:D */ .featherlight:last-of-type {}
 /* 12:E */ .featherlight:before {}
-/* 12:F */ .featherlight link.featherlight-inner {} 
-/* 12:G */ .featherlight script.featherlight-inner {} 
+/* 12:F */ .featherlight link.featherlight-inner {}
+/* 12:G */ .featherlight script.featherlight-inner {}
 /* 12:H */ .featherlight style.featherlight-inner {}
 /* 12:I */ .featherlight .featherlight-content {}
 /* 12:J */ .featherlight-content {}
@@ -299,6 +299,3 @@
 /* 12 ! */  }
 html.with-featherlight>*>:not(.featherlight) {}
 }
-
-
-

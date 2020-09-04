@@ -21,10 +21,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Remove Copyright from Sphinx html docs
 
 ### Fixed
+    - The frame the docs are displayed in (featherlight) was scrolling upwards off screen, whenever you selected the doc. Fixed it!
 
 ### To Do
-
     - Add Copyleft to Sphinx html docs
+
 ### Issues
 
 ## [0.0.1-rtw.7] - 2020-06-24
