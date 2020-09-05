@@ -1,6 +1,6 @@
 # Changelog
 All changes to this directory will be documented in this file.
-For changes to the directories content, please see the CHANGELOG's contained within the corresponding directory. 
+For changes to the directories content, please see the CHANGELOG's contained within the corresponding directory.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -18,10 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - HotspotBnB and Wave are now spin-off projects and subsidiaries of DATRO
 
 ### Removed
-    - Remove Copyright from Sphinx html docs
+    - Copyright (from Sphinx html docs)
+    - <link href="https://www.f-cdn.com/assets/bundles/jquery-4df54fac.js" rel="preload"> appeared multiple times on the same page.
 
 ### Fixed
     - The frame the docs are displayed in (featherlight) was scrolling upwards off screen, whenever you selected the doc. Fixed it!
+    - Copyleft symbol wasn't appearing on chrome on android. Reversed copyright symbol using css instead. 
 
 ### To Do
     - Add Copyleft to Sphinx html docs
@@ -30,7 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.1-rtw.7] - 2020-06-24
 ### Added
-- two important folders introduced, dynamic and static. static is for all the static websites, dynamic for the server-side backend/ CMS's etc. 
+- two important folders introduced, dynamic and static. static is for all the static websites, dynamic for the server-side backend/ CMS's etc.
 - added the Latex docs library under the directory /static/files (/static/docs is the website to view the files)
 
 ### Changed
@@ -38,7 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - moved all the hiden (server-side) folders into the dynamic directory. And made the folders visible (removed the dots from the start of the name)
 
 ### Removed
-- 
+-
 
 ### Fixed
 
@@ -46,7 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Issues
 - I installed the php extension imagick.so to the localmachine and php.ini file and it's throwing up an apache error with the demo
-- But weirdly not the wordpress websites. I installed it to clear a wordpress health report error. All we know at this point. 
+- But weirdly not the wordpress websites. I installed it to clear a wordpress health report error. All we know at this point.
 
 [Unreleased]: https://github.com/unclehowell/hbnb/compare/v0.0.1-rtw.7...HEAD
 [0.0.1-rtw.7]: https://github.com/unclehowell/hbnb/compare/v0.0.1-rc.7...v0.0.1-rtw.7
