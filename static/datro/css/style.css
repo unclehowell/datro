@@ -100,7 +100,8 @@ Structure:
     display: inline-block;
     text-align: right;
     margin: 0;
-    font-size: 98%;
+    font-weight:bolder!Important;
+    font-size: 99%;
     -moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
     -webkit-transform: scaleX(-1);

@@ -240,7 +240,7 @@
 /* 01:FE */	#pricing #shipping {margin:1em 0;}
 			.same-addresses {float: left; position: absolute; left: 0; text-align: left; padding: 2rem 1rem 0rem 1rem; max-width: 25vw; padding-bottom: 1rem; padding-top: 0.6rem; margin-left: 10vw; white-space: unset; line-height: 2; background-color: transparent; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; font-size: small; max-height: 89px; overflow: hidden; min-width: 132px; display: flex; object-position: center; justify-content: center; align-items: center;	}
 
-/* 01:GA */	.product-paragraph {text-align:justify; font-weight:lighter; font-size:100%;  font-size: 0.9rem!important; line-height: 1.8; color: white; font-weight: normal; padding-left:1rem; padding-right:1rem; }
+/* 01:GA */	.product-paragraph {text-align:justify; font-weight:lighter; font-size:100%;  font-size: 0.9rem!important; line-height: 1.8; color: white; font-weight: 300!important; padding-left:1rem; padding-right:1rem; }
 /* 01:GB */	.product-image {width:100%; margin:0 auto 1em auto; overflow:hidden; display:block; border-radius:12px 12px 0px 0px; padding-bottom:0; margin-bottom:0;}
 /* 01:GC */	.product-image-reveal {display:none;}
 /* 01:GD */	.product-image-reveal:hover {opacity:1; cursor:pointer!important;}
