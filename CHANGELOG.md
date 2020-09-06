@@ -20,13 +20,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
     - Copyright (from Sphinx html docs)
     - <link href="https://www.f-cdn.com/assets/bundles/jquery-4df54fac.js" rel="preload"> appeared multiple times on the same page.
+    - modernizer.js is discontinued, not the service, just the single js file method. So it's been removed, since it was causing errors.
+    - removed videolightning.js too, haven't used that feature for a while.
 
 ### Fixed
     - The frame the docs are displayed in (featherlight) was scrolling upwards off screen, whenever you selected the doc. Fixed it!
-    - Copyleft symbol wasn't appearing on chrome on android. Reversed copyright symbol using css instead. 
+    - Copyleft symbol wasn't appearing on chrome on android. Reversed copyright symbol using css instead.
+    - changed background color to theme, the white default was making the website look poor between page refreshes
+    - the dropdown in the footers seems to work locally now, let's see if it works when the sites pushed to gh-pages. 
 
 ### To Do
-    - Add Copyleft to Sphinx html docs
+    - Add Copyleft to Sphinx html docs, where copyright used to be (now that displaying the copyleft symbol has been resolved)
 
 ### Issues
 
