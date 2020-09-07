@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.1-rtw.8] - 2020-09-03
 ### Added
-    - GNU General Public Licence
+    - GNU General Public Licence - sitewide
 
 ### Changed
     - Changed `href="#myCarousel"` to `data-target="#myCarousel"` on the splashpage, to fix a bug (page was scrolling)
