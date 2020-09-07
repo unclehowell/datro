@@ -1,8 +1,3 @@
-@import (reference) "theme/variables.less";
-@import (reference) "libs/mixins.less";
-@import "libs/normalize.less";
-@import "theme/Container.less";
-@import "theme/Grid.less";
 /* -----------------------
 Only to be edited by the design team - style changes here echo across the whole
 site.
