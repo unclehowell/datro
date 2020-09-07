@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Moved the entire repo from `github.com/unclehowell/HBnB` to `github.com/unclehowell/datro`
     - Re-structured directory (ongoing) and re-branded, from Wave, to HotspotBnB, to DATRO
     - HotspotBnB and Wave are now spin-off projects and subsidiaries of DATRO
+    - Docs html theme now matches website theme
 
 ### Removed
     - Copyright (from Sphinx html docs)

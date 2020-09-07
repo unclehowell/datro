@@ -61,15 +61,21 @@
 
 	           a {color:grey;}
 
-	           .add-to-cart-btn {max-width:14px!important; padding:2px 0% 2px 0%!Important; font-size:1rem; min-width:75px;}
 	           @media all and (min-width:1024px) {
 	            .add-to-cart-btn { width:120px; max-height:30px; min-height:25px; min-width:80px;  padding-top:3px; font-weight:lighter;}
 	           }
 
 	           .btn, a.btn {display:inline-block; background:#333366!important; color:#fff; font-size:1rem; min-height:2rem;  text-align:center; border-radius:4px; padding:auto;  border:1px solid white!important; min-width:90px;   max-width:120px; width:30vw; margin:1px; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
 
-	           .snipcart-add-item {margin-left:162px!important; margin-top: 2px;  border-radius: 8px!important;  padding-bottom: 0px!important;}
-	           .glyphinbutton {all:unset!important;}
+	           .glyphinbutton {all:unset!important;
+                   }
+
+                   @media (max-width: 348px) and (orientation: portrait) {
+                   .video-iframe {max-height: 175px!important;}
+                   }
+                   @media (max-width: 600px) and (min-width: 345px) and (orientation: portrait) {
+                   .video-iframe {max-height: 225px!important;max-width:385px!Important;}
+                   }
 
 	</style>
 	<link href="static/datro/css/preloader/normalize.css" rel="stylesheet">
@@ -143,8 +149,8 @@
 <div class="container carouseltwo">
 <div class="carousel-caption text-left">
 
-<h1 class="carousel-maintitle"><strong>Internet</strong> of the People</h1>
-<h2 class="carousel-title">For the People, by the People</h2>
+<h1 class="carousel-maintitle">Imagine no internet</h1>
+<h2 class="carousel-title">Now imagine not noticing</h2>
 <div class="button-block">
 
 <div class="button-block-right">
@@ -186,8 +192,8 @@
 <div class="container carouselthree">
 <div class="carousel-caption text-left">
 
-<h1 class="carousel-maintitle"><strong>FREE</strong> Software Upgrade</h1>
-<h2 class="carousel-title">Supports 50+ Million Devices</h2>
+<h1 class="carousel-maintitle">A simple & <strong>100% free</strong></h1>
+<h2 class="carousel-title">wi-fi router software upgrade</h2>
 <div class="button-block">
 
 <div class="button-block-right">

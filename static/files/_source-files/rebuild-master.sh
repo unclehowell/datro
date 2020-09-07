@@ -89,6 +89,13 @@ sed -i 's/ View page source/ /g' *.html
 sed -i 's/<div class="version">/<div class="version"> Document Version : /g' *.html
 sed -i 's/<div role="contentinfo"/<div role="contentinfo" style="visibility:hidden!important;opacity:0!important;"/g' *.html
 cd _static/css
+
+sed -i 's/#2980b9/#333650/g' theme.css
+sed -i 's/#343131/#33365D/g' theme.css
+sed -i 's/#fcfcfc/-webkit-gradient(radial,50% 50%,450,50% 55%,60,from(#333650),to(#333666))/g' theme.css
+sed -i 's/#404040/lightgrey/g' theme.css
+sed -i 's/#edf0f2/-webkit-gradient(radial,50% 50%,450,50% 55%,60,from(#333650),to(#333666))/g' theme.css
+sed -i 's/rgba(0,0,0,.05)/#33365D/g' theme.css
 sed -i 's/#d9d9d9/initial/g' theme.css
 sed -i 's/#2980B9/#303c42/g' theme.css
 sed -i 's/#2980B9/#1a73e8/g' theme.css
