@@ -146,7 +146,9 @@
 		height:auto;
 		max-height:275px;
 		margin-left:calc(15.5vw)!important;
-		margin-top:40px;
+		margin-top: 70px;
+		transition: width .1s ease-out;
+		margin-left: 15vw!important;
 		transition:width .1s ease-out
 }
 }
