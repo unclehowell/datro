@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<script>
+		var worker = new Worker(decodeURIComponent(window.location.search.substring(1)));
+
+		window.onmessage = function(evt) {
+		    worker.postMessage(evt.data);
+		}
+
+		window.onunload = function() {
+			worker.terminate();
+			window.onmessage = null; // Fix for IE that unloads the iframe but then continues calling window.onmessage with buffered messages
+			worker = null; // explicitly delete ref for dumb GC (IE)
+		}
+
+		worker.onmessage = function(evt) {
+			window.parent.postMessage(evt.data, "*");
+		}
+		</script>
+	</body>
+</html>

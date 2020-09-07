@@ -32,7 +32,7 @@
 			this.currency = "&pound;"; // HTML entity of the currency to be displayed in the layout
 			this.currencyString = "£"; // Currency symbol as textual string
 			this.paypalCurrency = "GBP"; // PayPal's currency code
-			this.paypalBusinessEmail = "info@wave.hotspotbnb.com"; // Your Business PayPal's account email address
+			this.paypalBusinessEmail = "info@datro.xyz"; // Your Business PayPal's account email address
 			this.paypalURL = "https://www.paypal.com/cgi-bin/"; // The URL of the PayPal's form
 			
 			// Object containing patterns for form validation
