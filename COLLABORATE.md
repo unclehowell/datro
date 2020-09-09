@@ -250,3 +250,15 @@ GitHub will notify you if there's a comment to respond to or when the administra
 
       ### When you just need a bunch of files in a repo (no pull, sparse-checout - just files, quick and dirty)
       svn co --depth files https://github.com/unclehowell/hbnb/branches/gh-pages/static/splashpage/img/
+  
+      ### Something weird happened with RST files, where they had to be recoverd from build/html/_source/
+      ### This code bulk changes the extension on multiple files  
+     
+      #!/bin/sh
+      #
+
+      for i in *.txt
+	do
+      mv -- "$i" "${i%.txt}"
+      done
+

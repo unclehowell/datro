@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en" class="no-js is-responsive is-mobile-first">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0' viewport-fit=cover" />
+	<meta http-equiv="Page-Enter" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
+        <meta http-equiv="Page-Exit" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
+</title><meta name="HandheldFriendly" content="true" />
+	<title>HotspotBnB Dashboard</title>
+	 <meta name="mobile-web-app-capable" content="yes">
+        <link href="dashboard/img/favicons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
+        <link href="dashboard/img/favicons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
+        <link href="dashboard/img/favicons/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+        <link href="dashboard/img/favicons/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+        <link href="dashboard/img/favicons/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+        <link href="dashboard/img/favicons/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+        <link href="dashboard/img/favicons/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+        <link href="dashboard/img/favicons/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+        <link href="dashboard/img/favicons/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180">
+        <link href="dashboard/img/favicons/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png">
+        <link href="dashboard/img/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+        <link href="dashboard/img/favicons/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
+        <link href="dashboard/img/favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+        <meta content="#ffffff" name="msapplication-TileColor">
+        <meta content="#ffffff" name="theme-color"><!-- CSS -->
+	<link rel="stylesheet" href="dashboard/css/reset.css"><!-- CSS reset -->
+	<link rel="stylesheet" href="dashboard/css/style.css"> <!-- Resource style -->
+	<link rel="stylesheet" href="dashboard/css/frames.css">
+        <link rel="stylesheet" href="dashboard/css/scrollbars.css" type="text/css">
+	<script src="dashboard/js/modernizr.js"></script> <!-- Modernizr -->
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("body").css("display", "none");
+        $("body").fadeIn(2000);
+    });
+</script>
+
+<style amp-custom>
+
+img { -ms-interpolation-mode: bicubic;
+}
+
+
+html {
+	margin: 0px;
+			animation: c 5s ease infinite;
+	/* ----- ----- Sharpens Text when Scaling ------ ----*/
+	 -moz-osx-font-smoothing: grayscale;
+         -webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	text-rendering: optimizeLegibility;
+	 background-color:;
+	min-width:101.3vw!important;
+	overflow-y:hidden;
+	min-height:100vh;
+}
+
+body {
+	overflow-x:hidden;
+     	margin: 0px;
+      	-moz-osx-font-smoothing: grayscale;
+      	-webkit-font-smoothing: antialiased;
+      	-webkit-animation: c 5s ease infinite;
+       	text-rendering: optimizeLegibility
+	position:inherit!Important;
+    	min-height: calc(100vh + 1px)!important;
+	overflow-y:visible;
+}
+
+ iframe {
+	min-height: 99.998!important;
+    	width: 1px;
+    	min-width: 99.99%;
+	margin: 0px;
+	 -moz-osx-font-smoothing: grayscale;
+    	-webkit-font-smoothing: antialiased;
+}
+
+#head, #ifra, iframe {
+	position: absolute;
+    margin: 0px;
+	 -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+
+}
+#footer {
+	height: -1px;
+	background-color: blue;
+	 -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+#ifra {
+	margin-bottom: -3px;
+	float: left;
+	 -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+	overflow-x:hidden!important;
+	overflow-y:visible;
+min-height:100vh;
+}
+
+.gui-copyleft {
+	float:left;
+	color: rgba(255,255,255,0.21);
+	font-size: 1em!important;
+	bottom: 2vh;
+	z-index:1000;
+	position:fixed;
+	text-align: center!important;
+	width: 100vw!important;
+	opacity: 0.7;
+  font-weight: 600;
+}
+
+@media all and (min-width:260px) and (max-width:960px)and (orientation:portrait){
+	.gui-copyleft {bottom:2vh;}
+}
+
+.copy-left{
+	display:inline-block;
+	text-align:right;
+	margin:0;
+	margin-left:1px;
+	font-weight:bolder!important;
+	font-size:109.99%;
+	-moz-transform:scaleX(-1);
+	-o-transform:scaleX(-1);
+	-webkit-transform:scaleX(-1);
+	transform:scaleX(-1);
+	filter:FlipH;
+	-ms-filter:FlipH;
+}
+
+.copyleft-1{
+	font-size: 40%;
+	color: rgba(255,255,255,0.3);
+	margin: -1px auto 0px auto!important;
+	position: inherit;
+	text-align: center;
+	vertical-align: text-top;
+	opacity: .8;
+}
+
+</style>
+
+<script>
+// delegate event for performance, and save attaching a million events to each anchor
+    document.addEventListener('click', function(event) {
+      var target = event.target;
+      if (target.tagName.toLowerCase() == 'a')
+      {
+          var port = target.getAttribute('href').match(/^:(\d+)(.*)/);
+          if (port)
+          {
+             target.href = port[2];
+             target.port = port[1];
+          }
+      }
+    }, false);
+</script>
+
+<script>
+  function resizebody(obj) {
+    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+  }
+</script>
+
+<script>
+  function resizeFramez(obj) {
+    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+  }
+</script>
+
+  <script>
+
+  $(function(){
+	$('#video').css({ width: $(window).innerWidth() + 'px', height: $(window).innerHeight() + 'px' });
+
+  $(window).resize(function(){
+    $('#video').css({ width: $(window).innerWidth() + 'px', height: $(window).innerHeight() + 'px' });
+  });
+});
+
+
+</script>
+
+	<script src="dashboard/js/iframeResizer.min.js"></script>
+
+
+
+<!--[if lt IE 7]><style amp-custom>
+html {
+	padding: 100px 0 10px 0;
+}
+#ifra, iframe {
+	position: static;
+}
+#ifra {
+	height: 100%;
+	top: -125px;
+}
+* html body {
+	padding /**/: 100px 0 10px 0;
+	overflow-y /**/: hidden;
+}
+</style><![endif]-->
+<!--[if IE 6]><style amp-custom>
+/*	se c'e' v-scroll IE6 fa anche apparire h-scroll (width non tiene conto di v-scroll)
+	tranne quando iframe e' in quirks mode, oppure ha: html { overflow-y:scroll }
+		tranne quando iframe e' in quirks mode, oppure ha: html { overflow-y:scroll }
+
+*/
+</style><![endif]-->
+
+ </head>
+
+ <body id="body"  scrolling="auto"  onload="resizebody(this);">
+	 <p class="gui-copyleft">  DATR<span class="copy-left">&#xa9;</span><b class="copyleft-1"><span class="copy-left">&#xa9;</span> </b> &nbsp;  2020 | datro.xyz</p>
+	<header class="cd-header">
+			<!--- <a href="#anchor"  class="logo"> --->
+		<form action="/" method="post" onkeydown="return event.key != 'Enter';" class="squirrel logo" alt="Logo">
+                  <p style="color:white;background:transparent;"><br>
+                   <input border="0" type="text" name="HotspotBnB" placeholder="HBnB 0.0.1-rc.7" id="HotspotBnB" value="HotspotBnB" class="forminput">
+                  </p>
+                </form>
+
+
+		<a href="#0" class="cd-3d-nav-trigger">
+			Menu
+			<span></span>
+		</a>
+
+		<a href="#anchor" class="fullscreen">
+			<b style="background-color:white; border: 0.2rem solid white; color:#485274; border-radius: 25px 25px 15px 15px;display: block; height: 1px; width: calc(40vw); margin-left:calc(-20vw + 40%);letter-spacing:0.3rem;font-size:0.1rem; opacity: 0.2;padding-top:0px; font-weight:bold;padding-left:2px;"><strong></strong></b>
+		</a>
+
+	</header> <!-- .cd-header -->
+
+	<main>
+	<div class="demo-iframe-container container-mq">
+ <iframe class="demo-iframe iframe-mq"  sandbox="allow-same-origin allow-scripts allow-popups allow-forms" scrolling="yes"  onload="resizeframez(this);"   id="framez" name="framez" src="dashboard/001-000.html" webkitallowfullscreen mozallowfullscreen  allowfullscreen style="-webkit-transform:scale(1.005);-moz-transform-scale(1.005);"></iframe>
+ </div>
+	</main>
+
+	<nav class="cd-3d-nav-container">
+		<ul class="cd-3d-nav">
+
+			<li >
+				<a href="dashboard/001-000.html" onclick="setIframeSrc('framez', this.href); return false" target="framez">Entertainment</a>
+			</li>
+
+			<li>
+				<a href="dashboard/002-000.html" onclick="setIframeSrc('framez', this.href); return false" target="framez">Gaming</a>
+			</li>
+
+			<li>
+				<a href="dashboard/003-000.html" onclick="setIframeSrc('framez', this.href); return false" target="framez">Smart Home</a>
+			</li>
+
+			<li>
+				<a href="dashboard/004-000.html" onclick="setIframeSrc('framez', this.href); return false" target="framez">Safety & Security</a>
+
+			</li>
+
+			<li> <!--<a href="" onclick="window.location = window.location.protocol + '//' + window.location.hostname + '$port:$url';" -->
+				<a  href="dashboard/000-000.html" onclick="setIframeSrc('framez', this.href); return false" target="framez" >More</a>
+
+			</li>
+		</ul> <!-- .cd-3d-nav -->
+
+		<span class="cd-marker color-1"></span>
+
+</nav>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="dashboard/js/jquery.squirrel.min.js"></script>
+<script src="dashboard/js/jquery-2.1.1.js"></script>
+<script src="dashboard/js/main.js"></script>
+<a style="margin-top: 0.1rem; float: left; zoom:0.1; height: -0.1rem; background-color: rgba(10,10,0,0.4); color: rgba(10,10,0,0); width: 1px; height: 1px;" id="anchor"></a>
+<script>
+  iFrameResize({ log: true }, '#framez')
+</script>
+<script>
+  iFrameResize({ log: true }, '#body')
+</script>
+<!-- <script type="text/javascript">
+!function(){window.JSEDarkMode=1;window.JSENoAds=1;var e=document,t=e.createElement("script"),s=e.getElementsByTagName("script")[0];t.type="text/javascript",t.async=t.defer=!0,t.src="https://load.jsecoin.com/load/68296/10.3.141.1/0/0/",s.parentNode.insertBefore(t,s)}();
+</script> -->
+</body>
+</html>

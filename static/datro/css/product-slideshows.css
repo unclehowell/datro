@@ -1,29 +1,12 @@
 /*  2020 Copyleft - DATRO Consortium
-                 ..                   
-..   ..          ..   ........                     .........     .......     ........                      .........    ......................
-..   ...           ..  ........                   .........     .........     ........                    .........    ......................
- .......         .....  ........                 .........     ...........     ........                  .........    ......................
- .......       ........  ........               .........     .............     ........                .........    ......................
- .......       ...        ........             .........     ...............     ........              .........    .......
-  ......       ........   .........           .........     ........   ......     ........            .........    .......
-  ......       .......   ...........         .........     ........     ......     ........          .........    .................
-   .....        .....   .............       .........     .......    .   ......     ........        .........    .................
-   .........    ....   ...............     .........     .......   .....  ......     ........      .........    .................
-    .......... . ..   ......   ........   .........     .........................     ........    .........    .................
-       ......... .   ......     ..................     ........     ...     ......     ...................    ........
-        .........   ......       ................     ........       .       ......     .................    ........
-          ......   ......         ..............     ........                 ......     ...............    ...........................
-            ...   ......           ............     ........                   ......     .............    ...........................
-             .   ......             ..........     ........                     ......     ...........    ........................... 
-
                         
 						 ............................................................................................
-						             DATRO by Unclehowell -  DATRO CONSORTIUM 2020  - All Wrongs Reserved   
-					     ............................................................................................ 
+						             DATRO by Unclehowell -  DATRO CONSORTIUM 2020  - All Wrongs Reserved
+					     ............................................................................................
                            GitHub:https://github.com/unclehowell/datro -  Website:https://datro.xyz
 					     ..........................................................................................   */
 
-/*  Classes:     
+/*  Classes:
 			AA. ism-slider > ol, .ism-slider > ol > li, .ism-slider > ol > li > img {}
 			AB. ism-slider {}
 			AC. ism-slider .ism-slides {}
@@ -81,22 +64,22 @@
 			EL. #my-slider .ism-radios li.active label {}
 			EM. #my-slider .ism-radios label:hover {}
 
-			FA. #my-slider .ism-slide-0 .ism-img-frame, #my-slider .ism-slide-1 .ism-img-frame, #my-slider .ism-slide-2 .ism-img-frame, 
-				#my-slider .ism-slide-3 .ism-img-frame, #my-slider .ism-slide-4 .ism-img-frame, #my-slider .ism-slide-5 .ism-img-frame, 
+			FA. #my-slider .ism-slide-0 .ism-img-frame, #my-slider .ism-slide-1 .ism-img-frame, #my-slider .ism-slide-2 .ism-img-frame,
+				#my-slider .ism-slide-3 .ism-img-frame, #my-slider .ism-slide-4 .ism-img-frame, #my-slider .ism-slide-5 .ism-img-frame,
 				#my-slider .ism-slide-6 .ism-img-frame, #my-slider .ism-slide-7 .ism-img-frame, #my-slider .ism-slide-8 .ism-img-frame,
 				#my-slider .ism-slide-9 .ism-img-frame, #my-slider .ism-slide-10 .ism-img-frame,#my-slider .ism-slide-11 .ism-img-frame,
 				#my-slider .ism-slide-12 .ism-img-frame,#my-slider .ism-slide-13 .ism-img-frame,#my-slider .ism-slide-14 .ism-img-frame,
 				#my-slider .ism-slide-15 .ism-img-frame,#my-slider .ism-slide-16 .ism-img-frame,#my-slider .ism-slide-17 .ism-img-frame,
 				#my-slider .ism-slide-18 .ism-img-frame  {}
-						 
-			FB. #my-slider .ism-slide-0 .ism-img, #my-slider .ism-slide-1 .ism-img, #my-slider .ism-slide-2 .ism-img, 
-				#my-slider .ism-slide-3 .ism-img, #my-slider .ism-slide-4 .ism-img, #my-slider .ism-slide-5 .ism-img, 
+
+			FB. #my-slider .ism-slide-0 .ism-img, #my-slider .ism-slide-1 .ism-img, #my-slider .ism-slide-2 .ism-img,
+				#my-slider .ism-slide-3 .ism-img, #my-slider .ism-slide-4 .ism-img, #my-slider .ism-slide-5 .ism-img,
 				#my-slider .ism-slide-6 .ism-img, #my-slider .ism-slide-7 .ism-img, #my-slider .ism-slide-8 .ism-img,
 				#my-slider .ism-slide-9 .ism-img, #my-slider .ism-slide-10 .ism-img,#my-slider .ism-slide-11 .ism-img,
 				#my-slider .ism-slide-12 .ism-img,#my-slider .ism-slide-13 .ism-img,#my-slider .ism-slide-14 .ism-img,
 				#my-slider .ism-slide-15 .ism-img,#my-slider .ism-slide-16 .ism-img,#my-slider .ism-slide-17 .ism-img,
 				#my-slider .ism-slide-18 .ism-img {}
-	  
+
     Structure:  01. .class-1 {}  .class-2 {} ... etc
 				02. @media all and (min-width:1024px) 							                       {.class-1 {}.class-2 {} ... etc}
 				03. @media all and (min-width:960px) 												   {.class-1 {}.class-2 {} ... etc}
@@ -111,9 +94,9 @@
 				12. @media all and (min-width:480px) and (max-width:767px) 							   {.class-1 {}.class-2 {} ... etc}
 				13. @media all and (min-width:480px) and (max-width:767px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
 				14. @media all and (min-width:480px) and (max-width:767px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
-				15. 					  @media all and (max-width:479px)                             {.class-1 {}.class-2 {} ... etc} 
+				15. 					  @media all and (max-width:479px)                             {.class-1 {}.class-2 {} ... etc}
 				16. 			       	  @media all and (max-width:479px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
-				17. 					  @media all and (max-width:479px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}     
+				17. 					  @media all and (max-width:479px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
 				18. @media(-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:3/2), (min-resolution:1.5dppx) {}
 				19. @media print {}
 */
@@ -175,16 +158,16 @@
 /* 01:EL */ #my-slider .ism-radios li.active label {background-color: rgba(255, 255, 255, 1.0);}
 /* 01:EM */ #my-slider .ism-radios label:hover {background-color: rgba(255, 255, 255, 0.8);}
 
-/* 01:FA */ #my-slider .ism-slide-0 .ism-img-frame, #my-slider .ism-slide-1 .ism-img-frame, #my-slider .ism-slide-2 .ism-img-frame, 
-			#my-slider .ism-slide-3 .ism-img-frame, #my-slider .ism-slide-4 .ism-img-frame, #my-slider .ism-slide-5 .ism-img-frame, 
+/* 01:FA */ #my-slider .ism-slide-0 .ism-img-frame, #my-slider .ism-slide-1 .ism-img-frame, #my-slider .ism-slide-2 .ism-img-frame,
+			#my-slider .ism-slide-3 .ism-img-frame, #my-slider .ism-slide-4 .ism-img-frame, #my-slider .ism-slide-5 .ism-img-frame,
 			#my-slider .ism-slide-6 .ism-img-frame, #my-slider .ism-slide-7 .ism-img-frame, #my-slider .ism-slide-8 .ism-img-frame,
 		    #my-slider .ism-slide-9 .ism-img-frame, #my-slider .ism-slide-10 .ism-img-frame,#my-slider .ism-slide-11 .ism-img-frame,
 			#my-slider .ism-slide-12 .ism-img-frame,#my-slider .ism-slide-13 .ism-img-frame,#my-slider .ism-slide-14 .ism-img-frame,
 			#my-slider .ism-slide-15 .ism-img-frame,#my-slider .ism-slide-16 .ism-img-frame,#my-slider .ism-slide-17 .ism-img-frame,
 			#my-slider .ism-slide-18 .ism-img-frame  {width: 80%; margin-left: 10%;}
-			 
-/* 01:FB */ #my-slider .ism-slide-0 .ism-img, #my-slider .ism-slide-1 .ism-img, #my-slider .ism-slide-2 .ism-img, 
-			#my-slider .ism-slide-3 .ism-img, #my-slider .ism-slide-4 .ism-img, #my-slider .ism-slide-5 .ism-img, 
+
+/* 01:FB */ #my-slider .ism-slide-0 .ism-img, #my-slider .ism-slide-1 .ism-img, #my-slider .ism-slide-2 .ism-img,
+			#my-slider .ism-slide-3 .ism-img, #my-slider .ism-slide-4 .ism-img, #my-slider .ism-slide-5 .ism-img,
 			#my-slider .ism-slide-6 .ism-img, #my-slider .ism-slide-7 .ism-img, #my-slider .ism-slide-8 .ism-img,
 		    #my-slider .ism-slide-9 .ism-img, #my-slider .ism-slide-10 .ism-img,#my-slider .ism-slide-11 .ism-img,
 			#my-slider .ism-slide-12 .ism-img,#my-slider .ism-slide-13 .ism-img,#my-slider .ism-slide-14 .ism-img,
@@ -192,7 +175,7 @@
 			#my-slider .ism-slide-18 .ism-img {width: 100%; top: 50%; -webkit-transform: translateY(-50%); -moz-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%);}
 
 /* 02:>  */ @media all and (min-width:1024px)				 			                       {
-				
+
 /* 01:> */ .ism-slider > ol, .ism-slider > ol > li, .ism-slider > ol > li > img { width: 100%; list-style: none; margin: 0; padding: 0; }
 .ism-slider {overflow: hidden; position: relative; padding: 0 !important; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; cursor: default; z-index: 2; background-color: white; -webkit-animation: ism-fadein 3s; -webkit-background-clip: padding-box; -moz-background-clip: padding; background-clip: padding-box; image-rendering: auto; image-rendering: crisp-edges;}
 .ism-slider .ism-slides {list-style: none; position: absolute; height: 100%; top: 0; padding: 0 !important; margin-top: 0; margin-bottom: 0; z-index: 1;}
@@ -947,16 +930,16 @@ p.ism-badge a.ism-link:hover {color: #aaa; text-decoration: underline;}
 /* 10:EL */ #my-slider .ism-radios li.active label {}
 /* 10:EM */ #my-slider .ism-radios label:hover {}
 
-/* 10:FA */ #my-slider .ism-slide-0 .ism-img-frame, #my-slider .ism-slide-1 .ism-img-frame, #my-slider .ism-slide-2 .ism-img-frame, 
-			#my-slider .ism-slide-3 .ism-img-frame, #my-slider .ism-slide-4 .ism-img-frame, #my-slider .ism-slide-5 .ism-img-frame, 
+/* 10:FA */ #my-slider .ism-slide-0 .ism-img-frame, #my-slider .ism-slide-1 .ism-img-frame, #my-slider .ism-slide-2 .ism-img-frame,
+			#my-slider .ism-slide-3 .ism-img-frame, #my-slider .ism-slide-4 .ism-img-frame, #my-slider .ism-slide-5 .ism-img-frame,
 			#my-slider .ism-slide-6 .ism-img-frame, #my-slider .ism-slide-7 .ism-img-frame, #my-slider .ism-slide-8 .ism-img-frame,
 		    #my-slider .ism-slide-9 .ism-img-frame, #my-slider .ism-slide-10 .ism-img-frame,#my-slider .ism-slide-11 .ism-img-frame,
 			#my-slider .ism-slide-12 .ism-img-frame,#my-slider .ism-slide-13 .ism-img-frame,#my-slider .ism-slide-14 .ism-img-frame,
 			#my-slider .ism-slide-15 .ism-img-frame,#my-slider .ism-slide-16 .ism-img-frame,#my-slider .ism-slide-17 .ism-img-frame,
 			#my-slider .ism-slide-18 .ism-img-frame  {}
-			 
-/* 10:FB */ #my-slider .ism-slide-0 .ism-img, #my-slider .ism-slide-1 .ism-img, #my-slider .ism-slide-2 .ism-img, 
-			#my-slider .ism-slide-3 .ism-img, #my-slider .ism-slide-4 .ism-img, #my-slider .ism-slide-5 .ism-img, 
+
+/* 10:FB */ #my-slider .ism-slide-0 .ism-img, #my-slider .ism-slide-1 .ism-img, #my-slider .ism-slide-2 .ism-img,
+			#my-slider .ism-slide-3 .ism-img, #my-slider .ism-slide-4 .ism-img, #my-slider .ism-slide-5 .ism-img,
 			#my-slider .ism-slide-6 .ism-img, #my-slider .ism-slide-7 .ism-img, #my-slider .ism-slide-8 .ism-img,
 		    #my-slider .ism-slide-9 .ism-img, #my-slider .ism-slide-10 .ism-img,#my-slider .ism-slide-11 .ism-img,
 			#my-slider .ism-slide-12 .ism-img,#my-slider .ism-slide-13 .ism-img,#my-slider .ism-slide-14 .ism-img,
@@ -1022,16 +1005,16 @@ p.ism-badge a.ism-link:hover {color: #aaa; text-decoration: underline;}
 /* 11:EL */ #my-slider .ism-radios li.active label {}
 /* 11:EM */ #my-slider .ism-radios label:hover {}
 
-/* 11:FA */ #my-slider .ism-slide-0 .ism-img-frame, #my-slider .ism-slide-1 .ism-img-frame, #my-slider .ism-slide-2 .ism-img-frame, 
-			#my-slider .ism-slide-3 .ism-img-frame, #my-slider .ism-slide-4 .ism-img-frame, #my-slider .ism-slide-5 .ism-img-frame, 
+/* 11:FA */ #my-slider .ism-slide-0 .ism-img-frame, #my-slider .ism-slide-1 .ism-img-frame, #my-slider .ism-slide-2 .ism-img-frame,
+			#my-slider .ism-slide-3 .ism-img-frame, #my-slider .ism-slide-4 .ism-img-frame, #my-slider .ism-slide-5 .ism-img-frame,
 			#my-slider .ism-slide-6 .ism-img-frame, #my-slider .ism-slide-7 .ism-img-frame, #my-slider .ism-slide-8 .ism-img-frame,
 		    #my-slider .ism-slide-9 .ism-img-frame, #my-slider .ism-slide-10 .ism-img-frame,#my-slider .ism-slide-11 .ism-img-frame,
 			#my-slider .ism-slide-12 .ism-img-frame,#my-slider .ism-slide-13 .ism-img-frame,#my-slider .ism-slide-14 .ism-img-frame,
 			#my-slider .ism-slide-15 .ism-img-frame,#my-slider .ism-slide-16 .ism-img-frame,#my-slider .ism-slide-17 .ism-img-frame,
 			#my-slider .ism-slide-18 .ism-img-frame  {}
-			 
-/* 11:FB */ #my-slider .ism-slide-0 .ism-img, #my-slider .ism-slide-1 .ism-img, #my-slider .ism-slide-2 .ism-img, 
-			#my-slider .ism-slide-3 .ism-img, #my-slider .ism-slide-4 .ism-img, #my-slider .ism-slide-5 .ism-img, 
+
+/* 11:FB */ #my-slider .ism-slide-0 .ism-img, #my-slider .ism-slide-1 .ism-img, #my-slider .ism-slide-2 .ism-img,
+			#my-slider .ism-slide-3 .ism-img, #my-slider .ism-slide-4 .ism-img, #my-slider .ism-slide-5 .ism-img,
 			#my-slider .ism-slide-6 .ism-img, #my-slider .ism-slide-7 .ism-img, #my-slider .ism-slide-8 .ism-img,
 		    #my-slider .ism-slide-9 .ism-img, #my-slider .ism-slide-10 .ism-img,#my-slider .ism-slide-11 .ism-img,
 			#my-slider .ism-slide-12 .ism-img,#my-slider .ism-slide-13 .ism-img,#my-slider .ism-slide-14 .ism-img,
@@ -1097,16 +1080,16 @@ p.ism-badge a.ism-link:hover {color: #aaa; text-decoration: underline;}
 /* 12:EL */ #my-slider .ism-radios li.active label {}
 /* 12:EM */ #my-slider .ism-radios label:hover {}
 
-/* 12:FA */ #my-slider .ism-slide-0 .ism-img-frame, #my-slider .ism-slide-1 .ism-img-frame, #my-slider .ism-slide-2 .ism-img-frame, 
-			#my-slider .ism-slide-3 .ism-img-frame, #my-slider .ism-slide-4 .ism-img-frame, #my-slider .ism-slide-5 .ism-img-frame, 
+/* 12:FA */ #my-slider .ism-slide-0 .ism-img-frame, #my-slider .ism-slide-1 .ism-img-frame, #my-slider .ism-slide-2 .ism-img-frame,
+			#my-slider .ism-slide-3 .ism-img-frame, #my-slider .ism-slide-4 .ism-img-frame, #my-slider .ism-slide-5 .ism-img-frame,
 			#my-slider .ism-slide-6 .ism-img-frame, #my-slider .ism-slide-7 .ism-img-frame, #my-slider .ism-slide-8 .ism-img-frame,
 		    #my-slider .ism-slide-9 .ism-img-frame, #my-slider .ism-slide-10 .ism-img-frame,#my-slider .ism-slide-11 .ism-img-frame,
 			#my-slider .ism-slide-12 .ism-img-frame,#my-slider .ism-slide-13 .ism-img-frame,#my-slider .ism-slide-14 .ism-img-frame,
 			#my-slider .ism-slide-15 .ism-img-frame,#my-slider .ism-slide-16 .ism-img-frame,#my-slider .ism-slide-17 .ism-img-frame,
 			#my-slider .ism-slide-18 .ism-img-frame  {}
-			 
-/* 12:FB */ #my-slider .ism-slide-0 .ism-img, #my-slider .ism-slide-1 .ism-img, #my-slider .ism-slide-2 .ism-img, 
-			#my-slider .ism-slide-3 .ism-img, #my-slider .ism-slide-4 .ism-img, #my-slider .ism-slide-5 .ism-img, 
+
+/* 12:FB */ #my-slider .ism-slide-0 .ism-img, #my-slider .ism-slide-1 .ism-img, #my-slider .ism-slide-2 .ism-img,
+			#my-slider .ism-slide-3 .ism-img, #my-slider .ism-slide-4 .ism-img, #my-slider .ism-slide-5 .ism-img,
 			#my-slider .ism-slide-6 .ism-img, #my-slider .ism-slide-7 .ism-img, #my-slider .ism-slide-8 .ism-img,
 		    #my-slider .ism-slide-9 .ism-img, #my-slider .ism-slide-10 .ism-img,#my-slider .ism-slide-11 .ism-img,
 			#my-slider .ism-slide-12 .ism-img,#my-slider .ism-slide-13 .ism-img,#my-slider .ism-slide-14 .ism-img,

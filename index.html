@@ -3,15 +3,18 @@
 <head>
 	<meta charset="utf-8">
 	<script async src="https://cdn.ampproject.org/v0.js">
-	</script>
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport"><!-- GitHub Pages -->
+		</script>
+	<!-- trying a local copy instead
+	<script async src="https://cdn.ampproject.org/v0.js">
+	</script> -->
 	<meta content="1" http-equiv="Expires">
+	<link href="//datro.xyz" rel="canonical">
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport"><!-- GitHub Pages -->
 	<script type="type/javascript">
 	                var host = "datro.xyz";
 	                if {{ host == window.location.host} && {window.location.protocol != "https:""}}
 	                window.location.protocol = "https";
 	</script>
-	<link href="//datro.xyz" rel="canonical">
 	<meta content="DATRO Consortium" name="description">
 	<meta content="Unclehowell" name="author">
 	<title>DATRO Consortium</title>
@@ -31,18 +34,25 @@
 	<meta content="#ffffff" name="msapplication-TileColor">
 	<meta content="static/datro/img/favicons/ms-icon-144x144.png" name="msapplication-TileImage">
 	<meta content="#ffffff" name="theme-color"><!-- CSS -->
-	<link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet"><!-- pagespeed idea <link href="static/datro/css/bootstrap.min.css" rel="stylesheet"> -->
+
+
+	<!-- <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+ <link href="static/datro/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="static/datro/css/reset.min.css" rel="stylesheet">
+  <link href="static/datro/css/bootstrap.min.css" rel="stylesheet">
 	<link href="static/datro/css/featherlight.css" rel="stylesheet" type="text/css">
 	<link href="static/datro/css/style.css" rel="stylesheet">
 	<link href="static/datro/css/carousel.css" rel="stylesheet">
 	<link href="static/datro/css/dropdownboxes.css" rel="stylesheet">
 	<link href="static/datro/css/footer.css" rel="stylesheet" type="text/css">
+	<!-- do we really need these ? the other pages don't have them and there's no difference
 	<link href="static/datro/css/footer-icon.css" rel="stylesheet" type="text/css">
 	<link href="static/datro/css/footer-global.css" rel="stylesheet" type="text/css">
 	<link href="static/datro/css/footer-loggedout.css" rel="stylesheet" type="text/css">
-	<link href="static/datro/css/footer-grid.css" rel="stylesheet" type="text/css">
-	<link href="static/datro/css/glyphicon.css" rel="stylesheet" type="text/css">
+	<link href="static/datro/css/footer-grid.css" rel="stylesheet" type="text/css"> -->
 	<link href="static/datro/css/download-buttons.css" rel="stylesheet" type="text/css">
+	<link href="static/datro/css/glyphicon.css" rel="stylesheet" type="text/css">
 	<style>
 
 	              @media all and (min-width:1024px) {
@@ -65,23 +75,33 @@
 	                  }
 
 	</style>
-	<link href="static/datro/css/preloader/main.css" rel="stylesheet">
-	<script src="static/datro/js/menu.js">	</script>
+
 	<script src="static/datro/js/lazy.min.js">
 	</script>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-		</script>
+        <script src="static/datro/js/ism-2.2.min.js">
+        </script>
+
+        <script> src="static/datro/jquery-3.3.1.min.js" </script>
+    <!-- trying a local copy instead
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+		</script> -->
 		<script>
 		           function pageLoad(){
 		            document.getElementById('mainWrapper').style.visibility="visible";
 		           }
 		</script>
+		<link href="static/datro/html/search-box/app.css" rel="stylesheet">
+		<!-- think disabling the div isn't enough
+		<link href="static/datro/css/preloader/main.css" rel="stylesheet"> -->
+		<script src="static/datro/js/menu.js">	</script>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
-	</script>
+  <script> src="static/datro/js/preloader/jquery-1.9.1.js"</script>
+  <!--	trying a local copy instead
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+	</script> -->
 	<script>
-	   window.jQuery || document.write('<script src="static/datro/js/preloader/jquery-1.9.1.min.js"><\/script>')
+	   window.jQuery || document.write('<script src="static/datro/js/preloader/jquery-1.9.1.js"><\/script>')
 	</script>
 	<script src="static/datro/js/preloader/main.js">
 	</script>
@@ -117,8 +137,8 @@
 			</div>
 		</nav>
 	</header>
+<!-- preloader <div id="loader"></div> -->
 	<div id="loader-wrapper">
-		<div id="loader"></div>
 		<div class="loader-section section-left"></div>
 		<div class="loader-section section-right"></div>
 	</div>
@@ -129,8 +149,8 @@
 					<div id="image1"></div>
 					<div class="container carouseltwo">
 						<div class="carousel-caption text-left">
-							<h1 class="carousel-maintitle">Internet outages happen</h1>
-							<h2 class="carousel-title">Fortunately there's a solution</h2>
+               <h1 class="carousel-maintitle">Accessing the Internet</h1>
+								<h2 class="carousel-title">Is Now Everybody's Business</h2>
 							<div class="button-block">
 								<div class="button-block-right">
 									<div class="button-block-left">
@@ -169,8 +189,8 @@
 					<div id="image3"></div>
 					<div class="container carouselthree">
 						<div class="carousel-caption text-left">
-							<h1 class="carousel-maintitle"><strong>Free</strong> wi-fi access point</h1>
-							<h2 class="carousel-title">Over-the-air software upgrade</h2>
+							<h1 class="carousel-maintitle"><strong>Free</strong> Wi-Fi Access Point</h1>
+							<h2 class="carousel-title">Over-the-Air Software Upgrade</h2>
 							<div class="button-block">
 								<div class="button-block-right">
 									<div class="button-block-left">
@@ -209,18 +229,22 @@
 		</div><span class="sexy_line"></span>
 		<div class="segment">
 			<br>
-			<br>
-			<h1 class="segment-title" style="color:lightgrey!important;">Introduction</h1>
-			<p class="segment-paragraph"><br>
-			<b style="font-weight:400;color:rgba(255,255,255,0.7);">DATR<span class="copy-left">&#xa9;</span></b> is a consortium of technologies, designed to democratize and decentralize digital communications in a way never before attempted. Our software is free, open-source (<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="static/datro/html/gpl.html" style="color: white;font-weight:400;">General Public Licence</a>) and designed to work in conjunction with our users existing service provider and hardware - so there's no need to change Internet Service Providers (ISP's) or router hardware, nor pay fees or sign contracts.<br>
-			<br>
-			Your journey to freedom begins with our free wireless access point software upgrade - called <a href="static/datro/download.html" style="color: white;font-weight:400;"><u>Hotspotβnβ</u><b style="font-size:40%;color:white; position:relative;vertical-align:text-top!important;opacity:0.8;"><span class="copy-left">&#xa9;</span></b></a>. The upgrade process is fully autonomous and the software is compatible with 50+ million new wireless access points each year. So the upgrade is simple and compatible enough for anyone to do it. After upgrading you'll be able to explore and install applications, directly from your wireless access point. So instead of having seperate boxes for your iptv and gaming or energy and camera monitoring, you can install these as services on your wireless access point.<br>
-			<br>
-			See below our latest product introduction video, explaining and demonstrating the overal user experience:</p></br>
-			</br></p>
+
 			<div style="display:inline-block;background:transparent; margin-bottom:40px;width:100%; height:auto; text-align:center;">
 				<iframe class="video-iframe" src="static/datro/html/videos/intro-hbnb.html" style="max-width:90vw; width:545px; height:318px; text-align:center;"></iframe>
 			</div>
+			<p class="segment-paragraph"><br>
+			<b style="font-weight:400;color:rgba(255,255,255,0.7);">DATR<span class="copy-left">&#xa9;</span></b> is researching and developing (and inviting you to test) a new way to communicate digitally. Our solution is designed to transform the internet from a paid privelage to a free and inalienable human right. Our growing community is making it possible for any member of the public, in both urban and rural areas, to stop paying corporations for centrally-controlled access to the internet - and instead participate in our revolutionary, democratized and decentralized, FREE internet service.
+			</br></br>
+			As of 2020 more than 1 billion wireless access points exist in the world. <b style="font-weight:400;color:rgba(255,255,255,0.7);">DATR<span class="copy-left">&#xa9;</span></b> is sourcing our solution to every member of the public in the form of a free and universal software upgrade for these common household devices. And each year we pledge to make our solution compatible with 50 million more, pre-existing devices. Since the software enables wireless access points to mesh network, connectivity can now grow into areas without access to internet - without expensive and complex operations, technologies or licences. <b style="font-weight:400;color:rgba(255,255,255,0.7);">DATR<span class="copy-left">&#xa9;</span></b> is of the people: Built for the people, by the people.
+			</br></br>
+		<b style="font-weight:400;color:rgba(255,255,255,0.7);">DATR<span class="copy-left">&#xa9;</span></b> upgrades your existing wireless access point fully-autonomously (Alternatively our wireless access point software can be installed to a seperate single board computer, such as a Raspberry Pi and connected to your wireless router via ethernet). The source code's all in the public domain, for complete transparency and our solution 100% free for life and works in conjunction with your existing Internet Service Provider (ISP) -
+		so there's no need to be a tech genius to install it, or a private investigator to understand it. You don't need to pay a penny or break or sign contracts, or change your ISP hardware.
+
+			</br></br>
+			This website features all the initial software, documents and training videos, allowing anyone to upgrade their wireless access point and get started with <b style="font-weight:400;color:rgba(255,255,255,0.7);">DATR<span class="copy-left">&#xa9;</span></b>. Once you've upgraded, you'll be able to explore and install applications directly to your wireless access point for the first time ever. The free applications being developed for our app-store will blow your mind. There's an iptv and offline media center, energy and camera monitor and a wide selection of virtualized game stations, with virtualized gamepad controllers - all simultaniously accessible from any web-browser of any mobile device, wirelessly connected to your upgraded wireless hotspot.</p></br>
+			</br></p>
+
 			<div style="display:inline-block;width:100vw;text-align:center;"></div>
 		</div>
 		<div class="segment-bottom"></div>
@@ -263,7 +287,7 @@
 												<a class="FooterNew-link" data-content="DATRO To-Go USB" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" data-qtsb-label="GoToToGoUSB" data-qtsb-section="footer" data-qtsb-subsection="Network" href="static/datro/download.html" title="DATRO To-Go USB">To-Go USB<b style="font-size:40%;color:white; position:relative;vertical-align:text-top!important;opacity:0.8;"><span class="copy-left">&#xa9;</span></b></a>
 											</li>
 											<li>
-												<a class="FooterNew-link" data-content="DATRO" data-qtsb-label="GoToDownloadCenter" data-qtsb-section="footer" data-qtsb-subsection="Network" data-uitest-target="GoToHotspotBnB" href="static/datro/download.html" title="DATRO HotspotBnB">HotspotBnB<b style="font-size:40%;color:white; position:relative;vertical-align:text-top!important;opacity:0.8;"><span class="copy-left">&#xa9;</span></b></a>
+												<a class="FooterNew-link" data-content="DATRO" data-qtsb-label="GoToDownloadCenter" data-qtsb-section="footer" data-qtsb-subsection="Network" data-uitest-target="GoToHotspotBnB" href="static/datro/download.html" title="DATRO HotspotBnB">Hotspotβnβ<b style="font-size:40%;color:white; position:relative;vertical-align:text-top!important;opacity:0.8;"><span class="copy-left">&#xa9;</span></b></a>
 											</li>
 											<li>
 												<a class="FooterNew-link" data-content="DATRO Wave" data-qtsb-label="GoToWave" data-qtsb-section="footer" data-qtsb-subsection="Network" data-uitest-target="GoToWave" href="static/datro/download.html" title="DATRO Wave">Wave<b style="font-size:40%;color:white; position:relative;vertical-align:text-top!important;opacity:0.8;"><span class="copy-left">&#xa9;</span></b> DApp</a>
@@ -281,19 +305,19 @@
 									<div class="FooterNew-link-content">
 										<ul class="FooterNew-links">
 											<li>
-												<a class="FooterNew-link" data-content="News & Press Releases" data-qtsb-label="GoToNews" data-qtsb-section="footer" data-qtsb-subsection="News" data-uitest-target="GoToNews" href="#footer-about" rel="nofollow" title="News & Press Releases">News & Press</a>
+												<a class="FooterNew-link" data-content="DATRO News" data-qtsb-label="GoToNews" data-qtsb-section="footer" data-qtsb-subsection="About" data-uitest-target="GoToNews" href="static/datro/news.html" title="DATRO News">DATR<span class="copy-left">&#xa9;</span> News & Press</a>
 											</li>
 											<li>
-												<a class="FooterNew-link" data-content="DATRO Technical Document Library" data-qtsb-label="GoToDocuments" data-qtsb-section="footer" data-qtsb-subsection="Docs" data-uitest-target="GoToDocuments" href="documents.html" title="DATRO Technical Document Library">Documents</a>
+												<a class="FooterNew-link" data-content="DATRO Documents" data-qtsb-label="GoToDocuments" data-qtsb-section="footer" data-qtsb-subsection="About" data-uitest-target="GoToDocuments" href="static/datro/documents.html" title="DATRO Documents">DATR<span class="copy-left">&#xa9;</span> Documents</a>
 											</li>
 											<li>
-												<a class="FooterNew-link" data-content="Contact DATRO" data-qtsb-label="GoToContact" data-qtsb-section="footer" data-qtsb-subsection="Network" data-uitest-target="GoToContact" href="#footer-about" rel="nofollow" title="Contact DATRO">Contacts</a>
+												<a class="FooterNew-link" data-content="Contact DATRO" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" data-qtsb-label="GoToContact" data-qtsb-section="footer" data-qtsb-subsection="Network" data-uitest-target="GoToContact" href="static/datro/html/contactus.html" title="Contact DATRO">DATR<span class="copy-left">&#xa9;</span> Contacts</a>
 											</li>
 											<li>
-												<a class="FooterNew-link" data-content="History" data-qtsb-label="GoToHistory" data-qtsb-section="footer" data-qtsb-subsection="About" data-uitest-target="GoToHistory" href="#" rel="nofollow" title="History">History</a>
+												<a class="FooterNew-link" data-content="History" data-qtsb-label="GoToHistory" data-qtsb-section="footer" data-qtsb-subsection="About" data-uitest-target="GoToHistory" href="static/datro/history.html" title="History">DATR<span class="copy-left">&#xa9;</span> History</a>
 											</li>
 											<li>
-												<a class="FooterNew-link" data-content="Team" data-qtsb-label="GoToTeam" data-qtsb-section="footer" data-qtsb-subsection="Network" data-uitest-target="GoToTeam" href="#footer-about" rel="nofollow" title="The DATRO Team">Team</a>
+												<a class="FooterNew-link" data-content="Team" data-qtsb-label="GoToTeam" data-qtsb-section="footer" data-qtsb-subsection="Network" data-uitest-target="GoToTeam" href="static/datro/team.html" title="The DATRO Team">DATR<span class="copy-left">&#xa9;</span> Team</a>
 											</li>
 										</ul>
 									</div>
@@ -355,8 +379,8 @@
 									</div>
 								</div>
 								<div class="Grid-col Grid-col--desktopSmall-6">
-									<p class="FooterNew-siteStat-term"><strong>Copyleft <span class="copy-left">&#xa9;</span> 2020 DATRO</strong> | <b style="opacity:0.7;font-weight:lighter!important;">Decentralized, Democratized, Free Communications Network</b></p>
-									<p class="FooterNew-siteStat-term"><b style="opacity:0.7;font-weight:lighter!important;font-size:95%;">GNU Public Licence</b> | <strong>datro.xyz</strong> <b style="opacity:0.7;font-weight:lighter!important;font-size:95%;">0.0.1-rtw.7</b> <a data-content="DATRO Decentralized, Democratized, Free Communications - datro.xyz" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="html/statistics/website.html" style="color: white; display: inline-block; border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; padding: 5px;" title="DATRO Decentralized, Democratized, Free Communications - datro.xyz"><span class="glyphicon glyphicon-stats"></span> &nbsp; Stats</a> <a data-content="DATRO Decentralized, Democratized, Free Communications - datro.xyz" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="../files/coming-soon/coming-soon/latest/build/html/index.html" style="color: white; display: inline-block; border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; padding: 5px;" title="DATRO Decentralized, Democratized, Free Communications - datro.xyz"><span class="glyphicon glyphicon-book"></span> &nbsp;Docs</a> <a data-content="DATRO Decentralized, Democratized, Free Communications - datro.xyz" href="https://github.com/unclehowell/wave.Hotspot%CE%B2n%CE%B2.com" style="color: white; display: inline-block; border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; max-height: 29px!important; padding: 5px!important;" target="_popup" title="DATRO Decentralized, Democratized, Free Communications - datro.xyz"><img alt="GitHub Badge" class="Icon-image" height="24" src="static/datro/img/git-footer.png" style="height: 18px; vertical-align: middle; width: 18px; zoom: 0.8; margin-right: 3px!important; margin-bottom: 4px!important;" width="24">Code</a> <a data-content="DATRO Decentralized, Democratized, Free Communications - datro.xyz" href="https://github.com/unclehowell/datro/blob/gh-pages/COLLABORATE.md" style="color: white; display: inline-block; border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; padding: 5px;" target="_popup" title="DATRO Decentralized, Democratized, Free Communications - datro.xyz"><span class="glyphicon glyphicon-edit"></span> &nbsp; Edit</a></p>
+									<p class="FooterNew-siteStat-term"><strong>Copyleft <span class="copy-left">&#xa9;</span> 2020 DATRO</strong> | <b style="opacity:1;font-weight:lighter!important;">Decentralized, Democratized, Free Communications Network</b></p>
+									<p class="FooterNew-siteStat-term"><b style="opacity:1;font-weight:lighter!important;font-size:95%;">GNU Public Licence</b> |  <b style="opacity:1;font-weight:300!important;font-size:95%;">Platform v0.0.1-rtw.8</b> &nbsp; <a data-content="DATRO Decentralized, Democratized, Free Communications - datro.xyz" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="html/statistics/website.html" style="color: white; display: inline-block; border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; padding: 5px;" title="DATRO Decentralized, Democratized, Free Communications - datro.xyz"><span class="glyphicon glyphicon-stats"></span> &nbsp; Stats</a> <a data-content="DATRO Decentralized, Democratized, Free Communications - datro.xyz" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="static/files/coming-soon/coming-soon/latest/build/html/index.html" style="color: white; display: inline-block; border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; padding: 5px;" title="DATRO Decentralized, Democratized, Free Communications - datro.xyz"><span class="glyphicon glyphicon-book"></span> &nbsp;Docs</a> <a data-content="DATRO Decentralized, Democratized, Free Communications - datro.xyz" href="https://github.com/unclehowell/wave.Hotspot%CE%B2n%CE%B2.com" style="color: white; display: inline-block; border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; max-height: 29px!important; padding: 5px!important;" target="_popup" title="DATRO Decentralized, Democratized, Free Communications - datro.xyz"><img alt="GitHub Badge" class="Icon-image" height="24" src="static/datro/img/git-footer.png" style="height: 18px; vertical-align: middle; width: 18px; zoom: 0.8; margin-right: 3px!important; margin-bottom: 4px!important;" width="24">Code</a> <a data-content="DATRO Decentralized, Democratized, Free Communications - datro.xyz" href="https://github.com/unclehowell/datro/blob/gh-pages/COLLABORATE.md" style="color: white; display: inline-block; border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; padding: 5px;" target="_popup" title="DATRO Decentralized, Democratized, Free Communications - datro.xyz"><span class="glyphicon glyphicon-edit"></span> &nbsp; Edit</a></p>
 								</div>
 							</div>
 						</div>
@@ -365,12 +389,22 @@
 			</div>
 		</footer>
 	</div><!-- Need these two for Carousel to work -->
-	<script src="static/datro/js/popper.min.js">
+	<script src="static/datro//html/forms/vendor/bootstrap/js/popper.min.js">
 	</script>
-	<script src="https://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js">
+
+
+	<script src="static/datro/js/holder2.js">
 	</script>
+
+	</script>
+
+	<!-- needed for carousel to work -->
+<script src="https://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js">
+</script>
+
+	<!-- 
 	<script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/holder.min.js">
-	</script>
+	</script> -->
 	<script src="static/datro/js/carousel-dropdown.js">
 	</script>
 	<script src="static/datro/js/currencydrop.js">

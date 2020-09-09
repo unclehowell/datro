@@ -69,9 +69,40 @@ video {
 opacity:1;
 }
 
+/* ==========================================================================
+   #A small hack to show the controls when you mouseover the video, not just the controls at the bottom
+   ========================================================================== */
+
+.classmyass {
+  display: block;
+  background-color: transparent;
+  min-height: 125vh;
+  width: 40%;
+  position: absolute;
+  bottom: 0px;
+  float: left;
+  left: 0;
+  margin-left: -5vw;
+  margin-bottom: 10vw;
+}
+
+.classmyass2 {
+  display: block;
+  background-color: transparent;
+  min-height: 125vh;
+  width: 40%;
+  position: absolute;
+  bottom: 0px;
+  float: right;
+  right: 0;
+  margin-left: -5vw;
+  margin-bottom: 10vw;
+}
+
+
 
 .video-controls.hide {
-  opacity: 1;
+
   pointer-events: none;
 }
 

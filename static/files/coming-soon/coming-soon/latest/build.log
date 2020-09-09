@@ -6,14 +6,15 @@ building [latex]: all documents
 updating environment: 0 added, 1 changed, 0 removed
 reading sources... [100%] releasenotes
 
-/var/www/html/datro-gh-pages/static/files/coming-soon/coming-soon/latest/source/releasenotes.rst:19: WARNING: Problems with "csv-table" directive path:
+/var/www/html/datro-gh-pages/static/files/coming-soon/coming-soon/latest/source/releasenotes.rst:6: WARNING: Unexpected indentation.
+/var/www/html/datro-gh-pages/static/files/coming-soon/coming-soon/latest/source/releasenotes.rst:24: WARNING: Problems with "csv-table" directive path:
 [Errno 2] No such file or directory: 'source/_static/olderversions.csv'.
 
 .. csv-table:: Table 1.0 - Previous Publications
    :file: _static/olderversions.csv
    :widths: 10, 10, 20, 60
    :header-rows: 1
-/var/www/html/datro-gh-pages/static/files/coming-soon/coming-soon/latest/source/releasenotes.rst:37: WARNING: Problems with "csv-table" directive path:
+/var/www/html/datro-gh-pages/static/files/coming-soon/coming-soon/latest/source/releasenotes.rst:42: WARNING: Problems with "csv-table" directive path:
 [Errno 2] No such file or directory: 'source/_static/issues.csv'.
 
 .. csv-table:: Table 1.1 - Known Issues
@@ -29,7 +30,7 @@ done
 writing... done
 copying TeX support files... copying TeX support files...
 done
-build succeeded, 2 warnings.
+build succeeded, 3 warnings.
 
 The LaTeX files are in build/latex.
 Run 'make' in that directory to run these through (pdf)latex
@@ -170,18 +171,19 @@ Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
 less on input line 88.
 
 Chapter 1.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 128.
+less on input line 138.
 
-[1]
+[1] [2]
 Chapter 2.
 No file coming-soon.ind.
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 137.
+less on input line 163.
 
-[2] (./coming-soon.aux)
+[3] (./coming-soon.aux)
 
 Package rerunfilecheck Warning: File `coming-soon.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -195,7 +197,7 @@ e/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utm
 r8a.pfb>
-Output written on coming-soon.pdf (4 pages, 46455 bytes).
+Output written on coming-soon.pdf (5 pages, 51285 bytes).
 Transcript written on coming-soon.log.
 Latexmk: Index file 'coming-soon.idx' was written
 Latexmk: Missing input file: 'coming-soon.ind' from line
@@ -357,23 +359,24 @@ Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
 less on input line 88.
 
 Chapter 1.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 128.
+less on input line 138.
 
-[1]
+[1] [2]
 Chapter 2.
 (./coming-soon.ind)
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 137.
+less on input line 163.
 
-[2] (./coming-soon.aux) ){/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r
+[3] (./coming-soon.aux) ){/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r
 .enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb>
-Output written on coming-soon.pdf (4 pages, 50536 bytes).
+Output written on coming-soon.pdf (5 pages, 54920 bytes).
 Transcript written on coming-soon.log.
 Latexmk: Index file 'coming-soon.idx' was written
 Latexmk: Log file says output to 'coming-soon.pdf'
@@ -514,23 +517,24 @@ Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
 less on input line 88.
 
 Chapter 1.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 128.
+less on input line 138.
 
-[1]
+[1] [2]
 Chapter 2.
 (./coming-soon.ind)
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 137.
+less on input line 163.
 
-[2] (./coming-soon.aux) ){/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r
+[3] (./coming-soon.aux) ){/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r
 .enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb>
-Output written on coming-soon.pdf (4 pages, 50536 bytes).
+Output written on coming-soon.pdf (5 pages, 54920 bytes).
 Transcript written on coming-soon.log.
 Latexmk: Index file 'coming-soon.idx' was written
 Latexmk: Log file says output to 'coming-soon.pdf'

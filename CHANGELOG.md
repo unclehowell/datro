@@ -12,17 +12,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - GNU General Public Licence - sitewide
 
 ### Changed
-    - Changed `href="#myCarousel"` to `data-target="#myCarousel"` on the splashpage, to fix a bug (page was scrolling)
     - Moved the entire repo from `github.com/unclehowell/HBnB` to `github.com/unclehowell/datro`
-    - Re-structured directory (ongoing) and re-branded, from Wave, to HotspotBnB, to DATRO
-    - HotspotBnB and Wave are now spin-off projects and subsidiaries of DATRO
-    - Docs html theme now matches website theme
+    - Re-structured directory (ongoing)... and re-branded, from Wave, to HotspotBnB, to DATRO
+    - HotspotBnB and Wave are now spin-off/subsidiary projects of DATRO
+    - Renamed `static/demo` directory to `static/gui`. It may double up as a demo for HBnB, but it's actually the actual GUI 
 
 ### Removed
     - Copyright (from Sphinx html docs)
-    - <link href="https://www.f-cdn.com/assets/bundles/jquery-4df54fac.js" rel="preload"> appeared multiple times on the same page.
-    - modernizer.js is discontinued, not the service, just the single js file method. So it's been removed, since it was causing errors.
-    - removed videolightning.js too, haven't used that feature for a while.
 
 ### Fixed
     - The frame the docs are displayed in (featherlight) was scrolling upwards off screen, whenever you selected the doc. Fixed it!
