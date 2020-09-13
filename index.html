@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en" class="no-js is-responsive is-mobile-first">
 <head>
@@ -7,7 +6,7 @@
 	<meta http-equiv="Page-Enter" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
         <meta http-equiv="Page-Exit" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
 </title><meta name="HandheldFriendly" content="true" />
-	<title>DATRO Website Selector</title>
+	<title>DATRO Assets</title>
 	 <meta name="mobile-web-app-capable" content="yes">
         <link href="docs/dashboard/img/favicons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
         <link href="docs/dashboard/img/favicons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
@@ -189,7 +188,9 @@ min-height:100vh;
 
 </script>
 
-	<script src="docs/dashboard/js/iframeResizer.min.js"></script>
+
+
+<!-- this scripts forces scrollbar="no" , scrollbars needed sorry <script src="docs/dashboard/js/iframeResizer.min.js"></script>  -->
 
 
 
@@ -225,7 +226,7 @@ html {
 			<!--- <a href="#anchor"  class="logo"> --->
 		<form action="/" method="post" onkeydown="return event.key != 'Enter';" class="squirrel logo" alt="Logo">
                   <p style="color:white;background:transparent;"><br>
-                   <input border="0" type="text" name="Select a Site" placeholder="Version 0.0.1-rc.6" id="Select a Site" value="Select a Site" class="forminput">
+                   <input border="0" type="text" name="DATR&#127279;" placeholder="v0.0.1-rtw.8" id="DATR&#127279;" value="DATR&#127279;" class="forminput" title="All changes store in your web-browsers cache only">
                   </p>
                 </form>
 
@@ -243,7 +244,7 @@ html {
 
 	<main>
 	<div class="demo-iframe-container container-mq">
- <iframe class="demo-iframe iframe-mq"  sandbox="allow-same-origin allow-scripts allow-popups allow-forms" scrolling="yes"  onload="resizeframez(this);"   id="framez" name="framez" src="docs/dashboard/001-000.html" webkitallowfullscreen mozallowfullscreen  allowfullscreen style="-webkit-transform:scale(1.005);-moz-transform-scale(1.005);"></iframe>
+ <iframe class="demo-iframe iframe-mq"  sandbox="allow-popups-to-escape-sandbox allow-same-origin allow-modals allow-scripts allow-popups allow-forms " onload="resizeframez(this);" id="framez" name="framez" src="docs/app-store/001.html" webkitallowfullscreen mozallowfullscreen  allowfullscreen style="-webkit-transform:scale(1.005);-moz-transform-scale(1.005);overflow:visible!important;"></iframe>
  </div>
 	</main>
 
@@ -251,11 +252,11 @@ html {
 		<ul class="cd-3d-nav">
 
 			<li >
-				<a href="docs/dashboard/001-000.html" onclick="setIframeSrc('framez', this.href); return false" target="framez">Main Websites</a>
+				<a href="docs/app-store/001.html" onclick="setIframeSrc('framez', this.href); return false" target="framez">Operational</a>
 			</li>
 
 			<li>
-				<a href="docs/dashboard/002-000.html" onclick="setIframeSrc('framez', this.href); return false" target="framez">Beta Websites</a>
+				<a href="docs/app-store/002.html" onclick="setIframeSrc('framez', this.href); return false" target="framez">Engineering</a>
 			</li>
 
 			<li>

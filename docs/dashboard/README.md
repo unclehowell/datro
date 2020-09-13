@@ -1,7 +1,8 @@
 # Categories Index
 
-001-000 - Entertainment
-002-000 - Gaming
-003-000 - Smart Home
-004-000 - Safety & Security
-005-000 - More
+001-000 - Operational
+002-000 - Engineering
+
+## Intro
+The screens you'd normally see on the HotspotBnB dashboard, have been removed from this website selector splashpage.
+The reason for this is we're just using the app-store part of the dashboard for the purpose of previewing our digital assets.

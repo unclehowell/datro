@@ -12,10 +12,11 @@ html {
 body {
   font-size: 1.6rem;
   font-family: "Open Sans", sans-serif;
-  background-color: #485274;
+  background:-webkit-gradient(radial, 50% 52%, 123, 50% 57%, 61, from(#33366B), to(#333666));
   overflow-x: hidden!Important;
 
 }
+
 
 a {
   text-decoration: none;
@@ -85,11 +86,11 @@ text-align:center;
   border:1px solid transparent!important;
   background:transparent;
   color:white;
-  font-size: 2.5rem;
-  opacity: 0.6;
-  max-width: 210px;
-  text-align: center;
-  margin:-5px 0 5px 0;
+  font-size: 1.4em;
+      opacity: 0.6;
+      max-width: 210px;
+      text-align: center;
+      margin: -0.5em 0 5px 0
 }
 .cd-logo {
   float: left;
@@ -209,7 +210,7 @@ text-align:center;
   /* this is the 3D rotating navigation */
   position: relative;
   height: 100%;
-  background-color: #343c55;
+  background:-webkit-gradient(radial, 50% 52%, 123, 50% 157%, 1351, from(#333434), to(#33339D));
   /* Force Hardware Acceleration */
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
