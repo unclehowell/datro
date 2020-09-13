@@ -55,6 +55,7 @@ The monorepo branches are given different semantic version tag extensions:
 - source code on the `rpi-os` branch = version x.x.x-rc.x (Release Candidate) e.g. v0.0.1-rc.1
 - source code on the `live-usb` branch = version x.x.x-rtm.x (Release to Market) e.g. v0.0.1-rtm.1
 - source code on the `gh-pages` branch = version x.x.x-rtw.x (Release to Web) e.g. v0.0.1-rtw.1
+- source code on the `netlify` branch = version x.x.x-rtwx.x (Release to Web extra) e.g. v0.0.1-rtwx.1
 
 Why do this ? It's so we can release newer compiled software/ versions of the different technologies in our monorepo,
 at different stages, without having to wait to bring everything in the monorepo up to the latest version release.
@@ -68,10 +69,10 @@ So we can expect as many as 7 branches (plus 7 corresponding ones for developmen
 Furthermore, the rpi-os is the hotspotbnb software for the raspberry pi's only, so we may see separate releases for other supported hardware.  As too does the live-usb, (only supports) a select range of laptop hardware devices (at the moment).
 These branches are to look something like this:
 - rpi-os & rpi-os-dev (raspberry pi (hotspotbnb) operating system)
-- gh-pages & gh-pages-dev (all the websites (static & server-side) and documents, in html/pdf form)
-- live-usb (to-go persistent live usb disk image)
-- cacher (a solution for doing the self-build rpi-os upgrade entirely offline, using proxy cache/ redirects)
-- DAO Society (our decentralized autonomous organization & smart contracts)
+- gh-pages (all the websites (static & server-side) and documents, in html/pdf form)
+- live-usb & live-usb-dev (to-go persistent live usb disk image)
+- cacher & cacher-dev (a solution for doing the self-build rpi-os upgrade entirely offline, using proxy cache/ redirects)
+- DAS & das-dev (our decentralized autonomous organization & smart contracts)
 
 ## Getting Started with Sparse Checkout
 
@@ -250,10 +251,10 @@ GitHub will notify you if there's a comment to respond to or when the administra
 
       ### When you just need a bunch of files in a repo (no pull, sparse-checout - just files, quick and dirty)
       svn co --depth files https://github.com/unclehowell/hbnb/branches/gh-pages/static/splashpage/img/
-  
+
       ### Something weird happened with RST files, where they had to be recoverd from build/html/_source/
       ### This code bulk changes the extension on multiple files  
-     
+
       #!/bin/sh
       #
 
@@ -261,4 +262,3 @@ GitHub will notify you if there's a comment to respond to or when the administra
 	do
       mv -- "$i" "${i%.txt}"
       done
-

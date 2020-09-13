@@ -11,7 +11,7 @@ For more info about semantic version control and our use of bespoke extensions, 
 
 ## [Unreleased]
 
-## [0.0.1-rtw.8] - 2020-09-07
+## [0.0.1-rtw.8] - Q3/2020
 
 ### Added
 - Copyleft notice and website url, in the bottom center
@@ -20,6 +20,7 @@ For more info about semantic version control and our use of bespoke extensions, 
 - This changelog now reflects the new filename and our custom extension (`rtw`), of this branches semantic version ID
 - Hopefully all the inbound links to this 'gui' (formerly 'demo') are updated now. See their respective changelogs
 - Breadcrumb on app store, it was a bit close to the edge. I brought it in a bit (5vw)
+- 12-Sep - changed the title font-size and margin from px, to em, since it was looking stupidly small on mobile.
 
 ### Fixed
 - The mouse curstor wasn't always catching the budger button. Fixed it
