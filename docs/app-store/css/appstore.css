@@ -7,25 +7,59 @@ background-color:#333333;
 }
 .categories-text {
     position: relative;
-    margin: 0.4em auto 0 auto;
+    margin: -1em auto -1em auto;
     background: transparent;
     max-width: 100%;
-    padding: 0.4em;
-    font-size: 2.5vw;
+    padding: 1em;
+    font-size: 1.2rem;
     border-radius: 1em;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 100;
     height: 1px;
     text-align: center;
-    border-top: 1px solid grey;
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     text-size-adjust: 100%;
     opacity: 0.5;
     zoom: 0.8;
-    padding-top: 0.5em;
-    margin-bottom: -1em;
+    padding-top: 1em;
+}
+
+@media screen and (max-width:500px) {
+.categories-text {
+   opacity:0;
+}
+}
+
+@media screen and (min-width:386px) and (max-width:502px) {
+.content .rs {
+height: 5em;
+}
+}
+
+@media screen and (max-width:312px) {
+.content .rs {
+height: -2em;
+}
+}
+
+@media screen and (min-width:903px) {
+.categories-text {
+   font-size:2vw;
+}
+}
+
+@media screen and (min-width:1135px) {
+.categories-text {
+   margin-top:0em;
+}
+}
+
+@media screen and (min-width:502px) and (min-width:902px) {
+.categories-text {
+   padding-top:0em;
+}
 }
 
 .square {
@@ -48,7 +82,7 @@ background-color:#343c55;
 @media screen and (max-width: 900px) {
 .square {
     min-width: 25vw;
-    min-height: 16vw;
+    min-height: 12vw;
     line-height: 8vw;
 }
 
@@ -58,7 +92,7 @@ background-color:#343c55;
     line-height: 8vw;
 }
 
-.categories-text {font-size:4vw;}
+.categories-text {font-size:3.7vw;}
 }
 
 .content .rs {
