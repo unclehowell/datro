@@ -4,17 +4,18 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-### static/files - version 0.0.1
-This version ID is for this specific directory - for reference purposes only.  
-The actual semantic version is below - with the extension 'RTW' which represents this repositories branch.
-For more info about semantic version control and our use of bespoke extensions, read the top-level COLLABORATE.md file.  
+This version ID below refers to this specific directory e.g. FILES - for reference purposes only.  
+If you want to see the semantic version of this repositories branch look in the top level directories changelog e.g. version x.x.x-rtw.x
+Everything is in this single repo e.g. monorepo. The seperate branches are reflected with seperate semantic version extensions e.g. -rtw
+For more info about semantic version control and our use of bespoke extensions, read the top-level COLLABORATE.md file. 
 
 ## [Unreleased]
 
-## [0.0.1-rtw.8] - 2020-09-03
+## [0.0.2] - 2020-09-03
 
 ### Added
     - GNU General Public Licence - sitewide
+    - removed scrollbars completly - see the `master-rebuild.sh` script in the `_source-files` directory
 
 ### Changed
     - Re-structured directory (ongoing)... and re-branded, from Wave, to HotspotBnB, to DATRO

@@ -81,6 +81,7 @@ do
        ProgressBar ${number} ${_end}
 done
 
+sed -i 's/<\/head>/<style>html{overflow-y:scroll;} ::-webkit-scrollbar{width:0px;background:transparent;}<\/style><\/head>/g' build/html/*.html
 sed -i 's/ View page source/ /g' build/html/*.html
 sed -i 's/<div class="version">/<div class="version"> Document Version : /g' build/html/*.html
 # sed -i 's/<div role="contentinfo"/<div role="contentinfo" style="visibility:hidden!important;opacity:0!important;"/g' build/html/*.html

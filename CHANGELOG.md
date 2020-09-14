@@ -1,28 +1,14 @@
 # Changelog
-All changes to this directory will be documented in this file.
-For changes to the directories content, please see the CHANGELOG's contained within the corresponding directory.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-Kind of .... we use Q1/2020 instead the date in the release title
-and we put the date and month (time is optional) next to each entry
-This makes more sense to us, since the changelog is otherwise locked to specific commits
-
-### / - version x.x.x
-This version ID is for this specific directory - for reference purposes only. Not applicable for this top level directory.
-The actual semantic version is below - with the extension 'RTW' which represents this repositories branch.
-For more info about semantic version control and our use of bespoke extensions, read the top-level COLLABORATE.md file.
-
-* In each directories' changelog, the below version is replaced with the above
-So this changelog tells you the branch release version, whereas each directories ver. no. corresponds to work within that directory.
-Therefore, this changelog should correspond to structural changes only (and hosting changes, since its a gh-pages branch)
 
 ## [Unreleased]
 
 ## [0.0.1-rtw.8] - Q3/2020
 
 ### Added
+13-Sep - Missing files from the last commit - restored (/static/files/_source-files)
 09-Sep - GNU General Public Licence - repo/ sitewide
 
 ### Changed
@@ -32,6 +18,7 @@ Therefore, this changelog should correspond to structural changes only (and host
 09-Sep - Renamed `static/demo` directory to `static/gui`. It may double up as a demo for HBnB, but it's actually the actual GUI
 
 ### Removed
+13-Sep - Removed Scrollbars on all websites, part of the introduction of https://datro.world
 09-Sep - Copyright (from Sphinx html docs)
 
 ### Fixed
