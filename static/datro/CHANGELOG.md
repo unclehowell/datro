@@ -13,6 +13,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
     - local boostrap-grid.css, or else the columbs turn into rows if the cdn bootstrap isn't reachable.   
 
 ### Changed
+13-Sep - redirected all the pending webpages to the main page. Until they're ready to present. (see meta in header)
     - Changed `href="#myCarousel"` to `data-target="#myCarousel"` on the splashpage, to fix a bug (page was scrolling)
     - html theme now matches website theme
 
