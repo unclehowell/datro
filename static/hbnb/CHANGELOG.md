@@ -2,25 +2,17 @@
 It's expected that developers log all changes to this directory, in this CHANGELOG.md file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-Kind of .... we use Q1/2020 instead the date in the release title
-and we put the date and month (time is optional) next to each entry
-This makes more sense to us, since the changelog is otherwise locked to specific commits
-
-### static/hbnb - version 0.0.1
-This version ID is for this specific directory - for reference purposes only.
-The actual semantic version is below - with the extension 'RTW' which represents this repositories branch.
-For more info about semantic version control and our use of bespoke extensions, read the top-level COLLABORATE.md file.
+and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-## [0.0.1-rtw.8] - Q3/2020
+## [0.0.1] - Q3/2020
 
 ### Added
 - put some css into the header to allow scrolling, but hide the scrollbars
 - it should be in the css, but one step at a time. Will try that next, but not on the main (on the beta)
 
 ### Changed
+13-Sep - got rid of a horizontal scrollbar which was very apparent against the contrasting footer color. 
 
 ### Fixed
