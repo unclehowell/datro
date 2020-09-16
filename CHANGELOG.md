@@ -12,8 +12,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 15-Sep - made it so videos (inside the dashboard iframe) could be played full screen
 15-Sep - Put in some cool css, to hide blue flashes (in chrome) when you click stuff:
          `a{-webkit-tap-highlight-color: transparent;}`
-15-Sep - I was running experiments on this branch, which rebuilds autonomously with Netlify, which can get expensive
-         So I am going to move the experiment over to cloudflare and gh-pages branch, where there's no likelyhood of cost
+15-Sep - Jquery, to detect subdomain then change iframe content to correspond and raise top bar.
 
 ### Removed
 15-Sep - Remove AMP from splashpage. For now.

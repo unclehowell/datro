@@ -8,6 +8,15 @@
 				<meta name="HandheldFriendly" content="true" />
 			  <meta name="mobile-web-app-capable" content="yes">
 				<link href="dashboard/img/favicons/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script>
+        //If URL contains "mystring"
+           if (window.location.href.indexOf("hbnb") > -1) {
+             location.href = 'index#anchor';
+           $("#iframe").attr("src","static/hbnb/index.html");
+           }
+        </script>
 
         <meta http-equiv="Page-Enter" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
         <meta http-equiv="Page-Exit" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
