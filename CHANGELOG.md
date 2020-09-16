@@ -9,14 +9,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [0.0.1-rtwx.1] - Q3/2020
 
 ### Added
-15-Sep - Possible hack - to get subdomains and other urls to all visit the same site, then the site url forwards using javascript
-         e.g. type hbnb.datro.world or hotspotbnb.com and you'll be directed to the website datro.world/index.html
-         maybe able to revert back to one branch on gh-pages for all sites (+ Cloudflare/ no Netlify), using this solution           
-  FYI: - Removed the script that forces https, just for this experiment. Plus it may not even be required with Netlify instead of gh-pages
-
+15-Sep - moved everything from /docs directory into the top level directory
 15-Sep - made it so videos (inside the dashboard iframe) could be played full screen
 15-Sep - Put in some cool css, to hide blue flashes (in chrome) when you click stuff:
          `a{-webkit-tap-highlight-color: transparent;}`
+15-Sep - I was running experiments on this branch, which rebuilds autonomously with Netlify, which can get expensive
+         So I am going to move the experiment over to cloudflare and gh-pages branch, where there's no likelyhood of cost
 
 ### Removed
 13-Sep - Hid scrollbars, gorgeous if I do say so
