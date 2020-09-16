@@ -1,9 +1,9 @@
 html {
-background-color:#333333;
+background-color:#454545;
 }
 
 body {
-background-color:#333333;
+background-color:#454545;
 }
 .categories-text {
     position: relative;
@@ -33,7 +33,7 @@ background-color:#333333;
     position: relative;
     padding-bottom: 17%;
     margin: 1.99%;
-    background: -webkit-gradient(radial, 50% 52%, 253, -50% -1157%, 254, from(#333444), to(#33339D));
+    background: transparent;
     overflow: hidden;
     border-radius: 0.5em;
     border: 1px solid white;
@@ -46,7 +46,7 @@ background-color:#333333;
 }
 
 .square:hover {
-background-color:#343c55;
+background-color:#767676;
 }
 
 @media screen and (max-width: 370px)  and (max-width: 548px) {

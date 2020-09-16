@@ -4,7 +4,7 @@
     position: relative;
     width: 16%;
     padding-bottom: 16%;
-    background:-webkit-gradient(radial, 50% 52%, 253, -50% -1157%, 254, from(#333444), to(#33339D));
+    background:#2c2c2c;
     margin: 1.66%;
     overflow: hidden;
     border-radius: 0.5em;
@@ -12,11 +12,10 @@
     border-style: solid;
     border-color: white;
     border-image: initial;
-    z-index:0;
 }
 
 .square-005-001:hover {
-    background-color: rgb(52, 60, 85);
+    background-color: #303030;
 }
 
 .content-005-001 {
