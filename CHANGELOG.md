@@ -9,6 +9,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [0.0.1-rtwx.1] - Q3/2020
 
 ### Added
+13-Sep - made it so videos (inside the dashboard iframe) could be played full screen
 13-Sep - Put in some cool css, to hide blue flashes (in chrome) when you click stuff:
          `a{-webkit-tap-highlight-color: transparent;}`
 
