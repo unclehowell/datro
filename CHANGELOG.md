@@ -9,9 +9,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [0.0.1-rtwx.1] - Q3/2020
 
 ### Added
+13-Sep - Put in some cool css, to hide blue flashes (in chrome) when you click stuff:
+         `a{-webkit-tap-highlight-color: transparent;}`
 
 ### Removed
-13-Sep - hid scrollbars, gorgeous if I do say so
+13-Sep - Hid scrollbars, gorgeous if I do say so
 
 ### Changed
 15-Sep - New theme - the one kind most web-apps follow e.g. the grey, night-coding, dark-mode type

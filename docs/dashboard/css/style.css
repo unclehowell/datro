@@ -10,6 +10,14 @@ html {
   background:#2c2c2c;
   overflow-x:hidden!important;}
 
+
+*:focus {
+      -webkit-tap-highlight-color: transparent!Important;
+      outline: none!Important;
+      -ms-touch-action: manipulation!Important;
+      touch-action: manipulation!Important;
+  }
+
 body {
   font-size: 1.6rem;
   font-family: "Open Sans", sans-serif;
@@ -23,12 +31,16 @@ a {
   text-decoration: none;
 }
 
+a{
+-webkit-tap-highlight-color: transparent;
+}
+
 ::selection {
-    background: transparent;
+    background: transparent!important;
 }
 
 ::-moz-selection {
-    background: transparent;
+    background: transparent!important;
 }
 
 * {

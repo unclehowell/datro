@@ -248,10 +248,10 @@ GitHub will notify you if there's a comment to respond to or when the administra
       ### Change permission of all files in the repo.
       Handy when you want to use Atom instead of Notepad C++
 
-      find /xxxx/xxxx -type f -exec chown user:user {} \;
+      ` find ./ -type f -exec chown user:user {} \; `
 
       ### When you just need a bunch of files in a repo (no pull, sparse-checout - just files, quick and dirty)
-      svn co --depth files https://github.com/unclehowell/hbnb/branches/gh-pages/static/splashpage/img/
+      ` svn co --depth files https://github.com/unclehowell/hbnb/branches/gh-pages/static/splashpage/img/ `
 
       ### Something weird happened with RST files, where they had to be recoverd from build/html/_source/
       ### This code bulk changes the extension on multiple files  
@@ -259,7 +259,12 @@ GitHub will notify you if there's a comment to respond to or when the administra
       #!/bin/sh
       #
 
-      for i in *.txt
+      ` for i in *.txt
 	do
       mv -- "$i" "${i%.txt}"
-      done
+      done `
+ 
+      ## Modify apache2 page to show directory in full side on mobile
+      ## add this to /etc/apache2/apache2.conf 
+
+      ` IndexHeadInsert "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">" `

@@ -6,7 +6,25 @@ body {
 background-color:#454545;
 }
 
+*:focus {
+    -webkit-tap-highlight-color: transparent!Important;
+    outline: none!Important;
+    -ms-touch-action: manipulation!Important;
+    touch-action: manipulation!Important;
 }
+
+a{
+-webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+    background: transparent!important;
+}
+
+::-moz-selection {
+    background: transparent!important;
+}
+
 ul.breadcrumb li span:hover {
     color: white!Important;
     opacity: 1;
