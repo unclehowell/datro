@@ -47,6 +47,7 @@
     min-height: 8vw;
     min-width: 8vw;
     filter:invert(0.8);
+    image-rendering: auto;
 }
 
 @media screen and (max-width: 900px) {
