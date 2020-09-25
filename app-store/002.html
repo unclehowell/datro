@@ -1,4 +1,4 @@
-<DOCTYPE html>
+v<DOCTYPE html>
 <html>
   <head>
      <title>Gaming</title>
@@ -162,7 +162,7 @@ $(function () {
   	</div>
 
 
-        <a onclick="window.location = window.location.protocol + '//' + window.location.hostname + ':8080';" style="cursor:pointer;">
+        <a href="003.html" style="cursor:pointer;">
         <div class="square-002-001">
                 <div class="content-002-001">
                         <div class="table-002-001">
@@ -178,8 +178,8 @@ $(function () {
         </div></a>
 
 
-        <a onclick="window.location = window.location.protocol + '//' + window.location.hostname + ':8080';" style="cursor:pointer;">
-        <div class="square-002-002">
+        <a style="cursor:pointer;" onclick="window.location = window.location.protocol + '//' + window.location.hostname + ':8088';" >
+      <div class="square-002-002">
             <div class="content-002-002">
                    <div class="table-002-002">
                           <div class="table-cell-002-002">
@@ -193,11 +193,47 @@ $(function () {
                 </div>
         </div></a>
 
+<div class="square-empty">
+<div class="content-empty">
+<a href="">
+<div class="table-empty">
+<div class="table-cell-empty">
+<img class="rs-empty" />
+</br></br>
+</div>
+</div></a>
+</div>
+</div>
+
+
+<script>
+   function UrlExists(url) 
+{
+  var http = new XMLHttpRequest();
+  http.open('HEAD', url, false);
+  http.send();
+  return http.status!=404;
+}
+
+document.onreadystatechange = function() 
+{
+    var anchorElements = document.getElementsByTagName('a');
+    for (var i in anchorElements)
+        anchorElements[i].onclick = function(th) 
+        {
+        th.preventDefault();
+        if (UrlExists(this.href)) { window.location=this.href; }
+        else {window.location='404.html';}
+                return false;
+            }
+}
+</script>
+
 
 <script src="js/breadcrumb.js"></script>
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/main.js"></script>
-<!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="https://www.jqueryscript.net/demo/Simple-iFrame-Modal-Plugin-With-jQuery-modallink/src/jquery.modallink-1.0.0.js"></script>
   </body>
 </html>
