@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 09-Sep - Copyright (from Sphinx html docs)
 
 ### Fixed
+24-Sep - Broken links fixed (using a chrome link checker plugin from pagemodified.com - thanks whoever built it)
 09-Sep - The frame the docs are displayed in (featherlight) was scrolling upwards off screen, whenever you selected the doc. Fixed it!
 09-Sep - Copyleft symbol wasn't appearing on chrome on android. Reversed copyright symbol using css instead.
 09-Sep - changed background color to theme, the white default was making the website look poor between page refreshes
