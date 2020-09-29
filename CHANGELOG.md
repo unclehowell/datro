@@ -12,6 +12,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
          A seperate branch has been created for the gui, so the live build and trial can sync to github as a sort of backup. 
 
 ### Added
+24-Sep - Added some script to stop links functioning if the destination is a 404 e.g. service hasn't started etc
 
 ### Removed
 
