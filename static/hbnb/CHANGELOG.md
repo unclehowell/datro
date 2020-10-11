@@ -6,6 +6,16 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.0.1] - Q4/2020
+
+### Added
+
+### Changed
+
+10-Oct - Changed the github.com release url, from the hbnb repo, to the datro repo
+         inacurate according to our semantic release methodology and nomenclature, but it's only temporary
+         at least until the hbnb net installer source code branch is moved from hbnb to datro 
+
 ## [0.0.1] - Q3/2020
 
 ### Added
