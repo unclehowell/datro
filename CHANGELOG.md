@@ -6,6 +6,19 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.0.1-rtwx.1] - Q4/2020
+
+### Added
+15-Oct - New Hotspotβnβ logo added
+
+### Removed
+
+### Changed
+03-Oct - moved content of frame down a bit, it was getting cut off
+03-Oct - changed page titles from `Datro Assets` to `DATRO`
+
+### Fixed
+
 ## [0.0.1-rtwx.1] - Q3/2020
 
 ### Added
