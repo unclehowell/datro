@@ -13,7 +13,7 @@ body {
 }
 
 h1 {
-  color:rgba(52, 60, 85, 1);
+  color:#2c2c2c;
   font-weight: 400;
   padding: 50px 0;
 }
@@ -31,7 +31,7 @@ ul.breadcrumb {
 ul.breadcrumb li {
   float: right;
   padding: 0px 2.5px 0px 2.5px;
-  background-color:rgba(52, 60, 85, 1);
+  background-color:#454545;
   -moz-border-radius: 50px;
   -webkit-border-radius: 50px;
   border-radius: 50px;
@@ -56,8 +56,7 @@ ul.breadcrumb li a {
   transition: all 0.2s;
   text-decoration: none;
   height: 50px;
-  color: rgba(52, 60, 85, 1);
-  background-color:#333333;
+  color: white;
   text-align: center;
   width: 50px;
   display: block;
@@ -103,13 +102,13 @@ ul.breadcrumb li a .text {
 }
 
 ul.breadcrumb li a:hover {
-    background-color:rgba(255,255,255,0.6)!important;
-    color: rgba(52, 60, 85, 1)!important;
- /* background-color:rgba(52, 60, 85, 1)!important; */
+    background-color:#303030;
+    color: white!important;
 }
 ul.breadcrumb li a:hover .text {
   display: inline-block;
   opacity: 1;
+  color:white;
 }
 
 ul.breadcrumb li:last-child a {
@@ -126,7 +125,7 @@ ul.breadcrumb li:last-child:hover a {
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
   text-decoration: none;
-  color: rgba(52, 60, 85, 1);
+  color: #2c2c2c;
   display: block;
   padding-left: 6px;
   padding-right: -1px;

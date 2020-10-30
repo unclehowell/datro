@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="no-js is-responsive is-mobile-first" lang="en">
+<head>
+	<meta charset="utf-8">
+	<script async src="https://cdn.ampproject.org/v0.js">
+	</script>
+	<meta content="1" http-equiv="Expires">
+	<link href="//datro.xyz/static/gui/search.html" rel="canonical">
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport">
+	<script type="type/javascript">
+	             var host = "datro.xyz";
+	             if {{ host == window.location.host} && {window.location.protocol != "https:""}}
+	             window.location.protocol = "https";
+	</script>
+	<meta content="HotspotBnB GUI" name="description">
+	<meta content="HotspotBnB GUI" name="author">
+	<title>HotspotBnB Search</title>
+	<link href="dashboard/img/favicons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
+	<link href="dashboard/img/favicons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
+	<link href="dashboard/img/favicons/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+	<link href="dashboard/img/favicons/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+	<link href="dashboard/img/favicons/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+	<link href="dashboard/img/favicons/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+	<link href="dashboard/img/favicons/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+	<link href="dashboard/img/favicons/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+	<link href="dashboard/img/favicons/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180">
+	<link href="dashboard/img/favicons/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png">
+	<link href="dashboard/img/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+	<link href="dashboard/img/favicons/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
+	<link href="dashboard/img/favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+	<meta content="#ffffff" name="msapplication-TileColor">
+	<meta content="dashboard/img/favicons/ms-icon-144x144.png" name="msapplication-TileImage">
+	<meta content="#ffffff" name="theme-color"><!-- CSS -->
+	<link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet" type="text/css">
+	<link href="dashboard/css/search/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="dashboard/css/search/featherlight.css" rel="stylesheet" type="text/css">
+	<link href="dashboard/css/search/style.css" rel="stylesheet" type="text/css">
+	<link href="dashboard/css/search/footer.css" rel="stylesheet" type="text/css">
+	<link href="dashboard/css/search/download-buttons.css" rel="stylesheet" type="text/css">
+	<link href="dashboard/css/search/dropdownboxes.css" rel="stylesheet" type="text/css">
+	<link href="dashboard/css/search/glyphicon.css" rel="stylesheet" type="text/css">
+	<link href="dashboard/css/search/dropdownboxes.css" rel="stylesheet">
+	<link href="search-box/doc-library.css" rel="stylesheet">
+	<style>
+ html {
+	overflow-y:   scroll;
+	overflow-x:   hidden;
+      }
+
+::-webkit-scrollbar {
+		width: 0px;
+		background: transparent; /* make scrollbar transparent */
+                }
+
+	       .role-buttons {margin:5px!important;color:white!important;}
+	       .rounded-circle {margin-top:0!important; margin-bottom:15px;}
+	       .btn:hover {background:#333366!important;}
+	       .rolestore-buttons {float:left; postion:absolute; margin-top:0!important;text-align:center!important; width:100%!important; padding-top:0px; margin-bottom:1rem;}
+	       .btn-success {max-width:205px!Important;min-width:268px!Important;}
+	       .btn-lg {padding-left:20px!Important; justify-content: center!Important; display:inline-flex!important;}
+
+input[type=text] {min-width:232px;}
+.featherlight-iframe .featherlight-content {margin-top:1rem!important;}
+.collection .collection-item.active {
+               background-color:#3e3e3e;
+               border:2px solid #454545;           
+}
+
+body {
+  background: url(dashboard/img/logo.svg);
+  background-image: url(dashboard/img/image.svg), none;
+}	
+                .container {
+    perspective: 800px;
+    max-width:250px;
+    min-width:225px;
+}
+
+:root {
+    --accent: #04da97;
+    --border-width: 6px;
+    --border-radius: 55px;
+    --font-size: 30px;
+}
+
+.toggle {
+    position: relative;
+    border: solid var(--border-width) #2c2c2c;
+    border-radius: var(--border-radius);
+    transition: transform cubic-bezier(0, 0, 0.30, 2) .4s;
+    transform-style: preserve-3d;
+    perspective: 800px;
+}
+
+.toggle>input[type="radio"] {
+    display: none;
+}
+
+.toggle>#choice1:checked~#flap {
+    transform: rotateY(-180deg);
+}
+
+.toggle>#choice1:checked~#flap>.content {
+    transform: rotateY(-180deg);
+}
+
+.toggle>#choice2:checked~#flap {
+    transform: rotateY(0deg);
+}
+
+.toggle>label {
+    display: inline-block;
+    min-width: 170px;
+    padding: 30px;
+    font-size: var(--font-size);
+    text-align: center;
+    color: #2c2c2c;
+    cursor: pointer;
+}
+
+.toggle>label,
+.toggle>#flap {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.toggle>#flap {
+    position: absolute;
+    top: calc( 0px - var(--border-width));
+    left: 50%;
+    height: calc(100% + var(--border-width) * 2);
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--font-size);
+    background-color: #2c2c2c;
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: transform cubic-bezier(0.4, 0, 0.2, 1) .5s;
+}
+
+.toggle>#flap>.content {
+    color: #454545;
+    transition: transform 0s linear .25s;
+    transform-style: preserve-3d;
+}
+</style><!-- Java -->
+
+	<script src="dashboard/js/search/lazy.min.js">
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+	<script>
+	               function pageLoad(){
+	                document.getElementById('mainWrapper').style.visibility="visible";
+	               }
+	</script>
+	<style>
+	body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+	</style><noscript>
+	<style>
+	body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
+	</style></noscript>
+</head>
+<body bgcolor="#333366" onload="pageLoad()" style="font-size: 125%;">
+	<main class="main" role="main">
+		<div class="segment" style="margin-top:20vh!important;">
+			<div class="buttonsdiv" style="padding-bottom:4rem; text-align:center;">
+			  <div style="margin:auto;width:40%;text-align:center;">
+
+ <div class="container">
+
+        <form class="toggle" style="zoom:0.5;">
+
+            <input type="radio" id="choice1" name="choice" value="creative">
+            <label for="choice1">Docs</label>
+
+            <input type="radio" id="choice2" name="choice" value="productive">
+            <label for="choice2">Apps</label>
+
+            <div id="flap"><span class="content">productive</span></div>
+
+        </form>
+
+    </div> <p></p>
+
+                                  <input autocomplete="off" autofocus="" class="validate" id="search-box" style="max-height:100px!important; border:0.5px dotted grey;" type="text">
+
+</div>	                             <ul class="collection">
+					<li class="collection-item" style="opacity:0;">
+						<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="../files/coming-soon/coming-soon/latest/build/html/index.html"><strong>Sample 3</strong>Three Three</a>
+					</li>
+					<li class="collection-item" style="opacity:0;">
+						<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="../files/coming-soon/coming-soon/latest/build/html/index.html"><strong>Sample 4</strong>Four Four</a>
+					</li>
+				</ul>           </div> 
+
+				<div class="no-apps-found" style="text-align:center;">
+					<b>Nothing Matching That. Try Again Please.</b>
+				</div>
+
+
+		</div>
+	</main>
+	<script src="search-box/js/list-search-min.js">
+	</script> 
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+	</script> 
+	<script>
+	       window.jQuery || document.write('<script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/jquery-slim.min.js"><\/script>')
+	</script> 
+	<script src="https://getbootstrap.com/docs/4.1/assets/js/popper.min.js">
+	</script> 
+	<script src="https://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js">
+	</script> 
+	<script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/holder.min.js">
+	</script> <!-- The other .js fils -->
+	 
+	<script src="dashboard/js/search/distributors-dropdown.js">
+	</script> 
+	<script src="dashboard/js/search/scale.fix.js">
+	</script> 
+	<script src="dashboard/js/search/jquery.min.js">
+	</script> 
+	<script charset="utf-8" src="featherlight/release/featherlight.min.js" type="text/javascript">
+	</script> <!--- need for footer-dropdown to work, possibly all 3 -->
+	 
+	<script>
+	           initializeListSearch({
+	               toggleAnimationSpeed: 0,
+	               openLinkWithEnterKey: true,
+	               itemSelector: '.collection-item',
+	               searchTextBoxSelector: '#search-box',
+	               noItemsFoundSelector: '.no-apps-found'
+	           });
+	</script>
+        <script>
+const st = {};
+
+st.flap = document.querySelector('#flap');
+st.toggle = document.querySelector('.toggle');
+
+st.choice1 = document.querySelector('#choice1');
+st.choice2 = document.querySelector('#choice2');
+
+st.flap.addEventListener('transitionend', () => {
+
+    if (st.choice1.checked) {
+        st.toggle.style.transform = 'rotateY(-15deg)';
+        setTimeout(() => st.toggle.style.transform = '', 400);
+    } else {
+        st.toggle.style.transform = 'rotateY(15deg)';
+        setTimeout(() => st.toggle.style.transform = '', 400);
+    }
+
+})
+
+st.clickHandler = (e) => {
+
+    if (e.target.tagName === 'LABEL') {
+        setTimeout(() => {
+            st.flap.children[0].textContent = e.target.textContent;
+        }, 250);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    st.flap.children[0].textContent = st.choice2.nextElementSibling.textContent;
+});
+
+document.addEventListener('click', (e) => st.clickHandler(e));
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting</title>
+ <script type="text/javascript">
+                                    $(document).ready(function() {
+                                        $("body").css("display", "none");
+                                        $("body").fadeIn(20);
+                                    });
+                                </script>
+
+  </head>
+  <body onload="redirect()" style="background:#454545;">
+	<h1 style="text-align: center; padding-top: 50px; display: block;"></h1>
+<script>
+	  function redirect() {
+		setTimeout(function(){
+				window.location.replace("./index.html#anchor");
+			}
+			, 10);
+		}
+	</script>
+  </body>
+</html>

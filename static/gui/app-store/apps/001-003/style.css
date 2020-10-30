@@ -4,7 +4,7 @@
     position: relative;
     width: 16%;
     padding-bottom: 16%;
-    background-color: rgba(72, 82, 116, 0.9);
+    background:#303030;
     margin: 1.66%;
     overflow: hidden;
     border-radius: 0.5em;
@@ -15,7 +15,7 @@
 }
 
 .square-001-003:hover {
-    background-color: rgb(52, 60, 85);
+    background-color: #303030;
 }
 
 .content-001-003 {
@@ -37,7 +37,7 @@
 }
 
 .content-001-003 .rs-001-003 {
-    max-height: 15vw;
+    max-height: 35%;
     width: auto;
     margin-top: 10px;
     overflow: hidden!important;

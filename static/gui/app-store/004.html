@@ -8,6 +8,15 @@
 <link rel="stylesheet" href="css/breadcrumb.css">
 <link rel="stylesheet" href="css/appstore.css">
 <link rel="stylesheet" href="css/font-awesome.css">
+<link rel="stylesheet" href="apps/000-000/style.css">
+<link rel="stylesheet" href="apps/004-001/style.css">
+<link rel="stylesheet" href="apps/004-002/style.css">
+<link rel="stylesheet" href="apps/004-003/style.css">
+<link rel="stylesheet" href="apps/004-004/style.css">
+<link rel="stylesheet" href="apps/004-005/style.css">
+<link rel="stylesheet" href="apps/004-006/style.css">
+<link rel="stylesheet" href="apps/004-007/style.css">
+<link rel="stylesheet" href="apps/004-008/style.css">
     <style>
       html {overflow-x: hidden!important;height: -webkit-fill-available;}
 #body {}
@@ -86,6 +95,18 @@ body:not(.loaded) #slider img {
   display:none;
 }
 
+.breadcrumb-icon-microscope {
+  height: 40px;
+  width: 1.5em;
+  margin-top: 0.2em;
+  display:
+  inline-flex;
+  opacity: 1;
+  float: left;
+  filter: brightness(1.5);
+  margin-left: -0.1em;
+  margin-right: 0.3em;
+}
     </style>
     <script>
       $(document).ready(function(){
@@ -123,19 +144,19 @@ body:not(.loaded) #slider img {
 <ul class="breadcrumb" id="btn noHover">
   <li class='btn noHover'>
     <a href="#" style="width:auto!Important;">
-      <span class="icon icon-shield"></span>
+      <img class="breadcrumb-icon-microscope" src="../dashboard/img/icons/004.svg"></span>
       <span class="text2">safety & security</span>
     </a>
   </li>
   <li >
-    <a href="000.html" style="width:auto!Important;background-color:rgba(255, 255, 255, 0.2);">
-      <span class="text2">categories</span>
+    <a href="000.html" style="width:auto!Important;background-color:#303030;">
+        <span class="text2" style="margin-left:1vw">categories</span>
     </a>
   </li>
 
   <li class="btn noHover">
     <a href="000.html" style="width:auto!Important;">
-      <span class="text2">appstore</span>
+      <span class="text2">hotspotβnβ</span>
     </a>
   </li>
 
@@ -161,46 +182,21 @@ body:not(.loaded) #slider img {
 
         </div>
 
-
-<div class="square">
-   <div class="content">
-      <a href="#" onclick="">
-        <div class="table">
-            <div class="table-cell">
-                <img class="rs" src="img/pihole.png"/>
-                </br><p class="categories-text" style="zoom:0.62!important;">PiHole</p></br>
+ <a style="cursor:pointer;" onclick="window.location = window.location.protocol + '//' + window.location.hostname + ':80/admin/';" >
+        <div class="square-004-001">
+          <div class="content-004-001">
+            <div class="table-004-001">
+              <div class="table-cell-004-001">
+                <img class="rs-004-001" src="apps/004-001/logo.png"><br>
+                <span style="height: 3rem!Important; display: inline-block;"><object border="0" data="apps/004-001/title.svg" height="50px" style="z-index: -1!important; position: relative;" type="text/plain" width="100%">
+                </object></span><br>
+              </div>
             </div>
+          </div>
         </div></a>
-    </div>
-</div>
 
 
-<div class="square">
-   <div class="content">
-      <a href="#" onclick="">
-        <div class="table">
-            <div class="table-cell">
-                <img class="rs" src="img/motioneye.png"/>
-                </br><p class="categories-text" style="zoom:0.62!important;">MotionEye</p></br>
-            </div>
-        </div></a>
-    </div>
-</div>
 
-<div class="square-empty">
-   <div class="content">
-      <a href="#" onclick="">
-        <div class="table">
-            <div class="table-cell">
-                <img class="rs" src="img/icons/upload.svg" style="filter: invert(66%)grayscale(100%)brightness(152%)contrast(111%)!important;opacity:0.2;">
-                </br><p class="categories-text" style="zoom:0.60!important;">Nominate App</p></br>
-            </div>
-        </div></a>
-    </div>
-</div>
-
-
-<script src="js/modernizr.js"></script>
 <script src="js/breadcrumb.js"></script>
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/main.js"></script>
