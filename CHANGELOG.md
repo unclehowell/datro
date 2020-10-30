@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 09-Sep - GNU General Public Licence - repo/ sitewide
 
 ### Changed
+30-Oct - static/gui improved. See its embedded changelog for more info
 09-Sep - Moved the entire repo from `github.com/unclehowell/HBnB` to `github.com/unclehowell/datro`
 09-Sep - Re-structured directory (ongoing)... and re-branded, from Wave, to HotspotBnB, to DATRO
 09-Sep - HotspotBnB and Wave are now spin-off/subsidiary projects of DATRO
