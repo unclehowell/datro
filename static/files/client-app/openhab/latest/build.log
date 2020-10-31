@@ -1,0 +1,209 @@
+Running Sphinx v3.2.1
+making output directory... done
+WARNING: html_static_path entry '_static' does not exist
+loading pickled environment... done
+building [mo]: targets for 0 po files that are out of date
+building [latex]: all documents
+updating environment: 0 added, 1 changed, 0 removed
+reading sources... [100%] releasenotes
+
+/var/www/html/datro-gh-pages/static/files/client-app/openhab/latest/source/releasenotes.rst:13: WARNING: Problems with "csv-table" directive path:
+[Errno 2] No such file or directory: 'source/_static/olderversions.csv'.
+
+.. csv-table:: Table 1.0 - Older Versions of this Document
+   :file: _static/olderversions.csv
+   :widths: 25, 25, 25, 25
+   :header-rows: 1
+/var/www/html/datro-gh-pages/static/files/client-app/openhab/latest/source/releasenotes.rst:31: WARNING: Problems with "csv-table" directive path:
+[Errno 2] No such file or directory: 'source/_static/issues.csv'.
+
+.. csv-table:: Table 1.1 - Known Issues
+   :file: _static/issues.csv
+   :widths: 10, 10, 20, 60
+   :header-rows: 1
+looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
+processing client-app-openhab.tex... index releasenotes CONTRIBUTING introduction README styleguide 
+resolving references...
+done
+writing... done
+copying images... [100%] ./images/contribution_link.png
+
+copying TeX support files... copying TeX support files...
+done
+build succeeded, 3 warnings.
+
+The LaTeX files are in build/latex.
+Run 'make' in that directory to run these through (pdf)latex
+(use `make latexpdf' here to do that automatically).
+make[1]: Entering directory '/var/www/html/datro-gh-pages/static/files/client-app/openhab/latest/build/latex'
+latexmk -pdf -dvi- -ps-  'client-app-openhab.tex'
+Latexmk: This is Latexmk, John Collins, 26 Dec. 2019, version: 4.67.
+Rule 'pdflatex': The following rules & subrules became out-of-date:
+      'pdflatex'
+------------
+Run number 1 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex   -recorder  "client-app-openhab.tex"'
+------------
+Latexmk: applying rule 'pdflatex'...
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./client-app-openhab.tex
+LaTeX2e <2020-02-02> patch level 2
+L3 programming layer <2020-02-14> (./sphinxmanual.cls
+Document Class: sphinxmanual 2019/12/01 v2.3.0 Document class (Sphinx manual)
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo)))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/cmap/cmap.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty<<t1.cmap>>)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))))
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tabulary/tabulary.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty)
+(./sphinxmulticell.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(./footnotehyper-sphinx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
+(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip-2001-04-09.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
+(./sphinxhighlight.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/atbegshi/atbegshi.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/atveryend/atveryend.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/hypcap.sty)
+(./sphinxmessages.sty)
+Writing index file client-app-openhab.idx
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def)
+(./client-app-openhab.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `alignment tab' on input line 85.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)<<ot1.cmap>><<oml.cmap
+>><<oms.cmap>><<omx.cmap>>
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.85 \sphinxmaketitle
+                     
+? make[1]: *** Deleting file 'client-app-openhab.pdf'
+! Interruption.
+<template> ... \hfil \hskip \col@sep \endtemplate 
+                                                  
+l.85 \sphinxmaketitle
+                     
+? Traceback (most recent call last):
+  File "/usr/local/bin/sphinx-build", line 8, in <module>
+    sys.exit(main())
+  File "/usr/local/lib/python3.8/dist-packages/sphinx/cmd/build.py", line 292, in main
+    return make_main(argv)
+  File "/usr/local/lib/python3.8/dist-packages/sphinx/cmd/build.py", line 199, in make_main
+    return make_mode.run_make_mode(argv[1:])
+  File "/usr/local/lib/python3.8/dist-packages/sphinx/cmd/make_mode.py", line 166, in run_make_mode
+    return getattr(make, run_method)()
+  File "/usr/local/lib/python3.8/dist-packages/sphinx/cmd/make_mode.py", line 106, in build_latexpdf
+    return subprocess.call([makecmd, 'all-pdf'])
+  File "/usr/lib/python3.8/subprocess.py", line 342, in call
+    return p.wait(timeout=timeout)
+  File "/usr/lib/python3.8/subprocess.py", line 1079, in wait
+    return self._wait(timeout=timeout)
+  File "/usr/lib/python3.8/subprocess.py", line 1804, in _wait
+    (pid, sts) = self._try_wait(0)
+  File "/usr/lib/python3.8/subprocess.py", line 1762, in _try_wait
+    (pid, sts) = os.waitpid(self.pid, wait_flags)
+KeyboardInterrupt
+make: *** [Makefile:19: latexpdf] Interrupt
+Type <return> to proceed, S to scroll future error messages,
+R to run without stopping, Q to run quietly,
+I to insert something, E to edit your file,
+H for help, X to quit.
+? 
+! Emergency stop.
+<template> ... \hfil \hskip \col@sep \endtemplate 
+                                                  
+l.85 \sphinxmaketitle
+                     
+!  ==> Fatal error occurred, no output PDF file produced!
+Transcript written on client-app-openhab.log.
+Latexmk: Index file 'client-app-openhab.idx' was written
+Collected error summary (may duplicate other messages):
+  pdflatex: Command for 'pdflatex' gave return code 0.0078125
+      Refer to 'client-app-openhab.log' for details
+Latexmk: Use the -f option to force complete processing,
+ unless error was exceeding maximum runs, or warnings treated as errors.
+=== TeX engine is 'pdfTeX'
+Latexmk: Errors, so I did not complete making targets

@@ -12,22 +12,9 @@
 	             if {{ host == window.location.host} && {window.location.protocol != "https:""}}
 	             window.location.protocol = "https";
 	</script>
-        <script type="text/javascript">
-$(document).ready(function(){    
-    //Check if the current URL contains '#'
-    if(document.URL.indexOf("#")==-1){
-        // Set the URL to whatever it was plus "#".
-        url = document.URL+"#";
-        location = "#";
-
-        //Reload the page
-        location.reload(true);
-    }
-});
-</script>
 	<meta content="HotspotBnB GUI" name="description">
 	<meta content="HotspotBnB GUI" name="author">
-	<title>Search Apps</title>
+	<title>Search Docs</title>
 	<link href="dashboard/img/favicons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
 	<link href="dashboard/img/favicons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
 	<link href="dashboard/img/favicons/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
@@ -56,14 +43,14 @@ $(document).ready(function(){
 	<link href="dashboard/css/search/dropdownboxes.css" rel="stylesheet">
 	<link href="search-box/doc-library.css" rel="stylesheet">
 	<style>
-input:focus::placeholder {
-  color: transparent;
-}
-
  html {
 	overflow-y:   scroll;
 	overflow-x:   hidden;
       }
+
+input:focus::placeholder {
+  color: transparent;
+}
 
 ::-webkit-scrollbar {
 		width: 0px;
@@ -88,7 +75,7 @@ body {
   background: url(dashboard/img/logo.svg);
   background-image: url(dashboard/img/image.svg), none;
 }	
-.container {
+                .container {
     perspective: 800px;
     max-width:250px;
     min-width:225px;
@@ -120,10 +107,11 @@ display: inline-flex;
     padding: 30px 30px 30px 25px;
     font-size: var(--font-size);
     text-align: center;
-    color: rgba(0,0,0,0.3);
+    color: #454545;
     cursor: pointer;
     max-width: 115px;
     margin-left:1px;
+    background: rgba(0,0,0,0.3);
 }
 
 .appstab {
@@ -134,11 +122,10 @@ border-radius: 2px 20px 20px 2px;
     padding: 30px 25px 30px 20px;
     font-size: var(--font-size);
     text-align: center;
-    color: #454545;
+    color: rgba(0,0,0,0.3);
     cursor: pointer;
     max-width: 115px;
     margin-left:-1px;
-    background: rgba(0,0,0,0.3);
 }
 
 
@@ -166,6 +153,7 @@ border-radius: 2px 20px 20px 2px;
     from { opacity: 1; }
     to { opacity: 0; }
 }
+
 </style><!-- Java -->
 
 	<script src="dashboard/js/search/lazy.min.js">
@@ -191,14 +179,14 @@ border-radius: 2px 20px 20px 2px;
 			  <div style="margin:auto;width:40%;text-align:center;">
 
  <div class="tabcontainer">
-    <div class="docstab">Docs</div> 
-    <div class="appstab" onclick="window.location='search2.html';">Apps</div>
- </div> <p></p>	
+    <div class="docstab" onclick="window.location='search.html';">Docs</div>
+    <div class="appstab">Apps</div>
+ </div> <p></p>
 <div class="cursor">
                                   <input autocomplete="on" autofocus="" autofocus class="validate rq-form-element" id="search-box" style="max-height:100px!important; border:0.5px dotted grey;" type="text">
 <i></i>
 </div>
-</div>	                             <ul class="collection">
+</div> 	                             <ul class="collection">
 					<li class="collection-item" style="opacity:0;">
 						<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="../files/coming-soon/coming-soon/latest/build/html/index.html"><strong>Sample 3</strong>Three Three</a>
 					</li>
