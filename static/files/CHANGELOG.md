@@ -10,7 +10,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
     - GNU General Public License - site-wide
-    - removed scrollbars completely - see the `master-rebuild.sh` script in the `_source-files` directory
+    - removed scrollbars completely - see the `master-rebuild.sh` script in the `_blue-build-source` directory
 
 ### Changed
     - Re-structured directory (ongoing)... and re-branded, from Wave, to HotspotBnB, to DATRO

@@ -12,7 +12,7 @@ a) on the public website some of the categories may have slightly different name
 
 b) the file structure comprises of a "Top Level Directory". The Sphinx Document Folder name begins with the categoryID.
 
-c) this method keeps the depth of the file structure to 2. Which the custom autobuild scripts depend on (see _Source-files README.md)
+c) this method keeps the depth of the file structure to 2. Which the custom autobuild scripts depend on (see _blue-build-source README.md)
 
 
 ## The File Structure
@@ -241,7 +241,7 @@ The purpose of the script files contained in this directory are as follows:
 
 The directory structure and file locations are as follows:
 
-  _source-files/
+  _blue-build-source/
 
 	- updater.sh
 	- rebuild-master.sh
@@ -261,13 +261,13 @@ The directory structure and file locations are as follows:
 ## Functions
 
 * auto-rebuild.sh does the following:
-	- trigger the updater.sh in the _source-files directory. Updater.sh gets the latest *-master files (if not already run in the last 30 minutes).
-	- copies the *-master.sh files from the _source-files directory to the sphinx document directory (removing the -master from the destination filename).
+	- trigger the updater.sh in the _blue-build-source directory. Updater.sh gets the latest *-master files (if not already run in the last 30 minutes).
+	- copies the *-master.sh files from the _blue-build-source directory to the sphinx document directory (removing the -master from the destination filename).
 	- runs the latest rebuild.sh, producing a PDF and HTML verison of its rst files
 
 * rebuild.sh does the following:
         - rebuild the PDF and HTML
-        - copies the auto-rebuild-master.sh file from the _source-files directory to its own sphinx document directory
+        - copies the auto-rebuild-master.sh file from the _blue-build-source directory to its own sphinx document directory
         - * when the latest auto-rebuild-master.sh is copied across the -master part of the filename is removed.
 
 
@@ -276,7 +276,7 @@ The directory structure and file locations are as follows:
 	- if it hasn't been run in the last 30 minutes the latest *-master.sh scripts are fetched and written over the local ones.
 
 
-To learn more about the source files go into the _source-files directory and view the dedicated README.md
+To learn more about the source files go into the _blue-build-source directory and view the dedicated README.md
 
 
 ## Quality Control
@@ -290,7 +290,7 @@ When you see the changes on docs.DATRO.com the process is complete.
 
 * ensure you enter the date and version of your publication in the conf.py file
 * ensure you check the build.log after running the build for build errors e.g. formatting errors are common
-* ensure your build script is the latest (check the _source-files) - the files only update a maximum of twice per hour and upon request of the auto-rebuild.sh
+* ensure your build script is the latest (check the _blue-build-source) - the files only update a maximum of twice per hour and upon request of the auto-rebuild.sh
 * ensure there's no orphaned rst files e.g. the index.rst must index all the rst files in the source directory
 * ensure that you open the index.html and pdf locally and look at the output of the build before submitting to GitHub e.g. `xdg-open build/html/index.html` or `xdg-open build/latex/business-plan.pdf`
 * ensure you Git 'pull' & 'push' the latest Files Library, to make sure your local copy and working directory doesn't conflict with anothers contribution (if it does, rectify the conflic before proceeding)

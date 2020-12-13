@@ -1,5 +1,6 @@
 Running Sphinx v3.2.1
 making output directory... done
+WARNING: html_static_path entry '_static' does not exist
 loading pickled environment... done
 building [mo]: targets for 0 po files that are out of date
 building [latex]: all documents
@@ -30,7 +31,7 @@ done
 writing... done
 copying TeX support files... copying TeX support files...
 done
-build succeeded, 3 warnings.
+build succeeded, 4 warnings.
 
 The LaTeX files are in build/latex.
 Run 'make' in that directory to run these through (pdf)latex
@@ -197,7 +198,7 @@ e/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utm
 r8a.pfb>
-Output written on coming-soon.pdf (5 pages, 51124 bytes).
+Output written on coming-soon.pdf (5 pages, 51119 bytes).
 Transcript written on coming-soon.log.
 Latexmk: Index file 'coming-soon.idx' was written
 Latexmk: Missing input file: 'coming-soon.ind' from line
@@ -376,7 +377,7 @@ less on input line 163.
 hare/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb>
-Output written on coming-soon.pdf (5 pages, 54756 bytes).
+Output written on coming-soon.pdf (5 pages, 54754 bytes).
 Transcript written on coming-soon.log.
 Latexmk: Index file 'coming-soon.idx' was written
 Latexmk: Log file says output to 'coming-soon.pdf'
@@ -534,7 +535,7 @@ less on input line 163.
 hare/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb>
-Output written on coming-soon.pdf (5 pages, 54756 bytes).
+Output written on coming-soon.pdf (5 pages, 54754 bytes).
 Transcript written on coming-soon.log.
 Latexmk: Index file 'coming-soon.idx' was written
 Latexmk: Log file says output to 'coming-soon.pdf'

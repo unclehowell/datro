@@ -13,7 +13,7 @@
 #.......................................................
 #
 #                      Version 0.6
-#  ../../../ _source-files/README.md & CHANGELOG.md
+#  ../../../ _blue-build-source/README.md & CHANGELOG.md
 #.......................................................
 
 
@@ -175,8 +175,8 @@ done
 # making sure the auto-rebuild.sh is the latest version, for the next auto-build
 rm -r auto-rebuild.sh 2> /dev/null &
 
-bash ../../../_source-files/update.sh 2> /dev/null &
+bash ../../../_blue-build-source/update.sh 2> /dev/null &
 
-cp -r ../../../_source-files/auto-rebuild-master.sh auto-rebuild.sh 2> /dev/null &
+cp -r ../../../_blue-build-source/auto-rebuild-master.sh auto-rebuild.sh 2> /dev/null &
 
 printf "\e[2;3;33m Finished! \n\e[0m\n"

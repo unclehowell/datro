@@ -13,7 +13,7 @@ unset CDPATH
 #.......................................................
 #
 #                     Version 0.4
-#          view _source-files/README.md changelog
+#          view _blue-build-source/README.md changelog
 #.......................................................
 
 
@@ -115,8 +115,8 @@ done
 # making sure the auto-rebuild.sh is the latest version, for the next auto-build
 rm -r auto-rebuild.sh 2> /dev/null &
 
-bash ../../../_source-files/update.sh &&
+bash ../../../_blue-build-source/update.sh &&
 
-cp -r ../../../_source-files/auto-rebuild-master.sh auto-rebuild.sh &&
+cp -r ../../../_blue-build-source/auto-rebuild-master.sh auto-rebuild.sh &&
 
 printf "\e[2;3;33m Finished! \n\e[0m\n"

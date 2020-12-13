@@ -13,18 +13,18 @@ unset CDPATH
 #............................................................
 #
 #                         version 0.3
-#           view _source-files/README.md changelog
+#           view _blue-build-source/README.md changelog
 #............................................................
 
 
 # update the rebuild and auto-rebuild source files.
-sh ../../../_source-files/update.sh &&
+sh ../../../_blue-build-source/update.sh &&
 
 # get the latest rebuild.sh file from source
 
 rm -r rebuild.sh &&
 
-cp -r ../../../_source-files/rebuild-master.sh rebuild.sh &&
+cp -r ../../../_blue-build-source/rebuild-master.sh rebuild.sh &&
 
 # confirm permissions
 chmod +x rebuild.sh &&

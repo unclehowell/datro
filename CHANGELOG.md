@@ -5,6 +5,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [0.0.1-rtw.9] - Q4/2020
+
+### Added
+13-Dec - static/files alternate theme added. See their subdirecty changlogs for more details
+
+### Changed
+13-Dec - static/gui theme colour modified. See their subdirecty changlogs for more details  
+30-Oct - static/gui improved (search splashpage). See its embedded changelog for more info
+
+### Removed
+
+### Fixed
+
+### To Do
+
+### Issues
+
 ## [0.0.1-rtw.8] - Q3/2020
 
 ### Added
@@ -12,7 +30,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 09-Sep - GNU General Public Licence - repo/ sitewide
 
 ### Changed
-30-Oct - static/gui improved (search splashpage). See its embedded changelog for more info
 09-Sep - Moved the entire repo from `github.com/unclehowell/HBnB` to `github.com/unclehowell/datro`
 09-Sep - Re-structured directory (ongoing)... and re-branded, from Wave, to HotspotBnB, to DATRO
 09-Sep - HotspotBnB and Wave are now spin-off/subsidiary projects of DATRO
@@ -27,7 +44,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 09-Sep - The frame the docs are displayed in (featherlight) was scrolling upwards off screen, whenever you selected the doc. Fixed it!
 09-Sep - Copyleft symbol wasn't appearing on chrome on android. Reversed copyright symbol using css instead.
 09-Sep - changed background color to theme, the white default was making the website look poor between page refreshes
-
 
 ### To Do
 09-Sep - Add Copyleft to Sphinx html docs, where copyright used to be (now that displaying the copyleft symbol has been resolved)
