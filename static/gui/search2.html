@@ -31,7 +31,9 @@
 	<meta content="#ffffff" name="msapplication-TileColor">
 	<meta content="dashboard/img/favicons/ms-icon-144x144.png" name="msapplication-TileImage">
 	<meta content="#ffffff" name="theme-color"><!-- CSS -->
-	<link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	
+        <link href="dashboard/css/search/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <!---<link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet" type="text/css">
 	<link href="dashboard/css/search/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="dashboard/css/search/featherlight.css" rel="stylesheet" type="text/css">
@@ -44,8 +46,8 @@
 	<link href="search-box/doc-library.css" rel="stylesheet">
 	<style>
  html {
-	overflow-y:   scroll;
-	overflow-x:   hidden;
+	overflow-y:scroll;
+	overflow-x:hidden;
       }
 
 input:focus::placeholder {
@@ -137,7 +139,7 @@ border-radius: 2px 20px 20px 2px;
     width: 2px;
     height: 38%;
     background-color: lightgrey;
-    left: 41px;
+    left: calc(41vw - 1rem + -126px);
     top: 19%;
     animation-name: blink;
     animation-duration: 1300ms;
@@ -176,22 +178,19 @@ border-radius: 2px 20px 20px 2px;
 	<main class="main" role="main">
 		<div class="segment" style="margin-top:20vh!important;">
 			<div class="buttonsdiv" style="padding-bottom:4rem; text-align:center;">
-			  <div style="margin:auto;width:40%;text-align:center;">
+			  <div style="margin:auto;text-align:center;">
 
  <div class="tabcontainer">
     <div class="docstab" onclick="window.location='search.html';">Docs</div>
     <div class="appstab">Apps</div>
  </div> <p></p>
 <div class="cursor">
-                                  <input autocomplete="on" autofocus="" autofocus class="validate rq-form-element" id="search-box" style="max-height:100px!important; border:0.5px dotted grey;" type="text">
+                                  <input autocomplete="off" autofocus="" autofocus class="validate rq-form-element" placeholder="search apps" id="search-box" style="max-height:100px!important; border:0.5px dotted grey;" type="text">
 <i></i>
 </div>
 </div> 	                             <ul class="collection">
 					<li class="collection-item" style="opacity:0;">
-						<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="../files/coming-soon/coming-soon/latest/build/html/index.html"><strong>Sample 3</strong>Three Three</a>
-					</li>
-					<li class="collection-item" style="opacity:0;">
-						<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" href="../files/coming-soon/coming-soon/latest/build/html/index.html"><strong>Sample 4</strong>Four Four</a>
+						<a href="http://localhost:8080/habpanel/index.html#/" target="_self"><strong>OpenHAB</strong> - Open Home Automation Bus</a>
 					</li>
 				</ul>           </div> 
 

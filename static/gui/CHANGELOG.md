@@ -6,8 +6,18 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-## [0.0.1-gui.1] - Q3/2020
+## [0.0.1-gui.2] - Q4/2020
+### Added
+
+### Removed
+
+### Changed
+11-Dec - Docs (for the Apps) poped up with a blue border. Changed to grey to match GUI theme (gui). 
 30-Oct - Copied latest GUI design over & Made search splashpage better
+
+### Fixed
+
+## [0.0.1-gui.1] - Q3/2020
 20-Sep - The website interactive dashboard demo/ actual dashboard, 
          evolved into the datro consortium page selector, which has evolved into a beta dashboard we now call, gui. 
          A seperate branch has been created for the gui, so the live build and trial can sync to github as a sort of backup. 

@@ -2,7 +2,7 @@ html.with-featherlight{
 	overflow:hidden
 }
 
-/* 01:M */ .featherlight .featherlight-close-icon {position: absolute; right: 0; top: 0.5rem; float: right; z-index: 9999; cursor: pointer; text-align: center; background: #333366; color: rgba(255,255,255,0.45); border-radius: 8px; padding: 0rem; width: 2rem; height: 2rem; opacity: 0.85!important; zoom: 1.1; text-transform: uppercase!Important; font-weight: bold; margin-right: calc(1vw + 0.5rem);	}
+/* 01:M */ .featherlight .featherlight-close-icon {position: absolute; right: 0; top: 0.5rem; float: right; z-index: 9999; cursor: pointer; text-align: center; background:-webkit-gradient(radial,50% 50%,450,50% 55%,60,from(#454545),to(#454545)); color: rgba(255,255,255,0.45); border-radius: 8px; padding: 0rem; width: 2rem; height: 2rem; opacity: 0.85!important; zoom: 1.1; text-transform: uppercase!Important; font-weight: bold; margin-right: calc(1vw + 0.5rem);	}
 /* 01:N */ .featherlight .featherlight-close-icon::-moz-focus-inner { }
 
 .featherlight{
@@ -26,7 +26,7 @@ html.with-featherlight{
 	text-rendering:optimizeLegibility!important
 }
 .featherlight:last-of-type{
-	background:#336
+	background:-webkit-gradient(radial,50% 50%,450,50% 55%,60,from(#454545),to(#454545))
 }
 .featherlight link.featherlight-inner{
 	display:none
@@ -55,7 +55,7 @@ html.with-featherlight{
 .featherlight .featherlight-inner{
 	min-width:101.5%;
 	text-rendering:optimizeLegibility!important;
-	border:2px solid #336
+	border:2px solid #454545;
 	overflow:hidden
 }
 .featherlight-iframe .featherlight-content{
@@ -81,7 +81,7 @@ html.with-featherlight{
 		max-height:99.99vh;
 }
 	.featherlight:last-of-type{
-		background:#336
+		background:-webkit-gradient(radial,50% 50%,450,50% 55%,60,from(#454545),to(#454545))
 }
 	.featherlight:before{
 		content:'';
@@ -91,7 +91,7 @@ html.with-featherlight{
 }
 	.featherlight-content{
 		margin-top:-2rem;
-		background-color:#336
+		background-color:-webkit-gradient(radial,50% 50%,450,50% 55%,60,from(#454545),to(#454545))
 }
 	.featherlight .featherlight-inner{
 		-moz-osx-font-smoothing:grayscale;
@@ -150,7 +150,7 @@ html.with-featherlight{
 }
 @media all and (max-width:479px) and (orientation:portrait){
 	.featherlight:last-of-type{
-		background:#336
+		background:-webkit-gradient(radial,50% 50%,450,50% 55%,60,from(#454545),to(#454545))
 }
 	.featherlight:before{
 		content:'';
