@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.9] - Q4/2020
 
 ### Added
+13-Dec - Replaced instances of HotspotBnB with Hotspotβnβ in index.html, static/gui and static/hbnb
 13-Dec - static/files alternate theme added. See their subdirecty changlogs for more details
 
 ### Changed
