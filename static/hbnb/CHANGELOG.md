@@ -12,7 +12,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 13-Dec - Changed all instances of 'HotspotBnB' to 'Hotspotβnβ'
 
 ### Changed
-
+14-Dec - FavIcons updated to show the new Hotspotβnβ Logo
 10-Oct - Changed the github.com release url, from the hbnb repo, to the datro repo
          inacurate according to our semantic release methodology and nomenclature, but it's only temporary
          at least until the hbnb net installer source code branch is moved from hbnb to datro 

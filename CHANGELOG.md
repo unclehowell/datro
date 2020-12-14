@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 13-Dec - static/files alternate theme added. See their subdirecty changlogs for more details
 
 ### Changed
+14-Dec - static/gui & static/hbnb favicons changed to new logo
 13-Dec - static/gui theme colour modified. See their subdirecty changlogs for more details  
 30-Oct - static/gui improved (search splashpage). See its embedded changelog for more info
 

@@ -12,6 +12,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Removed
 
 ### Changed
+14-Dec - Favicons updated to new Logo design
 11-Dec - Docs (for the Apps) poped up with a blue border. Changed to grey to match GUI theme (gui). 
 30-Oct - Copied latest GUI design over & Made search splashpage better
 
