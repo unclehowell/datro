@@ -6,9 +6,22 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.0.1-rtwx.2] - Q1/2021
+
+### Added
+14-Jan - introduced a new website for evr-network (bootstrap of datro.xyz)
+       - evr-network.live in GoDaddy forwards to evrnetwork.datro.world, then the javascript in this splashpage brings up the frame that loads the website
+
+### Changed
+
+
 ## [0.0.1-rtwx.1] - Q4/2020
 
 ### Added
+22-Oct - Change the header text to display version number. (netlify branch, not gh-pages branch). 
+17-Oct - Added a local.html page, for localhost. Or else you see a 404 each time when working offline. 
+17-Oct - Moved Hotspotβnβ from development to Beta testing (WoodHaven Installation Complete). 
+         RPi4 image only atm (see releases for link),still need to make the image a net-installer and serve all models of RPI. 
 15-Oct - New Hotspotβnβ logo added
 
 ### Removed
