@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <!-- HTML meta refresh URL redirection -->
+   <meta http-equiv="refresh" content="5; url=../../demo-loadingapps.html">
+     <link rel="stylesheet" href="../css/progress.css">
+     <script>
+     // This script is used to animate the progress bar
+
+var increment = 0; //set a value of zero for the progress bar
+
+ window.setInterval( // loop adding 1
+ function () {
+        increment = increment + Math.round(Math.random()) * 5;
+        document.getElementById("determinate").value = increment;
+        document.getElementById("determinate-value").textContent = increment;
+        document.getElementById("progress3").value = increment * 1.2;
+        document.getElementById("progress4").value = increment * 0.85;
+
+        if (increment >= 100) {
+                increment = 0;
+        }
+ }, 500);
+     </script>
+
+ 
+<body >
+        <div class="card">
+                   <h2 style="color:grey; opacity:0.6;text-align:center;line-height:20px; margin-top:100px;"> Installing the WaveOS Dashboard </h2> 
+				   <progress id="determinate" max="100" value="0" style="width:calc(40vw);"></progress>
+				   <p style="text-align:center;">In the background the Wave® Dashboard is now installing. Upon completion you will be redirected to it </p>
+                        </br></br><div style="text-align:center;"><img src="../images/installing-dashboard.png" width="80%" height="auto"></div>
+        </div>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: "Helvetica Nenu", Hevetica, Arial, sans-serif;
+}
+.container {
+  *width: 960px;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 80px;
+}
+
+.header {
+  text-align: center;
+}
+.header:after {
+  display: block;
+  content: '';
+  border-bottom: 1px solid #ddd;
+  width: 80px;
+  margin: 0 auto;
+}
+.unofficial {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #999;
+}
+.header h1 {
+  margin: 0 0 20px;
+  font: bold 80px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #404040;
+}
+.header p {
+  font: 28px/34px Georgia, "Times New Roman", Palatino, serif;
+}
+
+.cases {
+  margin-top: 60px;
+  zoom: 1;
+}
+.cases:after {
+  display: block;
+  content: '';
+  clear: both;
+}
+.case {
+  float: left;
+}
+.case p {
+  color: #666;
+}
+.cases .user {
+  margin-right: 80px;
+  min-width: 40%;
+}
+
+.howto {
+  padding: 40px 0;
+  text-align: center;
+}
+.howto input, .howto textarea {
+  padding: 4px 8px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  width: 460px;
+  max-width: 90%;
+  border-radius: 4px;
+  color: #565656;
+  outline: 0;
+}
+.howto input {
+  text-align: center;
+  font: normal 28px/30px "Helvetica Nenu", Hevetica, Arial, sans-serif;
+}
+.howto textarea {
+  font-size: 16px;
+  text-align: left;
+  height: 80px;
+}
+.howto input:focus, .howto textarea:focus {
+  border-color: #bbb;
+}
+.howto-section {
+  margin-bottom: 40px;
+}
+
+.footer {
+  margin-top: 40px;
+  font-size: 14px;
+  color: #707070;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.footer a {
+  text-decoration: none;
+  color: #797979;
+  outline: 0;
+}
+.footer a:hover {
+  text-decoration: underline;
+}

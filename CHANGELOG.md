@@ -5,6 +5,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.1-rtw.10] - Q1/2021
+
+### Added
+14-Jan - introduced a new website for evr-network (bootstrap of datro.xyz)
+       - evr-network.live in GoDaddy forwards to evrnetwork.datro.world, then the javascript in the netlify splashpage brings up the website
+
+### Changed
+14-Jan - 
+
+### Removed
 
 ## [0.0.1-rtw.9] - Q4/2020
 
@@ -16,14 +26,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 14-Dec - static/gui & static/hbnb favicons changed to new logo
 13-Dec - static/gui theme colour modified. See their subdirecty changlogs for more details  
 30-Oct - static/gui improved (search splashpage). See its embedded changelog for more info
-
-### Removed
-
-### Fixed
-
-### To Do
-
-### Issues
 
 ## [0.0.1-rtw.8] - Q3/2020
 
@@ -61,9 +63,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - altered the content of the CHANGELOG.md to relate specifically to this (gh-pages-dev) branch e.g. website development, not software development
 - moved all the hiden (server-side) folders into the dynamic directory. And made the folders visible (removed the dots from the start of the name)
-
-### Removed
--
 
 ### Fixed
 

@@ -1,0 +1,183 @@
+html.with-featherlight{
+	overflow:hidden
+}
+
+/* 01:M */ .featherlight .featherlight-close-icon {position: absolute; right: 0; top: 0.5rem; float: right; z-index: 9999; cursor: pointer; text-align: center; background: #333366; color: rgba(255,255,255,0.45); border-radius: 8px; padding: 0rem; width: 2rem; height: 2rem; opacity: 0.85!important; zoom: 1.1; text-transform: uppercase!Important; font-weight: bold; margin-right: calc(1vw + 0.5rem);	}
+/* 01:N */ .featherlight .featherlight-close-icon::-moz-focus-inner { }
+
+.featherlight{
+	overflow-y:hidden;
+	cursor:pointer;
+	overflow:hidden;
+	float:left!important;
+	max-height:100vh;
+	height:100vh!important;
+	bottom:0!important;
+	position:sticky;
+	display:inline-flex!important;
+	width:100%;
+	padding-bottom:0;
+	text-rendering:optimizeLegibility!important
+}
+.featherlight *{
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	text-rendering:optimizeLegibility!important
+}
+.featherlight:last-of-type{
+	background:#336
+}
+.featherlight link.featherlight-inner{
+	display:none
+}
+.featherlight script.featherlight-inner{
+	display:none
+}
+.featherlight style.featherlight-inner{
+	display:none
+}
+.featherlight .featherlight-content{
+	margin-right:0;
+	width:100vw;
+	position:relative;
+	text-align:left;
+	vertical-align:middle;
+	display:inline-block;
+	cursor:auto;
+	white-space:normal;
+	left:calc(.1vw);
+	max-width:calc(98vw);
+	-moz-osx-font-smoothing:grayscale;
+	-webkit-font-smoothing:antialiased;
+	image-rendering:auto
+}
+.featherlight .featherlight-inner{
+	min-width:101.5%;
+	text-rendering:optimizeLegibility!important;
+	border:2px solid #336
+	overflow:hidden
+}
+.featherlight-iframe .featherlight-content{
+	-moz-osx-font-smoothing:grayscale;
+	-webkit-font-smoothing:antialiased;
+	-ms-transform-origin:0 0;
+	-moz-transform-origin:0 0;
+	width:98%;
+	overflow:hidden;
+	transform-origin:0 0;
+	display:inline-flex;
+	border:.1rem solid rgba(255,255,255,.15);
+	border-radius:14px;
+	left:0;
+	margin:5rem 2% 2% 2%!important;
+	padding:1px;
+	box-shadow:0 0 .51rem 0 rgba(0,0,0,.3);
+	top:0!important;
+	position:relative;
+}
+@media all and (min-width:1024px){
+	.featherlight{
+		max-height:92vh
+}
+	.featherlight:last-of-type{
+		background:#336
+}
+	.featherlight:before{
+		content:'';
+		display:inline-block;
+		max-height:100vh;
+		vertical-align:middle
+}
+	.featherlight-content{
+		margin-top:-2rem;
+		background-color:#336
+}
+	.featherlight .featherlight-inner{
+		-moz-osx-font-smoothing:grayscale;
+		-webkit-font-smoothing:antialiased;
+		-ms-transform-origin:0 0;
+		-moz-transform-origin:0 0;
+		-o-transform-origin:0 0;
+		-webkit-transform-origin:0 0;
+		transform-origin:0 0;
+		display:block
+}
+	.featherlight iframe{
+		position:absolute;
+		overflow:hidden!important;
+		margin:0;
+		height:100%;
+		width:100%;
+		border:1px solid #333666;
+		border-radius:1rem!important;
+		left:0;
+		right:0;
+		-webkit-overflow-scrolling:touch
+}
+	.featherlight-iframe .featherlight-content{
+		margin-top:2rem!important
+}
+}
+@media all and (min-width:768px) and (max-width:959px) and (orientation:portrait){
+	.featherlight .featherlight-inner{
+		-moz-osx-font-smoothing:grayscale;
+		-webkit-font-smoothing:antialiased;
+		-ms-transform-origin:0 0;
+		-moz-transform-origin:0 0;
+		-o-transform-origin:0 0;
+		-webkit-transform-origin:0 0;
+		transform-origin:0 0;
+		overflow:hidden
+}
+}
+@media all and (min-width:768px) and (max-width:959px) and (orientation:landscape){
+	.featherlight .featherlight-inner{
+		-moz-osx-font-smoothing:grayscale;
+		-webkit-font-smoothing:antialiased;
+		-ms-transform-origin:0 0;
+		-moz-transform-origin:0 0;
+		-o-transform-origin:0 0;
+		-webkit-transform-origin:0 0;
+		transform-origin:0 0;
+		overflow:hidden
+}
+}
+@media all and (min-width:480px) and (max-width:767px) and (orientation:landscape){
+	.featherlight-content{
+		margin-top:-2rem
+}
+}
+@media all and (max-width:479px) and (orientation:portrait){
+	.featherlight:last-of-type{
+		background:#336
+}
+	.featherlight:before{
+		content:'';
+		display:inline-block;
+		height:100vh;
+		vertical-align:middle
+}
+	.featherlight-content{
+		margin-top:-2rem;
+		background-color:transparent
+}
+	.featherlight .featherlight-inner{
+		-moz-osx-font-smoothing:grayscale;
+		-webkit-font-smoothing:antialiased;
+		-ms-transform-origin:0 0;
+		-moz-transform-origin:0 0;
+		-o-transform-origin:0 0;
+		-webkit-transform-origin:0 0;
+		transform-origin:0 0;
+		display:block
+}
+}
+@media all and (max-width:479px) and (orientation:landscape){
+	.featherlight .featherlight-inner{
+		box-shadow:inset -13px -14px 25px calc(100vh) rgba(255,255,255,.4)
+}
+	.featherlight .featherlight-image{
+		width:99vw
+}
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-white">
+    <head>
+        <meta charset="UTF-8">
+        <title>GitHub Profile Languages</title>
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8">
+        <script src="js/url.min.js"></script>
+        <script src="js/main.js"></script>
+    </head>
+    <body class="bg-white">
+        <div class="container text-center">
+            <div class="content mrg-xl pad-xl">
+                <h1><span class="username"></span> Languages</h1>
+                <p>Create a nice pie chart with the user's programming languages from their GitHub profile.</p>
+                <input class="form-elm" type="text" placeholder="@someone" autofocus="autofocus"><br>
+                <iframe id="graph" src="api.html" frameborder="0"></iframe><br>
+                <button data-popup=".popup.share" class="share btn bg-green"><i class="fa fa-share-alt"></i> Share</button>
+                <button data-popup=".popup.embed" class="embed btn bg-green"><i class="fa fa-code"></i> Embed</button>
+                <a href="https://github.com/IonicaBizau/github-profile-languages" class="btn bg-green"><i class="fa fa-github"></i> Check out the source code</a>
+            </div>
+            <div class="popup embed">
+                <div class="popup-content">
+                    <textarea class="form-elm"></textarea>
+                    <button class="close btn bg-white">Close</button>
+                </div>
+            </div>
+            <div class="popup share">
+                <div class="popup-content">
+                    <div class="social">
+                        <a class="twitter" target="blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a class="facebook" target="blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a class="gplus" target="blank">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                    <button class="close btn bg-white">Close</button>
+                </div>
+            </div>
+            <p class="footer">
+                Developed with JavaScript and <i class="fa fa-heart"></i> by <a href="http://ionicabizau.net/">Ionică Bizău</a>
+            </p>
+        </div>
+    </body>
+</html>

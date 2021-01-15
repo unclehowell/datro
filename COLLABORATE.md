@@ -303,3 +303,7 @@ GitHub will notify you if there's a comment to respond to or when the administra
 	do
       mv -- "$i" "${i%.txt}"
       done
+
+      ### Command for finding text in all files in a specific directory
+
+      grep -rnw '/path/to/somewhere/' -e 'pattern'
