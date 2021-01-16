@@ -11,6 +11,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Added
 14-Jan - introduced a new website for evr-network (bootstrap of datro.xyz)
        - evr-network.live in GoDaddy forwards to evrnetwork.datro.world, then the javascript in this splashpage brings up the frame that loads the website
+16-Jan - added canion meta to redirect pages to force https. Not hugely neccessary, just keeping things consistent with datro.xyz repo
 
 ### Changed
 
