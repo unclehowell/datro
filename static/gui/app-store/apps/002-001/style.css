@@ -38,16 +38,16 @@
 }
 
 .content-002-001 .rs-002-001 {
-    max-height: 35%;
+    max-height: 19%;
     width: auto;
-    margin-top: 10px;
+    margin-top: -1%;
     overflow: hidden!important;
-    height: 6%;
     max-width: 100%;
     min-height: 8vw;
     min-width: 8vw;
     image-rendering: auto;
-}
+    height: 2rem;
+    object-position: center!important;}
 
 @media screen and (max-width: 900px) {
 .square-002-001 {

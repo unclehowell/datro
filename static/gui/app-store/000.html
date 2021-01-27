@@ -12,7 +12,7 @@
 
 
 html {overflow-x: hidden!important;height: -webkit-fill-available;}
-#body { background-color:red;}
+body { background:-webkit-gradient(radial, 50% 50%, 450, 50% 50%, 860, from(#333434), to(#33335D))!important;}
 /* Sets the dimensions of the entire scrollbar */
 
 body::-webkit-scrollbar {
@@ -71,7 +71,7 @@ a:link, a, a:hover {color: rgba(255,255,255,0.8); font-size: 1.6rem;}
     background:transparent;
     text-align:left;
     position:fixed;
-    min-heigh:10vh;
+    min-height:10vh;
 }
 
 .container .box .box-cell.box2 {
@@ -97,6 +97,17 @@ body:not(.loaded) #slider img {
   display:none;
 }
 
+ul.breadcrumb li a:hover {
+    padding-left: 0px!important;
+    border: 4px solid transparent;
+    margin-top: -4px;
+    margin-left: -3px!important;
+    background: black;
+    box-shadow: none!important;
+}
+.square {background-color:#45455B;}
+.square:hover {
+    background-color: #2C2B48;}
 </style>
     <script src="js/jquery-2.1.4.min.js"></script>
     <script>
@@ -135,18 +146,18 @@ body:not(.loaded) #slider img {
 <ul class="breadcrumb" id="btn noHover">
   <li class="btn noHover">
     <a href="000.html" style="width:auto!Important;">
-      <span class="text2">categories</span>
+      <span class="text2">Categories</span>
     </a>
   </li>
-
+	
   <li class="btn noHover">
     <a href="000.html" style="width:auto!Important;">
-      <span class="text2">hotspotβnβ</span>
+      <span class="text2">App Store</span>
     </a>
   </li>
-  <li class="btn noHover">
-    <a href="000.html">
-      <span class="icon icon-th"></span>
+  <li class="btn" style="">
+    <a href="../dashboard/000.html">
+      <span style="background-image: url(img/logo.svg); background-position:top; position:absolute; border: 1.5px solid dodgerblue; background-size: 100%; width: 48px; height: 48px; margin-left: -25px; margin-top: 0px; border-radius: 37px; background-color:black;"></span>
       <span class="text"></span>
     </a>
   </li>
@@ -162,7 +173,7 @@ body:not(.loaded) #slider img {
 
 <div class="square">
    <div class="content">
-      <a href="001.html">
+      <a href="screen-lookups/001-lookup.html">
 	<div class="table">
 	    <div class="table-cell">
 		<img class="rs" src="../dashboard/img/icons/001.svg"/>
@@ -174,7 +185,7 @@ body:not(.loaded) #slider img {
 
 <div class="square">
    <div class="content">
-      <a href="002.html">
+      <a href="screen-lookups/002-lookup.html">
         <div class="table">
             <div class="table-cell">
                 <img class="rs" src="../dashboard/img/icons/002.svg"/>
@@ -187,7 +198,7 @@ body:not(.loaded) #slider img {
 
 <div class="square">
    <div class="content">
-      <a href="003.html">
+      <a href="screen-lookups/003-lookup.html">
         <div class="table">
             <div class="table-cell">
                 <img class="rs" src="../dashboard/img/icons/003.svg"/>
@@ -199,7 +210,7 @@ body:not(.loaded) #slider img {
 
 <div class="square">
    <div class="content">
-      <a href="004.html">
+      <a href="screen-lookups/004-lookup.html">
         <div class="table">
             <div class="table-cell">
                 <img class="rs" src="../dashboard/img/icons/004.svg"/>

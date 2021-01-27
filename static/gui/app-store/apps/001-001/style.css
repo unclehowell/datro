@@ -1,4 +1,3 @@
-
 .square-001-001 {
     float: left;
     position: relative;
@@ -38,18 +37,18 @@
 }
 
 .content-001-001 .rs-001-001 {
-    max-height: 35%;
+    max-height: 19%;
     width: auto;
-    margin-top: 10px;
+    margin-top: -1%;
     overflow: hidden!important;
-    height: 6%;
     max-width: 100%;
     min-height: 8vw;
     min-width: 8vw;
     image-rendering: auto;
+    height: 2rem;
+    object-position: center!important;
 }
-
-@media screen and (max-width: 900px) {
+media screen and (max-width: 900px) {
 .square-001-001 {
     min-width: 25vw;
     min-height: 16vw;

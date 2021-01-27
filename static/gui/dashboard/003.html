@@ -1,0 +1,192 @@
+<DOCTYPE html>
+<html>
+  <head>
+ <title>AppStore - Entertainment</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="media/css/breadcrumb.css">
+  <link rel="stylesheet" href="media/css/appstore.css">
+  <link rel="stylesheet" href="media/css/font-awesome.css">
+  <link rel="stylesheet" href="../app-store/apps/000-000/style.css">
+  <link rel="stylesheet" href="../app-store/apps/003-001/style.css">
+  <link rel="stylesheet" href="../app-store/apps/003-002/style.css">
+  <link rel="stylesheet" href="../app-store/apps/003-003/style.css">
+  <link rel="stylesheet" href="../app-store/apps/003-004/style.css">
+  <link rel="stylesheet" href="../app-store/apps/003-005/style.css">
+  <link rel="stylesheet" href="../app-store/apps/003-006/style.css">
+  <link rel="stylesheet" href="../app-store/apps/003-007/style.css">
+  <link rel="stylesheet" href="../app-store/apps/003-008/style.css">
+    <style>
+      html {overflow-x: hidden!important;height: -webkit-fill-available;}
+#body {}
+
+.content .rs {
+    max-height: 23%;
+    width: 80%;
+    margin-top: 0.5em;
+}
+a:link, a, a:hover {color: rgba(255,255,255,0.8); font-size: 1.6rem;}
+
+.container .box {
+    width: 82vw;
+    margin-left: 0.5vw;
+    display: table;
+    border-radius: 20px;
+    min-height:98px;
+}
+
+
+.container .box .box-row {
+    display:table-row;
+    color:rgba(255,255,255,0.6);
+}
+
+.container .box .box-cell {
+    display:table-cell;
+    width:28vw;
+    padding:20px 45px 13px 20px;
+}
+
+.container .box .box-cell.box1 {
+    background:transparent;
+    text-align:left;
+    position:fixed;
+    min-heigh:10vh;
+}
+
+.container .box .box-cell.box2 {
+    background: transparent;
+    font-size: 2rem;
+    text-align: center;
+    padding-left: 100px;
+    font-weight: bold;
+}
+
+.container .box .box-cell.box3 {
+    background:transparent;
+    text-align:right;
+    position: relative;
+}
+
+img {
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+.breadcrumb {opacity:0.4;}
+.noHover{
+    pointer-events: none;
+}
+
+.noHover a:hover{
+    pointer-events: none;
+}
+
+.noHover a{
+    pointer-events: none;
+}
+body{
+    opacity: 0.9;
+    transition: opacity 2s;
+    -webkit-transition: opacity 2s; /* Safari */
+}
+body:not(.loaded) #slider img {
+  display:none;
+}
+
+    </style>
+    <script>
+      $(document).ready(function(){
+        // Set trigger and container variables
+        var trigger = $('#nav ul li a'),
+            container = $('#content');
+
+        // Fire on click
+        trigger.on('click', function(){
+          // Set $this for re-use. Set target from data attribute
+          var $this = $(this),
+            target = $this.data('target');
+
+          // Load target page into container
+          container.load(target + '.html');
+
+          // Stop normal link behavior
+          return false;
+        });
+      });
+    </script>
+  </head>
+
+<body style="overflow: inherit!important;height: inherit!important;display:visible;" onload="document.body.classList.add('loaded')">
+
+<!--- <div class="container">
+
+            <div class="box">
+
+                <div class="box-row">
+
+                    <div class="box-cell box1">
+
+
+<ul class="breadcrumb" id="btn noHover">
+  <li class='btn noHover'>
+    <a href="#" style="width:auto!Important;">
+      <span class="icon icon-home"></span>
+      <span class="text2">smarthome</span>
+    </a>
+  </li>
+  <li >
+    <a href="000.html" style="width:auto!Important;background-color:#303030;">
+        <span class="text2" style="margin-left:1vw">categories</span>
+    </a>
+  </li>
+
+  <li class="btn noHover">
+    <a href="000.html" style="width:auto!Important;">
+      <span class="text2">hotspotβnβ</span>
+    </a>
+  </li>
+
+  <li class="btn noHover">
+    <a href="000.html">
+	      <span class="icon icon-th"></span>
+      <span class="text"></span>
+    </a>
+  </li>
+
+
+</ul>
+
+
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+--->
+
+<div class="square-empty">
+   <div class="content-empty">
+       <a href="../app-store/003.html">
+          <div class="table-empty">
+            <div class="table-cell-empty">
+                <img class="rs-empty" src="img/cross.svg" />
+               </br></br>
+            </div>
+        </div></a>
+    </div>
+</div>
+
+<script src="media/js/breadcrumb.js"></script>
+<script src="media/js/jquery-2.1.4.min.js"></script>
+<script src="media/js/main.js"></script>
+
+  </body>
+</html>

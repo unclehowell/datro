@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting</title>
+ <script type="text/javascript">
+                                    $(document).ready(function() {
+                                        $("body").css("display", "none");
+                                        $("body").fadeIn(2000);
+                                    });
+                                </script>
+
+  </head>
+  <body onload="redirect()" style="">
+	<h1 style="text-align: center; padding-top: 50px; display: block;">App still loading ... taking you back</h1>
+<script>
+	  function redirect() {
+		setTimeout(function(){ 
+				window.history.back() ;
+			}
+			, 1000);	
+		}
+	</script>
+  </body>
+</html>

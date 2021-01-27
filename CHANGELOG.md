@@ -8,11 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.10] - Q1/2021
 
 ### Added
+27-Jan - added first app store page - caterogies only for look and feel demo purposes only. Incomplete work (see static/gui CHANGELOG.md) 
 14-Jan - introduced a new website for evr-network (bootstrap of datro.xyz)
        - evr-network.live in GoDaddy forwards to evrnetwork.datro.world, then the javascript in the netlify splashpage brings up the website
 
-### Changed
-14-Jan - 
+### Changed 
 
 ### Removed
 

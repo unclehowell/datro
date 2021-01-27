@@ -23,7 +23,7 @@
     }
 
       html {overflow-x: hidden!important;height: -webkit-fill-available;}
-#body {}
+body {background:-webkit-gradient(radial, 50% 50%, 450, 50% 50%, 860, from(#333434), to(#33335D))!important;}
 /* Sets the dimensions of the entire scrollbar */
 body::-webkit-scrollbar {
     width: 30px;
@@ -143,8 +143,41 @@ body:not(.loaded) #slider img {
   float: right!important;
 }
 
+ul.breadcrumb li a:hover {
+    padding-left: 0.01rem!important;
+    border: 0.5px solid transparent;
+    margin-top: 0px!Important;
+    margin-left: 0px!important;
+    background: black!important;
+    box-shadow: none!important;
+    margin-right: 0.5px!important;
+}
+ul.breadcrumb li > text2 a:hover {
+    padding-left: 0px!important;
+    border: 4px solid transparent;
+    margin-top: -4px;
+    margin-left: -3px!important;
+    background: black;
+    box-shadow: none!important;
+}
 
+text2:hover {
 
+}
+
+.breadcrumb-logo-span {
+background-image: url(img/logo.svg);
+    background-position: top;
+    position: absolute;
+    border: 2.5px solid rgba(255,255,255,0.4);
+    background-size: 100%;
+    width: 48px;
+    height: 48px;
+    margin-left: -27px;
+    margin-top: 0px;
+    border-radius: 37px;
+    background-color: black;
+}
 </style>
 
 
@@ -170,20 +203,24 @@ $(function () {
   				<div class="box-cell box1">
   					<ul class="breadcrumb" id="btn noHover">
   						<li class='btn noHover'>
-  							<a href="#" style="width:auto!Important;background-color:#454545;"><span class="icon icon-play"></span> <span class="text2">entertainment</span></a>
+  							<a href="#" style="width:auto!Important;background-color:#454545;"><span class="icon icon-play"></span> <span class="text2">Entertainment</span></a>
   						</li>
   						<li>
-  							<a href="000.html" style="width:auto!Important;filter: brightness(1);background:rgba(0,0,0,0.55);border: 1px solid transparent;">  <span class="text2" style="margin-left:1vw;">categories</span></a>
+  							<a href="000.html" style="width:auto!Important;filter: brightness(1);background:rgba(0,0,0,0.55);border: 1px solid transparent;position: initial; padding-left: 48px!Important; margin-top: 0px;">  <span class="text2" style="margin-left:1vw;">Categories</span></a>
   						</li>
   						<li class="btn noHover">
-  							<a style="width:auto!Important;background-color:#454545;"><span class="text2">hotspotβnβ</span></a> 
+  							<a style="width:auto!Important;background-color:#454545;"><span class="text2">App Store</span></a> 
                                                           </p>
                                                         </form>
 </span></a>
   						</li>
-  						<li class="btn noHover" style="background-color: #454545;">
-  							<a href="000.html"><span class="icon icon-th" style="background-color:#454545;"></span> <span style="background-color:#454545;" class="text"></span></a>
-  						</li>
+  <li class="btn" style="">
+    <a href="../dashboard/000.html">
+      <span class="breadcrumb-logo-span"></span>
+      <span class="text"></span>
+    </a>
+  </li>
+
   					</ul>
   				</div>
   			</div>

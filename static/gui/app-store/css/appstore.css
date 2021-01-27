@@ -3,7 +3,7 @@ background-color:#454545;
 }
 
 body {
-background-color:#454545;
+background-color:#45455B;
 }
 
 .content-empty {
@@ -41,6 +41,7 @@ a{
 ul.breadcrumb li span:hover {
     color: white!Important;
     opacity: 1;
+    margin-top: 0px!important;
 }
 
 .categories-text {
@@ -106,7 +107,7 @@ height: -2em;
     width: 15.66%!important;
     padding-bottom: 17%;
     margin: 1.99%;
-    background:#303030;
+    background:-webkit-gradient(radial, 25% 60%, 196, -41% 30%, 93, from(#333434), to(#33335D))!important;
     overflow: hidden;
     border-radius: 0.5em;
     border: 1px solid white;

@@ -104,6 +104,7 @@ ul.breadcrumb li a .text {
 ul.breadcrumb li a:hover {
     background-color:#303030;
     color: white!important;
+    padding-left: 52px!Important;
 }
 ul.breadcrumb li a:hover .text {
   display: inline-block;
@@ -115,7 +116,8 @@ ul.breadcrumb li:last-child a {
   padding: 0px;
 }
 ul.breadcrumb li:last-child:hover {
-  margin-top: 0;
+    min-width: 48px;
+    max-width: 52px;
 }
 ul.breadcrumb li:last-child:hover a {
   margin:auto;

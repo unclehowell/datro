@@ -1,4 +1,4 @@
-.copy-left{
+)))).copy-left{
 	display:inline-block;
 	text-align:right;
 	margin:0;
@@ -160,9 +160,9 @@ v:after{
 }
 .navbar-brand{
 	image-rendering:auto;
-	max-width:115px!important;
+	max-width:235px!important;
 	max-height:auto;
-	margin-bottom:-5px;
+	margin-bottom:0px;
 	opacity:1;
 	border:0 solid transparent!important
 }
@@ -185,13 +185,13 @@ v:after{
 	font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"
 }
 .navbar-expand-md .navbar-nav .nav-link{
-	min-height:35px;
-	box-shadow:inset 0 -21px 20px rgba(255,255,255,.05);
-	color:rgba(255,255,255,1);
-	padding:auto!important
+    min-height: 35px;
+    box-shadow: inset 7px -31px 54px rgb(247,177,7,1);
+    color: rgb(0,0,0,0.5);
+    font-weight: 400!important;
 }
 .bg-dark{
-	background-color:#336!important;
+	background-color:#fff!important;
 	max-width:100.5vw!important;
 	overflow:hidden
 }
@@ -209,7 +209,7 @@ v:after{
 	height:inherit;
 	padding-top:2rem;
 	padding-bottom:2rem;
-	background:-webkit-gradient(radial,50% 50%,450,50% 50%,860,from(#333434),to(#33335d));
+	background:-webkit-gradient(radial,50% 50%,450,50% 50%,860,from(#14378F),to(#14178F));
 	verticle-align:top
 }
 .segment-bottom{

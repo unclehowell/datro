@@ -1,0 +1,227 @@
+<DOCTYPE html>
+<html>
+  <head>
+     <title>apps - Operational</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="media/css/breadcrumb.css">
+  <link rel="stylesheet" href="media/css/appstore.css">
+  <link rel="stylesheet" href="media/css/font-awesome.css">
+  <link rel="stylesheet" href="../app-store/apps/000-000/style.css"> <!--- for the 'suggest/upload app'  --->
+  <link rel="stylesheet" href="../app-store/apps/001-001/style.css">
+  <link rel="stylesheet" href="../app-store/apps/001-002/style.css">
+  <link rel="stylesheet" href="../app-store/apps/001-003/style.css">
+  <link rel="stylesheet" href="../app-store/apps/001-004/style.css">
+  <link rel="stylesheet" href="../app-store/apps/001-005/style.css">
+  <link rel="stylesheet" href="../app-store/apps/001-006/style.css">
+  <link rel="stylesheet" href="../app-store/apps/001-007/style.css">
+  <link rel="stylesheet" href="../app-store/apps/001-008/style.css">
+  <style>
+@font-face {
+      font-family: 'FontAwesome';
+      src: url('../fonts/fontawesome-webfont.eot');
+    }
+
+      html {overflow-x: hidden!important;height: -webkit-fill-available;}
+#body {}
+/* Sets the dimensions of the entire scrollbar */
+body::-webkit-scrollbar {
+    width: 30px;
+    height: 30px;
+}
+/* The grabbable scrollbar button  */
+html::-webkit-scrollbar-thumb {
+    background: -webkit-gradient(linear,left top,left bottom,from(#ff8a00),to(#e52e71));
+    background: linear-gradient(180deg,#ff8a00,#e52e71);
+    border-radius: 30px;
+    box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+}
+
+/* The vertical scrollbar background */
+html::-webkit-scrollbar-track {
+    background: linear-gradient(90deg,#201c29,#201c29 1px,#100e17 0,#100e17);
+}
+
+.content .rs {
+        max-height: 35%;
+    width: auto;
+    margin-top: 10px;
+    overflow: hidden!important;
+    height: 6%;
+
+}
+a:link, a, a:hover {color: rgba(255,255,255,0.8); font-size: 1.6rem;}
+
+.container .box {
+    width: 82vw;
+    margin-left: 0.5vw;
+    display: table;
+    border-radius: 20px;
+    min-height:98px;
+}
+
+
+.container .box .box-row {
+    display:table-row;
+    color:rgba(255,255,255,0.6);
+}
+
+.container .box .box-cell {
+    display:table-cell;
+    width:28vw;
+    padding:20px 45px 13px 20px;
+}
+
+.container .box .box-cell.box1 {
+    background:transparent;
+    text-align:left;
+    position:fixed;
+    min-heigh:10vh;
+}
+
+.container .box .box-cell.box2 {
+    background: transparent;
+    font-size: 2rem;
+    text-align: center;
+    padding-left: 100px;
+    font-weight: bold;
+}
+
+.container .box .box-cell.box3 {
+    background:transparent;
+    text-align:right;
+    position: relative;
+}
+
+img {
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+.breadcrumb {opacity:0.4;}
+.noHover{
+    pointer-events: none;
+}
+
+.noHover a:hover{
+    pointer-events: none;
+}
+
+
+body
+    opacity: 0.9;
+    transition: opacity 2s;
+    -webkit-transition: opacity 2s; /* Safari */
+}
+body:not(.loaded) #slider img {
+  display:none;
+}
+
+.forminput {
+  border: 1px solid transparent!important;
+  margin-top: -1.5rem;
+  background: transparent;
+  opacity: 0.6;
+  max-width: 17rem;
+  text-align: center;
+  padding: 5px;
+  position: fixed;
+  margin-left: -7.5rem;
+  color: dimgrey;
+  font-weight: 800!important;
+  letter-spacing: 0.2em;
+  font-size: 1.7rem;
+    }
+
+.logo {
+  background:transparent!important;
+  opacity:1;
+  margin-top: 0.8rem;
+  max-width: calc(100vw - 80px)!important;
+  width: 23rem!important;
+  margin-right: calc(-9.5rem + 41.5vw)!important;
+  float: right!important;
+}
+
+
+
+</style>
+
+
+<!-- if the app folder contains the file 'active', return the url for the details page, otherwise show the submit app page --->
+<script>
+$(function () {
+    var url = "new link";
+
+   if (patternExists("./appstore/001-001/active".$cus_id."*")) {
+      // bad!
+   }
+   document.getElementById('001-001').href= url;
+   return url;
+});
+</script>
+</head>
+
+<body style="overflow:inherit!important;height:inherit!important;display:visible;" onload="document.body.classList.add('loaded')">
+
+ <!-- <div class="container">
+  		<div class="box">
+  			<div class="box-row">
+  				<div class="box-cell box1">
+  					<ul class="breadcrumb" id="btn noHover" style="visibility:hidden!Important;">
+  						<li class='btn noHover'>
+  							<a href="#" style="width:auto!Important;background-color:#454545;"><span class="icon icon-play"></span> <span class="text2">entertainment</span></a>
+  						</li>
+  						<li>
+  							<a href="000.html" style="width:auto!Important;filter: brightness(1);background:rgba(0,0,0,0.55);border: 1px solid transparent;">  <span class="text2" style="margin-left:1vw;">categories</span></a>
+  						</li>
+  						<li class="btn noHover">
+  							<a style="width:auto!Important;background-color:#454545;"><span class="text2">hotspotβnβ</span></a> 
+                                                          </p>
+                                                        </form>
+</span></a>
+  						</li>
+  						<li class="btn noHover" style="background-color: #454545;">
+  							<a href="000.html"><span class="icon icon-th" style="background-color:#454545;"></span> <span style="background-color:#454545;" class="text"></span></a>
+  						</li>
+  					</ul>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+ -->
+
+        <a onclick="window.location = window.location.protocol + '//' + window.location.hostname + ':8096';" style="cursor:pointer;">
+      	<div class="square-001-001">
+      		<div class="content-001-001">
+      			<div class="table-001-001">
+      				<div class="table-cell-001-001">
+      					<img class="rs-001-001" src="../app-store/apps/001-001/logo.png"><br>
+      					<span style="height: 3rem!Important; display: inline-block;"><object border="0" data="../app-store/apps/001-001/title.svg" height="50px" style="z-index: -1!important; position: relative;" type="text/plain" width="100%">
+      					</object></span><br>
+      				</div>
+      			</div>
+      		</div>
+      	</div></a>
+
+
+<div class="square-empty">
+   <div class="content-empty">
+       <a href="../app-store/001.html">
+          <div class="table-empty">
+            <div class="table-cell-empty">
+                <img class="rs-empty" src="img/cross.svg" />
+               </br></br>
+            </div>
+        </div></a>
+    </div>
+</div>
+
+
+
+<script src="media/js/breadcrumb.js"></script>
+<script src="media/js/jquery-2.1.4.min.js"></script>
+<script src="media/js/main.js"></script>
+<script type="text/javascript" src="https://www.jqueryscript.net/demo/Simple-iFrame-Modal-Plugin-With-jQuery-modallink/src/jquery.modallink-1.0.0.js"></script>
+  </body>
+</html>
