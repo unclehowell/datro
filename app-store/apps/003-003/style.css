@@ -1,4 +1,3 @@
-
 .square-003-003 {
     float: left;
     position: relative;
@@ -33,7 +32,7 @@
 
 .table-cell-003-003 {
     display: table-cell;
-    vertical-align: middle;
+    vertical-align: top;
 }
 
 .content-003-003 .rs-003-003 {
@@ -42,9 +41,14 @@
     margin-top: 10px;
     overflow: hidden!important;
     height: 6%;
-    max-width: 100%;
-    min-height: 8vw;
-    min-width: 8vw;
+    max-width: 111%;
+    min-height: 5vw;
+    min-width: 15vw;
+    image-rendering: auto;
+    padding-bottom: 9%;
+    padding-top: 11%;
+    margin-left: -0.41rem;
+    left:0;
 }
 
 @media screen and (max-width: 900px) {

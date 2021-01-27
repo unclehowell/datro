@@ -1,5 +1,5 @@
 # Changelog
-It's expected that developers log all changes to this branch, in this CHANGELOG.md file.
+It's expected that developers log all changes to this branch in this CHANGELOG.md file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -9,12 +9,15 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [0.0.1-rtwx.2] - Q1/2021
 
 ### Added
+24-Jan - added the ability to launch a different icon hyperlink depending if viewing the website from online or offline. 
+         this solves seeing the dreaded 404 pages when working offline, while preserving the online experience.
+         the reason the hyperlinks can't just begin with './' is because the destinations are all on a seperate domain (see README.md to learn why). 
 14-Jan - introduced a new website for evr-network (bootstrap of datro.xyz)
        - evr-network.live in GoDaddy forwards to evrnetwork.datro.world, then the javascript in this splashpage brings up the frame that loads the website
 16-Jan - added canion meta to redirect pages to force https. Not hugely neccessary, just keeping things consistent with datro.xyz repo
 
 ### Changed
-
+24-Jan - Installed some packages to my local machine and suddenly the gui started showing minor style bugs, which have now been corrected.   
 
 ## [0.0.1-rtwx.1] - Q4/2020
 
@@ -25,13 +28,9 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
          RPi4 image only atm (see releases for link),still need to make the image a net-installer and serve all models of RPI. 
 15-Oct - New Hotspotβnβ logo added
 
-### Removed
-
 ### Changed
 03-Oct - moved content of frame down a bit, it was getting cut off
 03-Oct - changed page titles from `Datro Assets` to `DATRO`
-
-### Fixed
 
 ## [0.0.1-rtwx.1] - Q3/2020
 
