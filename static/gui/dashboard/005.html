@@ -8,14 +8,14 @@
   <link rel="stylesheet" href="media/css/appstore.css">
   <link rel="stylesheet" href="media/css/font-awesome.css">
   <link rel="stylesheet" href="../app-store/apps/000-000/style.css">
-  <link rel="stylesheet" href="../app-store/apps/005-001/style.css">
-  <link rel="stylesheet" href="../app-store/apps/005-002/style.css">
-  <link rel="stylesheet" href="../app-store/apps/005-003/style.css">
-  <link rel="stylesheet" href="../app-store/apps/005-004/style.css">
-  <link rel="stylesheet" href="../app-store/apps/005-005/style.css">
-  <link rel="stylesheet" href="../app-store/apps/005-006/style.css">
-  <link rel="stylesheet" href="../app-store/apps/005-007/style.css">
-  <link rel="stylesheet" href="../app-store/apps/005-008/style.css">
+  <link rel="stylesheet" href="../app-store/apps/004-001/style.css">
+  <link rel="stylesheet" href="../app-store/apps/004-002/style.css">
+  <link rel="stylesheet" href="../app-store/apps/004-003/style.css">
+  <link rel="stylesheet" href="../app-store/apps/004-004/style.css">
+  <link rel="stylesheet" href="../app-store/apps/004-005/style.css">
+  <link rel="stylesheet" href="../app-store/apps/004-006/style.css">
+  <link rel="stylesheet" href="../app-store/apps/004-007/style.css">
+  <link rel="stylesheet" href="../app-store/apps/004-008/style.css">
     <style>
       html {overflow-x: hidden!important;height: -webkit-fill-available;}
 #body {}
@@ -23,8 +23,7 @@
 .content .rs {
     max-height: calc(-1vh + 8vw + 32px)!important;
     width: auto;
-    margin-top: calc(-1vh + -1vw + 25px)!important;
-    min-height: calc(-1vh + 8vw + 31px)!important;
+    margin-top: -15px;
 }
 a:link, a, a:hover {color: rgba(255,255,255,0.8); font-size: 1.6rem;}
 
@@ -95,6 +94,18 @@ body:not(.loaded) #slider img {
   display:none;
 }
 
+.breadcrumb-icon-microscope {
+  height: 40px;
+  width: 1.5em;
+  margin-top: 0.2em;
+  display:
+  inline-flex;
+  opacity: 1;
+  float: left;
+  filter: brightness(1.5);
+  margin-left: -0.1em;
+  margin-right: 0.3em;
+}
     </style>
     <script>
       $(document).ready(function(){
@@ -132,8 +143,8 @@ body:not(.loaded) #slider img {
 <ul class="breadcrumb" id="btn noHover">
   <li class='btn noHover'>
     <a href="#" style="width:auto!Important;">
-      <span class="icon icon-lightbulb"></span>
-      <span class="text2">ideas</span>
+      <img class="breadcrumb-icon-microscope" src="../dashboard/img/icons/004.svg"></span>
+      <span class="text2">safety & security</span>
     </a>
   </li>
   <li >
@@ -170,32 +181,31 @@ body:not(.loaded) #slider img {
 
         </div>
 
-        <a href="https://datro.xyz/">
-      	<div class="square-005-001">
-      		<div class="content-005-001">
-      			<div class="table-005-001">
-      				<div class="table-cell-005-001">
-      					<img class="rs-005-001" src="../app-store/apps/005-001/logo.png"><br>
-      					<span style="height: 3rem!Important; display: inline-block;"><object border="0" data="../app-store/apps/005-001/title.svg" height="50px" style="z-index: -1!important; position: relative;" type="text/plain" width="100%">
-      					</object></span><br>
-      				</div>
-      			</div>
-      		</div>
-      	</div></a>
+ <a style="cursor:pointer;" onclick="window.location = window.location.protocol + '//' + window.location.hostname + ':80/admin/';" >
+        <div class="square-004-001">
+          <div class="content-004-001">
+            <div class="table-004-001">
+              <div class="table-cell-004-001">
+                <img class="rs-004-001" src="../app-store/apps/004-001/logo.png"><br>
+                <span style="height: 3rem!Important; display: inline-block;"><object border="0" data="../app-store/apps/004-001/title.svg" height="50px" style="z-index: -1!important; position: relative;" type="text/plain" width="100%">
+                </object></span><br>
+              </div>
+            </div>
+          </div>
+        </div></a>
 
-        <a href="https://datro.xyz/static/hbnb/">
-      	<div class="square-005-002">
-      		<div class="content-005-002">
-      			<div class="table-005-002">
-      				<div class="table-cell-005-002">
-      					<img class="rs-005-002" src="../app-store/apps/005-002/logo.png"><br>
-      					<span style="height: 3rem!Important; display: inline-block;"><object border="0" data="../app-store/apps/005-002/title.svg" height="50px" style="background-color:transparent;overflow:hidden;" type="text/plain" width="100%">
-      					</object></span><br>
-      				</div>
-      			</div>
-      		</div>
-      	</div></a>
 
+<div class="square-empty">
+   <div class="content-empty">
+       <a href="../app-store/004.html">
+          <div class="table-empty">
+            <div class="table-cell-empty">
+                <img class="rs-empty" src="img/cross.svg" />
+               </br></br>
+            </div>
+        </div></a>
+    </div>
+</div>
 
 <script src="media/js/breadcrumb.js"></script>
 <script src="media/js/jquery-2.1.4.min.js"></script>
