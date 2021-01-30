@@ -2,12 +2,9 @@ html {
 }
 
 body {
-   background-size:100vw auto!Important;
-   background-repeat:no-repeat;
-   background:rgb(44,12,33)!important;
-   background-blend-mode:overlay;
-   overflow:inherit!important;
-   height:-webkit-fill-available;
+background-size: 100vw 100vh!Important;
+background: rgb(44,12,33)!important;
+height: -webkit-fill-available;
 }
 
 .backtodash {

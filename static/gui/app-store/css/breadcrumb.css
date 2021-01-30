@@ -115,6 +115,7 @@ ul.breadcrumb li a:hover .text {
 ul.breadcrumb li:last-child a {
   padding: 0px;
   opacity:1;
+  background:rgba(0,0,0,0.55);
 }
 ul.breadcrumb li:last-child:hover {
     min-width: 48px;
