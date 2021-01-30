@@ -31,7 +31,7 @@ ul.breadcrumb {
 ul.breadcrumb li {
   float: right;
   padding: 0px 2.5px 0px 2.5px;
-  background-color:#454545;
+  background-color:rgb(44,12,33);
   -moz-border-radius: 50px;
   -webkit-border-radius: 50px;
   border-radius: 50px;
@@ -114,6 +114,7 @@ ul.breadcrumb li a:hover .text {
 
 ul.breadcrumb li:last-child a {
   padding: 0px;
+  opacity:1;
 }
 ul.breadcrumb li:last-child:hover {
     min-width: 48px;

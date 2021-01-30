@@ -268,3 +268,7 @@ GitHub will notify you if there's a comment to respond to or when the administra
       ## add this to /etc/apache2/apache2.conf 
 
       ` IndexHeadInsert "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">" `
+
+### Command for finding text in all files in a specific directory
+
+      grep -rnw '/path/to/somewhere/' -e 'pattern'

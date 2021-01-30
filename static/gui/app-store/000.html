@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Site Selector Categories</title>
+  <title>Hβnβ App Store</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/breadcrumb.css">
@@ -10,45 +10,36 @@
 <link rel="preload" href="fonts/fontawesome-webfont.eot" as="font" type="font/eot" crossorigin>
 <style>
 
+@font-face {
+      font-family: 'FontAwesome';
+      src: url('../fonts/fontawesome-webfont.eot');
+}
 
 html {overflow-x: hidden!important;height: -webkit-fill-available;}
-body { background:-webkit-gradient(radial, 50% 50%, 450, 50% 50%, 860, from(#333434), to(#33335D))!important;}
-/* Sets the dimensions of the entire scrollbar */
 
 body::-webkit-scrollbar {
     width: 30px;
     height: 30px;
 }
 
-/* The grabbable scrollbar button  */
+body:not(.loaded) #slider img {
+  display:none;
+}
+
 html::-webkit-scrollbar-thumb {
     background: -webkit-gradient(linear,left top,left bottom,from(#ff8a00),to(#e52e71));
     background: linear-gradient(180deg,#ff8a00,#e52e71);
     border-radius: 30px;
     box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
 }
-v
-/* The vertical scrollbar background */
+
 html::-webkit-scrollbar-track {
     background: linear-gradient(90deg,#201c29,#201c29 1px,#100e17 0,#100e17);
 }
-.content .rs {
-    max-height: 19%!important;
-    height: 89px;
-    min-height: calc(3.3em)!important;
-    min-width: 8vw;
-    padding: 0px;
-    margin: 0px;
-    filter: invert(66%)grayscale(100%)brightness(152%)contrast(111%)!important;
-    opacity: 0.5;
-    overflow:hidden;
-    max-width: 53%!important;
-}
-
 
 a:link, a, a:hover {color: rgba(255,255,255,0.8); font-size: 1.6rem;}
 
-.container .box {
+<!-- .container .box {
     width: 82vw;
     margin-left: 0.5vw;
     display: table;
@@ -86,28 +77,32 @@ a:link, a, a:hover {color: rgba(255,255,255,0.8); font-size: 1.6rem;}
     background:transparent;
     text-align:right;
     position: relative;
-}
+} -->
 
 .noHover{
     pointer-events: none;
 }
 .breadcrumb {opacity:0.4;}
 
-body:not(.loaded) #slider img {
-  display:none;
+ul.breadcrumb li a:hover {
+padding-left: 0px!important;
+    border: 3px solid transparent;
+    margin-top: -1px;
+    background: rgba(255,255,255,0.21);
+    box-shadow: none!important;
+    margin-left: -2px!important;
+    max-height: 48px;
+    max-width: 49px;
 }
 
-ul.breadcrumb li a:hover {
-    padding-left: 0px!important;
-    border: 4px solid transparent;
-    margin-top: -4px;
-    margin-left: -3px!important;
-    background: black;
-    box-shadow: none!important;
+.square {
+background:rgb(44,12,33)!important;
+border: 2px solid rgba(255,255,255,0.1);
 }
-.square {background-color:#45455B;}
-.square:hover {
-    background-color: #2C2B48;}
+
+.square:hover {background-color: #2C2B48;
+}
+
 </style>
     <script src="js/jquery-2.1.4.min.js"></script>
     <script>
@@ -133,8 +128,7 @@ ul.breadcrumb li a:hover {
 
 </head>
 
-<body style="overflow: inherit!important;height: inherit!important;display:visible;" onload="document.body.classList.add('loaded')">
-
+<body onload="document.body.classList.add('loaded')">
 <div class="container">
 
 	    <div class="box">
@@ -151,13 +145,13 @@ ul.breadcrumb li a:hover {
   </li>
 	
   <li class="btn noHover">
-    <a href="000.html" style="width:auto!Important;">
+    <a href="000.html" class="backtodash">
       <span class="text2">App Store</span>
     </a>
   </li>
-  <li class="btn" style="">
+  <li class="btn">
     <a href="../dashboard/000.html">
-      <span style="background-image: url(img/logo.svg); background-position:top; position:absolute; border: 1.5px solid dodgerblue; background-size: 100%; width: 48px; height: 48px; margin-left: -25px; margin-top: 0px; border-radius: 37px; background-color:black;"></span>
+     <span class="icon icon-arrow-left"></span>
       <span class="text"></span>
     </a>
   </li>
@@ -173,7 +167,19 @@ ul.breadcrumb li a:hover {
 
 <div class="square">
    <div class="content">
-      <a href="screen-lookups/001-lookup.html">
+      <a href="001.html">
+        <div class="table">
+            <div class="table-cell">
+                <img class="rs" style="opacity:0.4!Important;" src="img/icons/search.svg"/>
+  </br><p class="categories-text">Search</p></br>
+            </div>
+        </div></a>
+    </div>
+</div>
+
+<div class="square">
+   <div class="content">
+      <a href="002.html">
 	<div class="table">
 	    <div class="table-cell">
 		<img class="rs" src="../dashboard/img/icons/001.svg"/>
@@ -185,7 +191,7 @@ ul.breadcrumb li a:hover {
 
 <div class="square">
    <div class="content">
-      <a href="screen-lookups/002-lookup.html">
+      <a href="003.html">
         <div class="table">
             <div class="table-cell">
                 <img class="rs" src="../dashboard/img/icons/002.svg"/>
@@ -198,7 +204,7 @@ ul.breadcrumb li a:hover {
 
 <div class="square">
    <div class="content">
-      <a href="screen-lookups/003-lookup.html">
+      <a href="004.html">
         <div class="table">
             <div class="table-cell">
                 <img class="rs" src="../dashboard/img/icons/003.svg"/>
@@ -210,16 +216,27 @@ ul.breadcrumb li a:hover {
 
 <div class="square">
    <div class="content">
-      <a href="screen-lookups/004-lookup.html">
+      <a href="005.html">
         <div class="table">
             <div class="table-cell">
-                <img class="rs" src="../dashboard/img/icons/004.svg"/>
+                <img class="rs" style="opacity:0.4!important;" src="../dashboard/img/icons/004.svg"/>
               </br><p class="categories-text">Safety & Security</p></br>
             </div>
         </div></a>
     </div>
 </div>
 
+<div class="square">
+   <div class="content">
+      <a href="006.html">
+        <div class="table">
+            <div class="table-cell">
+                <img class="rs" src="../dashboard/img/icons/005.svg"/>
+              </br><p class="categories-text">External Device UI's</p></br>
+            </div>
+        </div></a>
+    </div>
+</div>
 
 
 <script src="js/jquery-2.1.1.js"></script>

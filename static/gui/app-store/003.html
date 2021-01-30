@@ -1,30 +1,53 @@
 <DOCTYPE html>
 <html>
   <head>
- <title>AppStore - Entertainment</title>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+     <title>Hotspotβnβ Gaming Apps</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
- <link rel="stylesheet" href="css/grid.css">
-<link rel="stylesheet" href="css/breadcrumb.css">
-<link rel="stylesheet" href="css/appstore.css">
-<link rel="stylesheet" href="css/font-awesome.css">
-<link rel="stylesheet" href="apps/000-000/style.css">
-<link rel="stylesheet" href="apps/003-001/style.css">
-<link rel="stylesheet" href="apps/003-002/style.css">
-<link rel="stylesheet" href="apps/003-003/style.css">
-<link rel="stylesheet" href="apps/003-004/style.css">
-<link rel="stylesheet" href="apps/003-005/style.css">
-<link rel="stylesheet" href="apps/003-006/style.css">
-<link rel="stylesheet" href="apps/003-007/style.css">
-<link rel="stylesheet" href="apps/003-008/style.css">
-    <style>
+  <link rel="stylesheet" href="css/breadcrumb.css">
+  <link rel="stylesheet" href="css/appstore.css">
+  <link rel="stylesheet" href="css/font-awesome.css">
+  <link rel="stylesheet" href="apps/000-000/style.css">
+  <link rel="stylesheet" href="apps/002-001/style.css">
+  <link rel="stylesheet" href="apps/002-002/style.css">
+  <link rel="stylesheet" href="apps/002-003/style.css">
+  <link rel="stylesheet" href="apps/002-004/style.css">
+  <link rel="stylesheet" href="apps/002-005/style.css">
+  <link rel="stylesheet" href="apps/002-006/style.css">
+  <link rel="stylesheet" href="apps/002-007/style.css">
+  <link rel="stylesheet" href="apps/002-008/style.css">
+  <style>
+@font-face {
+      font-family: 'FontAwesome';
+      src: url('../fonts/fontawesome-webfont.eot');
+    }
+
       html {overflow-x: hidden!important;height: -webkit-fill-available;}
-#body {}
-body { background-color:#45455B!important;}
+/* Sets the dimensions of the entire scrollbar */
+body::-webkit-scrollbar {
+    width: 30px;
+    height: 30px;
+}
+/* The grabbable scrollbar button  */
+html::-webkit-scrollbar-thumb {
+    background: -webkit-gradient(linear,left top,left bottom,from(#ff8a00),to(#e52e71));
+    background: linear-gradient(180deg,#ff8a00,#e52e71);
+    border-radius: 30px;
+    box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+}
+
+/* The vertical scrollbar background */
+html::-webkit-scrollbar-track {
+    background: linear-gradient(90deg,#201c29,#201c29 1px,#100e17 0,#100e17);
+}
+
 .content .rs {
-    max-height: 23%;
-    width: 80%;
-    margin-top: 0.5em;
+        max-height: 35%;
+    width: auto;
+    margin-top: 10px;
+    overflow: hidden!important;
+    height: 6%;
+
 }
 a:link, a, a:hover {color: rgba(255,255,255,0.8); font-size: 1.6rem;}
 
@@ -86,7 +109,7 @@ img {
 .noHover a{
     pointer-events: none;
 }
-body{
+body
     opacity: 0.9;
     transition: opacity 2s;
     -webkit-transition: opacity 2s; /* Safari */
@@ -95,86 +118,74 @@ body:not(.loaded) #slider img {
   display:none;
 }
 
-    </style>
-    <script>
-      $(document).ready(function(){
-        // Set trigger and container variables
-        var trigger = $('#nav ul li a'),
-            container = $('#content');
-
-        // Fire on click
-        trigger.on('click', function(){
-          // Set $this for re-use. Set target from data attribute
-          var $this = $(this),
-            target = $this.data('target');
-
-          // Load target page into container
-          container.load(target + '.html');
-
-          // Stop normal link behavior
-          return false;
-        });
-      });
-    </script>
-  </head>
-
-<body style="overflow: inherit!important;height: inherit!important;display:visible;" onload="document.body.classList.add('loaded')">
-
-<div class="container">
-
-            <div class="box">
-
-                <div class="box-row">
-
-                    <div class="box-cell box1">
+</style>
 
 
-<ul class="breadcrumb" id="btn noHover">
-  <li class='btn noHover'>
-    <a href="#" style="width:auto!Important;">
-      <span class="icon icon-home"></span>
-      <span class="text2">Smart Home</span>
-    </a>
-  </li>
-  <li >
-    <a href="000.html" style="width:auto!Important;background-color:#303030;">
-        <span class="text2" style="margin-left:1vw">Categories</span>
-    </a>
-  </li>
+<!-- if the app folder contains the file 'active', return the url for the details page, otherwise show the submit app page --->
+<script>
+$(function () {
+    var url = "new link";
 
-  <li class="btn noHover">
-    <a href="000.html" style="width:auto!Important;">
-      <span class="text2">App Store</span>
-    </a>
-  </li>
+   if (patternExists("./appstore/002-001/active".$cus_id."*")) {
+      // bad!
+   }
+   document.getElementById('002-001').href= url;
+   return url;
+});
+</script>
+</head>
 
-  <li class="btn noHover">
-    <a href="000.html">
-	      <span class="icon icon-th"></span>
-      <span class="text"></span>
-    </a>
-  </li>
+<body style="
+    background-size: 100vw auto!Important;
+    background-repeat: no-repeat;
+    background: rgba(-19,171,236,0.71)url(img/logo-background.svg)!important;
+    background-blend-mode: overlay;
+    overflow: inherit!important;
+    height: -webkit-fill-available;
+" onload="document.body.classList.add('loaded')">
+
+  <div class="container">
+  		<div class="box">
+  			<div class="box-row">
+  				<div class="box-cell box1">
+  					<ul class="breadcrumb" id="btn noHover">
+  						<li class='btn noHover'>
+  							<a href="#" style="width:auto!Important;"><span class="icon icon-gamepad"></span> <span class="text2">Controllers</span></a>
+  						</li>
+  						<li class='btn Hover'>
+  							<a href="000.html" style="width:auto!Important;background-color:#303030;">  <span class="text2" style="margin-left:1vw">Categories</span></a>
+  						</li>
+  						<li class="btn noHover">
+  							<a href="000.html" style="width:auto!Important;"><span class="text2">App Store</span></a>
+  						</li>
+  						<li class="btn noHover">
+  							<a href="000.html"><span class="icon icon-th"></span> <span class="text"></span></a>
+  						</li>
+  					</ul>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
 
 
-</ul>
-
-
-                    </div>
-
-
-
-
+    <a style="cursor:pointer;" onclick="window.location = window.location.protocol + '//' + window.location.hostname + ':8089';" >
+      <div class="square-002-001">
+            <div class="content-002-001">
+                   <div class="table-002-001">
+                          <div class="table-cell-002-001">
+                                 <img class="rs-002-001" src="apps/002-001/logo.png"><br>
+                                        <span style="height:3rem!Important; display:inline-block;">
+                                            <object border="0" data="apps/002-001/title.svg" height="50px" style="z-index:-1!important;position:relative;" type="text/plain" width="100%"></object>
+                                        </span><br>
+                                </div>
+                        </div>
                 </div>
-
-            </div>
-
-        </div>
-
-
+        </div></a>
 
 <script src="js/breadcrumb.js"></script>
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/main.js"></script>
-
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="https://www.jqueryscript.net/demo/Simple-iFrame-Modal-Plugin-With-jQuery-modallink/src/jquery.modallink-1.0.0.js"></script>
   </body>
 </html>

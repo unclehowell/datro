@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
   <head>
-     <title>apps - Operational</title>
+     <title>Hβnβ Search Apps</title>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/breadcrumb.css">
@@ -17,19 +17,12 @@
   <link rel="stylesheet" href="apps/001-007/style.css">
   <link rel="stylesheet" href="apps/001-008/style.css">
   <style>
-@font-face {
-      font-family: 'FontAwesome';
-      src: url('../fonts/fontawesome-webfont.eot');
-    }
 
       html {overflow-x: hidden!important;height: -webkit-fill-available;}
-body {background:-webkit-gradient(radial, 50% 50%, 450, 50% 50%, 860, from(#333434), to(#33335D))!important;}
-/* Sets the dimensions of the entire scrollbar */
 body::-webkit-scrollbar {
     width: 30px;
     height: 30px;
 }
-/* The grabbable scrollbar button  */
 html::-webkit-scrollbar-thumb {
     background: -webkit-gradient(linear,left top,left bottom,from(#ff8a00),to(#e52e71));
     background: linear-gradient(180deg,#ff8a00,#e52e71);
@@ -165,19 +158,6 @@ text2:hover {
 
 }
 
-.breadcrumb-logo-span {
-background-image: url(img/logo.svg);
-    background-position: top;
-    position: absolute;
-    border: 2.5px solid rgba(255,255,255,0.4);
-    background-size: 100%;
-    width: 48px;
-    height: 48px;
-    margin-left: -27px;
-    margin-top: 0px;
-    border-radius: 37px;
-    background-color: black;
-}
 </style>
 
 
@@ -195,7 +175,7 @@ $(function () {
 </script>
 </head>
 
-<body style="overflow:inherit!important;height:inherit!important;display:visible;" onload="document.body.classList.add('loaded')">
+<body style="" onload="document.body.classList.add('loaded')">
 
   <div class="container">
   		<div class="box">
@@ -203,43 +183,32 @@ $(function () {
   				<div class="box-cell box1">
   					<ul class="breadcrumb" id="btn noHover">
   						<li class='btn noHover'>
-  							<a href="#" style="width:auto!Important;background-color:#454545;"><span class="icon icon-play"></span> <span class="text2">Entertainment</span></a>
+  							<a href="#" style="width:auto!Important;">
+                                                <span class="icon icon-search"></span> <span class="text2">Search</span></a>
   						</li>
   						<li>
-  							<a href="000.html" style="width:auto!Important;filter: brightness(1);background:rgba(0,0,0,0.55);border: 1px solid transparent;position: initial; padding-left: 48px!Important; margin-top: 0px;">  <span class="text2" style="margin-left:1vw;">Categories</span></a>
-  						</li>
-  						<li class="btn noHover">
-  							<a style="width:auto!Important;background-color:#454545;"><span class="text2">App Store</span></a> 
-                                                          </p>
-                                                        </form>
-</span></a>
-  						</li>
-  <li class="btn" style="">
+  							<a href="000.html" style="width:auto!Important;filter: brightness(1);background:rgba(0,0,0,0.55);border: 1px solid rgba(255,255,255,0.4);position: initial; padding-left: 48px!Important; margin-top: 0px;">  
+                                                <span class="text2" style="margin-left:1vw;">Categories</span></a>
+
+</li>
+  <li class="btn noHover">
+    <a href="000.html" class="backtodash">
+      <span class="text2">App Store</span>
+    </a>
+  </li>
+  <li class="btn">
     <a href="../dashboard/000.html">
-      <span class="breadcrumb-logo-span"></span>
+     <span class="icon icon-arrow-left"></span>
       <span class="text"></span>
     </a>
   </li>
+
 
   					</ul>
   				</div>
   			</div>
   		</div>
   	</div>
-
-
-        <a onclick="window.location = window.location.protocol + '//' + window.location.hostname + ':8096';" style="cursor:pointer;">
-      	<div class="square-001-001">
-      		<div class="content-001-001">
-      			<div class="table-001-001">
-      				<div class="table-cell-001-001">
-      					<img class="rs-001-001" src="apps/001-001/logo.png"><br>
-      					<span style="height: 3rem!Important; display: inline-block;"><object border="0" data="apps/001-001/title.svg" height="50px" style="z-index: -1!important; position: relative;" type="text/plain" width="100%">
-      					</object></span><br>
-      				</div>
-      			</div>
-      		</div>
-      	</div></a>
 
 
 <script src="js/breadcrumb.js"></script>

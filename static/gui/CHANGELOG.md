@@ -12,6 +12,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Removed
 
 ### Changed
+30-Jan - started to change the theme of the app store  - incomplete . work in progress - just wanted to get local work published sooner than later
 24-Jan - when you pull down the top bar and select a screen e.g. entertainment, controllers, smart home etc it loads one.
          right now the apps are hardcoded into these screens. and link to the installed apps when you select them (locally only).
          2 things are being changed here. Firstly, there'll be a demo screen which will be loaded if the GUI is accessed online (since its a demo)

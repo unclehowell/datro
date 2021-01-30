@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
   <head>
- <title>AppStore - Entertainment</title>
+ <title>Hβnβ SmartHome Apps</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="css/grid.css">
@@ -9,22 +9,21 @@
 <link rel="stylesheet" href="css/appstore.css">
 <link rel="stylesheet" href="css/font-awesome.css">
 <link rel="stylesheet" href="apps/000-000/style.css">
-<link rel="stylesheet" href="apps/004-001/style.css">
-<link rel="stylesheet" href="apps/004-002/style.css">
-<link rel="stylesheet" href="apps/004-003/style.css">
-<link rel="stylesheet" href="apps/004-004/style.css">
-<link rel="stylesheet" href="apps/004-005/style.css">
-<link rel="stylesheet" href="apps/004-006/style.css">
-<link rel="stylesheet" href="apps/004-007/style.css">
-<link rel="stylesheet" href="apps/004-008/style.css">
+<link rel="stylesheet" href="apps/003-001/style.css">
+<link rel="stylesheet" href="apps/003-002/style.css">
+<link rel="stylesheet" href="apps/003-003/style.css">
+<link rel="stylesheet" href="apps/003-004/style.css">
+<link rel="stylesheet" href="apps/003-005/style.css">
+<link rel="stylesheet" href="apps/003-006/style.css">
+<link rel="stylesheet" href="apps/003-007/style.css">
+<link rel="stylesheet" href="apps/003-008/style.css">
     <style>
       html {overflow-x: hidden!important;height: -webkit-fill-available;}
 #body {}
-body { background-color:#45455B!important;}
 .content .rs {
-    max-height: calc(-1vh + 8vw + 32px)!important;
-    width: auto;
-    margin-top: -15px;
+    max-height: 23%;
+    width: 80%;
+    margin-top: 0.5em;
 }
 a:link, a, a:hover {color: rgba(255,255,255,0.8); font-size: 1.6rem;}
 
@@ -95,18 +94,6 @@ body:not(.loaded) #slider img {
   display:none;
 }
 
-.breadcrumb-icon-microscope {
-  height: 40px;
-  width: 1.5em;
-  margin-top: 0.2em;
-  display:
-  inline-flex;
-  opacity: 1;
-  float: left;
-  filter: brightness(1.5);
-  margin-left: -0.1em;
-  margin-right: 0.3em;
-}
     </style>
     <script>
       $(document).ready(function(){
@@ -130,7 +117,14 @@ body:not(.loaded) #slider img {
     </script>
   </head>
 
-<body style="overflow: inherit!important;height: inherit!important;display:visible;" onload="document.body.classList.add('loaded')">
+<body style="
+    background-size: 100vw auto!Important;
+    background-repeat: no-repeat;
+    background: rgba(-19,171,236,0.71)url(img/logo-background.svg)!important;
+    background-blend-mode: overlay;
+    overflow: inherit!important;
+    height: -webkit-fill-available;
+" onload="document.body.classList.add('loaded')">
 
 <div class="container">
 
@@ -144,8 +138,8 @@ body:not(.loaded) #slider img {
 <ul class="breadcrumb" id="btn noHover">
   <li class='btn noHover'>
     <a href="#" style="width:auto!Important;">
-      <img class="breadcrumb-icon-microscope" src="../dashboard/img/icons/004.svg"></span>
-      <span class="text2">Safety & Security</span>
+      <span class="icon icon-home"></span>
+      <span class="text2">Smart Home</span>
     </a>
   </li>
   <li >
@@ -181,19 +175,6 @@ body:not(.loaded) #slider img {
             </div>
 
         </div>
-
- <a style="cursor:pointer;" onclick="window.location = window.location.protocol + '//' + window.location.hostname + ':80/admin/';" >
-        <div class="square-004-001">
-          <div class="content-004-001">
-            <div class="table-004-001">
-              <div class="table-cell-004-001">
-                <img class="rs-004-001" src="apps/004-001/logo.png"><br>
-                <span style="height: 3rem!Important; display: inline-block;"><object border="0" data="apps/004-001/title.svg" height="50px" style="z-index: -1!important; position: relative;" type="text/plain" width="100%">
-                </object></span><br>
-              </div>
-            </div>
-          </div>
-        </div></a>
 
 
 
