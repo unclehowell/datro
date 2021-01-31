@@ -100,8 +100,12 @@
 	border: 2px solid rgba(255,255,255,0.1);
 	}
 
-	.square:hover {background-color: #2C2B48;
-	}
+.nohighlight:hover {
+    border: 0.01em solid rgb(255,255,255,0.12)!important;
+    background: rgb(44,12,33)!important;
+    pointer-events:none!important;
+}
+
 
 	</style>
 	<script src="js/jquery-2.1.4.min.js">
@@ -147,13 +151,13 @@
 			</div>
 		</div>
 	</div>
-	<div class="square">
-		<div class="content">
-			<a href="001.html">
-			<div class="table">
-				<div class="table-cell">
-					<img class="rs" src="img/icons/search.svg" style="opacity:0.4!Important;"><br>
-					<p class="categories-text">Search</p><br>
+	<div class="square nohighlight" style="opacity:0.4;pointer-events:none!Important;">
+		<div class="content nohighlight" style="pointer-events;none!important;">
+			<a href="#" class="nohighlight" style="pointer-events:none;">
+			<div class="table" style="pointer-events:none!Important;">
+				<div class="table-cell" style="pointer-events:none!important;">
+					<img class="rs" src="img/icons/search.svg" style="opacity:0.1!Important;pointer-events:none!Important;"><br>
+					<p class="categories-text" style="pointer-events:none!Important;opacity:0.2!important;">Search</p><br>
 				</div>
 			</div></a>
 		</div>
