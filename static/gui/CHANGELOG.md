@@ -8,6 +8,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [0.0.1-gui.3] - Q1/2021
 ### Added
+31-Jan - Added Jellyfin interactive demo
 27-Jan - started to work on app store. app store will be the same for actual gui on localhost webserver and remote online demo. Unlike 'screens' pages, which have seperate demo pages for online. 
 ### Removed
 
