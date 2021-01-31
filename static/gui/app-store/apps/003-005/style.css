@@ -1,10 +1,10 @@
 
-.square-003-001 {
+.square-003-004 {
     float: left;
     position: relative;
     width: 16%;
     padding-bottom: 16%;
-    background:#303030;
+    background:#2c2c2c;
     margin: 1.66%;
     overflow: hidden;
     border-radius: 0.5em;
@@ -12,33 +12,32 @@
     border-style: solid;
     border-color: white;
     border-image: initial;
-    z-index:0;
 }
 
-.square-003-001:hover {
-    background-color: #2c2c2c;
+.square-003-004:hover {
+    background-color: #303030;
 }
 
-.content-003-001 {
+.content-003-004 {
     position: absolute;
     height: 90%;
     width: 90%;
     padding: 5%;
 }
 
-.table-003-001 {
+.table-003-004 {
     display: table;
     width: 100%;
     height: 100%;
 }
 
-.table-cell-003-001 {
+.table-cell-003-004 {
     display: table-cell;
     vertical-align: middle;
 }
 
-.content-003-001 .rs-003-001 {
-    max-height: 35%;
+.content-003-004 .rs-003-004 {
+    max-height: 15vw;
     width: auto;
     margin-top: 10px;
     overflow: hidden!important;
@@ -49,7 +48,7 @@
 }
 
 @media screen and (max-width: 900px) {
-.square-003-001 {
+.square-003-004 {
     min-width: 25vw;
     min-height: 16vw;
     line-height: 8vw;

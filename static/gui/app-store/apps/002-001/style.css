@@ -1,4 +1,3 @@
-
 .square-002-001 {
     float: left;
     position: relative;
@@ -47,7 +46,8 @@
     min-width: 8vw;
     image-rendering: auto;
     height: 2rem;
-    object-position: center!important;}
+    object-position: center!important;
+}
 
 @media screen and (max-width: 900px) {
 .square-002-001 {

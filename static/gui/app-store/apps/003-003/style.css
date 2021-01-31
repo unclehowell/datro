@@ -1,5 +1,5 @@
 
-.square-003-003 {
+.square-003-002 {
     float: left;
     position: relative;
     width: 16%;
@@ -14,29 +14,29 @@
     border-image: initial;
 }
 
-.square-003-003:hover {
+.square-003-002:hover {
     background-color: #303030;
 }
 
-.content-003-003 {
+.content-003-002 {
     position: absolute;
     height: 90%;
     width: 90%;
     padding: 5%;
 }
 
-.table-003-003 {
+.table-003-002 {
     display: table;
     width: 100%;
     height: 100%;
 }
 
-.table-cell-003-003 {
+.table-cell-003-002 {
     display: table-cell;
     vertical-align: middle;
 }
 
-.content-003-003 .rs-003-003 {
+.content-003-002 .rs-003-002 {
     max-height: 35%;
     width: auto;
     margin-top: 10px;
@@ -48,7 +48,7 @@
 }
 
 @media screen and (max-width: 900px) {
-.square-003-003 {
+.square-003-002 {
     min-width: 25vw;
     min-height: 16vw;
     line-height: 8vw;
