@@ -1,34 +1,28 @@
 <DOCTYPE html>
 <html>
   <head>
-     <title>Hotspotβnβ Gaming Apps</title>
+     <title>Hβnβ Controller Apps</title>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/breadcrumb.css">
   <link rel="stylesheet" href="css/appstore.css">
   <link rel="stylesheet" href="css/font-awesome.css">
   <link rel="stylesheet" href="apps/000-000/style.css">
-  <link rel="stylesheet" href="apps/002-001/style.css">
-  <link rel="stylesheet" href="apps/002-002/style.css">
-  <link rel="stylesheet" href="apps/002-003/style.css">
-  <link rel="stylesheet" href="apps/002-004/style.css">
-  <link rel="stylesheet" href="apps/002-005/style.css">
-  <link rel="stylesheet" href="apps/002-006/style.css">
-  <link rel="stylesheet" href="apps/002-007/style.css">
-  <link rel="stylesheet" href="apps/002-008/style.css">
+  <link rel="stylesheet" href="apps/003-001/style.css">
+  <link rel="stylesheet" href="apps/003-002/style.css">
+  <link rel="stylesheet" href="apps/003-003/style.css">
+  <link rel="stylesheet" href="apps/003-004/style.css">
+  <link rel="stylesheet" href="apps/003-005/style.css">
+  <link rel="stylesheet" href="apps/003-006/style.css">
+  <link rel="stylesheet" href="apps/003-007/style.css">
+  <link rel="stylesheet" href="apps/003-008/style.css">
   <style>
-@font-face {
-      font-family: 'FontAwesome';
-      src: url('../fonts/fontawesome-webfont.eot');
-    }
 
-      html {overflow-x: hidden!important;height: -webkit-fill-available;}
-/* Sets the dimensions of the entire scrollbar */
 body::-webkit-scrollbar {
     width: 30px;
     height: 30px;
 }
-/* The grabbable scrollbar button  */
+
 html::-webkit-scrollbar-thumb {
     background: -webkit-gradient(linear,left top,left bottom,from(#ff8a00),to(#e52e71));
     background: linear-gradient(180deg,#ff8a00,#e52e71);
@@ -117,7 +111,54 @@ body
 body:not(.loaded) #slider img {
   display:none;
 }
+.forminput {
+	 border: 1px solid transparent!important;
+	 margin-top: -1.5rem;
+	 background: transparent;
+	 opacity: 0.6;
+	 max-width: 17rem;
+	 text-align: center;
+	 padding: 5px;
+	 position: fixed;
+	 margin-left: -7.5rem;
+	 color: dimgrey;
+	 font-weight: 800!important;
+	 letter-spacing: 0.2em;
+	 font-size: 1.7rem;
+	   }
 
+	.logo {
+	 background:transparent!important;
+	 opacity:1;
+	 margin-top: 0.8rem;
+	 max-width: calc(100vw - 80px)!important;
+	 width: 23rem!important;
+	 margin-right: calc(-9.5rem + 41.5vw)!important;
+	 float: right!important;
+	}
+
+	ul.breadcrumb li a:hover {
+	   padding-left: 0.0rem!important;
+	   margin-top: 0px!Important;
+	   margin-left: 0.0px!important;
+	   background: black!important;
+	   box-shadow: none!important;
+	   margin-right: 0.0px!important;
+	   border: 1px solid rgba(255,255,255,0.5);
+	   position: initial;
+	}
+	ul.breadcrumb li > text2 a:hover {
+	   padding-left: 0px!important;
+	   border: 4px solid transparent;
+	   margin-top: -4px;
+	   margin-left: -3px!important;
+	   background: black;
+	   box-shadow: none!important;
+	}
+
+	text2:hover {
+
+	}
 </style>
 
 
@@ -126,23 +167,16 @@ body:not(.loaded) #slider img {
 $(function () {
     var url = "new link";
 
-   if (patternExists("./appstore/002-001/active".$cus_id."*")) {
+   if (patternExists("./appstore/003-001/active".$cus_id."*")) {
       // bad!
    }
-   document.getElementById('002-001').href= url;
+   document.getElementById('003-001').href= url;
    return url;
 });
 </script>
 </head>
 
-<body style="
-    background-size: 100vw auto!Important;
-    background-repeat: no-repeat;
-    background: rgba(-19,171,236,0.71)url(img/logo-background.svg)!important;
-    background-blend-mode: overlay;
-    overflow: inherit!important;
-    height: -webkit-fill-available;
-" onload="document.body.classList.add('loaded')">
+<body style="" onload="document.body.classList.add('loaded')">
 
   <div class="container">
   		<div class="box">
@@ -152,15 +186,16 @@ $(function () {
   						<li class='btn noHover'>
   							<a href="#" style="width:auto!Important;"><span class="icon icon-gamepad"></span> <span class="text2">Controllers</span></a>
   						</li>
-  						<li class='btn Hover'>
-  							<a href="000.html" style="width:auto!Important;background-color:#303030;">  <span class="text2" style="margin-left:1vw">Categories</span></a>
-  						</li>
-  						<li class="btn noHover">
-  							<a href="000.html" style="width:auto!Important;"><span class="text2">App Store</span></a>
-  						</li>
-  						<li class="btn noHover">
-  							<a href="000.html"><span class="icon icon-th"></span> <span class="text"></span></a>
-  						</li>
+
+<li>
+							<a href="000.html" style="width:auto!Important;filter: brightness(1);background:rgba(0,0,0,0.55);border: 1px solid rgba(255,255,255,0.4);position: initial; padding-left: 48px!Important; margin-top: 0px;"><span class="text2" style="margin-left:1vw;">Categories</span></a>
+						</li>
+						<li class="btn noHover">
+							<a class="backtodash" href="000.html"><span class="text2">App Store</span></a>
+						</li>
+						<li class="btn">
+							<a href="../dashboard/000.html"><span class="icon icon-arrow-left"></span> <span class="text"></span></a>
+						</li>
   					</ul>
   				</div>
   			</div>
@@ -168,14 +203,14 @@ $(function () {
   	</div>
 
 
-    <a style="cursor:pointer;" onclick="window.location = window.location.protocol + '//' + window.location.hostname + ':8089';" >
-      <div class="square-002-001">
-            <div class="content-002-001">
-                   <div class="table-002-001">
-                          <div class="table-cell-002-001">
-                                 <img class="rs-002-001" src="apps/002-001/logo.png"><br>
+    <a style="cursor:pointer;" >
+      <div class="square-003-001">
+            <div class="content-003-001">
+                   <div class="table-003-001">
+                          <div class="table-cell-003-001">
+                                 <img class="rs-003-001" src="apps/003-001/logo.png"><br>
                                         <span style="height:3rem!Important; display:inline-block;">
-                                            <object border="0" data="apps/002-001/title.svg" height="50px" style="z-index:-1!important;position:relative;" type="text/plain" width="100%"></object>
+                                            <object border="0" data="apps/003-001/title.svg" height="50px" style="z-index:-1!important;position:relative;" type="text/plain" width="100%"></object>
                                         </span><br>
                                 </div>
                         </div>
@@ -185,7 +220,6 @@ $(function () {
 <script src="js/breadcrumb.js"></script>
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/main.js"></script>
-<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="https://www.jqueryscript.net/demo/Simple-iFrame-Modal-Plugin-With-jQuery-modallink/src/jquery.modallink-1.0.0.js"></script>
+<script src="js/jquery.modallink-1.0.0.js"></script>
   </body>
 </html>

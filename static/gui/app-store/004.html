@@ -94,88 +94,85 @@ body:not(.loaded) #slider img {
   display:none;
 }
 
+.forminput {
+	 border: 1px solid transparent!important;
+	 margin-top: -1.5rem;
+	 background: transparent;
+	 opacity: 0.6;
+	 max-width: 17rem;
+	 text-align: center;
+	 padding: 5px;
+	 position: fixed;
+	 margin-left: -7.5rem;
+	 color: dimgrey;
+	 font-weight: 800!important;
+	 letter-spacing: 0.2em;
+	 font-size: 1.7rem;
+	   }
+
+	.logo {
+	 background:transparent!important;
+	 opacity:1;
+	 margin-top: 0.8rem;
+	 max-width: calc(100vw - 80px)!important;
+	 width: 23rem!important;
+	 margin-right: calc(-9.5rem + 41.5vw)!important;
+	 float: right!important;
+	}
+
+	ul.breadcrumb li a:hover {
+	   padding-left: 0.0rem!important;
+	   margin-top: 0px!Important;
+	   margin-left: 0.0px!important;
+	   background: black!important;
+	   box-shadow: none!important;
+	   margin-right: 0.0px!important;
+	   border: 1px solid rgba(255,255,255,0.5);
+	   position: initial;
+	}
+	ul.breadcrumb li > text2 a:hover {
+	   padding-left: 0px!important;
+	   border: 4px solid transparent;
+	   margin-top: -4px;
+	   margin-left: -3px!important;
+	   background: black;
+	   box-shadow: none!important;
+	}
+
+	text2:hover {
+
+	}
     </style>
-    <script>
-      $(document).ready(function(){
-        // Set trigger and container variables
-        var trigger = $('#nav ul li a'),
-            container = $('#content');
-
-        // Fire on click
-        trigger.on('click', function(){
-          // Set $this for re-use. Set target from data attribute
-          var $this = $(this),
-            target = $this.data('target');
-
-          // Load target page into container
-          container.load(target + '.html');
-
-          // Stop normal link behavior
-          return false;
-        });
-      });
-    </script>
   </head>
 
-<body style="
-    background-size: 100vw auto!Important;
-    background-repeat: no-repeat;
-    background: rgba(-19,171,236,0.71)url(img/logo-background.svg)!important;
-    background-blend-mode: overlay;
-    overflow: inherit!important;
-    height: -webkit-fill-available;
-" onload="document.body.classList.add('loaded')">
+<body style="" onload="document.body.classList.add('loaded')">
 
-<div class="container">
-
-            <div class="box">
-
-                <div class="box-row">
-
-                    <div class="box-cell box1">
-
-
-<ul class="breadcrumb" id="btn noHover">
-  <li class='btn noHover'>
-    <a href="#" style="width:auto!Important;">
-      <span class="icon icon-home"></span>
+  <div class="container">
+  		<div class="box">
+  			<div class="box-row">
+  				<div class="box-cell box1">
+  					<ul class="breadcrumb" id="btn noHover">
+  						<li class='btn noHover'>
+  							<a href="#" style="width:auto!Important;">
+             <span class="icon icon-home"></span>
       <span class="text2">Smart Home</span>
     </a>
   </li>
-  <li >
-    <a href="000.html" style="width:auto!Important;background-color:#303030;">
-        <span class="text2" style="margin-left:1vw">Categories</span>
-    </a>
-  </li>
 
-  <li class="btn noHover">
-    <a href="000.html" style="width:auto!Important;">
-      <span class="text2">App Store</span>
-    </a>
-  </li>
-
-  <li class="btn noHover">
-    <a href="000.html">
-	      <span class="icon icon-th"></span>
-      <span class="text"></span>
-    </a>
-  </li>
-
-
-</ul>
-
-
-                    </div>
-
-
-
-
-                </div>
-
-            </div>
-
-        </div>
-
+<li>
+	<a href="000.html" style="width:auto!Important;filter: brightness(1);background:rgba(0,0,0,0.55);border: 1px solid rgba(255,255,255,0.4);position: initial; padding-left: 48px!Important; margin-top: 0px;"><span class="text2" style="margin-left:1vw;">Categories</span></a>
+	</li>
+	<li class="btn noHover">
+		<a class="backtodash" href="000.html"><span class="text2">App Store</span></a>
+						</li>
+						<li class="btn">
+							<a href="../dashboard/000.html"><span class="icon icon-arrow-left"></span> <span class="text"></span></a>
+						</li>
+  					</ul>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
 
 
 <script src="js/breadcrumb.js"></script>
