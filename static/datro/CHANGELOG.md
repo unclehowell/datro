@@ -17,6 +17,10 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Fixed
 31-Jan - html/statistics/website.html - commit comments weren't showing. simple fault, path to js was incorrect. 
 
+### Removed
+31-Jan - deleted directories labelled old as part of typical housekeeping
+
+
 ## [0.0.1] - Q3/2020
 
 ### Added
