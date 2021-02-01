@@ -6,6 +6,17 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.0.2] - Q1/2021
+
+### Added
+31-Jan - The Academy link was missing from the index page so I added it.
+
+### Changed
+31-Jan - html/statistics/website.html - few minor bug fixes - made it look better on mobile. 
+
+### Fixed
+31-Jan - html/statistics/website.html - commit comments weren't showing. simple fault, path to js was incorrect. 
+
 ## [0.0.1] - Q3/2020
 
 ### Added

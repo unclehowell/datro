@@ -61,7 +61,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
 
 		<!-- Java -->
-		<script src="../js/lazy.min.js"></script>
+		<script src="../../js/lazy.min.js"></script>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">	</script>
 		<script>
@@ -78,13 +78,44 @@
 
 
 		<style amp-boilerplate>
+html {
+	overflow-y:   scroll;
+	overflow-x:   hidden;
+}
+::-webkit-scrollbar {
+		width: 0px;
+		background: transparent; /* make scrollbar transparent */
+}
 
 			 body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
 
 		#github-commits {border:1px solid rgba (0,0,0,0.05); border-radius:10px; padding:20px;}
 
-		.github-commit a:hover, a:visited, a:link, a:active { text-decoration: none; white-space: pre-line!Important; }
-		.github-commit { vertical-align: top!important; margin-right: 20px; min-height: 113px!important; max-width: 50px!important; background-color: rgba(0,0,0,0.02); border-radius: 20px; min-width: 700px!important; padding: 10px 10px 10px 10px!important; line-height: 28px; border: 2px solid white; width: 50%!important; font-size: 15px; overflow: hidden!important; text-overflow: ellipsis!important; -webkit-box-orient: vertical!important; display: inline-block!Important; margin-left: 0px; font-variant-caps: all-petite-caps!important; font-weight: 450;}
+		.github-commit a:hover, a:visited, a:link, a:active { 
+
+font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    text-decoration: none;
+    white-space: pre-line!Important;
+}
+		.github-commit { 
+    vertical-align: top!important;
+    margin-right: 20px;
+    min-height: 113px!important;
+    background-color: rgba(0,0,0,0.02);
+    border-radius: 20px;
+    min-width: 24vw;
+    padding: 10px 10px 10px 10px!important;
+    line-height: 28px;
+    border: 2px solid white;
+    overflow: hidden!important;
+    text-overflow: ellipsis!important;
+    -webkit-box-orient: vertical!important;
+    display: inline-block!Important;
+    margin-left: 0px;
+    font-variant-caps: all-petite-caps!important;
+    font-weight: 450;
+    font-size: 1em!important;
+}
 
 	.github-commit title {  content: attr(title);  padding: 4px 8px;  color: #333;  position: absolute;  left: 0;  top: 100%;  white-space: nowrap;  z-index: 20px;
   -moz-border-radius: 5px;  -webkit-border-radius: 5px;  border-radius: 5px;  -moz-box-shadow: 0px 0px 4px #222;  -webkit-box-shadow: 0px 0px 4px #222;  box-shadow: 0px 0px 4px #222;
@@ -92,42 +123,65 @@
   background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);  background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);  background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);  background-image: -o-linear-gradient(top, #eeeeee, #cccccc); }
 
 		.github-avatar {}
-		.github-user {  margin-right: 19px; margin-left: 19px!important;    background-color: #333366;    display: -webkit-inline-box;    padding: 14px;    color: white;    text-indent: -5px;
-    line-height: 17px!important;    max-height: 200px!Important;    border-radius: 20px;    max-width: 111px;    overflow: hidden!important;    border: 1px solid grey;
-    opacity: 0.8;}
+		.github-user {
+    visibility: initial;
+    margin-right: 22px;
+    margin-left: 19px!important;
+    background: #333366;
+    display: -webkit-inline-box;
+    padding: 7px;
+    color: #333366;
+    text-indent: -5px;
+    line-height: 17px!important;
+    max-height: 200px!Important;
+    border-radius: 15px;
+    max-width: 110px;
+    overflow: hidden!important;
+    border: 1px solid grey;
+    opacity: 0.8;
+    min-width: 10vw;
+}
 
 		li {background-color: rgba(0,0,0,0.06); margin: 10px; padding: 13px 13px 23px 13px; border-radius: 10px; border: 1px solid #333666; overflow: hidden!important; font-weight: lighter!important; vertical-align: top!important; display: flex!important; text-underline-position: under!important; min-width: 90%!important; max-width: 99%!important; }
 
 		.wrap {
-			width: 100%;
-			height: 150%;
-			padding: 0;
-			overflow-y: hidden!important;
-			overflow-x: hidden!important;
+    width: 100vw;
+    height: 500px;
+    padding: 0;
+    overflow-y: hidden!important;
+    overflow-x: hidden!important;
+    left: 0px!important;
+    position: absolute;
+    text-align: center;
+    padding-left: 10px;
+    padding-bottom: 36em;
 			}
 
 
 
 		.frame {
-				width: 174%;
-			height: 130vh;
-			border: 0;
-			-ms-transform: scale(0.55);
-			-moz-transform: scale(0.55);
-			-o-transform: scale(0.55);
-			-webkit-transform: scale(0.55);
-			transform: scale(0.55);
-			-ms-transform-origin: 0 0;
-			-moz-transform-origin: 0 0;
-			-o-transform-origin: 0 0;
-			-webkit-transform-origin: 0 0;
-			transform-origin: 0 0;
-			overflow: auto;
-			margin-left: -1rem;
+    min-width: 65em;
+    min-height: 49em;
+    border: 0;
+    overflow: hidden;
+    margin-left: -12rem;
+    margin-top: -6vw;
+    overflow-x: hidden!important;
+    -moz-transform: scale(0.85vw);
+    -o-transform: scale(0.65);
+    -webkit-transform: scale(0.65);
+    transform: scale(0.65);
+    -ms-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    top: 0px;
+    left: 0px;
+    overflow-y: hidden!important;
 		}
 
 
-
+h2 {font-size:200%; font-weight:600; margin-top:1em; margin-bottom:1em;}
 
 
 
@@ -144,10 +198,10 @@
 	<div id="site" class="main">
 	<div id="content" class="segment-top" >
 
-		<div id="products" class="container" >
+		<div id="products" class="container" style="text-align:center;">
 			<h1 class="segment-title" style="margin:-2rem 0 0rem 0;">DATRO Website (datro.xyz)</h1>
 			</br></br>
-			<h2 class="segment-subtitle" style="text-align:center; display: block; margin-left: auto; margin-right: auto;">Development Calendar</h2>
+			<h2 class="segment-subtitle" style="margin-top:10vh;text-align:center; display: block; margin-left: auto; margin-right: auto;">Development Calendar</h2>
 				</br>
 			<img style="z-index: 1;" class="dev-cal" src="http://ghchart.rshah.org/333366/unclehowell" alt="Unclehowell's Github chart" />
 				</br></br>
@@ -155,31 +209,29 @@
 
 </br></br>
 
-	  <div id="products" class="container" >
-
-					</br></br>
-			<h2 class="segment-subtitle" style="text-align:center; display: block; margin-left: auto; margin-right: auto;">Latest from Developers</h2>
-			<div id="github-commits"></div>
-
-	  </div>
-
-<div id="products" class="container" >
+<!--- <div id="products" class="container" >
 
 						<h2 class="segment-subtitle" style="text-align:center; display: block; margin-left: auto; margin-right: auto;">Related Projects</h2>
 				  <div class="github-widget" data-user="unclehowell" data-options='{"limit":3, "sortBy": "stargazers_count"}'></div>
-	</div>
+	</div> -->
 
 
-		<div id="products" class="container" >
-			</br>
-			<h2 class="segment-subtitle" style="text-align:center; display: block; margin-left: auto; margin-right: auto;">Programming Languages Used</h2>
 
-			<div class="wrap">
-				<iframe class="frame" src="https://ionicabizau.github.io/github-profile-languages/api.html?unclehowell"></iframe>
-			</div>
+         <div id="products" class="container" >
 
-		</div>
+                                      
+                        <h2 class="segment-subtitle" style="text-align:center; display: block; margin-left: auto; margin-right: auto;">Latest from Developers</h2>
+                        <div id="github-commits"></div>
+          </div>
 
+                <div id="products" class="container" >
+                        </br>
+                        <h2 class="segment-subtitle" style="text-align:center; display: block; margin-left: auto; margin-right: auto;">Programming Languages Used</h2>
+
+                        <div class="wrap">
+                                <iframe class="frame" src="https://ionicabizau.github.io/github-profile-languages/api.html?unclehowell"></iframe>
+                        </div>
+                </div>
 
 
 	</div>
@@ -189,14 +241,14 @@
 
 	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
 
-	  	    <script src="../js/github.commits.widget.min.js"></script>
-	  	<script src="../js/github.commits.widget.js"></script>
-				<script src="../js/github-widget.js"></script>
+	  	    <script src="../../js/github.commits.widget.min.js"></script>
+	  	<script src="../../js/github.commits.widget.js"></script>
+				<script src="../../js/github-widget.js"></script>
 
 	  <script>
 		$(function() {
 			$('#github-commits').githubInfoWidget(
-				{ user: 'unclehowell', repo: 'datro', branch: 'gh-pages', last: 3, limitMessageTo: 300 });
+				{ user: 'unclehowell', repo: 'datro', branch: 'gh-pages', last: 4, limitMessageTo: 300 });
 		});
 	  </script>
 
