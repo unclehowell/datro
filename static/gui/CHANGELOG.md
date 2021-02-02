@@ -10,9 +10,9 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Added
 31-Jan - Added Jellyfin interactive demo
 27-Jan - started to work on app store. app store will be the same for actual gui on localhost webserver and remote online demo. Unlike 'screens' pages, which have seperate demo pages for online. 
-### Removed
 
 ### Changed
+01-Feb - minor change to controllers screen - not the demo, the actual one - it was showing entertainment app (jellyfin).
 30-Jan - started to change the theme of the app store  - incomplete . work in progress - just wanted to get local work published sooner than later
 24-Jan - when you pull down the top bar and select a screen e.g. entertainment, controllers, smart home etc it loads one.
          right now the apps are hardcoded into these screens. and link to the installed apps when you select them (locally only).

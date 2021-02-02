@@ -3,13 +3,13 @@
 	outline-style:none
 }
 a:hover{
-	color:#90ee90!important
+	color:rgba(0,0,0,0.8)!important;
 }
 a:hover strong{
-	color:#90ee90!important
+	color:rgba(0,0,0,0.8)!important;!important
 }
 a:hover span{
-	color:#90ee90!important
+	color:rgba(0,0,0,0.8)!important;!important
 }
 a:-webkit-any-link{
 	cursor:pointer!important
