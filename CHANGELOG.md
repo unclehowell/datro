@@ -9,6 +9,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [0.0.1-rtwx.2] - Q1/2021
 
 ### Added
+01-Feb - added a fund category, using Bitcoin as the symbol, instead of dollars
 24-Jan - added the ability to launch a different icon hyperlink depending if viewing the website from online or offline. 
          this solves seeing the dreaded 404 pages when working offline, while preserving the online experience.
          the reason the hyperlinks can't just begin with './' is because the destinations are all on a seperate domain (see README.md to learn why). 
