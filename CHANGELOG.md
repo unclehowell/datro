@@ -16,8 +16,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
        - evr-network.live in GoDaddy forwards to evrnetwork.datro.world, then the javascript in this splashpage brings up the frame that loads the website
 16-Jan - added canion meta to redirect pages to force https. Not hugely neccessary, just keeping things consistent with datro.xyz repo
 
+### Removed
+01-Feb - version "v" in title was causing the version number to spill off the page. Shrinking text was a nightmare, so I just removed the v. 
+
 ### Changed
 24-Jan - Installed some packages to my local machine and suddenly the gui started showing minor style bugs, which have now been corrected.   
+
 
 ## [0.0.1-rtwx.1] - Q4/2020
 
