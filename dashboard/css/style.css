@@ -385,6 +385,7 @@ Main Components
   background-image: url(../img/icons/005.svg);
   opacity:0.4;
    margin-top:-3.5em;
+   filter:invert(1);
 }
 
 

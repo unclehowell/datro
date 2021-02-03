@@ -21,7 +21,9 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 01-Feb - version "v" in title was causing the version number to spill off the page. Shrinking text was a nightmare, so I just removed the v. 
 
 ### Changed
-24-Jan - Installed some packages to my local machine and suddenly the gui started showing minor style bugs, which have now been corrected.   
+03-Feb - disabled visitors from viewing 'production' and 'beta testing' screens (until we're at those stages). 
+03-Feb - added support for localhost, but from a remote device. Since it sees an ip (192.168 etc), not 'localhost'   
+24-Jan - installed some packages to my local machine and suddenly the gui started showing minor style bugs, which have now been corrected.   
 
 
 ## [0.0.1-rtwx.1] - Q4/2020
