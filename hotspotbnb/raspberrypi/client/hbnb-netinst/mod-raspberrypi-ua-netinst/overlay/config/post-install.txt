@@ -1,0 +1,125 @@
+#! /bin/busybox sh
+# post-install.txt
+# finish set-up of basic server
+
+
+#####################
+#### PREPARATION ####
+#####################
+
+# This is where we setup variables and stuff that we need later in the script
+
+# shellcheck disable=SC2154
+USER=$username
+USRHOME="home/"$USER
+RMTPATH=$hostname/$USRHOME
+RMTSERVER="asgard"
+
+
+######################
+#### SYSTEM SETUP ####
+######################
+
+# Here we setup the generic system. Stuff that's needed to get a basic RPI up
+# and running stable.
+
+# For the paranoid:
+# Here we regenerate all the host SSH keys
+rm /rootfs/etc/ssh/ssh_host_*
+chroot /rootfs /usr/bin/ssh-keygen -N "" -t rsa   -b 4096 -f /etc/ssh/ssh_host_rsa_key
+chroot /rootfs /usr/bin/ssh-keygen -N "" -t dsa   -b 1024 -f /etc/ssh/ssh_host_dsa_key
+chroot /rootfs /usr/bin/ssh-keygen -N "" -t ecdsa -b 521  -f /etc/ssh/ssh_host_ecdsa_key
+chroot /rootfs /usr/bin/ssh-keygen -N "" -t ed25519       -f /etc/ssh/ssh_host_ed25519_key
+
+echo "Preparing /etc/hosts file..."
+echo ""
+echo "# Added by post-install:"
+echo "::1             localhost ip6-localhost ip6-loopback" >> /rootfs/etc/hosts
+echo "fe00::0         ip6-localnet"     >> /rootfs/etc/hosts
+echo "ff00::0         ip6-mcastprefix"  >> /rootfs/etc/hosts
+echo "ff02::1         ip6-allnodes"     >> /rootfs/etc/hosts
+echo "ff02::2         ip6-allrouters"   >> /rootfs/etc/hosts
+
+echo "Creating extra mountpoints..."
+mkdir -p /rootfs/mnt/data
+mkdir -p /rootfs/mnt/backup
+mkdir -p /rootfs/home/pi/bin
+#mkdir -p /rootfs/srv/semaphores
+#chroot /rootfs /bin/chown -R "${USER}":users /srv/semaphores
+
+# disable default /tmp mount
+sed -i "s/tmpfs \/tmp/#&/" /rootfs/etc/fstab
+echo "" >> /rootfs/etc/fstab
+echo "# Added by post-install:" >> /rootfs/etc/fstab
+# use our own /tmp mount definition
+echo "tmpfs                              /tmp             tmpfs  defaults,nodev,nosuid,size=80%                                         0   0" >> /rootfs/etc/fstab
+echo "${RMTSERVER}:/srv/nfs/backup       /mnt/backup      nfs4   nouser,atime,rw,dev,exec,suid,intr,_netdev,noauto                      0   0" >> /rootfs/etc/fstab
+echo "${RMTSERVER}:/srv/nfs/sqlite3      /mnt/data        nfs4   nouser,atime,rw,dev,exec,suid,intr,_netdev,x-systemd.automount,noauto  0   0" >> /rootfs/etc/fstab
+echo "${RMTSERVER}:/srv/nfs/rbin/rpi     /home/pi/bin     nfs4   nouser,atime,rw,dev,exec,suid,intr,_netdev,x-systemd.automount,noauto  0   0" >> /rootfs/etc/fstab
+
+echo "."
+chroot /rootfs /usr/sbin/update-locale LC_ALL="en_US.UTF-8"
+chroot /rootfs /usr/sbin/update-locale LANGUAGE="en_US:en"
+
+echo
+eval chroot /rootfs /usr/bin/apt-get -y update 2>&1 | output_filter
+if [ "${PIPESTATUS[0]}" -eq 0 ]; then
+	echo "OK"
+else
+	echo "FAILED !"
+fi
+echo "Removing rsyslog..."
+eval chroot /rootfs /usr/bin/apt-get -y purge rsyslog 2>&1 | output_filter
+if [ "${PIPESTATUS[0]}" -eq 0 ]; then
+	echo "OK"
+else
+	echo "FAILED !"
+fi
+echo "Installing syslog-ng..."
+eval chroot /rootfs /usr/bin/apt-get -y install syslog-ng 2>&1 | output_filter
+if [ "${PIPESTATUS[0]}" -eq 0 ]; then
+	echo "OK"
+else
+	echo "FAILED !"
+fi
+
+####################
+#### USER SETUP ####
+####################
+
+# Here we setup the generic user `pi` and the luser environment.
+
+# SSH
+if [ ! -d "/rootfs/${USRHOME}/.ssh" ]; then
+  echo "Create ~/.ssh folder..."
+  mkdir -m 0700 -p "/rootfs/${USRHOME}/.ssh"
+fi
+
+# GIT
+echo "Set-up raspboot..."
+mkdir -p "/rootfs/${USRHOME}/raspboot"
+echo "  Pull sources from GitLab..."
+chroot /rootfs /usr/bin/git clone -b master https://gitlab.com/mausy5043-installer/raspboot.git "/${USRHOME}/raspboot"
+echo "master" > "/rootfs/${USRHOME}/.raspboot.branch"
+echo "  Set permissions..."
+chmod -R 0755 "/rootfs/${USRHOME}/raspboot"
+
+# echo "Change ownership of files in $USRHOME..."
+chroot /rootfs /bin/chown -R "${USER}":"${USER}" "/${USRHOME}"
+
+######################
+#### SERVER SETUP ####
+######################
+
+# This is where specifics for the server are setup
+# Install CPU governor
+chroot /rootfs /usr/sbin/update-rc.d switch_cpu_governor defaults
+
+
+####################
+#### FINALISING ####
+####################
+
+echo -n "********** SYSTEM READY **********"
+
+date

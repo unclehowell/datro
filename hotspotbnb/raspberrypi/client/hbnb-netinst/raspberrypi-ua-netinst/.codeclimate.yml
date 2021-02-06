@@ -1,0 +1,23 @@
+engines:
+  shellcheck:
+    enabled: true
+    checks:
+      SC1090:
+        enabled: false
+      SC1091:
+        enabled: false
+  markdownlint:
+    enabled: true
+    checks:
+      MD009:
+        enabled: false
+      MD013:
+        enabled: false
+      MD036:
+        enabled: false
+    exclude_fingerprints:
+      - e7978957ce6c2ad804a97bc400e25ae8
+ratings:
+   paths:
+   - "**.sh"
+   - "**.md"

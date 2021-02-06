@@ -1,0 +1,95 @@
+# These are my default settings.
+# The order of the settings follows (as closely as possible) the description in
+# the **INSTALL_CUSTOM.md** documentation of raspberrypi-ua-netinst repo.
+
+# >>> PACKAGES <<<
+##################################
+
+packages="bash-completion,gettext,rsync,lsb-release,nfs-common,f2fs-tools,git,nano,tree,curl,zip"
+# packages I need
+packages="$packages,bc,htop,lsof,psmisc,screen,stress"
+# packages I like
+
+#firmware_packages=1
+# install the firmware packages just-in-case I need them for a WiFi-dongle
+firmware_packages=0
+# Set to 0 for due to this error:
+### 20181119
+# The following packages have unmet dependencies:
+#    firmware-ralink : Depends: firmware-misc-nonfree but it is not going to be installed
+#   E: Unable to correct problems, you have held broken packages.
+# ERROR: 100, FAILED !
+###
+
+# >>> Device / Peripheral <<<
+##################################
+
+
+# >>> SSH <<<
+##################################
+
+# the following is a deprecated option:
+# disable_root=1
+root_ssh_pwlogin=0
+# for security reasons we don't enable root, but we do enable SSH logins for other users
+ssh_pwlogin=1
+
+
+# >>> User <<<
+##################################
+
+username=pi
+userpw=raspberry
+usergpu=1
+usergpio=1
+usersysgroups="adm,users,video,dialout"
+# the following is a deprecated option:
+# user_is_admin=1
+userperms_admin=1
+# set-up the default user
+userperms_sound=1
+
+# >>> Network <<<
+##################################
+
+hostname=raspberrypi
+# This is a placeholder name. It will be replaced by the mod-raspberrypi-ua-netinst script.
+
+
+# >>> Localisation <<<
+##################################
+
+timezone=Europe/Amsterdam
+locales="en_US.UTF-8"
+system_default_locale="en_US.UTF-8"
+
+
+# >>> Graphics/GPU
+##################################
+
+gpu_mem=16
+# a headless-server does not need a lot of GPU memory. Lowest possible selected.
+
+
+# >>> Partitioning/Filesystem <<<
+##################################
+
+rootfstype=f2fs
+# F2FS is better suited for use on SD
+boot_volume_label=$hostname
+
+
+# >>> Advanced <<<
+##################################
+
+cmdline="dwc_otg.lpm_enable=0 console=serial0,115200 console=tty1 noatime loglevel=6 cgroup_enable=memory elevator=noop fsck.repair=yes"
+# `noatime` added to reduce wear on SD-card
+# `loglevel=6` to increase logging during boot
+# `cgroup_enable=memory` added to enable notification of upcoming OOM events
+# elevator changed to `noop` to increase performance
+disable_raspberries=0
+# don't show the raspberry logo
+cleanup=1
+
+
+timeserver=nl.pool.ntp.org

@@ -1,0 +1,7 @@
+set ssl:verify-certificate no
+set ftp:timezone ""
+set net:timeout 30
+set net:max-retries 2
+set xfer:log yes
+set xfer:log-file /tmp/lftp.log
+set xfer:max-log-size 1048576

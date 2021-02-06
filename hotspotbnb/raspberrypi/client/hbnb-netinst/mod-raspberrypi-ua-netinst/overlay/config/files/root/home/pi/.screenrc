@@ -1,0 +1,6 @@
+shell -$SHELL
+defscrollback 10000
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %l %{..Y} %Y-%m-%d %c "
+startup_message off

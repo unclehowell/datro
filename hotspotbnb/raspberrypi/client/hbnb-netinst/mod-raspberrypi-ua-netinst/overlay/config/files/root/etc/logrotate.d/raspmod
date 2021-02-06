@@ -1,0 +1,20 @@
+/var/log/7debug.log
+/var/log/6info.log
+/var/log/5notice.log
+/var/log/4warn.log
+/var/log/3err.log
+/var/log/2critical.log
+/var/log/1alert.log
+/var/log/0emerg.log
+{
+  rotate 4
+  weekly
+  missingok
+  notifempty
+  compress
+  delaycompress
+  sharedscripts
+  postrotate
+    invoke-rc.d rsyslog rotate > /dev/null
+  endscript
+}
