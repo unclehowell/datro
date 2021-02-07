@@ -46,6 +46,13 @@
            }
         </script>
 
+    <script>
+        //If URL contains "mystring"
+           if (window.location.href.indexOf("192.168") > -1) {
+           location.href = 'local.html#anchor';
+           }
+        </script>
+
         <meta http-equiv="Page-Enter" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
         <meta http-equiv="Page-Exit" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
         <link href="dashboard/img/favicons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
@@ -151,7 +158,7 @@
 						<nav class="cd-3d-nav-container">
 							<ul class="cd-3d-nav">
 
-         <li style="opacity: 0.2; pointer-events: none;">
+							         <li style="opacity: 0.2; pointer-events: none;">
                                                                         <a href="" onclick="" target="framez">Production</a>
                                                                 </li>
 

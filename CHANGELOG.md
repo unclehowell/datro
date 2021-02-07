@@ -21,6 +21,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 01-Feb - version "v" in title was causing the version number to spill off the page. Shrinking text was a nightmare, so I just removed the v. 
 
 ### Changed
+07-Feb - changes on the 3rd were not completed. Locally it worked, not public, solved it by making all the splashpages match the local one! 
 03-Feb - disabled visitors from viewing 'production' and 'beta testing' screens (until we're at those stages). 
 03-Feb - added support for localhost, but from a remote device. Since it sees an ip (192.168 etc), not 'localhost'   
 24-Jan - installed some packages to my local machine and suddenly the gui started showing minor style bugs, which have now been corrected.   
