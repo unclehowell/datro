@@ -87,7 +87,7 @@ button::-moz-focus-inner{
 html{
 	overflow-x:hidden;
 	letter-spacing:-.00278rem!important;
-	ackground:-webkit-gradient(radial,50% 50%,450,50% 50%,860,from(#333434),to(#33335d));
+	background:-webkit-gradient(radial,50% 50%,450,50% 50%,860,from(#333434),to(#33335d));
 	background-color:-webkit-gradient(radial,50% 50%,450,50% 50%,860,from(#333434),to(#33335d))
 }
 body{
@@ -112,7 +112,6 @@ body{
 }
 a{
 	text-decoration:none;
-	font-color:#fff!important
 }
 u{
 	text-decoration:none;
@@ -237,7 +236,6 @@ v:after{
 	max-height:4rem;
 	text-align:center;
 	font-size:1.5rem;
-	background-image:url(../img/wavee.png);
 	background-repeat:no-repeat;
 	background-size:contain;
 	background-position-x:center;
