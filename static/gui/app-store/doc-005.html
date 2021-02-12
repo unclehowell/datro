@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Hβnβ Entertainment Apps</title>
+	<title>Hβnβ Entertainment Docs</title>
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 	<meta content="width=device-width, initial-scale=1" name="viewport">
 	<link href="css/breadcrumb.css" rel="stylesheet">
-	<link href="css/appstore.css" rel="stylesheet">
+	<link href="css/docs.css" rel="stylesheet">
 	<link href="css/font-awesome.css" rel="stylesheet">
         <link href="apps/000-000/style.css" rel="stylesheet">
 	<link href="apps/002-001/style.css" rel="stylesheet">
@@ -18,6 +18,10 @@
 	<link href="apps/002-008/style.css" rel="stylesheet">
 	<style>
 
+.square-002-001:hover {
+    background: radial-gradient(rgb(20,20,9),transparent);
+    border: 1px solid grey;
+}
 
 	@font-face {
 	     font-family: 'FontAwesome';
@@ -110,6 +114,11 @@
 	}
 
 
+	body
+	   opacity: 0.9;
+	   transition: opacity 2s;
+	   -webkit-transition: opacity 2s; /* Safari */
+	}
 	body:not(.loaded) #slider img {
 	 display:none;
 	}
@@ -162,6 +171,8 @@
 	text2:hover {
 
 	}
+
+       .square-002-001 {background:radial-gradient(rgb(30,26,19), transparent);}
 	</style><!-- if the app folder contains the file 'active', return the url for the details page, otherwise show the submit app page =-->
 
 	<script>
@@ -183,13 +194,13 @@
 				<div class="box-cell box1">
 					<ul class="breadcrumb" id="btn noHover">
 						<li class='btn noHover'>
-							<a href="#" style="width:auto!Important;"><span class="icon icon-play"></span> <span class="text2">Entertainment</span></a>
+							<a href="#" style="width:auto!Important;"><span class="breadcrumb icon-lock"></span> <span class="text2">Safety & Security</span></a>
 						</li>
 						<li>
-							<a href="000.html" style="width:auto!Important;filter: brightness(1);background:rgba(0,0,0,0.55);border: 1px solid rgba(255,255,255,0.4);position: initial; padding-left: 48px!Important; margin-top: 0px;"><span class="text2" style="margin-left:1vw;">Categories</span></a>
+							<a href="doc-000.html" style="width:auto!Important;filter: brightness(1);background:rgba(0,0,0,0.55);border: 1px solid rgba(255,255,255,0.4);position: initial; padding-left: 48px!Important; margin-top: 0px;"><span class="text2" style="margin-left:1vw;">Categories</span></a>
 						</li>
 						<li class="btn noHover">
-							<a class="backtodash" href="000.html"><span class="text2">App Store</span></a>
+							<a class="backtodash" href="doc-000.html"><span class="text2">Library</span></a>
 						</li>
 						<li class="btn">
 							<a href="../search2.html"><span class="icon icon-search"></span> <span class="text"></span></a>
@@ -198,18 +209,7 @@
 				</div>
 			</div>
 		</div>
-	</div><a href="#" style="cursor:pointer;">
-	<div class="square-002-001">
-		<div class="content-002-001">
-			<div class="table-002-001">
-				<div class="table-cell-002-001">
-					<img class="rs-002-001" src="apps/002-001/logo.png"><br>
-					<span style="height: 3rem!Important; display: inline-block;"><object border="0" data="apps/002-001/title.svg" height="50px" style="z-index: -1!important; position: relative;" type="text/plain" width="100%">
-					</object></span><br>
-				</div>
-			</div>
-		</div>
-	</div></a> 
+	</div>
 	<script src="js/breadcrumb.js">
 	</script> 
 	<script src="js/jquery-2.1.4.min.js">

@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/breadcrumb.css">
-  <link rel="stylesheet" href="css/appstore.css">
+  <link rel="stylesheet" href="css/docs.css">
   <link rel="stylesheet" href="css/font-awesome.css">
   <link rel="stylesheet" href="apps/000-000/style.css">
   <link rel="stylesheet" href="apps/003-001/style.css">
@@ -17,7 +17,13 @@
   <link rel="stylesheet" href="apps/003-007/style.css">
   <link rel="stylesheet" href="apps/003-008/style.css">
   <style>
-
+.square-003-001 {
+    background: radial-gradient(rgb(30,26,19), transparent);
+}
+.square-003-001:hover {
+    background: radial-gradient(rgb(20,20,9),transparent);
+    border: 1px solid grey;
+}
 body::-webkit-scrollbar {
     width: 30px;
     height: 30px;
@@ -103,7 +109,11 @@ img {
 .noHover a{
     pointer-events: none;
 }
-
+body
+    opacity: 0.9;
+    transition: opacity 2s;
+    -webkit-transition: opacity 2s; /* Safari */
+}
 body:not(.loaded) #slider img {
   display:none;
 }
@@ -184,10 +194,10 @@ $(function () {
   						</li>
 
 <li>
-							<a href="000.html" style="width:auto!Important;filter: brightness(1);background:rgba(0,0,0,0.55);border: 1px solid rgba(255,255,255,0.4);position: initial; padding-left: 48px!Important; margin-top: 0px;"><span class="text2" style="margin-left:1vw;">Categories</span></a>
+							<a href="doc-000.html" style="width:auto!Important;filter: brightness(1);background:rgba(0,0,0,0.55);border: 1px solid rgba(255,255,255,0.4);position: initial; padding-left: 48px!Important; margin-top: 0px;"><span class="text2" style="margin-left:1vw;">Categories</span></a>
 						</li>
 						<li class="btn noHover">
-							<a class="backtodash" href="000.html"><span class="text2">App Store</span></a>
+							<a class="backtodash" href="doc-000.html"><span class="text2">Library</span></a>
 						</li>
 						<li class="btn">
 							<a href="../search2.html"><span class="icon icon-search"></span> <span class="text"></span></a>

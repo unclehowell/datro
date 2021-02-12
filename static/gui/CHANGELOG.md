@@ -1,17 +1,27 @@
 # Changelog
-It's expected that developers log all changes to this branch, in this CHANGELOG.md file.
+Developers are expected to log all changes to this directory to this changelog.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and a combination of [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and a combination of [Prince2 Project Management](https://prince2.com).
 
 ## [Unreleased]
 
 ## [0.0.1-gui.3] - Q1/2021
-### Added
+
+### Plan this Quarter/Version
+
+Just constant never ending improvements of GUI, as seen fit
+
+### Performance
+
+#### Added
 31-Jan - Added Jellyfin interactive demo
 27-Jan - started to work on app store. app store will be the same for actual gui on localhost webserver and remote online demo. Unlike 'screens' pages, which have seperate demo pages for online. 
 
-### Changed
+#### Changed
+12-Feb - added category icons and hyperlinks to the splashpage for less clickthrough & minor bug fixes and housekeeping. 
+10-Feb - minor edit to search page to speed up its page load time. See issues, risks concerns about this too - still outstanding work here
 01-Feb - minor change to controllers screen - not the demo, the actual one - it was showing entertainment app (jellyfin).
 30-Jan - started to change the theme of the app store  - incomplete . work in progress - just wanted to get local work published sooner than later
 24-Jan - when you pull down the top bar and select a screen e.g. entertainment, controllers, smart home etc it loads one.
@@ -35,10 +45,20 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
          so the work yesterday, makes this gui self-aware of if its online (serveless) or running offline (localhost server).
          self-aware but not with actual AI. But rather just some simple javascript which looks at the address bar - we've added the following label to the pages that perform this function *[-lookup].html
 
-## [0.0.1-gui.2] - Q4/2020
-### Added
+#### Fixed
+12-Feb - removed some buggy css from all pages e.g. body{opacity: 0.9;transition: opacity 2s; -webkit-transition: opacity 2s; /* Safari */}
+         it may have been buggy because in a lot of pages it didn't have an opening bracket where one should have been. 
 
-### Removed
+### Issues, Risks, Concerns
+
+12-Feb - Because of the screen-selector solution that has been implimented the backspace doesn't work in some cases.
+12-Feb - Browser cache doesn't appear to be storing the title change when offline.  
+
+### Plan for Next Quarter/Version
+
+00-Apr - Make browser back button work - perhaps have the screen-selector java work within the origin page, instead of its own page which is adding the extra step (which you can go back to, since it takes you forward again) 
+
+## [0.0.1-gui.2] - Q4/2020
 
 ### Changed
 14-Dec - Favicons updated to new Logo design

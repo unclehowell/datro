@@ -100,9 +100,22 @@
 
 
 				<!-- this scripts forces scrollbar="no" , scrollbars needed sorry <script src="dashboard/js/iframeResizer.min.js"></script>  -->
+<style>
 
 
+.forminput[name] {
+    color: rgba(255,255,255,0.4)!important;
+}
 
+.forminput[value] {
+    color: rgba(255,255,255,0.5)!important;
+}
+
+input:focus::placeholder {
+    opacity: 0.4!important;
+}
+
+</style>
 		</head>
 
     <body id="body"  scrolling="auto"  onload="resizebody(this);">
@@ -111,7 +124,7 @@
 								<!--- <a href="#anchor" class="logo"> --->
 							<form action="/" method="post" onkeydown="return event.key != 'Enter';" class="squirrel logo" alt="Logo">
 					                  <p style="color:white;background:transparent;"><br>
-					                   <input border="0" type="text" name="Hotspotβnβ" placeholder="Hotspotβnβ" id="Hotspotβnβ" value="Hotspotβnβ" class="forminput" title="Changes here save to your web-browser (client-side cache)">
+					                   <input border="0" type="text" name="Hotspotβnβ" placeholder="v0.0.1-gui.3" id="Hotspotβnβ" value="Hotspotβnβ" class="forminput" title="Changes here save to your web-browser (client-side cache)">
 					                  </p>
 					                </form>
 
