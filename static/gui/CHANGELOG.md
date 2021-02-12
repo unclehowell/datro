@@ -46,6 +46,7 @@ Just constant never ending improvements of GUI, as seen fit
          self-aware but not with actual AI. But rather just some simple javascript which looks at the address bar - we've added the following label to the pages that perform this function *[-lookup].html
 
 #### Fixed
+12-Feb - entertainment screen wasn't loading, fixed the bug
 12-Feb - removed some buggy css from all pages e.g. body{opacity: 0.9;transition: opacity 2s; -webkit-transition: opacity 2s; /* Safari */}
          it may have been buggy because in a lot of pages it didn't have an opening bracket where one should have been. 
 
