@@ -6,11 +6,18 @@
 
         <script src="../../../dashboard/js/jquery-3.3.1.min.js"></script>
 
-        <script>
+        <!-- <script>
         //If URL contains "mystring"
            if (window.location.href.indexOf("datro.") > -1) {
            window.location = 'http://' + '34.67.153.94' + ':8089'  ;
+           } -->
+           <script>
+           
+          //If URL contains "mystring"
+           if (window.location.href.indexOf("datro.") > -1) {
+           window.location.href = 'http://' + '34.67.153.94' + window.location.port + ':8089'  ;
            }
+
 
         //If URL contains "mystring"
            if (window.location.href.indexOf("127.") > -1) {
