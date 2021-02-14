@@ -120,47 +120,12 @@ body:not(.loaded) #slider img {
 </style>
 
 
-<!-- if the app folder contains the file 'active', return the url for the details page, otherwise show the submit app page --->
-<script>
-$(function () {
-    var url = "new link";
-
-   if (patternExists("../app-store/apps/002-001/active".$cus_id."*")) {
-      // bad!
-   }
-   document.getElementById('002-001').href= url;
-   return url;
-});
-</script>
 </head>
 
-<body style="overflow: inherit!important;height: inherit!important;display:visible;" onload="document.body.classList.add('loaded')">
+<body style="overflow: inherit!important;height: inherit!important;display:visible;">
 
-<!---  <div class="container">
-  		<div class="box">
-  			<div class="box-row">
-  				<div class="box-cell box1">
-  					<ul class="breadcrumb" id="btn noHover">
-  						<li class='btn noHover'>
-  							<a href="#" style="width:auto!Important;"><span class="icon icon-gamepad"></span> <span class="text2">controllers</span></a>
-  						</li>
-  						<li class='btn Hover'>
-  							<a href="000.html" style="width:auto!Important;background-color:#303030;">  <span class="text2" style="margin-left:1vw">categories</span></a>
-  						</li>
-  						<li class="btn noHover">
-  							<a href="000.html" style="width:auto!Important;"><span class="text2">hotspotβnβ</span></a>
-  						</li>
-  						<li class="btn noHover">
-  							<a href="000.html"><span class="icon icon-th"></span> <span class="text"></span></a>
-  						</li>
-  					</ul>
-  				</div>
-  			</div>
-  		</div>
-  	</div>
---->
 
-    <a style="cursor:pointer;" href="http://34.67.153.94:8089/index.html" target="_self" >
+    <a style="cursor:pointer;" href="../app-store/apps/003-001/fetch.html" target="_self" >
       <div class="square-003-001">
             <div class="content-003-001">
                    <div class="table-003-001">

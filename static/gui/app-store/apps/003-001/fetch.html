@@ -1,0 +1,36 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+        <head>
+        <meta charset="utf-8">
+
+        <script src="../../../dashboard/js/jquery-3.3.1.min.js"></script>
+
+        <script>
+        //If URL contains "mystring"
+           if (window.location.href.indexOf("datro.") > -1) {
+           window.location = '//' + '34.67.153.94' + ':8089'  ;
+           }
+
+        //If URL contains "mystring"
+           if (window.location.href.indexOf("127.") > -1) {
+           window.location.href = '//' + window.location.hostname + window.location.port + ':8089'  ;
+           }
+
+        //If URL contains "mystring"
+           if (window.location.href.indexOf("192.") > -1) {
+           window.location.href = '//' + window.location.hostname + window.location.port + ':8089'  ;
+           }
+
+        //If URL contains "mystring"
+           if (window.location.href.indexOf("localhost") > -1) {
+           window.location.href = '//' + window.location.hostname + window.location.port + ':8089'  ;
+           }
+        </script> 
+
+        <meta http-equiv="Page-Enter" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
+        <meta http-equiv="Page-Exit" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
+</head>
+<body id="body">
+</body>
+</html>
