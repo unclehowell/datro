@@ -16,7 +16,8 @@ Just constant never ending improvements of GUI, as seen fit
 ### Performance
 
 #### Added
-12-Feb - openhab just release v3.0 which has a ton of new features, and looks better on mobile. So it's been added to the demo/ demo screen for home control
+12-Feb - Added gamepad app, which I've hosted on a Google Cloud server for now, since its gotta work with emulationstation (which will display with guacamole/uv4l)
+12-Feb - Openhab just release v3.0 which has a ton of new features, and looks better on mobile. So it's been added to the demo/ demo screen for home control
 31-Jan - Added Jellyfin interactive demo
 27-Jan - started to work on app store. app store will be the same for actual gui on localhost webserver and remote online demo. Unlike 'screens' pages, which have seperate demo pages for online. 
 
