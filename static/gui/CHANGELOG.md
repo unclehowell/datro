@@ -21,6 +21,7 @@ Just constant never ending improvements of GUI, as seen fit
 27-Jan - started to work on app store. app store will be the same for actual gui on localhost webserver and remote online demo. Unlike 'screens' pages, which have seperate demo pages for online. 
 
 #### Changed
+14-Feb - Started messing with an email capture form with the online demo. Better to insist on mailchain or something instead, using a blockchain method, so will hold off. 
 12-Feb - added category icons and hyperlinks to the splashpage for less clickthrough & minor bug fixes and housekeeping. 
 10-Feb - minor edit to search page to speed up its page load time. See issues, risks concerns about this too - still outstanding work here
 01-Feb - minor change to controllers screen - not the demo, the actual one - it was showing entertainment app (jellyfin).

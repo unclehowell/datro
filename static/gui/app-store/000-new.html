@@ -7,6 +7,7 @@
 	<link href="css/breadcrumb.css" rel="stylesheet">
 	<link href="css/appstore.css" rel="stylesheet">
 	<link href="css/font-awesome.css" rel="stylesheet">
+        <link href="css/eform.css" rel="stylesheet">
 	<link href="fonts/fontawesome-webfont.eot" rel="preload" type="font/eot">
 	<style>
 
@@ -106,6 +107,30 @@
     pointer-events:none!important;
 }
 
+.basic {
+    z-index: 1;
+    width: 100vw;
+    height: 50vh;
+    background: rgba(255,255,255,0.2);
+    position: fixed;
+    float: left;
+    left: 0px;
+    top: 15vh;
+}
+
+.blur {
+    float: left;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(2px);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    z-index: 2;
+    left: 0px;
+    top: 0px;
+}
 
 	</style>
 	<script src="js/jquery-2.1.4.min.js">
@@ -132,6 +157,26 @@
 	</script>
 </head>
 <body onload="document.body.classList.add('loaded')">
+<div class="basic">
+  <div class="blur">
+<p class="eform-text"><strong>Our App Store goes live soon!</strong> </br> Register below for our newsletter.</p>
+<form class="eform-form" action="https://mysterious-springs-38014.herokuapp.com/contact/" method="post">
+ <ul>
+  <li>
+    <label class="eform-label" for="name">Name</label>
+    <input class="eform-input" type="text" id="name" name="name" />
+  </li>
+  <li>
+    <label class="eform-label" for="mail">Email</label>
+    <input class="eform-input" type="email" id="mail" name="email"  style="margin-left:4px"/>
+  </li>
+<li class="eform-button">
+  <input class="eform-button-submit" type="submit"></input>
+</li>
+</ul>
+</form>
+</div>
+</div>
 	<div class="container">
 		<div class="box">
 			<div class="box-row">

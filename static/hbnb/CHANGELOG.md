@@ -6,6 +6,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.0.3] - Q1/2021
+
+### Changed
+14-Feb - Minor edit. Typo/ spelling correction
+
 ## [0.0.2] - Q4/2020
 
 ### Added
