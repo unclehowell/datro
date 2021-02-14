@@ -13,6 +13,21 @@
     border-image: initial;
     z-index:0;
 }
+.square-003-001-doc {
+    float: left;
+    position: relative;
+    width: 16%;
+    padding-bottom: 16%;
+    background: radial-gradient(rgb(30,26,19), transparent);
+    margin: 1.66%;
+    overflow: hidden;
+    border-radius: 0.5em;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    border-image: initial;
+    z-index:0;
+}
 
 .square-003-001:hover {
     background-color: #2c2c2c;
@@ -51,7 +66,7 @@
 }
 
 @media screen and (max-width: 900px) {
-.square-003-001 {
+.square-003-001, .square-003-001-doc {
     min-width: 25vw;
     min-height: 16vw;
     line-height: 8vw;

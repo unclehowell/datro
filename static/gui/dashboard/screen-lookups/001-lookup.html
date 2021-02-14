@@ -8,19 +8,19 @@
  <script type="text/javascript">
                                     $(document).ready(function() {
                                         $("body").css("display", "none");
-                                        $("body").fadeIn(2000);
+                                        $("body").fadeIn(20);
                                     });
                                 </script>
 
   </head>
-  <body onload="redirect()" style="">
-	<h1 style="text-align: center; padding-top: 50px; display: block;">App still loading ... taking you back</h1>
+  <body onload="redirect()" style="background:#454545;">
+	<h1 style="text-align: center; padding-top: 50px; display: block;"></h1>
 <script>
 	  function redirect() {
-		setTimeout(function(){ 
-				window.history.back() ;
+		setTimeout(function(){
+				window.location.replace("../../index.html#anchor");
 			}
-			, 1000);	
+			, 10);
 		}
 	</script>
   </body>
