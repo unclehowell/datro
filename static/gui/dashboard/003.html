@@ -108,35 +108,70 @@ img {
     pointer-events: none;
 }
 
-.noHover a{
-    pointer-events: none;
-}
 
 body:not(.loaded) #slider img {
   display:none;
 }
 
+.forminput {
+  border: 1px solid transparent!important;
+  margin-top: -1.5rem;
+  background: transparent;
+  opacity: 0.6;
+  max-width: 17rem;
+  text-align: center;
+  padding: 5px;
+  position: fixed;
+  margin-left: -7.5rem;
+  color: dimgrey;
+  font-weight: 800!important;
+  letter-spacing: 0.2em;
+  font-size: 1.7rem;
+    }
+
+.logo {
+  background:transparent!important;
+  opacity:1;
+  margin-top: 0.8rem;
+  max-width: calc(100vw - 80px)!important;
+  width: 23rem!important;
+  margin-right: calc(-9.5rem + 41.5vw)!important;
+  float: right!important;
+}
+
 </style>
+<!-- if the app folder contains the file 'active', return the url for the details page, otherwise show the submit app page --->
+<script>
+$(function () {
+    var url = "new link";
+
+   if (patternExists("./appstore/003-001/active".$cus_id."*")) {
+      // bad!
+   }
+   document.getElementById('003-001').href= url;
+   return url;
+});
+</script>
 </head>
 
 <body style="overflow: inherit!important;height: inherit!important;display:visible;" onload="document.body.classList.add('loaded')">
 
- <a style="cursor:poiter;" href="../app-store/apps/003-001/fetch.html">
-      <div class="square-003-001">
-            <div class="content-003-001">
-                   <div class="table-003-001">
-                          <div class="table-cell-003-001">
-                                 <img class="rs-003-001" src="../app-store/apps/003-001/logo.png"><br>
-                                        <span style="height:3rem!Important; display:inline-block;">
-                                            <object border="0" data="../app-store/apps/003-001/title.svg" height="50px" style="z-index:-1!important;position:relative;" type="text/plain" width=>
-                                        </span><br>
-                                </div>
-                        </div>
-                </div>
-        </div></a>
+
+ <a style="cursor:pointer;" href="../app-store/apps/003-001/fetch.html">
+      	<div class="square-003-001">
+      		<div class="content-003-001">
+      			<div class="table-003-001">
+      				<div class="table-cell-003-001">
+      					<img class="rs-003-001" src="../app-store/apps/003-001/logo.png"><br>
+      					<span style="height: 3rem!Important; display: inline-block;"><object border="0" data="../app-store/apps/003-001/title.svg" height="50px" style="z-index: -1!important; position: relative;" type="text/plain" width="100%">
+      					</object></span><br>
+      				</div>
+      			</div>
+      		</div>
+      	</div></a>
 
 
-        <a href="../app-store/003.html" style="cursor:pointer;">
+ <a href="../app-store/003.html" style="cursor:pointer;">
         <div class="square-999-999">
                 <div class="content-999-999">
                         <div class="table-999-999">
@@ -150,11 +185,9 @@ body:not(.loaded) #slider img {
                 </div>
         </div></a>
 
-
 <script src="media/js/breadcrumb.js"></script>
 <script src="media/js/jquery-2.1.4.min.js"></script>
 <script src="media/js/main.js"></script>
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="https://www.jqueryscript.net/demo/Simple-iFrame-Modal-Plugin-With-jQuery-modallink/src/jquery.modallink-1.0.0.js"></script>
   </body>
 </html>
