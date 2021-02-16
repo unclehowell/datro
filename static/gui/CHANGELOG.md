@@ -55,6 +55,7 @@ and a combination of [Prince2 Project Management](https://prince2.com).
          self-aware but not with actual AI. But rather just some simple javascript which looks at the address bar - we've added the following label to the pages that perform this function *[-lookup].html
 
 #### Fixed
+16-Feb - The G.ES.K.N (guacamole, emulationstation,kodi,netflix) fetch file was wrong, it pointed to the gamepad app. corrected it
 16-Feb - Search wasn't searching. Jquery issues, fixed
 12-Feb - entertainment screen wasn't loading, fixed the bug
 12-Feb - removed some buggy css from all pages e.g. body{opacity: 0.9;transition: opacity 2s; -webkit-transition: opacity 2s; /* Safari */}
