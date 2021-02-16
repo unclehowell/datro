@@ -16,6 +16,7 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 ### PERFORMANCE
 
 #### Added
+16-Feb - new webapp on the demo/ public entertainment screen only, not locally. Webapp 002-002. Working to showcase Netflix in kodi, in EmulationStation in Guacamole. Locally it will use UV4l 
 12-Feb - Added gamepad app, which I've hosted on a Google Cloud server for now, since its gotta work with emulationstation (which will display with guacamole/uv4l)
 12-Feb - Openhab just release v3.0 which has a ton of new features, and looks better on mobile. So it's been added to the demo/ demo screen for home control
 31-Jan - Added Jellyfin interactive demo
