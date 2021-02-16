@@ -22,6 +22,7 @@ Just constant never ending improvements of GUI, as seen fit
 27-Jan - started to work on app store. app store will be the same for actual gui on localhost webserver and remote online demo. Unlike 'screens' pages, which have seperate demo pages for online. 
 
 #### Changed
+16-Feb - the gamepad app (port 8089) works on the remote server, but not in the dashboards iframe, perhaps due to no ssl. So I've made the apps server in question, https
 14-Feb - played around with how the apps load, came up with a better solution. Not perfect, just better. Also bug fixed controller screen, the link to the app store wasn't showing.
 14-Feb - housekeeping plus the way the apps (specifically the gamepad) on our server opened, wasn't correct so it didn't work. Changed it to use onclick instead of href.  
 14-Feb - housekeeping, mainly search is now fallen into how and where it should be as a screen (001) as appose to a stray page in the top direction.
@@ -55,6 +56,9 @@ Just constant never ending improvements of GUI, as seen fit
 12-Feb - entertainment screen wasn't loading, fixed the bug
 12-Feb - removed some buggy css from all pages e.g. body{opacity: 0.9;transition: opacity 2s; -webkit-transition: opacity 2s; /* Safari */}
          it may have been buggy because in a lot of pages it didn't have an opening bracket where one should have been. 
+
+#### Removed
+15-Feb - removed CNAME from static/gui, it wasn't correect anyway. only downside having there, can't see any upside.
 
 ### Issues, Risks, Concerns
 
