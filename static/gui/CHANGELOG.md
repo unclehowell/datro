@@ -9,11 +9,11 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 
 ## [0.0.1-gui.3] - Q1/2021
 
-### Plan this Quarter/Version
+### PLAN
 
-Just constant never ending improvements of GUI, as seen fit
+2021Q1 - Just constant never ending improvements of GUI, as seen fit
 
-### Performance
+### PERFORMANCE
 
 #### Added
 12-Feb - Added gamepad app, which I've hosted on a Google Cloud server for now, since its gotta work with emulationstation (which will display with guacamole/uv4l)
@@ -54,6 +54,7 @@ Just constant never ending improvements of GUI, as seen fit
          self-aware but not with actual AI. But rather just some simple javascript which looks at the address bar - we've added the following label to the pages that perform this function *[-lookup].html
 
 #### Fixed
+16-Feb - Search wasn't searching. Jquery issues, fixed
 12-Feb - entertainment screen wasn't loading, fixed the bug
 12-Feb - removed some buggy css from all pages e.g. body{opacity: 0.9;transition: opacity 2s; -webkit-transition: opacity 2s; /* Safari */}
          it may have been buggy because in a lot of pages it didn't have an opening bracket where one should have been. 
@@ -61,12 +62,12 @@ Just constant never ending improvements of GUI, as seen fit
 #### Removed
 15-Feb - removed CNAME from static/gui, it wasn't correect anyway. only downside having there, can't see any upside.
 
-### Issues, Risks, Concerns
+### ISSUES,RISKS,CONCERNS
 
 12-Feb - Because of the screen-selector solution that has been implimented the backspace doesn't work in some cases.
 12-Feb - Browser cache doesn't appear to be storing the title change when offline.  
 
-### Plan for Next Quarter/Version
+### PLAN MOVING FORWARD
 
 00-Apr - Make browser back button work - perhaps have the screen-selector java work within the origin page, instead of its own page which is adding the extra step (which you can go back to, since it takes you forward again) 
 
