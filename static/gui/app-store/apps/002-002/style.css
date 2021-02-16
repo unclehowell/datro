@@ -13,6 +13,7 @@
     border-image: initial;
     z-index:0;
 }
+
 .square-002-002-doc {
     float: left;
     position: relative;
@@ -53,20 +54,20 @@
 }
 
 .content-002-002 .rs-002-002 {
-    max-height: 10px;
+    max-height: 19%;
     width: auto;
-    margin-top: 0.4em;
+    margin-top: -1%;
     overflow: hidden!important;
-    height: 6%;
     max-width: 100%;
     min-height: 8vw;
     min-width: 8vw;
     image-rendering: auto;
+    height: 2rem;
     object-position: center!important;
 }
 
 @media screen and (max-width: 900px) {
-.square-002-002, .square-002-002-doc {
+.square-002-002, .square-002-002-doc  {
     min-width: 25vw;
     min-height: 16vw;
     line-height: 8vw;
