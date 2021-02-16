@@ -24,6 +24,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 16-Feb - removed secret ssl keys from some 3rd parties embedded repo
 
+### Fixed
+16-Feb - removing the keys from the 3rd party repo (see ### removed above) caused a push and gh-pages build to fail because of a broken symlink
+         theres a copy of the repo from before this oversight, so rolling back could work, but I decided to remove the folder containing the symlink instead and try again
+ 
 ## [0.0.1-rtw.9] - Q4/2020
 
 ### Added
