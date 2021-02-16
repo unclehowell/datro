@@ -22,6 +22,7 @@ Just constant never ending improvements of GUI, as seen fit
 27-Jan - started to work on app store. app store will be the same for actual gui on localhost webserver and remote online demo. Unlike 'screens' pages, which have seperate demo pages for online. 
 
 #### Changed
+16-Feb - setup a subdomain gamepad.bucklerfamilyestate.com which apache ProxyPasses to port 8089. So now https://gamepad.etc works and should work in the frame because its presented on a secure port
 16-Feb - the gamepad app (port 8089) works on the remote server, but not in the dashboards iframe, perhaps due to no ssl. So I've made the apps server in question, https
 14-Feb - played around with how the apps load, came up with a better solution. Not perfect, just better. Also bug fixed controller screen, the link to the app store wasn't showing.
 14-Feb - housekeeping plus the way the apps (specifically the gamepad) on our server opened, wasn't correct so it didn't work. Changed it to use onclick instead of href.  

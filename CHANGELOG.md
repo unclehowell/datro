@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
        - evr-network.live in GoDaddy forwards to evrnetwork.datro.world, then the javascript in the netlify splashpage brings up the website
 
 ### Changed 
+16-Feb - solved the issue I've been working on with ProxyPass. So webapps can all run on the sever and be accesses securely e.g. via the dashboard demo, locally the same dashboard souce code will retrieve the local app. Still not 100% ideal, but best solution so far
 16-Feb - see static/gui changelog - basically the demos of the apps are going onto a secure server
 14-Feb - changed the way methodology for how screens pages load and the apps load - see static/gui changelog
 14-Feb - see changelog for static/gui and static/hbnb - just some minor minor edits
@@ -21,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 01-Feb - see changelog for 'static/gui' and 'static/evr-network' - minor edits
 
 ### Removed
+16-Feb - removed secret ssl keys from some 3rd parties embedded repo
 
 ## [0.0.1-rtw.9] - Q4/2020
 
