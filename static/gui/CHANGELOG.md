@@ -56,6 +56,7 @@ and a combination of [Prince2 Project Management](https://prince2.com).
          self-aware but not with actual AI. But rather just some simple javascript which looks at the address bar - we've added the following label to the pages that perform this function *[-lookup].html
 
 #### Fixed
+19-Feb - Minor edit, broken link in the docs page.
 16-Feb - The G.ES.K.N (guacamole, emulationstation,kodi,netflix) fetch file was wrong, it pointed to the gamepad app. corrected it
 16-Feb - Search wasn't searching. Jquery issues, fixed
 12-Feb - entertainment screen wasn't loading, fixed the bug
@@ -67,6 +68,7 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 
 ### ISSUES,RISKS,CONCERNS
 
+19-Feb - our server hosting our webapps has issues. Working to resolve.
 12-Feb - Because of the screen-selector solution that has been implimented the backspace doesn't work in some cases.
 12-Feb - Browser cache doesn't appear to be storing the title change when offline.  
 
