@@ -16,6 +16,9 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 ### PERFORMANCE
 
 #### Added
+20-Feb - added netflix icon on appstore. It's definately going to need to run inside kodi (accessible via guacamole/webrtc/uv4l etc), just not sure how to go about it all yet:
+         options 1 includes: having a seperate debian (ubuntu on the demo server) and guacamole user, with a seperate kodi/netflix user profile which autologsin when accessed.
+         option 2 includes: not promoting netflix, just having kodi as an app on the app store. And let visitors be suprised that Netflix is installed into it. food for thought right now   
 20-Feb - added motioneye app to the public gui / demo and added the webapp to the server with some example camera feeds
 16-Feb - started working on a webapp to showcase emulationstation, with kodi and netflix, big files and work, but end result is worth it
 16-Feb - new webapp on the demo/ public entertainment screen only, not locally. Webapp 002-002. Working to showcase Netflix in kodi, in EmulationStation in Guacamole. Locally it will use UV4l 
