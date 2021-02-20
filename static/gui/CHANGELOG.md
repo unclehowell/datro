@@ -16,6 +16,7 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 ### PERFORMANCE
 
 #### Added
+20-Feb - added netdata , same methodology as below. port 19999 locally and remotely (remote server, like always, is handled via proxy pass)
 20-Feb - added Althea icon to appstore and demo screen (smarthome) and added the Althea webapp/gui to our public server
 20-Feb - added netflix icon on appstore. It's definately going to need to run inside kodi (accessible via guacamole/webrtc/uv4l etc), just not sure how to go about it all yet:
          options 1 includes: having a seperate debian (ubuntu on the demo server) and guacamole user, with a seperate kodi/netflix user profile which autologsin when accessed.
