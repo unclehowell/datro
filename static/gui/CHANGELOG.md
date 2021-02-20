@@ -16,6 +16,7 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 ### PERFORMANCE
 
 #### Added
+20-Feb - added motioneye app to the public gui / demo and added the webapp to the server with some example camera feeds
 16-Feb - started working on a webapp to showcase emulationstation, with kodi and netflix, big files and work, but end result is worth it
 16-Feb - new webapp on the demo/ public entertainment screen only, not locally. Webapp 002-002. Working to showcase Netflix in kodi, in EmulationStation in Guacamole. Locally it will use UV4l 
 12-Feb - Added gamepad app, which I've hosted on a Google Cloud server for now, since its gotta work with emulationstation (which will display with guacamole/uv4l)
