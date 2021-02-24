@@ -31,6 +31,7 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 27-Jan - started to work on app store. app store will be the same for actual gui on localhost webserver and remote online demo. Unlike 'screens' pages, which have seperate demo pages for online. 
 
 #### Changed
+24-Feb - fetch.html javascript logic was changed from (if '127.' '192.' or 'localhost') to (if NOT 'datro.xyz'). Since the existing logic would fail if the local ip subnet didn't match what was specified. It's easier to just say 'if NOT datro.xyz e.g. online, then presume it's localhosted. Better to change this if the public url changes, that keep adding to it to suite a myriad of local ip addresses and risk user experience.   
 20-Feb - made althea logo bigger. And made the fetch file correspond to a dedicated url (althea.bucklerfamilyestate.com), which proxy passes port 3005 to 443 to make the connection secure, in order it can appear within the hotspotbnb dashboard - regardless of x-frame option
 16-Feb - setup a subdomain gamepad.bucklerfamilyestate.com which apache ProxyPasses to port 8089. So now https://gamepad.etc works and should work in the frame because its presented on a secure port
 16-Feb - the gamepad app (port 8089) works on the remote server, but not in the dashboards iframe, perhaps due to no ssl. So I've made the apps server in question, https
