@@ -8,23 +8,11 @@
 
            <script>
            
-          //If URL contains "mystring"
            if (window.location.href.indexOf("datro.") > -1) {
            window.location.href = 'https://' + 'motioneye.bucklerfamilyestate.com' ;
            }
 
-        //If URL contains "mystring"
-           if (window.location.href.indexOf("127.") > -1) {
-           window.location.href = 'http://' + window.location.hostname + window.location.port + ':8765'  ;
-           }
-
-        //If URL contains "mystring"
-           if (window.location.href.indexOf("192.") > -1) {
-           window.location.href = 'http://' + window.location.hostname + window.location.port + ':8765'  ;
-           }
-
-        //If URL contains "mystring"
-           if (window.location.href.indexOf("localhost") > -1) {
+           if(document.URL.indexOf("datro.") <= -1){
            window.location.href = 'http://' + window.location.hostname + window.location.port + ':8765'  ;
            }
         </script>
