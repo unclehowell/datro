@@ -16,7 +16,7 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 ### PERFORMANCE
 
 #### Added
-25-Feb - added Aloshi/EmulationStation as subrepo in app-store/apps/002-002/subrepo
+25-Feb - added Aloshi/EmulationStation as subrepo (app-store/apps/002-002/subrepo) and included alongside it the Hβnβ ES theme folder
 20-Feb - openhab is the only entry in the demo search atm. but the url was missing, so that's been added and now the app search results in the app opening when selected
 20-Feb - added netdata , same methodology as below. port 19999 locally and remotely (remote server, like always, is handled via proxy pass)
 20-Feb - added Althea icon to appstore and demo screen (smarthome) and added the Althea webapp/gui to our public server
