@@ -1,42 +1,35 @@
-# HotspotBnB Client Directory
+# hotspotbnb-netinst build
 
-## Introduction
+In this directory you'll find the resources to build the latest hotspotbnb image using the latest sources. 
 
-This 'client' directory holds everything required to produce a HotspotBnB client. 
-A client is definied as physical Single Board Computer (SBC) Device e.g. Raspberry Pi 0,II,III,IIII etc
-In order for an SBC to become a HotspotBnB Client, is must first be able to operate the HotspotBnB Firmware. 
+## Requirements:
+- Two customised subrepo clones exist in this directory: 
+`FooDeas/raspberrypi-ua-netinst` and 'Mausy5043/mod-raspberrypi-ua-netinst' 
+- and a file containing the name of the prefered repository branch to be used e.g. master
 
-Once the setup process is complete (30 minutes of fully-autonomous installation) a person, tech savvy enough to operate a smartphone, 
-may benefit from use and enjoyment of HotspotBnB e.g. applications, feature/ security updates and upgrades etc. 
+```
+  mod-raspberrypi-ua-netinst
+  raspberrypi-ua-netinst
+  pi-netinst.branch
+```
 
-## The Basics
+## Instructions
 
-Anyone can visit github.com/unclehowell/hbnb and navigate to the latest release to get the pre-build img file for their SBC's MicroSD Card. 
-The workflow to produce these SDCard images (for testing and developing or for public use) is equally as straightforward:
+Follow these steps to build the hotspotbnb MicroSD Card .img file, from source:
 
-a. Obtain a copy of this source code, using any of the following methods: 
- -  `svn checkout` command (install `subversion` beforehand)
- -  'git sparse-checkout' command (install 'git' v2.5+ beforehand). 
+1. execute the clean script with the command `sudo bash raspberrypi-ua-netinst/cleansh`
 
-(It is not recommended you try to take a copy of the entire monorepo, by downloading from the github.com as a zip file or using git clone.
-The reason for this is that this monorepo could be tens of gigabytes, so only take (and put back, if improved) what you absolutely need)  
+2. execute the mod-ua with the command `sudo bash mod-raspberrypi-ua-netinst/mod-ua.sh`
+   - a directory should now exist in raspberrypi-ua-netinst called build_dir
+   - this directory contains the image, as it will appear on the MicroSD Card
 
-To navigate and understand this directory it is important to note that this folder contains 2 key sub-directories. 
-Before we explain them, it's also worth noting that these are also 'subrepo's' e.g. they share a special link to their own source of origin.
-Subrepo's allow  
+3. copy the custom text files from custom_setting into raspberrypi-ua-netinst/build_dir: 
+   - copy the config.txt and cmdline.txt to hbnb-netinst/raspberrypi-ua-netinst/build_dir/bootfs
+   - remove line 2 of config.txt and copy again to bnb-netinst/raspberrypi-ua-netinst/build_dir/bootfs/raspberrypi-ua-netinst/config/boot
+   - copy the post-install.txt and installer-config.txt to the hbnb-netinst/raspberrypi-ua-netinst/build_dir/bootfs/raspberrypi-ua-netinstall/config directory
+   - leave .bashrc and build.sh where they are, inside the custom_settings directory (the firmware will retreive them during bootup). 
 
- - 'hbnb-netinst' : This sub-directory contains the resources to autonomously-build the autonomous-self-building MicroSD Card image:
+4. go into raspberrypi-ua-netinst and run buildroot.sh to build the .img.xz file (for the timezone set in installer-config.txt) 
 
-     - the 'custom-settings' directory contains text files for the main underlying settings e.g. timezones, languages etc
-     - the 'mod-raspberrypi-ua-netinst' directory is a neat project, designed to make the generation of the MicroSD Card image, easier
-         - contained within this directory is the script file we run to autonomously generate the content files for the MicroSD Card image 
-     - the 'raspberrypi-ua-netinst' directory is the founding father of this autonomous-self-build solution
-         - contained within this directory is the sciprt file we run to autonomously compile the content into a single MicroSD Card image file
- 
- - 'html' : This sub-directory contains the graphical user interfaces, giving the end-users a friendly way to interact with their device.    
-     - the 'dashboard' directory contains the basic user (web) interface files e.g. css, js, html,img etc
-     - the 'appstore' directory also contains similar files, but with the addition of some script files (.cgi)
+## Notes
 
-The workflow to produce a new software release (for testing and developing or public use) is as follows: 
-
-   
