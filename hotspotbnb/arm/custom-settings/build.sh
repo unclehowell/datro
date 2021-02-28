@@ -16,13 +16,13 @@ sleep 15 &&
 sudo apt-get install subversion -y &&
 
 echo "Fetching the Dashboard ..."
-sudo svn co https://github.com/unclehowell/hbnb/trunk/client/html  \
+sudo svn co https://github.com/unclehowell/datro/trunk/static/gui/  \
             /tmp/html
 
 sudo cp -r /tmp/html/* /var/www/html >&- 2>&- &&
 
-if [ ! -d "/var/www/html/dashboard" ]; then
-    echo "For Latest Releases & Support visit https://github.com/unclehowell/hbnb"
+if [ ! -d "/var/www/html/" ]; then
+    echo "For Latest Releases & Support visit github.com/unclehowell/datro/releases"
 else
     sed -i '114,$d' /home/pi/.bashrc >&- 2>&-
     echo "HotspotBnB has installed. Visit this IP Address to access your Dashboard"

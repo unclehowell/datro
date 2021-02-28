@@ -7,12 +7,12 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 
 ## [Unreleased]
 
-## [0.0.1-.3] - Q1/2021
+## [0.0.1-rc.3] - Q1/2021
 
 ### PLAN
 
-2021Q1 - Get the 'net-installer' branch in shape
-         So that anyone, anywhere can compile a fresh disk image and have it produce local resources e.g. Hotspotβnβ
+2021Q1 - Get the 'net-installer' branch in better shape,
+         so that anyone, anywhere can also compile a fresh disk image, which produces the same results
 
 ### PERFORMANCE
 
