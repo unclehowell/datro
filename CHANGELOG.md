@@ -9,6 +9,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [0.0.1-rtwx.2] - Q1/2021
 
 ### Added
+27-Feb - minor edit to README.md (directory structure added). Pending changes, need to change 'app-store' to 'websites' and use latest fetch.html method from HBnB GUi
 01-Feb - added a fund category, using Bitcoin as the symbol, instead of dollars
 24-Jan - added the ability to launch a different icon hyperlink depending if viewing the website from online or offline. 
          this solves seeing the dreaded 404 pages when working offline, while preserving the online experience.

@@ -53,4 +53,17 @@ The reason this webpage is on a seperate branch to gh-pages, is part of an ethic
 
 
 
+Monorepo Branches
+
+The below branches and subdirections capture the entire Datro Consortium.
+Everything from training videos, websites and documents to software source code and the user interfaces.
+    
+
+### Directory Structure
+
+netlify
+        
+        /dashboard              #
+        /assets                 #
+
 
