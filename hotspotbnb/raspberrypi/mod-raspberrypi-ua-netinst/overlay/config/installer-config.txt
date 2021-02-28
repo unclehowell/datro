@@ -12,7 +12,7 @@ packages="$packages,bc,htop,lsof,psmisc,screen,stress"
 
 #firmware_packages=1
 # install the firmware packages just-in-case I need them for a WiFi-dongle
-firmware_packages=0
+# firmware_packages=0
 # Set to 0 for due to this error:
 ### 20181119
 # The following packages have unmet dependencies:
@@ -23,6 +23,9 @@ firmware_packages=0
 
 # >>> Device / Peripheral <<<
 ##################################
+spi_enable=1
+i2c_enable=1
+i2c_baudrate=10000
 
 
 # >>> SSH <<<
@@ -54,7 +57,8 @@ userperms_sound=1
 
 hostname=raspberrypi
 # This is a placeholder name. It will be replaced by the mod-raspberrypi-ua-netinst script.
-
+ip_ipv6=0
+# Don't activate IPv6 as it messes up intranet connections.
 
 # >>> Localisation <<<
 ##################################

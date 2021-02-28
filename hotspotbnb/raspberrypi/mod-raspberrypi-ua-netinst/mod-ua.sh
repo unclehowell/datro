@@ -6,9 +6,9 @@ NETINST="../raspberrypi-ua-netinst"
 BRANCH="../pi-netinst.branch"
 WPA="../wpa.conf"
 
-GOPTS=$(getopt -n 'mod-ua.sh' -o n:w --long name:,wifi -- "$@")
-if [ $? != 0 ] ; then echo "!!! Failed parsing options." >&2 ; exit 1 ; fi
-eval set -- "$GOPTS"
+#GOPTS=$(getopt -n 'mod-ua.sh' -o n:w --long name:,wifi -- "$@")
+#if [ $? != 0 ] ; then echo "!!! Failed parsing options." >&2 ; exit 1 ; fi
+#eval set -- "$GOPTS"
 
 while true; do
   case "$1" in
@@ -71,7 +71,7 @@ cp -rv ./overlay/* $NETINST/
 if [ "$WIFI" == true ]; then
   echo "   ...adding wpa_supplicant.conf to installer!"
   echo "ifname=wlan0"           >> $NETINST/config/installer-config.txt
-  echo "drivers_to_load=8192cu" >> $NETINST/config/installer-config.txt
+  # echo "drivers_to_load=8192cu" >> $NETINST/config/installer-config.txt
   cp -rv $WPA $NETINST/config/wpa_supplicant.conf
 fi
 
@@ -79,7 +79,11 @@ fi
 
 fnd="\ config"
 rpl="\ \.\.\/config"
-sed -i "s/${fnd}/${rpl}/" $NETINST/build.sh
+ls -al $NETINST
+
+echo "s/${fnd}/${rpl}/"
+echo "$NETINST/build.sh"
+sed -ibak "s/${fnd}/${rpl}/" $NETINST/build.sh
 
 echo ""
 echo ""
@@ -90,7 +94,7 @@ echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 echo ""
 pushd $NETINST/
   # change the hostname in the default installer-config.txt
-  sed -i "s/raspberrypi/${CLIENT}/" ./config/installer-config.txt
+  sed -ibak "s/raspberrypi/${CLIENT}/" ./config/installer-config.txt
   echo ""
   echo ""
   echo ""
