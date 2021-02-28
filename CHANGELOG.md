@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.10] - Q1/2021
 
 ### Added
+27-Feb - Directory Structure in README.md
 25-Feb - ES subrepo added - see static/gui changelog for details
 30-Jan - gui changes - app store etc - see gui changelog for more info
 27-Jan - added first app store page - caterogies only for look and feel demo purposes only. Incomplete work (see static/gui CHANGELOG.md) 

@@ -13,14 +13,23 @@
  - the websites contained within are primarily flattened html files and contained within the `/static' directory.
  - Corresponding server-side files e.g. cms's which can be used to manage them, like wordpress ... can be found in the `dynamic` directory.
 
-  `datro.xyz
-   | static
-   | ├── datro    -- splashpage js & css
-   | ├── gui      -- the user interface/ which also doubles up as an interative website demo
-   | ├── files    -- source + compiled PDF's & HTML
-   | dynamic
-   | ├── ?????    -- php server-side file e.g. 'the docs cms' (for local use only e.g. serverless)
-   | index.html'
+Monorepo Branches
+
+The below branches and subdirections capture the entire Datro Consortium.
+Everything from training videos, websites and documents to software source code and the user interfaces.
+    
+### Directory Structure
+
+gh-pages/ 
+
+        /static/gui             #
+        /static/files	     #
+        /static/datro           #
+        /static/hbnb            #
+        /static/slides          #
+        /static/wave            #
+        /static/evr-network     #
+        
 
   - Everything can be hosted for free on github (gh-pages)
   - Everything can be stored in the same repo as the source-code
