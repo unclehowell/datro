@@ -24,6 +24,7 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 27-Feb - Minor edit to README.md
 
 #### Fixed
+01-Mar - custom-settings/build.sh was 'trunk/static/gui' it should have been 'trunk/gh-pages/static/gui'
 
 #### Removed
 01-Mar - results.log - intended for reporting how the build.sh performed, but ended up ditching it.

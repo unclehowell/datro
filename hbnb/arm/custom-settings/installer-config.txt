@@ -15,6 +15,10 @@ userperms_admin=1
 usergpu=1
 rootpw=hotspotbnb
 root_ssh_pwlogin=0
+
+# if you're not using an ethernet to access internet, remove the hashes below and enter your AP's SSID and password
+# the pi will then establish a wireless connection to execute the autonomous build
+
 #ifname=wlan0
 #wlan_ssid=''
 #wlan_psk=''

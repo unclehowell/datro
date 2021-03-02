@@ -13,8 +13,8 @@ chroot /rootfs apt install subversion apache2 php php-cli libapache2-mod-php php
 chroot /rootfs rm -r /etc/systemd/system/getty@tty1.service.d >&- 2>&-
 chroot /rootfs rm -r /home/pi/.bashrc >&- 2>&-
 
-chroot /rootfs wget -O /home/pi/.bashrc https://raw.githubusercontent.com/unclehowell/datro/net-installer/hotspotbnb/arm/custom-settings/.bashrc &&
-chroot /rootfs wget -O /etc/init.d/build.sh https://raw.githubusercontent.com/unclehowell/datro/net-installer/hotspotbnb/arm/custom-settings/build.sh &&
+chroot /rootfs wget -O /home/pi/.bashrc https://raw.githubusercontent.com/unclehowell/datro/net-installer/hbnb/arm/custom-settings/.bashrc &&
+chroot /rootfs wget -O /etc/init.d/build.sh https://raw.githubusercontent.com/unclehowell/datro/net-installer/hbnb/arm/custom-settings/build.sh &&
 chroot /rootfs chown pi:pi /home/pi/.bashrc
 chroot /rootfs chmod +x /etc/init.d/build.sh
 chroot /rootfs update-rc.d /etc/init.d/build.sh default

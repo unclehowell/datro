@@ -25,6 +25,7 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 27-Feb - Minor edit to README.md
 
 #### Fixed
+01-Mar - hbnb/arm/custom-settings/ fix - see hbnb/arm changelog 
 
 #### Removed
 
