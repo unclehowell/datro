@@ -21,6 +21,7 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 
 #### Changed
 01-Mar - Restarted semantic versioning. Higher standard set for releases, no more increasing semantic versioning willy nilly
+         Few more changes too - see the hbnb/arm/changelog.md for more info
 27-Feb - Minor edit to README.md
 
 #### Fixed
