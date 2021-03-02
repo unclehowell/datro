@@ -7,7 +7,7 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 
 ## [Unreleased]
 
-## [0.0.1-rc.3] - Q1/2021
+## [0.0.1-rc.1] - Q1/2021
 
 ### PLAN
 
@@ -17,8 +17,10 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 ### PERFORMANCE
 
 #### Added
+01-Mar - got hbnb/arm functioning - see hbnb/arm/changelog.md for details
 
 #### Changed
+01-Mar - Restarted semantic versioning. Higher standard set for releases, no more increasing semantic versioning willy nilly
 27-Feb - Minor edit to README.md
 
 #### Fixed
