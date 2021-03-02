@@ -22,10 +22,12 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 
 #### Changed
 02-Mar - changed build.sh to compile.sh (because raspberrypi-ua-netinst/build.sh caused confusion. I also reworded it in README and CHANGELOG so it maintains sense when reading. 
+       - changed README to include fill usage instructions
 01-Mar - compile.sh now appends `exit 1` to the end of `raspberrypi-ua-netinst/buildroot.sh` (or else an `:(stdin)` error prevents exit on completion) see https://github.com/FooDeas/raspberrypi-ua-netinst/issues/213 
 27-Feb - Minor edit to README.md
 
 #### Fixed
+02-Mar - compile.sh moved `img.xz` to a directory one above the desired one. Changed `mv ../*.img.xz` to `mv ./img.xz` - Fixed! 
 01-Mar - compile.sh should be `trunk/static/gui` not `trunk/gh-pages/static/gui` ('gh-pages' is the repos default branch, maybe how it knows)
        - an E1700013 error: or in the case of local testing a E1700000 error.
         

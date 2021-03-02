@@ -49,6 +49,9 @@ do
 	sleep 0.1
 	ProgressBar ${number} ${_end}
 done
+
+rm -rf raspberrypi-ua-netinst &&
+rm -rf hbnb-latest.img.xz &&
 mkdir -p raspberrypi-ua-netinst &&
 cd raspberrypi-ua-netinst &&
 rm -rf .git &&
@@ -73,7 +76,7 @@ sed -i 's/set -e # exit/#set -e # exit/g' build.sh &&
 sudo bash ./build.sh &&
 printf "\e[2;3;33m Step 3 Complete! \n\e[0m"
 
-printf "\n\e[2;3;33m Step 4 of 5. Customising Build_Dir Files \n\e[0m\n"
+printf "\n\e[2;3;33m Step 4 of 5. Building hbnb-latest.img.xz \n\e[0m\n"
 for number in $(seq ${_60} ${_80})
 do
        sleep 0.1
@@ -86,26 +89,21 @@ cp -r ../custom-settings/config.txt build_dir/bootfs/raspberrypi-ua-netinst/conf
 cp -r ../custom-settings/cmdline.txt build_dir/bootfs/raspberrypi-ua-netinst/config/boot &&
 cp -r ../custom-settings/config.txt build_dir/bootfs &&
 cp -r ../custom-settings/cmdline.txt build_dir/bootfs &&
-printf "\e[2;3;33m Step 4 Complete! \n\e[0m"
-
-printf "\n\e[2;3;33m Step 5 of 5. Building the image \n\e[0m\n"
-for number in $(seq ${_80} ${_end})
-do
-    sleep 0.1
-    ProgressBar ${number} ${_end}
-done
-
 sed -i 's/compress_bz2=1/compress_bz2=0/g' buildroot.sh &&
 sed -i 's/set -e/#set -e/g' buildroot.sh &&
 echo 'exit 1' >> buildroot.sh &&
 sudo bash ./buildroot.sh &&
-sleep 1 &&
-rm -rf *.zip &&
-mv *.img.xz ../ &&
-mv raspberrypi-ua-netinst-git-* ../ &&
+printf "\e[2;3;33m Step 4 Complete! \n\e[0m"
+
+printf "\n\e[2;3;33m Step 5 of 5. Final Touches \n\e[0m\n"
+for number in $(seq ${_80} ${_end})
+do
+    sleep 1
+    ProgressBar ${number} ${_end}
+done
+
 cd .. &&
-rm -rf raspberrypi-ua-netinst* &&
-printf "\e[2;3;33m Step 5 Complete! \n\e[0m" &
-printf "\e[2;3;33m Finished! \n\e[0m\n" &&
-sleep 2 &&
-exit
+rm -rf *.zip &&
+mv raspberrypi-ua-netinst/*.img.xz ./hbnb-latest.img.xz &&
+rm -rf raspberrypi-ua-netinst* & printf "\e[2;3;33m Finished! \n\e[0m\n" &&
+exit 0
