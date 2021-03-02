@@ -92,6 +92,8 @@ cp -r ../custom-settings/cmdline.txt build_dir/bootfs &&
 sed -i 's/compress_bz2=1/compress_bz2=0/g' buildroot.sh &&
 sed -i 's/set -e/#set -e/g' buildroot.sh &&
 echo 'exit 1' >> buildroot.sh &&
+touch build_dir/bootfs/raspberrypi-ua-netinst/config/ssh &&
+echo " " >> build_dir/bootfs/raspberrypi-ua-netinst/config/ssh &&
 sudo bash ./buildroot.sh &&
 printf "\e[2;3;33m Step 4 Complete! \n\e[0m"
 

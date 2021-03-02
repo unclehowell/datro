@@ -1,24 +1,26 @@
 preset=server
-packages=nano,curl,subversion                                                  
+packages=nano,curl,apt-transport-https,git,git-core,git-svn,subversion                                                  
 firmware_packages=1
 release=buster
-timezone=Europe/London
+timezone=America/Santo_Domingo
+timeserver=time.nist.gov
 keyboard_layout=gb
 locales="en_US.UTF-8"
 system_default_locale="en_US.UTF-8"
-installer_networktimeout=95
-disable_raspberries=0
+installer_networktimeout=120
+disable_raspberries=1
 cleanup=1
 username=pi
 userpw=hotspotbnb
 userperms_admin=1
 usergpu=1
 rootpw=hotspotbnb
+hostname=hotspotbnb
 root_ssh_pwlogin=0
 
 # the above is all that's needed for ethernet connected raspberry pi's. For wi-fi unhash and fill in the below lines
 
 #ifname=wlan0
-#wlan_ssid='NETGEAR'
-#wlan_psk='raegten'
+#wlan_ssid='my-wifi'
+#wlan_psk='secret'
 

@@ -11,13 +11,14 @@
 # Short-Description: build hotspotbnb
 ### END INIT INFO
 
-echo "checking internet connection ..."
-sleep 15 &&
-sudo apt-get install subversion -y &&
+echo "establishing internet connection ..."
+sleep 20 &&
+sudo apt-get install git subversion git-svn git-core -y &&
 
 echo "Fetching the Dashboard ..."
-sudo svn co https://github.com/unclehowell/datro/trunk/static/gui/  \
-            /tmp/html
+git svn clone https://github.com/unclehowell/datro/trunk/static/gui/  &&
+mkdir /tmp/html &&
+mv gui/* /tmp/html &&
 
 sudo cp -r /tmp/html/* /var/www/html >&- 2>&- &&
 

@@ -20,6 +20,7 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 01-Mar - got hbnb/arm functioning - see hbnb/arm/changelog.md for details
 
 #### Changed
+02-Mar - hbnb/arm build doesn't complete successfully. build.sh goes into /etc/init.d and .bashrc is set to run it. Troubleshooting 
 01-Mar - Restarted semantic versioning. Higher standard set for releases, no more increasing semantic versioning willy nilly
          Few more changes too - see the hbnb/arm/changelog.md for more info
 27-Feb - Minor edit to README.md
