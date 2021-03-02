@@ -25,12 +25,15 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 27-Feb - Minor edit to README.md
 
 #### Fixed
-01-Mar - hbnb/arm/custom-settings/ fix - see hbnb/arm changelog 
+02-Mar - ran the image produced for hbnb/arm (rpi) - issues reported. Fixed! see hbnb/arm CHANGELOG for details
+01-Mar - hbnb/arm/custom-settings/ fix - see hbnb/arm CHANGELOG
 
 #### Removed
 
 ### ISSUES,RISKS,CONCERNS
 
-
 ### PLAN MOVING FORWARD
-
+02-Mar - more of an idea. Since a compile.sh script now exists, it maybe worth making this into a self-service web-service
+       - could use heroku or something near free, to let the website visitor enter SSID and password, or select ethernet and produce a custom build
+       - would surely be concerns with privacy, but it could be made a choice for convenience     
+01-Mar - perhaps img.xz is already at its smallest, but if it could be compressed further without issues that would be great. Worth investigating

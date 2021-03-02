@@ -15,19 +15,22 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
          so that anyone, anywhere can also compile a fresh disk image, which produces the same results
 
 ### PERFORMANCE
-01-Mar - Made a build script, to help understand what's going on and automate the compiling of autonomated builder aka net-intaller (source code > img.xz), with one command (`sudo bash ./build.sh`).
+01-Mar - Made a build script, to help understand what's going on and automate the compiling of autonomated builder aka net-intaller (source code > img.xz), with one command (`sudo bash ./compile.sh`).
 
 #### Added
 01-Mar - Noticed a .bashrc file was missing from the custom-settings directory. Placed it in there.
 
 #### Changed
+02-Mar - changed build.sh to compile.sh (because raspberrypi-ua-netinst/build.sh caused confusion. I also reworded it in README and CHANGELOG so it maintains sense when reading. 
+01-Mar - compile.sh now appends `exit 1` to the end of `raspberrypi-ua-netinst/buildroot.sh` (or else an `:(stdin)` error prevents exit on completion) see https://github.com/FooDeas/raspberrypi-ua-netinst/issues/213 
 27-Feb - Minor edit to README.md
 
 #### Fixed
-01-Mar - custom-settings/build.sh was 'trunk/static/gui' it should have been 'trunk/gh-pages/static/gui'
-
+01-Mar - compile.sh should be `trunk/static/gui` not `trunk/gh-pages/static/gui` ('gh-pages' is the repos default branch, maybe how it knows)
+       - an E1700013 error: or in the case of local testing a E1700000 error.
+        
 #### Removed
-01-Mar - results.log - intended for reporting how the build.sh performed, but ended up ditching it.
+01-Mar - results.log - intended for reporting how the compile.sh performed, but ended up ditching it.
 
 ### ISSUES,RISKS,CONCERNS
 01-Mar - Semantic versioning concern - 'rc' suffix applies to all the software compiler source code in this monorepo branch (net-installer)

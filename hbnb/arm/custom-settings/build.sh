@@ -16,7 +16,7 @@ sleep 15 &&
 sudo apt-get install subversion -y &&
 
 echo "Fetching the Dashboard ..."
-sudo svn co https://github.com/unclehowell/datro/trunk/gh-pages/static/gui/  \
+sudo svn co https://github.com/unclehowell/datro/trunk/static/gui/  \
             /tmp/html
 
 sudo cp -r /tmp/html/* /var/www/html >&- 2>&- &&

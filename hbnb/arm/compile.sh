@@ -4,7 +4,7 @@
 
 
 #.......................................................
-#            2020 Copyleft - DATRO Consortium
+#            2021 Copyleft - DATRO Consortium
 #.......................................................
 #         DATRO Document Library by Unclehowell
 #.......................................................
@@ -95,12 +95,17 @@ do
     ProgressBar ${number} ${_end}
 done
 
-sed -i 's/set -e # exit/#set -e # exit/g' buildroot.sh &&
+sed -i 's/compress_bz2=1/compress_bz2=0/g' buildroot.sh &&
+sed -i 's/set -e/#set -e/g' buildroot.sh &&
+echo 'exit 1' >> buildroot.sh &&
 sudo bash ./buildroot.sh &&
+sleep 1 &&
+rm -rf *.zip &&
 mv *.img.xz ../ &&
-mv *.img.xz hotspotbnb-v0_0_1-rc_1.img.xz &&
+mv raspberrypi-ua-netinst-git-* ../ &&
 cd .. &&
-printf "\e[2;3;33m Step 5 Complete! \n\e[0m"
-printf "\e[2;3;33m Finished! \n\e[0m\n" &
-sleep 0.1
+rm -rf raspberrypi-ua-netinst* &&
+printf "\e[2;3;33m Step 5 Complete! \n\e[0m" &
+printf "\e[2;3;33m Finished! \n\e[0m\n" &&
+sleep 2 &&
 exit
