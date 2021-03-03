@@ -33,6 +33,7 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
        - an E1700013 error: or in the case of local testing a E1700000 error.
         
 #### Removed
+03-Mar - build.sh duplicated some of installer-config.txt, more of a contingecy in case installer-config failed. Housekeeping so removed it
 01-Mar - results.log - intended for reporting how the compile.sh performed, but ended up ditching it.
 
 ### ISSUES,RISKS,CONCERNS

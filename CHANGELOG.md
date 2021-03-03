@@ -1,11 +1,13 @@
 # Changelog
 Developers are expected to log all changes to this directory to this changelog.
+
 This CHANGELOG (in the top level directory) follows a [Prince2 Highlight Report](https://prince2.wiki/management-products/highlight-report/) Methodology.
-CHANGELOG's exist in each subdirectry to correspond to its content and ahead to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and [Semantic Versioning](https://semver.org/spec/v2.0.0.html). The CHANGELOG structure is as follows:
+
+CHANGELOG's exist in each subdirectry to correspond to its content and ahead to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html). The CHANGELOG structure is as follows:
+
 BRANCH: net-installer/
-                     /hbnb/arm/CHANGELOG.md # 
-		     /hbnb/x86/CHANGELOG.md #
+                     /hbnb/arm/CHANGELOG.md # Hotspotβnβ Disk Image source code for ARM Processor Architecture (MicroSD)
+		     /hbnb/x86/CHANGELOG.md # Hotspotβnβ Disk Image source code for x86_64 Processor Architecture (USB)
 
 ## [Unreleased]
 

@@ -11,22 +11,14 @@
 # Short-Description: build Hotspotβnβ
 ### END INIT INFO
 
-sudo apt-get install git subversion git-svn -y &&
-
 echo "Fetching the Hotspotβnβ Dashboard ..."
 sleep 0.1 &&
-printf "\n%s\n"  "Trying Main Method ..."
-mkdir -p /tmp/main/ && git svn clone https://github.com/unclehowell/datro/trunk/static/gui/  \
-         /tmp/main/ && sleep 2 && sudo cp -r /tmp/main/* /var/www/html >&- 2>&- &&
+printf "\n%s\n"  "Executing Main Method ..."
+mkdir -p /tmp/html/ && svn co --depth infinity https://github.com/unclehowell/datro/trunk/static/gui/  \
+         /tmp/html/ && sleep 2 && sudo cp -r /tmp/html/* /var/www/html >&- 2>&- &&
 
-printf "\n%s\n"  "Trying Fallback Method ..."
-mkdir -p /tmp/fallback/ && svn co https://github.com/unclehowell/datro/trunk/static/gui/  \
-         /tmp/fallback/ && sleep 2 && sudo cp -r /tmp/fallback/* /var/www/html >&- 2>&- &&
-
-printf "\n%s\n"  "Trying Fallback2 Method ..."
-mkdir -p /tmp/fallback2/ && sudo /usr/bin/svn co https://github.com/unclehowell/datro/trunk/static/gui/  \
-         /tmp/fallback2/ && sleep 2 && sudo cp -r /tmp/fallback2/* /var/www/html >&- 2>&- &
-
+sleep 0.1 &&
+rm -r /tmp/html &&
 if [ ! -d "/var/www/html/" ]; then
     echo "For Latest Releases & Support visit github.com/unclehowell/datro/releases"
 else
