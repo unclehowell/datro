@@ -19,6 +19,7 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 01-Mar - Made a build script, to help understand what's going on and automate the compiling of autonomated builder aka net-intaller (source code > img.xz), with one command (`sudo bash ./compile.sh`).
 
 #### Added
+03-Mar - Added some code to build.sh to allow php files to run shell commands on the local system
 01-Mar - Noticed a .bashrc file was missing from the custom-settings directory. Placed it in there.
 
 #### Changed
