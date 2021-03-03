@@ -4,12 +4,12 @@ This CHANGELOG (in the top level directory) follows a [Prince2 Highlight Report]
 CHANGELOG's exist in each subdirectry to correspond to its content and ahead to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html). The CHANGELOG structure is as follows:
 BRANCH: net-installer/
-                     /hbnb/arm/CHANGELOG.md # H
+                     /hbnb/arm/CHANGELOG.md # 
 		     /hbnb/x86/CHANGELOG.md #
 
 ## [Unreleased]
 
-## [0.0.1-rc.1] - Q1/2021
+## [0.0.1-rc.9] - Q1/2021
 
 ### PLAN
 
@@ -22,6 +22,7 @@ BRANCH: net-installer/
 01-Mar - got hbnb/arm functioning - see hbnb/arm/changelog.md for details
 
 #### Changed
+03-Mar - jumped to 0.0.1-rc.9 because the last one was rc.8 - we did reset semantic versioning, but ultimately decided to continue on like before instead
 02-Mar - hbnb/arm build doesn't complete successfully. build.sh goes into /etc/init.d and .bashrc is set to run it. Troubleshooting 
 01-Mar - Restarted semantic versioning. Higher standard set for releases, no more increasing semantic versioning willy nilly
          Few more changes too - see the hbnb/arm/changelog.md for more info

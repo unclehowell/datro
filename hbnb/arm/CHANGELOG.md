@@ -7,7 +7,7 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 
 ## [Unreleased]
 
-## [0.0.1-rc.1-hbnb-arm] - Q1/2021
+## [0.0.1-rc.9-hbnb-arm] - Q1/2021
 
 ### PLAN
 
