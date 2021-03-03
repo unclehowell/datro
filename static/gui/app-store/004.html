@@ -171,8 +171,8 @@ body:not(.loaded) #slider img {
   		</div>
   	</div>
 
-
-  <a style="cursor:pointer;" href="#" >
+<!-- 004-001-open -->
+  <a style="cursor:pointer;" href="#" class="reboot">
       <div class="square-004-001">
             <div class="content-004-001">
                    <div class="table-004-001">
@@ -185,7 +185,12 @@ body:not(.loaded) #slider img {
                         </div>
                 </div>
         </div></a>
-
+       <script>
+       document.querySelector(".reboot").addEventListener('click', function(){
+        $.get('apps/004-001/reboot.php');
+       });
+       </script>
+<!-- 004-001-shut -->
 
   <a style="cursor:pointer;" href="#" >
       <div class="square-004-002">
@@ -199,7 +204,7 @@ body:not(.loaded) #slider img {
                                 </div>
                         </div>
                 </div>
-        </div></a>
+        </div></a> 
 
 <script src="js/breadcrumb.js"></script>
 <script src="js/jquery-2.1.4.min.js"></script>
