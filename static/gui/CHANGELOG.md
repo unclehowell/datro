@@ -73,6 +73,7 @@ and a combination of [Prince2 Project Management](https://prince2.com).
          it may have been buggy because in a lot of pages it didn't have an opening bracket where one should have been. 
 
 #### Removed
+02-Mar - had to remove a .svn because it caused an error when running `svn checkout` on a local machine (featured in the HotspotBnB Build script)
 15-Feb - removed CNAME from static/gui, it wasn't correect anyway. only downside having there, can't see any upside.
 
 ### ISSUES,RISKS,CONCERNS
