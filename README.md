@@ -1,46 +1,39 @@
-# Gh-pages Branch Readme 
+# Welcome to the DATRO Consortium GitHub MonoRepo 
 
 ### Nomenclature
 
- - this 'gh-pages' branch is auto-named with GitHub Pages (free website hosting). 
-   We refer to this branches content by its nickname: the "platform".
-   Other branches (with the exception of the 'Netlify' branch) are nicknamed "software" since they all hold software source-code. 
+You're currently on the 'gh-pages' branch (which is auto-named as part of GitHub Pages e.g. free website hosting for us. 
+Other branches include:
 
-   content of this branch mainly includes all websites ('static' & 'dymanic'/ 'server-side' files), technical documents & how-to videos
+[Net-Installer](https://github.com/unclehowell/datro/tree/net-installer "DATRO Net-Installer Branch")/ # source code and autonomous compiler scripts (which output the self-building disk image .img file) e.g. HotspotBnB, To-Go USB etc 
+[Netlify](https://github.com/unclehowell/datro/tree/netlify "DATRO Netlify Branch")/ # this is a version of the HBnB Dashboard, used to showcase our websites, in a similar way to how apps are on the Dashboard
+[SubRepos](https://github.com/unclehowell/datro/tree/subrepos "DATRO SubRepos Branch")/ # this branch contains all the subrepos, giving us a sort of staging server to mediate between our end-users and developers
 
- - 'netlify', the "platform reception pages" sister branch, is also worth a look to fully understand our website/ hosting methodology.
-
- - the websites contained within are primarily flattened html files and contained within the `/static' directory.
- - Corresponding server-side files e.g. cms's which can be used to manage them, like wordpress ... can be found in the `dynamic` directory.
-
-Monorepo Branches
-
-The below branches and subdirections capture the entire Datro Consortium.
-Everything from training videos, websites and documents to software source code and the user interfaces.
+Content of this branch mainly includes all the websites, the dashboard (gui), the technical documents and media e.g. academy videos.
     
 ### Directory Structure
 
-gh-pages/ 
+gh-pages/ # the top level directory features a few files required for things to work e.g. CNAME, index.html etc
 
-        /static/gui             #
-        /static/files	     #
-        /static/datro           #
-        /static/hbnb            #
-        /static/slides          #
-        /static/wave            #
-        /static/evr-network     #
+        /static/gui             # serves as both the online demo and the end-users (localhost) dashboard
+        /static/files	        # all the documents, this is our document library
+        /static/datro           # the datro website https://datro.world
+        /static/hbnb            # the HotspotBnB website https://hbnb.datro.world
+        /static/slides          # all the slides, this is our slideshow library
+        /static/wave            # the wave website
+        /static/evr-network     # the evr-network website https://evr-network.datro.world
         
 
-  - Everything can be hosted for free on github (gh-pages)
-  - Everything can be stored in the same repo as the source-code
+  - Everything above is hosted for free on github (gh-pages)
+  - This branch, alongside other branches, means everyrthing can be stored in the same repo
   - Serverless: Makes the business very resilient to physical/ cyber attacks:
      - anyone wanting to collaborate on the website can easily grab a local offline copy and make changes
      - git pull/ sprase-checkout the directories/websites you want to work on:
 
-         `mkdir /var/www/html (if it doesn't already exist)
-          git remote add origin https://github.com/unclehowell/datro.git
-          git checkout -b my-custom-mods (make new branch for your changes)
-          git pull origin gh-pages'
+         `mkdir /var/www/html` # if it doesn't already exist
+         `git remote add origin https://github.com/unclehowell/datro.git`
+         `git checkout -b my-custom-mods` # make new branch for your changes
+         `git pull origin gh-pages'
 
   - the corresponding dynamic server-side files allow the cms for the website to be locally hosted e.g. run offline
   - the DATRO persistent-live USB disk image is also provided, to turn any PC into a fully-configured local workstation

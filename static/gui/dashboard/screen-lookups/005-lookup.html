@@ -3,43 +3,16 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
         <head>
         <meta charset="utf-8">
-         <link href="//datro.xyz" rel="canonical">
-  <script type="type/javascript">
-                        var host = "datro.xyz";
-                        if {{ host == window.location.host} && {window.location.protocol != "https:""}}
-                        window.location.protocol = "https";
-        </script>
-                                <meta content="1" http-equiv="Expires">
-        <!-- trying offline copy of jquery <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+        <meta content="1" http-equiv="Expires">
         <script src="../js/jquery-3.3.1.min.js"></script>
         <script>
-        //If URL contains "mystring"
            if (window.location.href.indexOf("datro.") > -1) {
            location.href = '../005-demo.html';
            }
-        </script>
-
-    <script>
-        //If URL contains "mystring"
-           if (window.location.href.indexOf("192.") > -1) {
-           location.href = '../005.html';
+           if(document.URL.indexOf("datro.") <= -1){
+           window.location.href =  '../005.html' ;
            }
-        </script>
-    <script>
-        //If URL contains "mystring"
-           if (window.location.href.indexOf("127.") > -1) {
-           location.href = '../005.html';
-           }
-        </script>
-
-
-   <script>
-        //If URL contains "mystring"
-           if (window.location.href.indexOf("localhost") > -1) {
-           location.href = '../005.html';
-           }
-        </script>
-
+         </script>
         <meta http-equiv="Page-Enter" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
         <meta http-equiv="Page-Exit" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
 

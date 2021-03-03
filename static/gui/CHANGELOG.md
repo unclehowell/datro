@@ -7,13 +7,7 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 
 ## [Unreleased]
 
-## [0.0.1-gui.3] - Q1/2021
-
-### PLAN
-
-2021Q1 - Just constant never ending improvements of GUI, as seen fit
-
-### PERFORMANCE
+## [0.0.1-rtw.10-gui] - Q1/2021
 
 #### Added
 25-Feb - added Aloshi/EmulationStation as subrepo (app-store/apps/002-002/subrepo) and included alongside it the Hβnβ ES theme folder
@@ -32,6 +26,7 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 27-Jan - started to work on app store. app store will be the same for actual gui on localhost webserver and remote online demo. Unlike 'screens' pages, which have seperate demo pages for online. 
 
 #### Changed
+03-Mar - dashboard/screen-lookups/* needed simplifying with the same logic as was implimented on the 24th Feb (see below)
 02-Mar - did a `git svn clone` with the HotspotBnB Net Installer and it pulled files, previously removed. Bizzar. So tried to overwrite the remote to fix it.
 25-Feb - changed gameconsole images in emulationstation HBnB themes, to remove unauthorised usage of gaming companies trademarked and copyrighted brands and logos etc
 24-Feb - fetch.html javascript logic was changed from (if '127.' '192.' or 'localhost') to (if NOT 'datro.xyz'). Since the existing logic would fail if the local ip subnet didn't match what was specified. It's easier to just say 'if NOT datro.xyz e.g. online, then presume it's localhosted. Better to change this if the public url changes, that keep adding to it to suite a myriad of local ip addresses and risk user experience.   
@@ -85,10 +80,6 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 19-Feb - our server hosting our webapps has issues. Working to resolve.
 12-Feb - Because of the screen-selector solution that has been implimented the backspace doesn't work in some cases.
 12-Feb - Browser cache doesn't appear to be storing the title change when offline.  
-
-### PLAN MOVING FORWARD
-
-00-Apr - Make browser back button work - perhaps have the screen-selector java work within the origin page, instead of its own page which is adding the extra step (which you can go back to, since it takes you forward again) 
 
 ## [0.0.1-gui.2] - Q4/2020
 
