@@ -2,7 +2,6 @@
 
 #unset CDPATH
 
-
 #.......................................................
 #            2021 Copyleft - DATRO Consortium
 #.......................................................
@@ -10,9 +9,7 @@
 #.......................................................
 #                   https://datro.world/
 #.......................................................
-#
 #                       Version 0.1
-#
 #.......................................................
 
 function ProgressBar {
@@ -58,8 +55,8 @@ rm -rf .git &&
 sudo git init &&
 sudo git remote add origin https://github.com/FooDeas/raspberrypi-ua-netinst.git &&
 sudo git pull origin master &&
-printf "\e[2;3;33m Step 2 Complete! \n\e[0m"
 
+printf "\e[2;3;33m Step 2 Complete! \n\e[0m"
 printf "\n\e[2;3;33m Step 3 of 5. Producing the Build_Dir \n\e[0m\n"
 
 for number in $(seq ${_40} ${_60})
@@ -72,40 +69,47 @@ sudo bash ./clean.sh &&
 sleep 0.1 &&
 sudo bash ./update.sh &&
 sleep 0.1 &&
+cp -r ../custom-settings/{installer-config.txt,post-install.txt} config/ &&
+cp -r ../custom-settings/custom_files.txt config/files/ &&
+cp -r ../custom-settings/{config.txt,cmdline.txt,ssh,wpa_supplicant.conf} config/boot/ &&
+
+mkdir -p config/files/etc/wpa_supplicant/ &&
+cp -r ../custom-settings/wpa_supplicant.conf config/files/etc/wpa_supplicant/ &&
+
+mkdir -p config/files/home/pi/ &&
+cp -r ../custom-settings/.bashrc config/files/home/pi/ &&
+
+mkdir -p config/files/etc/init.d/ &&
+cp -r ../custom-settings/build.sh config/files/etc/init.d/ &&
+
 sed -i 's/set -e # exit/#set -e # exit/g' build.sh &&
 sudo bash ./build.sh &&
-printf "\e[2;3;33m Step 3 Complete! \n\e[0m"
 
-printf "\n\e[2;3;33m Step 4 of 5. Building hbnb-latest.img.xz \n\e[0m\n"
+printf "\e[2;3;33m Step 3 Complete! \n\e[0m"
+printf "\n\e[2;3;33m Step 4 of 5. Prep & Build hbnb-latest.img.xz \n\e[0m\n"
 for number in $(seq ${_60} ${_80})
 do
        sleep 0.1
        ProgressBar ${number} ${_end}
 done
 
-cp -r ../custom-settings/installer-config.txt build_dir/bootfs/raspberrypi-ua-netinst/config &&
-cp -r ../custom-settings/post-install.txt build_dir/bootfs/raspberrypi-ua-netinst/config &&
-cp -r ../custom-settings/config.txt build_dir/bootfs/raspberrypi-ua-netinst/config/boot &&
-cp -r ../custom-settings/cmdline.txt build_dir/bootfs/raspberrypi-ua-netinst/config/boot &&
-cp -r ../custom-settings/config.txt build_dir/bootfs &&
-cp -r ../custom-settings/cmdline.txt build_dir/bootfs &&
 sed -i 's/compress_bz2=1/compress_bz2=0/g' buildroot.sh &&
 sed -i 's/set -e/#set -e/g' buildroot.sh &&
 echo 'exit 1' >> buildroot.sh &&
-touch build_dir/bootfs/raspberrypi-ua-netinst/config/ssh &&
-echo " " >> build_dir/bootfs/raspberrypi-ua-netinst/config/ssh &&
 sudo bash ./buildroot.sh &&
-printf "\e[2;3;33m Step 4 Complete! \n\e[0m"
 
-printf "\n\e[2;3;33m Step 5 of 5. Final Touches \n\e[0m\n"
+printf "\e[2;3;33m Step 4 Complete! \n\e[0m"
+printf "\n\e[2;3;33m Step 5 of 5. Quick Clean Up  \n\e[0m\n"
 for number in $(seq ${_80} ${_end})
 do
     sleep 1
     ProgressBar ${number} ${_end}
 done
 
-cd .. &&
 rm -rf *.zip &&
-mv raspberrypi-ua-netinst/*.img.xz ./hbnb-latest.img.xz &&
-rm -rf raspberrypi-ua-netinst* & printf "\e[2;3;33m Finished! \n\e[0m\n" &&
+mv *.img.xz ../hbnb-latest.img.xz &&
+cd .. &&
+rm -rf raspberrypi-ua-netinst &
+
+printf "\e[2;3;33m Finished! \n\e[0m\n" &&
 exit 0

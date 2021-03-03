@@ -1,9 +1,11 @@
 # Changelog
 Developers are expected to log all changes to this directory to this changelog.
-
-The Datro Consortium format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlight-report/).
+This CHANGELOG (in the top level directory) follows a [Prince2 Highlight Report](https://prince2.wiki/management-products/highlight-report/) Methodology.
+CHANGELOG's exist in each subdirectry to correspond to its content and ahead to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and [Semantic Versioning](https://semver.org/spec/v2.0.0.html). The CHANGELOG structure is as follows:
+BRANCH: net-installer/
+                     /hbnb/arm/CHANGELOG.md # H
+		     /hbnb/x86/CHANGELOG.md #
 
 ## [Unreleased]
 

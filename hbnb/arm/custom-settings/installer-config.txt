@@ -1,9 +1,8 @@
 preset=server
-packages=nano,curl,apt-transport-https,git,git-core,git-svn,subversion                                                  
+packages=nano,curl,git,git-svn,subversion
 firmware_packages=1
 release=buster
 timezone=America/Santo_Domingo
-timeserver=time.nist.gov
 keyboard_layout=gb
 locales="en_US.UTF-8"
 system_default_locale="en_US.UTF-8"
