@@ -1,5 +1,5 @@
 preset=server
-packages=nano,curl,git,git-svn,subversion
+packages=nano,curl,git,git-svn,subversion,firmware-brcm80211,pi-bluetooth,wpasupplicant,apache2,php,php-cli,libapache2-mod-php,php-mcrypt
 firmware_packages=1
 release=buster
 timezone=America/Santo_Domingo
@@ -17,8 +17,7 @@ rootpw=hotspotbnb
 hostname=hotspotbnb
 root_ssh_pwlogin=0
 
-# the above is all that's needed for ethernet connected raspberry pi's. For wi-fi unhash and fill in the below lines
-
+# Unhash and complete the field below for Wi-Fi
 #ifname=wlan0
 #wlan_ssid='my-wifi'
 #wlan_psk='secret'

@@ -1,34 +1,41 @@
 ## Hotspotβnβ Disk Image (Raspberry Pi)
 
-Intructions for getting Hotspotβnβ running on any Raspberry Pi.
+Get Hotspotβnβ running on any Raspberry Pi.
 
-### Compile the Disk Image from Source (Linux)
+### Fastest Method (Non-Linux Machines e.g. Windows, Mac etc)
+1. Visit [Latest Releases](https://github.com/unclehowell/datro/releases/ "DATRO Net-Installer Latest Release") 
+2. Download the latest pre-comiled image (attached in the 'assets' segment at the bottom of the release notes)  
 
- `sudo bash ./compile.sh`
-
-hbnb-latest.img.xz will be produced after a few minutes!
-
-### Or Download a Pre-compiled Disk Image
-
-Visit [GitHub](https://github.com/unclehowell/datro/releases/ "DATRO on Github").
+### Compiling a fresh Disk Image (from Source)
+1. Grab a local copy of this directory:
+   - Git Checkout '/hbnb/arm/' from this 'Net-Installer' Branch is the best and recommended method
+   - Or Git Fetch/Clone the whole 'Net-Installer' Branch will get files you don't need, but it's easier
+   - Or Git Fetch/Clone or Zip download the entire monorepo is not recommend, since it's tens of gigabytes in size
+   # If you need instruction on performing any of the above, visit [Collaborate with the DATRO Net-Installer Branch](https://github.com/unclehowell/datro/blob/net-installer/COLLABORATE.md "Collaborate with the DATRO Net-Installer Branch")
+2. Run the following Command: `sudo bash ./compile.sh` 
+   # the script will produce an upto-date image entitled 'hbnb-latest.img.xz'
 
 ### Burn the image to your Raspberry Pi's MicroSD Card 
 
 Insert your Pi's MicroSD Card into your laptop/desktop computer
 Using your prefered Disk Burning Program, write the image to the Card.
 
-* Recommend [Etcher](https://www.balena.io/etcher/ "Etchers Website") or Gnomes Disk Utility (restore disk image).
+* We recommend [RaspberryPi Imager](https://www.raspberrypi.org/software/ "RaspberryPi Imager") since it supports Windows, Mac & Linux
+  Most other softwares do the same job if you prefer not to use RPI Imager e.g. Etcher, Win32 Disk Imager, Gnome Disk Utility etc
 
-### Configure for Ethernet
+The disk image is now ready to go into your Raspberry Pi (providing the Pi has internet access via Ethernet)
 
-Do Nothing - The disk image is already configured for the Raspberry Pi to access the web via Ethernet
+### Wireless (Wi-Fi) Support
 
-### Configure for Wi-Fi
-
-To customize the disk image so the Raspberry Pi accesses the web over Wi-Fi, do the following:
-   - eject and re-insert the MicroSD Card into your laptop/desktop computer
-   - navigate to /boot/raspberrypi-ua-netinst/config and open the `installer-config.txt` file in Notepad
-   - follow the instructions in the file to add your existing Wi-Fi's SSID and Password
+If you prefer to power up your Pi and have it connect wirelessly to a Wi-Fi Access point (to establish internet access) then follow these steps:
+1. Eject and re-insert the MicroSD Card into your machine
+2. Navigate to /boot/raspberrypi-ua-netinst/config/ in your favorate text editor
+   - Open the `installer-config.txt` file in Notepad
+   - Enter Wi-Fi SSID and Password where instructed
+   - Save the file
+   - Repeat with the file: /raspberrypi-ua-netinst/config/files/etc/wpa_supplicant.conf
+   - Repeat with the file: /raspberrypi-ua-netinst/config/boot/wpa_supplicant.conf
+3. Eject your MicroSD Card - You're ready to proceed 
 
 ## Power On and Bootup
    - eject your MicroSD card from your computer, insert it into the Pi and apply power. 

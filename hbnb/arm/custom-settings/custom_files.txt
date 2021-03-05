@@ -14,9 +14,6 @@
 pi:pi  755  /home/pi/.bashrc
 pi:pi  755  /etc/init.d/build.sh
 pi:pi  755  /etc/wpa_supplicant/wpa_supplicant.conf
-pi:pi  755  /boot/ssh
-pi:pi  755  /boot/config.txt
-pi:pi  755  /boot/cmdline.txt
 #
 # Don't forget to call the function:
 # install_files my-files.list

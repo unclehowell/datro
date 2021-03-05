@@ -2,26 +2,29 @@
 
 chroot /rootfs /usr/sbin/update-locale LC_ALL="en_US.UTF-8"
 chroot /rootfs /usr/sbin/update-locale LANGUAGE="en_US:en"
-install_files my-files.list &&
 
-chroot /rootfs dpkg --configure -a &&
+install_files custom_files.txt &&
+
 chroot /rootfs apt update &&
 chroot /rootfs apt upgrade -y &&
 chroot /rootfs apt autoremove -y &&
 chroot /rootfs apt autoclean -y &&
-chroot /rootfs apt install firmware-brcm80211 pi-bluetooth wpasupplicant -y &&
-chroot /rootfs apt install apache2 php php-cli libapache2-mod-php php-mcrypt -y &&
-chroot /rootfs apt install subversion git git-core git-svn -y &&
 chroot /rootfs dpkg --configure -a &&
 
-chroot /rootfs rm -r /etc/systemd/system/getty@tty1.service.d >&- 2>&-
-chroot /rootfs rm -r /home/pi/.bashrc >&- 2>&-
+chroot /rootfs grep www-data /etc/passwd &&
+chroot /rootfs grep www-data /etc/group &&
+chroot /rootfs usermod -a -G www-data pi &&
+chroot /rootfs echo "www-data ALL = NOPASSWD: /sbin/reboot, /sbin/halt" >> /etc/sudoers &&
+chroot /rootfs chown www-data:www-data -R /var/www/html &&
+chroot /rootfs sed -i 's/disable_functions/#disable_functions/g' /etc/php/7.3/apache2/php.ini &&
+chroot /rootfs systemctl reload apache2 &&
 
-chroot /rootfs chmod +x /etc/init.d/build.sh
-chroot /rootfs update-rc.d /etc/init.d/build.sh default
+chroot /rootfs rm -r /etc/systemd/system/getty@tty1.service.d >&- 2>&- &&
+chroot /rootfs chmod +x /etc/init.d/build.sh &&
+chroot /rootfs update-rc.d /etc/init.d/build.sh default &&
 
-chroot /rootfs mkdir /etc/systemd/system/getty@tty1.service.d
-chroot /rootfs touch /etc/systemd/system/getty@tty1.service.d/override.conf
+chroot /rootfs mkdir -p /etc/systemd/system/getty@tty1.service.d &&
+chroot /rootfs touch /etc/systemd/system/getty@tty1.service.d/override.conf &&
 
 { echo "[Service]";
   echo "ExecStart=";
@@ -29,7 +32,6 @@ chroot /rootfs touch /etc/systemd/system/getty@tty1.service.d/override.conf
   echo "hotspotbnb:  $";
 } | chroot /rootfs tee /etc/systemd/system/getty@tty1.service.d/override.conf
 
-chroot /rootfs cp -r /etc/wpa_supplicant/wpa_supplicant.conf /boot/wpa_supplicant.conf &&
 # wpa connects to wi-fi on reboot. bashrc runs build build.sh on reboot
 chroot /rootfs sleep 15
 chroot /rootfs reboot

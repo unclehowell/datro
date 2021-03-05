@@ -7,7 +7,7 @@ CHANGELOG's exist in each subdirectry to correspond to its content and ahead to 
 
 BRANCH: net-installer/
                      /hbnb/arm/CHANGELOG.md # Hotspotβnβ Disk Image source code for ARM Processor Architecture (MicroSD)
-		     /hbnb/x86/CHANGELOG.md # Hotspotβnβ Disk Image source code for x86_64 Processor Architecture (USB)
+		     /hbnb/x86-64/CHANGELOG.md # Hotspotβnβ Disk Image source code for x86-64 Processor Architecture (USB)
 
 ## [Unreleased]
 
@@ -24,8 +24,9 @@ BRANCH: net-installer/
 01-Mar - got hbnb/arm functioning - see hbnb/arm/changelog.md for details
 
 #### Changed
-03-Mar - jumped to 0.0.1-rc.9 because the last one was rc.8 - we did reset semantic versioning, but ultimately decided to continue on like before instead
-02-Mar - hbnb/arm build doesn't complete successfully. build.sh goes into /etc/init.d and .bashrc is set to run it. Troubleshooting 
+05-Mar - Changed x86 to x86-64 in the directory paths, since it's a more accurate nomenclature to describe the target architecture
+03-Mar - Jumped to 0.0.1-rc.9 because the last one was rc.8 - we did reset semantic versioning, but ultimately decided to continue on like before instead
+02-Mar - Hbnb/arm build doesn't complete successfully. build.sh goes into /etc/init.d and .bashrc is set to run it. Troubleshooting 
 01-Mar - Restarted semantic versioning. Higher standard set for releases, no more increasing semantic versioning willy nilly
          Few more changes too - see the hbnb/arm/changelog.md for more info
 27-Feb - Minor edit to README.md
