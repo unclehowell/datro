@@ -24,6 +24,7 @@ BRANCH: net-installer/
 01-Mar - got hbnb/arm functioning - see hbnb/arm/changelog.md for details
 
 #### Changed
+04-Mar - Minor edits on the hbnb/arm directory, but not enough to justify a re-release, not yet. 
 05-Mar - Changed x86 to x86-64 in the directory paths, since it's a more accurate nomenclature to describe the target architecture
 03-Mar - Jumped to 0.0.1-rc.9 because the last one was rc.8 - we did reset semantic versioning, but ultimately decided to continue on like before instead
 02-Mar - Hbnb/arm build doesn't complete successfully. build.sh goes into /etc/init.d and .bashrc is set to run it. Troubleshooting 

@@ -70,8 +70,8 @@ sleep 0.1 &&
 sudo bash ./update.sh &&
 sleep 0.1 &&
 cp -r ../custom-settings/{installer-config.txt,post-install.txt} config/ &&
-cp -r ../custom-settings/custom_files.txt config/files/ &&
-cp -r ../custom-settings/{config.txt,cmdline.txt,ssh,wpa_supplicant.conf} config/boot/ &&
+cp -r ../custom-settings/my-files.txt config/ &&
+cp -r ../custom-settings/{config.txt,cmdline.txt,ssh} config/boot/ &&
 
 mkdir -p config/files/etc/wpa_supplicant/ &&
 cp -r ../custom-settings/wpa_supplicant.conf config/files/etc/wpa_supplicant/ &&
