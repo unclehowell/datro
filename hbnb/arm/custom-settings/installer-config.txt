@@ -1,5 +1,5 @@
 preset=server
-packages=nano,curl,git,git-svn,subversion,firmware-brcm80211,pi-bluetooth,wpasupplicant,apache2,php,php-cli,libapache2-mod-php,php-mcrypt
+packages=gawk,nano,curl,git,git-svn,subversion,firmware-brcm80211,pi-bluetooth,wpasupplicant,apache2,php,php-cli,libapache2-mod-php,php-mcrypt
 firmware_packages=1
 release=buster
 timezone=America/Santo_Domingo

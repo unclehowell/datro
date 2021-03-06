@@ -3,7 +3,7 @@
 chroot /rootfs /usr/sbin/update-locale LC_ALL="en_US.UTF-8"
 chroot /rootfs /usr/sbin/update-locale LANGUAGE="en_US:en"
 
-install_files my-files.txt &&
+install_files custom_files.txt &&
 
 chroot /rootfs apt update &&
 chroot /rootfs apt upgrade -y &&
@@ -32,8 +32,10 @@ chroot /rootfs touch /etc/systemd/system/getty@tty1.service.d/override.conf &&
   echo "hotspotbnb:  $";
 } | chroot /rootfs tee /etc/systemd/system/getty@tty1.service.d/override.conf &&
 
-chroot /rootfs cp -r /etc/wpa_supplicant/wpa_supplicant.conf /boot/ &&
-
-# wpa connects to wi-fi on reboot. bashrc runs build build.sh on reboot
-chroot /rootfs sleep 15
+chroot /rootfs awk 'BEGIN{printf(" ")}1' /etc/wpa_supplicant.conf &&
+chroot /rootfs echo sed -i '1s/^/country=RD\n/' /etc/wpa_supplicant.conf &&
+chroot /rootfs echo sed -i '1s/^/update_config=1\n/' /etc/wpa_supplicant.conf &&
+chroot /rootfs echo sed -i '1s/^/ctrl_interface=DIR=\/var\/run\/wpa_supplicant GROUP=netdev\n/' /etc/wpa_supplicant.conf &&
+chroot /rootfs echo sed -i cp -r /etc/wpa_supplicant.conf /boot/ &&
+chroot /rootfs sleep 5
 chroot /rootfs reboot

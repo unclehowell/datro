@@ -23,7 +23,7 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 01-Mar - Noticed a .bashrc file was missing from the custom-settings directory. Placed it in there.
 
 #### Changed
-06-Mar - UA-Netinst doesn't write the wpa_supplicant.conf correctly. So it doesn't connect to internet on reboot post-build. The post-install script now overwrites the default config in /boot with a better one.
+06-Mar - Trying a new method with wpa_supplicant.conf to try to keep it minimal and dependable
 02-Mar - changed build.sh to compile.sh (because raspberrypi-ua-netinst/build.sh caused confusion. I also reworded it in README and CHANGELOG so it maintains sense when reading. 
        - changed README to include fill usage instructions
 01-Mar - Compile.sh now appends `exit 1` to the end of `raspberrypi-ua-netinst/buildroot.sh` (or else an `:(stdin)` error prevents exit on completion) see https://github.com/FooDeas/raspberrypi-ua-netinst/issues/213 
