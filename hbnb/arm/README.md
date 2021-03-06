@@ -33,7 +33,6 @@ If you prefer to power up your Pi and have it connect wirelessly to a Wi-Fi Acce
    - Open the `installer-config.txt` file in Notepad
    - Enter Wi-Fi SSID and Password where instructed
    - Save the file
-   - Repeat with the file: /raspberrypi-ua-netinst/config/files/etc/wpa_supplicant.conf
 3. Eject your MicroSD Card - You're ready to proceed 
 
 ## Power On and Bootup

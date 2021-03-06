@@ -73,9 +73,6 @@ cp -r ../custom-settings/{installer-config.txt,post-install.txt} config/ &&
 cp -r ../custom-settings/my-files.txt config/ &&
 cp -r ../custom-settings/{config.txt,cmdline.txt,ssh} config/boot/ &&
 
-mkdir -p config/files/etc/wpa_supplicant/ &&
-cp -r ../custom-settings/wpa_supplicant.conf config/files/etc/wpa_supplicant/ &&
-
 mkdir -p config/files/home/pi/ &&
 cp -r ../custom-settings/.bashrc config/files/home/pi/ &&
 
