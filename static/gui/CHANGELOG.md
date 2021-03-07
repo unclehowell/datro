@@ -26,6 +26,7 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 27-Jan - started to work on app store. app store will be the same for actual gui on localhost webserver and remote online demo. Unlike 'screens' pages, which have seperate demo pages for online. 
 
 #### Changed
+07-Mar - removed apps from dashboard. fresh installs shouldn't see apps until the user decided to install them. For the public server there's seperate -demo.html pages. 
 03-Mar - dashboard/screen-lookups/* needed simplifying with the same logic as was implimented on the 24th Feb (see below)
 02-Mar - did a `git svn clone` with the HotspotBnB Net Installer and it pulled files, previously removed. Bizzar. So tried to overwrite the remote to fix it.
 25-Feb - changed gameconsole images in emulationstation HBnB themes, to remove unauthorised usage of gaming companies trademarked and copyrighted brands and logos etc

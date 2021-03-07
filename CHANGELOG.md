@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
        - evr-network.live in GoDaddy forwards to evrnetwork.datro.world, then the javascript in the netlify splashpage brings up the website
 
 ### Changed 
+07-Mar - see static/gui changelog
 24-Feb - fetch.html changed in static/gui/app-store/apps/xxx-xxx/ - see corresponding changelog for details
 16-Feb - more work on gui - see static/gui changelog
 14-Feb - changed the way methodology for how screens pages load and the apps load - see static/gui changelog
