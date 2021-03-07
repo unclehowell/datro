@@ -21,7 +21,8 @@ Insert your Pi's MicroSD Card into your laptop/desktop computer
 Using your prefered Disk Burning Program, write the image to the Card.
 
 * We recommend [RaspberryPi Imager](https://www.raspberrypi.org/software/ "RaspberryPi Imager") since it supports Windows, Mac & Linux
-  Most other softwares do the same job if you prefer not to use RPI Imager e.g. Etcher, Win32 Disk Imager, Gnome Disk Utility etc
+* Most other softwares do the same job if you prefer not to use RPI Imager e.g. Etcher, Win32 Disk Imager, Gnome Disk Utility etc
+* But with RaspberryPi it defaults the format to FAT32, so you can be more sure not to screw up the build using it. 
 
 The disk image is now ready to go into your Raspberry Pi (providing the Pi has internet access via Ethernet)
 
