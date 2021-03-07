@@ -24,6 +24,7 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 
 #### Changed
 07-Mar - Still messing with wpa_supplicant.conf - also switched from custom_files.txt to my-files.list
+       - end-user only needs to add wi-fi ssid/password to the installer-config.txt (until this becomes a self-service web-service) - the build handles wpa-supplicant now (see post-install.txt)
 06-Mar - Trying a new method with wpa_supplicant.conf to try to keep it minimal and dependable
 02-Mar - changed build.sh to compile.sh (because raspberrypi-ua-netinst/build.sh caused confusion. I also reworded it in README and CHANGELOG so it maintains sense when reading. 
        - changed README to include fill usage instructions

@@ -16,9 +16,9 @@ usergpu=1
 rootpw=hotspotbnb
 hostname=hotspotbnb
 root_ssh_pwlogin=0
+ip_ipv6=0
 
-# Unhash and complete the field below for Wi-Fi
+# unhash to use Wi-Fi instead of ethernet (default)
 #ifname=wlan0
-#wlan_ssid='my-wifi'
-#wlan_psk='secret'
-
+#wlan_ssid='SSID'
+#wlan_psk='PASSWORD'

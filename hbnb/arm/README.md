@@ -35,23 +35,23 @@ If you prefer to power up your Pi and have it connect wirelessly to a Wi-Fi Acce
    - Save the file
 3. Eject your MicroSD Card - You're ready to proceed 
 
+If your using Ethernet(default) make sure your Raspberry Pi is connected via Ethernet to a router that has working internet access.
+If your using Wi-Fi make sure your Router is broadcasting Wi-Fi and the SSID/Passwords Match. 
+
 ## Power On and Bootup
-   - eject your MicroSD card from your computer, insert it into the Pi and apply power. 
-   - hotspotβnβ autonomously installs 
-   - connect to a TV via HDMI to see the progress
-   - it may reboot a few times, this is normal! 
+   - Insert your MicroSD Card into the Pi and apply power. 
+      - Hotspotβnβ autonomously installs (over Ethernet/Wi-Fi)
+      - Connect to a TV via HDMI to see the progress
+      - Your Pi may reboot a few times, this is normal! 
 
-## Access the Dashboard
-
+## Accessing the Dashboard
 Once the autonomous build has completed, identify the devices ip address 
 (shown on your TV Screen, if connected - otherwise scan your network for the IP of the new device) 
-
    - Enter the Pi's IP address into the web browser of any device connected to your local network. 
    - Displayed in your web-browser should be the HotspotBnB dashboard.
    - The remainder of the setup can be completed via the dashboard. 
 
 ## Support
-
 In the event of an issue, please check back for latest releases with bug fixes and/or submit an issue on here. 
 
 ### Tips 
