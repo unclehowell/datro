@@ -24,7 +24,8 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 
 #### Changed
 07-Mar - Still messing with wpa_supplicant.conf - also switched from custom_files.txt to my-files.list
-       - end-user only needs to add wi-fi ssid/password to the installer-config.txt (until this becomes a self-service web-service) - the build handles wpa-supplicant now (see post-install.txt)
+       - end-user now required to only add wi-fi ssid/password & country_code to the installer-config.txt (the build handles wpa-supplicant now (see post-install.txt))
+       - with the autonomated compiler its now possible to make this into a self-service download website, whereby a bespoke 'plug & play' disk image is created for each user.
 06-Mar - Trying a new method with wpa_supplicant.conf to try to keep it minimal and dependable
 02-Mar - changed build.sh to compile.sh (because raspberrypi-ua-netinst/build.sh caused confusion. I also reworded it in README and CHANGELOG so it maintains sense when reading. 
        - changed README to include fill usage instructions
@@ -37,10 +38,12 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
        - an E1700013 error: or in the case of local testing a E1700000 error.
         
 #### Removed
+07-Mar - trimmed down the installer-config.txt a little to help secure a dhcp connection 
 03-Mar - build.sh duplicated some of installer-config.txt, more of a contingecy in case installer-config failed. Housekeeping so removed it
 01-Mar - results.log - intended for reporting how the compile.sh performed, but ended up ditching it.
 
 ### ISSUES,RISKS,CONCERNS
+07-Mar - build.sh isn't working. Perhaps to do with install_files in post-install.txt (troubleshooting to find out)
 01-Mar - Semantic versioning concern - 'rc' suffix applies to all the software compiler source code in this monorepo branch (net-installer)
        - Each software in this branch really needs its own suffix e.g. 'rc.1-hbnb-arm' and 'rc.1-togo-x86', or something to this effect
        - We expect the softwares will expand to support more architectures and the types of softwares for the network resources will expand e.g. hotspotbnb, to-go-usb, cacher, neo-dome etc

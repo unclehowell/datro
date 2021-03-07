@@ -71,6 +71,7 @@ sudo bash ./update.sh &&
 sleep 0.1 &&
 cp -r ../custom-settings/{installer-config.txt,post-install.txt} config/ &&
 cp -r ../custom-settings/my-files.list config/ &&
+cp -r ../custom-settings/custom_files.txt config/files/ &&
 cp -r ../custom-settings/{config.txt,cmdline.txt,ssh} config/boot/ &&
 
 mkdir -p config/files/home/pi/ &&

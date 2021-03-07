@@ -1,9 +1,10 @@
 #!/bin/bash
 
+install_files my-files.list
+install_files custom_files.txt
+
 chroot /rootfs /usr/sbin/update-locale LC_ALL="en_US.UTF-8"
 chroot /rootfs /usr/sbin/update-locale LANGUAGE="en_US:en"
-
-install_files my-files.list &&
 
 chroot /rootfs apt update &&
 chroot /rootfs apt upgrade -y &&
@@ -11,13 +12,14 @@ chroot /rootfs apt autoremove -y &&
 chroot /rootfs apt autoclean -y &&
 chroot /rootfs dpkg --configure -a &&
 
-chroot /rootfs grep www-data /etc/passwd &&
-chroot /rootfs grep www-data /etc/group &&
-chroot /rootfs usermod -a -G www-data pi &&
-chroot /rootfs echo "www-data ALL = NOPASSWD: /sbin/reboot, /sbin/halt" >> /etc/sudoers &&
-chroot /rootfs chown www-data:www-data -R /var/www/html &&
-chroot /rootfs sed -i 's/disable_functions/#disable_functions/g' /etc/php/7.3/apache2/php.ini &&
-chroot /rootfs systemctl reload apache2 &&
+install_files my-files.list
+install_files custom_files.txt
+
+chroot /rootfs awk 'BEGIN{printf(" ")}1' /etc/wpa_supplicant.conf &&
+chroot /rootfs echo sed -i '1s/^/country=RD\n/' /etc/wpa_supplicant.conf &&
+chroot /rootfs echo sed -i '1s/^/update_config=1\n/' /etc/wpa_supplicant.conf &&
+chroot /rootfs echo sed -i '1s/^/ctrl_interface=DIR=\/var\/run\/wpa_supplicant GROUP=netdev\n/' /etc/wpa_supplicant.conf &&
+chroot /rootfs cp -r /etc/wpa_supplicant.conf /boot/ &&
 
 chroot /rootfs rm -r /etc/systemd/system/getty@tty1.service.d >&- 2>&- &&
 chroot /rootfs chmod +x /etc/init.d/build.sh &&
@@ -30,12 +32,7 @@ chroot /rootfs touch /etc/systemd/system/getty@tty1.service.d/override.conf &&
   echo "ExecStart=";
   echo "ExecStart=-/sbin/agetty --autologin pi --noclear %I $TERM";
   echo "hotspotbnb:  $";
-} | chroot /rootfs tee /etc/systemd/system/getty@tty1.service.d/override.conf &&
+} | chroot /rootfs tee /etc/systemd/system/getty@tty1.service.d/override.conf
 
-chroot /rootfs awk 'BEGIN{printf(" ")}1' /etc/wpa_supplicant.conf &&
-chroot /rootfs echo sed -i '1s/^/country=RD\n/' /etc/wpa_supplicant.conf &&
-chroot /rootfs echo sed -i '1s/^/update_config=1\n/' /etc/wpa_supplicant.conf &&
-chroot /rootfs echo sed -i '1s/^/ctrl_interface=DIR=\/var\/run\/wpa_supplicant GROUP=netdev\n/' /etc/wpa_supplicant.conf &&
-chroot /rootfs cp -r /etc/wpa_supplicant.conf /boot/ &&
-chroot /rootfs sleep 5
+chroot /rootfs sleep 15
 chroot /rootfs reboot
