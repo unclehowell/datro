@@ -16,12 +16,12 @@ rootpw=hotspotbnb
 hostname=hotspotbnb
 root_ssh_pwlogin=0
 timezone=America/Santo_Domingo
-#timeserver=time.nist.gov
 installer_networktimeout=120
-#ip_ipv6=0
+ip_ipv6=0
+ip6_addr=disable
+ip4_nameservers=8.8.8.8,8.8.4.4
 
 # unhash to use Wi-Fi instead of ethernet (default)
 #ifname=wlan0
-#wlan_country=RD
 #wlan_ssid='SSID'
 #wlan_psk='PASSWORD'
