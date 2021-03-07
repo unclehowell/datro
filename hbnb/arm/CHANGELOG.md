@@ -34,6 +34,8 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 27-Feb - Minor edit to README.md
 
 #### Fixed
+07-Mar - post-install.txt started getting ignored during local testing. Weird. Possibly because it fails beforehand trying mount the /boot (FAT32 must be used, not exFAT32)
+       - I also moved a lot of the packaged that needed to be installed from install-config.txt to post-install.txt to lighten the load and opportunity for failure on the first step
 02-Mar - compile.sh moved `img.xz` to a directory one above the desired one. Changed `mv ../*.img.xz` to `mv ./img.xz` - Fixed! 
 01-Mar - compile.sh should be `trunk/static/gui` not `trunk/gh-pages/static/gui` ('gh-pages' is the repos default branch, maybe how it knows)
        - an E1700013 error: or in the case of local testing a E1700000 error.

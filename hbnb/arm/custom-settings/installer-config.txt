@@ -1,12 +1,11 @@
 preset=server
-packages=nano,curl,git,wpasupplicant,firmware-brcm80211,pi-bluetooth,git-svn,subversion,gawk,apache2,php,php-cli,libapache2-mod-php,php-mcrypt
+packages=nano,curl,git
 firmware_packages=1
 release=buster
 keyboard_layout=gb
 locales="en_US.UTF-8"
 system_default_locale="en_US.UTF-8"
 disable_raspberries=1
-disable_splash=1
 cleanup=1
 username=pi
 userpw=hotspotbnb

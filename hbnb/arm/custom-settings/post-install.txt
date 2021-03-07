@@ -3,8 +3,8 @@
 install_files my-files.list
 install_files custom_files.txt
 
-chroot /rootfs /usr/sbin/update-locale LC_ALL="en_US.UTF-8"
-chroot /rootfs /usr/sbin/update-locale LANGUAGE="en_US:en"
+chroot /rootfs /usr/sbin/update-locale LC_ALL="en_US.UTF-8" &&
+chroot /rootfs /usr/sbin/update-locale LANGUAGE="en_US:en" &&
 
 chroot /rootfs apt update &&
 chroot /rootfs apt upgrade -y &&
@@ -12,8 +12,7 @@ chroot /rootfs apt autoremove -y &&
 chroot /rootfs apt autoclean -y &&
 chroot /rootfs dpkg --configure -a &&
 
-install_files my-files.list
-install_files custom_files.txt
+chroot /rootfs apt-get install -y firmware-brcm80211 pi-bluetooth git-svn subversion gawk apache2 php php-cli libapache2-mod-php php-mcrypt &&
 
 chroot /rootfs awk 'BEGIN{printf(" ")}1' /etc/wpa_supplicant.conf &&
 chroot /rootfs echo sed -i '1s/^/country=RD\n/' /etc/wpa_supplicant.conf &&
