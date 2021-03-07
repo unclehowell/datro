@@ -23,6 +23,7 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 01-Mar - Noticed a .bashrc file was missing from the custom-settings directory. Placed it in there.
 
 #### Changed
+07-Mar - Still messing with wpa_supplicant.conf - also switched from custom_files.txt to my-files.list
 06-Mar - Trying a new method with wpa_supplicant.conf to try to keep it minimal and dependable
 02-Mar - changed build.sh to compile.sh (because raspberrypi-ua-netinst/build.sh caused confusion. I also reworded it in README and CHANGELOG so it maintains sense when reading. 
        - changed README to include fill usage instructions

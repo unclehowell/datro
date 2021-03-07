@@ -48,7 +48,7 @@ do
 done
 
 rm -rf raspberrypi-ua-netinst &&
-rm -rf hbnb-latest.img.xz &&
+rm -rf *.xz &&
 mkdir -p raspberrypi-ua-netinst &&
 cd raspberrypi-ua-netinst &&
 rm -rf .git &&
@@ -70,7 +70,7 @@ sleep 0.1 &&
 sudo bash ./update.sh &&
 sleep 0.1 &&
 cp -r ../custom-settings/{installer-config.txt,post-install.txt} config/ &&
-cp -r ../custom-settings/my-files.txt config/ &&
+cp -r ../custom-settings/my-files.list config/ &&
 cp -r ../custom-settings/{config.txt,cmdline.txt,ssh} config/boot/ &&
 
 mkdir -p config/files/home/pi/ &&
@@ -106,7 +106,7 @@ done
 rm -rf *.zip &&
 mv *.img.xz ../hbnb-latest.img.xz &&
 cd .. &&
-rm -rf raspberrypi-ua-netinst &
+rm -rf raspberrypi-ua-netinst &&
 
 printf "\e[2;3;33m Finished! \n\e[0m\n" &&
 exit 0

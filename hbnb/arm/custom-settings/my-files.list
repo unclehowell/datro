@@ -13,8 +13,7 @@
 # A file placed on the SD-card in /config/files/home/pi/.bashrc is listed as follows:
 pi:pi  755  /home/pi/.bashrc
 pi:pi  755  /etc/init.d/build.sh
-pi:pi  755  /etc/wpa_supplicant/wpa_supplicant.conf
-#
+
 # Don't forget to call the function:
 # install_files my-files.list
 # from your `post-install.txt` where "my-files.list" is this file. 
