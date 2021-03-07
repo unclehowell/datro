@@ -1,0 +1,12 @@
+{
+  "extends": "react-app",
+  "plugins": ["prettier"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    } 
+  },
+  "rules": {
+    "prettier/prettier": "error"
+  }
+}
