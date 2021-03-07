@@ -8,10 +8,8 @@ Alternatively visit our [Latest Releases](https://github.com/unclehowell/datro/r
 ### Directory Structure
 
 Here's the directory structure:
-[Latest Releases](https://github.com/unclehowell/datro/releases/ "DATRO Net-Installer Latest Release")
-
-[Hbnb/Arm](https://github.com/unclehowell/datro/tree/net-installer/hbnb/arm/ "Hotspotβnβ on ARM")      # Hotspotβnβ ARM/RaspberryPi (All Models) Fully Autonomous, Self-Building Disk Image Source Code
-        [/hbnb/x86-64/](https://github.com/unclehowell/datro/tree/net-installer/hbnb/x86-64 "Hotspotβnβ on x86-64")      # Hotspotβnβ x86-64/Desktop/Laptop Fully Autonomous, Self-Building (Persistent-Live USB) Disk Image Source Code
+[/bnb/Arm/](https://github.com/unclehowell/datro/tree/net-installer/hbnb/arm/ "Hotspotβnβ on ARM")      # Hotspotβnβ ARM/RaspberryPi (All Models) Fully Autonomous, Self-Building Disk Image Source Code
+[/hbnb/x86-64/](https://github.com/unclehowell/datro/tree/net-installer/hbnb/x86-64 "Hotspotβnβ on x86-64")      # Hotspotβnβ x86-64/Desktop/Laptop Fully Autonomous, Self-Building (Persistent-Live USB) Disk Image Source Code
  
         [/togo/x86-64/](https://github.com/unclehowell/datro/tree/net-installer/togo/x86-64 "To-Go USB on x86-64")      # To-Go x86-64/Desktop/Laptop Fully Autonomous, Self-Building (Persistent-Live USB) Disk Image Source Code
 
