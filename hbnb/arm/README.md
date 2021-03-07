@@ -13,7 +13,7 @@ Get Hotspotβnβ running on any Raspberry Pi.
    - Or Git Fetch/Clone or Zip download the entire monorepo is not recommend, since it's tens of gigabytes in size
         - If you need instruction on performing any of the above, visit [Collaborate with the DATRO Net-Installer Branch](https://github.com/unclehowell/datro/blob/net-installer/COLLABORATE.md "Collaborate with the DATRO Net-Installer Branch")
 2. Run the following Command: `sudo bash ./compile.sh` 
-   # the script will produce an upto-date image entitled 'hbnb-latest.img.xz'
+     - this script will produce an upto-date image entitled 'hbnb-latest.img.xz'
 
 ### Burn the image to your Raspberry Pi's MicroSD Card 
 
