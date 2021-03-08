@@ -2,15 +2,15 @@
 
 ## Summary
 DATRO's website, document, software and training video source-code (everything) is held in a single public repository ("monorepo")
-The primary location online is `github.com/unclehowell/datro`.
-This monorepo can also be discovered elsewhere online and offline - just ask around.
-There's a few branches in the monorepo e.g. gh-pages, subrepos, netlify etc
-This branch of our monorepo is entitled 'net-installer' (see README.md for more info on its content)
+The primary location of this monorepo is `github.com/unclehowell/datro`.
+But it can be discovered elsewhere online and offline - just ask around.
+There's a few branches in the monorepo e.g. gh-pages, netlify, subrepos etc
+This branch is entitled 'net-installer' - since it primarily contains the source for net-installers. 
+Net-Installers autonomously self-build a disk image, including the devices firmware and software. 
 
 ## Why Collaborate
-Unlike other open source projects, it's worth collaborating since DATRO's networks revenue is autonomously divided between developers.
-So you don't get paid for a job well done with DATRO. Your contribution is democratically elected a beneficial interest.
-Since you maintain own and control of the contributing source code, you receive the beneficial interest as an ongoing royalty. 
+Unlike other open source projects, it's worth collaborating since DATRO distributes its network revenue between developers fully autonomously.
+Since developers maintain, own and control their contributing source code, beneficial interest in this network is managed as an ongoing royalty. 
 
 ## Basic Concept
 1. You make your own github repository (name it with relivance to the content). Your contribution, so you'll maintain ownership and control. 
@@ -24,9 +24,6 @@ Since you maintain own and control of the contributing source code, you receive 
 
 This whole method of collaboration and payment helps us carefully migrate towards becoming a DAO.
 Assessing each risk and tackling each challenge one step at a time to avoid exposures to modern cyber-threats and other vunerabilities. 
-
-## Branch Nomenclature (this branch only)
- - 'net-installer' refers to our Net-installers (autonomous self-building, self-configuring disk images for MicroSD Cards and USB). 
 
 ### Symantic Version Control
 See the CHANGELOG file for more information

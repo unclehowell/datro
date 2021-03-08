@@ -5,7 +5,6 @@ release=buster
 keyboard_layout=gb
 locales="en_US.UTF-8"
 system_default_locale="en_US.UTF-8"
-disable_raspberries=1
 cleanup=1
 username=pi
 userpw=hotspotbnb
@@ -18,7 +17,7 @@ timezone=America/Santo_Domingo
 installer_networktimeout=120
 ip_ipv6=0
 ip6_addr=disable
-ip4_nameservers=8.8.8.8,8.8.4.4
+ip4_nameservers=8.8.8.8
 
 # unhash to use Wi-Fi instead of ethernet (default)
 #ifname=wlan0

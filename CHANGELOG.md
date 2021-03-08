@@ -1,48 +1,44 @@
-# Changelog
-Developers are expected to log all changes to this directory to this changelog.
+# Net-Installer Changelog
+This Changelog generally pertains to the Branch as a whole. 
+Branch-Level Changelogs are based on these methodologies:
+- [Prince2 Highlight Report](https://prince2.wiki/management-products/highlight-report/)  
+- [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
+- [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
-This CHANGELOG (in the top level directory) follows a [Prince2 Highlight Report](https://prince2.wiki/management-products/highlight-report/) Methodology.
+Each sub-directry features its own CHANGELOG.md file, which correspond to changes going on in their respective directories:
 
-CHANGELOG's exist in each subdirectry to correspond to its content and ahead to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html). The CHANGELOG structure is as follows:
+[/hbnb/arm/CHANGELOG.md](https://github.com/unclehowell/datro/tree/net-installer/hbnb/arm/CHANGELOG.md "Hotspotβnβ ARM Changelog")      # CHANGELOG.md for Hotspotβnβ ARM/RaspberryPi (All Models)
 
-BRANCH: net-installer/
-                     /hbnb/arm/CHANGELOG.md # Hotspotβnβ Disk Image source code for ARM Processor Architecture (MicroSD)
-		     /hbnb/x86-64/CHANGELOG.md # Hotspotβnβ Disk Image source code for x86-64 Processor Architecture (USB)
+[/hbnb/x86-64/CHANGELOG.md](https://github.com/unclehowell/datro/tree/net-installer/hbnb/x86-64/CHANGELOG.md "Hotspotβnβ x86-64 Changelog")      # CHANGELOG.md for Hotspotβnβ x86-64/Desktop/Laptops
+
+[/togo/x86-64/CHANGELOG.md](https://github.com/unclehowell/datro/tree/net-installer/togo/x86-64/CHANGELOG.md "To-Go x86-64 Changelog")      # CHANGELOG.md for To-Go x86-64/Desktop/Laptop 
+
+[/cacher/arm/CHANGELOG.md](https://github.com/unclehowell/datro/tree/net-installer/cacher/arm "Cacher ARM Changelog")      # CHANGELOG.md for Cacher ARM/RaspberryPi (All Models)
+
+[/cacher/x86-64/CHANGELOG.md](https://github.com/unclehowell/datro/tree/net-installer/cacher/x86-64 "Cacher on x86-64")      # CHANGELOG.md for Cacher on X86-64 Desktop/Laptops
+
 
 ## [Unreleased]
 
 ## [0.0.1-rc.9] - Q1/2021
 
 ### PLAN
-
-2021Q1 - Get the 'net-installer' branch in better shape,
-         so that anyone, anywhere can also compile a fresh disk image, which produces the same results
+2021Q1 - Get the 'net-installer' branch, (specifically hbnb/arm) in such shape,
+         that anyone, anywhere can compile at least one fresh disk image,
+         (preferably Hotspotβnβ on Raspberry Pi (so the overall concept can be conveyed))
 
 ### PERFORMANCE
+01-Mar - Got hbnb/arm functioning (Tested on the Raspberry Pi4) - See hbnb/arm/changelog.md for details
 
 #### Added
-01-Mar - got hbnb/arm functioning - see hbnb/arm/changelog.md for details
 
 #### Changed
-07-Mar - Got wpa_supplicant sorted on hbnb/arm
-04-Mar - Minor edits on the hbnb/arm directory, but not enough to justify a re-release, not yet. 
-05-Mar - Changed x86 to x86-64 in the directory paths, since it's a more accurate nomenclature to describe the target architecture
-03-Mar - Jumped to 0.0.1-rc.9 because the last one was rc.8 - we did reset semantic versioning, but ultimately decided to continue on like before instead
-02-Mar - Hbnb/arm build doesn't complete successfully. build.sh goes into /etc/init.d and .bashrc is set to run it. Troubleshooting 
-01-Mar - Restarted semantic versioning. Higher standard set for releases, no more increasing semantic versioning willy nilly
-         Few more changes too - see the hbnb/arm/changelog.md for more info
-27-Feb - Minor edit to README.md
 
 #### Fixed
-02-Mar - ran the image produced for hbnb/arm (rpi) - issues reported. Fixed! see hbnb/arm CHANGELOG for details
-01-Mar - hbnb/arm/custom-settings/ fix - see hbnb/arm CHANGELOG
 
 #### Removed
 
 ### ISSUES,RISKS,CONCERNS
 
 ### PLAN MOVING FORWARD
-02-Mar - more of an idea. Since a compile.sh script now exists, it maybe worth making this into a self-service web-service
-       - could use heroku or something near free, to let the website visitor enter SSID and password, or select ethernet and produce a custom build
-       - would surely be concerns with privacy, but it could be made a choice for convenience     
-01-Mar - perhaps img.xz is already at its smallest, but if it could be compressed further without issues that would be great. Worth investigating
+

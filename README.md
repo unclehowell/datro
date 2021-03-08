@@ -1,8 +1,8 @@
 # DATRO Net-Installer(s)
 
-All the source code for our collection of autonomous, self-building disk images.
-We've even made the compiling of these disk images full automated. 
-Just visit the subdirectory corresponding to your requirement and run the `compiler.bash` script.
+All the source code on this branch include our collection of autonomous, self-building MicroSD and (Persistent-Live) USB Disk Images.
+We've even made the compiling of the abovementioned disk images (source code > img.xz) a full automated process. 
+Just visit the subdirectory corresponding to your requirements and run the `compiler.bash` script.
 Alternatively visit our [Latest Releases](https://github.com/unclehowell/datro/releases/ "DATRO Net-Installer Latest Release") for pre-compiled disk images.
 
 ### Directory Structure
