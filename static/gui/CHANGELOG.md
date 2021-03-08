@@ -10,6 +10,7 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 ## [0.0.1-rtw.10-gui] - Q1/2021
 
 #### Added
+08-Mar - emoncms webapp and interactive online demo
 03-Mar - added some php script - for net-installer testing
 25-Feb - added Aloshi/EmulationStation as subrepo (app-store/apps/002-002/subrepo) and included alongside it the Hβnβ ES theme folder
 20-Feb - openhab is the only entry in the demo search atm. but the url was missing, so that's been added and now the app search results in the app opening when selected
