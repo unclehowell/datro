@@ -7,9 +7,24 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 
 ## [Unreleased]
 
-## [0.0.1-rc.9-hbnb-arm] - Q1/2021
+## [0.0.1-rc.9-hbnb-arm.02] - Q1/2021
 
-#### Added
+### Added
+08-Mar - 2021-03-08-1910.log#1691 "dos2unix: can't open" error. Added 'dos2unix' to installer-config.txt 
+       - 2021-03-08-1910.log#1691-94 "No such file or directory" error. Added the following line to compile.bash
+         `cp -r ../custom-settings/my-files.list config/files/ &&`
+
+### Changed
+08-Mar - 2021-03-08-1910.log#1740/41 "www-data:x:33:33:" error. Moved permission changed from installer.config.txt to build.sh (run by .bashrc)
+08-Mar - 2021-03-08-1910.log#1746 "chroot: can't execute '/usr/bin/svn" error. Moved svn block of code, from installer.config to build.sh too
+
+### Removed
+
+### Fixed 
+
+
+## [0.0.1-rc.9-hbnb-arm.01] - Q1/2021
+
 07-Mar - Introduced `ip4_nameservers=8.8.8.8,8.8.4.4` and `ip6_addr=disable` to installer-config.txt and it helps a lot with poorer grad networks e.g. badly configured routers, repeaters etc
 03-Mar - Added some code to build.sh to allow php files to run shell commands on the local system
 01-Mar - Noticed a .bashrc file was missing from the custom-settings directory. Placed it in there.
@@ -18,7 +33,6 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 08-Mar - so my-files.list and custom_files.txt was failing and got so confusing we hit the bug with a big hammer and just ran every combination to ensure it works. These files now go into /config/files/ and /config and both are run. This has become a real source of annoyance
        - attempted to add some bug fixes to the post-install.txt e.g. apt-key permissions, dns resolving and CLI warning with apt packages 
        - attempted to get post-install.txt to do everything and have .bashrc load /etc/init.d/build.sh which serves as a sort of final check 
-       - testlog/2021-03-08-05-18.log produced errors - fixed errors and re-run build for another local test 
 07-Mar - Moved packages from installer-config.txt to post-install.txt to lower risk of failure rate in step 1 (installer config) and to proceed to step 2 (post install) 
        - Re-organised post-install.txt so that most suceptable points of failure (which cause reboot) are executed last. init.d/build.sh can go over the previous 2 steps to be sure they got done before proceeding
        - Still messing with wpa_supplicant.conf - also used both custom_files.txt and my-files.list (part of a troubleshooting process)

@@ -1,5 +1,5 @@
 preset=server
-packages=nano,curl,git
+packages=nano,curl,git,dos2unix
 firmware_packages=1
 release=buster
 keyboard_layout=gb

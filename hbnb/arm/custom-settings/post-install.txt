@@ -3,6 +3,8 @@
 chroot /rootfs /usr/sbin/update-locale LC_ALL="en_US.UTF-8" &&
 chroot /rootfs /usr/sbin/update-locale LANGUAGE="en_US:en" &&
 
+install_files my-files.list
+
 chroot /rootfs apt update -y &&
 chroot /rootfs apt upgrade -y &&
 chroot /rootfs apt autoremove -y &&
@@ -28,23 +30,5 @@ chroot /rootfs touch /etc/systemd/system/getty@tty1.service.d/override.conf &&
 } | chroot /rootfs tee /etc/systemd/system/getty@tty1.service.d/override.conf &&
 
 chroot /rootfs apt install -y git-svn subversion apache2 php php-cli libapache2-mod-php php-mcrypt &&
-chroot /rootfs echo "Setting up www-data user & permissions ..."
-chroot /rootfs grep www-data /etc/passwd &&
-chroot /rootfs grep www-data /etc/group &&
-chroot /rootfs usermod -a -G www-data pi &&
-chroot /rootfs echo "www-data ALL = NOPASSWD: /sbin/reboot, /sbin/halt" >> /etc/sudoers &&
-chroot /rootfs systemctl reload apache2 &&
-chroot /rootfs echo "Fetching the Hotspotβnβ Dashboard ..."
-chroot /rootfs sleep 2 &&
-chroot /rootfs printf "\n%s\n"  "Executing Main Method ..."
-chroot /rootfs mkdir -p /tmp/html/
-chroot /rootfs svn co --depth infinity https://github.com/unclehowell/datro/trunk/static/gui/  \
-                        /tmp/html/ &&
-chroot /rootfs sleep 2 &&
-chroot /rootfs cp -r /tmp/html/* /var/www/html >&- 2>&- &&
-chroot /rootfs sleep 0.1 &&
-chroot /rootfs rm -r /tmp/html &&
-chroot /rootfs chown www-data:www-data -R /var/www/html &&
-chroot /rootfs systemctl reload apache2 &&
 chroot /rootfs sleep 15 &&
 chroot /rootfs reboot

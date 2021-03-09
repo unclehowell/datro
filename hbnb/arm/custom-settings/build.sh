@@ -11,29 +11,35 @@
 # Short-Description: build HotspotBnB
 ### END INIT INFO
 
-sudo /usr/sbin/update-locale LC_ALL="en_US.UTF-8" &&
-sudo /usr/sbin/update-locale LANGUAGE="en_US:en" &&
+sudo echo "Fetching the Hotspotβnβ Dashboard ..."
+sudo sleep 2 &&
+sudo printf "\n%s\n"  "Executing Main Method ..."
+sudo mkdir -p /tmp/html/ &&
+sudo /usr/bin/svn co --depth infinity https://github.com/unclehowell/datro/trunk/static/gui/  \
+                        /tmp/html/ &&
+sudo sleep 2 &&
+sudo cp -r /tmp/html/* /var/www/html >&- 2>&- &&
+sudo sleep 0.1 &&
+sudo rm -r /tmp/html &&
 
-sudo apt update -y &&
-sudo apt upgrade -y &&
-sudo apt autoremove -y &&
-sudo apt autoclean -y &&
+sudo printf "\n%s\n"  "Executing 2nd Method ..."
+sudo mkdir -p /tmp/html/ &&
+svn co --depth infinity https://github.com/unclehowell/datro/trunk/static/gui/  \
+                        /tmp/html/ &&
+sudo sleep 2 &&
+sudo cp -r /tmp/html/* /var/www/html >&- 2>&- &&
+sudo sleep 0.1 &&
+sudo rm -r /tmp/html &&
 
-sudo apt-get install -y git-svn subversion apache2 php php-cli libapache2-mod-php php-mcrypt &&
+sudo systemctl reload apache2 &&
+
+echo "www-data ALL = NOPASSWD: /sbin/reboot, /sbin/halt" >> /etc/sudoers &&
+systemctl reload apache2 &&
 sudo echo "Setting up www-data user & permissions ..."
 sudo grep www-data /etc/passwd &&
 sudo grep www-data /etc/group &&
 sudo usermod -a -G www-data pi &&
 sudo systemctl reload apache2 &&
-sudo echo "Fetching the Hotspotβnβ Dashboard ..."
-sudo sleep 2 &&
-sudo printf "\n%s\n"  "Executing Main Method ..."
-sudo mkdir -p /tmp/html/ && /usr/bin/svn co --depth infinity https://github.com/unclehowell/datro/trunk/static/gui/  \
-                        /tmp/html/ && sleep 2 && sudo cp -r /tmp/html/* /var/www/html >&- 2>&- &&
-sudo sleep 0.1 &&
-sudo rm -r /tmp/html &&
-sudo sudo chown www-data:www-data -R /var/www/html &&
-sudo sudo systemctl reload apache2
 
 if [ ! -d "/var/www/html/" ]; then
     echo "The Hotspotβnβ Dashboard failed to download - Rebooting and trying again"

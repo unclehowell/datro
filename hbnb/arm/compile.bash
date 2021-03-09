@@ -66,32 +66,15 @@ do
 done
 
 sudo bash ./clean.sh &&
-sleep 0.1 &&
 sudo bash ./update.sh &&
-sleep 0.1 &&
 
-sudo mkdir -p config/files/home/pi/
-sleep 0.1
-sudo mkdir -p config/files/root/home/pi/
-sleep 0.1
-sudo mkdir -p config/files/etc/init.d/
-sleep 0.1
-sudo mkdir -p config/files/root/etc/init.d/
-sleep 0.1
-
-cp -r ../custom-settings/{installer-config.txt,post-install.txt,my-files.list} config/
-sleep 0.1
-cp -r ../custom-settings/my-files.list config/files/
-sleep 0.1
-cp -r ../custom-settings/{config.txt,cmdline.txt,ssh} config/boot/
-sleep 0.1
-cp -r ../custom-settings/.bashrc2 config/files/root/home/pi/
-sleep 0.1
-cp -r ../custom-settings/build2.sh config/files/root/etc/init.d/
-sleep 0.1
-cp -r ../custom-settings/.bashrc config/files/home/pi/
-sleep 0.1
-cp -r ../custom-settings/build.sh config/files/etc/init.d/
+sudo mkdir -p config/files/home/pi/ &&
+sudo mkdir -p config/files/etc/init.d/ &&
+cp -r ../custom-settings/{installer-config.txt,post-install.txt,my-files.list} config/ &&
+cp -r ../custom-settings/my-files.list config/files/ &&
+cp -r ../custom-settings/{config.txt,cmdline.txt,ssh} config/boot/ &&
+cp -r ../custom-settings/.bashrc config/files/home/pi/ &&
+cp -r ../custom-settings/build.sh config/files/etc/init.d/ &&
 
 sed -i 's/set -e # exit/#set -e # exit/g' build.sh &&
 sudo bash ./build.sh &&
