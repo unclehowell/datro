@@ -38,6 +38,7 @@ do
 done
 
 sudo apt-get install git curl bzip2 zip xz-utils gnupg kpartx dosfstools binutils bc &&
+#using rsync below instead of copy command
 printf "\e[2;3;33m Step 1 Complete! \n\e[0m"
 
 printf "\n\e[2;3;33m Step 2 of 5. Fetching latest files \n\e[0m\n"
@@ -68,16 +69,43 @@ done
 sudo bash ./clean.sh &&
 sudo bash ./update.sh &&
 
+sudo mkdir -p config/files/boot/
+sudo mkdir -p config/root/home/pi/ &&
+sudo mkdir -p config/root/etc/init.d/ &&
 sudo mkdir -p config/files/home/pi/ &&
 sudo mkdir -p config/files/etc/init.d/ &&
-cp -r ../custom-settings/{installer-config.txt,post-install.txt,my-files.list} config/ &&
-cp -r ../custom-settings/my-files.list config/files/ &&
-cp -r ../custom-settings/{config.txt,cmdline.txt,ssh} config/boot/ &&
-cp -r ../custom-settings/.bashrc config/files/home/pi/ &&
-cp -r ../custom-settings/build.sh config/files/etc/init.d/ &&
+sudo mkdir -p config/files/root/home/pi/ &&
+sudo mkdir -p config/files/root/etc/init.d/ &&
+sudo mkdir -p config/etc/init.d/ &&
+sudo mkdir -p config/home/pi/ &&
+cp -p ../custom-settings/config/{installer-config.txt,my-files.list,post-install.txt,custom_files.txt} config/ &&
+cp -p ../custom-settings/config/boot/{cmdline.txt,ssh,config.txt} config/boot/ &&
+cp -p ../custom-settings/config/etc/init.d/build.sh config/etc/init.d/ &&
+cp -p ../custom-settings/config/home/pi/.bashrc config/home/pi/ &&
+cp -p ../custom-settings/config/files/{installer-config.txt,my-files.list,post-install.txt,custom_files.txt} config/files/ &&
+cp -p ../custom-settings/config/root/{installer-config.txt,my-files.list,post-install.txt,custom_files.txt} config/root/ &&
+cp -p ../custom-settings/config/root/home/pi/.bashrc config/root/home/pi/ &&
+cp -p ../custom-settings/config/root/etc/init.d/build.sh config/root/etc/init.d/ &&
+cp -p ../custom-settings/config/files/home/pi/.bashrc config/home/pi/ &&
+cp -p ../custom-settings/config/files/etc/init.d/build.sh config/etc/init.d/ &&
+cp -p ../custom-settings/config/files/boot/{cmdline.txt,ssh,config.txt} config/files/boot/ &&
+cp -p ../custom-settings/config/files/root/{installer-config.txt,my-files.list,post-install.txt,custom_files.txt} config/files/root/ &&
+cp -p ../custom-settings/config/files/root/home/pi/.bashrc config/files/root/home/pi/ &&
+cp -p ../custom-settings/config/files/root/etc/init.d/build.sh config/files/root/etc/init.d/ &&
 
 sed -i 's/set -e # exit/#set -e # exit/g' build.sh &&
+sleep 0.1 &&
+echo "running the build, may take a few minutes to begin" &&
 sudo bash ./build.sh &&
+echo "quick break before mkdir build_dir/tmp/home/pi" &&
+sleep 15 &&
+
+sudo mkdir -p build_dir/tmp/home/pi/ &&
+sudo mkdir -p build_dir/tmp/etc/init.d/ &&
+sleep 0.1 &&
+cp -p ../custom-settings/build_dir/tmp/{installer-config.txt,my-files.list,post-install.txt,custom_files.txt} build_dir/tmp/ &&
+cp -p ../custom-settings/build_dir/tmp/etc/init.d/build.sh build_dir/tmp/etc/init.d/ &&
+cp -p ../custom-settings/build_dir/tmp/home/pi/.bashrc build_dir/tmp/home/pi/ &&
 
 printf "\e[2;3;33m Step 3 Complete! \n\e[0m"
 printf "\n\e[2;3;33m Step 4 of 5. Prep & Build hbnb-latest.img.xz \n\e[0m\n"

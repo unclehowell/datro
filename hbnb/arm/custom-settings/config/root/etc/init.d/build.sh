@@ -1,5 +1,5 @@
 #!/bin/sh
-
+#custom-settings/config/root/etc/init.d to raspberrypi-ua-netinst/config/root/etc/init.d
 ### BEGIN INIT INFO
 # Provides:          build.sh
 # Required-Start:    $remote_fs

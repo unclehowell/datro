@@ -1,0 +1,34 @@
+#!/bin/bash
+#custom-settings/config/files/root to raspberrypi-ua-netinst/config/files/root
+chroot /rootfs /usr/sbin/update-locale LC_ALL="en_US.UTF-8" &&
+chroot /rootfs /usr/sbin/update-locale LANGUAGE="en_US:en" &&
+
+install_files my-files.list
+
+chroot /rootfs apt update -y &&
+chroot /rootfs apt upgrade -y &&
+chroot /rootfs apt autoremove -y &&
+chroot /rootfs apt autoclean -y &&
+
+chroot /rootfs sed -i '1 i\country=RD' /etc/wpa_supplicant/wpa_supplicant.conf &&
+chroot /rootfs sed -i '1 i\update_config=1' /etc/wpa_supplicant/wpa_supplicant.conf &&
+chroot /rootfs sed -i '1 i\ctrl_interface=DIR=\/var\/run\/wpa_supplicant GROUP=netdev' /etc/wpa_supplicant/wpa_supplicant.conf &&
+
+chroot /rootfs cp -r /etc/wpa_supplicant/wpa_supplicant.conf /boot/ &&
+
+chroot /rootfs rm -r /etc/systemd/system/getty@tty1.service.d >&- 2>&-
+chroot /rootfs chmod +x /etc/init.d/build.sh &&
+chroot /rootfs update-rc.d /etc/init.d/build.sh default &&
+
+chroot /rootfs mkdir -p /etc/systemd/system/getty@tty1.service.d &&
+chroot /rootfs touch /etc/systemd/system/getty@tty1.service.d/override.conf &&
+
+{ echo "[Service]";
+  echo "ExecStart=";
+  echo "ExecStart=-/sbin/agetty --autologin pi --noclear %I $TERM";
+  echo "hotspotbnb:  $";
+} | chroot /rootfs tee /etc/systemd/system/getty@tty1.service.d/override.conf &&
+
+chroot /rootfs apt install -y git-svn subversion apache2 php php-cli libapache2-mod-php php-mcrypt &&
+chroot /rootfs sleep 15 &&
+chroot /rootfs reboot

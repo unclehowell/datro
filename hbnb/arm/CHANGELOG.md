@@ -7,7 +7,16 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 
 ## [Unreleased]
 
-## [0.0.1-rc.9-hbnb-arm.02] - Q1/2021
+## [0.0.1-rc.9-hbnb-arm.03] - Q1/2021
+### Added
+09-Mar - 2021-03-09-1637.log#2018/2022 lots of "cp: cannot stat" and "No such file or directory". 
+       -- Trial and Error didn't work. So we made almost every combination of source and target folder and file in custom-settings and compile.bash
+       -- in the files (in the custom-settings directory) we appended their location (file path) as a note in each file, for future reference 
+10-Mar -- now, when the disk image is mounted (and when the build generates a log), we'll see the origin of each successful file transfered
+       -- then we can do away with all the excess files created for this test (in custom-settings) leaving the source code dependable and minimal.
+       -- feedback will be given to FooDeas/raspberrypi-ua-netinst's guide, which we're confident we can simplify after this.  
+
+# [0.0.1-rc.9-hbnb-arm.02] - Q1/2021
 
 ### Added
 08-Mar - 2021-03-08-1910.log#1691 "dos2unix: can't open" error. Added 'dos2unix' to installer-config.txt 
@@ -17,10 +26,6 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 ### Changed
 08-Mar - 2021-03-08-1910.log#1740/41 "www-data:x:33:33:" error. Moved permission changed from installer.config.txt to build.sh (run by .bashrc)
 08-Mar - 2021-03-08-1910.log#1746 "chroot: can't execute '/usr/bin/svn" error. Moved svn block of code, from installer.config to build.sh too
-
-### Removed
-
-### Fixed 
 
 
 ## [0.0.1-rc.9-hbnb-arm.01] - Q1/2021

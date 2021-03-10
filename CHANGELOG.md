@@ -35,6 +35,7 @@ Each sub-directry features its own CHANGELOG.md file, which correspond to change
 #### Changed
 
 #### Fixed
+10-Mar - Fixed a lot of the build erros - for details see hbnb/arm/{changelog.md,buildlog.md,.buildlog/*}
 
 #### Removed
 

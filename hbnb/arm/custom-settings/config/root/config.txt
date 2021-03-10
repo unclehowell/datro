@@ -8,7 +8,7 @@ config_hdmi_boost=4
 dtparam=audio=on
 dtoverlay=pi3-disable-bt
 hdmi_force_hotplug=1
-
+#custom-settings/config/root to raspberrypi-ua-netinst/config/root
 [pi0]
 enable_uart=1
 hdmi_force_hotplug=1

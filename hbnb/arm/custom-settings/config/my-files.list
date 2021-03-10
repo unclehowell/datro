@@ -1,8 +1,13 @@
+pi:pi 755 /home/pi/.bashrc
+pi:pi 755 /etc/init.d/build.sh
+#
+#custom-settings/config to raspberrypi-ua-netinst/config/
+#
 # To add custom files on the target system:
 # Add one line per file using this format: 
 # <ownership> <permission> <path/filename>
 #
-# <ownership>     OWNER[:GROUP] (see `man chown`)
+# <ownership>     [OWNER][:[GROUP]] (see `man chown`)
 # <permission>    MODE  (see `man chmod`)
 # <path/file>     /path/as/it/will/appear/on/the/target/system.txt
 # 
@@ -11,10 +16,4 @@
 #
 # EXAMPLE:
 # A file placed on the SD-card in /config/files/home/pi/.bashrc is listed as follows:
-pi:pi  755  /home/pi/.bashrc
-pi:pi  755  /etc/init.d/build.sh
-
-# Don't forget to call the function:
-# install_files my-files.list
-# from your `post-install.txt` where "my-files.list" is this file. 
-# The function `install_files` will assume the file is located in the `config` directory.
+# pi:pi  755  /home/pi/.bashrc
