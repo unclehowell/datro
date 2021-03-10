@@ -1,8 +1,8 @@
 # DATRO Consortium: 'gh-pages' Branch 
 
 Welcome to the DATRO Consortium Monorepo.  
-Our Monorepo contains  **[Four Branches](#Branches)** in total.   
-This Monorepo Branch is entitled: 'gh-pages' (short for GitHub Pages)  
+This public repository contains **[Four Branches](#Branches)** in total.   
+This particular branch is entitled: 'gh-pages' *(short for GitHub Pages)*  
 
 ### Detailed Structure
 
@@ -40,24 +40,13 @@ The table below shows the content of this branch includes all the websites, the 
 
 ### Branches
 
-You are viewing the [gh-pages branch](https://github.com/unclehowell/datro/tree/gh-pages "gh-pages branch").  
-DATRO's 3 other branches are displayed in the table below:
+DATRO's full list of branches are displayed in the table below:
 
 | Branch                    | Details                                                                             |
 |:--------------------------|:------------------------------------------------------------------------------------|
-|[Net-Installer](https://github.com/unclehowell/datro/tree/net-installer "DATRO Net-Installer Branch") | Autonomous compiler script (creates fresh autonomous, self-building disk image e.g. Hotspotβnβ) |
-|[Netlify](https://github.com/unclehowell/datro/tree/netlify "DATRO Netlify Branch") | A modified version of the HBnB Dashboard, used to showcase our collection of websites |
-|[SubRepos](https://github.com/unclehowell/datro/tree/subrepos "DATRO SubRepos Branch") | Stores subrepos, giving DATRO a staging server of sorts, between users and developers |
-
- 
-
-
-  
-  
-    
+|[gh-pages](https://github.com/unclehowell/datro/tree/gh-pages "gh-pages branch") | Website, Document, Dashboard, Media & more source code |
+|[net-installer](https://github.com/unclehowell/datro/tree/net-installer "DATRO Net-Installer Branch") | Autonomous compiler script (creates fresh autonomous, self-building disk image e.g. Hotspotβnβ) |
+|[netlify](https://github.com/unclehowell/datro/tree/netlify "DATRO Netlify Branch") | A modified version of the HBnB Dashboard, used to showcase our collection of websites |
+|[subrepos](https://github.com/unclehowell/datro/tree/subrepos "DATRO SubRepos Branch") | Stores Subrepos, giving DATRO a staging server of sorts, between users and developers |
       
-        
-          
-    
-  
-
+     
