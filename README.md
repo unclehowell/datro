@@ -1,4 +1,4 @@
-# DATRO Consortium ('Gh-Pages' Branch) 
+# DATRO Consortium: 'gh-pages' Branch 
 
 Welcome to the DATRO Consortium MonoRepo.
 Our MonoRepo contains 4 branches.
@@ -7,14 +7,14 @@ The other 3 branches include:
 
 | Branch                    | Details                                                                             |
 |---------------------------|-------------------------------------------------------------------------------------|
-|[Net-Installer](https://github.com/unclehowell/datro/tree/net-installer "DATRO Net-Installer Branch") | autonomous compiler source code for autonomous, self-building disk images e.g. HotspotBnB, To-Go USB etc |
+|[Net-Installer](https://github.com/unclehowell/datro/tree/net-installer "DATRO Net-Installer Branch") | autonomous compiler source code for autonomous, self-building disk images e.g. Hotspotβnβ |
 |[Netlify](https://github.com/unclehowell/datro/tree/netlify "DATRO Netlify Branch") | this is a version of the HBnB Dashboard, used to showcase our websites |
-|[SubRepos](https://github.com/unclehowell/datro/tree/subrepos "DATRO SubRepos Branch") | this branch contains all the subrepos, giving us a sort of staging server to mediate between our end-users and developers |
+|[SubRepos](https://github.com/unclehowell/datro/tree/subrepos "DATRO SubRepos Branch") | this branch stores subrepos, giving DATRO a staging server of sorts, between users and developers |
 
-Content of this branch mainly includes all the websites, the dashboard (gui), the technical documents and media e.g. academy videos:
-    
 ### Detailed Structure
 
+The table below shows the content of this branch includes all the websites, the Hβnβ Dashboard(gui), the technical documents and some media e.g. academy videos etc
+    
 | Path                      | Details                                                                             |
 |---------------------------|-------------------------------------------------------------------------------------|
 |gh-pages/                  | Top level directory - mainly stuff to make things to work e.g. CNAME, index etc     |
