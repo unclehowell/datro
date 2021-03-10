@@ -13,16 +13,16 @@ Content of this branch mainly includes all the websites, the dashboard (gui), th
     
 ### Detailed Structure
 
-| Path &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Details &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    |
-|------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-|gh-pages/                                       | the top level directory features a few files required for things to work e.g. CNAME, index.html etc   |
-|gh-pages/static/gui                             | serves as both the online demo and the end-users (localhost) dashboard                                |
-|gh-pages/static/files	                         | all the documents, this is our document library                                                       |
-|       /static/datro                            | the [DATRO Consortium homepage](https://datro.world "DATRO Homepage")                                 |
-|       /static/hbnb                             | the [Hotspotβnβ Homepage](https://hbnb.datro.world "Hotspotβnβ Homepage")                             |
-|       /static/slides                           | all the slides, this is our slideshow library                                                         |
-|       /static/wave                             | the wave website                                                                                      |
-|       /static/evr-network                      | the [EVR-Network (TestNet) Homepage] https://evr-network.datro.world "EVR-Network (TestNet) Homepage" |
+| Path                      | Details                                                                             |
+|---------------------------|-------------------------------------------------------------------------------------|
+|gh-pages/                  | top level directory - mainly stuff to make things to work e.g. CNAME, index etc     |
+|gh-pages/static/gui        | serves as both the online demo and the end-users (localhost) dashboard              |
+|gh-pages/static/files      | all the documents, this is our document library                                     |
+|       /static/datro       | the [DATRO Consortium](https://datro.world "DATRO Consortium") Homepage             |
+|       /static/hbnb        | the [Hotspotβnβ Software](https://hbnb.datro.world "Hotspotβnβ Software") Homepage  |
+|       /static/slides      | all the slides, this is our slideshow library                                       |
+|       /static/wave        | the wave website                                                                    |
+|       /static/evr-network | the [EVR-Network] https://evr-network.datro.world "EVR-Network" Homepage            |
 
 
   - Everything above is hosted for free on github (gh-pages)
