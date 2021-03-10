@@ -1,13 +1,15 @@
 # DATRO Consortium ('Gh-Pages' Branch) 
 
 Welcome to the DATRO Consortium MonoRepo.
-Our MonoRepo contains 4 branches (You are viewing the [gh-pages branch](https://github.com/unclehowell/datro/tree/gh-pages "gh-pages branch"). The other 3 branches include: 
+Our MonoRepo contains 4 branches.
+You are viewing the [gh-pages branch](https://github.com/unclehowell/datro/tree/gh-pages "gh-pages branch". 
+The other 3 branches include: 
 
-[Net-Installer](https://github.com/unclehowell/datro/tree/net-installer "DATRO Net-Installer Branch")/ # source code and autonomous compiler scripts (which output the self-building disk image .img file) e.g. HotspotBnB, To-Go USB etc
-
-[Netlify](https://github.com/unclehowell/datro/tree/netlify "DATRO Netlify Branch")/ # this is a version of the HBnB Dashboard, used to showcase our websites, in a similar way to how apps are on the Dashboard
-
-[SubRepos](https://github.com/unclehowell/datro/tree/subrepos "DATRO SubRepos Branch")/ # this branch contains all the subrepos, giving us a sort of staging server to mediate between our end-users and developers
+| Branch                    | Details                                                                             |
+|---------------------------|-------------------------------------------------------------------------------------|
+|[Net-Installer](https://github.com/unclehowell/datro/tree/net-installer "DATRO Net-Installer Branch") | autonomous compiler source code for autonomous, self-building disk images e.g. HotspotBnB, To-Go USB etc |
+|[Netlify](https://github.com/unclehowell/datro/tree/netlify "DATRO Netlify Branch") | this is a version of the HBnB Dashboard, used to showcase our websites |
+|[SubRepos](https://github.com/unclehowell/datro/tree/subrepos "DATRO SubRepos Branch") | this branch contains all the subrepos, giving us a sort of staging server to mediate between our end-users and developers |
 
 Content of this branch mainly includes all the websites, the dashboard (gui), the technical documents and media e.g. academy videos:
     
