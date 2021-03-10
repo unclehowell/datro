@@ -1,15 +1,7 @@
 # DATRO Consortium: 'gh-pages' Branch 
 
 Welcome to the DATRO Consortium Monorepo.
-Our Monorepo contains 4 branches.
-You are viewing the [gh-pages branch](https://github.com/unclehowell/datro/tree/gh-pages "gh-pages branch"). 
-The other 3 branches include: 
-
-| Branch                    | Details                                                                             |
-|:--------------------------|:------------------------------------------------------------------------------------|
-|[Net-Installer](https://github.com/unclehowell/datro/tree/net-installer "DATRO Net-Installer Branch") | Autonomous compiler script (creates fresh autonomous, self-building disk image e.g. Hotspotβnβ) |
-|[Netlify](https://github.com/unclehowell/datro/tree/netlify "DATRO Netlify Branch") | A modified version of the HBnB Dashboard, used to showcase our collection of websites |
-|[SubRepos](https://github.com/unclehowell/datro/tree/subrepos "DATRO SubRepos Branch") | Stores subrepos, giving DATRO a staging server of sorts, between users and developers |
+Our Monorepo contains (#4 Branches) in total, this one is entitled: 'gh-pages'.
 
 ### Detailed Structure
 
@@ -43,4 +35,14 @@ The table below shows the content of this branch includes all the websites, the 
   - Make changes, follow the sites COLLABORATE.md guide e.g. directly edit the source code or use the cms and its html export feature)
   - once you're done making changes, upload your changes to github and make a pull request to the `gh-pages-dev' branch.
 
+## 4 Branches
+
+You are viewing the [gh-pages branch](https://github.com/unclehowell/datro/tree/gh-pages "gh-pages branch").
+DATRO's 3 other branches are displayed in the table below:
+
+| Branch                    | Details                                                                             |
+|:--------------------------|:------------------------------------------------------------------------------------|
+|[Net-Installer](https://github.com/unclehowell/datro/tree/net-installer "DATRO Net-Installer Branch") | Autonomous compiler script (creates fresh autonomous, self-building disk image e.g. Hotspotβnβ) |
+|[Netlify](https://github.com/unclehowell/datro/tree/netlify "DATRO Netlify Branch") | A modified version of the HBnB Dashboard, used to showcase our collection of websites |
+|[SubRepos](https://github.com/unclehowell/datro/tree/subrepos "DATRO SubRepos Branch") | Stores subrepos, giving DATRO a staging server of sorts, between users and developers |
 
