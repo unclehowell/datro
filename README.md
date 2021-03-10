@@ -1,7 +1,7 @@
 # DATRO Consortium ('Gh-Pages' Branch) 
 
 Welcome to the DATRO Consortium MonoRepo.
-Our MonoRepo contains 4 branches (You are viewing the 'gh-pages' Branch). The other 3 branches include: 
+Our MonoRepo contains 4 branches (You are viewing the [gh-pages branch](https://github.com/unclehowell/datro/tree/gh-pages "gh-pages branch"). The other 3 branches include: 
 
 [Net-Installer](https://github.com/unclehowell/datro/tree/net-installer "DATRO Net-Installer Branch")/ # source code and autonomous compiler scripts (which output the self-building disk image .img file) e.g. HotspotBnB, To-Go USB etc
 
@@ -18,11 +18,11 @@ Content of this branch mainly includes all the websites, the dashboard (gui), th
 |gh-pages/                  | Top level directory - mainly stuff to make things to work e.g. CNAME, index etc     |
 |gh-pages/static/gui        | Serves as both the online demo and the end-users (localhost) dashboard              |
 |gh-pages/static/files      | All the documents, this is our document library                                     |
-|       /static/datro       | The [DATRO Consortium](https://datro.world "DATRO Consortium") Homepage             |
-|       /static/hbnb        | The [Hotspotβnβ Software](https://hbnb.datro.world "Hotspotβnβ Software") Homepage  |
-|       /static/slides      | All the slides, this is our slideshow library                                       |
-|       /static/wave        | The Wave DApp website (JSECoin + Althea.net = Free Internet)                        |
-|       /static/evr-network | The [EVR-Network](https://evr-network.datro.world "EVR-Network") Homepage           |
+|gh-pages/static/datro      | The [DATRO Consortium](https://datro.world "DATRO Consortium") Homepage             |
+|gh-pages/static/hbnb       | The [Hotspotβnβ Software](https://hbnb.datro.world "Hotspotβnβ Software") Homepage  |
+|gh-pages/static/slides     | All the slides, this is our slideshow library                                       |
+|gh-pages/static/wave       | The Wave DApp website (JSECoin + Althea.net = Free Internet)                        |
+|gh-pages/static/evr-network| The [EVR-Network](https://evr-network.datro.world "EVR-Network") Homepage           |
 
 
   - Everything above is hosted for free on github (gh-pages)
