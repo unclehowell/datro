@@ -6,8 +6,8 @@ You are viewing the [gh-pages branch](https://github.com/unclehowell/datro/tree/
 The other 3 branches include: 
 
 | Branch                    | Details                                                                             |
-|---------------------------|-------------------------------------------------------------------------------------|
-|[Net-Installer](https://github.com/unclehowell/datro/tree/net-installer "DATRO Net-Installer Branch") | autonomous compiler source code for autonomous, self-building disk images e.g. Hotspotβnβ |
+|---------------------------|:------------------------------------------------------------------------------------|
+|[Net-Installer](https://github.com/unclehowell/datro/tree/net-installer "DATRO Net-Installer Branch") | Autonomous compiler script (creates fresh autonomous, self-building disk image e.g. Hotspotβnβ) |
 |[Netlify](https://github.com/unclehowell/datro/tree/netlify "DATRO Netlify Branch") | this is a version of the HBnB Dashboard, used to showcase our websites |
 |[SubRepos](https://github.com/unclehowell/datro/tree/subrepos "DATRO SubRepos Branch") | this branch stores subrepos, giving DATRO a staging server of sorts, between users and developers |
 
@@ -16,7 +16,7 @@ The other 3 branches include:
 The table below shows the content of this branch includes all the websites, the Hβnβ Dashboard(gui), the technical documents and some media e.g. academy videos etc
     
 | Path                      | Details                                                                             |
-|---------------------------|-------------------------------------------------------------------------------------|
+|---------------------------|:------------------------------------------------------------------------------------|
 |gh-pages/                  | Top level directory - mainly stuff to make things to work e.g. CNAME, index etc     |
 |gh-pages/static/gui        | Serves as both the online demo and the end-users (localhost) dashboard              |
 |gh-pages/static/files      | All the documents, this is our document library                                     |
