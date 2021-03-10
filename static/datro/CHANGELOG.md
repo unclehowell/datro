@@ -12,9 +12,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 31-Jan - The Academy link was missing from the index page so I added it.
 
 ### Changed
+10-Mar - academy.html said GPL was General Open Licence (bad case of find and replace by the looks of it) changed "Open" back to "Public" so it makes sense
 31-Jan - html/statistics/website.html - few minor bug fixes - made it look better on mobile. 
 
 ### Fixed
+
 06-Feb - removed broken links - since the problematic pages were dormant I just erazed them, but kept the pages so as not to cause more broken links
 31-Jan - html/statistics/website.html - commit comments weren't showing. simple fault, path to js was incorrect. 
 
