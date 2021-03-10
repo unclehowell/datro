@@ -1,7 +1,7 @@
 # DATRO Consortium: 'gh-pages' Branch 
 
 Welcome to the DATRO Consortium Monorepo.
-Our Monorepo contains [Go to Real Cool Heading section](#real-cool-heading) // `[Go to Real Cool Heading section](#real-cool-heading)` in total, this one is entitled: 'gh-pages'.
+Our Monorepo contains  [here](#place-2), this one is entitled: 'gh-pages'.
 
 ### Detailed Structure
 
@@ -37,9 +37,7 @@ The table below shows the content of this branch includes all the websites, the 
 
 #Datro's Branches
 
-`#Real Cool Heading`  
-
-`#real-cool-heading` 
+### Place 2
 
 You are viewing the [gh-pages branch](https://github.com/unclehowell/datro/tree/gh-pages "gh-pages branch").
 DATRO's 3 other branches are displayed in the table below:
