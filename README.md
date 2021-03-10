@@ -36,7 +36,9 @@ The table below shows the content of this branch includes all the websites, the 
   - once you're done making changes, upload your changes to github and make a pull request to the `gh-pages-dev' branch.
 
 #Datro's Branches
+
 `#Real Cool Heading`  
+
 `#real-cool-heading` 
 
 You are viewing the [gh-pages branch](https://github.com/unclehowell/datro/tree/gh-pages "gh-pages branch").
