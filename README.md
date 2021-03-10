@@ -1,22 +1,22 @@
 # DATRO Consortium: 'gh-pages' Branch 
 
-Welcome to the DATRO Consortium MonoRepo.
-Our MonoRepo contains 4 branches.
-You are viewing the [gh-pages branch](https://github.com/unclehowell/datro/tree/gh-pages "gh-pages branch". 
+Welcome to the DATRO Consortium Monorepo.
+Our Monorepo contains 4 branches.
+You are viewing the [gh-pages branch](https://github.com/unclehowell/datro/tree/gh-pages "gh-pages branch"). 
 The other 3 branches include: 
 
 | Branch                    | Details                                                                             |
-|---------------------------|:------------------------------------------------------------------------------------|
+|:--------------------------|:------------------------------------------------------------------------------------|
 |[Net-Installer](https://github.com/unclehowell/datro/tree/net-installer "DATRO Net-Installer Branch") | Autonomous compiler script (creates fresh autonomous, self-building disk image e.g. Hotspotβnβ) |
-|[Netlify](https://github.com/unclehowell/datro/tree/netlify "DATRO Netlify Branch") | this is a version of the HBnB Dashboard, used to showcase our websites |
-|[SubRepos](https://github.com/unclehowell/datro/tree/subrepos "DATRO SubRepos Branch") | this branch stores subrepos, giving DATRO a staging server of sorts, between users and developers |
+|[Netlify](https://github.com/unclehowell/datro/tree/netlify "DATRO Netlify Branch") | A modified version of the HBnB Dashboard, used to showcase our collection of websites |
+|[SubRepos](https://github.com/unclehowell/datro/tree/subrepos "DATRO SubRepos Branch") | Stores subrepos, giving DATRO a staging server of sorts, between users and developers |
 
 ### Detailed Structure
 
 The table below shows the content of this branch includes all the websites, the Hβnβ Dashboard(gui), the technical documents and some media e.g. academy videos etc
     
 | Path                      | Details                                                                             |
-|---------------------------|:------------------------------------------------------------------------------------|
+|:--------------------------|:------------------------------------------------------------------------------------|
 |gh-pages/                  | Top level directory - mainly stuff to make things to work e.g. CNAME, index etc     |
 |gh-pages/static/gui        | Serves as both the online demo and the end-users (localhost) dashboard              |
 |gh-pages/static/files      | All the documents, this is our document library                                     |
