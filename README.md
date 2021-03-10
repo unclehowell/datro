@@ -1,7 +1,7 @@
 # DATRO Consortium: 'gh-pages' Branch 
 
 Welcome to the DATRO Consortium Monorepo.
-Our Monorepo contains  [Four Branches](#Branches), this one is entitled: 'gh-pages'.
+Our Monorepo contains  **Four [Branches](#Branches)**, this one is entitled: 'gh-pages'.
 
 ### Detailed Structure
 
