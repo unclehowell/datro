@@ -13,7 +13,7 @@ Content of this branch mainly includes all the websites, the dashboard (gui), th
     
 ### Detailed Structure
 
-| Path                         | Details                                                                                               |
+| Path &nbsp;&nbsp;&nbsp;&nbsp;| Details &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    |
 |------------------------------|-------------------------------------------------------------------------------------------------------|
 |gh-pages/                     |# the top level directory features a few files required for things to work e.g. CNAME, index.html etc  |
 |gh-pages/static/gui           |# serves as both the online demo and the end-users (localhost) dashboard                               |
