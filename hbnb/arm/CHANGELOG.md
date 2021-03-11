@@ -8,6 +8,19 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 ## [Unreleased]
 
 ## [0.0.1-rc.9-hbnb-arm.03] - Q1/2021
+10-Mar - 2021-03-10-0748.log (on RPI4) net-instal success - Installation took 31 minutes (2 or 3 warnings/ alerts (no real errors).
+         -- autologin and build.sh failed - so no dashboard - must explore
+         -- the earlier experiment helped. `compile.bash` will be trimmed down to use minimal files/folders in hbnb.arm.04 (but custom-settings will remain untouched for the meanwhile)
+
+### Added
+10-Mar - put `#wlan_country=RD` in the installer-config.txt's in custom-settings because syslog showed p2/3 errors and defaulted to US.
+
+### Changed 
+10-Mar - used build data to determine which custom-settings files to hash out (eventually remove) from compile.bash - hbnb-arm.04 compiled ok
+10-Mar - made some changes to post-install.txt (all of them in custom-settings) to try to get init.d/build.sh to run on boot. will see in hbnb-arm.04 if it worked. 
+
+## [0.0.1-rc.9-hbnb-arm.02] - Q1/2021
+
 ### Added
 09-Mar - 2021-03-09-1637.log#2018/2022 lots of "cp: cannot stat" and "No such file or directory". 
        -- Trial and Error didn't work. So we made almost every combination of source and target folder and file in custom-settings and compile.bash
@@ -16,7 +29,7 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
        -- then we can do away with all the excess files created for this test (in custom-settings) leaving the source code dependable and minimal.
        -- feedback will be given to FooDeas/raspberrypi-ua-netinst's guide, which we're confident we can simplify after this.  
 
-# [0.0.1-rc.9-hbnb-arm.02] - Q1/2021
+# [0.0.1-rc.9-hbnb-arm.01] - Q1/2021
 
 ### Added
 08-Mar - 2021-03-08-1910.log#1691 "dos2unix: can't open" error. Added 'dos2unix' to installer-config.txt 
@@ -28,7 +41,7 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 08-Mar - 2021-03-08-1910.log#1746 "chroot: can't execute '/usr/bin/svn" error. Moved svn block of code, from installer.config to build.sh too
 
 
-## [0.0.1-rc.9-hbnb-arm.01] - Q1/2021
+## [0.0.1-rc.9-hbnb-arm] - Q1/2021
 
 07-Mar - Introduced `ip4_nameservers=8.8.8.8,8.8.4.4` and `ip6_addr=disable` to installer-config.txt and it helps a lot with poorer grad networks e.g. badly configured routers, repeaters etc
 03-Mar - Added some code to build.sh to allow php files to run shell commands on the local system
