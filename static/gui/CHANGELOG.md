@@ -30,6 +30,7 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 27-Jan - started to work on app store. app store will be the same for actual gui on localhost webserver and remote online demo. Unlike 'screens' pages, which have seperate demo pages for online. 
 
 #### Changed
+12-Mar - jellyfin introduced x-frame option to jellyfin public demo, so we switched to our own server instance of jellyfin  
 08-Mar - some code was removed from pages to make them work online and offline. But it seems gh-pages requires the header snippet - so it's being put back
        - changed some files to .old and back again - because it appears gh-pages didn't build correctly since some links doesn't adhear to the source code - weird!
 07-Mar - removed apps from dashboard. fresh installs shouldn't see apps until the user decided to install them. For the public server there's seperate -demo.html pages. 

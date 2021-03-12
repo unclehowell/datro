@@ -144,18 +144,6 @@ body:not(.loaded) #slider img {
 </style>
 
 
-<!-- if the app folder contains the file 'active', return the url for the details page, otherwise show the submit app page --->
-<script>
-$(function () {
-    var url = "new link";
-
-   if (patternExists("./appstore/001-001/active".$cus_id."*")) {
-      // bad!
-   }
-   document.getElementById('001-001').href= url;
-   return url;
-});
-</script>
 </head>
 
 <body style="overflow:inherit!important;height:inherit!important;display:visible;" onload="document.body.classList.add('loaded')">
