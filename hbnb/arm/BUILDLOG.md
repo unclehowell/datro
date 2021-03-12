@@ -5,6 +5,20 @@ The Datro Consortium format is based on [Keep a Changelog](https://keepachangelo
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlight-report/).
 
+
+## [0.0.1-rc.9-hbnb-arm.04] - Q1/2021
+#### ---------------------------------------
+#### .buildlog/2021-03-11-0111.log (on RPI4)
+#### ---------------------------------------
+#### Line  # Details (+ = repeates)
+     +1697   cp: cannot stat '/rootfs/boot/raspberrypi-ua-netinst/config/files/root/home/pi/.bashrc': No such file or directory
+     +1699   cp: cannot stat '/rootfs/boot/raspberrypi-ua-netinst/config/files/root/etc/init.d/build.sh': No such file or directory
+     +1700   chmod: cannot access '/rootfs/etc/init.d/build.sh': No such file or directory
+     +1701   chown: cannot access '/etc/init.d/build.sh': No such file or directory
+      1721   /usr/bin/apt-key: 57: /usr/bin/apt-key: cannot create /dev/null: Permission denied
+     -----   ------------------------------------------------------------------------
+     
+
 ## [0.0.1-rc.9-hbnb-arm.03] - Q1/2021
 #### ---------------------------------------
 #### .buildlog/2021-03-10-0748.log (on RPI4)

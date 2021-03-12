@@ -28,7 +28,7 @@ Each sub-directry features its own CHANGELOG.md file, which correspond to change
          (preferably Hotspotβnβ on Raspberry Pi (so the overall concept can be conveyed))
 
 ### PERFORMANCE
-01-Mar - Got hbnb/arm functioning (Tested on the Raspberry Pi4) - See hbnb/arm/changelog.md for details
+11-Mar - Got hbnb/arm functioning (Tested on the Raspberry Pi4) - See hbnb/arm/changelog.md for details
 
 #### Added
 

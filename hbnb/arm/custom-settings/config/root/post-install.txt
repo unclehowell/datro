@@ -10,7 +10,6 @@ chroot /rootfs apt upgrade -y &&
 chroot /rootfs apt autoremove -y &&
 chroot /rootfs apt autoclean -y &&
 
-chroot /rootfs sed -i '1 i\country=RD' /etc/wpa_supplicant/wpa_supplicant.conf &&
 chroot /rootfs sed -i '1 i\update_config=1' /etc/wpa_supplicant/wpa_supplicant.conf &&
 chroot /rootfs sed -i '1 i\ctrl_interface=DIR=\/var\/run\/wpa_supplicant GROUP=netdev' /etc/wpa_supplicant/wpa_supplicant.conf &&
 

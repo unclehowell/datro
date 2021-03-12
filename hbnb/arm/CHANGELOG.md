@@ -7,6 +7,15 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 
 ## [Unreleased]
 
+## [0.0.1-rc.9-hbnb-arm.04] - Q1/2021
+10-Mar - 2021-03-11-0111.log - changes to custom-settings files caused missing /home/pi/.bashrc and /etc/init.d/build.sh. 
+         -- confident these are now fixed (changes in compile.bash). These changes should make the next build work 100%. 
+11-Mar   -- error "cannot create /dev/null: Permission denied" is an annoyance. added the following code into post-install:
+            `rm /dev/null && mknod /dev/null c 1 3 && chmod 666 /dev/null`
+
+### Removed
+10-Mar - adding country=XX to installer-config.txt caused it to appear twice in wpa_supplicant.conf (removed from post-install.txt to fix it)
+
 ## [0.0.1-rc.9-hbnb-arm.03] - Q1/2021
 10-Mar - 2021-03-10-0748.log (on RPI4) net-instal success - Installation took 31 minutes (2 or 3 warnings/ alerts (no real errors).
          -- autologin and build.sh failed - so no dashboard - must explore
