@@ -1,5 +1,5 @@
 preset=server
-packages=nano,curl,git,dos2unix
+packages=nano,curl,git,dos2unix,net-tools
 firmware_packages=1
 release=buster
 keyboard_layout=gb
@@ -14,7 +14,7 @@ rootpw=hotspotbnb
 hostname=hotspotbnb
 root_ssh_pwlogin=0
 timezone=America/Santo_Domingo
-installer_networktimeout=15
+installer_networktimeout=60
 ip_ipv6=0
 ip6_addr=disable
 ip4_nameservers=8.8.8.8

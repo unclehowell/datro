@@ -12,6 +12,24 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 
 ## [Unreleased]
 
+## [0.0.1-rc.9-hbnb-arm.08] - Q1/2021
+13-Mar - 2021-03-13-0909.log - v0.0.1-rc.9-hbnb-arm.07 on RPI4 - still buggy, below are fixes for hbnb-arm.08:
+
+### Changed
+13-Mar - line 249-251 (and it repeats) `W: Couldn't download` & `ERROR 1, trying again` - increased `installer_networktimeout` from 15 to 60    
+13-Mar - line 1811 shows 'update-rc.d: error: unable to read /etc/init.d//etc/init.d/build.sh'. Why's etc/init.d inside etc/init.d ? 
+         -- changed `cp -p` to `cp -r` inside compile.bash
+    
+## [0.0.1-rc.9-hbnb-arm.07] - Q1/2021
+13-Mar - 2021-03-13-0500.log - v0.0.1-rc.9-hbnb-arm.06 ran on RPI4 with bugs - below are the patches for hbnb-arm.07:
+         -- zero errors with custom-settings files - first time ever
+
+### Added
+13-Mar - error line 1927 says "dpkg-preconfigure: unable to re-open stdin" - added `export DEBIAN_FRONTEND=noninteractive` to post-install.txt
+13-mar - error line 1653 isn't an error, its a user prompt to choose locales. Added a flag to avoid user prompts. Not errors, but could do without.        
+13-Mar - build.sh wasnt recognising svn, so added package install for svn again, in build.sh before svn is called..
+13-Mar - noticed on build completion `hostname -I` is called but no ip is displayed. Could be internet is lost on reboot. But set net-tools to install beforehand just incase.
+
 ## [0.0.1-rc.9-hbnb-arm.06] - Q1/2021
 12-Mar - 2021-03-12-2250.log - v0.0.1-rc.9-hbnb-arm.05 ran on RPI4 with following bugs. Here are the fixes:
 13-Mar - hbnb-arm.06 compiles in 1 minute (down from 3 minutes)

@@ -11,27 +11,34 @@
 # Short-Description: build HotspotBnB
 ### END INIT INFO
 
-sudo echo "Fetching the Hotspotβnβ Dashboard ..."
-sudo sleep 2 &&
-sudo printf "\n%s\n"  "Executing Main Method ..."
-sudo mkdir -p /tmp/html/ &&
-sudo /usr/bin/svn co --depth infinity https://github.com/unclehowell/datro/trunk/static/gui/  \
-                        /tmp/html/ &&
-sudo sleep 2 &&
-sudo cp -r /tmp/html/* /var/www/html >&- 2>&- &&
-sudo sleep 0.1 &&
-sudo rm -r /tmp/html &&
+sudo apt install -y net-tools git git-svn subversion 2>/dev/null | grep packages | cut -d '.' -f 1 &&
 
-sudo printf "\n%s\n"  "Executing 2nd Method ..."
+sudo echo "Fetching the Hotspotβnβ Dashboard ..." &&
+sudo sleep 2 &&
+sudo printf "\n%s\n"  "Executing Main Method ..." &&
 sudo mkdir -p /tmp/html/ &&
 svn co --depth infinity https://github.com/unclehowell/datro/trunk/static/gui/  \
                         /tmp/html/ &&
-sudo sleep 2 &&
+
+sleep 5 &&
 sudo cp -r /tmp/html/* /var/www/html >&- 2>&- &&
 sudo sleep 0.1 &&
 sudo rm -r /tmp/html &&
 
+sleep 5 &&
+sudo printf "\n%s\n"  "Executing 2nd Method ..."
+sudo mkdir -p /tmp/html/ &&
+sudo /usr/bin/svn co --depth infinity https://github.com/unclehowell/datro/trunk/static/gui/  \
+                        /tmp/html/ &&
+sleep 5 &&
+sudo cp -r /tmp/html/* /var/www/html >&- 2>&- &&
+sudo sleep 0.1 &&
+sudo rm -r /tmp/html &&
+
+sleep 5 &&
 sudo systemctl reload apache2 &&
+sleep 5 &&
+sudo systemctl restart apache2 &&
 
 echo "www-data ALL = NOPASSWD: /sbin/reboot, /sbin/halt" >> /etc/sudoers &&
 systemctl reload apache2 &&
