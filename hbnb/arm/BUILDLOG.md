@@ -10,6 +10,22 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 # like this - changelog 0.1 release. Then buildlog of 0.1 release. 
 # then changelog of 0.2 release (will refer to buildlog of 0.1 and bug and fixes) 
 
+## [0.0.1-rc.9-hbnb-arm.08] - Q1/2021
+#### ---------------------------------------
+#### .buildlog/2021-03-13-1800.log (on RPI4)
+#### ---------------------------------------
+#### Line  # Details (+ = repeates)
+     1662    update-rc.d: error: unable to read /etc/init.d//etc/init.d/build.sh
+     1667    Installation finished at Sat Mar 13 16:05:27 UTC 2021 and took 40 min 5 sec (2405 seconds)
+
+* says on screen: 
+
+/etc/init.d/build.sh: 20: /etc/init.d/build.sh: svn: not found
+sudo: /usr/bin/svn: command not found
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+www-data:x:33:
+Failed to reload apache2.service: Unit apache2.service not found.
+
 ## [0.0.1-rc.9-hbnb-arm.07] - Q1/2021
 #### ---------------------------------------
 #### .buildlog/2021-03-13-0909.log (on RPI4)

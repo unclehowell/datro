@@ -12,6 +12,26 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 
 ## [Unreleased]
 
+## [0.0.1-rc.9-hbnb-arm.09] - Q1/2021
+13-Mar - Bug fixes from hbnb-arm.08 trial-run on RPI4 - See BUILDLOG.md(.buildlog/2021-03-13-1800.log) for full report:
+
+### Added
+13-Mar - `apt install svn apache2` tried running before internet established after reboot. Added sleep at start of post-install.txt and ping at start of etc/init.d/build.sh
+       -  errors it caused came up on terminal, but not in logfile:
+          -- `/etc/init.d/build.sh: 20: /etc/init.d/build.sh: svn: not found`
+          -- `sudo: /usr/bin/svn: command not found`
+          -- `Failed to reload apache2.service: Unit apache2.service not found`
+
+13-mar - error: `www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin` & `www-data:x:33:`
+          -- added useradd -g www-data -s /usr/sbin/nologin -m -d /home/www-data www-data
+### Changed
+13-Mar - line 1662 -  update-rc.d: error: unable to read /etc/init.d//etc/init.d/build.sh
+                   -  changed post-install.txt to enter the directory then run update-rc.d without filepath
+
+### Issues, Risks, Concerns
+13-Mar - line 1667 -  Installation finished at Sat Mar 13 16:05:27 UTC 2021 and took 40 min 5 sec (2405 seconds)
+                   -  Need to try to improve this time at somepoint. It's creeping, it was 20/30 minutes
+
 ## [0.0.1-rc.9-hbnb-arm.08] - Q1/2021
 13-Mar - 2021-03-13-0909.log - v0.0.1-rc.9-hbnb-arm.07 on RPI4 - still buggy, below are fixes for hbnb-arm.08:
 
