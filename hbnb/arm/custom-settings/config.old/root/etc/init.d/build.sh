@@ -1,5 +1,5 @@
 #!/bin/sh
-
+#custom-settings/config/root/etc/init.d to raspberrypi-ua-netinst/config/root/etc/init.d
 ### BEGIN INIT INFO
 # Provides:          build.sh
 # Required-Start:    $remote_fs
@@ -10,8 +10,6 @@
 # X-Interactive:     true
 # Short-Description: build HotspotBnB
 ### END INIT INFO
-
-#custom-settings/config to raspberrypi-ua-netinst/config/
 
 sudo echo "Fetching the Hotspotβnβ Dashboard ..."
 sudo sleep 2 &&

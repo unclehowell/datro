@@ -10,11 +10,16 @@
 # X-Interactive:     true
 # Short-Description: build HotspotBnB
 ### END INIT INFO
-#custom-settings/config/root to raspberrypi-ua-netinst/config/root
 
-sudo echo "Fetching the Hotspotβnβ Dashboard ..."
+#custom-settings/config to raspberrypi-ua-netinst/config/
+
+sudo apt-get install -y git git-svn subversion apache2 php-common libapache2-mod-php &&
+sudo update-alternatives --config php &&
+sudo systemctl restart apache2 &&
+
+sudo echo "Fetching the Hotspotβnβ Dashboard ..." &&
 sudo sleep 2 &&
-sudo printf "\n%s\n"  "Executing Main Method ..."
+sudo printf "\n%s\n"  "Executing Main Method ..." &&
 sudo mkdir -p /tmp/html/ &&
 sudo /usr/bin/svn co --depth infinity https://github.com/unclehowell/datro/trunk/static/gui/  \
                         /tmp/html/ &&
@@ -23,7 +28,7 @@ sudo cp -r /tmp/html/* /var/www/html >&- 2>&- &&
 sudo sleep 0.1 &&
 sudo rm -r /tmp/html &&
 
-sudo printf "\n%s\n"  "Executing 2nd Method ..."
+sudo printf "\n%s\n"  "Executing 2nd Method ..." &&
 sudo mkdir -p /tmp/html/ &&
 svn co --depth infinity https://github.com/unclehowell/datro/trunk/static/gui/  \
                         /tmp/html/ &&
@@ -35,7 +40,7 @@ sudo rm -r /tmp/html &&
 sudo systemctl reload apache2 &&
 
 echo "www-data ALL = NOPASSWD: /sbin/reboot, /sbin/halt" >> /etc/sudoers &&
-systemctl reload apache2 &&
+sudo systemctl reload apache2 &&
 sudo echo "Setting up www-data user & permissions ..."
 sudo grep www-data /etc/passwd &&
 sudo grep www-data /etc/group &&
@@ -51,7 +56,7 @@ else
     echo "To proceed enter the following in your web-browser"
     echo "http://hotspotbnb/"
     echo "alternatively enter the following IP"
-    sudo hostname -I;
+    hostname -I;
 fi
 
 exit 0

@@ -1,7 +1,7 @@
 pi:pi 755 /home/pi/.bashrc
 pi:pi 755 /etc/init.d/build.sh
 #
-#custom-settings/config/files to raspberrypi-ua-netinst/config/files
+#custom-settings/config/files/root to raspberrypi-ua-netinst/config/files/root
 #
 # To add custom files on the target system:
 # Add one line per file using this format: 

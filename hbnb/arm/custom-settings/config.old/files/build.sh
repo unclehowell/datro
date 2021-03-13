@@ -1,5 +1,5 @@
 #!/bin/sh
-#custom-settings/config/etc/init.d to raspberrypi-ua-netinst/config/etc/init.d
+#custom-settings/config/files to raspberrypi-ua-netinst/config/files
 ### BEGIN INIT INFO
 # Provides:          build.sh
 # Required-Start:    $remote_fs
@@ -10,6 +10,10 @@
 # X-Interactive:     true
 # Short-Description: build HotspotBnB
 ### END INIT INFO
+
+sudo apt-get install -y git git-svn subversion apache2 php-common libapache2-mod-php &&
+sudo update-alternatives --config php &&
+sudo systemctl restart apache2 &&
 
 sudo echo "Fetching the Hotspotβnβ Dashboard ..."
 sudo sleep 2 &&
@@ -50,7 +54,7 @@ else
     echo "To proceed enter the following in your web-browser"
     echo "http://hotspotbnb/"
     echo "alternatively enter the following IP"
-    sudo hostname -I;
+    hostname -I;
 fi
 
 exit 0

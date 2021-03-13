@@ -1,5 +1,5 @@
 #!/bin/bash
-#custom-settings/config/files/root to raspberrypi-ua-netinst/config/files/root
+#custom-settings/config/boot to raspberrypi-ua-netinst/config/boot
 chroot /rootfs /usr/sbin/update-locale LC_ALL="en_US.UTF-8" &&
 chroot /rootfs /usr/sbin/update-locale LANGUAGE="en_US.UTF-8" &&
 chroot /rootfs /usr/sbin/update-locale LANG="en_US.UTF-8" &&

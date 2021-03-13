@@ -18,7 +18,7 @@ installer_networktimeout=15
 ip_ipv6=0
 ip6_addr=disable
 ip4_nameservers=8.8.8.8
-#custom-settings/config/files/root to raspberrypi-ua-netinst/config/files/root
+#custom-settings/config/files to raspberrypi-ua-netinst/config/files
 # unhash to use Wi-Fi instead of ethernet (default)
 #wlan_country=RD
 #ifname=wlan0

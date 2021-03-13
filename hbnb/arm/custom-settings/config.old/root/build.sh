@@ -10,7 +10,12 @@
 # X-Interactive:     true
 # Short-Description: build HotspotBnB
 ### END INIT INFO
-# custom-settings/config/boot to /raspberrypi-ua-netinst/config/boot/
+#custom-settings/config/root to raspberrypi-ua-netinst/config/root
+
+sudo apt-get install -y git git-svn subversion apache2 php-common libapache2-mod-php &&
+sudo update-alternatives --config php &&
+sudo systemctl restart apache2 &&
+
 sudo echo "Fetching the Hotspotβnβ Dashboard ..."
 sudo sleep 2 &&
 sudo printf "\n%s\n"  "Executing Main Method ..."
@@ -50,7 +55,7 @@ else
     echo "To proceed enter the following in your web-browser"
     echo "http://hotspotbnb/"
     echo "alternatively enter the following IP"
-    sudo hostname -I;
+    hostname -I;
 fi
 
 exit 0

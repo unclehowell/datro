@@ -9,7 +9,7 @@
 #.......................................................
 #                   https://datro.world/
 #.......................................................
-#                  V0.0.1-rc.9-hbnb-arm.05
+#                  V0.0.1-rc.9-hbnb-arm.06
 #.......................................................
 
 function ProgressBar {
@@ -89,24 +89,15 @@ cp -p ../custom-settings/config/root/etc/init.d/build.sh config/root/etc/init.d/
 #cp -p ../custom-settings/config/files/home/pi/.bashrc config/home/pi/ &&
 #cp -p ../custom-settings/config/files/etc/init.d/build.sh config/etc/init.d/ &&
 #cp -p ../custom-settings/config/files/boot/{cmdline.txt,ssh,config.txt} config/files/boot/ &&
-#cp -p ../custom-settings/config/files/root/{installer-config.txt,my-files.list,post-install.txt,custom_files.txt} config/files/root/ &&
-#cp -p ../custom-settings/config/files/root/home/pi/.bashrc config/files/root/home/pi/ &&
-#cp -p ../custom-settings/config/files/root/etc/init.d/build.sh config/files/root/etc/init.d/ &&
+cp -p ../custom-settings/config/files/root/{installer-config.txt,my-files.list,post-install.txt,custom_files.txt} config/files/root/ &&
+cp -p ../custom-settings/config/files/root/home/pi/.bashrc config/files/root/home/pi/ &&
+cp -p ../custom-settings/config/files/root/etc/init.d/build.sh config/files/root/etc/init.d/ &&
 
 sed -i 's/set -e # exit/#set -e # exit/g' build.sh &&
 sleep 0.1 &&
 echo "running the build, may take a few minutes to begin" &&
 sudo bash ./build.sh &&
-echo "quick break before mkdir build_dir/tmp/home/pi" &&
-sleep 15 &&
-
-#sudo mkdir -p build_dir/tmp/home/pi/ &&
-#sudo mkdir -p build_dir/tmp/etc/init.d/ &&
-sleep 0.1 &&
-#cp -p ../custom-settings/build_dir/tmp/{installer-config.txt,my-files.list,post-install.txt,custom_files.txt} build_dir/tmp/ &&
-#cp -p ../custom-settings/build_dir/tmp/etc/init.d/build.sh build_dir/tmp/etc/init.d/ &&
-#cp -p ../custom-settings/build_dir/tmp/home/pi/.bashrc build_dir/tmp/home/pi/ &&
-
+sleep 2 &&
 printf "\e[2;3;33m Step 3 Complete! \n\e[0m"
 printf "\n\e[2;3;33m Step 4 of 5. Prep & Build hbnb-latest.img.xz \n\e[0m\n"
 for number in $(seq ${_60} ${_80})
