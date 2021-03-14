@@ -12,6 +12,16 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 
 ## [Unreleased]
 
+## [0.0.1-rc.9-hbnb-arm.10] - Q1/2021
+
+### Added
+14-Mar - added apt update to top of build. between wait (for internet) and package install.
+14-Mar - removed duplicate installer-config.txt's from custom-settings.
+14-Mar - build.sh cannot add sudoers. added a fix before sudoers command.
+
+### Removed
+14-Mar - removed ping test
+
 ## [0.0.1-rc.9-hbnb-arm.09] - Q1/2021
 13-Mar - Bug fixes from hbnb-arm.08 trial-run on RPI4 - See BUILDLOG.md(.buildlog/2021-03-13-1800.log) for full report:
 
@@ -24,6 +34,7 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 
 13-mar - error: `www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin` & `www-data:x:33:`
           -- added useradd -g www-data -s /usr/sbin/nologin -m -d /home/www-data www-data
+
 ### Changed
 13-Mar - line 1662 -  update-rc.d: error: unable to read /etc/init.d//etc/init.d/build.sh
                    -  changed post-install.txt to enter the directory then run update-rc.d without filepath

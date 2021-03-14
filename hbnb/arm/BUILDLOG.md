@@ -10,6 +10,29 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 # like this - changelog 0.1 release. Then buildlog of 0.1 release. 
 # then changelog of 0.2 release (will refer to buildlog of 0.1 and bug and fixes) 
 
+## [0.0.1-rc.9-hbnb-arm.10] - Q1/2021
+#### ---------------------------------------
+#### .buildlog/2021-03-14-4444.log (on RPI4)
+#### ---------------------------------------
+#### Line  # Details (+ = repeates)
+     1649    chroot: can't execute 'export': No such file or directory
+     1654    chroot: can't execute 'cd': No such file or directory
+
+*build.sh threw out a load of errors worth mentioning because they prevent the build completing:
+       - ping. just ran on and on
+       - /etc/sudoers permissions error 
+       - `svn` and even `sudo /usr/bin/svn` failed. 
+       
+*post-installer.txt complaind about using the echo command.
+
+
+## [0.0.1-rc.9-hbnb-arm.09] - Q1/2021
+#### ---------------------------------------
+#### N/A (on RPI4)
+#### ---------------------------------------
+*build.sh ping error. also wrote over the SD card before grabbing the log (slapped wrist)
+
+
 ## [0.0.1-rc.9-hbnb-arm.08] - Q1/2021
 #### ---------------------------------------
 #### .buildlog/2021-03-13-1800.log (on RPI4)
