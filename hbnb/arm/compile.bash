@@ -68,19 +68,14 @@ done
 sudo bash ./clean.sh &&
 sudo bash ./update.sh &&
 
-sudo mkdir -p config/root/home/pi &&
-sudo mkdir -p config/root/etc/init.d &&
 sudo mkdir -p config/files/root/home/pi &&
 sudo mkdir -p config/files/root/etc/init.d &&
 
-cp -p ../custom-settings/config/{installer-config.txt,my-files.list,post-install.txt,custom_files.txt} config &&
+cp -p ../custom-settings/config/{installer-config.txt,post-install.txt,custom_files.txt} config &&
 cp -p ../custom-settings/config/boot/{cmdline.txt,ssh,config.txt} config/boot &&
-cp -p ../custom-settings/config/files/{installer-config.txt,my-files.list,post-install.txt,custom_files.txt} config/files &&
-cp -p ../custom-settings/config/root/home/pi/.bashrc config/root/home/pi &&
-cp -r ../custom-settings/config/root/etc/init.d/build.sh config/root/etc/init.d && ## /etc/init.d inside /etc/init.d ?
-cp -p ../custom-settings/config/files/root/{installer-config.txt,my-files.list,post-install.txt,custom_files.txt} config/files/root &&
+cp -r ../custom-settings/config/files/my-files.list config/files &&
 cp -p ../custom-settings/config/files/root/home/pi/.bashrc config/files/root/home/pi &&
-cp -r ../custom-settings/config/files/root/etc/init.d/build.sh config/files/root/etc/init.d && ## /etc/init.d inside /etc/init.d ?
+cp -r ../custom-settings/config/files/root/etc/init.d/build.sh config/files/root/etc/init.d &&
 
 sed -i 's/set -e # exit/#set -e # exit/g' build.sh &&
 sleep 0.1 &&

@@ -10,6 +10,19 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 # like this - changelog 0.1 release. Then buildlog of 0.1 release. 
 # then changelog of 0.2 release (will refer to buildlog of 0.1 and bug and fixes) 
 
+
+## [0.0.1-rc.9-hbnb-arm.11] - Q1/2021
+#### ---------------------------------------
+#### .buildlog/2021-03-14-0606.log (on RPI4)
+#### ---------------------------------------
+#### Line  # Details (+ = repeates)
+     1649    chroot: can't execute 'export': No such file or directory
+     1654    chroot: can't execute 'cd': No such file or directory
+     ----    ----------------------------------------------------------
+             - sudoers fix didn't clear permissions error. 
+             - after build, did a system reboot and had not wpa_supplicant.conf in boot. only in /etc/wpa_supplicant.conf
+
+
 ## [0.0.1-rc.9-hbnb-arm.10] - Q1/2021
 #### ---------------------------------------
 #### .buildlog/2021-03-14-4444.log (on RPI4)

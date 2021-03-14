@@ -1,9 +1,7 @@
 #!/bin/bash
-#custom-settings/config/ to raspberrypi-ua-netinst/config/ 
+#custom-settings/config/ to raspberrypi-ua-netinst/config/
 
-chroot /rootfs echo "V0.0.1-rc.9-hbnb-arm-08 - Post Install"
-
-chroot /rootfs export DEBIAN_FRONTEND=noninteractive &&
+#chroot /rootfs export DEBIAN_FRONTEND=noninteractive && ## directory not found error
 install_files my-files.list &&
 chroot /rootfs sleep 20 &&
 
@@ -27,10 +25,8 @@ chroot /rootfs touch /etc/systemd/system/getty@tty1.service.d/override.conf &&
   echo "hotspotbnb:  $";
 } | chroot /rootfs tee /etc/systemd/system/getty@tty1.service.d/override.conf &&
 
-chroot /rootfs cd /etc/init.d &&
-chroot /rootfs chmod +x build.sh &&
-chroot /rootfs update-rc.d build.sh defaults &&
-chroot /rootfs cd ~ &&
+chroot /rootfs chmod +x /etc/init.d/build.sh &&
+chroot /rootfs update-rc.d /etc/init.d/build.sh defaults &&
 
 chroot /rootfs rm /dev/null &&
 chroot /rootfs mknod /dev/null c 1 3 &&
@@ -40,7 +36,8 @@ chroot /rootfs apt -y update &&
 chroot /rootfs apt -y upgrade &&
 chroot /rootfs apt -y autoremove &&
 chroot /rootfs apt -y autoclean &&
-chroot /rootfs apt -y sleep 10 &&
+chroot /rootfs dpkg --configure -a &&
+chroot /rootfs sleep 10 &&
 chroot /rootfs apt -y install git &&
 chroot /rootfs apt -y install git-svn &&
 chroot /rootfs apt -y install subversion &&
@@ -49,6 +46,9 @@ chroot /rootfs apt -y install php php-common &&
 chroot /rootfs apt -y install php-cli php-fpm php-json php-mysql php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath &&
 chroot /rootfs apt -y install libapache2-mod-php &&
 chroot /rootfs update-alternatives --config php &&
+
+chroot /rootfs chown root:root /etc/sudoers /etc/sudoers.d -R && #fix for error (pid 1000 when it should be 0)
+chroot /rootfs printf "www-data ALL = NOPASSWD: /sbin/reboot, /sbin/halt" >> /etc/sudoers &&
 
 chroot /rootfs reboot
 

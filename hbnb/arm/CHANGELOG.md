@@ -12,6 +12,16 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 
 ## [Unreleased]
 
+## [0.0.1-rc.9-hbnb-arm.11] - Q1/2021
+14-Mar - completed the build with minimal errors - see 2021-03-14-0606.log. 
+          - sudoers fix didn't clear permissions error. moved sudoers to post-install and used `printf` instead of echo
+          - hashed out the `export DEBIAN_FRONTEND` in post-install.txt to clear export error. Also added `dpkg --configure -a` to the file
+
+### Issue, Risk, Concern
+14-Mar - After last build, did a system reboot and had not wpa_supplicant.conf in /boot/. only /etc/wpa_supplicant.conf
+         - added `cp -r wpa_supplicant.conf to /boot` in build.sh (its already in post-install.txt). 
+         - Enough to see the build complete, but reboot after successful install and it's anyones guess what happens.  
+
 ## [0.0.1-rc.9-hbnb-arm.10] - Q1/2021
 
 ### Added
