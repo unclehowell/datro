@@ -82,6 +82,7 @@ and a combination of [Prince2 Project Management](https://prince2.com).
          it may have been buggy because in a lot of pages it didn't have an opening bracket where one should have been. 
 
 #### Removed
+14-Mar - removed old images from app-store and dashboard img or /media/img files. It was making the svn checkout bigger than it needed to be
 03-Mar - removed subrepos. Decided on creating a seperate branch for subrepo's
 02-Mar - had to remove a .svn because it caused an error when running `svn checkout` on a local machine (featured in the HotspotBnB Build script)
 15-Feb - removed CNAME from static/gui, it wasn't correect anyway. only downside having there, can't see any upside.

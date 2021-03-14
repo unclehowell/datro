@@ -1,5 +1,0 @@
-Ownership
-============
-
-Company and its licensors expressly retain title and ownership to all worldwide intellectual property rights, including without limitation, design, trade secrets, know-how, patent rights, trademarks, and copyrights in and to the Software, Documentation, Source Code of the Software, and any modifications, adaptations, derivative works, and enhancements made thereto. Except as may be set forth in separate written agreements with regard to Software, Documentation, Source Code of the Software, and any modifications, adaptations, derivative works, and enhancements made thereto. Distributor hereby waives any claim that it may have had or has, as a result of this Agreement only, to title and ownership of intellectual property rights in and to the Software, Documentation, source code of the Software, and Company Proprietary Information (as defined in Section 11.1), and any modifications, adaptations, enhancements, or derivative works made by or under the direction of Company or Distributor.
-
