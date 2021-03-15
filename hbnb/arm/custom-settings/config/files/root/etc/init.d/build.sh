@@ -10,9 +10,10 @@
 # Short-Description: build HotspotBnB
 ### END INIT INFO
 #custom-settings/config/files/root/etc/init.d to raspberrypi-ua-netinst/config/files/root/etc/init.d
-sudo printf "v0.0.1-rc.9 BUILD ..." &&
-sudo cp -r /etc/wpa_supplicant/wpa_supplicant.conf /boot/ &&
+
 sleep 25 &&
+sudo printf "completing installation ..." &&
+sudo cp -r /etc/wpa_supplicant/wpa_supplicant.conf /boot/ &&
 sudo apt update -y &&
 sudo apt install -y net-tools git git-svn subversion apache2 &&
 sudo printf "Fetching the Hotspotβnβ Dashboard ..." &&
@@ -34,14 +35,14 @@ sudo update-alternatives --config php &&
 sudo systemctl restart apache2 &&
 
 if [ ! -d "/var/www/html/" ]; then
-    printf "Hotspotβnβ ran into an issue installing - reboot or begin again"
-    sleep 2 &&
+    echo "Rebooting - Maybe an internet issue"
+    sleep 10 &&
     reboot
 else
     sed -i '114,$d' /home/pi/.bashrc >&- 2>&-
-    printf "To proceed enter the following in your web-browser"
-    printf "http://hotspotbnb/"
-    printf "alternatively enter the following IP"
+    echo "To proceed enter the following in your web-browser"
+    echo "http://hotspotbnb/"
+    echo "alternatively enter the following IP"
     hostname -I;
 fi
 

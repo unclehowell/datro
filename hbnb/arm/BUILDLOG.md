@@ -13,15 +13,10 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 
 ## [0.0.1-rc.9-hbnb-arm.11] - Q1/2021
 #### ---------------------------------------
-#### .buildlog/2021-03-14-0606.log (on RPI4)
+#### .buildlog/2021-03-14-1800.log (on RPI4)
 #### ---------------------------------------
 #### Line  # Details (+ = repeates)
-     1649    chroot: can't execute 'export': No such file or directory
-     1654    chroot: can't execute 'cd': No such file or directory
-     ----    ----------------------------------------------------------
-             - sudoers fix didn't clear permissions error. 
-             - after build, did a system reboot and had not wpa_supplicant.conf in boot. only in /etc/wpa_supplicant.conf
-
+     1662    update-rc.d: error: unable to read /etc/init.d//etc/init.d/build.sh
 
 ## [0.0.1-rc.9-hbnb-arm.10] - Q1/2021
 #### ---------------------------------------

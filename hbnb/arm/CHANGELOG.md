@@ -12,6 +12,13 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 
 ## [Unreleased]
 
+
+## [0.0.1-rc.9-hbnb-arm.12] - Q1/2021
+
+### Changed
+14-Mar    - changed `update-rc.d /etc/init.d/build.sh defaults` to  `update-rc.d build.sh defaults' in post-install.txt
+          - also added 'update-rc.d -f build.sh remove` to successful build completion.
+
 ## [0.0.1-rc.9-hbnb-arm.11] - Q1/2021
 14-Mar - completed the build with minimal errors - see 2021-03-14-0606.log. 
           - sudoers fix didn't clear permissions error. moved sudoers to post-install and used `printf` instead of echo

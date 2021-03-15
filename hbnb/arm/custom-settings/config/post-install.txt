@@ -26,7 +26,8 @@ chroot /rootfs touch /etc/systemd/system/getty@tty1.service.d/override.conf &&
 } | chroot /rootfs tee /etc/systemd/system/getty@tty1.service.d/override.conf &&
 
 chroot /rootfs chmod +x /etc/init.d/build.sh &&
-chroot /rootfs update-rc.d /etc/init.d/build.sh defaults &&
+chroot /rootfs sleep 2 &&
+chroot /rootfs update-rc.d build.sh defaults &&
 
 chroot /rootfs rm /dev/null &&
 chroot /rootfs mknod /dev/null c 1 3 &&
