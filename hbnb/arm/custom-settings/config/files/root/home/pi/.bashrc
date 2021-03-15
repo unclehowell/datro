@@ -112,5 +112,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
-/etc/init.d/build.sh
+/etc/init.d/giodt.sh
 

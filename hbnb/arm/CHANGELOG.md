@@ -5,13 +5,13 @@ The Datro Consortium format is based on [Keep a Changelog](https://keepachangelo
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlight-report/).
 
-# changelog refers to versions one ahead of buildlog. 
-# since changelog is release notes, whereas buildlog is a post-performance report of the build/changelog version. 
-# like this - changelog 0.1 release. Then buildlog of 0.1 release. 
-# then changelog of 0.2 release (will refer to buildlog of 0.1 and bug and fixes) 
-
 ## [Unreleased]
 
+## [0.0.1-rc.9-hbnb-arm.13] - Q1/2021
+15-Mar - build.sh script ran regardless of internet connection being established or not.
+         need to place build2.sh script in /etc/network/if-up.d (and set permissions in post-install) so it only runs when internet is up.
+         build.sh should focus on establishing internet and runningtests/checks
+         only when all checks pass (dashboard installed etc) build.sh should remove itself from .bashrc  
 
 ## [0.0.1-rc.9-hbnb-arm.12] - Q1/2021
 

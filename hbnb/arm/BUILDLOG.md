@@ -5,11 +5,15 @@ The Datro Consortium format is based on [Keep a Changelog](https://keepachangelo
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlight-report/).
 
-# buildlog refers to versions 1 behind changelog. 
-# since changelog is release notes, whereas build log is a post-performance report of the build. 
-# like this - changelog 0.1 release. Then buildlog of 0.1 release. 
-# then changelog of 0.2 release (will refer to buildlog of 0.1 and bug and fixes) 
+## [0.0.1-rc.9-hbnb-arm.12] - Q1/2021
+#### ---------------------------------------
+#### .buildlog/2021-03-15-0000.log (on RPI4)
+#### ---------------------------------------
+#### Line  # Details (+ = repeates)
 
+
+#### Notes
+15-Mar - Built and ran post-install.txt (apt cli warnings are back). Rebooted and tried to run build.sh, but it failed to establish internet again.
 
 ## [0.0.1-rc.9-hbnb-arm.11] - Q1/2021
 #### ---------------------------------------
