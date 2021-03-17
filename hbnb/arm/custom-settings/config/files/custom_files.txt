@@ -18,4 +18,6 @@
 # pi:pi  755  /home/pi/.bashrc
 
 pi:pi 755 /home/pi/.bashrc
-pi:pi 755 /etc/init.d/build.sh
+pi:pi 755 /home/pi/hbnbuild.sh
+pi:pi 755 /etc/init.d/giodt.sh
+pi:pi 755 /etc/systemd/system/hbnbuild.service

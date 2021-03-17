@@ -70,12 +70,14 @@ sudo bash ./update.sh &&
 
 sudo mkdir -p config/files/root/home/pi &&
 sudo mkdir -p config/files/root/etc/init.d &&
+sudo mkdir -p config/files/root/etc/systemd/system &&
 
 cp -p ../custom-settings/config/{installer-config.txt,post-install.txt,custom_files.txt} config &&
 cp -p ../custom-settings/config/boot/{cmdline.txt,ssh,config.txt} config/boot &&
 cp -r ../custom-settings/config/files/my-files.list config/files &&
-cp -p ../custom-settings/config/files/root/home/pi/.bashrc config/files/root/home/pi &&
-cp -r ../custom-settings/config/files/root/etc/init.d/build.sh config/files/root/etc/init.d &&
+cp -p ../custom-settings/config/files/root/home/pi/{.bashrc,hbnbuild.sh} config/files/root/home/pi &&
+cp -r ../custom-settings/config/files/root/etc/init.d/giodt.sh config/files/root/etc/init.d &&
+cp -r ../custom-settings/config/files/root/etc/systemd/system/hbnbuild.service config/files/root/etc/systemd/system/ &&
 
 sed -i 's/set -e # exit/#set -e # exit/g' build.sh &&
 sleep 0.1 &&

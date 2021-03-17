@@ -1,6 +1,6 @@
 #!/bin/sh
 ### BEGIN INIT INFO
-# Provides:          build.sh
+# Provides:          hbnbuild.sh
 # Required-Start:    $remote_fs
 # Required-Stop:
 # Should-Start:
@@ -9,7 +9,7 @@
 # X-Interactive:     true
 # Short-Description: build HotspotBnB
 ### END INIT INFO
-#custom-settings/config/files/root/etc/init.d to raspberrypi-ua-netinst/config/files/root/etc/init.d
+#custom-settings/config/files/root/home/pi to raspberrypi-ua-netinst/config/files/root/home/pi
 
 sleep 25 &&
 sudo printf "completing installation ..." &&
@@ -33,17 +33,29 @@ sudo chmod -R 755 /var/www/html &&
 sudo apt -y install php php-common php-cli php-fpm php-json php-mysql php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath libapache2-mod-php &&
 sudo update-alternatives --config php &&
 sudo systemctl restart apache2 &&
+sudo lighttpd-enable-mod fastcgi-php &&
+sudo service lighttpd force-reload &&
+sudo systemctl restart lighttpd.service &&
+
+# Optimize configuration of php-cgi.
+function _optimize_php() {
+    if [ "$upgrade" == 0 ]; then
+        _install_log "Optimize PHP configuration"
+        if [ ! -f "$phpcgiconf" ]; then
+            _install_warning "PHP configuration could not be found."
+            return
+        fi
+
+sleep 5 &&
 
 if [ ! -d "/var/www/html/" ]; then
     echo "Rebooting - Maybe an internet issue"
     sleep 10 &&
     reboot
 else
-    sed -i '114,$d' /home/pi/.bashrc >&- 2>&-
-    echo "To proceed enter the following in your web-browser"
-    echo "http://hotspotbnb/"
-    echo "alternatively enter the following IP"
+    echo "Dashboard appeared to have installed - visit the IP below for a quick check before the final reboot"
     hostname -I;
 fi
-
+sleep 30 &&
+sudo reboot & reboot
 exit 0

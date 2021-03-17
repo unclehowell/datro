@@ -8,10 +8,8 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 ## [Unreleased]
 
 ## [0.0.1-rc.9-hbnb-arm.13] - Q1/2021
-15-Mar - build.sh script ran regardless of internet connection being established or not.
-         need to place build2.sh script in /etc/network/if-up.d (and set permissions in post-install) so it only runs when internet is up.
-         build.sh should focus on establishing internet and runningtests/checks
-         only when all checks pass (dashboard installed etc) build.sh should remove itself from .bashrc  
+17-Mar - install-config.txt > post-install.txt > {.bashrc > giodt.sh > hbnbuild.service > hbnbuild.sh} = loop
+       - should solve failure to connect to internet
 
 ## [0.0.1-rc.9-hbnb-arm.12] - Q1/2021
 

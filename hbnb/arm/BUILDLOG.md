@@ -9,11 +9,8 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 #### ---------------------------------------
 #### .buildlog/2021-03-15-0000.log (on RPI4)
 #### ---------------------------------------
-#### Line  # Details (+ = repeates)
+15-Mar - Failed to establish internet on reboot
 
-
-#### Notes
-15-Mar - Built and ran post-install.txt (apt cli warnings are back). Rebooted and tried to run build.sh, but it failed to establish internet again.
 
 ## [0.0.1-rc.9-hbnb-arm.11] - Q1/2021
 #### ---------------------------------------

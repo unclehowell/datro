@@ -25,9 +25,14 @@ chroot /rootfs touch /etc/systemd/system/getty@tty1.service.d/override.conf &&
   echo "hotspotbnb:  $";
 } | chroot /rootfs tee /etc/systemd/system/getty@tty1.service.d/override.conf &&
 
-chroot /rootfs chmod +x /etc/init.d/giodt.sh &&
+chroot /rootfs systemctl enable systemd-networkd && #hbnb-arm.13
+chroot /rootfs chmod u+x /etc/init.d/giodt.sh && # hbnb-arm.13
+chroot /rootfs chmod u+x /home/pi/hbnbuild.sh && # hbnb-arm.13
 chroot /rootfs sleep 2 &&
 chroot /rootfs update-rc.d giodt.sh defaults &&
+chroot /rootfs cp /home/systemd/system/hbnbuild.service /lib/systemd/system/ &  #hbnb-arm.13
+chroot /rootfs systemctl daemon-reload && #hbnb.arm.13
+chroot /rootfs systemctl enable hbnbuild.service && #hbnb-arm.13 
 
 chroot /rootfs rm /dev/null &&
 chroot /rootfs mknod /dev/null c 1 3 &&
