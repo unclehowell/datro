@@ -26,10 +26,12 @@ The table below shows the content of this branch includes all the websites, the 
      - anyone wanting to collaborate on the website can easily grab a local offline copy and make changes
      - git pull/ sprase-checkout the directories/websites you want to work on:
 
-         ``mkdir /var/www/html # if it doesn't already exist
-           git remote add origin https://github.com/unclehowell/datro.git`
-           git checkout -b my-custom-mods # make new branch for your changes
-           git pull origin gh-pages``
+         ```
+         mkdir /var/www/html # if it doesn't already exist
+         git remote add origin https://github.com/unclehowell/datro.git`
+         git checkout -b my-custom-mods # make new branch for your changes
+         git pull origin gh-pages
+         ```
 
   - the corresponding dynamic server-side files allow the cms for the website to be locally hosted e.g. run offline
   - the DATRO persistent-live USB disk image is also provided, to turn any PC into a fully-configured local workstation
