@@ -1,4 +1,4 @@
-# DATRO Consortium: 'gh-pages' Branch 
+# **DATRO Consortium**: 'gh-pages' Branch 
 
 Welcome to the DATRO Consortium Monorepo.  
 This public repository contains **[Four Branches](#Branches)** in total.   
@@ -23,15 +23,7 @@ The table below shows the content of this branch includes all the websites, the 
   - Everything above is hosted for free on github (gh-pages)
   - This branch, alongside other branches, means everyrthing can be stored in the same repo
   - Serverless: Makes the business very resilient to physical/ cyber attacks:
-     - anyone wanting to collaborate on the website can easily grab a local offline copy and make changes
-     - git pull/ sprase-checkout the directories/websites you want to work on:
-
-         ```
-         mkdir /var/www/html # if it doesn't already exist
-         git remote add origin https://github.com/unclehowell/datro.git
-         git checkout -b my-custom-mods # make new branch for your changes
-         git pull origin gh-pages
-         ```
+     - anyone wanting to collaborate on the website can (see COLLABORATE.md)
 
   - the corresponding dynamic server-side files allow the cms for the website to be locally hosted e.g. run offline
   - the DATRO persistent-live USB disk image is also provided, to turn any PC into a fully-configured local workstation
