@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.10] - Q1/2021
 
 ### Added
-23-Mar - Added `neodome` and `togo` subdirectories in `static`, since they'll have dedicated websites shortly too. 
+23-Mar - Added `neodome`, `scottishbay`, `cacher` & `togo` subdirectories in `static`, since they'll have dedicated websites shortly too. 
 27-Feb - Directory Structure in README.md
 25-Feb - ES subrepo added - see static/gui changelog for details
 30-Jan - gui changes - app store etc - see gui changelog for more info
