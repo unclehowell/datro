@@ -28,7 +28,7 @@ The table below shows the content of this branch includes all the websites, the 
 
          ```
          mkdir /var/www/html # if it doesn't already exist
-         git remote add origin https://github.com/unclehowell/datro.git`
+         git remote add origin https://github.com/unclehowell/datro.git
          git checkout -b my-custom-mods # make new branch for your changes
          git pull origin gh-pages
          ```
