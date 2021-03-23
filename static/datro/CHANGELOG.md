@@ -16,11 +16,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 31-Jan - html/statistics/website.html - few minor bug fixes - made it look better on mobile. 
 
 ### Fixed
-
+23-Mar - fixed some broken links
 06-Feb - removed broken links - since the problematic pages were dormant I just erazed them, but kept the pages so as not to cause more broken links
 31-Jan - html/statistics/website.html - commit comments weren't showing. simple fault, path to js was incorrect. 
 
 ### Removed
+23-Mar - bulk removed ® symbol, since this is now all GNU GPL
 31-Jan - deleted directories labelled old as part of typical housekeeping
 
 
