@@ -911,7 +911,7 @@
   911  ls
   912  cd datro
   913  ls
-  914  nano download.html
+  914  nano technology.html
   915  wget -q "http://deb.playonlinux.com/public.gpg" -O- | sudo apt-key add -
   916  sudo wget http://deb.playonlinux.com/playonlinux_cosmic.list -O /etc/apt/sources.list.d/playonlinux.list
   917  sudo apt-get update
@@ -931,9 +931,9 @@
   931  cd static
   932  cd datro
   933  ls
-  934  nano download.html
+  934  nano technology.html
   935  nano do
-  936  nano download.html
+  936  nano technology.html
   937  ls
   938  cd js
   939  ls
@@ -1358,7 +1358,7 @@
  1358  ls
  1359  touch README.md
  1360  ls
- 1361  nano download.html
+ 1361  nano technology.html
  1362  nano documents.html
  1363  su unclehowell
  1364  sudo su
@@ -1455,13 +1455,13 @@
  1455  ls
  1456  cd datro
  1457  ls
- 1458  grep --include={*.html} -rnl './' -e "<a class="nav-link" href="download.html">Software</a>" | xargs -i@ sed -i 's/<a class="nav-link" href="download.html">Software<\/a>/<a class="nav-link" href="download.html">Solution<\/a>/g' @
+ 1458  grep --include={*.html} -rnl './' -e "<a class="nav-link" href="technology.html">Software</a>" | xargs -i@ sed -i 's/<a class="nav-link" href="technology.html">Software<\/a>/<a class="nav-link" href="technology.html">Solution<\/a>/g' @
  1459  grep --include={*.html} -rnl './' -e ">Software</a>" | xargs -i@ sed -i 's/>Software<\/a>/>Solution<\/a>/g' @
- 1460  find ./ -type f -exec sed -i 's/href="download.html">Software/href="download.html">Solutions/' {} \;
+ 1460  find ./ -type f -exec sed -i 's/href="technology.html">Software/href="technology.html">Solutions/' {} \;
  1461  cd store
- 1462  find ./ -type f -exec sed -i 's/href="download.html">Software/href="download.html">Solutions/' {} \;
- 1463  find ./ -type f -exec sed -i 's/href="../download.html">Software/href="../download.html">Solutions/' {} \;
- 1464  find ./ -type f -exec sed -i 's/href="..\/download.html">Software/href="..\/download.html">Solutions/' {} \;
+ 1462  find ./ -type f -exec sed -i 's/href="technology.html">Software/href="technology.html">Solutions/' {} \;
+ 1463  find ./ -type f -exec sed -i 's/href="../technology.html">Software/href="../technology.html">Solutions/' {} \;
+ 1464  find ./ -type f -exec sed -i 's/href="..\/technology.html">Software/href="..\/technology.html">Solutions/' {} \;
  1465  ls
  1466  nano index.html
  1467  ls
@@ -1501,7 +1501,7 @@
  1501  ls
  1502  cd datro
  1503  ls
- 1504  nano download.html
+ 1504  nano technology.html
  1505  nano ../../index.html
  1506  nano /var/lib/snapd/desktop/applications/atom_atom.desktop
  1507  sudo sed -i 's/Exec=env BAMF_DESKTOP_FILE_HINT=\/var\/lib\/snapd\/desktop\/applications\/atom_atom.desktop \/snap\/bin\/atom ATOM_DISABLE_SHELLING_OUT_FOR_ENVIRONMENT=false \/usr\/bin\/atom %F/Exec=env BAMF_DESKTOP_FILE_HINT=\/var\/lib\/snapd\/desktop\/applications\/atom_atom.desktop ATOM_DISABLE_SHELLING_OUT_FOR_ENVIRONMENT=false \/snap\/bin\/atom %F/' /var/lib/snapd/desktop/applications/atom_atom.desktop
@@ -1582,7 +1582,7 @@
  1582  ls
  1583  cd datro
  1584  ls
- 1585  cp download.html academy.html
+ 1585  cp technology.html academy.html
  1586  chown unclehowell:unclehowell academy.html
  1587  sudo nano /etc/pulse/default.pa
  1588  cd /home/unclehowell/Videos
@@ -2159,10 +2159,10 @@
  2159  mkdir hbnb-new
  2160  cd hbnb-new
  2161  ls
- 2162  git add remote origin https://github.com/unclehowell/HBnB-new.git
+ 2162  git add remote origin https://github.com/unclehowell/datro-new.git
  2163  git init
- 2164  git add remote origin https://github.com/unclehowell/HBnB-new.git
- 2165  git remote add origin https://github.com/unclehowell/HBnB-new.git
+ 2164  git add remote origin https://github.com/unclehowell/datro-new.git
+ 2165  git remote add origin https://github.com/unclehowell/datro-new.git
  2166  git config core.sparsecheckout true
  2167  git sparse-checkout set static/wave
  2168  git checkout -b gh-pages
@@ -2216,10 +2216,10 @@
  2216  git-svg static/wave
  2217  rm -r .git
  2218  cd ..
- 2219  git svn clone -s https://github.com/unclehowell/HBnB-new/tree/gh-pages/wave hbnb-new
+ 2219  git svn clone -s https://github.com/unclehowell/datro-new/tree/gh-pages/wave hbnb-new
  2220  sudo apt-get install git-svn
  2221  ls
- 2222  git svn clone -s https://github.com/unclehowell/HBnB-new/tree/gh-pages/wave hbnb-new
+ 2222  git svn clone -s https://github.com/unclehowell/datro-new/tree/gh-pages/wave hbnb-new
  2223  ls
  2224  cd hbnb-new
  2225  ls
@@ -3513,8 +3513,8 @@
  3513  ls
  3514  cd datro
  3515  ls
- 3516  mv download.html download.html.old
- 3517  cp -r academy.html download.html
+ 3516  mv technology.html technology.html.old
+ 3517  cp -r academy.html technology.html
  3518  cd ..
  3519  ls
  3520  cd ..
@@ -4680,7 +4680,7 @@
  4680  cd ..
  4681  ls
  4682  mv documents.html documents.html.old
- 4683  cp -r download.html documents.html
+ 4683  cp -r technology.html documents.html
  4684  ls -la
  4685  chown unclehowell:unclehowell *
  4686  ls -la
@@ -5403,10 +5403,10 @@
  5403  git rm -r .git
  5404  rm -r .git
  5405  ls
- 5406  wget https://raw.githubusercontent.com/unclehowell/HBnB/gh-pages/index.html
+ 5406  wget https://raw.githubusercontent.com/unclehowell/datro/gh-pages/index.html
  5407  nano index.html
- 5408  wget https://raw.githubusercontent.com/unclehowell/HBnB/gh-pages/manifest.json
- 5409  wget https://raw.githubusercontent.com/unclehowell/HBnB/gh-pages/README.md
+ 5408  wget https://raw.githubusercontent.com/unclehowell/datro/gh-pages/manifest.json
+ 5409  wget https://raw.githubusercontent.com/unclehowell/datro/gh-pages/README.md
  5410  ls
  5411  mkdir css
  5412  mkdir js
@@ -5414,13 +5414,13 @@
  5414  ls
  5415  cd css
  5416  ls
- 5417  wget https://raw.githubusercontent.com/unclehowell/HBnB/gh-pages/static/splashpage/css/style.css
+ 5417  wget https://raw.githubusercontent.com/unclehowell/datro/gh-pages/static/splashpage/css/style.css
  5418  mkdir ../fonts
  5419  cd ../fonts
  5420  ls
- 5421  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/fonts/lineto-circular-book.eot
- 5422  wget https://raw.githubusercontent.com/unclehowell/HBnB/gh-pages/static/splashpage/fonts/lineto-circular-book.svg
- 5423  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/fonts/lineto-circular-book.woff
+ 5421  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/fonts/lineto-circular-book.eot
+ 5422  wget https://raw.githubusercontent.com/unclehowell/datro/gh-pages/static/splashpage/fonts/lineto-circular-book.svg
+ 5423  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/fonts/lineto-circular-book.woff
  5424  cd ..
  5425  ls
  5426  cd html
@@ -5456,40 +5456,40 @@
  5456  cd img
  5457  ls
  5458  wget /
- 5459  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/android-chrome-192x192.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-114x114.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-120x120.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-144x144.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-152x152.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-180x180.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-57x57.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-60x60.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-72x72.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-76x76.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/bg-cropped-mobile.jpg && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/bg-cropped.jpg && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/favicon-16x16.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/favicon-194x194.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/favicon-32x32.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/footer-logo_2x.png wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-large_1x.png wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/favicon-96x96.png && && && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-large_2x.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-medium_1x.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-medium_2x.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-small_1x.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-small_2x.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/g-icon.jpg && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/g-icon.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/logo_2x.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/mstile-144x144.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/signature.gif && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/signature.jpg &&
- 5460  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/android-chrome-192x192.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-114x114.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-120x120.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-144x144.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-152x152.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-180x180.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-57x57.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-60x60.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-72x72.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-76x76.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/bg-cropped-mobile.jpg && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/bg-cropped.jpg && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/favicon-16x16.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/favicon-194x194.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/favicon-32x32.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/footer-logo_2x.png wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-large_1x.png wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/favicon-96x96.png && && && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-large_2x.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-medium_1x.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-medium_2x.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-small_1x.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-small_2x.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/g-icon.jpg && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/g-icon.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/logo_2x.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/mstile-144x144.png && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/signature.gif && wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/signature.jpg
- 5461  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/android-chrome-192x192.png \nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-114x114.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-120x120.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-144x144.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-152x152.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-180x180.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-57x57.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-60x60.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-72x72.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-76x76.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/bg-cropped-mobile.jpg\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/bg-cropped.jpg\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/favicon-16x16.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/favicon-194x194.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/favicon-32x32.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/favicon-96x96.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/footer-logo_2x.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-large_1x.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-large_2x.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-medium_1x.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-medium_2x.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-small_1x.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-small_2x.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/g-icon.jpg\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/g-icon.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/logo_2x.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/mstile-144x144.png\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/signature.gif\nwget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/signature.jpg
- 5462  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/android-chrome-192x192.png 
+ 5459  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/android-chrome-192x192.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-114x114.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-120x120.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-144x144.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-152x152.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-180x180.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-57x57.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-60x60.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-72x72.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-76x76.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/bg-cropped-mobile.jpg && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/bg-cropped.jpg && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/favicon-16x16.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/favicon-194x194.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/favicon-32x32.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/footer-logo_2x.png wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-large_1x.png wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/favicon-96x96.png && && && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-large_2x.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-medium_1x.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-medium_2x.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-small_1x.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-small_2x.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/g-icon.jpg && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/g-icon.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/logo_2x.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/mstile-144x144.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/signature.gif && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/signature.jpg &&
+ 5460  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/android-chrome-192x192.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-114x114.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-120x120.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-144x144.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-152x152.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-180x180.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-57x57.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-60x60.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-72x72.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-76x76.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/bg-cropped-mobile.jpg && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/bg-cropped.jpg && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/favicon-16x16.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/favicon-194x194.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/favicon-32x32.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/footer-logo_2x.png wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-large_1x.png wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/favicon-96x96.png && && && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-large_2x.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-medium_1x.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-medium_2x.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-small_1x.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-small_2x.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/g-icon.jpg && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/g-icon.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/logo_2x.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/mstile-144x144.png && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/signature.gif && wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/signature.jpg
+ 5461  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/android-chrome-192x192.png \nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-114x114.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-120x120.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-144x144.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-152x152.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-180x180.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-57x57.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-60x60.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-72x72.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-76x76.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/bg-cropped-mobile.jpg\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/bg-cropped.jpg\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/favicon-16x16.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/favicon-194x194.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/favicon-32x32.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/favicon-96x96.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/footer-logo_2x.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-large_1x.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-large_2x.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-medium_1x.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-medium_2x.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-small_1x.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-small_2x.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/g-icon.jpg\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/g-icon.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/logo_2x.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/mstile-144x144.png\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/signature.gif\nwget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/signature.jpg
+ 5462  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/android-chrome-192x192.png 
  5463  ls
  5464  rm -r *
- 5465  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/android-chrome-192x192.png 
- 5466  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-114x114.png
- 5467  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-120x120.png
- 5468  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-144x144.png
- 5469  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-152x152.png
- 5470  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-180x180.png
- 5471  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-57x57.png
- 5472  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-60x60.png
- 5473  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-72x72.png
- 5474  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/apple-touch-icon-76x76.png
- 5475  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/bg-cropped-mobile.jpg
- 5476  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/bg-cropped.jpg
- 5477  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/favicon-16x16.png
- 5478  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/favicon-194x194.png
- 5479  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/favicon-32x32.png
- 5480  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/favicon-96x96.png
- 5481  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/footer-logo_2x.png
- 5482  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-large_2x.png
- 5483  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-medium_1x.png
- 5484  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-medium_2x.png
- 5485  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-small_1x.png
- 5486  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/forgoogle-small_2x.png
- 5487  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/g-icon.jpg
- 5488  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/g-icon.png
- 5489  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/logo_2x.png
- 5490  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/mstile-144x144.png
- 5491  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/signature.gif
- 5492  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/signature.jpg
+ 5465  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/android-chrome-192x192.png 
+ 5466  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-114x114.png
+ 5467  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-120x120.png
+ 5468  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-144x144.png
+ 5469  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-152x152.png
+ 5470  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-180x180.png
+ 5471  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-57x57.png
+ 5472  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-60x60.png
+ 5473  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-72x72.png
+ 5474  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/apple-touch-icon-76x76.png
+ 5475  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/bg-cropped-mobile.jpg
+ 5476  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/bg-cropped.jpg
+ 5477  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/favicon-16x16.png
+ 5478  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/favicon-194x194.png
+ 5479  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/favicon-32x32.png
+ 5480  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/favicon-96x96.png
+ 5481  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/footer-logo_2x.png
+ 5482  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-large_2x.png
+ 5483  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-medium_1x.png
+ 5484  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-medium_2x.png
+ 5485  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-small_1x.png
+ 5486  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/forgoogle-small_2x.png
+ 5487  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/g-icon.jpg
+ 5488  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/g-icon.png
+ 5489  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/logo_2x.png
+ 5490  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/mstile-144x144.png
+ 5491  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/signature.gif
+ 5492  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/signature.jpg
  5493  ls -la
  5494  rm -r *.1
  5495  ls
@@ -5538,7 +5538,7 @@
  5538  ls
  5539  cd datro
  5540  ls
- 5541  nano download.html
+ 5541  nano technology.html
  5542  cd ..
  5543  ls
  5544  cd ..
@@ -5575,13 +5575,13 @@
  5575  ls
  5576  rm -r *
  5577  ls
- 5578  wget https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/android-chrome-192x192.png
+ 5578  wget https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/android-chrome-192x192.png
  5579  ls -la
  5580  chown unclehowell:unclehowell *
- 5581  curl https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/android-chrome-192x192.png
+ 5581  curl https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/android-chrome-192x192.png
  5582  ls
  5583  rm -r *
- 5584  wget -c https://github.com/unclehowell/HBnB/blob/gh-pages/static/splashpage/img/android-chrome-192x192.png
+ 5584  wget -c https://github.com/unclehowell/datro/blob/gh-pages/static/splashpage/img/android-chrome-192x192.png
  5585  ls -la
  5586  ls
  5587  rm -r *
@@ -5611,16 +5611,16 @@
  5611  sudo svn copy https://github.com/unclehowell/hbnb/gh-pages/trunk/static
  5612  svn co --depth empty https://github.com/unclehowell/hbnb/gh-pages/trunk/static
  5613  svn co --depth empty https://github.com/unclehowell/hbnb/gh-pages/trunk/img
- 5614  svn co --depth empty https://github.com/unclehowell/HBnB/gh-pages/trunk/static/img/
- 5615  svn co --depth empty https://github.com/unclehowell/HBnB/gh-pages/trunk/static/img/ \\n*.jpg
- 5616  svn co --depth empty https://github.com/unclehowell/HBnB/gh-pages/trunk/static/img/ \\n*.png
- 5617  svn co --depth empty https://github.com/unclehowell/HBnB/gh-pages/trunk/static/img \\n*.png
- 5618  svn co --depth empty https://github.com/unclehowell/HBnB/gh-pages/trunk/static/img
- 5619  svn co --depth empty https://github.com/unclehowell/HBnB/gh-pages/trunk/static/img/
- 5620  svn co --depth empty https://github.com/unclehowell/HBnB/gh-pages/trunk/static/
- 5621  svn co --depth empty https://github.com/unclehowell/HBnB/gh-pages/tree/static/img/
- 5622  svn co --depth empty https://github.com/unclehowell/HBnB/gh-pages/tree/static/splashpage/img/
- 5623  svn co --depth empty https://github.com/unclehowell/HBnB/gh-pages/trunk/static/splashpage/img/
+ 5614  svn co --depth empty https://github.com/unclehowell/datro/gh-pages/trunk/static/img/
+ 5615  svn co --depth empty https://github.com/unclehowell/datro/gh-pages/trunk/static/img/ \\n*.jpg
+ 5616  svn co --depth empty https://github.com/unclehowell/datro/gh-pages/trunk/static/img/ \\n*.png
+ 5617  svn co --depth empty https://github.com/unclehowell/datro/gh-pages/trunk/static/img \\n*.png
+ 5618  svn co --depth empty https://github.com/unclehowell/datro/gh-pages/trunk/static/img
+ 5619  svn co --depth empty https://github.com/unclehowell/datro/gh-pages/trunk/static/img/
+ 5620  svn co --depth empty https://github.com/unclehowell/datro/gh-pages/trunk/static/
+ 5621  svn co --depth empty https://github.com/unclehowell/datro/gh-pages/tree/static/img/
+ 5622  svn co --depth empty https://github.com/unclehowell/datro/gh-pages/tree/static/splashpage/img/
+ 5623  svn co --depth empty https://github.com/unclehowell/datro/gh-pages/trunk/static/splashpage/img/
  5624  svn co --depth empty https://github.com/unclehowell/Hbnb/gh-pages/trunk/static/splashpage/img/
  5625  svn co --depth empty https://github.com/unclehowell/hbnb/gh-pages/trunk/static/splashpage/img/
  5626  svn co --depth empty https://github.com/unclehowell/hbnb/gh-pages/static/splashpage/img/
@@ -6619,7 +6619,7 @@
  6619  cd ..
  6620  ls
  6621  mv js js.old
- 6622  svn co --depth files https://github.com/unclehowell/HBnB-new/branches/gh-pages/wave/js/
+ 6622  svn co --depth files https://github.com/unclehowell/datro-new/branches/gh-pages/wave/js/
  6623  ls
  6624  cd ..
  6625  ls

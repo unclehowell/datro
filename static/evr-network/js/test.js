@@ -18,7 +18,7 @@
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="download.html">Download Center</a>
+							<a class="nav-link" href="technology.html">Download Center</a>
 						</li>
 						
 		

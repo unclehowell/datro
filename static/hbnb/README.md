@@ -5,7 +5,7 @@
 1. The Hotspotβnβ websites are mainly all administered in wordpress on a localhost.
    They're then published by exporting them (from a wp plugin) directly into a subdirectory of a public github repo (the gh-pages development branch).
 
-2. The repo containing all the static websites is the equivalent of our software source-code monorepo e.g. everything in one big directory
+2. The repo containing all the static websites is the equivalent of our software source-code MonoREAPo e.g. everything in one big directory
 
 3. There's a simple website in the top level directory, which is designed to be a super fast loading (well SEO'd) minimal landing page. 
    From this main page, visitors can navigate deeper into the websites in the subdrectories of the repo e.g. docs, store,blog etc  

@@ -3,7 +3,7 @@
 ## Summary
 
 DATRO's websites, documents and softwares source-code ... everything, is held in a single source-code repository e.g. "monorepo"
-The primary location of this monorepo is `github.com/unclehowell/datro`,
+The primary location of this MonoREAPo is `github.com/unclehowell/datro`,
 But its content can also be discovered elsewhere online and offline.
 
 ## Why Collaborate ? 
@@ -16,10 +16,10 @@ If you're looking to earn an income from the DATRO's network (as a web developer
   - Vice versa, any changes made to your sub-repo in our source code, notifies you via your repo.
 
 We expect a lot of activity while developing the DATRO network and platform, so Github will be used to handle this chaos.
-When things settle and the network/technology has stabalized, we seek to move to this entire monorepo to the blockchain.
+When things settle and the network/technology has stabalized, we seek to move to this entire MonoREAPo to the blockchain.
 In technology there's something called a bathtub effect, which we're in the early stages of. 
 e.g. on a graph issues are high, then in time they lower, then as the technology gets old the issues rise again.
-As the monorepo evolves e.g. good housekeeping, completed solutions and minimal possible filesizes, we can become fully-decentralized  
+As the MonoREAPo evolves e.g. good housekeeping, completed solutions and minimal possible filesizes, we can become fully-decentralized  
 Once the source code is on the blockchain, we can use tokenized, majority voting to suggest and auth changes e.g. fully-democratized
 
 
@@ -31,7 +31,7 @@ Once the source code is on the blockchain, we can use tokenized, majority voting
 
 The reason we have this second website related branch, is to hack our way to a few desired goals: 
     - we have a main website `datro.xyz`, then a few seperate urls for each of the solutions we're developing.
-    - all the websites are contained in this single monorepo (the gh-pages branch). And hosted using GitHub Pages. 
+    - all the websites are contained in this single MonoREAPo (the gh-pages branch). And hosted using GitHub Pages. 
     - Github only allow one url and one webpage per repository. Netlify gets around this, but the charge per each website change e.g. build/ deploy.
     - We tried to 'url/ mask -forward' our urls to the various seperate sites in our gh-pages subdirectories, where they're held.
     - Sadly the visitor is either redirected to a link they didn't enter and/or presented with the site, but no ssl/ browser safety.
@@ -95,15 +95,15 @@ And we don't use them in the usual way. Here's a list of our branch names and th
 2. Make your changes locally, on a branch-name of your chosing, then submit your changes accordingly, for the moderator(s) to review.
 
 ## GitHub 'mono' Repo
-This collaboration guide focuses on 2 know ways of interacting with this monorepo branch:
+This collaboration guide focuses on 2 know ways of interacting with this MonoREAPo branch:
 
 ### 1. Sparse-checkout:
   - 'apt install git' doesn't currently install a late enough version of git to support sparse-checkout (use PPA)
-  - since the monorepo is so big and diverse, collaborators must only checkout and push files they're actively working on
+  - since the MonoREAPo is so big and diverse, collaborators must only checkout and push files they're actively working on
   - the sparse-checkout method is designed for this purpose, making it the ideal choice
 
 ### 2. Git Pull
-  - standard practice with github. But remember, the monorepo is huge. So better use Sparse-checkout to checkout only what you need
+  - standard practice with github. But remember, the MonoREAPo is huge. So better use Sparse-checkout to checkout only what you need
 
 
 ## Final Intro Note

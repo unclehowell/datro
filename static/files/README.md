@@ -2,7 +2,7 @@
 
 ## Introduction
 
-* Files are hosted in our monorepo at this url:  https://github.com/unclehowell/datro/static/files/
+* Files are hosted in our MonoREAPo at this url:  https://github.com/unclehowell/datro/static/files/
 
 * The documents are presented here:  https://datro.xyz/static/datro/documents.html
 
