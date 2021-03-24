@@ -1,4 +1,4 @@
-# **DATRO Consortium**: 'gh-pages' Branch 
+# DATRO Consortium: 'gh-pages' Branch 
 
 Welcome to the DATRO Consortium Monorepo.  
 This public repository contains **[Four Branches](#Branches)** in total.   
