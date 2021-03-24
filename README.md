@@ -58,6 +58,5 @@ DATRO's full list of branches are displayed in the table below:
 |[gh-pages](https://github.com/unclehowell/datro/tree/gh-pages "gh-pages branch") | Website, Document, Dashboard, Media & more source code |
 |[net-installer](https://github.com/unclehowell/datro/tree/net-installer "DATRO Net-Installer Branch") | Autonomous compiler script (creates fresh autonomous, self-building disk image e.g. Hotspotβnβ) |
 |[netlify](https://github.com/unclehowell/datro/tree/netlify "DATRO Netlify Branch") | A modified version of the HBnB Dashboard, used to showcase our collection of websites |
-|[subrepos](https://github.com/unclehowell/datro/tree/subrepos "DATRO SubRepos Branch") | Stores Subrepos, giving DATRO a staging server of sorts, between users and developers |
-      
-     
+|[subrepos](https://github.com/unclehowell/datro/tree/subrepos "DATRO SubRepos Branch") | Stores Subrepos, giving DATRO a staging server of sorts, between users and developers | 
+ 
