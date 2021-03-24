@@ -5,7 +5,7 @@ This public repository contains **[Four Branches](#Branches)** in total.
 This particular branch is entitled: 'gh-pages' *(short for GitHub Pages)*  
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/unclehowell/datro/graphs/commit-activity)
-![Maintaner(https://img.shields.io/badge/maintainer-unclehowell-blue)](https://GitHub.com/unclehowell)
+[![Maintaner](https://img.shields.io/badge/maintainer-unclehowell-blue)](https://GitHub.com/unclehowell)
 
 ### Detailed Structure
 
