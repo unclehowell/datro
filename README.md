@@ -4,18 +4,6 @@ Welcome to the DATRO Consortium Monorepo.
 This public repository contains **[Four Branches](#Branches)** in total.   
 This particular branch is entitled: 'gh-pages' *(short for GitHub Pages)*  
 
-[![Join us on Discord][badge_discord]][link_discord]
-
-[![github issues][badge_issues]][link_issues]
-[![docker pulls][badge_docker]][link_docker]
-[![Support me on Github][badge_sponsor]][link_sponsor]
-
-<!-- 
-[![docker pulls][badge_docker]][link_docker]
-[![Support me on Github][badge_sponsor]][link_sponsor]
-[![github issues][badge_issues]][link_issues]
-[![Run build and publish][badge_build]][link_build] -->
-
 ### Detailed Structure
 
 The table below shows the content of this branch includes all the websites, the Hβnβ Dashboard(gui), the technical documents and some media e.g. academy videos etc
