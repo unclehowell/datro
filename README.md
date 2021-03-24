@@ -16,7 +16,7 @@ This particular branch is entitled: 'gh-pages' *(short for GitHub Pages)*
 
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
-[![made-with-bash](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)](https://www.gnu.org/software/bash/)  
+[![made-with-bash](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)](https://www.gnu.org/software/bash/)
 ![GitHub language count](https://img.shields.io/github/languages/count/unclehowell/datro)
 
 [![Website datro.xyz](https://img.shields.io/website-up-down-green-red/https/datro.xyz.svg)](https://datro.xyz/)
