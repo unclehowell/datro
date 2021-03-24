@@ -20,9 +20,6 @@ This particular branch is entitled: 'gh-pages' *(short for GitHub Pages)*
 [![made-with-bash](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)](https://www.gnu.org/software/bash/)
 ![GitHub language count](https://img.shields.io/github/languages/count/unclehowell/datro)
 
-[![Website datro.xyz](https://img.shields.io/website-up-down-green-red/https/datro.xyz.svg)](https://datro.xyz/)
-![W3C Validation](https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fdatro.xyz)  
-
 
 ### Detailed Structure
 
@@ -33,11 +30,13 @@ The table below shows the content of this branch includes all the websites, the 
 |[gh-pages](https://github.com/unclehowell/datro/tree/gh-pages "gh-pages branch") | Top level directory - basic stuff to make things to work e.g. CNAME, index etc     |
 |[gh-pages/static/gui](https://github.com/unclehowell/datro/tree/gh-pages/static/gui "gh-pages gui") | Serves as both the online demo and the end-users (localhost) dashboard              |
 |[gh-pages/static/files](https://github.com/unclehowell/datro/tree/gh-pages/static/files "gh-pages files") | All the documents, this is our document library                                     |
-|[gh-pages/static/datro](https://github.com/unclehowell/datro/tree/gh-pages/static/datro "gh-pages datro")   | The [DATRO Consortium](https://datro.world "DATRO Consortium") Website Homepage             |
-|[gh-pages/static/hbnb](https://github.com/unclehowell/datro/tree/gh-pages/static/hbnb "gh-pages Hotspotβnβ")  | The [Hotspotβnβ Software](https://hbnb.datro.world "Hotspotβnβ Software") Website Homepage  |
+|[gh-pages/static/datro](https://github.com/unclehowell/datro/tree/gh-pages/static/datro "gh-pages datro")   | The [DATRO Consortium](https://datro.world "DATRO Consortium") Website Homepage  [![Website datro.xyz](https://img.shields.io/website-up-down-green-red/https/datro.xyz.svg)](https://datro.xyz/)  [![W3C Validation](https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fdatro.xyz)     |
+|[gh-pages/static/hbnb](https://github.com/unclehowell/datro/tree/gh-pages/static/hbnb "gh-pages Hotspotβnβ")  | The [Hotspotβnβ Software](https://hbnb.datro.world "Hotspotβnβ Software") Website Homepage [![Website datro.world](https://img.shields.io/website-up-down-green-red/https/datro.world.svg)](https://datro.world/)
+![W3C Validation](https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fdatro.world)   |
 |[gh-pages/static/slides](https://github.com/unclehowell/datro/tree/gh-pages/static/slides "gh-pages Slides")  | All the slides, this is our slideshow library                                       |
 |[gh-pages/static/wave](https://github.com/unclehowell/datro/tree/gh-pages/static/wave "gh-pages Wave DApp")  | The Wave DApp website (JSECoin + Althea.net = Free Internet)                        |
-|[gh-pages/static/evr-network](https://github.com/unclehowell/datro/tree/gh-pages/static/evr-network "gh-pages EVR-Network")| The [EVR-Network](https://evr-network.datro.world "EVR-Network") Website Homepage           |
+|[gh-pages/static/evr-network](https://github.com/unclehowell/datro/tree/gh-pages/static/evr-network "gh-pages EVR-Network")| The [EVR-Network](https://evr-network.datro.world "EVR-Network") Website Homepage  [![Website evr-network.datro.world](https://img.shields.io/website-up-down-green-red/https/evr-network.datro.world.svg)](https://evr-network.datro.world/)
+![W3C Validation](https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fevr-network.datro.world)         |
 
 
   - Everything above is hosted for free on github (gh-pages)
