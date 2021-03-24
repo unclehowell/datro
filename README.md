@@ -5,9 +5,7 @@ This public repository contains **[Four Branches](#Branches)** in total.
 This particular branch is entitled: 'gh-pages' *(short for GitHub Pages)*  
 
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/unclehowell/datro?include_prereleases&style=plastic)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/unclehowell/datro?style=plastic)
 ![GitHub repo size](https://img.shields.io/github/repo-size/unclehowell/datro)
-![Lines of code](https://img.shields.io/tokei/lines/github/unclehowell/datro)  
 
 [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/unclehowell/datro/)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/unclehowell/datro/graphs/commit-activity)
