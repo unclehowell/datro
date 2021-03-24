@@ -7,6 +7,14 @@ This particular branch is entitled: 'gh-pages' *(short for GitHub Pages)*
 [![Website datro.xyz](https://img.shields.io/website-up-down-green-red/https/datro.xyz.svg)](https://datro.xyz/)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/unclehowell/datro/graphs/commit-activity)
 [![Maintaner](https://img.shields.io/badge/maintainer-unclehowell-blue)](https://GitHub.com/unclehowell)
+[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/unclehowell/)
+
+[![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
+[![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
+[![made-with-bash](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)](https://www.gnu.org/software/bash/)
+
+[![GitHub release](https://img.shields.io/github/release/unclehowell/datro.svg)](https://GitHub.com/unclehowell/datro/releases/)
+
 
 ### Detailed Structure
 
