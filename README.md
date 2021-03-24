@@ -4,6 +4,7 @@ Welcome to the DATRO Consortium Monorepo.
 This public repository contains **[Four Branches](#Branches)** in total.   
 This particular branch is entitled: 'gh-pages' *(short for GitHub Pages)*  
 
+[![Website datro.xyz](https://img.shields.io/website-up-down-green-red/https/datro.xyz.svg)](https://datro.xyz/)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/unclehowell/datro/graphs/commit-activity)
 [![Maintaner](https://img.shields.io/badge/maintainer-unclehowell-blue)](https://GitHub.com/unclehowell)
 
