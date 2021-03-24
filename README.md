@@ -4,18 +4,21 @@ Welcome to the DATRO Consortium Monorepo.
 This public repository contains **[Four Branches](#Branches)** in total.   
 This particular branch is entitled: 'gh-pages' *(short for GitHub Pages)*  
 
-[![Website datro.xyz](https://img.shields.io/website-up-down-green-red/https/datro.xyz.svg)](https://datro.xyz/)
-![W3C Validation](https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fdatro.xyz)
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/unclehowell/datro?include_prereleases&style=plastic)
+![GitHub top language](https://img.shields.io/github/languages/top/unclehowell/datro)
+![GitHub repo size](https://img.shields.io/github/repo-size/unclehowell/datro)
+![Lines of code](https://img.shields.io/tokei/lines/github/unclehowell/datro)
+
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/unclehowell/datro/graphs/commit-activity)
+[![Maintaner](https://img.shields.io/badge/maintainer-unclehowell-blue)](https://GitHub.com/unclehowell)
+[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/unclehowell/)
 
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
 [![made-with-bash](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)](https://www.gnu.org/software/bash/)
 
-![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/unclehowell/datro?include_prereleases&style=plastic)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/unclehowell/datro/graphs/commit-activity)
-[![Maintaner](https://img.shields.io/badge/maintainer-unclehowell-blue)](https://GitHub.com/unclehowell)
-[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/unclehowell/)
-
+[![Website datro.xyz](https://img.shields.io/website-up-down-green-red/https/datro.xyz.svg)](https://datro.xyz/)
+![W3C Validation](https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fdatro.xyz)
 
 
 ### Detailed Structure
