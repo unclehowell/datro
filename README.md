@@ -7,6 +7,7 @@ This particular branch is entitled: 'gh-pages' *(short for GitHub Pages)*
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/unclehowell/datro?include_prereleases)
 [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/unclehowell/datro/)
 ![GitHub repo size](https://img.shields.io/github/repo-size/unclehowell/datro)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/unclehowell/datro/graphs/commit-activity)
