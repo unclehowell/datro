@@ -4,6 +4,8 @@ Welcome to the DATRO Consortium Monorepo.
 This public repository contains **[Four Branches](#Branches)** in total.   
 This particular branch is entitled: 'gh-pages' *(short for GitHub Pages)*  
 
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+
 ### Detailed Structure
 
 The table below shows the content of this branch includes all the websites, the Hβnβ Dashboard(gui), the technical documents and some media e.g. academy videos etc
