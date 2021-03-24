@@ -8,28 +8,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.10] - Q1/2021
 
 ### Added
-23-Mar - Added `neodome`, `scottishbay`, `cacher` & `togo` subdirectories in `static`, since they'll have dedicated websites shortly too. 
-27-Feb - Directory Structure in README.md
-25-Feb - ES subrepo added - see static/gui changelog for details
-30-Jan - gui changes - app store etc - see gui changelog for more info
-27-Jan - added first app store page - caterogies only for look and feel demo purposes only. Incomplete work (see static/gui CHANGELOG.md) 
-14-Jan - introduced a new website for evr-network (bootstrap of datro.xyz)
-       - evr-network.live in GoDaddy forwards to evrnetwork.datro.world, then the javascript in the netlify splashpage brings up the website
+23-Mar - Added `neodome`, `scottishbay`, `cacher` & `togo` subdirectories in `static`, since they'll have dedicated websites shortly too.  
+27-Feb - Directory Structure in README.md  
+25-Feb - ES subrepo added - see static/gui changelog for details   
+30-Jan - gui changes - app store etc - see gui changelog for more info   
+27-Jan - added first app store page - caterogies only for look and feel demo purposes only. Incomplete work (see static/gui CHANGELOG.md)    
+14-Jan - introduced a new website for evr-network (bootstrap of datro.xyz)   
+       - evr-network.live in GoDaddy forwards to evrnetwork.datro.world, then the javascript in the netlify splashpage brings up the website   
 
 ### Changed 
-10-Mar - minor typo correction - see static/hbnb/changelog.md
-07-Mar - see static/gui changelog
-24-Feb - fetch.html changed in static/gui/app-store/apps/xxx-xxx/ - see corresponding changelog for details
-16-Feb - more work on gui - see static/gui changelog
-14-Feb - changed the way methodology for how screens pages load and the apps load - see static/gui changelog
-14-Feb - see changelog for static/gui and static/hbnb - just some minor minor edits
-12-Feb - made more changes to 'static/gui', see its dedicated changelog for details
-01-Feb - see changelog for 'static/gui' and 'static/evr-network' - minor edits
+10-Mar - minor typo correction - see static/hbnb/changelog.md   
+07-Mar - see static/gui changelog   
+24-Feb - fetch.html changed in static/gui/app-store/apps/xxx-xxx/ - see corresponding changelog for details   
+16-Feb - more work on gui - see static/gui changelog    
+14-Feb - changed the way methodology for how screens pages load and the apps load - see static/gui changelog    
+14-Feb - see changelog for static/gui and static/hbnb - just some minor minor edits   
+12-Feb - made more changes to 'static/gui', see its dedicated changelog for details   
+01-Feb - see changelog for 'static/gui' and 'static/evr-network' - minor edits   
 
-### Removed
-16-Feb - removed secret ssl keys from some 3rd parties embedded repo
-
-### Fixed
+### Removed   
+16-Feb - removed secret ssl keys from some 3rd parties embedded repo   
+    
+### Fixed   
 22-Feb - sorted 2 schoolboy erros on javascript on index.html e.g. <script> src="" </script>
 16-Feb - see static/gui changelog - search fixed
 16-Feb - removing the keys from the 3rd party repo (see ### removed above) caused a push and gh-pages build to fail because of a broken symlink
