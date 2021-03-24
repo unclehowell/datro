@@ -16,7 +16,6 @@ This particular branch is entitled: 'gh-pages' *(short for GitHub Pages)*
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/unclehowell/)  
 
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
-[![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
 [![made-with-bash](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)](https://www.gnu.org/software/bash/)
 ![GitHub language count](https://img.shields.io/github/languages/count/unclehowell/datro)
 
@@ -29,7 +28,7 @@ The table below shows the content of this branch includes all the websites, the 
 |:--------------------------|:------------------------------------------------------------------------------------|
 |[gh-pages](https://github.com/unclehowell/datro/tree/gh-pages "gh-pages branch") | Top level directory - basic stuff to make things to work e.g. CNAME, index etc     |
 |[gh-pages/static/gui](https://github.com/unclehowell/datro/tree/gh-pages/static/gui "gh-pages gui") | Serves as both the online demo and the end-users (localhost) dashboard              |
-|[gh-pages/static/files](https://github.com/unclehowell/datro/tree/gh-pages/static/files "gh-pages files") | All the documents, this is our document library                                     |
+|[gh-pages/static/files](https://github.com/unclehowell/datro/tree/gh-pages/static/files "gh-pages files") | All the documents, this is our document library [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)                                    |
 |[gh-pages/static/datro](https://github.com/unclehowell/datro/tree/gh-pages/static/datro "gh-pages datro")   |  [URL](https://datro.xyz/ "datro.xyz")  [![Website datro.xyz](https://img.shields.io/website-up-down-green-red/https/datro.xyz.svg)](https://datro.xyz/) ![W3C Validation](https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fdatro.xyz) |
 |[gh-pages/static/hbnb](https://github.com/unclehowell/datro/tree/gh-pages/static/hbnb "hbnb.datro.world")  |  [URL](https://datro.xyz/static/hbnb "datro.xyz/static/hbnb") [![Website datro.xyz/static/hbnb](https://img.shields.io/website-up-down-green-red/https/datro.xyz/static/hbnb.svg)](https://datro.xyz/static/hbnb) ![W3C Validation](https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fdatro.xyz/static/hbnb)   |
 |[gh-pages/static/slides](https://github.com/unclehowell/datro/tree/gh-pages/static/slides "gh-pages Slides")  | All the slides, this is our slideshow library                                       |
