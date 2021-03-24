@@ -27,9 +27,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 01-Feb - see changelog for 'static/gui' and 'static/evr-network' - minor edits   
 
 ### Removed   
+24-Mar - removed hbnb video from evr-network directory, basic housekeeping
 16-Feb - removed secret ssl keys from some 3rd parties embedded repo   
     
 ### Fixed   
+24-Mar - hbnb video corrupted , had to grab an old copy and overwrite
 22-Feb - sorted 2 schoolboy erros on javascript on index.html e.g. <script> src="" </script>   
 16-Feb - see static/gui changelog - search fixed   
 16-Feb - removing the keys from the 3rd party repo (see ### removed above) caused a push and gh-pages build to fail because of a broken symlink   
