@@ -9,6 +9,7 @@ This particular branch is entitled: 'gh-pages' *(short for GitHub Pages)*
 ![GitHub repo size](https://img.shields.io/github/repo-size/unclehowell/datro)
 ![Lines of code](https://img.shields.io/tokei/lines/github/unclehowell/datro)
 
+[![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/unclehowell/datro/)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/unclehowell/datro/graphs/commit-activity)
 [![Maintaner](https://img.shields.io/badge/maintainer-unclehowell-blue)](https://GitHub.com/unclehowell)
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/unclehowell/)
