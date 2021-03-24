@@ -13,7 +13,7 @@ This particular branch is entitled: 'gh-pages' *(short for GitHub Pages)*
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
 [![made-with-bash](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)](https://www.gnu.org/software/bash/)
 
-[![GitHub release](https://img.shields.io/github/release/unclehowell/datro.svg)](https://GitHub.com/unclehowell/datro/releases/)
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/unclehowell/datro?include_prereleases&style=flat-square)
 
 
 ### Detailed Structure
