@@ -12,6 +12,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 31-Jan - The Academy link was missing from the index page so I added it.
 
 ### Changed
+24-Mar - Noticed the video player has stopped functioning. So updated npm and re-installed the solution adopted, but no success locally. Will push and try remotely again later
 10-Mar - Academy.html said GPL was General Open Licence (bad case of find and replace by the looks of it) changed "Open" back to "Public" so it makes sense
 31-Jan - Html/statistics/website.html - few minor bug fixes - made it look better on mobile. 
 
