@@ -6,7 +6,6 @@ This particular branch is entitled: 'gh-pages' *(short for GitHub Pages)*
 
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/unclehowell/datro?include_prereleases)
 [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/unclehowell/datro/)
-![GitHub language count](https://img.shields.io/github/languages/count/unclehowell/datro)
 ![GitHub repo size](https://img.shields.io/github/repo-size/unclehowell/datro)
 
 
@@ -18,6 +17,7 @@ This particular branch is entitled: 'gh-pages' *(short for GitHub Pages)*
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
 [![made-with-bash](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)](https://www.gnu.org/software/bash/)  
+![GitHub language count](https://img.shields.io/github/languages/count/unclehowell/datro)
 
 [![Website datro.xyz](https://img.shields.io/website-up-down-green-red/https/datro.xyz.svg)](https://datro.xyz/)
 ![W3C Validation](https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fdatro.xyz)  
