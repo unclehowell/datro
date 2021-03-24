@@ -131,7 +131,7 @@ See the example below:
 
 To collaborate on the Files Library you will need to read and install the following:
 
-	```
+     ```
 	- sphinx-common
 
 	- http://www.sphinx-doc.org/en/master/  
@@ -139,7 +139,7 @@ To collaborate on the Files Library you will need to read and install the follow
 	- https://sphinx-rtd-theme.readthedocs.io/en/stable/installing.html  
 
 	- https://rst2pdf.org/  
-        ```
+     ```
 
 If you have Windows, you'll need to use the Linux command-line Windows "Sub-System"  
 Understanding Git is crucial e.g. Pull, Push, etc. (Git Desktop GUI for Windows Users)  
