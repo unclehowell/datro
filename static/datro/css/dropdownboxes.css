@@ -271,14 +271,15 @@ dl.dropdown2>img{
 	display:none
 }
 .carousel-dropdown dd ul li a{
-	padding:6px 0 6px 57px;
+	padding:6px 0 6px 16px;
 	color:#fff!important;
 	margin:0;
 	background-color:rgba(0,0,0,.1);
 	white-space:nowrap!important;
 	display:inline-block;
 	width:100%!important;
-	max-height:40px
+	max-height:40px;
+        text-align:right;
 }
 .dropdown-subtitle{
 	max-width:100%;

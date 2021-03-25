@@ -63,8 +63,12 @@ html {
 
 	              .btn, a.btn {display:inline-block; background:#333366!important; color:#fff; font-size:1rem; min-height:2rem;  text-align:center; border-radius:4px; padding:1px;  border:1px solid white!important; min-width:90px;   max-width:120px; width:30vw; margin:1px; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
 
-	              .glyphinbutton {*:unset!important;}
-
+.glyphinbutton {
+  all: initial!important;
+  * {
+    all: unset!important;
+  }
+}
 	                  @media (max-width: 600px) and (min-width: 345px) and (orientation: portrait) {
 	                  .video-iframe {min-height:45vw; min-width: 78vw; max-height: 48vw!important; max-width: 80vw!Important;}
 	                  }
@@ -155,11 +159,14 @@ html {
 													<dd>
 														<ul style="display: none; overflow-x:hidden;">
 															<li>
-																<a href="static/datro/technology.html" style="color:#66CCFF!important; white-space: nowrap!important; display:inline-block;"><b style="color:white; font-size:85%;margin-left:-5px; font-weight:300!important;">Technology</b> <span class="glyphicon glyphicon-download">&nbsp;</span></a>
+																
+<a href="static/datro/technology.html" style="color:#66CCFF!important; white-space: nowrap!important; display:inline-block;">
+<b style="color:white; font-size:85%;margin-right:10px; font-weight:300!important;">Technologies</b> 
+<span class="glyphicon glyphicon-download">&nbsp;</span></a>
 															</li>
 															<li style="list-style: none"><span class="glyphicon glyphicon-arrow-down" style="text-align:center; color: white; margin-left:50%; opacity:0;">&nbsp;</span></li>
 															<li>
-																<a href="static/datro/documents.html" style="color:#66CCFF!important;"><b style="color:white; font-size:85%; margin-left:-5px;font-weight:300!important;">Documents</b> <span class="glyphicon glyphicon-book">&nbsp;</span></a>
+																<a href="static/datro/documents.html" style="color:#66CCFF!important;"><b style="color:white; font-size:85%; margin-right:10px;font-weight:300!important;">Documents</b> <span class="glyphicon glyphicon-book">&nbsp;</span></a>
 															</li>
 															<li style="list-style: none"><span class="glyphicon glyphicon-arrow-down glyphinbutton" style="">&nbsp;</span></li>
 														</ul>
@@ -191,11 +198,14 @@ html {
 													<dd>
 														<ul style="display: none; overflow-x:hidden;">
 															<li>
-																<a href="static/datro/technology.html" style="color:#66CCFF!important; white-space: nowrap!important; display:inline-block;"><b style="color:white; font-size:85%;margin-left:-5px; font-weight:300!important;">Technology</b> <span class="glyphicon glyphicon-download" id="dropdown-glyph">&nbsp;</span></a>
+																
+<a href="static/datro/technology.html" style="color:#66CCFF!important; white-space: nowrap!important; display:inline-block;">
+<b style="color:white; font-size:85%;margin-right:10px; font-weight:300!important;">Technologies</b> 
+<span class="glyphicon glyphicon-download">&nbsp;</span></a>
 															</li>
 															<li style="list-style: none"><span class="glyphicon glyphicon-arrow-down" style="text-align:center; color: white; margin-left:50%; opacity:0;">&nbsp;</span></li>
 															<li>
-																<a href="static/datro/documents.html" style="color:#66CCFF!important;"><b style="color:white; font-size:85%; margin-left:-5px;font-weight:300!important;">Documents</b> <span class="glyphicon glyphicon-book">&nbsp;</span></a>
+																<a href="static/datro/documents.html" style="color:#66CCFF!important;"><b style="color:white; font-size:85%; margin-right:10px;font-weight:300!important;">Documents</b> <span class="glyphicon glyphicon-book">&nbsp;</span></a>
 															</li>
 															<li style="list-style: none"><span class="glyphicon glyphicon-arrow-down" style="text-align:center; color: white; margin-left:50%; opacity:0;">&nbsp;</span></li>
 														</ul>
@@ -212,20 +222,17 @@ html {
 			</div>
 		</div><span class="sexy_line"></span>
 		<div class="segment">
-			<br>
+			<br/>
 
 			<div style="display:inline-block;background:transparent; margin-bottom:40px;width:100%; height:auto; text-align:center;">
 				<iframe class="video-iframe" src="static/datro/html/videos/intro-hbnb.html" style="max-width:90vw; width:545px; height:318px; text-align:center;"></iframe>
 			</div>
-			<p class="segment-paragraph"><br>
-			<b style="font-weight:400;color:rgba(255,255,255,0.7);">DATR<span class="copy-left">&#xa9;</span></b> is researching and developing a broad range of technologies which work together to reduce our dependacy (and spend) on internet connectivity. Allowing any member of the public, in urban and rural areas, to stop paying centrally-controlled corporations for access to the internet </br>
-			As of 2020 more than 1 billion wireless access points exist in the world. <b style="font-weight:400;color:rgba(255,255,255,0.7);">DATR<span class="copy-left">&#xa9;</span></b> is sourcing our solution to every member of the public in the form of a free and universal software upgrade for these common household devices. And each year we pledge to make our solution compatible with 50 million more, pre-existing devices. Since the software enables wireless access points to mesh network, connectivity can now grow into areas without access to internet - without expensive and complex operations, technologies or licences. <b style="font-weight:400;color:rgba(255,255,255,0.7);">DATR<span class="copy-left">&#xa9;</span></b> is of the people: Built for the people, by the people.
-			</br>
-		<b style="font-weight:400;color:rgba(255,255,255,0.7);">DATR<span class="copy-left">&#xa9;</span></b> upgrades your existing wireless access point fully-autonomously (Alternatively our wireless access point software can be installed to a separate single board computer, such as a Raspberry Pi and connected to your wireless router via ethernet). The source code's all in the public domain, for complete transparency. And our solution's 100% free for life. And it works in conjunction with your existing Internet Service Provider (ISP) - so there's no need to be a tech genius to install it, or a private investigator to understand it. You don't need to pay fees or break and sign contracts, or change your ISP or hardware.
-
-			</br>
-			<p class="segment-paragraph"><br>This website features all the initial software, documents and training videos, allowing anyone to upgrade their wireless access point and get started with <b style="font-weight:400;color:rgba(255,255,255,0.7);">DATR<span class="copy-left">&#xa9;</span></b>. Once you've upgraded, you'll be able to explore and install applications directly to your wireless access point for the first time ever. The free applications being developed for our app-store will blow your mind. There's an iptv and offline media center, energy and camera monitor and a wide selection of virtualized game stations, with virtualized gamepad controllers - all simultaniously accessible from any web-browser of any mobile device, wirelessly connected to your <b style="font-weight:400;color:rgba(255,255,255,0.7);">DATR<span class="copy-left">&#xa9;</span></b> wireless hotspot.</p></br>
-			</br></p>
+			<p class="segment-paragraph"><br/>
+			<b style="font-weight:400;color:rgba(255,255,255,0.7);">DATR<span class="copy-left">&#xa9;</span></b> is researching and developing a broad range of technologies which work together to reduce our dependacy (and spend) on internet connectivity. Allowing any member of the public, in urban and rural areas, to stop paying centrally-controlled corporations for access to the internet.
+                        </p><p class="segment-paragraph">As of 2020 more than 1 billion wireless access points exist in the world. <b style="font-weight:400;color:rgba(255,255,255,0.7);">DATR<span class="copy-left">&#xa9;</span></b> is sourcing our solution to every member of the public in the form of a free and universal software upgrade for these common household devices. And each year we pledge to make our solution compatible with 50 million more, pre-existing devices. Since the software enables wireless access points to mesh network, connectivity can now grow into areas without access to internet - without expensive and complex operations, technologies or licences. <b style="font-weight:400;color:rgba(255,255,255,0.7);">DATR<span class="copy-left">&#xa9;</span></b> is of the people: Built for the people, by the people.
+			</p><p class="segment-paragraph"><b style="font-weight:400;color:rgba(255,255,255,0.7);">DATR<span class="copy-left">&#xa9;</span></b> upgrades your existing wireless access point fully-autonomously (Alternatively our wireless access point software can be installed to a separate single board computer, such as a Raspberry Pi and connected to your wireless router via ethernet). The source code's all in the public domain, for complete transparency. And our solution's 100% free for life. And it works in conjunction with your existing Internet Service Provider (ISP) - so there's no need to be a tech genius to install it, or a private investigator to understand it. You don't need to pay fees or break and sign contracts, or change your ISP or hardware.
+                        </p><p class="segment-paragraph">This website features all the initial software, documents and training videos, allowing anyone to upgrade their wireless access point and get started with <b style="font-weight:400;color:rgba(255,255,255,0.7);">DATR<span class="copy-left">&#xa9;</span></b>. Once you've upgraded, you'll be able to explore and install applications directly to your wireless access point for the first time ever. The free applications being developed for our app-store will blow your mind. There's an iptv and offline media center, energy and camera monitor and a wide selection of virtualized game stations, with virtualized gamepad controllers - all simultaniously accessible from any web-browser of any mobile device, wirelessly connected to your <b style="font-weight:400;color:rgba(255,255,255,0.7);">DATR<span class="copy-left">&#xa9;</span></b> wireless hotspot.
+          		</p>
 
 			<div style="display:inline-block;width:100vw;text-align:center;"></div>
 		</div>
