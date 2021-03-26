@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 14-Jan - evr-network.live in GoDaddy forwards to evrnetwork.datro.world, then the javascript in the netlify splashpage brings up the website   
 
 ### Changed 
+25-Mar - link to facebook was incorrect on datro website, fixed it sitewide
 10-Mar - minor typo correction - see static/hbnb/changelog.md   
 07-Mar - see static/gui changelog   
 24-Feb - fetch.html changed in static/gui/app-store/apps/xxx-xxx/ - see corresponding changelog for details   

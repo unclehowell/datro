@@ -71,6 +71,7 @@ and a combination of [Prince2 Project Management](https://prince2.com).
          self-aware but not with actual AI. But rather just some simple javascript which looks at the address bar - we've added the following label to the pages that perform this function *[-lookup].html
 
 #### Fixed
+25-Mar - webcache wasn't working. found solution by comparing sourcecode from when it was. a simple fix
 08-Mar - gamepad demo screen wasn't loading remotely, sorted it. EmulationStation now removed from demo screen, but kept in appstore
 21-Feb - the search results on the demo search pages wasn't working - look like the actual search pages were showing on the public demo too, not the demo search pages 
 20-Feb - style.css for 005-002 (netdata) was a template one, needed updating. Fixed it! 
