@@ -69,7 +69,7 @@
 @media screen and (max-width: 900px) {
 .square-002-003, .square-002-003-doc  {
     min-width: 25vw;
-    min-height: 16vw;
+min-height: calc(7vh + 2vw)!important;
     line-height: 8vw;
 }
 }
