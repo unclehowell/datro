@@ -6,6 +6,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [files.03] - Q1/2021
+
+### Added 
+27-Mar - Trying to get docs library to work with readthedocs by adding .readthedocs.yml
+
 ## [0.0.2] - Q3/2020
 
 ### Added
