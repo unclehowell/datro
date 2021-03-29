@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 16-Feb - removed secret ssl keys from some 3rd parties embedded repo  
 
 ### Fixed
+29-Mar - static/gui - fixed broken link - see gui changelog
 25-Mar - more wc3 validating (index.html only)
 24-Mar - wc3 validator fixes - https://pastebin.com/Au8ZEHmd  
 24-Mar - hbnb video corrupted , had to grab an old copy and overwrite  

@@ -10,7 +10,6 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 ## [0.0.1-rtw.10-gui] - Q1/2021
 
 #### Added
-
 08-Mar - emoncms webapp and interactive online demo
        - added &embed=1 to the end of the url to hide the bright blue top bar
        - added min-width:100vw; to html class in appstore.css because it went to about 90vw when the chrome download bar was visible
@@ -73,41 +72,41 @@ and a combination of [Prince2 Project Management](https://prince2.com).
          self-aware but not with actual AI. But rather just some simple javascript which looks at the address bar - we've added the following label to the pages that perform this function *[-lookup].html
 
 #### Fixed
-25-Mar - webcache wasn't working. found solution by comparing sourcecode from when it was. a simple fix
-08-Mar - gamepad demo screen wasn't loading remotely, sorted it. EmulationStation now removed from demo screen, but kept in appstore
-21-Feb - the search results on the demo search pages wasn't working - look like the actual search pages were showing on the public demo too, not the demo search pages
-20-Feb - style.css for 005-002 (netdata) was a template one, needed updating. Fixed it!
-19-Feb - minor edit, broken link in the docs page.
-16-Feb - the G.ES.K.N (guacamole, emulationstation,kodi,netflix) fetch file was wrong, it pointed to the gamepad app. corrected it
-16-Feb - search wasn't searching. Jquery issues, fixed
-12-Feb - entertainment screen wasn't loading, fixed the bug
-12-Feb - removed some buggy css from all pages e.g. body{opacity: 0.9;transition: opacity 2s; -webkit-transition: opacity 2s; /* Safari */}
-         it may have been buggy because in a lot of pages it didn't have an opening bracket where one should have been.
+29-Mar - fixed broken link to files in the openhab doc (demo) since the target file was moved  
+25-Mar - webcache wasn't working. found solution by comparing sourcecode from when it was. a simple fix  
+08-Mar - gamepad demo screen wasn't loading remotely, sorted it. EmulationStation now removed from demo screen, but kept in appstore  
+21-Feb - the search results on the demo search pages wasn't working - look like the actual search pages were showing on the public demo too, not the demo search pages  
+20-Feb - style.css for 005-002 (netdata) was a template one, needed updating. Fixed it!  
+19-Feb - minor edit, broken link in the docs page.  
+16-Feb - the G.ES.K.N (guacamole, emulationstation,kodi,netflix) fetch file was wrong, it pointed to the gamepad app. corrected it  
+16-Feb - search wasn't searching. Jquery issues, fixed  
+12-Feb - entertainment screen wasn't loading, fixed the bug  
+12-Feb - removed some buggy css from all pages e.g. body{opacity: 0.9;transition: opacity 2s; -webkit-transition: opacity 2s; /* Safari */}  
+         it may have been buggy because in a lot of pages it didn't have an opening bracket where one should have been.  
 
-#### Removed
-14-Mar - removed old images from app-store and dashboard img or /media/img files. It was making the svn checkout bigger than it needed to be
-03-Mar - removed subrepos. Decided on creating a seperate branch for subrepo's
-02-Mar - had to remove a .svn because it caused an error when running `svn checkout` on a local machine (featured in the HotspotBnB Build script)
-15-Feb - removed CNAME from static/gui, it wasn't correect anyway. only downside having there, can't see any upside.
+#### Removed  
+14-Mar - removed old images from app-store and dashboard img or /media/img files. It was making the svn checkout bigger than it needed to be  
+03-Mar - removed subrepos. Decided on creating a seperate branch for subrepo's  
+02-Mar - had to remove a .svn because it caused an error when running `svn checkout` on a local machine (featured in the HotspotBnB Build script)  
+15-Feb - removed CNAME from static/gui, it wasn't correect anyway. only downside having there, can't see any upside.  
 
 ### ISSUES,RISKS,CONCERNS
-
-19-Feb - our server hosting our webapps has issues. Working to resolve.
-12-Feb - Because of the screen-selector solution that has been implimented the backspace doesn't work in some cases.
+19-Feb - our server hosting our webapps has issues. Working to resolve.  
+12-Feb - Because of the screen-selector solution that has been implimented the backspace doesn't work in some cases.  
 12-Feb - Browser cache doesn't appear to be storing the title change when offline.  
 
 ## [0.0.1-gui.2] - Q4/2020
 
 ### Changed
-14-Dec - Favicons updated to new Logo design
-11-Dec - Docs (for the Apps) poped up with a blue border. Changed to grey to match GUI theme (gui).
-30-Oct - Copied latest GUI design over & Made search splashpage better
+14-Dec - Favicons updated to new Logo design  
+11-Dec - Docs (for the Apps) poped up with a blue border. Changed to grey to match GUI theme (gui).  
+30-Oct - Copied latest GUI design over & Made search splashpage better  
 
 ### Fixed
 
 ## [0.0.1-gui.1] - Q3/2020
-20-Sep - The website interactive dashboard demo/ actual dashboard,
-         evolved into the datro consortium page selector, which has evolved into a beta dashboard we now call, gui.
+20-Sep - The website interactive dashboard demo/ actual dashboard,  
+         evolved into the datro consortium page selector, which has evolved into a beta dashboard we now call, gui. 
          A seperate branch has been created for the gui, so the live build and trial can sync to github as a sort of backup.
 
 ### Added
