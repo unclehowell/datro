@@ -1,43 +1,30 @@
-Wave Roytalty Tokens™ (WRT)
+DATRO Investors (Detailed)
 ============================
 
-Wave® Roytalty Tokens™ (WRT Coins) were introduced for our Investors and Lenders as part of the Wave® Initial Coin Offering (ICO). 
-The 2019 ICO also included the launch of two other Tokens: The Wave® Interest Tokens™ (WIT) and Wave® Impact Notes™ (WIN). 
-This document focuses on the Wave® Roytalty Tokens™. 
+This publication reports the latest data corresponding to the DATRO Consortium's investment accounts and the Annual Rate of Interest (APR) accumulated on all deposits made by investors.
+This document also introduces readers to the innovative methodology DATRO adopts for managing investment accounts. A methodology which, in every way imaginable, outperform the traditional/ institutional approaches e.g. shares in a company and/or quarterly/ annually dividends (via fiat currency and banks) etc
 
-Wave® Roytalty Tokens™ accounts generate an Annual Rate of Interest (APR) of 16.6%+ on all deposits.
-But what makes WRT Coins exceptional, is that they replace the traditional system of shares. 
-Roytalty Tokens™ reflect ownership of Wave®. This means profits from our technology go to Wave® Roytalty Token™ holders.  
-Funds from WRT Coins help finance the development of Wave® technology and our organisation.  
+The DATRO Consortium is, by design, able to operate fully autonomously, with full annonymity and without a central point of control. 
+For this reason a blockchain and cryptocurrency is used to manage ownership of the consortium, voting rights and distribution of royalties and interest to the consortiums various groups of beneficiaries - especially and including DATRO's investors. 
 
-WRT Coins are based on cryptocurrency Ethereum. Offering token holders freedom unlike anything a traditional currency and bank can provide. 
-Whether you prefer managing your money online, or through a real person by phone, you’ll be glad to know that you can manage your WRT Coins however you want.
-
-the Securities Exchange facilitates the buying and selling of your WRT Coins. 
-The Securities Exchange can be located on our website ( https://wave.hotspotbnb.com ).
-Also included on our website is a free cryptocurrency wallet, for storing your WRT Coins. 
-
-To learn more about Wave® Roytalty Tokens ™, please proceed to the introduction segment of this document. 
 
 
 .. toctree::
    :maxdepth: 2
    
-   releasenotes
-   introduction
-   wrt-summary
-   wrt-interest
-   wrt-detail
- 
-   
-
+   releasenotes  
+   introduction  
+   summary-seed  
+   detailed-seed  
+   summary-startup
+   detailed-startup
 
  
-**Document Author(s):** 
+**Document Author:** 
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 =====================
-Wave Telecom Limited
+Sion Buckler, Founder
 =====================
 
 

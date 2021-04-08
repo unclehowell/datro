@@ -7,6 +7,7 @@ version = u'0.0.1'
 release = u'0.0.1-XX.1'
 
 extensions = ['sphinx.ext.autosectionlabel']
+suppress_warnings = ['autosectionlabel.*']
 
 templates_path = ['_templates']
 

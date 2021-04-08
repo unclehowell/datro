@@ -38,7 +38,10 @@ Run 'make' in that directory to run these through (pdf)latex
 (use `make latexpdf' here to do that automatically).
 make[1]: Entering directory '/var/www/html/datro-gh-pages/static/files/coming-soon/grey-theme/latest/build/latex'
 latexmk -pdf -dvi- -ps-  'coming-soon.tex'
-Latexmk: This is Latexmk, John Collins, 26 Dec. 2019, version: 4.67.
+Rc files read:
+  /etc/LatexMk
+  latexmkrc
+Latexmk: This is Latexmk, John Collins, 17 Apr. 2020, version: 4.69a.
 Rule 'pdflatex': The following rules & subrules became out-of-date:
       'pdflatex'
 ------------
@@ -48,12 +51,12 @@ Run number 1 of rule 'pdflatex'
 Running 'pdflatex   -recorder  "coming-soon.tex"'
 ------------
 Latexmk: applying rule 'pdflatex'...
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./coming-soon.tex
-LaTeX2e <2020-02-02> patch level 2
-L3 programming layer <2020-02-14> (./sphinxmanual.cls
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-07-17> (./sphinxmanual.cls
 Document Class: sphinxmanual 2019/12/01 v2.3.0 Document class (Sphinx manual)
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2019/12/20 v1.4l Standard LaTeX document class
@@ -70,10 +73,9 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def)
-(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
-(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
 (/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
@@ -112,7 +114,7 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 (/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
 (/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
 (/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
@@ -198,7 +200,7 @@ e/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utm
 r8a.pfb>
-Output written on coming-soon.pdf (5 pages, 51119 bytes).
+Output written on coming-soon.pdf (5 pages, 51121 bytes).
 Transcript written on coming-soon.log.
 Latexmk: Index file 'coming-soon.idx' was written
 Latexmk: Missing input file: 'coming-soon.ind' from line
@@ -217,7 +219,7 @@ Running 'makeindex -s python.ist  -o "coming-soon.ind" "coming-soon.idx"'
 ------------
 === TeX engine is 'pdfTeX'
 Latexmk: applying rule 'makeindex coming-soon.idx'...
-This is makeindex, version 2.15 [TeX Live 2019] (kpathsea + Thai support).
+This is makeindex, version 2.15 [TeX Live 2020] (kpathsea + Thai support).
 Scanning style file ./python.ist.......done (7 attributes redefined, 0 ignored).
 Scanning input file coming-soon.idx...done (0 entries accepted, 0 rejected).
 Nothing written in coming-soon.ind.
@@ -234,12 +236,12 @@ Run number 2 of rule 'pdflatex'
 Running 'pdflatex   -recorder  "coming-soon.tex"'
 ------------
 Latexmk: applying rule 'pdflatex'...
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./coming-soon.tex
-LaTeX2e <2020-02-02> patch level 2
-L3 programming layer <2020-02-14> (./sphinxmanual.cls
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-07-17> (./sphinxmanual.cls
 Document Class: sphinxmanual 2019/12/01 v2.3.0 Document class (Sphinx manual)
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2019/12/20 v1.4l Standard LaTeX document class
@@ -256,10 +258,9 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def)
-(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
-(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
 (/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
@@ -298,7 +299,7 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 (/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
 (/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
 (/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
@@ -377,7 +378,7 @@ less on input line 163.
 hare/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb>
-Output written on coming-soon.pdf (5 pages, 54754 bytes).
+Output written on coming-soon.pdf (5 pages, 54755 bytes).
 Transcript written on coming-soon.log.
 Latexmk: Index file 'coming-soon.idx' was written
 Latexmk: Log file says output to 'coming-soon.pdf'
@@ -392,12 +393,12 @@ Running 'pdflatex   -recorder  "coming-soon.tex"'
 ------------
 === TeX engine is 'pdfTeX'
 Latexmk: applying rule 'pdflatex'...
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./coming-soon.tex
-LaTeX2e <2020-02-02> patch level 2
-L3 programming layer <2020-02-14> (./sphinxmanual.cls
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-07-17> (./sphinxmanual.cls
 Document Class: sphinxmanual 2019/12/01 v2.3.0 Document class (Sphinx manual)
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2019/12/20 v1.4l Standard LaTeX document class
@@ -414,10 +415,9 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def)
-(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
-(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
 (/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
@@ -456,7 +456,7 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 (/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
 (/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
 (/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
@@ -535,10 +535,10 @@ less on input line 163.
 hare/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb>
-Output written on coming-soon.pdf (5 pages, 54754 bytes).
+Output written on coming-soon.pdf (5 pages, 54755 bytes).
 Transcript written on coming-soon.log.
 Latexmk: Index file 'coming-soon.idx' was written
 Latexmk: Log file says output to 'coming-soon.pdf'
 === TeX engine is 'pdfTeX'
-Latexmk: All targets () are up-to-date
+Latexmk: All targets (coming-soon.pdf) are up-to-date
 make[1]: Leaving directory '/var/www/html/datro-gh-pages/static/files/coming-soon/grey-theme/latest/build/latex'

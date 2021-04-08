@@ -1,6 +1,6 @@
 #! /bin/bash
 
-#unset CDPATH
+unset CDPATH
 
 
 #.......................................................
@@ -67,8 +67,8 @@ do
 done
 
 make latexpdf > build.log 2>&1
-cd build
-cd latex
+cd build &&
+cd latex &&
 find . -type f ! -iname "*.pdf" -delete &&
 cd ../../
 printf "\e[2;3;33m Done! \n\e[0m"
@@ -81,7 +81,7 @@ do
 done
 
 printf "\e[2;3;33m Done! \n\e[0m" &
-
+sleep 10 &&
 sed -i 's/<\/head>/<style>html{overflow-y:scroll;} ::-webkit-scrollbar{width:0px;background:transparent;}<\/style><\/head>/g' build/html/*.html &&
 sed -i 's/ View page source/ /g' build/html/*.html &&
 sed -i 's/<div class="version">/<div class="version"> Document Version : /g' build/html/*.html &&
@@ -175,10 +175,8 @@ done
 # making sure the auto-rebuild.sh is the latest version, for the next auto-build
 rm -r auto-rebuild.sh 2> /dev/null &
 #sleep 0.1
-bash ../../../_grey-build-source/update.sh 2> /dev/null &
+bash ../../../_theme-grey/update.sh 2> /dev/null &
 #sleep 0.1
-printf "\e[2;3;33m Finished! \n\e[0m\n" &
-sleep 0.1
-cp -r ../../../_grey-build-source/auto-rebuild-master.sh auto-rebuild.sh 2> /dev/null &
-sleep 0.1
-exit
+cp -r ../../../_theme-grey/auto-rebuild-master.sh auto-rebuild.sh 2> /dev/null &&
+printf "\e[2;3;33m Finished! \n\e[0m\n" &&
+exit 1

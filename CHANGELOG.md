@@ -5,6 +5,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.1-rtw.11] - Q2/2021
+
+### Changed
+07-Apr - Worked on static/files/ (datro-consortium/consortium-investors) - see static/files/CHANGELOG.md and changelog in document for details  
+05-Apr - Minor edit to static/datro/documents.html - see corresponding changelog for details
+
+### Fixed
+05-Apr - Minor security fix in static/datro - see corresponding changelog for details
+
 ## [0.0.1-rtw.10] - Q1/2021
 
 ### Added
@@ -17,7 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 14-Jan - evr-network.live in GoDaddy forwards to evrnetwork.datro.world, then the javascript in the netlify splashpage brings up the website   
 
 ### Changed 
-25-Mar - link to facebook was incorrect on datro website, fixed it sitewide
+25-Mar - link to facebook was incorrect on datro website, fixed it sitewide  
 10-Mar - minor typo correction - see static/hbnb/changelog.md   
 07-Mar - see static/gui changelog   
 24-Feb - fetch.html changed in static/gui/app-store/apps/xxx-xxx/ - see corresponding changelog for details   
@@ -96,5 +105,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - I installed the php extension imagick.so to the localmachine and php.ini file and it's throwing up an apache error with the demo  
 - But weirdly not the wordpress websites. I installed it to clear a wordpress health report error. All we know at this point.  
 
-[Unreleased]: https://github.com/unclehowell/hbnb/compare/v0.0.1-rtw.7...HEAD  
-[0.0.1-rtw.7]: https://github.com/unclehowell/hbnb/compare/v0.0.1-rc.7...v0.0.1-rtw.7  
+[Unreleased]: https://github.com/unclehowell/hbnb/compare/v0.0.1-rtw.11...HEAD  
+[0.0.1-rtw.10]: https://github.com/unclehowell/hbnb/compare/v0.0.1-rc.10...v0.0.1-rtw.10  

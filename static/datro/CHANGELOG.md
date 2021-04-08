@@ -6,6 +6,18 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [static-datro.03] - Q2/2021
+
+### Changed
+05-Apr - Intro text on docs page was re-written. 
+05-Apr - Changed the semantic version and the prefix of this directory - the full semantic version is now `0.0.1-rtw.11-static-datro.03`
+       - `0.0.1-rtw.11` is the branch e.g. "Release to Web (RTW)"
+       - `static-datro.03` is added to the end to reflect this subdirectories version'
+       -  must find a way to use semantic version badges on the published content too to save viewing the changelogs for version numbers   
+
+### Fixed
+05-Apr - There was a security vunerablity in html/videos/package-lock.json - fixed it as per github's suggestion (upping the version of a package to the latest)  
+
 ## [0.0.2] - Q1/2021
 
 ### Added

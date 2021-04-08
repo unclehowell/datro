@@ -18,7 +18,7 @@ c) this method keeps the depth of the file structure to 2. Which the custom auto
 ## The File Structure
 
 Top Level Directory we call "TLD"  
---depth 1 contains the sphinx document source-code directories (also containing compile scripts and compiled html & pdf) 
+--depth 1 contains the sphinx document source-code directories (also containing compile scripts and compiled html & pdf)
 
 TLD directories are labeled `subsidiaryID`  
 followed by a dash (`-`) and then `categoryID`.  
@@ -97,7 +97,7 @@ The low depth of the Files Library is also important for the custom scripts to f
  | ├──          'technical - development_guide'  
  | ├──          'slideshow - product_intro'  
  ```
- 
+
 ## How it Works  
 
 Within each "Top Level" Directory are sphinx document folders, which contains two sub directories:  
@@ -147,7 +147,7 @@ Understanding Git is crucial e.g. Pull, Push, etc. (Git Desktop GUI for Windows 
 ### Other Dependencies
 
 ```
-apt install texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra  
+apt install texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra texlive-luatex
 
 pip3 install -U sphinx (updates sphinx so that extension 'sphinx.ext.autosectionlabel' works).  
 
@@ -158,7 +158,7 @@ sudo apt install latexmk
 sudo apt-get install xdg-utils  
 ```
 
-To open index.html & *.pdf from commandline use xdg-open e.g. `xdg-open build/html/index.html` or `xdg-open build/latex/business-plan.pdf` 
+To open index.html & *.pdf from commandline use xdg-open e.g. `xdg-open build/html/index.html` or `xdg-open build/latex/business-plan.pdf`
 
 
 ## Getting Started
@@ -174,7 +174,7 @@ Remember in both cases to following the file structure, as explained at the top 
 ### New Version
 Before a new version of a document can be produced, you must archive the current version.  
 If there are existing versions, you will see them as the titles of the sub-directories in the sphinx document directory e.g. 0-0-1, 0-0-2 etc  
-Obviously the current version you are archieving, will be labelled as the next in the sequence e.g. 0-0-3  
+Obviously the current version you are archiving, will be labeled as the next in the sequence e.g. 0-0-3  
 
 1. Create a folder entitled x-x-x (the version number).  
 
@@ -215,14 +215,14 @@ It's also best practice to number and title each image as follows .. Fig 1.0 - I
 The consistent method of doing this is as follows:  
 
 * **Fig 1.0** - *Image Title*
-* 
+*
 The first star creates a bullet point which is the best way to center align the text.  
 The Fig x.x is in bold (using the two stars are the beginning and end)  
 The Image Title is in italics (using the single star at the beginning and end)  
 If the text above the image overflows then forget bullet pointing the line.  
 
 ## Source Files (self-updating build script)
-These source files work in conjuntion with the update-all process: 
+These source files work in conjuntion with the update-all process:
 
 - Update-all is our way of bulk rebuilding all the documents in this Files Library.  
 - There's an update-all.sh in each sub-directory e.g. management, services, hardware etc  
@@ -233,7 +233,7 @@ These source files work in conjuntion with the update-all process:
 The purpose of the script files contained in this directory are as follows:  
 
 **updater.sh** : gets the latest copy of the two *-master.sh files (it only allow itself to be run twice an hour to reduce server traffic)  
-**rebuild-master.sh** : found in every sphinx document folder (entitled rebuild.sh),it custom builds the rst files into PDF and HTML and updates the auto-rebuild 
+**rebuild-master.sh** : found in every sphinx document folder (entitled rebuild.sh),it custom builds the rst files into PDF and HTML and updates the auto-rebuild
 **auto-rebuild-master.sh** : placed in every sphinx document folder (entitled auto-rebuild.sh). Used by update-all.sh to update the rebuild.sh file before running it.  
 
 
@@ -242,7 +242,7 @@ The purpose of the script files contained in this directory are as follows:
 The directory structure and file locations are as follows:  
 
 ```
-  _blue-build-source/ 
+  _blue-build-source/
 
 	- updater.sh   
 	- rebuild-master.sh    
