@@ -90,7 +90,7 @@
    90  ls
    91  cd /var/www/html
    92  ls
-   93  wget -c https://www.dni.gov/files/NCSC/documents/Regulations/Technical-Specifications-SCIF-Construction.pdf
+   93  wget -c https://www.dni.gov/library/NCSC/documents/Regulations/Technical-Specifications-SCIF-Construction.pdf
    94  sudo apt-get update && apt-get upgrade -y
    95  sudo add-apt-repository ppa:obsproject/obs-studio
    96  sudo apt-get update && apt-get upgrade -y
@@ -3600,7 +3600,7 @@
  3600  find ./ -type f -exec sed -i 's/files\/client-os\/client-os-guide\/build\/html\/files\/client-hardware\/client-hardware-dome_guide\/latest\/build\/html\/n' {} \;
  3601  find ./ -type f -exec sed -i 's/files\/client-os\/client-os-guide\/build\/html\/files\/client-hardware\/client-hardware-dome_guide\/latest\/build\/html\/g' {} \;
  3602  find ./ -type f -exec sed -i 's/files\/client-os\/client-os-guide\/build\/html\/files\/client-hardware\/client-hardware-dome_guide\/latest\/build\/html\/gI' {} \;
- 3603  find ./ -type f -exec sed -i 's/files/\client-os/\client-os-guide/\build/\html/\files/\client-hardware/\client-hardware-dome_guide/\latest/\build/\html/\/gI' {} \;
+ 3603  find ./ -type f -exec sed -i 's/library/\client-os/\client-os-guide/\build/\html/\files/\client-hardware/\client-hardware-dome_guide/\latest/\build/\html/\/gI' {} \;
  3604  grep -rli '/files\/client-os\/client-os-guide\/build\/html/' * | xargs -i@ sed -i 's/files\/client-hardware\/client-hardware-dome_guide\/latest\/build\/html//g' @
  3605  grep -rli '/files\/client-os\/client-os-guide\/build\/html/' * | xargs -i@ sed -i 's//files\/client-os\/client-os-guide\/build\/html/files\/client-hardware\/client-hardware-dome_guide\/latest\/build\/html//g' @
  3606  grep -rli '/files\/client-os\/client-os-guide\/build\/html/' * | xargs -i@ sed -i 's//files\/client-os\/client-os-guide\/build\/html/files\/client-hardware\/client-hardware-dome_guide\/latest\/build\/html//gI' @
@@ -3628,7 +3628,7 @@
  3628  git push origin gh-pages
  3629  mkdocs gh-deploy --config-file ../_config.yml --remote-branch gh-pages
  3630  sudo apt-get install mkdocs
- 3631  cd /var/www/html/datro/static/files/client-hardware/client-hardware-dome_guide/latest/build
+ 3631  cd /var/www/html/datro/static/library/client-hardware/client-hardware-dome_guide/latest/build
  3632  ls
  3633  cd ..
  3634  ls
@@ -3834,7 +3834,7 @@
  3834  cd ..
  3835  cd /var/www/html/datro
  3836  git add ./
- 3837  git commit -m "stylesheet of docs in /static/datro/data/docs works. but not in /static/files . So I made a /data/docs in /static/files and moves the content of /static/files into /static/files/data/docs to mimick the working path depth, see if that helps"
+ 3837  git commit -m "stylesheet of docs in /static/datro/data/docs works. but not in /static/files . So I made a /data/docs in /static/files and moves the content of /static/files into /static/library/data/docs to mimick the working path depth, see if that helps"
  3838  git push origin gh-pages
  3839  ls
  3840  cd static
@@ -5124,7 +5124,7 @@
  5124  ls
  5125  cp intro-hbnb.html coming-soon.html
  5126  nano coming-soon.html
- 5127  cd /var/www/html/datro/static/files/coming-soon/coming-soon/latest
+ 5127  cd /var/www/html/datro/static/library/coming-soon/coming-soon/latest
  5128  ls
  5129  bash ./rebuild.sh
  5130  ls
@@ -5835,7 +5835,7 @@
  5835  ls
  5836  su unclehowell xdg-open _build/index.html
  5837  pip3 install sphinx-intl
- 5838  cd /var/www/html/datro/static/files/coming-soon/coming-soon
+ 5838  cd /var/www/html/datro/static/library/coming-soon/coming-soon
  5839  ls
  5840  cd latest
  5841  ls
@@ -6808,7 +6808,7 @@
  6808  git add ./
  6809  git commit -m "made docs theme match websites theme"
  6810  git push origin gh-pages
- 6811  cd static/files/coming-soon/coming-soon/latest
+ 6811  cd static/library/coming-soon/coming-soon/latest
  6812  ls
  6813  nano re
  6814  nano rebuild.sh

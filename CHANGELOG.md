@@ -8,7 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.11] - Q2/2021
 
 ### Changed
-07-Apr - Worked on static/files/ (datro-consortium/consortium-investors) - see static/files/CHANGELOG.md and changelog in document for details  
+10-Apr - changed /static/files to /static/library and updated all references to it
+07-Apr - Worked on static/library/ (datro-consortium/consortium-investors) - see static/library/CHANGELOG.md and changelog in document for details  
 05-Apr - Minor edit to static/datro/documents.html - see corresponding changelog for details
 
 ### Fixed
@@ -64,7 +65,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.8] - Q3/2020
 
 ### Added
-13-Sep - Missing files from the last commit - restored (/static/files/_source-files)  
+13-Sep - Missing files from the last commit - restored (/static/library/_source-files)  
 09-Sep - GNU General Public Licence - repo/ sitewide   
 
 ### Changed

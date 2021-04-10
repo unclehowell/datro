@@ -1,0 +1,1037 @@
+Running Sphinx v3.5.3
+making output directory... done
+loading pickled environment... done
+building [mo]: targets for 0 po files that are out of date
+building [latex]: all documents
+updating environment: 0 added, 0 changed, 0 removed
+looking for now-outdated files... none found
+processing datro_consortium-investors_detailed.tex... index releasenotes introduction summary-seed detailed-seed summary-startup detailed-startup 
+resolving references...
+done
+writing... done
+copying TeX support files... copying TeX support files...
+done
+build succeeded.
+
+The LaTeX files are in build/latex.
+Run 'make' in that directory to run these through (pdf)latex
+(use `make latexpdf' here to do that automatically).
+Rc files read:
+  /etc/LatexMk
+  latexmkrc
+Latexmk: This is Latexmk, John Collins, 17 Apr. 2020, version: 4.69a.
+Rule 'pdflatex': The following rules & subrules became out-of-date:
+      'pdflatex'
+------------
+Run number 1 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex   -recorder  "datro_consortium-investors_detailed.tex"'
+------------
+Latexmk: applying rule 'pdflatex'...
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./datro_consortium-investors_detailed.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-07-17> (./sphinxmanual.cls
+Document Class: sphinxmanual 2019/12/01 v2.3.0 Document class (Sphinx manual)
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo)))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/cmap/cmap.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty<<t1.cmap>>)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tabulary/tabulary.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty)
+(./sphinxmulticell.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(./footnotehyper-sphinx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
+(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip-2001-04-09.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
+(./sphinxhighlight.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/atbegshi/atbegshi.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/atveryend/atveryend.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/hypcap.sty)
+(./sphinxmessages.sty)
+Writing index file datro_consortium-investors_detailed.idx
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def)
+(./datro_consortium-investors_detailed.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)<<ot1.cmap>><<oml.cmap
+>><<oms.cmap>><<omx.cmap>>
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
+nts/map/pdftex/updmap/pdftex.map} <./logo.jpg>] [1] [1]
+Chapter 1.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [2]
+Underfull \hbox (badness 5077) in paragraph at lines 394--397
+\T1/ptm/m/it/10 and `NO-DATA' to ap-pear in-stead of
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 421.
+
+[3] [4]
+Chapter 2.
+[5]
+Chapter 3.
+
+Overfull \hbox (6.15207pt too wide) in paragraph at lines 500--503
+[]|\T1/phv/m/n/10 UID| 
+
+Overfull \hbox (6.15207pt too wide) in paragraph at lines 528--531
+[]|\T1/phv/m/n/10 UID| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 559--561
+[]|\T1/ptm/m/n/10 101| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 578--580
+[]|\T1/ptm/m/n/10 102| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 600--602
+[]|\T1/ptm/m/n/10 103| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 622--624
+[]|\T1/ptm/m/n/10 104| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 644--646
+[]|\T1/ptm/m/n/10 105| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 666--668
+[]|\T1/ptm/m/n/10 106| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 688--690
+[]|\T1/ptm/m/n/10 107| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 707--709
+[]|\T1/ptm/m/n/10 108| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 726--728
+[]|\T1/ptm/m/n/10 109| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 745--747
+[]|\T1/ptm/m/n/10 110| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 767--769
+[]|\T1/ptm/m/n/10 111| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 789--791
+[]|\T1/ptm/m/n/10 112| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 808--810
+[]|\T1/ptm/m/n/10 113| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 830--832
+[]|\T1/ptm/m/n/10 114| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 852--854
+[]|\T1/ptm/m/n/10 115| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 874--876
+[]|\T1/ptm/m/n/10 116| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 896--898
+[]|\T1/ptm/m/n/10 117| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 918--920
+[]|\T1/ptm/m/n/10 118| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 940--942
+[]|\T1/ptm/m/n/10 119| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 959--961
+[]|\T1/ptm/m/n/10 120| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 981--983
+[]|\T1/ptm/m/n/10 121| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1003--1005
+[]|\T1/ptm/m/n/10 122| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1025--1027
+[]|\T1/ptm/m/n/10 123| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1047--1049
+[]|\T1/ptm/m/n/10 124| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1069--1071
+[]|\T1/ptm/m/n/10 125| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1088--1090
+[]|\T1/ptm/m/n/10 126| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1110--1112
+[]|\T1/ptm/m/n/10 127| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1129--1131
+[]|\T1/ptm/m/n/10 128| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1151--1153
+[]|\T1/ptm/m/n/10 129| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1173--1175
+[]|\T1/ptm/m/n/10 130| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1192--1194
+[]|\T1/ptm/m/n/10 131| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1211--1213
+[]|\T1/ptm/m/n/10 132| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1230--1232
+[]|\T1/ptm/m/n/10 133| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1252--1254
+[]|\T1/ptm/m/n/10 134| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1274--1276
+[]|\T1/ptm/m/n/10 135| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1293--1295
+[]|\T1/ptm/m/n/10 136| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1315--1317
+[]|\T1/ptm/m/n/10 137| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1337--1339
+[]|\T1/ptm/m/n/10 138| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1356--1358
+[]|\T1/ptm/m/n/10 139| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1378--1380
+[]|\T1/ptm/m/n/10 140| 
+
+Overfull \hbox (2.9645pt too wide) in paragraph at lines 1387--1389
+[]|\T1/ptm/m/n/10 26966.80| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1400--1402
+[]|\T1/ptm/m/n/10 141| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1419--1421
+[]|\T1/ptm/m/n/10 142| 
+
+Overfull \hbox (2.9645pt too wide) in paragraph at lines 1428--1430
+[]|\T1/ptm/m/n/10 13656.50| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1441--1443
+[]|\T1/ptm/m/n/10 143| 
+
+Overfull \hbox (2.9645pt too wide) in paragraph at lines 1450--1452
+[]|\T1/ptm/m/n/10 24415.89| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1463--1465
+[]|\T1/ptm/m/n/10 144| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1482--1484
+[]|\T1/ptm/m/n/10 145| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1501--1503
+[]|\T1/ptm/m/n/10 146| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1520--1522
+[]|\T1/ptm/m/n/10 147| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1539--1541
+[]|\T1/ptm/m/n/10 148| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1561--1563
+[]|\T1/ptm/m/n/10 149| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1580--1582
+[]|\T1/ptm/m/n/10 150| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1603--1605
+[]|\T1/ptm/m/n/10 401| 
+
+Overfull \hbox (2.9645pt too wide) in paragraph at lines 1632--1634
+[]|\T1/ptm/m/n/10 95784.52| 
+
+Overfull \hbox (1.29445pt too wide) in paragraph at lines 1641--1644
+[]|\T1/ptm/m/n/10 100.00%| 
+[6] [7]
+Chapter 4.
+[8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20]
+Chapter 5.
+[21]
+Chapter 6.
+[22]
+Chapter 7.
+No file datro_consortium-investors_detailed.ind.
+[23] (./datro_consortium-investors_detailed.aux)
+
+Package rerunfilecheck Warning: File `datro_consortium-investors_detailed.out' 
+has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
+(see the transcript file for additional information){/usr/share/texlive/texmf-d
+ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
+jknappen/ec/tcrb1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/helve
+tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/urw/times/utmri8a.pfb>
+Output written on datro_consortium-investors_detailed.pdf (25 pages, 135092 byt
+es).
+Transcript written on datro_consortium-investors_detailed.log.
+Latexmk: Index file 'datro_consortium-investors_detailed.idx' was written
+Latexmk: Missing input file: 'datro_consortium-investors_detailed.ind' from line
+  'No file datro_consortium-investors_detailed.ind.'
+Latexmk: References changed.
+Latexmk: References changed.
+Latexmk: Log file says output to 'datro_consortium-investors_detailed.pdf'
+Latexmk: Log file says output to 'datro_consortium-investors_detailed.pdf'
+Rule 'makeindex datro_consortium-investors_detailed.idx': File changes, etc:
+   Changed files, or newly in use since previous run(s):
+      'datro_consortium-investors_detailed.idx'
+------------
+Run number 1 of rule 'makeindex datro_consortium-investors_detailed.idx'
+------------
+------------
+Running 'makeindex -s python.ist  -o "datro_consortium-investors_detailed.ind" "datro_consortium-investors_detailed.idx"'
+------------
+=== TeX engine is 'pdfTeX'
+Latexmk: applying rule 'makeindex datro_consortium-investors_detailed.idx'...
+This is makeindex, version 2.15 [TeX Live 2020] (kpathsea + Thai support).
+Scanning style file ./python.ist.......done (7 attributes redefined, 0 ignored).
+Scanning input file datro_consortium-investors_detailed.idx...done (0 entries accepted, 0 rejected).
+Nothing written in datro_consortium-investors_detailed.ind.
+Transcript written in datro_consortium-investors_detailed.ilg.
+Rule 'pdflatex': File changes, etc:
+   Changed files, or newly in use since previous run(s):
+      'datro_consortium-investors_detailed.aux'
+      'datro_consortium-investors_detailed.ind'
+      'datro_consortium-investors_detailed.out'
+------------
+Run number 2 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex   -recorder  "datro_consortium-investors_detailed.tex"'
+------------
+Latexmk: applying rule 'pdflatex'...
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./datro_consortium-investors_detailed.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-07-17> (./sphinxmanual.cls
+Document Class: sphinxmanual 2019/12/01 v2.3.0 Document class (Sphinx manual)
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo)))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/cmap/cmap.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty<<t1.cmap>>)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tabulary/tabulary.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty)
+(./sphinxmulticell.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(./footnotehyper-sphinx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
+(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip-2001-04-09.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
+(./sphinxhighlight.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/atbegshi/atbegshi.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/atveryend/atveryend.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/hypcap.sty)
+(./sphinxmessages.sty)
+Writing index file datro_consortium-investors_detailed.idx
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def)
+(./datro_consortium-investors_detailed.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
+(./datro_consortium-investors_detailed.out)
+(./datro_consortium-investors_detailed.out)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)<<ot1.cmap>><<oml.cmap
+>><<oms.cmap>><<omx.cmap>>
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
+nts/map/pdftex/updmap/pdftex.map} <./logo.jpg>]
+(./datro_consortium-investors_detailed.toc [1]) [2] [1]
+Chapter 1.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [2]
+Underfull \hbox (badness 5077) in paragraph at lines 394--397
+\T1/ptm/m/it/10 and `NO-DATA' to ap-pear in-stead of
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 421.
+
+[3] [4]
+Chapter 2.
+[5]
+Chapter 3.
+
+Overfull \hbox (6.15207pt too wide) in paragraph at lines 500--503
+[]|\T1/phv/m/n/10 UID| 
+
+Overfull \hbox (6.15207pt too wide) in paragraph at lines 528--531
+[]|\T1/phv/m/n/10 UID| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 559--561
+[]|\T1/ptm/m/n/10 101| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 578--580
+[]|\T1/ptm/m/n/10 102| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 600--602
+[]|\T1/ptm/m/n/10 103| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 622--624
+[]|\T1/ptm/m/n/10 104| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 644--646
+[]|\T1/ptm/m/n/10 105| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 666--668
+[]|\T1/ptm/m/n/10 106| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 688--690
+[]|\T1/ptm/m/n/10 107| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 707--709
+[]|\T1/ptm/m/n/10 108| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 726--728
+[]|\T1/ptm/m/n/10 109| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 745--747
+[]|\T1/ptm/m/n/10 110| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 767--769
+[]|\T1/ptm/m/n/10 111| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 789--791
+[]|\T1/ptm/m/n/10 112| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 808--810
+[]|\T1/ptm/m/n/10 113| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 830--832
+[]|\T1/ptm/m/n/10 114| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 852--854
+[]|\T1/ptm/m/n/10 115| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 874--876
+[]|\T1/ptm/m/n/10 116| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 896--898
+[]|\T1/ptm/m/n/10 117| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 918--920
+[]|\T1/ptm/m/n/10 118| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 940--942
+[]|\T1/ptm/m/n/10 119| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 959--961
+[]|\T1/ptm/m/n/10 120| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 981--983
+[]|\T1/ptm/m/n/10 121| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1003--1005
+[]|\T1/ptm/m/n/10 122| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1025--1027
+[]|\T1/ptm/m/n/10 123| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1047--1049
+[]|\T1/ptm/m/n/10 124| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1069--1071
+[]|\T1/ptm/m/n/10 125| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1088--1090
+[]|\T1/ptm/m/n/10 126| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1110--1112
+[]|\T1/ptm/m/n/10 127| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1129--1131
+[]|\T1/ptm/m/n/10 128| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1151--1153
+[]|\T1/ptm/m/n/10 129| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1173--1175
+[]|\T1/ptm/m/n/10 130| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1192--1194
+[]|\T1/ptm/m/n/10 131| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1211--1213
+[]|\T1/ptm/m/n/10 132| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1230--1232
+[]|\T1/ptm/m/n/10 133| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1252--1254
+[]|\T1/ptm/m/n/10 134| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1274--1276
+[]|\T1/ptm/m/n/10 135| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1293--1295
+[]|\T1/ptm/m/n/10 136| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1315--1317
+[]|\T1/ptm/m/n/10 137| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1337--1339
+[]|\T1/ptm/m/n/10 138| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1356--1358
+[]|\T1/ptm/m/n/10 139| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1378--1380
+[]|\T1/ptm/m/n/10 140| 
+
+Overfull \hbox (2.9645pt too wide) in paragraph at lines 1387--1389
+[]|\T1/ptm/m/n/10 26966.80| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1400--1402
+[]|\T1/ptm/m/n/10 141| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1419--1421
+[]|\T1/ptm/m/n/10 142| 
+
+Overfull \hbox (2.9645pt too wide) in paragraph at lines 1428--1430
+[]|\T1/ptm/m/n/10 13656.50| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1441--1443
+[]|\T1/ptm/m/n/10 143| 
+
+Overfull \hbox (2.9645pt too wide) in paragraph at lines 1450--1452
+[]|\T1/ptm/m/n/10 24415.89| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1463--1465
+[]|\T1/ptm/m/n/10 144| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1482--1484
+[]|\T1/ptm/m/n/10 145| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1501--1503
+[]|\T1/ptm/m/n/10 146| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1520--1522
+[]|\T1/ptm/m/n/10 147| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1539--1541
+[]|\T1/ptm/m/n/10 148| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1561--1563
+[]|\T1/ptm/m/n/10 149| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1580--1582
+[]|\T1/ptm/m/n/10 150| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1603--1605
+[]|\T1/ptm/m/n/10 401| 
+
+Overfull \hbox (2.9645pt too wide) in paragraph at lines 1632--1634
+[]|\T1/ptm/m/n/10 95784.52| 
+
+Overfull \hbox (1.29445pt too wide) in paragraph at lines 1641--1644
+[]|\T1/ptm/m/n/10 100.00%| 
+[6] [7]
+Chapter 4.
+[8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20]
+Chapter 5.
+[21]
+Chapter 6.
+[22]
+Chapter 7.
+(./datro_consortium-investors_detailed.ind) [23]
+(./datro_consortium-investors_detailed.aux) )
+(see the transcript file for additional information){/usr/share/texlive/texmf-d
+ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
+jknappen/ec/tcrb1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/helve
+tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/urw/times/utmri8a.pfb>
+Output written on datro_consortium-investors_detailed.pdf (26 pages, 145202 byt
+es).
+Transcript written on datro_consortium-investors_detailed.log.
+Latexmk: Index file 'datro_consortium-investors_detailed.idx' was written
+Latexmk: Log file says output to 'datro_consortium-investors_detailed.pdf'
+Latexmk: Log file says output to 'datro_consortium-investors_detailed.pdf'
+Rule 'pdflatex': File changes, etc:
+   Changed files, or newly in use since previous run(s):
+      'datro_consortium-investors_detailed.toc'
+------------
+Run number 3 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex   -recorder  "datro_consortium-investors_detailed.tex"'
+------------
+=== TeX engine is 'pdfTeX'
+Latexmk: applying rule 'pdflatex'...
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./datro_consortium-investors_detailed.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-07-17> (./sphinxmanual.cls
+Document Class: sphinxmanual 2019/12/01 v2.3.0 Document class (Sphinx manual)
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo)))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/cmap/cmap.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty<<t1.cmap>>)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tabulary/tabulary.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty)
+(./sphinxmulticell.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(./footnotehyper-sphinx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
+(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip-2001-04-09.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
+(./sphinxhighlight.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/atbegshi/atbegshi.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/atveryend/atveryend.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/hypcap.sty)
+(./sphinxmessages.sty)
+Writing index file datro_consortium-investors_detailed.idx
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def)
+(./datro_consortium-investors_detailed.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
+(./datro_consortium-investors_detailed.out)
+(./datro_consortium-investors_detailed.out)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)<<ot1.cmap>><<oml.cmap
+>><<oms.cmap>><<omx.cmap>>
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
+nts/map/pdftex/updmap/pdftex.map} <./logo.jpg>]
+(./datro_consortium-investors_detailed.toc [1]) [2] [1]
+Chapter 1.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [2]
+Underfull \hbox (badness 5077) in paragraph at lines 394--397
+\T1/ptm/m/it/10 and `NO-DATA' to ap-pear in-stead of
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 421.
+
+[3] [4]
+Chapter 2.
+[5]
+Chapter 3.
+
+Overfull \hbox (6.15207pt too wide) in paragraph at lines 500--503
+[]|\T1/phv/m/n/10 UID| 
+
+Overfull \hbox (6.15207pt too wide) in paragraph at lines 528--531
+[]|\T1/phv/m/n/10 UID| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 559--561
+[]|\T1/ptm/m/n/10 101| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 578--580
+[]|\T1/ptm/m/n/10 102| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 600--602
+[]|\T1/ptm/m/n/10 103| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 622--624
+[]|\T1/ptm/m/n/10 104| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 644--646
+[]|\T1/ptm/m/n/10 105| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 666--668
+[]|\T1/ptm/m/n/10 106| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 688--690
+[]|\T1/ptm/m/n/10 107| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 707--709
+[]|\T1/ptm/m/n/10 108| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 726--728
+[]|\T1/ptm/m/n/10 109| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 745--747
+[]|\T1/ptm/m/n/10 110| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 767--769
+[]|\T1/ptm/m/n/10 111| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 789--791
+[]|\T1/ptm/m/n/10 112| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 808--810
+[]|\T1/ptm/m/n/10 113| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 830--832
+[]|\T1/ptm/m/n/10 114| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 852--854
+[]|\T1/ptm/m/n/10 115| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 874--876
+[]|\T1/ptm/m/n/10 116| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 896--898
+[]|\T1/ptm/m/n/10 117| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 918--920
+[]|\T1/ptm/m/n/10 118| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 940--942
+[]|\T1/ptm/m/n/10 119| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 959--961
+[]|\T1/ptm/m/n/10 120| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 981--983
+[]|\T1/ptm/m/n/10 121| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1003--1005
+[]|\T1/ptm/m/n/10 122| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1025--1027
+[]|\T1/ptm/m/n/10 123| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1047--1049
+[]|\T1/ptm/m/n/10 124| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1069--1071
+[]|\T1/ptm/m/n/10 125| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1088--1090
+[]|\T1/ptm/m/n/10 126| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1110--1112
+[]|\T1/ptm/m/n/10 127| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1129--1131
+[]|\T1/ptm/m/n/10 128| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1151--1153
+[]|\T1/ptm/m/n/10 129| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1173--1175
+[]|\T1/ptm/m/n/10 130| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1192--1194
+[]|\T1/ptm/m/n/10 131| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1211--1213
+[]|\T1/ptm/m/n/10 132| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1230--1232
+[]|\T1/ptm/m/n/10 133| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1252--1254
+[]|\T1/ptm/m/n/10 134| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1274--1276
+[]|\T1/ptm/m/n/10 135| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1293--1295
+[]|\T1/ptm/m/n/10 136| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1315--1317
+[]|\T1/ptm/m/n/10 137| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1337--1339
+[]|\T1/ptm/m/n/10 138| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1356--1358
+[]|\T1/ptm/m/n/10 139| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1378--1380
+[]|\T1/ptm/m/n/10 140| 
+
+Overfull \hbox (2.9645pt too wide) in paragraph at lines 1387--1389
+[]|\T1/ptm/m/n/10 26966.80| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1400--1402
+[]|\T1/ptm/m/n/10 141| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1419--1421
+[]|\T1/ptm/m/n/10 142| 
+
+Overfull \hbox (2.9645pt too wide) in paragraph at lines 1428--1430
+[]|\T1/ptm/m/n/10 13656.50| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1441--1443
+[]|\T1/ptm/m/n/10 143| 
+
+Overfull \hbox (2.9645pt too wide) in paragraph at lines 1450--1452
+[]|\T1/ptm/m/n/10 24415.89| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1463--1465
+[]|\T1/ptm/m/n/10 144| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1482--1484
+[]|\T1/ptm/m/n/10 145| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1501--1503
+[]|\T1/ptm/m/n/10 146| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1520--1522
+[]|\T1/ptm/m/n/10 147| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1539--1541
+[]|\T1/ptm/m/n/10 148| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1561--1563
+[]|\T1/ptm/m/n/10 149| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1580--1582
+[]|\T1/ptm/m/n/10 150| 
+
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1603--1605
+[]|\T1/ptm/m/n/10 401| 
+
+Overfull \hbox (2.9645pt too wide) in paragraph at lines 1632--1634
+[]|\T1/ptm/m/n/10 95784.52| 
+
+Overfull \hbox (1.29445pt too wide) in paragraph at lines 1641--1644
+[]|\T1/ptm/m/n/10 100.00%| 
+[6] [7]
+Chapter 4.
+[8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20]
+Chapter 5.
+[21]
+Chapter 6.
+[22]
+Chapter 7.
+(./datro_consortium-investors_detailed.ind) [23]
+(./datro_consortium-investors_detailed.aux) )
+(see the transcript file for additional information){/usr/share/texlive/texmf-d
+ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
+jknappen/ec/tcrb1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/helve
+tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/urw/times/utmri8a.pfb>
+Output written on datro_consortium-investors_detailed.pdf (26 pages, 145202 byt
+es).
+Transcript written on datro_consortium-investors_detailed.log.
+Latexmk: Index file 'datro_consortium-investors_detailed.idx' was written
+Latexmk: Log file says output to 'datro_consortium-investors_detailed.pdf'
+Latexmk: Log file says output to 'datro_consortium-investors_detailed.pdf'
+=== TeX engine is 'pdfTeX'
+Latexmk: All targets (datro_consortium-investors_detailed.pdf) are up-to-date
