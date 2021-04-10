@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.11] - Q2/2021
 
 ### Changed
+10-Apr - little tidy up on badges layout of README.md in the top level directory 
 10-Apr - changed /static/files to /static/library and updated all references to it
 07-Apr - Worked on static/library/ (datro-consortium/consortium-investors) - see static/library/CHANGELOG.md and changelog in document for details  
 05-Apr - Minor edit to static/datro/documents.html - see corresponding changelog for details

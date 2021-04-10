@@ -310,4 +310,4 @@ GitHub will notify you if there's a comment to respond to or when the administra
 
       ### Find and Replace
       
-      grep -rl matchstring somedir/ | xargs sed -i 's/string1/string2/g'
+     grep -rl 'windows' ./ | xargs sed -i 's/windows/linux/g'
