@@ -10,6 +10,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [files.03] - Q2/2021
 
 ### Added 
+13-Apr - Testing a serverless file indexing method, so datro.xyz/static/library will show the document directories as html   
 13-Apr - Added a document for the DATRO Campus e.g. static/library/datro-consortium/consotrium/campus/latest   
 27-Mar - Trying to get docs library to work with readthedocs by adding .readthedocs.yml  
 
