@@ -1,6 +1,6 @@
-project = u'Land Annexures'
+project = u'"Jam Highland" Land Annexures'
 copyright = u'2021, DATRO Consortium'
-author = u'Sion Buckler'
+author = u'DATRO Consortium'
 
 version = u'0.0.1'
 release = u'0.0.1'
@@ -27,11 +27,11 @@ html_theme = 'sphinx_rtd_theme'
 
 html_static_path = ['_static']
 
-
 htmlhelp_basename = 'datro_consortium-campus'
 
 
-# latex_logo = '_static/logo.jpg'
+latex_logo = '_static/logo.jpg'
+
 
 latex_elements = {
 
@@ -43,21 +43,21 @@ latex_elements = {
 
 
 latex_documents = [
-  (master_doc, 'datro_consortium-campus.tex', 'Land Annexures',
-   u'Author(s): Sion Buckler', 'manual'),
+  (master_doc, 'datro_consortium-campus.tex', '"Jam Highland" Land Annexures',
+   u'Author(s): DATRO Consortium', 'manual'),
 ]
 
 
 man_pages = [
-  (master_doc, 'datro_consortium-campus', u'Land Annexures',
+  (master_doc, 'datro_consortium-campus', u'"Jam Highland" Land Annexures',
    [author], 1)
 ]
 
 
 
 texinfo_documents = [
-  (master_doc, 'datro_consortium-campus', u'Land Annexures',
-   author, 'datro_consortium-capus', 'Sion Buckler',
+  (master_doc, 'datro_consortium-campus', u'"Jam Highland" Land Annexures',
+   author, 'datro_consortium-capus', 'DATRO Consortium',
    'manual'),
 ]
 

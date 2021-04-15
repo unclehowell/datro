@@ -1,11 +1,16 @@
 Information
-============
+============  
+  
+This report (and reference to the plot of land in question) has been entitled "Jam Highland":
+ - "Jam" since the plots official name is presumed to be "El Jamito" (and the connecting roads presumed name: "Jamito"). This can be seen in the :ref:`General Plan (Preview)` below.  
+ - "Highland" since the plot is a hill and the coastline where it's situated is official named "Bahía Escocesa" (`Scottish Bay <https://en.wikipedia.org/wiki/Scottish_Bay>`__).
+ 
 
-Key Points
+Highlights
 ~~~~~~~~~~~~~~~
 
- - Location: `Google Maps Location <https://goo.gl/maps/GWLcg2BP3gYhoZdf7>`__ (19.287485, -69.543594)
- - Altitude: 150.00m/492.13ft
+ - Location: `Google Maps Location <https://goo.gl/maps/1zAx8ZeceHtPVksJ8>`__ (19.287486,-69.543597) - source: :ref:`Sotherby Market Analysis (Preview)`
+ - Elevation: 150.00m/492.13ft 
  - Directions: 2km before (south of) Las Terrenas, at the intersection of the road that leads to Hoyo Cacao, 
    we (turn right and) travel (uphill, Eastwards) 400m. And on the left we find the project (a large hill)
 
