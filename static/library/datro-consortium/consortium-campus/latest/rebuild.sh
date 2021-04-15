@@ -195,9 +195,15 @@ printf "\e[2;3;33m HTML - http://localhost/datro-gh-pages/static/library/${PWD#$
 printf "\e[2;3;33m  PDF - http://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*/*}/}/build/latex/datro_consortium-campus.pdf \n\e[0m\n"
 
 # going wild here to make absultely sure the script escapes - it can hang for all sorts of reasons
+sleep 0.1 &&
 exit 1 &
+sleep 0.1 &&
 exit 0 &
+sleep 0.1 &&
 exit
+sleep 0.1 &&
 exit 0
+sleep 0.1 &&
 exit 1
+sleep 0.1 &&
 end

@@ -5,9 +5,9 @@ This section provides information about what is new or changed.
 It also contains urgent issues, documentation updates, maintenance and new releases.  
 'Updates' are the term used to describe significant changes to our public source code and/or records.  
 
-This Release (Version 0.0.0)
+This Release (Version 0.0.1)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- **2021-Apr-13** - `first draft`  
+- **2021-Apr-14** - `Initial Release`  
 
 Older Versions
 ~~~~~~~~~~~~~~~~ 
@@ -18,7 +18,10 @@ The title of the download link may differ from the filename. This is mainly to k
    :file: _static/olderversions.csv
    :widths: 20, 20, 20, 40
    :header-rows: 1
-   
+
+Version 0.0.0
+########################
+- **2021-Apr-13** - `First Draft`   
 
 Known and Corrected Issues
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

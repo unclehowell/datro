@@ -1,9 +1,9 @@
-project = u'El Jamito - Hoyo del Cacao'
+project = u'Land Annexures'
 copyright = u'2021, DATRO Consortium'
-author = u'Sion Buckler and Adrian Cronin'
+author = u'Sion Buckler'
 
-version = u'0.0.0'
-release = u'0.0.0'
+version = u'0.0.1'
+release = u'0.0.1'
 
 extensions = ['sphinx.ext.autosectionlabel']
 
@@ -37,27 +37,27 @@ latex_elements = {
 
 'classoptions': ',openany,oneside', 'babel' : '\\usepackage[english]{babel}',
 
-'releasename': "El Jamito, Hoyo del Cacao | Version"
+'releasename': "19.287486,-69.543597 | Version"
 
 }
 
 
 latex_documents = [
-  (master_doc, 'datro_consortium-campus.tex', u'DATRO Consortium',
-   u'Author(s): Sion Buckler and Adrian Cronin', 'manual'),
+  (master_doc, 'datro_consortium-campus.tex', 'Land Annexures',
+   u'Author(s): Sion Buckler', 'manual'),
 ]
 
 
 man_pages = [
-  (master_doc, 'datro_consortium-campus', u'DATRO Consortium',
+  (master_doc, 'datro_consortium-campus', u'Land Annexures',
    [author], 1)
 ]
 
 
 
 texinfo_documents = [
-  (master_doc, 'datro_consortium-campus', u'DATRO Consortium',
-   author, 'datro_consortium-capus', 'DATRO Consortium',
+  (master_doc, 'datro_consortium-campus', u'Land Annexures',
+   author, 'datro_consortium-capus', 'Sion Buckler',
    'manual'),
 ]
 

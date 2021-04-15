@@ -5,11 +5,12 @@ building [mo]: targets for 0 po files that are out of date
 building [latex]: all documents
 updating environment: 0 added, 0 changed, 0 removed
 looking for now-outdated files... none found
-processing datro_consortium-campus.tex... index releasenotes annex-list 
+processing datro_consortium-campus.tex... index releasenotes details annex-list 
 resolving references...
 done
 writing... done
-copying images... [100%] _static/annex-a.png
+copying images... [ 50%] _static/2019-07-31_sotherbys-market-analysis.png
+copying images... [100%] _static/2020-06-06_general-plan.png
 
 copying TeX support files... copying TeX support files...
 done
@@ -133,14 +134,23 @@ Writing index file datro_consortium-campus.idx
 >><<oms.cmap>><<omx.cmap>>
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
-nts/map/pdftex/updmap/pdftex.map}] [1] [1]
+nts/map/pdftex/updmap/pdftex.map}] [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [2]
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1]
 Chapter 2.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd) [3 <./annex-a.png>]
+
+Overfull \hbox (0.6708pt too wide) in paragraph at lines 197--197
+[]
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+
+[2]
 Chapter 3.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd) [3 <./2019-07-31_soth
+erbys-market-analysis.png>] [4 <./2020-06-06_general-plan.png>]
+Chapter 4.
 No file datro_consortium-campus.ind.
-[4] (./datro_consortium-campus.aux)
+[5] (./datro_consortium-campus.aux)
 
 Package rerunfilecheck Warning: File `datro_consortium-campus.out' has changed.
 
@@ -150,12 +160,14 @@ Package rerunfilecheck Warning: File `datro_consortium-campus.out' has changed.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
- ){/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utm
-r8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on datro_consortium-campus.pdf (6 pages, 79431 bytes).
+ )
+(see the transcript file for additional information){/usr/share/texlive/texmf-d
+ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
+helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhv
+bo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on datro_consortium-campus.pdf (7 pages, 122041 bytes).
 Transcript written on datro_consortium-campus.log.
 Latexmk: Index file 'datro_consortium-campus.idx' was written
 Latexmk: Missing input file: 'datro_consortium-campus.ind' from line
@@ -294,19 +306,29 @@ Writing index file datro_consortium-campus.idx
 >><<oms.cmap>><<omx.cmap>>
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
-nts/map/pdftex/updmap/pdftex.map}] (./datro_consortium-campus.toc) [1] [1]
+nts/map/pdftex/updmap/pdftex.map}] (./datro_consortium-campus.toc) [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [2]
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1]
 Chapter 2.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd) [3 <./annex-a.png>]
+
+Overfull \hbox (0.6708pt too wide) in paragraph at lines 197--197
+[]
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+
+[2]
 Chapter 3.
-(./datro_consortium-campus.ind) [4] (./datro_consortium-campus.aux) ){/usr/shar
-e/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist
-/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/urw/helvetic/uhvbo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/
-utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on datro_consortium-campus.pdf (6 pages, 82008 bytes).
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd) [3 <./2019-07-31_soth
+erbys-market-analysis.png>] [4 <./2020-06-06_general-plan.png>]
+Chapter 4.
+(./datro_consortium-campus.ind) [5] (./datro_consortium-campus.aux) )
+(see the transcript file for additional information){/usr/share/texlive/texmf-d
+ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
+helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhv
+bo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on datro_consortium-campus.pdf (7 pages, 125870 bytes).
 Transcript written on datro_consortium-campus.log.
 Latexmk: Index file 'datro_consortium-campus.idx' was written
 Latexmk: Log file says output to 'datro_consortium-campus.pdf'
@@ -424,19 +446,29 @@ Writing index file datro_consortium-campus.idx
 >><<oms.cmap>><<omx.cmap>>
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
-nts/map/pdftex/updmap/pdftex.map}] (./datro_consortium-campus.toc) [1] [1]
+nts/map/pdftex/updmap/pdftex.map}] (./datro_consortium-campus.toc) [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [2]
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1]
 Chapter 2.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd) [3 <./annex-a.png>]
+
+Overfull \hbox (0.6708pt too wide) in paragraph at lines 197--197
+[]
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+
+[2]
 Chapter 3.
-(./datro_consortium-campus.ind) [4] (./datro_consortium-campus.aux) ){/usr/shar
-e/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist
-/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/urw/helvetic/uhvbo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/
-utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on datro_consortium-campus.pdf (6 pages, 82008 bytes).
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd) [3 <./2019-07-31_soth
+erbys-market-analysis.png>] [4 <./2020-06-06_general-plan.png>]
+Chapter 4.
+(./datro_consortium-campus.ind) [5] (./datro_consortium-campus.aux) )
+(see the transcript file for additional information){/usr/share/texlive/texmf-d
+ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
+helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhv
+bo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on datro_consortium-campus.pdf (7 pages, 125870 bytes).
 Transcript written on datro_consortium-campus.log.
 Latexmk: Index file 'datro_consortium-campus.idx' was written
 Latexmk: Log file says output to 'datro_consortium-campus.pdf'
