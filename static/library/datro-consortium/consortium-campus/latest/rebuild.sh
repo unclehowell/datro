@@ -194,10 +194,9 @@ sleep 1 &&
 printf "\e[2;3;33m HTML - http://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*/*}/}/build/html/index.html \n\e[0m\n"
 printf "\e[2;3;33m  PDF - http://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*/*}/}/build/latex/datro_consortium-campus.pdf \n\e[0m\n"
 
-#cd build/latex/
-#gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=datro_consortium-campus.pdf *.pdf &&
-#cd ../../
-
+#pdftk build/latex/datro_consortium-campus.pdf cat 1-10 11 13 15 17 19 20 21  output build/latex/datro_consortium-campus2.pdf &&
+#mv build/latex/datro_consortium-campus2.pdf build/latex/datro_consortium-campus.pdf
+#
 # going wild here to make absultely sure the script escapes - it can hang for all sorts of reasons
 sleep 0.1 &&
 exit 1 &

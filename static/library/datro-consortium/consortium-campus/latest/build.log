@@ -5,17 +5,22 @@ building [mo]: targets for 0 po files that are out of date
 building [latex]: all documents
 updating environment: 0 added, 0 changed, 0 removed
 looking for now-outdated files... none found
-processing datro_consortium-campus.tex... index releasenotes details annex-list 
+processing datro_consortium-campus.tex... index releasenotes glossary details annex-list 
 resolving references...
-/var/www/html/datro-gh-pages/static/library/datro-consortium/consortium-campus/latest/source/annex-list.rst:4: WARNING: undefined label: download link of annexures
 done
 writing... done
-copying images... [ 50%] _static/2019-07-31_sotherbys-market-analysis.png
-copying images... [100%] _static/2020-06-06_general-plan.png
+copying images... [ 12%] _static/2021-04-16_origional-map.png
+copying images... [ 25%] _static/2019-07-31_sotherbys-market-analysis.png
+copying images... [ 37%] _static/2017-07-24_certificate_2488_70.png
+copying images... [ 50%] _static/2010-08-13_certificate_4068_61.png
+copying images... [ 62%] _static/2010-08-13_certificate_2088_47.png
+copying images... [ 75%] _static/2010-08-13_certificate_2038_77.png
+copying images... [ 87%] _static/2010-08-13_certificate_1749_00.png
+copying images... [100%] _static/2009-11-19_certificate_1154_00.png
 
 copying TeX support files... copying TeX support files...
 done
-build succeeded, 1 warning.
+build succeeded.
 
 The LaTeX files are in build/latex.
 Run 'make' in that directory to run these through (pdf)latex
@@ -138,29 +143,72 @@ Writing index file datro_consortium-campus.idx
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map} <./logo.jpg>] [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1]
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+
+LaTeX Warning: Hyper reference `details:sellers-notes-surmises' on page 1 undef
+ined on input line 104.
+
+[1] [2]
 Chapter 2.
-
-LaTeX Warning: Hyper reference `annex-list:general-plan-preview' on page 2 unde
-fined on input line 180.
-
+[3]
+Chapter 3.
 
 LaTeX Warning: Hyper reference `annex-list:sotherby-market-analysis-preview' on
- page 2 undefined on input line 195.
+ page 4 undefined on input line 345.
 
 
-Overfull \hbox (0.6708pt too wide) in paragraph at lines 212--212
-[]
+LaTeX Warning: Hyper reference `annex-list:certificate-of-title-4-068-61m2-copy
+' on page 4 undefined on input line 349.
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--212
 
-[2] [3]
-Chapter 3.
-[4 <./2019-07-31_sotherbys-market-analysis.png>] [5 <./2020-06-06_general-plan.
-png>]
+LaTeX Warning: Hyper reference `annex-list:certificate-of-title-2-488-70m2-copy
+' on page 4 undefined on input line 353.
+
+
+LaTeX Warning: Hyper reference `annex-list:certificate-of-title-2-088-47m2-copy
+' on page 4 undefined on input line 357.
+
+
+LaTeX Warning: Hyper reference `annex-list:certificate-of-title-2-038-77m2-copy
+' on page 4 undefined on input line 361.
+
+
+LaTeX Warning: Hyper reference `annex-list:certificate-of-title-1-749-00m2-copy
+' on page 4 undefined on input line 365.
+
+
+LaTeX Warning: Hyper reference `annex-list:certificate-of-title-1-154-00m2-copy
+' on page 4 undefined on input line 369.
+
+
+LaTeX Warning: Hyper reference `annex-list:origional-map-remastered' on page 4 
+undefined on input line 384.
+
+[4]
+
+LaTeX Warning: Hyper reference `glossary:easement' on page 5 undefined on input
+ line 422.
+
+[5]
 Chapter 4.
+
+LaTeX Warning: Hyper reference `annex-list:download-links' on page 6 undefined 
+on input line 459.
+
+[6 <./2021-04-16_origional-map.png>] [7 <./2019-07-31_sotherbys-market-analysis
+.png>] [8]
+Overfull \vbox (1.74147pt too high) has occurred while \output is active
+[9 <./2017-07-24_certificate_2488_70.png>] [10 <./2010-08-13_certificate_4068_6
+1.png>] [11 <./2010-08-13_certificate_2088_47.png>] [12]
+Overfull \vbox (1.77911pt too high) has occurred while \output is active
+[13 <./2010-08-13_certificate_2038_77.png>] [14]
+Overfull \vbox (1.77911pt too high) has occurred while \output is active
+[15 <./2010-08-13_certificate_1749_00.png>] [16]
+Overfull \vbox (1.77911pt too high) has occurred while \output is active
+[17 <./2009-11-19_certificate_1154_00.png>] [18]
+Chapter 5.
 No file datro_consortium-campus.ind.
-[6] (./datro_consortium-campus.aux)
+[19] (./datro_consortium-campus.aux)
 
 Package rerunfilecheck Warning: File `datro_consortium-campus.out' has changed.
 
@@ -180,7 +228,7 @@ helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhv
 bo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on datro_consortium-campus.pdf (8 pages, 729902 bytes).
+Output written on datro_consortium-campus.pdf (21 pages, 6596240 bytes).
 Transcript written on datro_consortium-campus.log.
 Latexmk: Index file 'datro_consortium-campus.idx' was written
 Latexmk: Missing input file: 'datro_consortium-campus.ind' from line
@@ -323,27 +371,32 @@ Writing index file datro_consortium-campus.idx
 nts/map/pdftex/updmap/pdftex.map} <./logo.jpg>] (./datro_consortium-campus.toc)
 [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1]
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1] [2]
 Chapter 2.
-
-Overfull \hbox (0.6708pt too wide) in paragraph at lines 212--212
-[]
-
-Underfull \hbox (badness 10000) in paragraph at lines 212--212
-
-[2] [3]
+[3]
 Chapter 3.
-[4 <./2019-07-31_sotherbys-market-analysis.png>] [5 <./2020-06-06_general-plan.
-png>]
+[4] [5]
 Chapter 4.
-(./datro_consortium-campus.ind) [6] (./datro_consortium-campus.aux) )
+[6 <./2021-04-16_origional-map.png>] [7 <./2019-07-31_sotherbys-market-analysis
+.png>] [8]
+Overfull \vbox (1.74147pt too high) has occurred while \output is active
+[9 <./2017-07-24_certificate_2488_70.png>] [10 <./2010-08-13_certificate_4068_6
+1.png>] [11 <./2010-08-13_certificate_2088_47.png>] [12]
+Overfull \vbox (1.77911pt too high) has occurred while \output is active
+[13 <./2010-08-13_certificate_2038_77.png>] [14]
+Overfull \vbox (1.77911pt too high) has occurred while \output is active
+[15 <./2010-08-13_certificate_1749_00.png>] [16]
+Overfull \vbox (1.77911pt too high) has occurred while \output is active
+[17 <./2009-11-19_certificate_1154_00.png>] [18]
+Chapter 5.
+(./datro_consortium-campus.ind) [19] (./datro_consortium-campus.aux) )
 (see the transcript file for additional information){/usr/share/texlive/texmf-d
 ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
 helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhv
 bo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on datro_consortium-campus.pdf (8 pages, 733278 bytes).
+Output written on datro_consortium-campus.pdf (21 pages, 6601861 bytes).
 Transcript written on datro_consortium-campus.log.
 Latexmk: Index file 'datro_consortium-campus.idx' was written
 Latexmk: Log file says output to 'datro_consortium-campus.pdf'
@@ -465,27 +518,32 @@ Writing index file datro_consortium-campus.idx
 nts/map/pdftex/updmap/pdftex.map} <./logo.jpg>] (./datro_consortium-campus.toc)
 [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1]
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1] [2]
 Chapter 2.
-
-Overfull \hbox (0.6708pt too wide) in paragraph at lines 212--212
-[]
-
-Underfull \hbox (badness 10000) in paragraph at lines 212--212
-
-[2] [3]
+[3]
 Chapter 3.
-[4 <./2019-07-31_sotherbys-market-analysis.png>] [5 <./2020-06-06_general-plan.
-png>]
+[4] [5]
 Chapter 4.
-(./datro_consortium-campus.ind) [6] (./datro_consortium-campus.aux) )
+[6 <./2021-04-16_origional-map.png>] [7 <./2019-07-31_sotherbys-market-analysis
+.png>] [8]
+Overfull \vbox (1.74147pt too high) has occurred while \output is active
+[9 <./2017-07-24_certificate_2488_70.png>] [10 <./2010-08-13_certificate_4068_6
+1.png>] [11 <./2010-08-13_certificate_2088_47.png>] [12]
+Overfull \vbox (1.77911pt too high) has occurred while \output is active
+[13 <./2010-08-13_certificate_2038_77.png>] [14]
+Overfull \vbox (1.77911pt too high) has occurred while \output is active
+[15 <./2010-08-13_certificate_1749_00.png>] [16]
+Overfull \vbox (1.77911pt too high) has occurred while \output is active
+[17 <./2009-11-19_certificate_1154_00.png>] [18]
+Chapter 5.
+(./datro_consortium-campus.ind) [19] (./datro_consortium-campus.aux) )
 (see the transcript file for additional information){/usr/share/texlive/texmf-d
 ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
 helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhv
 bo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on datro_consortium-campus.pdf (8 pages, 733278 bytes).
+Output written on datro_consortium-campus.pdf (21 pages, 6601861 bytes).
 Transcript written on datro_consortium-campus.log.
 Latexmk: Index file 'datro_consortium-campus.idx' was written
 Latexmk: Log file says output to 'datro_consortium-campus.pdf'

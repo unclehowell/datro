@@ -6,7 +6,8 @@ It also contains urgent issues, documentation updates and new releases.
 
 This Release (Version 0.0.1)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- **2021-Apr-14** - `Initial Release`  
+- **2021-Apr-15** - `Added update concerning easements under` :ref:`Sellers Notes/ Surmises`
+- **2021-Apr-14** - `Consolidated all the supporting documents into this single document`
 
 Older Versions
 ~~~~~~~~~~~~~~~~ 
@@ -23,9 +24,11 @@ Version 0.0.0
 ########################
 - **2021-Apr-13** - `First Draft`   
 
-.. raw:: pdf
 
-   PageBreak oneColumn
+.. raw:: latex
+
+   \clearpage
+
 
 Known and Corrected Issues
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
