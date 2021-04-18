@@ -6,29 +6,35 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [-hbnb.01] - Q2/2021
+
+### Changed
+
+17-Apr - Added double spaces to end of paragraphs in this changelog so it presents on github.com website the same as in a text editor   
+
 ## [0.0.3] - Q1/2021
 
 ### Changed
-14-Feb - Minor edit. Typo/ spelling correction
+14-Feb - Minor edit. Typo/ spelling correction  
 
 ## [0.0.2] - Q4/2020
 
 ### Added
-13-Dec - Changed all instances of 'HotspotBnB' to 'Hotspotβnβ'
+13-Dec - Changed all instances of 'HotspotBnB' to 'Hotspotβnβ'  
 
 ### Changed
-14-Dec - FavIcons updated to show the new Hotspotβnβ Logo
-10-Oct - Changed the github.com release url, from the hbnb repo, to the datro repo
-         inacurate according to our semantic release methodology and nomenclature, but it's only temporary
-         at least until the hbnb net installer source code branch is moved from hbnb to datro 
+14-Dec - FavIcons updated to show the new Hotspotβnβ Logo  
+10-Oct - Changed the github.com release url, from the hbnb repo, to the datro repo  
+       - - inacurate according to our semantic release methodology and nomenclature, but it's only temporary.  
+       - - at least until the hbnb net installer source code branch is moved from hbnb to datro   
 
 ## [0.0.1] - Q3/2020
 
 ### Added
-00-Ooo - put some css into the header to allow scrolling, but hide the scrollbars
-00-Ooo - it should be in the css, but one step at a time. Will try that next, but not on the main (on the beta)
+00-Ooo - put some css into the header to allow scrolling, but hide the scrollbars  
+00-Ooo - it should be in the css, but one step at a time. Will try that next, but not on the main (on the beta)  
 
 ### Changed
-13-Sep - got rid of a horizontal scrollbar which was very apparent against the contrasting footer color. 
+13-Sep - got rid of a horizontal scrollbar which was very apparent against the contrasting footer color.   
 
 ### Fixed
