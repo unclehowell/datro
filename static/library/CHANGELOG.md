@@ -16,6 +16,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 27-Mar - Trying to get docs library to work with readthedocs by adding .readthedocs.yml  
 
 ### Fixed
+18-Apr - Fixed a load of issues with the github api index.html files (which allows file exploring via gh-pages webpage view)   
 05-Apr - The custom.sh script file in some docs (which pulls spreadsheet data in) was producing errors. Appended a `--location` to curl which fixed it  
 
 ### Changed
@@ -25,6 +26,9 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### To Do
 06-Apr - Solve Table numbering in Sphinx. Table numbering restarts on every new chapter   
+
+### Issues
+17-Apr - Github API tends to temporarily stop responding when testing - perhaps it thinks it's abuse. stop seems temp, no perminant - maybe cloudflare
 
 ## [-library.02] - Q3/2020
 
