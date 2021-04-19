@@ -36,5 +36,12 @@
         document.getElementsByTagName('body')[0].innerHTML = htmlString;
       })()
     </script>
-  <body>
+  </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+$('ul > li').each(function(){
+  if($(this).text().includes('.'))
+      $(this).hide();
+})
+</script>
 </html>
