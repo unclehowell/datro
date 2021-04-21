@@ -46,6 +46,26 @@ $('ul > li').each(function(){
   if($(this).text().includes('doctrees'))
     $(this).hide();
 })
+$('ul > li').each(function(){
+  if($(this).text().includes('.'))
+    $(this).hide();
+})
+  }, 100);
+
+</script>
+
+<script>
+setTimeout(
+  function()
+  {
+$('ul > li').each(function(){
+  if($(this).text().includes('doctrees'))
+    $(this).hide();
+})
+$('ul > li').each(function(){
+  if($(this).text().includes('.'))
+    $(this).hide();
+})
   }, 1000);
 
 </script>
