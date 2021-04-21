@@ -17,7 +17,7 @@
 #................................................
 #    Document rebuild.sh script (blue theme)
 #................................................
-#             Version 0.8 - datro.xyz
+#             Version 0.9 - datro.xyz
 #................................................
 
 
@@ -171,6 +171,26 @@ sed -i 's/.wy-nav-top a{color:#fff;font-weight:700/.wy-nav-top a{color:#fff;font
 sed -i 's/thead{color:#000;/thead{color:#fff;/g' build/html/_static/css/theme.css
 sed -i 's/caption{color:#000;/caption{color:#fff;/g' build/html/_static/css/theme.css
 sed -i 's/.rst-content .section>a>img,.rst-content .section>img{/.rst-content .section>a>img,.rst-content .section>img{filter:invert(1);/g' build/html/_static/css/theme.css
+
+cd build/latex/
+touch index.html
+{
+echo "<html>"
+echo "<head>"
+}>> index.html
+ls -1 >> name.txt
+sed 's/^/<meta http-equiv="refresh" content="0.5; .\//' name.txt > namenew.txt
+sed -i 's/pdf/pdf" />/g' namenew.txt
+rm -r name.txt
+ls -l  namenew.txt > index.html
+rm -r namenew.txt
+{
+echo "</head>"
+echo "<body>"
+echo "</body>"
+echo "</html>"
+}>> index.html
+cd ../../
 
 
 printf "\e[2;3;33m Done! \n\e[0m"

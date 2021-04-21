@@ -6,10 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 This directory and changelog belongs: 
  --  github.com/unclehowell/datro/
  -- `gh-pages` branch (aka "the platform") 
- --  release version `0.0.1-rtw.8`
- --  /static/files (aka "the documents")
+ --  release version `0.0.1-rtw.9-library-bluetheme.09`
+ --  /static/library (aka "the documents")
 
 ## [Unreleased]
+
+## [0.0.9] - Q2/2021
+
+### Added
+
+19-Apr - changed rebuild-master to produce a html redirect in build/latex/ - redirects from the directory to the pdf 
 
 ## [0.0.6] - Q3/2020
 

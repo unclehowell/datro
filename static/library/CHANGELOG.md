@@ -10,6 +10,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [-library.03] - Q2/2021
 
 ### Added 
+20-Apr - Build script (rebuild.sh) now creates a redirect page in latex, so instead of seeing a directory listing in html view, you see the compiled PDF
 18-Apr - Added theme for github api/ github-pages html-view of library (_theme-gitapi) 
 15-Apr - More work on campus library document - entitle consortium-campus
 13-Apr - Testing a serverless file indexing method, so datro.xyz/static/library will show the document directories as html   

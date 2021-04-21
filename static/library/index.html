@@ -21,7 +21,6 @@
         <link href="./_theme-gitapi/favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
         <meta content="./_theme-gitapi/favicons/ms-icon-144x144.png" name="msapplication-TileImage">
         <link rel="stylesheet" href="./_theme-gitapi/style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   </head>
   <body>
     <script>
@@ -29,7 +28,7 @@
         const response = await fetch('https://api.github.com/repos/unclehowell/datro/contents/static/library/');
         const data = await response.json();
         let htmlString = '<ul>';
-        htmlString += `<li><a style="color:#336;" href="../">UP A LEVEL ...</a></li></br>`;
+        htmlString += `<li><a style="color:#336;" href="../">UP A LEVEL</a></li></br>`;
 	for (let file of data) {
           htmlString += `<li><a href="../../${file.path}">${file.name}</a></li>`;
         }
@@ -40,10 +39,41 @@
   </body>
 <script src="./_theme-gitapi/jquery.min.js"></script>
 <script>
+setTimeout(
+  function() 
+  {
 $('ul > li').each(function(){
   if($(this).text().includes('.'))
     $(this).hide();
 })
-</script>
+$('ul > li').each(function(){
+  if($(this).text().includes('LICENCE'))
+    $(this).hide();
+})
+$('ul > li').each(function(){
+  if($(this).text().includes('_'))
+    $(this).hide();
+})
+  }, 100);
 
+</script>
+<script>
+setTimeout(
+  function()
+  {
+$('ul > li').each(function(){
+  if($(this).text().includes('.'))
+    $(this).hide();
+})
+$('ul > li').each(function(){
+  if($(this).text().includes('LICENCE'))
+    $(this).hide();
+})
+$('ul > li').each(function(){
+  if($(this).text().includes('_'))
+    $(this).hide();
+})
+  }, 1000);
+
+</script>
 </html>

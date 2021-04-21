@@ -46,13 +46,13 @@ do
         ProgressBar ${number} ${_end}
 done
 
-# custom e.g. pull in cryptocurrency data etc
-#sh custom.sh 2> /dev/null &&
+# custom e.g. pull in latest custom data e.g. fiscal 
+sh custom.sh 2> /dev/null &&
 touch build.log
 make clean > build.log 2>&1
 printf "\e[2;3;33m Done! \n\e[0m"
 
-printf "\n\e[2;3;33m Step 2 of 5. Converting RST to HTML \n\e[0m\n"
+printf "\n\e[2;3;33m Step 2 of 5. Converting ReStructuredText to HTML \n\e[0m\n"
 for number in $(seq ${_20} ${_40})
 do
 	sleep 0.1
@@ -63,7 +63,7 @@ done
 make html > build.log 2>&1 &&
 printf "\e[2;3;33m Done! \n\e[0m"
 
-printf "\n\e[2;3;33m Step 3 of 5. Converting RST to PDF \n\e[0m\n"
+printf "\n\e[2;3;33m Step 3 of 5. Converting ReStructeredText to PDF \n\e[0m\n"
 
 for number in $(seq ${_40} ${_60})
 do
@@ -79,7 +79,7 @@ find . -type f ! -iname "*.pdf" -delete &&
 cd ../../
 printf "\e[2;3;33m Done! \n\e[0m"
 
-printf "\n\e[2;3;33m Step 4 of 5. Changing HTML Theme from Default to DATRO \n\e[0m\n"
+printf "\n\e[2;3;33m Step 4 of 5. Changing HTML Theme from Default to DATRO(Blue) \n\e[0m\n"
 for number in $(seq ${_60} ${_80})
 do
        sleep 0.1
@@ -187,7 +187,10 @@ bash ../../../_theme-blue/update.sh 2> /dev/null &
 
 cp -r ../../../_theme-blue/auto-rebuild-master.sh auto-rebuild.sh 2> /dev/null &
 
-printf "\e[2;3;33m Finished! \n\e[0m\n"
+sleep 1 &&
+
+printf "\e[2;3;33m HTML - http://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*/*}/}/build/html/index.html \n\e[0m\n"
+printf "\e[2;3;33m  PDF - http://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*/*}/}/build/latex/datro_consortium-investors_detailed.pdf \n\e[0m\n"
 
 # going wild here to make absultely sure the script escapes - it can hang for all sorts of reasons
 exit 1 &

@@ -37,7 +37,7 @@ then
 
 	curl https://raw.githubusercontent.com/unclehowell/datro/gh-pages/static/library/_theme-blue/rebuild-master.sh > ../../../_theme-blue/rebuild-master.sh
 	curl https://raw.githubusercontent.com/unclehowell/datro/gh-pages/static/library/_theme-blue/auto-rebuild-master.sh > ../../../_theme-blue/auto-rebuild-master.sh
-	curl https://raw.githubusercontent.com/unclehowell/datro/gh-pages/static/library//_theme-blue/README.md > ../../../_theme-blue/README.md
+	curl https://raw.githubusercontent.com/unclehowell/datro/gh-pages/static/library/_theme-blue/README.md > ../../../_theme-blue/README.md
 
 else
 
