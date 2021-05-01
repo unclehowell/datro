@@ -10,7 +10,8 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [-library.03] - Q2/2021
 
 ### Added 
-01-May - Enhanced the scripts for the html navigation so that it uses an offline json when offline. Next up - We need a script to produce offline json
+01-May - The json file is now entitled `.treeview.json` and the remote url will be used instead of githubs API.    
+01-May - Enhanced the scripts for the html navigation so that it uses an offline json when offline. Next up - A script to produce the json file would be an impovement over manually maintaining it, as the library grows   
 20-Apr - Build script (rebuild.sh) now creates a redirect page in latex, so instead of seeing a directory listing in html view, you see the compiled PDF  
 18-Apr - Added theme for github api/ github-pages html-view of library (_theme-gitapi)    
 15-Apr - More work on campus library document - entitle consortium-campus  

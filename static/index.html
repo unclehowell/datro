@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <html>
   <head>
   <meta charset="UTF-8">
   <meta content="DATRO Library" name="description">
   <meta content="DATRO Consortium" name="author">
-  <title>DATRO Library</title>
+  <title>DATRO File Explorer</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport">
         <link href="library/_theme-gitapi/favicons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
         <link href="library/_theme-gitapi/favicons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
@@ -18,23 +19,40 @@
         <link href="library/_theme-gitapi/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
         <link href="library/_theme-gitapi/favicons/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
         <link href="library/_theme-gitapi/favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
-        <meta content="_theme-gitapi/favicons/ms-icon-144x144.png" name="msapplication-TileImage">
+        <meta content="library/_theme-gitapi/favicons/ms-icon-144x144.png" name="msapplication-TileImage">
         <link rel="stylesheet" href="library/_theme-gitapi/style.css">
+        <script src="library/_theme-gitapi/jquery-3.3.1.min.js"></script>
   </head>
-<html>
   <body>
     <script>
-      (async () => {
+    if (window.location.href.indexOf("datro.") > -1) {      
+        (async () => {
         const response = await fetch('https://api.github.com/repos/unclehowell/datro/contents/static/');
         const data = await response.json();
         let htmlString = '<ul>';
-        htmlString += `<li><a style="color:#336;opacity:0.4;" >UP A LEVEL</a></li></br>`;
+        htmlString += `<p style="font-weight:bolder;text-align:center;color:#336;">DATRO File Explorer (online)</p>`;
+        htmlString += `<li><a style="font-weight:bolder;opacity:0.4;" href="#">↑ up</a></li></br>`;
         for (let file of data) {
           htmlString += `<li><a href="../${file.path}">${file.name}</a></li>`;
         }
         htmlString += '</ul>';
         document.getElementsByTagName('body')[0].innerHTML = htmlString;
       })()
+     }
+    if(document.URL.indexOf("datro.") <= -1){
+      (async () => {
+        const response = await fetch('./.treeview.json');
+        const data = await response.json();
+        let htmlString = '<ul>';
+        htmlString += `<p style="font-weight:bolder;text-align:center;color:#336;">DATRO File Explorer (offline)</p>`;
+        htmlString += `<li><a style="font-weight:bolder;opacity:0.4;">↑ up</a></li></br>`;
+        for (let file of data) {
+          htmlString += `<li><a href="${file.path}">${file.name}</a></li>`;
+        }
+        htmlString += '</ul>';
+        document.getElementsByTagName('body')[0].innerHTML = htmlString;
+      })()
+     }
     </script>
   </body>
 <script type="text/javascript" src="library/_theme-gitapi/jquery.min.js"></script>

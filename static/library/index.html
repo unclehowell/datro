@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta content="DATRO Library" name="description">
   <meta content="DATRO Consortium" name="author">
-  <title>DATRO Library</title>
+  <title>DATRO File Explorer</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport">
         <link href="./_theme-gitapi/favicons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
         <link href="./_theme-gitapi/favicons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
@@ -30,8 +30,8 @@
         const response = await fetch('https://api.github.com/repos/unclehowell/datro/contents/static/library/');
         const data = await response.json();
         let htmlString = '<ul>';
-        htmlString += `<p style="font-weight:bolder;text-align:center;color:#336;" href="../">DATRO Library (online)</p>`;
-        htmlString += `<li><a style="color:grey;" href="../">⏎</a></li></br>`;
+        htmlString += `<p style="font-weight:bolder;text-align:center;color:#336;">DATRO File Explorer (online)</p>`;
+        htmlString += `<li><a style="font-weight:bolder;" href="../">↑ up</a></li></br>`;
 	for (let file of data) {
           htmlString += `<li><a href="../../${file.path}">${file.name}</a></li>`;
         }
@@ -42,10 +42,10 @@
 
     if(document.URL.indexOf("datro.") <= -1){
       (async () => {
-        const response = await fetch('./library.json');
+        const response = await fetch('./.treeview.json');
         const data = await response.json();
         let htmlString = '<ul>';
-        htmlString += `<p style="font-weight:bolder;text-align:center;color:#336;" href="../">DATRO Library (offline)</p>`;
+        htmlString += `<p style="font-weight:bolder;text-align:center;color:#336;">DATRO File Explorer (offline)</p>`;
         htmlString += `<li><a style="font-weight:bolder;" href="../">↑ up</a></li></br>`;
         for (let file of data) {
           htmlString += `<li><a href="${file.path}">${file.name}</a></li>`;
@@ -70,7 +70,7 @@ $('ul > li').each(function(){
     $(this).hide();
 })
 $('ul > li').each(function(){
-  if($(this).text().includes('_'))
+  if($(this).text().includes('_theme'))
     $(this).hide();
 })
   }, 100);
@@ -89,7 +89,7 @@ $('ul > li').each(function(){
     $(this).hide();
 })
 $('ul > li').each(function(){
-  if($(this).text().includes('_'))
+  if($(this).text().includes('_theme'))
     $(this).hide();
 })
   }, 1000);
