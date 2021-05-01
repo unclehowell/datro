@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ### Changed
+21-Apr - Changed some characters in README.md since the characters weren't all recognised in different readers  
 17-Apr - Minor change to static/datro - see corresponding CHANGELOG.md for details  
 13-Apr - Started a new document for the DATRO Campus - see the doc library changelog for more info  
 10-Apr - Little tidy up on badges layout of README.md in the top level directory   

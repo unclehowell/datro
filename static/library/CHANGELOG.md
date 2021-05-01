@@ -10,9 +10,10 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [-library.03] - Q2/2021
 
 ### Added 
-20-Apr - Build script (rebuild.sh) now creates a redirect page in latex, so instead of seeing a directory listing in html view, you see the compiled PDF
-18-Apr - Added theme for github api/ github-pages html-view of library (_theme-gitapi) 
-15-Apr - More work on campus library document - entitle consortium-campus
+01-May - Enhanced the scripts for the html navigation so that it uses an offline json when offline. Next up - We need a script to produce offline json
+20-Apr - Build script (rebuild.sh) now creates a redirect page in latex, so instead of seeing a directory listing in html view, you see the compiled PDF  
+18-Apr - Added theme for github api/ github-pages html-view of library (_theme-gitapi)    
+15-Apr - More work on campus library document - entitle consortium-campus  
 13-Apr - Testing a serverless file indexing method, so datro.xyz/static/library will show the document directories as html   
 13-Apr - Added a document for the DATRO Campus e.g. static/library/datro-consortium/consotrium/campus/latest   
 27-Mar - Trying to get docs library to work with readthedocs by adding .readthedocs.yml  
@@ -22,7 +23,9 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 05-Apr - The custom.sh script file in some docs (which pulls spreadsheet data in) was producing errors. Appended a `--location` to curl which fixed it  
 
 ### Changed
-07-Apr - worked on datro-consortium/consortium-investors v0.1.6 then archived, ran `make clean` and began work on v0.1.7 e.g. latest
+22-Apr - Put collaboration instructions from README.md into its own COLLABORATE.md file   
+21-Apr - Master-rebuild.sh in `_theme-blue` and `_theme_grey` has gone up to version 0.0.9 - it now builds html files for library navigation via html   
+07-Apr - Worked on datro-consortium/consortium-investors v0.1.6 then archived, ran `make clean` and began work on v0.1.7 e.g. latest  
 07-Apr - Moved archives to netlify branch and called it `wayback`  
 05-Apr - Moved archived content from each document directory to /static/archives    
 
@@ -30,7 +33,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 06-Apr - Solve Table numbering in Sphinx. Table numbering restarts on every new chapter   
 
 ### Issues
-17-Apr - Github API tends to temporarily stop responding when testing - perhaps it thinks it's abuse. stop seems temp, no perminant - maybe cloudflare
+17-Apr - Github API tends to temporarily stop responding when testing - perhaps it thinks it's abuse. stop seems temp, no perminant - maybe cloudflare  
 
 ## [-library.02] - Q3/2020
 

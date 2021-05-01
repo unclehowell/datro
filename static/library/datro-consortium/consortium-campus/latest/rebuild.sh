@@ -46,7 +46,7 @@ do
         ProgressBar ${number} ${_end}
 done
 
-# custom e.g. pull in latest custom data e.g. fiscal 
+# custom e.g. pull in latest custom data e.g. fiscal
 #sh custom.sh 2> /dev/null &&
 touch build.log
 make clean > build.log 2>&1
@@ -77,6 +77,7 @@ cd build
 cd latex
 find . -type f ! -iname "*.pdf" -delete &&
 cd ../../
+
 printf "\e[2;3;33m Done! \n\e[0m"
 
 printf "\n\e[2;3;33m Step 4 of 5. Changing HTML Theme from Default to DATRO(Blue) \n\e[0m\n"
@@ -89,7 +90,6 @@ done
 sed -i 's/<\/head>/<style>html{overflow-y:scroll;} ::-webkit-scrollbar{width:0px;background:transparent;}<\/style><\/head>/g' build/html/*.html
 sed -i 's/ View page source/ /g' build/html/*.html
 sed -i 's/<div class="version">/<div class="version"> Document Version : /g' build/html/*.html
-# sed -i 's/<div role="contentinfo"/<div role="contentinfo" style="visibility:hidden!important;opacity:0!important;"/g' build/html/*.html
 sed -i 's/#33368C/darkslateblue/g' build/html/_static/css/theme.css
 sed -i 's/color:initial}/color:lightgrey;}/g' build/html/_static/css/theme.css
 sed -i 's/#9b59b6/#29808A/g' build/html/_static/css/theme.css
@@ -171,19 +171,23 @@ sed -i 's/.wy-nav-top a{color:#fff;font-weight:700/.wy-nav-top a{color:#fff;font
 sed -i 's/thead{color:#000;/thead{color:#fff;/g' build/html/_static/css/theme.css
 sed -i 's/caption{color:#000;/caption{color:#fff;/g' build/html/_static/css/theme.css
 sed -i 's/.rst-content .section>a>img,.rst-content .section>img{/.rst-content .section>a>img,.rst-content .section>img{filter:invert(1);/g' build/html/_static/css/theme.css
+sleep 0.5 &&
 
-cd build/latex/
+cd build/latex
 touch index.html
 {
 echo "<html>"
 echo "<head>"
-}>> index.html
+}>> index.html &&
 ls -1 >> name.txt
 sed 's/^/<meta http-equiv="refresh" content="0.5; .\//' name.txt > namenew.txt
-sed -i 's/pdf/pdf" />/g' namenew.txt
+sed -i 's/pdf/pdf" \/>/g' namenew.txt
 rm -r name.txt
-ls -l  namenew.txt > index.html
-rm -r namenew.txt
+cat  namenew.txt >> index.html
+rm -r namenew.txt &&
+sed -i 's/<meta http-equiv="refresh" content="0.5; .\/index.html//' index.html
+sed -i 's/<meta http-equiv="refresh" content="0.5; .\/name.txt//' index.html
+sed -i '/^$/d' index.html
 {
 echo "</head>"
 echo "<body>"
@@ -211,8 +215,7 @@ cp -r ../../../_theme-blue/auto-rebuild-master.sh auto-rebuild.sh 2> /dev/null &
 
 sleep 1 &&
 
-printf "\e[2;3;33m HTML - http://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*/*}/}/build/html/index.html \n\e[0m\n"
-printf "\e[2;3;33m  PDF - http://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*/*}/}/build/latex/datro_consortium-campus.pdf \n\e[0m\n"
+printf "\e[2;3;33m HTML - http://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*/*}/}/build/ \n\e[0m\n"
 
 #pdftk build/latex/datro_consortium-campus.pdf cat 1-10 11 13 15 17 19 20 21  output build/latex/datro_consortium-campus2.pdf &&
 #mv build/latex/datro_consortium-campus2.pdf build/latex/datro_consortium-campus.pdf
