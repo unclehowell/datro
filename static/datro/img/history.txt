@@ -5124,7 +5124,7 @@
  5124  ls
  5125  cp intro-hbnb.html coming-soon.html
  5126  nano coming-soon.html
- 5127  cd /var/www/html/datro/static/library/coming-soon/coming-soon/latest
+ 5127  cd /var/www/html/datro/static/library/coming_soon/coming_soon/latest
  5128  ls
  5129  bash ./rebuild.sh
  5130  ls
@@ -5835,7 +5835,7 @@
  5835  ls
  5836  su unclehowell xdg-open _build/index.html
  5837  pip3 install sphinx-intl
- 5838  cd /var/www/html/datro/static/library/coming-soon/coming-soon
+ 5838  cd /var/www/html/datro/static/library/coming_soon/coming_soon
  5839  ls
  5840  cd latest
  5841  ls
@@ -6052,7 +6052,7 @@
  6052  git push origin gh-pages
  6053  cd static/slides
  6054  ls
- 6055  cd coming-soon/coming-soon
+ 6055  cd coming_soon/coming_soon
  6056  ls
  6057  cd latest
  6058  ls
@@ -6790,7 +6790,7 @@
  6790  cd files
  6791  ls
  6792  nano README.md
- 6793  cd coming-soon/coming-soon
+ 6793  cd coming_soon/coming_soon
  6794  ls
  6795  cd ..
  6796  ls
@@ -6808,7 +6808,7 @@
  6808  git add ./
  6809  git commit -m "made docs theme match websites theme"
  6810  git push origin gh-pages
- 6811  cd static/library/coming-soon/coming-soon/latest
+ 6811  cd static/library/coming_soon/coming_soon/latest
  6812  ls
  6813  nano re
  6814  nano rebuild.sh
@@ -6836,7 +6836,7 @@
  6836  cd _source-files
  6837  ls
  6838  cd ..
- 6839  cd coming-soon/coming-soon
+ 6839  cd coming_soon/coming_soon
  6840  ls
  6841  cd latest
  6842  bash ./rebuild.sh 
@@ -7056,7 +7056,7 @@
  7056  cd static
  7057  ls
  7058  cd files
- 7059  cd coming-soon/coming-soon
+ 7059  cd coming_soon/coming_soon
  7060  ls
  7061  cd latest
  7062  ls
@@ -7349,8 +7349,8 @@
  7349  cd _source-files
  7350  ls
  7351  nano rebuild-master.sh
- 7352  cp -r rebuild-master.sh ../coming-soon/coming-soon/latest/rebuild.sh
- 7353  bash ../coming-soon/coming-soon/latest/rebuild.sh
+ 7352  cp -r rebuild-master.sh ../coming_soon/coming_soon/latest/rebuild.sh
+ 7353  bash ../coming_soon/coming_soon/latest/rebuild.sh
  7354  ls
  7355  ls -la
  7356  cd ..
@@ -7412,7 +7412,7 @@
  7412  ls
  7413  cd ..
  7414  ls
- 7415  cd coming-soon/coming-soon
+ 7415  cd coming_soon/coming_soon
  7416  ls
  7417  cd latest
  7418  ls
@@ -7603,7 +7603,7 @@
  7603  ls
  7604  cd files
  7605  ls
- 7606  cd coming-soon/coming-soon
+ 7606  cd coming_soon/coming_soon
  7607  ls
  7608  cd latest
  7609  ls
@@ -7647,7 +7647,7 @@
  7647  ls
  7648  cd files
  7649  ls
- 7650  cd coming-soon/coming-soon
+ 7650  cd coming_soon/coming_soon
  7651  ls
  7652  cd latest
  7653  ls
@@ -7926,7 +7926,7 @@
  7926  cd _source-files
  7927  ls
  7928  cd ..
- 7929  cd coming-soon/coming-soon
+ 7929  cd coming_soon/coming_soon
  7930  ls
  7931  cd latest
  7932  ls

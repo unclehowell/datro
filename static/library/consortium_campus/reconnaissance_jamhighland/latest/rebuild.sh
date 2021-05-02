@@ -17,7 +17,7 @@
 #................................................
 #    Document rebuild.sh script (blue theme)
 #................................................
-#             Version 0.9 - datro.xyz
+#             Version 1.0 - datro.xyz
 #................................................
 
 
@@ -176,23 +176,26 @@ sleep 0.5 &&
 cd build/latex
 touch index.html
 {
-echo "<html>"
-echo "<head>"
+echo '<html>'
+echo '<body>'
+echo '</body>'
+echo '<script type="text/javascript">'
 }>> index.html &&
 ls -1 >> name.txt
-sed 's/^/<meta http-equiv="refresh" content="0.5; .\//' name.txt > namenew.txt
-sed -i 's/pdf/pdf" \/>/g' namenew.txt
+sed 's/^/window.open(".\//' name.txt > namenew.txt
+sed -i 's/pdf/pdf");/g' namenew.txt
 rm -r name.txt
 cat  namenew.txt >> index.html
 rm -r namenew.txt &&
-sed -i 's/<meta http-equiv="refresh" content="0.5; .\/index.html//' index.html
-sed -i 's/<meta http-equiv="refresh" content="0.5; .\/name.txt//' index.html
+sed -i 's/window.open(".\/index.html//' index.html
+sed -i 's/window.open(".\/name.txt//' index.html
 sed -i '/^$/d' index.html
 {
-echo "</head>"
-echo "<body>"
-echo "</body>"
-echo "</html>"
+echo '</script>'
+echo '<script language="JavaScript" type="text/javascript">'
+echo 'setTimeout("window.history.go(-1)",500);'
+echo '</script>'
+echo '</html>'
 }>> index.html
 cd ../../
 
@@ -217,8 +220,9 @@ sleep 1 &&
 
 printf "\e[2;3;33m HTML - http://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*/*}/}/build/ \n\e[0m\n"
 
-#pdftk build/latex/consortium_campus-reconnaissance_site1.pdf cat 1-10 11 13 15 17 19 20 21  output build/latex/consortium_campus-reconnaissance_site1-tmp.pdf &&
-#mv build/latex/consortium_campus-reconnaissance_site1-tmp.pdf build/latex/consortium_campus-reconnaissance_site1.pdf
+#change NAME to PDF name before running
+#pdftk build/latex/NAME.pdf cat 1-10 11 13 15 17 19 20 21  output build/latex/NAME-tmp.pdf &&
+#mv build/latex/NAME-tmp.pdf build/latex/NAME.pdf
 #
 # going wild here to make absultely sure the script escapes - it can hang for all sorts of reasons
 sleep 0.1 &&

@@ -172,10 +172,10 @@ sleep 0.5 &&
 cd build/latex
 touch index.html
 {
-echo "<html>"
-echo "<body>"
-echo "</body>"
-echo "<script type="text/javascript">"
+echo '<html>'
+echo '<body>'
+echo '</body>'
+echo '<script type="text/javascript">'
 }>> index.html &&
 ls -1 >> name.txt
 sed 's/^/window.open(".\//' name.txt > namenew.txt

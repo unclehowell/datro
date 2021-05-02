@@ -7,15 +7,15 @@ building [latex]: all documents
 updating environment: 0 added, 1 changed, 0 removed
 reading sources... [100%] releasenotes
 
-/var/www/html/datro-gh-pages/static/library/coming-soon/coming-soon/latest/source/releasenotes.rst:6: WARNING: Unexpected indentation.
-/var/www/html/datro-gh-pages/static/library/coming-soon/coming-soon/latest/source/releasenotes.rst:24: WARNING: Problems with "csv-table" directive path:
+/var/www/html/datro-gh-pages/static/library/coming_soon/coming_soon/latest/source/releasenotes.rst:6: WARNING: Unexpected indentation.
+/var/www/html/datro-gh-pages/static/library/coming_soon/coming_soon/latest/source/releasenotes.rst:24: WARNING: Problems with "csv-table" directive path:
 [Errno 2] No such file or directory: 'source/_static/olderversions.csv'.
 
 .. csv-table:: Table 1.0 - Previous Publications
    :file: _static/olderversions.csv
    :widths: 10, 10, 20, 60
    :header-rows: 1
-/var/www/html/datro-gh-pages/static/library/coming-soon/coming-soon/latest/source/releasenotes.rst:42: WARNING: Problems with "csv-table" directive path:
+/var/www/html/datro-gh-pages/static/library/coming_soon/coming_soon/latest/source/releasenotes.rst:42: WARNING: Problems with "csv-table" directive path:
 [Errno 2] No such file or directory: 'source/_static/issues.csv'.
 
 .. csv-table:: Table 1.1 - Known Issues
@@ -36,7 +36,7 @@ build succeeded, 4 warnings.
 The LaTeX files are in build/latex.
 Run 'make' in that directory to run these through (pdf)latex
 (use `make latexpdf' here to do that automatically).
-make[1]: Entering directory '/var/www/html/datro-gh-pages/static/library/coming-soon/coming-soon/latest/build/latex'
+make[1]: Entering directory '/var/www/html/datro-gh-pages/static/library/coming_soon/coming_soon/latest/build/latex'
 latexmk -pdf -dvi- -ps-  'coming-soon.tex'
 Latexmk: This is Latexmk, John Collins, 26 Dec. 2019, version: 4.67.
 Rule 'pdflatex': The following rules & subrules became out-of-date:
@@ -541,4 +541,4 @@ Latexmk: Index file 'coming-soon.idx' was written
 Latexmk: Log file says output to 'coming-soon.pdf'
 === TeX engine is 'pdfTeX'
 Latexmk: All targets () are up-to-date
-make[1]: Leaving directory '/var/www/html/datro-gh-pages/static/library/coming-soon/coming-soon/latest/build/latex'
+make[1]: Leaving directory '/var/www/html/datro-gh-pages/static/library/coming_soon/coming_soon/latest/build/latex'

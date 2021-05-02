@@ -27,7 +27,7 @@ html_theme = 'sphinx_rtd_theme'
 
 html_static_path = ['_static']
 
-htmlhelp_basename = 'consortium_campus-reconnaissance_site1'
+htmlhelp_basename = 'consortium_campus-reconnaissance_jamhighland'
 
 
 latex_logo = '_static/logo.jpg'
@@ -43,20 +43,20 @@ latex_elements = {
 
 
 latex_documents = [
-  (master_doc, 'consortium_campus-reconnaissance_site1.tex', 'Jam Highland - Land Annexures',
+  (master_doc, 'consortium_campus-reconnaissance_jamhighland.tex', 'Jam Highland - Land Annexures',
    u'Author(s): DATRO Consortium', 'manual'),
 ]
 
 
 man_pages = [
-  (master_doc, 'consortium_campus-reconnaissance_site1', u'Jam Highland - Land Annexures',
+  (master_doc, 'consortium_campus-reconnaissance_jamhighland', u'Jam Highland - Land Annexures',
    [author], 1)
 ]
 
 
 
 texinfo_documents = [
-  (master_doc, 'consortium_campus-reconnaissance_site1', u'Jam Highland - Land Annexures',
+  (master_doc, 'consortium_campus-reconnaissance_jamhighland', u'Jam Highland - Land Annexures',
    author, 'datro_consortium-capus', 'DATRO Consortium',
    'manual'),
 ]
