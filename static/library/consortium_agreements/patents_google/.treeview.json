@@ -1,0 +1,16 @@
+[
+  {
+    "name": "HTML",
+    "path": "./latest/build/html",
+    "_links": {
+      "html": "./latest/build/html"
+    }
+  },
+  {
+    "name": "PDF",
+    "path": "./latest/build/latex",
+    "_links": {
+      "html": "./latest/build/latex"
+    }
+  }
+]

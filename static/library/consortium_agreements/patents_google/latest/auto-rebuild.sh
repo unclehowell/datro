@@ -3,28 +3,31 @@
 
 unset CDPATH
 
-
-#............................................................
-#           HotspotBnB - 2020 Copyright
-#............................................................
-#    HotspotBnB Documentation - by  Wave Telecom Limited
-#............................................................
-#            docs.hotspotbnb.com - auto-update.sh
-#............................................................
+#.................................................
+#         DATRO Consortium - 2021 Copyleft
+#.................................................
 #
-#                         version 0.4
-#            view _blue-build-source/README.md changelog
-#............................................................
+#   ██████╗  █████╗ ████████╗██████╗  ██████╗
+#   ██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗██╔═══██╗
+#   ██║  ██║███████║   ██║   ██████╔╝██║   ██║
+#   ██║  ██║██╔══██║   ██║   ██╔══██╗██║   ██║
+#   ██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝
+#   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
+#................................................
+# Document auto-rebuild.sh Script (blue theme)
+#................................................
+#            Version 0.8 - datro.xyz
+#................................................
 
 
 # update the rebuild and auto-rebuild source files.
-bash ../../../_blue-build-source/update.sh &&
+bash ../../../_theme-blue/update.sh &&
 
 # get the latest rebuild.sh file from source
 
 rm -r rebuild.sh &&
 
-cp -r ../../../_blue-build-source/rebuild-master.sh rebuild.sh &&
+cp -r ../../../_theme-blue/rebuild-master.sh rebuild.sh &&
 
 # confirm permissions
 chmod +x rebuild.sh &&

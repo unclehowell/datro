@@ -1,10 +1,10 @@
 
-project = u'Wave® & Google Inc. Patents'
-copyright = u'2018, Wave Telecom Ltd. and Google Inc.'
+project = u'DATRO & Google Inc. Patents'
+copyright = u'2021, DATRO Consortium and Google Inc.'
 author = u'Kirk W. Dailey, Google Inc.'
 
-version = u'0.0.2'
-release = u'0.0.2rc1'
+version = u'0.0.3'
+release = u'0.0.3'
 
 
 
@@ -32,28 +32,28 @@ html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 
 
-htmlhelp_basename = 'wave-organisation-google_patent_agreement'
+htmlhelp_basename = 'consortium_agreements-patents_google'
 
 
 latex_elements = { 'classoptions': ',openany,oneside', 'babel' : '\\usepackage[english]{babel}' }
 
 
 latex_documents = [
-    (master_doc, 'wave-organisation-google_patent_agreement.tex', u'Wave and Google Inc. Patents',
+    (master_doc, 'consortium_agreements-patents_google.tex', u'DATRO and Google Inc. Patents',
      u'Author(s): Kirk W. Dailey, Google Inc.', 'manual'),
 ]
 
 
 man_pages = [
-    (master_doc, 'wave-organisation-google_patent_agreement', u'Wave® and Google Inc. Patents',
+    (master_doc, 'consortium_agreements-patents_google', u'DATRO and Google Inc. Patents',
      [author], 1)
 ]
 
 
 
 texinfo_documents = [
-    (master_doc, 'wave-organisation-google_patent_agreement', u'Wave® and Google Inc. Patents',
-     author, 'wave-organisation-google_patent_agreement', 'Wave® and Google Inc. Patents',
+    (master_doc, 'consortium_agreements-patents_google', u'DATRO and Google Inc. Patents',
+     author, 'consortium_agreements-patents_google', 'DATRO and Google Inc. Patents',
      'manual'),
 ]
 

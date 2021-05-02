@@ -25,27 +25,11 @@
   </head>
   <body>
     <script>
-    if (window.location.href.indexOf("datro.") > -1) {
       (async () => {
         const response = await fetch('.treeview.json');
         const data = await response.json();
         let htmlString = '<ul>';
-        htmlString += `<p style="font-weight:bolder;text-align:center;color:#336;" href="../">DATRO File Explorer (online)</p>`;
-        htmlString += `<li><a style="font-weight:bolder;" href="../">↑ up</a></li></br>`;
-        for (let file of data) {
-          htmlString += `<li><a href="../../../${file.path}">${file.name}</a></li>`;
-        }
-        htmlString += '</ul>';
-        document.getElementsByTagName('body')[0].innerHTML = htmlString;
-      })()
-     }
-    
-    if(document.URL.indexOf("datro.") <= -1){
-      (async () => {
-        const response = await fetch('.treeview.json');
-        const data = await response.json();
-        let htmlString = '<ul>';
-        htmlString += `<p style="font-weight:bolder;text-align:center;color:#336;">DATRO File Explorer (offline)</p>`;
+        htmlString += `<p style="font-weight:bolder;text-align:center;color:#336;">DATRO File Explorer</p>`;
         htmlString += `<li><a style="font-weight:bolder;" href="../">↑ up</a></li></br>`;
         for (let file of data) {
           htmlString += `<li><a href="${file.path}">${file.name}</a></li>`;
@@ -53,7 +37,6 @@
         htmlString += '</ul>';
         document.getElementsByTagName('body')[0].innerHTML = htmlString;
       })()
-    }
     </script>
   </body>
 <script src="../_theme-gitapi/jquery.min.js"></script>
