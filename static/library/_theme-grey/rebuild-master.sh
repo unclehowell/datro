@@ -16,7 +16,7 @@
 #................................................
 #     Document rebuild.sh script (grey theme)
 #................................................
-#             Version 0.8 - datro.xyz
+#             Version 1.0 - datro.xyz
 #................................................
 
 function ProgressBar {
@@ -167,6 +167,34 @@ sed -i 's/placeholder="Search docs"/placeholder="Search"/g' build/html/*.html &&
 sed -i 's/Built with/<div style="opacity:0.3;font-size:76%;">Built with/g' build/html/*.html &&
 sed -i 's/Read the Docs<\/a>./Read the Docs<\/a><\/div>/g' build/html/*.html &&
 sed -i 's/.wy-nav-top a{color:#fff;font-weight:700/.wy-nav-top a{color:#fff;font-weight:700;font-size:75%;margin-left:-56px;/g' build/html/_static/css/theme.css &&
+sleep 0.5 &&
+
+cd build/latex
+touch index.html
+{
+echo "<html>"
+echo "<body>"
+echo "</body>"
+echo "<script type="text/javascript">"
+}>> index.html &&
+ls -1 >> name.txt
+sed 's/^/window.open(".\//' name.txt > namenew.txt
+sed -i 's/pdf/pdf");/g' namenew.txt
+rm -r name.txt
+cat  namenew.txt >> index.html
+rm -r namenew.txt &&
+sed -i 's/window.open(".\/index.html//' index.html
+sed -i 's/window.open(".\/name.txt//' index.html
+sed -i '/^$/d' index.html
+{
+echo '</script>'
+echo '<script language="JavaScript" type="text/javascript">'
+echo 'setTimeout("window.history.go(-1)",500);'
+echo '</script>'
+echo '</html>'
+}>> index.html
+cd ../../
+
 
 printf "\n\e[2;3;33m Step 5 of 5. Grabbing the latest auto-rebuilder \n\e[0m\n"
 for number in $(seq ${_80} ${_end})
@@ -184,11 +212,26 @@ bash ../../../_theme-grey/update.sh 2> /dev/null &
 printf "\e[2;3;33m Finished! \n\e[0m\n" &
 sleep 0.1
 cp -r ../../../_theme-grey/auto-rebuild-master.sh auto-rebuild.sh 2> /dev/null &
+sleep 1 &&
 
+printf "\e[2;3;33m HTML - http://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*/*}/}/build/ \n\e[0m\n"
+
+#change NAME to PDF name before running
+#pdftk build/latex/NAME.pdf cat 1-10 11 13 15 17 19 20 21  output build/latex/NAME-tmp.pdf &&
+#mv build/latex/NAME-tmp.pdf build/latex/NAME.pdf
+#
 # going wild here to make absultely sure the script escapes - it can hang for all sorts of reasons
+sleep 0.1 &&
 exit 1 &
+sleep 0.1 &&
 exit 0 &
+sleep 0.1 &&
 exit
+sleep 0.1 &&
 exit 0
+sleep 0.1 &&
 exit 1
+sleep 0.1 &&
 end
+
+

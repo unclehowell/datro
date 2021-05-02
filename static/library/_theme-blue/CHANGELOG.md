@@ -9,9 +9,11 @@ This directory and changelog belongs to [![GitHub release (latest by date includ
 
 ## [-theme-blue.08] - Q2/2021  
 
-### Added  
+### Added
+02-May - index.html generated for build/latex no longer redirects to pdf, but instead opens it in new tab - temp fix for PDF not opening in datro.world iframe (which resulted in the following error "Requests to the server have been blocked by an extension")  
 
-19-Apr - changed rebuild-master to produce a html redirect in build/latex/ - redirects from the directory to the pdf   
+### Changed  
+19-Apr - Changed rebuild-master to produce a html redirect in build/latex/ - redirects from the directory to the pdf   
 
 ## [0.0.6] - Q3/2020
 

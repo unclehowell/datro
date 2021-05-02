@@ -11,6 +11,16 @@ This directory and changelog belongs:
 
 ## [Unreleased]
 
+## [-theme_grey.08] - Q2/2021
+
+### Added
+02-May - index.html generated for build/latex no longer redirects to pdf, but instead opens it in new tab - temp fix for PDF not opening in datro.world iframe (which resulted in the following error "Requests to the server have been blocked by an extension")  
+
+### Changed
+
+### Removed
+
+
 ## [0.0.6] - Q3/2020
 
 ## Added
