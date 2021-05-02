@@ -24,7 +24,8 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 05-Apr - The custom.sh script file in some docs (which pulls spreadsheet data in) was producing errors. Appended a `--location` to curl which fixed it  
 
 ### Changed
-02-May - see _theme* directories changelogs to see update to rebuild-master.sh (version 1.0)
+02-May - Began changing all the filepaths in the library from `something-something` to `something_something` - part of a uniform standard being adopted  
+02-May - see _theme* directories changelogs to see update to rebuild-master.sh (version 1.0)  
 22-Apr - Put collaboration instructions from README.md into its own COLLABORATE.md file   
 21-Apr - Master-rebuild.sh in `_theme-blue` and `_theme_grey` has gone up to version 0.0.9 - it now builds html files for library navigation via html   
 07-Apr - Worked on datro-consortium/consortium-investors v0.1.6 then archived, ran `make clean` and began work on v0.1.7 e.g. latest  

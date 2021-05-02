@@ -26,6 +26,10 @@ text-decoration:none;
 
 @media only screen and (max-width: 768px) {
 html {
-font-size: calc((2vh+2vw)/1.1)
+font-size: calc((2vh+2vw)/1.1);
+white-space: nowrap;
+}
+a {
+font-size: max(3vw);
 }
 }
