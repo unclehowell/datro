@@ -40,7 +40,7 @@ latex_elements = { 'classoptions': ',openany,oneside', 'babel' : '\\usepackage[e
 
 latex_documents = [
     (master_doc, 'consortium_plans-operations_business.tex', u'DATRO Business Plan',
-     u'Author(s): Kirk W. Dailey, Google Inc.', 'manual'),
+     u'Author(s): Sion H. Buckler, DATRO CONS.', 'manual'),
 ]
 
 

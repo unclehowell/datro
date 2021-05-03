@@ -5,15 +5,11 @@ Release Notes and Notices
 This section provides information about what is new or changed, including urgent issues and documentation updates. 
 
 
-Version 0.0.4
-==============
+This Release (Version 0.0.5)
+==============================
 
- - Formerly entitled 'Operation Sun Su' - An Investment Memorandum and detailed enhancement of the business plan
- - Version Control Method for Docs has changed - Only PDF of previous version were saved before. Now a copy of the entire sphinx directory will be saved.
- - Current sphinx directory are entitled ``latest``, previous versions/ sphinx directories are entitled by their version numbers e.g. ``0-1-0`` or ``0-2-3`` etc
- - The archived url subsequently changes from ``document-title/build/html/_static/title-0-0-1.pdf`` to ``document-title/0-0-1/build/latex/title.pdf``
- - Base64 will be used for all images, to reduce file size and contain all the content of the raw data to the .rst files
- - To reduce filesize further, the content of the latex file (except the .pdf) will also be cleared before publication as part of the automated build process. 
+- **2021-May-02** - `Business Plan still requires lots of input and thought`	
+- **2021-May-02** - `Organisation changed its name and status to **DATRO Consortium** some 2 years ago. The previous name(s) are now subsidiaries of the consortium e.g. Wave, HotspotBnB etc`
 
 
 Older Versions
@@ -26,6 +22,17 @@ The table below contains information and links to, older versions of this docume
    :widths: 25, 15, 35, 25
    :header-rows: 1
    
+
+Version 0.0.4
+---------------
+
+ - Formerly entitled 'Operation Sun Su' - An Investment Memorandum and detailed enhancement of the business plan
+ - Version Control Method for Docs has changed - Only PDF of previous version were saved before. Now a copy of the entire sphinx directory will be saved.
+ - Current sphinx directory are entitled ``latest``, previous versions/ sphinx directories are entitled by their version numbers e.g. ``0-1-0`` or ``0-2-3`` etc
+ - The archived url subsequently changes from ``document-title/build/html/_static/title-0-0-1.pdf`` to ``document-title/0-0-1/build/latex/title.pdf``
+ - Base64 will be used for all images, to reduce file size and contain all the content of the raw data to the .rst files
+ - To reduce filesize further, the content of the latex file (except the .pdf) will also be cleared before publication as part of the automated build process.
+
 
 Version 0.0.3
 --------------

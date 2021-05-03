@@ -1,37 +1,17 @@
 Running Sphinx v3.5.3
 making output directory... done
-WARNING: html_static_path entry '_static' does not exist
 loading pickled environment... done
 building [mo]: targets for 0 po files that are out of date
 building [latex]: all documents
-updating environment: 0 added, 1 changed, 0 removed
-reading sources... [100%] releasenotes
-
-/var/www/html/datro-gh-pages/static/library/consortium_plans/operations_business/latest/source/releasenotes.rst:24: WARNING: Problems with "csv-table" directive path:
-[Errno 2] No such file or directory: 'source/_static/olderversions.csv'.
-
-.. csv-table:: Older Versions of this Document
-   :file: _static/olderversions.csv
-   :widths: 25, 15, 35, 25
-   :header-rows: 1
-/var/www/html/datro-gh-pages/static/library/consortium_plans/operations_business/latest/source/releasenotes.rst:56: WARNING: Problems with "csv-table" directive path:
-[Errno 2] No such file or directory: 'source/_static/issues.csv'.
-
-.. csv-table:: Known Issues
-   :file: _static/issues.csv
-   :widths: 20, 15, 25, 35
-   :header-rows: 1
+updating environment: 0 added, 0 changed, 0 removed
 looking for now-outdated files... none found
-pickling environment... done
-checking consistency... /var/www/html/datro-gh-pages/static/library/consortium_plans/operations_business/latest/source/execution-summary.rst: WARNING: document isn't included in any toctree
-done
 processing consortium_plans-operations_business.tex... index releasenotes executive-summary opportunity execution company financial-plan appendix 
 resolving references...
 done
 writing... done
 copying TeX support files... copying TeX support files...
 done
-build succeeded, 4 warnings.
+build succeeded.
 
 The LaTeX files are in build/latex.
 Run 'make' in that directory to run these through (pdf)latex
@@ -155,25 +135,25 @@ nts/map/pdftex/updmap/pdftex.map}] [1]
 Chapter 1.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd)
-Underfull \hbox (badness 10000) in paragraph at lines 114--116
+Underfull \hbox (badness 10000) in paragraph at lines 199--201
 []\T1/ptm/m/n/10 The archived url sub-se-quently changes from \T1/pcr/m/n/10 do
 cument-title/build/html/_static/
 [1] [2]
 Chapter 2.
-[3]
+[3] [4] [5] [6]
 Chapter 3.
-[4]
-Chapter 4.
-[5]
-Chapter 5.
-[6]
-Chapter 6.
 [7]
+Chapter 4.
+[8] [9]
+Chapter 5.
+[10]
+Chapter 6.
+[11]
 Chapter 7.
-[8]
+[12]
 Chapter 8.
 No file consortium_plans-operations_business.ind.
-[9] (./consortium_plans-operations_business.aux)
+[13] (./consortium_plans-operations_business.aux)
 
 Package rerunfilecheck Warning: File `consortium_plans-operations_business.out'
  has changed.
@@ -189,8 +169,9 @@ ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
 courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on consortium_plans-operations_business.pdf (11 pages, 67434 byt
+/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/urw/times/utmri8a.pfb>
+Output written on consortium_plans-operations_business.pdf (15 pages, 99606 byt
 es).
 Transcript written on consortium_plans-operations_business.log.
 Latexmk: Index file 'consortium_plans-operations_business.idx' was written
@@ -337,33 +318,34 @@ nts/map/pdftex/updmap/pdftex.map}] (./consortium_plans-operations_business.toc
 Chapter 1.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd)
-Underfull \hbox (badness 10000) in paragraph at lines 114--116
+Underfull \hbox (badness 10000) in paragraph at lines 199--201
 []\T1/ptm/m/n/10 The archived url sub-se-quently changes from \T1/pcr/m/n/10 do
 cument-title/build/html/_static/
 [1] [2]
 Chapter 2.
-[3]
+[3] [4] [5] [6]
 Chapter 3.
-[4]
-Chapter 4.
-[5]
-Chapter 5.
-[6]
-Chapter 6.
 [7]
+Chapter 4.
+[8] [9]
+Chapter 5.
+[10]
+Chapter 6.
+[11]
 Chapter 7.
-[8]
+[12]
 Chapter 8.
-(./consortium_plans-operations_business.ind) [9]
+(./consortium_plans-operations_business.ind) [13]
 (./consortium_plans-operations_business.aux) )
 (see the transcript file for additional information){/usr/share/texlive/texmf-d
 ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
 courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on consortium_plans-operations_business.pdf (12 pages, 82272 byt
-es).
+/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/urw/times/utmri8a.pfb>
+Output written on consortium_plans-operations_business.pdf (16 pages, 112288 by
+tes).
 Transcript written on consortium_plans-operations_business.log.
 Latexmk: Index file 'consortium_plans-operations_business.idx' was written
 Latexmk: Log file says output to 'consortium_plans-operations_business.pdf'
@@ -488,33 +470,34 @@ nts/map/pdftex/updmap/pdftex.map}] (./consortium_plans-operations_business.toc
 Chapter 1.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd)
-Underfull \hbox (badness 10000) in paragraph at lines 114--116
+Underfull \hbox (badness 10000) in paragraph at lines 199--201
 []\T1/ptm/m/n/10 The archived url sub-se-quently changes from \T1/pcr/m/n/10 do
 cument-title/build/html/_static/
 [1] [2]
 Chapter 2.
-[3]
+[3] [4] [5] [6]
 Chapter 3.
-[4]
-Chapter 4.
-[5]
-Chapter 5.
-[6]
-Chapter 6.
 [7]
+Chapter 4.
+[8] [9]
+Chapter 5.
+[10]
+Chapter 6.
+[11]
 Chapter 7.
-[8]
+[12]
 Chapter 8.
-(./consortium_plans-operations_business.ind) [9]
+(./consortium_plans-operations_business.ind) [13]
 (./consortium_plans-operations_business.aux) )
 (see the transcript file for additional information){/usr/share/texlive/texmf-d
 ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
 courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on consortium_plans-operations_business.pdf (12 pages, 82272 byt
-es).
+/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/urw/times/utmri8a.pfb>
+Output written on consortium_plans-operations_business.pdf (16 pages, 112288 by
+tes).
 Transcript written on consortium_plans-operations_business.log.
 Latexmk: Index file 'consortium_plans-operations_business.idx' was written
 Latexmk: Log file says output to 'consortium_plans-operations_business.pdf'

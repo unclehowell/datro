@@ -13,8 +13,12 @@ font-size:200%;
 a {
 color:grey;
 text-decoration:none;
+font-size: clamp(1.5em, 3vw, 2em);
 }
 
+p {
+margin-left: -9vw;
+}
 * {
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -30,6 +34,6 @@ font-size: calc((2vh+2vw)/1.1);
 white-space: nowrap;
 }
 a {
-font-size: max(3vw);
+font-size: clamp(1.2em, 3vw, 2em);
 }
 }

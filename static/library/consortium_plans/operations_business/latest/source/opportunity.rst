@@ -19,8 +19,10 @@ Target Market
 Competition
 ============
 
+
 Current Alternatives
 ---------------------
+
 
 Our Advantages
 ---------------
