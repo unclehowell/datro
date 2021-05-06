@@ -9,6 +9,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [datro.03] - Q2/2021
 
 ### Changed
+05-May - Minor change to json in html/videos - security fix - see html/video/changelog.md
 17-Apr - GitHub link for HBnB segment was incorrect. Changed it to point to net-installer branch and hbnb README.md   
 10-Apr - Removed scroll bars from 404 and changed some content on the 404 page to exactly match the other pages  
 05-Apr - Intro text on docs page was re-written  
