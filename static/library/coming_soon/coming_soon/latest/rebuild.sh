@@ -4,17 +4,21 @@
 #unset CDPATH
 
 
-#.......................................................
-#           2020 Copyleft - DATRO Consortium
-#.......................................................
-#       DATRO Document Library by Unclehowell
-#.......................................................
-#                   https://datro.xyz/
-#.......................................................
+#.................................................
+#         DATRO Consortium - 2021 Copyleft
+#.................................................
 #
-#                      Version 0.6
-#  ../../../ _blue-build-source/README.md & CHANGELOG.md
-#.......................................................
+#   ██████╗  █████╗ ████████╗██████╗  ██████╗
+#   ██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗██╔═══██╗
+#   ██║  ██║███████║   ██║   ██████╔╝██║   ██║
+#   ██║  ██║██╔══██║   ██║   ██╔══██╗██║   ██║
+#   ██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝
+#   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
+#................................................
+#    Document rebuild.sh script (blue theme)
+#................................................
+#             Version 1.0 - datro.xyz
+#................................................
 
 
 function ProgressBar {
@@ -42,13 +46,13 @@ do
         ProgressBar ${number} ${_end}
 done
 
-# custom e.g. pull in cryptocurrency data etc
-sh custom.sh 2> /dev/null &&
+# custom e.g. pull in latest custom data e.g. fiscal
+#sh custom.sh 2> /dev/null &&
 touch build.log
 make clean > build.log 2>&1
 printf "\e[2;3;33m Done! \n\e[0m"
 
-printf "\n\e[2;3;33m Step 2 of 5. Converting RST to HTML \n\e[0m\n"
+printf "\n\e[2;3;33m Step 2 of 5. Converting ReStructuredText to HTML \n\e[0m\n"
 for number in $(seq ${_20} ${_40})
 do
 	sleep 0.1
@@ -59,7 +63,7 @@ done
 make html > build.log 2>&1 &&
 printf "\e[2;3;33m Done! \n\e[0m"
 
-printf "\n\e[2;3;33m Step 3 of 5. Converting RST to PDF \n\e[0m\n"
+printf "\n\e[2;3;33m Step 3 of 5. Converting ReStructeredText to PDF \n\e[0m\n"
 
 for number in $(seq ${_40} ${_60})
 do
@@ -67,14 +71,16 @@ do
         ProgressBar ${number} ${_end}
 done
 
-make latexpdf > build.log 2>&1
+make latexpdf --keep-going --silent > build.log 2>&1
+sleep 10 &&
 cd build
 cd latex
 find . -type f ! -iname "*.pdf" -delete &&
 cd ../../
+
 printf "\e[2;3;33m Done! \n\e[0m"
 
-printf "\n\e[2;3;33m Step 4 of 5. Changing HTML Theme from Default to DATRO \n\e[0m\n"
+printf "\n\e[2;3;33m Step 4 of 5. Changing HTML Theme from Default to DATRO(Blue) \n\e[0m\n"
 for number in $(seq ${_60} ${_80})
 do
        sleep 0.1
@@ -84,7 +90,6 @@ done
 sed -i 's/<\/head>/<style>html{overflow-y:scroll;} ::-webkit-scrollbar{width:0px;background:transparent;}<\/style><\/head>/g' build/html/*.html
 sed -i 's/ View page source/ /g' build/html/*.html
 sed -i 's/<div class="version">/<div class="version"> Document Version : /g' build/html/*.html
-# sed -i 's/<div role="contentinfo"/<div role="contentinfo" style="visibility:hidden!important;opacity:0!important;"/g' build/html/*.html
 sed -i 's/#33368C/darkslateblue/g' build/html/_static/css/theme.css
 sed -i 's/color:initial}/color:lightgrey;}/g' build/html/_static/css/theme.css
 sed -i 's/#9b59b6/#29808A/g' build/html/_static/css/theme.css
@@ -148,10 +153,11 @@ sed -i 's/.wy-nav-top i{font-size:30px;/.wy-nav-top i{font-size:30px;margin-top:
 sed -i 's/footer{color:grey}/footer{color:white;}/g' build/html/_static/css/theme.css
 sed -i 's/&copy;/<span class="copy-left">&copy;/g' build/html/*.html
 sed -i 's/&copy;/&copy;<\/span>/g' build/html/*.html
-sed -i 's/&copy; Copyright/Copyleft/g' build/html/*.html
+sed -i 's/&copy; Copyright/ /g' build/html/*.html
 sed -i 's/span>copy;/span> /g' build/html/*.html
 sed -i 's/;copy;/ /g' build/html/*.html
-sed -i 's/Copyright/Copyleft <b style="font-color:darkgrey!important;font-weight:lighter;font-size:90%;font-style:italic;"><strong>2021 DATRO<\/strong> Consortium<\/b> | datro.xyz/g' build/html/*.html
+sed -i 's/2021, DATRO Consortium/ /g' build/html/*.html
+sed -i 's/Copyright/  <b style="font-color:darkgrey!important;font-weight:lighter;font-size:90%;font-style:italic;"><strong>2021 DATRO<\/strong> Consortium<\/b> | datro.xyz/g' build/html/*.html
 sed -i 's/ datro.xyz/ <a href="https:\/\/datro.xyz" target="_popup">datro.xyz<\/a>/g' build/html/*.html
 sed -i 's/}article/}.copy-left{display:inline-block;text-align:right;margin:0;font-weight:bolder!important;font-size:99.99%;-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:FlipH;-ms-filter:FlipH}article/g' build/html/_static/css/theme.css
 sed -i 's/footer p{/footer p{font-size:122%;margin-bottom:0px;/g' build/html/*.html
@@ -162,6 +168,37 @@ sed -i 's/placeholder="Search docs"/placeholder="Search"/g' build/html/*.html
 sed -i 's/Built with/<div style="opacity:0.3;font-size:76%;">Built with/g' build/html/*.html
 sed -i 's/Read the Docs<\/a>./Read the Docs<\/a><\/div>/g' build/html/*.html
 sed -i 's/.wy-nav-top a{color:#fff;font-weight:700/.wy-nav-top a{color:#fff;font-weight:700;font-size:75%;margin-left:-56px;/g' build/html/_static/css/theme.css
+sed -i 's/thead{color:#000;/thead{color:#fff;/g' build/html/_static/css/theme.css
+sed -i 's/caption{color:#000;/caption{color:#fff;/g' build/html/_static/css/theme.css
+sed -i 's/.rst-content .section>a>img,.rst-content .section>img{/.rst-content .section>a>img,.rst-content .section>img{filter:invert(1);/g' build/html/_static/css/theme.css
+sleep 0.5 &&
+
+cd build/latex
+touch index.html
+{
+echo '<html>'
+echo '<body>'
+echo '</body>'
+echo '<script type="text/javascript">'
+}>> index.html &&
+ls -1 >> name.txt
+sed 's/^/window.open(".\//' name.txt > namenew.txt
+sed -i 's/pdf/pdf");/g' namenew.txt
+rm -r name.txt
+cat  namenew.txt >> index.html
+rm -r namenew.txt &&
+sed -i 's/window.open(".\/index.html//' index.html
+sed -i 's/window.open(".\/name.txt//' index.html
+sed -i '/^$/d' index.html
+{
+echo '</script>'
+echo '<script language="JavaScript" type="text/javascript">'
+echo 'setTimeout("window.history.go(-1)",500);'
+echo '</script>'
+echo '</html>'
+}>> index.html
+cd ../../
+
 
 printf "\e[2;3;33m Done! \n\e[0m"
 
@@ -175,8 +212,28 @@ done
 # making sure the auto-rebuild.sh is the latest version, for the next auto-build
 rm -r auto-rebuild.sh 2> /dev/null &
 
-bash ../../../_blue-build-source/update.sh 2> /dev/null &
+bash ../../../_theme-blue/update.sh 2> /dev/null &
 
-cp -r ../../../_blue-build-source/auto-rebuild-master.sh auto-rebuild.sh 2> /dev/null &
+cp -r ../../../_theme-blue/auto-rebuild-master.sh auto-rebuild.sh 2> /dev/null &
 
-printf "\e[2;3;33m Finished! \n\e[0m\n"
+sleep 1 &&
+
+printf "\e[2;3;33m HTML - http://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*/*}/}/build/ \n\e[0m\n"
+
+#change NAME to PDF name before running
+#pdftk build/latex/NAME.pdf cat 1-10 11 13 15 17 19 20 21  output build/latex/NAME-tmp.pdf &&
+#mv build/latex/NAME-tmp.pdf build/latex/NAME.pdf
+#
+# going wild here to make absultely sure the script escapes - it can hang for all sorts of reasons
+sleep 0.1 &&
+exit 1 &
+sleep 0.1 &&
+exit 0 &
+sleep 0.1 &&
+exit
+sleep 0.1 &&
+exit 0
+sleep 0.1 &&
+exit 1
+sleep 0.1 &&
+end

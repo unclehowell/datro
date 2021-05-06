@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta content="DATRO Library" name="description">
   <meta content="DATRO Consortium" name="author">
-  <title>DATRO File Explorer</title>
+  <title>DATRO Consortium > Deals</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport">
         <link href="../_theme-explorer/favicons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
         <link href="../_theme-explorer/favicons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
@@ -21,6 +21,7 @@
         <link href="../_theme-explorer/favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
         <meta content="../_theme-explorer/favicons/ms-icon-144x144.png" name="msapplication-TileImage">
         <link rel="stylesheet" href="../_theme-explorer/style.css">
+        <link rel="stylesheet" href="../_theme-explorer/glyphicon.css">
   </head>
   <body>
     <script>
@@ -28,10 +29,10 @@
         const response = await fetch('.treeview.json');
         const data = await response.json();
         let htmlString = '<ul>';
-        htmlString += `<p style="font-weight:bolder;text-align:center;color:#336;">DATRO File Explorer</p>`;
-        htmlString += `<li><a style="font-weight:bolder;" href="../">↑ up</a></li></br>`;
+        htmlString += `<p style="font-weight:bolder;text-align:center;color:#336;">Consortium > Deals</p>`;
+        htmlString += `<li class="glyphicon glyphicon-arrow-up"><a href="../">up</a></li></br>`;
         for (let file of data) {
-          htmlString += `<li><a href="${file.path}">${file.name}</a></li>`;
+          htmlString += `<li class="glyphicon glyphicon-book"><a href="${file.path}">${file.name}</a></li>`;
         }
         htmlString += '</ul>';
         document.getElementsByTagName('body')[0].innerHTML = htmlString;

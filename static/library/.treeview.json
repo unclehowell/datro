@@ -1,27 +1,20 @@
 [
   {
-    "name": "coming_soon",
-    "path": "./coming_soon",
+    "name": "consortium > deals",
+    "path": "./consortium_deals",
     "_links": {
-      "html": "./coming_soon"
+      "html": "./consortium_deals"
     }
   },
   {
-    "name": "consortium_agreements",
-    "path": "./consortium_agreements",
-    "_links": {
-      "html": "./consortium_agreements"
-    }
-  },
-  {
-    "name": "consortium_campus",
+    "name": "consortium > campus",
     "path": "./consortium_campus",
     "_links": {
       "html": "./consortium_campus"
     }
   },
   {
-    "name": "consortium_plans",
+    "name": "consortium > plans",
     "path": "./consortium_plans",
     "_links": {
       "html": "./consortium_plans"
