@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [-html-videos-0.2] - Q2/2021
 
 ### Fixed
-
+05-May - Mistakenly deleted package.json-lock file. It broke the video playback on the landing page. re-instated it.
 05-May - Security Vunerability in dependancy - package xmlhttprequest - updated to latest which has fix (v1.6.2) (in json file)  
 
 
