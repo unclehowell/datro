@@ -8,8 +8,7 @@ This section provides information about what is new or changed, including urgent
 This Release (Version 0.0.5)
 ==============================
 
-- **2021-May-02** - `Business Plan still requires lots of input and thought`	
-- **2021-May-02** - `Organisation changed its name and status to **DATRO Consortium** some 2 years ago. The previous name(s) are now subsidiaries of the consortium e.g. Wave, HotspotBnB etc`
+- **2021-May-02** - `Organisation name change to **DATRO Consortium** - technologies folded back in as seperate subsidiaries`
 
 
 Older Versions

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "funding > investors",
+    "path": "./funding_investors",
+    "_links": {
+      "html": "./funding_investors"
+    }
+  },
+  {
+    "name": "funding > creditors",
+    "path": "./funding_creditors",
+    "_links": {
+      "html": "./funding_creditors"
+    }
+  }
+
+]

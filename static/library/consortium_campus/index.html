@@ -32,7 +32,7 @@
         htmlString += `<p style="font-weight:bolder;text-align:center;color:#336;">Consortium > Campus</p>`;
         htmlString += `<li class="glyphicon glyphicon-arrow-up"><a href="../">up</a></li></br>`;
         for (let file of data) {
-          htmlString += `<li class="glyphicon glyphicon-book"><a href="${file.path}">${file.name}</a></li>`;
+          htmlString += `<li class="glyphicon glyphicon-book"><a href="${file.path}">${file.name}</a></li></br>`;
         }
         htmlString += '</ul>';
         document.getElementsByTagName('body')[0].innerHTML = htmlString;

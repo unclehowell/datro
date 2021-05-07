@@ -7,9 +7,10 @@ This directory and changelog belongs to [![GitHub release (latest by date includ
 
 ## [Unreleased]  
 
-## [-theme-blue.08] - Q2/2021  
+## [-theme-blue.08-rc#] - Q2/2021  
 
 ### Added
+05-May - RC1.1 - Added better styling for codeblock  
 02-May - index.html generated for build/latex no longer redirects to pdf, but instead opens it in new tab - temp fix for PDF not opening in datro.world iframe (which resulted in the following error "Requests to the server have been blocked by an extension")  
 
 ### Changed  

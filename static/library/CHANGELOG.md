@@ -10,6 +10,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [-library.03] - Q2/2021
 
 ### Added 
+06-May - Added some more docs to explorer
 05-May - Added glyphicons to the explorer - nothing too fancy, just up icon for navigating up the directory and a book icon for the directories/files    
 01-May - The json file is now entitled `.treeview.json` and the remote url will be used instead of githubs API.    
 01-May - Enhanced the scripts for the html navigation so that it uses an offline json when offline. Next up - A script to produce the json file would be an impovement over manually maintaining it, as the library grows   

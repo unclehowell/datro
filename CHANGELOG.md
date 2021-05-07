@@ -8,14 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.11] - Q2/2021
 
 ### Added
-01-May - Added index.html to `static` subdirectory, with .treeview.json  - the result is a html navigator
+06-May - Added more docs to the library - see the file explorer to see: https://datro.xyz/static/library/  
+01-May - Added index.html to `static` subdirectory, with .treeview.json  - the result is a html navigator  
 18-Apr - Theme customisation in Docs Library (github api/gh-pages html-view) see corresponding static/library CHANGELOG.md for details  
 17-Apr - Added code tip to COLLABORATE.md - a script to add 2 spaces at the end of each line in .md files - see note in file (at bottom)   
 
 
 ### Changed
-05-May - Changed the index.html in static (the html directory navigator) - included glyphicons
-02-May - Changed `coming-soon/coming-soon` to `coming_soon/coming_soon` throughout the monorepo - to match the new path of the document
+05-May - Changed the index.html in static (the html directory navigator) - included glyphicons  
+02-May - Changed `coming-soon/coming-soon` to `coming_soon/coming_soon` throughout the monorepo - to match the new path of the document  
 21-Apr - Changed some characters in README.md since the characters weren't all recognised in different readers  
 17-Apr - Minor change to static/datro - see corresponding CHANGELOG.md for details  
 13-Apr - Started a new document for the DATRO Campus - see the doc library changelog for more info  
@@ -54,7 +55,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 16-Feb - removed secret ssl keys from some 3rd parties embedded repo  
 
 ### Fixed
-29-Mar - static/gui - fixed broken link - see gui changelog
+29-Mar - static/gui - fixed broken link - see gui changelog  
 25-Mar - more wc3 validating (index.html only)  
 24-Mar - wc3 validator fixes - https://pastebin.com/Au8ZEHmd  
 24-Mar - hbnb video corrupted , had to grab an old copy and overwrite  

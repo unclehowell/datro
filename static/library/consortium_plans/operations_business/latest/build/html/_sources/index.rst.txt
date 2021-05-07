@@ -1,10 +1,10 @@
 DATRO Business Plan
 =========================
 
-
+Below is the DATRO Business Plan Index: 
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
 
    releasenotes
    executive-summary
