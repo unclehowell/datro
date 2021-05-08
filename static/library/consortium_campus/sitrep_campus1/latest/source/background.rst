@@ -5,7 +5,7 @@ The property has the levels. The top will be accomodation for visitors (log cabi
 The lext level down is the main house. A 5 bedroom villa.  
 
 Seller: Manuel Pacheco  
-Sale Price: $200,000 USD  
+Sale Price: $250,000 USD  
   
 
 

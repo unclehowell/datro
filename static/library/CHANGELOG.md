@@ -23,6 +23,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 27-Mar - Trying to get docs library to work with readthedocs by adding .readthedocs.yml  
 
 ### Fixed
+08-May - Corrected the purchase price of Campus One from $200k to $250k (possibly still inaccurate as it was around 7 years ago)
 18-Apr - Fixed a load of issues with the github api index.html files (which allows file exploring via gh-pages webpage view)   
 05-Apr - The custom.sh script file in some docs (which pulls spreadsheet data in) was producing errors. Appended a `--location` to curl which fixed it  
 

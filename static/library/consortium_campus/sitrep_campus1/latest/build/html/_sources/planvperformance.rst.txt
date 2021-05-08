@@ -24,7 +24,7 @@ Notes for **Option Two:** `Rental + security deposits ($20k) trasfered to amorti
  - **2016-06-01** - `$50,000 USD Installment`  
  - **2016-12-01** - `$50,000 USD Installment`  
 
- - **2016_06_01** - `$200k Purchase Complete - Title Transfered !!`
+ - **2016_06_01** - `$250k Purchase Complete - Title Transfered !!`
 
 Team Plan
 ############
