@@ -9,7 +9,7 @@
 	"description": "Featherlight is a very lightweight jQuery lightbox plugin. It's simple yet flexible and easy to use. Featherlight has minimal css and uses no inline styles, everything is name-spaced, it's completely customizable via configuration object and offers image, ajax and iframe support out of the box. Featherlights small footprint weights less than 4kB \u2013 in total.",
 	"devDependencies": {
 		"bower": "*",
-		"grunt": "~0.4.2",
+		"grunt": "~1.3.0",
 		"grunt-cli": "*",
 		"grunt-bump": "0.0.12",
 		"grunt-coffeelint": "0.0.7",

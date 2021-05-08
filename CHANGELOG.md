@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 05-Apr - Minor edit to static/datro/documents.html - see corresponding changelog for details  
 
 ### Fixed
+08-May - Updated packages in static/datro/html/featherlight and /videos to counter security threats - see corresponding changelogs for details   
 05-Apr - Minor security fix in static/datro - see corresponding changelog for details  
 
 ## [0.0.1-rtw.10] - Q1/2021
