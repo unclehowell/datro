@@ -5,19 +5,10 @@ building [mo]: targets for 0 po files that are out of date
 building [latex]: all documents
 updating environment: 0 added, 0 changed, 0 removed
 looking for now-outdated files... none found
-processing consortium_campus-sitrep_campus1.tex... index releasenotes background planvperformance issuesrisks forwardplan annex-list 
+processing consortium_campus-sitrep_campus1.tex... index releasenotes background planvperformance issuesrisks forwardplan 
 resolving references...
 done
 writing... done
-copying images... [ 12%] _static/2021-04-16_origional-map.png
-copying images... [ 25%] _static/2019-07-31_sotherbys-market-analysis.png
-copying images... [ 37%] _static/2017-07-24_certificate_2488_70.png
-copying images... [ 50%] _static/2010-08-13_certificate_4068_61.png
-copying images... [ 62%] _static/2010-08-13_certificate_2088_47.png
-copying images... [ 75%] _static/2010-08-13_certificate_2038_77.png
-copying images... [ 87%] _static/2010-08-13_certificate_1749_00.png
-copying images... [100%] _static/2009-11-19_certificate_1154_00.png
-
 copying TeX support files... copying TeX support files...
 done
 build succeeded.
@@ -158,24 +149,8 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 Chapter 5.
 [7]
 Chapter 6.
-
-LaTeX Warning: Hyper reference `annex-list:download-links' on page 8 undefined 
-on input line 429.
-
-[8 <./2021-04-16_origional-map.png>] [9 <./2019-07-31_sotherbys-market-analysis
-.png>] [10]
-Overfull \vbox (1.74147pt too high) has occurred while \output is active
-[11 <./2017-07-24_certificate_2488_70.png>] [12 <./2010-08-13_certificate_4068_
-61.png>] [13 <./2010-08-13_certificate_2088_47.png>] [14]
-Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[15 <./2010-08-13_certificate_2038_77.png>] [16]
-Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[17 <./2010-08-13_certificate_1749_00.png>] [18]
-Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[19 <./2009-11-19_certificate_1154_00.png>] [20]
-Chapter 7.
 No file consortium_campus-sitrep_campus1.ind.
-[21] (./consortium_campus-sitrep_campus1.aux)
+[8] (./consortium_campus-sitrep_campus1.aux)
 
 Package rerunfilecheck Warning: File `consortium_campus-sitrep_campus1.out' has
  changed.
@@ -183,21 +158,16 @@ Package rerunfilecheck Warning: File `consortium_campus-sitrep_campus1.out' has
 (rerunfilecheck)                or use package `bookmark'.
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
- )
-(see the transcript file for additional information) </root/.texlive2020/texmf-
-var/fonts/pk/ljfour/jknappen/ec/tcrb1000.600pk>{/usr/share/texlive/texmf-dist/f
-onts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/helve
-tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on consortium_campus-sitrep_campus1.pdf (23 pages, 6591228 bytes
-).
+ ) </root/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrb1000.600pk>{/u
+sr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/tex
+mf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/font
+s/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
+/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on consortium_campus-sitrep_campus1.pdf (10 pages, 641313 bytes)
+.
 Transcript written on consortium_campus-sitrep_campus1.log.
 Latexmk: Index file 'consortium_campus-sitrep_campus1.idx' was written
 Latexmk: Missing input file: 'consortium_campus-sitrep_campus1.ind' from line
@@ -357,29 +327,16 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 Chapter 5.
 [7]
 Chapter 6.
-[8 <./2021-04-16_origional-map.png>] [9 <./2019-07-31_sotherbys-market-analysis
-.png>] [10]
-Overfull \vbox (1.74147pt too high) has occurred while \output is active
-[11 <./2017-07-24_certificate_2488_70.png>] [12 <./2010-08-13_certificate_4068_
-61.png>] [13 <./2010-08-13_certificate_2088_47.png>] [14]
-Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[15 <./2010-08-13_certificate_2038_77.png>] [16]
-Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[17 <./2010-08-13_certificate_1749_00.png>] [18]
-Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[19 <./2009-11-19_certificate_1154_00.png>] [20]
-Chapter 7.
-(./consortium_campus-sitrep_campus1.ind) [21]
-(./consortium_campus-sitrep_campus1.aux) )
-(see the transcript file for additional information) </root/.texlive2020/texmf-
-var/fonts/pk/ljfour/jknappen/ec/tcrb1000.600pk>{/usr/share/texlive/texmf-dist/f
-onts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/helve
-tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on consortium_campus-sitrep_campus1.pdf (23 pages, 6595651 bytes
-).
+(./consortium_campus-sitrep_campus1.ind) [8]
+(./consortium_campus-sitrep_campus1.aux) ) </root/.texlive2020/texmf-var/fonts/
+pk/ljfour/jknappen/ec/tcrb1000.600pk>{/usr/share/texlive/texmf-dist/fonts/enc/d
+vips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/urw/times/utmri8a.pfb>
+Output written on consortium_campus-sitrep_campus1.pdf (10 pages, 645346 bytes)
+.
 Transcript written on consortium_campus-sitrep_campus1.log.
 Latexmk: Index file 'consortium_campus-sitrep_campus1.idx' was written
 Latexmk: Log file says output to 'consortium_campus-sitrep_campus1.pdf'
@@ -518,29 +475,16 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 Chapter 5.
 [7]
 Chapter 6.
-[8 <./2021-04-16_origional-map.png>] [9 <./2019-07-31_sotherbys-market-analysis
-.png>] [10]
-Overfull \vbox (1.74147pt too high) has occurred while \output is active
-[11 <./2017-07-24_certificate_2488_70.png>] [12 <./2010-08-13_certificate_4068_
-61.png>] [13 <./2010-08-13_certificate_2088_47.png>] [14]
-Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[15 <./2010-08-13_certificate_2038_77.png>] [16]
-Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[17 <./2010-08-13_certificate_1749_00.png>] [18]
-Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[19 <./2009-11-19_certificate_1154_00.png>] [20]
-Chapter 7.
-(./consortium_campus-sitrep_campus1.ind) [21]
-(./consortium_campus-sitrep_campus1.aux) )
-(see the transcript file for additional information) </root/.texlive2020/texmf-
-var/fonts/pk/ljfour/jknappen/ec/tcrb1000.600pk>{/usr/share/texlive/texmf-dist/f
-onts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/helve
-tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on consortium_campus-sitrep_campus1.pdf (23 pages, 6595651 bytes
-).
+(./consortium_campus-sitrep_campus1.ind) [8]
+(./consortium_campus-sitrep_campus1.aux) ) </root/.texlive2020/texmf-var/fonts/
+pk/ljfour/jknappen/ec/tcrb1000.600pk>{/usr/share/texlive/texmf-dist/fonts/enc/d
+vips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/urw/times/utmri8a.pfb>
+Output written on consortium_campus-sitrep_campus1.pdf (10 pages, 645346 bytes)
+.
 Transcript written on consortium_campus-sitrep_campus1.log.
 Latexmk: Index file 'consortium_campus-sitrep_campus1.idx' was written
 Latexmk: Log file says output to 'consortium_campus-sitrep_campus1.pdf'

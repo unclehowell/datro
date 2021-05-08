@@ -13,14 +13,13 @@ This document is a brief report about the activities at what we now refer to as 
    planvperformance
    issuesrisks
    forwardplan
-   annex-list
 
  
 **Document Author(s):** 
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 =========================================
-**DATRO Consortium**
+**Sion Buckler, Founder@DATRO**
 =========================================
 
 
