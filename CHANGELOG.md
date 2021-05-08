@@ -1,13 +1,17 @@
 # Changelog
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),  
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).  
+Key: When refering to a directory e.g. `library', 'datro', 'hbnb' etc, note that the full path includes a '/static/' before the directory title  
+better to say this once than keep writing /static/ in every changelog entry, before the directory being refered to.  
+ideally at some point the content of /static/ could be moved up a directory and /static/ removed alltogether.   
+However, for now, it's understood that /static/ is required of gh-pages to serve the directory content as webpages.   
 
 ## [Unreleased]
 
 ## [0.0.1-rtw.11] - Q2/2021
 
 ### Added
+08-May - Added key at top of changelog to keep author from repeating lengthly notes   
 06-May - Added more docs to the library - see the file explorer to see: https://datro.xyz/static/library/  
 01-May - Added index.html to `static` subdirectory, with .treeview.json  - the result is a html navigator  
 18-Apr - Theme customisation in Docs Library (github api/gh-pages html-view) see corresponding static/library CHANGELOG.md for details  
@@ -27,7 +31,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 05-Apr - Minor edit to static/datro/documents.html - see corresponding changelog for details  
 
 ### Fixed
-08-May - Minor edit to document in library - see static/library changelog for details
+08-May - Fixed some data miscalculations in the creditors document - see static/library/changelog for more info  
+08-May - Minor edit to document in library - see static/library changelog for details  
 08-May - Updated packages in static/datro/html/featherlight and /videos to counter security threats - see corresponding changelogs for details   
 05-Apr - Minor security fix in static/datro - see corresponding changelog for details  
 

@@ -1,8 +1,12 @@
 DATRO Consortium Creditors
 ================================
 
-Similar to Investors and Developers, the DATRO Consortiums Creditors can expect loans and interest to be extinguish (fully-autonomously) by our Decentralized Autonomous Society (DAS).
-The latest method employed for this process, resides with cryptocurrency DOT and the Polkadot blockchain, in which the latest version of this document is regularly and autonomously scraped by a smart contract to determin the lenders, interest and division of funds designated for distribution. 
+The way DATRO expects to autonomously extinguish our lines of credit, is similar to the systems we're putting in place to remunerate our developers and investors.
+Our Consortiums Creditors can expect loans and interest to be extinguished (fully-autonomously) by our Decentralized Autonomous Society (DAS) - Which is explained later in this document in more depth.
+The latest method employed for this process, resides within the cryptocurrency DOT and the Polkadot blockchain, in which the latest version of this document is able to be regularly and autonomously scraped by a smart contract to determin the lenders, accured interest and autonomously issue the funds to our lenders in accordance with the amortization agreements.
+Since this autonomous, decentralised system is still in pre-production, some methodologies are executed manually in the interim for purposes of troubleshooting and correctly writing the smart contracts, which can only later be changed by way of a tokenized vote. 
+And until such time as the DAS is operational, accured interest will compound and is subject to adjustment to ensure the compounded interest is within the reach of the DAS and its annual revenue. 
+ 
 
 
 .. toctree::
@@ -18,9 +22,9 @@ The latest method employed for this process, resides with cryptocurrency DOT and
 **Document Author:** 
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-==============================
-Sion Buckler, Founder@DATRO
-==============================
+===============================
+Sion H. Buckler, Founder@DATRO
+===============================
 
 
 
