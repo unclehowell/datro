@@ -16,7 +16,7 @@ master_doc = 'index'
 
 language = None
 
-today_fmt = 'Dec 09, 2019'
+#today_fmt = 'Dec 09, 2019'
 
 exclude_patterns = ['_build']
 

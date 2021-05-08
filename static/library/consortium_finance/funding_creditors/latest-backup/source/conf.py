@@ -3,8 +3,8 @@ project = u'DATRO Consortium Creditors'
 copyright = u'2021, DATRO Consortium'
 author = u'Sion Buckler, Founder'
 
-version = u'0.0.3'
-release = u'0.0.3'
+version = u'0.0.4'
+release = u'0.0.4'
 
 extensions = ['sphinx.ext.autosectionlabel']
 
@@ -16,7 +16,7 @@ master_doc = 'index'
 
 language = None
 
-today_fmt = 'Dec 09, 2019'
+#today_fmt = 'Dec 09, 2019'
 
 exclude_patterns = ['_build']
 

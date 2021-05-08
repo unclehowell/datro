@@ -1,11 +1,9 @@
-Wave® Interest Token (WIT), 10% APR
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Creditors (Overview)
+~~~~~~~~~~~~~~~~~~~~~~
 
-The same delivery methods used to give investors in Royalty Tokens their royalties, are employed by the Wave® DAO to offer lenders real-time interest on loans made to Wave®. 
-**Interest Tokens** can be used to receive real-time interest on loans, in much the same way royalties from our network are autonomously paid to Royalty Token holders.
+See below a summary of the DATRO Consortiums Creditors Accounts: 
 
-
-.. csv-table:: Wave® Interest Token (WIT) - Master Register
+.. csv-table:: DATRO Creditor(s) - Master Register
    :file: _static/wit-coin/wit-master-register.csv
    :widths: 10, 25, 20, 20, 25
    :header-rows: 1

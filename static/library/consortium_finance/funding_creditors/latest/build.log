@@ -5,12 +5,10 @@ building [mo]: targets for 0 po files that are out of date
 building [latex]: all documents
 updating environment: 0 added, 0 changed, 0 removed
 looking for now-outdated files... none found
-processing consortium_finance-funding_creditors.tex... index releasenotes introduction wit-summary wit-detail 
+processing consortium_finance-funding_creditors.tex... index releasenotes introduction creditors 
 resolving references...
 done
 writing... done
-copying images... [100%] images/fianancials.png
-
 copying TeX support files... copying TeX support files...
 done
 build succeeded.
@@ -135,34 +133,20 @@ Writing index file consortium_finance-funding_creditors.idx
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map}] [1] [1]
 Chapter 1.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 108.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 145--148
-[]|[][]\T1/ptm/m/n/10 2019-01-09_wave-organisation-
-
-Underfull \hbox (badness 10000) in paragraph at lines 158--161
-[]|[][]\T1/ptm/m/n/10 2019-01-17_wave-organisation-
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [2]
-Underfull \hbox (badness 10000) in paragraph at lines 221--223
+Underfull \hbox (badness 10000) in paragraph at lines 247--249
 []|\T1/phv/b/n/10 Ver-
 [3]
 Chapter 2.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd) [4 <./fianancials.png
->]
+[4]
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 305--307
+Underfull \hbox (badness 10000) in paragraph at lines 329--331
 []|\T1/phv/m/n/10 In-ter-est 10%
-[5]
+[5] [6] [7] [8] [9] [10] [11] [12]
 Chapter 4.
-[6] [7] [8] [9] [10]
-Chapter 5.
 No file consortium_finance-funding_creditors.ind.
-[11] (./consortium_finance-funding_creditors.aux)
+[13] (./consortium_finance-funding_creditors.aux)
 
 Package rerunfilecheck Warning: File `consortium_finance-funding_creditors.out'
  has changed.
@@ -174,13 +158,13 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information){/usr/share/texlive/texmf-d
-ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
-jknappen/ec/tcrb1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/helve
-tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on consortium_finance-funding_creditors.pdf (13 pages, 128490 by
+ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
+helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhv
+bo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/urw/times/utmri8a.pfb>
+Output written on consortium_finance-funding_creditors.pdf (15 pages, 100665 by
 tes).
 Transcript written on consortium_finance-funding_creditors.log.
 Latexmk: Index file 'consortium_finance-funding_creditors.idx' was written
@@ -325,42 +309,28 @@ Writing index file consortium_finance-funding_creditors.idx
 nts/map/pdftex/updmap/pdftex.map}] (./consortium_finance-funding_creditors.toc)
 [1] [1]
 Chapter 1.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 108.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 145--148
-[]|[][]\T1/ptm/m/n/10 2019-01-09_wave-organisation-
-
-Underfull \hbox (badness 10000) in paragraph at lines 158--161
-[]|[][]\T1/ptm/m/n/10 2019-01-17_wave-organisation-
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [2]
-Underfull \hbox (badness 10000) in paragraph at lines 221--223
+Underfull \hbox (badness 10000) in paragraph at lines 247--249
 []|\T1/phv/b/n/10 Ver-
 [3]
 Chapter 2.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd) [4 <./fianancials.png
->]
+[4]
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 305--307
+Underfull \hbox (badness 10000) in paragraph at lines 329--331
 []|\T1/phv/m/n/10 In-ter-est 10%
-[5]
+[5] [6] [7] [8] [9] [10] [11] [12]
 Chapter 4.
-[6] [7] [8] [9] [10]
-Chapter 5.
-(./consortium_finance-funding_creditors.ind) [11]
+(./consortium_finance-funding_creditors.ind) [13]
 (./consortium_finance-funding_creditors.aux) )
 (see the transcript file for additional information){/usr/share/texlive/texmf-d
-ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
-jknappen/ec/tcrb1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/helve
-tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on consortium_finance-funding_creditors.pdf (13 pages, 135062 by
+ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
+helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhv
+bo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/urw/times/utmri8a.pfb>
+Output written on consortium_finance-funding_creditors.pdf (15 pages, 106406 by
 tes).
 Transcript written on consortium_finance-funding_creditors.log.
 Latexmk: Index file 'consortium_finance-funding_creditors.idx' was written
@@ -484,42 +454,28 @@ Writing index file consortium_finance-funding_creditors.idx
 nts/map/pdftex/updmap/pdftex.map}] (./consortium_finance-funding_creditors.toc)
 [1] [1]
 Chapter 1.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 108.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 145--148
-[]|[][]\T1/ptm/m/n/10 2019-01-09_wave-organisation-
-
-Underfull \hbox (badness 10000) in paragraph at lines 158--161
-[]|[][]\T1/ptm/m/n/10 2019-01-17_wave-organisation-
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [2]
-Underfull \hbox (badness 10000) in paragraph at lines 221--223
+Underfull \hbox (badness 10000) in paragraph at lines 247--249
 []|\T1/phv/b/n/10 Ver-
 [3]
 Chapter 2.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd) [4 <./fianancials.png
->]
+[4]
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 305--307
+Underfull \hbox (badness 10000) in paragraph at lines 329--331
 []|\T1/phv/m/n/10 In-ter-est 10%
-[5]
+[5] [6] [7] [8] [9] [10] [11] [12]
 Chapter 4.
-[6] [7] [8] [9] [10]
-Chapter 5.
-(./consortium_finance-funding_creditors.ind) [11]
+(./consortium_finance-funding_creditors.ind) [13]
 (./consortium_finance-funding_creditors.aux) )
 (see the transcript file for additional information){/usr/share/texlive/texmf-d
-ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
-jknappen/ec/tcrb1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/helve
-tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on consortium_finance-funding_creditors.pdf (13 pages, 135062 by
+ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
+helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhv
+bo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/urw/times/utmri8a.pfb>
+Output written on consortium_finance-funding_creditors.pdf (15 pages, 106406 by
 tes).
 Transcript written on consortium_finance-funding_creditors.log.
 Latexmk: Index file 'consortium_finance-funding_creditors.idx' was written

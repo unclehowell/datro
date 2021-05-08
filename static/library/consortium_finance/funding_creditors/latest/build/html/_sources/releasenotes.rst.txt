@@ -8,8 +8,10 @@ This section provides information about what is new or changed, including urgent
 This Release (0.0.4)
 ~~~~~~~~~~~~~~~~~~~~~
 
-**2021-05-06** - The archives may display semantic version format 'v0.1.x' but this was incorrect. They've been corrected and changed to 'v0.0.x'
-**2021-05-06** - `The nomenclatures have been updated (from Wave to DATRO) in this latest document.  
+- **2021-05-08** - `Where possible yyyy-mm-dd is used where no date is recorded to maintain formatting consistency in anticipation of Polkadot smart contract scraping.`  
+- **2021-05-08** - `Creditor data updated since last release (accured interest, latest deposits etc). Some accounts still require reconsiling and new credits exist that are not on record yet.`  
+- **2021-05-08** - `The content segment was extensive because each creditor had a dedicated entry. Solved this (merged two .rst's and changed header types). Now content segment is brief.`  
+- **2021-05-06** - `Older version titles ('wave-token-wit' changed to 'datro-creditors') and semantic versions ('0.1.x' changed to '0.0.x') in this release, however archive titles and semantic versions remain unchanged as per archive/"wayback" policy.`    
 
 
 Older Versions
@@ -25,10 +27,9 @@ Older Versions
 Version 0.0.3
 ###############
 
+This document has the following updates since version 0.0.2 was published:
 
-This document has the following updates since version 0.1.0 was published:
-
-- Further lending obtained, records updated!
+- **yyyy-mm-dd** - Further lending obtained, records updated!
 
 Version 0.0.2
 ####################

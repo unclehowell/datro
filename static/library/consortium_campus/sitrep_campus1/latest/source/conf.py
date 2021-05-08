@@ -15,7 +15,7 @@ master_doc = 'index'
 
 language = None
 
-today_fmt = 'Dec 28, 2014'
+today_fmt = 'Aug 08, 2014'
 
 exclude_patterns = ['_build']
 
@@ -37,7 +37,7 @@ latex_elements = {
 
 'classoptions': ',openany,oneside', 'babel' : '\\usepackage[english]{babel}',
 
-'releasename': "GPS:19.287486,-69.543597 | Version"
+'releasename': "GPS: ? | Version"
 
 }
 

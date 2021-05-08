@@ -6,12 +6,11 @@ The latest method employed for this process, resides with cryptocurrency DOT and
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    
    releasenotes
    introduction
-   wit-summary
-   wit-detail
+   creditors
  
    
 

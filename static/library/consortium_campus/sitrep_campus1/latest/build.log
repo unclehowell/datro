@@ -5,9 +5,8 @@ building [mo]: targets for 0 po files that are out of date
 building [latex]: all documents
 updating environment: 0 added, 0 changed, 0 removed
 looking for now-outdated files... none found
-processing consortium_campus-sitrep_campus1.tex... index releasenotes plan performance annex-list 
+processing consortium_campus-sitrep_campus1.tex... index releasenotes background planvperformance issuesrisks forwardplan annex-list 
 resolving references...
-/var/www/html/datro-gh-pages/static/library/consortium_campus/sitrep_campus1/latest/source/releasenotes.rst:9: WARNING: undefined label: sellers notes/ surmises
 done
 writing... done
 copying images... [ 12%] _static/2021-04-16_origional-map.png
@@ -21,7 +20,7 @@ copying images... [100%] _static/2009-11-19_certificate_1154_00.png
 
 copying TeX support files... copying TeX support files...
 done
-build succeeded, 1 warning.
+build succeeded.
 
 The LaTeX files are in build/latex.
 Run 'make' in that directory to run these through (pdf)latex
@@ -142,40 +141,36 @@ Writing index file consortium_campus-sitrep_campus1.idx
 >><<oms.cmap>><<omx.cmap>>
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
-nts/map/pdftex/updmap/pdftex.map} <./logo.jpg>] [1]
+nts/map/pdftex/updmap/pdftex.map} <./logo.jpg>] [1] [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1] [2]
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [2]
 Chapter 2.
 [3]
 Chapter 3.
-
-LaTeX Warning: Hyper reference `annex-list:certificate-of-title-4-068-61m2-copy
-' on page 4 undefined on input line 325.
-
-
-LaTeX Warning: Hyper reference `annex-list:origional-map-remastered' on page 4 
-undefined on input line 330.
-
-[4]
+[4] [5]
 Chapter 4.
-
-LaTeX Warning: Hyper reference `annex-list:download-links' on page 5 undefined 
-on input line 337.
-
-[5 <./2021-04-16_origional-map.png>] [6 <./2019-07-31_sotherbys-market-analysis
-.png>] [7]
-Overfull \vbox (1.74147pt too high) has occurred while \output is active
-[8 <./2017-07-24_certificate_2488_70.png>] [9 <./2010-08-13_certificate_4068_61
-.png>] [10 <./2010-08-13_certificate_2088_47.png>] [11]
-Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[12 <./2010-08-13_certificate_2038_77.png>] [13]
-Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[14 <./2010-08-13_certificate_1749_00.png>] [15]
-Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[16 <./2009-11-19_certificate_1154_00.png>] [17]
+[6]
 Chapter 5.
+[7]
+Chapter 6.
+
+LaTeX Warning: Hyper reference `annex-list:download-links' on page 8 undefined 
+on input line 423.
+
+[8 <./2021-04-16_origional-map.png>] [9 <./2019-07-31_sotherbys-market-analysis
+.png>] [10]
+Overfull \vbox (1.74147pt too high) has occurred while \output is active
+[11 <./2017-07-24_certificate_2488_70.png>] [12 <./2010-08-13_certificate_4068_
+61.png>] [13 <./2010-08-13_certificate_2088_47.png>] [14]
+Overfull \vbox (1.77911pt too high) has occurred while \output is active
+[15 <./2010-08-13_certificate_2038_77.png>] [16]
+Overfull \vbox (1.77911pt too high) has occurred while \output is active
+[17 <./2010-08-13_certificate_1749_00.png>] [18]
+Overfull \vbox (1.77911pt too high) has occurred while \output is active
+[19 <./2009-11-19_certificate_1154_00.png>] [20]
+Chapter 7.
 No file consortium_campus-sitrep_campus1.ind.
-[18] (./consortium_campus-sitrep_campus1.aux)
+[21] (./consortium_campus-sitrep_campus1.aux)
 
 Package rerunfilecheck Warning: File `consortium_campus-sitrep_campus1.out' has
  changed.
@@ -195,7 +190,7 @@ helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhv
 bo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on consortium_campus-sitrep_campus1.pdf (20 pages, 6590049 bytes
+Output written on consortium_campus-sitrep_campus1.pdf (23 pages, 6590667 bytes
 ).
 Transcript written on consortium_campus-sitrep_campus1.log.
 Latexmk: Index file 'consortium_campus-sitrep_campus1.idx' was written
@@ -339,27 +334,31 @@ Writing index file consortium_campus-sitrep_campus1.idx
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map} <./logo.jpg>]
-(./consortium_campus-sitrep_campus1.toc) [1]
+(./consortium_campus-sitrep_campus1.toc) [1] [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1] [2]
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [2]
 Chapter 2.
 [3]
 Chapter 3.
-[4]
+[4] [5]
 Chapter 4.
-[5 <./2021-04-16_origional-map.png>] [6 <./2019-07-31_sotherbys-market-analysis
-.png>] [7]
-Overfull \vbox (1.74147pt too high) has occurred while \output is active
-[8 <./2017-07-24_certificate_2488_70.png>] [9 <./2010-08-13_certificate_4068_61
-.png>] [10 <./2010-08-13_certificate_2088_47.png>] [11]
-Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[12 <./2010-08-13_certificate_2038_77.png>] [13]
-Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[14 <./2010-08-13_certificate_1749_00.png>] [15]
-Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[16 <./2009-11-19_certificate_1154_00.png>] [17]
+[6]
 Chapter 5.
-(./consortium_campus-sitrep_campus1.ind) [18]
+[7]
+Chapter 6.
+[8 <./2021-04-16_origional-map.png>] [9 <./2019-07-31_sotherbys-market-analysis
+.png>] [10]
+Overfull \vbox (1.74147pt too high) has occurred while \output is active
+[11 <./2017-07-24_certificate_2488_70.png>] [12 <./2010-08-13_certificate_4068_
+61.png>] [13 <./2010-08-13_certificate_2088_47.png>] [14]
+Overfull \vbox (1.77911pt too high) has occurred while \output is active
+[15 <./2010-08-13_certificate_2038_77.png>] [16]
+Overfull \vbox (1.77911pt too high) has occurred while \output is active
+[17 <./2010-08-13_certificate_1749_00.png>] [18]
+Overfull \vbox (1.77911pt too high) has occurred while \output is active
+[19 <./2009-11-19_certificate_1154_00.png>] [20]
+Chapter 7.
+(./consortium_campus-sitrep_campus1.ind) [21]
 (./consortium_campus-sitrep_campus1.aux) )
 (see the transcript file for additional information){/usr/share/texlive/texmf-d
 ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
@@ -367,7 +366,7 @@ helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhv
 bo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on consortium_campus-sitrep_campus1.pdf (20 pages, 6595314 bytes
+Output written on consortium_campus-sitrep_campus1.pdf (23 pages, 6594929 bytes
 ).
 Transcript written on consortium_campus-sitrep_campus1.log.
 Latexmk: Index file 'consortium_campus-sitrep_campus1.idx' was written
@@ -490,27 +489,31 @@ Writing index file consortium_campus-sitrep_campus1.idx
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map} <./logo.jpg>]
-(./consortium_campus-sitrep_campus1.toc) [1]
+(./consortium_campus-sitrep_campus1.toc) [1] [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1] [2]
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [2]
 Chapter 2.
 [3]
 Chapter 3.
-[4]
+[4] [5]
 Chapter 4.
-[5 <./2021-04-16_origional-map.png>] [6 <./2019-07-31_sotherbys-market-analysis
-.png>] [7]
-Overfull \vbox (1.74147pt too high) has occurred while \output is active
-[8 <./2017-07-24_certificate_2488_70.png>] [9 <./2010-08-13_certificate_4068_61
-.png>] [10 <./2010-08-13_certificate_2088_47.png>] [11]
-Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[12 <./2010-08-13_certificate_2038_77.png>] [13]
-Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[14 <./2010-08-13_certificate_1749_00.png>] [15]
-Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[16 <./2009-11-19_certificate_1154_00.png>] [17]
+[6]
 Chapter 5.
-(./consortium_campus-sitrep_campus1.ind) [18]
+[7]
+Chapter 6.
+[8 <./2021-04-16_origional-map.png>] [9 <./2019-07-31_sotherbys-market-analysis
+.png>] [10]
+Overfull \vbox (1.74147pt too high) has occurred while \output is active
+[11 <./2017-07-24_certificate_2488_70.png>] [12 <./2010-08-13_certificate_4068_
+61.png>] [13 <./2010-08-13_certificate_2088_47.png>] [14]
+Overfull \vbox (1.77911pt too high) has occurred while \output is active
+[15 <./2010-08-13_certificate_2038_77.png>] [16]
+Overfull \vbox (1.77911pt too high) has occurred while \output is active
+[17 <./2010-08-13_certificate_1749_00.png>] [18]
+Overfull \vbox (1.77911pt too high) has occurred while \output is active
+[19 <./2009-11-19_certificate_1154_00.png>] [20]
+Chapter 7.
+(./consortium_campus-sitrep_campus1.ind) [21]
 (./consortium_campus-sitrep_campus1.aux) )
 (see the transcript file for additional information){/usr/share/texlive/texmf-d
 ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
@@ -518,7 +521,7 @@ helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhv
 bo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on consortium_campus-sitrep_campus1.pdf (20 pages, 6595314 bytes
+Output written on consortium_campus-sitrep_campus1.pdf (23 pages, 6594929 bytes
 ).
 Transcript written on consortium_campus-sitrep_campus1.log.
 Latexmk: Index file 'consortium_campus-sitrep_campus1.idx' was written

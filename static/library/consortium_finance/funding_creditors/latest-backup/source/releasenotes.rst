@@ -1,18 +1,15 @@
 Release Notes and Notices
-================================================
+===============================
 
 This section provides information about what is new or changed, including urgent issues, documentation updates, maintenance and new releases. 
 - 'Updates' are the term used to describe significant changes to our public source code and/or records. 
 
  
-Version 0.1.3
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+This Release (0.0.4)
+~~~~~~~~~~~~~~~~~~~~~
 
-
-This document has the following updates since version 0.1.0 was published:
-
-- Further lending obtained, records updated! 
-
+**2021-05-06** - The archives may display semantic version format 'v0.1.x' but this was incorrect. They've been corrected and changed to 'v0.0.x'
+**2021-05-06** - `The nomenclatures have been updated (from Wave to DATRO) in this latest document.  
 
 
 Older Versions
@@ -25,13 +22,15 @@ Older Versions
    :header-rows: 1
    
    
-Version 0.1.1
-####################
-
-- First Release
+Version 0.0.3
+###############
 
 
-Version 0.1.2
+This document has the following updates since version 0.1.0 was published:
+
+- Further lending obtained, records updated!
+
+Version 0.0.2
 ####################
 
 - Changes to presentation of data more than data itself. 

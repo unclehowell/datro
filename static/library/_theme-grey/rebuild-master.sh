@@ -16,7 +16,7 @@
 #................................................
 #     Document rebuild.sh script (grey theme)
 #................................................
-#             Version 1.0 - datro.xyz
+#             Version 1.2 - datro.xyz
 #................................................
 
 function ProgressBar {
@@ -214,7 +214,9 @@ sleep 0.1
 cp -r ../../../_theme-grey/auto-rebuild-master.sh auto-rebuild.sh 2> /dev/null &
 sleep 1 &&
 
-printf "\e[2;3;33m HTML - http://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*/*}/}/build/ \n\e[0m\n"
+cd ../
+printf "\e[2;3;33m HTML - http://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*}/} \n\e[0m\n"
+cd latest
 
 #change NAME to PDF name before running
 #pdftk build/latex/NAME.pdf cat 1-10 11 13 15 17 19 20 21  output build/latex/NAME-tmp.pdf &&

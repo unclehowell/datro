@@ -6,8 +6,7 @@ It also contains urgent issues, documentation updates and new releases.
 
 This Release (Version 0.0.1)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- **2021-Apr-15** - `Added update concerning easements under` :ref:`Sellers Notes/ Surmises`
-- **2021-Apr-14** - `Consolidated all the supporting documents into this single document`
+- **2014-Aug-14** - `First Draft`
 
 Older Versions
 ~~~~~~~~~~~~~~~~ 
@@ -19,15 +18,6 @@ The date the file was archived will differ from the date of the document label, 
    :file: _static/olderversions.csv
    :widths: 20, 20, 20, 40
    :header-rows: 1
-
-Version 0.0.0
-########################
-- **2021-Apr-13** - `First Draft`   
-
-
-.. raw:: latex
-
-   \clearpage
 
 
 Known and Corrected Issues

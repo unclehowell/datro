@@ -17,6 +17,7 @@ This directory and changelog belongs:
 02-May - index.html generated for build/latex no longer redirects to pdf, but instead opens it in new tab - temp fix for PDF not opening in datro.world iframe (which resulted in the following error "Requests to the server have been blocked by an extension")  
 
 ### Changed
+07-May - For the sake of beutifying things the rebuild script (v1.2) now displays a link to the newly developed html file explorers index.html on completion of the build  
 
 ### Removed
 

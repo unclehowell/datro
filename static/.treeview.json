@@ -1,27 +1,27 @@
 [
   {
-    "name": "datro",
+    "name": "DATRO Homepage",
     "path": "../index.html",
     "_links": {
       "html": "../index.html"
     }
   },
   {
-    "name": "gui",
-    "path": "./gui",
-    "_links": {
-      "html": "./gui"
-    }
-  },
-  {
-    "name": "hbnb",
+    "name": "HBnB Homepage",
     "path": "./hbnb",
     "_links": {
       "html": "./hbnb"
     }
   },
   {
-    "name": "library",
+    "name": "HBnB Dashboard",
+    "path": "./gui",
+    "_links": {
+      "html": "./gui"
+    }
+  },
+  {
+    "name": "Document Library",
     "path": "./library",
     "_links": {
       "html": "./library"

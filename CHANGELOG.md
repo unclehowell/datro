@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ### Changed
+08-May - Updated `funding_creditors` document in library (0.0.3 > 0.0.4). See static/library/CHANGELOG.md for more info  
 05-May - Changed the index.html in static (the html directory navigator) - included glyphicons  
 02-May - Changed `coming-soon/coming-soon` to `coming_soon/coming_soon` throughout the monorepo - to match the new path of the document  
 21-Apr - Changed some characters in README.md since the characters weren't all recognised in different readers  
