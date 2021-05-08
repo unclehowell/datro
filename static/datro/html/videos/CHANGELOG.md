@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [-html-videos-0.2] - Q2/2021
 
 ### Fixed
-08-May - ua-parser-js updated to 0.7.24) used a regular expression which is vulnerable to denial of service. If an attacker sends a malicious User-Agent header, ua-parser-js will get stuck processing it for an extended period of time.  
+08-May - `lodash` updated to `v4.17.21`) - versions prior to 4.17.21 are vulnerable to Command Injection via the template function.  
+08-May - `ua-parser-js` updated to `v0.7.24`) - used a regular expression which is vulnerable to denial of service. If an attacker sends a malicious User-Agent header, ua-parser-js will get stuck processing it for an extended period of time.  
 05-May - Mistakenly deleted package.json-lock file. It broke the video playback on the landing page. re-instated it.  
 05-May - Security Vunerability in dependancy - package xmlhttprequest - updated to latest which has fix (v1.6.2) (in json file)  
 
