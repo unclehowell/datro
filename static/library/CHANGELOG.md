@@ -42,6 +42,8 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 06-Apr - Solve Table numbering in Sphinx. Table numbering restarts on every new chapter   
 
 ### Issues
+08-May - Need to get docs (html & PDF) to open links in new tab. Browser based PDF viewer doesn't show within iframes/ divs. And `library.datro.world` displays `datro.xyz/static/library` in a frame  
+08-May - Solved below by ignoring github API and using local .json (.treeview.json) in each directory instead  
 17-Apr - Github API tends to temporarily stop responding when testing - perhaps it thinks it's abuse. stop seems temp, no perminant - maybe cloudflare  
 
 ## [-library.02] - Q3/2020
