@@ -10,7 +10,7 @@ This Release (0.0.5)
 
 - **2021-05-08** - `In lieu of the fact English is technically my second language (Welsh being my first), I have made corrections to the gramma and spelling in this document which was raised as a concern.`   
 - **2021-05-08** - `The methodology for archiving the old version was followed with v0.0.3, but the folder 0-0-3 was corrupt and missing the .rst files, could recover from build/HTML but not a feasible exertion of energy, so deleted it instead.`
-- **2021-05-08** - `Minor edit - Added initial in the document author segment, since other people exist with the same first/last name.`
+- **2021-05-08** - `Added initial in the document author segment, since other people exist with the same first/last name. And put space between 'Founder', '@' and 'DATRO' or else web browsers treat it like an email link`
 - **2021-05-08** - `The source data seems to have an unwritten methodology for calculating accrued interest on accounts, which doesn't appear to be followed in all cases - unwritten and unautomated being the keyword (action required).`
 - **2021-05-08** - `Data had errors that were rectified e.g. some accounts did not have accrued interest added for the years 2021 - and some accounts accrued interest was miscalculated.` 
 
@@ -18,6 +18,9 @@ This Release (0.0.5)
 Older Versions
 ####################
 
+In the table below the last entry displays a link to an archived copy of the last report.
+To keep the filename from overflowing in the table below the name displayed may differ from the file name.
+The date the file was archived will differ from the date of the document label, which is its creation date.
 If you're viewing this document on a subdomain of `.datro.world` you may need to right-click and select 'open link in new tab`.
 In the interim of a bug fix, you can avoid right-clicking all together, by viewing our document library at its original location `datro.xyz/static/library <https://datro.xyz/static/library>`__
 

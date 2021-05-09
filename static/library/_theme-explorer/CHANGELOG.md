@@ -10,8 +10,9 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [-theme-explorer.01] - Q2/2021
 
 ### Added 
-05-May - Added glyphicons.css and icons to explorer to make it more visibly stunning
-02-May - Added media query to losely prevent text from overflowing beyond 100vw (screen width) e.g. `white-space:nowrap` and `font-size: max(` etc
+08-May - Quick fix - Added favicons, they were missing and generating broken links. Used a generic document icon. 512x512 missing, so used DATRO logo for that one.   
+05-May - Added glyphicons.css and icons to explorer to make it more visibly stunning.  
+02-May - Added media query to losely prevent text from overflowing beyond 100vw (screen width) e.g. `white-space:nowrap` and `font-size: max(` etc  
 
 ### Fixed
 

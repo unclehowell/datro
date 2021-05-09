@@ -21,9 +21,9 @@ And until such time as this aspect of our DAS is operational, the accrued intere
 **Document Author:** 
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-===============================
-Sion H. Buckler, Founder@DATRO
-===============================
+=================================
+Sion H. Buckler, Founder @ DATRO
+=================================
 
 
 
