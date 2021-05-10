@@ -1,10 +1,10 @@
 
 project = u'DATRO Consortium Investments'
 copyright = u'2021, DATRO Consortium'
-author = u'Sion Buckler, Founder'
+author = u'The Team @ DATRO Consortium'
 
-version = u'0.1.7'
-release = u'0.1.7'
+version = u'0.0.8'
+release = u'0.0.8'
 
 extensions = ['sphinx.ext.autosectionlabel']
 
@@ -45,7 +45,7 @@ latex_elements = {
 
 latex_documents = [
     (master_doc, 'consortium_finance-funding_investors.tex', u'DATRO Consortium',
-     u'Author: Sion Buckler, Founder', 'manual'),
+     u'Author: The Team @ DATRO Consortium', 'manual'),
 ]
 
 

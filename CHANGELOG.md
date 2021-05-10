@@ -19,6 +19,7 @@ However, for now, it's understood that /static/ is required of gh-pages to serve
 
 
 ### Changed
+10-May - Updated `funding_invesors` (0.0.7 > 0.0.8) - see document release notes for details  
 08-May - Updated `funding_creditors` document in library (0.0.3 > 0.0.4). See static/library/CHANGELOG.md for more info  
 05-May - Changed the index.html in static (the html directory navigator) - included glyphicons  
 02-May - Changed `coming-soon/coming-soon` to `coming_soon/coming_soon` throughout the monorepo - to match the new path of the document  

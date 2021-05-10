@@ -10,6 +10,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [-library.03] - Q2/2021
 
 ### Added 
+10-May - Updated `consortium_finance/funding_investors` (v0.0.7 > v0.0.8) - See the documents latest release notes for details  
 09-May - Added `consortium_campus/casestudy_campusone` (v0.0.1) - Still in draft, but it's a start  
 08-May - Updated `consortium_finances/funding_creditors` (v0.0.4 > v0.0.5). Made sure there's a rst for v0.0.4 , and followed the methodology for re-release (which is still undocumented FYI)
 08-May - Updated `consortium_finances/funding_creditors` (v0.0.3 > v0.0.4). Note: No rst for version '0-0-1/2 & 3', but PDF's exist in archive/"wayback" - v0.0.4 release done according to proposed smart contract rule e.g. archived '0.0.3' and linked to archived copy in 'latest/v0.0.4' releasenotes (olderversions segment) & Semantic version updated by x.x.1 etc   

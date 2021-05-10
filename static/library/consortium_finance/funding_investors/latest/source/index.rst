@@ -16,17 +16,14 @@ For this reason a blockchain and cryptocurrency is used to manage ownership of t
    introduction
    summary-seed  
    detailed-seed  
-   summary-startup
-   detailed-startup  
-	
 
  
 **Document Author:** 
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
-=====================
-Sion Buckler, Founder
-=====================
+===============================
+The Team @ DATRO Consortium
+===============================
 
 
 

@@ -32,35 +32,39 @@ Property
   :alt: Campus One - Villa
 
 
-Lessor
-~~~~~~~~
+Lessor & Seller
+~~~~~~~~~~~~~~~~
 
-The property owner/ seller & Lessor, is the Director of Investments for the Ministry of Tourism: **Mr. Manuel Pacheco**
+.. figure:: _static/manuel_1_756x150.png
+    :width: 756px
+    :align: center
+    :height: 150px
+    :alt: Manuel Pacheco
+    :figclass: align-left
 
-.. image:: _static/manuel_1_756x150.png
-  :width: 756
-  :alt: Manuel Pacheco
+    The property owner/ seller & Lessor, is the Director of Investments for the Ministry of Tourism: **Mr. Manuel Pacheco**
 
+Lessee & Buyer
+~~~~~~~~~~~~~~~~
 
-Lessee
-~~~~~~~~~
+.. figure:: _static/sion_1_756x150.png
+    :width: 756px
+    :align: center
+    :height: 150px
+    :alt: Sion H. Buckler
+    :figclass: align-left
 
-The Property Occupant/ Buyer & Lessee, is the Founder & CEO of the DATRO Consortium: **Mr. Sion H. Buckler** (seen below, standing next to Mr. Pacheco)
-
-.. image:: _static/manuel_sion_1_756x150.png
-  :width: 756
-  :alt: Manuel Pacheco & Sion Buckler 
-
+    The Property Occupant/ Buyer & Lessee, is the DATRO Consortium, directed by its founder: **Mr. Sion H. Buckler**
 
 Nomenclature
 ~~~~~~~~~~~~~~
-Throughout 2014 our DATRO Consortium Team referred to this property as Casa Llandovery.
-This was the name Sion gave his former private residence, where his son Milo was born, back in Stockeld Park, Yorkshire (North England) the previous year.
+
+Throughout 2014 the DATRO Consortium occupied the property, referring to it as **Casa Llandovery**.
+This was the name Sion gave his former private residence, where his son Milo was born (back in Stockeld Park, Yorkshire (North England)) the previous year.
 Llandovery originates from the name of the Welsh town and private boarding school where Sion studied before attending college/ the military and becoming an engineer.
 
 
 The Team
 ~~~~~~~~~~
-
 
 

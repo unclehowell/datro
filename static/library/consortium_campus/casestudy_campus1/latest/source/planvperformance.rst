@@ -67,7 +67,6 @@ Campus Performance
  - **2014-10-05** - Began work on Campus Two (Playa de Magante, Gaspar Hernández, 40 Minutes Drive East of Cabrera, the official beginning of the 'Scottish Bay').  
 
 
-
 Team Performance
 ##################
 
@@ -84,5 +83,13 @@ Team Performance
 **Part-Time:**
  - Armani continued to work remotely (from London)  
  - Visiting Programmers (DD-WRT) was a success. Deal signed and technology developed. 
- - Leon & Curtis (PMC's) continued to provide security/security services.
+ - Leon & Curtis (PMC's) continued to provide security/security services.  
+
+
+DD-WRT stayed at Campus One (and later Casa de Campo with Armani Vashi):
+
+.. image::  _static/armani_ddwrt_756_150.png  
+   :width: 756  
+
+
 

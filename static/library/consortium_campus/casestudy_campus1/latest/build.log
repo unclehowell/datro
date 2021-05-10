@@ -9,11 +9,12 @@ processing consortium_campus-casestudy_campus1.tex... index releasenotes backgro
 resolving references...
 done
 writing... done
-copying images... [ 16%] _static/land_1_756x150.png
-copying images... [ 33%] _static/campusone_756x150.png
-copying images... [ 50%] _static/manuel_1_756x150.png
-copying images... [ 66%] _static/manuel_sion_1_756x150.png
-copying images... [ 83%] _static/2014-05-04_vor_incident_1_800x150.png
+copying images... [ 14%] _static/land_1_756x150.png
+copying images... [ 28%] _static/campusone_756x150.png
+copying images... [ 42%] _static/manuel_1_756x150.png
+copying images... [ 57%] _static/sion_1_756x150.png
+copying images... [ 71%] _static/armani_ddwrt_756_150.png
+copying images... [ 85%] _static/2014-05-04_vor_incident_1_800x150.png
 copying images... [100%] _static/burnt_1_756x150.png
 
 copying TeX support files... copying TeX support files...
@@ -154,16 +155,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 211--213
 [2]
 Chapter 2.
 [3 <./land_1_756x150.png> <./campusone_756x150.png>] [4 <./manuel_1_756x150.png
-> <./manuel_sion_1_756x150.png>]
+> <./sion_1_756x150.png>]
 Chapter 3.
-[5] [6]
+[5] [6] [7 <./armani_ddwrt_756_150.png>]
 Chapter 4.
-[7 <./2014-05-04_vor_incident_1_800x150.png>] [8]
+[8 <./2014-05-04_vor_incident_1_800x150.png>] [9]
 Chapter 5.
-[9]
+[10]
 Chapter 6.
 No file consortium_campus-casestudy_campus1.ind.
-[10 <./burnt_1_756x150.png>] (./consortium_campus-casestudy_campus1.aux)
+[11 <./burnt_1_756x150.png>] (./consortium_campus-casestudy_campus1.aux)
 
 Package rerunfilecheck Warning: File `consortium_campus-casestudy_campus1.out' 
 has changed.
@@ -181,7 +182,7 @@ tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on consortium_campus-casestudy_campus1.pdf (12 pages, 1449117 by
+Output written on consortium_campus-casestudy_campus1.pdf (13 pages, 1580035 by
 tes).
 Transcript written on consortium_campus-casestudy_campus1.log.
 Latexmk: Index file 'consortium_campus-casestudy_campus1.idx' was written
@@ -340,15 +341,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 211--213
 [2]
 Chapter 2.
 [3 <./land_1_756x150.png> <./campusone_756x150.png>] [4 <./manuel_1_756x150.png
-> <./manuel_sion_1_756x150.png>]
+> <./sion_1_756x150.png>]
 Chapter 3.
-[5] [6]
+[5] [6] [7 <./armani_ddwrt_756_150.png>]
 Chapter 4.
-[7 <./2014-05-04_vor_incident_1_800x150.png>] [8]
+[8 <./2014-05-04_vor_incident_1_800x150.png>] [9]
 Chapter 5.
-[9]
+[10]
 Chapter 6.
-(./consortium_campus-casestudy_campus1.ind) [10 <./burnt_1_756x150.png>]
+(./consortium_campus-casestudy_campus1.ind) [11 <./burnt_1_756x150.png>]
 (./consortium_campus-casestudy_campus1.aux) )
 (see the transcript file for additional information) </root/.texlive2020/texmf-
 var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk>{/usr/share/texlive/texmf-dist/f
@@ -357,7 +358,7 @@ tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on consortium_campus-casestudy_campus1.pdf (12 pages, 1451988 by
+Output written on consortium_campus-casestudy_campus1.pdf (13 pages, 1582856 by
 tes).
 Transcript written on consortium_campus-casestudy_campus1.log.
 Latexmk: Index file 'consortium_campus-casestudy_campus1.idx' was written
@@ -495,15 +496,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 211--213
 [2]
 Chapter 2.
 [3 <./land_1_756x150.png> <./campusone_756x150.png>] [4 <./manuel_1_756x150.png
-> <./manuel_sion_1_756x150.png>]
+> <./sion_1_756x150.png>]
 Chapter 3.
-[5] [6]
+[5] [6] [7 <./armani_ddwrt_756_150.png>]
 Chapter 4.
-[7 <./2014-05-04_vor_incident_1_800x150.png>] [8]
+[8 <./2014-05-04_vor_incident_1_800x150.png>] [9]
 Chapter 5.
-[9]
+[10]
 Chapter 6.
-(./consortium_campus-casestudy_campus1.ind) [10 <./burnt_1_756x150.png>]
+(./consortium_campus-casestudy_campus1.ind) [11 <./burnt_1_756x150.png>]
 (./consortium_campus-casestudy_campus1.aux) )
 (see the transcript file for additional information) </root/.texlive2020/texmf-
 var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk>{/usr/share/texlive/texmf-dist/f
@@ -512,7 +513,7 @@ tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on consortium_campus-casestudy_campus1.pdf (12 pages, 1451988 by
+Output written on consortium_campus-casestudy_campus1.pdf (13 pages, 1582856 by
 tes).
 Transcript written on consortium_campus-casestudy_campus1.log.
 Latexmk: Index file 'consortium_campus-casestudy_campus1.idx' was written
