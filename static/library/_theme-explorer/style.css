@@ -38,5 +38,5 @@ white-space: nowrap;
 }
 a {
 font-size: clamp(1.2em, 3vw, 2em);
-}
+letter-spacing:-0.1rem;}
 }

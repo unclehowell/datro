@@ -7,9 +7,10 @@ This directory and changelog belongs to [![GitHub release (latest by date includ
 
 ## [Unreleased]  
 
-## [-theme-blue.08-rc#] - Q2/2021  
+## [-theme-blue.08-rc1.4] - Q2/2021  
 
 ### Added
+11-May - RC1.4 - rebuild.sh now changes `.rst-content blockquote{margin-left:24px` to `0px` to left align images  
 05-May - RC1.1 - Added better styling for codeblock  
 02-May - index.html generated for build/latex no longer redirects to pdf, but instead opens it in new tab - temp fix for PDF not opening in datro.world iframe (which resulted in the following error "Requests to the server have been blocked by an extension")  
 

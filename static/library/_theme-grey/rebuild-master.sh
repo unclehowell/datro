@@ -14,10 +14,12 @@
 #   ██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝
 #   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
 #................................................
-#     Document rebuild.sh script (grey theme)
+#       rebuild.sh  -theme-grey.08-rc1.4
 #................................................
-#             Version 1.2 - datro.xyz
+#                   datro.xyz
 #................................................
+
+
 
 function ProgressBar {
 	let _progress=(${1}*100/${2}*100)/100
@@ -123,6 +125,7 @@ sed -i 's/color:#333650/color:lightgrey/g' build/html/_static/css/theme.css &&
 sed -i 's/;color:#2980b9/;color:lightskyblue/g' build/html/_static/css/theme.css &&
 sed -i 's/#333;/#fff;/g' build/html/_static/css/theme.css &&
 sed -i 's/background-color:#2980b9;/background-color:#2C2C2C;/g' build/html/_static/css/theme.css &&
+sed -i 's/.rst-content blockquote{margin-left:24px/.rst-content blockquote{margin-left:2.5px/g' build/html/_static/css/theme.css
 sed -i 's/#e3e3e3/transparent/g' build/html/_static/css/theme.css &&
 sed -i 's/color:initial}/color:lightgrey;}/g' build/html/_static/css/theme.css &&
 sed -i 's/a,.wy-side-nav-search>a{color:-webkit-gradient(radial,50% 50%,450,50% 55%,60,from(#454545),to(#454545));/a,.wy-side-nav-search>a{color:lightskyblue;/g' build/html/_static/css/theme.css &&
