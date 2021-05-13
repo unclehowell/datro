@@ -1,4 +1,4 @@
-project = u'Case Study: Tech House One (2014)'
+project = u'Case Study: Tech House One'
 copyright = u'2021, DATRO Consortium'
 author = u'The Team @ DATRO Consortium'
 
@@ -48,20 +48,20 @@ latex_elements = {
 
 
 latex_documents = [
-  (master_doc, 'consortium_campus-casestudy_techhouse1.tex', 'Case Study: Tech House One (2014)',
+  (master_doc, 'consortium_campus-casestudy_techhouse1.tex', 'Case Study: Tech House One',
    u'Author(s): The Team @ DATRO Consortium', 'manual'),
 ]
 
 
 man_pages = [
-  (master_doc, 'consortium_campus-casestudy_techhouse1', u'Case Study: Tech House One (2014)',
+  (master_doc, 'consortium_campus-casestudy_techhouse1', u'Case Study: Tech House One',
    [author], 1)
 ]
 
 
 
 texinfo_documents = [
-  (master_doc, 'consortium_campus-casestudy_techhouse1', u'Case Study: Tech House One (2014)',
+  (master_doc, 'consortium_campus-casestudy_techhouse1', u'Case Study: Tech House One',
    author, 'consortium_campus-casestudy_techhouse1', 'The Team @ DATRO Consortium',
    'manual'),
 ]

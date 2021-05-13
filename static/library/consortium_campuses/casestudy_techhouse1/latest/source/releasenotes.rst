@@ -1,17 +1,18 @@
 Release Notes and Notices
-=====================================
+===========================
 
 This section provides information about what is new or changed.
 It also contains urgent issues, documentation updates and new releases.  
 
 This Release (Version 0.0.1)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 - **2014-Aug-14** - `First Draft`
 
 
 
 Older Versions
-####################
+~~~~~~~~~~~~~~~~
 
 In the table below the last entry displays a link to an archived copy of the last report.
 To keep the filename from overflowing in the table below the name displayed may differ from the file name.
@@ -27,13 +28,13 @@ In the interim of a bug fix, you can avoid right-clicking all together, by viewi
 
 
 Version 0.0.0
-###############
+################
 
 - **yyyy-mm-dd** - `first draft - merely a template document at this stage`
 
 
 Known and Corrected Issues
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Below is a table of pending issues that have been reported to our team.
 These issues will be cleared from this list as and when they are remedied.

@@ -1,12 +1,8 @@
+*****************************
 Plan vs Performance (2014)
-=============================
+*****************************
   
-Plan
-~~~~~~~~~
-
-
-Associated Parties 
-###################
+**Associated Parties:**
 
 
 +------------------------+-----------------------------------------------------------------+-------------------------------------------------+
@@ -24,18 +20,12 @@ Associated Parties
 
 
 Deal Plan
-###########
+============
 
 - 6 months lease in lieu of a purchase agreement:
-   - **Leasehold Terms:** `x6 month leasehold @ $2.5k per month. 
-   - **Purchase Terms:** `x5 amortization installments @ $50k every 6 months thereafter`
+   - **Leasehold Terms:** `6 month leasehold at $2.5k per month + 2 months security deposit` 
+   - **Purchase Terms:** `5 'amortization' installments of $50k every 6 months`
 
-**Lease In Lieu of Purchase:** - `Lease installments pay into escrow. Escrow balance deductable from amortization as credit towards sale`
-
-**Assurances:** This purchase deal was assured by way of a soft probe of DATRO's working capital for that year, which was in the region of $200k+ USD. 
-The source of a significant portion of this fund was in lieu of the sale of a UK asset (45 Gregory Ave, Breaston, England, DE72 3DJ), which sold for £135,750 GBP.
-This provided the seller of this property with sufficient assurances for said terms, which resulted in the lease/purchase payment plan in the tables below: 
- 
 
 .. csv-table:: Leasehold - Payment Schedule/ Rent Book (USD)
    :file: _static/plan_leasehold.csv
@@ -48,11 +38,43 @@ This provided the seller of this property with sufficient assurances for said te
    :header-rows: 1
 
 
+**Lease In Lieu of Purchase:**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- `All lease payments (& security deposit) serve as a deductable amortization credit during the purchase agreement`
+- `Duration of lease (in this case 6 months) serves as a trial run for both the buyer and seller prior to an amortization`
+
+
+**Assurances:**
+~~~~~~~~~~~~~~~~~
+
+The Lessee/ Buyer assured the Lessor/ Seller using the concept of a "Soft Probe" (whereby the buyer is able to look at the holdings of the buyer to gain assurances they are in a suitable financial position to make the purchase).
+DATRO's working capital for that year, was proven to be in the region of $200k+ USD -/+ 10% (almost the full purchase price of the property).
+
+DATRO's source of capital for that year was proven to be legitimate e.g. investments and loans (albeit no trading activity/ sales revenues etc)
+A breakdown of these funds and sources can be found in related documentation in the DATRO Consortium Document Library (see financials/funding).
+
+The primary source of this 2014 fund was sale of a UK asset (45 Gregory Ave, Breaston, England, DE72 3DJ), which sold for £135,750 GBP and resulted in 74,000 GBP being invested, into what is now the DATRO Consortium.
+The above info provided the Lessor/ Seller with sufficient assurances to proceed with this deal plan, terms and the aforementioned payment schedules.
+
+
+
+Naming
+#########
+
+The DATRO Consortium will name the property **Casa Llandovery**.
+The name Sion gave his former private residence, where his son Milo was born (back in Stockeld Park, Yorkshire (North England)) the previous year.
+Llandovery originates from the name of the Welsh town and private boarding school where Sion studied before attending college/ the military and becoming an engineer.
+
+
+
+
+
 Team Plan
-############
+===========
 
 
 **Full-Time:**
+~~~~~~~~~~~~~~~
 
  - Programmers (3-5) (+ onsite accomodation inc.)
  - Head of Security (+ onsite accomodation inc.)
@@ -64,26 +86,36 @@ Team Plan
  - Cook (2nd duty, rotation/ schedule between above personel)
 
 
+.. figure::  _static/staffphoto_756_150.jpg
+   :width: 310px
+   :alt:  Staff Photo
+   :align: center
+
+   `(1) Pest Control, (2) Driver/Villa Manager (and his wife, son & daughter) (3) Cleaner, (4) Handy Man/Ground Keeper, (6) Building Works Manager, (7) Founder & CEO`
+
+
 **Part-Time:**
+~~~~~~~~~~~~~~~~
 
- - Programmers (visiting)
+ - Possible security (shift, threat level increase/ decrease etc)
  - Onsite contractors (bees, fumigators, plumber, electrician etc) 
+ - Programmers (visiting) e.g. DD-WRT
 
+.. figure::  _static/armani_ddwrt_756_150.png
+   :width: 620px
+   :alt:  - DD-WRT with Armani Vashi
+   :align: center
 
-Naming
-#########
+   `DD-WRT Executives (from Germany) with Amarni Vashi (Development Coordinator) at Casa De Campo debrief after a brief stay at the Tech House`
 
-The DATRO Consortium will name the property **Casa Llandovery**.
-The name Sion gave his former private residence, where his son Milo was born (back in Stockeld Park, Yorkshire (North England)) the previous year.
-Llandovery originates from the name of the Welsh town and private boarding school where Sion studied before attending college/ the military and becoming an engineer.
 
 
 Performance
-~~~~~~~~~~~~~
+================
 
 
 Deal Performance
-###################
+~~~~~~~~~~~~~~~~~~~~~
 
 .. csv-table:: Leasehold - Payment Performance/ Rent Book (USD)
    :file: _static/performance_leasehold.csv
@@ -92,56 +124,61 @@ Deal Performance
 
 
 The first half of the agreement between the two parties (Lessor and Seller & Leasee and Buyer) went as expected. 
-The final weeks went as follows (to the best of our recollection): 
 
- * All dogs poisoned in the neighbourhood. Dog that came with the property (Jaws) was poisoned to death and found in a nearby ditch (a common act of thieves prior to thefts).
- * Uninvited guests/ trasspassers entered the main gates of the property, at night, causing a security drill to be triggered e.g. bugging out and heading up to the 3rd level and beyond until the all clear was given over radio and the team could return to the property. 
- * The bug-out ended up being a false alert. A negligent member of staff (the same one who crashed the vehicle) thoughtlessly invited an unauthorised person onto the property and was in the vehicle which followed. The unauthorised visitor took it upon themselves to enter the main gates not aware of the silent alarm and protocols they triggered.   
- * Electricity went off to the whole street for weeks. And battery and generator experienced issues. Lessee had to all go stay in a hotel in Santo Domingo.
- * It was reported that Electricity didn't come back onto the area for the remainder of the lease and worse still, quarrying began next door to the property and was very noisy e.g. trucks struggling up the hills, hammer action digging into rockfaces etc.  
- * The 6 month lease was expiring and purchase agreement date was approaching, while the Lessee was in a hotel in Santo Domingo, because of the inhability of the property. 
- * A new 6 month lease was signed, but under 'Vi Coactus (V.C/ duress) and in lieu of electric to the town coming back on, quarrying schedule explaining & full legal discovery (title deeds, lien clearance, easements etc)).
- * The Lessor made no discounts or satisfy the above concerns with supported evidence. Instead there was an insistance and even aggression for the Lessee to proceed with the deal, regardlesss of the properties inhabitable nature and the Lessees unfulfilled queries and concerned.  
- * The Lessee made no payment towards the renewed leasehold agreement as a consequence of the above. The final payment of the lease may have also been neglected as a consequence of the above. Which would have resulted in the Lessor using some of the security deposit (what it's there for), especially in light of the fact no damage was caused to the property.
- * When stated no damage was caused to the property, there was one alteration which was viewed as a damage by the Lessor. The Lessee installed steps from the vehicle driveway to the front door as the grass hill was very steep and hazardous (slippery) when wet. Steps had to be installed into the grass verge, but the contractors workmanship was very poor.  
- * It all ended very confusingly because of the language barrier and the fact the Lessee was having to stay away in a hotel for week, in addition to other concerns and complexities (quarrying, purchase agreement signing with missing documents etc)
 
+Campus Performance
+~~~~~~~~~~~~~~~~~~~~
+
+Essentials
+#############
+
+Essential Assets for basic operation: 
+
+.. figure::  _static/otherassets_756x150.png
+   :width: 620px
+   :alt:  Other Assets
+   :align: center
+
+   `(1) Vehicle & (2) Whiteboard & (3) Maintained (Well-Stocked) Fridge & (4) TRAINED Security Dog`
+
+
+Indoor Office
+##############
+
+Suppliers, Accounts, Staff Rosta/ Schedule (days on/off, role/duty changes etc), Daily Routines Checksheets etc
+
+
+.. figure::  _static/office_756x150.png
+   :width: 620px
+   :alt:  Indoor Office
+   :align: center
+
+   `(1) Sion Tea & Biscuits, (2&3) Rafi & Leon, (4) Rafi, Junior, Jose & Sion`
  
-**Conclusion:** Both parties went their seperate ways rather amicably, both equally dispositioned by the final month of dealings. It is the conclusion of the Lessee, had the quarrying not begun or the electric gone off to the area, there would have been no questions asked and no undisclosed hotel/safe distance from which to negotiate from.
-Without the unfortunate events that placed the Lessee on the defensive during the final weeks of the leasehold, the Lessee may have continued forward, purchasing a property with a greater risk of undisclosed liens, easements and years of noisy quarrying and electricity cuts for weeks on end.    
- 
-**2014-10-05** - Updated
 
- - Moved directly from Hotel in Santo Domingo (via Casa Llandovery to grab our stuff)
- - Ended up Reorganising ("ReOrg"ing) at Los Gringos, Playa de Magante, Gaspar Hernández on the north side
- - Gaspar Hernández is 40 minutes drive east of Cabrera (the North West/ beginning of the 'Scottish Bay' Coastline).  
- - Our arrival to Playa de Magante is the beginnings of **Campus Two** (see the seperate 'Campus Two' Case Study/ Document for details).         
+Outdoor Office
+#################
+
+
+.. figure::  _static/outdooroffice_756x150.png
+   :width: 620px
+   :alt:  Eagles Nest
+   :align: center
+
+   `(1) Sion & Mike from Casa De Campo, (2&3) Outdoor Office "Eagles Nest"`
+
+
+.. figure::  _static/outdooroffice2_756x150.png
+   :width: 620px
+   :alt:  Eagles Nest  
+   :align: center
+
+   `(1) View from the "Eagles Nest"`
+
 
 
 Team Performance
-##################
-
-**Full-Time:**  
- - Programmers (1) (Armani returned to London and continued working remotely)
- - Kept Head of Security/PMC (Leon - and kept providing accomodation)
- - Disgarded x2 Security Staff (Jose & 'Jeff ?')
- - Aquired a 2nd PMC (Curtis) 
- - Kept Event Organiser/ Local Relations (Lee)
- - Disgarded Housekeeper/ Manager (+ offsite accomodation tenancy agreement)  
- - Disgarded Groundkeeper (Junior - at his request)
- - Disgarded Cleaner(s) (x2)
-
-**Part-Time:**
- - Armani continued to work remotely (from London)  
- - Visiting Programmers (DD-WRT) was a success. Deal signed and technology developed. 
- - Leon & Curtis (PMC's) continued to provide security/security services.  
-
-.. figure::  _static/armani_ddwrt_756_150.png  
-   :width: 620px  
-   :alt:  - DD-WRT with Armani Vashi
-   :align: center
-  
-   DD-WRT after visiting Campus One, staying at Casa de Campo
+~~~~~~~~~~~~~~~~~~~
 
 
 The team generally worked together well to create a campus that ran like clockwork.
@@ -150,3 +187,31 @@ Outside of developing there was BBQ's in the evening, walks to the waterfall in 
 We also went out in the local town for food and ordered takeaways from time to time. 
 Movie nights and friends and family visiting was also helpful to our wellbeing. 
 Sadly there was a lot of security concerns and attacks at the time.
+
+
+Staff Accomadation
+###################
+
+The Driver/ Villa Manager (Rafi) along with his wife and children were rewarded with a 3 room apartment in the local town, with underground parking. 
+Rafis privelages were extended to use of a vehicle to commute home each evening and back each morning. 
+
+
+.. figure::  _static/rafishouseandwife_756x150.png
+   :width: 620px
+   :alt:  Rafi and Wife at Apartment
+   :align: center
+
+   `(1) Rafi & Sion at Rafi's Apartment, (2&3) Apartment Photos, (4) Rafi, Rafi's Wife & Hywel, Punta Cana Beach`
+  
+  
+
+The Groundkeeper (Junior) occupied the groundkeepers property. 
+His wife and child were permitted to be with him under special circumstances e.g. welfare, emergencies and subject to security threat levels at the campus.
+Otherwise Junior would commute to see them in the local town on evening and weekends. With the cost of commuting being reflected in a weekly additional allowance. 
+
+
+
+
+
+
+
