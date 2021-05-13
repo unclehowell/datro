@@ -10,6 +10,8 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [-library.03] - Q2/2021
 
 ### Added 
+12-May - Have to commit abrubtly due to keyboard and laptop possibly overheating and keystrokes resulting in duplicate letters on the screen. Concern of data loss upon impending system reboot
+12-May - Added content to `static/library/casestudy_techhouse1`, which has also been renamed from `campusone` to `techhouse1` - still more to do
 11-May - Modified `static/library/_theme-*/rebuild-master.sh` (rc1.3 > rc.1.4) - Added sed command to change stylesheets to left aligns images   
 10-May - Updated `consortium_finance/funding_investors` (v0.0.7 > v0.0.8) - See the documents latest release notes for details  
 09-May - Added `consortium_campus/casestudy_campusone` (v0.0.1) - Still in draft, but it's a start  

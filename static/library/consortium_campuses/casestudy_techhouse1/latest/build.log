@@ -14,8 +14,8 @@ copying images... [ 28%] _static/campusone_756x150.png
 copying images... [ 42%] _static/pacheco_200x150.png
 copying images... [ 57%] _static/buckler_200x150.png
 copying images... [ 71%] _static/armani_ddwrt_756_150.png
-copying images... [ 85%] _static/2014-05-04_vor_incident_1_800x150.png
-copying images... [100%] _static/burnt_1_756x150.png
+copying images... [ 85%] _static/burnt_1_756x150.png
+copying images... [100%] _static/2014-05-04_vor_incident_1_800x150.png
 
 copying TeX support files... copying TeX support files...
 done
@@ -154,17 +154,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 211--213
 []|\T1/phv/b/n/10 Ver-
 [2]
 Chapter 2.
-[3 <./land_1_756x150.png> <./campusone_756x150.png>] [4 <./pacheco_200x150.png>
- <./buckler_200x150.png>]
+[3 <./land_1_756x150.png> <./campusone_756x150.png>] [4]
 Chapter 3.
-[5] [6] [7 <./armani_ddwrt_756_150.png>]
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 334.
+
+[5 <./pacheco_200x150.png> <./buckler_200x150.png>] [6] [7] [8] [9 <./armani_dd
+wrt_756_150.png>]
 Chapter 4.
-[8 <./2014-05-04_vor_incident_1_800x150.png>] [9]
+[10 <./burnt_1_756x150.png>] [11 <./2014-05-04_vor_incident_1_800x150.png>]
 Chapter 5.
-[10]
+[12]
 Chapter 6.
 No file consortium_campus-casestudy_techhouse1.ind.
-[11 <./burnt_1_756x150.png>] (./consortium_campus-casestudy_techhouse1.aux)
+[13] (./consortium_campus-casestudy_techhouse1.aux)
 
 Package rerunfilecheck Warning: File `consortium_campus-casestudy_techhouse1.ou
 t' has changed.
@@ -175,15 +180,16 @@ t' has changed.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information){/usr/share/texlive/texmf-d
-ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
-jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/helve
-tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/urw/times/utmri8a.pfb>
-Output written on consortium_campus-casestudy_techhouse1.pdf (13 pages, 1527234
+(see the transcript file for additional information) </root/.texlive2020/texmf-
+var/fonts/pk/ljfour/jknappen/ec/tcrb1000.600pk>{/usr/share/texlive/texmf-dist/f
+onts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/jknap
+pen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/u
+hvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+urw/times/utmri8a.pfb>
+Output written on consortium_campus-casestudy_techhouse1.pdf (15 pages, 1534677
  bytes).
 Transcript written on consortium_campus-casestudy_techhouse1.log.
 Latexmk: Index file 'consortium_campus-casestudy_techhouse1.idx' was written
@@ -341,26 +347,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 211--213
 []|\T1/phv/b/n/10 Ver-
 [2]
 Chapter 2.
-[3 <./land_1_756x150.png> <./campusone_756x150.png>] [4 <./pacheco_200x150.png>
- <./buckler_200x150.png>]
+[3 <./land_1_756x150.png> <./campusone_756x150.png>] [4]
 Chapter 3.
-[5] [6] [7 <./armani_ddwrt_756_150.png>]
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 334.
+
+[5 <./pacheco_200x150.png> <./buckler_200x150.png>] [6] [7] [8] [9 <./armani_dd
+wrt_756_150.png>]
 Chapter 4.
-[8 <./2014-05-04_vor_incident_1_800x150.png>] [9]
+[10 <./burnt_1_756x150.png>] [11 <./2014-05-04_vor_incident_1_800x150.png>]
 Chapter 5.
-[10]
+[12]
 Chapter 6.
-(./consortium_campus-casestudy_techhouse1.ind) [11 <./burnt_1_756x150.png>]
+(./consortium_campus-casestudy_techhouse1.ind) [13]
 (./consortium_campus-casestudy_techhouse1.aux) )
-(see the transcript file for additional information){/usr/share/texlive/texmf-d
-ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
-jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/helve
-tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/urw/times/utmri8a.pfb>
-Output written on consortium_campus-casestudy_techhouse1.pdf (13 pages, 1529933
+(see the transcript file for additional information) </root/.texlive2020/texmf-
+var/fonts/pk/ljfour/jknappen/ec/tcrb1000.600pk>{/usr/share/texlive/texmf-dist/f
+onts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/jknap
+pen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/u
+hvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+urw/times/utmri8a.pfb>
+Output written on consortium_campus-casestudy_techhouse1.pdf (15 pages, 1537375
  bytes).
 Transcript written on consortium_campus-casestudy_techhouse1.log.
 Latexmk: Index file 'consortium_campus-casestudy_techhouse1.idx' was written
@@ -497,26 +509,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 211--213
 []|\T1/phv/b/n/10 Ver-
 [2]
 Chapter 2.
-[3 <./land_1_756x150.png> <./campusone_756x150.png>] [4 <./pacheco_200x150.png>
- <./buckler_200x150.png>]
+[3 <./land_1_756x150.png> <./campusone_756x150.png>] [4]
 Chapter 3.
-[5] [6] [7 <./armani_ddwrt_756_150.png>]
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 334.
+
+[5 <./pacheco_200x150.png> <./buckler_200x150.png>] [6] [7] [8] [9 <./armani_dd
+wrt_756_150.png>]
 Chapter 4.
-[8 <./2014-05-04_vor_incident_1_800x150.png>] [9]
+[10 <./burnt_1_756x150.png>] [11 <./2014-05-04_vor_incident_1_800x150.png>]
 Chapter 5.
-[10]
+[12]
 Chapter 6.
-(./consortium_campus-casestudy_techhouse1.ind) [11 <./burnt_1_756x150.png>]
+(./consortium_campus-casestudy_techhouse1.ind) [13]
 (./consortium_campus-casestudy_techhouse1.aux) )
-(see the transcript file for additional information){/usr/share/texlive/texmf-d
-ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
-jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/helve
-tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/urw/times/utmri8a.pfb>
-Output written on consortium_campus-casestudy_techhouse1.pdf (13 pages, 1529933
+(see the transcript file for additional information) </root/.texlive2020/texmf-
+var/fonts/pk/ljfour/jknappen/ec/tcrb1000.600pk>{/usr/share/texlive/texmf-dist/f
+onts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/jknap
+pen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/u
+hvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+urw/times/utmri8a.pfb>
+Output written on consortium_campus-casestudy_techhouse1.pdf (15 pages, 1537375
  bytes).
 Transcript written on consortium_campus-casestudy_techhouse1.log.
 Latexmk: Index file 'consortium_campus-casestudy_techhouse1.idx' was written

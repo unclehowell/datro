@@ -29,12 +29,6 @@ This document is a brief report about the activities at what we now refer to as 
 **The Team @ DATRO Consortium**
 =========================================
 
- - **2021-01-05** - Unfortunately, Campus One caught fire in January of 2021 and is no more.
-
-.. image:: _static/burnt_1_756x150.png
-  :width: 756
-  :alt: Campus One - Fire (2021-Jan)
-
 
 
 
