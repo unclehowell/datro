@@ -30,7 +30,7 @@
         const data = await response.json();
         let htmlString = '<ul>';
         htmlString += `<p style="font-weight:bolder;text-align:center;color:#336;">Explorer</p>`;
-        htmlString += `<li class="glyphicon glyphicon-arrow-up"><a href="../">up</a></li></br>`;
+        htmlString += `<li class="glyphicon glyphicon-arrow-up" style="opacity:0.4;"><a>up</a></li></br>`;
         for (let file of data) {
           htmlString += `<i class="glyphicon glyphicon-book"><a href="${file.path}">${file.name}</a></li></br>`;
         }

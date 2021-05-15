@@ -17,7 +17,7 @@
 #................................................
 #    Document rebuild.sh script (blue theme)
 #................................................
-#             Version 1.1 - datro.xyz
+#             Version 1.4 - datro.xyz
 #................................................
 
 
@@ -63,7 +63,7 @@ done
 make html > build.log 2>&1 &&
 printf "\e[2;3;33m Done! \n\e[0m"
 
-printf "\n\e[2;3;33m Step 3 of 5. Converting ReStructeredText to PDF \n\e[0m\n"
+printf "\n\e[2;3;33m Step 3 of 5. Converting RST to PDF ('make latexpdf') \n\e[0m\n"
 
 for number in $(seq ${_40} ${_60})
 do
@@ -134,6 +134,7 @@ sed -i 's/#ddd/#333666/g' build/html/_static/css/theme.css
 sed -i 's/border-radius:50px;padding:6px 12px;border-color:darkgrey/border-radius:50px;padding:6px 12px;border-color:darkgrey;background-color:#333666;color: lightgray; letter-spacing: 0.05em;/g' build/html/_static/css/theme.css
 sed -i 's/#ccc/#333666/g' build/html/_static/css/theme.css
 sed -i 's/darkgrey/darkgrey/g' build/html/_static/css/theme.css
+sed -i 's/.rst-content blockquote{margin-left:24px/.rst-content blockquote{margin-left:2.5px/g' build/html/_static/css/theme.css
 sed -i 's/#999/darkgrey/g' build/html/_static/css/theme.css
 sed -i 's/#666/darkgrey/g' build/html/_static/css/theme.css
 sed -i 's/#e74c3c/darkgrey/g' build/html/_static/css/theme.css
@@ -171,7 +172,7 @@ sed -i 's/.wy-nav-top a{color:#fff;font-weight:700/.wy-nav-top a{color:#fff;font
 sed -i 's/thead{color:#000;/thead{color:#fff;/g' build/html/_static/css/theme.css
 sed -i 's/caption{color:#000;/caption{color:#fff;/g' build/html/_static/css/theme.css
 sed -i 's/.rst-content code,.rst-content tt,code{white-space:unset;font-weight:800!important;max-width:100%;border:3px solid transparent;font-size:75%;padding: 0 5px;color:#FFF;overflow-x:auto;background:#333654;max-width:100%;background:#fff;border:1px solid #e1e4e5;font-size:75%;padding:0 5px;font-family:SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,Courier,monospace;color:darkgrey;overflow-x:auto}/.rst-content code,.rst-content tt,code{white-space:unset;font-weight:800!important;max-width:100%;border:3px solid transparent;font-size:75%;padding: 0 5px;color:#FFF;overflow-x:auto;background:#333654;}/g' build/html/_static/css/theme.css
-sed -i 's/.rst-content .section>a>img,.rst-content .section>img{/.rst-content .section>a>img,.rst-content .section>img{filter:invert(1);/g' build/html/_static/css/theme.css
+sed -i 's/.rst-content .section>a>img,.rst-content .section>img{/.rst-content .section>a>img,.rst-content .section>img{filter:invert(0);/g' build/html/_static/css/theme.css
 sleep 0.5 &&
 
 cd build/latex
@@ -219,7 +220,9 @@ cp -r ../../../_theme-blue/auto-rebuild-master.sh auto-rebuild.sh 2> /dev/null &
 
 sleep 1 &&
 
-printf "\e[2;3;33m HTML - http://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*/*}/}/build/ \n\e[0m\n"
+cd ../
+printf "\e[2;3;33m http://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*}/} \n\e[0m\n"
+cd latest
 
 #change NAME to PDF name before running
 #pdftk build/latex/NAME.pdf cat 1-10 11 13 15 17 19 20 21  output build/latex/NAME-tmp.pdf &&

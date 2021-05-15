@@ -3,8 +3,8 @@ project = u'DATRO Consortium Investments'
 copyright = u'2021, DATRO Consortium'
 author = u'The Team @ DATRO Consortium'
 
-version = u'0.0.8'
-release = u'0.0.8'
+version = u'0.0.9'
+release = u'0.0.9'
 
 extensions = ['sphinx.ext.autosectionlabel']
 
@@ -16,7 +16,7 @@ master_doc = 'index'
 
 language = None
 
-# today_fmt = 'June 12, 2020'
+today_fmt = 'May 10, 2021'
 
 exclude_patterns = ['_build']
 
