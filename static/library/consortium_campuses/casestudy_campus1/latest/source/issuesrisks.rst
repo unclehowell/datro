@@ -41,7 +41,6 @@ Deal Concerns
 Campus Concerns
 ~~~~~~~~~~~~~~~~
 
-
 Team Concerns
 ~~~~~~~~~~~~~~
 
@@ -66,6 +65,7 @@ Risks
 Deal Risks
 ~~~~~~~~~~~
 
+
 Campus Risks
 ~~~~~~~~~~~~~
 
@@ -73,6 +73,7 @@ Campus Risks
 Team Risks
 ~~~~~~~~~~~~
 
+- The guard Jose insisted on use of the vehicle while under the influence of alcohol and became threatning etc. 
 
 Other Risks
 ~~~~~~~~~~~~
@@ -136,6 +137,7 @@ In this case due to a faulty vehicle, a dangerous driveway, poor communications,
 .. image:: _static/2014-05-04_vor_incident_1_800x150.png
   :width: 620px
   :alt: Vehicle Off Road (VOR) Incident
+
 
 
 

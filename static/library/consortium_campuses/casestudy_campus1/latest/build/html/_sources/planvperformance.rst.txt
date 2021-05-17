@@ -63,7 +63,8 @@ DATRO's investor/ creditor public reporting can be found in the `DATRO Consortiu
 Business/Technolgy Plan
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A dedicated 5 year plan was written in 2014 and can be found by visiting the following link. 
+A copy of business plan, drafted in July 2014, can be located in our archives at `this address <https://datro.world/wayback/2014-07-24_consortium_plans-operations_business_v0.0.2.pdf>`__.
+For latest releases of our public business plans, featuring notes and references of older copies, please visit `this link <https://datro.xyz/static/library/consortium_plans/operations_business/>`__ .  
  
 
 Name Plan
@@ -87,28 +88,46 @@ Campus Plans
 Team Plans
 ~~~~~~~~~~~~~
 
-Below was the Team Plan
+Below is a breakdwn of some plans we have for our onsite team:
 
-Team Building
-################
+Team Building Plan
+###################
 
- - Waterparks
- - Meet Families
+ - Have Friends/Families visit
  - Dinner Nights in Town
- - Houseparties
+ - House Parties
+ - Merrits e.g. trophies etc
+ - Chunder Book (where possible make light of acts of minor negligence and incompitence)
+ - Early Nock-off/ warm up drinks/bbq for the weekend
+ - Command Tasks (Collective Problem Solving)
 
+Personal Development Plan
+#############################
+ - Adventure Training
+ - Certifications
+ - Health & Fitness
+ - Critical Appointments e.g. Medical, Dental etc 
+ - Driving
+ - Finances e.g. Credit, Investment & Saving Plans
+ - Career Path/ Plan
+ - Charity Work/ Volunteering 
+ - Rehabilitation e.g. drugs, alcohol, smoking, gambling etc
 
-Team Schedule
-###############
+Team Schedule Plan
+###################
 
 - Show Parades (check clothing/ haircuts etc)
 - Daily Nock-on/ Nock-off Meetings (Eagles Nest)
-- Sunday School (Hosted by Herman the German)
 - Secondary Duties e.g. Safety, BookKeeping, Areas of Responsibility
 - Staff Lunch Area (Picnic Table at rear of property)
+- Guard Night Shift, rotation, patrol routes & timings etc
 
-Generally the House Staff operate the property as if it were a resort, waiting on the developers every need.
-Generally the developers work as if they are on a resort, with all their needs taken care of, so as to focus soley on the technology and nothing else.
+Generally the support staff, under the guidance and supervision of the villa manager, upkeep the property as if it were a resort/hotel and support the developers as its guests/clients.
+Generally the developers will have all their needs catered for by the support staff, allowing them maximum focus on the development of the technology venture.
+The villa manager received special training and ongoing feedback during daily debriefs, to ensure developers every needs are met, while at the same time causing them minimal disruptions or distractions. 
+
+ - The 0700 morning "nock on" meetings gives everyone a chance to openly discuss the evening and night prior as well as their needs of others for the day ahead. Goals and Objectives for the day ahead are clearly stated. 
+ - The 1700 afternoon "nock off"/ de-brief meetings (in the eagles nest) allows open reflection of the days activities, communications for evenings/ weekends and preperation points for the following working day. 
 
 
 Full-Time Staff
@@ -119,7 +138,6 @@ Full-Time Staff
    :alt: `DD-WRT Executives (from Germany) with Amarni Vashi (Development Coordinator) at Casa De Campo debrief after a brief stay at the Tech House`
 
 `DD-WRT Executives (from Germany) with Amarni Vashi (Development Coordinator) at Casa De Campo debrief after a brief stay at the Tech House`
-
 
  - Programmers (3-5) (+ onsite accomodation inc.) - @ $4,000 - 8,000 USD p/m
  - Head of Security (+ onsite accomodation inc.) - @ $6,000 USD p/m
@@ -148,6 +166,16 @@ Part-Time Staff
  - Cook (House Managers Wife) - @ $400 USD p/m
 
 
+Labour Expenses/ HR
+####################
+
+
+.. csv-table:: Regular Labour Expenses (USD)
+   :file: _static/staff_salary.csv
+   :widths: 20, 20, 5, 10, 20, 25
+   :header-rows: 1
+  
+
 
 Performance
 ================
@@ -162,7 +190,8 @@ Deal Performance
    :header-rows: 1
 
 
-The first half of the agreement between the two parties (Lessor and Seller & Leasee and Buyer) went as expected. 
+The first 4 of 6 months of the leashold agreement between the lessor and lessee went as planned.
+See the Issues segment for details of the 5th and 6th months of the lease and the purchase plan.  
 
 
 Campus Performance
@@ -198,6 +227,9 @@ Suppliers, Accounts, Staff Rosta/ Schedule (days on/off, role/duty changes etc),
 Outdoor Office
 #################
 
+The `Eagles Nest` was ideal and multipurposes e.g. nock-on/off meetings, training, collaboration, r&r etc 
+The only two modifications made included errecting a whitebard and running electrity for lighting
+
 
 .. figure::  _static/outdooroffice_756x150.png
    :width: 620px
@@ -226,6 +258,31 @@ Outside of developing there was BBQ's in the evening, walks to the waterfall in 
 The team also went out in the local town for food and ordered takeaways from time to time. 
 Movie nights and friends visiting, was also helpful to our wellbeing. 
 Sadly there was a lot of security concerns and attacks at the time.
+
+Team Building Performance
+###########################
+
+
+
+Personal Development Performance
+##################################
+
+
+Team Schedule Performance
+#############################
+
+.. figure::  _static/staff_performance.png
+   :width: 620px
+   :alt:  Staff Performance
+   :align: center
+
+   `(1) Support Staff Meeting (2) Sunday School/ Bible studies (3) Food Prep (4) Driver`
+
+- Staff were generally on time and dilligent (with some encouragement from the villa manager)
+- The expectation of cleanliness was seldom met 
+- Some hiring and firing happened over the months to form a strong and happy workforce
+- A dedicated cook (Rafi the Villa Managers Wife) came onboard mon-fri, allowing cooking as a 2nd duty to end
+- Once a decent guard (Jose) and Cleaner was in place, they were able to bring a 2nd guard and cleaner of their choice in.
 
 
 Staff Accomadation
