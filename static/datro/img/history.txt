@@ -2058,7 +2058,7 @@
  2058  ls
  2059  cp -r /home/unclehowell/Documents/datro_footer.jpg ./footer_logo.png
  2060  ls -la
- 2061  find /var/www/html/datro/static/datro/ -type f -exec sed -i 's/wave.hotspotbnb.com/datro.xyz/g' {} \;
+ 2061  find /var/www/html/datro/static/datro/ -type f -exec sed -i 's/datro.xyz/datro.xyz/g' {} \;
  2062  chown unclehowell:unclehowell \ latest.webm
  2063  pip3 install ffmpeg-normalize
  2064  sudo apt-get install ffmpeg-normalize

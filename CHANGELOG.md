@@ -37,6 +37,7 @@ However, for now, it's understood that /static/ is required of gh-pages to serve
 05-Apr - Minor edit to static/datro/documents.html - see corresponding changelog for details  
 
 ### Fixed
+23-May - Google Search Console Reported error `Alternate page with proper canonical tag` - Attempt made to remedy   
 08-May - Fixed some data miscalculations in the creditors document - see static/library/changelog for more info  
 08-May - Minor edit to document in library - see static/library changelog for details  
 08-May - Updated packages in static/datro/html/featherlight and /videos to counter security threats - see corresponding changelogs for details   
