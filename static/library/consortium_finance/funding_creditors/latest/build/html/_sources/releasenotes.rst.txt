@@ -5,14 +5,10 @@ This section provides information about what is new or changed, including urgent
 - 'Updates' are the term used to describe significant changes to our public source code and/or records.  
  
 
-This Release (0.0.5)
+This Release (0.0.6)
 ~~~~~~~~~~~~~~~~~~~~~
 
-- **2021-05-08** - `In lieu of the fact English is technically my second language (Welsh being my first), I have made corrections to the gramma and spelling in this document which was raised as a concern.`   
-- **2021-05-08** - `The methodology for archiving the old version was followed with v0.0.3, but the folder 0-0-3 was corrupt and missing the .rst files, could recover from build/HTML but not a feasible exertion of energy, so deleted it instead.`
-- **2021-05-08** - `Added initial in the document author segment, since other people exist with the same first/last name. And put space between 'Founder', '@' and 'DATRO' or else web browsers treat it like an email link`
-- **2021-05-08** - `The source data seems to have an unwritten methodology for calculating accrued interest on accounts, which doesn't appear to be followed in all cases - unwritten and unautomated being the keyword (action required).`
-- **2021-05-08** - `Data had errors that were rectified e.g. some accounts did not have accrued interest added for the years 2021 - and some accounts accrued interest was miscalculated.` 
+- **2021-05-23** - `Data updated`
 
 
 Older Versions
@@ -30,6 +26,15 @@ In the interim of a bug fix, you can avoid right-clicking all together, by viewi
    :widths: 20, 20, 20, 40
    :header-rows: 1
    
+
+Version 0.0.5
+################
+
+- **2021-05-08** - `In lieu of the fact English is technically my second language (Welsh being my first), I have made corrections to the gramma and spelling in this document which was raised as a concern.`
+- **2021-05-08** - `The methodology for archiving the old version was followed with v0.0.3, but the folder 0-0-3 was corrupt and missing the .rst files, could recover from build/HTML but not a feasible exertion of energy, so deleted it instead.`
+- **2021-05-08** - `Added initial in the document author segment, since other people exist with the same first/last name. And put space between 'Founder', '@' and 'DATRO' or else web browsers treat it like an email link`
+- **2021-05-08** - `The source data seems to have an unwritten methodology for calculating accrued interest on accounts, which doesn't appear to be followed in all cases - unwritten and unautomated being the keyword (action required).`
+- **2021-05-08** - `Data had errors that were rectified e.g. some accounts did not have accrued interest added for the years 2021 - and some accounts accrued interest was miscalculated.`
 
 Version 0.0.4
 ###############

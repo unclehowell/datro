@@ -3,8 +3,8 @@ project = u'DATRO Consortium Creditors'
 copyright = u'2021, DATRO Consortium'
 author = u'Sion H. Buckler, Founder @ DATRO'
 
-version = u'0.0.5'
-release = u'0.0.5'
+version = u'0.0.6'
+release = u'0.0.6'
 
 extensions = ['sphinx.ext.autosectionlabel']
 

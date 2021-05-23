@@ -111,3 +111,10 @@ curl -f 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTPvPc3dndOPG0JzXX81tSo
 cut -d, -f 1-5 creditor-account-212.csv > temp-creditor-account-212.csv
 mv temp-creditor-account-212.csv creditor-account-212.csv
 cd ../../../
+
+printf "\n\n${RED}DATRO${NC} - Fetching Creditor Account - UID: 213 (A-Cronin):  \n\n"
+cd source/_static/custom
+curl -f 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTPvPc3dndOPG0JzXX81tSorsaQAGt5Y8_LIbhh76Ri5HBAWVkFrshW98lPhtN8iizS73YmSzqyfnHw/pub?gid=1217248800&single=true&output=csv'  --location -o creditor-account-213.csv
+cut -d, -f 1-5 creditor-account-213.csv > temp-creditor-account-213.csv
+mv temp-creditor-account-213.csv creditor-account-213.csv
+cd ../../../
