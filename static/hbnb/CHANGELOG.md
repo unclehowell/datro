@@ -8,9 +8,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [-hbnb.01] - Q2/2021
 
-### Changed
-
+### Added 
 17-Apr - Added double spaces to end of paragraphs in this changelog so it presents on github.com website the same as in a text editor   
+
+### Changed
+23-May - Changed the images from `.png` to `.webp`  
+
 
 ## [0.0.3] - Q1/2021
 
