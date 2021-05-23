@@ -19,6 +19,7 @@ However, for now, it's understood that /static/ is required of gh-pages to serve
 
 
 ### Changed
+23-May - Changed `sitemap.xml` - `consortium_campus` corrected to `consortium_campuses`
 23-May - See `static/hbnb/CHANGELOG.md` - .png > .webp  
 23-May - Added the file explorer index.html's to `sitemap.xml`  
 23-May - Manual entries into the `sitemap.xml` - mainly the locations of the compiled html's in `static/library` which are listed to show in the .treeview.json   
