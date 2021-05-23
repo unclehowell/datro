@@ -10,8 +10,9 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [-library.03] - Q2/2021
 
 ### Added 
-12-May - Have to commit abrubtly due to keyboard and laptop possibly overheating and keystrokes resulting in duplicate letters on the screen. Concern of data loss upon impending system reboot
-12-May - Added content to `static/library/casestudy_techhouse1`, which has also been renamed from `campusone` to `techhouse1` - still more to do
+23-May - Added `consortium_plans/test_network/` (not Sphinx but instead a slideshow made in Google Docs Slides (for now)). The `build/` filepath is used for consistency for the html/json file explorer  
+12-May - Have to commit abrubtly due to keyboard and laptop possibly overheating and keystrokes resulting in duplicate letters on the screen. Concern of data loss upon impending system reboot  
+12-May - Added content to `static/library/casestudy_techhouse1`, which has also been renamed from `campusone` to `techhouse1` - still more to do  
 11-May - Modified `static/library/_theme-*/rebuild-master.sh` (rc1.3 > rc.1.4) - Added sed command to change stylesheets to left aligns images   
 10-May - Updated `consortium_finance/funding_investors` (v0.0.7 > v0.0.8) - See the documents latest release notes for details  
 09-May - Added `consortium_campus/casestudy_campusone` (v0.0.1) - Still in draft, but it's a start  
@@ -37,14 +38,14 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Changed
 02-May - Began changing all the filepaths in the library from `something-something` to `something_something` - part of a uniform standard being adopted  
 02-May - see _theme* directories changelogs to see update to rebuild-master.sh (version 1.0)  
-22-Apr - Put collaboration instructions from README.md into its own COLLABORATE.md file   
-21-Apr - Master-rebuild.sh in `_theme-blue` and `_theme_grey` has gone up to version 0.0.9 - it now builds html files for library navigation via html   
+22-Apr - Put collaboration instructions from README.md into its own COLLABORATE.md file  
+21-Apr - Master-rebuild.sh in `_theme-blue` and `_theme_grey` has gone up to version 0.0.9 - it now builds html files for library navigation via html  
 07-Apr - Worked on datro-consortium/consortium-investors v0.1.6 then archived, ran `make clean` and began work on v0.1.7 e.g. latest  
 07-Apr - Moved archives to netlify branch and called it `wayback`  
-05-Apr - Moved archived content from each document directory to /static/archives    
+05-Apr - Moved archived content from each document directory to /static/archives   
 
 ### To Do
-06-Apr - Solve Table numbering in Sphinx. Table numbering restarts on every new chapter   
+06-Apr - Solve table numbering in Sphinx. Table numbering restarts on every new chapter   
 
 ### Issues
 08-May - Need to get docs (html & PDF) to open links in new tab. Browser based PDF viewer doesn't show within iframes/ divs. And `library.datro.world` displays `datro.xyz/static/library` in a frame  
