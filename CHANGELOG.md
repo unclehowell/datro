@@ -19,6 +19,7 @@ However, for now, it's understood that /static/ is required of gh-pages to serve
 
 
 ### Changed
+23-May - Added the file explorer index.html's to `sitemap.xml`
 23-May - Manual entries into the `sitemap.xml` - mainly the locations of the compiled html's in `static/library` which are listed to show in the .treeview.json 
 15-May - Changed the index.html in `static/` to stop file explorers navigating up a directory.  
 10-May - Updated `funding_invesors` (0.0.7 > 0.0.8) - see document release notes for details  
