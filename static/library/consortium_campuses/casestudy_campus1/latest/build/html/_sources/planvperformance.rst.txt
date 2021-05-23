@@ -88,6 +88,17 @@ Campus Plans
 Team Plans
 ~~~~~~~~~~~~~
 
+Below is a table laying out the team we plan to assemble for this campus:
+
++------------------------+-----------------------------------------------------------------+-------------------------------------------------+-------------------------------------------------+
+|                        | .. centered:: **Lead Developer**                                | .. centered:: **Development CoOrdinator**       | .. centered:: **Head of Security**              | 
++========================+=================================================================+=================================================+=================================================+
+|                        | .. centered::                                                   | .. centered::                                   | .. centered::                                   |
+| .. centered::          | .. figure:: _static/avatar_100x75.png                           | .. figure:: _static/avatar_100x75.png           | .. figure:: _static/avatar_100x75.png           |
+|                        |     :width: 100px                                               |     :width: 100px                               |     :width: 100px                               |
+|                        |     :align: center                                              |     :align: center                              |     :align: center                              |
++------------------------+-----------------------------------------------------------------+-------------------------------------------------+-------------------------------------------------+
+
 Below is a breakdwn of some plans we have for our onsite team:
 
 Team Building Plan
@@ -103,6 +114,7 @@ Team Building Plan
 
 Personal Development Plan
 #############################
+
  - Adventure Training
  - Certifications
  - Health & Fitness
@@ -112,6 +124,7 @@ Personal Development Plan
  - Career Path/ Plan
  - Charity Work/ Volunteering 
  - Rehabilitation e.g. drugs, alcohol, smoking, gambling etc
+
 
 Team Schedule Plan
 ###################
@@ -161,20 +174,15 @@ Part-Time Staff
  - Possible additional security (x2 - shift, threat level increase/ decrease etc) - $400 p/m
  - Onsite contractors (bees, fumigators, plumber, electrician etc) - $200 p/m
  - Programmers (visiting) e.g. DD-WRT - $35,000 USD in total
- - Event Organiser/ Local Relations (1) - $400 USD p/m 
+ - Local Relations/Councellor (1) - $400 USD p/m 
  - Cleaner(s) (x2) - $250 USD p/m
  - Cook (House Managers Wife) - @ $400 USD p/m
 
 
-Labour Expenses/ HR
-####################
+Team Remunerations
+#####################
 
 
-.. csv-table:: Regular Labour Expenses (USD)
-   :file: _static/staff_salary.csv
-   :widths: 20, 20, 5, 10, 20, 25
-   :header-rows: 1
-  
 
 
 Performance
@@ -259,6 +267,7 @@ The team also went out in the local town for food and ordered takeaways from tim
 Movie nights and friends visiting, was also helpful to our wellbeing. 
 Sadly there was a lot of security concerns and attacks at the time.
 
+
 Team Building Performance
 ###########################
 
@@ -283,6 +292,18 @@ Team Schedule Performance
 - Some hiring and firing happened over the months to form a strong and happy workforce
 - A dedicated cook (Rafi the Villa Managers Wife) came onboard mon-fri, allowing cooking as a 2nd duty to end
 - Once a decent guard (Jose) and Cleaner was in place, they were able to bring a 2nd guard and cleaner of their choice in.
+
+
+Team Remunerations
+####################
+
+
+.. csv-table:: Regular Labour Expenses (USD)
+   :file: _static/staff_salary.csv
+   :widths: 20, 20, 5, 10, 20, 25
+   :header-rows: 1
+
+
 
 
 Staff Accomadation

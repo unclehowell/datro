@@ -9,19 +9,29 @@ Ideas
 Campus Ideas
 ~~~~~~~~~~~~~
 
-- Install Pool and Patio for deck chairs
-- Cut into hill and Install Climbing Wall behind pool
-- Log Cabin/ Campsite (on top level) 
-- Zip line
-- Gate Post - For gate guard
-- Fumegate Regularly
+ - Install Pool and Patio for deck chairs
+ - Cut into hill and Install Climbing Wall behind pool
+ - Log Cabin/ Campsite (on top level)  
+ - Zip line
+ - Gate Post - For gate guard
+ - Fumegate Regularly
 
- 
+
+Tech/ Business Ideas
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Develop our own Private Bitcoin Securities Exchange 
+
+
 Team Ideas
 ~~~~~~~~~~~
 
 
 - Uniforms
+
+
+Security Ideas
+~~~~~~~~~~~~~~~~
 
 
 Other Ideas
@@ -38,25 +48,35 @@ Concerns
 Deal Concerns
 ~~~~~~~~~~~~~~~
 
+Tech/ Business Concerns
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
 Campus Concerns
 ~~~~~~~~~~~~~~~~
 
 Team Concerns
 ~~~~~~~~~~~~~~
 
-- Junior "Pingu" (Haitian Groundkeeper/ Security) brought his wife and child from town to live in his groundskeepers property with him. 
-- This was not authorised and noisy and prohibited, since it was a place of work and the security level was Yellow/ Orange (Elevated/ High). 
+Security Concerns
+~~~~~~~~~~~~~~~~~~~
 
- but no provisions were made to assist the situation. Our events organiser/ local relations identified this matter and remedied it. 
-
+ - Junior "Pingu" (Haitian Groundkeeper/ Security) snuck his wife and child from town to live in his groundskeepers property with him.
+ - This was not authorised and noisy and prohibited, since it was a place of work and the security level was Yellow/ Orange (Elevated/ High).
 
 Other Concerns 
 ~~~~~~~~~~~~~~~~
 
-- Hire car is based on a tourist rate/ on a short-term fee (Sion's same supplier and car from previous trips to the DR)
-- The cost inccured for April - October 2014 was in the region of $12,000 USD
-
-
+ - Hire car is based on a tourist rate/ on a short-term fee (Sion's same supplier from previous trips to the DR)
+ - The cost inccured between April - October 2014 was in the region of $12,000 USD
+ - This fee was high but this choice was requried for the following reasons:
+   -  the hire company offered credit terms (pay at end of month) which suited cashflow
+   -  the hire car company had no fleet, there was no choice for a cheaper vehicle
+   -  the hire car company had a copy of Sion's driving licence on file already
+   -  the hire car agent is a close friend of Sions and trust was crucial for security at the time
+   -  the hire car agent was trustworthy enough not to disclose the identity of Sions driver (disclosed only for insurance purposes)  
+   -  the vehicle was ideal for the terrain and executive enough for business
 
 Risks
 =======
@@ -66,14 +86,24 @@ Deal Risks
 ~~~~~~~~~~~
 
 
+Tech/ Business Risks
+~~~~~~~~~~~~~~~~~~~~~~~~
+
 Campus Risks
 ~~~~~~~~~~~~~
 
+ - The driveway is a steep hill and a real risk e.g. a lot of strain and dependacy on the hand break
 
 Team Risks
 ~~~~~~~~~~~~
 
-- The guard Jose insisted on use of the vehicle while under the influence of alcohol and became threatning etc. 
+
+Security Risks
+~~~~~~~~~~~~~~~~~~~
+
+ - A member of staff entered the property late one evening and insisted on use of the vehicle while under the influence of alcohol
+ - When refused he became threatning, but quickly learnt Sion was not a push over, nor was he to be taken for granted 
+
 
 Other Risks
 ~~~~~~~~~~~~
@@ -87,7 +117,6 @@ Deal Issues
 
 The final weeks went as follows (to the best of our recollection):
 
- * All dogs poisoned in the neighbourhood. Dog that came with the property (Jaws) was poisoned to death and found in a nearby ditch (a common act of thieves prior to thefts).
  * Electricity went off to the whole street for weeks. And battery and generator experienced issues. Lessee had to all go stay in a hotel in Santo Domingo.
  * It was reported that Electricity didn't come back onto the area for the remainder of the lease and worse still, quarrying began next door to the property and was very noisy e.g. trucks struggling up the hills, hammer action digging into rockfaces etc.
  * The 6 month lease was expiring and purchase agreement date was approaching, while the Lessee was in a hotel in Santo Domingo, because of the inhability of the property.
@@ -109,6 +138,8 @@ Without the unfortunate events that placed the Lessee on the defensive during th
  - Our arrival to Playa de Magante is the beginnings of **Campus Two** (see the seperate 'Campus Two' Case Study/ Document for details).
 
 
+Tech/Business Issues
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Campus Issues
 ~~~~~~~~~~~~~~
@@ -120,12 +151,18 @@ Campus Issues
 Team Issues
 ~~~~~~~~~~~~~
 
-1. Uninvited guests/ trasspassers entered the main gates of the property, at night, causing a security drill to be triggered 
-e.g. bugging out and heading up to the 3rd level and beyond until the all clear was given over radio and the team could return to the property.
+ - Uninvited guests/ trasspassers entered the main gates of the property, at night, causing a security drill to be triggered 
+    - e.g. drill was to exit the property at the rear and head up to the 3rd level (and beyond into a forest rv point) until the all clear was given by the head of security.
 
-The bug-out ended up being a false alert. A negligent member of staff (the same one who crashed the vehicle) 
-thoughtlessly invited an unauthorised person onto the property and was in the vehicle which followed far behind his associate. 
-The unauthorised visitor took it upon themselves to enter the main gates not aware of the silent alarm and protocols they triggered.
+`The bug-out ended up being a false alert. A negligent member of staff (the same one who crashed the vehicle).`
+`Thoughtlessly invited an unauthorised person onto the property and was in the vehicle which followed far behind his associate` 
+`The unauthorised visitor took it upon themselves to enter the main gates not aware of the silent alarm and protocols they triggered`
+
+
+Security Issues
+~~~~~~~~~~~~~~~~
+
+ - All dogs poisoned in the neighbourhood. Dog that came with the property (Jaws) was poisoned to death and found in a nearby ditch (a common act of thieves prior to thefts).
 
 
 Other Issues
@@ -140,4 +177,31 @@ In this case due to a faulty vehicle, a dangerous driveway, poor communications,
 
 
 
+Solutions
+=============
 
+
+Deal Solutions
+~~~~~~~~~~~~~~~~~~
+
+
+Tech/ Business Solutions
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Campus Solutions
+~~~~~~~~~~~~~~~~~~~
+
+
+Team Solutions
+~~~~~~~~~~~~~~~~~~
+
+ - No provisions were made to assist Juniors family situation, as highlighted by our local relations/ councellor, who mediated and remedied this welfare matter.
+ - The solution was to cover the expense and contract a scheduled mototaxi driver, to run Junior to his wife and child in town after work, then run him back at night/ early next morning.
+
+Security Solutions
+~~~~~~~~~~~~~~~~~~~~
+
+
+Other Solutions
+~~~~~~~~~~~~~~~~~~

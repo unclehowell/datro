@@ -6,13 +6,16 @@ Plans Moving Forward: Nov-2014 >
 Campus
 ========
 
- - **Move Location** - Plan to renew lease and/or move forward with purchase was all voided. 
+ - **Exit Renewed Lease** - Excercise the V.C clause put in (next to the signature) on the renewed lease agreement, in order to null/void it.
+ - **Exit Purchase Agreement** - Email notification to seller to say DATRO will not be moving forward with the renewed lease or purchase agreement plan.  
  - **Alotment & stairs** - The alotment and stairs installed (car to front door) were left in place. 
 
 Property
 =========
 
- - No plan to revert changes e.g.  
+ - No significant changes made to the property which required rectifying. At most the furniture layout was re-arranged. 
+ - Any purchases of additional kitchen utilities and utensils were left in the property and costs written off.
+
 
 Team
 ========
@@ -38,6 +41,5 @@ Part-Time
 
 Other
 ================
-
 
 - Purchase vehicle as oppose to lease

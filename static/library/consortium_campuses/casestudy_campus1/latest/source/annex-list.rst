@@ -3,12 +3,12 @@ Annexures
 
 This section contains the Annexures, referenced in the text above.
 
-Bitcoin Purchases (2014)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Kraken Exchange Bitcoin Purchases (2014)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. csv-table:: Bitcoin Purchases (2014)
+.. csv-table:: Kraken Exchange Bitcoin Purchases (2014)
    :file: _static/bitcoins.csv
-   :widths: 25, 25, 25, 25
+   :widths: 35, 25, 15, 25
    :header-rows: 1  
 
 
