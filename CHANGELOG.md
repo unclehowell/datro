@@ -11,6 +11,7 @@ However, for now, it's understood that /static/ is required of gh-pages to serve
 ## [0.0.1-rtw.11] - Q2/2021
 
 ### Added
+24-May - Added css to file explorer index.html pages to hide scrollbars - when visiting datro.xyz webpages within datro.world scrollbars were showing   
 23-May - Added `body{color:#202020}` to index.html as it was considered to be critical css  
 08-May - Added key at top of changelog to keep author from repeating lengthly notes   
 06-May - Added more docs to the library - see the file explorer to see: https://datro.xyz/static/library/  
