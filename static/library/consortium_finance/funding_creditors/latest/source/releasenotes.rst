@@ -52,10 +52,8 @@ This document has the following updates since version 0.0.2 was published:
 
 - **yyyy-mm-dd** - Further lending obtained, records updated!
 
-Version 0.0.2
-####################
 
-- Changes to presentation of data more than data itself. 
+To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://datro.world/wayback/>`__.
    
 
 Known and Corrected Issues

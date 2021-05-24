@@ -1,7 +1,7 @@
 
 project = u'DATRO Consortium Creditors'
 copyright = u'2021, DATRO Consortium'
-author = u'Sion H. Buckler, Founder @ DATRO'
+author = u'The Team @ DATRO Consortium'
 
 version = u'0.0.6'
 release = u'0.0.6'
@@ -45,7 +45,7 @@ latex_elements = {
 
 latex_documents = [
     (master_doc, 'consortium_finance-funding_creditors.tex', u'DATRO Consortium',
-     u'Author: Sion H. Buckler, Founder @ DATRO', 'manual'),
+     u'Author: The Team @ DATRO Consortium', 'manual'),
 ]
 
 

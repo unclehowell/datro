@@ -4,7 +4,7 @@ Investor Accounts
 Summary 
 ~~~~~~~~~
 See below a summary of the seed funding investment round (account ID & aliases) and the corresponding account balance for each investor.
-The final balance includes all deposits, withdrawls, accrued and compounded interest (16.6% APR per annum, from April 2019).
+The final balance includes all deposits, withdrawls, accrued and compounded interest (1.66% APR per annum, from April 2019).
 
 .. csv-table:: DATRO Investor Accounts - Including Accrued Interest (GBP)
    :file: _static/custom/wrt-master-register.csv
@@ -16,7 +16,7 @@ The final balance includes all deposits, withdrawls, accrued and compounded inte
 Detailed
 ~~~~~~~~~~
 
-See below a detailed statement/ breakdown of each investors Account from DATRO's £1Million GBP Seed Funding Investment Round:
+See below mini-statements for each investor account.
 
 
 B-Leonides (Account:101)
@@ -488,4 +488,30 @@ B-Naipaul (Account:150)
    :header-rows: 1
       
          
+
+Anonymous-1 (Account:151)
+#################################
+
+.. csv-table:: Mini Statement: Anonymous-1 (Account:151)
+   :file: _static/custom/wrt-wallet-151.csv
+   :widths: 15, 35, 15, 15, 20
+   :header-rows: 1
+
+
+Anonymous-2 (Account:152)
+#################################
+
+.. csv-table:: Mini Statement: Anonymous-2 (Account:152)
+   :file: _static/custom/wrt-wallet-152.csv
+   :widths: 15, 35, 15, 15, 20
+   :header-rows: 1
+
+M-Jaffe (Account:153)
+#################################
+
+.. csv-table:: Mini Statement: M-Jaffe (Account:153)
+   :file: _static/custom/wrt-wallet-153.csv
+   :widths: 15, 35, 15, 15, 20
+   :header-rows: 1
+
 

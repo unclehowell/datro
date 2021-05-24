@@ -30,12 +30,14 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 27-Mar - Trying to get docs library to work with readthedocs by adding .readthedocs.yml  
 
 ### Fixed
+23-May - Minor typo fix in html footer of Google Patent Purchase Agreement  
 08-May - Annex.rst removed from campus one doc. It was from a template used - didn't correspond  
 08-May - Corrected the purchase price of Campus One from $200k to $250k (possibly still inaccurate as it was around 7 years ago)  
 18-Apr - Fixed a load of issues with the github api index.html files (which allows file exploring via gh-pages webpage view)   
 05-Apr - The custom.sh script file in some docs (which pulls spreadsheet data in) was producing errors. Appended a `--location` to curl which fixed it  
 
 ### Changed
+24-May - Updated `funding_creditors` 0.0.9 => 0.1.0  ... also updated `fundin_investors` data
 23-May - Title of file explorer index for `consortium_plans/test_network/` was changed to match doc title  
 02-May - Began changing all the filepaths in the library from `something-something` to `something_something` - part of a uniform standard being adopted  
 02-May - see _theme* directories changelogs to see update to rebuild-master.sh (version 1.0)  

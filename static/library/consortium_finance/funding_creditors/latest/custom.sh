@@ -118,3 +118,17 @@ curl -f 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTPvPc3dndOPG0JzXX81tSo
 cut -d, -f 1-5 creditor-account-213.csv > temp-creditor-account-213.csv
 mv temp-creditor-account-213.csv creditor-account-213.csv
 cd ../../../
+
+printf "\n\n${RED}DATRO${NC} - Fetching Creditor Account - UID: 214 (A-Buckler):  \n\n"
+cd source/_static/custom
+curl -f 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTPvPc3dndOPG0JzXX81tSorsaQAGt5Y8_LIbhh76Ri5HBAWVkFrshW98lPhtN8iizS73YmSzqyfnHw/pub?gid=1363503703&single=true&output=csv'  --location -o creditor-account-214.csv
+cut -d, -f 1-5 creditor-account-214.csv > temp-creditor-account-214.csv
+mv temp-creditor-account-214.csv creditor-account-214.csv
+cd ../../../
+
+printf "\n\n${RED}DATRO${NC} - Fetching Creditor Account - UID: 215 (G-Smith):  \n\n"
+cd source/_static/custom
+curl -f 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTPvPc3dndOPG0JzXX81tSorsaQAGt5Y8_LIbhh76Ri5HBAWVkFrshW98lPhtN8iizS73YmSzqyfnHw/pub?gid=1224901281&single=true&output=csv'  --location -o creditor-account-215.csv
+cut -d, -f 1-5 creditor-account-215.csv > temp-creditor-account-215.csv
+mv temp-creditor-account-215.csv creditor-account-215.csv
+cd ../../../

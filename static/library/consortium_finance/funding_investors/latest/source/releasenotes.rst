@@ -8,8 +8,8 @@ It also contains urgent issues, documentation updates, maintenance and new relea
 This Release (Version 0.1.0)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **2021-05-22** - ``
-- **2021-05-22** - `In accordance with the the notice issued in the last release of this document, interest was adjusted and changes to accounts was applied accordingly'
+- **2021-05-24** - `Added more lenders, however more reconsiliation is pending to bring this documents data upto date and accuracy`
+- **2021-05-23** - `In accordance with the the notice issued in the last release of this document, interest was adjusted and changes to accounts was applied accordingly'
 
 
 Older Versions

@@ -416,6 +416,28 @@ cut -d, -f 1-5 wrt-wallet-150.csv > temp-wrt-wallet-150.csv
 mv temp-wrt-wallet-150.csv wrt-wallet-150.csv
 cd ../../../
 
+printf "\n\n${RED}DATRO${NC} - Getting Account - UID: 151 (Anonymous-1):  \n\n"
+cd source/_static/custom
+curl -f 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSfTard2Lcj4YBTwWDnVZmLSO_fNd___vP3_wQJm8vP6OzyXeE3cmi80A2Pxzt1eVO_B2J5KJKi4WDT/pub?gid=1457970582&single=true&output=csv' --location -o wrt-wallet-151.csv
+cut -d, -f 1-5 wrt-wallet-151.csv > temp-wrt-wallet-151.csv
+mv temp-wrt-wallet-151.csv wrt-wallet-151.csv
+cd ../../../
+
+printf "\n\n${RED}DATRO${NC} - Getting Account - UID: 152 (Anonymous-2):  \n\n"
+cd source/_static/custom
+curl -f 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSfTard2Lcj4YBTwWDnVZmLSO_fNd___vP3_wQJm8vP6OzyXeE3cmi80A2Pxzt1eVO_B2J5KJKi4WDT/pub?gid=780038456&single=true&output=csv' --location -o wrt-wallet-152.csv
+cut -d, -f 1-5 wrt-wallet-152.csv > temp-wrt-wallet-152.csv
+mv temp-wrt-wallet-152.csv wrt-wallet-152.csv
+cd ../../../
+
+printf "\n\n${RED}DATRO${NC} - Getting Account - UID: 153 (M-Jaffe):  \n\n"
+cd source/_static/custom
+curl -f 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSfTard2Lcj4YBTwWDnVZmLSO_fNd___vP3_wQJm8vP6OzyXeE3cmi80A2Pxzt1eVO_B2J5KJKi4WDT/pub?gid=1311450348&single=true&output=csv' --location -o wrt-wallet-153.csv
+cut -d, -f 1-5 wrt-wallet-153.csv > temp-wrt-wallet-153.csv
+mv temp-wrt-wallet-153.csv wrt-wallet-153.csv
+cd ../../../
+
+
 printf "\n\n${RED}DATRO${NC} - Getting Account UID: 401 (Startup Investor(s)):  \n\n"
 cd source/_static/custom
 curl -f 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSfTard2Lcj4YBTwWDnVZmLSO_fNd___vP3_wQJm8vP6OzyXeE3cmi80A2Pxzt1eVO_B2J5KJKi4WDT/pub?gid=1714984400&single=true&output=csv' --location -o wrt-wallet-401.csv

@@ -5,14 +5,11 @@ This section provides information about what is new or changed.
 It also contains urgent issues, documentation updates, maintenance and new releases.  
 'Updates' are the term used to describe significant changes to our public source code and/or records.  
 
-This Release (Version 0.0.9)
+This Release (Version 0.1.0)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **2021-05-14** - `Limiting the number of older versions/older version release notes (referenced in the latest release) to three. To view older notes look back 3 semantic versions in the archives/ "wayback" e.g. https://wayback.datro.world'
-- **2021-05-14** - `Stopped using names of months in releasenotes and used numbers instead - More technical but it aligns better. Backdated this formatting too e.g. '2021-May-10' > '2021-05-10'`
-- **2021-05-14** - `The indexing and layout of v0.0.7 (and the archived copy of v0.0.8) was improved, making the glossary brief and the navigation simpler`
-- **2021-05-14** - `The proposed (backdated and pre-revenue) base rate of interest will reduce by a decimal place this quarter. To be revisited once the consortium is post-revenue` 
-- **2021-05-14** - `Minor releasenote edits to v0.0.8 before archiving it - 'This Release' was a version behind and v0.0.7 was missing from 'Older Versions'`
+- **2021-05-24** - `Added more lenders, however more reconsiliation is pending to bring this documents data upto date and accuracy`
+- **2021-05-23** - `In accordance with the the notice issued in the last release of this document, interest was adjusted and changes to accounts was applied accordingly'
 
 
 Older Versions
@@ -30,6 +27,16 @@ Latest releases mention the last three semantic versions only. Older versions ca
    :header-rows: 1
 
 
+Version 0.0.9
+##############
+
+- **2021-05-14** - `Limiting the number of older versions/older version release notes (referenced in the latest release) to three. To view older notes look back 3 semantic versions in the archives/ "wayback" e.g. https://wayback.datro.world'
+- **2021-05-14** - `Stopped using names of months in releasenotes and used numbers instead - More technical but it aligns better. Backdated this formatting too e.g. '2021-May-10' > '2021-05-10'`
+- **2021-05-14** - `The indexing and layout of v0.0.7 (and the archived copy of v0.0.8) was improved, making the glossary brief and the navigation simpler`
+- **2021-05-14** - `The proposed (backdated and pre-revenue) base rate of interest will reduce by a decimal place this quarter. To be revisited once the consortium is post-revenue`
+- **2021-05-14** - `Minor releasenote edits to v0.0.8 before archiving it - 'This Release' was a version behind and v0.0.7 was missing from 'Older Versions'`
+
+
 Version 0.0.8
 ###############
 
@@ -41,18 +48,6 @@ Version 0.0.7
 #################
 
 - **2021-04-08** - `Addressed issues from last document release`
-  
-
-Version 0.0.6
-###############
-
-- **2020-06-11** - `Added dates to the changelogs under each version - which DATRO is now implimenting on all source code changelogs and document releasenotes`
-- **2020-06-10** - `Remove the interest segment, since the additional data was causing confusion - The objective of this report was to keep it simple`
-- **2020-05-12** - `Changed document title from 'WRT Tokens' to 'DATRO Consortium - Investors (Detailed)'`
-- **2020-02-25** - `Document file structure updated to a uniform format across the entire document library e.g. path/{'latest' or '0-0-0'}`
-- **2020-01-01** - `Last remaining WIN Token account (ID:300) migrated to WRT as per T&C's (WIN Token scheme is now terminated)`
-- **2019-11-14** - `D. Allen made contact to query his account. A correction was made`
-- **2019-11-10** - `C. & A. Doick made contact to query their account. A correction was made`
   
 
 To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback <https://wayback.datro.world>`__ Archive.
