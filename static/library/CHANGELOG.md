@@ -37,6 +37,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 05-Apr - The custom.sh script file in some docs (which pulls spreadsheet data in) was producing errors. Appended a `--location` to curl which fixed it  
 
 ### Changed
+25-May - Updated `funding_investors` but didn't re-release doc. Although the entry was made in the releasenotes  
 24-May - Updated `funding_creditors` 0.0.9 => 0.1.0  ... also updated `fundin_investors` data
 23-May - Title of file explorer index for `consortium_plans/test_network/` was changed to match doc title  
 02-May - Began changing all the filepaths in the library from `something-something` to `something_something` - part of a uniform standard being adopted  

@@ -47,7 +47,7 @@ do
 done
 
 # custom e.g. pull in latest custom data e.g. fiscal
-sh custom.sh 2> /dev/null &&
+#sh custom.sh 2> /dev/null &&
 touch build.log
 make clean > build.log 2>&1
 printf "\e[2;3;33m Done! \n\e[0m"

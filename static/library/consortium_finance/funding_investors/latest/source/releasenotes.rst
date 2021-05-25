@@ -9,6 +9,7 @@ It also contains urgent issues, documentation updates, maintenance and new relea
 This Release (Version 0.1.1)
 ================================
 
+- **2021-05-25** - `Removed commas from data, which caused csv rendering issues`  
 - **2021-05-25** - `Replaced the word 'Reconciling' with 'Queued' in data, to reduce column width`
 
 
