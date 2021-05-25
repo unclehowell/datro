@@ -25,7 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ### Changed
-23-May - Changed `sitemap.xml` - `consortium_campus` corrected to `consortium_campuses`
+25-May - Modified `make-sitemap.sh.options` to remove unwanted files in `sitemap.xml`   
+23-May - Changed `sitemap.xml` - `consortium_campus` corrected to `consortium_campuses`  
 23-May - See `static/hbnb/CHANGELOG.md` - .png > .webp  
 23-May - Added the file explorer index.html's to `sitemap.xml`  
 23-May - Manual entries into the `sitemap.xml` - mainly the locations of the compiled html's in `static/library` which are listed to show in the .treeview.json   
