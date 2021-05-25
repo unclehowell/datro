@@ -3,8 +3,8 @@ project = u'DATRO Consortium Investments'
 copyright = u'2021, DATRO Consortium'
 author = u'The Team @ DATRO Consortium'
 
-version = u'0.1.0'
-release = u'0.1.0'
+version = u'0.1.1'
+release = u'0.1.1'
 
 extensions = ['sphinx.ext.autosectionlabel']
 

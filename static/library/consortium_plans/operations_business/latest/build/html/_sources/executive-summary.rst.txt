@@ -2,22 +2,16 @@
 Executive Summary
 *******************
 
+
+The internet is great, but accessing the internet remains an affordable privilege, courtesy of autocratic and centralized service providers.
 The DATRO Consortium is attempting to decentralize, democratize and free access to the internet.
-There are 1+ billion wireless router/ "access points" on the planet.
+
+DATRO itself is a consortium of free, publicly available, democratic and decentralized technologies designed to enable anyone, anywhere to access the internet for free and as a human right.
+The primary technology being researched and developed is a free and universal software upgrade, for the worlds 1,000,000,000+ wireless access points. 
+DATRO's focus is a single 60Mb file, which can be uploaded to any wi-fi router via its backup/restore feature. 
+
 For residential and small business users, DATRO offers a universal, free software upgrade (Compatible on 20M+ wireless routers worldwide as of 2021).
-For non-compatible routers our software can be run on a seperate, low-cost (wirelessly-connected) IoT device e.g. Raspberry Pi (30M+ in circulation worldwide as of 2021).    
-
-This software upgrade (targeting 5% of global wireless access points in year 1 alone) is free, fully-autonomous and can be obtained with full-anonymity (no credentials required).
-The first notable difference after the software upgrade is a new wireless router dashboard menu, featuring the worlds first wi-fi router app store. 
-We believe installing web-applications to your wireless access point is integral to making access to the internet free, democratic and decentralised.
-
-An example Decentralized App (DApp) is Althea. A California-based startup, whos software application allow you to mesh your wireless access point with your neighbours and share costs using cryptocurrency.  
-We also incorporated JSECoin. A Cambridge(UK) based startup, whos technology allows you to mine cryptocurrency while accessing web-applications on your wireless access point.  
-And with the addition of our own DApp called Wave, users can autonomously re-route revenue from JSECoin to Althea resulting in a subsidised, perhaps even free internet connection. 
-
-There is no advertising in this model. Instead the reduntant processing power of the wireless devices connected to your newly upgraded wireless access point, is used to perform blockchain functions. 
-The remuneration for these functions are intravenously credited to your wireless access point for the data being consumed e.g. free internet    
-For non-residential/small business e.g. military, educational institutions etc DATRO is currently trialling a geodesic communications equipment room solution.  
+For non-compatible routers our software can be run on a seperate, low-cost (wirelessly-connected) IoT device e.g. Raspberry Pi (30M+ in circulation worldwide as of 2021).
 
 
 Opportunity
@@ -36,13 +30,37 @@ Solution Summary
 It is now technologically possible for anyone, anywhere to setup access to the internet for themselves and their community and pay less (perhaps even $0, perhaps even earn $$$) and with a fully transparent and open(public) solution
 A bridge is being created between the technology and practices of skilled internet service engineers and competent members of the general public. 
 
+This software upgrade (targeting 5% of global wireless access points in year 1) is free, fully-autonomous and can be obtained with full-anonymity (no credentials required).
+The first notable difference after the software upgrade is a new wireless router dashboard menu, featuring the worlds first wi-fi router app store.
+We believe installing web-applications to your wireless access point is integral to making access to the internet free, democratic and decentralised.
+
+An example Decentralized App (DApp) is Althea. A California-based startup, whos software application allow you to mesh your wireless access point with your neighbours and share costs using cryptocurrency.
+We also incorporated JSECoin. A Cambridge(UK) based startup, whos technology allows you to mine cryptocurrency while accessing web-applications on your wireless access point.
+And with the addition of our own DApp called Wave, users can autonomously re-route revenue from JSECoin to Althea resulting in a subsidised, perhaps even free internet connection.
+
+There is no advertising in this model. Instead the reduntant processing power of the wireless devices connected to your newly upgraded wireless access point, is used to perform blockchain functions.
+The remuneration for these functions are intravenously credited to your wireless access point for the data being consumed e.g. free internet
+For non-residential/small business e.g. military, educational institutions etc DATRO is currently trialling a geodesic communications equipment room solution.
+
 Market Summary
 ---------------
 
 Access to the internet has been flatlining for years since the growth of the network is heavily dependant on a billing model whereby the end-user pays. 
 For a % of the global population the cost per GB of data is still too expensive. However the value of connecting this demographic to the internet, is strong for those already connected e.g. preserving dying languages etc 
-The solution proposed by DATRO hits a cross section of many markets, more than 4 of which are in the tens and hundreds of billions each year e.g. IoT, voice/data communications etc
-It's possible to profit from connecting people to the internet, since the cruciendo of revenue paying for end-users internet is a margin which is expected to grow as the trend grows. 
+The solution proposed by DATRO hits a cross section of many markets, more than four of which are in the tens and hundreds of billions each year e.g. IoT, Web 3.0, voice/data communications, blockchain/cryptocurrencies etc
+
+**By DATRO's calculations it's possible to profit from connecting people to the internet for free** and without ads or data mining etc
+This is due to the following fact:
+
+1. The margin between **(1) revenue discounting end-users internet** and **(2) data consumption costs** continues to shrink 
+2. The margin decrease is on trajectory to hitting a cruciendo whereby (1) cancels out (2) ... resulting in free access to internet for end-users.
+3. And like Metcalfs, Gildafs and Moors laws, there's no foreseeable reason why these trends should cease to continue.
+
+Therefore the decreasing margin between **(1) the revenue generated from the correctly designed internet service** and **(2) the data consumption cost of said service** will surpass a cruciendo whereby one cancels out the other, resulting in an ever increasing margin between the two e.g. revenue and eventual ROI/profits.
+
+ 
+ 
+is a margin which is expected to grow as the trend grows. 
 So in 2020 - 2025 we will see monetisation of the network paying for the network. Then in 2025 - 2030 we will see an abudance of revenue being generated as the data consumption cost reduces and the monetisation methods are optimised and become more efficient e.g. profit opportunity (web 3.0 will help in this area)  
 
 Competition
@@ -78,7 +96,7 @@ Over the years my commitment has withstood the test of time and this project is 
 Expectations
 ==============
 
-1. A small community grows around the product/ service. Allowing us to prove the revenue potential and attention retained by the technology. 
+1. A community is already growing around this technology product/ service, allowing DATRO to prove the revenue potential and attention retained by the technology. 
 2. A small network grows which is able to sustain a regions communications while others fail e.g. earthquakes, cyber attacks etc - demonstrating our technical supremacy 
 3. Traction and growth becomes more frictionless - we see networks springing up around the world, without our knowledge or participation - just people using the material and software we've published to gain for themselves what we have
 4. Revolution - large scale adoption, abandonment of the traditional ISP and billing model worldwide

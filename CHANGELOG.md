@@ -1,16 +1,20 @@
 # Changelog
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),  
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).  
-Key: When refering to a directory e.g. `library', 'datro', 'hbnb' etc, note that the full path includes a '/static/' before the directory title  
-better to say this once than keep writing /static/ in every changelog entry, before the directory being refered to.  
-ideally at some point the content of /static/ could be moved up a directory and /static/ removed alltogether.   
-However, for now, it's understood that /static/ is required of gh-pages to serve the directory content as webpages.   
+
+1. When refering to a directory e.g. `library', 'datro', 'hbnb' etc, note that the full path includes a '/static/' before the directory title  
+ - better to say this once than keep writing /static/ in every changelog entry, before the directory being refered to.  
+ - ideally at some point the content of /static/ could be moved up a directory and /static/ removed alltogether.   
+ - However, for now, it's understood that /static/ is required of gh-pages to serve the directory content as webpages.   
+2. Any changes to index.html in this top level directory should be logged in the datro subdirectory, since it belongs to that website  
 
 ## [Unreleased]
 
 ## [0.0.1-rtw.11] - Q2/2021
 
 ### Added
+25-May - Added a sitemap generator script  
+24-May - Added a table containing links to the other monorepo branches in README.md  - It did exist previously, it must have been mistakenly removed  
 24-May - Added css to file explorer index.html pages to hide scrollbars - when visiting datro.xyz webpages within datro.world scrollbars were showing   
 23-May - Added `body{color:#202020}` to index.html as it was considered to be critical css  
 08-May - Added key at top of changelog to keep author from repeating lengthly notes   

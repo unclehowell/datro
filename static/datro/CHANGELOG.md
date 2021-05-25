@@ -4,6 +4,10 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+1. This websites within a directory of a directry of a gh-pages repo
+   - for this reason `index.html` is located two directory levels up e.g. for `index.html` you'd instead use `../../index.html`  
+   - equally `index.html` has to locate files in this directory e.g. for `"css/style.css"` you'd instead use `static/datro/css/style.css`  
+
 ## [Unreleased]
 
 ## [datro.03] - Q2/2021
@@ -20,6 +24,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
        -  must find a way to use semantic version badges on the published content too to save viewing the changelogs for version numbers   
 
 ### Fixed
+24-May - Carousel in index.html didn't work offline, fixed it by replacing `bootstrap.min.js` with an offline copy  
 05-Apr - There was a security vunerablity in html/videos/package-lock.json - fixed it as per github's suggestion (upping the version of a package to the latest)  
 
 ## [0.0.2] - Q1/2021
