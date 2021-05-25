@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ### Changed
+25-May - Modified `make-sitemap.sh` to change sitemap from weekly to hourly   
 25-May - Modified `make-sitemap.sh.options` to remove unwanted files in `sitemap.xml`   
 23-May - Changed `sitemap.xml` - `consortium_campus` corrected to `consortium_campuses`  
 23-May - See `static/hbnb/CHANGELOG.md` - .png > .webp  

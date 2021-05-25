@@ -4,7 +4,7 @@
 URL="https://datro.xyz/"
 
 # values: always hourly daily weekly monthly yearly never
-FREQ="weekly"
+FREQ="hourly"
 
 # begin new sitemap
 exec 1> sitemap.xml
