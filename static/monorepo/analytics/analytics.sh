@@ -6,7 +6,7 @@ bash ../sitemap/make-sitemap.sh &
 # get a list of urls from sitemap
 cat ../../../sitemap.xml | grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | sort -u > urls.txt
 
-# remove one unwanted
+# remove sitemap url
 sed -i 's+http://www.sitemaps.org/schemas/sitemap/0.9++g' urls.txt
 
 # make file paths make sense from current subdirectory
