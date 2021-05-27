@@ -45,6 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 05-Apr - Minor edit to static/datro/documents.html - see corresponding changelog for details  
 
 ### Fixed
+27-May - Busted then fixed messing with svn   
 23-May - Google Search Console Reported error `Alternate page with proper canonical tag` - Attempt made to remedy   
 08-May - Fixed some data miscalculations in the creditors document - see static/library/changelog for more info  
 08-May - Minor edit to document in library - see static/library changelog for details  
