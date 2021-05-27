@@ -13,8 +13,9 @@ exec 1> sitemap.xml
 echo '<?xml version="1.0" encoding="UTF-8"?>'
 echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
 
+cd ../../../
 # print urls
-IFS=$'\r\n' GLOBIGNORE='*' command eval "OPTIONS=($(cat $0.options))"
+IFS=$'\r\n' GLOBIGNORE='*' command eval "OPTIONS=($(cat ./static/monorepo/sitemap/$0.options))"
 find . -type f "${OPTIONS[@]}" -printf "%TY-%Tm-%Td%p\n" | \
 while read -r line; do
   DATE=${line:0:10}
@@ -28,3 +29,6 @@ done
 
 # print foot
 echo "</urlset>"
+
+cd static/monorepo/sitemap/
+mv sitemap.xml ../../../
