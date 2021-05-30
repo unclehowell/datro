@@ -1,5 +1,15 @@
 ## Hotspotβnβ Disk Image (Raspberry Pi)
 
+--------------------------------------------------
+FYI - 2021-05-29 issues urgent - leave here until issues are fixed
+
+- ssh issue - has t0 edit /etc/ssh/sshd_config and change PasswordAuthentication 'no' to 'yes'
+- maybe this c0uld be d0ne during the build 0f the image, al0ng with the blank ssh file insersi0n.
+
+- build hangs 0n 'C0nfiguring DHCP ...' - with0ut access t0 the cacher 0r internet Hotspotβnβ d0esn't build) 
+
+--------------------------------------------------
+
 Get Hotspotβnβ running on any Raspberry Pi.
 
 ### Instant Download (on Linux, Windows & Mac)
