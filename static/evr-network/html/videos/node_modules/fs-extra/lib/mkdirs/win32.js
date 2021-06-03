@@ -9,7 +9,7 @@ function getRootPath (p) {
   return null
 }
 
-// http://stackoverflow.com/a/62888/10333 contains more accurate
+// https://stackoverflow.com/a/62888/10333 contains more accurate
 // TODO: expand to include the rest
 const INVALID_PATH_CHARS = /[<>:"|?*]/
 

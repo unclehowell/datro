@@ -3,7 +3,7 @@
  *
  * Copyright (c) 2009 Martin Conte Mac Donell <Reflejo@gmail.com>
  * Dual licensed under the MIT and GPL licenses.
- * http://docs.jquery.com/License
+ * https://docs.jquery.com/License
  *
  */
 

@@ -1,6 +1,6 @@
 # strip-ansi [![Build Status](https://travis-ci.org/chalk/strip-ansi.svg?branch=master)](https://travis-ci.org/chalk/strip-ansi)
 
-> Strip [ANSI escape codes](http://en.wikipedia.org/wiki/ANSI_escape_code)
+> Strip [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code)
 
 
 ## Install
@@ -30,4 +30,4 @@ stripAnsi('\u001b[4mcake\u001b[0m');
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)

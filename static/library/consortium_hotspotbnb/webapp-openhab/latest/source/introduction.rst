@@ -300,7 +300,7 @@ A Deeper Dive: openHAB Structure for Advanced Users
 
 openHAB 2 is developed in `Java <https://www.java.com/>`__ and uses
 `OSGi <https://www.osgi.org/>`__ for modularity. `Apache
-Karaf <http://karaf.apache.org/>`__ serves as a container with `Eclipse
+Karaf <https://karaf.apache.org/>`__ serves as a container with `Eclipse
 Equinox <https://www.eclipse.org/equinox/>`__ as the OSGi runtime
 environment. `Jetty <https://www.eclipse.org/jetty/>`__ is included as
 an HTTP server.

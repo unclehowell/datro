@@ -1,8 +1,8 @@
 /**
  * Featherlight Gallery – an extension for the ultra slim jQuery lightbox
- * Version 1.7.13 - http://noelboss.github.io/featherlight/
+ * Version 1.7.13 - https://noelboss.github.io/featherlight/
  *
- * Copyright 2018, Noël Raoul Bossart (http://www.noelboss.com)
+ * Copyright 2018, Noël Raoul Bossart (https://www.noelboss.com)
  * MIT Licensed.
 **/
 (function($) {
@@ -38,7 +38,7 @@
 					self.$instance.off('next.'+self.namespace+' previous.'+self.namespace);
 					if (self._swiper) {
 						self._swiper
-							.off('swipeleft', self._swipeleft) /* See http://stackoverflow.com/questions/17367198/hammer-js-cant-remove-event-listener */
+							.off('swipeleft', self._swipeleft) /* See https://stackoverflow.com/questions/17367198/hammer-js-cant-remove-event-listener */
 							.off('swiperight', self._swiperight);
 						self._swiper = null;
 					}

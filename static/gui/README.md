@@ -132,7 +132,7 @@ To collaborate on the Files Library you will need to read and install the follow
      ```
 	- sphinx-common
 
-	- http://www.sphinx-doc.org/en/master/  
+	- https://www.sphinx-doc.org/en/master/  
 
 	- https://sphinx-rtd-theme.readthedocs.io/en/stable/installing.html  
 

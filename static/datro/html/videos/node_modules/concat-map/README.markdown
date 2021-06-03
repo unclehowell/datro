@@ -3,9 +3,9 @@ concat-map
 
 Concatenative mapdashery.
 
-[![browser support](http://ci.testling.com/substack/node-concat-map.png)](http://ci.testling.com/substack/node-concat-map)
+[![browser support](https://ci.testling.com/substack/node-concat-map.png)](https://ci.testling.com/substack/node-concat-map)
 
-[![build status](https://secure.travis-ci.org/substack/node-concat-map.png)](http://travis-ci.org/substack/node-concat-map)
+[![build status](https://secure.travis-ci.org/substack/node-concat-map.png)](https://travis-ci.org/substack/node-concat-map)
 
 example
 =======
@@ -45,7 +45,7 @@ onto the end of the result array.
 install
 =======
 
-With [npm](http://npmjs.org) do:
+With [npm](https://npmjs.org) do:
 
 ```
 npm install concat-map

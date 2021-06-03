@@ -2,7 +2,7 @@
 // Call this function in a another function to find out the file from
 // which that function was called from. (Inspects the v8 stack trace)
 //
-// Inspired by http://stackoverflow.com/questions/13227489
+// Inspired by https://stackoverflow.com/questions/13227489
 module.exports = function getCallerFile(position) {
     if (position === void 0) { position = 2; }
     if (position >= Error.stackTraceLimit) {

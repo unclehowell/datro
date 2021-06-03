@@ -1,7 +1,7 @@
 Featherlight - ultra slim jQuery lightbox [![Build Status](https://travis-ci.org/noelboss/featherlight.svg?branch=master)](https://travis-ci.org/noelboss/featherlight)
 ------------------------
 
-**Featherlight is a very lightweight jQuery lightbox plugin. For more information and demos, visit the [official website](http://noelboss.github.io/featherlight/).**
+**Featherlight is a very lightweight jQuery lightbox plugin. For more information and demos, visit the [official website](https://noelboss.github.io/featherlight/).**
 
 * Simple yet flexible
 * Image, Ajax, iFrame and custom content support
@@ -170,7 +170,7 @@ This selector specified where the featherlight should be appended.
 ================================================
 
 	openSpeed & closeSpeed – Integer or String:  250
-Defines the speed for the opening and close animations. Values allowed are [jQuery animation durations](http://api.jquery.com/animate/#duration). Avoid the usage of 0 since this would cause a reversal of time and the end of the world! (Okay, kidding, just the closing callback would not be fired and unused ghost-DOM would linger around, but still.)
+Defines the speed for the opening and close animations. Values allowed are [jQuery animation durations](https://api.jquery.com/animate/#duration). Avoid the usage of 0 since this would cause a reversal of time and the end of the world! (Okay, kidding, just the closing callback would not be fired and unused ghost-DOM would linger around, but still.)
 
 
 ================================================
@@ -348,7 +348,7 @@ or you can provide the link directly as the featherlight-attribute:
 Featherlight generates an iframe with the 'iframe' keyword and a given URL.  
 The default size of the iframe is very small (300 x 150).  
 
-	<a href="http://www.example.com" data-featherlight="iframe">Open example.com in an iframe</a>
+	<a href="https://www.example.com" data-featherlight="iframe">Open example.com in an iframe</a>
 
 Options:  
 You can use the following iframe attributes:  
@@ -374,20 +374,20 @@ Featherlight generates an iframe that contains the embedded video.
 
 Display a clickable thumbnail image that opens a video with a fixed size of 640 x 480 and automatically start playback:  
 `
-<a href="http://www.youtube.com/embed/f0BzD1zCye0?rel=0&amp;autoplay=1" data-featherlight="iframe" data-featherlight-iframe-width="640" data-featherlight-iframe-height="480" data-featherlight-iframe-frameborder="0" data-featherlight-iframe-allow="autoplay; encrypted-media" data-featherlight-iframe-allowfullscreen="true">
-<img src="http://img.youtube.com/vi/f0BzD1zCye0/0.jpg" alt="" />
+<a href="https://www.youtube.com/embed/f0BzD1zCye0?rel=0&amp;autoplay=1" data-featherlight="iframe" data-featherlight-iframe-width="640" data-featherlight-iframe-height="480" data-featherlight-iframe-frameborder="0" data-featherlight-iframe-allow="autoplay; encrypted-media" data-featherlight-iframe-allowfullscreen="true">
+<img src="https://img.youtube.com/vi/f0BzD1zCye0/0.jpg" alt="" />
 </a>
 `  
 
 A text link that opens a video in a lightbox that is stretched to 85% height and width of the viewport:  
 `
-<a href="http://www.youtube.com/embed/f0BzD1zCye0?rel=0&amp;autoplay=1" data-featherlight="iframe" data-featherlight-iframe-frameborder="0" data-featherlight-iframe-allow="autoplay; encrypted-media" data-featherlight-iframe-allowfullscreen="true" data-featherlight-iframe-style="display:block;border:none;height:85vh;width:85vw;">My video</a>
+<a href="https://www.youtube.com/embed/f0BzD1zCye0?rel=0&amp;autoplay=1" data-featherlight="iframe" data-featherlight-iframe-frameborder="0" data-featherlight-iframe-allow="autoplay; encrypted-media" data-featherlight-iframe-allowfullscreen="true" data-featherlight-iframe-style="display:block;border:none;height:85vh;width:85vw;">My video</a>
 `  
 
 A link that opens a video in a lightbox that fills 100% of the window:  
 Note: the "close" icon is not visible so this example is not user-friendly.  
 `
-<a href="http://www.youtube.com/embed/f0BzD1zCye0?rel=0&amp;autoplay=1" data-featherlight="iframe" data-featherlight-iframe-frameborder="0" data-featherlight-iframe-allow="autoplay; encrypted-media" data-featherlight-iframe-allowfullscreen="true" 
+<a href="https://www.youtube.com/embed/f0BzD1zCye0?rel=0&amp;autoplay=1" data-featherlight="iframe" data-featherlight-iframe-frameborder="0" data-featherlight-iframe-allow="autoplay; encrypted-media" data-featherlight-iframe-allowfullscreen="true" 
 data-featherlight-iframe-style="position:fixed;background:#000;border:none;top:0;right:0;bottom:0;left:0;width:100%;height:100%;">My video</a>
 `
 
@@ -400,7 +400,7 @@ If you want the background in IE8 to be translucent, use data:image before the r
 ---
 
 # Featherlight Gallery
-You will need to use an extension (featherlight.gallery.js).  Since Featherlight was created to be as small and simple as possible, it has selected functionality, and  allows you to add additional functionality by using extensions.  featherlight.gallery.js is a small extension that turns your set of links into a [gallery](http://noelboss.github.io/featherlight/gallery.html).
+You will need to use an extension (featherlight.gallery.js).  Since Featherlight was created to be as small and simple as possible, it has selected functionality, and  allows you to add additional functionality by using extensions.  featherlight.gallery.js is a small extension that turns your set of links into a [gallery](https://noelboss.github.io/featherlight/gallery.html).
 
 ## Gallery installation
 
@@ -494,15 +494,15 @@ To support mobile/tablet and all touch devices, you will need to include one of 
 
 ## Questions
 
-For questions, please use [Stack Overflow](http://stackoverflow.com/questions/ask) and be sure to use the `featherlight.js` tag. Please **provide an example**, starting for example from [this jsfiddle](http://jsfiddle.net/JNsu6/15/)
+For questions, please use [Stack Overflow](https://stackoverflow.com/questions/ask) and be sure to use the `featherlight.js` tag. Please **provide an example**, starting for example from [this jsfiddle](https://jsfiddle.net/JNsu6/15/)
 
 ## Reporting bugs and issues
 
-If you believe you've found a bug, please open an issue on [Github](https://github.com/noelboss/featherlight/issues/new) and **provide an example** starting from [this jsfiddle](http://jsfiddle.net/JNsu6/15/).
+If you believe you've found a bug, please open an issue on [Github](https://github.com/noelboss/featherlight/issues/new) and **provide an example** starting from [this jsfiddle](https://jsfiddle.net/JNsu6/15/).
 
 ## Pull requests
 
-Pull requests are welcome (good tips can be found on [Stack Overflow](http://stackoverflow.com/questions/14680711/how-to-do-a-github-pull-request))
+Pull requests are welcome (good tips can be found on [Stack Overflow](https://stackoverflow.com/questions/14680711/how-to-do-a-github-pull-request))
 
 To run the tests, you can open `test/featherlight.html` or `test/featherlight_gallery.html` in your browser.
 Alternatively, run them from the console with `grunt test`; you will need to run `npm install` the first time.

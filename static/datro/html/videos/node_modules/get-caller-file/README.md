@@ -5,7 +5,7 @@
 
 This is a utility, which allows a function to figure out from which file it was invoked. It does so by inspecting v8's stack trace at the time it is invoked.
 
-Inspired by http://stackoverflow.com/questions/13227489
+Inspired by https://stackoverflow.com/questions/13227489
 
 *note: this relies on Node/V8 specific APIs, as such other runtimes may not work*
 

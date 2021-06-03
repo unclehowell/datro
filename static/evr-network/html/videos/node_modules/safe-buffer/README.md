@@ -403,7 +403,7 @@ In this example, an http client just has to send:
 and it will get back 1,000 bytes of uninitialized memory from the server.
 
 This is a very serious bug. It's similar in severity to the
-[the Heartbleed bug](http://heartbleed.com/) that allowed disclosure of OpenSSL process
+[the Heartbleed bug](https://heartbleed.com/) that allowed disclosure of OpenSSL process
 memory by remote attackers.
 
 
@@ -412,7 +412,7 @@ memory by remote attackers.
 #### [`bittorrent-dht`](https://www.npmjs.com/package/bittorrent-dht)
 
 [Mathias Buus](https://github.com/mafintosh) and I
-([Feross Aboukhadijeh](http://feross.org/)) found this issue in one of our own packages,
+([Feross Aboukhadijeh](https://feross.org/)) found this issue in one of our own packages,
 [`bittorrent-dht`](https://www.npmjs.com/package/bittorrent-dht). The bug would allow
 anyone on the internet to send a series of messages to a user of `bittorrent-dht` and get
 them to reveal 20 bytes at a time of uninitialized memory from the node.js process.
@@ -570,7 +570,7 @@ The original issues in `bittorrent-dht`
 ([disclosure](https://nodesecurity.io/advisories/68)) and
 `ws` ([disclosure](https://nodesecurity.io/advisories/67)) were discovered by
 [Mathias Buus](https://github.com/mafintosh) and
-[Feross Aboukhadijeh](http://feross.org/).
+[Feross Aboukhadijeh](https://feross.org/).
 
 Thanks to [Adam Baldwin](https://github.com/evilpacket) for helping disclose these issues
 and for his work running the [Node Security Project](https://nodesecurity.io/).
@@ -581,4 +581,4 @@ auditing the code.
 
 ## license
 
-MIT. Copyright (C) [Feross Aboukhadijeh](http://feross.org)
+MIT. Copyright (C) [Feross Aboukhadijeh](https://feross.org)

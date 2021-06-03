@@ -12,7 +12,7 @@ Tutorial: https://freshman.tech/custom-html5-video/
 
 ## Live demo
 
-This project is live at http://custom-html5-video.surge.sh/
+This project is live at https://custom-html5-video.surge.sh/
 
 ## Prerequisites
 

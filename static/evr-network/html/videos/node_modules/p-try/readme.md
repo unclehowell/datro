@@ -2,7 +2,7 @@
 
 > Start a promise chain
 
-[How is it useful?](http://cryto.net/~joepie91/blog/2016/05/11/what-is-promise-try-and-why-does-it-matter/)
+[How is it useful?](https://cryto.net/~joepie91/blog/2016/05/11/what-is-promise-try-and-why-does-it-matter/)
 
 
 ## Install

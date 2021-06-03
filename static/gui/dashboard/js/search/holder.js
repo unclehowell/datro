@@ -2,9 +2,9 @@
 
 Holder - client side image placeholders
 Version 2.9.0+f2dkw
-© 2015 Ivan Malopinsky - http://imsky.co
+© 2015 Ivan Malopinsky - https://imsky.co
 
-Site:     http://holderjs.com
+Site:     https://holderjs.com
 Issues:   https://github.com/imsky/holder/issues
 License:  MIT
 
@@ -171,7 +171,7 @@ License:  MIT
       /*jshint +W001, +W103 */
   }
 
-  // @license http://opensource.org/licenses/MIT
+  // @license https://opensource.org/licenses/MIT
   // copyright Paul Irish 2015
 
 
@@ -306,7 +306,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/*
 	Holder.js - client side image placeholders
-	(c) 2012-2015 Ivan Malopinsky - http://imsky.co
+	(c) 2012-2015 Ivan Malopinsky - https://imsky.co
 	*/
 
 	module.exports = __webpack_require__(1);
@@ -318,7 +318,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/* WEBPACK VAR INJECTION */(function(global) {/*
 	Holder.js - client side image placeholders
-	(c) 2012-2015 Ivan Malopinsky - http://imsky.co
+	(c) 2012-2015 Ivan Malopinsky - https://imsky.co
 	*/
 
 	//Libraries and functions
@@ -1501,7 +1501,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _onDomReady(win) {
 	    //Lazy loading fix for Firefox < 3.6
-	    //http://webreflection.blogspot.com/2009/11/195-chars-to-help-lazy-loading.html
+	    //https://webreflection.blogspot.com/2009/11/195-chars-to-help-lazy-loading.html
 	    if (document.readyState == null && document.addEventListener) {
 	        document.addEventListener("DOMContentLoaded", function DOMContentLoaded() {
 	            document.removeEventListener("DOMContentLoaded", DOMContentLoaded, false);
@@ -1584,7 +1584,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    
 	    // Catch cases where onDomReady is called after the browser event has already occurred.
 	    // we once tried to use readyState "interactive" here, but it caused issues like the one
-	    // discovered by ChrisS here: http://bugs.jquery.com/ticket/12282#comment:15
+	    // discovered by ChrisS here: https://bugs.jquery.com/ticket/12282#comment:15
 	    if ( doc[READYSTATE] === COMPLETE ) {
 	        // Handle it asynchronously to allow scripts the opportunity to delay ready
 	        defer( ready );
@@ -1616,7 +1616,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                if ( !isReady ) {
 	                    try {
 	                        // Use the trick by Diego Perini
-	                        // http://javascript.nwbox.com/IEContentLoaded/
+	                        // https://javascript.nwbox.com/IEContentLoaded/
 	                        _top.doScroll("left");
 	                    } catch(e) {
 	                        return defer( doScrollCheck, 50 );
@@ -2113,7 +2113,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/* WEBPACK VAR INJECTION */(function(global) {var DOM = __webpack_require__(9);
 
-	var SVG_NS = 'http://www.w3.org/2000/svg';
+	var SVG_NS = 'https://www.w3.org/2000/svg';
 	var NODE_TYPE_COMMENT = 8;
 
 	/**
@@ -2506,7 +2506,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = {
 	  'version': '2.9.0',
-	  'svg_ns': 'http://www.w3.org/2000/svg'
+	  'svg_ns': 'https://www.w3.org/2000/svg'
 	};
 
 /***/ },

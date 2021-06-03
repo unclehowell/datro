@@ -54,10 +54,10 @@ function useColors() {
     return false;
   }
 
-  // is webkit? http://stackoverflow.com/a/16459606/376773
+  // is webkit? https://stackoverflow.com/a/16459606/376773
   // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
   return (typeof document !== 'undefined' && document.documentElement && document.documentElement.style && document.documentElement.style.WebkitAppearance) ||
-    // is firebug? http://stackoverflow.com/a/398120/376773
+    // is firebug? https://stackoverflow.com/a/398120/376773
     (typeof window !== 'undefined' && window.console && (window.console.firebug || (window.console.exception && window.console.table))) ||
     // is firefox >= v31?
     // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages

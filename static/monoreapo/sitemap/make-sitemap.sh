@@ -11,7 +11,7 @@ exec 1> sitemap.xml
 
 # print head
 echo '<?xml version="1.0" encoding="UTF-8"?>'
-echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+echo '<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">'
 
 cd ../../../
 # print urls

@@ -220,7 +220,7 @@ cp -r ../../../_theme-blue/auto-rebuild-master.sh auto-rebuild.sh 2> /dev/null &
 sleep 1 &&
 
 cd ../
-printf "\e[2;3;33m HTML - http://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*}/} \n\e[0m\n"
+printf "\e[2;3;33m HTML - https://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*}/} \n\e[0m\n"
 cd latest
 
 #change NAME to PDF name before running

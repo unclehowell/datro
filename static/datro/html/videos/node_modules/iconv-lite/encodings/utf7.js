@@ -2,7 +2,7 @@
 var Buffer = require("safer-buffer").Buffer;
 
 // UTF-7 codec, according to https://tools.ietf.org/html/rfc2152
-// See also below a UTF-7-IMAP codec, according to http://tools.ietf.org/html/rfc3501#section-5.1.3
+// See also below a UTF-7-IMAP codec, according to https://tools.ietf.org/html/rfc3501#section-5.1.3
 
 exports.utf7 = Utf7Codec;
 exports.unicode11utf7 = 'utf7'; // Alias UNICODE-1-1-UTF-7
@@ -118,7 +118,7 @@ Utf7Decoder.prototype.end = function() {
 
 
 // UTF-7-IMAP codec.
-// RFC3501 Sec. 5.1.3 Modified UTF-7 (http://tools.ietf.org/html/rfc3501#section-5.1.3)
+// RFC3501 Sec. 5.1.3 Modified UTF-7 (https://tools.ietf.org/html/rfc3501#section-5.1.3)
 // Differences:
 //  * Base64 part is started by "&" instead of "+"
 //  * Direct characters are 0x20-0x7E, except "&" (0x26)

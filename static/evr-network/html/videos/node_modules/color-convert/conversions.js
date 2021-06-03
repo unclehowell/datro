@@ -365,7 +365,7 @@ convert.hsv.hsl = function (hsv) {
 	return [h, sl * 100, l * 100];
 };
 
-// http://dev.w3.org/csswg/css-color/#hwb-to-rgb
+// https://dev.w3.org/csswg/css-color/#hwb-to-rgb
 convert.hwb.rgb = function (hwb) {
 	var h = hwb[0] / 360;
 	var wh = hwb[1] / 100;

@@ -1,7 +1,7 @@
 Created by Codrops
-Please read about our license: http://tympanus.net/codrops/licensing/
+Please read about our license: https://tympanus.net/codrops/licensing/
 
-Fonts created with http://icomoon.io/app/
+Fonts created with https://icomoon.io/app/
 
-Background by http://subtlepatterns.com/grid/
+Background by https://subtlepatterns.com/grid/
 

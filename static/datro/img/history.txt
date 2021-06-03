@@ -491,8 +491,8 @@
   491  sudo apt install kazam
   492  gpg --keyserver keyserver.ubuntu.com --recv-keys 3596ED6E
   493  gpg --export --armor 3596ED6E | sudo apt-key add -
-  494  deb http://snapshots.ekiga.net/snapshots/ubuntu/ <release> main
-  495  deb http://archive.ubuntu.com/ubuntu/ <release>-updates main multiverse
+  494  deb https://snapshots.ekiga.net/snapshots/ubuntu/ <release> main
+  495  deb https://archive.ubuntu.com/ubuntu/ <release>-updates main multiverse
   496  sudo apt-get install libopal-snapshot-plugins-h264
   497  sudo apt-get install libpt-snapshot-plugins-v4l
   498  sudo apt-get install ekiga-snapshot
@@ -584,7 +584,7 @@
   584  git clone https://gitlab.linphone.org/BC/public/linphone-desktop.git --recursive
   585  cd /var/tmp
   586  ls
-  587  wget http://download.ag-projects.com/agp-debian-gpg.key
+  587  wget https://download.ag-projects.com/agp-debian-gpg.key
   588  sudo apt-key add agp-debian-gpg.key
   589  nano  /etc/apt/sources.list
   590  apt-get update
@@ -912,8 +912,8 @@
   912  cd datro
   913  ls
   914  nano technology.html
-  915  wget -q "http://deb.playonlinux.com/public.gpg" -O- | sudo apt-key add -
-  916  sudo wget http://deb.playonlinux.com/playonlinux_cosmic.list -O /etc/apt/sources.list.d/playonlinux.list
+  915  wget -q "https://deb.playonlinux.com/public.gpg" -O- | sudo apt-key add -
+  916  sudo wget https://deb.playonlinux.com/playonlinux_cosmic.list -O /etc/apt/sources.list.d/playonlinux.list
   917  sudo apt-get update
   918  sudo apt-get install playonlinux
   919  ls
@@ -7046,8 +7046,8 @@
  7046  youtube-dl https://youtu.be/2X6bc-7DsVU --extract-audio
  7047  youtube-dl https://youtu.be/2X6bc-7DsVU --extract-audio --verbose
  7048  sudo apt-get clean
- 7049  curl http://95.216.113.156/vk/c4/2eq0OOYoh4Wn7VueFwWLBQ,1599496742/yt:2X6bc-7DsVU-1/Ti%C3%ABstos%20Ultra%20Miami%20Set%202017.mp3
- 7050  wget http://95.216.113.156/vk/c4/2eq0OOYoh4Wn7VueFwWLBQ,1599496742/yt:2X6bc-7DsVU-1/Ti%C3%ABstos%20Ultra%20Miami%20Set%202017.mp3
+ 7049  curl https://95.216.113.156/vk/c4/2eq0OOYoh4Wn7VueFwWLBQ,1599496742/yt:2X6bc-7DsVU-1/Ti%C3%ABstos%20Ultra%20Miami%20Set%202017.mp3
+ 7050  wget https://95.216.113.156/vk/c4/2eq0OOYoh4Wn7VueFwWLBQ,1599496742/yt:2X6bc-7DsVU-1/Ti%C3%ABstos%20Ultra%20Miami%20Set%202017.mp3
  7051  ls
  7052  rm -r sitemap.xml
  7053  ls

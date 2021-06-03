@@ -1,8 +1,8 @@
 /**
  * Featherlight – ultra slim jQuery lightbox
- * Version 1.7.13 - http://noelboss.github.io/featherlight/
+ * Version 1.7.13 - https://noelboss.github.io/featherlight/
  *
- * Copyright 2018, Noël Raoul Bossart (http://www.noelboss.com)
+ * Copyright 2018, Noël Raoul Bossart (https://www.noelboss.com)
  * MIT Licensed.
 **/
 
@@ -107,7 +107,7 @@ html.with-featherlight {
 	padding: 0;
 }
 
-/* See http://stackoverflow.com/questions/16077341/how-to-reset-all-default-styles-of-the-html5-button-element */
+/* See https://stackoverflow.com/questions/16077341/how-to-reset-all-default-styles-of-the-html5-button-element */
 .featherlight .featherlight-close-icon::-moz-focus-inner {
 	border: 0;
 	padding: 0;

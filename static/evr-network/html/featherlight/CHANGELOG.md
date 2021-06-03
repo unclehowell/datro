@@ -253,7 +253,7 @@ The following changes could require changes to your custom CSS:
 0.2.0 - 2014-02-10
 -----------------------------------
 ### Features
-- Added Gallery Extension. Check out the [example page](http://noelboss.github.io/featherlight/gallery.html).
+- Added Gallery Extension. Check out the [example page](https://noelboss.github.io/featherlight/gallery.html).
 
 
 0.1.13 - 2014-02-09
@@ -339,7 +339,7 @@ The following changes could require changes to your custom CSS:
 0.1.3 & 0.1.4 - 2013-11-05
 -----------------------------------
 ### Maintenance & Fixes
-- Added support for jQuery plugin site: http://plugins.jquery.com/featherlight/
+- Added support for jQuery plugin site: https://plugins.jquery.com/featherlight/
 
 
 0.1.2 - 2013-11-04

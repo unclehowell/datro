@@ -6,7 +6,7 @@ module.exports = x => {
 	}
 
 	// code points are derived from:
-	// http://www.unix.org/Public/UNIDATA/EastAsianWidth.txt
+	// https://www.unix.org/Public/UNIDATA/EastAsianWidth.txt
 	if (
 		x >= 0x1100 && (
 			x <= 0x115f ||  // Hangul Jamo

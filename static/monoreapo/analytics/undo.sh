@@ -9,7 +9,7 @@ cd ../analytics
 cat ../../../sitemap.xml | grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | sort -u > urls.txt
 
 ### remove sitemaps.org url
-sed -i 's+http://www.sitemaps.org/schemas/sitemap/0.9++g' urls.txt
+sed -i 's+https://www.sitemaps.org/schemas/sitemap/0.9++g' urls.txt
 
 ### duplicate the file
 cp -r urls.txt urls2.txt

@@ -6,7 +6,7 @@ Recursively iterates over specified directory, `require()`'ing each file, and re
 
 [![NPM](https://nodei.co/npm/require-directory.png?downloads=true&stars=true)](https://nodei.co/npm/require-directory/)
 
-[![build status](https://secure.travis-ci.org/troygoode/node-require-directory.png)](http://travis-ci.org/troygoode/node-require-directory)
+[![build status](https://secure.travis-ci.org/troygoode/node-require-directory.png)](https://travis-ci.org/troygoode/node-require-directory)
 
 ## How To Use
 
@@ -176,7 +176,7 @@ $ npm test
 
 ## License
 
-[MIT License](http://www.opensource.org/licenses/mit-license.php)
+[MIT License](https://www.opensource.org/licenses/mit-license.php)
 
 ## Author
 

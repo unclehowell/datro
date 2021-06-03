@@ -8,7 +8,7 @@ java -jar /usr/local/closure-compiler/compiler.jar \
 
 ###* @preserve https://github.com/jawj/github-widget
 Copyright (c) 2011 - 2012 George MacKerron
-Released under the MIT licence: http://opensource.org/licenses/mit-license ###
+Released under the MIT licence: https://opensource.org/licenses/mit-license ###
 
 makeWidget = (payloadData, div) ->
   make cls: 'gw-clearer', prevSib: div
