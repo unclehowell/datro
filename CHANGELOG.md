@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.11] - Q2/2021
 
 ### Added
-02-Jun - Added `static/monoreapo/analytics` and `static/monoreapo/sitemap` - details in their dedicated README.md files    	 
+02-Jun - Added `static/monoreapo/analytics` and `static/monoreapo/sitemap` - details in their dedicated README.md files  
 25-May - Added a sitemap generator script `make-sitemap.sh` and `make-sitemap.sh.options`   
 24-May - Added a table containing links to the other monorepo branches in README.md  - It did exist previously, it must have been mistakenly removed  
 24-May - Added css to file explorer index.html pages to hide scrollbars - when visiting datro.xyz webpages within datro.world scrollbars were showing   
@@ -48,8 +48,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 05-Apr - Minor edit to static/datro/documents.html - see corresponding changelog for details  
 
 ### Fixed
-27-May - Busted then fixed messing with svn   
-23-May - Google Search Console Reported error `Alternate page with proper canonical tag` - Attempt made to remedy   
+04-May - An experimental bash script (`monoreapo/analytics/run.sh`) removed lines while injecting/removing google analytics script  
+04-May - Fixed the white page of death. Put CNAME and Cloudflare DNS settings back, but tag urls changed from https to https were kept   
+27-May - Busted then fixed messing with svn  
+23-May - Google Search Console Reported error `Alternate page with proper canonical tag` - Attempt made to remedy  
 08-May - Fixed some data miscalculations in the creditors document - see static/library/changelog for more info  
 08-May - Minor edit to document in library - see static/library changelog for details  
 08-May - Updated packages in static/datro/html/featherlight and /videos to counter security threats - see corresponding changelogs for details   

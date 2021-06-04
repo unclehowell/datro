@@ -24,6 +24,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
        -  must find a way to use semantic version badges on the published content too to save viewing the changelogs for version numbers   
 
 ### Fixed
+04-May - An experimental bash script (`monoreapo/analytics/run.sh`) removed lines while injecting/removing google analytics script  
 24-May - Carousel in index.html didn't work offline, fixed it by replacing `bootstrap.min.js` with an offline copy  
 05-Apr - There was a security vunerablity in html/videos/package-lock.json - fixed it as per github's suggestion (upping the version of a package to the latest)  
 
