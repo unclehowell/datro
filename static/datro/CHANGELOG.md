@@ -7,6 +7,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 1. This websites within a directory of a directry of a gh-pages repo
    - for this reason `index.html` is located two directory levels up e.g. for `index.html` you'd instead use `../../index.html`  
    - equally `index.html` has to locate files in this directory e.g. for `"css/style.css"` you'd instead use `static/datro/css/style.css`  
+   - this said a copy of ../../index.html exists in this directory (with updated links) so there's no 404 or redirect when you visit datro.xyz/static/datro/    
 
 ## [Unreleased]
 
@@ -23,10 +24,15 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
        - `static-datro.03` is added to the end to reflect this subdirectories version'  
        -  must find a way to use semantic version badges on the published content too to save viewing the changelogs for version numbers   
 
+### Added 
+04-Jun - Added a 
+
 ### Fixed
 04-May - An experimental bash script (`monoreapo/analytics/run.sh`) removed lines while injecting/removing google analytics script  
 24-May - Carousel in index.html didn't work offline, fixed it by replacing `bootstrap.min.js` with an offline copy  
 05-Apr - There was a security vunerablity in html/videos/package-lock.json - fixed it as per github's suggestion (upping the version of a package to the latest)  
+
+
 
 ## [0.0.2] - Q1/2021
 
