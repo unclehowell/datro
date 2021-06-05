@@ -1,37 +1,17 @@
 Running Sphinx v3.5.3
 making output directory... done
-WARNING: html_static_path entry '_static' does not exist
 loading pickled environment... done
 building [mo]: targets for 0 po files that are out of date
 building [latex]: all documents
-updating environment: 0 added, 1 changed, 0 removed
-reading sources... [100%] releasenotes
-
-/var/www/html/datro-gh-pages/static/library/coming_soon/coming_soon/latest/source/releasenotes.rst:6: WARNING: Unexpected indentation.
-/var/www/html/datro-gh-pages/static/library/coming_soon/coming_soon/latest/source/releasenotes.rst:24: WARNING: Problems with "csv-table" directive path:
-[Errno 2] No such file or directory: 'source/_static/olderversions.csv'.
-
-.. csv-table:: Table 1.0 - Previous Publications
-   :file: _static/olderversions.csv
-   :widths: 10, 10, 20, 60
-   :header-rows: 1
-/var/www/html/datro-gh-pages/static/library/coming_soon/coming_soon/latest/source/releasenotes.rst:42: WARNING: Problems with "csv-table" directive path:
-[Errno 2] No such file or directory: 'source/_static/issues.csv'.
-
-.. csv-table:: Table 1.1 - Known Issues
-   :file: _static/issues.csv
-   :widths: 10, 10, 20, 60
-   :header-rows: 1
+updating environment: 0 added, 0 changed, 0 removed
 looking for now-outdated files... none found
-pickling environment... done
-checking consistency... done
 processing coming-soon.tex... index releasenotes 
 resolving references...
 done
 writing... done
 copying TeX support files... copying TeX support files...
 done
-build succeeded, 4 warnings.
+build succeeded.
 
 The LaTeX files are in build/latex.
 Run 'make' in that directory to run these through (pdf)latex
@@ -169,7 +149,7 @@ e/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utm
 r8a.pfb>
-Output written on coming-soon.pdf (5 pages, 51353 bytes).
+Output written on coming-soon.pdf (5 pages, 51294 bytes).
 Transcript written on coming-soon.log.
 Latexmk: Index file 'coming-soon.idx' was written
 Latexmk: Missing input file: 'coming-soon.ind' from line
@@ -316,7 +296,7 @@ ts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/helveti
 c/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on coming-soon.pdf (5 pages, 54985 bytes).
+Output written on coming-soon.pdf (5 pages, 54947 bytes).
 Transcript written on coming-soon.log.
 Latexmk: Index file 'coming-soon.idx' was written
 Latexmk: Log file says output to 'coming-soon.pdf'
@@ -442,7 +422,7 @@ ts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/helveti
 c/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on coming-soon.pdf (5 pages, 54985 bytes).
+Output written on coming-soon.pdf (5 pages, 54947 bytes).
 Transcript written on coming-soon.log.
 Latexmk: Index file 'coming-soon.idx' was written
 Latexmk: Log file says output to 'coming-soon.pdf'

@@ -12,6 +12,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+04-Jun - Security Vunerability Fix - https://nvd.nist.gov/vuln/detail/CVE-2020-7729
 01-Feb - Bootstrapped website for EVR Network (Testnet) using DATRO website as a template. 
 
 ### Removed

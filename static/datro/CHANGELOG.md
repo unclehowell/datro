@@ -28,6 +28,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 04-Jun - Added a 
 
 ### Fixed
+04-May - Security Vunerability fixed - https://github.com/websockets/ws/commit/00c425ec77993773d823f018f64a5c44e17023ff
 04-May - An experimental bash script (`monoreapo/analytics/run.sh`) removed lines while injecting/removing google analytics script  
 24-May - Carousel in index.html didn't work offline, fixed it by replacing `bootstrap.min.js` with an offline copy  
 05-Apr - There was a security vunerablity in html/videos/package-lock.json - fixed it as per github's suggestion (upping the version of a package to the latest)  
