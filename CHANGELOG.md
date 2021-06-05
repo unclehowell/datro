@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ### Changed
+04-Jun - Minor edits - added html   
 03-Jun - Changed `http` to `https` and `CNAME` content from `datro.xyz` to `unclehowell.github.io` as instructed by GitHub support to solve white page issue e.g. mixed content   
 02-Jun - Ran run.sh in `static/monoreapo/analytics` - which inserted analytics tracking into all .html files in this branch  
 25-May - Modified `make-sitemap.sh` to change sitemap from weekly to hourly   
