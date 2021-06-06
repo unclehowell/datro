@@ -7,7 +7,18 @@ and a combination of [Prince2 Project Management](https://prince2.com).
  
 ## [Unreleased]    
 
-## [0.0.1-rtw.10-gui] - Q1/2021    
+
+## [gui-0.1] - Q2/2021
+
+
+### Added
+
+### Removed 
+
+### Fixed 
+08-Mar - Injecting google tracking removed some lines of code and caused loading issues - missing lines re-inserted which fixed it   
+ 
+## [gui-0.0] - Q1/2021    
  
 #### Added    
 08-Mar - emoncms webapp and interactive online demo    
@@ -95,25 +106,3 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 12-Feb - Because of the screen-selector solution that has been implimented the backspace doesn't work in some cases.      
 12-Feb - Browser cache doesn't appear to be storing the title change when offline.      
  
-## [0.0.1-gui.2] - Q4/2020    
- 
-### Changed    
-14-Dec - Favicons updated to new Logo design      
-11-Dec - Docs (for the Apps) poped up with a blue border. Changed to grey to match GUI theme (gui).      
-30-Oct - Copied latest GUI design over & Made search splashpage better      
- 
-### Fixed    
-
-## [0.0.1-gui.1] - Q3/2020    
-20-Sep - The website interactive dashboard demo/ actual dashboard,      
-         evolved into the datro consortium page selector, which has evolved into a beta dashboard we now call, gui.     
-         A seperate branch has been created for the gui, so the live build and trial can sync to github as a sort of backup.    
- 
-### Added    
-24-Sep - Added some script to stop links functioning if the destination is a 404 e.g. service hasn't started etc    
- 
-### Removed    
- 
-### Changed    
-
-### Fixed    
