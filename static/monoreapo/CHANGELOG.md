@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-### Issues
 
+### Issues
+08-Jun - The following string was getting deleted in .svg files, potentially caused with early testing of `run.sh` or `undo.sh` - `<?xml version="1.0" encoding="UTF-8" standalone="no"?>` 
 04-Jun - Either run.sh or undo.sh is systematically removing the line above the script block it's trying to remove, needs fixing   

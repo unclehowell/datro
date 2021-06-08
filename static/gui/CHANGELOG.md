@@ -4,14 +4,16 @@ Developers are expected to log all changes to this directory to this changelog.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),    
 and a combination of [Semantic Versioning](https://semver.org/spec/v2.0.0.html).    
 and a combination of [Prince2 Project Management](https://prince2.com).    
- 
+
+   
 ## [Unreleased]    
 
 
 ## [gui-0.1] - Q2/2021
 
-
 ### Added
+08-Jun - Added the below string to .svg files that needed it. Possible result of testing `monoreapo/analytics/run.sh` and/or `monoreapo/analytics/undo.sh` on the main gh-Pages branch:   
+08-Jun - `<?xml version="1.0" encoding="UTF-8" standalone="no"?>`   
 
 ### Removed 
 

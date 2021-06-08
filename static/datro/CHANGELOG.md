@@ -24,15 +24,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
        - `static-datro.03` is added to the end to reflect this subdirectories version'  
        -  must find a way to use semantic version badges on the published content too to save viewing the changelogs for version numbers   
 
-### Added 
-04-Jun - Added a 
-
 ### Fixed
 04-May - Security Vunerability fixed - https://github.com/websockets/ws/commit/00c425ec77993773d823f018f64a5c44e17023ff
 04-May - An experimental bash script (`monoreapo/analytics/run.sh`) removed lines while injecting/removing google analytics script  
 24-May - Carousel in index.html didn't work offline, fixed it by replacing `bootstrap.min.js` with an offline copy  
 05-Apr - There was a security vunerablity in html/videos/package-lock.json - fixed it as per github's suggestion (upping the version of a package to the latest)  
-
 
 
 ## [0.0.2] - Q1/2021
@@ -42,9 +38,9 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 25-Mar - Links to Facebook Page were incorrect, changed it sitewide  
-24-Mar - Noticed the video player has stopped functioning. So updated npm and re-installed the solution adopted, but no success locally. Will push and try remotely again later
-10-Mar - Academy.html said GPL was General Open Licence (bad case of find and replace by the looks of it) changed "Open" back to "Public" so it makes sense
-31-Jan - Html/statistics/website.html - few minor bug fixes - made it look better on mobile. 
+24-Mar - Noticed the video player has stopped functioning. So updated npm and re-installed the solution adopted, but no success locally. Will push and try remotely again later  
+10-Mar - Academy.html said GPL was General Open Licence (bad case of find and replace by the looks of it) changed "Open" back to "Public" so it makes sense  
+31-Jan - Html/statistics/website.html - few minor bug fixes - made it look better on mobile.   
 
 ### Fixed
 23-Mar - Fixed some broken links  
