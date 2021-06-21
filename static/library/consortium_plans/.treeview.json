@@ -1,9 +1,16 @@
 [
   {
-    "name": "operations > business",
+    "name": "ops > business",
     "path": "./operations_business",
     "_links": {
       "html": "./operations_business"
+    }
+  },
+  {
+    "name": "grid > intro",
+    "path": "./grid_intro",
+    "_links": {
+      "html": "./grid_intro"
     }
   },
   {

@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.11] - Q2/2021
 
 ### Added
+21-Jun - Added `static/grid/` as part of a new project  
 02-Jun - Added `static/monoreapo/analytics` and `static/monoreapo/sitemap` - details in their dedicated README.md files  
 25-May - Added a sitemap generator script `make-sitemap.sh` and `make-sitemap.sh.options`   
 24-May - Added a table containing links to the other monorepo branches in README.md  - It did exist previously, it must have been mistakenly removed  
