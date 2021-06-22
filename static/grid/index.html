@@ -148,7 +148,7 @@ function words_to_coord(words) {
 
 </script>
     <h2>DATRO Grid</h2>
-    <p id="output_text">misses.is.nutter</p>
+    <p id="output_text">scottish.bay.dr</p>
    <!-- <p id="output_text4">00000 00000 00000</p>
     <p id="output_text2">0.000000</p>
     <p id="output_text3">0.000000</p>-->
@@ -164,12 +164,12 @@ function words_to_coord(words) {
           }) 
         ],
         view: new ol.View({
-          center: ol.proj.fromLonLat([-0.116708278, 51.50844113]),
-          zoom: 16
+          center: ol.proj.fromLonLat([-69.750395, 19.283519]),
+          zoom: 9
         })
       });
 	var marker = new ol.Overlay({
-                        position: ol.proj.fromLonLat([-0.116708278, 51.50844113]),
+                        position: ol.proj.fromLonLat([-69.750395, 19.283519]),
                         positioning: 'center-center',
                         element: document.getElementById('marker'),
                         stopEvent: false
@@ -182,6 +182,6 @@ function words_to_coord(words) {
 	marker.setPosition(map.getView().getCenter());
       };
 	map.on('postrender', onMove);
-	    </script>
+</script>
   </body>
 </html>
