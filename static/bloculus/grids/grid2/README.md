@@ -1,0 +1,1 @@
+grid square on map

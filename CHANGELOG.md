@@ -13,21 +13,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.11] - Q2/2021
 
 ### Added
-22-Jun - Added `static/grid2` trying the following  https://openlayers.org/en/latest/examples/graticule.html  
-21-Jun - Added `static/grid/` as part of a new project  
-02-Jun - Added `static/monoreapo/analytics` and `static/monoreapo/sitemap` - details in their dedicated README.md files  
+25-Jun - Added `static/library/bloculus`  
+22-Jun - Added `static/grid2` trying the following https://openlayers.org/en/latest/examples/graticule.html   
+21-Jun - Added `static/grid/` as part of a new project   
+02-Jun - Added `static/monoreapo/analytics` and `static/monoreapo/sitemap` - details in their dedicated README.md files   
 25-May - Added a sitemap generator script `make-sitemap.sh` and `make-sitemap.sh.options`   
-24-May - Added a table containing links to the other monorepo branches in README.md  - It did exist previously, it must have been mistakenly removed  
+24-May - Added a table containing links to the other monorepo branches in README.md  - It did exist previously, it must have been mistakenly removed   
 24-May - Added css to file explorer index.html pages to hide scrollbars - when visiting datro.xyz webpages within datro.world scrollbars were showing   
-23-May - Added `body{color:#202020}` to index.html as it was considered to be critical css  
+23-May - Added `body{color:#202020}` to index.html as it was considered to be critical css   
 08-May - Added key at top of changelog to keep author from repeating lengthly notes   
-06-May - Added more docs to the library - see the file explorer to see: https://datro.xyz/static/library/  
-01-May - Added index.html to `static` subdirectory, with .treeview.json  - the result is a html navigator  
-18-Apr - Theme customisation in Docs Library (github api/gh-pages html-view) see corresponding static/library CHANGELOG.md for details  
+06-May - Added more docs to the library - see the file explorer to see: https://datro.xyz/static/library/   
+01-May - Added index.html to `static` subdirectory, with .treeview.json  - the result is a html navigator   
+18-Apr - Theme customisation in Docs Library (github api/gh-pages html-view) see corresponding static/library CHANGELOG.md for details   
 17-Apr - Added code tip to COLLABORATE.md - a script to add 2 spaces at the end of each line in .md files - see note in file (at bottom)   
 
+### Removed
+25-Jun - Removed `static/library/grid` and `grid2` - Directory is now labelled `bloculus`   
 
 ### Changed
+25-Jun - Changed `static/grid` and `static/grid2` to `static/bloculus`  
 04-Jun - Minor edits - added html   
 03-Jun - Changed `http` to `https` and `CNAME` content from `datro.xyz` to `unclehowell.github.io` as instructed by GitHub support to solve white page issue e.g. mixed content   
 02-Jun - Ran run.sh in `static/monoreapo/analytics` - which inserted analytics tracking into all .html files in this branch  
@@ -51,6 +55,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 05-Apr - Minor edit to static/datro/documents.html - see corresponding changelog for details  
 
 ### Fixed
+25-Jun - Fixed missing buttons in the `static/datro` website - `static/datro/css/bootstrap.min.css` needed replacing with an earlier version. Perhaps building and testing `static/monoreapo/analytics/run.sh` or `./undo.sh` buggered it up   
 04-May - An experimental bash script (`monoreapo/analytics/run.sh`) removed lines while injecting/removing google analytics script  
 04-May - Fixed the white page of death. Put CNAME and Cloudflare DNS settings back, but tag urls changed from https to https were kept   
 27-May - Busted then fixed messing with svn  

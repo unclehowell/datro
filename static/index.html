@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta content="DATRO Library" name="description">
   <meta content="DATRO Consortium" name="author">
-  <title>DATRO Explorer</title>
+  <title>DATRO > Explore</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport">
         <link href="library/_theme-explorer/favicons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
         <link href="library/_theme-explorer/favicons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
@@ -50,7 +50,7 @@
         const response = await fetch('./.treeview.json');
         const data = await response.json();
         let htmlString = '<ul>';
-        htmlString += `<p style="font-weight:bolder;text-align:center;color:#336;">Explorer</p>`;
+        htmlString += `<p style="font-weight:bolder;text-align:center;color:#336;">Explore DATRO</p>`;
         htmlString += `<li class="glyphicon glyphicon-arrow-up" style="opacity:0.4;"><a>up</a></li></br>`;
         for (let file of data) {
           htmlString += `<i class="glyphicon glyphicon-book"><a href="${file.path}">${file.name}</a></li></br>`;

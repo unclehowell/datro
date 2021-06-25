@@ -15,7 +15,7 @@
 #   ██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝
 #   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
 #................................................
-#       rebuild.sh  -theme-docs.08-rc1.6
+#       rebuild.sh  _theme-docs.08-rc1.7
 #................................................
 #                   datro.xyz
 #................................................
@@ -140,7 +140,7 @@ cp -r ../../../_theme-docs/auto-rebuild-master.sh auto-rebuild.sh 2> /dev/null &
 sleep 1 &&
 
 cd ../
-printf "\e[2;3;33m https://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*}/} \n\e[0m\n"
+printf "\e[2;3;33m http://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*}/} \n\e[0m\n"
 cd latest
 
 #change NAME to PDF name before running

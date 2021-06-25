@@ -7,10 +7,16 @@ This directory and changelog belongs to [![GitHub release (latest by date includ
 
 ## [Unreleased]  
 
-## [-theme-docs.08-rc1.6] - Q2/2021  
+## [_theme-docs.08-rc1.7] - Q2/2021
+
+### Changed
+24-Jun - Changed `https://localhost` to `http://localhost` on preview link in rebuild.sh, because ssl error caused if there's no certificate on localserver  
+24-Jun - Changed `-theme-docs` to `_theme-docs`, how it should be  
+
+## [_theme-docs.08-rc1.6] - Q2/2021  
 
 ### Added
-15-May - Blue.sh (v0.0 > v0.1) - Added `sed -i 's/#bdbdbd/#333687/g' build/html/_static/css/theme.css` 
+15-May - Blue.sh (v0.0 > v0.1) - Added `sed -i 's/#bdbdbd/#333687/g' build/html/_static/css/theme.css`   
 14-May - RC1.6 - `_theme-{color}` is now simply `_theme-docs` - the color is now set in the `rebuild.sh` script - This saves maintaining multiple `_theme-{color}` directories   
 14-May - RC1.5 - rebuild-master.sh messages improved to be clearer and more specific  
 11-May - RC1.4 - rebuild-master.sh now changes `.rst-content blockquote{margin-left:24px` to `0px` to left align images  
