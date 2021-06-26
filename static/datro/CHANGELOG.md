@@ -14,6 +14,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [datro.03] - Q2/2021
 
 ### Changed
+25-Jun - Changed `<a class="nav-link" href="documents.html">` to `<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" class="nav-link" href="../library/">`  
 08-May - Changed `html/videos/package-json.lock` (packages: `ua-parser-js` & `lodash`) and `html/featherlight/package-json` (package: `grunt`) ... to latest version to solve high severity security threats (reported by github dependancy bot).  
 05-May - Minor change to json in html/videos - security fix - see `html/video/changelog.md`  
 17-Apr - GitHub link for HBnB segment was incorrect. Changed it to point to net-installer branch and hbnb README.md   

@@ -12,11 +12,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Added 
 08-May - Quick fix - Added favicons, they were missing and generating broken links. Used a generic document icon. 512x512 missing, so used DATRO logo for that one.   
 05-May - Added glyphicons.css and icons to explorer to make it more visibly stunning.  
-02-May - Added media query to losely prevent text from overflowing beyond 100vw (screen width) e.g. `white-space:nowrap` and `font-size: max(` etc  
+02-May - Added media query to losely prevent text from overflowing beyond 100vw (screen width) e.g. `white-space:nowrap` and `font-size: max(` etc   
 
 ### Fixed
 
 ### Changed
+25-Jun - Changed theme from black background to a blue one, to match the DATRO webpages theme. Since that's where the library will most likely be accessed from  
 
 ### To Do
 

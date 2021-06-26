@@ -312,6 +312,18 @@ GitHub will notify you if there's a comment to respond to or when the administra
       
      grep -rl 'windows' ./ | xargs sed -i 's/windows/linux/g'
  
+     Or you can use another character as a seperator to avoid conflics or confusion with what you're attempting to find and replace e.g. 's|windows|linux|g'
+
+     This works - replacing (1) with (2):
+
+     1. <a class="nav-link" href="documents.html">Documents</a>
+
+     2. <a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" class="nav-link" href="../library/">Documents</a> 
+
+     ~: grep -rl '<a class="nav-link" href="documents.html">Documents</a>' ./ | xargs sed -i 's|<a class\=\"nav-link" href\=\"documents.html">Documents<\/a>|<a data-featherlight\=\"iframe" data-featherlight-iframe-allowfullscreen\=\"true" class\=\"nav-link" href\=\"..\/library\/">Documents<\/a>|g' 
+
+
+
      .md files need 2 spaces at the end of each paragraph for github.com to show them the same as text editors do. 
 
      awk '{printf "%s%*.s\n", $0, 100, " "}' filename > newfile

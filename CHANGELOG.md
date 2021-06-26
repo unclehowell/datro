@@ -31,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 25-Jun - Removed `static/library/grid` and `grid2` - Directory is now labelled `bloculus`   
 
 ### Changed
+25-Jun - Changes to color scheme in index.html pages (file explorer) inside `static/library` and change style.css inside `static/library/_theme-explorer` - see corresponding changelogs for details   
 25-Jun - Changed `static/grid` and `static/grid2` to `static/bloculus`  
 04-Jun - Minor edits - added html   
 03-Jun - Changed `http` to `https` and `CNAME` content from `datro.xyz` to `unclehowell.github.io` as instructed by GitHub support to solve white page issue e.g. mixed content   
