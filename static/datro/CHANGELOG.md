@@ -14,6 +14,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [datro.03] - Q2/2021
 
 ### Changed
+25-Jun - Changed document link in footer to open `../library/` in featherlight box instead of hyperlink to `documents.html` page - html library explorer is a better user experience   
 25-Jun - Changed `<a class="nav-link" href="documents.html">` to `<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" class="nav-link" href="../library/">`  
 08-May - Changed `html/videos/package-json.lock` (packages: `ua-parser-js` & `lodash`) and `html/featherlight/package-json` (package: `grunt`) ... to latest version to solve high severity security threats (reported by github dependancy bot).  
 05-May - Minor change to json in html/videos - security fix - see `html/video/changelog.md`  
@@ -31,6 +32,10 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 24-May - Carousel in index.html didn't work offline, fixed it by replacing `bootstrap.min.js` with an offline copy  
 05-Apr - There was a security vunerablity in html/videos/package-lock.json - fixed it as per github's suggestion (upping the version of a package to the latest)  
 
+
+### Ideas
+
+25-Jun - Make the `static/library` html library explorer theme match the `static/datro/documents.html` page e.g. maybe a html tag in the library explorer menu to show the release version   
 
 ## [0.0.2] - Q1/2021
 
