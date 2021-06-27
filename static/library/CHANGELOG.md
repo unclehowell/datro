@@ -37,6 +37,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 05-Apr - The custom.sh script file in some docs (which pulls spreadsheet data in) was producing errors. Appended a `--location` to curl which fixed it  
 
 ### Changed
+25-Jun - Changed `consortium_deals` to `consortium_contracts` and updated references and titles in the file explorer e.g. `index.html` and `.treeview`    
 25-May - Changed color in index.html files e.g. file explorer pages. Because the library will now appear in a featherlight popup on the DATRO website when documents are seleted. So the themes need to match   
 25-May - Updated `funding_investors` but didn't re-release doc. Although the entry was made in the releasenotes  
 24-May - Updated `funding_creditors` 0.0.9 => 0.1.0  ... also updated `fundin_investors` data

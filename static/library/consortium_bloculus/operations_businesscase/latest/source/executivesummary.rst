@@ -1,11 +1,10 @@
 Executive Summary 
 ====================
   
-Bloculus is a combination of two words which best describe this new protocol. 
-'Bloc' is a referece to Blockchain technology, which is presumed to need no explination.   
-'Loculus' refers to three seperate subjects which coincidentally all relate to this protocol.
-'Loculus' is a small satchel that was carried by Roman soldiers, a "little place" in terms of architectural practices and a compartment within an organ or part of an organism e.g. fungus.
-  
+Bloculus is a combination of two words that best describe this new protocol. 
+'Bloc' is a referece to Blockchain technology, whereas 'Loculus' is an architectural term used to describe a "little place" and similarly the plural of the biological term 'Locule', which describes compartmentalisation within an organism.  
+This protocol has been developed by the DATRO Consortium as part of a larger plan to deploy the worlds first (for-profit) free internet service.   
+
   
 Deslinde
 ~~~~~~~~~~

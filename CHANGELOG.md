@@ -28,9 +28,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 17-Apr - Added code tip to COLLABORATE.md - a script to add 2 spaces at the end of each line in .md files - see note in file (at bottom)   
 
 ### Removed
+25-Jun - Removed everything in `static/bloculus/` - was only there for testing, not important ... yet   
 25-Jun - Removed `static/library/grid` and `grid2` - Directory is now labelled `bloculus`   
 
 ### Changed
+25-Jun - Generated new sitemap.xml  
 25-Jun - Changes to color scheme in index.html pages (file explorer) inside `static/library` and change style.css inside `static/library/_theme-explorer` - see corresponding changelogs for details   
 25-Jun - Changed `static/grid` and `static/grid2` to `static/bloculus`  
 04-Jun - Minor edits - added html   
