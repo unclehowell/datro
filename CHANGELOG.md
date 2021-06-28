@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.11] - Q2/2021
 
 ### Added
+25-Jun - Added content to `static/bloculus` - just a map at this stage, no h3 overlay - but it's a start   
 25-Jun - Added `static/library/bloculus`  
 22-Jun - Added `static/grid2` trying the following https://openlayers.org/en/latest/examples/graticule.html   
 21-Jun - Added `static/grid/` as part of a new project   

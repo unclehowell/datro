@@ -26,6 +26,10 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
        - `static-datro.03` is added to the end to reflect this subdirectories version'  
        -  must find a way to use semantic version badges on the published content too to save viewing the changelogs for version numbers   
 
+### Removed
+25-Jun - Removed `))` at the start of `static/datro/html/statistics/website.html` - typo error, shouldn't be there   
+
+
 ### Fixed
 04-May - Security Vunerability fixed - https://github.com/websockets/ws/commit/00c425ec77993773d823f018f64a5c44e17023ff
 04-May - An experimental bash script (`monoreapo/analytics/run.sh`) removed lines while injecting/removing google analytics script  
