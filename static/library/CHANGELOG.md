@@ -6,6 +6,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [-library.03] - Q3/2021
+
+### Changed
+
+08-Jul - Changed the `consortium_bloculus` document content to further explain the protocol ... still way more to do on this doc and protocol, but it's coming together  
+
 
 ## [-library.03] - Q2/2021
 

@@ -1,0 +1,270 @@
+/**
+ * Featherlight - ultra slim jQuery lightbox
+ * Version 1.7.13 - https://noelboss.github.io/featherlight/
+ *
+ * Copyright 2018, Noël Raoul Bossart (https://www.noelboss.com)
+ * MIT Licensed.
+**/
+
+html.with-featherlight {
+	overflow: hidden;
+}
+.featherlight {
+	display: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 2147483647;
+	text-align: center;
+	white-space: nowrap;
+	cursor: pointer;
+	background: #333;
+	background: rgba(0, 0, 0, 0);
+}
+.featherlight:last-of-type {
+	background: rgba(0, 0, 0, .8)
+}
+.featherlight:before {
+	content: '';
+	display: inline-block;
+	height: calc(100vh - 0%);
+	vertical-align: middle
+}
+.featherlight .featherlight-content {
+	position: relative;
+	text-align: left;
+	vertical-align: middle;
+	display: inline-block;
+	overflow: auto;
+	padding: 25px 25px 0;
+	border-bottom: 25px solid transparent;
+	margin-left: :calc(1vw);
+	margin-right: :calc(1vw);
+	max-height: 95%;
+	background: #fff;
+	cursor: auto;
+	white-space: normal;
+	left: calc(0.1vw);
+	max-width: calc(98vw);
+}
+.featherlight .featherlight-inner {
+	display: block
+}
+.featherlight link.featherlight-inner, .featherlight script.featherlight-inner, .featherlight style.featherlight-inner {
+	display: none
+}
+.featherlight .featherlight-close-icon {
+	position: absolute;
+	z-index: 9999;
+	width: 25px;
+	cursor: pointer;
+	text-align: center;
+	font-family: Arial, sans-serif;
+	background: #fff;
+	background: rgba(255, 255, 255, .3);
+	color: #000;
+	border: 0;
+	padding: 0;
+	right: 8px;
+	top: 8px;
+	width: 32px;
+	height: 32px;
+	opacity: 0.3;
+	line-height: 20px;
+}
+.featherlight .featherlight-close-icon::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+.featherlight .featherlight-image {
+	width: 100%;
+}
+.featherlight-iframe .featherlight-content {
+	height: calc(100vh - 0%);
+	width: calc(100vw - 0%);
+	border-bottom: 0;
+	padding: 0;
+}
+.featherlight iframe {
+	height: calc(100vh - 0%);
+	width: calc(100vw - 0%);
+	border: 0;
+	overflow: hidden!important;
+	overflow-y: hidden!important;
+	overflow-x: hidden!important;
+	-webkit-overflow-scrolling: touch;
+}
+.featherlight * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+@media all and (min-width:1024px)
+and (orientation: landscape)  {
+	.featherlight .featherlight-content {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.featherlight-iframe .featherlight-content {
+		height: calc(100vh - 0%);
+		width: calc(100vw - 0%);
+		overflow: hidden!Important;
+		background-color: white;
+	}
+	.featherlight iframe {
+		text-align: center;
+		margin-top: 7vh;
+		height: calc(100vh - 18vh);
+		width: calc(100vw + 0%);
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+		-ms-transform: scale(0.98);
+		-moz-transform: scale(0.98);
+		-o-transform: scale(0.98);
+		-webkit-transform: scale(0.98);
+		transform: scale(0.98);
+		-ms-transform-origin: 0 0;
+		-moz-transform-origin: 0 0;
+		-o-transform-origin: 0 0;
+		-webkit-transform-origin: 0 0;
+		transform-origin: 0 0;
+	}
+}
+@media all and (min-width: 960px) and (max-width: 1199px)
+and (orientation: landscape)  {
+	.featherlight-iframe .featherlight-content {
+		height: calc(100vh - 0%);
+		width: calc(100vw - 0%);
+	}
+	.featherlight iframe {
+		height: calc(100vh - 0%);
+		width: calc(100vw + 0%);
+	}
+}
+@media all and (min-width: 768px) and (max-width: 959px) 
+and (orientation: landscape) {
+	.featherlight-iframe .featherlight-content {
+		height: calc(100vh - 0%);
+		width: calc(100vw - 0%);
+	}
+	.featherlight iframe {
+		height: calc(100vh - 0%);
+		width: calc(100vw + 0%);
+	}
+}
+@media all and (min-width: 480px) and (max-width: 767px)
+and (orientation: landscape)  {
+	.featherlight .featherlight-content {
+		
+		margin-right: 0;
+		width: calc(100vw);
+	}
+	.featherlight-iframe .featherlight-content {
+		height: calc(100vh - 0%);
+		width: calc(100vw - 0%);
+		overflow: hidden!Important;
+		background-color: black;
+				-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+			-ms-transform: scale(0.98);
+		-moz-transform: scale(0.98);
+		-o-transform: scale(0.98);
+		-webkit-transform: scale(0.98);
+		transform: scale(0.98);
+		-ms-transform-origin: 0 0;
+		-moz-transform-origin: 0 0;
+		-o-transform-origin: 0 0;
+		-webkit-transform-origin: 0 0;
+		transform-origin: 0 0;
+	}
+	.featherlight iframe {
+	
+		position: absolute;
+		overflow: hidden!important;
+		margin:0;
+		margin-top: 7vh;
+		height: calc(100vh + 79vh);
+		width: calc(100vw);
+		
+	}
+}
+
+@media all and (max-width: 599px)
+  and (orientation: landscape) {
+	.featherlight .featherlight-content {
+		
+		margin-right: 0;
+		width: calc(100vw);
+	}
+	.featherlight-iframe .featherlight-content {
+		height: calc(100vh - 0%);
+		width: calc(100vw - 0%);
+		overflow: hidden!Important;
+		background-color: white;
+				-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+			-ms-transform: scale(0.98);
+		-moz-transform: scale(0.98);
+		-o-transform: scale(0.98);
+		-webkit-transform: scale(0.98);
+		transform: scale(0.98);
+		-ms-transform-origin: 0 0;
+		-moz-transform-origin: 0 0;
+		-o-transform-origin: 0 0;
+		-webkit-transform-origin: 0 0;
+		transform-origin: 0 0;
+	}
+	.featherlight iframe {
+	
+		position: absolute;
+		overflow: hidden!important;
+		margin:0;
+		margin-top: 7vh;
+		height: calc(100vh + 79vh);
+		width: calc(100vw);
+		
+	}
+}
+@media all and (max-width: 479px)
+and (orientation: landscape)  {
+	.featherlight .featherlight-content {
+		
+		margin-right: 0;
+		width: calc(100vw);
+	}
+	.featherlight-iframe .featherlight-content {
+		height: calc(100vh - 0%);
+		width: calc(100vw - 0%);
+		overflow: hidden!Important;
+		background-color: white;
+				-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+			-ms-transform: scale(0.98);
+		-moz-transform: scale(0.98);
+		-o-transform: scale(0.98);
+		-webkit-transform: scale(0.98);
+		transform: scale(0.98);
+		-ms-transform-origin: 0 0;
+		-moz-transform-origin: 0 0;
+		-o-transform-origin: 0 0;
+		-webkit-transform-origin: 0 0;
+		transform-origin: 0 0;
+	}
+	.featherlight iframe {
+	
+		position: absolute;
+		overflow: hidden!important;
+		margin:0;
+		margin-top: 7vh;
+		height: calc(100vh + 79vh);
+		width: calc(100vw + 75vw);
+		
+	}
+}
+@media print {
+	html.with-featherlight>*>:not(.featherlight) {
+		display: none
+	}
+}

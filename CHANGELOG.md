@@ -10,6 +10,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.1-rtw.12] - Q3/2021
+
+### Added
+
+### Removed
+
+### Changed 
+08-Jul - Changed to `static/library` - see library changelog for details  
+06-Jul - Ran `static/monoreapo/analytics/undo.sh` and `run.sh` (remove/ re-insert google analytics in *.html's & re-generate sitemap)  
+
+### Fixed
+
+
 ## [0.0.1-rtw.11] - Q2/2021
 
 ### Added

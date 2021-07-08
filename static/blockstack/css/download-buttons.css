@@ -1,0 +1,53 @@
+@font-face{
+	font-family:'Glyphicons Halflings';
+	src:url(../fonts/glyphicons-halflings-regular.eot);
+	src:url(../fonts/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'),url(../fonts/glyphicons-halflings-regular.woff) format('woff'),url(../fonts/glyphicons-halflings-regular.ttf) format('truetype'),url(../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular) format('svg')
+}
+.btn-info2,.btn-info2.active,.btn-info2:active,.btn-info2:focus,.btn-info2:hover,.open .dropdown-toggle.btn-info2{
+	color:#fff!important;
+	background-color:#5bc0de!important;
+	border-color:#46b8da!important
+}
+.btn{
+	display:inline-block!important;
+	padding:6px 12px!important;
+	margin-bottom:0!important;
+	font-size:14px!important;
+	font-weight:400!important;
+	line-height:1.428571429!important;
+	text-align:center!important;
+	white-space:nowrap!important;
+	vertical-align:middle!important;
+	cursor:pointer!important;
+	border:1px solid transparent!important;
+	border-radius:4px!important;
+	-webkit-user-select:none!important;
+	-moz-user-select:none!important;
+	-ms-user-select:none!important;
+	-o-user-select:none!important;
+	user-select:none!important
+}
+*,:after,:before{
+	-webkit-box-sizing:border-box!important;
+	-moz-box-sizing:border-box!important;
+	box-sizing:border-box!important
+}
+:focus{
+	outline:-webkit-focus-ring-color auto 5px!important
+}
+.glyphicon-arrow-down:before{
+	content:"\e094"
+}
+.glyphicon-compressed:before{
+	content:"\e181"
+}
+.glyphicon{
+	position:relative;
+	top:4px;
+	display:inline-block;
+	font-family:'Glyphicons Halflings';
+	-webkit-font-smoothing:antialiased;
+	font-style:normal;
+	font-weight:400;
+	line-height:1
+}

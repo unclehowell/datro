@@ -4,13 +4,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [bloculus.1] - Q2/2021
+## [bloculus.01] - Q3/2021
 
 ### Added
-
+06-Jul - Added GNU GPL Licence  
 ### Removed
 
 ### Changed
+06-Jul - Changed README a little  
 
 ### Fixed
 
