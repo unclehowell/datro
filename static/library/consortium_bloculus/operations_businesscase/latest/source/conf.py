@@ -26,11 +26,19 @@ pygments_style = None
 html_theme = 'sphinx_rtd_theme'
 
 html_static_path = ['_static']
+html_logo = '_static/logo.png'
+html_theme_options = {
+    'logo_only': False,
+    'display_version': True,
+}
+
+
+html_static_path = ['_static']
 
 htmlhelp_basename = 'consortium_bloculus-operations_businesscase'
 
 
-latex_logo = '_static/logo.jpg'
+latex_logo = '_static/logo.png'
 
 
 latex_elements = {

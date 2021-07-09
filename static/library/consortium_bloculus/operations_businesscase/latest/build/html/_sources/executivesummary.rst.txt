@@ -1,31 +1,27 @@
 Executive Summary 
 ====================
 
-Since 2016 the DATRO Consortium has been conducting trials of a new web 3.0 fixed communications infrastructure, along a 70km caribbean coastline entitled the "Scottish Bay".
-This new network is made up of geodesic communications equipment rooms (entitled "domes"), which are solar powered and mesh together using a radio solution provided by Althea, California.
-The purpose of this document is to introduce the Bloculus protocol and the business model and subsequent business opportunities which surround it.
+The DATRO Consortium is a for-profit company which seeks to offer a free internet service. The service is being beta tested along a 70km caribbean coastline entitled the Scottish Bay.
+This new fixed communications infrastructure comprises of geodesic communications equipment rooms (entitled "Neo Dome's"), which are solar powered and mesh together using licence-free Radio Frequencies (RF).
+The purpose of this document is to introduce the Bloculus protocol component of this network and the business model and subsequent business opportunities which surround it.
 
-Issue
-~~~~~~~
-Two challenges have had be overcome for this innovative new communications infrastructure to exist:  
+Challenge
+~~~~~~~~~~~
+In order for this innovative new communications infrastructure to exist many challenges have had to be overcome. Below are the two this document focuses on:  
 
-1. Each newly constructed communications room ("dome") must be able to autonomously find its neighbours and establish a radio link   
+	1. Each newly constructed Neo Dome must be able to autonomously locate and pair with neighbouring Neo Dome's using licence-free RF 
 
-2. After establishing a secure radio link, the web 3.0 services contained within each dome e.g. decentralized messaging, file storage etc - must be able to autonomously pair to the corresponding one in the neighbouring dome(s) 
+	2. After establishing secure radio links, the DWeb/Web3.0 nodes hosted inside the Dome, must autonomously pair to their corresponding nodes inside neighbouring domes  
 
 
-Instead of consuming expensive engineering labour, manually establishing line-of-sight radio links and consulting authorities for licences, 
-DATRO's network will use omnidirectional antennas, unlicenced radio frequencies and use its own protocol and automated software scripts and programs.   
-
-Developing the technology isn't the only challenge. The business and financing has to continue to develop.
-In addition to a protocol being developed to overcome the above challenges, the protocol has to be exclusively owned/controlled by the DATRO Consortium so that usage can be leased in order to generate revenue.  
-In todays world it's simple for anything digital to be ripped off, cloned etc. So how can the aformentioned protocol be exclusively owned and controlled ?
+Fulfilling these technological needs isn't the only challenge here. The consortium is a for-profit business and subsequently must generate a fiscal return on its investment with this protocol.
+Therefore the protocol has to be designed and developed to be exclusively owned/controlled by the DATRO Consortium, so that use and enjoyment of it can be billed, in order to generate revenue.
 
 Solution & Outcomes
 ~~~~~~~~~~~~~~~~~~~~~~~
-The word Bloculus is made of two key words which best describe this new protocol:
- - 'Bloc' is a referece to Blockchain, particularly the Polkadot blockchain, which is uses in this protocols day-to-day operations.
- - 'Loculus' is an architectural and biological reference, used to describe a "little place" and/or compartmentalisation.  
+This new protocol has been named Bloculus, which is a combination of the two primary words which best describe it:
+ - 'Bloc' is a referece to Blockchain (particularly the Polkadot blockchain which is used in this protocols day-to-day operations) 
+ - 'Loculus' is an architectural and biological reference, used to describe a "little place" and/or compartmentalisation   
 
 The Bloculus protocol works by combining Uber's hexagonal ("H3") grid reference system with the Top Level Domain platform: Handshake. 
 The result is a dedicated Top Level Domain for each hexagonal grids unique reference.

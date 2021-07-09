@@ -142,49 +142,55 @@ Writing index file consortium_bloculus-operations_businesscase.idx
 >><<oms.cmap>><<omx.cmap>>
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
-nts/map/pdftex/updmap/pdftex.map} <./logo.jpg>] [1]
+nts/map/pdftex/updmap/pdftex.map} <./logo.png>] [1]
 Chapter 1.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 115.
+(textcomp)                Default family used instead on input line 119.
 
 [1] [2]
 Chapter 2.
+
+Overfull \hbox (33.75966pt too wide) in paragraph at lines 266--266
+[]
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--266
+
 [3] [4] [5]
 Chapter 3.
 
 LaTeX Warning: Hyper reference `annex-list:sotherby-market-analysis-preview' on
- page 6 undefined on input line 385.
+ page 6 undefined on input line 384.
 
 
 LaTeX Warning: Hyper reference `annex-list:certificate-of-title-4-068-61m2-copy
-' on page 6 undefined on input line 389.
+' on page 6 undefined on input line 388.
 
 
 LaTeX Warning: Hyper reference `annex-list:certificate-of-title-2-488-70m2-copy
-' on page 6 undefined on input line 393.
+' on page 6 undefined on input line 392.
 
 
 LaTeX Warning: Hyper reference `annex-list:certificate-of-title-2-088-47m2-copy
-' on page 6 undefined on input line 397.
+' on page 6 undefined on input line 396.
 
 
 LaTeX Warning: Hyper reference `annex-list:certificate-of-title-2-038-77m2-copy
-' on page 6 undefined on input line 401.
+' on page 6 undefined on input line 400.
 
 
 LaTeX Warning: Hyper reference `annex-list:certificate-of-title-1-749-00m2-copy
-' on page 6 undefined on input line 405.
+' on page 6 undefined on input line 404.
 
 
 LaTeX Warning: Hyper reference `annex-list:certificate-of-title-1-154-00m2-copy
-' on page 6 undefined on input line 409.
+' on page 6 undefined on input line 408.
 
 
 LaTeX Warning: Hyper reference `annex-list:origional-map-remastered' on page 6 
-undefined on input line 424.
+undefined on input line 423.
 
 [6] [7]
 Chapter 4.
@@ -194,7 +200,7 @@ Chapter 5.
 Chapter 6.
 
 LaTeX Warning: Hyper reference `annex-list:download-links' on page 10 undefined
- on input line 541.
+ on input line 540.
 
 [10 <./2021-04-16_origional-map.png>] [11 <./2019-07-31_sotherbys-market-analys
 is.png>] [12]
@@ -230,8 +236,8 @@ tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on consortium_bloculus-operations_businesscase.pdf (25 pages, 66
-03162 bytes).
+Output written on consortium_bloculus-operations_businesscase.pdf (25 pages, 63
+63138 bytes).
 Transcript written on consortium_bloculus-operations_businesscase.log.
 Latexmk: Index file 'consortium_bloculus-operations_businesscase.idx' was written
 Latexmk: Missing input file: 'consortium_bloculus-operations_businesscase.ind' from line
@@ -373,17 +379,23 @@ Writing index file consortium_bloculus-operations_businesscase.idx
 >><<oms.cmap>><<omx.cmap>>
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
-nts/map/pdftex/updmap/pdftex.map} <./logo.jpg>]
+nts/map/pdftex/updmap/pdftex.map} <./logo.png>]
 (./consortium_bloculus-operations_businesscase.toc [1]) [2]
 Chapter 1.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 115.
+(textcomp)                Default family used instead on input line 119.
 
 [1] [2]
 Chapter 2.
+
+Overfull \hbox (33.75966pt too wide) in paragraph at lines 266--266
+[]
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--266
+
 [3] [4] [5]
 Chapter 3.
 [6] [7]
@@ -413,8 +425,8 @@ tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on consortium_bloculus-operations_businesscase.pdf (26 pages, 66
-12408 bytes).
+Output written on consortium_bloculus-operations_businesscase.pdf (26 pages, 63
+72274 bytes).
 Transcript written on consortium_bloculus-operations_businesscase.log.
 Latexmk: Index file 'consortium_bloculus-operations_businesscase.idx' was written
 Latexmk: Log file says output to 'consortium_bloculus-operations_businesscase.pdf'
@@ -535,17 +547,23 @@ Writing index file consortium_bloculus-operations_businesscase.idx
 >><<oms.cmap>><<omx.cmap>>
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
-nts/map/pdftex/updmap/pdftex.map} <./logo.jpg>]
+nts/map/pdftex/updmap/pdftex.map} <./logo.png>]
 (./consortium_bloculus-operations_businesscase.toc [1]) [2]
 Chapter 1.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 115.
+(textcomp)                Default family used instead on input line 119.
 
 [1] [2]
 Chapter 2.
+
+Overfull \hbox (33.75966pt too wide) in paragraph at lines 266--266
+[]
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--266
+
 [3] [4] [5]
 Chapter 3.
 [6] [7]
@@ -575,8 +593,8 @@ tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on consortium_bloculus-operations_businesscase.pdf (26 pages, 66
-12408 bytes).
+Output written on consortium_bloculus-operations_businesscase.pdf (26 pages, 63
+72274 bytes).
 Transcript written on consortium_bloculus-operations_businesscase.log.
 Latexmk: Index file 'consortium_bloculus-operations_businesscase.idx' was written
 Latexmk: Log file says output to 'consortium_bloculus-operations_businesscase.pdf'
