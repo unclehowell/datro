@@ -11,6 +11,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [-datro.04] - Q3/2021
+
+### Changed
+09-Jul - Changed the menu labels from `technology` to `portfolio` and `documents` to `library`  
+ 
+
 ## [datro.03] - Q2/2021
 
 ### Changed

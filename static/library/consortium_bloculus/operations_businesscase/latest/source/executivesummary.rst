@@ -1,7 +1,7 @@
 Executive Summary 
 ====================
 
-The DATRO Consortium is a for-profit company which seeks to offer a free internet service. The service is being beta tested along a 70km caribbean coastline entitled the Scottish Bay.
+DATRO is a for-profit consortium which is actively beta testing its own web3.0 internet service along the 70km "Scottish Bay" caribbean coastline.
 This new fixed communications infrastructure comprises of geodesic communications equipment rooms (entitled "Neo Dome's"), which are solar powered and mesh together using licence-free Radio Frequencies (RF).
 The purpose of this document is to introduce the Bloculus protocol component of this network and the business model and subsequent business opportunities which surround it.
 
