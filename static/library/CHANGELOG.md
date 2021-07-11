@@ -9,7 +9,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [-library.03] - Q3/2021
 
 ### Changed
-
+11-Jul - Minor edit to `consortium_bloculus` - removed content from template and inserted some lorum ipson text  
 08-Jul - Changed the `consortium_bloculus` document content to further explain the protocol ... still way more to do on this doc and protocol, but it's coming together  
 
 

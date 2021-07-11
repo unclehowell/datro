@@ -1,8 +1,6 @@
 Project Organization
 =======================
 
-
-
 	
 Project Governance
 ~~~~~~~~~~~~~~~~~~~~~~~

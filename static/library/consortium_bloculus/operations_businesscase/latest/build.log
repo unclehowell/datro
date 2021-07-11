@@ -7,20 +7,11 @@ updating environment: 0 added, 0 changed, 0 removed
 looking for now-outdated files... none found
 processing consortium_bloculus-operations_businesscase.tex... index releasenotes executivesummary finance projectdefinition projectorganization 
 resolving references...
-/var/www/html/datro-gh-pages/static/library/consortium_bloculus/operations_businesscase/latest/source/finance.rst:13: WARNING: undefined label: sotherby market analysis (preview)
-/var/www/html/datro-gh-pages/static/library/consortium_bloculus/operations_businesscase/latest/source/finance.rst:15: WARNING: undefined label: certificate of title: 4,068.61m2 (copy)
-/var/www/html/datro-gh-pages/static/library/consortium_bloculus/operations_businesscase/latest/source/finance.rst:16: WARNING: undefined label: certificate of title: 2,488.70m2 (copy)
-/var/www/html/datro-gh-pages/static/library/consortium_bloculus/operations_businesscase/latest/source/finance.rst:17: WARNING: undefined label: certificate of title: 2,088.47m2 (copy)
-/var/www/html/datro-gh-pages/static/library/consortium_bloculus/operations_businesscase/latest/source/finance.rst:18: WARNING: undefined label: certificate of title: 2,038.77m2 (copy)
-/var/www/html/datro-gh-pages/static/library/consortium_bloculus/operations_businesscase/latest/source/finance.rst:19: WARNING: undefined label: certificate of title: 1,749.00m2 (copy)
-/var/www/html/datro-gh-pages/static/library/consortium_bloculus/operations_businesscase/latest/source/finance.rst:20: WARNING: undefined label: certificate of title: 1,154.00m2 (copy)
-/var/www/html/datro-gh-pages/static/library/consortium_bloculus/operations_businesscase/latest/source/finance.rst:25: WARNING: undefined label: origional map (remastered)
-/var/www/html/datro-gh-pages/static/library/consortium_bloculus/operations_businesscase/latest/source/finance.rst:44: WARNING: undefined label: easement
 done
 writing... done
 copying TeX support files... copying TeX support files...
 done
-build succeeded, 9 warnings.
+build succeeded.
 
 The LaTeX files are in build/latex.
 Run 'make' in that directory to run these through (pdf)latex
@@ -152,21 +143,21 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 [1]
 Chapter 2.
 
-Overfull \hbox (33.75966pt too wide) in paragraph at lines 161--161
+Overfull \hbox (33.75966pt too wide) in paragraph at lines 163--163
 []
 
-Underfull \hbox (badness 10000) in paragraph at lines 161--161
+Underfull \hbox (badness 10000) in paragraph at lines 163--163
 
 [2] [3] [4]
 Chapter 3.
-[5] [6]
+[5]
 Chapter 4.
-[7]
+[6]
 Chapter 5.
-[8]
+[7]
 Chapter 6.
 No file consortium_bloculus-operations_businesscase.ind.
-[9] (./consortium_bloculus-operations_businesscase.aux)
+[8] (./consortium_bloculus-operations_businesscase.aux)
 
 Package rerunfilecheck Warning: File `consortium_bloculus-operations_businessca
 se.out' has changed.
@@ -184,8 +175,8 @@ tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on consortium_bloculus-operations_businesscase.pdf (11 pages, 12
-3503 bytes).
+Output written on consortium_bloculus-operations_businesscase.pdf (10 pages, 12
+0877 bytes).
 Transcript written on consortium_bloculus-operations_businesscase.log.
 Latexmk: Index file 'consortium_bloculus-operations_businesscase.idx' was written
 Latexmk: Missing input file: 'consortium_bloculus-operations_businesscase.ind' from line
@@ -339,20 +330,20 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 [1]
 Chapter 2.
 
-Overfull \hbox (33.75966pt too wide) in paragraph at lines 161--161
+Overfull \hbox (33.75966pt too wide) in paragraph at lines 163--163
 []
 
-Underfull \hbox (badness 10000) in paragraph at lines 161--161
+Underfull \hbox (badness 10000) in paragraph at lines 163--163
 
 [2] [3] [4]
 Chapter 3.
-[5] [6]
+[5]
 Chapter 4.
-[7]
+[6]
 Chapter 5.
-[8]
+[7]
 Chapter 6.
-(./consortium_bloculus-operations_businesscase.ind) [9]
+(./consortium_bloculus-operations_businesscase.ind) [8]
 (./consortium_bloculus-operations_businesscase.aux) )
 (see the transcript file for additional information) </root/.texlive2020/texmf-
 var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk>{/usr/share/texlive/texmf-dist/f
@@ -361,8 +352,8 @@ tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on consortium_bloculus-operations_businesscase.pdf (11 pages, 13
-0726 bytes).
+Output written on consortium_bloculus-operations_businesscase.pdf (10 pages, 12
+8675 bytes).
 Transcript written on consortium_bloculus-operations_businesscase.log.
 Latexmk: Index file 'consortium_bloculus-operations_businesscase.idx' was written
 Latexmk: Log file says output to 'consortium_bloculus-operations_businesscase.pdf'
@@ -495,20 +486,20 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 [1]
 Chapter 2.
 
-Overfull \hbox (33.75966pt too wide) in paragraph at lines 161--161
+Overfull \hbox (33.75966pt too wide) in paragraph at lines 163--163
 []
 
-Underfull \hbox (badness 10000) in paragraph at lines 161--161
+Underfull \hbox (badness 10000) in paragraph at lines 163--163
 
 [2] [3] [4]
 Chapter 3.
-[5] [6]
+[5]
 Chapter 4.
-[7]
+[6]
 Chapter 5.
-[8]
+[7]
 Chapter 6.
-(./consortium_bloculus-operations_businesscase.ind) [9]
+(./consortium_bloculus-operations_businesscase.ind) [8]
 (./consortium_bloculus-operations_businesscase.aux) )
 (see the transcript file for additional information) </root/.texlive2020/texmf-
 var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk>{/usr/share/texlive/texmf-dist/f
@@ -517,8 +508,8 @@ tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on consortium_bloculus-operations_businesscase.pdf (11 pages, 13
-0726 bytes).
+Output written on consortium_bloculus-operations_businesscase.pdf (10 pages, 12
+8675 bytes).
 Transcript written on consortium_bloculus-operations_businesscase.log.
 Latexmk: Index file 'consortium_bloculus-operations_businesscase.idx' was written
 Latexmk: Log file says output to 'consortium_bloculus-operations_businesscase.pdf'
