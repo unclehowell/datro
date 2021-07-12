@@ -17,8 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 ### Changed 
-08-Jul - Changed to `static/library` - see library changelog for details  
-06-Jul - Ran `static/monoreapo/analytics/undo.sh` and `run.sh` (remove/ re-insert google analytics in *.html's & re-generate sitemap)  
+Jul-11 - Minor edit to `library` and regenerated sitemap.xml and changed the date format in this changelog moving forward. Was DD-MM , now it's MM-DD   
+Jul-08 - Changed to `static/library` - see library changelog for details  
+Jul-06 - Ran `static/monoreapo/analytics/undo.sh` and `run.sh` (remove/ re-insert google analytics in *.html's & re-generate sitemap)  
 
 ### Fixed
 

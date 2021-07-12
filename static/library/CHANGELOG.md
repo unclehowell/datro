@@ -9,8 +9,10 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [-library.03] - Q3/2021
 
 ### Changed
-11-Jul - Minor edit to `consortium_bloculus` - removed content from template and inserted some lorum ipson text  
-08-Jul - Changed the `consortium_bloculus` document content to further explain the protocol ... still way more to do on this doc and protocol, but it's coming together  
+Jul-11 - Added svg/png maps to `consortium_bloculus` document  
+Jul-11 - Changed date format on this changelog - should always be YYYY-MM-DD, not sure why its been DD-MM up until now (perhaps keepchangelog guildelines ??)   
+Jul-11 - Minor edit to `consortium_bloculus` - removed content from template and inserted some lorum ipson text  
+Jul-08 - Changed the `consortium_bloculus` document content to further explain the protocol ... still way more to do on this doc and protocol, but it's coming together  
 
 
 ## [-library.03] - Q2/2021

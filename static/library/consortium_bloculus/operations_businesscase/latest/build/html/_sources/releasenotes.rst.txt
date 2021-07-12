@@ -7,6 +7,7 @@ This section provides information about what is new or changed, including urgent
 
 This Release (Version 0.0.0)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- **2021-Jul-11** - `Added Annexes with Resolutions 5 and 6`  
 - **2021-Jul-09** - `Document is still in draft - title changed to 'business case'`
 - **2021-Jun-24** - `Changed document title to match directory path (which was changed from 'recon' to 'sitesurvey')`
 
