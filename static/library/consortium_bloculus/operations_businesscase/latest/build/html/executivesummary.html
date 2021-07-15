@@ -170,19 +170,21 @@
             
   <div class="section" id="executive-summary">
 <h1>Executive Summary<a class="headerlink" href="#executive-summary" title="Permalink to this headline">¶</a></h1>
-<p>DATRO is a for-profit consortium which is pioneering and actively beta testing its own web3.0 internet service along the 70km “Scottish Bay” caribbean coastline.
+<p>DATRO is a for-profit consortium that is currently pioneering (and actively beta testing) its own web3.0 internet service along the 70km “Scottish Bay” caribbean coastline.
 This new fixed communications infrastructure comprises of geodesic communications equipment rooms (entitled “Neo Dome’s”), which are solar powered and mesh together using licence-free Radio Frequencies (RF).
-The entire model, from the equipment room blueprints to the software, is in the public domain under a General Public Licence (GPL) allowing anyone, anywhere to launch the same network in their area.
-The purpose of this document is to introduce the Bloculus protocol component of this network, which is being developed in order to allows the domes to find each other (and allows the decentralized nodes inside the domes to sync) fully autonomouosly, even before an internet gateway is present.
-Furthermore this document explores the business model and subsequent business opportunities surrounding the Bloculus protocol.</p>
+The entire network, including the communication rooms blueprints to the software which operates them and the end-users wireless access points, are in the public domain under a General Public Licence (GPL) - allowing anyone, anywhere to launch the same secure and decentralized network in their area.
+The purpose of this document is to introduce a component of this network entitled the Bloculus Protcol, which is to become the underlying foundations of this entire network.
+This document will also briefly explore the business model and subsequent business opportunities surrounding the Bloculus protocol.</p>
 <div class="section" id="challenge">
 <h2>Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">¶</a></h2>
 <p>This protocol is being developed in order to overcome a few core challenges;</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>Each newly constructed Neo Dome must be able to autonomously locate and pair with neighbouring Neo Dome’s using licence-free RF</p></li>
-<li><p>After establishing secure radio links, the DWeb/Web3.0 nodes hosted inside the Dome, must autonomously pair to their corresponding nodes inside neighbouring domes</p></li>
-<li><p>The protocol has to be exclusively owned/controlled by the DATRO Consortium. Usage of it can then be billable in order to generate revenue to maintain the protocol</p></li>
+<li><p>Each newly constructed Neo Dome needs a suitable protocol to quickly, securely and autonomously locate and pair with neighbouring Neo Dome’s over licence-free Radio Frequencies</p></li>
+<li><p>After establishing secure radio links, the DWeb/Web3.0 nodes hosted inside the dome(s), must have a method to autonomously pair to their corresponding nodes inside neighbouring domes</p></li>
+<li><p>Character lengths/ texstrings must be short enough for the protocol to operate effectively over low-bandwidth/low-cost/low-energy fallback radio links e.g. LoRaWAN, Cellular USSD etc</p></li>
+<li><p>The same protocol used to establish links of equipment rooms and nodes contained within, will serve to route and re-route traffic over the network e.g. uptime monitoring etc</p></li>
+<li><p>Protocol will be exclusive to the DATRO Consortium. Usage of the protocol will be autonomously compesated by the nodes using it, using cryptocurrency smart contracts e.g. a Decentralized Autonomous Organization (DAO)</p></li>
 </ol>
 </div></blockquote>
 </div>
@@ -201,11 +203,67 @@ Initially the protocol and TLD’s function on a Local Area Network (LAN) basis,
 In order to share in the excitement and opportuntities surrounding this new protocol, it’s worth having a basic understanding of Ubers H3 system and the Handshake platform.</p>
 <p>There’s a multitude of grid reference systems in operation e.g. Universal Transverse Mercator (UTM), Military Grid Reference System (MGRS) etc
 One of the most unique is Ubers H3 solution, which instead of referencing a point or square on a map it uses hexagonals, commonly known as “honeycombs”.
-A key feature of H3 used by DATRO is called “resolution”, which permits the size of these honeycombs to be selected from a shortlist.
-For DATRO’s new network, 500 meter long honeycombs are sufficient for a balance between security obscurity and location accuracy.
+A key feature of H3 used by DATRO is called “resolution”, which permits the size of these honeycombs to be selected from a shortlist.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 20%" />
+<col style="width: 27%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>H3 Resolution</p></th>
+<th class="head"><p>Avg. Hexagon Area (km2)</p></th>
+<th class="head"><p>Avg. Hexagon Edge Length (km)</p></th>
+<th class="head"><p>No. of unique indexes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p class="centered">
+<strong>5</strong></p></td>
+<td><p class="centered">
+<strong>252.9033645</strong></p></td>
+<td><p class="centered">
+<strong>8.544408276</strong></p></td>
+<td><p class="centered">
+<strong>2,016,842</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p class="centered">
+<strong>6</strong></p></td>
+<td><p class="centered">
+<strong>36.1290521</strong></p></td>
+<td><p class="centered">
+<strong>3.229482772</strong></p></td>
+<td><p class="centered">
+<strong>14,117,882</strong></p></td>
+</tr>
+<tr class="row-even"><td><p class="centered">
+<strong>7</strong></p></td>
+<td><p class="centered">
+<strong>5.1612932</strong></p></td>
+<td><p class="centered">
+<strong>1.220629759</strong></p></td>
+<td><p class="centered">
+<strong>98,825,162</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p class="centered">
+<strong>8</strong></p></td>
+<td><p class="centered">
+<strong>0.7373276</strong></p></td>
+<td><p class="centered">
+<strong>0.461354684</strong></p></td>
+<td><p class="centered">
+<strong>691,776,122</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>For DATRO’s new network, 500 meter long honeycombs are sufficient for a balance between security obscurity and locationv accuracy.
 The closest suitable resolution is therefore resolution 8, which sets the honeycombs lengths to 461 Meters.
-Each of which has a dedicated and unique reference e.g. 8843a13687fffff</p>
-<p>But use of these references isn’t something which can be exclusively owned and controlled.
+Each of which has a dedicated 15 digit unique reference ID e.g. 8843a13687fffff</p>
+<p>There’s a ‘self-service website &lt;<a class="reference external" href="https://observablehq.com/&#64;sw1227/h3-index-visualizer">https://observablehq.com/&#64;sw1227/h3-index-visualizer</a>&gt;’__ for experiencing H3 in action without having to set it up locally.
+You can right click and edit the map and enter a UTM co-ordinate to specify the location. (remembering to reverse longitude and latitude).
+This is better than trying to pan and zoom to find a location, since the website is heavy on resources and crashes.</p>
+<p>In any case, use of these h3 references isn’t something which can be exclusively owned and controlled. So how to we overcome this challenge ?
 Enter Handshake. To understand Handshake its best to first understand Top Level Domains (TLD’s).
 TLD’s are unique in nature e.g. dot com (.com) for example is only able to be possesed by a single entity at any one time.
 If two entities both provided the TLD .com at the same time, how would a network know which party’s .com to direct traffic to when someone enteres a .com url into their browser ?
@@ -216,7 +274,8 @@ The Handshake platform has democratised and cheapened this process through what 
 The nodes running in the domes are categorised and these categories are listed as the domain name e.g. messaging.8843a13687fffff
 And finally the name of the service running in the dome is listed as the subdomain e.g. matrix.messaging.8843a13687fffff</p>
 <p>The domes can now establish links autonomously, since the addressing system contains the physical location.
-Next the services/ nodes running inside each dome can pair quickly by specifying the corresponding domain and subdomain.</p>
+Next the services/ nodes running inside each dome can pair quickly by specifying the corresponding domain and subdomain.
+And later, when the network is a few domes and nodes in size, the Bloculus protocol can be used to route traffic around the network, more effectively than anything in existance.</p>
 </div>
 <div class="section" id="market-potential">
 <h2>Market Potential<a class="headerlink" href="#market-potential" title="Permalink to this headline">¶</a></h2>

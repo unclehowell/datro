@@ -1,21 +1,25 @@
 Executive Summary 
 ====================
 
-DATRO is a for-profit consortium which is pioneering and actively beta testing its own web3.0 internet service along the 70km "Scottish Bay" caribbean coastline.
+DATRO is a for-profit consortium that is currently pioneering (and actively beta testing) its own web3.0 internet service along the 70km "Scottish Bay" caribbean coastline.
 This new fixed communications infrastructure comprises of geodesic communications equipment rooms (entitled "Neo Dome's"), which are solar powered and mesh together using licence-free Radio Frequencies (RF).
-The entire model, from the equipment room blueprints to the software, is in the public domain under a General Public Licence (GPL) allowing anyone, anywhere to launch the same network in their area. 
-The purpose of this document is to introduce the Bloculus protocol component of this network, which is being developed in order to allows the domes to find each other (and allows the decentralized nodes inside the domes to sync) fully autonomouosly, even before an internet gateway is present. 
-Furthermore this document explores the business model and subsequent business opportunities surrounding the Bloculus protocol.
+The entire network, including the communication rooms blueprints to the software which operates them and the end-users wireless access points, are in the public domain under a General Public Licence (GPL) - allowing anyone, anywhere to launch the same secure and decentralized network in their area. 
+The purpose of this document is to introduce a component of this network entitled the Bloculus Protcol, which is to become the underlying foundations of this entire network. 
+This document will also briefly explore the business model and subsequent business opportunities surrounding the Bloculus protocol.
 
 Challenge
 ~~~~~~~~~~~
 This protocol is being developed in order to overcome a few core challenges; 
 
-	1. Each newly constructed Neo Dome must be able to autonomously locate and pair with neighbouring Neo Dome's using licence-free RF 
+	1. Each newly constructed Neo Dome needs a suitable protocol to quickly, securely and autonomously locate and pair with neighbouring Neo Dome's over licence-free Radio Frequencies 
 
-	2. After establishing secure radio links, the DWeb/Web3.0 nodes hosted inside the Dome, must autonomously pair to their corresponding nodes inside neighbouring domes  
+	2. After establishing secure radio links, the DWeb/Web3.0 nodes hosted inside the dome(s), must have a method to autonomously pair to their corresponding nodes inside neighbouring domes
 
-        3. The protocol has to be exclusively owned/controlled by the DATRO Consortium. Usage of it can then be billable in order to generate revenue to maintain the protocol
+        3. Character lengths/ texstrings must be short enough for the protocol to operate effectively over low-bandwidth/low-cost/low-energy fallback radio links e.g. LoRaWAN, Cellular USSD etc
+
+        4. The same protocol used to establish links of equipment rooms and nodes contained within, will serve to route and re-route traffic over the network e.g. uptime monitoring etc 
+
+        5. Protocol will be exclusive to the DATRO Consortium. Usage of the protocol will be autonomously compesated by the nodes using it, using cryptocurrency smart contracts e.g. a Decentralized Autonomous Organization (DAO)  
 
 
 Solution & Outcomes
@@ -32,11 +36,35 @@ In order to share in the excitement and opportuntities surrounding this new prot
 There's a multitude of grid reference systems in operation e.g. Universal Transverse Mercator (UTM), Military Grid Reference System (MGRS) etc 
 One of the most unique is Ubers H3 solution, which instead of referencing a point or square on a map it uses hexagonals, commonly known as "honeycombs". 
 A key feature of H3 used by DATRO is called "resolution", which permits the size of these honeycombs to be selected from a shortlist.
-For DATRO's new network, 500 meter long honeycombs are sufficient for a balance between security obscurity and location accuracy. 
-The closest suitable resolution is therefore resolution 8, which sets the honeycombs lengths to 461 Meters.
-Each of which has a dedicated and unique reference e.g. 8843a13687fffff
 
-But use of these references isn't something which can be exclusively owned and controlled. 
+
++------------------------+---------------------------+-------------------------------------+-------------------------------------------------+
+|H3 Resolution           | Avg. Hexagon Area (km2)   | Avg. Hexagon Edge Length (km)       |                 No. of unique indexes           |
++========================+===========================+=====================================+=================================================+
+| .. centered:: 5        | .. centered:: 252.9033645 | .. centered:: 8.544408276           |  .. centered:: 2,016,842                        |
++------------------------+---------------------------+-------------------------------------+-------------------------------------------------+
+| .. centered:: 6        | .. centered:: 36.1290521  | .. centered:: 3.229482772	   |  .. centered:: 14,117,882                       |
++------------------------+---------------------------+-------------------------------------+-------------------------------------------------+
+| .. centered:: 7        | .. centered:: 5.1612932   | .. centered:: 1.220629759	   |  .. centered:: 98,825,162                       |
++------------------------+---------------------------+-------------------------------------+-------------------------------------------------+
+| .. centered:: 8        | .. centered:: 0.7373276   | .. centered:: 0.461354684	   |  .. centered:: 691,776,122                      |
++------------------------+---------------------------+-------------------------------------+-------------------------------------------------+
+
+For DATRO's new network, 500 meter long honeycombs are sufficient for a balance between security obscurity and locationv accuracy.
+The closest suitable resolution is therefore resolution 8, which sets the honeycombs lengths to 461 Meters.
+Each of which has a dedicated 15 digit unique reference ID e.g. 8843a13687fffff
+
+.. image::  _static/h5-h8-sb.png
+   :width: 620px
+   :alt: `Bloculus, Scottish Bay,DR`
+
+   `Bloculus, Scottish Bay, DR` 
+
+There's a 'self-service website <https://observablehq.com/@sw1227/h3-index-visualizer>'__ for experiencing H3 in action without having to set it up locally.
+You can right click and edit the map and enter a UTM co-ordinate to specify the location. (remembering to reverse longitude and latitude). 
+This is better than trying to pan and zoom to find a location, since the website is heavy on resources and crashes.
+ 
+In any case, use of these h3 references isn't something which can be exclusively owned and controlled. So how to we overcome this challenge ? 
 Enter Handshake. To understand Handshake its best to first understand Top Level Domains (TLD's).
 TLD's are unique in nature e.g. dot com (.com) for example is only able to be possesed by a single entity at any one time.
 If two entities both provided the TLD .com at the same time, how would a network know which party's .com to direct traffic to when someone enteres a .com url into their browser ? 
@@ -50,7 +78,8 @@ And finally the name of the service running in the dome is listed as the subdoma
 
 The domes can now establish links autonomously, since the addressing system contains the physical location.
 Next the services/ nodes running inside each dome can pair quickly by specifying the corresponding domain and subdomain. 
-
+And later, when the network is a few domes and nodes in size, the Bloculus protocol can be used to route traffic around the network, more effectively than anything in existance.
+ 
 
 Market Potential
 ~~~~~~~~~~~~~~~~~~~~ 

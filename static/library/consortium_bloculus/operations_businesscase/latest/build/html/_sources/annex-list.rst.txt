@@ -4,6 +4,16 @@ Annexures
 This section contains the Annexures, referenced in the text above.
 The :ref:`Download Links` for these Annexures can be found at the very end of this document:
 
+Resolutions (All) 
+~~~~~~~~~~~~~~~~~~~
+Download the `SVG File <https://datro.xyz/static/library/consortium_bloculus/operations_businesscase/latest/build/html/_static/h5-h8-sb.svg>`__
+
+.. image:: _static/h5-h8-sb.png
+  :width: 800
+  :alt: Resolutions (All)
+
+
+
 Resolution 6 (3.23Km Wide Cells)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Download the `SVG File <https://datro.xyz/static/library/consortium_bloculus/operations_businesscase/latest/build/html/_static/resolution6.svg>`__
