@@ -31,10 +31,6 @@ Each sub-directry features its own CHANGELOG.md file, which correspond to change
 13-Mar - hbnb/arm compiles in 1 minute - down from the 3 minutes - see hbnb/arm/changelog.md for details
 11-Mar - Got hbnb/arm functioning (Tested on the Raspberry Pi4) - See hbnb/arm/changelog.md for details
 
-#### Added
-
-#### Changed
-
 #### Fixed
 10-Mar - Fixed a lot of the build erros - for details see hbnb/arm/{changelog.md,buildlog.md,.buildlog/*}
 
