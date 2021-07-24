@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - ideally at some point the content of /static/ could be moved up a directory and /static/ removed alltogether.   
  - However, for now, it's understood that /static/ is required of gh-pages to serve the directory content as webpages.   
 2. Any changes to index.html in this top level directory should be logged in the datro subdirectory, since it belongs to that website  
+3. Before commiting a change update the sitemap.xml (automated script to perform this task is in the `static/monoreapo/sitemap/` directory  
 
 ## [Unreleased]
 
@@ -23,6 +24,8 @@ Jul-06 - Ran `static/monoreapo/analytics/undo.sh` and `run.sh` (remove/ re-inser
 
 ### Fixed
 
+### Updated
+Jul-24 - Updated Bloculus biz case draft in library and updated the sitemap.xml  
 
 ## [0.0.1-rtw.11] - Q2/2021
 

@@ -10,8 +10,8 @@ resolving references...
 done
 writing... done
 copying images... [ 33%] _static/h5-h8-sb.png
-copying images... [ 66%] _static/resolution6.png
-copying images... [100%] _static/resolution5.png
+copying images... [ 66%] _static/resolution5.png
+copying images... [100%] _static/resolution6.png
 
 copying TeX support files... copying TeX support files...
 done
@@ -142,22 +142,22 @@ Chapter 1.
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 123.
+(textcomp)                Default family used instead on input line 127.
 
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 194.
+(textcomp)                Default family used instead on input line 198.
 
 [1]
 Chapter 2.
-
-Overfull \hbox (33.75966pt too wide) in paragraph at lines 243--243
+[2]
+Overfull \hbox (33.75966pt too wide) in paragraph at lines 249--249
 []
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--243
+Underfull \hbox (badness 10000) in paragraph at lines 249--249
 
-[2] [3] [4] [5]
+[3] [4] [5]
 Chapter 3.
 [6]
 Chapter 4.
@@ -167,12 +167,12 @@ Chapter 5.
 Chapter 6.
 
 LaTeX Warning: Hyper reference `annex-list:download-links' on page 9 undefined 
-on input line 485.
+on input line 491.
 
-[9] [10 <./h5-h8-sb.png>] [11 <./resolution6.png> <./resolution5.png>] [12]
+[9 <./h5-h8-sb.png>] [10 <./resolution5.png> <./resolution6.png>] [11]
 Chapter 7.
 No file consortium_bloculus-operations_businesscase.ind.
-[13] (./consortium_bloculus-operations_businesscase.aux)
+[12] (./consortium_bloculus-operations_businesscase.aux)
 
 Package rerunfilecheck Warning: File `consortium_bloculus-operations_businessca
 se.out' has changed.
@@ -195,8 +195,8 @@ hvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb><
 exlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 urw/times/utmri8a.pfb>
-Output written on consortium_bloculus-operations_businesscase.pdf (15 pages, 82
-1286 bytes).
+Output written on consortium_bloculus-operations_businesscase.pdf (14 pages, 13
+54167 bytes).
 Transcript written on consortium_bloculus-operations_businesscase.log.
 Latexmk: Index file 'consortium_bloculus-operations_businesscase.idx' was written
 Latexmk: Missing input file: 'consortium_bloculus-operations_businesscase.ind' from line
@@ -345,22 +345,22 @@ Chapter 1.
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 123.
+(textcomp)                Default family used instead on input line 127.
 
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 194.
+(textcomp)                Default family used instead on input line 198.
 
 [1]
 Chapter 2.
-
-Overfull \hbox (33.75966pt too wide) in paragraph at lines 243--243
+[2]
+Overfull \hbox (33.75966pt too wide) in paragraph at lines 249--249
 []
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--243
+Underfull \hbox (badness 10000) in paragraph at lines 249--249
 
-[2] [3] [4] [5]
+[3] [4] [5]
 Chapter 3.
 [6]
 Chapter 4.
@@ -368,9 +368,9 @@ Chapter 4.
 Chapter 5.
 [8]
 Chapter 6.
-[9] [10 <./h5-h8-sb.png>] [11 <./resolution6.png> <./resolution5.png>] [12]
+[9 <./h5-h8-sb.png>] [10 <./resolution5.png> <./resolution6.png>] [11]
 Chapter 7.
-(./consortium_bloculus-operations_businesscase.ind) [13]
+(./consortium_bloculus-operations_businesscase.ind) [12]
 (./consortium_bloculus-operations_businesscase.aux) )
 (see the transcript file for additional information){/usr/share/texlive/texmf-d
 ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
@@ -381,8 +381,8 @@ hvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb><
 exlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 urw/times/utmri8a.pfb>
-Output written on consortium_bloculus-operations_businesscase.pdf (15 pages, 82
-9466 bytes).
+Output written on consortium_bloculus-operations_businesscase.pdf (14 pages, 13
+62050 bytes).
 Transcript written on consortium_bloculus-operations_businesscase.log.
 Latexmk: Index file 'consortium_bloculus-operations_businesscase.idx' was written
 Latexmk: Log file says output to 'consortium_bloculus-operations_businesscase.pdf'
@@ -510,22 +510,22 @@ Chapter 1.
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 123.
+(textcomp)                Default family used instead on input line 127.
 
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 194.
+(textcomp)                Default family used instead on input line 198.
 
 [1]
 Chapter 2.
-
-Overfull \hbox (33.75966pt too wide) in paragraph at lines 243--243
+[2]
+Overfull \hbox (33.75966pt too wide) in paragraph at lines 249--249
 []
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--243
+Underfull \hbox (badness 10000) in paragraph at lines 249--249
 
-[2] [3] [4] [5]
+[3] [4] [5]
 Chapter 3.
 [6]
 Chapter 4.
@@ -533,9 +533,9 @@ Chapter 4.
 Chapter 5.
 [8]
 Chapter 6.
-[9] [10 <./h5-h8-sb.png>] [11 <./resolution6.png> <./resolution5.png>] [12]
+[9 <./h5-h8-sb.png>] [10 <./resolution5.png> <./resolution6.png>] [11]
 Chapter 7.
-(./consortium_bloculus-operations_businesscase.ind) [13]
+(./consortium_bloculus-operations_businesscase.ind) [12]
 (./consortium_bloculus-operations_businesscase.aux) )
 (see the transcript file for additional information){/usr/share/texlive/texmf-d
 ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
@@ -546,8 +546,8 @@ hvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb><
 exlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 urw/times/utmri8a.pfb>
-Output written on consortium_bloculus-operations_businesscase.pdf (15 pages, 82
-9466 bytes).
+Output written on consortium_bloculus-operations_businesscase.pdf (14 pages, 13
+62050 bytes).
 Transcript written on consortium_bloculus-operations_businesscase.log.
 Latexmk: Index file 'consortium_bloculus-operations_businesscase.idx' was written
 Latexmk: Log file says output to 'consortium_bloculus-operations_businesscase.pdf'

@@ -14,6 +14,8 @@ Jul-11 - Changed date format on this changelog - should always be YYYY-MM-DD, no
 Jul-11 - Minor edit to `consortium_bloculus` - removed content from template and inserted some lorum ipson text  
 Jul-08 - Changed the `consortium_bloculus` document content to further explain the protocol ... still way more to do on this doc and protocol, but it's coming together  
 
+### Removed
+July-24 - Removed `Grid-Intro` from `consortium_plans/.treeview.json`  
 
 ## [-library.03] - Q2/2021
 
