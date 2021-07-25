@@ -8,6 +8,10 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [-library.03] - Q3/2021
 
+### Added
+Jul-24 - Added a directory called `consortium_other/github_wiki` in library and contained within is a new type of `custom.sh` build script   
+Jul-24 - The idea is that this build will trigger the custom.sh which will fetch the latest github wiki and turn it into a standard doc e.g. html/pdf   
+
 ### Changed
 Jul-11 - Added svg/png maps to `consortium_bloculus` document  
 Jul-11 - Changed date format on this changelog - should always be YYYY-MM-DD, not sure why its been DD-MM up until now (perhaps keepchangelog guildelines ??)   

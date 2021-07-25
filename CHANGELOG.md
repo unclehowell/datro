@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.12] - Q3/2021
 
 ### Added
+Jul-24 - Added a custom.sh in one of the docs in library (see library changelog), just wanted to push before running the script, incase  
 
 ### Removed
 

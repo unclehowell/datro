@@ -295,13 +295,12 @@ GitHub will notify you if there's a comment to respond to or when the administra
 
       ### This code bulk changes the extension on multiple files  
 
-      ```bash
-      #!/bin/sh
-      for i in *.txt
-	do
-      mv -- "$i" "${i%.txt}"
-      done
-      ```
+	```
+	#!/bin/sh
+	for f in *.md; do 
+    	mv -- "$f" "${f%.md}.rst"
+	done
+	```
 
       ### Command for finding text in all files in a specific directory  
 
