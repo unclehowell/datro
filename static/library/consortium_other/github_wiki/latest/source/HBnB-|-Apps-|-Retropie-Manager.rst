@@ -1,6 +1,5 @@
-HBnB | Apps | RetroPie | Manager
-==================================
-
+HBnB > Apps > Retropie-Manager
+======================================================
 # RetroPie-Manager
 
 ## Errors & Solution

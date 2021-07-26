@@ -1,7 +1,5 @@
-HBnB | Apps | ES | Virtual-GamePad
-=======================================
-
-
+HBnB > Apps > Virtual-GamePad
+======================================================
 ## Install Node.js
 
 ```

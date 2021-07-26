@@ -1,31 +1,29 @@
 DATRO Wiki
-===========
-
+============
 
 .. toctree::
    :maxdepth: 2
-   
 
    releasenotes
-   Home
-   HBnB-|-Apps-|-ES-|-BGM
-   HBnB-|-Apps-|-ES-|-es_input.cfg
-   HBnB-|-Apps-|-ES-|-Virtual-GamePad
+   Home-|-Home-|-Home
    HBnB-|-Apps-|-PiHole
-   HBnB-|-Apps-|-RetroPie-|-Manager
-   HBnB-|-ARM-|-Manual-Build
+   HBnB-|-Apps-|-RetroPie-|-BGM
+   HBnB-|-Apps-|-Retropie-|-es_input.cfg
+   HBnB-|-Apps-|-Retropie-Manager
+   HBnB-|-Apps-|-Virtual-GamePad
    HBnB-|-Configs-|-config.txt
    HBnB-|-Configs-|-fstab
    HBnB-|-Configs-|-System-Analyze
    HBnB-|-Configs-|-system.conf
    HBnB-|-Configs-|-wpa_supplicant.conf
-   _Sidebar
-   
-   
- 
-   
-**Document Author(s):** 
+   HBnB-|-Manual-Build-Process
+
+
+
+**Document Author(s):**
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
+=========================================
 **DATRO Consortium**
+=========================================
 

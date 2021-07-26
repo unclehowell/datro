@@ -1,6 +1,5 @@
-HBnB | Configs | wpa_supplicant.conf
-================================================
-
+HBnB > Configs > wpa_supplicant.conf
+======================================================
 
 1. Create `wpa_supplicant.conf` in the `/boot/` directory using this command:
 
@@ -13,10 +12,10 @@ country=US
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 
-network={
+ network={
     ssid="NETWORK-NAME"
     psk="NETWORK-PASSWORD"
-}
+ }
 ```
 
 3. Then `CTL-X` then `Y` then `ENTER` to save the file. 

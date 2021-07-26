@@ -1,7 +1,5 @@
-HBnB | Configs | fstab
-=======================
-
-
+HBnB > Configs > fstab
+======================================================
 If the MicroSD Card corrupts, use fsck/ dosfsck. 
 
 1. Place it into a Linux machine

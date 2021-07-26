@@ -19,6 +19,7 @@ Jul-24 - Added a custom.sh in one of the docs in library (see library changelog)
 ### Removed
 
 ### Changed 
+Jul-24 - Change in Library (wiki document) - see libraries dedicated changelog for details  
 Jul-11 - Minor edit to `library` and regenerated sitemap.xml and changed the date format in this changelog moving forward. Was DD-MM , now it's MM-DD   
 Jul-08 - Changed to `static/library` - see library changelog for details  
 Jul-06 - Ran `static/monoreapo/analytics/undo.sh` and `run.sh` (remove/ re-insert google analytics in *.html's & re-generate sitemap)  
@@ -26,6 +27,7 @@ Jul-06 - Ran `static/monoreapo/analytics/undo.sh` and `run.sh` (remove/ re-inser
 ### Fixed
 
 ### Updated
+Jul-26 - Updated sitemap.xml (to include first draft document (pdf/html) version of github wiki  
 Jul-24 - Updated Bloculus biz case draft in library and updated the sitemap.xml  
 
 ## [0.0.1-rtw.11] - Q2/2021

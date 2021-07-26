@@ -48,7 +48,7 @@ cd ..
 cd source
 mkdir tmp
 # offline attempt
-#cp -r /var/www/html/datro.wiki/*.md tmp
+cp -r /var/www/html/datro.wiki/*.md tmp
 # online attempt
 git clone https://github.com/unclehowell/datro.wiki.git &&
 mv datro.wiki/*.md tmp
@@ -86,7 +86,7 @@ echo "\n" >> index2.txt
 while read -r iiitem; do
   file="${iiitem}_foo.rst"
   [[ ! -f "$file" ]] && continue # skip if file doesn't exist or if it is not a regular file
-  printf '%s\n' 0a "$iiitem" . x | ex "$file"
+  printf '0a\%s\n.' "$iiitem" >> "$file"
 done < index2.txt
 
 ## rm -r index2.txt
@@ -104,8 +104,6 @@ do
 done
 
 grep -rl 'iiitem' ./*.rst | xargs sed -i 's/iiitem//g'
-sed -i '1 a ======================================================' *.rst
-grep -rl '\-|\-' ./ | xargs sed -i '1 s/\-|\-/ > /g'
 mv *.rst ../
 sed -i -e 's/^/   /' ../index/index.txt
 cd ..
@@ -117,10 +115,18 @@ cat index/index.txt >> indexrst/index.rst
  # more housekeeping
 grep -rl '.rst' ./indexrst | xargs sed -i 's/.rst//g'
 grep -rl 'iiitem' ./indexrst | xargs sed -i 's/iiitem//g'
+
 mv indexrst/index.rst ./
 rm -r indexrst
 rm -r tmp
 rm -r index
 cd ..
 
-# That's all for now - still needs work BTW
+# if file has 1 -|- append heading ======
+# if file has 2 -|- append subheading ------
+# if file has 3 -|- append subsubheading  ####
+
+# apped space under
+
+# move bottom lines to top
+

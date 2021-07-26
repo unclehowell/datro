@@ -1,10 +1,8 @@
-HBnB | ARM | Manual-Build
-===========================
-
-
+HBnB > Manual-Build-Process
+======================================================
 # Install Dependencies
 
-`sudo apt-get install git'
+`sudo apt-get install git`
 
 # Install GUI
 

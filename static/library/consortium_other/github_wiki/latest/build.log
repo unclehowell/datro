@@ -5,7 +5,7 @@ building [mo]: targets for 0 po files that are out of date
 building [latex]: all documents
 updating environment: 0 added, 0 changed, 0 removed
 looking for now-outdated files... none found
-processing consortium_other-github_wiki.tex... index releasenotes Home HBnB-|-Apps-|-ES-|-BGM HBnB-|-Apps-|-ES-|-es_input.cfg HBnB-|-Apps-|-ES-|-Virtual-GamePad HBnB-|-Apps-|-PiHole HBnB-|-Apps-|-RetroPie-|-Manager HBnB-|-ARM-|-Manual-Build HBnB-|-Configs-|-config.txt HBnB-|-Configs-|-fstab HBnB-|-Configs-|-System-Analyze HBnB-|-Configs-|-system.conf HBnB-|-Configs-|-wpa_supplicant.conf _Sidebar 
+processing consortium_other-github_wiki.tex... index releasenotes Home-|-Home-|-Home HBnB-|-Apps-|-PiHole HBnB-|-Apps-|-RetroPie-|-BGM HBnB-|-Apps-|-Retropie-|-es_input.cfg HBnB-|-Apps-|-Retropie-Manager HBnB-|-Apps-|-Virtual-GamePad HBnB-|-Configs-|-config.txt HBnB-|-Configs-|-fstab HBnB-|-Configs-|-System-Analyze HBnB-|-Configs-|-system.conf HBnB-|-Configs-|-wpa_supplicant.conf HBnB-|-Manual-Build-Process 
 resolving references...
 done
 writing... done
@@ -134,57 +134,7 @@ Writing index file consortium_other-github_wiki.idx
 nts/map/pdftex/updmap/pdftex.map}] [1]
 Chapter 1.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1]
-Underfull \hbox (badness 10000) in paragraph at lines 232--234
-[]|\T1/phv/b/n/10 Ver-
-
-Underfull \hbox (badness 10000) in paragraph at lines 242--244
-[]|\T1/ptm/m/n/10 2021-
-[2]
 Chapter 2.
-[3]
-Chapter 3.
-[4]
-Chapter 4.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 303.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 303.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 303.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 302--305
-[]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 <in-put-Con-fig type=^^Q
-keyboard^^Q de-vi-ce-Name=^^QKeyboard^^Q deviceGUID=^^Q-1^^Q de-vi-ceN-bAxes=^^
-Q0^^Q de-vi-
-
-Overfull \hbox (301.63994pt too wide) in paragraph at lines 321--336
-[]
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 340.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 340.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 340.
-
-[5]
-Chapter 5.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd)
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
@@ -198,12 +148,100 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family pcr in TS1 encoding.
 (textcomp)                Default family used instead on input line 1.
 
+[2]
+Chapter 3.
+[3]
+Chapter 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 348--355
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 156.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 156.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 156.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--158
+[]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 <in-put-Con-fig type=^^Q
+keyboard^^Q de-vi-ce-Name=^^QKeyboard^^Q deviceGUID=^^Q-1^^Q de-vi-ceN-bAxes=^^
+Q0^^Q de-vi-
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 175.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 175.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 175.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 178.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 178.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 178.
+
+
+Overfull \hbox (24.86803pt too wide) in paragraph at lines 177--180
+[][]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 <in-put-Con-fig type=^
+^Qjoystick^^Q de-vi-ce-Name=^^QVirtual gamepad^^Q de-viceGUID=^^Q03000000030000
+000300000002000000^^Q
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 199.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 199.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 199.
+
+[4]
+Chapter 5.
+[5]
+Chapter 6.
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family pcr in TS1 encoding.
+(textcomp)                Default family used instead on input line 1.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family pcr in TS1 encoding.
+(textcomp)                Default family used instead on input line 1.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--240
 []\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 curl -sL https://deb.nodesource.com/setup_9
 .x | sudo bash - sudo apt install
 
-Underfull \hbox (badness 10000) in paragraph at lines 348--355
+Underfull \hbox (badness 10000) in paragraph at lines 233--240
 \T1/pcr/m/n/10 -y build-essential python-dev nodejs npm npm install -g npm \TS1
 /cmtt/m/n/10 ` \T1/ptm/m/n/10 (Mines \T1/ptm/m/it/10 node -v \T1/ptm/m/n/10 =
 
@@ -217,11 +255,11 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                Default family used instead on input line 1.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 356--364
+Underfull \hbox (badness 10000) in paragraph at lines 241--249
 \T1/pcr/m/n/10 curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key
  add - echo
 
-Underfull \hbox (badness 10000) in paragraph at lines 356--364
+Underfull \hbox (badness 10000) in paragraph at lines 241--249
 \T1/pcr/m/n/10 "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc
 /apt/sources.
 
@@ -235,7 +273,7 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                Default family used instead on input line 1.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--376
+Underfull \hbox (badness 10000) in paragraph at lines 253--261
 []\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 sudo npm cache clean -f sudo npm install -g
  n sudo n 9 sudo npm install -g
 
@@ -249,7 +287,7 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                Default family used instead on input line 1.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--388
+Underfull \hbox (badness 10000) in paragraph at lines 265--273
 []\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 sudo -i cd / git clone https://github.com/m
 iroof/node-virtual-gamepads cd
 
@@ -273,7 +311,7 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                Default family used instead on input line 1.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 398--405
+Underfull \hbox (badness 10000) in paragraph at lines 283--290
 []\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 sudo npm install pm2 -g sudo pm2 start main
 .js # full path e.g. /home/pi/
 
@@ -287,113 +325,117 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                Default family used instead on input line 1.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 []\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 input_device = "Virtual gamepad" input_driv
 er = "udev" input_r_btn = "5"
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 \T1/pcr/m/n/10 input_save_state_btn = "5" input_start_btn = "7" input_exit_emul
 ator_btn = "7"
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 \T1/pcr/m/n/10 input_l_btn = "4" input_load_state_btn = "4" input_up_axis = "-1
 " input_a_btn
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 \T1/pcr/m/n/10 = "0" input_b_btn = "1" input_reset_btn = "1" input_down_axis = 
 "+1"
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 \T1/pcr/m/n/10 input_right_axis = "+0" input_state_slot_increase_axis = "+0" in
 put_x_btn =
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 \T1/pcr/m/n/10 "2" input_menu_toggle_btn = "2" input_select_btn = "6" input_ena
 ble_hotkey_btn
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 \T1/pcr/m/n/10 = "6" input_y_btn = "3" input_left_axis = "-0" input_state_slot_
 decrease_axis
 [6] [7]
-Chapter 6.
-[8]
 Chapter 7.
-[9]
-Chapter 8.
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 509.
-
-[10]
-Chapter 9.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 542.
+(textcomp)                Default family used instead on input line 350.
 
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 542.
+(textcomp)                Default family used instead on input line 350.
 
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 542.
+(textcomp)                Default family used instead on input line 350.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 541--557
-[]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 dis-able_splash=1 dis-pl
-ay_default_lcd=0 dis-able_overscan=1 hdmi_force_hotplug=1
+Underfull \hbox (badness 10000) in paragraph at lines 349--365
+[][]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 dis-able_splash=1 dis-
+play_default_lcd=0 dis-able_overscan=1 hdmi_force_hotplug=1
 
-Underfull \hbox (badness 6412) in paragraph at lines 541--557
+Underfull \hbox (badness 6412) in paragraph at lines 349--365
 \T1/ptm/m/n/10 hdmi_ignore_edid=0xa5000080 hdmi_drive=2 con-fig_hdmi_boost=4 dt
 -param=i2c_arm=on dt-param=audio=on
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 571.
+(textcomp)                Default family used instead on input line 381.
 
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 571.
+(textcomp)                Default family used instead on input line 381.
 
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 571.
+(textcomp)                Default family used instead on input line 381.
 
-[11]
+[8]
+Chapter 8.
+[9]
+Chapter 9.
+[10]
 Chapter 10.
-[12]
+[11]
 Chapter 11.
-[13]
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 444.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 444.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 444.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 462.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 462.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 462.
+
+[12]
 Chapter 12.
-[14]
+[13]
 Chapter 13.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 634.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 634.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 634.
-
-[15]
-Chapter 14.
-[16]
-Chapter 15.
 No file consortium_other-github_wiki.ind.
-[17] (./consortium_other-github_wiki.aux)
+[14] (./consortium_other-github_wiki.aux)
 
 Package rerunfilecheck Warning: File `consortium_other-github_wiki.out' has cha
 nged.
@@ -406,15 +448,15 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
  )
 (see the transcript file for additional information){/usr/share/texlive/texmf-d
 ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
-jknappen/ec/tctt1000.600pk> </root/.texlive2020/texmf-var/fonts/pk/ljfour/jknap
-pen/ec/tcrm1000.600pk> </root/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/e
-c/tcrb1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.
+jknappen/ec/tcrm1000.600pk> </root/.texlive2020/texmf-var/fonts/pk/ljfour/jknap
+pen/ec/tcrb1000.600pk> </root/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/e
+c/tctt1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ti
 mes/utmri8a.pfb>
-Output written on consortium_other-github_wiki.pdf (19 pages, 110430 bytes).
+Output written on consortium_other-github_wiki.pdf (16 pages, 98598 bytes).
 Transcript written on consortium_other-github_wiki.log.
 Latexmk: Index file 'consortium_other-github_wiki.idx' was written
 Latexmk: Missing input file: 'consortium_other-github_wiki.ind' from line
@@ -557,57 +599,7 @@ nts/map/pdftex/updmap/pdftex.map}] (./consortium_other-github_wiki.toc)
 [1]
 Chapter 1.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1]
-Underfull \hbox (badness 10000) in paragraph at lines 232--234
-[]|\T1/phv/b/n/10 Ver-
-
-Underfull \hbox (badness 10000) in paragraph at lines 242--244
-[]|\T1/ptm/m/n/10 2021-
-[2]
 Chapter 2.
-[3]
-Chapter 3.
-[4]
-Chapter 4.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 303.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 303.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 303.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 302--305
-[]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 <in-put-Con-fig type=^^Q
-keyboard^^Q de-vi-ce-Name=^^QKeyboard^^Q deviceGUID=^^Q-1^^Q de-vi-ceN-bAxes=^^
-Q0^^Q de-vi-
-
-Overfull \hbox (301.63994pt too wide) in paragraph at lines 321--336
-[]
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 340.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 340.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 340.
-
-[5]
-Chapter 5.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd)
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
@@ -621,12 +613,100 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family pcr in TS1 encoding.
 (textcomp)                Default family used instead on input line 1.
 
+[2]
+Chapter 3.
+[3]
+Chapter 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 348--355
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 156.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 156.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 156.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--158
+[]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 <in-put-Con-fig type=^^Q
+keyboard^^Q de-vi-ce-Name=^^QKeyboard^^Q deviceGUID=^^Q-1^^Q de-vi-ceN-bAxes=^^
+Q0^^Q de-vi-
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 175.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 175.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 175.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 178.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 178.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 178.
+
+
+Overfull \hbox (24.86803pt too wide) in paragraph at lines 177--180
+[][]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 <in-put-Con-fig type=^
+^Qjoystick^^Q de-vi-ce-Name=^^QVirtual gamepad^^Q de-viceGUID=^^Q03000000030000
+000300000002000000^^Q
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 199.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 199.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 199.
+
+[4]
+Chapter 5.
+[5]
+Chapter 6.
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family pcr in TS1 encoding.
+(textcomp)                Default family used instead on input line 1.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family pcr in TS1 encoding.
+(textcomp)                Default family used instead on input line 1.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--240
 []\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 curl -sL https://deb.nodesource.com/setup_9
 .x | sudo bash - sudo apt install
 
-Underfull \hbox (badness 10000) in paragraph at lines 348--355
+Underfull \hbox (badness 10000) in paragraph at lines 233--240
 \T1/pcr/m/n/10 -y build-essential python-dev nodejs npm npm install -g npm \TS1
 /cmtt/m/n/10 ` \T1/ptm/m/n/10 (Mines \T1/ptm/m/it/10 node -v \T1/ptm/m/n/10 =
 
@@ -640,11 +720,11 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                Default family used instead on input line 1.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 356--364
+Underfull \hbox (badness 10000) in paragraph at lines 241--249
 \T1/pcr/m/n/10 curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key
  add - echo
 
-Underfull \hbox (badness 10000) in paragraph at lines 356--364
+Underfull \hbox (badness 10000) in paragraph at lines 241--249
 \T1/pcr/m/n/10 "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc
 /apt/sources.
 
@@ -658,7 +738,7 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                Default family used instead on input line 1.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--376
+Underfull \hbox (badness 10000) in paragraph at lines 253--261
 []\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 sudo npm cache clean -f sudo npm install -g
  n sudo n 9 sudo npm install -g
 
@@ -672,7 +752,7 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                Default family used instead on input line 1.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--388
+Underfull \hbox (badness 10000) in paragraph at lines 265--273
 []\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 sudo -i cd / git clone https://github.com/m
 iroof/node-virtual-gamepads cd
 
@@ -696,7 +776,7 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                Default family used instead on input line 1.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 398--405
+Underfull \hbox (badness 10000) in paragraph at lines 283--290
 []\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 sudo npm install pm2 -g sudo pm2 start main
 .js # full path e.g. /home/pi/
 
@@ -710,124 +790,128 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                Default family used instead on input line 1.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 []\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 input_device = "Virtual gamepad" input_driv
 er = "udev" input_r_btn = "5"
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 \T1/pcr/m/n/10 input_save_state_btn = "5" input_start_btn = "7" input_exit_emul
 ator_btn = "7"
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 \T1/pcr/m/n/10 input_l_btn = "4" input_load_state_btn = "4" input_up_axis = "-1
 " input_a_btn
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 \T1/pcr/m/n/10 = "0" input_b_btn = "1" input_reset_btn = "1" input_down_axis = 
 "+1"
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 \T1/pcr/m/n/10 input_right_axis = "+0" input_state_slot_increase_axis = "+0" in
 put_x_btn =
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 \T1/pcr/m/n/10 "2" input_menu_toggle_btn = "2" input_select_btn = "6" input_ena
 ble_hotkey_btn
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 \T1/pcr/m/n/10 = "6" input_y_btn = "3" input_left_axis = "-0" input_state_slot_
 decrease_axis
 [6] [7]
-Chapter 6.
-[8]
 Chapter 7.
-[9]
-Chapter 8.
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 509.
-
-[10]
-Chapter 9.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 542.
+(textcomp)                Default family used instead on input line 350.
 
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 542.
+(textcomp)                Default family used instead on input line 350.
 
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 542.
+(textcomp)                Default family used instead on input line 350.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 541--557
-[]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 dis-able_splash=1 dis-pl
-ay_default_lcd=0 dis-able_overscan=1 hdmi_force_hotplug=1
+Underfull \hbox (badness 10000) in paragraph at lines 349--365
+[][]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 dis-able_splash=1 dis-
+play_default_lcd=0 dis-able_overscan=1 hdmi_force_hotplug=1
 
-Underfull \hbox (badness 6412) in paragraph at lines 541--557
+Underfull \hbox (badness 6412) in paragraph at lines 349--365
 \T1/ptm/m/n/10 hdmi_ignore_edid=0xa5000080 hdmi_drive=2 con-fig_hdmi_boost=4 dt
 -param=i2c_arm=on dt-param=audio=on
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 571.
+(textcomp)                Default family used instead on input line 381.
 
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 571.
+(textcomp)                Default family used instead on input line 381.
 
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 571.
+(textcomp)                Default family used instead on input line 381.
 
-[11]
+[8]
+Chapter 8.
+[9]
+Chapter 9.
+[10]
 Chapter 10.
-[12]
+[11]
 Chapter 11.
-[13]
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 444.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 444.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 444.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 462.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 462.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 462.
+
+[12]
 Chapter 12.
-[14]
+[13]
 Chapter 13.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 634.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 634.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 634.
-
-[15]
-Chapter 14.
-[16]
-Chapter 15.
-(./consortium_other-github_wiki.ind) [17] (./consortium_other-github_wiki.aux) 
+(./consortium_other-github_wiki.ind) [14] (./consortium_other-github_wiki.aux) 
 )
-(see the transcript file for additional information){/usr/share/texlive/texmf-d
-ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
-jknappen/ec/tctt1000.600pk> </root/.texlive2020/texmf-var/fonts/pk/ljfour/jknap
-pen/ec/tcrm1000.600pk> </root/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/e
-c/tcrb1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.
+(see the transcript file for additional information) </root/.texlive2020/texmf-
+var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk> </root/.texlive2020/texmf-var/f
+onts/pk/ljfour/jknappen/ec/tcrb1000.600pk>{/usr/share/texlive/texmf-dist/fonts/
+enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/e
+c/tctt1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ti
 mes/utmri8a.pfb>
-Output written on consortium_other-github_wiki.pdf (19 pages, 115095 bytes).
+Output written on consortium_other-github_wiki.pdf (16 pages, 107120 bytes).
 Transcript written on consortium_other-github_wiki.log.
 Latexmk: Index file 'consortium_other-github_wiki.idx' was written
 Latexmk: Log file says output to 'consortium_other-github_wiki.pdf'
@@ -949,57 +1033,7 @@ nts/map/pdftex/updmap/pdftex.map}] (./consortium_other-github_wiki.toc)
 [1]
 Chapter 1.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1]
-Underfull \hbox (badness 10000) in paragraph at lines 232--234
-[]|\T1/phv/b/n/10 Ver-
-
-Underfull \hbox (badness 10000) in paragraph at lines 242--244
-[]|\T1/ptm/m/n/10 2021-
-[2]
 Chapter 2.
-[3]
-Chapter 3.
-[4]
-Chapter 4.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 303.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 303.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 303.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 302--305
-[]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 <in-put-Con-fig type=^^Q
-keyboard^^Q de-vi-ce-Name=^^QKeyboard^^Q deviceGUID=^^Q-1^^Q de-vi-ceN-bAxes=^^
-Q0^^Q de-vi-
-
-Overfull \hbox (301.63994pt too wide) in paragraph at lines 321--336
-[]
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 340.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 340.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 340.
-
-[5]
-Chapter 5.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd)
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
@@ -1013,12 +1047,100 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family pcr in TS1 encoding.
 (textcomp)                Default family used instead on input line 1.
 
+[2]
+Chapter 3.
+[3]
+Chapter 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 348--355
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 156.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 156.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 156.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--158
+[]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 <in-put-Con-fig type=^^Q
+keyboard^^Q de-vi-ce-Name=^^QKeyboard^^Q deviceGUID=^^Q-1^^Q de-vi-ceN-bAxes=^^
+Q0^^Q de-vi-
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 175.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 175.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 175.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 178.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 178.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 178.
+
+
+Overfull \hbox (24.86803pt too wide) in paragraph at lines 177--180
+[][]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 <in-put-Con-fig type=^
+^Qjoystick^^Q de-vi-ce-Name=^^QVirtual gamepad^^Q de-viceGUID=^^Q03000000030000
+000300000002000000^^Q
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 199.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 199.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 199.
+
+[4]
+Chapter 5.
+[5]
+Chapter 6.
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family pcr in TS1 encoding.
+(textcomp)                Default family used instead on input line 1.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family pcr in TS1 encoding.
+(textcomp)                Default family used instead on input line 1.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--240
 []\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 curl -sL https://deb.nodesource.com/setup_9
 .x | sudo bash - sudo apt install
 
-Underfull \hbox (badness 10000) in paragraph at lines 348--355
+Underfull \hbox (badness 10000) in paragraph at lines 233--240
 \T1/pcr/m/n/10 -y build-essential python-dev nodejs npm npm install -g npm \TS1
 /cmtt/m/n/10 ` \T1/ptm/m/n/10 (Mines \T1/ptm/m/it/10 node -v \T1/ptm/m/n/10 =
 
@@ -1032,11 +1154,11 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                Default family used instead on input line 1.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 356--364
+Underfull \hbox (badness 10000) in paragraph at lines 241--249
 \T1/pcr/m/n/10 curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key
  add - echo
 
-Underfull \hbox (badness 10000) in paragraph at lines 356--364
+Underfull \hbox (badness 10000) in paragraph at lines 241--249
 \T1/pcr/m/n/10 "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc
 /apt/sources.
 
@@ -1050,7 +1172,7 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                Default family used instead on input line 1.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--376
+Underfull \hbox (badness 10000) in paragraph at lines 253--261
 []\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 sudo npm cache clean -f sudo npm install -g
  n sudo n 9 sudo npm install -g
 
@@ -1064,7 +1186,7 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                Default family used instead on input line 1.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--388
+Underfull \hbox (badness 10000) in paragraph at lines 265--273
 []\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 sudo -i cd / git clone https://github.com/m
 iroof/node-virtual-gamepads cd
 
@@ -1088,7 +1210,7 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                Default family used instead on input line 1.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 398--405
+Underfull \hbox (badness 10000) in paragraph at lines 283--290
 []\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 sudo npm install pm2 -g sudo pm2 start main
 .js # full path e.g. /home/pi/
 
@@ -1102,124 +1224,128 @@ Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                Default family used instead on input line 1.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 []\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 input_device = "Virtual gamepad" input_driv
 er = "udev" input_r_btn = "5"
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 \T1/pcr/m/n/10 input_save_state_btn = "5" input_start_btn = "7" input_exit_emul
 ator_btn = "7"
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 \T1/pcr/m/n/10 input_l_btn = "4" input_load_state_btn = "4" input_up_axis = "-1
 " input_a_btn
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 \T1/pcr/m/n/10 = "0" input_b_btn = "1" input_reset_btn = "1" input_down_axis = 
 "+1"
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 \T1/pcr/m/n/10 input_right_axis = "+0" input_state_slot_increase_axis = "+0" in
 put_x_btn =
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 \T1/pcr/m/n/10 "2" input_menu_toggle_btn = "2" input_select_btn = "6" input_ena
 ble_hotkey_btn
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--435
+Underfull \hbox (badness 10000) in paragraph at lines 295--320
 \T1/pcr/m/n/10 = "6" input_y_btn = "3" input_left_axis = "-0" input_state_slot_
 decrease_axis
 [6] [7]
-Chapter 6.
-[8]
 Chapter 7.
-[9]
-Chapter 8.
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 509.
-
-[10]
-Chapter 9.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 542.
+(textcomp)                Default family used instead on input line 350.
 
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 542.
+(textcomp)                Default family used instead on input line 350.
 
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 542.
+(textcomp)                Default family used instead on input line 350.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 541--557
-[]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 dis-able_splash=1 dis-pl
-ay_default_lcd=0 dis-able_overscan=1 hdmi_force_hotplug=1
+Underfull \hbox (badness 10000) in paragraph at lines 349--365
+[][]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 dis-able_splash=1 dis-
+play_default_lcd=0 dis-able_overscan=1 hdmi_force_hotplug=1
 
-Underfull \hbox (badness 6412) in paragraph at lines 541--557
+Underfull \hbox (badness 6412) in paragraph at lines 349--365
 \T1/ptm/m/n/10 hdmi_ignore_edid=0xa5000080 hdmi_drive=2 con-fig_hdmi_boost=4 dt
 -param=i2c_arm=on dt-param=audio=on
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 571.
+(textcomp)                Default family used instead on input line 381.
 
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 571.
+(textcomp)                Default family used instead on input line 381.
 
 
 Package textcomp Warning: Symbol \textasciigrave not provided by
 (textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 571.
+(textcomp)                Default family used instead on input line 381.
 
-[11]
+[8]
+Chapter 8.
+[9]
+Chapter 9.
+[10]
 Chapter 10.
-[12]
+[11]
 Chapter 11.
-[13]
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 444.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 444.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 444.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 462.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 462.
+
+
+Package textcomp Warning: Symbol \textasciigrave not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead on input line 462.
+
+[12]
 Chapter 12.
-[14]
+[13]
 Chapter 13.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 634.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 634.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 634.
-
-[15]
-Chapter 14.
-[16]
-Chapter 15.
-(./consortium_other-github_wiki.ind) [17] (./consortium_other-github_wiki.aux) 
+(./consortium_other-github_wiki.ind) [14] (./consortium_other-github_wiki.aux) 
 )
-(see the transcript file for additional information){/usr/share/texlive/texmf-d
-ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
-jknappen/ec/tctt1000.600pk> </root/.texlive2020/texmf-var/fonts/pk/ljfour/jknap
-pen/ec/tcrm1000.600pk> </root/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/e
-c/tcrb1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.
+(see the transcript file for additional information) </root/.texlive2020/texmf-
+var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk> </root/.texlive2020/texmf-var/f
+onts/pk/ljfour/jknappen/ec/tcrb1000.600pk>{/usr/share/texlive/texmf-dist/fonts/
+enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/e
+c/tctt1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ti
 mes/utmri8a.pfb>
-Output written on consortium_other-github_wiki.pdf (19 pages, 115095 bytes).
+Output written on consortium_other-github_wiki.pdf (16 pages, 107120 bytes).
 Transcript written on consortium_other-github_wiki.log.
 Latexmk: Index file 'consortium_other-github_wiki.idx' was written
 Latexmk: Log file says output to 'consortium_other-github_wiki.pdf'

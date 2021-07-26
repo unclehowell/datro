@@ -1,5 +1,6 @@
-HBnB | Configs | config.txt
-=============================
+HBnB > Configs > config.txt
+======================================================
+Below is where you'll find the default config.txt - Although looking at this, this isn't it - so don't depend on it. 
 
 ```
 disable_splash=1
@@ -27,4 +28,5 @@ max_framebuffers=2
 
 [all]
 dtoverlay=vc4-fkms-v3d
+
 ```

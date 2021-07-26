@@ -1,7 +1,5 @@
-HBnB | Apps | ES | es_input.cfg
-===================================
-
-
+HBnB > Apps > Retropie > es_input.cfg
+======================================================
 ```
 <inputConfig type="keyboard" deviceName="Keyboard" deviceGUID="-1" deviceNbAxes="0" deviceNbHats="0" deviceNbButtons="120">
 		<input name="a" type="key" id="115" value="1" code="168" />
@@ -15,7 +13,9 @@ HBnB | Apps | ES | es_input.cfg
 		<input name="select" type="key" id="32" value="1" code="168" />
 		<input name="start" type="key" id="13" value="1" code="168" />
 		<input name="up" type="key" id="1073741906" value="1" code="168" />
+```
 
+```
 <inputConfig type="joystick" deviceName="Virtual gamepad" deviceGUID="03000000030000000300000002000000" deviceNbAxes="2" deviceNbHats="0" deviceNbButtons="8">
                 <input name="a" type="button" id="0" value="1" code="304" />
 		<input name="b" type="button" id="1" value="1" code="305" />
