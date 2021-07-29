@@ -1,5 +1,5 @@
 HBnB > Configs > config.txt
-======================================================
+------------------------------------------------------------------------
 Below is where you'll find the default config.txt - Although looking at this, this isn't it - so don't depend on it. 
 
 ```

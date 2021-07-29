@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Jul-24 - Added a custom.sh in one of the docs in library (see library changelog), just wanted to push before running the script, incase  
 
 ### Removed
+Jul-29 - Removed some bad code in library `github_wiki/index.html` which caused a bug. see library changelog for details   
 
 ### Changed 
 Jul-24 - Change in Library (wiki document) - see libraries dedicated changelog for details  

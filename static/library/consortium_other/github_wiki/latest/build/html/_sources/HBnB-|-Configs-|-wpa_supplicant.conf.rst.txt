@@ -1,5 +1,5 @@
 HBnB > Configs > wpa_supplicant.conf
-======================================================
+------------------------------------------------------------------------
 
 1. Create `wpa_supplicant.conf` in the `/boot/` directory using this command:
 

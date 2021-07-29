@@ -1,5 +1,5 @@
 HBnB > Apps > Retropie > es_input.cfg
-======================================================
+------------------------------------------------------------------------
 ```
 <inputConfig type="keyboard" deviceName="Keyboard" deviceGUID="-1" deviceNbAxes="0" deviceNbHats="0" deviceNbButtons="120">
 		<input name="a" type="key" id="115" value="1" code="168" />

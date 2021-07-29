@@ -21,6 +21,7 @@ Jul-08 - Changed the `consortium_bloculus` document content to further explain t
 
 ### Removed
 July-24 - Removed `Grid-Intro` from `consortium_plans/.treeview.json`  
+July-29 - Removed some bad code from the end of `consortium_other/github_wiki/index.html` which caused hits to redirect back to the previous page.  
 
 ## [-library.03] - Q2/2021
 

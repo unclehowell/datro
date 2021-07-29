@@ -26,8 +26,10 @@ mkdir backup
 mv *.py backup
 mv releasenotes.rst backup
 rm -r *.rst
+rm -r *.csv
 rm -r 3
 rm -r index
+rm -r *.txt
 rm -r indexrst
 rm -r tmp
 mv backup/* ./
@@ -104,8 +106,35 @@ do
 done
 
 grep -rl 'iiitem' ./*.rst | xargs sed -i 's/iiitem//g'
-sed -i '1 a ======================================================' *.rst
+sed -i '1 a \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-' *.rst
 grep -rl '\-|\-' ./ | xargs sed -i '1 s/\-|\-/ > /g'
+
+# All files are now titled as sub-sub-sub-heading. 
+# Next we perform what I call an "RST Russian Doll" 
+
+# A. Generate blank sub-sub-heading rst files and title them accordingly, 
+
+
+# then merge the corresponding sub-sub-sub-heading titles into them.
+touch ../subsubsubheadings.txt
+find . -maxdepth 1 -mindepth 1 -type f -name '*\-|-**\-|-**\-|-*' >> ../subsubsubheadings.txt
+
+# B. Generate blank sub-heading rst files and title them accordingly,
+# then merge the corresponding sub-sub-heading title into them. 
+
+# C. Generate blank heading rst files and title them accordingly,
+# then merge the corresponding sub-heading title into them.
+
+echo "HEADERS, X" >> ../headers.csv
+ls *.rst | cut -f1 -d- | sort -u | while read HEADERS
+do
+    echo $HEADERS, \"$(echo "$HEADERS"* | sed 's/ /,/g')\" >> ../headers.csv
+done
+
+# next 
+
+cut -f1 -d ../headers.csv
+
 mv *.rst ../
 sed -i -e 's/^/   /' ../index/index.txt
 cd ..
