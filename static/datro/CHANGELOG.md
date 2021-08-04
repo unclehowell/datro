@@ -14,6 +14,10 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [-datro.04] - Q3/2021
 
 ### Changed
+
+04-Aug - Copywriting text improved in index.html and links to documents.html replaced with data-featherlight view and new library view (codenamed LibrarEye)     
+04-Aug - Changed download in footer to downloads - since the button links to the gh-pages releases, which now features more than just compiled HBnB Disk Image e.g. Persistent-Live, DApps and all the websites   
+04-Aug - Changed date on footer to include script that detects and displays current year (for copyleft).Replaces having to rewrite the year on the website each year to keep it concurrent   
 09-Jul - Changed the menu labels from `technology` to `portfolio` and `documents` to `library`  
  
 
