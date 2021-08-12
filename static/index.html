@@ -50,7 +50,7 @@
         const response = await fetch('./.treeview.json');
         const data = await response.json();
         let htmlString = '<ul>';
-        htmlString += `<p style="font-weight:bolder;text-align:center;color:lightslategrey;">Explore DATRO</p>`;
+        htmlString += `<p style="font-weight:bolder;text-align:center;color:lightslategrey;">Intellectual Properties</p>`;
         htmlString += `<li class="glyphicon glyphicon-arrow-up" style="opacity:0.4;"><a>up</a></li></br>`;
         for (let file of data) {
           htmlString += `<i class="glyphicon glyphicon-book"><a href="${file.path}">${file.name}</a></li></br>`;

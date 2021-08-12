@@ -8,6 +8,11 @@ and a combination of [Prince2 Project Management](https://prince2.com).
    
 ## [Unreleased]    
 
+## [gui-0.2] - Q3/2021
+
+### Fixed
+Aug-12 - Two of the pages of the app-store had no `</style>` (stylesheet closing tag) - it prevented the page from loading  
+
 
 ## [gui-0.1] - Q2/2021
 

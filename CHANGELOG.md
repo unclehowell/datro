@@ -26,6 +26,7 @@ Jul-08 - Changed to `static/library` - see library changelog for details
 Jul-06 - Ran `static/monoreapo/analytics/undo.sh` and `run.sh` (remove/ re-insert google analytics in *.html's & re-generate sitemap)  
 
 ### Fixed
+Aug-12 - See changelog for `static/gui` - minor fix  
 
 ### Updated
 Jul-26 - Updated sitemap.xml (to include first draft document (pdf/html) version of github wiki  
