@@ -6,6 +6,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+
+## [-hbnb.01] - Q3/2021
+
+### Added
+Aug-13 - Minor edit to README.md - almost lost a handy bit of code, so I put it in the README for now. Really it should be in docs, will get to that later  
+
 ## [-hbnb.01] - Q2/2021
 
 ### Added 

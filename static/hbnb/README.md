@@ -26,4 +26,7 @@
   
 
       
+## The magic
 
+Basically you select the app icons and it switches to the port that app is running on e.g. 
+<a  href="#" onclick="window.location = window.location.protocol + '//' + window.location.hostname + ':8096';">
