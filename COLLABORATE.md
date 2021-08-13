@@ -326,3 +326,13 @@ GitHub will notify you if there's a comment to respond to or when the administra
      .md files need 2 spaces at the end of each paragraph for github.com to show them the same as text editors do. 
 
      awk '{printf "%s%*.s\n", $0, 100, " "}' filename > newfile
+
+
+Git Issues
+############
+
+If git push generates 403 run this command:
+
+`git config --global --unset credential.helper`
+
+Then retry
