@@ -1,0 +1,300 @@
+/*  2020 Copyleft - DATRO Consortium
+
+						 ............................................................................................
+						             DATRO by Unclehowell -  DATRO CONSORTIUM 2020  - All Wrongs Reserved
+					     ............................................................................................
+                           GitHub:https://github.com/unclehowell/datro -  Website:https://gui.8cc.online
+					     ..........................................................................................   */
+
+/*  Classes:     A. .container {}
+				 B. .carousel-maintitle {}
+				 C. .carousel-maintitle-link {}
+				 D. .carousel-maintitle-link:hover {}
+				 E. .carousel-title {}
+				 F. .carousel-title-link {}
+				 G. .carousel-title-link:hover {}
+				 H. .carousel-subtitle {}
+				 I. .carousel-item {}
+				 J. .appstore-img-button-play {}
+				 K. .appstore-img-button-apple  {}
+				 L. .payment-button-img-paypal {}
+				 M. .button-text-paypal {}
+				 N. .payment-button-img-stripe {}
+				 O. .button-text-stripe {}
+				 P. .button-block {}
+				 Q. .button-block-left {}
+				 R. .button-block-right {}
+				 S. .tick-box-holder {}
+				 T. .tick-box {}
+				 U. .moreinfo {}
+				 V.  #image1>img,#image2>img,#image3>img,#image4>img,#image4>img {}
+
+    Structure:  01. .class-1 {}  .class-2 {} ... etc
+				02. @media all and (min-width:1024px) 							                       {.class-1 {}.class-2 {} ... etc}
+				03. @media all and (min-width:960px) 												   {.class-1 {}.class-2 {} ... etc}
+				04. @media all and (min-width:960px) and (max-width:1123px)							   {.class-1 {}.class-2 {} ... etc}
+				05. @media all and (min-width:960px) and (max-width:1123px)and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
+				06. @media all and (min-width:960px) and (max-width:1123px)and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
+				07. @media all and (min-width:768px)												   {.class-1 {}.class-2 {} ... etc}
+				08. @media all and (min-width:768px) and (max-width:959px)  						   {.class-1 {}.class-2 {} ... etc}
+				09. @media all and (min-width:768px) and (max-width:959px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
+				10. @media all and (min-width:768px) and (max-width:959px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
+				11. @media all and (min-width:480px) 					 							   {.class-1 {}.class-2 {} ... etc}
+				12. @media all and (min-width:480px) and (max-width:767px) 							   {.class-1 {}.class-2 {} ... etc}
+				13. @media all and (min-width:480px) and (max-width:767px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
+				14. @media all and (min-width:480px) and (max-width:767px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
+				15. 					  @media all and (max-width:479px)                             {.class-1 {}.class-2 {} ... etc}
+				16. 			       	  @media all and (max-width:479px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
+				17. 					  @media all and (max-width:479px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
+				18. @media(-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:3/2), (min-resolution:1.5dppx) {}
+				19. @media print {}
+
+	01:> */
+
+.wrapperwrapper2 {position:static; padding-top:1rem; text-align: center!important;}
+.wrapper2 {	width:300px;margin:3% auto;}
+.dropdown2 dd ul li a span:first-child, .dropdown2 dt a span span:first-child {background-image: url('../img/flags/all.png'); background-repeat: no-repeat; width: 16px; height: 11px; display: inline-block; margin:5px; vertical-align: top; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
+.dropdown2 dd, .dropdown2 dt, .dropdown2 ul {margin: 0px; padding: 0px; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
+.dropdown2 dt a span {cursor: pointer; display: block; padding: 5px; white-space: nowrap;}
+.dropdown2 dt a img {position: relative; z-index: 1;}
+.dropdown2 dt a span span:first-child:before {position: absolute; content: ''; width: 15px; height: 10px; box-shadow: 0 1px 1px rgba(0,0,0,0.2) inset;}
+.dropdown2 dt a span span {display: inline-block; padding: 0;}
+.dropdown2 dt a span span:first-child {padding:0;}
+.dropdown2 dd {	position: relative;}
+.dropdown2 a, .dropdown2 a:visited {color: #4a535f; text-decoration: none; outline: none; text-align:left; z-index:0!important;}
+.dropdown2 a:hover {color: #5d4617;}
+.dropdown2 dt a:hover, .dropdown2 dt a:focus {color: #5d4617;}
+.dropdown2 dt a {position: relative; background: #e3e6ef; display: block; padding-right: 20px; overflow: hidden; border:1px dotted grey; border-radius: 5px; width:250px;}
+.dropdown2 dd ul {background: #f0f2f7; color: #C5C0B0; display: none; top: -3px; padding: 6px 0px; position: absolute; width: 250px; border: 1px solid #343A40; list-style: none; max-height: 136px; overflow-y: scroll; z-index: 2; border-radius: 0px 0px 11px 11px;}
+.dropdown2 dd ul::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.3); border-left:1px solid rgba(0,0,0,0.1);}
+.dropdown2 dd ul::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.4);}
+.dropdown2 dd ul::-webkit-scrollbar-thumb:window-inactive {background: blue;}
+.dropdown2 span.value {display: none;}
+.dropdown2 dd ul li a {padding: 5px; display: block; font-size: 12px !important;}
+.dropdown2 dd ul li a:hover {background-color: rgba(0,0,0,0.05);}
+dl.dropdown2 {display: inline-block; width: 240px; margin: -3px 0 0 1px;}
+dl.dropdown2 > span:nth-child(3) {color: rgba(0,0,0,0.4)}
+dl.dropdown2 dt span:nth-child(3) {display: none;}
+dl.dropdown2 > span:nth-child(2) {overflow: hidden; white-space: nowrap; display: inline-block;}
+dl.dropdown2 dt span:nth-child(2) {color: rgba(0, 0, 0, 0.6); font-size: 18px; font-weight: 300; line-height: 1.6em;}
+.countryFlag {padding: 0; background-image: url("https://i.imgur.com/OQiDoZe.png"); background-repeat: no-repeat; display: inline-block; height: 11px; margin-right: 4px; width: 16px; cursor: pointer; white-space: nowrap; -moz-border-bottom-colors: none; -moz-border-left-colors: none; -moz-border-right-colors: none; -moz-border-top-colors: none; border-color: #BFBFC1 #B6B6B6 #969696; border-image: none; border-radius: 2px 2px 2px 2px; border-style: solid; border-width: 1px; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.09);}
+dl.dropdown2>img {display:hidden; display:none;}
+.dropdown2 dt a:after {content: ''; background: #343A40; position: absolute; height: 32px; position: absolute; right: 0; top: 0; width: 35px;}
+.dropdown2 dt a:before {background: none repeat scroll 0 0 #FFFFFF; content: ""; height: 3px; position: absolute; right: 7px; top: 6px; width: 20px; z-index: 2; box-shadow:0 8px 0 #FFFFFF, 0 16px 0 #FFFFFF;}
+
+/* ---  FEATURES DROPDOWN  --- */
+.wrapperwrapper {position:static; text-align: left!important;}
+.carousel-dropdown dd, .carousel-dropdown dt, .carousel-dropdown ul {min-height:inherit; margin: 0px; padding: 0px; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
+.carousel-dropdown dt a span {
+
+font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    margin-left: 73px;
+    cursor: pointer;
+    letter-spacing: 0.01rem;
+    display: block;
+    min-height: 40px;
+    max-height: 20px;
+    padding-top: 0.5px;
+    font-weight: 300;
+    color: white;
+    overflow: hidden;
+    border-right: 1px solid transparent;
+    text-align: left;
+    line-height: 1.25rem;
+    float: left;
+    margin-top: 6px;
+
+
+}
+.features-text {position:absolute; float:left; left:0; margin-top:-3px!important; margin-left:-1px!important;}
+.carousel-dropdown dt a img {position: relative; z-index: 1;}
+.carousel-dropdown dt a span span:first-child:before {padding: 0; width: 0px; height: 0px; display: hidden; color: transparent; background-color: transparent; border: 1px solid transparent; visibility: hidden;}
+.carousel-dropdown dt a span span:first-child {padding: 0; width:3px; height:1px; visibility: hidden;}
+.carousel-dropdown dd {position: relative;}
+.carousel-dropdown a, .carousel-dropdown a:visited {font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-weight: 300;
+    text-decoration: none!important;
+    outline: none;
+    text-align: left;
+    line-height: 1.4rem!Important;
+    letter-spacing: 1px;
+    font-size: 95%!important;
+    max-height: 40px!Important;}
+.carousel-dropdown a:hover {color: #5d4617;}
+.carousel-dropdown dt a:hover, .carousel-dropdown dt a:focus {color: #5d4617;}
+.carousel-dropdown dt a {position: relative; background: transparent; display: block; padding-right: 10px; overflow: hidden; border:1px solid white; border-radius: 7px; max-width:160px; max-height: 35px;}
+.carousel-dropdown dd ul { background: rgba(51,51,102,0.95); box-shadow: inset 0 1px 9px rgba(255,255,255,0.4); padding-top: 1rem; position: fixed; border: 1px solid grey; border-radius: 17px 17px 0px 0px; overflow-y: hidden; width:157px; max-width:157px; margin-left: 2px; max-height: 357px; margin-top: calc(5vh + 3rem); bottom: 87px;-webkit-overflow-scrolling: touch;}
+.carousel-dropdown dd ul::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.3); border-left:1px solid rgba(0,0,0,0.1);}
+.carousel-dropdown dd ul::-webkit-scrollbar-thumb {background: rgba(0,0,0,0.4);}
+.carousel-dropdown dd ul::-webkit-scrollbar-thumb:window-inactive {background: blue;}
+.carousel-dropdown span.value {display: none;}
+.carousel-dropdown dd ul li a {
+    padding: 6px 0 6px 57px;
+    color: white!important;
+    margin: 0;
+    background-color: rgba(0,0,0,0.1);
+    white-space: nowrap!important;
+    display: inline-block;
+    width: 100%!important;
+    max-height: 40px;
+	}
+
+.dropdown-subtitle {
+	      max-width: 100%;
+    letter-spacing: 1px;
+    margin: 27px 0px 0 0!important;
+    color: rgba(255,255,255,0.5);
+    padding: 0!important;
+    display: inline-block;
+    text-align: center!Important;
+    margin-left: calc(50% - 73px)!important;
+    width: 140px;
+    font-size: 83%;
+    white-space: nowrap;
+}
+.carousel-dropdown dd ul li a:hover {background-color: darkslategray; border-radius: 8px!important; width: 96%!important; margin-left: 2%;}
+dl.carousel-dropdown {display: inline-block; min-width: 220px; max-width: 220px; margin: -3px 0 0 1px; max-height: 40px; margin-top: -2px; position: absolute;}
+dl.carousel-dropdown span:nth-child(3) {color: rgba(0,0,0,0.4);}
+dl.carousel-dropdown > span:nth-child(2) {overflow: hidden; white-space: nowrap; display: inline-block;}
+dl.carousel-dropdown span:nth-child(3) {float: right;}
+dl.carousel-dropdown dt span:nth-child(2) {color: white;
+    display: inline;
+    margin-left: 4rem!important;
+    font-size: 1rem;
+    background-color: transparent;
+    text-align: left;
+    font-weight: 300;
+    padding-top: 0.3rem;}
+dl.carousel-dropdown dt span:nth-child(3) {	display: none;}
+dl.carousel-dropdown>img {display:hidden; display:none;}
+.carousel-dropdown dt a:after {margin-top:1px; content: ''; background: transparent; position: absolute; height: 42px; position: absolute; left: -1px; top: -2px; width: 55px; border:1px solid white;}
+.carousel-dropdown dt a:before {background: none repeat scroll 0 0 white; content: ""; height: 0.1rem; position: absolute; left: 13px; top: 10px; width: 28px; opacity: 0.7; box-shadow: 0 8px 0 white, 0 16px 0 white;}
+.carousel-dropdown dd ul li a span:first-child, .carousel-dropdown dt a span span:first-child {background-image: url(../img/features-small.png); background-repeat: no-repeat; width: 34px; height: 33px; float: left; margin: 0px 0px 50px -55px; zoom:0.8; vertical-align: top; border-radius: 0px; padding: 0px; left: 0; }
+.carousel-dropdown-holder {background-color:transparent; background-image:none; display:inline-block; color: #343A40; width:3px; height:1px;}
+.carousel-dropdown-list {margin-left:50px; font-size:1rem; margin-top:-5px; padding-bottom:4px;}
+.carousel-caption {position:fixed!important; bottom:0; margin-bottom:0px!important; padding-bottom:1rem!important;}
+
+.media-carousel-dropdown-img {background-position:0px -70.5px;}
+.media-carousel-dropdown-img:hover {}
+.energy-carousel-dropdown-img {background-position:1px -34px;}
+.energy-carousel-dropdown-img:hover {}
+.iot-carousel-dropdown-img {background-position:0px 2px;}
+.iot-carousel-dropdown-img:hover {}
+.cameras-carousel-dropdown-img {background-position:-1px -106px;}
+.cameras-carousel-dropdown-img:hover {}
+.tracking-carousel-dropdown-img {background-position:0px -144px;}
+.tracking-carousel-dropdown-img:hover {}
+.more-carousel-dropdown-img {background-position:0px -180px;}
+.more-carousel-dropdown-img:hover {}
+
+/* ---  ? DROPDOWN  --- */
+
+.dropdown3 dd ul li a span:first-child, .dropdown3 dt a span span:first-child {background-image: url('../img/flags/all.png'); background-repeat: no-repeat; width: 16px; height: 11px; display: inline-block; margin:5px; vertical-align: top; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
+.dropdown3 dd, .dropdown3 dt, .dropdown3 ul {margin: 0px; padding: 0px; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
+.dropdown3 dt a span {cursor: pointer; display: block; padding: 5px; white-space: nowrap;}
+.dropdown3 dt a img {position: relative; z-index: 1;}
+.dropdown3 dt a span span:first-child:before {position: absolute; content: ''; width: 15px; height: 10px; box-shadow: 0 1px 1px rgba(0,0,0,0.2) inset;}
+.dropdown3 dt a span span {display: inline-block; padding: 0;}
+.dropdown3 dt a span span:first-child {padding: 0;}
+.dropdown3 dd {position: relative;}
+.dropdown3 a, .dropdown3 a:visited {color: #4a535f; text-decoration: none; outline: none; text-align:left;}
+.dropdown3 a:hover {color: #5d4617;}
+.dropdown3 dt a:hover, .dropdown3 dt a:focus {color: #5d4617;}
+.dropdown3 dt a {position: relative; background: #e3e6ef; display: block; padding-right: 20px; overflow: hidden; border:1px solid #343A40; border-radius: 5px; width:250px;}
+.dropdown3 dd ul {background: #f0f2f7; color: #C5C0B0; display: none; left: 0px; padding: 5px 0px; position: absolute; width: 250px; border:1px solid #343A40; list-style: none; max-height: 100px; overflow-y: scroll; z-index: 2;}
+.dropdown3 dd ul::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.3); border-left:1px solid rgba(0,0,0,0.1);}
+.dropdown3 dd ul::-webkit-scrollbar-thumb {background: rgba(0,0,0,0.4);}
+.dropdown3 dd ul::-webkit-scrollbar-thumb:window-inactive {background: blue;}
+.dropdown3 span.value {display: none;}
+.dropdown3 dd ul li a {padding: 5px; display: block; font-size: 12px !important;}
+.dropdown3 dd ul li a:hover {background-color: rgba(0,0,0,0.05);}
+dl.dropdown3 {display: inline-block; width: 240px; margin: -3px 0 0 1px;}
+dl.dropdown3 > span:nth-child(3) {color: rgba(0,0,0,0.4)}
+dl.dropdown3 dt span:nth-child(3) {display: none;}
+dl.dropdown3 > span:nth-child(2) {overflow: hidden;white-space: nowrap;display: inline-block;}
+dl.dropdown3 dt span:nth-child(2) {color: rgba(0, 0, 0, 0.6);font-size: 18px; font-weight: bold; line-height: 1.6em;}
+dl.dropdown3>img {display:hidden;display:none;}
+.dropdown3 dt a:after {content: ''; background: #343A40; position: absolute; height: 32px; position: absolute; right: 0; top: 0; width: 35px;}
+.dropdown3 dt a:before {background: none repeat scroll 0 0 #FFFFFF; content: ""; height: 3px; position: absolute; right: 7px; top: 6px; width: 20px; z-index: 2; box-shadow:0 8px 0 #FFFFFF, 0 16px 0 #FFFFFF;}
+
+/* ---  FEATURES DROPDOWN  --- */
+
+/* ---  FEATURES DROPDOWN  --- */
+
+
+.allfeaturesdrop-wrapperwrapper {float:left; display:inline; padding-top:1rem; width:88px; margin-left:calc(1vw); text-align: center!important;}
+.allfeaturesdrop-wrapper {width:0px;margin:0% auto;}
+.allfeaturesdrop dd ul li a span:first-child, .allfeaturesdrop dt a span span:first-child {background-image: url('../img/flags/all.png'); background-repeat: no-repeat; width: 16px; height: 11px; display: inline-block; margin:5px; vertical-align: top; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
+.allfeaturesdrop dd, .allfeaturesdrop dt, .allfeaturesdrop ul {margin: 0px; padding: 0px; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
+.allfeaturesdrop dt a span {cursor: pointer; display: block; padding: 1px; white-space: nowrap; max-height:30px;}
+.allfeaturesdrop dt a img {position: relative; z-index: 1;}
+.allfeaturesdrop dt a span span:first-child:before {position: absolute; content: ''; width: 15px; height: 10px; box-shadow: 0 1px 1px rgba(0,0,0,0.2) inset;}
+.allfeaturesdrop dt a span span {display: inline-block; padding: 0;}
+.allfeaturesdrop dt a span span:first-child {background-position:0px -55px; margin-top: 8px; margin-right: 10px; margin-left: 10px;zoom:1; color: #61CFF7; max-width:100px;}
+.allfeaturesdrop dd {	position: relative;}
+.allfeaturesdrop a, .allfeaturesdrop a:visited {color: #4a535f; text-decoration: none; outline: none; text-align:left;}
+.allfeaturesdrop a:hover {color: #5d4617;}
+.allfeaturesdrop dt a:hover, .allfeaturesdrop dt a:focus {color: #5d4617;}
+.allfeaturesdrop dt a {position: relative; display: block; padding-right: 20px; overflow: hidden; border:0.5px dotted #61CFF7; border-radius: 5px; width:75px;}
+.allfeaturesdrop dd ul {background: #333366; color: #C5C0B0; display: none; /* top: 142px; */ padding: 6px 0px; position: fixed; width: 90px; border: 0.5px dotted white; list-style: none; max-height: 194px; overflow-y: scroll; z-index: 2; border-radius: 5px; float: left; bottom: 134px; }
+.allfeaturesdrop dd ul::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.3); border-left:1px solid rgba(0,0,0,0.1);}
+.allfeaturesdrop dd ul::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.4);}
+.allfeaturesdrop dd ul::-webkit-scrollbar-thumb:window-inactive {background: blue;}
+.allfeaturesdrop span.value {display: none;}
+.allfeaturesdrop dd ul li a {padding: 5px; display: block; font-size: 12px !important;}
+.allfeaturesdrop dd ul li a:hover {background-color: rgba(0,0,0,0.05);}
+.allfeaturesdrop li a {font-size:13px;}
+.allfeaturesdrop li a span:nth-child(2) {line-height: 2em; color:#61CFF7;}
+dl.allfeaturesdrop {display: inline-block; width: 100px; margin: -18px 0 0 1px; float:left;}
+dl.allfeaturesdrop > span:nth-child(3) {color: rgba(0,0,0,0.4)}
+dl.allfeaturesdrop dt span:nth-child(3) {display: none;}
+dl.allfeaturesdrop > span:nth-child(2) {overflow: hidden; white-space: nowrap; display: inline-block;}
+dl.allfeaturesdrop dt span:nth-child(2) {color: #61CFF7; font-size: 0.75rem; font-weight: 300; margin-top: 0.25rem; background-color: transparent; position: absolute; margin-left: -0.1px;}
+.countryFlag {padding: 0; background-image: url("https://i.imgur.com/OQiDoZe.png"); background-repeat: no-repeat; display: inline-block; height: 11px; margin-right: 4px; width: 16px; cursor: pointer; white-space: nowrap; -moz-border-bottom-colors: none; -moz-border-left-colors: none; -moz-border-right-colors: none; -moz-border-top-colors: none; border-color: #BFBFC1 #B6B6B6 #969696; border-image: none; border-radius: 2px 2px 2px 2px; border-style: solid; border-width: 1px; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.09);}
+dl.allfeaturesdrop>img {display:hidden; display:none;}
+.allfeaturesdrop dt a:after {content: ''; background: transparent; position: absolute; height: 22px; position: absolute; right: 0; top: 0; width: 35px;}
+.allfeaturesdrop dt a:before {display:hidden;}
+/* background: none repeat scroll 0 0 #FFFFFF; content: ""; height: 3px; position: absolute; right: 7px; top: 6px; width: 20px; z-index: 2; box-shadow:0 8px 0 #FFFFFF, 0 16px 0 #FFFFFF;} */
+
+
+/* ---  CURRENCY DROPDOWN  --- */
+
+.currencydrop-wrapperwrapper {float:left; display:inline; padding-top:1rem; width:88px; margin-left:calc(1vw); text-align: center!important;}
+.countrydrop-wrapper {width:0px;margin:0% auto;}
+.currencydrop dd ul li a span:first-child, .currencydrop dt a span span:first-child {background-image: url('../img/flags/all.png'); background-repeat: no-repeat; width: 16px; height: 11px; display: inline-block; margin:5px; vertical-align: top; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
+.currencydrop dd, .currencydrop dt, .currencydrop ul {margin: 0px; padding: 0px; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
+.currencydrop dt a span {cursor: pointer; display: block; padding: 1px; white-space: nowrap; max-height:30px;}
+.currencydrop dt a img {position: relative; z-index: 1;}
+.currencydrop dt a span span:first-child:before {position: absolute; content: ''; width: 15px; height: 10px; box-shadow: 0 1px 1px rgba(0,0,0,0.2) inset;}
+.currencydrop dt a span span {display: inline-block; padding: 0;}
+.currencydrop dt a span span:first-child {background-position:0px -55px; margin-top: 8px; margin-right: 10px; margin-left: 10px;zoom:1; color: #61CFF7; max-width:100px;}
+.currencydrop dd {	position: relative;}
+.currencydrop a, .currencydrop a:visited {color: #4a535f; text-decoration: none; outline: none; text-align:left;}
+.currencydrop a:hover {color: #5d4617;}
+.currencydrop dt a:hover, .currencydrop dt a:focus {color: #5d4617;}
+.currencydrop dt a {position: relative; display: block; padding-right: 20px; overflow: hidden; border:0.5px dotted #61CFF7; border-radius: 5px; width:75px;}
+.currencydrop dd ul {background: #333366; color: #C5C0B0; display: none; /* top: 142px; */ padding: 6px 0px; position: fixed; width: 90px; border: 0.5px dotted white; list-style: none; max-height: 194px; overflow-y: scroll; z-index: 2; border-radius: 5px; float: left; bottom: 134px; }
+.currencydrop dd ul::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.3); border-left:1px solid rgba(0,0,0,0.1);}
+.currencydrop dd ul::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.4);}
+.currencydrop dd ul::-webkit-scrollbar-thumb:window-inactive {background: blue;}
+.currencydrop span.value {display: none;}
+.currencydrop dd ul li a {padding: 5px; display: block; font-size: 12px !important;}
+.currencydrop dd ul li a:hover {background-color: rgba(0,0,0,0.05);}
+.currencydrop li a {font-size:13px;}
+.currencydrop li a span:nth-child(2) {line-height: 2em; color:#61CFF7;}
+dl.currencydrop {display: inline-block; width: 100px; margin: -18px 0 0 1px; float:left;}
+dl.currencydrop > span:nth-child(3) {color: rgba(0,0,0,0.4)}
+dl.currencydrop dt span:nth-child(3) {display: none;}
+dl.currencydrop > span:nth-child(2) {overflow: hidden; white-space: nowrap; display: inline-block;}
+dl.currencydrop dt span:nth-child(2) {color: #61CFF7; font-size: 0.75rem; font-weight: 300; margin-top: 0.25rem; background-color: transparent; position: absolute; margin-left: -0.1px;}
+.countryFlag {padding: 0; background-image: url("https://i.imgur.com/OQiDoZe.png"); background-repeat: no-repeat; display: inline-block; height: 11px; margin-right: 4px; width: 16px; cursor: pointer; white-space: nowrap; -moz-border-bottom-colors: none; -moz-border-left-colors: none; -moz-border-right-colors: none; -moz-border-top-colors: none; border-color: #BFBFC1 #B6B6B6 #969696; border-image: none; border-radius: 2px 2px 2px 2px; border-style: solid; border-width: 1px; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.09);}
+dl.currencydrop>img {display:hidden; display:none;}
+.currencydrop dt a:after {content: ''; background: transparent; position: absolute; height: 22px; position: absolute; right: 0; top: 0; width: 35px;}
+.currencydrop dt a:before {display:hidden;}
+/* background: none repeat scroll 0 0 #FFFFFF; content: ""; height: 3px; position: absolute; right: 7px; top: 6px; width: 20px; z-index: 2; box-shadow:0 8px 0 #FFFFFF, 0 16px 0 #FFFFFF;} */
+
+
+@media all and (min-width: 1024px) {
+	.carousel-dropdown a, .carousel-dropdown a:visited {font-size:0.95rem!important;}
+	.carousel-dropdown dt a span {font-size:1.01rem!important;}
+}

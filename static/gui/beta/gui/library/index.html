@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <meta content="DATRO Library" name="description">
+  <meta content="DATRO Consortium" name="author">
+  <title>DATRO Explorer > Library</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport">
+  <link href="//gui.8cc.online/static/library/index.html" rel="canonical">
+	<script type="type/javascript">
+	                var host = "gui.8cc.online";
+	                if {{ host == window.location.host} && {window.location.protocol != "https:""}}
+	                window.location.protocol = "https";
+	</script>
+        <link href="./_theme-explorer/favicons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
+        <link href="./_theme-explorer/favicons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
+        <link href="./_theme-explorer/favicons/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+        <link href="./_theme-explorer/favicons/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+        <link href="./_theme-explorer/favicons/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+        <link href="./_theme-explorer/favicons/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+        <link href="./_theme-explorer/favicons/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+        <link href="./_theme-explorer/favicons/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+        <link href="./_theme-explorer/favicons/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180">
+        <link href="./_theme-explorer/favicons/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png">
+        <link href="./_theme-explorer/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+        <link href="./_theme-explorer/favicons/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
+        <link href="./_theme-explorer/favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+        <meta content="./_theme-explorer/favicons/ms-icon-144x144.png" name="msapplication-TileImage">
+        <link rel="stylesheet" href="./_theme-explorer/style.css">
+        <link rel="stylesheet" href="./_theme-explorer/glyphicon.css">
+   <style>
+        html {
+        overflow-y:   scroll;
+        overflow-x:   hidden;
+}
+::-webkit-scrollbar {
+                width: 0px;
+                background: transparent; /* make scrollbar transparent */
+}
+</style>
+
+<!-- google tracking code start --> 
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BTNPTMXBF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6BTNPTMXBF');
+</script>
+<!-- google tracking code end -->
+  </head>
+  <body>
+    <script>
+      (async () => {
+        const response = await fetch('.treeview.json');
+        const data = await response.json();
+        let htmlString = '<ul>';
+        htmlString += `<p style="font-weight:bolder;text-align:center;color:lightslategrey;">Explorer > Library</p>`;
+        htmlString += `<li class="glyphicon glyphicon-arrow-up"><a href="../">up</a></li></br>`;
+	for (let file of data) {
+          htmlString += `<li class="glyphicon glyphicon-book"><a href="${file.path}">${file.name}</a></li></br>`;
+        }
+        htmlString += '</ul>';
+        document.getElementsByTagName('body')[0].innerHTML = htmlString;
+      })()
+    </script>
+  </body>
+<script src="./_theme-explorer/jquery.min.js"></script>
+</html>

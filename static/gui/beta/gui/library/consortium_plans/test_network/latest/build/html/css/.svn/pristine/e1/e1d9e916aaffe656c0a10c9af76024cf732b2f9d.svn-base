@@ -1,0 +1,301 @@
+/*  2020 Copyleft - DATRO Consortium
+                 ..
+..   ..          ..   ........                     .........     .......     ........                      .........    ......................
+..   ...           ..  ........                   .........     .........     ........                    .........    ......................
+ .......         .....  ........                 .........     ...........     ........                  .........    ......................
+ .......       ........  ........               .........     .............     ........                .........    ......................
+ .......       ...        ........             .........     ...............     ........              .........    .......
+  ......       ........   .........           .........     ........   ......     ........            .........    .......
+  ......       .......   ...........         .........     ........     ......     ........          .........    .................
+   .....        .....   .............       .........     .......    .   ......     ........        .........    .................
+   .........    ....   ...............     .........     .......   .....  ......     ........      .........    .................
+    .......... . ..   ......   ........   .........     .........................     ........    .........    .................
+       ......... .   ......     ..................     ........     ...     ......     ...................    ........
+        .........   ......       ................     ........       .       ......     .................    ........
+          ......   ......         ..............     ........                 ......     ...............    ...........................
+            ...   ......           ............     ........                   ......     .............    ...........................
+             .   ......             ..........     ........                     ......     ...........    ...........................
+
+
+						 ............................................................................................
+						             DATRO by Unclehowell -  DATRO CONSORTIUM 2020  - All Wrongs Reserved
+					     ............................................................................................
+                           GitHub:https://github.com/unclehowell/datro -  Website:https://gui.8cc.online
+					     ..........................................................................................   */
+
+/*  Classes:     A.  html.with-featherlight {}
+				 B. .featherlight {}
+				 C. .featherlight * {}
+				 D. .featherlight:last-of-type {}
+				 E. .featherlight:before {}
+				 F. .featherlight link.featherlight-inner {}
+				 G. .featherlight script.featherlight-inner {}
+				 H. .featherlight style.featherlight-inner {}
+				 I. .featherlight .featherlight-content {}
+				 J. .featherlight-content {}
+				 K. .featherlight .featherlight-inner {}
+				 L. .featherlight-inner {}
+				 M. .featherlight .featherlight-close-icon {}
+				 N. .featherlight .featherlight-close-icon::-moz-focus-inner {}
+				 O. .featherlight .featherlight-image {}
+				 P. .featherlight iframe {}
+				 Q. .featherlight-iframe .featherlight-content {}
+
+	Structure:  01. .class-1 {}  .class-2 {} ... etc
+				02. @media all and (min-width:1024px) 							                       {.class-1 {}.class-2 {} ... etc}
+				03. @media all and (min-width:960px) 												   {.class-1 {}.class-2 {} ... etc}
+				04. @media all and (min-width:960px) and (max-width:1123px)							   {.class-1 {}.class-2 {} ... etc}
+				05. @media all and (min-width:960px) and (max-width:1123px)and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
+				06. @media all and (min-width:960px) and (max-width:1123px)and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
+				07. @media all and (min-width:768px)												   {.class-1 {}.class-2 {} ... etc}
+				08. @media all and (min-width:768px) and (max-width:959px)  						   {.class-1 {}.class-2 {} ... etc}
+				09. @media all and (min-width:768px) and (max-width:959px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
+				10. @media all and (min-width:768px) and (max-width:959px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
+				11. @media all and (min-width:480px) 					 							   {.class-1 {}.class-2 {} ... etc}
+				12. @media all and (min-width:480px) and (max-width:767px) 							   {.class-1 {}.class-2 {} ... etc}
+				13. @media all and (min-width:480px) and (max-width:767px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
+				14. @media all and (min-width:480px) and (max-width:767px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
+				15. 					  @media all and (max-width:479px)                             {.class-1 {}.class-2 {} ... etc}
+				16. 			       	  @media all and (max-width:479px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
+				17. 					  @media all and (max-width:479px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
+				18. @media(-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:3/2), (min-resolution:1.5dppx) {}
+				19. @media print {}
+   01:> */
+/* 01:A */	html.with-featherlight { overflow:hidden; }
+/* 01:B */ .featherlight { overflow-y: hidden; /* z-index: 2147483647;*/ cursor: pointer; overflow: hidden; float: left!important; max-height: 100vh; height: 100vh!important; bottom: 0px!important; position: sticky; display: inline-flex!important; width: 100%; padding-bottom: 0rem; text-rendering: optimizeLegibility!important;}
+/* 01:C */ .featherlight * { -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; text-rendering: optimizeLegibility!important;}
+/* 01:D */ .featherlight:last-of-type {background:#333366}
+/* 01:E */ .featherlight:before { }
+/* 01:F */ .featherlight link.featherlight-inner { display:none; }
+/* 01:G */ .featherlight script.featherlight-inner { display:none; }
+/* 01:H */ .featherlight style.featherlight-inner { display:none; }
+/* 01:I */ .featherlight .featherlight-content {margin-right: 0; width:100vw; position: relative; text-align: left; vertical-align: middle; display: inline-block; cursor: auto; white-space: normal; left: calc(0.1vw); max-width: calc(98vw); -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; image-rendering: auto;}
+/* 01:J */ .featherlight-content { }
+/* 01:K */ .featherlight .featherlight-inner { min-width:100.5%; text-rendering: optimizeLegibility!important; border:2px solid #333366;}
+/* 01:L */ .featherlight-inner	 { }
+/* 01:M */ .featherlight .featherlight-close-icon {position: absolute; right: 0; top: 0.5rem; float: right; z-index: 9999; cursor: pointer; text-align: center; background: #333366; color: rgba(255,255,255,0.45); border-radius: 8px; padding: 0rem; width: 2rem; height: 2rem; opacity: 0.85!important; zoom: 1.1; text-transform: uppercase!Important; font-weight: bold; margin-right: calc(1vw + 0.5rem);	}
+/* 01:N */ .featherlight .featherlight-close-icon::-moz-focus-inner { }
+/* 01:O */ .featherlight .featherlight-image { }
+/* 01:P */ .featherlight iframe { }
+/* 01:Q */ .featherlight-iframe .featherlight-content {-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; -ms-transform-origin: 0 0; -moz-transform-origin: 0 0; width: 98%; overflow: hidden; transform-origin: 0 0; display: inline-flex; border: 0.1rem solid rgba(255,255,255,0.15); border-radius: 14px; left: 0; margin: 5rem 2% 2% 2%!important; padding: 1px; box-shadow: 0rem 0rem 0.51rem 0rem rgba(0,0,0,0.3); top: 0!important; position:relative;}
+
+/* 02:> */  												  @media all and (min-width:1024px) {
+/* 02:A */  html.with-featherlight {}
+/* 02:B */ .featherlight {    max-height: 92vh;}
+/* 02:C */ .featherlight * {}
+/* 02:D */ .featherlight:last-of-type {background:#333366}
+/* 02:E */ .featherlight:before {content:''; display:inline-block; max-height:100vh; vertical-align:middle; }
+/* 02:F */ .featherlight link.featherlight-inner {}
+/* 02:G */ .featherlight script.featherlight-inner {}
+/* 02:H */ .featherlight style.featherlight-inner {}
+/* 02:I */ .featherlight .featherlight-content { }
+/* 02:J */ .featherlight-content {	margin-top: -2rem; background-color:#333366;}
+/* 02:K */ .featherlight .featherlight-inner {	-moz-osx-font-smoothing:grayscale; -webkit-font-smoothing:antialiased; 	-ms-transform-origin:0 0; -moz-transform-origin:0 0; 	-o-transform-origin:0 0; -webkit-transform-origin:0 0; transform-origin:0 0; display:block; }
+/* 02:L */ .featherlight-inner {}
+/* 02:M */ .featherlight .featherlight-close-icon {}
+/* 02:N */ .featherlight .featherlight-close-icon::-moz-focus-inner {}
+/* 02:O */ .featherlight .featherlight-image {}
+/* 02:P */ .featherlight iframe { position: absolute; overflow: hidden!important; margin: 0; height: 100%; width: 100%; /* min-height: 230px; */ border: 2px solid red; border-radius: 1rem!important; left: 0; right: 0; -webkit-overflow-scrolling:touch;}
+/* 02:Q */ .featherlight-iframe .featherlight-content { margin-top:2rem!important;}
+/* 02 ! */ }
+
+/* 03:> */  @media all and (min-width:960px) and (max-width:1123px) and  (orientation:portrait) {
+/* 03:A */  html.with-featherlight {}
+/* 03:B */ .featherlight {}
+/* 03:C */ .featherlight * {}
+/* 03:D */ .featherlight:last-of-type {}
+/* 03:E */ .featherlight:before {}
+/* 03:F */ .featherlight link.featherlight-inner {}
+/* 03:G */ .featherlight script.featherlight-inner {}
+/* 03:H */ .featherlight style.featherlight-inner {}
+/* 03:I */ .featherlight .featherlight-content {}
+/* 03:J */ .featherlight-content {}
+/* 03:K */ .featherlight .featherlight-inner {}
+/* 03:L */ .featherlight-inner {}
+/* 03:M */ .featherlight .featherlight-close-icon {}
+/* 03:N */ .featherlight .featherlight-close-icon::-moz-focus-inner {}
+/* 03:O */ .featherlight .featherlight-image {}
+/* 03:P */ .featherlight iframe {}
+/* 03:Q */ .featherlight-iframe .featherlight-content { }
+/* 03 ! */  }
+
+/* 04:> */  @media all and (min-width:960px) and (max-width:1123px) and (orientation:landscape) {
+/* 04:A */  html.with-featherlight {}
+/* 04:B */ .featherlight {}
+/* 04:C */ .featherlight * {}
+/* 04:D */ .featherlight:last-of-type {}
+/* 04:E */ .featherlight:before {}
+/* 04:F */ .featherlight link.featherlight-inner {}
+/* 04:G */ .featherlight script.featherlight-inner {}
+/* 04:H */ .featherlight style.featherlight-inner {}
+/* 04:I */ .featherlight .featherlight-content {}
+/* 04:J */ .featherlight-content {}
+/* 04:K */ .featherlight .featherlight-inner {}
+/* 04:L */ .featherlight-inner {}
+/* 04:M */ .featherlight .featherlight-close-icon {}
+/* 04:N */ .featherlight .featherlight-close-icon::-moz-focus-inner {}
+/* 04:O */ .featherlight .featherlight-image {}
+/* 04:P */ .featherlight iframe {}
+/* 04:Q */ .featherlight-iframe .featherlight-content {}
+/* 04 ! */  }
+
+/* 05:> */  @media all and (min-width:768px) and  (max-width:959px) and  (orientation:portrait) {
+/* 05:A */  html.with-featherlight {}
+/* 05:B */ .featherlight {}
+/* 05:C */ .featherlight * {}
+/* 05:D */ .featherlight:last-of-type {}
+/* 05:E */ .featherlight:before {}
+/* 05:F */ .featherlight link.featherlight-inner {}
+/* 05:G */ .featherlight script.featherlight-inner {}
+/* 05:H */ .featherlight style.featherlight-inner {}
+/* 05:I */ .featherlight .featherlight-content { }
+/* 05:J */ .featherlight-content {}
+/* 05:K */ .featherlight .featherlight-inner {	-moz-osx-font-smoothing:grayscale; 	-webkit-font-smoothing:antialiased; -ms-transform-origin:0 0; -moz-transform-origin:0 0; 	-o-transform-origin:0 0; -webkit-transform-origin:0 0; 	transform-origin:0 0; overflow:hidden; }
+/* 05:L */ .featherlight-inner {}
+/* 05:M */ .featherlight .featherlight-close-icon {}
+/* 05:N */ .featherlight .featherlight-close-icon::-moz-focus-inner {}
+/* 05:O */ .featherlight .featherlight-image {}
+/* 05:P */ .featherlight iframe { }
+/* 05:Q */ .featherlight-iframe .featherlight-content {}
+/* 05 ! */  }
+
+/* 06:> */  @media all and (min-width:768px) and  (max-width:959px) and (orientation:landscape) {
+/* 06:A */  html.with-featherlight {}
+/* 06:B */ .featherlight {}
+/* 06:C */ .featherlight * {}
+/* 06:D */ .featherlight:last-of-type {}
+/* 06:E */ .featherlight:before {}
+/* 06:F */ .featherlight link.featherlight-inner {}
+/* 06:G */ .featherlight script.featherlight-inner {}
+/* 06:H */ .featherlight style.featherlight-inner {}
+/* 06:I */ .featherlight .featherlight-content { }
+/* 06:J */ .featherlight-content {}
+/* 06:K */ .featherlight .featherlight-inner {	-moz-osx-font-smoothing:grayscale; -webkit-font-smoothing:antialiased;  -ms-transform-origin:0 0; -moz-transform-origin:0 0; -o-transform-origin:0 0; -webkit-transform-origin:0 0; transform-origin:0 0; overflow:hidden; }
+/* 06:L */ .featherlight-inner {}
+/* 06:M */ .featherlight .featherlight-close-icon {}
+/* 06:N */ .featherlight .featherlight-close-icon::-moz-focus-inner {}
+/* 06:O */ .featherlight .featherlight-image {}
+/* 06:P */ .featherlight iframe {}
+/* 06:Q */ .featherlight-iframe .featherlight-content {}
+/* 06 ! */  }
+
+/* 07:> */  @media all and (min-width:480px) and  (max-width:767px) and  (orientation:portrait) {
+/* 07:A */  html.with-featherlight {}
+/* 07:B */ .featherlight {}
+/* 07:C */ .featherlight * {}
+/* 07:D */ .featherlight:last-of-type {}
+/* 07:E */ .featherlight:before {}
+/* 07:F */ .featherlight link.featherlight-inner {}
+/* 07:G */ .featherlight script.featherlight-inner {}
+/* 07:H */ .featherlight style.featherlight-inner {}
+/* 07:I */ .featherlight .featherlight-content {}
+/* 07:J */ .featherlight-content {}
+/* 07:K */ .featherlight .featherlight-inner {}
+/* 07:L */ .featherlight-inner {}
+/* 07:M */ .featherlight .featherlight-close-icon {}
+/* 07:N */ .featherlight .featherlight-close-icon::-moz-focus-inner {}
+/* 07:O */ .featherlight .featherlight-image {}
+/* 07:P */ .featherlight iframe {}
+/* 07:Q */ .featherlight-iframe .featherlight-content {}
+/* 07 ! */  }
+
+/* 08:> */  @media all and (min-width:480px) and  (max-width:767px) and (orientation:landscape) {
+/* 08:A */  html.with-featherlight {}
+/* 08:B */ .featherlight {}
+/* 08:C */ .featherlight * {}
+/* 08:D */ .featherlight:last-of-type {}
+/* 08:E */ .featherlight:before {}
+/* 08:F */ .featherlight link.featherlight-inner {}
+/* 08:G */ .featherlight script.featherlight-inner {}
+/* 08:H */ .featherlight style.featherlight-inner {}
+/* 08:I */ .featherlight .featherlight-content {}
+/* 08:J */ .featherlight-content {margin-top:-2rem; }
+/* 08:K */ .featherlight .featherlight-inner {}
+/* 08:L */ .featherlight-inner {}
+/* 08:M */ .featherlight .featherlight-close-icon {}
+/* 08:N */ .featherlight .featherlight-close-icon::-moz-focus-inner {}
+/* 08:O */ .featherlight .featherlight-image {}
+/* 08:P */ .featherlight iframe {}
+/* 08:Q */ .featherlight-iframe .featherlight-content {}
+/* 08 ! */  }
+
+/* 09:> */  					  @media all and  (max-width:479px) and  (orientation:portrait) {
+/* 09:A */  html.with-featherlight {}
+/* 09:B */ .featherlight {}
+/* 09:C */ .featherlight * {}
+/* 09:D */ .featherlight:last-of-type {background:#333366}
+/* 09:E */ .featherlight:before {content:''; display:inline-block; height:100vh; vertical-align:middle; }
+/* 09:F */ .featherlight link.featherlight-inner {}
+/* 09:G */ .featherlight script.featherlight-inner {}
+/* 09:H */ .featherlight style.featherlight-inner {}
+/* 09:I */ .featherlight .featherlight-content { }
+/* 09:J */ .featherlight-content {	margin-top: -2rem; background-color:transparent;}
+/* 09:K */ .featherlight .featherlight-inner {	-moz-osx-font-smoothing:grayscale; -webkit-font-smoothing:antialiased; 	-ms-transform-origin:0 0; -moz-transform-origin:0 0; 	-o-transform-origin:0 0; -webkit-transform-origin:0 0; transform-origin:0 0; display:block; }
+/* 09:L */ .featherlight-inner {}
+/* 09:M */ .featherlight .featherlight-close-icon {}
+/* 09:N */ .featherlight .featherlight-close-icon::-moz-focus-inner {}
+/* 09:O */ .featherlight .featherlight-image {}
+/* 09:P */ .featherlight iframe {  }
+/* 09:Q */ .featherlight-iframe .featherlight-content { }
+/* 09 ! */  }
+
+/* 10:> */  					  @media all and  (max-width:479px) and (orientation:landscape) {
+/* 10:A */  html.with-featherlight {}
+/* 10:B */ .featherlight {}
+/* 10:C */ .featherlight * {}
+/* 10:D */ .featherlight:last-of-type {}
+/* 10:E */ .featherlight:before {}
+/* 10:F */ .featherlight link.featherlight-inner {}
+/* 10:G */ .featherlight script.featherlight-inner {}
+/* 10:H */ .featherlight style.featherlight-inner {}
+/* 10:I */ .featherlight .featherlight-content { }
+/* 10:K */ .featherlight .featherlight-inner { box-shadow:inset -13px -14px 25px calc(100vh) rgba(255,255,255,0.4); }
+/* 10:L */ .featherlight-inner {}
+/* 10:M */ .featherlight .featherlight-close-icon {}
+/* 10:N */ .featherlight .featherlight-close-icon::-moz-focus-inner {}
+/* 10:O */ .featherlight .featherlight-image {width:99vw;}
+/* 10:P */ .featherlight iframe { }
+/* 10:Q */ .featherlight-iframe .featherlight-content {}
+/* 10 ! */  }
+
+/* 11:> */   @media(-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:3/2), (min-resolution:1.5dppx) {
+/* 11:A */  html.with-featherlight {}
+/* 11:B */ .featherlight {}
+/* 11:C */ .featherlight * {}
+/* 11:D */ .featherlight:last-of-type {}
+/* 11:E */ .featherlight:before {}
+/* 11:F */ .featherlight link.featherlight-inner {}
+/* 11:G */ .featherlight script.featherlight-inner {}
+/* 11:H */ .featherlight style.featherlight-inner {}
+/* 11:I */ .featherlight .featherlight-content {}
+/* 11:J */ .featherlight-content {}
+/* 11:K */ .featherlight .featherlight-inner {}
+/* 11:L */ .featherlight-inner {}
+/* 11:M */ .featherlight .featherlight-close-icon {}
+/* 11:N */ .featherlight .featherlight-close-icon::-moz-focus-inner {}
+/* 11:O */ .featherlight .featherlight-image {}
+/* 11:P */ .featherlight iframe {}
+/* 11:Q */ .featherlight-iframe .featherlight-content {}
+/* 11 ! */  }
+
+/* 12:> */   @media print {
+/* 12:A */  html.with-featherlight {}
+/* 12:B */ .featherlight {}
+/* 12:C */ .featherlight * {}
+/* 12:D */ .featherlight:last-of-type {}
+/* 12:E */ .featherlight:before {}
+/* 12:F */ .featherlight link.featherlight-inner {}
+/* 12:G */ .featherlight script.featherlight-inner {}
+/* 12:H */ .featherlight style.featherlight-inner {}
+/* 12:I */ .featherlight .featherlight-content {}
+/* 12:J */ .featherlight-content {}
+/* 12:K */ .featherlight .featherlight-inner {}
+/* 12:L */ .featherlight-inner {}
+/* 12:M */ .featherlight .featherlight-close-icon {}
+/* 12:N */ .featherlight .featherlight-close-icon::-moz-focus-inner {}
+/* 12:O */ .featherlight .featherlight-image {}
+/* 12:P */ .featherlight iframe {}
+/* 12:Q */ .featherlight-iframe .featherlight-content {}
+/* 12 ! */  }
+html.with-featherlight>*>:not(.featherlight) {}
+}

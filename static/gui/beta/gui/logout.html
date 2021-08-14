@@ -1,0 +1,34 @@
+<html><head>
+<script type="text/javascript">
+function logout() {
+    var xmlhttp;
+    if (window.XMLHttpRequest) {
+          xmlhttp = new XMLHttpRequest();
+    }
+    // code for IE
+    else if (window.ActiveXObject) {
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    if (window.ActiveXObject) {
+      // IE clear HTTP Authentication
+      document.execCommand("ClearAuthenticationCache");
+      window.location.href='https://8cc.online/index.html';
+    } else {
+        xmlhttp.open("GET", '/path/that/will/return/200/OK', true, "logout", "logout");
+        xmlhttp.send("");
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4) {window.location.href='https://8cc.online/index.html';}
+        }
+
+
+    }
+
+
+    return false;
+}
+</script>
+</head>
+<body>
+<a href="#" onclick="logout();">Log out</a>
+</body>
+</html>

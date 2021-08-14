@@ -1,0 +1,368 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>translating-dev &mdash; Element -  WebApp 0.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="translating" href="translating.html" />
+    <link rel="prev" title="theming" href="theming.html" /> 
+<style>html{overflow-y:scroll;} ::-webkit-scrollbar{width:0px;background:transparent;}</style></head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Element -  WebApp
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version"> Document Version : 
+                0.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search" class="placeholder-final" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes and Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app-load.html">app-load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customisations.html">customisations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e2ee.html">e2ee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e2ee.html#disabling-encryption-by-default">Disabling encryption by default</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e2ee.html#requiring-secure-backup">Requiring secure backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e2ee.html#preferring-setup-methods">Preferring setup methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature-flags.html">feature-flags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature-flags.html#interaction-with-spec-process">Interaction with spec process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature-flags.html#starting-work-on-a-feature">Starting work on a feature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature-flags.html#enabling-by-default-on-develop-and-nightly">Enabling by default on develop and nightly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature-flags.html#enabling-by-default-on-staging-app-and-release">Enabling by default on staging, app, and release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature-flags.html#feature-deployed-successfully">Feature deployed successfully</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi-dev.html">jitsi-dev</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi-dev.html#brief-introduction-to-widgets">Brief introduction to widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi-dev.html#brief-introduction-to-integration-managers">Brief introduction to integration managers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi-dev.html#widgets-configured-by-integration-managers">Widgets configured by integration managers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi-dev.html#jitsi-widgets-from-integration-managers">Jitsi widgets from integration managers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi-dev.html#jitsi-widgets-generated-by-element-itself">Jitsi widgets generated by Element itself</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi-dev.html#the-jitsi-wrapper-in-element">The Jitsi wrapper in Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi.html">jitsi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi.html#configuring-element-to-use-your-self-hosted-jitsi-server">Configuring Element to use your self-hosted Jitsi server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi.html#element-android">Element Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi.html#element-ios">Element iOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kubernetes.html">kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html">labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#submit-abuse-report-to-moderators-msc3215-support-feature-report-to-moderators">Submit Abuse Report to Moderators MSC3215 support (<code class="docutils literal notranslate"><span class="pre">feature_report_to_moderators</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#matrix-spaces-msc1772-support-feature-spaces">Matrix Spaces MSC1772 support (<code class="docutils literal notranslate"><span class="pre">feature_spaces</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#render-latex-maths-in-messages-feature-latex-maths">Render LaTeX maths in messages (<code class="docutils literal notranslate"><span class="pre">feature_latex_maths</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#message-pinning-feature-pinning">Message pinning (<code class="docutils literal notranslate"><span class="pre">feature_pinning</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#custom-status-feature-custom-status">Custom status (<code class="docutils literal notranslate"><span class="pre">feature_custom_status</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#custom-tags-feature-custom-tags">Custom tags (<code class="docutils literal notranslate"><span class="pre">feature_custom_tags</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#render-simple-counters-in-room-header-feature-state-counters">Render simple counters in room header (<code class="docutils literal notranslate"><span class="pre">feature_state_counters</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#multiple-integration-managers-feature-many-integration-managers">Multiple integration managers (<code class="docutils literal notranslate"><span class="pre">feature_many_integration_managers</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#new-ways-to-ignore-people-feature-mjolnir">New ways to ignore people (<code class="docutils literal notranslate"><span class="pre">feature_mjolnir</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#verifications-in-dms-feature-dm-verification">Verifications in DMs (<code class="docutils literal notranslate"><span class="pre">feature_dm_verification</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#bridge-info-tab-feature-bridge-state">Bridge info tab (<code class="docutils literal notranslate"><span class="pre">feature_bridge_state</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#presence-indicator-in-room-list-feature-presence-in-room-list">Presence indicator in room list (<code class="docutils literal notranslate"><span class="pre">feature_presence_in_room_list</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#custom-themes-feature-custom-themes">Custom themes (<code class="docutils literal notranslate"><span class="pre">feature_custom_themes</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#message-preview-tweaks">Message preview tweaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#communities-v2-prototyping-feature-communities-v2-prototypes-in-development">Communities v2 prototyping (<code class="docutils literal notranslate"><span class="pre">feature_communities_v2_prototypes</span></code>) [In Development]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#dehydrated-devices-feature-dehydration">Dehydrated devices (<code class="docutils literal notranslate"><span class="pre">feature_dehydration</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#do-not-disturb-feature-dnd">Do not disturb (<code class="docutils literal notranslate"><span class="pre">feature_dnd</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#hidden-read-receipts-feature-hidden-read-receipts">Hidden read receipts (<code class="docutils literal notranslate"><span class="pre">feature_hidden_read_receipts</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="memory-profiles-and-leaks.html">memory-profiles-and-leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="memory-profiles-and-leaks.html#memory-leaks">Memory leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="memory-profiles-and-leaks.html#memory-profiles-snapshots">Memory profiles/snapshots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="native-node-modules.html">native-node-modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr-previews.html">pr-previews</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr-previews.html#faqs">FAQs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="review.html">review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="review.html#code-review">Code Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="review.html#code-quality">Code Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="review.html#design-and-product-review">Design and Product Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skinning%20thoughts.html">iiitemskinning thoughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theming.html">theming</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">translating-dev</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-translate-element-dev-guide">How to translate Element (Dev Guide)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#translating-strings-vs-marking-strings-for-translation">Translating strings vs. marking strings for translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#adding-new-strings">Adding new strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#editing-existing-strings">Editing existing strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#adding-variables-inside-a-string">Adding variables inside a string.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#things-to-know-style-guides">Things to know/Style Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating.html">translating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating.html#requirements">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating.html#step-0-join-element-translations-matrix-org">Step 0: Join #element-translations:matrix.org</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating.html#step-1-preparing-your-weblate-profile">Step 1: Preparing your Weblate Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating.html#how-to-check-if-your-language-already-is-being-translated">How to check if your language already is being translated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating.html#step-2a-helping-on-existing-languages">Step 2a: Helping on existing languages.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating.html#step-2b-adding-a-new-language">Step 2b: Adding a new language</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Element -  WebApp</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>translating-dev</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/translating-dev.rst.txt" rel="nofollow"> </a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="translating-dev">
+<h1>translating-dev<a class="headerlink" href="#translating-dev" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="how-to-translate-element-dev-guide">
+<h2>How to translate Element (Dev Guide)<a class="headerlink" href="#how-to-translate-element-dev-guide" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="requirements">
+<h1>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>A working <a class="reference external" href="../../#setting-up-a-dev-environment">Development Setup</a></p>
+<ul>
+<li><p>Including up-to-date versions of matrix-react-sdk and matrix-js-sdk</p></li>
+</ul>
+</li>
+<li><p>Latest LTS version of Node.js installed</p></li>
+<li><p>Be able to understand English</p></li>
+<li><p>Be able to understand the language you want to translate Element into</p></li>
+</ul>
+</div>
+<div class="section" id="translating-strings-vs-marking-strings-for-translation">
+<h1>Translating strings vs. marking strings for translation<a class="headerlink" href="#translating-strings-vs-marking-strings-for-translation" title="Permalink to this headline">¶</a></h1>
+<p>Translating strings are done with the <code class="docutils literal notranslate"><span class="pre">_t()</span></code> function found in matrix-react-sdk/lib/languageHandler.js. It is recommended to call this function wherever you introduce a string constant which should be translated. However, translating can not be performed until after the translation system has been initialized. Thus, sometimes translation must be performed at a different location in the source code than where the string is introduced. This breaks some tooling and makes it difficult to find translatable strings. Therefore, there is the alternative <code class="docutils literal notranslate"><span class="pre">_td()</span></code> function which is used to mark strings for translation, without actually performing the translation (which must still be performed separately, and after the translation system has been initialized).</p>
+<p>Basically, whenever a translatable string is introduced, you should call either <code class="docutils literal notranslate"><span class="pre">_t()</span></code> immediately OR <code class="docutils literal notranslate"><span class="pre">_td()</span></code> and later <code class="docutils literal notranslate"><span class="pre">_t()</span></code>.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Module</span><span class="o">-</span><span class="n">level</span> <span class="n">constant</span>
+<span class="n">const</span> <span class="n">COLORS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;#f8481c&#39;</span><span class="p">:</span> <span class="n">_td</span><span class="p">(</span><span class="s1">&#39;reddish orange&#39;</span><span class="p">),</span> <span class="o">//</span> <span class="n">Can</span><span class="s1">&#39;t call _t() here yet</span>
+    <span class="s1">&#39;#fc2647&#39;</span><span class="p">:</span> <span class="n">_td</span><span class="p">(</span><span class="s1">&#39;pinky red&#39;</span><span class="p">)</span> <span class="o">//</span> <span class="n">Use</span> <span class="n">_td</span><span class="p">()</span> <span class="n">instead</span> <span class="n">so</span> <span class="n">the</span> <span class="n">text</span> <span class="ow">is</span> <span class="n">picked</span> <span class="n">up</span> <span class="k">for</span> <span class="n">translation</span> <span class="n">anyway</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">Function</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">called</span> <span class="n">some</span> <span class="n">time</span> <span class="n">after</span> <span class="n">i18n</span> <span class="n">has</span> <span class="n">been</span> <span class="n">loaded</span>
+<span class="n">function</span> <span class="n">getColorName</span><span class="p">(</span><span class="nb">hex</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_t</span><span class="p">(</span><span class="n">COLORS</span><span class="p">[</span><span class="nb">hex</span><span class="p">]);</span> <span class="o">//</span> <span class="n">Perform</span> <span class="n">actual</span> <span class="n">translation</span> <span class="n">here</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adding-new-strings">
+<h1>Adding new strings<a class="headerlink" href="#adding-new-strings" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li><p>Check if the import <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">{</span> <span class="pre">_t</span> <span class="pre">}</span> <span class="pre">from</span> <span class="pre">'matrix-react-sdk/lib/languageHandler';</span></code> is present. If not add it to the other import statements. Also import <code class="docutils literal notranslate"><span class="pre">_td</span></code> if needed.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">_t()\</span> <span class="pre">`</span></code> to your string. (Don’t forget curly braces when you assign an expression to JSX attributes in the render method). If the string is introduced at a point before the translation system has not yet been initialized, use``_td()` instead, and call <cite>_t()</cite> at the appropriate time.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">yarn</span> <span class="pre">i18n</span></code> to update <code class="docutils literal notranslate"><span class="pre">src/i18n/strings/en_EN.json</span></code></p></li>
+<li><p>If you added a string with a plural, you can add other English plural variants to <code class="docutils literal notranslate"><span class="pre">src/i18n/strings/en_EN.json</span></code> (remeber to edit the one in the same project as the source file containing your new translation).</p></li>
+</ol>
+</div>
+<div class="section" id="editing-existing-strings">
+<h1>Editing existing strings<a class="headerlink" href="#editing-existing-strings" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li><p>Edit every occurrence of the string inside <code class="docutils literal notranslate"><span class="pre">_t()</span></code> and <code class="docutils literal notranslate"><span class="pre">_td()</span></code> in the JSX files.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">yarn</span> <span class="pre">i18n</span></code> to update <code class="docutils literal notranslate"><span class="pre">src/i18n/strings/en_EN.json</span></code>. (Be sure to run this in the same project as the JSX files you just edited.)</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">yarn</span> <span class="pre">prunei18n</span></code> to remove the old string from <code class="docutils literal notranslate"><span class="pre">src/i18n/strings/*.json</span></code>.</p></li>
+</ol>
+</div>
+<div class="section" id="adding-variables-inside-a-string">
+<h1>Adding variables inside a string.<a class="headerlink" href="#adding-variables-inside-a-string" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li><p>Extend your <code class="docutils literal notranslate"><span class="pre">_t()\</span> <span class="pre">``call.</span> <span class="pre">Instead</span> <span class="pre">of</span></code>_t(STRING)<code class="docutils literal notranslate"><span class="pre">use</span></code>_t(STRING, {})``</p></li>
+<li><p>Decide how to name it. Please think about if the person who has to translate it can understand what it does. E.g. using the name ‘recipient’ is bad, because a translator does not know if it is the name of a person, an email address, a user ID, etc. Rather use e.g. recipientEmailAddress.</p></li>
+<li><p>Add it to the array in <code class="docutils literal notranslate"><span class="pre">_t\</span> <span class="pre">``for</span> <span class="pre">example</span></code>_t(STRING, {variable: this.variable})``</p></li>
+<li><p>Add the variable inside the string. The syntax for variables is <code class="docutils literal notranslate"><span class="pre">%(variable)s</span></code>. Please note the <em>s</em> at the end. The name of the variable has to match the previous used name.</p></li>
+</ol>
+<ul class="simple">
+<li><p>You can use the special <code class="docutils literal notranslate"><span class="pre">count</span></code> variable to choose between multiple versions of the same string, in order to get the correct pluralization. E.g. <code class="docutils literal notranslate"><span class="pre">_t('You</span> <span class="pre">have</span> <span class="pre">%(count)s</span> <span class="pre">new</span> <span class="pre">messages',</span> <span class="pre">{</span> <span class="pre">count:</span> <span class="pre">2</span> <span class="pre">})\</span> <span class="pre">``would</span> <span class="pre">show</span> <span class="pre">'You</span> <span class="pre">have</span> <span class="pre">2</span> <span class="pre">new</span> <span class="pre">messages',</span> <span class="pre">while</span></code>_t(‘You have %(count)s new messages’, { count: 1 })<code class="docutils literal notranslate"><span class="pre">would</span> <span class="pre">show</span> <span class="pre">'You</span> <span class="pre">have</span> <span class="pre">one</span> <span class="pre">new</span> <span class="pre">message'</span> <span class="pre">(assuming</span> <span class="pre">a</span> <span class="pre">singular</span> <span class="pre">version</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">string</span> <span class="pre">has</span> <span class="pre">been</span> <span class="pre">added</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">translation</span> <span class="pre">file.</span> <span class="pre">See</span> <span class="pre">above).</span> <span class="pre">Passing</span> <span class="pre">in</span></code>count`` is much prefered over having an if-statement choose the correct string to use, because some languages have much more complicated plural rules than english (e.g. they might need a completely different form if there are three things rather than two).</p></li>
+<li><p>If you want to translate text that includes e.g. hyperlinks or other HTML you have to also use tag substitution, e.g. <code class="docutils literal notranslate"><span class="pre">_t('\</span> <span class="pre">:raw-html-m2r:`&lt;a&gt;Click</span> <span class="pre">here!&lt;/a&gt;`\</span> <span class="pre">',</span> <span class="pre">{},</span> <span class="pre">{</span> <span class="pre">'a':</span> <span class="pre">(sub)</span> <span class="pre">=&gt;</span> <span class="pre">:raw-html-m2r:`&lt;a&gt;{sub}&lt;/a&gt;`</span> <span class="pre">})</span></code>. If you don’t do the tag substitution you will end up showing literally ‘<span class="raw-html-m2r"><a></span>‘ rather than making a hyperlink.</p></li>
+<li><p>You can also use React components with normal variable substitution if you want to insert HTML markup, e.g. <code class="docutils literal notranslate"><span class="pre">_t('Your</span> <span class="pre">email</span> <span class="pre">address</span> <span class="pre">is</span> <span class="pre">%(emailAddress)s',</span> <span class="pre">{</span> <span class="pre">emailAddress:</span> <span class="pre">:raw-html-m2r:`&lt;i&gt;{userEmailAddress}&lt;/i&gt;`</span> <span class="pre">})</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="things-to-know-style-guides">
+<h1>Things to know/Style Guides<a class="headerlink" href="#things-to-know-style-guides" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Do not use <code class="docutils literal notranslate"><span class="pre">_t()</span></code> inside <code class="docutils literal notranslate"><span class="pre">getDefaultProps</span></code>: the translations aren’t loaded when <code class="docutils literal notranslate"><span class="pre">getDefaultProps</span></code> is called, leading to missing translations. Use <code class="docutils literal notranslate"><span class="pre">_td()</span></code> to indicate that <code class="docutils literal notranslate"><span class="pre">_t()</span></code> will be called on the string later.</p></li>
+<li><p>If using translated strings as constants, translated strings can’t be in constants loaded at class-load time since the translations won’t be loaded. Mark the strings using <code class="docutils literal notranslate"><span class="pre">_td()</span></code> instead and perform the actual translation later.</p></li>
+<li><p>If a string is presented in the UI with punctuation like a full stop, include this in the translation strings, since punctuation varies between languages too.</p></li>
+<li><p>Avoid “translation in parts”, i.e. concatenating translated strings or using translated strings in variable substitutions. Context is important for translations, and translating partial strings this way is simply not always possible.</p></li>
+<li><p>Concatenating strings often also introduces an implicit assumption about word order (e.g. that the subject of the sentence comes first), which is incorrect for many languages.</p></li>
+<li><p>Translation ‘smell test’: If you have a string that does not begin with a capital letter (is not the start of a sentence) or it ends with e.g. ‘:’ or a preposition (e.g. ‘to’) you should recheck that you are not trying to translate a partial sentence.</p></li>
+<li><p>If you have multiple strings, that are almost identical, except some part (e.g. a word or two) it is still better to translate the full sentence multiple times. It may seem like inefficient repetion, but unlike programming where you try to minimize repetition, translation is much faster if you have many, full, clear, sentences to work with, rather than fewer, but incomplete sentence fragments.</p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="translating.html" class="btn btn-neutral float-right" title="translating" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="theming.html" class="btn btn-neutral float-left" title="theming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo" style="opacity:0.4;">
+    <p>
+        &#169; Copyleft <b style="font-color:darkgrey!important;font-weight:lighter;font-size:90%;font-style:italic;"><strong>2021 DATRO</strong> Consortium</b> | <a href="https://gui.8cc.online" target="_popup">gui.8cc.online</a>  .
+
+    </p>
+  </div>
+    
+    
+    
+    <div style="opacity:0.3;font-size:76%;">Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a></div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

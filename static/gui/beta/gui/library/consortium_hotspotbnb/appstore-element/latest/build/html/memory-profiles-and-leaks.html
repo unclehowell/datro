@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>memory-profiles-and-leaks &mdash; Element -  WebApp 0.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="native-node-modules" href="native-node-modules.html" />
+    <link rel="prev" title="labs" href="labs.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Element -  WebApp
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes and Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app-load.html">app-load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customisations.html">customisations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e2ee.html">e2ee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e2ee.html#disabling-encryption-by-default">Disabling encryption by default</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e2ee.html#requiring-secure-backup">Requiring secure backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e2ee.html#preferring-setup-methods">Preferring setup methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature-flags.html">feature-flags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature-flags.html#interaction-with-spec-process">Interaction with spec process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature-flags.html#starting-work-on-a-feature">Starting work on a feature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature-flags.html#enabling-by-default-on-develop-and-nightly">Enabling by default on develop and nightly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature-flags.html#enabling-by-default-on-staging-app-and-release">Enabling by default on staging, app, and release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature-flags.html#feature-deployed-successfully">Feature deployed successfully</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi-dev.html">jitsi-dev</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi-dev.html#brief-introduction-to-widgets">Brief introduction to widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi-dev.html#brief-introduction-to-integration-managers">Brief introduction to integration managers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi-dev.html#widgets-configured-by-integration-managers">Widgets configured by integration managers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi-dev.html#jitsi-widgets-from-integration-managers">Jitsi widgets from integration managers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi-dev.html#jitsi-widgets-generated-by-element-itself">Jitsi widgets generated by Element itself</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi-dev.html#the-jitsi-wrapper-in-element">The Jitsi wrapper in Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi.html">jitsi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi.html#configuring-element-to-use-your-self-hosted-jitsi-server">Configuring Element to use your self-hosted Jitsi server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi.html#element-android">Element Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jitsi.html#element-ios">Element iOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kubernetes.html">kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html">labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#submit-abuse-report-to-moderators-msc3215-support-feature-report-to-moderators">Submit Abuse Report to Moderators MSC3215 support (<code class="docutils literal notranslate"><span class="pre">feature_report_to_moderators</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#matrix-spaces-msc1772-support-feature-spaces">Matrix Spaces MSC1772 support (<code class="docutils literal notranslate"><span class="pre">feature_spaces</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#render-latex-maths-in-messages-feature-latex-maths">Render LaTeX maths in messages (<code class="docutils literal notranslate"><span class="pre">feature_latex_maths</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#message-pinning-feature-pinning">Message pinning (<code class="docutils literal notranslate"><span class="pre">feature_pinning</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#custom-status-feature-custom-status">Custom status (<code class="docutils literal notranslate"><span class="pre">feature_custom_status</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#custom-tags-feature-custom-tags">Custom tags (<code class="docutils literal notranslate"><span class="pre">feature_custom_tags</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#render-simple-counters-in-room-header-feature-state-counters">Render simple counters in room header (<code class="docutils literal notranslate"><span class="pre">feature_state_counters</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#multiple-integration-managers-feature-many-integration-managers">Multiple integration managers (<code class="docutils literal notranslate"><span class="pre">feature_many_integration_managers</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#new-ways-to-ignore-people-feature-mjolnir">New ways to ignore people (<code class="docutils literal notranslate"><span class="pre">feature_mjolnir</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#verifications-in-dms-feature-dm-verification">Verifications in DMs (<code class="docutils literal notranslate"><span class="pre">feature_dm_verification</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#bridge-info-tab-feature-bridge-state">Bridge info tab (<code class="docutils literal notranslate"><span class="pre">feature_bridge_state</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#presence-indicator-in-room-list-feature-presence-in-room-list">Presence indicator in room list (<code class="docutils literal notranslate"><span class="pre">feature_presence_in_room_list</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#custom-themes-feature-custom-themes">Custom themes (<code class="docutils literal notranslate"><span class="pre">feature_custom_themes</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#message-preview-tweaks">Message preview tweaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#communities-v2-prototyping-feature-communities-v2-prototypes-in-development">Communities v2 prototyping (<code class="docutils literal notranslate"><span class="pre">feature_communities_v2_prototypes</span></code>) [In Development]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#dehydrated-devices-feature-dehydration">Dehydrated devices (<code class="docutils literal notranslate"><span class="pre">feature_dehydration</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#do-not-disturb-feature-dnd">Do not disturb (<code class="docutils literal notranslate"><span class="pre">feature_dnd</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs.html#hidden-read-receipts-feature-hidden-read-receipts">Hidden read receipts (<code class="docutils literal notranslate"><span class="pre">feature_hidden_read_receipts</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">memory-profiles-and-leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#memory-leaks">Memory leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#memory-profiles-snapshots">Memory profiles/snapshots</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#taking-a-memory-profile-firefox">Taking a memory profile (Firefox)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#taking-a-memory-profile-chrome-desktop">Taking a memory profile (Chrome/Desktop)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="native-node-modules.html">native-node-modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr-previews.html">pr-previews</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr-previews.html#faqs">FAQs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="review.html">review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="review.html#code-review">Code Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="review.html#code-quality">Code Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="review.html#design-and-product-review">Design and Product Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skinning%20thoughts.html">iiitemskinning thoughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theming.html">theming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating-dev.html">translating-dev</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating-dev.html#requirements">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating-dev.html#translating-strings-vs-marking-strings-for-translation">Translating strings vs. marking strings for translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating-dev.html#adding-new-strings">Adding new strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating-dev.html#editing-existing-strings">Editing existing strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating-dev.html#adding-variables-inside-a-string">Adding variables inside a string.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating-dev.html#things-to-know-style-guides">Things to know/Style Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating.html">translating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating.html#requirements">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating.html#step-0-join-element-translations-matrix-org">Step 0: Join #element-translations:matrix.org</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating.html#step-1-preparing-your-weblate-profile">Step 1: Preparing your Weblate Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating.html#how-to-check-if-your-language-already-is-being-translated">How to check if your language already is being translated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating.html#step-2a-helping-on-existing-languages">Step 2a: Helping on existing languages.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translating.html#step-2b-adding-a-new-language">Step 2b: Adding a new language</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Element -  WebApp</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>memory-profiles-and-leaks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/memory-profiles-and-leaks.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="memory-profiles-and-leaks">
+<h1>memory-profiles-and-leaks<a class="headerlink" href="#memory-profiles-and-leaks" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="memory-leaks">
+<h1>Memory leaks<a class="headerlink" href="#memory-leaks" title="Permalink to this headline">¶</a></h1>
+<p>Element usually emits slow behaviour just before it is about to crash. Getting a
+memory snapshot (below) just before that happens is ideal in figuring out what
+is going wrong.</p>
+<p>Common symptoms are clicking on a room and it feels like the tab froze and scrolling
+becoming jumpy/staggered.</p>
+<p>If you receive a white screen (electron) or the chrome crash page, it is likely
+run out of memory and it is too late for a memory profile. Please do report when
+this happens though so we can try and narrow down what might have gone wrong.</p>
+</div>
+<div class="section" id="memory-profiles-snapshots">
+<h1>Memory profiles/snapshots<a class="headerlink" href="#memory-profiles-snapshots" title="Permalink to this headline">¶</a></h1>
+<p>When investigating memory leaks/problems it’s usually important to compare snapshots
+from different points in the Element session lifecycle. Most importantly, a snapshot
+to establish the baseline or “normal” memory usage is useful. Taking a snapshot
+roughly 30-60 minutes after starting Element is a good time to establish “normal”
+memory usage for the app - anything after that is at risk of hiding the memory leak
+and anything newer is still in the warmup stages of the app.</p>
+<p><strong>Memory profiles can contain sensitive information.</strong> If you are submitting a memory
+profile to us for debugging purposes, please pick the appropriate Element developer and
+send them over an encrypted private message. <em>Do not share your memory profile in
+public channels or with people you do not trust.</em></p>
+<div class="section" id="taking-a-memory-profile-firefox">
+<h2>Taking a memory profile (Firefox)<a class="headerlink" href="#taking-a-memory-profile-firefox" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Press CTRL+SHIFT+I (I as in eye).</p></li>
+<li><p>Click the Memory tab.</p></li>
+<li><p>Press the camera icon in the top left of the pane.</p></li>
+<li><p>Wait a bit (coffee is a good option).</p></li>
+<li><p>When the save button appears on the left side of the panel, click it to save the
+profile locally.</p></li>
+<li><p>Compress the file (gzip or regular zip) to make the file smaller.</p></li>
+<li><p>Send the compressed file to whoever asked for it (if you trust them).</p></li>
+</ol>
+<p>While the profile is in progress, the tab might be frozen or unresponsive.</p>
+</div>
+<div class="section" id="taking-a-memory-profile-chrome-desktop">
+<h2>Taking a memory profile (Chrome/Desktop)<a class="headerlink" href="#taking-a-memory-profile-chrome-desktop" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Press CTRL+SHIFT+I (I as in eye).</p></li>
+<li><p>Click the Memory tab.</p></li>
+<li><p>Select “Heap Snapshot” and the app.element.io VM instance (not the indexeddb one).</p></li>
+<li><p>Click “Take Snapshot”.</p></li>
+<li><p>Wait a bit (coffee is a good option).</p></li>
+<li><p>When the save button appears on the left side of the panel, click it to save the
+profile locally.</p></li>
+<li><p>Compress the file (gzip or regular zip) to make the file smaller.</p></li>
+<li><p>Send the compressed file to whoever asked for it (if you trust them).</p></li>
+</ol>
+<p>While the profile is in progress, the tab might be frozen or unresponsive.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="native-node-modules.html" class="btn btn-neutral float-right" title="native-node-modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="labs.html" class="btn btn-neutral float-left" title="labs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, DATRO Consortium.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

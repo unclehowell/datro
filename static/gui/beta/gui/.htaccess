@@ -1,0 +1,4 @@
+<IfModule mod_rewrite.c>
+   RewriteEngine on
+   RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization},L]
+</IfModule>
