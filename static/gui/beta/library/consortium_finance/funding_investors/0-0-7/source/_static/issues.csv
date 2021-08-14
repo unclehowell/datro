@@ -1,9 +1,0 @@
-**Date**, **Version**, **Subject**, **Description**
-2021-04-07, 0.1.6, Account data, `Disregard this report - Is was recompiled a year after publication and so the financial data is a year ahead and also contains errors`
-2020-06-11, 0.1.6, Account Data, `'interest to date' and interest in 2020 missing on accounts - 122 123 124 126 128 129 133 134 136 137 139 and 140` 
-2020-06-11, 0.1.6, Account Data, `ideally we want 'reconsiliation pending' and 'NO-DATA' to appear instead of '#missingdata' - update source spreadsheet to achieve this`
-2020-06-11, 0.1.6, Account Headers, `Better they appear in bold. Which will mean adding '**' to the beginning and end of each header title in the source (spreadsheet)`
-2020-06-11, 0.1.6, Account Dates, `Some of the formatting of the dates are different to others. Also 'YY-MM-DD' is preferential to what currently exists e.g. 'DD-MM-YY'' 
-2020-06-10, 0.1.6, Master Register, `The data combines the interest awarded and the account balance to produce an inaccurate final balance. Correct at the source`  
-2020-06-06, 0.1.6, Account data, `Account 105 has discrepancies - in the Master Register Table the alias is different to the rest of the report`  
-2020-06-05, 0.1.6, Document build, `Throws some errors and asks for user input but it still builds - temporarily a flag was added to latexpdf to skip errors`  
