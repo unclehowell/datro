@@ -1,0 +1,30 @@
+[
+  {
+   "name": "About > User Guide",
+    "path": "./about-userguide",
+    "_links": {
+      "html": "./about-userguide"
+    }
+  },
+  {
+    "name": "AppStore > Althea",
+    "path": "./appstore-althea",
+    "_links": {
+      "html": "./appstore-althea"
+    }
+  },
+  {
+   "name": "AppStore > Element",
+    "path": "./appstore-element",
+    "_links": {
+      "html": "./appstore-element"
+    }
+  },
+  {
+   "name": "AppStore > OpenHab",
+    "path": "./appstore-openhab",
+    "_links": {
+      "html": "./appstore-openhab"
+    }
+  }
+]

@@ -1,0 +1,16 @@
+Running Sphinx v3.5.3
+making output directory... done
+WARNING: logo file '_static/logo.png' does not exist
+loading pickled environment... done
+building [mo]: targets for 0 po files that are out of date
+building [latex]: all documents
+updating environment: 0 added, 0 changed, 0 removed
+looking for now-outdated files... none found
+processing hotspotbnb_os-appstore_althea.tex... index releasenotes 
+resolving references...
+done
+writing... done
+
+Sphinx error:
+logo file '_static/logo.png' does not exist
+make: *** [Makefile:19: latexpdf] Error 1
