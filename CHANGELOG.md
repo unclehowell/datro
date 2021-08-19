@@ -22,6 +22,7 @@ Jul-24 - Added a custom.sh in one of the docs in library (see library changelog)
 Jul-29 - Removed some bad code in library `github_wiki/index.html` which caused a bug. see library changelog for details   
 
 ### Changed 
+Aug-18 - Minor edit to datro-beta/2 - a web component/ reactjs template   
 Jul-24 - Change in Library (wiki document) - see libraries dedicated changelog for details  
 Jul-11 - Minor edit to `library` and regenerated sitemap.xml and changed the date format in this changelog moving forward. Was DD-MM , now it's MM-DD   
 Jul-08 - Changed to `static/library` - see library changelog for details  
