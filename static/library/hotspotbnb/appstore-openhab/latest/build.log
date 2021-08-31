@@ -1,4 +1,4 @@
-Running Sphinx v3.2.1
+Running Sphinx v3.5.3
 making output directory... done
 loading pickled environment... done
 building [mo]: targets for 0 po files that are out of date
@@ -16,9 +16,10 @@ build succeeded.
 The LaTeX files are in build/latex.
 Run 'make' in that directory to run these through (pdf)latex
 (use `make latexpdf' here to do that automatically).
-make[1]: Entering directory '/var/www/html/datro-gh-pages/static/library/client-app/openhab/latest/build/latex'
-latexmk -pdf -dvi- -ps-  'client-app-openhab.tex'
-Latexmk: This is Latexmk, John Collins, 26 Dec. 2019, version: 4.67.
+Rc files read:
+  /etc/LatexMk
+  latexmkrc
+Latexmk: This is Latexmk, John Collins, 17 Apr. 2020, version: 4.69a.
 Rule 'pdflatex': The following rules & subrules became out-of-date:
       'pdflatex'
 ------------
@@ -28,12 +29,12 @@ Run number 1 of rule 'pdflatex'
 Running 'pdflatex   -recorder  "client-app-openhab.tex"'
 ------------
 Latexmk: applying rule 'pdflatex'...
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./client-app-openhab.tex
-LaTeX2e <2020-02-02> patch level 2
-L3 programming layer <2020-02-14> (./sphinxmanual.cls
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-07-17> (./sphinxmanual.cls
 Document Class: sphinxmanual 2019/12/01 v2.3.0 Document class (Sphinx manual)
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2019/12/20 v1.4l Standard LaTeX document class
@@ -50,10 +51,9 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def)
-(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
-(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
 (/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
@@ -85,6 +85,7 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
 (./sphinxhighlight.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 (/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
@@ -92,7 +93,7 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 (/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
 (/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
 (/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
@@ -132,46 +133,17 @@ Writing index file client-app-openhab.idx
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
 Overfull \hbox (175.75462pt too wide) in paragraph at lines 85--85
  [][]
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 86.
-
-
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 87.
-
-[1]
-
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 88.
-
-
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 88.
-
-
-Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 88.
-
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [1]
 Chapter 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2--131
+Underfull \hbox (badness 10000) in paragraph at lines 138--141
 []|[][]\T1/ptm/m/n/10 2020-10-30_datro-client-
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
-Underfull \hbox (badness 10000) in paragraph at lines 176--177
+Underfull \hbox (badness 10000) in paragraph at lines 194--196
 []|\T1/ptm/m/n/10 09-01-
-
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 192.
-
 [1] [2]
 Chapter 2.
 No file client-app-openhab.ind.
-
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 205.
-
 [3] (./client-app-openhab.aux)
 
 Package rerunfilecheck Warning: File `client-app-openhab.out' has changed.
@@ -188,7 +160,7 @@ helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhv
 bo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on client-app-openhab.pdf (5 pages, 59574 bytes).
+Output written on client-app-openhab.pdf (5 pages, 59723 bytes).
 Transcript written on client-app-openhab.log.
 Latexmk: Index file 'client-app-openhab.idx' was written
 Latexmk: Missing input file: 'client-app-openhab.ind' from line
@@ -207,7 +179,7 @@ Running 'makeindex -s python.ist  -o "client-app-openhab.ind" "client-app-openha
 ------------
 === TeX engine is 'pdfTeX'
 Latexmk: applying rule 'makeindex client-app-openhab.idx'...
-This is makeindex, version 2.15 [TeX Live 2019] (kpathsea + Thai support).
+This is makeindex, version 2.15 [TeX Live 2020] (kpathsea + Thai support).
 Scanning style file ./python.ist.......done (7 attributes redefined, 0 ignored).
 Scanning input file client-app-openhab.idx...done (0 entries accepted, 0 rejected).
 Nothing written in client-app-openhab.ind.
@@ -224,12 +196,12 @@ Run number 2 of rule 'pdflatex'
 Running 'pdflatex   -recorder  "client-app-openhab.tex"'
 ------------
 Latexmk: applying rule 'pdflatex'...
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./client-app-openhab.tex
-LaTeX2e <2020-02-02> patch level 2
-L3 programming layer <2020-02-14> (./sphinxmanual.cls
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-07-17> (./sphinxmanual.cls
 Document Class: sphinxmanual 2019/12/01 v2.3.0 Document class (Sphinx manual)
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2019/12/20 v1.4l Standard LaTeX document class
@@ -246,10 +218,9 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def)
-(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
-(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
 (/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
@@ -281,6 +252,7 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
 (./sphinxhighlight.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 (/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
@@ -288,7 +260,7 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 (/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
 (/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
 (/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
@@ -330,54 +302,24 @@ Writing index file client-app-openhab.idx
 Overfull \hbox (175.75462pt too wide) in paragraph at lines 85--85
  [][]
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 86.
-
-(./client-app-openhab.toc)
-
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 87.
-
-[1]
-
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 88.
-
-
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 88.
-
-
-Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 88.
-
+(./client-app-openhab.toc) [1]
 Chapter 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2--131
+Underfull \hbox (badness 10000) in paragraph at lines 138--141
 []|[][]\T1/ptm/m/n/10 2020-10-30_datro-client-
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
-Underfull \hbox (badness 10000) in paragraph at lines 176--177
+Underfull \hbox (badness 10000) in paragraph at lines 194--196
 []|\T1/ptm/m/n/10 09-01-
-
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 192.
-
 [1] [2]
 Chapter 2.
-(./client-app-openhab.ind)
-
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 205.
-
-[3] (./client-app-openhab.aux) )
+(./client-app-openhab.ind) [3] (./client-app-openhab.aux) )
 (see the transcript file for additional information){/usr/share/texlive/texmf-d
 ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
 helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhv
 bo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on client-app-openhab.pdf (5 pages, 61617 bytes).
+Output written on client-app-openhab.pdf (5 pages, 61781 bytes).
 Transcript written on client-app-openhab.log.
 Latexmk: Index file 'client-app-openhab.idx' was written
 Latexmk: Log file says output to 'client-app-openhab.pdf'
@@ -392,12 +334,12 @@ Running 'pdflatex   -recorder  "client-app-openhab.tex"'
 ------------
 === TeX engine is 'pdfTeX'
 Latexmk: applying rule 'pdflatex'...
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./client-app-openhab.tex
-LaTeX2e <2020-02-02> patch level 2
-L3 programming layer <2020-02-14> (./sphinxmanual.cls
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-07-17> (./sphinxmanual.cls
 Document Class: sphinxmanual 2019/12/01 v2.3.0 Document class (Sphinx manual)
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2019/12/20 v1.4l Standard LaTeX document class
@@ -414,10 +356,9 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def)
-(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
-(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
 (/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
@@ -449,6 +390,7 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
 (./sphinxhighlight.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 (/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
@@ -456,7 +398,7 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 (/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
 (/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
 (/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
@@ -498,57 +440,26 @@ Writing index file client-app-openhab.idx
 Overfull \hbox (175.75462pt too wide) in paragraph at lines 85--85
  [][]
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 86.
-
-(./client-app-openhab.toc)
-
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 87.
-
-[1]
-
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 88.
-
-
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 88.
-
-
-Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 88.
-
+(./client-app-openhab.toc) [1]
 Chapter 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2--131
+Underfull \hbox (badness 10000) in paragraph at lines 138--141
 []|[][]\T1/ptm/m/n/10 2020-10-30_datro-client-
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
-Underfull \hbox (badness 10000) in paragraph at lines 176--177
+Underfull \hbox (badness 10000) in paragraph at lines 194--196
 []|\T1/ptm/m/n/10 09-01-
-
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 192.
-
 [1] [2]
 Chapter 2.
-(./client-app-openhab.ind)
-
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 205.
-
-[3] (./client-app-openhab.aux) )
+(./client-app-openhab.ind) [3] (./client-app-openhab.aux) )
 (see the transcript file for additional information){/usr/share/texlive/texmf-d
 ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
 helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhv
 bo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on client-app-openhab.pdf (5 pages, 61617 bytes).
+Output written on client-app-openhab.pdf (5 pages, 61781 bytes).
 Transcript written on client-app-openhab.log.
 Latexmk: Index file 'client-app-openhab.idx' was written
 Latexmk: Log file says output to 'client-app-openhab.pdf'
 === TeX engine is 'pdfTeX'
-Latexmk: All targets () are up-to-date
-make[1]: Leaving directory '/var/www/html/datro-gh-pages/static/library/client-app/openhab/latest/build/latex'
+Latexmk: All targets (client-app-openhab.pdf) are up-to-date

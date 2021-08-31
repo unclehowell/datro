@@ -14,6 +14,8 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [-datro.04] - Q3/2021
 
 ### Changed
+Aug-29 - Changed ScottishBay to DAS (Decentralized Autonomous Society) - operation is no longer stationary/static, we're going mobile/itenerant   
+Aug-29 - Changed icon image in 'html/static/website.html' to the profile logo from github.com/unclehowell   
 Aug-14 - Copywriting improved - minor edit - Also changed format of date on this Changelog    
 Aug-04 - Copywriting text improved in index.html and links to documents.html replaced with data-featherlight view and new library view (codenamed LibrarEye)     
 Aug-04 - Changed download in footer to downloads - since the button links to the gh-pages releases, which now features more than just compiled HBnB Disk Image e.g. Persistent-Live, DApps and all the websites   

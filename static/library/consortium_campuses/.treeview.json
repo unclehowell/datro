@@ -1,16 +1,38 @@
 [
   {
-    "name": "Case Study > Campus 1",
-    "path": "./casestudy_campus1",
+    "name": "Campus I - Case Study",
+    "path": "./campus1_casestudy",
     "_links": {
-      "html": "./casestudy_campus1"
+      "html": "./campus1_casestudy"
     }
   },
   {
-    "name": "Site Survey > Jam'Land",
-    "path": "./sitesurvey_jamhighland",
+    "name": "Campus IV - Site Survey",
+    "path": "./campus4_sitesurvey",
     "_links": {
-      "html": "./sitesurvey_jamhighland"
+      "html": "./campus4_sitesurvey"
+    }
+  },
+  {
+    "name": "TechHouse II > Case Study",
+    "path": "./techhouse2_casestudy",
+    "_links": {
+      "html": "./techhouse2_casestudy"
+    }
+  },
+  {
+    "name": " -------------------------",
+    "path": "",
+    "_links": {
+      "html": ""
+    }
+  },
+
+  {
+    "name": " Pending Publication",
+    "path": "",
+    "_links": {
+      "html": ""
     }
   },
   {
@@ -20,29 +42,37 @@
       "html": ""
     }
   },
+
   {
-    "name": "In Draft > CCU Akrotiri",
+    "name": "Campus 0 > Case Study",
     "path": "",
     "_links": {
       "html": ""
     }
   },
   {
-    "name": "In Draft > Campus 2",
+    "name": "Campus II > Case Study",
     "path": "",
     "_links": {
       "html": ""
     }
   },
   {
-    "name": "In Draft > Campus 3",
+    "name": "Campus III > Case Study",
     "path": "",
     "_links": {
       "html": ""
     }
   },
   {
-    "name": "In Draft > Campus 4 Plan",
+    "name": "Campus IV > Vision Plan",
+    "path": "",
+    "_links": {
+      "html": ""
+    }
+  },
+  {
+    "name": "TechHouse I > Case Study",
     "path": "",
     "_links": {
       "html": ""

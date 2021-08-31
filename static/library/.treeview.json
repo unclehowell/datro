@@ -1,12 +1,5 @@
 [
   {
-    "name": "Bloculus > Protocol",
-    "path": "./consortium_bloculus",
-    "_links": {
-      "html": "./consortium_bloculus"
-    }
-  },
-  {
    "name": "Consortium > Campuses",
     "path": "./consortium_campuses",
     "_links": {
@@ -42,7 +35,14 @@
     }
   },
   {
-    "name": "HotspotBnB > OS",
+    "name": "DAO-Society",
+    "path": "dao_society",
+    "_links": {
+      "html": "dao_society"
+    }
+  },
+  {
+    "name": "Hotspotβnβ",
     "path": "./hotspotbnb",
     "_links": {
       "html": "./hotspotbnb"
@@ -50,13 +50,6 @@
   },
   {
     "name": "--------- Draft ---------",
-    "path": "#",
-    "_links": {
-      "html": "#"
-    }
-  },
-  {
-    "name": "DAO Society",
     "path": "#",
     "_links": {
       "html": "#"

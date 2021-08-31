@@ -7,6 +7,11 @@ This directory and changelog belongs to [![GitHub release (latest by date includ
 
 ## [Unreleased]  
 
+## [_theme-docs.08-rc1.8] - Q3/2021
+
+### Added
+Aug-22 - Added sed command to build-master.sh to append script that'll change date in footer (copyleft notice) from fixed year to range e.g. 2021 - YYYY  (YYYY being the current year)   
+
 ## [_theme-docs.08-rc1.7] - Q2/2021
 
 ### Changed

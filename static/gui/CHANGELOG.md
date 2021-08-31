@@ -13,6 +13,10 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 ### Fixed
 Aug-12 - Two of the pages of the app-store had no `</style>` (stylesheet closing tag) - it prevented the page from loading  
 
+### Added
+Aug-25 - Two handy codetips worth noting at this juncture. still undecided if we'll use well-known, subdomains or ports for apps and menu's etc:
+Aug-25 - change port ~ `  onclick="window.location = window.location.protocol + '//' + window.location.hostname + ':8096';"  `  
+Aug-25 - apppend subdomain ~ `  <a href="#" onclick="window.location.host = `gui.${window.location.host}`"  `  
 
 ## [gui-0.1] - Q2/2021
 

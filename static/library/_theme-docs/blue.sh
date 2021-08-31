@@ -93,7 +93,7 @@ sed -i 's/&copy; Copyright/ /g' build/html/*.html
 sed -i 's/span>copy;/span> /g' build/html/*.html
 sed -i 's/;copy;/ /g' build/html/*.html
 sed -i 's/2021, DATRO Consortium/ /g' build/html/*.html
-sed -i 's/Copyright/  <b style="font-color:darkgrey!important;font-weight:lighter;font-size:90%;font-style:italic;"><strong>2021 DATRO<\/strong> Consortium<\/b> | datro.xyz/g' build/html/*.html
+sed -i 's/Copyright/  <b style="font-color:darkgrey!important;font-weight:lighter;font-size:90%;font-style:italic;"><strong>YYYY DATRO<\/strong> Consortium<\/b> | datro.xyz/g' build/html/*.html
 sed -i 's/ datro.xyz/ <a href="https:\/\/datro.xyz" target="_popup">datro.xyz<\/a>/g' build/html/*.html
 sed -i 's/}article/}.copy-left{display:inline-block;text-align:right;margin:0;font-weight:bolder!important;font-size:99.99%;-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:FlipH;-ms-filter:FlipH}article/g' build/html/_static/css/theme.css
 sed -i 's/footer p{/footer p{font-size:122%;margin-bottom:0px;/g' build/html/*.html
@@ -108,5 +108,4 @@ sed -i 's/thead{color:#000;/thead{color:#fff;/g' build/html/_static/css/theme.cs
 sed -i 's/caption{color:#000;/caption{color:#fff;/g' build/html/_static/css/theme.css
 sed -i 's/.rst-content code,.rst-content tt,code{white-space:unset;font-weight:800!important;max-width:100%;border:3px solid transparent;font-size:75%;padding: 0 5px;color:#FFF;overflow-x:auto;background:#333654;max-width:100%;background:#fff;border:1px solid #e1e4e5;font-size:75%;padding:0 5px;font-family:SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,Courier,monospace;color:darkgrey;overflow-x:auto}/.rst-content code,.rst-content tt,code{white-space:unset;font-weight:800!important;max-width:100%;border:3px solid transparent;font-size:75%;padding: 0 5px;color:#FFF;overflow-x:auto;background:#333654;}/g' build/html/_static/css/theme.css
 sed -i 's/.rst-content .section>a>img,.rst-content .section>img{/.rst-content .section>a>img,.rst-content .section>img{filter:brightness(0.8)invert(0.95)hue-rotate(-164deg);/g' build/html/_static/css/theme.css
-
 exit 0
