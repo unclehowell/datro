@@ -7,10 +7,19 @@ This directory and changelog belongs to [![GitHub release (latest by date includ
 
 ## [Unreleased]  
 
+## [_theme-docs.08-rc1.9] - Q3/2021
+
+### Added 
+Sep-03 - Now supports Internationalization (EN, ES, DE, FR, IT, RU, ZH, AR, HI). More to come. ATM tanslations have to be done manually using a .po editor.
+
 ## [_theme-docs.08-rc1.8] - Q3/2021
 
 ### Added
 Aug-22 - Added sed command to build-master.sh to append script that'll change date in footer (copyleft notice) from fixed year to range e.g. 2021 - YYYY  (YYYY being the current year)   
+
+### Changed
+
+Sep-02 - replaced `sed -i 's/ View page source/ /g' build/html/*.html` with `sed -i 's|<a href="_sources/index.rst.txt" rel="nofollow">.*</a>||'` to support multi-language  
 
 ## [_theme-docs.08-rc1.7] - Q2/2021
 

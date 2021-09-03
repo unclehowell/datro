@@ -1,17 +1,128 @@
 [
   {
-    "name": "HTML",
-    "path": "./latest/build/html",
+    "name": "<div class='glyphicon glyphicon-book new-line'>HTML</div>",
+    "path": "",
     "_links": {
-      "html": "./latest/build/html"
+      "html": ""
     }
    },
   {
-    "name": "PDF",
-    "path": "./latest/build/latex/",
+    "name": "EN",
+    "path": "./latest/build/html/en/",
     "_links": {
-    "html": "./latest/build/latex/",
-    "target": "_blank"
-  }
- }
+      "html": "./latest/build/html/en/"
+    }
+   },
+  {
+    "name": "ES",
+    "path": "./latest/build/html/es/",
+    "_links": {
+      "html": "./latest/build/html/es/"
+    }
+   },
+  {
+    "name": "DE",
+    "path": "./latest/build/html/de/",
+    "_links": {
+      "html": "./latest/build/html/de/"
+    }
+   },
+  {
+    "name": "FR",
+    "path": "./latest/build/html/fr/",
+    "_links": {
+      "html": "./latest/build/html/fr/"
+    }
+   },
+  {
+    "name": "RU",
+    "path": "./latest/build/html/ru/",
+    "_links": {
+      "html": "./latest/build/html/ru/"
+    }
+   },
+  {
+    "name": "ZH",
+    "path": "./latest/build/html/zh/",
+    "_links": {
+      "html": "./latest/build/html/zh/"
+    }
+   },
+  {
+    "name": "AR",
+    "path": "./latest/build/html/ar/",
+    "_links": {
+      "html": "./latest/build/html/ar/"
+    }
+   },
+  {
+    "name": "HI",
+    "path": "./latest/build/html/hi/",
+    "_links": {
+      "html": "./latest/build/html/hi/"
+    }
+   },
+  {
+    "name": "<div class='glyphicon glyphicon-book new-line'>PDF</div>",
+    "path": "",
+    "_links": {
+      "html": ""
+    }
+   },
+  {
+    "name": "EN",
+    "path": "./latest/build/latex/en/",
+    "_links": {
+      "html": "./latest/build/latex/en/"
+    }
+   },
+  {
+    "name": "ES",
+    "path": "./latest/build/latex/es/",
+    "_links": {
+      "html": "./latest/build/latex/es/"
+    }
+   },
+  {
+    "name": "DE",
+    "path": "./latest/build/latex/de/",
+    "_links": {
+      "html": "./latest/build/latex/de/"
+    }
+   },
+  {
+    "name": "FR",
+    "path": "./latest/build/latex/fr/",
+    "_links": {
+      "html": "./latest/build/latex/fr/"
+    }
+   },
+  {
+    "name": "RU",
+    "path": "./latest/build/latex/ru/",
+    "_links": {
+      "html": "./latest/build/latex/ru/"
+    }
+   },
+  {
+    "name": "ZH",
+    "path": "./latest/build/latex/zh/",
+    "_links": {
+      "html": "./latest/build/latex/zh/"
+    }
+   },
+  {
+    "name": "AR",
+    "path": "./latest/build/latex/ar/",
+    "_links": {
+      "html": "./latest/build/latex/ar/"
+    }
+   },
+  {
+    "name": "HI",
+    "path": "./latest/build/latex/hi/",
+    "_links": {
+      "html": "./latest/build/latex/hi/"
+    }
+   }
 ]

@@ -2,7 +2,20 @@ html {
 margin-top:10vh;
 background:#336;
 background-color:#336;
+width: 100vw!important;
+overflow: hidden;
 }
+
+.new-line {
+font-size:150%;text-decoration:underline;
+text-decoration: underline;
+display: block;
+min-width: 99vw;
+letter-spacing: 0.3em;
+right: 0!important;
+text-underline-position: under;
+}
+
 
 body {
 background:#336;

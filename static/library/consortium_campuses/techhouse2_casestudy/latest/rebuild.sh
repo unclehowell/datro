@@ -15,7 +15,7 @@
 #   ██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝
 #   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
 #................................................
-#       rebuild.sh  _theme-docs.08-rc1.8
+#       rebuild.sh  _theme-docs.08-rc1.9
 #................................................
 #                   datro.xyz
 #................................................
@@ -60,7 +60,48 @@ do
 done
 
 
+# produce .po files from .rst in build/gettext
+make gettext > build.log 2>&1 &&
+# copy .po into source/locales/{language-code}/LC_MESSAGES/
+sphinx-intl update -p build/gettext -l es -l de -l fr -l ru -l it -l zh -l cy -l ar -l hi -l bn -l pt -l ja -l ur > build.log 2>&1 &&
+#potranslator update -p build/gettext -l es -l de -l fr -l ru -l it -l zh -l cy -l ar -l hi -l bn -l pt -l ja -l ur > build.log 2>&1 &&
 make html > build.log 2>&1 &&
+sleep 5 &&
+cd build &&
+mkdir en &&
+mv html/* en 2>&1 &&
+mv en html &&
+cd ../
+sleep 5 &&
+sphinx-build -b html source build/html/es -D language='es' > build.log 2>&1 &&
+sphinx-build -b html source build/html/de -D language='de' > build.log 2>&1 &&
+sphinx-build -b html source build/html/fr -D language='fr' > build.log 2>&1 &&
+sphinx-build -b html source build/html/ru -D language='ru' > build.log 2>&1 &&
+sphinx-build -b html source build/html/zh -D language='zh' > build.log 2>&1 &&
+sphinx-build -b html source build/html/ar -D language='ar' > build.log 2>&1 &&
+sphinx-build -b html source build/html/hi -D language='hi' > build.log 2>&1 &&
+sleep 5 &&
+
+
+cd build
+cd html
+touch index.html
+{
+echo '<html>'
+echo '<body>'
+echo '</body>'
+echo '<script type="text/javascript">'
+echo 'window.open("./en/", "_self");'
+echo '</script>'
+echo '<script language="JavaScript" type="text/javascript">'
+echo 'setTimeout("window.history.go(-1)",500);'
+echo '</script>'
+echo '</html>'
+}>> index.html
+cd ..
+cd ..
+sleep 5 &&
+
 printf "\e[2;3;33m Done! \n\e[0m"
 
 printf "\n\e[2;3;33m Step 3 of 5. Converting ReStructeredText to PDF (make latexpdf) \n\e[0m\n"
@@ -71,13 +112,17 @@ do
         ProgressBar ${number} ${_end}
 done
 
-make latexpdf --keep-going --silent > build.log 2>&1
-sleep 10 &&
-cd build
-cd latex
-find . -type f ! -iname "*.pdf" -delete &&
-cd ../../
-
+mkdir -p build/pdfs/{en,es,de,fr,ru,zh,ar,hi}
+make  -e SPHINXOPTS="-D language='en'" latexpdf  --keep-going --silent > build.log 2>&1 && sleep 5 && find build/latex/ -type f ! -iname "*.pdf" -delete && mv build/latex/* build/pdfs/en &&
+make  -e SPHINXOPTS="-D language='es'" latexpdf  --keep-going --silent > build.log 2>&1 && sleep 5 && find build/latex/ -type f ! -iname "*.pdf" -delete && mv build/latex/* build/pdfs/es &&
+make  -e SPHINXOPTS="-D language='de'" latexpdf  --keep-going --silent > build.log 2>&1 && sleep 5 && find build/latex/ -type f ! -iname "*.pdf" -delete && mv build/latex/* build/pdfs/de &&
+make  -e SPHINXOPTS="-D language='fr'" latexpdf  --keep-going --silent > build.log 2>&1 && sleep 5 && find build/latex/ -type f ! -iname "*.pdf" -delete && mv build/latex/* build/pdfs/fr &&
+make  -e SPHINXOPTS="-D language='ru'" latexpdf  --keep-going --silent > build.log 2>&1 && sleep 5 && find build/latex/ -type f ! -iname "*.pdf" -delete && mv build/latex/* build/pdfs/ru &&
+make  -e SPHINXOPTS="-D language='zh'" latexpdf  --keep-going --silent > build.log 2>&1 && sleep 5 && find build/latex/ -type f ! -iname "*.pdf" -delete && mv build/latex/* build/pdfs/zh &&
+make  -e SPHINXOPTS="-D language='ar'" latexpdf  --keep-going --silent > build.log 2>&1 && sleep 5 && find build/latex/ -type f ! -iname "*.pdf" -delete && mv build/latex/* build/pdfs/ar &&
+make  -e SPHINXOPTS="-D language='hi'" latexpdf  --keep-going --silent > build.log 2>&1 && sleep 5 && find build/latex/ -type f ! -iname "*.pdf" -delete && mv build/latex/* build/pdfs/hi &&
+mv build/pdfs/{en,es,de,fr,ru,zh,ar,hi} build/latex
+rm -r build/pdfs
 printf "\e[2;3;33m Done! \n\e[0m"
 
 printf "\n\e[2;3;33m Step 4 of 5. Setting HTML Theme (alternate color in rebuild.sh) \n\e[0m\n"
@@ -87,14 +132,26 @@ do
        ProgressBar ${number} ${_end}
 done
 
+sleep 2 &&
+# Select a color theme (default blue)
+# cp -r ../../../_theme-docs/grey.sh grey.sh 2> /dev/null &&
+cp -r ../../../_theme-docs/blue.sh blue.sh 2> /dev/null &&
 
-# Set color theme (default blue)
-cp -r ../../../_theme-docs/blue.sh blue.sh 2> /dev/null && chmod +x ./blue.sh && bash ./blue.sh && rm -r ./blue.sh &
-#cp -r ../../../_theme-docs/grey.sh grey.sh 2> /dev/null && chmod +x ./grey.sh && bash ./grey.sh && rm -r ./grey.sh &
+mv ./blue.sh ./theme.sh
+sudo chmod +x ./theme.sh &&
+sed 's|build\/html\/|build\/html\/en\/|g' ./theme.sh > ./en.sh && chmod +x ./en.sh && bash ./en.sh && rm -r ./en.sh && sleep 1 &&
+sed 's|build\/html\/|build\/html\/es\/|g' ./theme.sh > ./es.sh && chmod +x ./es.sh && bash ./es.sh && rm -r ./es.sh && sleep 1 &&
+sed 's|build\/html\/|build\/html\/de\/|g' ./theme.sh > ./de.sh && chmod +x ./de.sh && bash ./de.sh && rm -r ./de.sh && sleep 1 &&
+sed 's|build\/html\/|build\/html\/fr\/|g' ./theme.sh > ./fr.sh && chmod +x ./fr.sh && bash ./fr.sh && rm -r ./fr.sh && sleep 1 &&
+sed 's|build\/html\/|build\/html\/ru\/|g' ./theme.sh > ./ru.sh && chmod +x ./ru.sh && bash ./ru.sh && rm -r ./ru.sh && sleep 1 &&
+sed 's|build\/html\/|build\/html\/zh\/|g' ./theme.sh > ./zh.sh && chmod +x ./zh.sh && bash ./zh.sh && rm -r ./zh.sh && sleep 1 &&
+sed 's|build\/html\/|build\/html\/ar\/|g' ./theme.sh > ./ar.sh && chmod +x ./ar.sh && bash ./ar.sh && rm -r ./ar.sh && sleep 1 &&
+sed 's|build\/html\/|build\/html\/hi\/|g' ./theme.sh > ./hi.sh && chmod +x ./hi.sh && bash ./hi.sh && rm -r ./hi.sh && sleep 1 &&
+rm -r ./theme.sh
 
-sleep 0.5 &&
+sleep 2 &&
 
-cd build/latex
+cd build/latex/en
 touch index.html
 {
 echo '<html>'
@@ -103,13 +160,13 @@ echo '</body>'
 echo '<script type="text/javascript">'
 }>> index.html &&
 ls -1 >> name.txt
-sed 's/^/window.open(".\//' name.txt > namenew.txt
+sed 's/^/window.open(".\/en\//' name.txt > namenew.txt
 sed -i 's/pdf/pdf");/g' namenew.txt
 rm -r name.txt
 cat  namenew.txt >> index.html
 rm -r namenew.txt &&
-sed -i 's/window.open(".\/index.html//' index.html
-sed -i 's/window.open(".\/name.txt//' index.html
+sed -i 's/window.open(".\/en\/index.html//' index.html
+sed -i 's/window.open(".\/en\/name.txt//' index.html
 sed -i '/^$/d' index.html
 {
 echo '</script>'
@@ -118,7 +175,9 @@ echo 'setTimeout("window.history.go(-1)",500);'
 echo '</script>'
 echo '</html>'
 }>> index.html
-cd ../../
+cp -r index.html ../
+cd ../../../
+
 
 # change copyleft from fixed date to date range in build/html
 sleep 5 &&

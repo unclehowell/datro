@@ -130,9 +130,9 @@ To learn more about the source files go into the _blue-build-source directory an
 So you've modified the releasenotes and conf.py and checked the html and latex PDF locally.  
 And you're happy with your changes and have published to Github e.g. you've 'pulled' the latest, 'pushed' your changes and there's no conflicts showing, so you've 'committed' your work.  
 The repository administrator will review and hopefully accept the changes. Now the changes to the Files Library are live.  
-If required the administrator will also update the docs.DATRO.com website, if not done automatically.  
+If required the administrator will also update the datro.xyz/static/library/ website, if not done automatically.  
 
-When you see the changes on docs.DATRO.com the process is complete.  
+When you see the changes on datro.xyz/static/library/ the process is complete.  
 
 * ensure you enter the date and version of your publication in the conf.py file  
 * ensure you check the build.log after running the build for build errors e.g. formatting errors are common  
@@ -141,5 +141,57 @@ When you see the changes on docs.DATRO.com the process is complete.
 * ensure that you open the index.html and pdf locally and look at the output of the build before submitting to GitHub e.g. `xdg-open build/html/index.html` or `xdg-open build/latex/business-plan.pdf`  
 * ensure you Git 'pull' & 'push' the latest Files Library, to make sure your local copy and working directory doesn't conflict with anothers contribution (if it does, rectify the conflic before proceeding)  
 * ensure after Git 'commit' you monitor the administrators role to ensure you get feedback and/or approval in order the work be published.  
-* ensure your contribution appears on docs.DATRO.com by visiting it regularly and/or chasing it up with the administrator.  
+* ensure your contribution appears on datro.xyz/static/library/ by visiting it regularly and/or chasing it up with the administrator.  
+
+
+## Translation 
+
+This is being implimented into the rebuild.sh script for full autonomy. 
+Below is more of a troubleshooter if there's failure and/or guide for understanding of the process.
+
+1. install dependacies
+
+`sudo apt-get install -y sphinx-intl python3-stemmer`
+
+There maybe more. Will revisit this command later.
+
+
+2. make sure conf.py is correct (language settings)
+
+	``
+	language = "en"
+	locale_dirs = ['locales']
+	gettext_auto_build = True
+	gettext_compact = False
+
+	``
+
+3. make sure .local and build/gettext exist
+
+mkdir build/gettext
+mkdir .local
+
+4. run this command to generate a gettext directory containing .po file equivalents of the .rst files (in static directory)
+
+`make gettext` 
+
+5. generates .local/es/LC_MESSAGES/ directory and copies .po files to this directory
+
+`sphinx-intl update -p build/gettext -l es`
+
+sphinx-intl update -p build/gettext -l en -l es
+
+
+maybe run the syntax error check command ? e.g. msgstr file.po (I think)
+
+6. Use a POE Editor (localise.biz/free/poeditor and maybe Google Translate) to append the other languages text to the .po files
+(there's a `trans` command that can surely be hacked to automate this step of manually translating ???/) 
+
+7. overwrite the old .po files with the new ones in .local/es/LC_MESSAGES/
+
+maybe run the syntax error check command ? e.g. msgstr file.po (I think)
+
+8. run this command 
+
+`sphinx-build -b html source build/html/es -D language='es'`
 

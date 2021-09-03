@@ -9,6 +9,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [-library.03] - Q3/2021
 
 ### Added
+Sep-03 - Now supporting multiple languages(See _theme-docs/CHANGELOG.md). More dependancies required (See COLLABORATE.md)   
 Jul-24 - Added a directory called `consortium_other/github_wiki` in library and contained within is a new type of `custom.sh` build script   
 Jul-24 - The idea is that this build will trigger the custom.sh which will fetch the latest github wiki and turn it into a standard doc e.g. html/pdf   
 

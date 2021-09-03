@@ -22,7 +22,8 @@
 
 
 sed -i 's/<\/head>/<style>html{overflow-y:scroll;} ::-webkit-scrollbar{width:0px;background:transparent;}<\/style><\/head>/g' build/html/*.html
-sed -i 's/ View page source/ /g' build/html/*.html
+#sed -i 's/ View page source/ /g' build/html/*.html
+sed -i 's|<a href="_sources/index.rst.txt" rel="nofollow">.*</a>||' build/html/*.html
 sed -i 's/<div class="version">/<div class="version"> Document Version : /g' build/html/*.html
 sed -i 's/#33368C/darkslateblue/g' build/html/_static/css/theme.css
 sed -i 's/color:initial}/color:lightgrey;}/g' build/html/_static/css/theme.css

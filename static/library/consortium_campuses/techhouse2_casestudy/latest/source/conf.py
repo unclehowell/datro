@@ -1,7 +1,6 @@
-
 project = u'Tech House II - Case Study'
 copyright = u'2021, DATRO Consortium'
-author = u'The Team @ DATRO Consortium'
+author = u'Team @ DATRO'
 
 version = u'0.0.0'
 release = u'0.0.0'
@@ -14,7 +13,11 @@ source_suffix = '.rst'
 
 master_doc = 'index'
 
-language = None
+#language = None
+language = "en"
+locale_dirs = ['locales']
+gettext_auto_build = True
+gettext_compact = False
 
 #today_fmt = 'Dec 09, 2019'
 
@@ -32,33 +35,33 @@ html_static_path = ['_static']
 htmlhelp_basename = 'consortium_campuses-techhouse2_casestudy'
 
 
-#latex_logo = '_static/logo.jpg'
+latex_logo = '_static/logo.jpg'
 
 latex_elements =  {
 
 'classoptions': ',openany,oneside', 'babel' : '\\usepackage[english]{babel}',
 
-'releasename': "Case Study  |  Version"
+'releasename': "Latest Release  |  Version"
 
 }
 
 
 latex_documents = [
-    (master_doc, 'consortium_campuses-techhouse2_casestudy.tex', u'DATRO Consortium',
-     u'Author: The Team @ DATRO Consortium', 'manual'),
+    (master_doc, 'consortium_campuses-techhouse2_casestudy.tex', u'Tech House II',
+     u'Author: Team @ DATRO', 'manual'),
 ]
 
 
 man_pages = [
-    (master_doc, 'consortium_campuses-techhouse2_casestudy', u'DATRO Tech House II',
+    (master_doc, 'consortium_campuses-techhouse2_casestudy', u'Tech House II',
      [author], 1)
 ]
 
 
 
 texinfo_documents = [
-    (master_doc, 'consortium_campuses-techhouse2_casestudy', u'DATRO Tech House II',
-     author, 'consortium_campuses-techhouse2_casestudy', 'DATRO Tech House II',
+    (master_doc, 'consortium_campuses-techhouse2_casestudy', u'Tech House II',
+     author, 'consortium_campuses-techhouse2_casestudy', 'Tech House II',
      'manual'),
 ]
 
