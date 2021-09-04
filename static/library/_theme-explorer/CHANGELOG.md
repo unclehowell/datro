@@ -7,8 +7,8 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [Unreleased]
 
 ## [-theme-explorer.02] - Q3/2021
-
-Sep-03 - Added multiple language support, so stylesheet had to adopt to fit all the HTML/PDF languages on the screen
+Sep-04 - Buggy design, ref last point. Worked on it some more  
+Sep-03 - Added multiple language support, so stylesheet had to adopt to fit all the HTML/PDF languages on the screen  
 
 ## [-theme-explorer.01] - Q2/2021
 

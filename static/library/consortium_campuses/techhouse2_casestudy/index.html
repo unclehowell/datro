@@ -23,8 +23,14 @@
         <link rel="stylesheet" href="../../_theme-explorer/style.css">
         <link rel="stylesheet" href="../../_theme-explorer/glyphicon.css">
 <style>
+
 html {
+	overflow-y:   scroll;
+	overflow-x:   hidden;
+max-width:99.99vw;
+min-width: 46vh!important
 }
+
 </style>
   </head>
   <body>
@@ -38,7 +44,8 @@ html {
         for (let file of data) {
           htmlString += `<li class="glyphicon"><a href="${file.path}">${file.name}</a></li>`;
         }
-        htmlString += '</ul>';
+        htmlString += '</ul></br>';
+        htmlString += '</br><div style="min-height:70vh;"></div>';
         document.getElementsByTagName('body')[0].innerHTML = htmlString;
            })()
     </script>

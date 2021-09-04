@@ -13,6 +13,10 @@ This directory and changelog belongs to [![GitHub release (latest by date includ
 Sep-03 - Added another line to blue.sh and grey.sh to change footer copyleft notice to show date range, as oppose to a fixed date.   
 Sep-03 - Now supports Internationalization (EN, ES, DE, FR, IT, RU, ZH, AR, HI). More to come. ATM tanslations have to be done manually using a .po editor.  
 
+
+### Remved
+Sep-04 - Removed some languages as they were causing issues. es fr de & en all work fine.  
+
 ## [_theme-docs.08-rc1.8] - Q3/2021
 
 ### Added

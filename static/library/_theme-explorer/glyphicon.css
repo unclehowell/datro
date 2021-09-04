@@ -4,15 +4,14 @@
 	src:url(./fonts/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'),url(./fonts/glyphicons-halflings-regular.woff) format('woff'),url(./fonts/glyphicons-halflings-regular.ttf) format('truetype'),url(./fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular) format('svg')
 }
 .glyphicon{
-    top: 1px;
-    display: initial;
-    font-family: 'Glyphicons Halflings';
-    -webkit-font-smoothing: antialiased;
-    font-style: normal;
+margin:1px;
+    display: inline-block!important;
+    max-width: 99vw;
+    overflow: visible;
     font-weight: 200;
-    line-height: 2rem;
-    color: grey;
-    font-size: 4vw!important;
+    float: left;
+    font-family: 'Glyphicons Halflings';
+    color:grey;
 }
 #dropdown-glyph{
 	vertical-align:top!important;

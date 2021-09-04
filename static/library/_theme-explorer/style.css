@@ -3,7 +3,7 @@ margin-top:10vh;
 background:#336;
 background-color:#336;
 width: 100vw!important;
-overflow: hidden!important;
+overflow-y: visible!important;
 }
 
 .new-line {
@@ -51,7 +51,8 @@ font-size: calc((2vh+2vw)/1.1);
 white-space: nowrap;
 }
 a {
-font-size: clamp(2em, 3vw, 2em);
+font-size: clamp(7vw, 3vw, 2em);
     letter-spacing: 0.1px;
+        word-spacing: -0.75em;
 }
 }

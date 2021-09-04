@@ -50,6 +50,7 @@ done
 #sh custom.sh 2> /dev/null &&
 touch build.log
 make clean > build.log 2>&1
+
 printf "\e[2;3;33m Done! \n\e[0m"
 
 printf "\n\e[2;3;33m Step 2 of 5. Converting ReStructuredText to HTML (make html) \n\e[0m\n"
@@ -60,11 +61,10 @@ do
 done
 
 
-# produce .po files from .rst in build/gettext
 make gettext > build.log 2>&1 &&
 # copy .po into source/locales/{language-code}/LC_MESSAGES/
 sleep 2 &&
-sphinx-intl update -p build/gettext -l es -l de -l fr -l ru -l it -l zh -l cy -l ar -l hi -l bn -l pt -l ja -l ur > build.log 2>&1 &&
+sphinx-intl update -p build/gettext -l es -l de -l fr  > build.log 2>&1 &&
 sleep 2 &&
 make html > build.log 2>&1 &&
 sleep 2 &&
@@ -83,14 +83,6 @@ sphinx-build -b html source build/html/de -D language='de' > build.log 2>&1 &&
 sleep 2 &&
 sphinx-build -b html source build/html/fr -D language='fr' > build.log 2>&1 &&
 sleep 2 &&
-sphinx-build -b html source build/html/ru -D language='ru' > build.log 2>&1 &&
-sleep 2 &&
-sphinx-build -b html source build/html/zh -D language='zh' > build.log 2>&1 &&
-sleep 2 &&
-sphinx-build -b html source build/html/ar -D language='ar' > build.log 2>&1 &&
-sleep 2 &&
-sphinx-build -b html source build/html/hi -D language='hi' > build.log 2>&1 &&
-sleep 5 &&
 
 
 cd build
@@ -112,9 +104,6 @@ cd ..
 cd ..
 sleep 5 &&
 
-printf "\e[2;3;33m make sure we're in the tld \n\e[0m"
-pwd
-
 printf "\e[2;3;33m Done! \n\e[0m"
 
 printf "\n\e[2;3;33m Step 3 of 5. Converting ReStructeredText to PDF (make latexpdf) \n\e[0m\n"
@@ -125,27 +114,19 @@ do
         ProgressBar ${number} ${_end}
 done
 
-printf "\n\e[2;3;33m build/pdfs/{en,es,de,fr,ru,zh,ar,hi} \n\e[0m\n"
-
 cd build
-mkdir -p pdfs/{en,es,de,fr,ru,zh,ar,hi}
+mkdir -p pdfs/{en,es,de,fr}
 printf "\n\e[2;3;33m making pdf (en) \n\e[0m\n"
 cd ..
 
 make  -e SPHINXOPTS="-D language='en'" latexpdf  --keep-going --silent > build.log 2>&1 &&
-
-printf "\n\e[2;3;33m check en pdf is made \n\e[0m\n"
 ls -1 build/latex/
 
 sleep 2 && cd build && mv latex/*.pdf pdfs/en && cd latex && find . -type f ! -iname "*.pdf" -delete &&
 
-printf "\n\e[2;3;33m check en pdf moved to ../pdfs/en \n\e[0m\n"
 ls -la ../pdfs/en
 cd ..
 cd ..
-
-printf "\n\e[2;3;33m check we're back in the top level directory - I \n\e[0m\n"
-pwd
 
 make  -e SPHINXOPTS="-D language='es'" latexpdf  --keep-going --silent > build.log 2>&1 &&
 cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/es && cd .. && cd .. &&
@@ -153,17 +134,9 @@ make  -e SPHINXOPTS="-D language='de'" latexpdf  --keep-going --silent > build.l
 cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/de && cd .. && cd .. &&
 make  -e SPHINXOPTS="-D language='fr'" latexpdf  --keep-going --silent > build.log 2>&1 &&
 cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/fr && cd .. && cd .. &&
-make  -e SPHINXOPTS="-D language='ru'" latexpdf  --keep-going --silent > build.log 2>&1 &&
-cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/ru && cd .. && cd .. &&
-make  -e SPHINXOPTS="-D language='zh'" latexpdf  --keep-going --silent > build.log 2>&1 &&
-cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/zh && cd .. && cd .. &&
-make  -e SPHINXOPTS="-D language='ar'" latexpdf  --keep-going --silent > build.log 2>&1 &&
-cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/ar && cd .. && cd .. &&
-make  -e SPHINXOPTS="-D language='hi'" latexpdf  --keep-going --silent > build.log 2>&1 &&
-cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/hi && cd .. && cd .. &&
 
 
-mv build/pdfs/{en,es,de,fr,ru,zh,ar,hi} build/latex
+mv build/pdfs/{en,es,de,fr} build/latex
 rm -r build/pdfs
 
 printf "\n\e[2;3;33m check we're back in the top level directory - II \n\e[0m\n"
@@ -203,10 +176,6 @@ printf "\e[2;3;33m Copy index.html redirect into language directories \n\e[0m"
 cp -r index.html ../es &&
 cp -r index.html ../de &&
 cp -r index.html ../fr &&
-cp -r index.html ../ru &&
-cp -r index.html ../zh &&
-cp -r index.html ../ar &&
-cp -r index.html ../hi &&
 cd ..
 cd ..
 cd ..
@@ -236,10 +205,6 @@ sed 's|build\/html\/|build\/html\/es\/|g' ./theme.sh > ./es.sh && chmod +x ./es.
 printf "\n\e[2;3;33m es theme done \n\e[0m\n"
 sed 's|build\/html\/|build\/html\/de\/|g' ./theme.sh > ./de.sh && chmod +x ./de.sh && bash ./de.sh && rm -r ./de.sh && sleep 2 &&
 sed 's|build\/html\/|build\/html\/fr\/|g' ./theme.sh > ./fr.sh && chmod +x ./fr.sh && bash ./fr.sh && rm -r ./fr.sh && sleep 2 &&
-sed 's|build\/html\/|build\/html\/ru\/|g' ./theme.sh > ./ru.sh && chmod +x ./ru.sh && bash ./ru.sh && rm -r ./ru.sh && sleep 2 &&
-sed 's|build\/html\/|build\/html\/zh\/|g' ./theme.sh > ./zh.sh && chmod +x ./zh.sh && bash ./zh.sh && rm -r ./zh.sh && sleep 2 &&
-sed 's|build\/html\/|build\/html\/ar\/|g' ./theme.sh > ./ar.sh && chmod +x ./ar.sh && bash ./ar.sh && rm -r ./ar.sh && sleep 2 &&
-sed 's|build\/html\/|build\/html\/hi\/|g' ./theme.sh > ./hi.sh && chmod +x ./hi.sh && bash ./hi.sh && rm -r ./hi.sh && sleep 2 &&
 rm -r ./theme.sh
 
 sleep 2 &&
