@@ -35,7 +35,7 @@ html_static_path = ['_static']
 htmlhelp_basename = 'consortium_campuses-techhouse2_casestudy'
 
 
-latex_logo = '_static/logo.jpg'
+latex_logo = '_static/logo.jpeg'
 
 latex_elements =  {
 

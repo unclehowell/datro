@@ -4,27 +4,29 @@
 # Case Study package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Tech House II - Case Study 0.0.0\n"
+"Project-Id-Version: Casa Tec II - Reporte 0.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-01 16:43-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2021-09-03 17:43-0400\n"
+"PO-Revision-Date: 2021-09-03 21:14-0400\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: \n"
+"Language-Team: DATRO Consortium\n"
+"Language: es\n"
+"X-Generator: Poedit 3.0\n"
 
 #: ../../source/introduction.rst:2
 msgid "Introduction"
-msgstr ""
+msgstr "Introducción"
 
 #: ../../source/introduction.rst:4
 msgid "This document details the DATRO Consortiums \"Tech House II\"."
-msgstr ""
+msgstr "Este documento detalla los DATRO Consorcios \"Casa Tec II\"."
 
 #: ../../source/introduction.rst:6
 msgid ""
@@ -41,37 +43,66 @@ msgid ""
 "and exports must be manually adjusted to fit the documents desired "
 "format, especially where it concerns data and tables."
 msgstr ""
+"Los datos fiscales relevantes se recuperan de la solución de "
+"contabilidad federada de DATRO. La teneduría de libros / cuentas no es "
+"una excepción en lo que respecta a las aplicaciones web progresivas "
+"(PWA) de localhost federado. Los contratos inteligentes de las "
+"sociedades autónomas descentralizadas (DAS) de DATRO, luego recopilan el "
+"último informe para determinar qué proveedores (y qué cantidades y "
+"cuándo) pagar de forma autónoma. En este momento, los datos fiscales no "
+"se recuperan de forma totalmente autónoma durante el proceso de "
+"recompilación / actualización del documento (rebuild.sh). El script "
+"personalizado (custom.sh) y la metodología de importación de datos aún "
+"necesitan más mejoras antes de que esto suceda. Este informe se compila "
+"posteriormente manualmente, lo que actualmente es intensivo ya que el "
+"informe es nuevo y las exportaciones deben ajustarse manualmente para "
+"adaptarse al formato deseado de los documentos, especialmente cuando se "
+"trata de datos y tablas."
 
 #: ../../source/introduction.rst:12
 msgid "Adjustments to the exported data thus far includes:"
-msgstr ""
+msgstr "Los ajustes a los datos exportados hasta ahora incluyen:"
 
 #: ../../source/introduction.rst:14
 msgid ""
 "We want to keep the references on transactions as a single string so the "
 "line doesn't break to fit the columb width. e.g. lease_debit_2020/09/01"
 msgstr ""
+"Queremos mantener las referencias en las transacciones como una sola "
+"cadena para que la línea no se rompa para ajustarse al ancho de la "
+"columna. p.ej. Alquiler_Débito_2020/09/01"
 
 #: ../../source/introduction.rst:15
 msgid ""
-"We want to append `.. centered:: ` to every entry in the csv file. This "
+"We want to append `.. centered::` to every entry in the csv file. This "
 "helps verticle alignment too. And is better than auto, where some items "
 "are left aligned, some right aligned etc"
 msgstr ""
+"Queremos agregar `.. centered::` a cada entrada en el archivo csv. Esto "
+"también ayuda a la alineación vertical. Y es mejor que automático, donde "
+"algunos elementos están alineados a la izquierda, otros alineados a la "
+"derecha etc"
 
 #: ../../source/introduction.rst:16
 msgid ""
 "We make select entries bold or italic (by appending 1 or 2 stars to the "
 "beginning and end of the data e.g. **bold**, *italic* etc"
 msgstr ""
+"Hacemos que las entradas seleccionadas estén en negrita o cursiva "
+"(agregando 1 o 2 estrellas al principio y al final de los datos, por "
+"ejemplo, **negrita**, *cursiva* etc"
 
 #: ../../source/introduction.rst:17
 msgid ""
 "We change the titles of the columbs e.g. `currency` becomes `unit` and "
-"`transaction amount` = `volume` - This allows more columbs to squeez into"
-" the document. And eliminates horizontal table scrolls on the compiled "
-"html view."
+"`transaction amount` = `volume` - This allows more columbs to squeez "
+"into the document. And eliminates horizontal table scrolls on the "
+"compiled html view."
 msgstr ""
+"Cambiamos los títulos de los columbos, p. Ej. `currency` se convierte "
+"en` unit` y `transaction amount` =` volume` - Esto permite que más "
+"monedas se aprieten en el documento. Y elimina los desplazamientos de "
+"tablas horizontales en la vista html compilada."
 
 #: ../../source/introduction.rst:18
 msgid ""
@@ -79,6 +110,10 @@ msgid ""
 "balance will show as a minus if funds are owed, not a positive number "
 "which might be considered an overpayment/ credit."
 msgstr ""
+"Invierta los negativos y los positivos (en todos los números). De esta "
+"manera, el saldo final se mostrará como menos si se adeudan fondos, no "
+"como un número positivo que podría considerarse un pago en exceso / "
+"crédito."
 
 #: ../../source/introduction.rst:19
 msgid ""
@@ -87,8 +122,11 @@ msgid ""
 "`balance` and a columb for currency `USD` and one for the amount itself "
 "e.g. `-36.24`"
 msgstr ""
+"Separe el saldo final en una tabla separada. De esta manera, el número "
+"de columbs puede ser menor, ya que solo necesitamos tener un columb para "
+"el \"saldo\" y un columb para la moneda \"USD\" y uno para el monto en "
+"sí, p. `-36,24`"
 
 #: ../../source/introduction.rst:20
 msgid "Date format DD-MM-YYYY > YYYY/MM/DD"
-msgstr ""
-
+msgstr "Formato de fecha DD-MM-YYYY > YYYY/MM/DD"

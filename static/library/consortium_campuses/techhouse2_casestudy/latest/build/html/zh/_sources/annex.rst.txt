@@ -5,7 +5,7 @@ This section contains the Annexures, referenced in the text above.
 The :ref:`Download Links` for these Annexures can be found at the very end of this document:
 
 
-Lease Contract Statements
+Lease Statements Annex
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 LC-I Statement
@@ -86,7 +86,7 @@ LC-IV Statement
 Download as `PDF <https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__ , `XLS <https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__ and/or `CSV <https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__
 To view all available downloads, skip to the :ref:`Download Links` Table.
 
-Inventory
+Inventory Annex
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 

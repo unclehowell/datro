@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tech House II - Case Study 0.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-02 20:56-0400\n"
+"POT-Creation-Date: 2021-09-03 18:19-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,7 +30,7 @@ msgid ""
 msgstr ""
 
 #: ../../source/annex.rst:9
-msgid "Lease Contract Statements"
+msgid "Lease Statements Annex"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/annex.rst:12
@@ -41,8 +41,322 @@ msgstr ""
 msgid "Lease Contract Statement I - 2018/04-2019/03"
 msgstr ""
 
+#: ../../source/_static/annex.csv:1 ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "**Date**"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "**Net**"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "**Reference**"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "**Volume**"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "**¤**"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "**GBP**"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "**Bal (£)**"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/04/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2018/04"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "-500.00"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901-footer.csv:1
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902-footer.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903-footer.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904-footer.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "USD"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901-footer.csv:1
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902-footer.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903-footer.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "?"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/04/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "n/a"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2018/04"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/05/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2018/05"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/05/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2018/05"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/06/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2018/06"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/06/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2018/06"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/07/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2018/07"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/07/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2018/07"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/08/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2018/08"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/08/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2018/08"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/09/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2018/09"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/09/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2018/09"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/10/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2018/10"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/10/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2018/10"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/11/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2018/11"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/11/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2018/11"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/12/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2018/12"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/12/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2018/12"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2019/01/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2019/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2019/01/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2019/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2019/02/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2019/02"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2019/02/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2019/02"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2019/03/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2019/03"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2019/03/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2019/03"
+msgstr ""
+
 #: ../../source/annex.rst:20
 msgid "Lease Contract Statement I - Final Balance"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901-footer.csv:1
+#: ../../source/_static/custom/lease-902-footer.csv:1
+#: ../../source/_static/custom/lease-903-footer.csv:1
+#: ../../source/_static/custom/lease-904-footer.csv:1
+msgid "**Final Balance (Latest Release Date of Document):**"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901-footer.csv:1
+#: ../../source/_static/custom/lease-902-footer.csv:1
+#: ../../source/_static/custom/lease-903-footer.csv:1
+#: ../../source/_static/custom/lease-904-footer.csv:1
+msgid "GBP"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901-footer.csv:1
+msgid "*xe.com 2019/03/31 = x ?*"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901-footer.csv:1
+#: ../../source/_static/custom/lease-902-footer.csv:1
+#: ../../source/_static/custom/lease-903-footer.csv:1
+#: ../../source/_static/custom/lease-904-footer.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "DOP"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901-footer.csv:1
+#: ../../source/_static/custom/lease-902-footer.csv:1
+#: ../../source/_static/custom/lease-903-footer.csv:1
+msgid "50000"
 msgstr ""
 
 #: ../../source/annex.rst:27 ../../source/annex.rst:47
@@ -66,8 +380,93 @@ msgstr ""
 msgid "Lease Contract Statement II - 2019/04-2019/08"
 msgstr ""
 
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "2019/04/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "Lease Debit 2019/04"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "2019/04/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "Lease Credit 2019/04"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "2019/05/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "Lease Debit 2019/05"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "2019/05/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "Lease Credit 2019/05"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "2019/06/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "Lease Debit 2019/06"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "2019/06/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "Lease Credit 2019/06"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "2019/07/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "Lease Debit 2019/07"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "2019/07/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "Lease Credit 2019/07"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "2019/08/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "Lease Debit 2019/08"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "2019/08/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "Lease Credit 2019/08"
+msgstr ""
+
 #: ../../source/annex.rst:39
 msgid "Lease Contract Statement II - Final Balance"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902-footer.csv:1
+#: ../../source/_static/custom/lease-903-footer.csv:1
+msgid "*xe.com 2019/08/31 = x ?*"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/annex.rst:51
@@ -76,6 +475,198 @@ msgstr ""
 
 #: ../../source/annex.rst:53
 msgid "Lease Contract Statement III - 2019/09-2020/08"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2019/09/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2019/09"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2019/09/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2019/09"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2019/10/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2019/10"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2019/10/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2019/10"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2019/11/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2019/11"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2019/11/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2019/11"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2019/12/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2019/12"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2019/12/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2019/12"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/01/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2020/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/01/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2020/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/02/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2020/02"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/02/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2020/02"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/03/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2020/03"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/03/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2020/03"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/04/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2020/04"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/04/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2020/04"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/05/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2020/05"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/05/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2020/05"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/06/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2020/06"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/06/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2020/06"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/07/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2020/07"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/07/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2020/07"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/08/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2020/08"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/08/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2020/08"
 msgstr ""
 
 #: ../../source/annex.rst:59
@@ -90,53 +681,12 @@ msgstr ""
 msgid "Lease Contract Statement IV - 2020/09-2021/08"
 msgstr ""
 
-#: ../../source/_static/annex.csv:1 ../../source/_static/custom/lease-904.csv:1
-msgid "**Date**"
-msgstr ""
-
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "**Net**"
-msgstr ""
-
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "**Reference**"
-msgstr ""
-
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "**Volume**"
-msgstr ""
-
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "**¤**"
-msgstr ""
-
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "**GBP**"
-msgstr ""
-
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "**Bal (£)**"
-msgstr ""
-
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "2020/09/01"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "28"
-msgstr ""
-
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "Lease_Debit_2020/09"
-msgstr ""
-
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "-500.00"
-msgstr ""
-
-#: ../../source/_static/custom/lease-904-footer.csv:1
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "USD"
+msgid "Lease Debit 2020/09"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
@@ -148,7 +698,7 @@ msgid "2020/10/01"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "Lease_Debit_2020/10"
+msgid "Lease Debit 2020/10"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
@@ -156,7 +706,7 @@ msgid "-726.21"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "Mulct1_Debit_2020/09"
+msgid "Mulct1 Debit 2020/09"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
@@ -177,7 +727,7 @@ msgid "2020/11/01"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "Mulct2_Debit_2020/09"
+msgid "Mulct2 Debit 2020/09"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
@@ -189,20 +739,11 @@ msgid "2020/11/02"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "n/a"
-msgstr ""
-
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "Mulct1_Credit_2020/09"
+msgid "Mulct1 Credit 2020/09"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "2923.81"
-msgstr ""
-
-#: ../../source/_static/custom/lease-904-footer.csv:1
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "DOP"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
@@ -214,7 +755,7 @@ msgid "-761.53"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "Lease_Credit_2020/09_1/2"
+msgid "Lease Credit 2020/09 1/2"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
@@ -234,7 +775,7 @@ msgid "2020/11/03"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "Mulct2_Credit_2020/09"
+msgid "Mulct2 Credit 2020/09"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
@@ -250,7 +791,7 @@ msgid "-537.71"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "Lease_Credit_2020/09_2/2"
+msgid "Lease Credit 2020/09 2/2"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
@@ -270,7 +811,7 @@ msgid "2020/11/05"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "Mulct1_Debit_2020/10"
+msgid "Mulct1 Debit 2020/10"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
@@ -282,7 +823,7 @@ msgid "2020/11/09"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "Lease_Credit_2020/10"
+msgid "Lease Credit 2020/10"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
@@ -298,7 +839,7 @@ msgid "-14.72"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "Agent>Xe_Reconsile_Credit"
+msgid "Agent>Xe Reconsile Credit"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
@@ -307,14 +848,6 @@ msgstr ""
 
 #: ../../source/annex.rst:78
 msgid "Lease Contract Statement IV - Final Balance"
-msgstr ""
-
-#: ../../source/_static/custom/lease-904-footer.csv:1
-msgid "**Final Balance (Latest Release Date of Document):**"
-msgstr ""
-
-#: ../../source/_static/custom/lease-904-footer.csv:1
-msgid "GBP"
 msgstr ""
 
 #: ../../source/_static/custom/lease-904-footer.csv:1
@@ -334,7 +867,7 @@ msgid "-2842.10"
 msgstr ""
 
 #: ../../source/annex.rst:90
-msgid "Inventory"
+msgid "Inventory Annex"
 msgstr ""
 
 #: ../../source/annex.rst:94
@@ -456,5 +989,218 @@ msgstr ""
 #~ "<https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__"
 #~ " Or jump to the \"all available "
 #~ ":ref:`Download Links`\" table"
+#~ msgstr ""
+
+#~ msgid "Lease Contract Statements"
+#~ msgstr ""
+
+#~ msgid "Inventory"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2018/04"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2018/04"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2018/05"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2018/05"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2018/06"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2018/06"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2018/07"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2018/07"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2018/08"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2018/08"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2018/09"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2018/09"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2018/10"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2018/10"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2018/11"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2018/11"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2018/12"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2018/12"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2019/01"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2019/01"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2019/02"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2019/02"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2019/03"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2019/03"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2019/04"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2019/04"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2019/05"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2019/05"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2019/06"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2019/06"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2019/07"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2019/07"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2019/08"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2019/08"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2019/09"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2019/09"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2019/10"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2019/10"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2019/11"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2019/11"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2019/12"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2019/12"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2020/01"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2020/01"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2020/02"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2020/02"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2020/03"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2020/03"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2020/04"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2020/04"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2020/05"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2020/05"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2020/06"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2020/06"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2020/07"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2020/07"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2020/08"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2020/08"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2020/09"
+#~ msgstr ""
+
+#~ msgid "Lease_Debit_2020/10"
+#~ msgstr ""
+
+#~ msgid "Mulct1_Debit_2020/09"
+#~ msgstr ""
+
+#~ msgid "Mulct2_Debit_2020/09"
+#~ msgstr ""
+
+#~ msgid "Mulct1_Credit_2020/09"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2020/09_1/2"
+#~ msgstr ""
+
+#~ msgid "Mulct2_Credit_2020/09"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2020/09_2/2"
+#~ msgstr ""
+
+#~ msgid "Mulct1_Debit_2020/10"
+#~ msgstr ""
+
+#~ msgid "Lease_Credit_2020/10"
+#~ msgstr ""
+
+#~ msgid "Agent>Xe_Reconsile_Credit"
 #~ msgstr ""
 

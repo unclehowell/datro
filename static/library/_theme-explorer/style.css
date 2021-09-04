@@ -3,11 +3,12 @@ margin-top:10vh;
 background:#336;
 background-color:#336;
 width: 100vw!important;
-overflow: hidden;
+overflow: hidden!important;
 }
 
 .new-line {
-font-size:150%;text-decoration:underline;
+font-size: 100%;
+line-height: 6rem!Important;
 text-decoration: underline;
 display: block;
 min-width: 99vw;
@@ -50,6 +51,7 @@ font-size: calc((2vh+2vw)/1.1);
 white-space: nowrap;
 }
 a {
-font-size: clamp(1.2em, 3vw, 2em);
-letter-spacing:-0.1rem;}
+font-size: clamp(2em, 3vw, 2em);
+    letter-spacing: 0.1px;
+}
 }

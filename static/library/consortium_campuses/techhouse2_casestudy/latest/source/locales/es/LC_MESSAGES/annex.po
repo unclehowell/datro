@@ -8,16 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Casa de Tec II\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-02 20:56-0400\n"
-"PO-Revision-Date: 2021-09-01 17:41-0400\n"
+"POT-Creation-Date: 2021-09-03 18:19-0400\n"
+"PO-Revision-Date: 2021-09-03 21:01-0400\n"
 "Last-Translator: \n"
 "Language: es_ES\n"
 "Language-Team: DATRO Consortium\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"X-Generator: Poedit 3.0\n"
 
 #: ../../source/annex.rst:2
 msgid "Annexures"
@@ -25,17 +26,17 @@ msgstr "Anexos"
 
 #: ../../source/annex.rst:4
 msgid ""
-"This section contains the Annexures, referenced in the text above. The "
-":ref:`Download Links` for these Annexures can be found at the very end of"
-" this document:"
+"This section contains the Annexures, referenced in the text above. The :ref:"
+"`Download Links` for these Annexures can be found at the very end of this "
+"document:"
 msgstr ""
-"Esta sección contiene los Anexos, a los que se hace referencia en el "
-"texto anterior. Los: ref: `Enlaces de Descarga` para estos Anexos se "
-"pueden encontrar al final de este documento:"
+"Esta sección contiene los Anexos, a los que se hace referencia en el texto "
+"anterior. Los: ref: `Enlaces de Descarga` para estos Anexos se pueden "
+"encontrar al final de este documento:"
 
 #: ../../source/annex.rst:9
-msgid "Lease Contract Statements"
-msgstr "Declaraciones del Contrato de Arrendamiento"
+msgid "Lease Statements Annex"
+msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/annex.rst:12
 msgid "LC-I Statement"
@@ -45,31 +46,341 @@ msgstr "LC-I Declaración"
 msgid "Lease Contract Statement I - 2018/04-2019/03"
 msgstr "Declaración del contrato de arrendamiento I - 2018/04-2019/03"
 
+#: ../../source/_static/annex.csv:1 ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "**Date**"
+msgstr "**Fecha**"
+
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "**Net**"
+msgstr "**Neta**"
+
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "**Reference**"
+msgstr "**Referencia**"
+
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "**Volume**"
+msgstr "**Volumen**"
+
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "**¤**"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "**GBP**"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "**Bal (£)**"
+msgstr "**Equ(£)**"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/04/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2018/04"
+msgstr "Alquiler Débito 2018/04"
+
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "-500.00"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901-footer.csv:1
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902-footer.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903-footer.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904-footer.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "USD"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901-footer.csv:1
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902-footer.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903-footer.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "?"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/04/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+#: ../../source/_static/custom/lease-902.csv:1
+#: ../../source/_static/custom/lease-903.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "n/a"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2018/04"
+msgstr "Alquiler Crédito 2018/04"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/05/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2018/05"
+msgstr "Alquiler Débito 2018/05"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/05/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2018/05"
+msgstr "Alquiler Crédito 2018/05"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/06/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2018/06"
+msgstr "Alquiler Débito 2018/06"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/06/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2018/06"
+msgstr "Alquiler Crédito 2018/06"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/07/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2018/07"
+msgstr "Alquiler Débito 2018/07"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/07/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2018/07"
+msgstr "Alquiler Crédito 2018/07"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/08/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2018/08"
+msgstr "Alquiler Débito 2018/08"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/08/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2018/08"
+msgstr "Alquiler Crédito 2018/08"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/09/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2018/09"
+msgstr "Alquiler Débito 2018/09"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/09/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2018/09"
+msgstr "Alquiler Crédito 2018/09"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/10/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2018/10"
+msgstr "Alquiler Débito 2018/10"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/10/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2018/10"
+msgstr "Alquiler Crédito 2018/10"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/11/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2018/11"
+msgstr "Alquiler Débito 2018/11"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/11/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2018/11"
+msgstr "Alquiler Crédito 2018/11"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/12/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2018/12"
+msgstr "Alquiler Débito 2018/12"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2018/12/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2018/12"
+msgstr "Alquiler Crédito 2018/12"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2019/01/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2019/01"
+msgstr "Alquiler Débito 2019/01"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2019/01/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2019/01"
+msgstr "Alquiler Crédito 2019/01"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2019/02/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2019/02"
+msgstr "Alquiler Débito 2019/02"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2019/02/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2019/02"
+msgstr "Alquiler Crédito 2019/02"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2019/03/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Debit 2019/03"
+msgstr "Alquiler Débito 2019/03"
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "2019/03/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901.csv:1
+msgid "Lease Credit 2019/03"
+msgstr "Alquiler Crédito 2019/03"
+
 #: ../../source/annex.rst:20
-#, fuzzy
 msgid "Lease Contract Statement I - Final Balance"
-msgstr "Declaraciones del Contrato de Arrendamiento"
+msgstr "Declaraciones del Contrato de Arrendamiento I - Saldo Final"
+
+#: ../../source/_static/custom/lease-901-footer.csv:1
+#: ../../source/_static/custom/lease-902-footer.csv:1
+#: ../../source/_static/custom/lease-903-footer.csv:1
+#: ../../source/_static/custom/lease-904-footer.csv:1
+msgid "**Final Balance (Latest Release Date of Document):**"
+msgstr "**Saldo Final (Última Fecha de Publicación del Documento**"
+
+#: ../../source/_static/custom/lease-901-footer.csv:1
+#: ../../source/_static/custom/lease-902-footer.csv:1
+#: ../../source/_static/custom/lease-903-footer.csv:1
+#: ../../source/_static/custom/lease-904-footer.csv:1
+msgid "GBP"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901-footer.csv:1
+msgid "*xe.com 2019/03/31 = x ?*"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901-footer.csv:1
+#: ../../source/_static/custom/lease-902-footer.csv:1
+#: ../../source/_static/custom/lease-903-footer.csv:1
+#: ../../source/_static/custom/lease-904-footer.csv:1
+#: ../../source/_static/custom/lease-904.csv:1
+msgid "DOP"
+msgstr ""
+
+#: ../../source/_static/custom/lease-901-footer.csv:1
+#: ../../source/_static/custom/lease-902-footer.csv:1
+#: ../../source/_static/custom/lease-903-footer.csv:1
+msgid "50000"
+msgstr ""
 
 #: ../../source/annex.rst:27 ../../source/annex.rst:47
 #: ../../source/annex.rst:66 ../../source/annex.rst:86
-#, fuzzy
 msgid ""
-"Download as `PDF "
-"<https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__"
-" , `XLS "
-"<https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__"
-" and/or `CSV "
-"<https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__"
-" To view all available downloads, skip to the :ref:`Download Links` "
-"Table."
+"Download as `PDF <https://datro.xyz/static/library/consortium_campuses/"
+"techhouse2_casestudy/latest/build/html/_static/>`__ , `XLS <https://datro."
+"xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/"
+"html/_static/>`__ and/or `CSV <https://datro.xyz/static/library/"
+"consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__ To "
+"view all available downloads, skip to the :ref:`Download Links` Table."
 msgstr ""
-"Descargar como "
-"'PDF<https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__"
-" , `XLS "
-"<https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__"
-" y/o `CSV "
-"<https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__O"
-" vaya a la tabla \"Todos los Disponibles: ref:` Descargar Enlaces` \""
+"Descargar como 'PDF<https://datro.xyz/static/library/consortium_campuses/"
+"techhouse2_casestudy/latest/build/html/_static/>`__ , `XLS <https://datro."
+"xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/"
+"html/_static/>`__ y/o `CSV <https://datro.xyz/static/library/"
+"consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__Para "
+"ver todas las descargas disponibles, vaya a la tabla :ref:`Descargar "
+"Enlaces`."
 
 #: ../../source/_static/annex.csv:1 ../../source/annex.rst:31
 msgid "LC-II Statement"
@@ -79,10 +390,94 @@ msgstr "LC-II Declaración"
 msgid "Lease Contract Statement II - 2019/04-2019/08"
 msgstr "Declaración del Contrato de Arrendamiento II - 2019/04-2019/08"
 
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "2019/04/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "Lease Debit 2019/04"
+msgstr "Alquiler Débito 2019/04"
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "2019/04/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "Lease Credit 2019/04"
+msgstr "Alquiler Crédito 2019/04"
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "2019/05/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "Lease Debit 2019/05"
+msgstr "Alquiler Débito 2019/05"
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "2019/05/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "Lease Credit 2019/05"
+msgstr "Alquiler Crédito 2019/05"
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "2019/06/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "Lease Debit 2019/06"
+msgstr "Alquiler Débito 2019/06"
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "2019/06/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "Lease Credit 2019/06"
+msgstr "Alquiler Crédito 2019/06"
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "2019/07/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "Lease Debit 2019/07"
+msgstr "Alquiler Débito 2019/07"
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "2019/07/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "Lease Credit 2019/07"
+msgstr "Alquiler Crédito 2019/07"
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "2019/08/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "Lease Debit 2019/08"
+msgstr "Alquiler Débito 2019/08"
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "2019/08/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-902.csv:1
+msgid "Lease Credit 2019/08"
+msgstr "Alquiler Crédito 2019/08"
+
 #: ../../source/annex.rst:39
-#, fuzzy
 msgid "Lease Contract Statement II - Final Balance"
-msgstr "Declaraciones del Contrato de Arrendamiento"
+msgstr "Declaraciones del Contrato de Arrendamiento II - Saldo Final"
+
+#: ../../source/_static/custom/lease-902-footer.csv:1
+#: ../../source/_static/custom/lease-903-footer.csv:1
+msgid "*xe.com 2019/08/31 = x ?*"
+msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/annex.rst:51
 msgid "LC-III Statement"
@@ -92,10 +487,201 @@ msgstr "LC-III Declaración"
 msgid "Lease Contract Statement III - 2019/09-2020/08"
 msgstr "Declaración del Contrato de Arrendamiento III - 2019/09-2020/08"
 
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2019/09/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2019/09"
+msgstr "Alquiler Débito 2019/09"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2019/09/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2019/09"
+msgstr "Alquiler Crédito 2019/09"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2019/10/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2019/10"
+msgstr "Alquiler Débito 2019/10"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2019/10/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2019/10"
+msgstr "Alquiler Crédito 2019/10"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2019/11/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2019/11"
+msgstr "Alquiler Débito 2019/11"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2019/11/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2019/11"
+msgstr "Alquiler Crédito 2019/11"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2019/12/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2019/12"
+msgstr "Alquiler Débito 2019/12"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2019/12/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2019/12"
+msgstr "Alquiler Crédito 2019/12"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/01/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2020/01"
+msgstr "Alquiler Débito 2020/01"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/01/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2020/01"
+msgstr "Alquiler Crédito 2020/01"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/02/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2020/02"
+msgstr "Alquiler Débito 2020/02"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/02/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2020/02"
+msgstr "Alquiler Crédito 2020/02"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/03/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2020/03"
+msgstr "Alquiler Débito 2020/03"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/03/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2020/03"
+msgstr "Alquiler Crédito 2020/03"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/04/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2020/04"
+msgstr "Alquiler Débito 2020/04"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/04/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2020/04"
+msgstr "Alquiler Crédito 2020/04"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/05/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2020/05"
+msgstr "Alquiler Débito 2020/05"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/05/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2020/05"
+msgstr "Alquiler Crédito 2020/05"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/06/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2020/06"
+msgstr "Alquiler Débito 2020/06"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/06/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2020/06"
+msgstr "Alquiler Crédito 2020/06"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/07/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2020/07"
+msgstr "Alquiler Débito 2020/07"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/07/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2020/07"
+msgstr "Alquiler Crédito 2020/07"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/08/01"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Debit 2020/08"
+msgstr "Alquiler Débito 2020/08"
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "2020/08/28"
+msgstr ""
+
+#: ../../source/_static/custom/lease-903.csv:1
+msgid "Lease Credit 2020/08"
+msgstr "Alquiler Crédito 2020/08"
+
 #: ../../source/annex.rst:59
-#, fuzzy
 msgid "Lease Contract Statement III - Final Balance"
-msgstr "Declaraciones del Contrato de Arrendamiento"
+msgstr "Declaraciones del Contrato de Arrendamiento III - Saldo Final"
 
 #: ../../source/_static/annex.csv:1 ../../source/annex.rst:70
 msgid "LC-IV Statement"
@@ -105,253 +691,194 @@ msgstr "LC-IV Declaración"
 msgid "Lease Contract Statement IV - 2020/09-2021/08"
 msgstr "Declaración del Contrato de Arrendamiento IV - 2020/09-2021/08"
 
-#: ../../source/_static/annex.csv:1 ../../source/_static/custom/lease-904.csv:1
-msgid "**Date**"
-msgstr "**Fecha**"
-
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "**Net**"
-msgstr "**Neta**"
-
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "**Reference**"
-msgstr "**Referencia**"
-
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "**Volume**"
-msgstr "**Volumen**"
-
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "**¤**"
-msgstr "**¤**"
-
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "**GBP**"
-msgstr "**GBP**"
-
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "**Bal (£)**"
-msgstr "**Equ(£)**"
-
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "2020/09/01"
-msgstr "2020/09/01"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "28"
-msgstr "28"
-
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "Lease_Debit_2020/09"
-msgstr "Alquiler_Débito_2020/09"
-
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "-500.00"
-msgstr "-500.00"
-
-#: ../../source/_static/custom/lease-904-footer.csv:1
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "USD"
-msgstr "USD"
+msgid "Lease Debit 2020/09"
+msgstr "Alquiler Débito 2020/09"
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "-363.11"
-msgstr "-363.11"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "2020/10/01"
-msgstr "2020/10/01"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "Lease_Debit_2020/10"
-msgstr "Alquiler_Débito_2020/10"
+msgid "Lease Debit 2020/10"
+msgstr "Alquiler Débito 2020/10"
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "-726.21"
-msgstr "-726.21"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "Mulct1_Debit_2020/09"
-msgstr "Multa1_Débito_2020/09"
+msgid "Mulct1 Debit 2020/09"
+msgstr "Multa1 Débito 2020/09"
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "-50.00"
-msgstr "-50.00"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904-footer.csv:1
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "-36.31"
-msgstr "-36.31"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "-762.52"
-msgstr "-762.52"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "2020/11/01"
-msgstr "2020/11/01"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "Mulct2_Debit_2020/09"
-msgstr "Multa2_Débito_2020/09"
+msgid "Mulct2 Debit 2020/09"
+msgstr "Multa2 Débito 2020/09"
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "-798.83"
-msgstr "-798.83"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "2020/11/02"
-msgstr "2020/11/02"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "n/a"
-msgstr "n/a"
-
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "Mulct1_Credit_2020/09"
-msgstr "Multa1_Crédito_2020/09"
+msgid "Mulct1 Credit 2020/09"
+msgstr "Multa1 Crédito 2020/09"
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "2923.81"
-msgstr "2923.81"
-
-#: ../../source/_static/custom/lease-904-footer.csv:1
-#: ../../source/_static/custom/lease-904.csv:1
-msgid "DOP"
-msgstr "DOP"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "37.30"
-msgstr "37.30"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "-761.53"
-msgstr "-761.53"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "Lease_Credit_2020/09_1/2"
-msgstr "Alquiler_Crédito_2020/09_1/2"
+msgid "Lease Credit 2020/09 1/2"
+msgstr "Alquiler Crédito 2020/09 1/2"
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "14619.03"
-msgstr "14619.03"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "186.51"
-msgstr "186.51"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "-575.02"
-msgstr "-575.02"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "2020/11/03"
-msgstr "2020/11/03"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "Mulct2_Credit_2020/09"
-msgstr "Multa2_Crédito_2020/09"
+msgid "Mulct2 Credit 2020/09"
+msgstr "Multa2 Crédito 2020/09"
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "2924.54"
-msgstr "2924.54"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "37.31"
-msgstr "37.31"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "-537.71"
-msgstr "-537.71"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "Lease_Credit_2020/09_2/2"
-msgstr "Alquiler_Crédito_2020/09_2/2"
+msgid "Lease Credit 2020/09 2/2"
+msgstr "Alquiler Crédito 2020/09 2/2"
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "14622.69"
-msgstr "14622.69"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "186.56"
-msgstr "186.56"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "-351.15"
-msgstr "-351.15"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "2020/11/05"
-msgstr "2020/11/05"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "Mulct1_Debit_2020/10"
-msgstr "Multa2_Débito_2020/10"
+msgid "Mulct1 Debit 2020/10"
+msgstr "Multa2 Débito 2020/10"
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "-387.46"
-msgstr "-387.46"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "2020/11/09"
-msgstr "2020/11/09"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "Lease_Credit_2020/10"
-msgstr "Alquiler_Crédito_2020/10"
+msgid "Lease Credit 2020/10"
+msgstr "Alquiler Crédito 2020/10"
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "29215.71"
-msgstr "29215.71"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "372.74"
-msgstr "372.74"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "-14.72"
-msgstr "-14.72"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904.csv:1
-msgid "Agent>Xe_Reconsile_Credit"
-msgstr "Agente>Xe_Conciliar_Crédito"
+msgid "Agent>Xe Reconsile Credit"
+msgstr "Agente>Xe Conciliar Crédito"
 
 #: ../../source/_static/custom/lease-904.csv:1
 msgid "-21.59"
-msgstr "-21.59"
+msgstr ""
 
 #: ../../source/annex.rst:78
-#, fuzzy
 msgid "Lease Contract Statement IV - Final Balance"
-msgstr "Declaraciones del Contrato de Arrendamiento"
-
-#: ../../source/_static/custom/lease-904-footer.csv:1
-msgid "**Final Balance (Latest Release Date of Document):**"
-msgstr "**Saldo Final (Última Fecha de Publicación del Documento**"
-
-#: ../../source/_static/custom/lease-904-footer.csv:1
-msgid "GBP"
-msgstr "GBP"
+msgstr "Declaraciones del Contrato de Arrendamiento IV - Saldo Final"
 
 #: ../../source/_static/custom/lease-904-footer.csv:1
 msgid "*xe.com 31/08/2021 = x 1.37541*"
-msgstr "*xe.com 31/08/2021 = x 1.37541*"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904-footer.csv:1
 msgid "-49.94"
-msgstr "-49.94"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904-footer.csv:1
 msgid "*xe.com 31/08/2021 = x 78.2755*"
-msgstr "*xe.com 31/08/2021 = x 78.2755*"
+msgstr ""
 
 #: ../../source/_static/custom/lease-904-footer.csv:1
 msgid "-2842.10"
-msgstr "-2842.10"
+msgstr ""
 
 #: ../../source/annex.rst:90
-msgid "Inventory"
-msgstr "Inventario"
+msgid "Inventory Annex"
+msgstr "Inventario Anexos"
 
 #: ../../source/annex.rst:94
 msgid "Download Links"
@@ -375,19 +902,19 @@ msgstr "**Descripción**"
 
 #: ../../source/_static/annex.csv:1
 msgid "**PDF**"
-msgstr "**PDF**"
+msgstr ""
 
 #: ../../source/_static/annex.csv:1
 msgid "**XLS**"
-msgstr "**XLS**"
+msgstr ""
 
 #: ../../source/_static/annex.csv:1
 msgid "**CSV**"
-msgstr "**CSV**"
+msgstr ""
 
 #: ../../source/_static/annex.csv:1
 msgid "2018-04-01"
-msgstr "2018-04-01"
+msgstr ""
 
 #: ../../source/_static/annex.csv:1
 msgid "Lease Contract I"
@@ -395,35 +922,35 @@ msgstr "Contrato de Alquiler I"
 
 #: ../../source/_static/annex.csv:1
 msgid ""
-"`link(19kb) "
-"<https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__"
+"`link(19kb) <https://datro.xyz/static/library/consortium_campuses/"
+"techhouse2_casestudy/latest/build/html/_static/>`__"
 msgstr ""
-"`Enlace(19kb) "
-"<https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__"
+"`Enlace(19kb) <https://datro.xyz/static/library/consortium_campuses/"
+"techhouse2_casestudy/latest/build/html/_static/>`__"
 
 #: ../../source/_static/annex.csv:1
 msgid "2019-03-31"
-msgstr "2019-03-31"
+msgstr ""
 
 #: ../../source/_static/annex.csv:1
 msgid ""
-"`link(5.3mb) "
-"<https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__"
+"`link(5.3mb) <https://datro.xyz/static/library/consortium_campuses/"
+"techhouse2_casestudy/latest/build/html/_static/>`__"
 msgstr ""
-"`Enlace(5.3mb) "
-"<https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__"
+"`Enlace(5.3mb) <https://datro.xyz/static/library/consortium_campuses/"
+"techhouse2_casestudy/latest/build/html/_static/>`__"
 
 #: ../../source/_static/annex.csv:1
 msgid ""
-"`link(?mb) "
-"<https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__"
+"`link(?mb) <https://datro.xyz/static/library/consortium_campuses/"
+"techhouse2_casestudy/latest/build/html/_static/>`__"
 msgstr ""
-"`Enlace(?mb) "
-"<https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__"
+"`Enlace(?mb) <https://datro.xyz/static/library/consortium_campuses/"
+"techhouse2_casestudy/latest/build/html/_static/>`__"
 
 #: ../../source/_static/annex.csv:1
 msgid "2019-04-01"
-msgstr "2019-04-01"
+msgstr ""
 
 #: ../../source/_static/annex.csv:1
 msgid "Lease Contract II"
@@ -431,11 +958,11 @@ msgstr "Contrato de Alquiler II"
 
 #: ../../source/_static/annex.csv:1
 msgid "2019-08-31"
-msgstr "2019-08-31"
+msgstr ""
 
 #: ../../source/_static/annex.csv:1
 msgid "2019-09-01"
-msgstr "2019-09-01"
+msgstr ""
 
 #: ../../source/_static/annex.csv:1
 msgid "Lease Contract III"
@@ -443,11 +970,11 @@ msgstr "Contrato de Alquiler III"
 
 #: ../../source/_static/annex.csv:1
 msgid "2020-08-31"
-msgstr "2020-08-31"
+msgstr ""
 
 #: ../../source/_static/annex.csv:1
 msgid "2020-09-01"
-msgstr "2020-09-01"
+msgstr ""
 
 #: ../../source/_static/annex.csv:1
 msgid "Lease Contract IV"
@@ -455,32 +982,4 @@ msgstr "Contrato de Alquiler IV"
 
 #: ../../source/_static/annex.csv:1
 msgid "2021-08-31"
-msgstr "2021-08-31"
-
-#~ msgid ""
-#~ "Or jump to the :ref:`Download Links` "
-#~ "Table to view all available downloads."
-#~ msgstr ""
-#~ "O vaya a la tabla: ref: `Descargar"
-#~ " Enlaces` para ver todas las "
-#~ "descargas disponibles."
-
-#~ msgid ""
-#~ "Download as `PDF "
-#~ "<https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__"
-#~ " , `XLS "
-#~ "<https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__"
-#~ " and/or `CSV "
-#~ "<https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__"
-#~ " Or jump to the \"all available "
-#~ ":ref:`Download Links`\" table"
-#~ msgstr ""
-#~ "Descargar como "
-#~ "'PDF<https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__"
-#~ " , `XLS "
-#~ "<https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__"
-#~ " y/o `CSV "
-#~ "<https://datro.xyz/static/library/consortium_campuses/techhouse2_casestudy/latest/build/html/_static/>`__"
-#~ " O vaya a la tabla \"Todos los"
-#~ " Disponibles: ref:` Descargar Enlaces` \""
-
+msgstr ""

@@ -93,7 +93,7 @@ sed -i 's/&copy; Copyright/Copyleft/g' build/html/*.html &&
 sed -i 's/span>copy;/span> /g' build/html/*.html &&
 sed -i 's/;copy;/ /g' build/html/*.html &&
 sed -i 's/2021, DATRO Consortium/ /g' build/html/*.html
-sed -i 's/Copyright/Copyleft <b style="font-color:darkgrey!important;font-weight:lighter;font-size:90%;font-style:italic;"><strong>2021 DATRO<\/strong> Consortium<\/b> | datro.xyz/g' build/html/*.html &&
+sed -i 's/Copyright/  <b style="font-color:darkgrey!important;font-weight:lighter;font-size:90%;font-style:italic;"><strong>YYYY DATRO<\/strong> Consortium<\/b> | datro.xyz/g' build/html/*.html &&
 sed -i 's/ datro.xyz/ <a href="https:\/\/datro.xyz" target="_popup">datro.xyz<\/a>/g' build/html/*.html &&
 sed -i 's/}article/}.copy-left{display:inline-block;text-align:right;margin:0;font-weight:bolder!important;font-size:99.99%;-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:FlipH;-ms-filter:FlipH}article/g' build/html/_static/css/theme.css &&
 sed -i 's/footer p{/footer p{font-size:122%;margin-bottom:0px;/g' build/html/*.html &&
@@ -104,4 +104,5 @@ sed -i 's/placeholder="Search docs"/placeholder="Search"/g' build/html/*.html &&
 sed -i 's/Built with/<div style="opacity:0.3;font-size:76%;">Built with/g' build/html/*.html &&
 sed -i 's/Read the Docs<\/a>./Read the Docs<\/a><\/div>/g' build/html/*.html &&
 sed -i 's/.wy-nav-top a{color:#fff;font-weight:700/.wy-nav-top a{color:#fff;font-weight:700;font-size:75%;margin-left:-56px;/g' build/html/_static/css/theme.css &&
+sed -i 's/YYYY DATRO/2012\<script>new Date().getFullYear()>2012\&\&document.write("-"+new Date().getFullYear());\<\/script> DATRO/g' build/html/*.html &&
 exit 0

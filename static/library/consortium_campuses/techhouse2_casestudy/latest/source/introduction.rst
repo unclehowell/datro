@@ -12,7 +12,7 @@ This report is subsequently compiled manually, which is currently intensive sinc
 Adjustments to the exported data thus far includes:
 
 1. We want to keep the references on transactions as a single string so the line doesn't break to fit the columb width. e.g. lease_debit_2020/09/01
-2. We want to append `.. centered:: ` to every entry in the csv file. This helps verticle alignment too. And is better than auto, where some items are left aligned, some right aligned etc
+2. We want to append `.. centered::` to every entry in the csv file. This helps verticle alignment too. And is better than auto, where some items are left aligned, some right aligned etc
 3. We make select entries bold or italic (by appending 1 or 2 stars to the beginning and end of the data e.g. **bold**, *italic* etc
 4. We change the titles of the columbs e.g. `currency` becomes `unit` and `transaction amount` = `volume` - This allows more columbs to squeez into the document. And eliminates horizontal table scrolls on the compiled html view.
 5. Invert the negatives and positives (on all numbers). This way the final balance will show as a minus if funds are owed, not a positive number which might be considered an overpayment/ credit. 
