@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Introducción &mdash; documentación de Tech House II - Case Study - 0.0.0</title>
+  <title>Introduction &mdash; documentación de Tech House II - Case Study - 0.0.0</title>
   
 
   
@@ -42,8 +42,8 @@
     
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="Categorías" href="categories.html" />
-    <link rel="prev" title="Notas y avisos de la versión" href="releasenotes.html" /> 
+    <link rel="next" title="Categories" href="categories.html" />
+    <link rel="prev" title="Release Notes and Notices" href="releasenotes.html" /> 
 <style>html{overflow-y:scroll;} ::-webkit-scrollbar{width:0px;background:transparent;}</style></head>
 
 <body class="wy-body-for-nav">
@@ -93,10 +93,10 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Notas y avisos de la versión</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Introducción</a></li>
-<li class="toctree-l1"><a class="reference internal" href="categories.html">Categorías</a></li>
-<li class="toctree-l1"><a class="reference internal" href="annex.html">Anexos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes and Notices</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="annex.html">Annexures</a></li>
 </ul>
 
             
@@ -145,7 +145,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Introducción</li>
+      <li>Introduction</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -165,18 +165,22 @@
            <div itemprop="articleBody">
             
   <div class="section" id="introduction">
-<h1>Introducción<a class="headerlink" href="#introduction" title="Enlazar permanentemente con este título">¶</a></h1>
-<p>Este documento detalla los DATRO Consorcios «Casa Tec II».</p>
-<p>Los datos fiscales relevantes se recuperan de la solución de contabilidad federada de DATRO. La teneduría de libros / cuentas no es una excepción en lo que respecta a las aplicaciones web progresivas (PWA) de localhost federado. Los contratos inteligentes de las sociedades autónomas descentralizadas (DAS) de DATRO, luego recopilan el último informe para determinar qué proveedores (y qué cantidades y cuándo) pagar de forma autónoma. En este momento, los datos fiscales no se recuperan de forma totalmente autónoma durante el proceso de recompilación / actualización del documento (rebuild.sh). El script personalizado (custom.sh) y la metodología de importación de datos aún necesitan más mejoras antes de que esto suceda. Este informe se compila posteriormente manualmente, lo que actualmente es intensivo ya que el informe es nuevo y las exportaciones deben ajustarse manualmente para adaptarse al formato deseado de los documentos, especialmente cuando se trata de datos y tablas.</p>
-<p>Los ajustes a los datos exportados hasta ahora incluyen:</p>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>This document details the DATRO Consortiums «Tech House II».</p>
+<p>Relevant fiscal data is retrieved from DATRO’s federated accounting solution. Bookkeeping/accounts is no exception where it concerns federated localhost Progressive WebApp(PWA)”s.
+DATRO’s Decentralized Autonomous Societies (DAS)”s smart contracts, then scrape the latest report to determine what suppliers (and what amounts and when) to autonomously pay.
+At this time fiscal data isn’t retrieved fully autonomously during the document re-compile/update (rebuild.sh) process.
+The custom script (custom.sh) and data import methodology still needs more improvement before this can happen.
+This report is subsequently compiled manually, which is currently intensive since the report is new and exports must be manually adjusted to fit the documents desired format, especially where it concerns data and tables.</p>
+<p>Adjustments to the exported data thus far includes:</p>
 <ol class="arabic simple">
-<li><p>Queremos mantener las referencias en las transacciones como una sola cadena para que la línea no se rompa para ajustarse al ancho de la columna. p.ej. Alquiler_Débito_2020/09/01</p></li>
-<li><p>Queremos agregar <cite>.. centered::</cite> a cada entrada en el archivo csv. Esto también ayuda a la alineación vertical. Y es mejor que automático, donde algunos elementos están alineados a la izquierda, otros alineados a la derecha etc</p></li>
-<li><p>Hacemos que las entradas seleccionadas estén en negrita o cursiva (agregando 1 o 2 estrellas al principio y al final de los datos, por ejemplo, <strong>negrita</strong>, <em>cursiva</em> etc</p></li>
-<li><p>Cambiamos los títulos de los columbos, p. Ej. <cite>currency</cite> se convierte en` unit` y <cite>transaction amount</cite> =` volume` - Esto permite que más monedas se aprieten en el documento. Y elimina los desplazamientos de tablas horizontales en la vista html compilada.</p></li>
-<li><p>Invierta los negativos y los positivos (en todos los números). De esta manera, el saldo final se mostrará como menos si se adeudan fondos, no como un número positivo que podría considerarse un pago en exceso / crédito.</p></li>
-<li><p>Separe el saldo final en una tabla separada. De esta manera, el número de columbs puede ser menor, ya que solo necesitamos tener un columb para el «saldo» y un columb para la moneda «USD» y uno para el monto en sí, p. <cite>-36,24</cite></p></li>
-<li><p>Formato de fecha DD-MM-YYYY &gt; YYYY/MM/DD</p></li>
+<li><p>We want to keep the references on transactions as a single string so the line doesn’t break to fit the columb width. e.g. lease_debit_2020/09/01</p></li>
+<li><p>We want to append <cite>.. centered::</cite> to every entry in the csv file. This helps verticle alignment too. And is better than auto, where some items are left aligned, some right aligned etc</p></li>
+<li><p>We make select entries bold or italic (by appending 1 or 2 stars to the beginning and end of the data e.g. <strong>bold</strong>, <em>italic</em> etc</p></li>
+<li><p>We change the titles of the columbs e.g. <cite>currency</cite> becomes <cite>unit</cite> and <cite>transaction amount</cite> = <cite>volume</cite> - This allows more columbs to squeez into the document. And eliminates horizontal table scrolls on the compiled html view.</p></li>
+<li><p>Invert the negatives and positives (on all numbers). This way the final balance will show as a minus if funds are owed, not a positive number which might be considered an overpayment/ credit.</p></li>
+<li><p>Seperate the final balance into a seperate table. This way the number of columbs can be fewer, since we only really need to have a columb for the <cite>balance</cite> and a columb for currency <cite>USD</cite> and one for the amount itself e.g. <cite>-36.24</cite></p></li>
+<li><p>Date format DD-MM-YYYY &gt; YYYY/MM/DD</p></li>
 </ol>
 </div>
 
@@ -186,8 +190,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="categories.html" class="btn btn-neutral float-right" title="Categorías" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="releasenotes.html" class="btn btn-neutral float-left" title="Notas y avisos de la versión" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="categories.html" class="btn btn-neutral float-right" title="Categories" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="releasenotes.html" class="btn btn-neutral float-left" title="Release Notes and Notices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
     </div>
 
   <hr/>

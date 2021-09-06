@@ -1,72 +1,94 @@
 [
   {
-    "name": "<div class='glyphicon glyphicon-book new-line'>HTML</div>",
-    "path": "",
+    "name": "<div class='title-line flag-gb disable-link' >English</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": ""
+      "html": "javascript:void(0)"
     }
    },
   {
-    "name": "EN",
+    "name": "<div class='subtitle-line'>HTML</div>",
     "path": "./latest/build/html/en/",
     "_links": {
       "html": "./latest/build/html/en/"
     }
    },
   {
-    "name": "ES",
-    "path": "./latest/build/html/es/",
-    "_links": {
-      "html": "./latest/build/html/es/"
-    }
-   },
-  {
-    "name": "DE",
-    "path": "./latest/build/html/de/",
-    "_links": {
-      "html": "./latest/build/html/de/"
-    }
-   },
-  {
-    "name": "FR",
-    "path": "./latest/build/html/fr/",
-    "_links": {
-      "html": "./latest/build/html/fr/"
-    }
-   },
-  {
-    "name": "<div class='glyphicon glyphicon-book new-line'>PDF</div>",
-    "path": "",
-    "_links": {
-      "html": ""
-    }
-   },
-  {
-    "name": "EN",
+    "name": "<div class='subtitle-line'>PDF</div>",
     "path": "./latest/build/latex/en/",
     "_links": {
       "html": "./latest/build/latex/en/"
     }
    },
   {
-    "name": "ES",
-    "path": "./latest/build/latex/es/",
+    "name": "<div class='title-line flag-es disable-link' >Español</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": "./latest/build/latex/es/"
+      "html": "javascript:void(0)"
     }
    },
   {
-    "name": "DE",
-    "path": "./latest/build/latex/de/",
+    "name": "<div class='subtitle-line disable-link'>HTML</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": "./latest/build/latex/de/"
+      "html": "javascript:void(0)"
     }
    },
   {
-    "name": "FR",
-    "path": "./latest/build/latex/fr/",
+    "name": "<div class='subtitle-line disable-link'>PDF</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": "./latest/build/latex/fr/"
+      "html": "javascript:void(0)"
     }
-   }
+   },
+  {
+    "name": "<div class='title-line flag-de disable-link' >Deutsch</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line disable-link'>HTML</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line disable-link'>PDF</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='title-line flag-fr disable-link' >Française</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line disable-link' >HTML</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line disable-link' >PDF</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='title-line disable-link'></div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   } 
 ]
+

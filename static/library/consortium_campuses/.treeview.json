@@ -1,81 +1,72 @@
 [
   {
-    "name": "Campus I - Case Study",
-    "path": "./campus1_casestudy",
+    "name": "<div class='title-line'>Campus IV</div>",
+    "path": "",
     "_links": {
-      "html": "./campus1_casestudy"
+      "html": ""
     }
-  },
+   },
   {
-    "name": "Campus IV - Site Survey",
+    "name": "<div class='glyphicon glyphicon-book subtitle-line'>Site Survey</div>",
     "path": "./campus4_sitesurvey",
     "_links": {
       "html": "./campus4_sitesurvey"
     }
+   },
+ {
+    "name": "<div class='title-line'>Tech House II</div>",
+    "path": "",
+    "_links": {
+      "html": ""
+    }
   },
   {
-    "name": "TechHouse II > Case Study",
+    "name": "<div class='subtitle-line'>Case Study</div>",
     "path": "./techhouse2_casestudy",
     "_links": {
       "html": "./techhouse2_casestudy"
     }
   },
-  {
-    "name": " -------------------------",
-    "path": "",
-    "_links": {
-      "html": ""
-    }
-  },
-
-  {
-    "name": " Pending Publication",
+ {
+    "name": "<div class='title-line'>Tech House I</div>",
     "path": "",
     "_links": {
       "html": ""
     }
   },
   {
-    "name": " ------------------------",
-    "path": "",
+    "name": "<div class='glyphicon glyphicon-book'>Case Study</div>",
+    "path": "./techhouse1_casestudy",
     "_links": {
-      "html": ""
-    }
-  },
-
-  {
-    "name": "Campus 0 > Case Study",
-    "path": "",
-    "_links": {
-      "html": ""
+      "html": "./techhouse1_casestudy"
     }
   },
   {
-    "name": "Campus II > Case Study",
+    "name": "<div class='glyphicon glyphicon-book title-line'>Campus III</div>",
     "path": "",
     "_links": {
       "html": ""
     }
-  },
+   },
   {
-    "name": "Campus III > Case Study",
+    "name": "<div class='glyphicon glyphicon-book title-line'>Campus II</div>",
     "path": "",
     "_links": {
       "html": ""
     }
-  },
+   },
   {
-    "name": "Campus IV > Vision Plan",
+    "name": "<div class='glyphicon glyphicon-book title-line'>Campus I</div>",
     "path": "",
     "_links": {
       "html": ""
     }
-  },
+   },
   {
-    "name": "TechHouse I > Case Study",
+    "name": "<div class='glyphicon glyphicon-book title-line'>Campus 0</div>",
     "path": "",
     "_links": {
       "html": ""
     }
-  }
+   }
 ]

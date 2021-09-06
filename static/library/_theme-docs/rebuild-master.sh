@@ -157,7 +157,7 @@ echo '<script type="text/javascript">'
 }>> index.html &&
 ls -1 >> name.txt
 sed 's/^/window.open(".\//' name.txt > namenew.txt
-sed -i 's/pdf/pdf");/g' namenew.txt
+sed -i 's/pdf/pdf", "_self");/g' namenew.txt
 rm -r name.txt
 cat  namenew.txt >> index.html
 rm -r namenew.txt &&

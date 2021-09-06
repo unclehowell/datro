@@ -17,8 +17,7 @@ master_doc = 'index'
 language = "en"
 locale_dirs = ['locales']
 gettext_auto_build = True
-gettext_compact = False
-
+gettext_compact = "docs"
 #today_fmt = 'Dec 09, 2019'
 
 exclude_patterns = ['_build']

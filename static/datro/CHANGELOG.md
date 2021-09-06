@@ -13,6 +13,9 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [-datro.04] - Q3/2021
 
+### Added
+Sep-06 - Added current year to page title (and a "view all" option for commits) to the following page `html/statistics/website.html`  
+
 ### Changed
 Aug-29 - Changed ScottishBay to DAS (Decentralized Autonomous Society) - operation is no longer stationary/static, we're going mobile/itenerant   
 Aug-29 - Changed icon image in 'html/static/website.html' to the profile logo from github.com/unclehowell   

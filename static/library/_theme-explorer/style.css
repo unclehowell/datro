@@ -1,20 +1,105 @@
 html {
-margin-top:10vh;
-background:#336;
-background-color:#336;
-width: 100vw!important;
-overflow-y: visible!important;
+    margin-top:10vh;
+    background:#336;
+    background-color:#336;
+    width: 100vw!important;
+    overflow-y: visible!important;
 }
 
-.new-line {
-font-size: 100%;
-line-height: 6rem!Important;
-text-decoration: underline;
-display: block;
-min-width: 99vw;
-letter-spacing: 0.3em;
-right: 0!important;
-text-underline-position: under;
+upselect {
+    background-color:green;
+    display:inline-block;
+}
+
+.up-active {
+    text-decoration: underline;
+    color: rgba(255,255,255,0.50);
+    margin-left: 30px;
+    font-weight: lighter;
+    text-transform: uppercase!important;
+    text-underline-offset: 2px;
+}
+
+li{
+    display: inline-block!important;
+    max-width: 99vw;
+    overflow: visible;
+    font-weight: 200;
+    float: left!important;
+    font-family: 'Glyphicons Halflings';
+    color: slategrey;
+    padding: 0px 0px 0px 0vw;
+    margin: 0px 0px 0px 1em;
+    text-indent: 0px;
+}
+
+.title-line {
+    font-size: 100%!Important;
+    line-height: 4rem!Important;
+    min-width: 99vw!important;
+    letter-spacing: 0.15rem;
+    text-underline-position: under;
+    padding-left: 70px!important;
+    max-width: 99vw!important;
+    margin: -0.8em 1px -0.15em -3.5pc!important;
+    float: left!important;
+    cursor:default;
+    white-space: nowrap;
+    word-spacing: -0.5em;
+}
+
+.disable-link {
+  color: rgba(255,255,255,0.25)!important;
+}
+
+.enable-link {
+  pointer-events: none!important;
+  cursor: grabber!important;
+  color: rgba(255,255,255,0.50)!important;
+  line-height:1em;
+}
+
+.subtitle-line { 
+    margin: 1rem 0 0.75em 0.00vw!important;
+    color: rgba(255,255,255,0.50);
+    padding: 0px 0px 0px 0px;
+    display: inline-table!important;
+    min-width: 70px;
+    max-width: 70px;
+    line-height: 1em;
+    min-height: 28px;
+    text-underline-offset: 2px;
+    text-decoration: underline;
+    white-space: nowrap;
+    word-spacing: -0.5em;
+    cursor:default;
+}
+
+.flag-gb {
+    background-image: url(icons/gb.png);
+    background-size: 40px 20px;
+    background-repeat: no-repeat;
+    background-position: 0.8rem 0.6em;
+} 
+
+.flag-es {
+    background-image: url(icons/es.png);
+    background-size: 40px 20px;
+    background-repeat: no-repeat;
+    background-position: 0.8rem 0.6em;
+}
+.flag-de {
+    background-image: url(icons/de.png);
+    background-size: 40px 20px;
+    background-repeat: no-repeat;
+    background-position: 0.8rem 0.6em;
+}
+
+.flag-fr {
+    background-image: url(icons/fr.png);
+    background-size: 40px 20px;
+    background-repeat: no-repeat;
+    background-position: 0.8rem 0.6em;
 }
 
 
@@ -28,13 +113,14 @@ a {
 color:grey;
 text-decoration:none;
 font-size: clamp(1.5em, 3vw, 2em);
-margin-left: 16px;
-    word-spacing: -2rem;
+margin-left: 0px;
+word-spacing: 1em;
 text-transform:capitalize;
+margin-left: 0.5em;
 }
 
 p {
-margin-left: -9vw;
+margin-left: -10vw;
 }
 * {
     -webkit-user-select: none;

@@ -79,7 +79,7 @@ html {
 
 body {background-color:#333366!important;}
 
-.dev-cal {filter:brightness(1.3)contrast(2)saturate(12);}
+.dev-cal {}
 
 ::-webkit-scrollbar {
 		width: 0px;
@@ -142,6 +142,7 @@ font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue"
     background-image: url(https://avatars.githubusercontent.com/u/10119070?v=4)!important;
     background-position: center;
     background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 		li {color:white; font-size:1rem;background-color: rgba(0,0,0,0.06); margin: 10px; padding: 13px 13px 23px 13px; border-radius: 10px; border: 1px solid #333666; overflow: hidden!important; font-weight: lighter!important; vertical-align: top!important; display: flex!important; text-underline-position: under!important; min-width: 90%!important; max-width: 99%!important; }
@@ -200,7 +201,7 @@ h2 {font-size:200%; font-weight:600; margin-top:1em; margin-bottom:1em;}
 		<div id="products" class="container" style="text-align:center;">
 			<h1 class="segment-title" style="margin:-2rem 0 0rem 0;">DATRO Website (datro.xyz)</h1>
 			</br></br>
-			<h2 class="segment-subtitle" style="margin-top:10vh;text-align:center; display: block; margin-left: auto; margin-right: auto;">Development Calendar</h2>
+			<h2 class="segment-subtitle" style="margin-top:10vh;text-align:center; display: block; margin-left: auto; margin-right: auto;">Development Calendar (<script>new Date().getFullYear()>2012&&document.write(""+new Date().getFullYear());</script>)</h2>
 				</br>
 			<img style="z-index: 1;right:31rem;position:relative;min-width:100vw;min-height:129px;" class="dev-cal" src="https://ghchart.rshah.org/333366/unclehowell" alt="Unclehowell's Github chart" />
 				</br></br>
@@ -219,9 +220,10 @@ h2 {font-size:200%; font-weight:600; margin-top:1em; margin-bottom:1em;}
          <div id="products" class="container" >
 
                                       
-                        <h2 class="segment-subtitle" style="text-align:center; display: block; margin-left: auto; margin-right: auto;">Latest from Developer(s)</h2>
+                        <h2 class="segment-subtitle" style="text-align:center; display: block; margin-left: auto; margin-right: auto;">Latest Developments</h2>
                         <div id="github-commits"></div>
-          </div>
+                        <a href="https://github.com/unclehowell/datro/commits/gh-pages" target="_self" style="margin-right:5vw;float:right;"> ... View All</a>
+          </div></br>
 
                 <div id="products" class="container" >
                         </br>
