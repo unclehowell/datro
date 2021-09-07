@@ -40,7 +40,7 @@ li{
     letter-spacing: 0.25rem;
     text-underline-position: under;
     max-width: 99vw!important;
-    margin: -0.8em 0 -0.15em 0pc!important;
+    margin: -0.8em 0 -0.15em -6pc!important;
     float: left!important;
     white-space: nowrap;
     word-spacing: -0.1em;
@@ -50,6 +50,7 @@ li{
     border-radius: 0;
     left: 0vw!Important;
     position: static!important;
+    padding-left: 4.75em;
 }
 
 .page-scroll-fix {
@@ -146,66 +147,49 @@ margin-top: 3rem;
     word-spacing: -1.75rem;
 }
 
-.flag-datro {
+.f-datro {
     background-image: url(icons/datro.png);
-    background-size: 40px 20px;
-    background-repeat: no-repeat;
-    background-position: 1.8pc 0.6em;
-    margin-left: -103px!important;
-    padding-left: 5.2pc!important;
-    border-left: 18px solid rgba(0,0,0,0)!important;
 } 
 
-.flag-gb {
+.f-gb {
     background-image: url(icons/gb.png);
-    background-size: 40px 20px;
-    background-repeat: no-repeat;
-    background-position: 0.8rem 0.6em;
-    background-position: 1.8pc 0.6em;
-    margin-left: -103px!important;
-    padding-left: 5.2pc!important;
-    border-left: 18px solid rgba(0,0,0,0)!important;
 } 
 
-.flag-es {
+.f-es {
     background-image: url(icons/es.png);
-    background-size: 40px 20px;
-    background-repeat: no-repeat;
-    background-position: 0.8rem 0.6em;
-    background-position: 1.8pc 0.6em;
-    margin-left: -103px!important;
-    padding-left: 5.2pc!important;
-    border-left: 18px solid rgba(0,0,0,0)!important;
 }
 
-.flag-de {
+.f-hbnb {
+    background-image: url(icons/hbnb.png);
+}
+
+
+.f-techhouse {
+    background-image: url(icons/techhouse.png);
+}
+
+.f-de {
     background-image: url(icons/de.png);
-    background-size: 40px 20px;
-    background-repeat: no-repeat;
-    background-position: 1.8pc 0.6em;
-    margin-left: -103px!important;
-    padding-left: 5.2pc!important;
-    border-left: 18px solid rgba(0,0,0,0)!important;
-
 }
 
-.flag-fr {
+.f-fr {
     background-image: url(icons/fr.png);
-    background-size: 40px 20px;
-    background-repeat: no-repeat;
-    background-position: 1.8pc 0.6em;
-    margin-left: -103px!important;
-    padding-left: 5.2pc!important;
-    border-left: 18px solid rgba(0,0,0,0)!important;
 }
 
-.flag-do {
+.f-do {
     background-image: url(icons/do.png);
+}
+
+.f-google {
+    background-image: url(icons/google.png);
+}
+
+.flag {
     background-size: 40px 20px;
     background-repeat: no-repeat;
-    background-position: 1.8pc 0.6em;
-    margin-left: -103px!important;
-    padding-left: 5.2pc!important;
+    background-position: 1.5pc 1.3pc;
+    margin-left: -100px!important;
+    padding-left: 6.2rem!important;
     border-left: 18px solid rgba(0,0,0,0)!important;
 }
 

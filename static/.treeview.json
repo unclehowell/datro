@@ -1,31 +1,44 @@
 [
   {
-    "name": "DATRO Homepage",
-    "path": "../index.html",
+    "name": "<div class='title-line flag f-datro enable-link'>DATRO World</div>",
+    "path": "https://datro.world",
     "_links": {
-      "html": "../index.html"
+      "html": "https://datro.world"
     }
   },
   {
-    "name": "HBnB Homepage",
+    "name": "<div class='title-line flag f-datro enable-link'>DATRO Website</div>",
+    "path": "./datro/index.html",
+    "_links": {
+      "html": "./datro/index.html"
+    }
+  },
+  {
+   "name": "<div class='title-line flag f-hbnb enable-link'>Hotspotβnβ Website</div>",
     "path": "./hbnb",
     "_links": {
       "html": "./hbnb"
     }
   },
   {
-    "name": "HBnB Dashboard",
+    "name": "<div class='title-line flag f-hbnb enable-link'>Hotspotβnβ Dashboard</div>",
     "path": "./gui",
     "_links": {
       "html": "./gui"
     }
   },
   {
-    "name": "Document Library",
+    "name": "<div class='title-line flag f-docs enable-link'>Library/'Docs Explorer'</div>",
     "path": "./library",
     "_links": {
       "html": "./library"
     }
-  }
+  },
+  {
+    "name": "<div class='page-scroll-fix'></div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   }
 ]
-

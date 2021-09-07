@@ -1,9 +1,52 @@
 [
   {
-    "name": "patents > google",
-    "path": "./patents_google",
+    "name": "<div class='title-line flag f-google title-disable' >Google</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": "./patents_google"
+      "html": "javascript:void(0)"
     }
-  }
+   },
+  {
+    "name": "<div class='depth2-subtitle-line enable-link'>Patent Purchase</div>",
+    "path": "./patents_google/",
+    "_links": {
+      "html": "./patents_google/"
+    }
+   },
+  {
+    "name": "<div class='depth2-subtitle-line subtitle-disabled'>Loon (Team X)</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='title-line flag f-techhouse title-disable' >Tech House II</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='depth2-subtitle-line subtitle-disable'>Lease Agreement (2021)</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='depth2-subtitle-line subtitle-disable'>Lease Agreement (2019/20)</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='depth2-subtitle-line subtitle-disable'>Lease Agreement (2019)</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   }
 ]
+
