@@ -1,41 +1,162 @@
 {
 	"name": "Hotspotβnβ",
-	"icons": [
-		{
+	"icons" [
+                {
+                        "src": "\/.img\/favicon-16x16.webp",
+                        "sizes": "16x16",
+                        "type": "image\/webp",
+                        "density": "0.75"
+                },
+                {
 			"src": "\/.img\/android-chrome-36x36.webp",
 			"sizes": "36x36",
-			"type": "image\/png",
+			"type": "image\/webp",
 			"density": "0.75"
 		},
+                {
+                        "src": "\/.img\/android-icon-36x36.webp",
+                        "sizes": "36x36",
+                        "type": "image\/webp",
+                        "density": "0.75"
+                },
 		{
 			"src": "\/.img\/android-chrome-48x48.webp",
 			"sizes": "48x48",
-			"type": "image\/png",
+			"type": "image\/webp",
 			"density": "1.0"
 		},
+                {
+                        "src": "\/.img\/android-icon-48x48.webp",
+                        "sizes": "48x48",
+                        "type": "image\/webp",
+                        "density": "1.0"
+                },
+                {
+                        "src": "\/.img\/apple-icon-57x57.webp",
+                        "sizes": "57x57",
+                        "type": "image\/webp",
+                        "density": "1.5"
+                },
+
 		{
 			"src": "\/.img\/android-chrome-72x72.webp",
 			"sizes": "72x72",
-			"type": "image\/png",
+			"type": "image\/webp",
 			"density": "1.5"
 		},
+                {
+                        "src": "\/.img\/apple-icon-72x72.webp",
+                        "sizes": "72x72",
+                        "type": "image\/webp",
+                        "density": "1.5"
+                },
+
+                {
+                        "src": "\/.img\/apple-touch-icon-72x72.webp",
+                        "sizes": "72x72",
+                        "type": "image\/webp",
+                        "density": "1.5"
+                },
+                {
+                        "src": "\/.img\/apple-icon-76x76.webp",
+                        "sizes": "76x76",
+                        "type": "image\/webp",
+                        "density": "2.0"
+                },
+                {
+                        "src": "\/.img\/apple-touch-icon-76x76.webp",
+                        "sizes": "76x76",
+                        "type": "image\/webp",
+                        "density": "2.0"
+                },
 		{
 			"src": "\/.img\/android-chrome-96x96.webp",
 			"sizes": "96x96",
-			"type": "image\/png",
+			"type": "image\/webp",
 			"density": "2.0"
 		},
 		{
 			"src": "\/.img\/android-chrome-144x144.webp",
 			"sizes": "144x144",
-			"type": "image\/png",
+			"type": "image\/webp",
 			"density": "3.0"
 		},
+                   {
+                        "src": "\/.img\/android-icon-144x144.webp",
+                        "sizes": "144x144",
+                        "type": "image\/webp",
+                        "density": "3.0"
+                },
+                {
+                        "src": "\/.img\/ms-icon-144x144.webp",
+                        "sizes": "144x144",
+                        "type": "image\/webp",
+                        "density": "3.0"
+                },
+               {
+                        "src": "\/.img\/ms-icon-150x150.webp",
+                        "sizes": "150x150",
+                        "type": "image\/webp",
+                        "density": "3.0"
+                },
+
+                {
+                        "src": "\/.img\/apple-icon-180x180.webp",
+                        "sizes": "180x180",
+                        "type": "image\/webp",
+                        "density": "3.0"
+                },
 		{
 			"src": "\/.img\/android-chrome-192x192.webp",
 			"sizes": "192x192",
-			"type": "image\/png",
+			"type": "image\/webp",
 			"density": "4.0"
-		}
+		},
+                {
+                        "src": "\/.img\/android-icon-192x192.webp",
+                        "sizes": "192x192",
+                        "type": "image\/webp",
+                        "density": "4.0"
+                },
+                {
+                        "src": "\/.img\/ms-icon-310x310.webp",
+                        "sizes": "310x310",
+                        "type": "image\/webp",
+                        "density": "4.0"
+                },
+                {
+                        "src": "\/.img\/g-icon.webp",
+                        "type": "image\/webp",
+                        "density": "4.0"
+                },
+                {
+                        "src": "\/.img\/logo_2x.webp",
+                        "type": "image\/webp",
+                        "density": "4.0"
+                },
+                {
+                        "src": "\/.img\/bg-cropped-mobile.webp",
+                        "type": "image\/webp",
+                        "density": "4.0"
+                },
+                {
+                        "src": "\/.img\/bg-cropped.webp",
+                        "type": "image\/webp",
+                        "density": "4.0"
+                },
+                {
+                        "src": "\/.img\/apple-icon-precomposed.webp",
+                        "type": "image\/webp",
+                        "density": "4.0"
+                },
+
+
 	]
 }
+android-icon-72x72.webp        apple-icon.webp                favicon-194x194.webp           ms-icon-70x70.webp           
+android-icon-96x96.webp        apple-touch-icon-120x120.webp  favicon-32x32.webp             mstile-144x144.webp          
+apple-icon-114x114.webp        apple-touch-icon-144x144.webp  favicon-96x96.webp             signature.gif                
+apple-icon-120x120.webp        apple-touch-icon-152x152.webp  favicon.ico                    signature.webp               
+apple-icon-144x144.webp        apple-touch-icon-57x57.webp    footer-logo_2x.webp                                         
+apple-icon-152x152.webp        apple-touch-icon-60x60.webp    forgoogle-large_2x.webp                                     
+
