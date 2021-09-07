@@ -1,93 +1,107 @@
 [
   {
-   "name": "Consortium > Campuses",
+    "name": "<div class='title-line flag-datro title-disable'>Consortium</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+  },
+  {
+   "name": "<div class='subtitle-line enable-link'>Campuses</div>",
     "path": "./consortium_campuses",
     "_links": {
       "html": "./consortium_campuses"
     }
   },
   {
-    "name": "Consortium > Contracts",
+    "name": "<div class='subtitle-line enable-link'>Contracts</div>",
     "path": "./consortium_contracts",
     "_links": {
       "html": "./consortium_contracts"
     }
   },
   {
-    "name": "Consortium > Financials",
+    "name": "<div class='subtitle-line enable-link'>Financials</div>",
     "path": "./consortium_finance",
     "_links": {
       "html": "./consortium_finance"
     }
   },
   {
-    "name": "Consortium > Other",
+    "name": "<div class='subtitle-line enable-link'>Other</div>",
     "path": "./consortium_other",
     "_links": {
       "html": "./consortium_other"
     }
   },
   {
-    "name": "Consortium > Plans",
+    "name": "<div class='subtitle-line enable-link'>Plans</div>",
     "path": "./consortium_plans",
     "_links": {
       "html": "./consortium_plans"
     }
   },
   {
-    "name": "DAO-Society",
-    "path": "dao_society",
+    "name": "<div class='title-line flag-datro enable-link'>DAO Society</div>",
+    "path": "./dao_society",
     "_links": {
-      "html": "dao_society"
+      "html": "./dao_society"
     }
   },
   {
-    "name": "Hotspotβnβ",
+    "name": "<div class='title-line flag-datro enable-link'>Hotspotβnβ</div>",
     "path": "./hotspotbnb",
     "_links": {
       "html": "./hotspotbnb"
     }
   },
   {
-    "name": "--------- Draft ---------",
-    "path": "#",
+    "name": "<div class='indraft-title title-disable'>In Draft</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": "#"
+      "html": "javascript:void(0)"
     }
   },
   {
-    "name": "Docs Library",
-    "path": "#",
+    "name": "<div class='title-line flag-datro title-disable'>Library/Docs Explorer</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": "#"
+      "html": "javascript:void(0)"
     }
    },
   {
-    "name": "MonoREAPo",
-    "path": "#",
+    "name": "<div class='title-line flag-datro title-disable'>MonoREAPo</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": "#"
+      "html": "javascript:void(0)"
     }
   },
   {
-    "name": "Neo-Dome",
-    "path": "#",
+    "name": "<div class='title-line flag-datro title-disable'>NΞΩ DΩMΞ</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": "#"
+      "html": "javascript:void(0)"
     }
   },
   {
-    "name": "TestNet (DR)",
-    "path": "#",
+    "name": "<div class='title-line flag-datro title-disable'>Test Net (DR)</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": "#"
+      "html": "javascript:void(0)"
     }
   },
   {
-    "name": "To-Go USB",
-    "path": "#",
+    "name": "<div class='title-line flag-datro title-disable'>To-Go USB</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": "#"
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='page-scroll-fix'></div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
     }
    }
 ]

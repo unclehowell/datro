@@ -1,72 +1,73 @@
 [
   {
-    "name": "<div class='title-line'>Campus IV</div>",
-    "path": "",
+    "name": "<div class='title-line flag-do title-disable' >Campus IV (2022)</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": ""
+      "html": "javascript:void(0)"
     }
    },
   {
-    "name": "<div class='glyphicon glyphicon-book subtitle-line'>Site Survey</div>",
-    "path": "./campus4_sitesurvey",
+    "name": "<div class='depth2-subtitle-line enable-link'>Site Survey</div>",
+    "path": "./campus4_sitesurvey/",
     "_links": {
-      "html": "./campus4_sitesurvey"
-    }
-   },
- {
-    "name": "<div class='title-line'>Tech House II</div>",
-    "path": "",
-    "_links": {
-      "html": ""
-    }
-  },
-  {
-    "name": "<div class='subtitle-line'>Case Study</div>",
-    "path": "./techhouse2_casestudy",
-    "_links": {
-      "html": "./techhouse2_casestudy"
-    }
-  },
- {
-    "name": "<div class='title-line'>Tech House I</div>",
-    "path": "",
-    "_links": {
-      "html": ""
-    }
-  },
-  {
-    "name": "<div class='glyphicon glyphicon-book'>Case Study</div>",
-    "path": "./techhouse1_casestudy",
-    "_links": {
-      "html": "./techhouse1_casestudy"
-    }
-  },
-  {
-    "name": "<div class='glyphicon glyphicon-book title-line'>Campus III</div>",
-    "path": "",
-    "_links": {
-      "html": ""
+      "html": "./campus4_sitesurvey/"
     }
    },
   {
-    "name": "<div class='glyphicon glyphicon-book title-line'>Campus II</div>",
-    "path": "",
+    "name": "<div class='title-line flag-do title-disable' >Tech House II (2018+)</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": ""
+      "html": "javascript:void(0)"
     }
    },
   {
-    "name": "<div class='glyphicon glyphicon-book title-line'>Campus I</div>",
-    "path": "",
+    "name": "<div class='depth2-subtitle-line enable-link'>Full Report</div>",
+    "path": "./techhouse2_casestudy/",
     "_links": {
-      "html": ""
+      "html": "./techhouse2_casestudy/"
     }
    },
   {
-    "name": "<div class='glyphicon glyphicon-book title-line'>Campus 0</div>",
-    "path": "",
+    "name": "<div class='title-line flag-do title-disable'>Tech House I (2017)</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": ""
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='title-line flag-do title-disable'>Campus III (2016/17)</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='title-line flag-do title-disable'>Campus II (2015)</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='title-line flag-do title-disable'>Campus I (2014)</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line subtitle-enable link-enabled'>Case Study</div>",
+    "path": "./campus1_casestudy",
+    "_links": {
+      "html": "./campus1_casestudy"
+    }
+   },
+  {
+    "name": "<div class='page-scroll-fix title-disable'></div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
     }
    }
 ]
+

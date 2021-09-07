@@ -1,94 +1,94 @@
 [
   {
-    "name": "<div class='title-line flag-gb disable-link' >English</div>",
+    "name": "<div class='title-line flag-gb title-disable' >English</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
    },
   {
-    "name": "<div class='subtitle-line'>HTML</div>",
+    "name": "<div class='language-subtitle-line enable-link'>HTML</div>",
     "path": "./latest/build/html/en/",
     "_links": {
       "html": "./latest/build/html/en/"
     }
    },
   {
-    "name": "<div class='subtitle-line'>PDF</div>",
+    "name": "<div class='language-subtitle-line enable-link'>PDF</div>",
     "path": "./latest/build/latex/en/",
     "_links": {
       "html": "./latest/build/latex/en/"
     }
    },
   {
-    "name": "<div class='title-line flag-es disable-link' >Español</div>",
+    "name": "<div class='title-line flag-es title-disable' >Español</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
    },
   {
-    "name": "<div class='subtitle-line disable-link'>HTML</div>",
+    "name": "<div class='language-subtitle-line subtitle-disable'>HTML</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
    },
   {
-    "name": "<div class='subtitle-line disable-link'>PDF</div>",
+    "name": "<div class='language-subtitle-line subtitle-disable'>PDF</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
    },
   {
-    "name": "<div class='title-line flag-de disable-link' >Deutsch</div>",
+    "name": "<div class='title-line flag-de title-disable' >Deutsch</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
    },
   {
-    "name": "<div class='subtitle-line disable-link'>HTML</div>",
+    "name": "<div class='language-subtitle-line subtitle-disable'>HTML</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
    },
   {
-    "name": "<div class='subtitle-line disable-link'>PDF</div>",
+    "name": "<div class='language-subtitle-line subtitle-disable'>PDF</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
    },
   {
-    "name": "<div class='title-line flag-fr disable-link' >Française</div>",
+    "name": "<div class='title-line flag-fr title-disable' >Française</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
    },
   {
-    "name": "<div class='subtitle-line disable-link' >HTML</div>",
+    "name": "<div class='language-subtitle-line subtitle-disable' >HTML</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
    },
   {
-    "name": "<div class='subtitle-line disable-link' >PDF</div>",
+    "name": "<div class='language-subtitle-line subtitle-disable' >PDF</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
    },
   {
-    "name": "<div class='title-line disable-link'></div>",
+    "name": "<div class='page-scroll-fix'></div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
-   } 
+   }
 ]
 

@@ -29,37 +29,88 @@ li{
     font-family: 'Glyphicons Halflings';
     color: slategrey;
     padding: 0px 0px 0px 0vw;
-    margin: 0px 0px 0px 1em;
+    margin: 0px 0px 0px 2pc;
     text-indent: 0px;
 }
 
 .title-line {
-    font-size: 100%!Important;
+    font-size: 0.75em;
     line-height: 4rem!Important;
     min-width: 99vw!important;
-    letter-spacing: 0.15rem;
+    letter-spacing: 0.25rem;
     text-underline-position: under;
-    padding-left: 70px!important;
     max-width: 99vw!important;
-    margin: -0.8em 1px -0.15em -3.5pc!important;
+    margin: -0.8em 0 -0.15em 0pc!important;
     float: left!important;
-    cursor:default;
     white-space: nowrap;
-    word-spacing: -0.5em;
+    word-spacing: -0.1em;
+    font-family: sans-serif!important;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 0;
+    left: 0vw!Important;
+    position: static!important;
 }
 
-.disable-link {
-  color: rgba(255,255,255,0.25)!important;
+.page-scroll-fix {
+    font-size: 0.75em;
+    line-height: 4rem!Important;
+    min-width: 99vw!important;
+    letter-spacing: 0.25rem;
+    text-underline-position: under;
+    max-width: 99vw!important;
+    margin: -0.8em 0 -0.15em 0pc!important;
+    float: left!important;
+    cursor: default;
+    white-space: nowrap;
+    word-spacing: -0.1em;
+    font-family: sans-serif!important;
+    background: rgba(255,255,255,0.05);
+    border-radius: 0;
+    left: 0vw!Important;
+    position: static!important;
+}
+
+.subtitle-disable {
+  color: rgba(255,255,255,0.1)!important;
+    cursor: default;
+}
+
+.indraft-title {
+word-spacing:-1.75rem;
+margin-left: 0rem;
+    float: left!important;
+margin-top: 3rem;
+}
+
+.title-disable {
+  color: rgba(255,255,255,0.3)!important;
+    cursor: default;
 }
 
 .enable-link {
-  pointer-events: none!important;
   cursor: grabber!important;
   color: rgba(255,255,255,0.50)!important;
   line-height:1em;
 }
 
 .subtitle-line { 
+    margin: 0.5em 0 0 0!important;
+    color: rgba(255,255,255,0.50);
+    padding: 0px 0px 0px 0px;
+    display: inline-table!important;
+    min-width: 99vw;
+    max-width: 70px;
+    line-height: 1em;
+    min-height: 28px;
+    text-underline-offset: 2px;
+    text-decoration: underline;
+    white-space: nowrap;
+    word-spacing: -0.5em;
+    
+}
+
+.language-subtitle-line { 
     margin: 1rem 0 0.75em 0.00vw!important;
     color: rgba(255,255,255,0.50);
     padding: 0px 0px 0px 0px;
@@ -72,14 +123,48 @@ li{
     text-decoration: underline;
     white-space: nowrap;
     word-spacing: -0.5em;
-    cursor:default;
+    
 }
+
+
+.depth2-subtitle-line {
+    padding: 0px 0px 0px 0px;
+    display: inline-table!important;
+    min-height: 28px;
+    text-underline-offset: -0.05em;
+    text-decoration: underline;
+    font-size: 100%!Important;
+    line-height: 3rem!Important;
+    min-width: 99vw!important;
+    letter-spacing: 0.15rem;
+    text-underline-position: under;
+    padding-left: 70px!important;
+    max-width: 99vw!important;
+    margin: -0.8em 1px 0.85em -3.5pc!important;
+    float: left!important;
+    white-space: nowrap;
+    word-spacing: -1.75rem;
+}
+
+.flag-datro {
+    background-image: url(icons/datro.png);
+    background-size: 40px 20px;
+    background-repeat: no-repeat;
+    background-position: 1.8pc 0.6em;
+    margin-left: -103px!important;
+    padding-left: 5.2pc!important;
+    border-left: 18px solid rgba(0,0,0,0)!important;
+} 
 
 .flag-gb {
     background-image: url(icons/gb.png);
     background-size: 40px 20px;
     background-repeat: no-repeat;
     background-position: 0.8rem 0.6em;
+    background-position: 1.8pc 0.6em;
+    margin-left: -103px!important;
+    padding-left: 5.2pc!important;
+    border-left: 18px solid rgba(0,0,0,0)!important;
 } 
 
 .flag-es {
@@ -87,19 +172,41 @@ li{
     background-size: 40px 20px;
     background-repeat: no-repeat;
     background-position: 0.8rem 0.6em;
+    background-position: 1.8pc 0.6em;
+    margin-left: -103px!important;
+    padding-left: 5.2pc!important;
+    border-left: 18px solid rgba(0,0,0,0)!important;
 }
+
 .flag-de {
     background-image: url(icons/de.png);
     background-size: 40px 20px;
     background-repeat: no-repeat;
-    background-position: 0.8rem 0.6em;
+    background-position: 1.8pc 0.6em;
+    margin-left: -103px!important;
+    padding-left: 5.2pc!important;
+    border-left: 18px solid rgba(0,0,0,0)!important;
+
 }
 
 .flag-fr {
     background-image: url(icons/fr.png);
     background-size: 40px 20px;
     background-repeat: no-repeat;
-    background-position: 0.8rem 0.6em;
+    background-position: 1.8pc 0.6em;
+    margin-left: -103px!important;
+    padding-left: 5.2pc!important;
+    border-left: 18px solid rgba(0,0,0,0)!important;
+}
+
+.flag-do {
+    background-image: url(icons/do.png);
+    background-size: 40px 20px;
+    background-repeat: no-repeat;
+    background-position: 1.8pc 0.6em;
+    margin-left: -103px!important;
+    padding-left: 5.2pc!important;
+    border-left: 18px solid rgba(0,0,0,0)!important;
 }
 
 

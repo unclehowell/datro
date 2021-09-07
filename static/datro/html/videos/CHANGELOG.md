@@ -6,20 +6,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [-html-videos-0.3] - Q3/2021
+
+### Changed
+Sep-06 - Changed date format on this changelog from DD-MM to MM-DD  
+Sep-06 - Replaced hbnb-intro.jpg with .webp version, generated using Sqoosh CLI command `npx @squoosh/cli --webp auto ./*.jpg`  
+
 ## [-html-videos-0.2] - Q2/2021
 
 ### Fixed
-08-May - `lodash` updated to `v4.17.21`) - versions prior to 4.17.21 are vulnerable to Command Injection via the template function.  
-08-May - `ua-parser-js` updated to `v0.7.24`) - used a regular expression which is vulnerable to denial of service. If an attacker sends a malicious User-Agent header, ua-parser-js will get stuck processing it for an extended period of time.  
-05-May - Mistakenly deleted package.json-lock file. It broke the video playback on the landing page. re-instated it.  
-05-May - Security Vunerability in dependancy - package xmlhttprequest - updated to latest which has fix (v1.6.2) (in json file)  
+May-08 - `lodash` updated to `v4.17.21`) - versions prior to 4.17.21 are vulnerable to Command Injection via the template function.  
+May-08 - `ua-parser-js` updated to `v0.7.24`) - used a regular expression which is vulnerable to denial of service. If an attacker sends a malicious User-Agent header, ua-parser-js will get stuck processing it for an extended period of time.  
+May-05 - Mistakenly deleted package.json-lock file. It broke the video playback on the landing page. re-instated it.  
+May-05 - Security Vunerability in dependancy - package xmlhttprequest - updated to latest which has fix (v1.6.2) (in json file)  
 
 
 ## [-html-videos-0.1] - 2020-09-09
 
 ### Added
     - The source of this video player solutions is https://freshman.tech/custom-html5-video/  
-    - 
 
 ### Changed
     - added two div's (left and right side of video), so that mousing over the video reveals the player  

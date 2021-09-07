@@ -7,6 +7,11 @@ This directory and changelog belongs to [![GitHub release (latest by date includ
 
 ## [Unreleased]  
 
+## [_theme-docs.08-rc2.0] - Q3/2021
+
+### Added
+Sep-07 - Now generates an `index.html` inside `build/latex` which redirects to `build/latex/en`  
+
 ## [_theme-docs.08-rc1.9] - Q3/2021
 
 ### Added 

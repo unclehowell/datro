@@ -15,7 +15,7 @@
 #   ██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝
 #   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
 #................................................
-#       rebuild.sh  _theme-docs.08-rc1.9
+#       rebuild.sh  _theme-docs.08-rc2.0
 #................................................
 #                   datro.xyz
 #................................................
@@ -139,7 +139,7 @@ cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/fr
 mv build/pdfs/{en,es,de,fr} build/latex
 rm -r build/pdfs
 
-printf "\n\e[2;3;33m check we're back in the top level directory - II \n\e[0m\n"
+printf "\n\e[2;3;33m check we're back in ./ (CTL+C if not) \n\e[0m\n"
 pwd
 
 
@@ -177,12 +177,30 @@ cp -r index.html ../es &&
 cp -r index.html ../de &&
 cp -r index.html ../fr &&
 cd ..
-cd ..
-cd ..
+printf "\e[2;3;33m Double check we're in ./build/latex/ (CTL+C if not) \n\e[0m"
+pwd
+sleep 2 &&
 
-printf "\e[2;3;33m Make sure we're back in the top level directory \n\e[0m"
+# now we redirect to /en
+touch index.html
+{
+echo '<html>'
+echo '<body>'
+echo '</body>'
+echo '<script type="text/javascript">'
+echo 'window.open("./en/", "_self");'
+echo '</script>'
+echo '<script language="JavaScript" type="text/javascript">'
+echo 'setTimeout("window.history.go(-1)",500);'
+echo '</script>'
+echo '</html>'
+}>> index.html
+cd ..
+cd ..
+printf "\e[2;3;33m Make sure we're back at ./ (CTL+C if not) \n\e[0m"
 pwd
 
+sleep 2 &&
 printf "\e[2;3;33m Done! \n\e[0m"
 
 printf "\n\e[2;3;33m Step 4 of 5. Setting HTML Theme (alternate color in rebuild.sh) \n\e[0m\n"

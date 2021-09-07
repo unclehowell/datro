@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta content="DATRO Library" name="description">
   <meta content="DATRO Consortium" name="author">
-  <title>DATRO Consortium > Campuses</title>
+  <title>Consortium > Campuses</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport">
         <link href="../_theme-explorer/favicons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
         <link href="../_theme-explorer/favicons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
@@ -24,18 +24,16 @@
         <link rel="stylesheet" href="../_theme-explorer/glyphicon.css">
 <style>
 
-        html {
-        overflow-y:   scroll;
-        overflow-x:   hidden;
+html {
+  overflow-y:   scroll;
+  overflow-x:   hidden;
 }
+
 ::-webkit-scrollbar {
-                width: 0px;
-                background: transparent; /* make scrollbar transparent */
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
 }
-
 </style>
-
-
   </head>
   <body>
     <script>
@@ -49,7 +47,7 @@
           htmlString += `<li class="li"><a href="${file.path}">${file.name}</a></li>`;
         }
         htmlString += '</ul>';
-        htmlString += '</br><div style="min-height:70vh;"></div>';
+        htmlString += '<div style="min-height:100vh;"></div>';
         document.getElementsByTagName('body')[0].innerHTML = htmlString;
            })()
     </script>
