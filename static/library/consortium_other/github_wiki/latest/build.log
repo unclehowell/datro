@@ -1,17 +1,53 @@
-Running Sphinx v3.5.3
-making output directory... done
+Running Sphinx v4.2.0+
+loading translations [fr]... done
 loading pickled environment... done
 building [mo]: targets for 0 po files that are out of date
 building [latex]: all documents
-updating environment: 0 added, 0 changed, 0 removed
+updating environment: [config changed ('language')] 14 added, 0 changed, 0 removed
+reading sources... [  7%] HBnB-|-Apps-|-PiHole
+reading sources... [ 14%] HBnB-|-Apps-|-RetroPie-|-BGM
+reading sources... [ 21%] HBnB-|-Apps-|-Retropie-Manager
+reading sources... [ 28%] HBnB-|-Apps-|-Retropie-|-es_input.cfg
+reading sources... [ 35%] HBnB-|-Apps-|-Virtual-GamePad
+reading sources... [ 42%] HBnB-|-Configs-|-System-Analyze
+reading sources... [ 50%] HBnB-|-Configs-|-config.txt
+reading sources... [ 57%] HBnB-|-Configs-|-fstab
+reading sources... [ 64%] HBnB-|-Configs-|-system.conf
+reading sources... [ 71%] HBnB-|-Configs-|-wpa_supplicant.conf
+reading sources... [ 78%] HBnB-|-Manual-Build-Process
+reading sources... [ 85%] Home-|-Home-|-Home
+reading sources... [ 92%] index
+reading sources... [100%] releasenotes
+
+/var/www/html/datro-gh-pages/static/library/consortium_other/github_wiki/latest/source/HBnB-|-Apps-|-Retropie-|-es_input.cfg.rst:5: WARNING: Unexpected indentation.
+/var/www/html/datro-gh-pages/static/library/consortium_other/github_wiki/latest/source/HBnB-|-Apps-|-Retropie-|-es_input.cfg.rst:3: WARNING: Inline literal start-string without end-string.
+/var/www/html/datro-gh-pages/static/library/consortium_other/github_wiki/latest/source/HBnB-|-Apps-|-Retropie-|-es_input.cfg.rst:16: WARNING: Block quote ends without a blank line; unexpected unindent.
+/var/www/html/datro-gh-pages/static/library/consortium_other/github_wiki/latest/source/HBnB-|-Apps-|-Retropie-|-es_input.cfg.rst:16: WARNING: Inline literal start-string without end-string.
+/var/www/html/datro-gh-pages/static/library/consortium_other/github_wiki/latest/source/HBnB-|-Apps-|-Retropie-|-es_input.cfg.rst:16: WARNING: Inline interpreted text or phrase reference start-string without end-string.
+/var/www/html/datro-gh-pages/static/library/consortium_other/github_wiki/latest/source/HBnB-|-Apps-|-Retropie-|-es_input.cfg.rst:20: WARNING: Unexpected indentation.
+/var/www/html/datro-gh-pages/static/library/consortium_other/github_wiki/latest/source/HBnB-|-Apps-|-Retropie-|-es_input.cfg.rst:18: WARNING: Inline literal start-string without end-string.
+/var/www/html/datro-gh-pages/static/library/consortium_other/github_wiki/latest/source/HBnB-|-Apps-|-Retropie-|-es_input.cfg.rst:33: WARNING: Block quote ends without a blank line; unexpected unindent.
+/var/www/html/datro-gh-pages/static/library/consortium_other/github_wiki/latest/source/HBnB-|-Apps-|-Retropie-|-es_input.cfg.rst:33: WARNING: Inline literal start-string without end-string.
+/var/www/html/datro-gh-pages/static/library/consortium_other/github_wiki/latest/source/HBnB-|-Apps-|-Retropie-|-es_input.cfg.rst:33: WARNING: Inline interpreted text or phrase reference start-string without end-string.
+/var/www/html/datro-gh-pages/static/library/consortium_other/github_wiki/latest/source/HBnB-|-Configs-|-config.txt.rst:5: WARNING: Inline literal start-string without end-string.
+/var/www/html/datro-gh-pages/static/library/consortium_other/github_wiki/latest/source/HBnB-|-Configs-|-config.txt.rst:32: WARNING: Inline literal start-string without end-string.
+/var/www/html/datro-gh-pages/static/library/consortium_other/github_wiki/latest/source/HBnB-|-Configs-|-config.txt.rst:32: WARNING: Inline interpreted text or phrase reference start-string without end-string.
+/var/www/html/datro-gh-pages/static/library/consortium_other/github_wiki/latest/source/HBnB-|-Configs-|-fstab.rst:7: WARNING: Enumerated list ends without a blank line; unexpected unindent.
+/var/www/html/datro-gh-pages/static/library/consortium_other/github_wiki/latest/source/HBnB-|-Configs-|-wpa_supplicant.conf.rst:10: WARNING: Inline literal start-string without end-string.
+/var/www/html/datro-gh-pages/static/library/consortium_other/github_wiki/latest/source/HBnB-|-Configs-|-wpa_supplicant.conf.rst:18: WARNING: Definition list ends without a blank line; unexpected unindent.
+/var/www/html/datro-gh-pages/static/library/consortium_other/github_wiki/latest/source/HBnB-|-Configs-|-wpa_supplicant.conf.rst:19: WARNING: Block quote ends without a blank line; unexpected unindent.
+/var/www/html/datro-gh-pages/static/library/consortium_other/github_wiki/latest/source/HBnB-|-Configs-|-wpa_supplicant.conf.rst:19: WARNING: Inline literal start-string without end-string.
+/var/www/html/datro-gh-pages/static/library/consortium_other/github_wiki/latest/source/HBnB-|-Configs-|-wpa_supplicant.conf.rst:19: WARNING: Inline interpreted text or phrase reference start-string without end-string.
 looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
 processing consortium_other-github_wiki.tex... index releasenotes Home-|-Home-|-Home HBnB-|-Apps-|-PiHole HBnB-|-Apps-|-RetroPie-|-BGM HBnB-|-Apps-|-Retropie-|-es_input.cfg HBnB-|-Apps-|-Retropie-Manager HBnB-|-Apps-|-Virtual-GamePad HBnB-|-Configs-|-config.txt HBnB-|-Configs-|-fstab HBnB-|-Configs-|-System-Analyze HBnB-|-Configs-|-system.conf HBnB-|-Configs-|-wpa_supplicant.conf HBnB-|-Manual-Build-Process 
 resolving references...
 done
 writing... done
 copying TeX support files... copying TeX support files...
 done
-build succeeded.
+build succeeded, 19 warnings.
 
 The LaTeX files are in build/latex.
 Run 'make' in that directory to run these through (pdf)latex
@@ -54,41 +90,49 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
 (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
-(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/tex-gyre/tgtermes.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texmf/tex/latex/tex-gyre/tgheros.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(./sphinxoptionshyperref.sty) (./sphinxoptionsgeometry.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(./sphinxlatexgraphics.sty) (./sphinxlatexadmonitions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty))
+(./sphinxlatexliterals.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty))
+(./sphinxlatexshadowbox.sty) (./sphinxlatexcontainers.sty)
+(./sphinxhighlight.sty) (./sphinxlatextables.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tabulary/tabulary.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty)
-(./sphinxmulticell.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
-(./footnotehyper-sphinx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty))
+(./sphinxlatexnumfig.sty) (./sphinxlatexlists.sty) (./sphinxpackagefootnote.sty
+) (./sphinxlatexindbibtoc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty))
+(./sphinxlatexstylepage.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip-2001-04-09.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
-(./sphinxhighlight.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty))
+(./sphinxlatexstyleheadings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty))
+(./sphinxlatexstyletext.sty) (./sphinxlatexobjects.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
@@ -117,7 +161,7 @@ For additional information on amsmath, use the `?' option.
 Writing index file consortium_other-github_wiki.idx
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def)
 (./consortium_other-github_wiki.aux)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qtm.fd)
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
@@ -127,315 +171,107 @@ Writing index file consortium_other-github_wiki.idx
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)<<ot1.cmap>><<oml.cmap
->><<oms.cmap>><<omx.cmap>>
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qhv.fd)<<ot1.cmap>><<oml.cmap>><<oms.cma
+p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map}] [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1]
-Chapter 2.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [1]
+Overfull \hbox (11.02449pt too wide) in paragraph at lines 188--190
+[]|\T1/qtm/m/n/10 2021/09/07| 
 
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmtt.fd)
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
+Overfull \hbox (11.02449pt too wide) in paragraph at lines 201--203
+[]|\T1/qtm/m/n/10 2021/09/07| 
 [2]
+Chapter 2.
+[3] [4]
 Chapter 3.
-[3]
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/ts1txtt.fd) [5]
 Chapter 4.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 156.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 156.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 156.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 155--158
-[]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 <in-put-Con-fig type=^^Q
-keyboard^^Q de-vi-ce-Name=^^QKeyboard^^Q deviceGUID=^^Q-1^^Q de-vi-ceN-bAxes=^^
-Q0^^Q de-vi-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 175.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 175.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 175.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 178.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 178.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 178.
-
-
-Overfull \hbox (24.86803pt too wide) in paragraph at lines 177--180
-[][]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 <in-put-Con-fig type=^
-^Qjoystick^^Q de-vi-ce-Name=^^QVirtual gamepad^^Q de-viceGUID=^^Q03000000030000
-000300000002000000^^Q
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 199.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 199.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 199.
-
-[4]
+[6]
 Chapter 5.
-[5]
+
+Overfull \hbox (30.14499pt too wide) in paragraph at lines 303--306
+[][]\TS1/qtm/b/n/10 ``[]\TS1/qtm/m/n/10 ` \T1/qtm/m/n/10 <in-put-Con-fig type= 
+^^Tjoy-stick ^^T de-vi-ce-Name= ^^TVir-tual gamepad ^^T de-viceGUID= ^^T0300000
+0030000000300000002000000 ^^T
+[7]
 Chapter 6.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 233--240
-[]\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 curl -sL https://deb.nodesource.com/setup_9
-.x | sudo bash - sudo apt install
-
-Underfull \hbox (badness 10000) in paragraph at lines 233--240
-\T1/pcr/m/n/10 -y build-essential python-dev nodejs npm npm install -g npm \TS1
-/cmtt/m/n/10 ` \T1/ptm/m/n/10 (Mines \T1/ptm/m/it/10 node -v \T1/ptm/m/n/10 =
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 241--249
-\T1/pcr/m/n/10 curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key
- add - echo
-
-Underfull \hbox (badness 10000) in paragraph at lines 241--249
-\T1/pcr/m/n/10 "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc
-/apt/sources.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 253--261
-[]\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 sudo npm cache clean -f sudo npm install -g
- n sudo n 9 sudo npm install -g
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 265--273
-[]\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 sudo -i cd / git clone https://github.com/m
-iroof/node-virtual-gamepads cd
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 283--290
-[]\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 sudo npm install pm2 -g sudo pm2 start main
-.js # full path e.g. /home/pi/
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-[]\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 input_device = "Virtual gamepad" input_driv
-er = "udev" input_r_btn = "5"
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-\T1/pcr/m/n/10 input_save_state_btn = "5" input_start_btn = "7" input_exit_emul
-ator_btn = "7"
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-\T1/pcr/m/n/10 input_l_btn = "4" input_load_state_btn = "4" input_up_axis = "-1
-" input_a_btn
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-\T1/pcr/m/n/10 = "0" input_b_btn = "1" input_reset_btn = "1" input_down_axis = 
-"+1"
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-\T1/pcr/m/n/10 input_right_axis = "+0" input_state_slot_increase_axis = "+0" in
-put_x_btn =
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-\T1/pcr/m/n/10 "2" input_menu_toggle_btn = "2" input_select_btn = "6" input_ena
-ble_hotkey_btn
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-\T1/pcr/m/n/10 = "6" input_y_btn = "3" input_left_axis = "-0" input_state_slot_
-decrease_axis
-[6] [7]
+[8]
 Chapter 7.
 
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 350.
+Underfull \hbox (badness 10000) in paragraph at lines 359--366
+[]\TS1/txtt/m/n/10 ` \T1/txtt/m/n/10 curl -sL https://deb.nodesource.com/setup_
+9.x | sudo bash - sudo apt install -y
 
+Underfull \hbox (badness 10000) in paragraph at lines 367--375
+\T1/txtt/m/n/10 curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-ke
+y add - echo "deb https:/
 
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 350.
+Underfull \hbox (badness 10000) in paragraph at lines 367--375
+\T1/txtt/m/n/10 /dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
+s.list.d/yarn.list sudo
 
+Underfull \hbox (badness 10000) in paragraph at lines 379--387
+[]\TS1/txtt/m/n/10 ` \T1/txtt/m/n/10 sudo npm cache clean -f sudo npm install -
+g n sudo n 9 sudo npm install -g npm \TS1/txtt/m/n/10 ` \T1/qtm/m/n/10 (Mines
 
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 350.
+Underfull \hbox (badness 10000) in paragraph at lines 391--399
+[]\TS1/txtt/m/n/10 ` \T1/txtt/m/n/10 sudo -i cd / git clone https://github.com/
+miroof/node-virtual-gamepads cd
 
+Underfull \hbox (badness 10000) in paragraph at lines 409--416
+[]\TS1/txtt/m/n/10 ` \T1/txtt/m/n/10 sudo npm install pm2 -g sudo pm2 start mai
+n.js # full path e.g. /home/pi/
 
-Underfull \hbox (badness 10000) in paragraph at lines 349--365
-[][]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 dis-able_splash=1 dis-
+Underfull \hbox (badness 10000) in paragraph at lines 421--446
+[]\TS1/txtt/m/n/10 ` \T1/txtt/m/n/10 input_device = "Virtual gamepad" input_dri
+ver = "udev" input_r_btn = "5"
+
+Underfull \hbox (badness 10000) in paragraph at lines 421--446
+\T1/txtt/m/n/10 input_save_state_btn = "5" input_start_btn = "7" input_exit_emu
+lator_btn = "7"
+
+Underfull \hbox (badness 10000) in paragraph at lines 421--446
+\T1/txtt/m/n/10 input_l_btn = "4" input_load_state_btn = "4" input_up_axis = "-
+1" input_a_btn = "0"
+
+Underfull \hbox (badness 10000) in paragraph at lines 421--446
+\T1/txtt/m/n/10 input_b_btn = "1" input_reset_btn = "1" input_down_axis = "+1" 
+input_right_axis = "+0"
+
+Underfull \hbox (badness 10000) in paragraph at lines 421--446
+\T1/txtt/m/n/10 input_state_slot_increase_axis = "+0" input_x_btn = "2" input_m
+enu_toggle_btn = "2"
+
+Underfull \hbox (badness 10000) in paragraph at lines 421--446
+\T1/txtt/m/n/10 input_select_btn = "6" input_enable_hotkey_btn = "6" input_y_bt
+n = "3" input_left_axis
+[9] [10]
+Chapter 8.
+
+Underfull \hbox (badness 10000) in paragraph at lines 475--491
+[][]\TS1/qtm/b/n/10 ``[]\TS1/qtm/m/n/10 ` \T1/qtm/m/n/10 dis-able_splash=1 dis-
 play_default_lcd=0 dis-able_overscan=1 hdmi_force_hotplug=1
 
-Underfull \hbox (badness 6412) in paragraph at lines 349--365
-\T1/ptm/m/n/10 hdmi_ignore_edid=0xa5000080 hdmi_drive=2 con-fig_hdmi_boost=4 dt
+Underfull \hbox (badness 10000) in paragraph at lines 475--491
+\T1/qtm/m/n/10 hdmi_ignore_edid=0xa5000080 hdmi_drive=2 con-fig_hdmi_boost=4 dt
 -param=i2c_arm=on dt-param=audio=on
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 381.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 381.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 381.
-
-[8]
-Chapter 8.
-[9]
-Chapter 9.
-[10]
-Chapter 10.
 [11]
-Chapter 11.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 444.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 444.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 444.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 462.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 462.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 462.
-
+Chapter 9.
 [12]
-Chapter 12.
+Chapter 10.
 [13]
+Chapter 11.
+[14]
+Chapter 12.
+[15]
 Chapter 13.
+[16]
+Chapter 14.
 No file consortium_other-github_wiki.ind.
-[14] (./consortium_other-github_wiki.aux)
+[17] (./consortium_other-github_wiki.aux)
 
 Package rerunfilecheck Warning: File `consortium_other-github_wiki.out' has cha
 nged.
@@ -446,17 +282,15 @@ nged.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information){/usr/share/texlive/texmf-d
-ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
-jknappen/ec/tcrm1000.600pk> </root/.texlive2020/texmf-var/fonts/pk/ljfour/jknap
-pen/ec/tcrb1000.600pk> </root/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/e
-c/tctt1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ti
-mes/utmri8a.pfb>
-Output written on consortium_other-github_wiki.pdf (16 pages, 98599 bytes).
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/tex-gyre/q-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ec.enc}<
+/usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/t
+ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
+vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
+/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
+gyre/qtmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xtt.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/tcxtt.pfb>
+Output written on consortium_other-github_wiki.pdf (19 pages, 181064 bytes).
 Transcript written on consortium_other-github_wiki.log.
 Latexmk: Index file 'consortium_other-github_wiki.idx' was written
 Latexmk: Missing input file: 'consortium_other-github_wiki.ind' from line
@@ -517,41 +351,49 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
 (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
-(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/tex-gyre/tgtermes.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texmf/tex/latex/tex-gyre/tgheros.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(./sphinxoptionshyperref.sty) (./sphinxoptionsgeometry.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(./sphinxlatexgraphics.sty) (./sphinxlatexadmonitions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty))
+(./sphinxlatexliterals.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty))
+(./sphinxlatexshadowbox.sty) (./sphinxlatexcontainers.sty)
+(./sphinxhighlight.sty) (./sphinxlatextables.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tabulary/tabulary.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty)
-(./sphinxmulticell.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
-(./footnotehyper-sphinx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty))
+(./sphinxlatexnumfig.sty) (./sphinxlatexlists.sty) (./sphinxpackagefootnote.sty
+) (./sphinxlatexindbibtoc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty))
+(./sphinxlatexstylepage.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip-2001-04-09.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
-(./sphinxhighlight.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty))
+(./sphinxlatexstyleheadings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty))
+(./sphinxlatexstyletext.sty) (./sphinxlatexobjects.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
@@ -580,7 +422,7 @@ For additional information on amsmath, use the `?' option.
 Writing index file consortium_other-github_wiki.idx
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def)
 (./consortium_other-github_wiki.aux)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qtm.fd)
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
@@ -591,327 +433,117 @@ Writing index file consortium_other-github_wiki.idx
 (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
 (./consortium_other-github_wiki.out) (./consortium_other-github_wiki.out)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)<<ot1.cmap>><<oml.cmap
->><<oms.cmap>><<omx.cmap>>
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qhv.fd)<<ot1.cmap>><<oml.cmap>><<oms.cma
+p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map}] (./consortium_other-github_wiki.toc)
 [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1]
-Chapter 2.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [1]
+Overfull \hbox (11.02449pt too wide) in paragraph at lines 188--190
+[]|\T1/qtm/m/n/10 2021/09/07| 
 
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmtt.fd)
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
+Overfull \hbox (11.02449pt too wide) in paragraph at lines 201--203
+[]|\T1/qtm/m/n/10 2021/09/07| 
 [2]
+Chapter 2.
+[3] [4]
 Chapter 3.
-[3]
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/ts1txtt.fd) [5]
 Chapter 4.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 156.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 156.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 156.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 155--158
-[]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 <in-put-Con-fig type=^^Q
-keyboard^^Q de-vi-ce-Name=^^QKeyboard^^Q deviceGUID=^^Q-1^^Q de-vi-ceN-bAxes=^^
-Q0^^Q de-vi-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 175.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 175.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 175.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 178.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 178.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 178.
-
-
-Overfull \hbox (24.86803pt too wide) in paragraph at lines 177--180
-[][]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 <in-put-Con-fig type=^
-^Qjoystick^^Q de-vi-ce-Name=^^QVirtual gamepad^^Q de-viceGUID=^^Q03000000030000
-000300000002000000^^Q
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 199.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 199.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 199.
-
-[4]
+[6]
 Chapter 5.
-[5]
+
+Overfull \hbox (30.14499pt too wide) in paragraph at lines 303--306
+[][]\TS1/qtm/b/n/10 ``[]\TS1/qtm/m/n/10 ` \T1/qtm/m/n/10 <in-put-Con-fig type= 
+^^Tjoy-stick ^^T de-vi-ce-Name= ^^TVir-tual gamepad ^^T de-viceGUID= ^^T0300000
+0030000000300000002000000 ^^T
+[7]
 Chapter 6.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 233--240
-[]\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 curl -sL https://deb.nodesource.com/setup_9
-.x | sudo bash - sudo apt install
-
-Underfull \hbox (badness 10000) in paragraph at lines 233--240
-\T1/pcr/m/n/10 -y build-essential python-dev nodejs npm npm install -g npm \TS1
-/cmtt/m/n/10 ` \T1/ptm/m/n/10 (Mines \T1/ptm/m/it/10 node -v \T1/ptm/m/n/10 =
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 241--249
-\T1/pcr/m/n/10 curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key
- add - echo
-
-Underfull \hbox (badness 10000) in paragraph at lines 241--249
-\T1/pcr/m/n/10 "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc
-/apt/sources.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 253--261
-[]\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 sudo npm cache clean -f sudo npm install -g
- n sudo n 9 sudo npm install -g
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 265--273
-[]\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 sudo -i cd / git clone https://github.com/m
-iroof/node-virtual-gamepads cd
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 283--290
-[]\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 sudo npm install pm2 -g sudo pm2 start main
-.js # full path e.g. /home/pi/
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-[]\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 input_device = "Virtual gamepad" input_driv
-er = "udev" input_r_btn = "5"
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-\T1/pcr/m/n/10 input_save_state_btn = "5" input_start_btn = "7" input_exit_emul
-ator_btn = "7"
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-\T1/pcr/m/n/10 input_l_btn = "4" input_load_state_btn = "4" input_up_axis = "-1
-" input_a_btn
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-\T1/pcr/m/n/10 = "0" input_b_btn = "1" input_reset_btn = "1" input_down_axis = 
-"+1"
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-\T1/pcr/m/n/10 input_right_axis = "+0" input_state_slot_increase_axis = "+0" in
-put_x_btn =
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-\T1/pcr/m/n/10 "2" input_menu_toggle_btn = "2" input_select_btn = "6" input_ena
-ble_hotkey_btn
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-\T1/pcr/m/n/10 = "6" input_y_btn = "3" input_left_axis = "-0" input_state_slot_
-decrease_axis
-[6] [7]
+[8]
 Chapter 7.
 
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 350.
+Underfull \hbox (badness 10000) in paragraph at lines 359--366
+[]\TS1/txtt/m/n/10 ` \T1/txtt/m/n/10 curl -sL https://deb.nodesource.com/setup_
+9.x | sudo bash - sudo apt install -y
 
+Underfull \hbox (badness 10000) in paragraph at lines 367--375
+\T1/txtt/m/n/10 curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-ke
+y add - echo "deb https:/
 
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 350.
+Underfull \hbox (badness 10000) in paragraph at lines 367--375
+\T1/txtt/m/n/10 /dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
+s.list.d/yarn.list sudo
 
+Underfull \hbox (badness 10000) in paragraph at lines 379--387
+[]\TS1/txtt/m/n/10 ` \T1/txtt/m/n/10 sudo npm cache clean -f sudo npm install -
+g n sudo n 9 sudo npm install -g npm \TS1/txtt/m/n/10 ` \T1/qtm/m/n/10 (Mines
 
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 350.
+Underfull \hbox (badness 10000) in paragraph at lines 391--399
+[]\TS1/txtt/m/n/10 ` \T1/txtt/m/n/10 sudo -i cd / git clone https://github.com/
+miroof/node-virtual-gamepads cd
 
+Underfull \hbox (badness 10000) in paragraph at lines 409--416
+[]\TS1/txtt/m/n/10 ` \T1/txtt/m/n/10 sudo npm install pm2 -g sudo pm2 start mai
+n.js # full path e.g. /home/pi/
 
-Underfull \hbox (badness 10000) in paragraph at lines 349--365
-[][]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 dis-able_splash=1 dis-
+Underfull \hbox (badness 10000) in paragraph at lines 421--446
+[]\TS1/txtt/m/n/10 ` \T1/txtt/m/n/10 input_device = "Virtual gamepad" input_dri
+ver = "udev" input_r_btn = "5"
+
+Underfull \hbox (badness 10000) in paragraph at lines 421--446
+\T1/txtt/m/n/10 input_save_state_btn = "5" input_start_btn = "7" input_exit_emu
+lator_btn = "7"
+
+Underfull \hbox (badness 10000) in paragraph at lines 421--446
+\T1/txtt/m/n/10 input_l_btn = "4" input_load_state_btn = "4" input_up_axis = "-
+1" input_a_btn = "0"
+
+Underfull \hbox (badness 10000) in paragraph at lines 421--446
+\T1/txtt/m/n/10 input_b_btn = "1" input_reset_btn = "1" input_down_axis = "+1" 
+input_right_axis = "+0"
+
+Underfull \hbox (badness 10000) in paragraph at lines 421--446
+\T1/txtt/m/n/10 input_state_slot_increase_axis = "+0" input_x_btn = "2" input_m
+enu_toggle_btn = "2"
+
+Underfull \hbox (badness 10000) in paragraph at lines 421--446
+\T1/txtt/m/n/10 input_select_btn = "6" input_enable_hotkey_btn = "6" input_y_bt
+n = "3" input_left_axis
+[9] [10]
+Chapter 8.
+
+Underfull \hbox (badness 10000) in paragraph at lines 475--491
+[][]\TS1/qtm/b/n/10 ``[]\TS1/qtm/m/n/10 ` \T1/qtm/m/n/10 dis-able_splash=1 dis-
 play_default_lcd=0 dis-able_overscan=1 hdmi_force_hotplug=1
 
-Underfull \hbox (badness 6412) in paragraph at lines 349--365
-\T1/ptm/m/n/10 hdmi_ignore_edid=0xa5000080 hdmi_drive=2 con-fig_hdmi_boost=4 dt
+Underfull \hbox (badness 10000) in paragraph at lines 475--491
+\T1/qtm/m/n/10 hdmi_ignore_edid=0xa5000080 hdmi_drive=2 con-fig_hdmi_boost=4 dt
 -param=i2c_arm=on dt-param=audio=on
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 381.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 381.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 381.
-
-[8]
-Chapter 8.
-[9]
-Chapter 9.
-[10]
-Chapter 10.
 [11]
-Chapter 11.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 444.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 444.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 444.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 462.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 462.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 462.
-
+Chapter 9.
 [12]
-Chapter 12.
+Chapter 10.
 [13]
+Chapter 11.
+[14]
+Chapter 12.
+[15]
 Chapter 13.
-(./consortium_other-github_wiki.ind) [14] (./consortium_other-github_wiki.aux) 
+[16]
+Chapter 14.
+(./consortium_other-github_wiki.ind) [17] (./consortium_other-github_wiki.aux) 
 )
-(see the transcript file for additional information) </root/.texlive2020/texmf-
-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk> </root/.texlive2020/texmf-var/f
-onts/pk/ljfour/jknappen/ec/tcrb1000.600pk>{/usr/share/texlive/texmf-dist/fonts/
-enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/e
-c/tctt1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ti
-mes/utmri8a.pfb>
-Output written on consortium_other-github_wiki.pdf (16 pages, 107119 bytes).
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/tex-gyre/q-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ec.enc}<
+/usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/t
+ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
+vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
+/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
+gyre/qtmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xtt.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/tcxtt.pfb>
+Output written on consortium_other-github_wiki.pdf (19 pages, 189785 bytes).
 Transcript written on consortium_other-github_wiki.log.
 Latexmk: Index file 'consortium_other-github_wiki.idx' was written
 Latexmk: Log file says output to 'consortium_other-github_wiki.pdf'
@@ -951,41 +583,49 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
 (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
-(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/tex-gyre/tgtermes.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texmf/tex/latex/tex-gyre/tgheros.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(./sphinxoptionshyperref.sty) (./sphinxoptionsgeometry.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(./sphinxlatexgraphics.sty) (./sphinxlatexadmonitions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty))
+(./sphinxlatexliterals.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty))
+(./sphinxlatexshadowbox.sty) (./sphinxlatexcontainers.sty)
+(./sphinxhighlight.sty) (./sphinxlatextables.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tabulary/tabulary.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty)
-(./sphinxmulticell.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
-(./footnotehyper-sphinx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty))
+(./sphinxlatexnumfig.sty) (./sphinxlatexlists.sty) (./sphinxpackagefootnote.sty
+) (./sphinxlatexindbibtoc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty))
+(./sphinxlatexstylepage.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip-2001-04-09.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
-(./sphinxhighlight.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty))
+(./sphinxlatexstyleheadings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty))
+(./sphinxlatexstyletext.sty) (./sphinxlatexobjects.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
@@ -1014,7 +654,7 @@ For additional information on amsmath, use the `?' option.
 Writing index file consortium_other-github_wiki.idx
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def)
 (./consortium_other-github_wiki.aux)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qtm.fd)
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
@@ -1025,327 +665,117 @@ Writing index file consortium_other-github_wiki.idx
 (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
 (./consortium_other-github_wiki.out) (./consortium_other-github_wiki.out)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)<<ot1.cmap>><<oml.cmap
->><<oms.cmap>><<omx.cmap>>
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qhv.fd)<<ot1.cmap>><<oml.cmap>><<oms.cma
+p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map}] (./consortium_other-github_wiki.toc)
 [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1]
-Chapter 2.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [1]
+Overfull \hbox (11.02449pt too wide) in paragraph at lines 188--190
+[]|\T1/qtm/m/n/10 2021/09/07| 
 
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmtt.fd)
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
+Overfull \hbox (11.02449pt too wide) in paragraph at lines 201--203
+[]|\T1/qtm/m/n/10 2021/09/07| 
 [2]
+Chapter 2.
+[3] [4]
 Chapter 3.
-[3]
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/ts1txtt.fd) [5]
 Chapter 4.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 156.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 156.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 156.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 155--158
-[]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 <in-put-Con-fig type=^^Q
-keyboard^^Q de-vi-ce-Name=^^QKeyboard^^Q deviceGUID=^^Q-1^^Q de-vi-ceN-bAxes=^^
-Q0^^Q de-vi-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 175.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 175.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 175.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 178.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 178.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 178.
-
-
-Overfull \hbox (24.86803pt too wide) in paragraph at lines 177--180
-[][]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 <in-put-Con-fig type=^
-^Qjoystick^^Q de-vi-ce-Name=^^QVirtual gamepad^^Q de-viceGUID=^^Q03000000030000
-000300000002000000^^Q
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 199.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 199.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 199.
-
-[4]
+[6]
 Chapter 5.
-[5]
+
+Overfull \hbox (30.14499pt too wide) in paragraph at lines 303--306
+[][]\TS1/qtm/b/n/10 ``[]\TS1/qtm/m/n/10 ` \T1/qtm/m/n/10 <in-put-Con-fig type= 
+^^Tjoy-stick ^^T de-vi-ce-Name= ^^TVir-tual gamepad ^^T de-viceGUID= ^^T0300000
+0030000000300000002000000 ^^T
+[7]
 Chapter 6.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 233--240
-[]\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 curl -sL https://deb.nodesource.com/setup_9
-.x | sudo bash - sudo apt install
-
-Underfull \hbox (badness 10000) in paragraph at lines 233--240
-\T1/pcr/m/n/10 -y build-essential python-dev nodejs npm npm install -g npm \TS1
-/cmtt/m/n/10 ` \T1/ptm/m/n/10 (Mines \T1/ptm/m/it/10 node -v \T1/ptm/m/n/10 =
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 241--249
-\T1/pcr/m/n/10 curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key
- add - echo
-
-Underfull \hbox (badness 10000) in paragraph at lines 241--249
-\T1/pcr/m/n/10 "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc
-/apt/sources.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 253--261
-[]\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 sudo npm cache clean -f sudo npm install -g
- n sudo n 9 sudo npm install -g
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 265--273
-[]\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 sudo -i cd / git clone https://github.com/m
-iroof/node-virtual-gamepads cd
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 283--290
-[]\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 sudo npm install pm2 -g sudo pm2 start main
-.js # full path e.g. /home/pi/
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 1.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-[]\TS1/cmtt/m/n/10 ` \T1/pcr/m/n/10 input_device = "Virtual gamepad" input_driv
-er = "udev" input_r_btn = "5"
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-\T1/pcr/m/n/10 input_save_state_btn = "5" input_start_btn = "7" input_exit_emul
-ator_btn = "7"
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-\T1/pcr/m/n/10 input_l_btn = "4" input_load_state_btn = "4" input_up_axis = "-1
-" input_a_btn
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-\T1/pcr/m/n/10 = "0" input_b_btn = "1" input_reset_btn = "1" input_down_axis = 
-"+1"
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-\T1/pcr/m/n/10 input_right_axis = "+0" input_state_slot_increase_axis = "+0" in
-put_x_btn =
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-\T1/pcr/m/n/10 "2" input_menu_toggle_btn = "2" input_select_btn = "6" input_ena
-ble_hotkey_btn
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--320
-\T1/pcr/m/n/10 = "6" input_y_btn = "3" input_left_axis = "-0" input_state_slot_
-decrease_axis
-[6] [7]
+[8]
 Chapter 7.
 
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 350.
+Underfull \hbox (badness 10000) in paragraph at lines 359--366
+[]\TS1/txtt/m/n/10 ` \T1/txtt/m/n/10 curl -sL https://deb.nodesource.com/setup_
+9.x | sudo bash - sudo apt install -y
 
+Underfull \hbox (badness 10000) in paragraph at lines 367--375
+\T1/txtt/m/n/10 curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-ke
+y add - echo "deb https:/
 
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 350.
+Underfull \hbox (badness 10000) in paragraph at lines 367--375
+\T1/txtt/m/n/10 /dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
+s.list.d/yarn.list sudo
 
+Underfull \hbox (badness 10000) in paragraph at lines 379--387
+[]\TS1/txtt/m/n/10 ` \T1/txtt/m/n/10 sudo npm cache clean -f sudo npm install -
+g n sudo n 9 sudo npm install -g npm \TS1/txtt/m/n/10 ` \T1/qtm/m/n/10 (Mines
 
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 350.
+Underfull \hbox (badness 10000) in paragraph at lines 391--399
+[]\TS1/txtt/m/n/10 ` \T1/txtt/m/n/10 sudo -i cd / git clone https://github.com/
+miroof/node-virtual-gamepads cd
 
+Underfull \hbox (badness 10000) in paragraph at lines 409--416
+[]\TS1/txtt/m/n/10 ` \T1/txtt/m/n/10 sudo npm install pm2 -g sudo pm2 start mai
+n.js # full path e.g. /home/pi/
 
-Underfull \hbox (badness 10000) in paragraph at lines 349--365
-[][]\TS1/cmr/b/n/10 ``[]\TS1/cmr/m/n/10 ` \T1/ptm/m/n/10 dis-able_splash=1 dis-
+Underfull \hbox (badness 10000) in paragraph at lines 421--446
+[]\TS1/txtt/m/n/10 ` \T1/txtt/m/n/10 input_device = "Virtual gamepad" input_dri
+ver = "udev" input_r_btn = "5"
+
+Underfull \hbox (badness 10000) in paragraph at lines 421--446
+\T1/txtt/m/n/10 input_save_state_btn = "5" input_start_btn = "7" input_exit_emu
+lator_btn = "7"
+
+Underfull \hbox (badness 10000) in paragraph at lines 421--446
+\T1/txtt/m/n/10 input_l_btn = "4" input_load_state_btn = "4" input_up_axis = "-
+1" input_a_btn = "0"
+
+Underfull \hbox (badness 10000) in paragraph at lines 421--446
+\T1/txtt/m/n/10 input_b_btn = "1" input_reset_btn = "1" input_down_axis = "+1" 
+input_right_axis = "+0"
+
+Underfull \hbox (badness 10000) in paragraph at lines 421--446
+\T1/txtt/m/n/10 input_state_slot_increase_axis = "+0" input_x_btn = "2" input_m
+enu_toggle_btn = "2"
+
+Underfull \hbox (badness 10000) in paragraph at lines 421--446
+\T1/txtt/m/n/10 input_select_btn = "6" input_enable_hotkey_btn = "6" input_y_bt
+n = "3" input_left_axis
+[9] [10]
+Chapter 8.
+
+Underfull \hbox (badness 10000) in paragraph at lines 475--491
+[][]\TS1/qtm/b/n/10 ``[]\TS1/qtm/m/n/10 ` \T1/qtm/m/n/10 dis-able_splash=1 dis-
 play_default_lcd=0 dis-able_overscan=1 hdmi_force_hotplug=1
 
-Underfull \hbox (badness 6412) in paragraph at lines 349--365
-\T1/ptm/m/n/10 hdmi_ignore_edid=0xa5000080 hdmi_drive=2 con-fig_hdmi_boost=4 dt
+Underfull \hbox (badness 10000) in paragraph at lines 475--491
+\T1/qtm/m/n/10 hdmi_ignore_edid=0xa5000080 hdmi_drive=2 con-fig_hdmi_boost=4 dt
 -param=i2c_arm=on dt-param=audio=on
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 381.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 381.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 381.
-
-[8]
-Chapter 8.
-[9]
-Chapter 9.
-[10]
-Chapter 10.
 [11]
-Chapter 11.
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 444.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 444.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 444.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 462.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 462.
-
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 462.
-
+Chapter 9.
 [12]
-Chapter 12.
+Chapter 10.
 [13]
+Chapter 11.
+[14]
+Chapter 12.
+[15]
 Chapter 13.
-(./consortium_other-github_wiki.ind) [14] (./consortium_other-github_wiki.aux) 
+[16]
+Chapter 14.
+(./consortium_other-github_wiki.ind) [17] (./consortium_other-github_wiki.aux) 
 )
-(see the transcript file for additional information) </root/.texlive2020/texmf-
-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk> </root/.texlive2020/texmf-var/f
-onts/pk/ljfour/jknappen/ec/tcrb1000.600pk>{/usr/share/texlive/texmf-dist/fonts/
-enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/e
-c/tctt1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ti
-mes/utmri8a.pfb>
-Output written on consortium_other-github_wiki.pdf (16 pages, 107119 bytes).
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/tex-gyre/q-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ec.enc}<
+/usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/t
+ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
+vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
+/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
+gyre/qtmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xtt.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/tcxtt.pfb>
+Output written on consortium_other-github_wiki.pdf (19 pages, 189785 bytes).
 Transcript written on consortium_other-github_wiki.log.
 Latexmk: Index file 'consortium_other-github_wiki.idx' was written
 Latexmk: Log file says output to 'consortium_other-github_wiki.pdf'

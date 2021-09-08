@@ -1,16 +1,9 @@
 [
   {
-    "name": "<div class='title-line flag f-datro enable-link'>DATRO World</div>",
-    "path": "https://datro.world",
+    "name": "<div class='title-line flag f-datro enable-link'>Library/'Docs Explorer'</div>",
+    "path": "./library",
     "_links": {
-      "html": "https://datro.world"
-    }
-  },
-  {
-    "name": "<div class='title-line flag f-datro enable-link'>DATRO Website</div>",
-    "path": "./datro/index.html",
-    "_links": {
-      "html": "./datro/index.html"
+      "html": "./library"
     }
   },
   {
@@ -21,17 +14,24 @@
     }
   },
   {
-    "name": "<div class='title-line flag f-hbnb enable-link'>Hotspotβnβ Dashboard</div>",
+    "name": "<div class='title-line flag f-hbnb enable-link'>Hotspotβnβ GUI/'dash'</div>",
     "path": "./gui",
     "_links": {
       "html": "./gui"
     }
   },
   {
-    "name": "<div class='title-line flag f-docs enable-link'>Library/'Docs Explorer'</div>",
-    "path": "./library",
+    "name": "<div class='title-line flag f-datro enable-link'>DATRO Website</div>",
+    "path": "./datro/index.html",
     "_links": {
-      "html": "./library"
+      "html": "./datro/index.html"
+    }
+  },
+  {
+    "name": "<div class='title-line flag f-datro enable-link'>DATRO World</div>",
+    "path": "https://datro.world",
+    "_links": {
+      "html": "https://datro.world"
     }
   },
   {

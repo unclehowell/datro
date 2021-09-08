@@ -16,7 +16,11 @@ source_suffix = '.rst'
 
 master_doc = 'index'
 
-language = None
+#language = None
+language = "en"
+locale_dirs = ['locales']
+gettext_auto_build = True
+gettext_compact = "docs"
 
 today_fmt = 'May 02, 2021'
 
@@ -34,28 +38,28 @@ html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 
 
-htmlhelp_basename = 'consortium_agreements-patents_google'
+htmlhelp_basename = 'consortium_contracts-patents_google'
 
 
 latex_elements = { 'classoptions': ',openany,oneside', 'babel' : '\\usepackage[english]{babel}' }
 
 
 latex_documents = [
-    (master_doc, 'consortium_agreements-patents_google.tex', u'DATRO and Google Inc. Patents',
+    (master_doc, 'consortium_contracts-patents_google.tex', u'DATRO and Google Inc. Patents',
      u'Author(s): Kirk W. Dailey, Google Inc.', 'manual'),
 ]
 
 
 man_pages = [
-    (master_doc, 'consortium_agreements-patents_google', u'DATRO and Google Inc. Patents',
+    (master_doc, 'consortium_contracts-patents_google', u'DATRO and Google Inc. Patents',
      [author], 1)
 ]
 
 
 
 texinfo_documents = [
-    (master_doc, 'consortium_agreements-patents_google', u'DATRO and Google Inc. Patents',
-     author, 'consortium_agreements-patents_google', 'DATRO and Google Inc. Patents',
+    (master_doc, 'consortium_contracts-patents_google', u'DATRO and Google Inc. Patents',
+     author, 'consortium_contracts-patents_google', 'DATRO and Google Inc. Patents',
      'manual'),
 ]
 

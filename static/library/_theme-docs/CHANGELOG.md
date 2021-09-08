@@ -12,6 +12,10 @@ This directory and changelog belongs to [![GitHub release (latest by date includ
 ### Added
 Sep-07 - Now generates an `index.html` inside `build/latex` which redirects to `build/latex/en`  
 
+### Changed
+Sep-07 - Brought `grey.sh` upto version 0.2 and `blue.sh` to version 0.2 too - final change was removing `filter` css class from the images (used only for the Campus IV Site Survey)   
+Sep-07 - The last change to `blue.sh` and `grey.sh` (theme changer) didn't correctly remove the "View Source" nor support biligual. Now it does   
+
 ## [_theme-docs.08-rc1.9] - Q3/2021
 
 ### Added 

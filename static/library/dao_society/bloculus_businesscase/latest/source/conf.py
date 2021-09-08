@@ -13,7 +13,13 @@ source_suffix = '.rst'
 
 master_doc = 'index'
 
-language = None
+#language = None
+language = "en"
+locale_dirs = ['locales']
+gettext_auto_build = True
+gettext_compact = "docs"
+#today_fmt = 'Dec 09, 2019'
+
 
 today_fmt = 'July 24, 2021'
 

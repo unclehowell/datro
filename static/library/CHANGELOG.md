@@ -9,6 +9,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [-library.04] - Q3/2021
 
 ### Added
+Sep-08 - Most of the document library explorer pages are now accurate. Maybe 2 more left to improve on (the hbnb appstore apps). Aim to do tomorrow, must sleep now   
 Sep-07 - Improved the BJesus out of the design of the library, but it's not complete yet. Uploading to run a test (see if the redirect in /build/latex/` is ok   
 Sep-03 - Now supporting multiple languages(See _theme-docs/CHANGELOG.md). More dependancies required (See COLLABORATE.md)   
 Jul-24 - Added a directory called `consortium_other/github_wiki` in library and contained within is a new type of `custom.sh` build script   

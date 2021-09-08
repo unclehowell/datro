@@ -1,30 +1,52 @@
 [
   {
-   "name": "About > User Guide",
-    "path": "./about-userguide",
+    "name": "<div class='title-line flag f-hbnb title-disable'>About</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": "./about-userguide"
+      "html": "javascript:void(0)"
     }
-  },
+   },
   {
-    "name": "AppStore > Althea",
-    "path": "./appstore-althea",
+    "name": "<div class='depth2-subtitle-line enable-link'>User Guide</div>",
+    "path": "./about_userguide",
     "_links": {
-      "html": "./appstore-althea"
+      "html": "./about_userguide"
     }
-  },
+   },
   {
-   "name": "AppStore > Element",
-    "path": "./appstore-element",
+    "name": "<div class='title-line flag f-hbnb title-disable' >AppStore(Apps)</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": "./appstore-element"
+      "html": "javascript:void(0)"
     }
-  },
+   },
   {
-   "name": "AppStore > OpenHab",
-    "path": "./appstore-openhab",
+    "name": "<div class='subtitle-line enable-link'>Althea</div>",
+    "path": "./appstore_althea",
     "_links": {
-      "html": "./appstore-openhab"
+      "html": "./appstore_althea"
     }
-  }
+   },
+  {
+    "name": "<div class='subtitle-line enable-link'>Element</div>",
+    "path": "./appstore_element",
+    "_links": {
+      "html": "./appstore_element"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line enable-link'>OpenHAB</div>",
+    "path": "./appstore_openhab",
+    "_links": {
+      "html": "./appstore_openhab"
+    }
+   },
+  {
+    "name": "<div class='page-scroll-fix title-disable'></div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   }
 ]
+

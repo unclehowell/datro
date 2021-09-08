@@ -1,0 +1,195 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, DATRO Consortium
+# This file is distributed under the same license as the Site Survey - Jam Highland package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Site Survey - Jam Highland 0.0.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-07 17:59-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/releasenotes.rst:2
+msgid "Release Notes and Notices"
+msgstr ""
+
+#: ../../source/releasenotes.rst:4
+msgid "This section provides information about what is new or changed, including urgent issues, documentation updates, maintenance, and new releases. - 'Updates' are the term used to describe significant changes to our public source code and/or records."
+msgstr ""
+
+#: ../../source/releasenotes.rst:9
+msgid "This Release (Version 0.0.2)"
+msgstr ""
+
+#: ../../source/releasenotes.rst:10
+msgid "**2021-May-08** - `Changed document title to match directory path (which was changed from 'recon' to 'sitesurvey'`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:13
+msgid "Older Versions"
+msgstr ""
+
+#: ../../source/releasenotes.rst:14
+msgid "In the table below the last entry displays a link to an archived copy of the last report. To keep the filename from overflowing in the table below the name displayed may differ from the file name. The date the file was archived will differ from the date of the document label, which is its creation date. If you're viewing this document on a subdomain of `.datro.world` you may need to right-click and select 'open link in new tab`. In the interim of a bug fix, you can avoid right-clicking all together, by viewing our document library at its original location `datro.xyz/static/library <https://datro.xyz/static/library>`__"
+msgstr ""
+
+#: ../../source/releasenotes.rst:21
+msgid "Older Versions of this Document"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "**Archive Date**"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "**Version**"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "**Description**"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "**Download Link**"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "2021-05-08"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/issues.csv:1
+#: ../../source/_static/issues.csv:1
+#: ../../source/_static/issues.csv:1
+#: ../../source/_static/issues.csv:1
+#: ../../source/_static/issues.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "0.0.1"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/olderversions.csv:1
+msgid "see releasenotes"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "`2021-05-02_campus1_v0.0.1.pdf <https://datro.world/wayback/2021-05-02_consortium_campus-sitesurvey_jamhighland_v0.0.1.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "2021-04-15"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "0.0.0"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "`2021-04-13_campus1_v0.0.0.pdf <https://datro.world/wayback/2021-04-13_datro-consortium-campus_v0.0.0.pdf>`__"
+msgstr ""
+
+#: ../../source/releasenotes.rst:27
+msgid "Version 0.0.1"
+msgstr ""
+
+#: ../../source/releasenotes.rst:28
+msgid "**2021-Apr-15** - `Added update concerning easements under ':ref:Sellers Notes/ Surmises'.`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:29
+msgid "**2021-Apr-14** - `Consolidated all the supporting documents into this single document.`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:33
+msgid "Version 0.0.0"
+msgstr ""
+
+#: ../../source/releasenotes.rst:34
+msgid "**2021-Apr-13** - `First Draft`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:39
+msgid "Known and Corrected Issues"
+msgstr ""
+
+#: ../../source/releasenotes.rst:41
+msgid "Below is a table of pending issues which have been reported to our team. When these issues are remedied, or any significant changed made, a new release will be published."
+msgstr ""
+
+#: ../../source/releasenotes.rst:44
+msgid "Known Issues"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "**Date**"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "**Subject**"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "Sotherby Analysis"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "`According to radio site surveys e.g. Ubiquity Link software - The elevation at the site is in fact 160m not 150m`"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+#: ../../source/_static/issues.csv:1
+#: ../../source/_static/issues.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "2021-04-14"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "General Plan"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "`In the Section field it says \"El Jamito\" which may be incorrect since this is not mentioned elswhere`"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "Certificate of Title"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "`Name is previous owner not current owner - see sellers notes for resolution`"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "`Certificates use security paper which displays null in the background when copied - the origional certificates are notarised and valid`"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "Annexures"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "`At this stage all that exists for discovery are the Annexures - sourced by the seller along with his surmises - due diligence is not complete`"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "2021-04-13"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "Building Permits"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "`No building permits exist yet`"
+msgstr ""

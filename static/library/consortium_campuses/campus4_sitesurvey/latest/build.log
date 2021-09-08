@@ -1,10 +1,23 @@
-Running Sphinx v3.5.3
-making output directory... done
+Running Sphinx v4.2.0+
+loading translations [fr]... done
 loading pickled environment... done
 building [mo]: targets for 0 po files that are out of date
 building [latex]: all documents
-updating environment: 0 added, 0 changed, 0 removed
+updating environment: [config changed ('language')] 5 added, 0 changed, 0 removed
+reading sources... [ 20%] annex-list
+reading sources... [ 40%] details
+reading sources... [ 60%] glossary
+reading sources... [ 80%] index
+reading sources... [100%] releasenotes
+
+/var/www/html/datro-gh-pages/static/library/consortium_campuses/campus4_sitesurvey/latest/source/annex-list.rst:2: WARNING: duplicate label annexures, other instance in /var/www/html/datro-gh-pages/static/library/consortium_campuses/campus4_sitesurvey/latest/source/glossary.rst
+/var/www/html/datro-gh-pages/static/library/consortium_campuses/campus4_sitesurvey/latest/source/details.rst:13: WARNING: Block quote ends without a blank line; unexpected unindent.
+/var/www/html/datro-gh-pages/static/library/consortium_campuses/campus4_sitesurvey/latest/source/details.rst:21: WARNING: Block quote ends without a blank line; unexpected unindent.
+/var/www/html/datro-gh-pages/static/library/consortium_campuses/campus4_sitesurvey/latest/source/details.rst:25: WARNING: Block quote ends without a blank line; unexpected unindent.
+/var/www/html/datro-gh-pages/static/library/consortium_campuses/campus4_sitesurvey/latest/source/glossary.rst:25: WARNING: duplicate label annexures, other instance in /var/www/html/datro-gh-pages/static/library/consortium_campuses/campus4_sitesurvey/latest/source/annex-list.rst
 looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
 processing consortium_campus-sitesurvey_jamhighland.tex... index releasenotes glossary details annex-list 
 resolving references...
 done
@@ -20,7 +33,7 @@ copying images... [100%] _static/2009-11-19_certificate_1154_00.png
 
 copying TeX support files... copying TeX support files...
 done
-build succeeded.
+build succeeded, 5 warnings.
 
 The LaTeX files are in build/latex.
 Run 'make' in that directory to run these through (pdf)latex
@@ -63,41 +76,49 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
 (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
-(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/tex-gyre/tgtermes.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texmf/tex/latex/tex-gyre/tgheros.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(./sphinxoptionshyperref.sty) (./sphinxoptionsgeometry.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(./sphinxlatexgraphics.sty) (./sphinxlatexadmonitions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty))
+(./sphinxlatexliterals.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty))
+(./sphinxlatexshadowbox.sty) (./sphinxlatexcontainers.sty)
+(./sphinxhighlight.sty) (./sphinxlatextables.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tabulary/tabulary.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty)
-(./sphinxmulticell.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
-(./footnotehyper-sphinx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty))
+(./sphinxlatexnumfig.sty) (./sphinxlatexlists.sty) (./sphinxpackagefootnote.sty
+) (./sphinxlatexindbibtoc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty))
+(./sphinxlatexstylepage.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip-2001-04-09.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
-(./sphinxhighlight.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty))
+(./sphinxlatexstyleheadings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty))
+(./sphinxlatexstyletext.sty) (./sphinxlatexobjects.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
@@ -126,7 +147,7 @@ For additional information on amsmath, use the `?' option.
 Writing index file consortium_campus-sitesurvey_jamhighland.idx
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def)
 (./consortium_campus-sitesurvey_jamhighland.aux)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qtm.fd)
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
@@ -136,74 +157,73 @@ Writing index file consortium_campus-sitesurvey_jamhighland.idx
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)<<ot1.cmap>><<oml.cmap
->><<oms.cmap>><<omx.cmap>>
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qhv.fd)<<ot1.cmap>><<oml.cmap>><<oms.cma
+p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map} <./logo.jpg>] [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1] [2]
+(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [1] [2]
 Chapter 2.
-[3]
+[3] [4]
 Chapter 3.
 
 LaTeX Warning: Hyper reference `annex-list:sotherby-market-analysis-preview' on
- page 4 undefined on input line 365.
+ page 5 undefined on input line 361.
 
 
 LaTeX Warning: Hyper reference `annex-list:certificate-of-title-4-068-61m2-copy
-' on page 4 undefined on input line 369.
+' on page 5 undefined on input line 365.
 
 
 LaTeX Warning: Hyper reference `annex-list:certificate-of-title-2-488-70m2-copy
-' on page 4 undefined on input line 373.
+' on page 5 undefined on input line 369.
 
 
 LaTeX Warning: Hyper reference `annex-list:certificate-of-title-2-088-47m2-copy
-' on page 4 undefined on input line 377.
+' on page 5 undefined on input line 373.
 
 
 LaTeX Warning: Hyper reference `annex-list:certificate-of-title-2-038-77m2-copy
-' on page 4 undefined on input line 381.
+' on page 5 undefined on input line 377.
 
 
 LaTeX Warning: Hyper reference `annex-list:certificate-of-title-1-749-00m2-copy
-' on page 4 undefined on input line 385.
+' on page 5 undefined on input line 381.
 
 
 LaTeX Warning: Hyper reference `annex-list:certificate-of-title-1-154-00m2-copy
-' on page 4 undefined on input line 389.
+' on page 5 undefined on input line 385.
 
 
-LaTeX Warning: Hyper reference `annex-list:origional-map-remastered' on page 4 
-undefined on input line 404.
-
-[4]
-
-LaTeX Warning: Hyper reference `glossary:easement' on page 5 undefined on input
- line 442.
+LaTeX Warning: Hyper reference `annex-list:origional-map-remastered' on page 5 
+undefined on input line 400.
 
 [5]
+
+LaTeX Warning: Hyper reference `glossary:easement' on page 6 undefined on input
+ line 438.
+
+[6]
 Chapter 4.
 
-LaTeX Warning: Hyper reference `annex-list:download-links' on page 6 undefined 
-on input line 479.
+LaTeX Warning: Hyper reference `annex-list:download-links' on page 7 undefined 
+on input line 475.
 
-[6 <./2021-04-16_origional-map.png>] [7 <./2019-07-31_sotherbys-market-analysis
-.png>] [8]
+[7 <./2021-04-16_origional-map.png>] [8 <./2019-07-31_sotherbys-market-analysis
+.png>] [9]
 Overfull \vbox (1.74147pt too high) has occurred while \output is active
-[9 <./2017-07-24_certificate_2488_70.png>] [10 <./2010-08-13_certificate_4068_6
-1.png>] [11 <./2010-08-13_certificate_2088_47.png>] [12]
+[10 <./2017-07-24_certificate_2488_70.png>] [11 <./2010-08-13_certificate_4068_
+61.png>] [12 <./2010-08-13_certificate_2088_47.png>] [13]
 Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[13 <./2010-08-13_certificate_2038_77.png>] [14]
+[14 <./2010-08-13_certificate_2038_77.png>] [15]
 Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[15 <./2010-08-13_certificate_1749_00.png>] [16]
+[16 <./2010-08-13_certificate_1749_00.png>] [17]
 Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[17 <./2009-11-19_certificate_1154_00.png>] [18]
+[18 <./2009-11-19_certificate_1154_00.png>] [19]
 Chapter 5.
 No file consortium_campus-sitesurvey_jamhighland.ind.
-[19] (./consortium_campus-sitesurvey_jamhighland.aux)
+[20] (./consortium_campus-sitesurvey_jamhighland.aux)
 
 Package rerunfilecheck Warning: File `consortium_campus-sitesurvey_jamhighland.
 out' has changed.
@@ -217,14 +237,15 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information){/usr/share/texlive/texmf-d
-ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
-helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhv
-bo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on consortium_campus-sitesurvey_jamhighland.pdf (21 pages, 65971
-09 bytes).
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/tex-gyre/q-ec.enc}{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ts1.enc}<
+/usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/t
+ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
+vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
+/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
+gyre/qtmri.pfb>
+Output written on consortium_campus-sitesurvey_jamhighland.pdf (22 pages, 66793
+43 bytes).
 Transcript written on consortium_campus-sitesurvey_jamhighland.log.
 Latexmk: Index file 'consortium_campus-sitesurvey_jamhighland.idx' was written
 Latexmk: Missing input file: 'consortium_campus-sitesurvey_jamhighland.ind' from line
@@ -286,41 +307,49 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
 (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
-(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/tex-gyre/tgtermes.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texmf/tex/latex/tex-gyre/tgheros.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(./sphinxoptionshyperref.sty) (./sphinxoptionsgeometry.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(./sphinxlatexgraphics.sty) (./sphinxlatexadmonitions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty))
+(./sphinxlatexliterals.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty))
+(./sphinxlatexshadowbox.sty) (./sphinxlatexcontainers.sty)
+(./sphinxhighlight.sty) (./sphinxlatextables.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tabulary/tabulary.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty)
-(./sphinxmulticell.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
-(./footnotehyper-sphinx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty))
+(./sphinxlatexnumfig.sty) (./sphinxlatexlists.sty) (./sphinxpackagefootnote.sty
+) (./sphinxlatexindbibtoc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty))
+(./sphinxlatexstylepage.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip-2001-04-09.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
-(./sphinxhighlight.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty))
+(./sphinxlatexstyleheadings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty))
+(./sphinxlatexstyletext.sty) (./sphinxlatexobjects.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
@@ -349,7 +378,7 @@ For additional information on amsmath, use the `?' option.
 Writing index file consortium_campus-sitesurvey_jamhighland.idx
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def)
 (./consortium_campus-sitesurvey_jamhighland.aux)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qtm.fd)
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
@@ -361,42 +390,42 @@ Writing index file consortium_campus-sitesurvey_jamhighland.idx
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
 (./consortium_campus-sitesurvey_jamhighland.out)
 (./consortium_campus-sitesurvey_jamhighland.out)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)<<ot1.cmap>><<oml.cmap
->><<oms.cmap>><<omx.cmap>>
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qhv.fd)<<ot1.cmap>><<oml.cmap>><<oms.cma
+p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map} <./logo.jpg>]
 (./consortium_campus-sitesurvey_jamhighland.toc) [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1] [2]
+(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [1] [2]
 Chapter 2.
-[3]
+[3] [4]
 Chapter 3.
-[4] [5]
+[5] [6]
 Chapter 4.
-[6 <./2021-04-16_origional-map.png>] [7 <./2019-07-31_sotherbys-market-analysis
-.png>] [8]
+[7 <./2021-04-16_origional-map.png>] [8 <./2019-07-31_sotherbys-market-analysis
+.png>] [9]
 Overfull \vbox (1.74147pt too high) has occurred while \output is active
-[9 <./2017-07-24_certificate_2488_70.png>] [10 <./2010-08-13_certificate_4068_6
-1.png>] [11 <./2010-08-13_certificate_2088_47.png>] [12]
+[10 <./2017-07-24_certificate_2488_70.png>] [11 <./2010-08-13_certificate_4068_
+61.png>] [12 <./2010-08-13_certificate_2088_47.png>] [13]
 Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[13 <./2010-08-13_certificate_2038_77.png>] [14]
+[14 <./2010-08-13_certificate_2038_77.png>] [15]
 Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[15 <./2010-08-13_certificate_1749_00.png>] [16]
+[16 <./2010-08-13_certificate_1749_00.png>] [17]
 Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[17 <./2009-11-19_certificate_1154_00.png>] [18]
+[18 <./2009-11-19_certificate_1154_00.png>] [19]
 Chapter 5.
-(./consortium_campus-sitesurvey_jamhighland.ind) [19]
+(./consortium_campus-sitesurvey_jamhighland.ind) [20]
 (./consortium_campus-sitesurvey_jamhighland.aux) )
-(see the transcript file for additional information){/usr/share/texlive/texmf-d
-ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
-helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhv
-bo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on consortium_campus-sitesurvey_jamhighland.pdf (21 pages, 66025
-21 bytes).
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/tex-gyre/q-ec.enc}{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ts1.enc}<
+/usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/t
+ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
+vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
+/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
+gyre/qtmri.pfb>
+Output written on consortium_campus-sitesurvey_jamhighland.pdf (22 pages, 66848
+85 bytes).
 Transcript written on consortium_campus-sitesurvey_jamhighland.log.
 Latexmk: Index file 'consortium_campus-sitesurvey_jamhighland.idx' was written
 Latexmk: Log file says output to 'consortium_campus-sitesurvey_jamhighland.pdf'
@@ -437,41 +466,49 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
 (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
-(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/tex-gyre/tgtermes.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texmf/tex/latex/tex-gyre/tgheros.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(./sphinxoptionshyperref.sty) (./sphinxoptionsgeometry.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(./sphinxlatexgraphics.sty) (./sphinxlatexadmonitions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty))
+(./sphinxlatexliterals.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty))
+(./sphinxlatexshadowbox.sty) (./sphinxlatexcontainers.sty)
+(./sphinxhighlight.sty) (./sphinxlatextables.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tabulary/tabulary.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty)
-(./sphinxmulticell.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
-(./footnotehyper-sphinx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty))
+(./sphinxlatexnumfig.sty) (./sphinxlatexlists.sty) (./sphinxpackagefootnote.sty
+) (./sphinxlatexindbibtoc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty))
+(./sphinxlatexstylepage.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip-2001-04-09.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
-(./sphinxhighlight.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty))
+(./sphinxlatexstyleheadings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty))
+(./sphinxlatexstyletext.sty) (./sphinxlatexobjects.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
@@ -500,7 +537,7 @@ For additional information on amsmath, use the `?' option.
 Writing index file consortium_campus-sitesurvey_jamhighland.idx
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def)
 (./consortium_campus-sitesurvey_jamhighland.aux)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qtm.fd)
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
@@ -512,42 +549,42 @@ Writing index file consortium_campus-sitesurvey_jamhighland.idx
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
 (./consortium_campus-sitesurvey_jamhighland.out)
 (./consortium_campus-sitesurvey_jamhighland.out)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)<<ot1.cmap>><<oml.cmap
->><<oms.cmap>><<omx.cmap>>
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qhv.fd)<<ot1.cmap>><<oml.cmap>><<oms.cma
+p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map} <./logo.jpg>]
 (./consortium_campus-sitesurvey_jamhighland.toc) [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1] [2]
+(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [1] [2]
 Chapter 2.
-[3]
+[3] [4]
 Chapter 3.
-[4] [5]
+[5] [6]
 Chapter 4.
-[6 <./2021-04-16_origional-map.png>] [7 <./2019-07-31_sotherbys-market-analysis
-.png>] [8]
+[7 <./2021-04-16_origional-map.png>] [8 <./2019-07-31_sotherbys-market-analysis
+.png>] [9]
 Overfull \vbox (1.74147pt too high) has occurred while \output is active
-[9 <./2017-07-24_certificate_2488_70.png>] [10 <./2010-08-13_certificate_4068_6
-1.png>] [11 <./2010-08-13_certificate_2088_47.png>] [12]
+[10 <./2017-07-24_certificate_2488_70.png>] [11 <./2010-08-13_certificate_4068_
+61.png>] [12 <./2010-08-13_certificate_2088_47.png>] [13]
 Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[13 <./2010-08-13_certificate_2038_77.png>] [14]
+[14 <./2010-08-13_certificate_2038_77.png>] [15]
 Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[15 <./2010-08-13_certificate_1749_00.png>] [16]
+[16 <./2010-08-13_certificate_1749_00.png>] [17]
 Overfull \vbox (1.77911pt too high) has occurred while \output is active
-[17 <./2009-11-19_certificate_1154_00.png>] [18]
+[18 <./2009-11-19_certificate_1154_00.png>] [19]
 Chapter 5.
-(./consortium_campus-sitesurvey_jamhighland.ind) [19]
+(./consortium_campus-sitesurvey_jamhighland.ind) [20]
 (./consortium_campus-sitesurvey_jamhighland.aux) )
-(see the transcript file for additional information){/usr/share/texlive/texmf-d
-ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
-helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhv
-bo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on consortium_campus-sitesurvey_jamhighland.pdf (21 pages, 66025
-21 bytes).
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/tex-gyre/q-ec.enc}{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ts1.enc}<
+/usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/t
+ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
+vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
+/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
+gyre/qtmri.pfb>
+Output written on consortium_campus-sitesurvey_jamhighland.pdf (22 pages, 66848
+85 bytes).
 Transcript written on consortium_campus-sitesurvey_jamhighland.log.
 Latexmk: Index file 'consortium_campus-sitesurvey_jamhighland.idx' was written
 Latexmk: Log file says output to 'consortium_campus-sitesurvey_jamhighland.pdf'

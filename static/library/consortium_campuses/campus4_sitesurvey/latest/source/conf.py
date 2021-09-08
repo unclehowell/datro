@@ -15,7 +15,7 @@ master_doc = 'index'
 
 language = None
 
-# today_fmt = 'June 12, 2020'
+today_fmt = 'May 08, 2021'
 
 exclude_patterns = ['_build']
 

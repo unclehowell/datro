@@ -1,16 +1,31 @@
 [
   {
-    "name": "ops > business",
-    "path": "./operations_business",
+    "name": "<div class='title-line flag f-datro title-disable' >Operations</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": "./operations_business"
+      "html": "javascript:void(0)"
     }
-  },
+   },
   {
-    "name": "test > network",
+    "name": "<div class='depth2-subtitle-line enable-link'>Business Plan</div>",
+    "path": "./operations_business/",
+    "_links": {
+      "html": "./operations_business/"
+    }
+   },
+  {
+    "name": "<div class='depth2-subtitle-line enable-link'>Test Network</div>",
     "path": "./test_network",
     "_links": {
       "html": "./test_network"
     }
-  }
+   },
+  {
+    "name": "<div class='page-scroll-fix title-disable'></div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   }
 ]
+

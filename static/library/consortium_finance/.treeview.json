@@ -1,17 +1,31 @@
 [
   {
-    "name": "funding > investors",
+    "name": "<div class='title-line flag f-datro title-disable' >Funding</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='depth2-subtitle-line enable-link'>Investors</div>",
     "path": "./funding_investors",
     "_links": {
       "html": "./funding_investors"
     }
-  },
+   },
   {
-    "name": "funding > creditors",
+    "name": "<div class='depth2-subtitle-line enable-link'>Creditors</div>",
     "path": "./funding_creditors",
     "_links": {
       "html": "./funding_creditors"
     }
-  }
-
+   },
+  {
+    "name": "<div class='page-scroll-fix title-disable'></div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   }
 ]
+

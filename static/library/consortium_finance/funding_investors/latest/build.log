@@ -1,17 +1,41 @@
-Running Sphinx v3.5.3
-making output directory... done
+Running Sphinx v4.2.0+
+loading translations [fr]... done
 loading pickled environment... done
 building [mo]: targets for 0 po files that are out of date
 building [latex]: all documents
-updating environment: 0 added, 0 changed, 0 removed
+updating environment: [config changed ('language')] 3 added, 0 changed, 0 removed
+reading sources... [ 33%] index
+reading sources... [ 66%] investoraccounts
+reading sources... [100%] releasenotes
+
+/var/www/html/datro-gh-pages/static/library/consortium_finance/funding_investors/latest/source/investoraccounts.rst:121: WARNING: Title underline too short.
+
+J-Smith-Walker (Account:111)
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+/var/www/html/datro-gh-pages/static/library/consortium_finance/funding_investors/latest/source/investoraccounts.rst:121: WARNING: Title underline too short.
+
+J-Smith-Walker (Account:111)
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+/var/www/html/datro-gh-pages/static/library/consortium_finance/funding_investors/latest/source/investoraccounts.rst:465: WARNING: Title underline too short.
+
+J-Choudhury-Lucas (Account:148)
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+/var/www/html/datro-gh-pages/static/library/consortium_finance/funding_investors/latest/source/investoraccounts.rst:465: WARNING: Title underline too short.
+
+J-Choudhury-Lucas (Account:148)
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+/var/www/html/datro-gh-pages/static/library/consortium_finance/funding_investors/latest/source/releasenotes.rst:35: WARNING: Inline interpreted text or phrase reference start-string without end-string.
+/var/www/html/datro-gh-pages/static/library/consortium_finance/funding_investors/latest/source/releasenotes.rst:41: WARNING: Inline interpreted text or phrase reference start-string without end-string.
 looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
 processing consortium_finance-funding_investors.tex... index releasenotes investoraccounts 
 resolving references...
 done
 writing... done
 copying TeX support files... copying TeX support files...
 done
-build succeeded.
+build succeeded, 6 warnings.
 
 The LaTeX files are in build/latex.
 Run 'make' in that directory to run these through (pdf)latex
@@ -54,41 +78,49 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
 (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
-(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/tex-gyre/tgtermes.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texmf/tex/latex/tex-gyre/tgheros.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(./sphinxoptionshyperref.sty) (./sphinxoptionsgeometry.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(./sphinxlatexgraphics.sty) (./sphinxlatexadmonitions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty))
+(./sphinxlatexliterals.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty))
+(./sphinxlatexshadowbox.sty) (./sphinxlatexcontainers.sty)
+(./sphinxhighlight.sty) (./sphinxlatextables.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tabulary/tabulary.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty)
-(./sphinxmulticell.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
-(./footnotehyper-sphinx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty))
+(./sphinxlatexnumfig.sty) (./sphinxlatexlists.sty) (./sphinxpackagefootnote.sty
+) (./sphinxlatexindbibtoc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty))
+(./sphinxlatexstylepage.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip-2001-04-09.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
-(./sphinxhighlight.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty))
+(./sphinxlatexstyleheadings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty))
+(./sphinxlatexstyletext.sty) (./sphinxlatexobjects.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
@@ -117,7 +149,7 @@ For additional information on amsmath, use the `?' option.
 Writing index file consortium_finance-funding_investors.idx
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def)
 (./consortium_finance-funding_investors.aux)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qtm.fd)
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
@@ -127,218 +159,205 @@ Writing index file consortium_finance-funding_investors.idx
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)<<ot1.cmap>><<oml.cmap
->><<oms.cmap>><<omx.cmap>>
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qhv.fd)<<ot1.cmap>><<oml.cmap>><<oms.cma
+p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map}] [1] [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 221.
-
-[2]
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 230.
-
-[3]
+(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [2] [3]
 Chapter 2.
 
-Overfull \hbox (6.15207pt too wide) in paragraph at lines 337--340
-[]|\T1/phv/m/n/10 UID| 
+Overfull \hbox (6.15224pt too wide) in paragraph at lines 335--338
+[]|\T1/qhv/m/n/10 UID| 
 
-Overfull \hbox (6.15207pt too wide) in paragraph at lines 365--368
-[]|\T1/phv/m/n/10 UID| 
+Overfull \hbox (6.15224pt too wide) in paragraph at lines 363--366
+[]|\T1/qhv/m/n/10 UID| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 396--398
-[]|\T1/ptm/m/n/10 101| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 394--396
+[]|\T1/qtm/m/n/10 101| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 415--417
-[]|\T1/ptm/m/n/10 102| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 413--415
+[]|\T1/qtm/m/n/10 102| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 437--439
-[]|\T1/ptm/m/n/10 103| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 435--437
+[]|\T1/qtm/m/n/10 103| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 459--461
-[]|\T1/ptm/m/n/10 104| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 457--459
+[]|\T1/qtm/m/n/10 104| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 481--483
-[]|\T1/ptm/m/n/10 105| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 479--481
+[]|\T1/qtm/m/n/10 105| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 503--505
-[]|\T1/ptm/m/n/10 106| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 501--503
+[]|\T1/qtm/m/n/10 106| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 525--527
-[]|\T1/ptm/m/n/10 107| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 523--525
+[]|\T1/qtm/m/n/10 107| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 544--546
-[]|\T1/ptm/m/n/10 108| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 542--544
+[]|\T1/qtm/m/n/10 108| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 563--565
-[]|\T1/ptm/m/n/10 109| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 561--563
+[]|\T1/qtm/m/n/10 109| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 582--584
-[]|\T1/ptm/m/n/10 110| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 580--582
+[]|\T1/qtm/m/n/10 110| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 604--606
-[]|\T1/ptm/m/n/10 111| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 602--604
+[]|\T1/qtm/m/n/10 111| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 626--628
-[]|\T1/ptm/m/n/10 112| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 624--626
+[]|\T1/qtm/m/n/10 112| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 645--647
-[]|\T1/ptm/m/n/10 113| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 643--645
+[]|\T1/qtm/m/n/10 113| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 667--669
-[]|\T1/ptm/m/n/10 114| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 665--667
+[]|\T1/qtm/m/n/10 114| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 689--691
-[]|\T1/ptm/m/n/10 115| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 687--689
+[]|\T1/qtm/m/n/10 115| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 711--713
-[]|\T1/ptm/m/n/10 116| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 709--711
+[]|\T1/qtm/m/n/10 116| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 733--735
-[]|\T1/ptm/m/n/10 117| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 731--733
+[]|\T1/qtm/m/n/10 117| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 755--757
-[]|\T1/ptm/m/n/10 118| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 753--755
+[]|\T1/qtm/m/n/10 118| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 777--779
-[]|\T1/ptm/m/n/10 119| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 775--777
+[]|\T1/qtm/m/n/10 119| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 796--798
-[]|\T1/ptm/m/n/10 120| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 794--796
+[]|\T1/qtm/m/n/10 120| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 818--820
-[]|\T1/ptm/m/n/10 121| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 816--818
+[]|\T1/qtm/m/n/10 121| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 840--842
-[]|\T1/ptm/m/n/10 122| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 838--840
+[]|\T1/qtm/m/n/10 122| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 862--864
-[]|\T1/ptm/m/n/10 123| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 860--862
+[]|\T1/qtm/m/n/10 123| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 884--886
-[]|\T1/ptm/m/n/10 124| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 882--884
+[]|\T1/qtm/m/n/10 124| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 906--908
-[]|\T1/ptm/m/n/10 125| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 904--906
+[]|\T1/qtm/m/n/10 125| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 925--927
-[]|\T1/ptm/m/n/10 126| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 923--925
+[]|\T1/qtm/m/n/10 126| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 947--949
-[]|\T1/ptm/m/n/10 127| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 945--947
+[]|\T1/qtm/m/n/10 127| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 966--968
-[]|\T1/ptm/m/n/10 128| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 964--966
+[]|\T1/qtm/m/n/10 128| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 988--990
-[]|\T1/ptm/m/n/10 129| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 986--988
+[]|\T1/qtm/m/n/10 129| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1010--1012
-[]|\T1/ptm/m/n/10 130| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1008--1010
+[]|\T1/qtm/m/n/10 130| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1029--1031
-[]|\T1/ptm/m/n/10 131| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1027--1029
+[]|\T1/qtm/m/n/10 131| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1048--1050
-[]|\T1/ptm/m/n/10 132| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1046--1048
+[]|\T1/qtm/m/n/10 132| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1067--1069
-[]|\T1/ptm/m/n/10 133| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1065--1067
+[]|\T1/qtm/m/n/10 133| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1089--1091
-[]|\T1/ptm/m/n/10 134| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1087--1089
+[]|\T1/qtm/m/n/10 134| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1111--1113
-[]|\T1/ptm/m/n/10 135| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1109--1111
+[]|\T1/qtm/m/n/10 135| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1130--1132
-[]|\T1/ptm/m/n/10 136| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1128--1130
+[]|\T1/qtm/m/n/10 136| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1152--1154
-[]|\T1/ptm/m/n/10 137| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1150--1152
+[]|\T1/qtm/m/n/10 137| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1174--1176
-[]|\T1/ptm/m/n/10 138| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1172--1174
+[]|\T1/qtm/m/n/10 138| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1193--1195
-[]|\T1/ptm/m/n/10 139| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1191--1193
+[]|\T1/qtm/m/n/10 139| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1215--1217
-[]|\T1/ptm/m/n/10 140| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1213--1215
+[]|\T1/qtm/m/n/10 140| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1237--1239
-[]|\T1/ptm/m/n/10 141| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1235--1237
+[]|\T1/qtm/m/n/10 141| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1256--1258
-[]|\T1/ptm/m/n/10 142| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1254--1256
+[]|\T1/qtm/m/n/10 142| 
 
-Overfull \hbox (1.29445pt too wide) in paragraph at lines 1274--1277
-[]|\T1/ptm/m/n/10 14.210%| 
+Overfull \hbox (1.2945pt too wide) in paragraph at lines 1272--1275
+[]|\T1/qtm/m/n/10 14.210%| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1278--1280
-[]|\T1/ptm/m/n/10 143| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1276--1278
+[]|\T1/qtm/m/n/10 143| 
 
-Overfull \hbox (1.29445pt too wide) in paragraph at lines 1296--1299
-[]|\T1/ptm/m/n/10 28.108%| 
+Overfull \hbox (1.2945pt too wide) in paragraph at lines 1294--1297
+[]|\T1/qtm/m/n/10 28.108%| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1300--1302
-[]|\T1/ptm/m/n/10 144| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1298--1300
+[]|\T1/qtm/m/n/10 144| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1319--1321
-[]|\T1/ptm/m/n/10 145| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1317--1319
+[]|\T1/qtm/m/n/10 145| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1338--1340
-[]|\T1/ptm/m/n/10 146| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1336--1338
+[]|\T1/qtm/m/n/10 146| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1357--1359
-[]|\T1/ptm/m/n/10 147| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1355--1357
+[]|\T1/qtm/m/n/10 147| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1376--1378
-[]|\T1/ptm/m/n/10 148| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1374--1376
+[]|\T1/qtm/m/n/10 148| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1398--1400
-[]|\T1/ptm/m/n/10 149| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1396--1398
+[]|\T1/qtm/m/n/10 149| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1417--1419
-[]|\T1/ptm/m/n/10 150| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1415--1417
+[]|\T1/qtm/m/n/10 150| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1436--1438
-[]|\T1/ptm/m/n/10 151| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1434--1436
+[]|\T1/qtm/m/n/10 151| 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1454--1457
-[]|\T1/ptm/m/n/10 Queued
+Underfull \hbox (badness 10000) in paragraph at lines 1452--1455
+[]|\T1/qtm/m/n/10 Queued
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1458--1460
-[]|\T1/ptm/m/n/10 152| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1456--1458
+[]|\T1/qtm/m/n/10 152| 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1476--1479
-[]|\T1/ptm/m/n/10 Queued
+Underfull \hbox (badness 10000) in paragraph at lines 1474--1477
+[]|\T1/qtm/m/n/10 Queued
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1480--1482
-[]|\T1/ptm/m/n/10 153| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1478--1480
+[]|\T1/qtm/m/n/10 153| 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1498--1501
-[]|\T1/ptm/m/n/10 Queued
+Underfull \hbox (badness 10000) in paragraph at lines 1496--1499
+[]|\T1/qtm/m/n/10 Queued
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1502--1504
-[]|\T1/ptm/m/n/10 154| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1500--1502
+[]|\T1/qtm/m/n/10 154| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1525--1527
-[]|\T1/ptm/m/n/10 401| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1523--1525
+[]|\T1/qtm/m/n/10 401| 
 
-Overfull \hbox (1.29445pt too wide) in paragraph at lines 1540--1543
-[]|\T1/ptm/m/n/10 15.018%| 
+Overfull \hbox (1.2945pt too wide) in paragraph at lines 1538--1541
+[]|\T1/qtm/m/n/10 15.018%| 
 
-Overfull \hbox (6.29445pt too wide) in paragraph at lines 1563--1566
-[]|\T1/ptm/m/n/10 100.000%| 
+Overfull \hbox (6.2945pt too wide) in paragraph at lines 1561--1564
+[]|\T1/qtm/m/n/10 100.000%| 
 [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18]
 Chapter 3.
 No file consortium_finance-funding_investors.ind.
@@ -353,15 +372,14 @@ Package rerunfilecheck Warning: File `consortium_finance-funding_investors.out'
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information){/usr/share/texlive/texmf-d
-ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
-jknappen/ec/tcrb1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/helve
-tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/urw/times/utmri8a.pfb>
-Output written on consortium_finance-funding_investors.pdf (21 pages, 121325 by
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/tex-gyre/q-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ec.enc}<
+/usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/t
+ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
+vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
+/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
+gyre/qtmri.pfb>
+Output written on consortium_finance-funding_investors.pdf (21 pages, 197433 by
 tes).
 Transcript written on consortium_finance-funding_investors.log.
 Latexmk: Index file 'consortium_finance-funding_investors.idx' was written
@@ -424,41 +442,49 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
 (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
-(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/tex-gyre/tgtermes.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texmf/tex/latex/tex-gyre/tgheros.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(./sphinxoptionshyperref.sty) (./sphinxoptionsgeometry.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(./sphinxlatexgraphics.sty) (./sphinxlatexadmonitions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty))
+(./sphinxlatexliterals.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty))
+(./sphinxlatexshadowbox.sty) (./sphinxlatexcontainers.sty)
+(./sphinxhighlight.sty) (./sphinxlatextables.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tabulary/tabulary.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty)
-(./sphinxmulticell.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
-(./footnotehyper-sphinx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty))
+(./sphinxlatexnumfig.sty) (./sphinxlatexlists.sty) (./sphinxpackagefootnote.sty
+) (./sphinxlatexindbibtoc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty))
+(./sphinxlatexstylepage.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip-2001-04-09.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
-(./sphinxhighlight.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty))
+(./sphinxlatexstyleheadings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty))
+(./sphinxlatexstyletext.sty) (./sphinxlatexobjects.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
@@ -487,7 +513,7 @@ For additional information on amsmath, use the `?' option.
 Writing index file consortium_finance-funding_investors.idx
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def)
 (./consortium_finance-funding_investors.aux)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qtm.fd)
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
@@ -499,232 +525,218 @@ Writing index file consortium_finance-funding_investors.idx
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
 (./consortium_finance-funding_investors.out)
 (./consortium_finance-funding_investors.out)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)<<ot1.cmap>><<oml.cmap
->><<oms.cmap>><<omx.cmap>>
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qhv.fd)<<ot1.cmap>><<oml.cmap>><<oms.cma
+p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map}] (./consortium_finance-funding_investors.toc)
 [1] [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 221.
-
-[2]
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 230.
-
-[3]
+(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [2] [3]
 Chapter 2.
 
-Overfull \hbox (6.15207pt too wide) in paragraph at lines 337--340
-[]|\T1/phv/m/n/10 UID| 
+Overfull \hbox (6.15224pt too wide) in paragraph at lines 335--338
+[]|\T1/qhv/m/n/10 UID| 
 
-Overfull \hbox (6.15207pt too wide) in paragraph at lines 365--368
-[]|\T1/phv/m/n/10 UID| 
+Overfull \hbox (6.15224pt too wide) in paragraph at lines 363--366
+[]|\T1/qhv/m/n/10 UID| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 396--398
-[]|\T1/ptm/m/n/10 101| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 394--396
+[]|\T1/qtm/m/n/10 101| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 415--417
-[]|\T1/ptm/m/n/10 102| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 413--415
+[]|\T1/qtm/m/n/10 102| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 437--439
-[]|\T1/ptm/m/n/10 103| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 435--437
+[]|\T1/qtm/m/n/10 103| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 459--461
-[]|\T1/ptm/m/n/10 104| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 457--459
+[]|\T1/qtm/m/n/10 104| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 481--483
-[]|\T1/ptm/m/n/10 105| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 479--481
+[]|\T1/qtm/m/n/10 105| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 503--505
-[]|\T1/ptm/m/n/10 106| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 501--503
+[]|\T1/qtm/m/n/10 106| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 525--527
-[]|\T1/ptm/m/n/10 107| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 523--525
+[]|\T1/qtm/m/n/10 107| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 544--546
-[]|\T1/ptm/m/n/10 108| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 542--544
+[]|\T1/qtm/m/n/10 108| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 563--565
-[]|\T1/ptm/m/n/10 109| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 561--563
+[]|\T1/qtm/m/n/10 109| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 582--584
-[]|\T1/ptm/m/n/10 110| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 580--582
+[]|\T1/qtm/m/n/10 110| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 604--606
-[]|\T1/ptm/m/n/10 111| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 602--604
+[]|\T1/qtm/m/n/10 111| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 626--628
-[]|\T1/ptm/m/n/10 112| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 624--626
+[]|\T1/qtm/m/n/10 112| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 645--647
-[]|\T1/ptm/m/n/10 113| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 643--645
+[]|\T1/qtm/m/n/10 113| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 667--669
-[]|\T1/ptm/m/n/10 114| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 665--667
+[]|\T1/qtm/m/n/10 114| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 689--691
-[]|\T1/ptm/m/n/10 115| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 687--689
+[]|\T1/qtm/m/n/10 115| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 711--713
-[]|\T1/ptm/m/n/10 116| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 709--711
+[]|\T1/qtm/m/n/10 116| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 733--735
-[]|\T1/ptm/m/n/10 117| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 731--733
+[]|\T1/qtm/m/n/10 117| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 755--757
-[]|\T1/ptm/m/n/10 118| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 753--755
+[]|\T1/qtm/m/n/10 118| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 777--779
-[]|\T1/ptm/m/n/10 119| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 775--777
+[]|\T1/qtm/m/n/10 119| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 796--798
-[]|\T1/ptm/m/n/10 120| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 794--796
+[]|\T1/qtm/m/n/10 120| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 818--820
-[]|\T1/ptm/m/n/10 121| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 816--818
+[]|\T1/qtm/m/n/10 121| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 840--842
-[]|\T1/ptm/m/n/10 122| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 838--840
+[]|\T1/qtm/m/n/10 122| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 862--864
-[]|\T1/ptm/m/n/10 123| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 860--862
+[]|\T1/qtm/m/n/10 123| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 884--886
-[]|\T1/ptm/m/n/10 124| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 882--884
+[]|\T1/qtm/m/n/10 124| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 906--908
-[]|\T1/ptm/m/n/10 125| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 904--906
+[]|\T1/qtm/m/n/10 125| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 925--927
-[]|\T1/ptm/m/n/10 126| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 923--925
+[]|\T1/qtm/m/n/10 126| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 947--949
-[]|\T1/ptm/m/n/10 127| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 945--947
+[]|\T1/qtm/m/n/10 127| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 966--968
-[]|\T1/ptm/m/n/10 128| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 964--966
+[]|\T1/qtm/m/n/10 128| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 988--990
-[]|\T1/ptm/m/n/10 129| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 986--988
+[]|\T1/qtm/m/n/10 129| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1010--1012
-[]|\T1/ptm/m/n/10 130| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1008--1010
+[]|\T1/qtm/m/n/10 130| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1029--1031
-[]|\T1/ptm/m/n/10 131| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1027--1029
+[]|\T1/qtm/m/n/10 131| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1048--1050
-[]|\T1/ptm/m/n/10 132| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1046--1048
+[]|\T1/qtm/m/n/10 132| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1067--1069
-[]|\T1/ptm/m/n/10 133| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1065--1067
+[]|\T1/qtm/m/n/10 133| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1089--1091
-[]|\T1/ptm/m/n/10 134| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1087--1089
+[]|\T1/qtm/m/n/10 134| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1111--1113
-[]|\T1/ptm/m/n/10 135| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1109--1111
+[]|\T1/qtm/m/n/10 135| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1130--1132
-[]|\T1/ptm/m/n/10 136| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1128--1130
+[]|\T1/qtm/m/n/10 136| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1152--1154
-[]|\T1/ptm/m/n/10 137| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1150--1152
+[]|\T1/qtm/m/n/10 137| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1174--1176
-[]|\T1/ptm/m/n/10 138| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1172--1174
+[]|\T1/qtm/m/n/10 138| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1193--1195
-[]|\T1/ptm/m/n/10 139| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1191--1193
+[]|\T1/qtm/m/n/10 139| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1215--1217
-[]|\T1/ptm/m/n/10 140| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1213--1215
+[]|\T1/qtm/m/n/10 140| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1237--1239
-[]|\T1/ptm/m/n/10 141| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1235--1237
+[]|\T1/qtm/m/n/10 141| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1256--1258
-[]|\T1/ptm/m/n/10 142| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1254--1256
+[]|\T1/qtm/m/n/10 142| 
 
-Overfull \hbox (1.29445pt too wide) in paragraph at lines 1274--1277
-[]|\T1/ptm/m/n/10 14.210%| 
+Overfull \hbox (1.2945pt too wide) in paragraph at lines 1272--1275
+[]|\T1/qtm/m/n/10 14.210%| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1278--1280
-[]|\T1/ptm/m/n/10 143| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1276--1278
+[]|\T1/qtm/m/n/10 143| 
 
-Overfull \hbox (1.29445pt too wide) in paragraph at lines 1296--1299
-[]|\T1/ptm/m/n/10 28.108%| 
+Overfull \hbox (1.2945pt too wide) in paragraph at lines 1294--1297
+[]|\T1/qtm/m/n/10 28.108%| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1300--1302
-[]|\T1/ptm/m/n/10 144| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1298--1300
+[]|\T1/qtm/m/n/10 144| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1319--1321
-[]|\T1/ptm/m/n/10 145| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1317--1319
+[]|\T1/qtm/m/n/10 145| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1338--1340
-[]|\T1/ptm/m/n/10 146| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1336--1338
+[]|\T1/qtm/m/n/10 146| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1357--1359
-[]|\T1/ptm/m/n/10 147| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1355--1357
+[]|\T1/qtm/m/n/10 147| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1376--1378
-[]|\T1/ptm/m/n/10 148| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1374--1376
+[]|\T1/qtm/m/n/10 148| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1398--1400
-[]|\T1/ptm/m/n/10 149| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1396--1398
+[]|\T1/qtm/m/n/10 149| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1417--1419
-[]|\T1/ptm/m/n/10 150| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1415--1417
+[]|\T1/qtm/m/n/10 150| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1436--1438
-[]|\T1/ptm/m/n/10 151| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1434--1436
+[]|\T1/qtm/m/n/10 151| 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1454--1457
-[]|\T1/ptm/m/n/10 Queued
+Underfull \hbox (badness 10000) in paragraph at lines 1452--1455
+[]|\T1/qtm/m/n/10 Queued
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1458--1460
-[]|\T1/ptm/m/n/10 152| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1456--1458
+[]|\T1/qtm/m/n/10 152| 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1476--1479
-[]|\T1/ptm/m/n/10 Queued
+Underfull \hbox (badness 10000) in paragraph at lines 1474--1477
+[]|\T1/qtm/m/n/10 Queued
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1480--1482
-[]|\T1/ptm/m/n/10 153| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1478--1480
+[]|\T1/qtm/m/n/10 153| 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1498--1501
-[]|\T1/ptm/m/n/10 Queued
+Underfull \hbox (badness 10000) in paragraph at lines 1496--1499
+[]|\T1/qtm/m/n/10 Queued
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1502--1504
-[]|\T1/ptm/m/n/10 154| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1500--1502
+[]|\T1/qtm/m/n/10 154| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1525--1527
-[]|\T1/ptm/m/n/10 401| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1523--1525
+[]|\T1/qtm/m/n/10 401| 
 
-Overfull \hbox (1.29445pt too wide) in paragraph at lines 1540--1543
-[]|\T1/ptm/m/n/10 15.018%| 
+Overfull \hbox (1.2945pt too wide) in paragraph at lines 1538--1541
+[]|\T1/qtm/m/n/10 15.018%| 
 
-Overfull \hbox (6.29445pt too wide) in paragraph at lines 1563--1566
-[]|\T1/ptm/m/n/10 100.000%| 
+Overfull \hbox (6.2945pt too wide) in paragraph at lines 1561--1564
+[]|\T1/qtm/m/n/10 100.000%| 
 [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18]
 Chapter 3.
 (./consortium_finance-funding_investors.ind) [19]
 (./consortium_finance-funding_investors.aux) )
-(see the transcript file for additional information){/usr/share/texlive/texmf-d
-ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
-jknappen/ec/tcrb1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/helve
-tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/urw/times/utmri8a.pfb>
-Output written on consortium_finance-funding_investors.pdf (21 pages, 124999 by
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/tex-gyre/q-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ec.enc}<
+/usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/t
+ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
+vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
+/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
+gyre/qtmri.pfb>
+Output written on consortium_finance-funding_investors.pdf (21 pages, 204683 by
 tes).
 Transcript written on consortium_finance-funding_investors.log.
 Latexmk: Index file 'consortium_finance-funding_investors.idx' was written
@@ -766,41 +778,49 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
 (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
-(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/tex-gyre/tgtermes.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texmf/tex/latex/tex-gyre/tgheros.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(./sphinxoptionshyperref.sty) (./sphinxoptionsgeometry.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(./sphinxlatexgraphics.sty) (./sphinxlatexadmonitions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty))
+(./sphinxlatexliterals.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty))
+(./sphinxlatexshadowbox.sty) (./sphinxlatexcontainers.sty)
+(./sphinxhighlight.sty) (./sphinxlatextables.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tabulary/tabulary.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty)
-(./sphinxmulticell.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
-(./footnotehyper-sphinx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty))
+(./sphinxlatexnumfig.sty) (./sphinxlatexlists.sty) (./sphinxpackagefootnote.sty
+) (./sphinxlatexindbibtoc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty))
+(./sphinxlatexstylepage.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip-2001-04-09.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
-(./sphinxhighlight.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty))
+(./sphinxlatexstyleheadings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty))
+(./sphinxlatexstyletext.sty) (./sphinxlatexobjects.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
@@ -829,7 +849,7 @@ For additional information on amsmath, use the `?' option.
 Writing index file consortium_finance-funding_investors.idx
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def)
 (./consortium_finance-funding_investors.aux)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qtm.fd)
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
@@ -841,232 +861,218 @@ Writing index file consortium_finance-funding_investors.idx
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
 (./consortium_finance-funding_investors.out)
 (./consortium_finance-funding_investors.out)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)<<ot1.cmap>><<oml.cmap
->><<oms.cmap>><<omx.cmap>>
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qhv.fd)<<ot1.cmap>><<oml.cmap>><<oms.cma
+p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map}] (./consortium_finance-funding_investors.toc)
 [1] [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 221.
-
-[2]
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 230.
-
-[3]
+(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [2] [3]
 Chapter 2.
 
-Overfull \hbox (6.15207pt too wide) in paragraph at lines 337--340
-[]|\T1/phv/m/n/10 UID| 
+Overfull \hbox (6.15224pt too wide) in paragraph at lines 335--338
+[]|\T1/qhv/m/n/10 UID| 
 
-Overfull \hbox (6.15207pt too wide) in paragraph at lines 365--368
-[]|\T1/phv/m/n/10 UID| 
+Overfull \hbox (6.15224pt too wide) in paragraph at lines 363--366
+[]|\T1/qhv/m/n/10 UID| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 396--398
-[]|\T1/ptm/m/n/10 101| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 394--396
+[]|\T1/qtm/m/n/10 101| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 415--417
-[]|\T1/ptm/m/n/10 102| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 413--415
+[]|\T1/qtm/m/n/10 102| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 437--439
-[]|\T1/ptm/m/n/10 103| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 435--437
+[]|\T1/qtm/m/n/10 103| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 459--461
-[]|\T1/ptm/m/n/10 104| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 457--459
+[]|\T1/qtm/m/n/10 104| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 481--483
-[]|\T1/ptm/m/n/10 105| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 479--481
+[]|\T1/qtm/m/n/10 105| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 503--505
-[]|\T1/ptm/m/n/10 106| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 501--503
+[]|\T1/qtm/m/n/10 106| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 525--527
-[]|\T1/ptm/m/n/10 107| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 523--525
+[]|\T1/qtm/m/n/10 107| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 544--546
-[]|\T1/ptm/m/n/10 108| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 542--544
+[]|\T1/qtm/m/n/10 108| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 563--565
-[]|\T1/ptm/m/n/10 109| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 561--563
+[]|\T1/qtm/m/n/10 109| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 582--584
-[]|\T1/ptm/m/n/10 110| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 580--582
+[]|\T1/qtm/m/n/10 110| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 604--606
-[]|\T1/ptm/m/n/10 111| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 602--604
+[]|\T1/qtm/m/n/10 111| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 626--628
-[]|\T1/ptm/m/n/10 112| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 624--626
+[]|\T1/qtm/m/n/10 112| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 645--647
-[]|\T1/ptm/m/n/10 113| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 643--645
+[]|\T1/qtm/m/n/10 113| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 667--669
-[]|\T1/ptm/m/n/10 114| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 665--667
+[]|\T1/qtm/m/n/10 114| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 689--691
-[]|\T1/ptm/m/n/10 115| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 687--689
+[]|\T1/qtm/m/n/10 115| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 711--713
-[]|\T1/ptm/m/n/10 116| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 709--711
+[]|\T1/qtm/m/n/10 116| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 733--735
-[]|\T1/ptm/m/n/10 117| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 731--733
+[]|\T1/qtm/m/n/10 117| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 755--757
-[]|\T1/ptm/m/n/10 118| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 753--755
+[]|\T1/qtm/m/n/10 118| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 777--779
-[]|\T1/ptm/m/n/10 119| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 775--777
+[]|\T1/qtm/m/n/10 119| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 796--798
-[]|\T1/ptm/m/n/10 120| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 794--796
+[]|\T1/qtm/m/n/10 120| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 818--820
-[]|\T1/ptm/m/n/10 121| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 816--818
+[]|\T1/qtm/m/n/10 121| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 840--842
-[]|\T1/ptm/m/n/10 122| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 838--840
+[]|\T1/qtm/m/n/10 122| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 862--864
-[]|\T1/ptm/m/n/10 123| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 860--862
+[]|\T1/qtm/m/n/10 123| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 884--886
-[]|\T1/ptm/m/n/10 124| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 882--884
+[]|\T1/qtm/m/n/10 124| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 906--908
-[]|\T1/ptm/m/n/10 125| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 904--906
+[]|\T1/qtm/m/n/10 125| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 925--927
-[]|\T1/ptm/m/n/10 126| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 923--925
+[]|\T1/qtm/m/n/10 126| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 947--949
-[]|\T1/ptm/m/n/10 127| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 945--947
+[]|\T1/qtm/m/n/10 127| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 966--968
-[]|\T1/ptm/m/n/10 128| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 964--966
+[]|\T1/qtm/m/n/10 128| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 988--990
-[]|\T1/ptm/m/n/10 129| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 986--988
+[]|\T1/qtm/m/n/10 129| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1010--1012
-[]|\T1/ptm/m/n/10 130| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1008--1010
+[]|\T1/qtm/m/n/10 130| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1029--1031
-[]|\T1/ptm/m/n/10 131| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1027--1029
+[]|\T1/qtm/m/n/10 131| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1048--1050
-[]|\T1/ptm/m/n/10 132| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1046--1048
+[]|\T1/qtm/m/n/10 132| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1067--1069
-[]|\T1/ptm/m/n/10 133| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1065--1067
+[]|\T1/qtm/m/n/10 133| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1089--1091
-[]|\T1/ptm/m/n/10 134| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1087--1089
+[]|\T1/qtm/m/n/10 134| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1111--1113
-[]|\T1/ptm/m/n/10 135| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1109--1111
+[]|\T1/qtm/m/n/10 135| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1130--1132
-[]|\T1/ptm/m/n/10 136| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1128--1130
+[]|\T1/qtm/m/n/10 136| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1152--1154
-[]|\T1/ptm/m/n/10 137| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1150--1152
+[]|\T1/qtm/m/n/10 137| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1174--1176
-[]|\T1/ptm/m/n/10 138| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1172--1174
+[]|\T1/qtm/m/n/10 138| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1193--1195
-[]|\T1/ptm/m/n/10 139| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1191--1193
+[]|\T1/qtm/m/n/10 139| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1215--1217
-[]|\T1/ptm/m/n/10 140| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1213--1215
+[]|\T1/qtm/m/n/10 140| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1237--1239
-[]|\T1/ptm/m/n/10 141| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1235--1237
+[]|\T1/qtm/m/n/10 141| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1256--1258
-[]|\T1/ptm/m/n/10 142| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1254--1256
+[]|\T1/qtm/m/n/10 142| 
 
-Overfull \hbox (1.29445pt too wide) in paragraph at lines 1274--1277
-[]|\T1/ptm/m/n/10 14.210%| 
+Overfull \hbox (1.2945pt too wide) in paragraph at lines 1272--1275
+[]|\T1/qtm/m/n/10 14.210%| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1278--1280
-[]|\T1/ptm/m/n/10 143| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1276--1278
+[]|\T1/qtm/m/n/10 143| 
 
-Overfull \hbox (1.29445pt too wide) in paragraph at lines 1296--1299
-[]|\T1/ptm/m/n/10 28.108%| 
+Overfull \hbox (1.2945pt too wide) in paragraph at lines 1294--1297
+[]|\T1/qtm/m/n/10 28.108%| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1300--1302
-[]|\T1/ptm/m/n/10 144| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1298--1300
+[]|\T1/qtm/m/n/10 144| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1319--1321
-[]|\T1/ptm/m/n/10 145| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1317--1319
+[]|\T1/qtm/m/n/10 145| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1338--1340
-[]|\T1/ptm/m/n/10 146| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1336--1338
+[]|\T1/qtm/m/n/10 146| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1357--1359
-[]|\T1/ptm/m/n/10 147| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1355--1357
+[]|\T1/qtm/m/n/10 147| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1376--1378
-[]|\T1/ptm/m/n/10 148| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1374--1376
+[]|\T1/qtm/m/n/10 148| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1398--1400
-[]|\T1/ptm/m/n/10 149| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1396--1398
+[]|\T1/qtm/m/n/10 149| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1417--1419
-[]|\T1/ptm/m/n/10 150| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1415--1417
+[]|\T1/qtm/m/n/10 150| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1436--1438
-[]|\T1/ptm/m/n/10 151| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1434--1436
+[]|\T1/qtm/m/n/10 151| 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1454--1457
-[]|\T1/ptm/m/n/10 Queued
+Underfull \hbox (badness 10000) in paragraph at lines 1452--1455
+[]|\T1/qtm/m/n/10 Queued
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1458--1460
-[]|\T1/ptm/m/n/10 152| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1456--1458
+[]|\T1/qtm/m/n/10 152| 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1476--1479
-[]|\T1/ptm/m/n/10 Queued
+Underfull \hbox (badness 10000) in paragraph at lines 1474--1477
+[]|\T1/qtm/m/n/10 Queued
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1480--1482
-[]|\T1/ptm/m/n/10 153| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1478--1480
+[]|\T1/qtm/m/n/10 153| 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1498--1501
-[]|\T1/ptm/m/n/10 Queued
+Underfull \hbox (badness 10000) in paragraph at lines 1496--1499
+[]|\T1/qtm/m/n/10 Queued
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1502--1504
-[]|\T1/ptm/m/n/10 154| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1500--1502
+[]|\T1/qtm/m/n/10 154| 
 
-Overfull \hbox (3.93224pt too wide) in paragraph at lines 1525--1527
-[]|\T1/ptm/m/n/10 401| 
+Overfull \hbox (3.93224pt too wide) in paragraph at lines 1523--1525
+[]|\T1/qtm/m/n/10 401| 
 
-Overfull \hbox (1.29445pt too wide) in paragraph at lines 1540--1543
-[]|\T1/ptm/m/n/10 15.018%| 
+Overfull \hbox (1.2945pt too wide) in paragraph at lines 1538--1541
+[]|\T1/qtm/m/n/10 15.018%| 
 
-Overfull \hbox (6.29445pt too wide) in paragraph at lines 1563--1566
-[]|\T1/ptm/m/n/10 100.000%| 
+Overfull \hbox (6.2945pt too wide) in paragraph at lines 1561--1564
+[]|\T1/qtm/m/n/10 100.000%| 
 [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18]
 Chapter 3.
 (./consortium_finance-funding_investors.ind) [19]
 (./consortium_finance-funding_investors.aux) )
-(see the transcript file for additional information){/usr/share/texlive/texmf-d
-ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
-jknappen/ec/tcrb1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/helve
-tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/urw/times/utmri8a.pfb>
-Output written on consortium_finance-funding_investors.pdf (21 pages, 124999 by
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/tex-gyre/q-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ec.enc}<
+/usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/t
+ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
+vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
+/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
+gyre/qtmri.pfb>
+Output written on consortium_finance-funding_investors.pdf (21 pages, 204683 by
 tes).
 Transcript written on consortium_finance-funding_investors.log.
 Latexmk: Index file 'consortium_finance-funding_investors.idx' was written

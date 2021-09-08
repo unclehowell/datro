@@ -1,10 +1,17 @@
-Running Sphinx v3.5.3
-making output directory... done
+Running Sphinx v4.2.0+
+loading translations [fr]... done
 loading pickled environment... done
 building [mo]: targets for 0 po files that are out of date
 building [latex]: all documents
-updating environment: 0 added, 0 changed, 0 removed
+updating environment: [config changed ('language')] 4 added, 0 changed, 0 removed
+reading sources... [ 25%] creditors
+reading sources... [ 50%] index
+reading sources... [ 75%] introduction
+reading sources... [100%] releasenotes
+
 looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
 processing consortium_finance-funding_creditors.tex... index releasenotes introduction creditors 
 resolving references...
 done
@@ -54,41 +61,49 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
 (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
-(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/tex-gyre/tgtermes.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texmf/tex/latex/tex-gyre/tgheros.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(./sphinxoptionshyperref.sty) (./sphinxoptionsgeometry.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(./sphinxlatexgraphics.sty) (./sphinxlatexadmonitions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty))
+(./sphinxlatexliterals.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty))
+(./sphinxlatexshadowbox.sty) (./sphinxlatexcontainers.sty)
+(./sphinxhighlight.sty) (./sphinxlatextables.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tabulary/tabulary.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty)
-(./sphinxmulticell.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
-(./footnotehyper-sphinx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty))
+(./sphinxlatexnumfig.sty) (./sphinxlatexlists.sty) (./sphinxpackagefootnote.sty
+) (./sphinxlatexindbibtoc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty))
+(./sphinxlatexstylepage.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip-2001-04-09.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
-(./sphinxhighlight.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty))
+(./sphinxlatexstyleheadings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty))
+(./sphinxlatexstyletext.sty) (./sphinxlatexobjects.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
@@ -117,7 +132,7 @@ For additional information on amsmath, use the `?' option.
 Writing index file consortium_finance-funding_creditors.idx
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def)
 (./consortium_finance-funding_creditors.aux)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qtm.fd)
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
@@ -127,31 +142,24 @@ Writing index file consortium_finance-funding_creditors.idx
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)<<ot1.cmap>><<oml.cmap
->><<oms.cmap>><<omx.cmap>>
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qhv.fd)<<ot1.cmap>><<oml.cmap>><<oms.cma
+p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map}] [1] [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 122.
-
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 311--313
-[]|\T1/phv/b/n/10 Ver-
+(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [2]
+Underfull \hbox (badness 10000) in paragraph at lines 305--307
+[]|\T1/qhv/b/n/10 Ver-
 [3]
 Chapter 2.
 [4]
 Chapter 3.
 [5] [6] [7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 2787--2789
-[]|\T1/ptm/m/n/10 Rec-on-cil-ing
+Underfull \hbox (badness 10000) in paragraph at lines 2781--2783
+[]|\T1/qtm/m/n/10 Rec-on-cil-ing
 
-Underfull \hbox (badness 10000) in paragraph at lines 2800--2802
-[]|\T1/ptm/m/n/10 Rec-on-cil-ing
+Underfull \hbox (badness 10000) in paragraph at lines 2794--2796
+[]|\T1/qtm/m/n/10 Rec-on-cil-ing
 [9] [10] [11] [12] [13] [14] [15]
 Chapter 4.
 No file consortium_finance-funding_creditors.ind.
@@ -166,15 +174,14 @@ Package rerunfilecheck Warning: File `consortium_finance-funding_creditors.out'
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information){/usr/share/texlive/texmf-d
-ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
-jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/helve
-tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/urw/times/utmri8a.pfb>
-Output written on consortium_finance-funding_creditors.pdf (18 pages, 119405 by
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/tex-gyre/q-ec.enc}{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ts1.enc}<
+/usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/t
+ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
+vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
+/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
+gyre/qtmri.pfb>
+Output written on consortium_finance-funding_creditors.pdf (18 pages, 194875 by
 tes).
 Transcript written on consortium_finance-funding_creditors.log.
 Latexmk: Index file 'consortium_finance-funding_creditors.idx' was written
@@ -237,41 +244,49 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
 (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
-(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/tex-gyre/tgtermes.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texmf/tex/latex/tex-gyre/tgheros.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(./sphinxoptionshyperref.sty) (./sphinxoptionsgeometry.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(./sphinxlatexgraphics.sty) (./sphinxlatexadmonitions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty))
+(./sphinxlatexliterals.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty))
+(./sphinxlatexshadowbox.sty) (./sphinxlatexcontainers.sty)
+(./sphinxhighlight.sty) (./sphinxlatextables.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tabulary/tabulary.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty)
-(./sphinxmulticell.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
-(./footnotehyper-sphinx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty))
+(./sphinxlatexnumfig.sty) (./sphinxlatexlists.sty) (./sphinxpackagefootnote.sty
+) (./sphinxlatexindbibtoc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty))
+(./sphinxlatexstylepage.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip-2001-04-09.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
-(./sphinxhighlight.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty))
+(./sphinxlatexstyleheadings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty))
+(./sphinxlatexstyletext.sty) (./sphinxlatexobjects.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
@@ -300,7 +315,7 @@ For additional information on amsmath, use the `?' option.
 Writing index file consortium_finance-funding_creditors.idx
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def)
 (./consortium_finance-funding_creditors.aux)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qtm.fd)
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
@@ -312,45 +327,37 @@ Writing index file consortium_finance-funding_creditors.idx
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
 (./consortium_finance-funding_creditors.out)
 (./consortium_finance-funding_creditors.out)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)<<ot1.cmap>><<oml.cmap
->><<oms.cmap>><<omx.cmap>>
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qhv.fd)<<ot1.cmap>><<oml.cmap>><<oms.cma
+p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map}] (./consortium_finance-funding_creditors.toc)
 [1] [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 122.
-
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 311--313
-[]|\T1/phv/b/n/10 Ver-
+(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [2]
+Underfull \hbox (badness 10000) in paragraph at lines 305--307
+[]|\T1/qhv/b/n/10 Ver-
 [3]
 Chapter 2.
 [4]
 Chapter 3.
 [5] [6] [7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 2787--2789
-[]|\T1/ptm/m/n/10 Rec-on-cil-ing
+Underfull \hbox (badness 10000) in paragraph at lines 2781--2783
+[]|\T1/qtm/m/n/10 Rec-on-cil-ing
 
-Underfull \hbox (badness 10000) in paragraph at lines 2800--2802
-[]|\T1/ptm/m/n/10 Rec-on-cil-ing
+Underfull \hbox (badness 10000) in paragraph at lines 2794--2796
+[]|\T1/qtm/m/n/10 Rec-on-cil-ing
 [9] [10] [11] [12] [13] [14] [15]
 Chapter 4.
 (./consortium_finance-funding_creditors.ind) [16]
 (./consortium_finance-funding_creditors.aux) )
-(see the transcript file for additional information){/usr/share/texlive/texmf-d
-ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
-jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/helve
-tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/urw/times/utmri8a.pfb>
-Output written on consortium_finance-funding_creditors.pdf (18 pages, 126248 by
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/tex-gyre/q-ec.enc}{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ts1.enc}<
+/usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/t
+ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
+vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
+/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
+gyre/qtmri.pfb>
+Output written on consortium_finance-funding_creditors.pdf (18 pages, 202310 by
 tes).
 Transcript written on consortium_finance-funding_creditors.log.
 Latexmk: Index file 'consortium_finance-funding_creditors.idx' was written
@@ -392,41 +399,49 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
 (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
-(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/tex-gyre/tgtermes.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texmf/tex/latex/tex-gyre/tgheros.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty) (./sphinx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(./sphinxoptionshyperref.sty) (./sphinxoptionsgeometry.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(./sphinxlatexgraphics.sty) (./sphinxlatexadmonitions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty))
+(./sphinxlatexliterals.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty))
+(./sphinxlatexshadowbox.sty) (./sphinxlatexcontainers.sty)
+(./sphinxhighlight.sty) (./sphinxlatextables.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tabulary/tabulary.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty)
-(./sphinxmulticell.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
-(./footnotehyper-sphinx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty))
+(./sphinxlatexnumfig.sty) (./sphinxlatexlists.sty) (./sphinxpackagefootnote.sty
+) (./sphinxlatexindbibtoc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty))
+(./sphinxlatexstylepage.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip-2001-04-09.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty)
-(./sphinxhighlight.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty))
+(./sphinxlatexstyleheadings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty))
+(./sphinxlatexstyletext.sty) (./sphinxlatexobjects.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
@@ -455,7 +470,7 @@ For additional information on amsmath, use the `?' option.
 Writing index file consortium_finance-funding_creditors.idx
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def)
 (./consortium_finance-funding_creditors.aux)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qtm.fd)
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
@@ -467,45 +482,37 @@ Writing index file consortium_finance-funding_creditors.idx
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
 (./consortium_finance-funding_creditors.out)
 (./consortium_finance-funding_creditors.out)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)<<ot1.cmap>><<oml.cmap
->><<oms.cmap>><<omx.cmap>>
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texmf/tex/latex/tex-gyre/t1qhv.fd)<<ot1.cmap>><<oml.cmap>><<oms.cma
+p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map}] (./consortium_finance-funding_creditors.toc)
 [1] [1]
 Chapter 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
-
-Package textcomp Warning: Symbol \textasciigrave not provided by
-(textcomp)                font family ptm in TS1 encoding.
-(textcomp)                Default family used instead on input line 122.
-
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 311--313
-[]|\T1/phv/b/n/10 Ver-
+(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [2]
+Underfull \hbox (badness 10000) in paragraph at lines 305--307
+[]|\T1/qhv/b/n/10 Ver-
 [3]
 Chapter 2.
 [4]
 Chapter 3.
 [5] [6] [7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 2787--2789
-[]|\T1/ptm/m/n/10 Rec-on-cil-ing
+Underfull \hbox (badness 10000) in paragraph at lines 2781--2783
+[]|\T1/qtm/m/n/10 Rec-on-cil-ing
 
-Underfull \hbox (badness 10000) in paragraph at lines 2800--2802
-[]|\T1/ptm/m/n/10 Rec-on-cil-ing
+Underfull \hbox (badness 10000) in paragraph at lines 2794--2796
+[]|\T1/qtm/m/n/10 Rec-on-cil-ing
 [9] [10] [11] [12] [13] [14] [15]
 Chapter 4.
 (./consortium_finance-funding_creditors.ind) [16]
 (./consortium_finance-funding_creditors.aux) )
-(see the transcript file for additional information){/usr/share/texlive/texmf-d
-ist/fonts/enc/dvips/base/8r.enc} </root/.texlive2020/texmf-var/fonts/pk/ljfour/
-jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/urw/helve
-tic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/urw/times/utmri8a.pfb>
-Output written on consortium_finance-funding_creditors.pdf (18 pages, 126248 by
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/tex-gyre/q-ec.enc}{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ts1.enc}<
+/usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/t
+ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
+vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
+/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
+gyre/qtmri.pfb>
+Output written on consortium_finance-funding_creditors.pdf (18 pages, 202310 by
 tes).
 Transcript written on consortium_finance-funding_creditors.log.
 Latexmk: Index file 'consortium_finance-funding_creditors.idx' was written

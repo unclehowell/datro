@@ -6,6 +6,20 @@ html {
     overflow-y: visible!important;
 }
 
+.main-logo {
+    min-width: 4.5em;
+    background-image: url(icons/datro.svg);
+    background-repeat: no-repeat;
+    background-size: 4em auto;
+    background-position-x: center;
+    background-position-y: center;
+    width: 4.5em;
+    height: 2em;
+    text-align: center;
+    margin: auto;
+    content-visibility: hidden;
+}
+
 upselect {
     background-color:green;
     display:inline-block;
@@ -77,6 +91,17 @@ li{
     cursor: default;
 }
 
+.up-inactive {
+    text-decoration: underline;
+    color: rgba(255,255,255,0.25);
+    margin-left: 30px;
+    font-weight: lighter;
+    text-transform: uppercase!important;
+    text-underline-offset: 2px;
+    cursor: default;
+}
+
+
 .indraft-title {
 word-spacing:-1.75rem;
 margin-left: 0rem;
@@ -111,23 +136,6 @@ margin-top: 3rem;
     
 }
 
-.language-subtitle-line { 
-    margin: 1rem 0 0.75em 0.00vw!important;
-    color: rgba(255,255,255,0.50);
-    padding: 0px 0px 0px 0px;
-    display: inline-table!important;
-    min-width: 70px;
-    max-width: 70px;
-    line-height: 1em;
-    min-height: 28px;
-    text-underline-offset: 2px;
-    text-decoration: underline;
-    white-space: nowrap;
-    word-spacing: -0.5em;
-    
-}
-
-
 .depth2-subtitle-line {
     padding: 0px 0px 0px 0px;
     display: inline-table!important;
@@ -146,6 +154,24 @@ margin-top: 3rem;
     white-space: nowrap;
     word-spacing: -1.75rem;
 }
+
+.language-subtitle-line { 
+    margin: 1rem 0 0.75em 0.00vw!important;
+    color: rgba(255,255,255,0.50);
+    padding: 0px 0px 0px 0px;
+    display: inline-table!important;
+    min-width: 70px;
+    max-width: 70px;
+    line-height: 1em;
+    min-height: 28px;
+    text-underline-offset: 2px;
+    text-decoration: underline;
+    white-space: nowrap;
+    word-spacing: -0.5em;
+    
+}
+
+
 
 .f-datro {
     background-image: url(icons/datro.png);

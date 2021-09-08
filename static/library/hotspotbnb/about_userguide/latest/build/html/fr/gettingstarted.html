@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Getting Started Guide &mdash; Documentation HotspotBnB - User Guide 0.0.6</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Installation Guide" href="installation.html" />
+    <link rel="prev" title="Preperation &amp; Planning" href="preperation.html" /> 
+<style>html{overflow-y:scroll;} ::-webkit-scrollbar{width:0px;background:transparent;}</style></head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> HotspotBnB - User Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version"> Document Version : 
+                0.0.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes and Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preperation.html">Preperation &amp; Planning</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#a-download-the-latest-release">A) Download the latest release</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#building-from-source-developers">Building from source (Developers)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#b-burn-the-image-to-your-raspberry-pi-s-microsd-card">B) Burn the image to your Raspberry Pi’s MicroSD Card</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#wireless-wi-fi-support">Wireless (Wi-Fi) Support</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c-power-on-and-bootup">C) Power On and Bootup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#d-accessing-the-dashboard">D) Accessing the Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#support">Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tips">Tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="end-user.html">General Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="productmaint.html">Device Upkeep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="afterinstallconfig.html">Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docsandvideos.html">PDF’s &amp; Video’s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ’s and Other Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networkmaint.html">Housekeeping</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">HotspotBnB - User Guide</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Getting Started Guide</li>
+    
+    
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="getting-started-guide">
+<h1>Getting Started Guide<a class="headerlink" href="#getting-started-guide" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Get HotspotBnB running on any Raspberry Pi.</p>
+<div class="section" id="a-download-the-latest-release">
+<h2>A) Download the latest release<a class="headerlink" href="#a-download-the-latest-release" title="Lien permanent vers ce titre">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Visit “Latest Releases &lt;<a class="reference external" href="https://github.com/unclehowell/datro/releases/">https://github.com/unclehowell/datro/releases/</a>&gt;”__ « DATRO Net-Installer Latest Release »)</p></li>
+<li><p>Download the latest pre-comiled image (attached in the “assets” segment at the bottom of the release notes)</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>a point to note about our GitHub releases. Our releases include “platform” and “software” release.</p></li>
+<li><p>“platform” is primarily all the website (the “gh-pages” branch). And is recognised by the extesion -rtw (release-to-web)</p></li>
+<li><p>“software” is primarily all the software (the “net-installer” branch). And is recognised by the extension -rc (release candidate)</p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="building-from-source-developers">
+<h3>Building from source (Developers)<a class="headerlink" href="#building-from-source-developers" title="Lien permanent vers ce titre">¶</a></h3>
+<ol class="arabic">
+<li><p>Grab a local copy of this directory:
+- Git Checkout “/hbnb/arm/” from this “Net-Installer” Branch is the best and recommended method
+- Or Git Fetch/Clone the whole “Net-Installer” Branch will get files you don’t need, but it’s easier
+- Or Git Fetch/Clone or Zip download the entire monorepo is not recommend, since it’s tens of gigabytes in size</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>If you need instruction on performing any of the above, visit [Collaborate with the DATRO Net-Installer Branch](<a class="reference external" href="https://github.com/unclehowell/datro/blob/net-installer/COLLABORATE.md">https://github.com/unclehowell/datro/blob/net-installer/COLLABORATE.md</a> « Collaborate with the DATRO Net-Installer Branch »)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><dl class="simple">
+<dt>Run the following Command: <cite>sudo bash ./compile.sh</cite></dt><dd><ul class="simple">
+<li><p>this script will produce an upto-date image entitled “hbnb-latest.img.xz”</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="b-burn-the-image-to-your-raspberry-pi-s-microsd-card">
+<h2>B) Burn the image to your Raspberry Pi’s MicroSD Card<a class="headerlink" href="#b-burn-the-image-to-your-raspberry-pi-s-microsd-card" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Insert your Pi’s MicroSD Card into your laptop/desktop computer
+Using your prefered Disk Burning Program, write the image to the Card.</p>
+<ul class="simple">
+<li><p>We recommend [RaspberryPi Imager](<a class="reference external" href="https://www.raspberrypi.org/software/">https://www.raspberrypi.org/software/</a> « RaspberryPi Imager ») since it supports Windows, Mac &amp; Linux</p></li>
+<li><p>Most other softwares do the same job if you prefer not to use RPI Imager e.g. Etcher, Win32 Disk Imager, Gnome Disk Utility etc</p></li>
+<li><p>But with RaspberryPi it defaults the format to FAT32, so you can be more sure not to screw up the build using it.</p></li>
+</ul>
+<p>The disk image is now ready to go into your Raspberry Pi (providing the Pi has internet access via Ethernet)</p>
+<div class="section" id="wireless-wi-fi-support">
+<h3>Wireless (Wi-Fi) Support<a class="headerlink" href="#wireless-wi-fi-support" title="Lien permanent vers ce titre">¶</a></h3>
+<p>If you prefer to power up your Pi and have it connect wirelessly to a Wi-Fi Access point (to establish internet access) then follow these steps:
+1. Eject and re-insert the MicroSD Card into your machine
+2. Navigate to /raspberrypi-ua-netinst/config/ in your favorate text editor</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Open the <cite>installer-config.txt</cite> file in Notepad</p></li>
+<li><p>Enter Wi-Fi SSID and Password where instructed and save the file</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Eject your MicroSD Card - You’re ready to proceed</p></li>
+</ol>
+<p>If your using Ethernet(default) make sure your Raspberry Pi is connected via Ethernet to a router that has working internet access.
+If your using Wi-Fi make sure your Router is broadcasting Wi-Fi and the SSID/Passwords Match.</p>
+</div>
+</div>
+<div class="section" id="c-power-on-and-bootup">
+<h2>C) Power On and Bootup<a class="headerlink" href="#c-power-on-and-bootup" title="Lien permanent vers ce titre">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Insert your MicroSD Card into the Pi and apply power.</p></li>
+<li><p>HotspotBnB autonomously installs (over Ethernet/Wi-Fi)</p></li>
+<li><p>Connect to a TV via HDMI to see the progress</p></li>
+<li><p>Your Pi may reboot a few times, this is normal!</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="d-accessing-the-dashboard">
+<h2>D) Accessing the Dashboard<a class="headerlink" href="#d-accessing-the-dashboard" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Once the autonomous build has completed, identify the devices ip address
+(shown on your TV Screen, if connected - otherwise scan your network for the IP of the new device)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Enter the Pi’s IP address into the web browser of any device connected to your local network.</p></li>
+<li><p>Displayed in your web-browser should be the HotspotBnB dashboard.</p></li>
+<li><p>The remainder of the setup can be completed via the dashboard.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="support">
+<h3>Support<a class="headerlink" href="#support" title="Lien permanent vers ce titre">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>“Configuring wlan0 with DHCP” can sometimes stick. Reboot your wireless access point then reboot the Pi to clear the problem</p></li>
+<li><p>In the event of an issue, please check you have the latest release, failing that [Report Issues](<a class="reference external" href="https://github.com/unclehowell/datro/issues">https://github.com/unclehowell/datro/issues</a> « Report Issues »)</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="tips">
+<h3>Tips<a class="headerlink" href="#tips" title="Lien permanent vers ce titre">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>If you’re accessing the dashboard from a mobile device (preferably using Chrome web browser) it’s recommended you save the page to your devices homescreen, so that you can launch your HotspotBnB Dashboard in the same way you do other apps on your mobile devices.  Locally this will work, but to access the Raspberry Pi remotely you will need to install an application such as Dataplicity (currently being loaded to HotspotBnB’s App Store).</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id1">
+<h3>Notes<a class="headerlink" href="#id1" title="Lien permanent vers ce titre">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>This release is only a proof of concept of the autonomous self-build capabilities and a preview of the final solution (so no apps can actually be installed yet). For a disk image with apps pre-installed, please download [HotspotBnB v0.0.1-rc.8](<a class="reference external" href="https://mega.nz/#!ZCAziaQb!P4r2FrkY0-bQnDqThiQkY0Da0ORtguYO2tCnO3CO_Ec">https://mega.nz/#!ZCAziaQb!P4r2FrkY0-bQnDqThiQkY0Da0ORtguYO2tCnO3CO_Ec</a> « HotspotBnB v0.0.1-rc.8 »)</p></li>
+<li><p>download each new release and repeat this initial installation process to experience the latest developments in near “real-time” until we introduce our Software/ Firmware Over the Air (OTA) updates/ upgrades.</p></li>
+<li><p>tested and working on all models of the raspberry pi.</p></li>
+<li><p>Users will normally be prompted to accept the terms of the cryptocurrency mining when accessing the dashboard for the first time - an optional and opt-in feature. However this “JSECoin” feature is still being integrated into HotspotBnB. (If users don’t agree and accept the cryptocurrency mining, the banner just remains on the dashboard. We owe no obligation not to inhibit the user experience in this way if they aren’t willing to participate in a fair exchange e.g. our software solution for access to your network devices redundant processing power)</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation Guide" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="preperation.html" class="btn btn-neutral float-left" title="Preperation &amp; Planning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo" style="opacity:0.4;">
+    <p>
+        &#169;   <b style="font-color:darkgrey!important;font-weight:lighter;font-size:90%;font-style:italic;"><strong>2012<script>new Date().getFullYear()>2012&&document.write("-"+new Date().getFullYear());</script> DATRO</strong> Consortium</b> | <a href="https://datro.xyz" target="_popup">datro.xyz</a>  .
+
+    </p>
+  </div>
+    
+    
+    
+    Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    
+    fourni par <a href="https://readthedocs.org">Read the Docs</a></div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,3554 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, DATRO Consortium
+# This file is distributed under the same license as the DATRO Consortium Investments package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: DATRO Consortium Investments 0.1.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-07 23:43-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/index.rst:3
+msgid "DATRO Investments"
+msgstr ""
+
+#: ../../source/index.rst:5
+msgid "**Introduction**"
+msgstr ""
+
+#: ../../source/index.rst:7
+msgid "This publication details the DATRO Consortiums (1) Master shareholders register, (2) Base-interest rates (Accurals & Compounding) and (3) Investment Activity (Summary & Detailed 'Mini-Statements')"
+msgstr ""
+
+#: ../../source/index.rst:9
+msgid "This report is produced semi-autonomously as part of the DATRO Consortiums transition from web-2.0 to web-3.0. In web 2.0 the shareholders register and investment activities would be compiled centrally and manually and submitted to a pre-existing societies, pre-existing framework e.g. .gov TLD, central bank etc. With web 3.0 the DATRO Consortium is able to operate as a cryptocurrency/ blockchain-based, Decentralized Autonomous Organisation (DAO). Or further still a DAS (D.A Society) e.g. fully decentralized with full annonymity and \"smart contract\" autonomy (self-administering/ governing (\"liquid democracy\" tokenized voting))."
+msgstr ""
+
+#: ../../source/index.rst:15
+msgid "This document belongs to the `DATRO Consortium Document Library <https://datro.xyz/static/library/>`__"
+msgstr ""
+
+#: ../../source/index.rst:25
+msgid "**Document Author:**"
+msgstr ""
+
+#: ../../source/index.rst:29
+msgid "The Team @ DATRO Consortium"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:3
+msgid "Investor Accounts"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:6
+msgid "Summary"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:8
+msgid "See below a summary of the seed funding investment round (account ID & aliases) and the corresponding account balance for each investor. The final balance includes all deposits, withdrawls, accrued and compounded interest (1.66% APR per annum, from April 2019)."
+msgstr ""
+
+#: ../../source/investoraccounts.rst:11
+msgid "DATRO Investor Accounts - Including Accrued Interest (GBP)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "UID"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "Account Alias"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "Investment"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "Interest"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-101.csv:1
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-107.csv:1
+#: ../../source/_static/custom/wrt-wallet-108.csv:1
+#: ../../source/_static/custom/wrt-wallet-109.csv:1
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-112.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-119.csv:1
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-125.csv:1
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-127.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-130.csv:1
+#: ../../source/_static/custom/wrt-wallet-131.csv:1
+#: ../../source/_static/custom/wrt-wallet-132.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+#: ../../source/_static/custom/wrt-wallet-135.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+#: ../../source/_static/custom/wrt-wallet-138.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+#: ../../source/_static/custom/wrt-wallet-141.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+#: ../../source/_static/custom/wrt-wallet-144.csv:1
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+#: ../../source/_static/custom/wrt-wallet-146.csv:1
+#: ../../source/_static/custom/wrt-wallet-147.csv:1
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+#: ../../source/_static/custom/wrt-wallet-149.csv:1
+#: ../../source/_static/custom/wrt-wallet-150.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "Balance (GBP)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "Shares"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "Equity"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "101"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "B-Leonides"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-101.csv:1
+#: ../../source/_static/custom/wrt-wallet-107.csv:1
+#: ../../source/_static/custom/wrt-wallet-108.csv:1
+#: ../../source/_static/custom/wrt-wallet-109.csv:1
+#: ../../source/_static/custom/wrt-wallet-112.csv:1
+#: ../../source/_static/custom/wrt-wallet-119.csv:1
+#: ../../source/_static/custom/wrt-wallet-125.csv:1
+#: ../../source/_static/custom/wrt-wallet-127.csv:1
+#: ../../source/_static/custom/wrt-wallet-130.csv:1
+#: ../../source/_static/custom/wrt-wallet-131.csv:1
+#: ../../source/_static/custom/wrt-wallet-132.csv:1
+#: ../../source/_static/custom/wrt-wallet-135.csv:1
+#: ../../source/_static/custom/wrt-wallet-138.csv:1
+#: ../../source/_static/custom/wrt-wallet-141.csv:1
+#: ../../source/_static/custom/wrt-wallet-144.csv:1
+#: ../../source/_static/custom/wrt-wallet-146.csv:1
+#: ../../source/_static/custom/wrt-wallet-147.csv:1
+#: ../../source/_static/custom/wrt-wallet-149.csv:1
+#: ../../source/_static/custom/wrt-wallet-150.csv:1
+msgid "Queued ..."
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "1720000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.172%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "102"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "M-Holmes"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+msgid "500.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "18.03"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+msgid "518.03"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "90000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.009%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "103"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "R-James"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "104"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "S-Barnes"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "501.27"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "16.76"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "110000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.011%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "105"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "C-Gilder"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+msgid "2000.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "72.12"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+msgid "2072.12"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "106"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "P-Beals"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "170000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.017%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "107"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "P-Brown"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "200000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.020%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "108"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "M-Hough"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "230000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.023%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "109"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "A-Witcomb"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "590000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.059%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "110"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "D-Owen"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+msgid "5000.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "180.30"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+msgid "5180.30"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "111"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "J-Smith-Walker"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "112"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "S-Gates"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "113"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "C-A-Doick"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "2600.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "93.76"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "2693.76"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "760000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.076%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "114"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "C-Kell"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+msgid "4000.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "144.24"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+msgid "4144.24"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "790000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.079%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "115"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "S-Purcell"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+msgid "4500.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "162.27"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+msgid "4662.27"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "880000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.088%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "116"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "C-Chapman"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+msgid "1000.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "36.06"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+msgid "1036.06"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "1070000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.107%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "117"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "T-Marshall"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "2980000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.298%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "118"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "C-Marshall"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+msgid "3000.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "108.18"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+msgid "3108.18"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "3290000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.329%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "119"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "H-Davies"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "1190000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.119%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "120"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "M-Simpson"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+msgid "900.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "32.45"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+msgid "932.45"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "121"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "S-Hume"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "3300000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.330%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "122"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "B-Pullen"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+msgid "8000.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "288.48"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+msgid "8288.48"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "1280000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.128%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "123"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "G-Caines"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+msgid "300.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "10.82"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+msgid "310.82"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "3850000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.385%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "124"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "A-Powell"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "3880000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.388%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "125"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "M-Preston"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "1580000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.158%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "126"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "S-Chapman"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+msgid "100.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "3.61"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+msgid "103.61"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "3010000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.301%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "127"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "L-Wallace"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "2470000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.247%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "128"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "M-Boyd"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "129"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "M-Gerard"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "3060000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.306%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "130"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "S-Hargreaves"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "10640000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "1.064%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "131"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "G-Stewart"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "6120000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.612%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "132"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "S-Reynolds"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "133"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "D-Allen"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "21150000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "2.115%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "134"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "J-Davis"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+msgid "7700.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "277.66"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+msgid "7977.66"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "28270000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "2.827%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "135"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "N-Smith"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "15250000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "1.525%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "136"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "D-Marshall"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+msgid "15000.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "540.90"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+msgid "15540.90"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "48530000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "4.853%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "137"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "A-Vashi"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "65590000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "6.559%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "138"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "C-Pitcairn"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "28210000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "2.821%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "139"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "H-Pitcairn"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "2000000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.200%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "140"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "L-Allen"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+msgid "74000.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "2668.44"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+msgid "76668.44"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "54080000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "5.408%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "141"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "G-Pitcairn"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "44800000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "4.480%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "142"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "P-Caines"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+msgid "37475.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "1351.35"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+msgid "38826.35"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "142100000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "14.210%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "143"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "S-Buckler"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+msgid "67000.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "2416.02"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+msgid "69416.02"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "281084060"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "28.108%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "144"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "E-Young"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "3040000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.304%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "145"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "J-O-Sullivan"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "33480000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "3.348%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "146"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "Y-Sakowitz"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "300000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.030%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "147"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "M-Weaver"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "148"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "Choudhury-Lucas"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+msgid "3268.75"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "117.87"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+msgid "3386.62"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "3830000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.383%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "149"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "R-Stevenson"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "5000000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.500%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "150"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "B-Naipaul"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "151"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "N/A-1"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "152"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "N/A-2"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "153"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "N/A-3"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "1600.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "57.70"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "1657.70"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "154"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "M-Jaffe"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "1550.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "31.65"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "1581.65"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "2800000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "0.280%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "401"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "Startup Investor(s)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "150175940"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "15.018%"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "Total"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "266995.02"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "9602.28"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "276597.30"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "1000000000"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-master-register.csv:1
+msgid "100.000%"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:19
+msgid "Detailed"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:21
+msgid "See below mini-statements for each investor account."
+msgstr ""
+
+#: ../../source/investoraccounts.rst:25
+msgid "B-Leonides (Account:101)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:27
+msgid "Mini Statement: B-Leonides (Account:101)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-101.csv:1
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-107.csv:1
+#: ../../source/_static/custom/wrt-wallet-108.csv:1
+#: ../../source/_static/custom/wrt-wallet-109.csv:1
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-112.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-119.csv:1
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-125.csv:1
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-127.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-130.csv:1
+#: ../../source/_static/custom/wrt-wallet-131.csv:1
+#: ../../source/_static/custom/wrt-wallet-132.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+#: ../../source/_static/custom/wrt-wallet-135.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+#: ../../source/_static/custom/wrt-wallet-138.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+#: ../../source/_static/custom/wrt-wallet-141.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+#: ../../source/_static/custom/wrt-wallet-144.csv:1
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+#: ../../source/_static/custom/wrt-wallet-146.csv:1
+#: ../../source/_static/custom/wrt-wallet-147.csv:1
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+#: ../../source/_static/custom/wrt-wallet-149.csv:1
+#: ../../source/_static/custom/wrt-wallet-150.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "Date"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-101.csv:1
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-107.csv:1
+#: ../../source/_static/custom/wrt-wallet-108.csv:1
+#: ../../source/_static/custom/wrt-wallet-109.csv:1
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-112.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-119.csv:1
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-125.csv:1
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-127.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-130.csv:1
+#: ../../source/_static/custom/wrt-wallet-131.csv:1
+#: ../../source/_static/custom/wrt-wallet-132.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+#: ../../source/_static/custom/wrt-wallet-135.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+#: ../../source/_static/custom/wrt-wallet-138.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+#: ../../source/_static/custom/wrt-wallet-141.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+#: ../../source/_static/custom/wrt-wallet-144.csv:1
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+#: ../../source/_static/custom/wrt-wallet-146.csv:1
+#: ../../source/_static/custom/wrt-wallet-147.csv:1
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+#: ../../source/_static/custom/wrt-wallet-149.csv:1
+#: ../../source/_static/custom/wrt-wallet-150.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "Details"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-101.csv:1
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-107.csv:1
+#: ../../source/_static/custom/wrt-wallet-108.csv:1
+#: ../../source/_static/custom/wrt-wallet-109.csv:1
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-112.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-119.csv:1
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-125.csv:1
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-127.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-130.csv:1
+#: ../../source/_static/custom/wrt-wallet-131.csv:1
+#: ../../source/_static/custom/wrt-wallet-132.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+#: ../../source/_static/custom/wrt-wallet-135.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+#: ../../source/_static/custom/wrt-wallet-138.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+#: ../../source/_static/custom/wrt-wallet-141.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+#: ../../source/_static/custom/wrt-wallet-144.csv:1
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+#: ../../source/_static/custom/wrt-wallet-146.csv:1
+#: ../../source/_static/custom/wrt-wallet-147.csv:1
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+#: ../../source/_static/custom/wrt-wallet-149.csv:1
+#: ../../source/_static/custom/wrt-wallet-150.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "Debit"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-101.csv:1
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-107.csv:1
+#: ../../source/_static/custom/wrt-wallet-108.csv:1
+#: ../../source/_static/custom/wrt-wallet-109.csv:1
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-112.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-119.csv:1
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-125.csv:1
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-127.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-130.csv:1
+#: ../../source/_static/custom/wrt-wallet-131.csv:1
+#: ../../source/_static/custom/wrt-wallet-132.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+#: ../../source/_static/custom/wrt-wallet-135.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+#: ../../source/_static/custom/wrt-wallet-138.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+#: ../../source/_static/custom/wrt-wallet-141.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+#: ../../source/_static/custom/wrt-wallet-144.csv:1
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+#: ../../source/_static/custom/wrt-wallet-146.csv:1
+#: ../../source/_static/custom/wrt-wallet-147.csv:1
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+#: ../../source/_static/custom/wrt-wallet-149.csv:1
+#: ../../source/_static/custom/wrt-wallet-150.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "Credit"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:34
+msgid "M-Holmes (Account:102)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:36
+msgid "Mini Statement: M-Holmes (Account:102)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+msgid "24-04-14"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "Funds Deposited"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "01-04-19"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "Interest Policy Begins"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "01-04-20"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "Interest (1.66% APR)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+msgid "8.32"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+msgid "508.32"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "01-04-21"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+msgid "8.44"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+msgid "516.76"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "25-05-21"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "Interest to Date ...."
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-102.csv:1
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+#: ../../source/_static/custom/wrt-wallet-139.csv:1
+msgid "1.27"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:43
+msgid "R-James (Account:103)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:45
+msgid "Mini Statement: R-James (Account:103)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-103.csv:1
+msgid "13-06-13"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:53
+msgid "S-Barnes (Account:104)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:55
+msgid "Mini Statement: S-Barnes (Account:104)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-104.csv:1
+msgid "21-01-13"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:63
+msgid "C-Gilder (Account:105)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:65
+msgid "Mini Statement: C-Gilder (Account:105)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+msgid "33.29"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+msgid "2033.29"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+msgid "33.75"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+msgid "2067.04"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-105.csv:1
+#: ../../source/_static/custom/wrt-wallet-106.csv:1
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+msgid "5.08"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:73
+msgid "P-Beals (Account:106)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:75
+msgid "Mini Statement: P-Beals (Account:106)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:83
+msgid "P-Brown (Account:107)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:85
+msgid "Mini Statement: P-Brown (Account:107)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:93
+msgid "M-Hough (Account:108)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:95
+msgid "Mini Statement: M-Hough (Account:108)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:103
+msgid "A-Witcomb (Account:109)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:105
+msgid "Mini Statement: A-Witcomb (Account:109)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:112
+msgid "D-Owen (Account:110)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:114
+msgid "Mini Statement: D-Owen (Account:110)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+msgid "07-03-13"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+msgid "83.23"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+msgid "5083.23"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+msgid "84.38"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+msgid "5167.61"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-110.csv:1
+#: ../../source/_static/custom/wrt-wallet-111.csv:1
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+msgid "12.69"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:121
+msgid "J-Smith-Walker (Account:111)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:123
+msgid "Mini Statement: J-Smith-Walker (Account:111)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:130
+msgid "S-Gates (Account:112)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:132
+msgid "Mini Statement: S-Gates (Account:112)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:139
+msgid "C-A-Doick (Account:113)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:141
+msgid "Mini Statement: C-A-Doick (Account:113)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "28-02-13"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "200.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "28-03-13"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "400.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "29-04-13"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "600.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "28-05-13"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+msgid "800.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "01-07-13"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "29-07-13"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "1200.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "29-08-13"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "1400.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "30-09-13"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "29-10-13"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "1800.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+msgid "28-11-13"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "14-03-19"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "43.28"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "2643.28"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "43.88"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "2687.16"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-113.csv:1
+msgid "6.60"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:148
+msgid "C-Kell (Account:114)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:150
+msgid "Mini Statement: C-Kell (Account:114)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+msgid "06-02-13"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+msgid "66.58"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+msgid "4066.58"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+msgid "67.51"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+msgid "4134.09"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-114.csv:1
+msgid "10.15"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:157
+msgid "S-Purcell (Account:115)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:159
+msgid "Mini Statement: S-Purcell (Account:115)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+msgid "28-12-12"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+msgid "Funds Withdrawn"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+msgid "500"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+msgid "74.90"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+msgid "4574.90"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+msgid "75.94"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+msgid "4650.85"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-115.csv:1
+msgid "11.42"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:166
+msgid "C-Chapman (Account:116)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:168
+msgid "Mini Statement: C-Chapman (Account:116)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+msgid "30-12-13"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+msgid "16.65"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+msgid "1016.65"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+msgid "16.88"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+msgid "1033.52"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-116.csv:1
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+msgid "2.54"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:176
+msgid "T-Marshall (Account:117)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:178
+msgid "Mini Statement: T-Marshall (Account:117)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-117.csv:1
+msgid "14-01-14"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:185
+msgid "C-Marshall (Account:118)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:187
+msgid "Mini Statement: C-Marshall (Account:118)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+msgid "06-08-13"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+msgid "10-02-14"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+msgid "49.94"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+msgid "3049.94"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+msgid "50.63"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+msgid "3100.57"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-118.csv:1
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+msgid "7.61"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:194
+msgid "H-Davies (Account:119)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:196
+msgid "Mini Statement: H-Davies (Account:119)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:203
+msgid "M-Simpson (Account:120)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:205
+msgid "Mini Statement: M-Simpson (Account:120)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+msgid "0.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+msgid "14.98"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+msgid "914.98"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+msgid "15.19"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+msgid "930.17"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-120.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+msgid "2.28"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:212
+msgid "S-Hume (Account:121)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:214
+msgid "Mini Statement: S-Hume (Account:121)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-121.csv:1
+msgid "20-02-12"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:221
+msgid "B-Pullen (Account:122)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:223
+msgid "Mini Statement: B-Pullen (Account:122)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+msgid "21-12-12"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+msgid "31-12-12"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+msgid "6000.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+msgid "133.16"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+msgid "8133.16"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+msgid "135.01"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+msgid "8268.17"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-122.csv:1
+msgid "20.31"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:230
+msgid "G-Caines (Account:123)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:232
+msgid "Mini Statement: G-Caines (Account:123)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+msgid "21-11-12"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+msgid "4.99"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+msgid "304.99"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+msgid "5.06"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+msgid "310.06"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-123.csv:1
+msgid "0.76"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:239
+msgid "A-Powell (Account:124)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:241
+msgid "Mini Statement: A-Powell (Account:124)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+msgid "08-08-13"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+msgid "19-12-13"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+msgid "2500.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-124.csv:1
+msgid "21-07-14"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:248
+msgid "M-Preston (Account:125)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:250
+msgid "Mini Statement: M-Preston (Account:125)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:257
+msgid "S-Chapman (Account:126)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:259
+msgid "Mini Statement: S-Chapman (Account:126)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+msgid "04-02-13"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+msgid "1.66"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+msgid "101.66"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+msgid "1.69"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+msgid "103.35"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-126.csv:1
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+msgid "0.25"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:266
+msgid "L-Wallace (Account:127)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:268
+msgid "Mini Statement: L-Wallace (Account:127)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:275
+msgid "M-Boyd (Account:128)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:277
+msgid "Mini Statement: M-Boyd (Account:128)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-128.csv:1
+msgid "04-08-12"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:284
+msgid "M-Gerard (Account:129)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:286
+msgid "Mini Statement: M-Gerard (Account:129)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-129.csv:1
+msgid "01-02-13"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:293
+msgid "S-Hargreaves (Account:130)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:295
+msgid "Mini Statement: S-Hargreaves (Account:130)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:302
+msgid "G-Stewart (Account:131)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:304
+msgid "Mini Statement: G-Stewart (Account:131)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:311
+msgid "S-Reynolds (Account:132)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:313
+msgid "Mini Statement: S-Reynolds (Account:132)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:320
+msgid "D-Allen (Account:133)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:322
+msgid "Mini Statement: D-Allen (Account:133)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-133.csv:1
+msgid "01-06-13"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:329
+msgid "J-Davis (Account:134)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:331
+msgid "Mini Statement: J-Davis (Account:134)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+msgid "02-01-13"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "1500.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+msgid "05-11-13"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+msgid "3200.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+msgid "4700.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+msgid "23-12-13"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+msgid "128.17"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+msgid "7828.17"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+msgid "129.95"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+msgid "7958.12"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-134.csv:1
+msgid "19.54"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:339
+msgid "N-Smith (Account:135)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:341
+msgid "Mini Statement: N-Smith (Account:135)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:348
+msgid "D-Marshall (Account:136)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:350
+msgid "Mini Statement: D-Marshall (Account:136)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+msgid "10000.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+msgid "249.68"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+msgid "15249.68"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+msgid "253.14"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+msgid "15502.83"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-136.csv:1
+msgid "38.07"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:357
+msgid "A-Vashi (Account:137)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:359
+msgid "Mini Statement: A-Vashi (Account:137)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-137.csv:1
+msgid "26-11-13"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:367
+msgid "C-Pitcairn (Account:138)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:369
+msgid "Mini Statement: C-Pitcairn (Account:138)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:376
+msgid "H-Pitcairn (Account:139)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:378
+msgid "Mini Statement: H-Pitcairn (Account:139)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:385
+msgid "L-Allen (Account:140)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:387
+msgid "Mini Statement: L-Allen (Account:140)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+msgid "28-11-14"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+msgid "1231.77"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+msgid "75231.77"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+msgid "1248.85"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+msgid "76480.61"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-140.csv:1
+msgid "187.83"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:395
+msgid "G-Pitcairn (Account:141)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:397
+msgid "Mini Statement: G-Pitcairn (Account:141)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:405
+msgid "P-Caines (Account:142)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:407
+msgid "Mini Statement: P-Caines (Account:142)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+msgid "25000.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+msgid "03-09-14"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+msgid "2875.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+msgid "27875.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+msgid "17-11-14"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+msgid "31875.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+msgid "29-12-14"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+msgid "5600.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+msgid "623.79"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+msgid "38098.79"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+msgid "632.44"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+msgid "38731.23"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-142.csv:1
+msgid "95.12"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:415
+msgid "S-Buckler (Account:143)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:417
+msgid "Mini Statement: S-Buckler (Account:143)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+msgid "1115.25"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+msgid "68115.25"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+msgid "1130.71"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+msgid "69245.96"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-143.csv:1
+msgid "170.06"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:425
+msgid "E-Young (Account:144)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:427
+msgid "Mini Statement: E-Young (Account:144)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:435
+msgid "J-O-Sullivan (Account:145)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:437
+msgid "Mini Statement: J-O-Sullivan (Account:145)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+msgid "05-10-11"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+msgid "01-08-15"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+msgid "12.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+msgid "2012.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+msgid "02-11-15"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+msgid "125.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+msgid "2125.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+msgid "35.37"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+msgid "2160.37"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+msgid "35.86"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+msgid "2196.23"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+msgid "5.39"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-145.csv:1
+msgid "2201.63"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:445
+msgid "Y-Sakowitz (Account:146)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:447
+msgid "Mini Statement: Y-Sakowitz (Account:146)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:455
+msgid "M-Weaver (Account:147)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:457
+msgid "Mini Statement: M-Weaver (Account:147)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:465
+msgid "J-Choudhury-Lucas (Account:148)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:467
+msgid "Mini Statement: J-Choudhury-Lucas (Account:148)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+msgid "29-03-18"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+msgid "1412.50"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+msgid "05-12-18"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+msgid "1856.25"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+msgid "54.41"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+msgid "3323.16"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+msgid "55.16"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+msgid "3378.32"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-148.csv:1
+msgid "8.30"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:475
+msgid "R-Stevenson (Account:149)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:477
+msgid "Mini Statement: R-Stevenson (Account:149)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:485
+msgid "B-Naipaul (Account:150)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:487
+msgid "Mini Statement: B-Naipaul (Account:150)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:495
+msgid "Anonymous-1 (Account:151)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:497
+msgid "Mini Statement: Anonymous-1 (Account:151)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "23-12-18"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-151.csv:1
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "100"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:504
+msgid "Anonymous-2 (Account:152)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:506
+msgid "Mini Statement: Anonymous-2 (Account:152)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "11-08-18"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+msgid "19-11-18"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+msgid "50"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+msgid "450.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "30-11-18"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-152.csv:1
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "350"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:512
+msgid "Anonymous-3 (Account:153)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:514
+msgid "Mini Statement: Anonymous-3 (Account:153)"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "01-11-20"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "750"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "1150.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "26.63"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "1626.63"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "27.00"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "1653.63"
+msgstr ""
+
+#: ../../source/_static/custom/wrt-wallet-153.csv:1
+#: ../../source/_static/custom/wrt-wallet-154.csv:1
+msgid "4.06"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:521
+msgid "M-Jaffe (Account:154)"
+msgstr ""
+
+#: ../../source/investoraccounts.rst:523
+msgid "Mini Statement: M-Jaffe (Account:154)"
+msgstr ""
+
+#: ../../source/releasenotes.rst:3
+msgid "Release Notes and Notices"
+msgstr ""
+
+#: ../../source/releasenotes.rst:5
+msgid "This section provides information about what is new or changed. It also contains urgent issues, documentation updates, maintenance and new releases. 'Updates' are the term used to describe significant changes to our public source code and/or records."
+msgstr ""
+
+#: ../../source/releasenotes.rst:10
+msgid "This Release (Version 0.1.1)"
+msgstr ""
+
+#: ../../source/releasenotes.rst:12
+msgid "**2021-05-25** - `Removed commas from data, which caused csv rendering issues`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:13
+msgid "**2021-05-25** - `Replaced the word 'Reconciling' with 'Queued' in data, to reduce column width`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:17
+msgid "Older Versions"
+msgstr ""
+
+#: ../../source/releasenotes.rst:19
+msgid "Inherent with the update and re-release of this report is the inclusion of a reference to a downloadable, archived copy, of the previous report. In the table below the last entry should display a link to an archived copy of the last report, with an archive date matching the publication of this newly published report. The title of the download link may differ from the filename. This is mainly to keep the filename from overflowing in the table below. Latest releases mention the last three semantic versions only. Older versions can be located in the DATRO Consortiums `Wayback <https://wayback.datro.world>`__ Archive."
+msgstr ""
+
+#: ../../source/releasenotes.rst:25
+msgid "Older Versions of this Document"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "**Archive Date**"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "**Version**"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "**Description**"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "**Download Link**"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "2021-05-23"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "0.0.9"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/olderversions.csv:1
+msgid "see notes"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "`2021-05-10_v0.0.9.pdf <https://datro.world/wayback/2021-05-10_consortium_finances-funding_investors_v0.1.9.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "2021-05-14"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "0.0.8"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "`2021-05-10_v0.0.8.pdf <https://datro.world/wayback/2021-05-10_consortium_finances-funding_investors_v0.1.8.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "2021-05-09"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "0.0.7"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "`2021-05-06_v0.0.7.pdf <https://datro.world/wayback/2021-05-06_consortium_finances-funding_investors_v0.1.7.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "2021-04-07"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "0.0.6"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "`2020-06-12_v0.0.6.pdf <https://datro.world/wayback/2020-06-12_datro_consortium-investors_detailed_v0.1.6.pdf>`__"
+msgstr ""
+
+#: ../../source/releasenotes.rst:32
+msgid "Version 0.1.0"
+msgstr ""
+
+#: ../../source/releasenotes.rst:34
+msgid "**2021-05-24** - `Added more lenders, however more reconsiliation is pending to bring this documents data upto date and accuracy`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:35
+msgid "**2021-05-23** - `In accordance with the the notice issued in the last release of this document, interest was adjusted and changes to accounts was applied accordingly'"
+msgstr ""
+
+#: ../../source/releasenotes.rst:39
+msgid "Version 0.0.9"
+msgstr ""
+
+#: ../../source/releasenotes.rst:41
+msgid "**2021-05-14** - `Limiting the number of older versions/older version release notes (referenced in the latest release) to three. To view older notes look back 3 semantic versions in the archives/ \"wayback\" e.g. https://wayback.datro.world'"
+msgstr ""
+
+#: ../../source/releasenotes.rst:42
+msgid "**2021-05-14** - `Stopped using names of months in releasenotes and used numbers instead - More technical but it aligns better. Backdated this formatting too e.g. '2021-May-10' > '2021-05-10'`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:43
+msgid "**2021-05-14** - `The indexing and layout of v0.0.7 (and the archived copy of v0.0.8) was improved, making the glossary brief and the navigation simpler`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:44
+msgid "**2021-05-14** - `The proposed (backdated and pre-revenue) base rate of interest will reduce by a decimal place this quarter. To be revisited once the consortium is post-revenue`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:45
+msgid "**2021-05-14** - `Minor releasenote edits to v0.0.8 before archiving it - 'This Release' was a version behind and v0.0.7 was missing from 'Older Versions'`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:49
+msgid "Version 0.0.8"
+msgstr ""
+
+#: ../../source/releasenotes.rst:51
+msgid "**2021-05-09** - `Fixed issue with cells numbering format which put commas in the data and effected the csv comma scrape, resulting in some blank cells`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:52
+msgid "**2021-05-08** - `Stopped using semantic version '0.1.x'. Using '0.0.x' instead. And backdated when referencing older versions too e.g. 0.1.6 is now 0.0.6 etc`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:56
+msgid "Version 0.0.7"
+msgstr ""
+
+#: ../../source/releasenotes.rst:58
+msgid "**2021-04-08** - `Addressed issues from last document release`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:61
+msgid "To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback <https://wayback.datro.world>`__ Archive."
+msgstr ""
+
+#: ../../source/releasenotes.rst:64
+msgid "Known and Corrected Issues"
+msgstr ""
+
+#: ../../source/releasenotes.rst:66
+msgid "Below is a table of pending issues which have been reported to our team. When these issues are remedied they will be cleared from this, ahead of updated releases of this document."
+msgstr ""
+
+#: ../../source/releasenotes.rst:69
+msgid "Known Issues"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "**Date**"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "**Subject**"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "0.1.0"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "Data"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "`Account reconsilation still pending on some accounts`"
+msgstr ""

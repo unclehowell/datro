@@ -14,20 +14,20 @@ unset CDPATH
 #   ██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝
 #   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
 #................................................
-# Docs Library - auto-rebuild.sh - v0.9
+#            auto-rebuild.sh - v1.0
 #................................................
-#          (Blue Theme) - datro.xyz
+#                  datro.xyz
 #................................................
 
 
 # update the rebuild and auto-rebuild source files.
-bash ../../../_theme-blue/update.sh &&
+bash ../../../_theme-docs/update.sh &&
 
 # get the latest rebuild.sh file from source
 
 rm -r rebuild.sh &&
 
-cp -r ../../../_theme-blue/rebuild-master.sh rebuild.sh &&
+cp -r ../../../_theme-docs/rebuild-master.sh rebuild.sh &&
 
 # confirm permissions
 chmod +x rebuild.sh &&

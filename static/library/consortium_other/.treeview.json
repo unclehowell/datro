@@ -1,9 +1,24 @@
 [
   {
-    "name": "github > wiki",
+    "name": "<div class='title-line flag f-datro title-disable' >Wiki</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='depth2-subtitle-line enable-link'>GitHub</div>",
     "path": "./github_wiki",
     "_links": {
       "html": "./github_wiki"
     }
-  }
+   },
+  {
+    "name": "<div class='page-scroll-fix title-disable'></div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   }
 ]
+

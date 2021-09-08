@@ -1,0 +1,486 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, DATRO Consortium
+# This file is distributed under the same license as the DATRO Wiki package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: DATRO Wiki 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-07 21:08-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/HBnB-|-Apps-|-PiHole.rst:2
+msgid "HBnB > Apps > PiHole"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-PiHole.rst:3
+msgid "# Manual Install"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-PiHole.rst:5
+msgid "``` curl -sSL https://install.pi-hole.net | bash ```"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-PiHole.rst:9
+msgid "During the setup it asks for lightpad to be installed. Say no. We will use apache as our webserver."
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-PiHole.rst:11
+msgid "`http://HOSTNAMEorIP/admin` to access the PiHole dashboard"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-PiHole.rst:13
+msgid "Go from there."
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-RetroPie-|-BGM.rst:2
+msgid "HBnB > Apps > RetroPie > BGM"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-RetroPie-|-BGM.rst:3
+msgid "Background audio solution is BGM (google it)"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Retropie-Manager.rst:2
+msgid "HBnB > Apps > Retropie-Manager"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Retropie-Manager.rst:3
+msgid "# RetroPie-Manager"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Retropie-Manager.rst:5
+msgid "## Errors & Solution"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Retropie-Manager.rst:7
+msgid "The Makefile can bring up a myriad of issues, so go through it manually to fulfill it's requirements and deal with the issues 1 by 1 as they arrive. Here are some examples below:"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Retropie-Manager.rst:9
+msgid "**Error:** bad magic number in 'application': b'\\x03\\xf3\\r\\n' **Solution:** Remove `--no-site-packages` from manage.py"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Retropie-Manager.rst:12
+msgid "**Error:** bad magic number in 'project': b'\\x03\\xf3\\r\\n' **Solution:** `find . -name \\*.pyc -delete` **Source:** https://github.com/Miserlou/Zappa/issues/854"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Retropie-Manager.rst:16
+msgid "**Error:** TypeError: expected str, bytes or os.PathLike object, not NoneType **Solution:** apt-get -y update && apt-get install -y build-essential g++ gcc make git zip unzip libopenblas-dev cmake python3-dev python3-pip **Source:** https://github.com/IBM/mimkl/issues/6"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Retropie-|-es_input.cfg.rst:2
+msgid "HBnB > Apps > Retropie > es_input.cfg"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Retropie-|-es_input.cfg.rst:3
+msgid "``` <inputConfig type=\"keyboard\" deviceName=\"Keyboard\" deviceGUID=\"-1\" deviceNbAxes=\"0\" deviceNbHats=\"0\" deviceNbButtons=\"120\">"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Retropie-|-es_input.cfg.rst:5
+msgid "<input name=\"a\" type=\"key\" id=\"115\" value=\"1\" code=\"168\" /> <input name=\"b\" type=\"key\" id=\"97\" value=\"1\" code=\"168\" /> <input name=\"down\" type=\"key\" id=\"1073741905\" value=\"1\" code=\"168\" /> <input name=\"hotkey\" type=\"key\" id=\"32\" value=\"1\" code=\"168\" /> <input name=\"left\" type=\"key\" id=\"1073741904\" value=\"1\" code=\"168\" /> <input name=\"pagedown\" type=\"key\" id=\"1073741902\" value=\"1\" code=\"168\" /> <input name=\"pageup\" type=\"key\" id=\"1073741899\" value=\"1\" code=\"168\" /> <input name=\"right\" type=\"key\" id=\"1073741903\" value=\"1\" code=\"168\" /> <input name=\"select\" type=\"key\" id=\"32\" value=\"1\" code=\"168\" /> <input name=\"start\" type=\"key\" id=\"13\" value=\"1\" code=\"168\" /> <input name=\"up\" type=\"key\" id=\"1073741906\" value=\"1\" code=\"168\" />"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Retropie-|-es_input.cfg.rst:16
+#: ../../source/HBnB-|-Apps-|-Retropie-|-es_input.cfg.rst:33
+#: ../../source/HBnB-|-Configs-|-config.txt.rst:32
+#: ../../source/HBnB-|-Configs-|-wpa_supplicant.conf.rst:19
+msgid "```"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Retropie-|-es_input.cfg.rst:18
+msgid "``` <inputConfig type=\"joystick\" deviceName=\"Virtual gamepad\" deviceGUID=\"03000000030000000300000002000000\" deviceNbAxes=\"2\" deviceNbHats=\"0\" deviceNbButtons=\"8\">"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Retropie-|-es_input.cfg.rst:20
+msgid "<input name=\"a\" type=\"button\" id=\"0\" value=\"1\" code=\"304\" /> <input name=\"b\" type=\"button\" id=\"1\" value=\"1\" code=\"305\" /> <input name=\"down\" type=\"axis\" id=\"1\" value=\"1\" code=\"1\" /> <input name=\"hotkey\" type=\"button\" id=\"6\" value=\"1\" code=\"314\" /> <input name=\"left\" type=\"axis\" id=\"0\" value=\"-1\" code=\"0\" /> <input name=\"pagedown\" type=\"button\" id=\"5\" value=\"1\" code=\"311\" /> <input name=\"pageup\" type=\"button\" id=\"4\" value=\"1\" code=\"310\" /> <input name=\"right\" type=\"axis\" id=\"0\" value=\"1\" code=\"0\" /> <input name=\"select\" type=\"button\" id=\"6\" value=\"1\" code=\"314\" /> <input name=\"start\" type=\"button\" id=\"7\" value=\"1\" code=\"315\" /> <input name=\"up\" type=\"axis\" id=\"1\" value=\"-1\" code=\"1\" /> <input name=\"x\" type=\"button\" id=\"2\" value=\"1\" code=\"307\" /> <input name=\"y\" type=\"button\" id=\"3\" value=\"1\" code=\"308\" />"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Virtual-GamePad.rst:2
+msgid "HBnB > Apps > Virtual-GamePad"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Virtual-GamePad.rst:3
+msgid "## Install Node.js"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Virtual-GamePad.rst:5
+msgid "``` curl -sL https://deb.nodesource.com/setup_9.x | sudo bash - sudo apt install -y build-essential python-dev nodejs npm npm install -g npm ``` (Mines `node -v` = v14.13.0, `nodejs -v` = v10.21.0, `npm -v` = 6.14.8)"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Virtual-GamePad.rst:12
+msgid "## You may also need development tools to build native addons: ``` sudo apt-get install gcc g++ make curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - echo \"deb https://dl.yarnpkg.com/debian/ stable main\" | sudo tee /etc/apt/sources.list.d/yarn.list sudo apt-get update && sudo apt-get install yarn ```"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Virtual-GamePad.rst:20
+msgid "## Then run:"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Virtual-GamePad.rst:22
+msgid "``` sudo npm cache clean -f sudo npm install -g n sudo n 9 sudo npm install -g npm ``` (Mines now `node -v` = v9.11.2 - nodejs & npm are the same)"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Virtual-GamePad.rst:30
+msgid "## Install Virtual Gamepad (Must Be Run As Root!)"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Virtual-GamePad.rst:32
+msgid "``` sudo -i cd / git clone https://github.com/miroof/node-virtual-gamepads cd node-virtual-gamepads npm install ```"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Virtual-GamePad.rst:40
+msgid "## Test it out ``` sudo node main.js ```"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Virtual-GamePad.rst:46
+msgid "## Make the gamepad load at startup"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Virtual-GamePad.rst:48
+msgid "``` sudo npm install pm2 -g sudo pm2 start main.js   # full path e.g. /home/pi/node-virtual-gamepad/main.js etc sudo pm2 startup sudo pm2 save ```"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Virtual-GamePad.rst:56
+msgid "# EmulationStation Controller Config (in `/opt/retropie/configs/all/retroarch-joypads/Virtualgamepad.cfg`)"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Virtual-GamePad.rst:59
+msgid "``` input_device = \"Virtual gamepad\" input_driver = \"udev\" input_r_btn = \"5\" input_save_state_btn = \"5\" input_start_btn = \"7\" input_exit_emulator_btn = \"7\" input_l_btn = \"4\" input_load_state_btn = \"4\" input_up_axis = \"-1\" input_a_btn = \"0\" input_b_btn = \"1\" input_reset_btn = \"1\" input_down_axis = \"+1\" input_right_axis = \"+0\" input_state_slot_increase_axis = \"+0\" input_x_btn = \"2\" input_menu_toggle_btn = \"2\" input_select_btn = \"6\" input_enable_hotkey_btn = \"6\" input_y_btn = \"3\" input_left_axis = \"-0\" input_state_slot_decrease_axis = \"-0\" ```"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Virtual-GamePad.rst:84
+msgid "# Prevent \"Welcome - No Gamepad Detected\" on boot-up"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Virtual-GamePad.rst:86
+msgid "You just need to configure a keyboard as a gamepad once. Then it seems to stop asking you on boot-up."
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Virtual-GamePad.rst:89
+msgid "# Troubleshooting"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Virtual-GamePad.rst:91
+msgid "## npm audit fix"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Virtual-GamePad.rst:93
+msgid "Running this command can actually cause the gamepad not to run. So don't run it when it suggests, not unless `sudo node main.js` fails."
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Virtual-GamePad.rst:95
+msgid "## other errors"
+msgstr ""
+
+#: ../../source/HBnB-|-Apps-|-Virtual-GamePad.rst:97
+msgid "Most other errors are solved by simply removing the `node_modules` directory and performing `sudo npm install` again."
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-System-Analyze.rst:2
+msgid "HBnB > Configs > System-Analyze"
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-System-Analyze.rst:3
+msgid "The command `systemd-analyze blame` lists bootup items and time. This is helpful for troubleshooting boot-up speed issues."
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-config.txt.rst:2
+msgid "HBnB > Configs > config.txt"
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-config.txt.rst:3
+msgid "Below is where you'll find the default config.txt - Although looking at this, this isn't it - so don't depend on it."
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-config.txt.rst:5
+msgid "``` disable_splash=1 display_default_lcd=0 disable_overscan=1 hdmi_force_hotplug=1 hdmi_ignore_edid=0xa5000080 hdmi_drive=2 config_hdmi_boost=4 dtparam=i2c_arm=on dtparam=audio=on gpu_mem_256=128 gpu_mem_512=256 gpu_mem_1024=384 gpu_mem_2048=512 gpu_mem_4096=512"
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-config.txt.rst:21
+msgid "[pi3] program_usb_boot_mode=1 enable_uart=1"
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-config.txt.rst:25
+msgid "[pi4] dtoverlay=vc4-fkms-v3d max_framebuffers=2"
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-config.txt.rst:29
+msgid "[all] dtoverlay=vc4-fkms-v3d"
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-fstab.rst:2
+msgid "HBnB > Configs > fstab"
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-fstab.rst:3
+msgid "If the MicroSD Card corrupts, use fsck/ dosfsck."
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-fstab.rst:5
+msgid "Place it into a Linux machine"
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-fstab.rst:6
+msgid "Get device location with this command `lsblk` e.g. # /dev/sdb"
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-fstab.rst:7
+msgid "3. Check for errors with this command `sudo dosfsck -w -r -l -a -v -t /dev/sdb1` 3. This command also works `sudo fsck -y /dev/sdb1`"
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-system.conf.rst:2
+msgid "HBnB > Configs > system.conf"
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-system.conf.rst:3
+msgid "The system.conf file is kept in this directory `/etc/systemd/`"
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-system.conf.rst:5
+msgid "You can append `arm_64bit=1` to invoke the 64 bit kernel"
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-wpa_supplicant.conf.rst:2
+msgid "HBnB > Configs > wpa_supplicant.conf"
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-wpa_supplicant.conf.rst:4
+msgid "Create `wpa_supplicant.conf` in the `/boot/` directory using this command:"
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-wpa_supplicant.conf.rst:6
+msgid "`sudo nano wpa_supplicant.conf`"
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-wpa_supplicant.conf.rst:8
+msgid "Past this text below into the file and fill out the Country Code, SSID & PSK:"
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-wpa_supplicant.conf.rst:10
+msgid "``` country=US ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev update_config=1"
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-wpa_supplicant.conf.rst:16
+msgid "network={"
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-wpa_supplicant.conf.rst:16
+msgid "ssid=\"NETWORK-NAME\" psk=\"NETWORK-PASSWORD\""
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-wpa_supplicant.conf.rst:18
+msgid "}"
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-wpa_supplicant.conf.rst:21
+msgid "Then `CTL-X` then `Y` then `ENTER` to save the file."
+msgstr ""
+
+#: ../../source/HBnB-|-Configs-|-wpa_supplicant.conf.rst:23
+msgid "`umount ./` to unmount"
+msgstr ""
+
+#: ../../source/HBnB-|-Manual-Build-Process.rst:2
+msgid "HBnB > Manual-Build-Process"
+msgstr ""
+
+#: ../../source/HBnB-|-Manual-Build-Process.rst:3
+msgid "# Install Dependencies"
+msgstr ""
+
+#: ../../source/HBnB-|-Manual-Build-Process.rst:5
+msgid "`sudo apt-get install git`"
+msgstr ""
+
+#: ../../source/HBnB-|-Manual-Build-Process.rst:7
+msgid "# Install GUI"
+msgstr ""
+
+#: ../../source/HBnB-|-Manual-Build-Process.rst:9
+msgid "Get the GUI and place it onto your webserver e.g. /var/www/html/"
+msgstr ""
+
+#: ../../source/HBnB-|-Manual-Build-Process.rst:11
+msgid "`cd /var/www/html`"
+msgstr ""
+
+#: ../../source/HBnB-|-Manual-Build-Process.rst:13
+msgid "`sudo svn co --depth infinity https://github.com/unclehowell/datro/branches/gh-pages/static/gui/` (the online interactive demo (https://datro.xyz/static/gui) source files, are the same source files as the actual GUI )"
+msgstr ""
+
+#: ../../source/HBnB-|-Manual-Build-Process.rst:16
+msgid "# Get Started"
+msgstr ""
+
+#: ../../source/HBnB-|-Manual-Build-Process.rst:18
+msgid "visit `http://hostname/`"
+msgstr ""
+
+#: ../../source/HBnB-|-Manual-Build-Process.rst:20
+msgid "For installation instructions for the application, search for the corresponding documentation using the search tool."
+msgstr ""
+
+#: ../../source/Home-|-Home-|-Home.rst:2
+msgid "Home > Home > Home"
+msgstr ""
+
+#: ../../source/Home-|-Home-|-Home.rst:3
+msgid "Welcome to the DATRO Wiki! Our mission here at DATRO is to free, democratize & decentralize our ability to communicate digitally e.g. access to the internet. Right now we pay, so it's an affordable privilege, our communications mostly goes through a corporate/privately owned internet service provider, who dictate the service and terms to the public, which has usually been dictated to them by a central Government and/or bank - And in a lot of cases, to the users complete detriment and dissatisfaction. [Learn More](https://datro.world)"
+msgstr ""
+
+#: ../../source/Home-|-Home-|-Home.rst:5
+msgid "To join this revolution, begin with [HotspotBnB](http://hbnb.datro.world/): Our free & universal software upgrade for your wireless access point. (Also works on most other Linux Debian supported devices, such as the Raspberry Pi's (all models)). This software upgrade will allow you to install and host applications on your wireless access point. The HotspotBnB App Store features a range of cutting edge web app and a stylish and modern dashboard to access and manage them. With a few apps installed your wireless access point will transform into a smart home hub, featuring gaming, iptv & media center entertainment, energy & ipcctv monitoring and more. HotspotBnB also features an opt-in cryptocurrency mining feature, used for the Wave application."
+msgstr ""
+
+#: ../../source/Home-|-Home-|-Home.rst:7
+msgid "Wave is a Decentralized Application (DApp) on the HotspotBnB App Store. It enables you to forward the cryptocurrency being mined on your home network, to your Internet Service Provider (ISP). This DApp is subsequently able to reduce your monthly internet bill. In some cases by as much as 100% e.g. free internet access. It all depends on your monthly usage of your newly upgrade wireless access point."
+msgstr ""
+
+#: ../../source/Home-|-Home-|-Home.rst:9
+msgid "Then we have a few other solution which help secure, decentralize and democratize our software solutions. Here's a summary of these additional solutions DATRO is developing:"
+msgstr ""
+
+#: ../../source/Home-|-Home-|-Home.rst:11
+msgid "To-Go USB - A disk image for a USB Dongle. It creates a pre-configured work environment, giving anyone anywhere the tools and development environment they need to collaborate on this project. No more need to change settings or install work software onto your laptop, just copy our persistent live disk image to a usb dongle and reboot your machine and it's just like you've visited our offices and booted up one of our workstations."
+msgstr ""
+
+#: ../../source/Home-|-Home-|-Home.rst:13
+msgid "'Scottish Bay' Decentralised Autonomous Society (DAS) - Revenue is mined from our network and distributed to ISP's and developers fully autonomously using cryptocurrency smart contracts and the blockchain. These types of autonomous organisations are commonly known as DAO's (Decentralised Autonomous Organisations), but our stakeholders exceed 5,000 and subsequently constitute this DAO being a society and not just an organisation, hence the abbreviation DAS. The term Scottish Bay comes from the Caribbean coastline from where this technology is being developed and trialed."
+msgstr ""
+
+#: ../../source/Home-|-Home-|-Home.rst:15
+msgid "Proxy Cache - A disk image for use on offline networks. Our Proxy Cache simulates internet access, tricking the autonomous self-building HotspotBnB NetInstaller, to think there's internet when there isn't, in order for it to upgrade a wireless access point, install a mesh network application and join a nearby mesh network, and/or download Wave, to get free internet access from the second the new user joins the network."
+msgstr ""
+
+#: ../../source/Home-|-Home-|-Home.rst:17
+msgid "Monorepo - We're proud to announce that everything listed above and more, including compiled technical documents and our websites, training videos etc, are all stored in a single public directory (repository), which uses industry standard methodologies to manage changes and release (CHANGELOG, Semantic version etc)"
+msgstr ""
+
+#: ../../source/index.rst:2
+msgid "DATRO Wiki"
+msgstr ""
+
+#: ../../source/index.rst:24
+msgid "**Document Author(s):**"
+msgstr ""
+
+#: ../../source/index.rst:28
+msgid "**DATRO Consortium**"
+msgstr ""
+
+#: ../../source/releasenotes.rst:2
+msgid "Release Notes and Notices"
+msgstr ""
+
+#: ../../source/releasenotes.rst:4
+msgid "This section provides information about what is new or changed, including urgent issues, documentation updates, maintenance, and new releases. - 'Updates' are the term used to describe significant changes to our public source code and/or records."
+msgstr ""
+
+#: ../../source/releasenotes.rst:9
+msgid "This Release (0.0.0)"
+msgstr ""
+
+#: ../../source/releasenotes.rst:11
+msgid "**2021-09-07** - `Still in draft but rebuilt using new rebuild.sh with multilingual support`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:15
+msgid "Older Versions"
+msgstr ""
+
+#: ../../source/releasenotes.rst:17
+msgid "In the table below the last entry displays a link to an archived copy of the last report. To keep the filename from overflowing in the table below the name displayed may differ from the file name. The date the file was archived will differ from the date of the document label, which is its creation date. If you're viewing this document on a subdomain of `.datro.world` you may need to right-click and select 'open link in new tab`. In the interim of a bug fix, you can avoid right-clicking all together, by viewing our document library at its original location `datro.xyz/static/library <https://datro.xyz/static/library>`__"
+msgstr ""
+
+#: ../../source/releasenotes.rst:24
+msgid "Older Versions of this Document"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "archive date"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "version"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "description"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "download link"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/olderversions.csv:1
+msgid "n/a"
+msgstr ""
+
+#: ../../source/releasenotes.rst:31
+msgid "Version 0.0.0"
+msgstr ""
+
+#: ../../source/releasenotes.rst:33
+msgid "To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://datro.world/wayback/>`__."
+msgstr ""
+
+#: ../../source/releasenotes.rst:38
+msgid "Known and Corrected Issues"
+msgstr ""
+
+#: ../../source/releasenotes.rst:40
+msgid "Below is a table of pending issues that have been reported to our team. These issues will be cleared from this list as and when they are remedied."
+msgstr ""
+
+#: ../../source/releasenotes.rst:44
+msgid "Known Issues"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "**Date**"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "**Version**"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "**Subject**"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "**Description**"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "2021/09/07"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "0.0.0"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "custom.sh"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "`custom.sh also leaves behind unwanted files headers.csv and subsubsubheadings.txt`"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "`the custom script screws up the csv files`"
+msgstr ""

@@ -1,6 +1,6 @@
 [
   {
-    "name": "<div class='title-line flag-gb title-disable' >English</div>",
+    "name": "<div class='title-line flag f-gb title-disable' >English</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
@@ -21,7 +21,7 @@
     }
    },
   {
-    "name": "<div class='title-line flag-es title-disable' >Español</div>",
+    "name": "<div class='title-line flag f-es title-disable' >Español</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
@@ -42,7 +42,7 @@
     }
    },
   {
-    "name": "<div class='title-line flag-de title-disable' >Deutsch</div>",
+    "name": "<div class='title-line flag f-de title-disable' >Deutsch</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
@@ -63,7 +63,7 @@
     }
    },
   {
-    "name": "<div class='title-line flag-fr title-disable' >Française</div>",
+    "name": "<div class='title-line flag f-fr title-disable' >Française</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
@@ -84,11 +84,10 @@
     }
    },
   {
-    "name": "<div class='page-scroll-fix'></div>",
+    "name": "<div class='page-scroll-fix title-disable'></div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
    }
 ]
-

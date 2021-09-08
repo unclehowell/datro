@@ -15,9 +15,9 @@
 #   ██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝
 #   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
 #................................................
-#    Document rebuild.sh script (blue theme)
+#       rebuild.sh  _theme-docs.08-rc2.0
 #................................................
-#             Version 1.2 - datro.xyz
+#                   datro.xyz
 #................................................
 
 
@@ -39,7 +39,7 @@ _end=100
 
 printf "\n\e[2;4;33m${PWD#${PWD%/*/*/*}/} ... is rebuilding!\e[0m\n"
 
-printf "\n\e[2;3;33m Step 1 of 5. Clearing old builds & logs and running any custom scripts (if they exist) \n\e[0m\n"
+printf "\n\e[2;3;33m Step 1 of 5. Cleared old builds. Run custom script ? (enable/disable in rebuild.sh) \n\e[0m\n"
 for number in $(seq ${_start} ${_20})
 do
         sleep 0.1
@@ -50,9 +50,10 @@ done
 #sh custom.sh 2> /dev/null &&
 touch build.log
 make clean > build.log 2>&1
+
 printf "\e[2;3;33m Done! \n\e[0m"
 
-printf "\n\e[2;3;33m Step 2 of 5. Converting ReStructuredText to HTML \n\e[0m\n"
+printf "\n\e[2;3;33m Step 2 of 5. Converting ReStructuredText to HTML (make html) \n\e[0m\n"
 for number in $(seq ${_20} ${_40})
 do
 	sleep 0.1
@@ -60,10 +61,52 @@ do
 done
 
 
+make gettext > build.log 2>&1 &&
+# copy .po into source/locales/{language-code}/LC_MESSAGES/
+sleep 2 &&
+sphinx-intl update -p build/gettext -l es -l de -l fr  > build.log 2>&1 &&
+sleep 2 &&
 make html > build.log 2>&1 &&
+sleep 2 &&
+
+cd build &&
+mkdir en &&
+cd html &&
+mv * ../en &&
+cd ..
+mv en html &&
+cd ..
+sleep 2 &&
+sphinx-build -b html source build/html/es -D language='es' > build.log 2>&1 &&
+sleep 2 &&
+sphinx-build -b html source build/html/de -D language='de' > build.log 2>&1 &&
+sleep 2 &&
+sphinx-build -b html source build/html/fr -D language='fr' > build.log 2>&1 &&
+sleep 2 &&
+
+
+cd build
+cd html
+touch index.html
+{
+echo '<html>'
+echo '<body>'
+echo '</body>'
+echo '<script type="text/javascript">'
+echo 'window.open("./en/", "_self");'
+echo '</script>'
+echo '<script language="JavaScript" type="text/javascript">'
+echo 'setTimeout("window.history.go(-1)",500);'
+echo '</script>'
+echo '</html>'
+}>> index.html
+cd ..
+cd ..
+sleep 5 &&
+
 printf "\e[2;3;33m Done! \n\e[0m"
 
-printf "\n\e[2;3;33m Step 3 of 5. Converting ReStructeredText to PDF \n\e[0m\n"
+printf "\n\e[2;3;33m Step 3 of 5. Converting ReStructeredText to PDF (make latexpdf) \n\e[0m\n"
 
 for number in $(seq ${_40} ${_60})
 do
@@ -71,110 +114,40 @@ do
         ProgressBar ${number} ${_end}
 done
 
-make latexpdf --keep-going --silent > build.log 2>&1
-sleep 10 &&
+cd build
+mkdir -p pdfs/{en,es,de,fr}
+printf "\n\e[2;3;33m making pdf (en) \n\e[0m\n"
+cd ..
+
+make  -e SPHINXOPTS="-D language='en'" latexpdf  --keep-going --silent > build.log 2>&1 &&
+ls -1 build/latex/
+
+sleep 2 && cd build && mv latex/*.pdf pdfs/en && cd latex && find . -type f ! -iname "*.pdf" -delete &&
+
+ls -la ../pdfs/en
+cd ..
+cd ..
+
+make  -e SPHINXOPTS="-D language='es'" latexpdf  --keep-going --silent > build.log 2>&1 &&
+cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/es && cd .. && cd .. &&
+make  -e SPHINXOPTS="-D language='de'" latexpdf  --keep-going --silent > build.log 2>&1 &&
+cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/de && cd .. && cd .. &&
+make  -e SPHINXOPTS="-D language='fr'" latexpdf  --keep-going --silent > build.log 2>&1 &&
+cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/fr && cd .. && cd .. &&
+
+
+mv build/pdfs/{en,es,de,fr} build/latex
+rm -r build/pdfs
+
+printf "\n\e[2;3;33m check we're back in ./ (CTL+C if not) \n\e[0m\n"
+pwd
+
+
+printf "\n\e[2;3;33m Making redirect from language directories to pdf's \n\e[0m\n"
+
 cd build
 cd latex
-find . -type f ! -iname "*.pdf" -delete &&
-cd ../../
-
-printf "\e[2;3;33m Done! \n\e[0m"
-
-printf "\n\e[2;3;33m Step 4 of 5. Changing HTML Theme from Default to DATRO(Blue) \n\e[0m\n"
-for number in $(seq ${_60} ${_80})
-do
-       sleep 0.1
-       ProgressBar ${number} ${_end}
-done
-
-sed -i 's/<\/head>/<style>html{overflow-y:scroll;} ::-webkit-scrollbar{width:0px;background:transparent;}<\/style><\/head>/g' build/html/*.html
-sed -i 's/ View page source/ /g' build/html/*.html
-sed -i 's/<div class="version">/<div class="version"> Document Version : /g' build/html/*.html
-sed -i 's/#33368C/darkslateblue/g' build/html/_static/css/theme.css
-sed -i 's/color:initial}/color:lightgrey;}/g' build/html/_static/css/theme.css
-sed -i 's/#9b59b6/#29808A/g' build/html/_static/css/theme.css
-sed -i 's/#4d4d4d/grey/g' build/html/_static/css/theme.css
-sed -i 's/#4e4a4a/#333569/g' build/html/_static/css/theme.css
-sed -i 's/#c9c9c9/#333653/g' build/html/_static/css/theme.css
-sed -i 's/#d6d6d6/#333666/g' build/html/_static/css/theme.css
-sed -i 's/#f3f6f6/#333666/g' build/html/_static/css/theme.css
-sed -i 's/rgb(243, 246, 246)/#333666/g' build/html/_static/css/theme.css
-sed -i 's/#e5ebeb/#333666/g' build/html/_static/css/theme.css
-sed -i 's/#343131/#33365D/g' build/html/_static/css/theme.css
-sed -i 's/#fcfcfc/-webkit-gradient(radial,50% 50%,450,50% 55%,60,from(#333650),to(#333666))/g' build/html/_static/css/theme.css
-sed -i 's/#404040/lightgrey/g' build/html/_static/css/theme.css
-sed -i 's/#edf0f2/-webkit-gradient(radial,50% 50%,450,50% 55%,60,from(#333650),to(#333666))/g' build/html/_static/css/theme.css
-sed -i 's/rgba(0,0,0,.05)/#33365D/g' build/html/_static/css/theme.css
-sed -i 's/#d9d9d9/initial/g' build/html/_static/css/theme.css
-sed -i 's/#9B59B6/#a3a3a3/g' build/html/_static/css/theme.css
-sed -i 's/body{/body{text-align:justify;/g' build/html/_static/css/theme.css
-sed -i 's/.wy-nav-top{/.wy-nav-top{width:100vw!important;position:fixed!important;/g' build/html/_static/css/theme.css
-sed -i 's/body{/body{scroll-padding-top: 70px!important;/g' build/html/_static/css/theme.css
-sed -i 's/html{/html{scroll-padding-top: 70px!important;/g' build/html/_static/css/theme.css
-sed -i 's/h3{font/h3{font-align:left;font/g' build/html/_static/css/theme.css
-sed -i 's/.wy-table-responsive table td/.wy-table-responsive table td {white-space: normal !important;} .wy-table-responsive table td/g' build/html/_static/css/theme.css
-sed -i 's/.btn-neutral {/.btn-neutral {background-color: #333666!important; border: 1px solid rgb(229, 235, 235) !important; border-radius: 6px;  /g' build/html/_static/css/theme.css
-sed -i 's/a.btn.btn-neutral.float-right {/a.btn.btn-neutral.float-right {background-color: #333666!important; border: 1px solid rgb(229, 235, 235) !important; border-radius: 6px; /g' build/html/_static/css/theme.css
-sed -i 's/.wy-table-responsive {/.wy-table-responsive {overflow: visible !important;/g' build/html/_static/css/theme.css
-sed -i 's/h2,/h2 {text-align:left!important;} h2,/g' build/html/_static/css/theme.css
-sed -i 's/.rst-content img{/ @media all and (min-width: 680px) { .rst-content img {margin-left:24px!important;} } .rst-content img{ /g' build/html/_static/css/theme.css
-sed -i 's/a:visited{color:#a3a3a3}/a:visited{color:#5F9EA0;}/g' build/html/_static/css/theme.css
-sed -i 's/initial;/lightgrey;/g' build/html/_static/css/theme.css
-sed -i 's/color:#333650/color:lightgrey/g' build/html/_static/css/theme.css
-sed -i 's/;color:#2980b9/;color:lightskyblue/g' build/html/_static/css/theme.css
-sed -i 's/#333;/#fff;/g' build/html/_static/css/theme.css
-sed -i 's/background-color:#2980b9;/background-color:#333666;/g' build/html/_static/css/theme.css
-sed -i 's/#e3e3e3/transparent/g' build/html/_static/css/theme.css
-sed -i 's/color:initial}/color:lightgrey;}/g' build/html/_static/css/theme.css
-sed -i 's/a,.wy-side-nav-search>a{color:-webkit-gradient(radial,50% 50%,450,50% 55%,60,from(#333650),to(#333666));/a,.wy-side-nav-search>a{color:lightskyblue;/g' build/html/_static/css/theme.css
-sed -i 's/#29808A/lightskyblue/g' build/html/_static/css/theme.css
-sed -i 's/#2980b9/lightskyblue/g' build/html/_static/css/theme.css
-sed -i 's/#2472a4/darkgrey/g' build/html/_static/css/theme.css
-sed -i 's/#ddd/#333666/g' build/html/_static/css/theme.css
-sed -i 's/border-radius:50px;padding:6px 12px;border-color:darkgrey/border-radius:50px;padding:6px 12px;border-color:darkgrey;background-color:#333666;color: lightgray; letter-spacing: 0.05em;/g' build/html/_static/css/theme.css
-sed -i 's/#ccc/#333666/g' build/html/_static/css/theme.css
-sed -i 's/darkgrey/darkgrey/g' build/html/_static/css/theme.css
-sed -i 's/#999/darkgrey/g' build/html/_static/css/theme.css
-sed -i 's/#666/darkgrey/g' build/html/_static/css/theme.css
-sed -i 's/#e74c3c/darkgrey/g' build/html/_static/css/theme.css
-sed -i 's/background-color: rgb(41, 128, 185);/background-color:#333666/g' build/html/_static/css/theme.css
-sed -i 's/.wy-side-nav-search .wy-dropdown>a,.wy-side-nav-search>a{color:lightskyblue;/.wy-side-nav-search .wy-dropdown>a,.wy-side-nav-search>a{color:lightslategrey;/g' build/html/_static/css/theme.css
-sed -i 's/}*,:after,:before{/}div#document-author-s { color: rgba(255,255,255,0.14); font-size: 75%; margin-top: 4em;}*,:after,:before{/g' build/html/_static/css/theme.css
-sed -i 's/background:lightskyblue;/background:#333666;/g' build/html/_static/css/theme.css
-sed -i 's/background-color:lightskyblue;/background-color:#333666;/g' build/html/_static/css/theme.css
-sed -i 's/#3091d1/lightgreen!important/g' build/html/_static/css/theme.css
-sed -i 's/a:visited{color:lightskyblue/a:visited{color:darkgrey/g' build/html/_static/css/theme.css
-sed -i 's/background:hsla(0,0%,100%,.1)}.wy-side-nav-search/background:transparent}.wy-side-nav-search/g' build/html/_static/css/theme.css
-sed -i 's/)}.wy-nav-top/)}.wy-breadcrumbs{visibility:hidden!important;}.wy-nav-top/g' build/html/_static/css/theme.css
-sed -i 's/li{list-style:disc}.wy-breadcrumbs{/li{list-style:disc}.wy-breadcrumbs{position:fixed;width:81%;display:block;height:55px;margin-left:-55px;padding-left:50px;margin-top:-50px;padding-top:14px;background:-webkit-gradient(radial,56%10%,300,188%120%,132,from(#333664),to(transparent));visibility:visible;/g' build/html/_static/css/theme.css
-sed -i 's/.wy-nav-top{width:100vw/.wy-nav-top{width:105vw;border-top:2px solid #333666;top:-2px;/g' build/html/_static/css/theme.css
-sed -i 's/.wy-grid-for-nav{position:absolute;width:100%;height:100%}/.wy-grid-for-nav{position:absolute;min-width:100vw;width:100%;display:contents;height:100%;}/g' build/html/_static/css/theme.css
-sed -i 's/.wy-nav-top i{font-size:30px;/.wy-nav-top i{font-size:30px;margin-top: 5px!important; margin-left: 10px;/g' build/html/_static/css/theme.css
-sed -i 's/footer{color:grey}/footer{color:white;}/g' build/html/_static/css/theme.css
-sed -i 's/&copy;/<span class="copy-left">&copy;/g' build/html/*.html
-sed -i 's/&copy;/&copy;<\/span>/g' build/html/*.html
-sed -i 's/&copy; Copyright/ /g' build/html/*.html
-sed -i 's/span>copy;/span> /g' build/html/*.html
-sed -i 's/;copy;/ /g' build/html/*.html
-sed -i 's/2021, DATRO Consortium/ /g' build/html/*.html
-sed -i 's/Copyright/  <b style="font-color:darkgrey!important;font-weight:lighter;font-size:90%;font-style:italic;"><strong>2021 DATRO<\/strong> Consortium<\/b> | datro.xyz/g' build/html/*.html
-sed -i 's/ datro.xyz/ <a href="https:\/\/datro.xyz" target="_popup">datro.xyz<\/a>/g' build/html/*.html
-sed -i 's/}article/}.copy-left{display:inline-block;text-align:right;margin:0;font-weight:bolder!important;font-size:99.99%;-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:FlipH;-ms-filter:FlipH}article/g' build/html/_static/css/theme.css
-sed -i 's/footer p{/footer p{font-size:122%;margin-bottom:0px;/g' build/html/*.html
-sed -i 's/placeholder="Search docs"/placeholder="Search docs" class="placeholder-final"/g' build/html/*.html
-sed -i 's/li{list-style:disc}.wy-breadcrumbs/li{list-style:disc}input.placeholder-final::placeholder{color:darkgrey;}input.placeholder-final:focus::placeholder { color: transparent;}.wy-breadcrumbs/g' build/html/_static/css/theme.css
-sed -i 's/role="contentinfo"/role="contentinfo" style="opacity:0.4;"/g' build/html/*.html
-sed -i 's/placeholder="Search docs"/placeholder="Search"/g' build/html/*.html
-sed -i 's/Built with/<div style="opacity:0.3;font-size:76%;">Built with/g' build/html/*.html
-sed -i 's/Read the Docs<\/a>./Read the Docs<\/a><\/div>/g' build/html/*.html
-sed -i 's/.wy-nav-top a{color:#fff;font-weight:700/.wy-nav-top a{color:#fff;font-weight:700;font-size:75%;margin-left:-56px;/g' build/html/_static/css/theme.css
-sed -i 's/thead{color:#000;/thead{color:#fff;/g' build/html/_static/css/theme.css
-sed -i 's/caption{color:#000;/caption{color:#fff;/g' build/html/_static/css/theme.css
-sed -i 's/.rst-content code,.rst-content tt,code{white-space:unset;font-weight:800!important;max-width:100%;border:3px solid transparent;font-size:75%;padding: 0 5px;color:#FFF;overflow-x:auto;background:#333654;max-width:100%;background:#fff;border:1px solid #e1e4e5;font-size:75%;padding:0 5px;font-family:SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,Courier,monospace;color:darkgrey;overflow-x:auto}/.rst-content code,.rst-content tt,code{white-space:unset;font-weight:800!important;max-width:100%;border:3px solid transparent;font-size:75%;padding: 0 5px;color:#FFF;overflow-x:auto;background:#333654;}/g' build/html/_static/css/theme.css
-sed -i 's/.rst-content .section>a>img,.rst-content .section>img{/.rst-content .section>a>img,.rst-content .section>img{filter:invert(1);/g' build/html/_static/css/theme.css
-sleep 0.5 &&
-
-cd build/latex
+cd en
 touch index.html
 {
 echo '<html>'
@@ -184,7 +157,7 @@ echo '<script type="text/javascript">'
 }>> index.html &&
 ls -1 >> name.txt
 sed 's/^/window.open(".\//' name.txt > namenew.txt
-sed -i 's/pdf/pdf");/g' namenew.txt
+sed -i 's/pdf/pdf", "_self");/g' namenew.txt
 rm -r name.txt
 cat  namenew.txt >> index.html
 rm -r namenew.txt &&
@@ -198,7 +171,83 @@ echo 'setTimeout("window.history.go(-1)",500);'
 echo '</script>'
 echo '</html>'
 }>> index.html
-cd ../../
+
+printf "\e[2;3;33m Copy index.html redirect into language directories \n\e[0m"
+cp -r index.html ../es &&
+cp -r index.html ../de &&
+cp -r index.html ../fr &&
+cd ..
+printf "\e[2;3;33m Double check we're in ./build/latex/ (CTL+C if not) \n\e[0m"
+pwd
+sleep 2 &&
+
+# now we redirect to /en
+touch index.html
+{
+echo '<html>'
+echo '<body>'
+echo '</body>'
+echo '<script type="text/javascript">'
+echo 'window.open("./en/", "_self");'
+echo '</script>'
+echo '<script language="JavaScript" type="text/javascript">'
+echo 'setTimeout("window.history.go(-1)",500);'
+echo '</script>'
+echo '</html>'
+}>> index.html
+cd ..
+cd ..
+printf "\e[2;3;33m Make sure we're back at ./ (CTL+C if not) \n\e[0m"
+pwd
+
+sleep 2 &&
+printf "\e[2;3;33m Done! \n\e[0m"
+
+printf "\n\e[2;3;33m Step 4 of 5. Setting HTML Theme (alternate color in rebuild.sh) \n\e[0m\n"
+for number in $(seq ${_60} ${_80})
+do
+       sleep 0.1
+       ProgressBar ${number} ${_end}
+done
+
+sleep 2 &&
+# Select a color theme (default blue)
+# cp -r ../../../_theme-docs/grey.sh grey.sh 2> /dev/null &&
+cp -r ../../../_theme-docs/blue.sh blue.sh 2> /dev/null &&
+
+mv ./blue.sh ./theme.sh
+sudo chmod +x ./theme.sh &&
+sed 's|build\/html\/|build\/html\/en\/|g' ./theme.sh > ./en.sh && chmod +x ./en.sh && bash ./en.sh && rm -r ./en.sh && sleep 2 &&
+printf "\n\e[2;3;33m en theme done \n\e[0m\n"
+sed 's|build\/html\/|build\/html\/es\/|g' ./theme.sh > ./es.sh && chmod +x ./es.sh && bash ./es.sh && rm -r ./es.sh && sleep 2 &&
+printf "\n\e[2;3;33m es theme done \n\e[0m\n"
+sed 's|build\/html\/|build\/html\/de\/|g' ./theme.sh > ./de.sh && chmod +x ./de.sh && bash ./de.sh && rm -r ./de.sh && sleep 2 &&
+sed 's|build\/html\/|build\/html\/fr\/|g' ./theme.sh > ./fr.sh && chmod +x ./fr.sh && bash ./fr.sh && rm -r ./fr.sh && sleep 2 &&
+rm -r ./theme.sh
+
+sleep 2 &&
+
+
+printf "\e[2;3;33m redirect build/html to build/html/en (default language) \n\e[0m"
+
+cd build
+cd html
+touch index.html
+{
+echo '<html>'
+echo '<body>'
+echo '</body>'
+echo '<script type="text/javascript">'
+echo 'window.open("./en/", "_self");'
+echo '</script>'
+echo '<script language="JavaScript" type="text/javascript">'
+echo 'setTimeout("window.history.go(-1)",500);'
+echo '</script>'
+echo '</html>'
+}>> index.html
+cd ..
+cd ..
+sleep 2 &&
 
 
 printf "\e[2;3;33m Done! \n\e[0m"
@@ -213,14 +262,14 @@ done
 # making sure the auto-rebuild.sh is the latest version, for the next auto-build
 rm -r auto-rebuild.sh 2> /dev/null &
 
-bash ../../../_theme-blue/update.sh 2> /dev/null &
+bash ../../../_theme-docs/update.sh 2> /dev/null &
 
-cp -r ../../../_theme-blue/auto-rebuild-master.sh auto-rebuild.sh 2> /dev/null &
+cp -r ../../../_theme-docs/auto-rebuild-master.sh auto-rebuild.sh 2> /dev/null &
 
 sleep 1 &&
 
 cd ../
-printf "\e[2;3;33m HTML - https://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*}/} \n\e[0m\n"
+printf "\e[2;3;33m http://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*}/} \n\e[0m\n"
 cd latest
 
 #change NAME to PDF name before running
