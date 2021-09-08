@@ -16,6 +16,7 @@ Jul-24 - Added a directory called `consortium_other/github_wiki` in library and 
 Jul-24 - The idea is that this build will trigger the custom.sh which will fetch the latest github wiki and turn it into a standard doc e.g. html/pdf   
 
 ### Changed
+Sep-08 - Stylesheet improvements to Library Explorer  
 Jul-26 - Major change and milestone with custom.sh script in `consortium_other/github_wiki`  
 Jul-11 - Added svg/png maps to `consortium_bloculus` document  
 Jul-11 - Changed date format on this changelog - should always be YYYY-MM-DD, not sure why its been DD-MM up until now (perhaps keepchangelog guildelines ??)   
