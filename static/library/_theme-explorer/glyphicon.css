@@ -96,9 +96,6 @@ display: inline-block!important;
 }
 .glyphicon-arrow-up:before{
 	content:"\e093";
-    margin-left: -3rem;
-    margin-right: -0.5rem;
-    line-height: 6rem;
 }
 .glyphicon-arrow-down:before{
 	content:"\e094"

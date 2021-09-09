@@ -1,6 +1,6 @@
 
 project = u'DATRO Business Plan'
-copyright = u'2021, DATRO Business Plan'
+copyright = u'2021, DATRO Consortium'
 author = u'DATRO Consortium'
 
 version = u'0.0.5'

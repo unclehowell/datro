@@ -1,5 +1,5 @@
 html {
-    margin-top:10vh;
+    margin-top:2.5vh;
     background:#336;
     background-color:#336;
     width: 100vw!important;
@@ -18,54 +18,65 @@ html {
     text-align: center;
     margin: auto;
     content-visibility: hidden;
+    outline: none;
+    border: 0px;
 }
 
+.caps1 {
+text-transform:none;
+}
 upselect {
     background-color:green;
     display:inline-block;
 }
 
 .up-active {
-    text-decoration: underline;
-    color: rgba(255,255,255,0.50);
-    margin-left: 30px;
-    font-weight: lighter;
-    text-transform: uppercase!important;
-    text-underline-offset: 2px;
+    color: rgba(255,255,255,.75);
+    background: #336;
+    top: 0px!important;
+    left: 0px!important;
+    padding: 0px 10px 0px 10px!important;
+    font-size: 90%!important;
+    float: left;
+    position: absolute;
+    line-height: 45px;
+    margin: 1.5rem 10px 10px 1.5rem;
+    min-width: 1px;
+    min-height: 1px;
+    zoom: 0.75;
+    border-top: 3px solid rgba(255,255,255,0.5);
+    border-left: 3px solid rgba(255,255,255,0.5);
+    border-right: 3px solid rgba(0,0,0,0.5);
+    border-bottom: 3px solid rgba(0,0,0,0.5);
+    border-radius: 10px;
 }
 
 li{
-    display: inline-block!important;
-    max-width: 99vw;
-    overflow: visible;
-    font-weight: 200;
-    float: left!important;
-    font-family: 'Glyphicons Halflings';
-    color: slategrey;
+    display:block;
+    float:left;
     padding: 0px 0px 0px 0vw;
-    margin: 0px 0px 0px 2pc;
+    margin: 0px 0px 0px 0px;
     text-indent: 0px;
-    line-height: 0.75em;
+    line-height: 0em;
 }
 
 .title-line {
     font-size: 0.75em;
     line-height: 4rem!Important;
-    min-width: 99vw!important;
+    min-width: 120vw!important;
     letter-spacing: 0.25rem;
     text-underline-position: under;
     max-width: 99vw!important;
-    margin: 0em 0 -0.15em -6pc!important;
+    margin: 1em 0rem 0.25em calc(-20vw - 1rem)!important;
     float: left!important;
     white-space: nowrap;
     word-spacing: -0.1em;
     font-family: sans-serif!important;
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 0;
-    left: 0vw!Important;
-    position: static!important;
-    padding-left: 4.75em;
+    opacity: 0.85;
+    box-shadow: 3px 10px 34px -3px rgb(0 0 0 / 20%);
+    padding: 1px 1px 1px calc(20vw - 0rem);
 }
 
 .page-scroll-fix {
@@ -88,31 +99,51 @@ li{
 }
 
 .subtitle-disable {
-  color: rgba(255,255,255,0.1)!important;
+    color: rgba(255,255,255,0.1)!important;
     cursor: default;
+    background: #336!important;
+    border: 1px solid rgba(255,255,255,0.1)!important;
 }
 
 .up-inactive {
-    text-decoration: underline;
     color: rgba(255,255,255,0.25);
-    margin-left: 30px;
-    font-weight: lighter;
-    text-transform: uppercase!important;
-    text-underline-offset: 2px;
     cursor: default;
+    background: #336;
+    top: 0px!important;
+    left: 0px!important;
+    font-size: 90%!important;
+    float: left;
+    line-height: 45px;
+    padding: 0px 10px 0px 10px!important;
+    font-size: 90%!important;
+    position: absolute;
+    margin: 1.5rem 10px 10px 1.5rem;
+    min-width: 1px;
+    min-height: 1px;
+    zoom: 0.75;
+    border-top: 3px solid rgba(255,255,255,0.15);
+    border-left: 3px solid rgba(255,255,255,0.15);
+    border-right: 3px solid rgba(0,0,0,0.15);
+    border-bottom: 3px solid rgba(0,0,0,0.15);
+    border-radius: 10px;
 }
 
 
 .indraft-title {
-word-spacing:-1.75rem;
-margin-left: 0rem;
-    float: left!important;
-margin-top: 3rem;
+    margin-top: 1rem;
+    padding: 3.25rem 0em 2rem 0rem;
+    text-decoration: none;
+    text-align: center;
+    position: inherit;
+    display: inline-block;
+    margin-left: calc(25vw - 4em);
+    opacity:0.6;
 }
 
 .title-disable {
   color: rgba(255,255,255,0.3)!important;
     cursor: default;
+    opacity:0.5;
 }
 
 .enable-link {
@@ -122,36 +153,40 @@ margin-top: 3rem;
 }
 
 .subtitle-line, .depth2-subtitle-line { 
-    margin: 0.5em 0 0 0!important;
-    color: rgba(255,255,255,0.50);
-    padding: 0px 0px 0px 0px;
-    display: inline-table!important;
-    min-width: 99vw;
-    max-width: 70px;
-    line-height: 1em;
+    margin: 0.4em 0em 0.25em 0.05em!important;
+    font-size: 80%;
+    display: inline-flex!important;
+    min-width: inherit;
+    line-height: 1.25em;
     min-height: 28px;
     text-underline-offset: 2px;
-    text-decoration: underline;
     white-space: nowrap;
-    word-spacing: -0.5em;
-    
+    word-spacing: 0.15em;
+    background: rgba(255,255,255,0.05);
+    max-width: 100vw;
+    border-radius: 10px;
+    border: 1px solid grey;
+    padding: 0.4rem 0.75em calc(1rem - 0.25em) 0.75em;
+    color: rgba(255,255,255,0.50);
 }
 
 
 .language-subtitle-line { 
-    margin: 1rem 0 0.75em 0.00vw!important;
+margin: 1rem 1rem 0.25em 0em!important;
     color: rgba(255,255,255,0.50);
-    padding: 0px 0px 0px 0px;
     display: inline-table!important;
-    min-width: 70px;
-    max-width: 70px;
+    min-width: inherit;
+    max-width: inherit;
     line-height: 1em;
     min-height: 28px;
     text-underline-offset: 2px;
-    text-decoration: underline;
     white-space: nowrap;
     word-spacing: -0.5em;
-    
+    background: rgba(255,255,255,0.1);
+    padding: 0.75rem 10px 0.25em 15px;
+    border-radius: 8px;
+    font-size: 80%;
+    border: 1px solid rgba(255,255,255,0.15);
 }
 
 
@@ -194,12 +229,18 @@ margin-top: 3rem;
 }
 
 .flag {
-    background-size: 40px 20px;
+    background-size: 40px 20px!important;
     background-repeat: no-repeat;
-    background-position: 1.5pc 1.3pc;
-    margin-left: -100px!important;
-    padding-left: 6.2rem!important;
-    border-left: 18px solid rgba(0,0,0,0)!important;
+    background-position: 0.03em 0.02em;
+    border-left: 0px solid rgba(0,0,0,0)!important;
+    display: inline;
+    min-width: 40px;
+    min-height: 12.5px;
+    margin: calc(1.55rem - 0.24em) 1.5rem 0rem -1rem!important;
+    padding: 0.1em 0.05em 0.16em 0.01em;
+    float: left;
+    opacity: 1;
+    border-radius: 1em;
 }
 
 
@@ -214,7 +255,6 @@ color:grey;
 text-decoration:none;
 font-size: clamp(1.5em, 3vw, 2em);
 margin-left: 0px;
-word-spacing: 1em;
 text-transform:capitalize;
 margin-left: 0.5em;
 }
@@ -239,6 +279,5 @@ white-space: nowrap;
 a {
 font-size: clamp(7vw, 3vw, 2em);
     letter-spacing: 0.1px;
-        word-spacing: -0.75em;
 }
 }

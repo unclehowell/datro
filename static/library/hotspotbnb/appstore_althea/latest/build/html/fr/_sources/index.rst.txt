@@ -8,11 +8,11 @@ Still working on this, but the plan is to scrape the Althea Discord/blog which A
    
    releasenotes
 
-**Document Publisher(s):** 
+**Publisher and Author(s):** 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 =========================================
-**DATRO Consortium**
+*DATRO Consortium* and *Althea*
 =========================================
 
 

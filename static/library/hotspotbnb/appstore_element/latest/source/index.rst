@@ -1,4 +1,4 @@
-Bloculus - Business Case
+Element WebApp
 =======================================
 
 
@@ -6,16 +6,13 @@ Bloculus - Business Case
    :maxdepth: 2
    
    releasenotes
-   executivesummary
 
-**Document Author(s):** 
-^^^^^^^^^^^^^^^^^^^^^^^^^
+**Publisher and Author(s):** 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 =========================================
-**DATRO Consortium**
+*DATRO Consortium* & *New Vector Ltd*
 =========================================
-
-
 
 
 

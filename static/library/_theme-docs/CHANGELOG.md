@@ -7,6 +7,13 @@ This directory and changelog belongs to [![GitHub release (latest by date includ
 
 ## [Unreleased]  
 
+## [_theme-docs.08-rc2.1] - Q3/2021
+
+### Added
+Sep-08 - Grey.sh (v0.2 > v0.3) - The theme was displaying text in black. Made color white e.g. `color:#fff`   
+### Changed
+Sep-08 - Minor edit to `rebuild-master.sh` to save anyone changing the theme some time. See code/commit if you care about this change   
+
 ## [_theme-docs.08-rc2.0] - Q3/2021
 
 ### Added

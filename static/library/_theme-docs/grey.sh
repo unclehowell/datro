@@ -15,7 +15,7 @@
 #   ██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝
 #   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
 #................................................
-#                  grey.sh v0.2
+#                  grey.sh v0.3
 #................................................
 #                   datro.xyz
 #................................................
@@ -105,4 +105,5 @@ sed -i 's/Built with/<div style="opacity:0.3;font-size:76%;">Built with/g' build
 sed -i 's/Read the Docs<\/a>./Read the Docs<\/a><\/div>/g' build/html/*.html &&
 sed -i 's/.wy-nav-top a{color:#fff;font-weight:700/.wy-nav-top a{color:#fff;font-weight:700;font-size:75%;margin-left:-56px;/g' build/html/_static/css/theme.css &&
 sed -i 's/YYYY DATRO/2012\<script>new Date().getFullYear()>2012\&\&document.write("-"+new Date().getFullYear());\<\/script> DATRO/g' build/html/*.html &&
+sed -i 's/color:#000/color:#FFF/g' build/html/_static/css/theme.css &&
 exit 0

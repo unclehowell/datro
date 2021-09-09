@@ -1,6 +1,6 @@
 project = u'Element -  WebApp'
-copyright = u'2021, New Vector Ltd'
-author = u'Element'
+copyright = u'& New Vector Ltd'
+author = u'New Vector Ltd and DATRO Consortium'
 
 version = u'0.0.0'
 release = u'0.0.0'
@@ -13,9 +13,13 @@ source_suffix = '.rst'
 
 master_doc = 'index'
 
-language = None
+#language = None
+language = "en"
+locale_dirs = ['locales']
+gettext_auto_build = True
+gettext_compact = "docs"
 
-#today_fmt = 'July 24, 2021'
+today_fmt = 'July 24, 2021'
 
 exclude_patterns = ['_build']
 
@@ -52,7 +56,7 @@ latex_elements = {
 
 latex_documents = [
   (master_doc, 'hotspotbnb_os-appstore_element.tex', 'Element WebApp',
-   u'Author(s): Element', 'manual'),
+   u'Publisher: DATRO Consortium', 'manual'),
 ]
 
 man_pages = [
@@ -64,7 +68,7 @@ man_pages = [
 
 texinfo_documents = [
   (master_doc, 'hotspotbnb_os-appstore_element', u'Element WebApp',
-   author, 'Element', 'Element',
+   author, 'New Vector Ltd', 'New Vector Ltd',
    'manual'),
 ]
 

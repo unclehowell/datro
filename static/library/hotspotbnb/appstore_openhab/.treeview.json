@@ -1,17 +1,94 @@
 [
   {
-    "name": "HTML",
-    "path": "./latest/build/html",
+    "name": "<div class='title-line title-disable'><div class='flag f-gb'></div>English</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": "./latest/build/html"
+      "html": "javascript:void(0)"
     }
    },
   {
-    "name": "PDF",
-    "path": "./latest/build/latex/",
+    "name": "<div class='language-subtitle-line enable-link'>HTML</div>",
+    "path": "./latest/build/html/en/",
     "_links": {
-    "html": "./latest/build/latex/",
-    "target": "_blank"
-  }
- }
+      "html": "./latest/build/html/en/"
+    }
+   },
+  {
+    "name": "<div class='language-subtitle-line enable-link'>PDF</div>",
+    "path": "./latest/build/latex/en/",
+    "_links": {
+      "html": "./latest/build/latex/en/"
+    }
+   },
+  {
+    "name": "<div class='title-line title-disable'><div class='flag f-es'></div>Español</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='language-subtitle-line subtitle-disable'>HTML</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='language-subtitle-line subtitle-disable'>PDF</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='title-line title-disable'><div class='flag f-de'></div>Deutsch</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='language-subtitle-line subtitle-disable'>HTML</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='language-subtitle-line subtitle-disable'>PDF</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='title-line title-disable' ><div class='flag f-fr'></div>Française</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='language-subtitle-line subtitle-disable' >HTML</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='language-subtitle-line subtitle-disable' >PDF</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='page-scroll-fix'></div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   }
 ]
+

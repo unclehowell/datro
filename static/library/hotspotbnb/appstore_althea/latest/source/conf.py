@@ -1,6 +1,6 @@
-project = u'Althea (Complete)'
-copyright = u'2021, DATRO Consortium'
-author = u'DATRO Consortium'
+project = u'Althea WebApp'
+copyright = u'& Althea'
+author = u'DATRO Consortium and Althea'
 
 version = u'0.0.0'
 release = u'0.0.0'
@@ -54,19 +54,19 @@ latex_elements = {
 
 
 latex_documents = [
-  (master_doc, 'hotspotbnb_os-appstore_althea.tex', 'Althea (Complete)',
-   u'Author(s): Althea', 'manual'),
+  (master_doc, 'hotspotbnb_os-appstore_althea.tex', 'Althea (WebApp)',
+   u'Publisher(s): DATRO Consortium', 'manual'),
 ]
 
 man_pages = [
-  (master_doc, 'hotspotbnb_os-appstore_althea', u'Althea (Complete)',
+  (master_doc, 'hotspotbnb_os-appstore_althea', u'Althea (WebApp)',
    [author], 1)
 ]
 
 
 
 texinfo_documents = [
-  (master_doc, 'hotspotbnb_os-appstore_althea', u'Althea (Complete)',
+  (master_doc, 'hotspotbnb_os-appstore_althea', u'Althea (WebApp)',
    author, 'Althea',
    'manual'),
 ]

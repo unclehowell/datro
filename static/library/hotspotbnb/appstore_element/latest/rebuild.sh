@@ -15,7 +15,7 @@
 #   ██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝
 #   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
 #................................................
-#       rebuild.sh  _theme-docs.08-rc1.7
+#       rebuild.sh  _theme-docs.08-rc2.0
 #................................................
 #                   datro.xyz
 #................................................
@@ -50,6 +50,7 @@ done
 #sh custom.sh 2> /dev/null &&
 touch build.log
 make clean > build.log 2>&1
+
 printf "\e[2;3;33m Done! \n\e[0m"
 
 printf "\n\e[2;3;33m Step 2 of 5. Converting ReStructuredText to HTML (make html) \n\e[0m\n"
@@ -60,7 +61,49 @@ do
 done
 
 
+make gettext > build.log 2>&1 &&
+# copy .po into source/locales/{language-code}/LC_MESSAGES/
+sleep 2 &&
+sphinx-intl update -p build/gettext -l es -l de -l fr  > build.log 2>&1 &&
+sleep 2 &&
 make html > build.log 2>&1 &&
+sleep 2 &&
+
+cd build &&
+mkdir en &&
+cd html &&
+mv * ../en &&
+cd ..
+mv en html &&
+cd ..
+sleep 2 &&
+sphinx-build -b html source build/html/es -D language='es' > build.log 2>&1 &&
+sleep 2 &&
+sphinx-build -b html source build/html/de -D language='de' > build.log 2>&1 &&
+sleep 2 &&
+sphinx-build -b html source build/html/fr -D language='fr' > build.log 2>&1 &&
+sleep 2 &&
+
+
+cd build
+cd html
+touch index.html
+{
+echo '<html>'
+echo '<body>'
+echo '</body>'
+echo '<script type="text/javascript">'
+echo 'window.open("./en/", "_self");'
+echo '</script>'
+echo '<script language="JavaScript" type="text/javascript">'
+echo 'setTimeout("window.history.go(-1)",500);'
+echo '</script>'
+echo '</html>'
+}>> index.html
+cd ..
+cd ..
+sleep 5 &&
+
 printf "\e[2;3;33m Done! \n\e[0m"
 
 printf "\n\e[2;3;33m Step 3 of 5. Converting ReStructeredText to PDF (make latexpdf) \n\e[0m\n"
@@ -71,30 +114,40 @@ do
         ProgressBar ${number} ${_end}
 done
 
-make latexpdf --keep-going --silent > build.log 2>&1
-sleep 10 &&
+cd build
+mkdir -p pdfs/{en,es,de,fr}
+printf "\n\e[2;3;33m making pdf (en) \n\e[0m\n"
+cd ..
+
+make  -e SPHINXOPTS="-D language='en'" latexpdf  --keep-going --silent > build.log 2>&1 &&
+ls -1 build/latex/
+
+sleep 2 && cd build && mv latex/*.pdf pdfs/en && cd latex && find . -type f ! -iname "*.pdf" -delete &&
+
+ls -la ../pdfs/en
+cd ..
+cd ..
+
+make  -e SPHINXOPTS="-D language='es'" latexpdf  --keep-going --silent > build.log 2>&1 &&
+cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/es && cd .. && cd .. &&
+make  -e SPHINXOPTS="-D language='de'" latexpdf  --keep-going --silent > build.log 2>&1 &&
+cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/de && cd .. && cd .. &&
+make  -e SPHINXOPTS="-D language='fr'" latexpdf  --keep-going --silent > build.log 2>&1 &&
+cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/fr && cd .. && cd .. &&
+
+
+mv build/pdfs/{en,es,de,fr} build/latex
+rm -r build/pdfs
+
+printf "\n\e[2;3;33m check we're back in ./ (CTL+C if not) \n\e[0m\n"
+pwd
+
+
+printf "\n\e[2;3;33m Making redirect from language directories to pdf's \n\e[0m\n"
+
 cd build
 cd latex
-find . -type f ! -iname "*.pdf" -delete &&
-cd ../../
-
-printf "\e[2;3;33m Done! \n\e[0m"
-
-printf "\n\e[2;3;33m Step 4 of 5. Setting HTML Theme (alternate color in rebuild.sh) \n\e[0m\n"
-for number in $(seq ${_60} ${_80})
-do
-       sleep 0.1
-       ProgressBar ${number} ${_end}
-done
-
-
-# Set color theme (default blue)
-cp -r ../../../_theme-docs/blue.sh blue.sh 2> /dev/null && chmod +x ./blue.sh && bash ./blue.sh && rm -r ./blue.sh &
-#cp -r ../../../_theme-docs/grey.sh grey.sh 2> /dev/null && chmod +x ./grey.sh && bash ./grey.sh && rm -r ./grey.sh &
-
-sleep 0.5 &&
-
-cd build/latex
+cd en
 touch index.html
 {
 echo '<html>'
@@ -104,7 +157,7 @@ echo '<script type="text/javascript">'
 }>> index.html &&
 ls -1 >> name.txt
 sed 's/^/window.open(".\//' name.txt > namenew.txt
-sed -i 's/pdf/pdf");/g' namenew.txt
+sed -i 's/pdf/pdf", "_self");/g' namenew.txt
 rm -r name.txt
 cat  namenew.txt >> index.html
 rm -r namenew.txt &&
@@ -118,7 +171,83 @@ echo 'setTimeout("window.history.go(-1)",500);'
 echo '</script>'
 echo '</html>'
 }>> index.html
-cd ../../
+
+printf "\e[2;3;33m Copy index.html redirect into language directories \n\e[0m"
+cp -r index.html ../es &&
+cp -r index.html ../de &&
+cp -r index.html ../fr &&
+cd ..
+printf "\e[2;3;33m Double check we're in ./build/latex/ (CTL+C if not) \n\e[0m"
+pwd
+sleep 2 &&
+
+# now we redirect to /en
+touch index.html
+{
+echo '<html>'
+echo '<body>'
+echo '</body>'
+echo '<script type="text/javascript">'
+echo 'window.open("./en/", "_self");'
+echo '</script>'
+echo '<script language="JavaScript" type="text/javascript">'
+echo 'setTimeout("window.history.go(-1)",500);'
+echo '</script>'
+echo '</html>'
+}>> index.html
+cd ..
+cd ..
+printf "\e[2;3;33m Make sure we're back at ./ (CTL+C if not) \n\e[0m"
+pwd
+
+sleep 2 &&
+printf "\e[2;3;33m Done! \n\e[0m"
+
+printf "\n\e[2;3;33m Step 4 of 5. Setting HTML Theme (alternate color in rebuild.sh) \n\e[0m\n"
+for number in $(seq ${_60} ${_80})
+do
+       sleep 0.1
+       ProgressBar ${number} ${_end}
+done
+
+sleep 2 &&
+
+# Select a color theme (default blue)
+cp -r ../../../_theme-docs/grey.sh grey.sh 2> /dev/null && mv ./grey.sh ./theme.sh &&
+#cp -r ../../../_theme-docs/blue.sh blue.sh 2> /dev/null && mv ./blue.sh ./theme.sh &&
+
+sudo chmod +x ./theme.sh &&
+sed 's|build\/html\/|build\/html\/en\/|g' ./theme.sh > ./en.sh && chmod +x ./en.sh && bash ./en.sh && rm -r ./en.sh && sleep 2 &&
+printf "\n\e[2;3;33m en theme done \n\e[0m\n"
+sed 's|build\/html\/|build\/html\/es\/|g' ./theme.sh > ./es.sh && chmod +x ./es.sh && bash ./es.sh && rm -r ./es.sh && sleep 2 &&
+printf "\n\e[2;3;33m es theme done \n\e[0m\n"
+sed 's|build\/html\/|build\/html\/de\/|g' ./theme.sh > ./de.sh && chmod +x ./de.sh && bash ./de.sh && rm -r ./de.sh && sleep 2 &&
+sed 's|build\/html\/|build\/html\/fr\/|g' ./theme.sh > ./fr.sh && chmod +x ./fr.sh && bash ./fr.sh && rm -r ./fr.sh && sleep 2 &&
+rm -r ./theme.sh
+
+sleep 2 &&
+
+
+printf "\e[2;3;33m redirect build/html to build/html/en (default language) \n\e[0m"
+
+cd build
+cd html
+touch index.html
+{
+echo '<html>'
+echo '<body>'
+echo '</body>'
+echo '<script type="text/javascript">'
+echo 'window.open("./en/", "_self");'
+echo '</script>'
+echo '<script language="JavaScript" type="text/javascript">'
+echo 'setTimeout("window.history.go(-1)",500);'
+echo '</script>'
+echo '</html>'
+}>> index.html
+cd ..
+cd ..
+sleep 2 &&
 
 
 printf "\e[2;3;33m Done! \n\e[0m"
