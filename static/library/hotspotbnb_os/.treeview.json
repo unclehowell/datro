@@ -1,0 +1,45 @@
+[
+  {
+    "name": "<div class='title-line title-disable'><div class='flag f-hbnb'></div>General</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='depth2-subtitle-line subtitle-disable'>Whitepaper</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='title-line title-disable'><div class='flag f-hbnb'></div>Manuals</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='depth2-subtitle-line enable-link'>User Guide</div>",
+    "path": "./manuals_userguide",
+    "_links": {
+      "html": "./manual_userguide"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line subtitle-disable'>Developer Guide</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='page-scroll-fix title-disable'></div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   }
+]
+

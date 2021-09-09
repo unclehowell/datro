@@ -130,14 +130,14 @@ li{
 
 
 .indraft-title {
-    margin-top: 1rem;
+    padding-top: 5rem!important;
     padding: 3.25rem 0em 2rem 0rem;
     text-decoration: none;
     text-align: center;
     position: inherit;
     display: inline-block;
-    margin-left: calc(25vw - 4em);
-    opacity:0.6;
+    margin: 0;
+    min-width: 98vw;
 }
 
 .title-disable {

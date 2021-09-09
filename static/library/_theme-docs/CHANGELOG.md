@@ -11,8 +11,13 @@ This directory and changelog belongs to [![GitHub release (latest by date includ
 
 ### Added
 Sep-08 - Grey.sh (v0.2 > v0.3) - The theme was displaying text in black. Made color white e.g. `color:#fff`   
+
 ### Changed
+Sep-09 - Grey.sh && Blue.sh (v0.x > v0.3) - Reversed copyleft footer, it was '..Consortium | datro.xyz', now it's 'datro.xyz | ..Consortium', incase we need to append, say, '& Co-Author'  
 Sep-08 - Minor edit to `rebuild-master.sh` to save anyone changing the theme some time. See code/commit if you care about this change   
+
+### Issues
+Sep-09 - Really annoying dot at the end of the footer. Tried `footer p:child-element:after{content ""}` with no success  
 
 ## [_theme-docs.08-rc2.0] - Q3/2021
 

@@ -13,8 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 ### 0utstanding
-
-31-May - und0.sh has t0 be changed s0 it m0difies input.html t0 pr0duce 0utput.htm - Then m0dify the .htm to produce .html and .htm again 
+Sep-09 - There's no content in the log files (log directory is hidden FYI)   
+May-31 - und0.sh has t0 be changed s0 it m0difies input.html t0 pr0duce 0utput.htm - Then m0dify the .htm to produce .html and .htm again 
  
 [Unreleased]: https://github.com/unclehowell/hbnb/compare/v0.0.1-rtw.11...HEAD  
 [0.0.1-rtw.10]: https://github.com/unclehowell/hbnb/compare/v0.0.1-rc.10...v0.0.1-rtw.10  

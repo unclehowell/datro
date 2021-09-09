@@ -1,5 +1,12 @@
 [
   {
+    "name": "<div class='title-line enable-link'><div class='flag f-datro'></div>Bloculus</div>",
+    "path": "./bloculus",
+    "_links": {
+      "html": "./bloculus"
+    }
+  },
+  {
     "name": "<div class='title-line title-disable'><div class='flag f-datro'></div>Consortium</div>",
     "path": "javascript:void(0)",
     "_links": {
@@ -28,6 +35,13 @@
     }
   },
   {
+    "name": "<div class='subtitle-line enable-link'>Legal</div>",
+    "path": "./consortium_legal",
+    "_links": {
+      "html": "./consortium_legal"
+    }
+  },
+  {
     "name": "<div class='subtitle-line enable-link'>Other</div>",
     "path": "./consortium_other",
     "_links": {
@@ -42,21 +56,49 @@
     }
   },
   {
-    "name": "<div class='title-line enable-link'><div class='flag f-datro'></div>DAS (DAO Society)</div>",
-    "path": "./dao_society",
+    "name": "<div class='subtitle-line enable-link'>Projects</div>",
+    "path": "./consortium_projects",
     "_links": {
-      "html": "./dao_society"
+      "html": "./consortium_projects"
     }
   },
   {
-    "name": "<div class='title-line enable-link'><div class='flag f-hbnb'></div>Hotspotβnβ</div>",
-    "path": "./hotspotbnb",
+    "name": "<div class='title-line title-disable'><div class='flag f-hbnb'></div>Hotspotβnβ</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": "./hotspotbnb"
+      "html": "javascript:void(0)"
+    }
+  },
+  {
+    "name": "<div class='subtitle-line enable-link'>Apps</div>",
+    "path": "./hotspotbnb_apps",
+    "_links": {
+      "html": "./hotspotbnb_apps"
+    }
+  },
+  {
+    "name": "<div class='subtitle-line enable-link'>Business</div>",
+    "path": "./hotspotbnb_business",
+    "_links": {
+      "html": "./hotspotbnb_business"
+    }
+  },
+  {
+    "name": "<div class='subtitle-line enable-link'>OS</div>",
+    "path": "./hotspotbnb_os",
+    "_links": {
+      "html": "./hotspotbnb_os"
     }
   },
   {
     "name": "<div class='indraft-title title-disable'>Pending Publication (Draft)</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+  },
+  {
+    "name": "<div class='title-line title-disable'><div class='flag f-datro'></div>DAS (DAO Society)</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
@@ -84,7 +126,7 @@
     }
   },
   {
-    "name": "<div class='title-line title-disable'><div class='flag f-datro'></div>Test Net (DR)</div>",
+    "name": "<div class='title-line title-disable'><div class='flag f-datro'></div>Test Net</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"

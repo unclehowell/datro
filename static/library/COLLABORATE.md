@@ -35,11 +35,26 @@ To open index.html & *.pdf from commandline use xdg-open e.g. `xdg-open build/ht
 
 ### New Document
 In the case of a creating a completely new document, you can run the 'sphinx-quickstart' command.   
-After this quickstart wizard is completed, an auto-rebuild.sh and rebuild.sh script file should be copied in from the '_source-file' directory, remembering to remove the '-master' from the title and giving the file write permission 'chmod +x'   
+But it's faster to clone a draft document and taylor it  
+After this quickstart wizard is completed or you've cloned another doc as the template don't run auto-rebuild.sh or rebuild.sh  
+First make sure all dependancies are installed (install will be included in the rebuild.sh to allow skipping this manual step)
+Next edit the conf.py according. Paying particular attention to include the following:
 
-Alternatively you can just copy/clone an existing sphinx document directory.   
-Remember in both cases to following the file structure, as explained at the top of this page.   
+      ~~~
 
+      language = "en"                # sets default language to english
+      locale_dirs = ['locales']      # labels the directory which will store the `.po`/`.pot`/`.mo` files (the files you edit to parallel the text in alternate languages) 
+      gettext_auto_build = True      # actually produce alternate languages during the rebuild/compile e.g. produces this `source/locales/{2letter language code}/LC_MESSAGES/docs.po` 
+      gettext_compact = "docs"       # without this you get a corresponding .po`/`.pot`/`.mo` file for each `.rst` file e.g. intro.rst > intro.po --  
+      today_fmt = 'May 02, 2021'     # if hashed out the date appended in the published PDF will be the date of its rebuild/compile. 
+                                     # by default we leave this set to the date of the last publication, so we can run new rebuild.sh releases,
+                                     # without having to follow the semantic changelog/archive protocol, required when re-releasing a document. 
+                                     # One exception to this rule. It's best to follow the full changelog/archive protocol in the even the file path changes.   
+                                     # The protocol is explained elsewhere in this document e.g. copy /latest/* to /0-0-x/, copy /latest/latex/*.pdf to datro.world/wayback/, `make clean` 0-0-x, update latest/source/conf.py & olderversion.csv and recompile 
+ 
+      ~~~
+
+Remember in any case, following the file structure methodology (as explained at the top of this page).   
 
 ### New Version
 Before a new version of a document can be produced, you must archive the current version.  
@@ -50,11 +65,18 @@ Obviously the current version you are archiving, will be labeled as the next in 
 
 2. Copy the content of the 'latest' directory to it.  
 
-The content of the RST/PDF and HTML files should also indicate the version, so no adjustments to the archived content should be required.  
+3. move the compiled pdf from x-x-x to datro.world/wayback (the 'netlify' branch of the monorepo)  
 
-3. Go into the 'latest' directory and change the version number in the .py file (as well as making updates to the changelog, olderversions.csv and *.rst files)  
+4. run `make clean` in x-x-x  
 
-4. Once the 'latest' folder content (*.RST) is updated, run the rebuild.sh script to produce the PDF and HTML  
+# we'll add a link to the archived version in the new version  
+# make clean trims down the file size. if we ever have to revert to an older version, we can run rebuild.sh and recompile the pdf and html
+
+5. Go into the 'latest' directory and change the version number in the .py file (as well as making updates to the changelog, olderversions.csv and *.rst files)  
+
+6. Once you've made all your changes to `latest/source/{conf.py,releasenotes.rst, index.rst` etc, run the rebuild.sh script to produce the PDF and HTML   
+
+# For multiple languages edit the .po files described above after rebuild, then rebuild again. The modifications to the .po files won't overwrite    
 
 
 ## Formatting - Text
@@ -77,6 +99,9 @@ And possibly two stars (**) at the beginning and the end of the Sub-sub Title to
 
 ## Formatting - Images
 Another principle employed by this Files Library is to always use base64 image encoding and NOT links to images in the _static directory, as suggested by Sphinx.  The benefit of this is a reduced amount of http requests.  
+Personally rst can become a mindfield and deviate far from a normal looking text file. In this case it's worth sourcing .csv and images rather than trying to embedd images and tables   
+The real value of base64 images and reStructuredText Tables as oppose to sourcing a .csv file, is to reduce the overall filesize of the branch or onorepo as a whole.  
+Housekeeping a monorepo in this way is a full time job and/or a job for a team in itself. In the interim of such luxuries/ feasibility, be as dilligent as possible while working on this   
 
 All images should have their width set to 620.  
 Combined with the custom css changes in the build script, the images will appear perfectly centered on mobile and desktop and shouldn't overflow.  
@@ -90,6 +115,9 @@ The first star creates a bullet point which is the best way to center align the 
 The Fig x.x is in bold (using the two stars are the beginning and end)  
 The Image Title is in italics (using the single star at the beginning and end)  
 If the text above the image overflows then forget bullet pointing the line.  
+
+# I believe the pdf autogenerates the figures for tables and images. In html there's a string that can be used.
+# The same string which is used to insert the `content` html-only title, above the opening pages index (see index.rst) 
 
 ## Source Files (self-updating build script)
 These source files work in conjuntion with the update-all process:
