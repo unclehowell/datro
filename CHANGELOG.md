@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.12] - Q3/2021
 
 ### Added
+Sep-09 - A fair amount of work done on perfecting the docs explorer design - see library changelog for details  
 Sep-09 - Added some logos to doc files and regerenated sitemap.xml  
 Aug-18 - Minor edits on library and regenerated sitemap.xml  
 Aug-13 - Added to COLLABORATE.md  
