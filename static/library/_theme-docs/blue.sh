@@ -15,7 +15,7 @@
 #   ██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝
 #   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
 #................................................
-#                  blue.sh v0.3
+#                  blue.sh v0.4-rc.1
 #................................................
 #                   datro.xyz
 #................................................
@@ -99,7 +99,7 @@ sed -i 's/}article/}.copy-left{display:inline-block;text-align:right;margin:0;fo
 sed -i 's/footer p{/footer p{font-size:122%;margin-bottom:0px;/g' build/html/*.html &&
 sed -i 's/placeholder="Search docs"/placeholder="Search docs" class="placeholder-final"/g' build/html/*.html &&
 sed -i 's/li{list-style:disc}.wy-breadcrumbs/li{list-style:disc}input.placeholder-final::placeholder{color:darkgrey;}input.placeholder-final:focus::placeholder { color: transparent;}.wy-breadcrumbs/g' build/html/_static/css/theme.css &&
-sed -i 's/role="contentinfo"/role="contentinfo" style="opacity:0.4;"/g' build/html/*.html &&
+sed -i 's/<div role="contentinfo"/\<div class\="rst-footer-buttons" role\="navigation" aria-label\="footer navigation"> \<a href\="..\/..\/..\/..\/" style\="min-width:100%;margin-bottom:1em;" class\="btn btn-neutral float-left" title\="DARO Document Library" accesskey\="n" rel\="back">\<span class\="fa fa-arrow-circle-left" aria-hidden\="true">\<\/span> Return to Library\<\/a> \<\/div><div role="contentinfo" style="opacity:0.4;"/g' build/html/*.html &&
 sed -i 's/placeholder="Search docs"/placeholder="Search"/g' build/html/*.html &&
 sed -i 's/Built with/<div style="opacity:0.3;font-size:76%;">Built with/g' build/html/*.html &&
 sed -i 's/Read the Docs<\/a>./Read the Docs<\/a><\/div>/g' build/html/*.html &&
@@ -108,4 +108,7 @@ sed -i 's/thead{color:#000;/thead{color:#fff;/g' build/html/_static/css/theme.cs
 sed -i 's/caption{color:#000;/caption{color:#fff;/g' build/html/_static/css/theme.css &&
 sed -i 's/.rst-content code,.rst-content tt,code{white-space:unset;font-weight:800!important;max-width:100%;border:3px solid transparent;font-size:75%;padding: 0 5px;color:#FFF;overflow-x:auto;background:#333654;max-width:100%;background:#fff;border:1px solid #e1e4e5;font-size:75%;padding:0 5px;font-family:SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,Courier,monospace;color:darkgrey;overflow-x:auto}/.rst-content code,.rst-content tt,code{white-space:unset;font-weight:800!important;max-width:100%;border:3px solid transparent;font-size:75%;padding: 0 5px;color:#FFF;overflow-x:auto;background:#333654;}/g' build/html/_static/css/theme.css &&
 sed -i 's/YYYY DATRO/2012\<script>new Date().getFullYear()>2012\&\&document.write("-"+new Date().getFullYear());\<\/script> DATRO/g' build/html/*.html &&
+sed -i 's/DATRO Consortium<\/strong><\/b>  ./DATRO Consortium<\/strong><\/b>/g' build/html/*.html &&
+sed -i 's/DATRO Consortium<\/strong><\/b> ./DATRO Consortium<\/strong><\/b>/g' build/html/*.html &&
+sed -i 's/DATRO Consortium<\/strong><\/b>./DATRO Consortium<\/strong><\/b>/g' build/html/*.html &&
 exit 0

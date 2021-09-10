@@ -10,10 +10,12 @@ This directory and changelog belongs to [![GitHub release (latest by date includ
 ## [_theme-docs.08-rc2.1] - Q3/2021
 
 ### Added
+Sep-09 - Blue.sh & Grey.sh (> v0.4) - After introducing a feature to add a "Back to Library" Button in the footer during the application of the theme   
 Sep-08 - Grey.sh (v0.2 > v0.3) - The theme was displaying text in black. Made color white e.g. `color:#fff`   
 
 ### Changed
-Sep-09 - Grey.sh && Blue.sh (v0.x > v0.3) - Reversed copyleft footer, it was '..Consortium | datro.xyz', now it's 'datro.xyz | ..Consortium', incase we need to append, say, '& Co-Author'  
+Sep-10 - `Grey.sh` and `Blue.sh` (v0.4 > v0.4-rc.1) Added an affix to semantic version of these theme files because they change so after, and improved yesterdays change to these files   
+Sep-09 - `Grey.sh` and `Blue.sh` (v0.x > v0.3) - Reversed copyleft footer, it was '..Consortium | datro.xyz', now it's 'datro.xyz | ..Consortium', incase we need to append, say, '& Co-Author'  
 Sep-08 - Minor edit to `rebuild-master.sh` to save anyone changing the theme some time. See code/commit if you care about this change   
 
 ### Issues

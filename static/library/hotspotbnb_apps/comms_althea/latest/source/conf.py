@@ -1,6 +1,5 @@
 project = u'Althea WebApp'
-copyright = u'& Althea'
-author = u'DATRO Consortium and Althea'
+author = u'Althea'
 
 version = u'0.0.0'
 release = u'0.0.0'

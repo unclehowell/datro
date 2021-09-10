@@ -13,7 +13,10 @@ source_suffix = '.rst'
 
 master_doc = 'index'
 
-language = None
+language = "en"
+locale_dirs = ['locales']
+gettext_auto_build = True
+gettext_compact = "docs"
 
 today_fmt = 'May 08, 2021'
 
@@ -27,7 +30,7 @@ html_theme = 'sphinx_rtd_theme'
 
 html_static_path = ['_static']
 
-htmlhelp_basename = 'consortium_campus-sitesurvey_jamhighland'
+htmlhelp_basename = 'consortium_campuses-campus4_sitesurvey'
 
 
 latex_logo = '_static/logo.jpg'
@@ -43,21 +46,21 @@ latex_elements = {
 
 
 latex_documents = [
-  (master_doc, 'consortium_campus-sitesurvey_jamhighland.tex', 'Site Survey - Jam Highland',
-   u'Author(s): DATRO Consortium', 'manual'),
+  (master_doc, 'consortium_campuses-campus4_sitesurvey.tex', 'Site Survey - Jam Highland',
+   u'Publisher(s): DATRO Consortium', 'manual'),
 ]
 
 
 man_pages = [
-  (master_doc, 'consortium_campus-sitesurvey_jamhighland', u'Site Survey - Jam Highland',
+  (master_doc, 'consortium_campuses-campus4_sitesurvey', u'Site Survey - Jam Highland',
    [author], 1)
 ]
 
 
 
 texinfo_documents = [
-  (master_doc, 'consortium_campus-sitesurvey_jamhighland', u'Site Survey - Jam Highland',
-   author, 'datro_consortium-capus', 'DATRO Consortium',
+  (master_doc, 'consortium_campuses-campus4_sitesurvey', u'Site Survey - Jam Highland',
+   author, 'DATRO Consortium',
    'manual'),
 ]
 

@@ -1,6 +1,6 @@
 project = u'Tech House II - Case Study'
 copyright = u'2021, DATRO Consortium'
-author = u'Team @ DATRO'
+author = u'DATRO Consortium'
 
 version = u'0.0.0'
 release = u'0.0.0'
@@ -18,7 +18,7 @@ language = "en"
 locale_dirs = ['locales']
 gettext_auto_build = True
 gettext_compact = "docs"
-#today_fmt = 'Dec 09, 2019'
+today_fmt = 'Sep 07, 2021'
 
 exclude_patterns = ['_build']
 
@@ -47,7 +47,7 @@ latex_elements =  {
 
 latex_documents = [
     (master_doc, 'consortium_campuses-techhouse2_casestudy.tex', u'Tech House II',
-     u'Author: Team @ DATRO', 'manual'),
+     u'Publisher(s): DATRO Consortium', 'manual'),
 ]
 
 

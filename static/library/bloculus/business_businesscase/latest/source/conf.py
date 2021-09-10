@@ -41,7 +41,7 @@ html_theme_options = {
 
 html_static_path = ['_static']
 
-htmlhelp_basename = 'dao_society-bloculus_businesscase'
+htmlhelp_basename = 'bloculus-bloculus_businesscase'
 
 
 latex_logo = '_static/logo.png'
@@ -57,20 +57,20 @@ latex_elements = {
 
 
 latex_documents = [
-  (master_doc, 'dao_society-bloculus_businesscase.tex', 'Bloculus - Business Case',
+  (master_doc, 'bloculus-bloculus_businesscase.tex', 'Bloculus - Business Case',
    u'Author(s): DATRO Consortium', 'manual'),
 ]
 
 
 man_pages = [
-  (master_doc, 'dao_society-bloculus_businesscase', u'Bloculus - Business Case',
+  (master_doc, 'bloculus-bloculus_businesscase', u'Bloculus - Business Case',
    [author], 1)
 ]
 
 
 
 texinfo_documents = [
-  (master_doc, 'dao_society-bloculus_businesscase', u'Bloculus - Business Case',
+  (master_doc, 'bloculus-bloculus_businesscase', u'Bloculus - Business Case',
    author, 'datro_consortium-capus', 'DATRO Consortium',
    'manual'),
 ]

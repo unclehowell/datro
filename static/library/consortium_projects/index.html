@@ -52,12 +52,11 @@ html {
         const data = await response.json();
         let htmlString = '<ul>';
         htmlString += `<a href="../" class="up-active"><<</a>`;
-        htmlString += `<p style="font-weight:bolder;text-align:center;color:lightslategrey;"><img class="main-logo"></br>Consortium Projects</p>`;
+        htmlString += `<p style="font-weight:bolder;text-align:center;color:lightslategrey;"><img class="main-logo ml-datro"></br>Consortium Projects</p>`;
         for (let file of data) {
           htmlString += `<li class="li"><a href="${file.path}">${file.name}</a></li>`;
         }
         htmlString += '</ul>';
-        htmlString += '<div style="min-height:100vh;"></div>';
         document.getElementsByTagName('body')[0].innerHTML = htmlString;
            })()
     </script>
