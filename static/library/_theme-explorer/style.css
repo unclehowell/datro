@@ -54,8 +54,8 @@ upselect {
 li{
     display:block;
     float:left;
-    padding: 0px 0px 0px 0vw;
-    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 1vw;
+    margin: 0px 0px 0px -2vw;
     text-indent: 0px;
     line-height: 0em;
 }
@@ -137,7 +137,8 @@ li{
     position: inherit;
     display: inline-block;
     margin: 0;
-    min-width: 98vw;
+    min-width: 75vw;
+    left: 0;
 }
 
 .title-disable {
@@ -236,7 +237,7 @@ margin: 1rem 1rem 0.25em 0em!important;
     display: inline;
     min-width: 40px;
     min-height: 12.5px;
-    margin: calc(1.55rem - 0.24em) 1.5rem 0rem -1rem!important;
+    margin: calc(1.55rem - 0.24em) 1.5rem 0rem 0rem!important;
     padding: 0.1em 0.05em 0.16em 0.01em;
     float: left;
     opacity: 1;
@@ -245,9 +246,15 @@ margin: 1rem 1rem 0.25em 0em!important;
 
 
 body {
-background:#336;
-background-color:#336;
-font-size:200%;
+    background: #336;
+    background-color: #336;
+    font-size: 200%;
+    margin-left: 0;
+    max-width: 100vw;
+    min-width: 99vw;
+    left: 0;
+    overscroll-behavior: contain;
+    top: 0;
 }
 
 a {
