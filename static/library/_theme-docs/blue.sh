@@ -15,13 +15,13 @@
 #   ██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝
 #   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
 #................................................
-#                  blue.sh v0.4-rc.1
+#                  blue.sh v0.4-rc.2
 #................................................
 #                   datro.xyz
 #................................................
 
 
-sed -i 's/<\/head>/<style>html{overflow-y:scroll;} ::-webkit-scrollbar{width:0px;background:transparent;}<\/style><\/head>/g' build/html/*.html &&
+sed -i 's/<\/head>/<style>html{overflow-y:scroll;} ::-webkit-scrollbar{width:0px;background:transparent;} div#author-s{text-align:left;}<\/style><\/head>/g' build/html/*.html &&
 sed -i '/\<li class\="wy-breadcrumbs-aside">/,+6d' build/html/*.html &&
 sed -i 's/<div class="version">/<div class="version"> Document Version : /g' build/html/*.html &&
 sed -i 's/#33368C/darkslateblue/g' build/html/_static/css/theme.css &&

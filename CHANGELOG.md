@@ -24,6 +24,7 @@ Jul-24 - Added a custom.sh in one of the docs in library (see library changelog)
 Jul-29 - Removed some bad code in library `github_wiki/index.html` which caused a bug. see library changelog for details   
 
 ### Changed 
+Sep-12 - Changes to library gui and some docs (added logos, like in the Google Patent Contract)  
 Sep-08 - Re-Generated sitemap.xml and removed/ re-added Google Analytics Tracking Code to all HTML Files  
 Sep-08 - Made some good progress on the library navigation menu - see datro.xyz/static/library/ to see   
 Sep-07 - Library (Docs Explorer) Design improved (work in progress/ patience please)   

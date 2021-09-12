@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tech House II - Case Study 0.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-04 23:51-0400\n"
+"POT-Creation-Date: 2021-09-10 16:41-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1201,11 +1201,11 @@ msgid "Tech House II"
 msgstr ""
 
 #: ../../source/index.rst:20
-msgid "**Document Author:**"
+msgid "**Author(s):**"
 msgstr ""
 
 #: ../../source/index.rst:24
-msgid "The Team @ DATRO Consortium"
+msgid "*DATRO Consortium*"
 msgstr ""
 
 #: ../../source/introduction.rst:2
@@ -1373,4 +1373,10 @@ msgstr ""
 #: ../../source/_static/issues.csv:1
 msgid "**Subject**"
 msgstr ""
+
+#~ msgid "**Document Author:**"
+#~ msgstr ""
+
+#~ msgid "The Team @ DATRO Consortium"
+#~ msgstr ""
 

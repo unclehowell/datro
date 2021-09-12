@@ -16,11 +16,11 @@ Tech House II
    
 
 
-**Document Author:** 
+**Author(s):** 
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 =================================
-The Team @ DATRO Consortium
+*DATRO Consortium*
 =================================
 
 

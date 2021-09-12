@@ -1,3 +1,4 @@
+
 html {
     background: #336;
     background-color: #336;
@@ -8,6 +9,72 @@ html {
     margin: 0;
 }
 
+.redish {
+    color: rgba(255,120,19,0.33);
+    position: absolute;
+    display: inline-block;
+    font-size: 0.5em;
+    padding-right: 1em;
+    font-family: sans-serif;
+    letter-spacing: 0.1em;
+    font-weight: bolder;
+    right: 0;
+    cursor: default;
+}
+
+
+.greenish {
+    color:rgba(0,128,0,0.7);
+    position: absolute;
+    display: inline-block;
+    font-size: 0.5em;
+    padding-right: 4em;
+    font-family: sans-serif;
+    letter-spacing: 0.1em;
+    font-weight: bolder;
+    right: 0; 
+    cursor: default;
+}
+
+.rish {
+    border: 2px solid rgba(255,120,19,0.33)!important;
+}
+
+
+.gish {
+border: 2px solid rgba(0,128,0,0.7)!important;
+}
+
+
+.title-html {
+    font-weight: lighter;
+    opacity: 0.5;
+    letter-spacing: 0.01em;
+    margin-left: 0.3em;
+}
+
+.type-subtitle-line {
+    font-size: 65%;
+    border-top: 2px solid rgba(0,0,0,0.0)!important;
+    text-transform: none;
+    word-spacing: 2vw;
+    color: rgba(211,221,255,0.2)!important;
+    cursor: default;
+    font-weight: lighter;
+    font-family: sans-serif;
+    letter-spacing: 0.05em;
+    overflow: visible!Important;
+    display: inline-block!important;
+    min-width: 111vw;
+    padding: 14px 1px 5px 34vw!Important;
+    margin: 0.2em 0.1em 0.1em -5vw;
+    min-height: 0.5em;
+    text-align: left;
+    background-color: rgba(0,0,0,0.1);
+    float: left;
+    position: absolute;
+    top: 0;
+}
 
 .main-logo {
     background-repeat: no-repeat;
@@ -23,7 +90,18 @@ html {
     width: -webkit-fill-available;
 }
 
+.i-techhouse {
+    background-image: url(icons/techhouse.png);
+}
 
+.ml-techhouse {    
+background-image: url(logos/techhouse100x90.png);
+}
+
+
+.ml-campus {
+    background-image: url(logos/campus100x90.png);
+}
 
 
 .ml-althea {
@@ -37,6 +115,10 @@ html {
 
 .ml-hbnb {
     background-image: url(logos/hbnb100x90.png);
+}
+
+.i-hbnb {
+    background-image: url(icons/hbnb.png);   
 }
 
 .ml-datro {
@@ -109,6 +191,7 @@ li{
     padding: 0.1em;
     opacity: 0.85;
     border-bottom: 1px solid rgba(255,255,255,0.15);
+    text-transform:none;
 }
 
 .page-scroll-fix {
@@ -241,17 +324,6 @@ margin: 0.5em 0em 0.1em 0.5em!important;
     background-image: url(flag/es.png);
 }
 
-.f-hbnb {
-    background-image: url(icons/hbnb.png);
-    filter: contrast(1.4)brightness(1.5);
-    opacity:0.8!important;
-}
-
-
-.f-techhouse {
-    background-image: url(icons/techhouse.png);
-}
-
 .f-de {
     background-image: url(flag/de.png);
 }
@@ -264,8 +336,12 @@ margin: 0.5em 0em 0.1em 0.5em!important;
     background-image: url(flag/do.png);
 }
 
-.f-google {
-    background-image: url(icons/google.png);
+.i-google {
+    background-image: url(logos/google-100x90.png);
+}
+
+.ml-google {
+    background-image: url(logos/google-100x90.png);
 }
 
 .flag {
@@ -285,19 +361,19 @@ margin: 0.5em 0em 0.1em 0.5em!important;
 }
 
 .icon {
-    background-size: 42px 35px!important;
+background-size: calc(3rem - 0.1em) calc(3rem - 0.2em);
     background-repeat: no-repeat;
-    background-position: 0.04em 0.1em;
+    background-position: calc(1rem - 0.1em) calc(1rem - 0.3em);
     display: inline;
-    margin: 0em 1.5rem 0rem 1.0rem!important;
-    padding: 0.1em 0.05em 0.16em 0.01em;
+    margin: 0.1em;
+    padding: calc(1rem - 0.3em);
     float: left;
     opacity: 1;
     border-radius: 0.11em;
-    min-height: 35px;
-    height: 35px;
-    max-height: 35px;
-    min-width: 42px;
+    min-height: calc(3rem - 0.1em);
+    height: calc(2rem - 0.1em);
+    max-height: calc(3rem - 0.1em);
+    min-width: 4rem;
     border: 1px solid rgba(255,255,255,0);
 }
 
@@ -306,7 +382,7 @@ margin: 0.5em 0em 0.1em 0.5em!important;
 body {
     background: #336;
     background-color: #336;
-    font-size: 200%;
+    font-size: 175%;
     max-width: 100%;
     left: 0!important;
     overscroll-behavior: contain;

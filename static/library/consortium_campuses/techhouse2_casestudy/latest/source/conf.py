@@ -33,7 +33,12 @@ html_static_path = ['_static']
 
 htmlhelp_basename = 'consortium_campuses-techhouse2_casestudy'
 
-
+html_static_path = ['_static']
+html_logo = '_static/logo.jpeg'
+html_theme_options = {
+    'logo_only': False,
+    'display_version': True,
+}
 latex_logo = '_static/logo.jpeg'
 
 latex_elements =  {

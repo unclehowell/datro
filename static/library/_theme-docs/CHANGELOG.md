@@ -10,6 +10,7 @@ This directory and changelog belongs to [![GitHub release (latest by date includ
 ## [_theme-docs.08-rc2.1] - Q3/2021
 
 ### Added
+Sep-11 - `Grey.sh` and `Blue.sh` (>v0.4-rc.2) - Introduced css to left-align author. Otherwise it inherited the default (text-align: justify), which didn't sit right  
 Sep-09 - Blue.sh & Grey.sh (> v0.4) - After introducing a feature to add a "Back to Library" Button in the footer during the application of the theme   
 Sep-08 - Grey.sh (v0.2 > v0.3) - The theme was displaying text in black. Made color white e.g. `color:#fff`   
 

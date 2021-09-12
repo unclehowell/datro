@@ -1,5 +1,12 @@
 [
   {
+    "name": "<div><b class='greenish' title='Green = HTML'>HTML</b>|<b class='redish' title='Red = PDF'>PDF</b></div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
     "name": "<div class='title-line title-disable'><div class='flag f-gb'></div>English</div>",
     "path": "javascript:void(0)",
     "_links": {
@@ -7,17 +14,31 @@
     }
    },
   {
-    "name": "<div class='language-subtitle-line enable-link'>HTML</div>",
+    "name": "<div class='language-subtitle-line enable-link gish' title='DATRO Campus IV - Site Survey (Latest)'>Latest</div>",
     "path": "./latest/build/html/en/",
     "_links": {
       "html": "./latest/build/html/en/"
     }
    },
   {
-    "name": "<div class='language-subtitle-line enable-link'>PDF</div>",
-    "path": "./latest/build/latex/en/",
+    "name": "<div class='language-subtitle-line enable-link rish' title='DATRO Campus IV - Site Survey v0.0.2'>0-0-2</div>",
+    "path": "./latest/build/latex/en/consortium_campuses-campus4_sitesurvey.pdf",
     "_links": {
-      "html": "./latest/build/latex/en/"
+      "html": "./latest/build/latex/en/consortium_campuses-campus4_sitesurvey.pdf"
+    }
+   },
+  {
+    "name": "<div class='language-subtitle-line enable-link rish' title='DATRO Campus IV - Site Survey v0.0.1'>0-0-1</div>",
+    "path": "https://datro.world/wayback/2021-05-02_consortium_campus-sitesurvey_jamhighland_v0.0.1.pdf",
+    "_links": {
+      "html": "https://datro.world/wayback/2021-05-02_consortium_campus-sitesurvey_jamhighland_v0.0.1.pdf"
+    }
+   },
+  {
+    "name": "<div class='language-subtitle-line enable-link rish' title='DATRO Campus IV - Site Survey v0.0.0'>0-0-0</div>",
+    "path": "https://datro.world/wayback/2021-04-13_datro-consortium-campus_v0.0.0.pdf",
+    "_links": {
+      "html": "https://datro.world/wayback/2021-04-13_datro-consortium-campus_v0.0.0.pdf"
     }
    },
   {
