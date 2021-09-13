@@ -2,31 +2,20 @@
 <html>
 <head>
         <script src="dashboard/js/jquery-3.3.1.min.js"></script>
-
+       
         <script>
-document.getElementById("world").innerHTML = "The full URL of this page is:<br>" + window.location.hostname;
+           if (top.location.href.indexOf("world.datro") > -1) {
+           location.href = '../datro/';
+           }
+
+           if (top.location.href.indexOf("world.datro") <= -1) {
+           location.href = '../gui/dashboard/001-a.html';
+           }
+
          </script>
-<script>
 
-if(window.self !== window.top) {
-
-//run this code if in an iframe
-document.getElementById("demofsdfsdfs").innerHTML = "in frame";
-
-}else{
-
-//run code if not in an iframe
-document.getElementById("demofsdfsdfs").innerHTML = "no frame";
-}
-
-</script>
 </head>
 <body>
-
-  <h2>JavaScript</h2>
-  <h3>The window.location.hostname</h3>
-<p id="demofsdfsdfs"></p>
-  <p id="root"></p>
 </body>
 
 </html>
