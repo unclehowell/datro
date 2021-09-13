@@ -8,14 +8,19 @@
 
 
         <script src="../js/jquery-3.3.1.min.js"></script>
+        <script>
+
+        if (window.location.href.IndexOf("world.") > -1) {
+           location.href = './hello-world.html';
+           }
+
+        if (window.location.href.IndexOf("world.datro.xyz") <= -1) {
+           location.href = './hello-datro.html';
+           }
+
          </script>
 
 </head>
 <body id="body">
-<a href="./test1.html">test1</a>
-<a href="./test2.html">test2</a>
-<a href="./test3.html">test3</a>
-<a href="./test4.html">test4</a>
-<a href="./test5.html">test5</a>
 </body>
 </html>
