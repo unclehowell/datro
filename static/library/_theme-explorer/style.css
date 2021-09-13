@@ -10,7 +10,7 @@ html {
 }
 
 .redish {
-    color: rgba(255,120,19,0.33);
+    color: rgba(51,51,255,0.6);
     position: absolute;
     display: inline-block;
     font-size: 0.5em;
@@ -20,6 +20,8 @@ html {
     font-weight: bolder;
     right: 0;
     cursor: default;
+    filter: brightness(1.5);
+    opacity: 0.9;
 }
 
 
@@ -37,7 +39,7 @@ html {
 }
 
 .rish {
-    border: 2px solid rgba(255,120,19,0.33)!important;
+    border: 2px solid rgba(51,51,255,0.33)!important;
 }
 
 
@@ -222,7 +224,7 @@ ul {
     color: rgba(255,255,255,0.1)!important;
     cursor: default;
     background: #336!important;
-    border: 1px solid rgba(255,255,255,0.1)!important;
+    border: 2px solid rgba(51,65,110,1)!important;
 }
 
 .up-inactive {
@@ -292,9 +294,9 @@ ul {
 }
 
 
-.language-subtitle-line { 
-margin: 0.5em 0em 0.1em 0.5em!important;
-    font-size: 80%;
+.language-subtitle-line {
+    margin: 0.5em 0em 0.1em 0.5em!important;
+    font-size: 66.6%;
     display: inline-flex!important;
     min-width: inherit;
     line-height: 1.25em;
@@ -305,8 +307,7 @@ margin: 0.5em 0em 0.1em 0.5em!important;
     background: rgba(255,255,255,0.05);
     max-width: 100vw;
     border-radius: 10px;
-    border: 1px solid grey;
-    padding: calc(4px + 0.1em) 0.75em calc(4px + 0.1em) 0.75em;
+    padding: calc(4px + 0.1em) 10px calc(0.5px + 0.2em) 10px;
     color: rgba(255,255,255,0.50);
 }
 

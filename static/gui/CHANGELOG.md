@@ -6,11 +6,24 @@ and a combination of [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 and a combination of [Prince2 Project Management](https://prince2.com).    
 
    
-## [Unreleased]    
+## [Unreleased] 
+
+
+## [gui-0.3] - Q3/2021
+
+Sep-12 - Not in the habbit of raising the semantic version mid quarter, we're not that active, but some serious changes are happening with the GUI right now  
+       - Basically the GUI serves as both the software GUI and the interactive only demo, requiring only 1 GUI to be maintained, as it serves 2 seperate functions  
+       - The major change right now, full disclosure, is that we're scrapping the sister GUI which ran on datro.world (in the "netlify" branch).  
+       - We're also going to scrap datro.world and use just the main domain datro.xyz. And we're going to make static/gui perform the datro.word function as its 3rd function   
+       - So now the HotspotGUI will serve the demo HotspotBnB WebApps if the url in the address bar is datro.xyz (or demo.world.datro.xyz).  
+       - If the address in the address bar is simply world.datro.xyz (the successor of datro.world) then the consortiums portfolio of assets will be displayed instead.  
+       - If the address in the address bar has the Top Level Domain `.local` it's presumed the GUI is running locally, and so the end-users screens will be served, contained their installed WebApps.  
+ 
 
 ## [gui-0.2] - Q3/2021
 
 ### Fixed
+Sep-12 - Minor bug needed fixing. Some text was missing a line-height in the css and so it was overflowing off the app icon - (dashboard/media/appstore.css:133)   
 Aug-12 - Two of the pages of the app-store had no `</style>` (stylesheet closing tag) - it prevented the page from loading  
 
 ### Added

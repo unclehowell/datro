@@ -1,55 +1,62 @@
 [
   {
-    "name": "<div class='title-line enable-link'><div class='flag f-gb'></div>English<b class='title-html'>(HTML)</b></div>",
+    "name": "<div><b class='greenish' title='Green = HTML'>HTML</b>|<b class='redish' title='Red = PDF'>PDF</b></div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='title-line title-disable'><div class='flag f-gb'></div>English</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='language-subtitle-line enable-link gish'>Latest</div>",
     "path": "./latest/build/html/en/",
     "_links": {
       "html": "./latest/build/html/en/"
     }
    },
   {
-    "name": "<div class='pdf-subtitle-line'>PDF:</div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
-    }
-   },
-  {
-    "name": "<div class='language-subtitle-line enable-link'>0-0-1</div>",
+    "name": "<div class='language-subtitle-line enable-link rish'>0-0-1</div>",
     "path": "./latest/build/latex/en/consortium_contracts-techhouse2_lease5.pdf",
     "_links": {
       "html": "./latest/build/latex/en/consortium_contracts-techhouse2_lease5.pdf"
     }
    },
  {
-    "name": "<div class='language-subtitle-line enable-link'>0-0-0</div>",
+    "name": "<div class='language-subtitle-line enable-link rish'>0-0-0</div>",
     "path": "./latest/build/latex/en/consortium_contracts-techhouse2_lease5.pdf",
     "_links": {
       "html": "./latest/build/latex/en/consortium_contracts-techhouse2_lease5.pdf"
     }
    },
   {
-    "name": "<div class='title-line enable-link'><div class='flag f-es'></div>Español<b class='title-html'> (HTML)</b></div></div>",
-    "path": "../techhouse2_lease5_es/latest/build/html/es/",
-    "_links": {
-      "html": "../techhouse2_lease5_es/latest/build/html/es/"
-    }
-   },
-    {
-    "name": "<div class='pdf-subtitle-line'>PDF:</div>",
+    "name": "<div class='title-line title-disable'><div class='flag f-es'></div>Español</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
    },
   {
-    "name": "<div class='language-subtitle-line enable-link'>0-0-1</div>",
+    "name": "<div class='language-subtitle-line enable-link gish'>Reciente</div>",
+    "path": "../techhouse2_lease5_es/latest/build/html/es/",
+    "_links": {
+      "html": "../techhouse2_lease5_es/latest/build/html/es/"
+    }
+   },
+  {
+    "name": "<div class='language-subtitle-line enable-link rish'>0-0-1</div>",
     "path": "../techhouse2_lease5_es/latest/build/html/es/_static/consortium_contracts-techhouse2_lease5_es.pdf",
     "_links": {
       "html": "../techhouse2_lease5_es/latest/build/html/es/_static/consortium_contracts-techhouse2_lease5_es.pdf"
     }
    },
    {
-    "name": "<div class='language-subtitle-line enable-link'>0-0-0</div>",
+    "name": "<div class='language-subtitle-line enable-link rish'>0-0-0</div>",
     "path": "../techhouse2_lease5_es/latest/build/html/es/_static/consortium_contracts-techhouse2_lease5_v0-0-0.pdf",
     "_links": {
       "html": "../techhouse2_lease5_es/latest/build/html/es/_static/consortium_contracts-techhouse2_lease5_v0-0-0.pdf"
@@ -63,14 +70,14 @@
     }
    },
   {
-    "name": "<div class='language-subtitle-line subtitle-disable'>HTML</div>",
+    "name": "<div class='language-subtitle-line subtitle-disable gish'>Neueste</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
    },
   {
-    "name": "<div class='language-subtitle-line subtitle-disable'>PDF</div>",
+    "name": "<div class='language-subtitle-line subtitle-disable rish'>x-x-x</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
@@ -84,14 +91,14 @@
     }
    },
   {
-    "name": "<div class='language-subtitle-line subtitle-disable' >HTML</div>",
+    "name": "<div class='language-subtitle-line subtitle-disable gish'>Dernier</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
    },
   {
-    "name": "<div class='language-subtitle-line subtitle-disable' >PDF</div>",
+    "name": "<div class='language-subtitle-line subtitle-disable rish'>x-x-x</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
