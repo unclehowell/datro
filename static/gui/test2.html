@@ -6,12 +6,26 @@
         <script>
 document.getElementById("world").innerHTML = "The full URL of this page is:<br>" + window.location.hostname;
          </script>
+<script>
 
+if(window.self !== window.top) {
+
+//run this code if in an iframe
+document.getElementById("demofsdfsdfs").innerHTML = "in frame";
+
+}else{
+
+//run code if not in an iframe
+document.getElementById("demofsdfsdfs").innerHTML = "no frame";
+}
+
+</script>
 </head>
 <body>
 
   <h2>JavaScript</h2>
   <h3>The window.location.hostname</h3>
+<p id="demofsdfsdfs"></p>
   <p id="root"></p>
 </body>
 

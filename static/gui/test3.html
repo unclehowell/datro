@@ -12,8 +12,23 @@ console.log('document.location', document.location.href);
 console.log('location.pathname',  window.location.pathname); // Returns path only
 console.log('location.href', window.location.href); // Returns full URL
 </script>
+<script>
+
+if(window.self !== window.top) {
+
+//run this code if in an iframe
+document.getElementById("demofsdfsdfs").innerHTML = "in frame";
+
+}else{
+
+//run code if not in an iframe
+document.getElementById("demofsdfsdfs").innerHTML = "no frame";
+}
+
+</script>
 
 </head>
 <body id="body">
+<p id="demofsdfsdfs"></p>
 </body>
 </html>
