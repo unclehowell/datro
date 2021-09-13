@@ -1,29 +1,18 @@
-<!doctype html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-        <head>
-        <meta charset="utf-8">
-
-                                <meta content="1" http-equiv="Expires">
-
-
+<!DOCTYPE html>
+<html>
+<head>
         <script src="../js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript">             
-    $(document).ready
-    (
-        function () 
-        { 
-            var regExp = /world/g;
-            var testString = "world";//Inyour case it would be window.location;
-            if(regExp.test(testString)) // This doesn't work, any suggestions.                 
-            {                      
-                alert("world");                 
-            }             
-        }
-    );         
-</script>
+
+        <script>
+document.getElementById("world").innerHTML = "The full URL of this page is:<br>" + window.location.hostname;
+         </script>
 
 </head>
-<body id="body">
+<body>
+
+  <h2>JavaScript</h2>
+  <h3>The window.location.hostname</h3>
+  <p id="root"></p>
 </body>
+
 </html>

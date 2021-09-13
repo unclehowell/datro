@@ -3,19 +3,18 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
         <head>
         <meta charset="utf-8">
-
-                                <meta content="1" http-equiv="Expires">
-
-
-        <script src="../js/jquery-3.3.1.min.js"></script>
+        <meta content="1" http-equiv="Expires">
+        <script src="dashboard/js/jquery-3.3.1.min.js"></script>
         <script>
-
-
-url = window.location.href;
-if( url.match(/world/) ) {
-   alert("Alert: World!");
-}
+           if (window.location.href.indexOf("world.") > -1) {
+           location.href = 'https://datro.xyz/static/datro/index.html';
+           }
+           if(document.URL.indexOf("world.") <= -1){
+           window.location.href =  'https://datro.xyz/static/gui/dashboard/001-a-demo.html' ;
+           }
          </script>
+        <meta http-equiv="Page-Enter" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
+        <meta http-equiv="Page-Exit" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
 
 </head>
 <body id="body">

@@ -3,21 +3,20 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
         <head>
         <meta charset="utf-8">
-
         <meta content="1" http-equiv="Expires">
+        <script src="dashboard/js/jquery-3.3.1.min.js"></script>
+        <script>
+        function inIframe () {
+             try {
+                return window.self !== window.top;
+             } catch (e) {
+                return true;
+             }
+        }
+         </script>
+        <meta http-equiv="Page-Enter" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
+        <meta http-equiv="Page-Exit" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
 
-
-<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
-
-<script type="text/javascript">
-$(document).ready(function () {
-    if(window.location.href.indexOf("world") > -1) {
-       alert("Alert: world!");
-    } else {
-        alert("window.location.href: " + window.location.href);
-    }
-});
-</script>
 </head>
 <body id="body">
 </body>

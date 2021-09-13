@@ -5,14 +5,12 @@
         <meta charset="utf-8">
 
                                 <meta content="1" http-equiv="Expires">
-
+<script src="../js/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-  $(document).ready(function() {
-    if (window.location.href.indexOf("world") > -1) {
-      alert("world");
-    }
-  });
+console.log('document.location', document.location.href);
+console.log('location.pathname',  window.location.pathname); // Returns path only
+console.log('location.href', window.location.href); // Returns full URL
 </script>
 
 </head>
