@@ -9,16 +9,20 @@
 
 <script>
 
-if(window.self !== window.top) {
-
-//run this code if in an iframe
-document.getElementById("demofsdfsdfs").innerHTML = "in frame";
-
-}else{
-
-//run code if not in an iframe
-document.getElementById("demofsdfsdfs").innerHTML = "no frame";
-}
+if (top != self) {
+ try {
+ if (top.location.hostname.indexOf("world") >= 0) throw 1;
+ } catch (e) {
+ window.document.write("<div style=
+ 'background: black;
+ opacity: 0.5; filter: alpha(opacity = 50);
+ position: absolute; top: 0px; left: 0px;
+ width: 9999px; height: 9999px;
+ z-index: 1000001'
+ onClick='top.location.href=window.location.href'>
+ </div>");
+ }
+} 
 
 </script>
         <meta http-equiv="Page-Enter" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
@@ -26,6 +30,5 @@ document.getElementById("demofsdfsdfs").innerHTML = "no frame";
 
 </head>
 <body id="body">
-<p id="demofsdfsdfs"></p>
 </body>
 </html>
