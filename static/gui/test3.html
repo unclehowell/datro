@@ -7,9 +7,13 @@
                                 <meta content="1" http-equiv="Expires">
 <script src="dashboard/js/jquery-3.3.1.min.js"></script>
         <script>
-               if (top != self) {
-                top.location = self.location;
-               } 
+           if (top.location.href.indexOf("world") > -1) {
+           window.location.href = 'https://' + 'https://demo.openhab.org/#!/page/floorplan_tabs' ;
+           }
+
+           if (top.location.href.indexOf("world") <= -1) {
+           window.location.href = '../gui/dashboard/001-a.html';
+           }
 
          </script>
 
