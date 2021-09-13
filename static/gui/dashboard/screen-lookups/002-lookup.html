@@ -8,13 +8,12 @@
 
         <script src="../js/jquery-3.3.1.min.js"></script> 
         <script>
-           if (window.location.href.indexOf("world.datro.xyz") > -1) {
-           window.location.replace("https://datro.xyz/static/datro/index.html", "_self");
+        if (window.parent.location.href.IndexOf("https://world.datro.xyz") > -1) {
+           location.href = '../../../';
            }
-
-           if(document.URL.indexOf("world.datro.xyz") <= -1){
-           window.location.href =  '../002.html' ;
-           } 
+        if(document.URL.IndexOf("world.") <= -1){
+           window.location.href =  '../002-demo.html' ;
+           }
          </script>
 
         <meta http-equiv="Page-Enter" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">

@@ -9,20 +9,13 @@
 
         <script src="../js/jquery-3.3.1.min.js"></script> 
         <script>
-
-           if (window.location.href.indexOf("world.") > -1) {
-            window.location.href = '../../../datro/index.html', '_self');
-            }
-
-           if (window.location.href.indexOf("world.") <= -1) {
-            window.location.href = '../001-a-demo.html';
-            }
-           
-           if (window.location.href.indexOf(".local") > -1) {
-           window.location.href = '../001-a.html';
+        if (window.parent.location.href.IndexOf("https://world.datro.xyz") > -1) {
+           location.href = '../../../';
            }
 
-
+        if (window.parent.location.href.IndexOf("https://world.datro.xyz") <= -1) {
+           location.href = '../002-demo.html';
+           }
          </script>
 
 </head>
