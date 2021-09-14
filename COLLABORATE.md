@@ -158,7 +158,7 @@ Now all the cheapskates get to continue enjoying their media center, with free I
       ````bash
       # leave the *.git off the end to get the README.md and CHANGELOG.md files
 
-      git remote add origin https://github.com/unclehowell/HBnB.git
+      git remote add origin https://github.com/unclehowell/datro.git
       ````
 
 5. Checkout files and give your branch a name:
