@@ -24,6 +24,8 @@ Jul-24 - Added a custom.sh in one of the docs in library (see library changelog)
 Jul-29 - Removed some bad code in library `github_wiki/index.html` which caused a bug. see library changelog for details   
 
 ### Changed 
+Sep-13 - After sparse checkout of Library (see previous entry) salvagable changes (stylesheets only) from backup, were re-introduced   
+Sep-13 - Local copy of Library got screwed up with a typo during 'grep find replace'. Performed sparse checkout of library, from last commit, to remedy   
 Sep-12 - Major improvement to static/gui - It's now going to takeon the role of datro.world as a 3rd type of content it's able to serve   
        - (the 1st being demo data (when online) and the 2nd being the end-users actual webapps & screens (when offline/hosted locally))  
 Sep-12 - Changes to library gui and some docs (added logos, like in the Google Patent Contract)  
