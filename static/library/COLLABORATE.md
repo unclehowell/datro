@@ -50,7 +50,7 @@ Next edit the conf.py according. Paying particular attention to include the foll
                                      # by default we leave this set to the date of the last publication, so we can run new rebuild.sh releases,
                                      # without having to follow the semantic changelog/archive protocol, required when re-releasing a document. 
                                      # One exception to this rule. It's best to follow the full changelog/archive protocol in the even the file path changes.   
-                                     # The protocol is explained elsewhere in this document e.g. copy /latest/* to /0-0-x/, copy /latest/latex/*.pdf to datro.world/wayback/, `make clean` 0-0-x, update latest/source/conf.py & olderversion.csv and recompile 
+                                     # The protocol is explained elsewhere in this document e.g. copy /latest/* to /0-0-x/, copy /latest/latex/*.pdf to world.datro.xyz/wayback/, `make clean` 0-0-x, update latest/source/conf.py & olderversion.csv and recompile 
  
       ~~~
 
@@ -65,7 +65,7 @@ Obviously the current version you are archiving, will be labeled as the next in 
 
 2. Copy the content of the 'latest' directory to it.  
 
-3. move the compiled pdf from x-x-x to datro.world/wayback (the 'netlify' branch of the monorepo)  
+3. move the compiled pdf from x-x-x to world.datro.xyz/wayback (the 'netlify' branch of the monorepo)  
 
 4. run `make clean` in x-x-x  
 

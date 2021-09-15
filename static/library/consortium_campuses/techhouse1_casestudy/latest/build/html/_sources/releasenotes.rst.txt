@@ -53,7 +53,7 @@ This document has the following updates since version 0.0.2 was published:
 - **yyyy-mm-dd** - Further lending obtained, records updated!
 
 
-To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://datro.world/wayback/>`__.
+To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://datro.world.xyz/wayback/>`__.
    
 
 Known and Corrected Issues

@@ -80,7 +80,7 @@ Sep-09 - Google Search Console was reporting overflow issues. had to add `paddin
 06-Apr - Solve table numbering in Sphinx. Table numbering restarts on every new chapter   
 
 ### Issues
-08-May - Need to get docs (html & PDF) to open links in new tab. Browser based PDF viewer doesn't show within iframes/ divs. And `library.datro.world` displays `datro.xyz/static/library` in a frame  
+08-May - Need to get docs (html & PDF) to open links in new tab. Browser based PDF viewer doesn't show within iframes/ divs. And `world.datro.xyz/library` displays `datro.xyz/static/library` in a frame (Sep 13 - world.datro.xyz was datro.world, but we ditched .world in lieu of hosting everything on 1 domain)   
 08-May - Solved below by ignoring github API and using local .json (.treeview.json) in each directory instead  
 17-Apr - Github API tends to temporarily stop responding when testing - perhaps it thinks it's abuse. stop seems temp, no perminant - maybe cloudflare  
 

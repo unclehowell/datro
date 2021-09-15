@@ -30,7 +30,7 @@ In the interim of a bug fix, you can avoid right-clicking all together, by viewi
 Version 0.0.0
 ################
 
-To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://datro.world/wayback/>`__.
+To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://datro.world.xyz/wayback/>`__.
    
 
 
