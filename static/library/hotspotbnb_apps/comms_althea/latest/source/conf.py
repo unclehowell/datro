@@ -53,19 +53,19 @@ latex_elements = {
 
 
 latex_documents = [
-  (master_doc, 'hotspotbnb_os-appstore_althea.tex', 'Althea (WebApp)',
+  (master_doc, 'hotspotbnb_apps-comms_althea.tex', 'Althea (WebApp)',
    u'Publisher(s): DATRO Consortium', 'manual'),
 ]
 
 man_pages = [
-  (master_doc, 'hotspotbnb_os-appstore_althea', u'Althea (WebApp)',
+  (master_doc, 'hotspotbnb_apps-comms_althea', u'Althea (WebApp)',
    [author], 1)
 ]
 
 
 
 texinfo_documents = [
-  (master_doc, 'hotspotbnb_os-appstore_althea', u'Althea (WebApp)',
+  (master_doc, 'hotspotbnb_apps-comms_althea', u'Althea (WebApp)',
    author, 'Althea',
    'manual'),
 ]

@@ -1,4 +1,3 @@
-
 html {
     background: #336;
     background-color: #336;
@@ -9,33 +8,43 @@ html {
     margin: 0;
 }
 
+p.main-title {
+    font-weight: bolder;
+    text-align: center;
+    color: lightslategrey;
+    padding-bottom: 1em;
+    font-size: clamp(20px, 6vw, 33px);
+    line-height: 1em;
+}
+
 .redish {
-    color: rgba(51,51,255,0.6);
+    color: rgba(51,51,230,0.8);
     position: absolute;
     display: inline-block;
     font-size: 0.5em;
-    padding-right: 1em;
+    padding-right: 25px;
     font-family: sans-serif;
     letter-spacing: 0.1em;
     font-weight: bolder;
     right: 0;
     cursor: default;
-    filter: brightness(1.5);
+    filter: brightness(1.8);
     opacity: 0.9;
 }
 
 
 .greenish {
-    color:rgba(0,128,0,0.7);
+    color: rgba(0,128,0,0.9);
     position: absolute;
     display: inline-block;
     font-size: 0.5em;
-    padding-right: 4em;
+    padding-right: calc(1vw + 2rem + 3em);
     font-family: sans-serif;
     letter-spacing: 0.1em;
     font-weight: bolder;
-    right: 0; 
+    right: 0;
     cursor: default;
+    filter: brightness(1.2);
 }
 
 .rish {
@@ -84,7 +93,7 @@ border: 2px solid rgba(0,128,0,0.7)!important;
     background-position-x: center;
     background-position-y: center;
     min-height: 90px!important;
-    margin: 0px;
+    margin: calc(2vw - 1em) 0px 0px 0px;
     outline: none;
     object-position: center!important;
     text-align: center;
@@ -100,14 +109,26 @@ border: 2px solid rgba(0,128,0,0.7)!important;
 background-image: url(logos/techhouse100x90.png);
 }
 
+.ml-investors {
+    background-image: url(logos/investors100x90.png);
+}
+
 
 .ml-campus {
     background-image: url(logos/campus100x90.png);
 }
 
+.ml-creditors {
+    background-image: url(logos/creditors100x90.png);
+}
 
 .ml-althea {
     background-image: url(logos/althea100x90.png);
+}
+
+
+.ml-github {
+    background-image: url(logos/github100x90.png);
 }
 
 
@@ -147,23 +168,29 @@ text-transform:none;
 }
 
 .up-active {
-    color: rgba(255,255,255,.75);
-    background: #336;
-    top: 30px!important;
-    left: 25px!important;
-    padding: 0px 10px 0px 10px!important;
-    font-size: 90%!important;
+    color: rgba(255,255,255,.55);
+    background: rgb(51,51,102,1);
+    margin-top: calc(0vw - 2.1em);
+    left: 0px!important;
+    padding: 0px 5px 0px 5px!important;
+    font-size: 70%!important;
     float: left;
-    position: absolute!important;
-    line-height: 45px;
+    position: fixed;
+    line-height: 30px;
     min-width: 1px;
     min-height: 1px;
-    zoom: 0.75;
-    border-top: 3px solid rgba(255,255,255,0.5);
-    border-left: 3px solid rgba(255,255,255,0.5);
-    border-right: 3px solid rgba(0,0,0,0.5);
-    border-bottom: 3px solid rgba(0,0,0,0.5);
+    zoom: 1.1;
+    border-top: 2px solid rgba(255,255,255,0.3);
+    border-left: 2px solid rgba(255,255,255,0.3);
+    border-right: 2px solid rgba(0,0,0,0.5);
+    border-bottom: 2px solid rgba(0,0,0,0.5);
     border-radius: 10px;
+    margin-left: calc(0.5vw + 0.5rem);
+    font-family: monospace;
+    font-weight: bolder;
+    opacity: 0.8;
+    background-color: rgb(51,51,102,1);
+    z-index: 1;
 }
 
 li{
@@ -178,11 +205,12 @@ li{
 }
 
 .title-line {
+    max-height: 3em;
     font-size: 0.75em;
     line-height: 4rem!Important;
     min-width: 100vw!important;
     letter-spacing: 0.25rem;
-    margin: 1em 0rem 0.25em 0em!important;
+    margin: 1em 0rem calc(1.5vh - 0rem) 0em!important;
     float: left!important;
     word-spacing: -0.1em;
     font-family: sans-serif!important;
@@ -193,7 +221,7 @@ li{
     padding: 0.1em;
     opacity: 0.85;
     border-bottom: 1px solid rgba(255,255,255,0.15);
-    text-transform:none;
+    text-transform: none;
 }
 
 .page-scroll-fix {
@@ -228,26 +256,29 @@ ul {
 }
 
 .up-inactive {
-    color: rgba(255,255,255,0.25);
-    cursor: default;
-    background: #336;
-    top: 30px!important;
-    left: 25px!important;
-    font-size: 90%!important;
+    color: rgba(255,255,255,.25);
+    background: rgb(51,51,102,0.5);
+    margin-top: calc(0vw - 2.1em);
+    left: 0px!important;
+    padding: 0px 5px 0px 5px!important;
+    font-size: 70%!important;
     float: left;
-    line-height: 45px;
-    padding: 0px 10px 0px 10px!important;
-    font-size: 90%!important;
-    position: absolute;
+    position: fixed;
+    line-height: 30px;
     min-width: 1px;
     min-height: 1px;
-    zoom: 0.75;
-    border-top: 3px solid rgba(255,255,255,0.15);
-    border-left: 3px solid rgba(255,255,255,0.15);
-    border-right: 3px solid rgba(0,0,0,0.15);
-    border-bottom: 3px solid rgba(0,0,0,0.15);
+    zoom: 1.1;
+    border-top: 2px solid rgba(255,255,255,0.15);
+    border-left: 2px solid rgba(255,255,255,0.15);
+    border-right: 2px solid rgba(0,0,0,0.25);
+    border-bottom: 2px solid rgba(0,0,0,0.25);
     border-radius: 10px;
-
+    margin-left: calc(0.5vw + 0.5rem);
+    font-family: monospace;
+    font-weight: bolder;
+    opacity: 0.8;
+    background-color: rgb(51,51,102,0.5);
+    cursor:default;
 }
 
 
@@ -296,7 +327,7 @@ ul {
 
 .language-subtitle-line {
     margin: 0.5em 0em 0.1em 0.5em!important;
-    font-size: 66.6%;
+    font-size: clamp(17px, 4vw, 30px);
     display: inline-flex!important;
     min-width: inherit;
     line-height: 1.25em;
@@ -307,7 +338,7 @@ ul {
     background: rgba(255,255,255,0.05);
     max-width: 100vw;
     border-radius: 10px;
-    padding: calc(4px + 0.1em) 10px calc(0.5px + 0.2em) 10px;
+    padding: calc(4px + 0.1em) 10px calc(0.5vw - 0.05rem) 10px;
     color: rgba(255,255,255,0.50);
 }
 

@@ -7,6 +7,12 @@ This directory and changelog belongs to [![GitHub release (latest by date includ
 
 ## [Unreleased]  
 
+
+## [_theme-docs.08-rc2.2] - Q3/2021
+
+### Added
+Sep-14 - `rebuild-master.sh` (> v08-rc2.2) Added simple error check/safeguard, 1) Reverts path to `./latest` after each task, 2) Confirm, 3) Resume script (abort if 2 = mismatch)   
+
 ## [_theme-docs.08-rc2.1] - Q3/2021
 
 ### Added

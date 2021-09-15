@@ -40,28 +40,28 @@ latex_logo = '_static/logo.png'
 html_static_path = ['_static']
 
 
-htmlhelp_basename = 'hotspotbnb-appstore_openhab'
+htmlhelp_basename = 'hotspotbnb_apps-smarthome_openhab'
 
 
 latex_elements = { 'classoptions': ',openany,oneside', 'babel' : '\\usepackage[english]{babel}' }
 
 
 latex_documents = [
-    (master_doc, 'hotspotbnb-appstore_openhab.tex', u'OpenHAB WebApp',
+    (master_doc, 'hotspotbnb_apps-smarthome_openhab.tex', u'OpenHAB WebApp',
      u'Publisher: DATRO Consortium', 'manual'),
 ]
 
 
 man_pages = [
-    (master_doc, 'hotspotbnb-appstore_openhab', u'DATRO Consortium and the OpenHAB Community/ Foundation e.V.',
+    (master_doc, 'hotspotbnb_apps-smarthome_openhab', u'DATRO Consortium and the OpenHAB Community/ Foundation e.V.',
      [author], 1)
 ]
 
 
 
 texinfo_documents = [
-    (master_doc, 'hotspotbnb-appstore_openhab', u'DATRO Consortium and the OpenHAB Community/ Foundation e.V.',
-     author, 'hotspotbnb-appstore_openhab', 'DATRO Consortium and the OpenHAB Community/ Foundation e.V.',
+    (master_doc, 'hotspotbnb_apps-smarthome_openhab', u'DATRO Consortium and the OpenHAB Community/ Foundation e.V.',
+     author, 'hotspotbnb_apps-smarthome_openhab', 'DATRO Consortium and the OpenHAB Community/ Foundation e.V.',
      'manual'),
 ]
 

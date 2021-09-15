@@ -52,7 +52,7 @@ html {
         const data = await response.json();
         let htmlString = '<ul>';
         htmlString += `<a href="../" class="up-active"><<</a>`;
-        htmlString += `<p style="font-weight:bolder;text-align:center;color:lightslategrey;"><img class="main-logo ml-datro"></br>Consortium Financials</p>`;
+        htmlString += `<p class="main-title"><img class="main-logo ml-datro"></br>Consortium Financials</p>`;
         for (let file of data) {
           htmlString += `<li class="li"><a href="${file.path}">${file.name}</a></li>`;
         }

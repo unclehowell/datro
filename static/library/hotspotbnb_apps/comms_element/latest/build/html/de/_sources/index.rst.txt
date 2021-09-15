@@ -7,11 +7,11 @@ Element WebApp
    
    releasenotes
 
-**Publisher and Author(s):** 
+**Author(s):** 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 =========================================
-*DATRO Consortium* & *New Vector Ltd*
+*New Vector Ltd*
 =========================================
 
 

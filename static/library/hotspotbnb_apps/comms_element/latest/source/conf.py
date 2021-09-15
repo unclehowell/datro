@@ -1,6 +1,6 @@
 project = u'Element -  WebApp'
-copyright = u'& New Vector Ltd'
-author = u'New Vector Ltd and DATRO Consortium'
+copyright = u'2021, DATRO Consortium'
+author = u'New Vector Ltd'
 
 version = u'0.0.0'
 release = u'0.0.0'
@@ -53,19 +53,19 @@ latex_elements = {
 
 
 latex_documents = [
-  (master_doc, 'hotspotbnb_os-appstore_element.tex', 'Element WebApp',
+  (master_doc, 'hotspotbnb_apps-comms_element.tex', 'Element WebApp',
    u'Publisher: DATRO Consortium', 'manual'),
 ]
 
 man_pages = [
-  (master_doc, 'hotspotbnb_os-appstore_element', u'Element WebApp',
+  (master_doc, 'hotspotbnb_apps-comms_element', u'Element WebApp',
    [author], 1)
 ]
 
 
 
 texinfo_documents = [
-  (master_doc, 'hotspotbnb_os-appstore_element', u'Element WebApp',
+  (master_doc, 'hotspotbnb_apps-comms_element', u'Element WebApp',
    author, 'New Vector Ltd', 'New Vector Ltd',
    'manual'),
 ]

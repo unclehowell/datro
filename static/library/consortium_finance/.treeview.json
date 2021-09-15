@@ -7,17 +7,17 @@
     }
    },
   {
-    "name": "<div class='depth2-subtitle-line subtitle-disable'>Sales</div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
-    }
-   },
-  {
     "name": "<div class='depth2-subtitle-line enable-link'>Credit</div>",
     "path": "./funding_creditors",
     "_links": {
       "html": "./funding_creditors"
+    }
+   },
+  {
+    "name": "<div class='depth2-subtitle-line subtitle-disable'>Grants</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
     }
    },
   {
@@ -28,7 +28,7 @@
     }
    },
   {
-    "name": "<div class='depth2-subtitle-line subtitle-disable'>Grants</div>",
+    "name": "<div class='depth2-subtitle-line subtitle-disable'>Sales</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
