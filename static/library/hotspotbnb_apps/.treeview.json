@@ -133,6 +133,20 @@
     }
    },
   {
+    "name": "<div class='title-line title-disable'><div class='icon f-hbnb'></div>Developers</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='depth2-subtitle-line enable-link'>Weblate</div>",
+    "path": "./developers_weblate/",
+    "_links": {
+      "html": "./developers_weblate/"
+    }
+   },
+  {
     "name": "<div class='title-line title-disable'><div class='icon f-hbnb'></div>Integrated</div>",
     "path": "javascript:void(0)",
     "_links": {

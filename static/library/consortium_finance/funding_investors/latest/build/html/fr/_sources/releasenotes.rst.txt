@@ -19,7 +19,7 @@ Older Versions
 Inherent with the update and re-release of this report is the inclusion of a reference to a downloadable, archived copy, of the previous report. 
 In the table below the last entry should display a link to an archived copy of the last report, with an archive date matching the publication of this newly published report.  
 The title of the download link may differ from the filename. This is mainly to keep the filename from overflowing in the table below.
-Latest releases mention the last three semantic versions only. Older versions can be located in the DATRO Consortiums `Wayback <https://wayback.datro.world>`__ Archive. 
+Latest releases mention the last three semantic versions only. Older versions can be located in the DATRO Consortiums `Wayback <https://world.datro.xyz/wayback/>`__ Archive. 
   
 
 .. csv-table:: Older Versions of this Document
@@ -38,7 +38,7 @@ Version 0.1.0
 Version 0.0.9
 ~~~~~~~~~~~~~~
 
-- **2021-05-14** - `Limiting the number of older versions/older version release notes (referenced in the latest release) to three. To view older notes look back 3 semantic versions in the archives/ "wayback" e.g. https://wayback.datro.world'
+- **2021-05-14** - `Limiting the number of older versions/older version release notes (referenced in the latest release) to three. To view older notes look back 3 semantic versions in the archives/ "wayback" e.g. https://world.datro.xyz/wayback/'
 - **2021-05-14** - `Stopped using names of months in releasenotes and used numbers instead - More technical but it aligns better. Backdated this formatting too e.g. '2021-May-10' > '2021-05-10'`
 - **2021-05-14** - `The indexing and layout of v0.0.7 (and the archived copy of v0.0.8) was improved, making the glossary brief and the navigation simpler`
 - **2021-05-14** - `The proposed (backdated and pre-revenue) base rate of interest will reduce by a decimal place this quarter. To be revisited once the consortium is post-revenue`
@@ -58,7 +58,7 @@ Version 0.0.7
 - **2021-04-08** - `Addressed issues from last document release`
   
 
-To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback <https://wayback.datro.world>`__ Archive.
+To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback <https://world.datro.xyz/wayback/>`__ Archive.
 
 Known and Corrected Issues
 ==============================

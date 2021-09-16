@@ -8,24 +8,24 @@ reading sources... [ 33%] index
 reading sources... [ 66%] investoraccounts
 reading sources... [100%] releasenotes
 
-/var/www/html/datro-gh-pages/static/library/consortium_finance/funding_investors/latest/source/investoraccounts.rst:121: WARNING: Title underline too short.
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_finance/funding_investors/latest/source/investoraccounts.rst:121: WARNING: Title underline too short.
 
 J-Smith-Walker (Account:111)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-/var/www/html/datro-gh-pages/static/library/consortium_finance/funding_investors/latest/source/investoraccounts.rst:121: WARNING: Title underline too short.
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_finance/funding_investors/latest/source/investoraccounts.rst:121: WARNING: Title underline too short.
 
 J-Smith-Walker (Account:111)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-/var/www/html/datro-gh-pages/static/library/consortium_finance/funding_investors/latest/source/investoraccounts.rst:465: WARNING: Title underline too short.
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_finance/funding_investors/latest/source/investoraccounts.rst:465: WARNING: Title underline too short.
 
 J-Choudhury-Lucas (Account:148)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-/var/www/html/datro-gh-pages/static/library/consortium_finance/funding_investors/latest/source/investoraccounts.rst:465: WARNING: Title underline too short.
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_finance/funding_investors/latest/source/investoraccounts.rst:465: WARNING: Title underline too short.
 
 J-Choudhury-Lucas (Account:148)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-/var/www/html/datro-gh-pages/static/library/consortium_finance/funding_investors/latest/source/releasenotes.rst:35: WARNING: Inline interpreted text or phrase reference start-string without end-string.
-/var/www/html/datro-gh-pages/static/library/consortium_finance/funding_investors/latest/source/releasenotes.rst:41: WARNING: Inline interpreted text or phrase reference start-string without end-string.
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_finance/funding_investors/latest/source/releasenotes.rst:35: WARNING: Inline interpreted text or phrase reference start-string without end-string.
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_finance/funding_investors/latest/source/releasenotes.rst:41: WARNING: Inline interpreted text or phrase reference start-string without end-string.
 looking for now-outdated files... none found
 pickling environment... done
 checking consistency... done
@@ -159,10 +159,11 @@ Writing index file consortium_finance-funding_investors.idx
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd)
 (/usr/share/texmf/tex/latex/tex-gyre/t1qhv.fd)<<ot1.cmap>><<oml.cmap>><<oms.cma
 p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
-nts/map/pdftex/updmap/pdftex.map}] [1] [1]
+nts/map/pdftex/updmap/pdftex.map} <./logo.png>] [1] [1]
 Chapter 1.
 (/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [2] [3]
 Chapter 2.
@@ -379,7 +380,7 @@ ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
 vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
 /fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
 gyre/qtmri.pfb>
-Output written on consortium_finance-funding_investors.pdf (21 pages, 197433 by
+Output written on consortium_finance-funding_investors.pdf (21 pages, 201809 by
 tes).
 Transcript written on consortium_finance-funding_investors.log.
 Latexmk: Index file 'consortium_finance-funding_investors.idx' was written
@@ -525,11 +526,12 @@ Writing index file consortium_finance-funding_investors.idx
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
 (./consortium_finance-funding_investors.out)
 (./consortium_finance-funding_investors.out)
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd)
 (/usr/share/texmf/tex/latex/tex-gyre/t1qhv.fd)<<ot1.cmap>><<oml.cmap>><<oms.cma
 p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
-nts/map/pdftex/updmap/pdftex.map}] (./consortium_finance-funding_investors.toc)
-[1] [1]
+nts/map/pdftex/updmap/pdftex.map} <./logo.png>]
+(./consortium_finance-funding_investors.toc) [1] [1]
 Chapter 1.
 (/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [2] [3]
 Chapter 2.
@@ -736,7 +738,7 @@ ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
 vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
 /fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
 gyre/qtmri.pfb>
-Output written on consortium_finance-funding_investors.pdf (21 pages, 204683 by
+Output written on consortium_finance-funding_investors.pdf (21 pages, 209304 by
 tes).
 Transcript written on consortium_finance-funding_investors.log.
 Latexmk: Index file 'consortium_finance-funding_investors.idx' was written
@@ -861,11 +863,12 @@ Writing index file consortium_finance-funding_investors.idx
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
 (./consortium_finance-funding_investors.out)
 (./consortium_finance-funding_investors.out)
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd)
 (/usr/share/texmf/tex/latex/tex-gyre/t1qhv.fd)<<ot1.cmap>><<oml.cmap>><<oms.cma
 p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
-nts/map/pdftex/updmap/pdftex.map}] (./consortium_finance-funding_investors.toc)
-[1] [1]
+nts/map/pdftex/updmap/pdftex.map} <./logo.png>]
+(./consortium_finance-funding_investors.toc) [1] [1]
 Chapter 1.
 (/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [2] [3]
 Chapter 2.
@@ -1072,7 +1075,7 @@ ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
 vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
 /fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
 gyre/qtmri.pfb>
-Output written on consortium_finance-funding_investors.pdf (21 pages, 204683 by
+Output written on consortium_finance-funding_investors.pdf (21 pages, 209304 by
 tes).
 Transcript written on consortium_finance-funding_investors.log.
 Latexmk: Index file 'consortium_finance-funding_investors.idx' was written

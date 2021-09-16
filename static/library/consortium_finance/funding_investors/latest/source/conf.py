@@ -1,7 +1,6 @@
-
 project = u'DATRO Consortium Investments'
 copyright = u'2021, DATRO Consortium'
-author = u'The Team @ DATRO Consortium'
+author = u'DATRO Consortium'
 
 version = u'0.1.1'
 release = u'0.1.1'
@@ -22,6 +21,16 @@ gettext_compact = "docs"
 
 today_fmt = 'May 25, 2021'
 
+
+html_static_path = ['_static']
+html_logo = '_static/logo.png'
+html_theme_options = {
+    'logo_only': False,
+    'display_version': True,
+}
+latex_logo = '_static/logo.png'
+
+
 exclude_patterns = ['_build']
 
 
@@ -35,8 +44,6 @@ html_static_path = ['_static']
 
 htmlhelp_basename = 'consortium_finance-funding_investors'
 
-
-#latex_logo = '_static/logo.jpg'
 
 latex_elements = {
 

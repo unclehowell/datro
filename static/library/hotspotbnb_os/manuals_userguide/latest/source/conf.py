@@ -57,19 +57,19 @@ latex_elements = {
 
 
 latex_documents = [
-  (master_doc, 'hotspotbnb_os-technical_userguide.tex', 'HotspotBnB - User Guide',
+  (master_doc, 'hotspotbnb_os-manuals_userguide.tex', 'HotspotBnB - User Guide',
    u'Author(s): DATRO Consortium', 'manual'),
 ]
 
 man_pages = [
-  (master_doc, 'hotspotbnb_os-technical_userguide', u'HotspotBnB - User Guide',
+  (master_doc, 'hotspotbnb_os-manuals_userguide', u'HotspotBnB - User Guide',
    [author], 1)
 ]
 
 
 
 texinfo_documents = [
-  (master_doc, 'hotspotbnb_os-technical_userguide', u'HotspotBnB - User Guide',
+  (master_doc, 'hotspotbnb_os-manuals_userguide', u'HotspotBnB - User Guide',
    author, 'DATRO Consortium',
    'manual'),
 ]

@@ -15,7 +15,7 @@
 #   ██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝
 #   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
 #................................................
-#       rebuild.sh  _theme-docs.08-rc2.1
+#       rebuild.sh  _theme-docs.08-rc2.3
 #................................................
 #                   datro.xyz
 #................................................
@@ -42,21 +42,32 @@ printf "\n\e[2;4;33m${PWD#${PWD%/*/*/*}/} ... is rebuilding!\e[0m\n"
 printf "\n\e[2;3;33m Step 1 of 5. Cleared old builds. Run custom script ? (enable/disable in rebuild.sh) \n\e[0m\n"
 for number in $(seq ${_start} ${_20})
 do
-        sleep 0.1
+        sleep 0.5
         ProgressBar ${number} ${_end}
 done
+
+sleep 1 &&
+
 
 # custom e.g. pull in latest custom data e.g. fiscal
 #sh custom.sh 2> /dev/null &&
 touch build.log
 make clean > build.log 2>&1
 
+
+
+# error check
+if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
+echo "  ... ABORTING - Current directory isn't right" && exit 1 & sleep 0.1 && exit 0 & sleep 0.1 && exit & sleep 0.1 && exit 0 & sleep 0.1 && exit 1 & sleep 0.1 && end 
+fi
+
+
 printf "\e[2;3;33m Done! \n\e[0m"
 
 printf "\n\e[2;3;33m Step 2 of 5. Converting ReStructuredText to HTML (make html) \n\e[0m\n"
 for number in $(seq ${_20} ${_40})
 do
-	sleep 0.1
+	sleep 0.5
 	ProgressBar ${number} ${_end}
 done
 
@@ -68,6 +79,7 @@ sphinx-intl update -p build/gettext -l es -l de -l fr  > build.log 2>&1 &&
 sleep 2 &&
 make html > build.log 2>&1 &&
 sleep 2 &&
+
 
 cd build &&
 mkdir en &&
@@ -83,6 +95,12 @@ sphinx-build -b html source build/html/de -D language='de' > build.log 2>&1 &&
 sleep 2 &&
 sphinx-build -b html source build/html/fr -D language='fr' > build.log 2>&1 &&
 sleep 2 &&
+
+
+# error check
+if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
+echo "  ... ABORTING - Current directory isn't right" && exit 1 & sleep 0.1 && exit 0 & sleep 0.1 && exit & sleep 0.1 && exit 0 & sleep 0.1 && exit 1 & sleep 0.1 && end 
+fi
 
 
 cd build
@@ -102,7 +120,13 @@ echo '</html>'
 }>> index.html
 cd ..
 cd ..
-sleep 5 &&
+
+
+# error check
+if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
+echo "  ... ABORTING - Current directory isn't right" && exit 1 & sleep 0.1 && exit 0 & sleep 0.1 && exit & sleep 0.1 && exit 0 & sleep 0.1 && exit 1 & sleep 0.1 && end 
+fi
+
 
 printf "\e[2;3;33m Done! \n\e[0m"
 
@@ -114,19 +138,24 @@ do
         ProgressBar ${number} ${_end}
 done
 
+
 cd build
 mkdir -p pdfs/{en,es,de,fr}
-printf "\n\e[2;3;33m making pdf (en) \n\e[0m\n"
 cd ..
 
 make  -e SPHINXOPTS="-D language='en'" latexpdf  --keep-going --silent > build.log 2>&1 &&
-ls -1 build/latex/
 
 sleep 2 && cd build && mv latex/*.pdf pdfs/en && cd latex && find . -type f ! -iname "*.pdf" -delete &&
 
-ls -la ../pdfs/en
 cd ..
 cd ..
+
+
+# error check
+if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
+echo "  ... ABORTING - Current directory isn't right" && exit 1 & sleep 0.1 && exit 0 & sleep 0.1 && exit & sleep 0.1 && exit 0 & sleep 0.1 && exit 1 & sleep 0.1 && end 
+fi
+
 
 make  -e SPHINXOPTS="-D language='es'" latexpdf  --keep-going --silent > build.log 2>&1 &&
 cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/es && cd .. && cd .. &&
@@ -139,11 +168,11 @@ cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/fr
 mv build/pdfs/{en,es,de,fr} build/latex
 rm -r build/pdfs
 
-printf "\n\e[2;3;33m check we're back in ./ (CTL+C if not) \n\e[0m\n"
-pwd
+# error check
+if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
+echo "  ... ABORTING - Current directory isn't right" && exit 1 & sleep 0.1 && exit 0 & sleep 0.1 && exit & sleep 0.1 && exit 0 & sleep 0.1 && exit 1 & sleep 0.1 && end 
+fi
 
-
-printf "\n\e[2;3;33m Making redirect from language directories to pdf's \n\e[0m\n"
 
 cd build
 cd latex
@@ -172,13 +201,10 @@ echo '</script>'
 echo '</html>'
 }>> index.html
 
-printf "\e[2;3;33m Copy index.html redirect into language directories \n\e[0m"
 cp -r index.html ../es &&
 cp -r index.html ../de &&
 cp -r index.html ../fr &&
 cd ..
-printf "\e[2;3;33m Double check we're in ./build/latex/ (CTL+C if not) \n\e[0m"
-pwd
 sleep 2 &&
 
 # now we redirect to /en
@@ -197,10 +223,13 @@ echo '</html>'
 }>> index.html
 cd ..
 cd ..
-printf "\e[2;3;33m Make sure we're back at ./ (CTL+C if not) \n\e[0m"
-pwd
 
-sleep 2 &&
+
+# error check
+if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
+echo "  ... ABORTING - Current directory isn't right" && exit 1 & sleep 0.1 && exit 0 & sleep 0.1 && exit & sleep 0.1 && exit 0 & sleep 0.1 && exit 1 & sleep 0.1 && end 
+fi
+
 printf "\e[2;3;33m Done! \n\e[0m"
 
 printf "\n\e[2;3;33m Step 4 of 5. Setting HTML Theme (alternate color in rebuild.sh) \n\e[0m\n"
@@ -210,7 +239,11 @@ do
        ProgressBar ${number} ${_end}
 done
 
-sleep 2 &&
+# error check
+if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
+echo "  ... ABORTING - Current directory isn't right" && exit 1 & sleep 0.1 && exit 0 & sleep 0.1 && exit & sleep 0.1 && exit 0 & sleep 0.1 && exit 1 & sleep 0.1 && end 
+fi
+
 
 # Select a color theme (default blue)
 #cp -r ../../../_theme-docs/grey.sh grey.sh 2> /dev/null && mv ./grey.sh ./theme.sh &&
@@ -218,9 +251,7 @@ cp -r ../../../_theme-docs/blue.sh blue.sh 2> /dev/null && mv ./blue.sh ./theme.
 
 sudo chmod +x ./theme.sh &&
 sed 's|build\/html\/|build\/html\/en\/|g' ./theme.sh > ./en.sh && chmod +x ./en.sh && bash ./en.sh && rm -r ./en.sh && sleep 2 &&
-printf "\n\e[2;3;33m en theme done \n\e[0m\n"
 sed 's|build\/html\/|build\/html\/es\/|g' ./theme.sh > ./es.sh && chmod +x ./es.sh && bash ./es.sh && rm -r ./es.sh && sleep 2 &&
-printf "\n\e[2;3;33m es theme done \n\e[0m\n"
 sed 's|build\/html\/|build\/html\/de\/|g' ./theme.sh > ./de.sh && chmod +x ./de.sh && bash ./de.sh && rm -r ./de.sh && sleep 2 &&
 sed 's|build\/html\/|build\/html\/fr\/|g' ./theme.sh > ./fr.sh && chmod +x ./fr.sh && bash ./fr.sh && rm -r ./fr.sh && sleep 2 &&
 rm -r ./theme.sh
@@ -228,7 +259,11 @@ rm -r ./theme.sh
 sleep 2 &&
 
 
-printf "\e[2;3;33m redirect build/html to build/html/en (default language) \n\e[0m"
+# error check
+if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
+echo "  ... ABORTING - Current directory isn't right" && exit 1 & sleep 0.1 && exit 0 & sleep 0.1 && exit & sleep 0.1 && exit 0 & sleep 0.1 && exit 1 & sleep 0.1 && end 
+fi
+
 
 cd build
 cd html
@@ -247,17 +282,19 @@ echo '</html>'
 }>> index.html
 cd ..
 cd ..
-sleep 2 &&
 
+
+# error check
+if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
+echo "  ... ABORTING - Current directory isn't right" && exit 1 & sleep 0.1 && exit 0 & sleep 0.1 && exit & sleep 0.1 && exit 0 & sleep 0.1 && exit 1 & sleep 0.1 && end 
+fi
 
 printf "\e[2;3;33m Done! \n\e[0m"
 
 printf "\n\e[2;3;33m Step 5 of 5. Grabbing the latest auto-rebuilder \n\e[0m\n"
-for number in $(seq ${_80} ${_end})
-do
-    sleep 0.1
-    ProgressBar ${number} ${_end}
-done
+sleep 0.1 &&
+printf "\n\e[2;3;33m ----------------------------------------------------- \n\e[0m\n"
+
 
 # making sure the auto-rebuild.sh is the latest version, for the next auto-build
 rm -r auto-rebuild.sh 2> /dev/null &
@@ -266,10 +303,21 @@ bash ../../../_theme-docs/update.sh 2> /dev/null &
 
 cp -r ../../../_theme-docs/auto-rebuild-master.sh auto-rebuild.sh 2> /dev/null &
 
-sleep 1 &&
+sleep 5 &&
 
-cd ../
-printf "\e[2;3;33m http://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*}/} \n\e[0m\n"
+for number in $(seq ${_80} ${_end})
+do
+    sleep 0.1
+    ProgressBar ${number} ${_end}
+done
+
+printf "\e[2;3;33m Done! \n\e[0m"
+
+cd ..
+printf "\n\e[2;3;33m ----------------------------------------------------- \n\e[0m\n"
+sleep 1 &&
+printf "\e[2;3;33m Preview Link (adjust to suite your local machine) \n\e[0m\n"
+printf "\e[2;3;33m http://localhost/${PWD#${PWD%/*/*/*/*/*/*/*}/} \n\e[0m\n"
 cd latest
 
 #change NAME to PDF name before running

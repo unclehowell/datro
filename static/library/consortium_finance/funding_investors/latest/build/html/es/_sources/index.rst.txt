@@ -21,11 +21,11 @@ This document belongs to the `DATRO Consortium Document Library <https://datro.x
    investoraccounts
 
  
-**Document Author:** 
-^^^^^^^^^^^^^^^^^^^^^^
+**Document Author(s):** 
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 ===============================
-The Team @ DATRO Consortium
+*DATRO Consortium*
 ===============================
 
 
