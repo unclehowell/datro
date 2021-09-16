@@ -17,6 +17,7 @@ Jul-24 - Added a directory called `consortium_other/github_wiki` in library and 
 Jul-24 - The idea is that this build will trigger the custom.sh which will fetch the latest github wiki and turn it into a standard doc e.g. html/pdf   
 
 ### Changed
+Sep-15 - Ran the command `git reflog expire --expire=now --all && git gc --prune=now --aggressive` to cleanup the `static/library` sparse-checkout  
 Sep-09 - Minor tweaks to `_theme-explorer/style.css`   
 Sep-08 - Made some updates to COLLABORATE.md and README.md, to include recent developments   
 Sep-08 - Stylesheet improvements to Library Explorer  
