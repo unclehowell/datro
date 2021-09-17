@@ -6,8 +6,10 @@ This new fixed communications infrastructure comprises of geodesic communication
 
 
 The entire network, including the communication rooms blueprints to the software which operates them and the end-users wireless access points, are in the public domain under a General Public Licence (GPL) - allowing anyone, anywhere to launch the same secure and decentralized network in their area. 
-The purpose of this document is to introduce a component of this network entitled the Bloculus Protcol, which is to become the underlying foundations of this new type of (web3.0) network. 
+The purpose of this document is to introduce a component of this network entitled the Bloculus Protocol, which is to become the underlying foundations of this new type of (web3.0) network. 
 This document will also briefly explore the business model and subsequent business opportunities surrounding the Bloculus protocol.
+Although this document is public, it isn't to say some aspects of this protocol aren't undisclosed or exist elsewhere under proprietary licencing. 
+
 
 Challenge
 ~~~~~~~~~~~

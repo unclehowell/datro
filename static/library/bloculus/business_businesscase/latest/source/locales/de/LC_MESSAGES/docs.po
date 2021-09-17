@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bloculus - Business Case 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-17 16:41-0400\n"
+"POT-Creation-Date: 2021-09-17 16:57-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../source/annex-list.rst:2 ../../source/executivesummary.rst:179
+#: ../../source/annex-list.rst:2 ../../source/executivesummary.rst:181
 msgid "Annexures"
 msgstr ""
 
@@ -171,51 +171,53 @@ msgid ""
 "are in the public domain under a General Public Licence (GPL) - allowing "
 "anyone, anywhere to launch the same secure and decentralized network in "
 "their area. The purpose of this document is to introduce a component of "
-"this network entitled the Bloculus Protcol, which is to become the "
+"this network entitled the Bloculus Protocol, which is to become the "
 "underlying foundations of this new type of (web3.0) network. This "
 "document will also briefly explore the business model and subsequent "
-"business opportunities surrounding the Bloculus protocol."
+"business opportunities surrounding the Bloculus protocol. Although this "
+"document is public, it isn't to say some aspects of this protocol aren't "
+"undisclosed or exist elsewhere under proprietary licencing."
 msgstr ""
 
-#: ../../source/executivesummary.rst:13
+#: ../../source/executivesummary.rst:15
 msgid "Challenge"
 msgstr ""
 
-#: ../../source/executivesummary.rst:14
+#: ../../source/executivesummary.rst:16
 msgid ""
 "The Bloculus protocol is being developed in order to overcome a few core "
 "challenges;"
 msgstr ""
 
-#: ../../source/executivesummary.rst:16
+#: ../../source/executivesummary.rst:18
 msgid ""
 "Each newly constructed Neo Dome needs a suitable protocol to quickly, "
 "securely and autonomously locate and pair with neighbouring Neo Dome's "
 "over licence-free Radio Frequencies"
 msgstr ""
 
-#: ../../source/executivesummary.rst:18
+#: ../../source/executivesummary.rst:20
 msgid ""
 "After establishing secure radio links, the DWeb/Web3.0 nodes hosted "
 "inside the dome(s), must have a method to autonomously pair to their "
 "corresponding nodes inside neighbouring domes"
 msgstr ""
 
-#: ../../source/executivesummary.rst:20
+#: ../../source/executivesummary.rst:22
 msgid ""
 "Character lengths/ texstrings must be short enough for the protocol to "
 "operate effectively over low-bandwidth/low-cost/low-energy fallback radio"
 " links e.g. LoRaWAN, Cellular USSD etc"
 msgstr ""
 
-#: ../../source/executivesummary.rst:22
+#: ../../source/executivesummary.rst:24
 msgid ""
 "The same protocol used to establish links of equipment rooms and nodes "
 "contained within, will serve to route and re-route traffic over the "
 "network e.g. uptime monitoring etc"
 msgstr ""
 
-#: ../../source/executivesummary.rst:24
+#: ../../source/executivesummary.rst:26
 msgid ""
 "Protocol will be exclusive to the DATRO Consortium. Usage of the protocol"
 " will be autonomously compesated by the nodes using it, using "
@@ -223,29 +225,29 @@ msgid ""
 "Organization (DAO)"
 msgstr ""
 
-#: ../../source/executivesummary.rst:28
+#: ../../source/executivesummary.rst:30
 msgid "Solution & Outcomes"
 msgstr ""
 
-#: ../../source/executivesummary.rst:31
+#: ../../source/executivesummary.rst:33
 msgid ""
 "This new protocol has been named Bloculus, which is a combination of the "
 "two primary words which best describe it:"
 msgstr ""
 
-#: ../../source/executivesummary.rst:30
+#: ../../source/executivesummary.rst:32
 msgid ""
 "'Bloc' is a referece to Blockchain (particularly the Polkadot blockchain "
 "which is used in this protocols day-to-day operations)"
 msgstr ""
 
-#: ../../source/executivesummary.rst:31
+#: ../../source/executivesummary.rst:33
 msgid ""
 "'Loculus' is an architectural and biological reference, used to describe "
 "a \"little place\" and/or compartmentalisation"
 msgstr ""
 
-#: ../../source/executivesummary.rst:33
+#: ../../source/executivesummary.rst:35
 msgid ""
 "The Bloculus protocol works by combining Uber's hexagonal (\"H3\") grid "
 "reference system with the Top Level Domain platform: Handshake. The "
@@ -258,7 +260,7 @@ msgid ""
 "the Handshake platform."
 msgstr ""
 
-#: ../../source/executivesummary.rst:38
+#: ../../source/executivesummary.rst:40
 msgid ""
 "There's a multitude of grid reference systems in operation e.g. Universal"
 " Transverse Mercator (UTM), Military Grid Reference System (MGRS) etc One"
@@ -269,23 +271,23 @@ msgid ""
 " from a shortlist."
 msgstr ""
 
-#: ../../source/executivesummary.rst:44
+#: ../../source/executivesummary.rst:46
 msgid "H3 Resolution"
 msgstr ""
 
-#: ../../source/executivesummary.rst:44
+#: ../../source/executivesummary.rst:46
 msgid "Avg. Hexagon Area (km2)"
 msgstr ""
 
-#: ../../source/executivesummary.rst:44
+#: ../../source/executivesummary.rst:46
 msgid "Avg. Hexagon Edge Length (km)"
 msgstr ""
 
-#: ../../source/executivesummary.rst:44
+#: ../../source/executivesummary.rst:46
 msgid "No. of unique indexes"
 msgstr ""
 
-#: ../../source/executivesummary.rst:55
+#: ../../source/executivesummary.rst:57
 msgid ""
 "For DATRO's new network, 500 meter long honeycombs are sufficient for a "
 "balance between security obscurity and locationv accuracy. The closest "
@@ -294,7 +296,7 @@ msgid ""
 "reference ID e.g. 8843a13687fffff"
 msgstr ""
 
-#: ../../source/executivesummary.rst:65
+#: ../../source/executivesummary.rst:67
 msgid ""
 "There's a 'self-service website <https://observablehq.com/@sw1227/h3"
 "-index-visualizer>'__ for experiencing H3 in action without having to set"
@@ -304,7 +306,7 @@ msgid ""
 " since the website is heavy on resources and crashes."
 msgstr ""
 
-#: ../../source/executivesummary.rst:69
+#: ../../source/executivesummary.rst:71
 msgid ""
 "In any case, use of these h3 references isn't something which can be "
 "exclusively owned and controlled. So how to we overcome this challenge ? "
@@ -322,7 +324,7 @@ msgid ""
 " auction. Now registration only takes a few dollars and a couple of days."
 msgstr ""
 
-#: ../../source/executivesummary.rst:77
+#: ../../source/executivesummary.rst:79
 msgid ""
 "In the case of the Bloculus protocol its possible to have a dedicated TLD"
 " for each H3 reference e.g. .8843a13687fffff The nodes running in the "
@@ -332,7 +334,7 @@ msgid ""
 "matrix.messaging.8843a13687fffff"
 msgstr ""
 
-#: ../../source/executivesummary.rst:81
+#: ../../source/executivesummary.rst:83
 msgid ""
 "The domes can now establish links autonomously, since the addressing "
 "system contains the physical location. Next the services/ nodes running "
@@ -342,11 +344,11 @@ msgid ""
 "network, more effectively than anything in existance."
 msgstr ""
 
-#: ../../source/executivesummary.rst:87
+#: ../../source/executivesummary.rst:89
 msgid "Market Potential"
 msgstr ""
 
-#: ../../source/executivesummary.rst:89
+#: ../../source/executivesummary.rst:91
 #, python-format
 msgid ""
 "DATRO's approach is to sell 50% co-ownership (co-lessor rights) for a one"
@@ -365,11 +367,11 @@ msgid ""
 " of digital lessee's which will pay to use the Bloculus protocol."
 msgstr ""
 
-#: ../../source/executivesummary.rst:99
+#: ../../source/executivesummary.rst:101
 msgid "Recommendation"
 msgstr ""
 
-#: ../../source/executivesummary.rst:101
+#: ../../source/executivesummary.rst:103
 msgid ""
 "It's recommended the consortium expand on this business case and produce "
 "a dedicated whitepaper on the technology. It would be wise to purchase "
@@ -380,7 +382,7 @@ msgid ""
 "this investors maybe interested in financing this initiative."
 msgstr ""
 
-#: ../../source/executivesummary.rst:106
+#: ../../source/executivesummary.rst:108
 msgid ""
 "Moving forward the consortium will overlay the desired H3 grid onto a map"
 " of the Scottish Bay. A salesforce will sell the inventory to interested "
@@ -388,40 +390,40 @@ msgid ""
 "contract."
 msgstr ""
 
-#: ../../source/executivesummary.rst:114
+#: ../../source/executivesummary.rst:116
 msgid ""
 "A typical business case would see this estate divided into 2,800 "
 "honeycombs."
 msgstr ""
 
-#: ../../source/executivesummary.rst:111
+#: ../../source/executivesummary.rst:113
 msgid ""
 "In this example a capital investor purchases co-ownership of a quarter of"
 " this estate (700 H3 hexagons) for circa $350,000 USD ($500 per "
 "honeycomb)."
 msgstr ""
 
-#: ../../source/executivesummary.rst:112
+#: ../../source/executivesummary.rst:114
 msgid ""
 "The first lessee is the aformentioned mesh network, which takes say 3 "
 "years to construct and begins earning in the region of $6M USD per annum "
 "for use/enjoyment of the protocol."
 msgstr ""
 
-#: ../../source/executivesummary.rst:113
+#: ../../source/executivesummary.rst:115
 msgid ""
 "The benefactor which co-owns a quarter of the estate would receive "
 "$750,000 USD per annum in royalties."
 msgstr ""
 
-#: ../../source/executivesummary.rst:114
+#: ../../source/executivesummary.rst:116
 msgid ""
 "At this juncture the currency invested would be USD but the currency "
 "generated by the network and paid to beneficiaries would be the "
 "cryptocurrency DOT (on the Polkadot blockchain)."
 msgstr ""
 
-#: ../../source/executivesummary.rst:116
+#: ../../source/executivesummary.rst:118
 msgid ""
 "The interface for configuring the final phase of deployment of the domes "
 "is HotspotBnB. A simple localhost webapp, developed by the DATRO "
@@ -434,7 +436,7 @@ msgid ""
 "called Cacher)"
 msgstr ""
 
-#: ../../source/executivesummary.rst:121
+#: ../../source/executivesummary.rst:123
 msgid ""
 "DATRO is soon to release a self-service website for making customisations"
 " to this autonomous self-buiding OS prior downloading a copy (websites "
@@ -449,11 +451,11 @@ msgid ""
 " proximity."
 msgstr ""
 
-#: ../../source/executivesummary.rst:128
+#: ../../source/executivesummary.rst:130
 msgid "Justification"
 msgstr ""
 
-#: ../../source/executivesummary.rst:130
+#: ../../source/executivesummary.rst:132
 msgid ""
 "This protocol is justified from both a technical and business standpoint."
 " The alternatives aren't half as effective and have limitations which "
@@ -465,7 +467,7 @@ msgid ""
 "tokenized voting/ liquid democracy."
 msgstr ""
 
-#: ../../source/executivesummary.rst:135
+#: ../../source/executivesummary.rst:137
 msgid ""
 "The vision of web3.0 (in the eyes of DATRO in anycase) are wi-fi access "
 "points which host all webservices as decentralized (federated) localhost "
@@ -476,7 +478,7 @@ msgid ""
 "work on many of the existing 1Billion wireless access points."
 msgstr ""
 
-#: ../../source/executivesummary.rst:139
+#: ../../source/executivesummary.rst:141
 msgid ""
 "Although the expectation of these pre-existing access points is low in "
 "terms of storage and webserver capabilities, they should be enough to "
@@ -490,7 +492,7 @@ msgid ""
 "crm?, odoo, owncloud etc"
 msgstr ""
 
-#: ../../source/executivesummary.rst:144
+#: ../../source/executivesummary.rst:146
 msgid ""
 "There is popularity with progessive localhost webapps with smart-homes "
 "e.g. jellyfin, virtual/ mobilegamepad, openhab etc And with the work-"
@@ -503,7 +505,7 @@ msgid ""
 "access points."
 msgstr ""
 
-#: ../../source/executivesummary.rst:149
+#: ../../source/executivesummary.rst:151
 msgid ""
 "The software (entitled HotspotBnB) provides end-users with a friendly "
 "user-interface to explore and install web-apps and a friendly local "
@@ -520,7 +522,7 @@ msgid ""
 "of web3.0 is why a protocol such as Bloculus is being thoughtup."
 msgstr ""
 
-#: ../../source/executivesummary.rst:156
+#: ../../source/executivesummary.rst:158
 msgid ""
 "Bloculus does use Uber's H3 grid reference system which symbolises "
 "geographics locations with unique references per each hexagonal in a "
@@ -534,7 +536,7 @@ msgid ""
 "drill down using h3's levels."
 msgstr ""
 
-#: ../../source/executivesummary.rst:161
+#: ../../source/executivesummary.rst:163
 msgid ""
 "For example Jack is in Scotland and Jill is in London. Jack's message to "
 "Jill will get to her by asking each H3 level 1 if Jills H3 level 8 "
@@ -549,7 +551,7 @@ msgid ""
 "Jills h3 Level 8 TLD)"
 msgstr ""
 
-#: ../../source/executivesummary.rst:166
+#: ../../source/executivesummary.rst:168
 msgid ""
 "This triangulation feature of the bloculus protocol effectively paints a "
 "realtime map of a nationwide mesh network. Since each user's alloted TLD "
@@ -559,7 +561,7 @@ msgid ""
 "those on each radio-relay station."
 msgstr ""
 
-#: ../../source/executivesummary.rst:170
+#: ../../source/executivesummary.rst:172
 msgid ""
 "Futhermore anyone hosting the same federated webservice as Jack and Jill,"
 " regardless of if they're a radio-relay between the two friends, "
@@ -575,7 +577,7 @@ msgid ""
 "decentral and under a General Public Licence."
 msgstr ""
 
-#: ../../source/executivesummary.rst:181
+#: ../../source/executivesummary.rst:183
 msgid ""
 "A suppliment or appendix to a written document. An annexure is an "
 "addition to something, often to a document. When used generally to simply"
@@ -887,5 +889,26 @@ msgstr ""
 #~ " document library at its original "
 #~ "location `datro.xyz/static/library "
 #~ "<https://datro.xyz/static/library>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The entire network, including the "
+#~ "communication rooms blueprints to the "
+#~ "software which operates them and the "
+#~ "end-users wireless access points, are"
+#~ " in the public domain under a "
+#~ "General Public Licence (GPL) - allowing"
+#~ " anyone, anywhere to launch the same"
+#~ " secure and decentralized network in "
+#~ "their area. The purpose of this "
+#~ "document is to introduce a component "
+#~ "of this network entitled the Bloculus"
+#~ " Protcol, which is to become the "
+#~ "underlying foundations of this new type"
+#~ " of (web3.0) network. This document "
+#~ "will also briefly explore the business"
+#~ " model and subsequent business "
+#~ "opportunities surrounding the Bloculus "
+#~ "protocol."
 #~ msgstr ""
 

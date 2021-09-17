@@ -13,7 +13,7 @@ reading sources... [ 85%] projectorganization
 reading sources... [100%] releasenotes
 
 /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/bloculus/business_businesscase/latest/source/annex-list.rst:2: WARNING: duplicate label annexures, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/bloculus/business_businesscase/latest/source/executivesummary.rst
-/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/bloculus/business_businesscase/latest/source/executivesummary.rst:59: WARNING: Error in "image" directive:
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/bloculus/business_businesscase/latest/source/executivesummary.rst:61: WARNING: Error in "image" directive:
 no content permitted.
 
 .. image::  _static/h5-h8-sb.png
@@ -21,7 +21,7 @@ no content permitted.
    :alt: `Bloculus, Scottish Bay,DR`
 
    `Bloculus, Scottish Bay, DR`
-/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/bloculus/business_businesscase/latest/source/executivesummary.rst:179: WARNING: duplicate label annexures, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/bloculus/business_businesscase/latest/source/annex-list.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/bloculus/business_businesscase/latest/source/executivesummary.rst:181: WARNING: duplicate label annexures, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/bloculus/business_businesscase/latest/source/annex-list.rst
 /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/bloculus/business_businesscase/latest/source/releasenotes.rst:50: WARNING: Inline interpreted text or phrase reference start-string without end-string.
 looking for now-outdated files... none found
 pickling environment... done
@@ -169,10 +169,10 @@ Chapter 1.
 (/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [1] [2]
 Chapter 2.
 [3]
-Overfull \hbox (32.34492pt too wide) in paragraph at lines 272--272
+Overfull \hbox (32.34492pt too wide) in paragraph at lines 273--273
 []
 
-Underfull \hbox (badness 10000) in paragraph at lines 272--272
+Underfull \hbox (badness 10000) in paragraph at lines 273--273
 
 [4] [5] [6] [7]
 Chapter 3.
@@ -184,7 +184,7 @@ Chapter 5.
 Chapter 6.
 
 LaTeX Warning: Hyper reference `annex-list:download-links' on page 11 undefined
- on input line 563.
+ on input line 564.
 
 [11 <./h5-h8-sb.png>] [12 <./resolution5.png> <./resolution6.png>] [13]
 Chapter 7.
@@ -210,7 +210,7 @@ ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
 vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
 /fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
 gyre/qtmri.pfb>
-Output written on bloculus-bloculus_businesscase.pdf (16 pages, 1453314 bytes).
+Output written on bloculus-bloculus_businesscase.pdf (16 pages, 1453423 bytes).
 Transcript written on bloculus-bloculus_businesscase.log.
 Latexmk: Index file 'bloculus-bloculus_businesscase.idx' was written
 Latexmk: Missing input file: 'bloculus-bloculus_businesscase.ind' from line
@@ -364,10 +364,10 @@ Chapter 1.
 (/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [1] [2]
 Chapter 2.
 [3]
-Overfull \hbox (32.34492pt too wide) in paragraph at lines 272--272
+Overfull \hbox (32.34492pt too wide) in paragraph at lines 273--273
 []
 
-Underfull \hbox (badness 10000) in paragraph at lines 272--272
+Underfull \hbox (badness 10000) in paragraph at lines 273--273
 
 [4] [5] [6] [7]
 Chapter 3.
@@ -388,7 +388,7 @@ ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
 vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
 /fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
 gyre/qtmri.pfb>
-Output written on bloculus-bloculus_businesscase.pdf (17 pages, 1461233 bytes).
+Output written on bloculus-bloculus_businesscase.pdf (17 pages, 1461343 bytes).
 Transcript written on bloculus-bloculus_businesscase.log.
 Latexmk: Index file 'bloculus-bloculus_businesscase.idx' was written
 Latexmk: Log file says output to 'bloculus-bloculus_businesscase.pdf'
@@ -521,10 +521,10 @@ Chapter 1.
 (/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [1] [2]
 Chapter 2.
 [3]
-Overfull \hbox (32.34492pt too wide) in paragraph at lines 272--272
+Overfull \hbox (32.34492pt too wide) in paragraph at lines 273--273
 []
 
-Underfull \hbox (badness 10000) in paragraph at lines 272--272
+Underfull \hbox (badness 10000) in paragraph at lines 273--273
 
 [4] [5] [6] [7]
 Chapter 3.
@@ -545,7 +545,7 @@ ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
 vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
 /fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
 gyre/qtmri.pfb>
-Output written on bloculus-bloculus_businesscase.pdf (17 pages, 1461233 bytes).
+Output written on bloculus-bloculus_businesscase.pdf (17 pages, 1461343 bytes).
 Transcript written on bloculus-bloculus_businesscase.log.
 Latexmk: Index file 'bloculus-bloculus_businesscase.idx' was written
 Latexmk: Log file says output to 'bloculus-bloculus_businesscase.pdf'
