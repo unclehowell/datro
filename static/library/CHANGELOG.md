@@ -34,6 +34,7 @@ July-24 - Removed `Grid-Intro` from `consortium_plans/.treeview.json`
 July-29 - Removed some bad code from the end of `consortium_other/github_wiki/index.html` which caused hits to redirect back to the previous page.  
 
 ### Fixed
+Sep-17 - Fixed some broken links in bloculus/business_businesscase  
 Sep-09 - Google Search Console was reporting overflow issues. had to add `padding:0px;` to `ui`, bullet points were hidden but still shifted content into an overflow situation  
 
 ## [-library.03] - Q2/2021

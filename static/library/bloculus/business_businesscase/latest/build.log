@@ -12,8 +12,8 @@ reading sources... [ 71%] projectdefinition
 reading sources... [ 85%] projectorganization
 reading sources... [100%] releasenotes
 
-/var/www/html/library-only/static/library/bloculus/business_businesscase/latest/source/annex-list.rst:2: WARNING: duplicate label annexures, other instance in /var/www/html/library-only/static/library/bloculus/business_businesscase/latest/source/executivesummary.rst
-/var/www/html/library-only/static/library/bloculus/business_businesscase/latest/source/executivesummary.rst:59: WARNING: Error in "image" directive:
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/bloculus/business_businesscase/latest/source/annex-list.rst:2: WARNING: duplicate label annexures, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/bloculus/business_businesscase/latest/source/executivesummary.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/bloculus/business_businesscase/latest/source/executivesummary.rst:59: WARNING: Error in "image" directive:
 no content permitted.
 
 .. image::  _static/h5-h8-sb.png
@@ -21,8 +21,8 @@ no content permitted.
    :alt: `Bloculus, Scottish Bay,DR`
 
    `Bloculus, Scottish Bay, DR`
-/var/www/html/library-only/static/library/bloculus/business_businesscase/latest/source/executivesummary.rst:179: WARNING: duplicate label annexures, other instance in /var/www/html/library-only/static/library/bloculus/business_businesscase/latest/source/annex-list.rst
-/var/www/html/library-only/static/library/bloculus/business_businesscase/latest/source/releasenotes.rst:50: WARNING: Inline interpreted text or phrase reference start-string without end-string.
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/bloculus/business_businesscase/latest/source/executivesummary.rst:179: WARNING: duplicate label annexures, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/bloculus/business_businesscase/latest/source/annex-list.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/bloculus/business_businesscase/latest/source/releasenotes.rst:50: WARNING: Inline interpreted text or phrase reference start-string without end-string.
 looking for now-outdated files... none found
 pickling environment... done
 checking consistency... done
@@ -210,7 +210,7 @@ ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
 vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
 /fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
 gyre/qtmri.pfb>
-Output written on bloculus-bloculus_businesscase.pdf (16 pages, 1453316 bytes).
+Output written on bloculus-bloculus_businesscase.pdf (16 pages, 1453314 bytes).
 Transcript written on bloculus-bloculus_businesscase.log.
 Latexmk: Index file 'bloculus-bloculus_businesscase.idx' was written
 Latexmk: Missing input file: 'bloculus-bloculus_businesscase.ind' from line
@@ -388,7 +388,7 @@ ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
 vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
 /fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
 gyre/qtmri.pfb>
-Output written on bloculus-bloculus_businesscase.pdf (17 pages, 1461268 bytes).
+Output written on bloculus-bloculus_businesscase.pdf (17 pages, 1461233 bytes).
 Transcript written on bloculus-bloculus_businesscase.log.
 Latexmk: Index file 'bloculus-bloculus_businesscase.idx' was written
 Latexmk: Log file says output to 'bloculus-bloculus_businesscase.pdf'
@@ -545,7 +545,7 @@ ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
 vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
 /fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
 gyre/qtmri.pfb>
-Output written on bloculus-bloculus_businesscase.pdf (17 pages, 1461268 bytes).
+Output written on bloculus-bloculus_businesscase.pdf (17 pages, 1461233 bytes).
 Transcript written on bloculus-bloculus_businesscase.log.
 Latexmk: Index file 'bloculus-bloculus_businesscase.idx' was written
 Latexmk: Log file says output to 'bloculus-bloculus_businesscase.pdf'

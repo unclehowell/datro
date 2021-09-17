@@ -6,7 +6,7 @@ The :ref:`Download Links` for these Annexures can be found at the very end of th
 
 Resolutions 5,6,7 & 8
 ~~~~~~~~~~~~~~~~~~~~~~~
-Download the `SVG File <https://datro.xyz/static/library/consortium_bloculus/operations_businesscase/latest/build/html/_static/h5-h8-sb.svg>`__
+Download the `SVG File <https://datro.xyz/static/library/bloculus/business_businesscase/latest/build/html/en/_static/h5-h8-sb.svg>`__
 
 .. image:: _static/h5-h8-sb.png
   :width: 800
@@ -15,7 +15,7 @@ Download the `SVG File <https://datro.xyz/static/library/consortium_bloculus/ope
 
 Resolution 5 (8.544Km Wide Hex's)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Download the `SVG File <https://datro.xyz/static/library/consortium_bloculus/operations_businesscase/latest/build/html/_static/resolution5.svg>`__
+Download the `SVG File <https://datro.xyz/static/library/bloculus/business_businesscase/latest/build/html/en/_static/resolution5.svg>`__
 
 .. image:: _static/resolution5.png
   :width: 800
@@ -24,7 +24,7 @@ Download the `SVG File <https://datro.xyz/static/library/consortium_bloculus/ope
 
 Resolution 6 (3.23Km Wide Hex's)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Download the `SVG File <https://datro.xyz/static/library/consortium_bloculus/operations_businesscase/latest/build/html/_static/resolution6.svg>`__
+Download the `SVG File <https://datro.xyz/static/library/bloculus/business_businesscase/latest/build/html/en/_static/resolution6.svg>`__
 
 .. image:: _static/resolution6.png
   :width: 800

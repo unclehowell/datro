@@ -15,7 +15,7 @@
 #   ██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝
 #   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
 #................................................
-#       rebuild.sh  _theme-docs.08-rc2.2
+#       rebuild.sh  _theme-docs.08-rc2.3
 #................................................
 #                   datro.xyz
 #................................................
@@ -313,11 +313,11 @@ done
 
 printf "\e[2;3;33m Done! \n\e[0m"
 
-cd ../
+cd ..
 printf "\n\e[2;3;33m ----------------------------------------------------- \n\e[0m\n"
 sleep 1 &&
-printf "\e[2;3;33m Visit the following link to preview \n\e[0m\n"
-printf "\e[2;3;33m http://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*}/} \n\e[0m\n"
+printf "\e[2;3;33m Preview Link (adjust to suite your local machine) \n\e[0m\n"
+printf "\e[2;3;33m http://localhost/${PWD#${PWD%/*/*/*/*/*/*/*}/} \n\e[0m\n"
 cd latest
 
 #change NAME to PDF name before running

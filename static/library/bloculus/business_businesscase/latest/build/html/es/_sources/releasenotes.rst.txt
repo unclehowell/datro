@@ -16,7 +16,7 @@ Older Versions
 In the table below the last entry displays a link to an archived copy of the last report.  
 To keep the filename from overflowing in the table below the name displayed may differ from the file name.
 The date the file was archived will differ from the date of the document label, which is its creation date.     
-If you're viewing this document on a subsubdomain of `.world.datro.xyz` you may need to right-click and select 'open link in new tab`.
+If you're viewing this document in `world.datro.xyz` you may need to right-click and select 'open link in new tab`.
 In the interim of a bug fix, you can avoid right-clicking all together, by viewing our document library at its original location `datro.xyz/static/library <https://datro.xyz/static/library>`__
 
 
