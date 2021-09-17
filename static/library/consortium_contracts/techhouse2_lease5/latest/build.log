@@ -3,21 +3,100 @@ loading translations [fr]... done
 loading pickled environment... done
 building [mo]: targets for 0 po files that are out of date
 building [latex]: all documents
-updating environment: [config changed ('language')] 3 added, 0 changed, 0 removed
-reading sources... [ 33%] content
-reading sources... [ 66%] index
+updating environment: [config changed ('language')] 16 added, 0 changed, 0 removed
+reading sources... [  6%] _static/eight
+reading sources... [ 12%] _static/five
+reading sources... [ 18%] _static/four
+reading sources... [ 25%] _static/one
+reading sources... [ 31%] _static/seven
+reading sources... [ 37%] _static/six
+reading sources... [ 43%] _static/three
+reading sources... [ 50%] _static/two
+reading sources... [ 56%] _static/v0.0.0
+reading sources... [ 62%] annex
+reading sources... [ 68%] contract001
+reading sources... [ 75%] highlightaug2021
+reading sources... [ 81%] highlightjul2021
+reading sources... [ 87%] highlightsep2021
+reading sources... [ 93%] index
 reading sources... [100%] releasenotes
 
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/eight.rst:3: WARNING: duplicate label **section eight**, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/five.rst:3: WARNING: duplicate label **section five**, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/four.rst:3: WARNING: duplicate label **section four**, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/four.rst:9: WARNING: duplicate label paragraph i, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/four.rst:16: WARNING: duplicate label paragraph ii, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/one.rst:3: WARNING: duplicate label **section one**, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/one.rst:12: WARNING: duplicate label paragraph i, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/four.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/one.rst:17: WARNING: duplicate label paragraph ii, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/four.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/one.rst:22: WARNING: duplicate label paragraph iii, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/one.rst:26: WARNING: duplicate label paragraph iv, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/seven.rst:3: WARNING: duplicate label **section seven**, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/six.rst:3: WARNING: duplicate label **section six**, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/six.rst:9: WARNING: duplicate label paragraph i, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/one.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/six.rst:14: WARNING: duplicate label paragraph ii, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/one.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/three.rst:3: WARNING: duplicate label **section three**, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/three.rst:8: WARNING: duplicate label paragraph i, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/six.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/two.rst:3: WARNING: duplicate label **section two**, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/two.rst:9: WARNING: duplicate label paragraph i, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/three.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/two.rst:13: WARNING: duplicate label paragraph ii, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/six.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/two.rst:18: WARNING: duplicate label paragraph iii, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/one.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/v0.0.0.rst:16: WARNING: duplicate object description of center, other instance in _static/v0.0.0, use :noindex: for one of them
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/v0.0.0.rst:120: WARNING: duplicate object description of center, other instance in _static/v0.0.0, use :noindex: for one of them
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/v0.0.0.rst:124: WARNING: duplicate object description of center, other instance in _static/v0.0.0, use :noindex: for one of them
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/v0.0.0.rst:135: WARNING: duplicate object description of center, other instance in _static/v0.0.0, use :noindex: for one of them
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/v0.0.0.rst:139: WARNING: duplicate object description of center, other instance in _static/v0.0.0, use :noindex: for one of them
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/v0.0.0.rst:155: WARNING: duplicate object description of center, other instance in _static/v0.0.0, use :noindex: for one of them
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/v0.0.0.rst:159: WARNING: duplicate object description of center, other instance in _static/v0.0.0, use :noindex: for one of them
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/v0.0.0.rst:163: WARNING: duplicate object description of center, other instance in _static/v0.0.0, use :noindex: for one of them
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/annex.rst:8: WARNING: Inline interpreted text or phrase reference start-string without end-string.
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/annex.rst:16: WARNING: Inline interpreted text or phrase reference start-string without end-string.
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:20: WARNING: duplicate label **section one**, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/one.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:29: WARNING: duplicate label paragraph i, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/two.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:34: WARNING: duplicate label paragraph ii, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/two.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:39: WARNING: duplicate label paragraph iii, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/two.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:43: WARNING: duplicate label paragraph iv, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/one.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:48: WARNING: duplicate label **section two**, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/two.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:54: WARNING: duplicate label paragraph i, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:59: WARNING: duplicate label paragraph iii, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:65: WARNING: duplicate label **section three**, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/three.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:71: WARNING: duplicate label paragraph i, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:76: WARNING: duplicate label **section four**, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/four.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:82: WARNING: duplicate label paragraph i, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:89: WARNING: duplicate label paragraph ii, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:94: WARNING: duplicate label **section five**, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/five.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:98: WARNING: duplicate label **section six**, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/six.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:102: WARNING: duplicate label paragraph i, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:107: WARNING: duplicate label paragraph ii, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:112: WARNING: duplicate label **section seven**, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/seven.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:121: WARNING: duplicate label **section eight**, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/eight.rst
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/highlightsep2021.rst:45: WARNING: Inline strong start-string without end-string.
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/releasenotes.rst:44: WARNING: "csv-table" widths do not match the number of columns in table (6).
+
+.. csv-table:: Known Issues
+   :file: _static/issues.csv
+   :widths: 10, 15, 15, 60
+   :header-rows: 1
 looking for now-outdated files... none found
 pickling environment... done
-checking consistency... done
-processing consortium_contracts-techhouse2_lease5.tex... index releasenotes content 
+checking consistency... /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/eight.rst: WARNING: document isn't included in any toctree
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/five.rst: WARNING: document isn't included in any toctree
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/four.rst: WARNING: document isn't included in any toctree
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/one.rst: WARNING: document isn't included in any toctree
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/seven.rst: WARNING: document isn't included in any toctree
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/six.rst: WARNING: document isn't included in any toctree
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/three.rst: WARNING: document isn't included in any toctree
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/two.rst: WARNING: document isn't included in any toctree
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/v0.0.0.rst: WARNING: document isn't included in any toctree
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/highlightjul2021.rst: WARNING: document isn't included in any toctree
+done
+processing consortium_contracts-techhouse2_lease5.tex... index contract001 releasenotes highlightaug2021 highlightsep2021 annex 
 resolving references...
 done
 writing... done
 copying TeX support files... copying TeX support files...
 done
-build succeeded.
+build succeeded, 61 warnings.
 
 The LaTeX files are in build/latex.
 Run 'make' in that directory to run these through (pdf)latex
@@ -147,12 +226,29 @@ p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map} <./logo.jpeg>] [1]
 Chapter 1.
-(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [1] [2]
+[1] [2] [3] [4] [5]
 Chapter 2.
-[3]
+(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd)
+Overfull \hbox (158.355pt too wide) in paragraph at lines 321--321
+[]
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--321
+
+[6] [7]
 Chapter 3.
+[8]
+Chapter 4.
+[9]
+Overfull \hbox (72.73499pt too wide) in paragraph at lines 531--531
+[]
+
+Underfull \hbox (badness 10000) in paragraph at lines 531--531
+
+[10]
+Chapter 5.
+[11] [12]
 No file consortium_contracts-techhouse2_lease5.ind.
-[4] (./consortium_contracts-techhouse2_lease5.aux)
+[13] (./consortium_contracts-techhouse2_lease5.aux)
 
 Package rerunfilecheck Warning: File `consortium_contracts-techhouse2_lease5.ou
 t' has changed.
@@ -162,14 +258,16 @@ t' has changed.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
- ){/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ec.enc}{/usr/share/texmf/fonts/e
-nc/dvips/tex-gyre/q-ts1.enc}</usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.
-pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/f
-onts/type1/public/tex-gyre/qhvr.pfb></usr/share/texmf/fonts/type1/public/tex-gy
-re/qtmb.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/
-texmf/fonts/type1/public/tex-gyre/qtmri.pfb>
-Output written on consortium_contracts-techhouse2_lease5.pdf (6 pages, 224619 b
-ytes).
+ )
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/tex-gyre/q-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ec.enc}<
+/usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/t
+ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
+vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
+/fonts/type1/public/tex-gyre/qtmbi.pfb></usr/share/texmf/fonts/type1/public/tex
+-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmri.pfb>
+Output written on consortium_contracts-techhouse2_lease5.pdf (15 pages, 293433 
+bytes).
 Transcript written on consortium_contracts-techhouse2_lease5.log.
 Latexmk: Index file 'consortium_contracts-techhouse2_lease5.idx' was written
 Latexmk: Missing input file: 'consortium_contracts-techhouse2_lease5.ind' from line
@@ -321,20 +419,37 @@ p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 nts/map/pdftex/updmap/pdftex.map} <./logo.jpeg>]
 (./consortium_contracts-techhouse2_lease5.toc) [1]
 Chapter 1.
-(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [1] [2]
+[1] [2] [3] [4] [5]
 Chapter 2.
-[3]
+(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd)
+Overfull \hbox (158.355pt too wide) in paragraph at lines 321--321
+[]
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--321
+
+[6] [7]
 Chapter 3.
-(./consortium_contracts-techhouse2_lease5.ind) [4]
-(./consortium_contracts-techhouse2_lease5.aux) ){/usr/share/texmf/fonts/enc/dvi
-ps/tex-gyre/q-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ec.enc}</usr
-/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/type1
-/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qhvr.p
-fb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf/fon
-ts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre
-/qtmri.pfb>
-Output written on consortium_contracts-techhouse2_lease5.pdf (6 pages, 233591 b
-ytes).
+[8]
+Chapter 4.
+[9]
+Overfull \hbox (72.73499pt too wide) in paragraph at lines 531--531
+[]
+
+Underfull \hbox (badness 10000) in paragraph at lines 531--531
+
+[10]
+Chapter 5.
+[11] [12] (./consortium_contracts-techhouse2_lease5.ind) [13]
+(./consortium_contracts-techhouse2_lease5.aux) )
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/tex-gyre/q-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ec.enc}<
+/usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/t
+ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
+vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
+/fonts/type1/public/tex-gyre/qtmbi.pfb></usr/share/texmf/fonts/type1/public/tex
+-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmri.pfb>
+Output written on consortium_contracts-techhouse2_lease5.pdf (15 pages, 299000 
+bytes).
 Transcript written on consortium_contracts-techhouse2_lease5.log.
 Latexmk: Index file 'consortium_contracts-techhouse2_lease5.idx' was written
 Latexmk: Log file says output to 'consortium_contracts-techhouse2_lease5.pdf'
@@ -465,20 +580,37 @@ p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 nts/map/pdftex/updmap/pdftex.map} <./logo.jpeg>]
 (./consortium_contracts-techhouse2_lease5.toc) [1]
 Chapter 1.
-(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [1] [2]
+[1] [2] [3] [4] [5]
 Chapter 2.
-[3]
+(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd)
+Overfull \hbox (158.355pt too wide) in paragraph at lines 321--321
+[]
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--321
+
+[6] [7]
 Chapter 3.
-(./consortium_contracts-techhouse2_lease5.ind) [4]
-(./consortium_contracts-techhouse2_lease5.aux) ){/usr/share/texmf/fonts/enc/dvi
-ps/tex-gyre/q-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ec.enc}</usr
-/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/type1
-/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qhvr.p
-fb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf/fon
-ts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre
-/qtmri.pfb>
-Output written on consortium_contracts-techhouse2_lease5.pdf (6 pages, 233591 b
-ytes).
+[8]
+Chapter 4.
+[9]
+Overfull \hbox (72.73499pt too wide) in paragraph at lines 531--531
+[]
+
+Underfull \hbox (badness 10000) in paragraph at lines 531--531
+
+[10]
+Chapter 5.
+[11] [12] (./consortium_contracts-techhouse2_lease5.ind) [13]
+(./consortium_contracts-techhouse2_lease5.aux) )
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/tex-gyre/q-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ec.enc}<
+/usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/t
+ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
+vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
+/fonts/type1/public/tex-gyre/qtmbi.pfb></usr/share/texmf/fonts/type1/public/tex
+-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmri.pfb>
+Output written on consortium_contracts-techhouse2_lease5.pdf (15 pages, 299000 
+bytes).
 Transcript written on consortium_contracts-techhouse2_lease5.log.
 Latexmk: Index file 'consortium_contracts-techhouse2_lease5.idx' was written
 Latexmk: Log file says output to 'consortium_contracts-techhouse2_lease5.pdf'

@@ -1,5 +1,6 @@
-Mountain View Villa - Lease V
-================================
+**********************************
+Mountain View - Lease Agreement V
+**********************************
 
 .. raw:: html
 
@@ -7,22 +8,14 @@ Mountain View Villa - Lease V
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    
+   contract001
    releasenotes
-   contract
-
+   highlightaug2021
+   highlightsep2021
+   annex
    
-
-
-**Author(s):** 
-^^^^^^^^^^^^^^^
-
-========================================================================
-*DATRO Consortium*
-========================================================================
-
-
 
 
 

@@ -1,9 +1,9 @@
-project = u'Tech House II - Lease V'
+project = u'Mountain View - Lease Agreement V'
 copyright = u'2021, DATRO Consortium'
-author = u'DATRO Consortium3'
+author = u'DR. Aridio Antnio Guzman Rosario'
 
-version = u'0.0.0'
-release = u'0.0.0'
+version = u'0.0.1'
+release = u'0.0.1'
 
 extensions = ['sphinx.ext.autosectionlabel']
 
@@ -18,9 +18,17 @@ language = "en"
 locale_dirs = ['locales']
 gettext_auto_build = True
 gettext_compact = "docs"
-today_fmt = 'Sep 01, 2021'
+today_fmt = 'Sep 16, 2021'
 
 exclude_patterns = ['_build']
+
+html_theme = 'sphinx_rtd_theme'
+html_static_path = ['_static']
+html_logo = '_static/logo.jpeg'
+html_theme_options = {
+    'logo_only': False,
+    'display_version': True,
+}
 
 
 pygments_style = None
@@ -46,21 +54,21 @@ latex_elements =  {
 
 
 latex_documents = [
-    (master_doc, 'consortium_contracts-techhouse2_lease5.tex', u'Tech House II',
-     u'Publisher(s): DATRO Consortium1', 'manual'),
+    (master_doc, 'consortium_contracts-techhouse2_lease5.tex', u'Mountain View - Lease Agreement V',
+     u'Publisher(s): DATRO Consortium', 'manual'),
 ]
 
 
 man_pages = [
-    (master_doc, 'consortium_contracts-techhouse2_lease5', u'Tech House II',
+    (master_doc, 'consortium_contracts-techhouse2_lease5', u'Mountain View - Lease Agreement V',
      [author], 1)
 ]
 
 
 
 texinfo_documents = [
-    (master_doc, 'consortium_contracts-techhouse2_lease5', u'Tech House II',
-     author, 'DATRO Consortium2', 'manual'),
+    (master_doc, 'consortium_contracts-techhouse2_lease5', u'Mountain View - Lease Agreement V',
+     author, 'DR. Aridio Antnio Guzman Rosario', 'manual'),
 ]
 
 

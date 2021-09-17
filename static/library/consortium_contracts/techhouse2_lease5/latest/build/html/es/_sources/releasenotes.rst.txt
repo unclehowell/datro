@@ -1,37 +1,44 @@
-Release Notes and Notices
-===============================
+Release Notes & Notices
+========================
 
-This section provides information about what is new or changed, including urgent issues, documentation updates, maintenance, and new releases.
-- 'Updates' are the term used to describe significant changes to our public source code and/or records.  
- 
 
-This Release (0.0.0)
-~~~~~~~~~~~~~~~~~~~~~
+This Release (0.0.1)
+~~~~~~~~~~~~~~~~~~~~~~~
 
-- **2021-09-01** - `Draft`
+
+- **2021-09-15** - `Added a link to the Annex (list of defects) at the end of Section 1: Paragraph II: (Tenant acknowledges apartment is in perfect condition)` 
+- **2021-01-xx** - `Section 2: Paragraph II removed (the tenant undertakes to make the payment of three (03) months of delay of the previous contract)`
+                 - `Tenant understood there to be only 2 months rent, for settlement of the old contract. And this was paid 30/08/2021 (on the condition it would settle the matter)`  
 
 
 Older Versions
-####################
+################
 
-In the table below the last entry displays a link to an archived copy of the last report.
-To keep the filename from overflowing in the table below the name displayed may differ from the file name.
-The date the file was archived will differ from the date of the document label, which is its creation date.
-If you're viewing this document on a subdomain of `.datro.world` you may need to right-click and select 'open link in new tab`.
-In the interim of a bug fix, you can avoid right-clicking all together, by viewing our document library at its original location `datro.xyz/static/library <https://datro.xyz/static/library>`__
+
+Version 0.0.0
+---------------
+
+- **2021-09-14** - `Version 0.0.0 translated and placed online by the tenant`
+- **2021-09-01** - `Version 0.0.0 of this agreement was drafted and a copy provided to the tenant`
+- **2021-08-27** - `Tenant responded and proposed renewal terms`
+- **2021-08-0?** - `Owner provided tenant with written notice of expiration of contract`
+- **2021-08-27** - `Meeting at property between tenant and owner (and translator). Terms of agreement verbally negotiated`
+
+
+
+In the table below the last entry displays a link to an archived copy of the last version.
 
 
 .. csv-table:: Older Versions of this Document
    :file: _static/olderversions.csv
    :widths: 20, 20, 20, 40
    :header-rows: 1
-   
 
-Known and Corrected Issues
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Below is a table of pending issues that have been reported to our team.
-These issues will be cleared from this list as and when they are remedied.
+Issues
+~~~~~~~~~
+
+Below is a table of reported issued.
 
 
 .. csv-table:: Known Issues
