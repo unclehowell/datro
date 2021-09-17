@@ -29,6 +29,7 @@ Jul-11 - Minor edit to `consortium_bloculus` - removed content from template and
 Jul-08 - Changed the `consortium_bloculus` document content to further explain the protocol ... still way more to do on this doc and protocol, but it's coming together  
 
 ### Removed
+Sep-17 -  Google Contract page has broken links that have been fixed   
 July-24 - Removed `Grid-Intro` from `consortium_plans/.treeview.json`  
 July-29 - Removed some bad code from the end of `consortium_other/github_wiki/index.html` which caused hits to redirect back to the previous page.  
 
