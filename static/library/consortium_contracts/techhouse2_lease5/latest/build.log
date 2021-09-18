@@ -70,13 +70,21 @@ reading sources... [100%] releasenotes
 /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:107: WARNING: duplicate label paragraph ii, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst
 /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:112: WARNING: duplicate label **section seven**, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/seven.rst
 /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/contract001.rst:121: WARNING: duplicate label **section eight**, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/eight.rst
-/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/highlightsep2021.rst:45: WARNING: Inline strong start-string without end-string.
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/highlightsep2021.rst:47: WARNING: Inline strong start-string without end-string.
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/index.rst:68: WARNING: "csv-table" widths do not match the number of columns in table (6).
+
+.. csv-table:: Known Issues
+   :file: _static/issues.csv
+   :widths: 10, 15, 15, 60
+   :header-rows: 1
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/index.rst:39: WARNING: duplicate label version 0.0.0, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/releasenotes.rst
 /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/releasenotes.rst:44: WARNING: "csv-table" widths do not match the number of columns in table (6).
 
 .. csv-table:: Known Issues
    :file: _static/issues.csv
    :widths: 10, 15, 15, 60
    :header-rows: 1
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/releasenotes.rst:19: WARNING: duplicate label version 0.0.0, other instance in /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/index.rst
 looking for now-outdated files... none found
 pickling environment... done
 checking consistency... /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/eight.rst: WARNING: document isn't included in any toctree
@@ -89,14 +97,15 @@ checking consistency... /var/www/html/sparse-checkouts/gh-pages/static-library/s
 /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/two.rst: WARNING: document isn't included in any toctree
 /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/_static/v0.0.0.rst: WARNING: document isn't included in any toctree
 /var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/highlightjul2021.rst: WARNING: document isn't included in any toctree
+/var/www/html/sparse-checkouts/gh-pages/static-library/static/library/consortium_contracts/techhouse2_lease5/latest/source/releasenotes.rst: WARNING: document isn't included in any toctree
 done
-processing consortium_contracts-techhouse2_lease5.tex... index contract001 releasenotes highlightaug2021 highlightsep2021 annex 
+processing consortium_contracts-techhouse2_lease5.tex... index contract001 highlightaug2021 highlightsep2021 annex 
 resolving references...
 done
 writing... done
 copying TeX support files... copying TeX support files...
 done
-build succeeded, 61 warnings.
+build succeeded, 65 warnings.
 
 The LaTeX files are in build/latex.
 Run 'make' in that directory to run these through (pdf)latex
@@ -225,28 +234,22 @@ Writing index file consortium_contracts-techhouse2_lease5.idx
 p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map} <./logo.jpeg>] [1]
+(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [1]
 Chapter 1.
-[1] [2] [3] [4] [5]
+[2] [3] [4] [5] [6]
 Chapter 2.
-(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd)
-Overfull \hbox (158.355pt too wide) in paragraph at lines 321--321
-[]
-
-Underfull \hbox (badness 10000) in paragraph at lines 321--321
-
-[6] [7]
+[7]
 Chapter 3.
 [8]
-Chapter 4.
-[9]
-Overfull \hbox (72.73499pt too wide) in paragraph at lines 531--531
+Overfull \hbox (72.73499pt too wide) in paragraph at lines 459--459
 []
 
-Underfull \hbox (badness 10000) in paragraph at lines 531--531
+Underfull \hbox (badness 10000) in paragraph at lines 459--459
 
-[10]
+[9]
+Chapter 4.
+[10] [11] [12]
 Chapter 5.
-[11] [12]
 No file consortium_contracts-techhouse2_lease5.ind.
 [13] (./consortium_contracts-techhouse2_lease5.aux)
 
@@ -264,9 +267,9 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 /usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/t
 ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
 vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
-/fonts/type1/public/tex-gyre/qtmbi.pfb></usr/share/texmf/fonts/type1/public/tex
--gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmri.pfb>
-Output written on consortium_contracts-techhouse2_lease5.pdf (15 pages, 293433 
+/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
+gyre/qtmri.pfb>
+Output written on consortium_contracts-techhouse2_lease5.pdf (15 pages, 270277 
 bytes).
 Transcript written on consortium_contracts-techhouse2_lease5.log.
 Latexmk: Index file 'consortium_contracts-techhouse2_lease5.idx' was written
@@ -418,37 +421,32 @@ p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map} <./logo.jpeg>]
 (./consortium_contracts-techhouse2_lease5.toc) [1]
+(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [1]
 Chapter 1.
-[1] [2] [3] [4] [5]
+[2] [3] [4] [5] [6]
 Chapter 2.
-(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd)
-Overfull \hbox (158.355pt too wide) in paragraph at lines 321--321
-[]
-
-Underfull \hbox (badness 10000) in paragraph at lines 321--321
-
-[6] [7]
+[7]
 Chapter 3.
 [8]
-Chapter 4.
-[9]
-Overfull \hbox (72.73499pt too wide) in paragraph at lines 531--531
+Overfull \hbox (72.73499pt too wide) in paragraph at lines 459--459
 []
 
-Underfull \hbox (badness 10000) in paragraph at lines 531--531
+Underfull \hbox (badness 10000) in paragraph at lines 459--459
 
-[10]
+[9]
+Chapter 4.
+[10] [11] [12]
 Chapter 5.
-[11] [12] (./consortium_contracts-techhouse2_lease5.ind) [13]
+(./consortium_contracts-techhouse2_lease5.ind) [13]
 (./consortium_contracts-techhouse2_lease5.aux) )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
 /dvips/tex-gyre/q-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ec.enc}<
 /usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/t
 ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
 vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
-/fonts/type1/public/tex-gyre/qtmbi.pfb></usr/share/texmf/fonts/type1/public/tex
--gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmri.pfb>
-Output written on consortium_contracts-techhouse2_lease5.pdf (15 pages, 299000 
+/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
+gyre/qtmri.pfb>
+Output written on consortium_contracts-techhouse2_lease5.pdf (15 pages, 275074 
 bytes).
 Transcript written on consortium_contracts-techhouse2_lease5.log.
 Latexmk: Index file 'consortium_contracts-techhouse2_lease5.idx' was written
@@ -579,37 +577,32 @@ p>><<omx.cmap>> (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map} <./logo.jpeg>]
 (./consortium_contracts-techhouse2_lease5.toc) [1]
+(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd) [1]
 Chapter 1.
-[1] [2] [3] [4] [5]
+[2] [3] [4] [5] [6]
 Chapter 2.
-(/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd)
-Overfull \hbox (158.355pt too wide) in paragraph at lines 321--321
-[]
-
-Underfull \hbox (badness 10000) in paragraph at lines 321--321
-
-[6] [7]
+[7]
 Chapter 3.
 [8]
-Chapter 4.
-[9]
-Overfull \hbox (72.73499pt too wide) in paragraph at lines 531--531
+Overfull \hbox (72.73499pt too wide) in paragraph at lines 459--459
 []
 
-Underfull \hbox (badness 10000) in paragraph at lines 531--531
+Underfull \hbox (badness 10000) in paragraph at lines 459--459
 
-[10]
+[9]
+Chapter 4.
+[10] [11] [12]
 Chapter 5.
-[11] [12] (./consortium_contracts-techhouse2_lease5.ind) [13]
+(./consortium_contracts-techhouse2_lease5.ind) [13]
 (./consortium_contracts-techhouse2_lease5.aux) )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
 /dvips/tex-gyre/q-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ec.enc}<
 /usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/t
 ype1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qh
 vr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb></usr/share/texmf
-/fonts/type1/public/tex-gyre/qtmbi.pfb></usr/share/texmf/fonts/type1/public/tex
--gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmri.pfb>
-Output written on consortium_contracts-techhouse2_lease5.pdf (15 pages, 299000 
+/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/fonts/type1/public/tex-
+gyre/qtmri.pfb>
+Output written on consortium_contracts-techhouse2_lease5.pdf (15 pages, 275074 
 bytes).
 Transcript written on consortium_contracts-techhouse2_lease5.log.
 Latexmk: Index file 'consortium_contracts-techhouse2_lease5.idx' was written

@@ -2,7 +2,7 @@ Highlight Report (Sep 2021)
 ==============================
 
 
-Plan vs Performance (Sep 2021)
+Plan (Sep 2021)
 ######################################
 
 - Tenancy Agreement IV (2020/21) expires August 31st 2021. 
@@ -10,6 +10,8 @@ Plan vs Performance (Sep 2021)
 - Owners send written notice to tenant about contract expiration. 
 
 
+Performance (Sep 2021) 
+#####################################
 **Tenant Offer**
 
 |
@@ -30,7 +32,7 @@ Contract 0.0.0 - tenant loses deposit if tenant gives notice to leave
                - tenants deposit cant be used for rent, only repairs
              
  
-Issues, Risks, Concerns (Aug/Sep 2021)
+Issues (Sep 2021)
 ##########################################
 
 **2021-Sep-16*  - Owner produced a receipt, ahead of any payment, saying payment is for missing payment. 
@@ -49,7 +51,7 @@ Issues, Risks, Concerns (Aug/Sep 2021)
                 - Condition of the $1k sent on the 30th Aug was that is was for final settlement of the old contract. It's even specified on the bank transfer.
 
 
-Plans Moving Forward (Oct 2021)
+Future Plans (Oct 2021)
 #####################################
 
 

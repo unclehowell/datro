@@ -1,17 +1,21 @@
-Highlight Report (2021-Jul/Aug)
+Highlight Report (Aug 2021)
 =================================
 
 
-Plan vs Performance (2021 - Jul/Aug)
+Plan (Aug 2021)
 #########################################
-
 
 - Contract (2020/21) expires August 31st 2021. 
 - Owners report to tenant the apartment is selling. And they're discussing renewing tenancy.
 - Owners send written notice to tenant about contract expiration. 
 
- 
-Issues, Risks, Concerns (2021 - Jul/Aug)
+
+Performance (Aug 2021)
+#########################################
+
+
+
+Issues (Aug 2021)
 ############################################
 
 **2021-July** - July unpaid. Tenant suggests 2 months security deposit cover last 2 months of contract (Jul/Aug)
@@ -21,7 +25,7 @@ Issues, Risks, Concerns (2021 - Jul/Aug)
 **2021-August** - Owner believes and alledges only 9 of the 12 payments of the contract term were paid. 
 
 
-Plans Moving Forward (2021 - Aug/Sep)
+Future Plans (Sep 2021)
 ########################################
 
  Owner should not declaire the last $1k Tenant paid is for this or that month. 
