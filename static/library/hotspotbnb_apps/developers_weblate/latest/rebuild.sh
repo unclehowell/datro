@@ -15,7 +15,7 @@
 #   ██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝
 #   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
 #................................................
-#       rebuild.sh  _theme-docs.08-rc2.3
+#       rebuild.sh  _theme-docs.08-rc2.4
 #................................................
 #                   datro.xyz
 #................................................
@@ -77,6 +77,7 @@ make gettext > build.log 2>&1 &&
 sleep 2 &&
 sphinx-intl update -p build/gettext -l es -l de -l fr  > build.log 2>&1 &&
 sleep 2 &&
+chown -R $user:$user ./
 make html > build.log 2>&1 &&
 sleep 2 &&
 
@@ -246,9 +247,10 @@ fi
 
 
 # Select a color theme (default blue)
-#cp -r ../../../_theme-docs/grey.sh grey.sh 2> /dev/null && mv ./grey.sh ./theme.sh &&
-cp -r ../../../_theme-docs/blue.sh blue.sh 2> /dev/null && mv ./blue.sh ./theme.sh &&
+cp -r ../../../_theme-docs/grey.sh grey.sh 2> /dev/null && mv ./grey.sh ./theme.sh &&
+#cp -r ../../../_theme-docs/blue.sh blue.sh 2> /dev/null && mv ./blue.sh ./theme.sh &&
 
+chown -R $user:$user ./theme.sh &&
 sudo chmod +x ./theme.sh &&
 sed 's|build\/html\/|build\/html\/en\/|g' ./theme.sh > ./en.sh && chmod +x ./en.sh && bash ./en.sh && rm -r ./en.sh && sleep 2 &&
 sed 's|build\/html\/|build\/html\/es\/|g' ./theme.sh > ./es.sh && chmod +x ./es.sh && bash ./es.sh && rm -r ./es.sh && sleep 2 &&

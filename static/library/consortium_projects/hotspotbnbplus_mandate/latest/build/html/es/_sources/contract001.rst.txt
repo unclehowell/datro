@@ -1,0 +1,148 @@
+Rental Agreement (v0.0.1)
+==========================
+
+**AMONG:** On the one hand, **EUTASIO PAYANO TEJADA and ANGELITA ACOSTA DE LA CRUZ DE PAYANO**,
+Dominicans, of legal age, married to each other, the first an independent worker and the second a hotelier, bearers of personal and electoral identity cards Nos .:
+066-0003295-4 y 134-0000617-0, both domiciled and resident in Calle Duarte No. 280, of the Municipality of Las Terrenas,
+who from now on in this contract will be called **THE FIRST PARTY or THE OWNERS;** And on the other hand, Mr. **SION HYWEL BUCKLER,** of British nationality, of legal age, merchant, Single,
+bearer of passport No. **562389465**, resident in the street boulevard del Atlantico No. 101, of the Municipality of Las Terrenas, Province Samana,
+who for the purposes of this contract will be called **THE SECOND PARTY or THE TENANT.**
+
+|
+
+|
+
+**********************************************
+The following has been agreed
+**********************************************
+
+**Section One**
+~~~~~~~~~~~~~~~~~~
+
+**THE OWNERS**, by means of this contract, assign as a rental in favor of **THE TENANT** who accepts, the property described below:
+
+**A FURNISHED APARTMENT, WITH AN INVENTORY THAT IS ATTACHED TO THIS CONTACT, BUILT IN BLOCKS,
+CERAMIC FLOOR, CONCRETE CEILING, WITH ONE (01) BATHROOM, ONE (01) KITCHEN, (THREE (03) BEDROOMS AND ONE (01) LIVING ROOM, ONE (01) BALCONY, ONE (01) TERRACE,
+ONE (1) PARKING, LOCATED WITHIN THE RESIDENTIAL MOUNTAIN VIEW VILLA, IN THE 'HOYO DEL CACAO' PLACE OF THE MUNICIPALITY OF LAS TERRENAS, SAMANA PROVINCE, DOMINICAN REPUBLIC.**
+
+Paragraph I 
+################
+The Apartment Described above, will be used by **THE TENANT**, as a home, not being able to dedicate it to other purposes, or sub-rent it, transfer, or assign, in whole or in part, or in any way that would be to third parties, physical or moral, the rights acquired in this contract,
+nor may they make a change or distribution in said property or anything that changes its nature, without the prior written consent of **THE OWNERS.**
+
+Paragraph II
+###################
+**THE TENANT,** by means of this act, acknowledges that the rented Apartment is in perfect condition in its walls and in all its parts,
+Therefore, he undertakes to keep the Apartment in perfect condition, take care of its walls, floors, windows, locks, and furniture, interior paintings, installation, or any other in its physical structure, everything necessary for the proper maintenance of the Apartment.
+
+Paragraph III
+###################
+In the event that the parties, **THE OWNER and THE TENANT**, decide not to continue with this contract, they must notify each other two months before the end of this contract.
+
+Paragraph IV
+##################
+In the hypothetical case that **THE TENANT** decides to terminate this contract, they will lose a months deposit, as a penalty for having terminated the aforementioned contract before the agreed term.
+
+
+**Section Two**
+~~~~~~~~~~~~~~~~~~
+
+**THE PARTIES** agree that the property referred to in this contract will be used, always in accordance with the laws and moral precepts of good customs.
+The exercise of any other activity that is not authorized would be a terminating clause to this contract and **THE OWNERS** reserve the right to invalidate them by simple notification, without granting any compensation to **THE TENANT.**
+
+Paragraph I
+##################
+The parties agree that the pool will be of common use, whose hours will be from 9:00 A.M. at 10:00 P.M. and a gazevo for its activity, always giving two days advance notice for its use
+
+
+Paragraph III 
+##################
+**THE TENANT,** undertakes to repair everything destroyed during the term that the rental contract dated September 1, 2020, in the six (06) months of the new rental contract,
+where the owners will look for a worthy budget for said repair or replacement of the damaged, so the complete Inventory will be replaced as received and as stipulated in the contract.
+
+
+**Section Three**
+~~~~~~~~~~~~~~~~~~~
+
+**THE TENANT,** acknowledges that they must expressly and in writing inform THE OWNERS, of any loss and degradation that occurs in the rented Apartment, even if these do not result as
+consequence of no apparent loss.
+
+Paragraph I
+##################
+It is understood that the expenses of electricity and any other services, such as a telephone contract or others requested by **THE TENANT**, will be borne by them, who must deliver invoices for
+balance of said services at the time of delivery of the apartment,
+
+**Section Four** 
+~~~~~~~~~~~~~~~~~~
+The price agreed between the parties for this contract is the sum of **FIVE HUNDRED DOLLARS (US $ 500),** or its equivalent in Dominican pesos at the current rate at the time of
+house payment, which will be paid monthly without delay.
+
+
+Paragraph I
+#######################
+**THE PARTIES** acknowledge and agree that this contract is a renewal of the rental contract dated September 1, 2020, therefore the existing deposits in the contract will remain in force
+above as a deposit, that is, the sum of **FIFTY THOUSAND DOMINICAN PESOS (RD $ 50,000.00),** which will be returned at the end of the contract, as long as there is no need to make any kind of
+Repeatability for damage caused to the property by **THE TENANT**, or pending payments of utility bills requested by them, nor may they be used as monthly rent payments
+overdue.
+
+Paragraph II
+#################
+It is established between **THE PARTIES,** that once the completion date of this contract arrives, if **THE TENANT** manages to keep payments up to date in the six (06) months in which it lasts saying
+contract, this will be reason for the contract to be extended for six (06) more months of rent, as long as you keep the payments up to date, otherwise at the end of the six (06) months the present contract.
+
+**Section Five** 
+~~~~~~~~~~~~~~~~~~~~
+This contract will have a duration of six (06) months, and will begin to run from the signing thereof, that is, from the first (01) of September 2021 and whose termination date will be the first (01) March 2022
+
+**Section Six**
+~~~~~~~~~~~~~~~~~~~
+It is understood that within the property, either within the apartment or in the common areas, it is forbidden to enter or have pets of any kind, in compliance with the common areas of the residential referral.
+
+Paragraph I
+##################
+
+It is established by mutual agreement that the rental contract dated August 30 (30), 2020, with signatures legalized by Dr. Pedro Catrain Bonilla Notary Public for the National District, is rescinded due to having arrived at its end.
+
+Paragraph II
+##################
+It is established that the condominium expenses are borne by **THE OWNERS**, and they will be given a set of keys for the front gate, which they must deliver at the time of delivery
+the aforementioned apartment, and in case of having lost it they will have to replace it with a new set.
+
+**Section Seven** 
+~~~~~~~~~~~~~~~~~~~~~
+This contract may be terminated by **THE OWNER** for the following reasons:
+
+a) Due to lack of maintenance and deterioration of the leased property.
+b) By fortuitous event.
+c) Due to non-payment of monthly rents, if it exceeds five days.
+d) For any other cause or use contrary to the laws of good practice, and for **THE TENANT** failing to comply with any of the obligations contracted under this contract.
+
+**Section Eight** 
+~~~~~~~~~~~~~~~~~~~~~
+For the application and execution of this contract, the parties will be governed by common law.
+
+Done and signed in two originals and in good faith, one for each of the contracting parties. In the Municipality of Las Terrenas, Samaná Province, Dominican Republic, on one (01) day of the month of September 2021
+
+|
+
+ | **EUTASIO PAYANO TEJADA  ANGELITA ACOSTA DE LA CRUZ DE PAYANO**
+ | **THE OWNERS**
+
+|
+
+ | **SION HYWEL BUCKLER**
+ | **THE TENANT**
+
+|
+
+I, **ARIDIO ANTONIO GUZMAN ROSARIO,** Notary Public Lawyer of the Number of the Municipality of Las Terrenas, **CERTIFY AND ATTEST:** That the foregoing signatures were placed in my free presence and
+voluntarily, by the gentlemen: **EUTASIO PAYANO TEJADA, ANGELITA ACOSTA DE LA CRUZ DE PAYANO** and **SION HYWEL BUCKLER** of generals and qualities that consist of those who **I ATTEST** know and who have declared to me that Those are the signatures that they usually use in all the acts of their lives,
+for which full faith and credit must be given. In Santo Domingo, Capital National District of the Dominican Republic, on one (01) day of the month of September 2021.
+
+|
+
+ | **DR. ARIDIO ANTNIO GUZMAN ROSARIO**
+ | **PUBLIC NOTARY**
+ | **Tuition 6403**
+
+|
