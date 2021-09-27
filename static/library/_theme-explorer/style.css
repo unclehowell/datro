@@ -8,6 +8,14 @@ html {
     margin: 0;
 }
 
+
+.bright {
+  filter:brightness(2.4)contrast(0.5);
+} 
+
+.bright2 {
+  filter:brightness(1.5)contrast(2);
+} 
 p.main-title {
     font-weight: bolder;
     text-align: center;
@@ -64,6 +72,27 @@ border: 2px solid rgba(0,128,0,0.7)!important;
     margin-left: 0.3em;
 }
 
+
+.subtitle-line-mini {
+    max-height: 3em;
+    font-size: calc( 12px + (12 – 8) * ( (45vw – 200px) / ( 400 – 200) ));
+    line-height: 4rem!Important;
+    min-width: 100vw!important;
+    letter-spacing: 0.25rem;
+    margin: calc(3.25rem - 2rem) 0rem calc(0.5vh - 0rem) 0em!important;
+    float: left!important;
+    word-spacing: -0.1em;
+    font-family: sans-serif!important;
+    background: rgba(255,255,255,0.05);
+    border-top: 0px solid rgba(255,255,255,0.15);
+    box-shadow: 3px 10px 34px -3px rgb(0 0 0 / 20%);
+    display: inline-flex!important;
+    padding: calc(0.25em - 3px) 0.1em calc(4rem - 3em) 4em;
+    opacity: 0.85;
+    border-bottom: 0px solid rgba(255,255,255,0.15);
+    text-transform: none;
+}
+
 .type-subtitle-line {
     font-size: 65%;
     border-top: 2px solid rgba(0,0,0,0.0)!important;
@@ -103,6 +132,14 @@ border: 2px solid rgba(0,128,0,0.7)!important;
 
 .i-techhouse {
     background-image: url(icons/techhouse.png);
+}
+
+.i-handshake {
+    background-image: url(icons/handshake.png);
+}
+
+.ml-handshake {    
+background-image: url(logos/handshake100x90.png);
 }
 
 .ml-techhouse {    
@@ -259,6 +296,13 @@ ul {
     border: 2px solid rgba(51,65,110,1)!important;
 }
 
+.subtitle-mini-disable {
+    color: rgba(255,255,255,0.3)!important;
+    cursor: default;
+    background: #336!important;
+    border: 2px solid rgba(51,65,110,1)!important;
+}
+
 .up-inactive {
     color: rgba(255,255,255,.25);
     background: rgb(51,51,102,0.5);
@@ -296,6 +340,7 @@ ul {
     margin: 0;
     min-width: 100vw;
     left: 0;
+    font-size:clamp(20px, 6vw, 30px);
 }
 
 .title-disable {
@@ -312,7 +357,7 @@ ul {
 
 .subtitle-line, .depth2-subtitle-line { 
     margin: 0.5em 0em 0.1em 0.5em!important;
-    font-size: 80%;
+    font-size: calc(1.5rem + 0.1em);
     display: inline-flex!important;
     min-width: inherit;
     line-height: 1.25em;

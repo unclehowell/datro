@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2021, DATRO Consortium
-# This file is distributed under the same license as the Client File - 8CC package.
+# This file is distributed under the same license as the Client ID - 8CC package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Client File - 8CC 0.0.0\n"
+"Project-Id-Version: Client ID - 8CC 0.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-22 17:21-0400\n"
+"POT-Creation-Date: 2021-09-26 21:17-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,4325 +16,473 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../source/creditors.rst:2
-msgid "Creditor Accounts"
+#: ../../source/activity.rst:2
+msgid "Activity"
 msgstr ""
 
-#: ../../source/creditors.rst:5
-msgid "Summary"
-msgstr ""
-
-#: ../../source/creditors.rst:7
-msgid "See below a summary of the DATRO Consortiums Creditors Accounts:"
-msgstr ""
-
-#: ../../source/creditors.rst:9
-msgid "DATRO Creditor(s) - Master Register"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "UID"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "Wallet ID/ Alias"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "Deposited (GBP)"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "Interest 1% (GBP)"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-210.csv:1
-#: ../../source/_static/custom/creditor-account-211.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-213.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "Balance (GBP)"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "201"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "J-Rushton"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "18218.80"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "1323.56"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "19542.36"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "202"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "M-Glover"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "25190.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "2184.37"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "27374.37"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "203"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "S-Murphy"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "5190.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "425.49"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "5615.49"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "204"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "Family-Gill"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "40190.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "3372.52"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "43562.52"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "205"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "D-Khan"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "2711.49"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "233.84"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2945.33"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "206"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "M-Kennedy"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "5055.13"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "453.02"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "5508.15"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "207"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "R-Davis"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "3000.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "118.37"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-msgid "3118.37"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "208"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "F-Van-Rienen"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "7500.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "253.38"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "7753.38"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "209"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "K-E-Amos"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-msgid "1680.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "46.71"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-msgid "1726.71"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "210"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "Anonymous-1"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-210.csv:1
-msgid "1103.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "28.42"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-210.csv:1
-msgid "1131.42"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "211"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "E-Coldwell"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-211.csv:1
-#: ../../source/_static/custom/creditor-account-211.csv:1
-msgid "4440.84"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-211.csv:1
-msgid "43.07"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-211.csv:1
-msgid "4483.91"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "212"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "P-Caines"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "4029.20"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "232.44"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "4261.64"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "213"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "A-Cronin"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-213.csv:1
-msgid "900.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-213.csv:1
-msgid "1.44"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-213.csv:1
-msgid "901.44"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "214"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "A-Buckler"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "5381.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "34.70"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "5415.70"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "215"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "G-Smith"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "2810.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "276.02"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "3086.02"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "Total"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "127399.46"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "9027.36"
-msgstr ""
-
-#: ../../source/_static/custom/creditors-master-register.csv:1
-msgid "136426.82"
-msgstr ""
-
-#: ../../source/creditors.rst:16
-msgid "Detailed"
-msgstr ""
-
-#: ../../source/creditors.rst:17
-msgid "See below a detailed ledger of the DATRO Consortiums Creditors Accounts:"
-msgstr ""
-
-#: ../../source/creditors.rst:21
-msgid "Account 201 - (J-Rushton)"
-msgstr ""
-
-#: ../../source/creditors.rst:24
-msgid "DATRO Creditor - Account 201 - J-Rushton"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-210.csv:1
-#: ../../source/_static/custom/creditor-account-211.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-213.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "Date"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-210.csv:1
-#: ../../source/_static/custom/creditor-account-211.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-213.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "Details"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-210.csv:1
-#: ../../source/_static/custom/creditor-account-211.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-213.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "Debit"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-210.csv:1
-#: ../../source/_static/custom/creditor-account-211.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-213.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "Credit"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "05-03-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-210.csv:1
-#: ../../source/_static/custom/creditor-account-210.csv:1
-#: ../../source/_static/custom/creditor-account-210.csv:1
-#: ../../source/_static/custom/creditor-account-211.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-213.csv:1
-#: ../../source/_static/custom/creditor-account-213.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "Funds Deposited"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "834.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "05-04-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "1668.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "16-05-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "400.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "2068.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "23-05-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "300.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "2368.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "06-06-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "2668.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "20-06-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "532.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "3200.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "04-07-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "250.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "3450.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "19-07-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "272.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "3722.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "01-08-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "278.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "4000.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "08-08-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "4250.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "15-08-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "4500.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "04-10-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "4800.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "05-10-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "200.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "5000.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "24-10-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "5200.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "15-11-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-msgid "1500.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "6700.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "09-12-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "7000.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "28-12-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-210.csv:1
-#: ../../source/_static/custom/creditor-account-210.csv:1
-#: ../../source/_static/custom/creditor-account-210.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "Interest Accrued (1% APR)"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "30.55"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "7030.55"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "24-01-14"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "7280.55"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "04-02-14"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "7530.55"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "03-03-14"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "7780.55"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "06-03-14"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "8030.55"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "17-03-14"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "8230.55"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "20-03-14"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "8530.55"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "25-03-14"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "500.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "9030.55"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "27-03-14"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "800.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "9830.55"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "10030.55"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "29-04-14"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2000.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "12030.55"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "28-12-14"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "107.53"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "12138.07"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "20-03-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "14138.07"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "16138.07"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "23-07-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "1999.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "18137.07"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "10-05-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "14.90"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "18151.97"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "10-08-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "204.90"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "18356.87"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "28-12-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "161.93"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "18518.80"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "28-12-16"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "185.70"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "18704.50"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "28-12-17"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "187.04"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "18891.54"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-210.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "28-12-18"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "188.92"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "19080.46"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-210.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "28-12-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "190.80"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "19271.26"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-210.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "28-12-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "193.24"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "19464.50"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-210.csv:1
-#: ../../source/_static/custom/creditor-account-211.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-213.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "23-05-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
-#: ../../source/_static/custom/creditor-account-210.csv:1
-#: ../../source/_static/custom/creditor-account-211.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-213.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "Interest to Date ...."
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-201.csv:1
-msgid "77.86"
-msgstr ""
-
-#: ../../source/creditors.rst:31
-msgid "Account 202 - (M-Glover)"
-msgstr ""
-
-#: ../../source/creditors.rst:34
-msgid "DATRO Creditor - Account 202 - M-Glover"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "28-04-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "8000.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "12000.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "20000.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "01-10-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "25000.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "247.45"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "25247.45"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "252.47"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "25499.93"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "255.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "25754.93"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "257.55"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "26012.48"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "05-12-17"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-#: ../../source/_static/custom/creditor-account-203.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-213.csv:1
-#: ../../source/_static/custom/creditor-account-213.csv:1
-msgid "190.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "26202.48"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "260.24"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "26462.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "264.63"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "26727.35"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "267.27"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "26994.62"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "270.69"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "27265.31"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-202.csv:1
-msgid "109.06"
-msgstr ""
-
-#: ../../source/creditors.rst:41
-msgid "Account 203 - (S-Murphy)"
-msgstr ""
-
-#: ../../source/creditors.rst:44
-msgid "DATRO Creditor - Account 203 - S-Murphy"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "17-05-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "30.82"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "5030.82"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "50.31"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "5081.13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "50.81"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "5131.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "51.46"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "5183.40"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "06-12-17"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "5373.40"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "55.07"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "5428.47"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "54.28"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "5482.76"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "54.83"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "5537.59"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "55.53"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "5593.11"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-203.csv:1
-msgid "22.37"
-msgstr ""
-
-#: ../../source/creditors.rst:51
-msgid "Account 204 - (Family-Gill)"
-msgstr ""
-
-#: ../../source/creditors.rst:53
-msgid "DATRO Creditor - Account 204 - Family-Gill"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "09-06-12"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "6000.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "07-09-12"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "10000.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "10-09-12"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "14-11-12"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "15000.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "19-11-12"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "27000.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "28-12-12"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "67.89"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "27067.89"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "270.68"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "27338.57"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "30-12-13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "30338.57"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "20-04-14"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "40338.57"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "372.26"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "40710.83"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "407.11"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "41117.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "412.31"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "41530.25"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "07-12-17"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "41720.25"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "391.52"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "42111.76"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "421.12"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "42532.88"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "425.33"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "42958.21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "430.76"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "43388.97"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-204.csv:1
-msgid "173.56"
-msgstr ""
-
-#: ../../source/creditors.rst:61
-msgid "Account 205 - (D-Khan)"
-msgstr ""
-
-#: ../../source/creditors.rst:64
-msgid "DATRO Creditor - Account 205 - D-Khan"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "09-07-12"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "70.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "09-11-12"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2070.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "3.01"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2073.01"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "20.73"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2093.74"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "20.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2114.68"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "25-08-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "12.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2126.68"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "16-09-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "30.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2156.68"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "21.27"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2177.95"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "21.84"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2199.79"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "22-11-17"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "189.49"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2389.28"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "22.18"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2411.47"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "05-02-18"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2441.47"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "15-05-18"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "150.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2591.47"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "20-06-18"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "50.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2641.47"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "17-07-18"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2691.47"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "01-08-18"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2741.47"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "13-08-18"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "40.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2781.47"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "15-11-18"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "20.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2801.47"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "16-11-18"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2821.47"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "26.20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2847.67"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "28.48"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2876.15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "28.84"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-msgid "2904.99"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-205.csv:1
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "40.34"
-msgstr ""
-
-#: ../../source/creditors.rst:73
-msgid "Account 206 - (M-Kennedy)"
-msgstr ""
-
-#: ../../source/creditors.rst:76
-msgid "DATRO Creditor - Account 206 - M-Kennedy"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "20-02-12"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "34.19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "4034.19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "4074.53"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "19-08-14"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "865.13"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "4939.66"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "43.85"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "4983.51"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "49.84"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "5033.35"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "50.47"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "5083.82"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "18-12-17"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "5273.82"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "50.89"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "5324.71"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "53.25"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "5377.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "53.78"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "5431.74"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "54.47"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "5486.20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-206.csv:1
-msgid "21.94"
-msgstr ""
-
-#: ../../source/creditors.rst:84
-msgid "Account 207 - (R-Davis)"
-msgstr ""
-
-#: ../../source/creditors.rst:86
-msgid "DATRO Creditor - Account 207 - R-Davis"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-207.csv:1
-msgid "15-03-16"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "15-07-16"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-207.csv:1
-#: ../../source/_static/custom/creditor-account-209.csv:1
+#: ../../source/activity.rst:4
+msgid "See below the activity for client 8cc:"
+msgstr ""
+
+#: ../../source/activity.rst:8
+msgid "Statement"
+msgstr ""
+
+#: ../../source/activity.rst:10
+msgid "8cc - Statement"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/tenders.rst:10
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "**Date**"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/tenders.rst:10
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "**Reference**"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "**Volume**"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "**¤**"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "**GBP**"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "**Bal (£)**"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "2021/07/01"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "INV-0019 - Element/Matrix (VPS)"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "2500.00"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/tenders.rst:12
+#: ../../source/tenders.rst:14
+#: ../../source/tenders.rst:16
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "USD"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "1816.52"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "2021/07/19"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "Credit (INV-0019)"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "-2500.00"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "-1816.52"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "0.00"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "2021/08/26"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "INV-0021 - HBnB+ Project Deposit"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
 msgid "1000.00"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-207.csv:1
-msgid "6.22"
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "730.12"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-207.csv:1
-msgid "1006.22"
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "2021/08/30"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-207.csv:1
-msgid "09-01-17"
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "Credit (INV-0021)"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-207.csv:1
-msgid "2006.22"
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "-1000.00"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-207.csv:1
-msgid "19.73"
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "-730.12"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-207.csv:1
-msgid "2025.95"
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "**End Balance**"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-207.csv:1
-msgid "20.26"
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/transactions-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "**0.00**"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-207.csv:1
-msgid "2046.21"
+#: ../../source/activity.rst:16
+msgid "Transactions"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-207.csv:1
-msgid "23-02-19"
+#: ../../source/activity.rst:18
+msgid "8cc - Transactions"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-207.csv:1
-msgid "3046.21"
+#: ../../source/annex-list.rst:2
+msgid "Annexures"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-207.csv:1
-msgid "28.90"
+#: ../../source/annex-list.rst:4
+msgid "This section contains the Annexures, referenced in the text above. The ref Download Links for these Annexures can be found at the very end of this document:"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-207.csv:1
-msgid "3075.11"
+#: ../../source/annex-list.rst:10
+msgid "Element/Matrix VPS"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-207.csv:1
-msgid "30.84"
+#: ../../source/annex-list.rst:14
+msgid "HotspotBnB+"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-207.csv:1
-msgid "3105.95"
+#: ../../source/annex-list.rst:19
+msgid "2021-08-19: Quote for HotspotBnB+ Project Deposit"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-207.csv:1
-msgid "12.42"
+#: ../../source/annex-list.rst:23
+msgid "2021-08-26: Invoice for HotspotBnB+ Project Deposit"
 msgstr ""
 
-#: ../../source/creditors.rst:95
-msgid "Account 208 - (F-Van-Rienen)"
+#: ../../source/annex-list.rst:27
+msgid "Download Links"
 msgstr ""
 
-#: ../../source/creditors.rst:97
-msgid "DATRO Creditor - Account 208 - F-Van-Rienen"
+#: ../../source/annex-list.rst:29
+msgid "See below a table of the download links for the Annexed items in this document:"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "15-07-15"
+#: ../../source/annex-list.rst:31
+msgid "Download Link of Annexures"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "750.00"
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "**Description**"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "15-12-15"
+#: ../../source/_static/annex.csv:1
+msgid "**PDF**"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "3.68"
+#: ../../source/_static/annex.csv:1
+msgid "**SVG**"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "1503.68"
+#: ../../source/_static/annex.csv:1
+msgid "**PNG**"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "2253.68"
+#: ../../source/_static/annex.csv:1
+msgid "2021-04-16"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "15-12-16"
+#: ../../source/_static/annex.csv:1
+msgid "Origional Map - Remastered"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "3003.68"
+#: ../../source/_static/annex.csv:1
+msgid "`link(19kb) <https://datro.xyz/static/library/datro-consortium/consortium-campus/latest/build/html/_static/2021-04-16_origional-map.pdf>`__"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "18.76"
+#: ../../source/_static/annex.csv:1
+msgid "`link(36kb) <https://datro.xyz/static/library/datro-consortium/consortium-campus/latest/build/html/_static/2021-04-16_origional-map.svg>`__"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "3022.43"
+#: ../../source/_static/annex.csv:1
+msgid "2019-07-31"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "15-07-17"
+#: ../../source/_static/annex.csv:1
+msgid "Sotherby's Market Analysis"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "3772.43"
+#: ../../source/_static/annex.csv:1
+msgid "`link(5.3mb) <https://datro.xyz/static/library/datro-consortium/consortium-campus/latest/build/html/_static/2019-07-31_sotherbys-market-analysis.pdf>`__"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "15-12-17"
+#: ../../source/_static/annex.csv:1
+msgid "2017-07-24"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "4522.43"
+#: ../../source/_static/annex.csv:1
+msgid "Certificate of Title: 2488.70m2"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "33.90"
+#: ../../source/_static/annex.csv:1
+msgid "`link(860kb) <https://datro.xyz/static/library/datro-consortium/consortium-campus/latest/build/html/_static/2017-07-24_Certificate 2488_70.png>`__"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "4556.34"
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/annex.csv:1
+msgid "2010-08-13"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "15-07-18"
+#: ../../source/_static/annex.csv:1
+msgid "Certificate of Title: 2088.47m2"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "5306.34"
+#: ../../source/_static/annex.csv:1
+msgid "`link(1.4mb) <https://datro.xyz/static/library/datro-consortium/consortium-campus/latest/build/html/_static/2010-08-13_Certificate 2088_47.png>`__"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "15-12-18"
+#: ../../source/_static/annex.csv:1
+msgid "Certificate of Title: 2038.77m2"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "6056.34"
+#: ../../source/_static/annex.csv:1
+msgid "`link(173kb) <https://datro.xyz/static/library/datro-consortium/consortium-campus/latest/build/html/_static/2010-08-13_Certificate 2038_77.png>`__"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "49.24"
+#: ../../source/_static/annex.csv:1
+msgid "Certificate of Title: 1749.00m2"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "6105.58"
+#: ../../source/_static/annex.csv:1
+msgid "`link(173kb) <https://datro.xyz/static/library/datro-consortium/consortium-campus/latest/build/html/_static/2010-08-13_Certificate 1749_00.png>`__"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "61.06"
+#: ../../source/_static/annex.csv:1
+msgid "2009-11-19"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "6166.63"
+#: ../../source/_static/annex.csv:1
+msgid "Certificate of Title: 1154.00m2"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "61.84"
+#: ../../source/_static/annex.csv:1
+msgid "`link(173kb) <https://datro.xyz/static/library/datro-consortium/consortium-campus/latest/build/html/_static/2010-08-13_Certificate 1154_00.png>`__"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "6228.47"
+#: ../../source/_static/annex.csv:1
+msgid "Certificate of Title: 4068.61m2"
 msgstr ""
 
-#: ../../source/_static/custom/creditor-account-208.csv:1
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "Reconciling ..."
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "6978.47"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "7728.47"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-208.csv:1
-msgid "24.91"
-msgstr ""
-
-#: ../../source/creditors.rst:105
-msgid "Account 209 - (K-E-Amos)"
-msgstr ""
-
-#: ../../source/creditors.rst:108
-msgid "DATRO Creditor - Account 209 - K-E-Amos"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-209.csv:1
-msgid "08-08-18"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-209.csv:1
-msgid "15-08-18"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-209.csv:1
-msgid "03-09-18"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-209.csv:1
-msgid "14-09-18"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-209.csv:1
-msgid "180.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-209.csv:1
-msgid "5.90"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-209.csv:1
-msgid "1685.90"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-209.csv:1
-msgid "16.86"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-209.csv:1
-msgid "1702.76"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-209.csv:1
-msgid "17.07"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-209.csv:1
-msgid "1719.83"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-209.csv:1
-msgid "6.88"
-msgstr ""
-
-#: ../../source/creditors.rst:116
-msgid "Account 210 - (Anonymous-1)"
-msgstr ""
-
-#: ../../source/creditors.rst:118
-msgid "DATRO Creditor - Account 210 - Anonymous-1"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-210.csv:1
-#: ../../source/_static/custom/creditor-account-210.csv:1
-msgid "22-10-18"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-210.csv:1
-#: ../../source/_static/custom/creditor-account-210.csv:1
-msgid "3.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-210.csv:1
-msgid "650.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-210.csv:1
-msgid "653.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-210.csv:1
-msgid "19-11-18"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-210.csv:1
-msgid "450.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-210.csv:1
-msgid "1.68"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-210.csv:1
-msgid "1104.68"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-210.csv:1
-msgid "11.05"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-210.csv:1
-msgid "1115.73"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-210.csv:1
-msgid "11.19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-210.csv:1
-msgid "1126.91"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-210.csv:1
-msgid "4.51"
-msgstr ""
-
-#: ../../source/creditors.rst:126
-msgid "Account 211 - (E-Coldwell)"
-msgstr ""
-
-#: ../../source/creditors.rst:128
-msgid "DATRO Creditor - Account 211 - E-Coldwell"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-211.csv:1
-msgid "03-06-20"
-msgstr ""
-
-#: ../../source/creditors.rst:135
-msgid "Account 212 - (P-Caines)"
-msgstr ""
-
-#: ../../source/creditors.rst:137
-msgid "DATRO Creditor - Account 212 - P-Caines"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "23-05-14"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "100.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "04-08-14"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "14-08-14"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "17-08-14"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "01-09-14"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "04-09-14"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "550.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "2.22"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "552.22"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "09-02-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "702.22"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "03-03-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "902.22"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "14-03-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "1002.22"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "01-06-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "99.90"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "1102.12"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "13-06-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "149.90"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "1252.02"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "14-07-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "54.90"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "1306.92"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "20-08-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "90.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "1396.92"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "24-08-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "1546.82"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "1696.82"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "27-08-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "1846.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "28-08-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "158.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "2004.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "09-09-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "93.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "2097.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "12-09-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "2247.62"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "18-09-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "35.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "2282.62"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "20-09-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "2472.62"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "26-09-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "84.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "2556.62"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "27-09-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "140.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "2696.62"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "30-09-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "45.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "2741.62"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "12-10-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "2786.62"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "14-10-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "2876.62"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "17-10-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "240.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "3116.62"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "22-10-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "3151.62"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "26-10-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "3301.52"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "04-11-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "125.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "3426.52"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "06-11-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "3616.52"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "23-11-15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "75.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "3691.52"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "16.92"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "3708.44"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "37.08"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "3745.52"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "04-09-17"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "3845.52"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "37.77"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "3883.29"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "18-05-18"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "3903.29"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "27-06-18"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "3923.29"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "39.06"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "3962.35"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "01-12-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "49.90"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "4012.25"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "07-06-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "4062.25"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "28-08-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "4162.25"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "40.27"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "4202.52"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "42.14"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "4244.66"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-212.csv:1
-msgid "16.98"
-msgstr ""
-
-#: ../../source/creditors.rst:144
-msgid "Account 213 - (A-Cronin)"
-msgstr ""
-
-#: ../../source/creditors.rst:146
-msgid "DATRO Creditor - Account 213 - A-Cronin"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-213.csv:1
-msgid "01-03-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-213.csv:1
-msgid "01-04-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-213.csv:1
-msgid "710.00"
-msgstr ""
-
-#: ../../source/creditors.rst:152
-msgid "Account 214 - (A-Buckler)"
-msgstr ""
-
-#: ../../source/creditors.rst:154
-msgid "DATRO Creditor - Account 214 - A-Buckler"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "19-09-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "25-09-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "100"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "130.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "30-09-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "330.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "08-10-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "350.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "10-10-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "370.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "13-10-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "50"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "420.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "15-10-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "114"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "534.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "19-10-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "584.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "24-10-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "75"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "659.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "30-10-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "40"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "699.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "16-11-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "815"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "1514.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "28-11-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "1564.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "07-12-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "730"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "2294.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "19-12-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "2344.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "20-12-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "2364.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "2.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "2366.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "10-01-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "30"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "2396.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "16-01-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "2446.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "22-01-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "2546.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "30-01-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "2586.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "07-02-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "2606.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "12-02-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "2626.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "19-02-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "2656.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "20-02-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "2686.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "140"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "2826.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "28-02-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "2866.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "29-02-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "2916.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "07-03-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "2956.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "14-03-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "2976.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "19-03-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3006.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "21-03-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "15"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3021.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "22-03-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3051.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "27-03-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3101.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "20-04-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3131.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "25-04-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "10"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3141.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "03-05-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3151.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "08-05-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3171.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "14-05-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3181.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "16-05-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3211.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "21-05-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3311.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "27-05-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3331.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "08-06-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3371.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "21-06-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3401.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "27-06-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3431.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "06-07-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3471.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "09-07-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3501.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "17-07-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "250"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3751.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "23-07-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3801.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "27-07-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3901.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "03-08-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3921.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "19-08-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "3971.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "28-08-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "4021.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "12-09-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "4071.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "16-09-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "60"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "4131.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "17-09-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "4141.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "18-09-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "4181.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "29-09-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "4231.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "19-10-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "4331.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "19-11-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "4431.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "05-12-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "4441.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "18-12-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "4541.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "21-12-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "4591.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "26-12-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "4621.96"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "11.76"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "4633.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "18-01-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "4733.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "26-01-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "4773.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "06-02-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "4823.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "19-02-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "4923.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "27-02-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "4973.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "19-03-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "150"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "5123.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "29-03-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "2"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "5125.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "03-04-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "5155.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "11-04-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "5165.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "13-04-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "5185.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "17-04-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "5205.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "19-04-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "5255.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "26-04-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "5265.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "08-05-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "5295.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "15-05-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "5345.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "5395.72"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-214.csv:1
-msgid "19.97"
-msgstr ""
-
-#: ../../source/creditors.rst:162
-msgid "Account 215 - (G-Smith)"
-msgstr ""
-
-#: ../../source/creditors.rst:164
-msgid "DATRO Creditor - Account 215 - G-Smith"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "03-12-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "27-12-19"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "600.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "700.00"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "0.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "700.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "14-02-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "730.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "18-02-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "760.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "25-02-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "790.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "03-03-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "820.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "10-03-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "850.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "17-03-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "880.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "24-03-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "910.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "31-03-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "940.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "07-04-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "970.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "14-04-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1000.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "21-04-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1030.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "28-04-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1060.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "05-05-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1090.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "12-05-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1120.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "19-05-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1150.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "26-05-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1180.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "02-06-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1210.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "09-06-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1240.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "12-06-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1340.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "16-06-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1370.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "23-06-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1400.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "30-06-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1430.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "07-07-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1460.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "14-07-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1490.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "21-07-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1520.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "28-07-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1550.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "04-08-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1580.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "11-08-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1610.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "18-08-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1640.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "25-08-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1670.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "01-09-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1700.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "08-09-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1730.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "15-09-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1760.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "22-09-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1790.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1820.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "06-10-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1850.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "13-10-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1880.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "20-10-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1910.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "27-10-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1940.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "03-11-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "1970.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "10-11-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2000.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "17-11-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2030.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "24-11-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2060.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "01-12-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2090.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "08-12-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2120.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "15-12-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2150.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "22-12-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2180.09"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "264.86"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2444.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "29-12-20"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2474.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "05-01-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2504.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "12-01-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2534.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "19-01-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2564.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2594.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "02-02-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2624.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "09-02-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2654.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "16-02-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2684.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "23-02-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2714.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "02-03-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2744.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "09-03-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2774.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "16-03-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2804.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "23-03-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2834.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "30-03-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2864.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "06-04-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2894.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "14-04-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2924.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "20-04-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2954.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "27-04-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "2984.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "04-05-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "3014.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "11-05-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "3044.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "18-05-21"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "3074.94"
-msgstr ""
-
-#: ../../source/_static/custom/creditor-account-215.csv:1
-msgid "11.07"
+#: ../../source/_static/annex.csv:1
+msgid "`link(1.4mb) <https://datro.xyz/static/library/datro-consortium/consortium-campus/latest/build/html/_static/2010-08-13_Certificate 4068_61.png>`__"
 msgstr ""
 
 #: ../../source/index.rst:2
-msgid "DATRO Consortium Creditors"
+msgid "Client ID - 8cc"
 msgstr ""
 
-#: ../../source/index.rst:4
-msgid "The way DATRO expects to autonomously extinguish our lines of credit is similar to the systems we’re putting in place to remunerate our developers and investors. Our Consortiums Creditors can expect loans and interest to be extinguished (fully autonomously) by our Decentralized Autonomous Society (DAS) - Which is explained later in this document in more depth. The latest method employed for this process, resides within the cryptocurrency DOT and the Polkadot blockchain, in which the latest version of this document is regularly and autonomously scraped by a smart contract to determine the lenders, accrued interest, and then autonomously issue the funds to our lenders cryptocurrency wallets in accordance with the amortization agreements. Since this autonomous, decentralized system is still in pre-production, some methodologies are (in the interim) executed manually for purposes of troubleshooting and correct writing of the smart contracts, which can only be amended hereinafter by way of a tokenized vote. And until such time as this aspect of our DAS is operational, the accrued interest will compound, but maybe subject to adjustments to ensure the rate and backdate is within the reach of the DAS and its fiscal \"burnrate\"."
-msgstr ""
-
-#: ../../source/index.rst:22
+#: ../../source/index.rst:17
 msgid "**Document Author:**"
 msgstr ""
 
-#: ../../source/index.rst:26
-msgid "The Team @ DATRO Consortium"
+#: ../../source/index.rst:21
+msgid "DATRO Consortium"
 msgstr ""
 
-#: ../../source/introduction.rst:2
-msgid "Introduction"
+#: ../../source/receipts.rst:2
+msgid "Receipts"
 msgstr ""
 
-#: ../../source/introduction.rst:4
-msgid "This document details the DATRO Consortiums creditors. Unlike most organizations, DATRO simultaneously operates its own bespoke and internal cryptocurrency banking system and services. This new trend in tech, business, and finance is most commonly referred to as Decentralised Finance (DeFi) and a Decentralised Autonomous Organisation (DAO). This report focuses on the creditor account data only."
+#: ../../source/receipts.rst:4
+msgid "See below the receipts for client 8cc:"
 msgstr ""
 
-#: ../../source/introduction.rst:9
-msgid "The concept of loans, interest, and other such financial instruments surrounding promissory notes isn't new. But our DAO method is s preferred way of automating the administration, transactions, and record-keeping of this business area. DATRO's DAO is also being developed to autonomously maintain these financial reports, updating them each time a block of transactions occur, in order, it remains as consistent as possible to the institutional method of changelogs, reports, and document archiving for a smoother transition from company to DAO. At the time of writing these reports are compiled from source by a system administrator and custom build script, in order to check processes and procedures before going fully autonomous. In the event of a new release, our DAO will autonomously archive the source files of the previous version alongside the 'latest' directory e.g. 0-0-1, 0-0-2, etc. And autonomously archive the previously compiled PDF in our wayback archive, then reference the compiled PDF in the release notes of the new publication (under the section 'previous versions')."
-msgstr ""
-
-#: ../../source/introduction.rst:15
-msgid "As a final note, we take this opportunity to state that our DAO is also sometimes referred to as a DAS (Decentralised, Autonomous Society) due to the magnitude of the stakeholders involved, which constitute the organization being a stand-alone (cyberspace-based/digital) society/system of governance and not your typical organization. For more information on DeFi and DAO's, please conduct your own research online as the subject is extensive."
+#: ../../source/receipts.rst:7
+msgid "8cc - Receipts"
 msgstr ""
 
 #: ../../source/releasenotes.rst:2
@@ -4346,11 +494,11 @@ msgid "This section provides information about what is new or changed, including
 msgstr ""
 
 #: ../../source/releasenotes.rst:9
-msgid "This Release (0.0.6)"
+msgid "This Release (0.0.0)"
 msgstr ""
 
 #: ../../source/releasenotes.rst:11
-msgid "**2021-05-23** - `Data updated`"
+msgid "**2021-09-01** - `First Draft`"
 msgstr ""
 
 #: ../../source/releasenotes.rst:15
@@ -4358,207 +506,131 @@ msgid "Older Versions"
 msgstr ""
 
 #: ../../source/releasenotes.rst:17
-msgid "In the table below the last entry displays a link to an archived copy of the last report. To keep the filename from overflowing in the table below the name displayed may differ from the file name. The date the file was archived will differ from the date of the document label, which is its creation date. If you're viewing this document on a subdomain of `.datro.world` you may need to right-click and select 'open link in new tab`. In the interim of a bug fix, you can avoid right-clicking all together, by viewing our document library at its original location `datro.xyz/static/library <https://datro.xyz/static/library>`__"
+msgid "In the table below the last entry displays a link to an archived copy of the last report. To keep the filename from overflowing in the table below the name displayed may differ from the file name. The date the file was archived will differ from the date of the document label, which is its creation date."
 msgstr ""
 
-#: ../../source/releasenotes.rst:24
+#: ../../source/releasenotes.rst:22
 msgid "Older Versions of this Document"
 msgstr ""
 
 #: ../../source/_static/olderversions.csv:1
-msgid "archive date"
-msgstr ""
-
-#: ../../source/_static/olderversions.csv:1
-msgid "version"
-msgstr ""
-
-#: ../../source/_static/olderversions.csv:1
-msgid "description"
-msgstr ""
-
-#: ../../source/_static/olderversions.csv:1
-msgid "download link"
+msgid "**Archive Date**"
 msgstr ""
 
 #: ../../source/_static/olderversions.csv:1
 #: ../../source/_static/issues.csv:1
-msgid "2021-05-23"
+msgid "**Version**"
 msgstr ""
 
 #: ../../source/_static/olderversions.csv:1
-msgid "0.0.5"
+msgid "**Download Link**"
 msgstr ""
 
 #: ../../source/_static/olderversions.csv:1
 #: ../../source/_static/olderversions.csv:1
 #: ../../source/_static/olderversions.csv:1
 #: ../../source/_static/olderversions.csv:1
-#: ../../source/_static/olderversions.csv:1
-#: ../../source/_static/olderversions.csv:1
-msgid "see releasenotes"
+#: ../../source/_static/issues.csv:1
+#: ../../source/_static/issues.csv:1
+#: ../../source/_static/issues.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "N/A"
 msgstr ""
 
-#: ../../source/_static/olderversions.csv:1
-msgid "`2021-05-08_creditors_v0.0.5.pdf <https://datro.world.xyz/wayback/2021-05-08_consortium_finance-funding_creditors_v0.0.5.pdf>`__"
-msgstr ""
-
-#: ../../source/_static/olderversions.csv:1
-msgid "2021-05-08"
-msgstr ""
-
-#: ../../source/_static/olderversions.csv:1
-msgid "0.0.4"
-msgstr ""
-
-#: ../../source/_static/olderversions.csv:1
-msgid "`2021-05-08_creditors_v0.0.4.pdf <https://datro.world.xyz/wayback/2021-05-08_consortium_finance-funding_creditors_v0.0.4.pdf>`__"
-msgstr ""
-
-#: ../../source/_static/olderversions.csv:1
-msgid "2019-12-09"
-msgstr ""
-
-#: ../../source/_static/olderversions.csv:1
-msgid "0.0.3"
-msgstr ""
-
-#: ../../source/_static/olderversions.csv:1
-msgid "`2019-12-09_creditors_v0.0.3.pdf <https://datro.world.xyz/wayback/2019-12-09_wave-tokens-wit_v0.1.3.pdf>`__"
-msgstr ""
-
-#: ../../source/_static/olderversions.csv:1
-msgid "2019-02-01"
-msgstr ""
-
-#: ../../source/_static/olderversions.csv:1
-msgid "0.0.2"
-msgstr ""
-
-#: ../../source/_static/olderversions.csv:1
-msgid "`2019-02-11_creditors_v0.0.2.pdf <https://datro.world.xyz/wayback/2019-02-11_wave-tokens-wit_v0.1.2.pdf>`__"
-msgstr ""
-
-#: ../../source/_static/olderversions.csv:1
-msgid "2019-01-17"
-msgstr ""
-
-#: ../../source/_static/olderversions.csv:1
-msgid "0.0.1"
-msgstr ""
-
-#: ../../source/_static/olderversions.csv:1
-msgid "`2019-01-17_creditors_v0.0.1.pdf <https://datro.world.xyz/wayback/2019-01-17_wave-organisation-tokens_v0.1.1.pdf>`__"
-msgstr ""
-
-#: ../../source/_static/olderversions.csv:1
-msgid "2019-01-09"
-msgstr ""
-
-#: ../../source/_static/olderversions.csv:1
-msgid "0.0.0"
-msgstr ""
-
-#: ../../source/_static/olderversions.csv:1
-msgid "`2019-01-09_creditors_v0.0.0.pdf <https://datro.world.xyz/wayback/2019-01-09_wave-organisation-tokens_v0.1.0.pdf>`__"
-msgstr ""
-
-#: ../../source/releasenotes.rst:31
-msgid "Version 0.0.5"
+#: ../../source/releasenotes.rst:29
+msgid "To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://world.datro.xyz/wayback/>`__."
 msgstr ""
 
 #: ../../source/releasenotes.rst:33
-msgid "**2021-05-08** - `In lieu of the fact English is technically my second language (Welsh being my first), I have made corrections to the gramma and spelling in this document which was raised as a concern.`"
-msgstr ""
-
-#: ../../source/releasenotes.rst:34
-msgid "**2021-05-08** - `The methodology for archiving the old version was followed with v0.0.3, but the folder 0-0-3 was corrupt and missing the .rst files, could recover from build/HTML but not a feasible exertion of energy, so deleted it instead.`"
-msgstr ""
-
-#: ../../source/releasenotes.rst:35
-msgid "**2021-05-08** - `Added initial in the document author segment, since other people exist with the same first/last name. And put space between 'Founder', '@' and 'DATRO' or else web browsers treat it like an email link`"
-msgstr ""
-
-#: ../../source/releasenotes.rst:36
-msgid "**2021-05-08** - `The source data seems to have an unwritten methodology for calculating accrued interest on accounts, which doesn't appear to be followed in all cases - unwritten and unautomated being the keyword (action required).`"
-msgstr ""
-
-#: ../../source/releasenotes.rst:37
-msgid "**2021-05-08** - `Data had errors that were rectified e.g. some accounts did not have accrued interest added for the years 2021 - and some accounts accrued interest was miscalculated.`"
-msgstr ""
-
-#: ../../source/releasenotes.rst:40
-msgid "Version 0.0.4"
-msgstr ""
-
-#: ../../source/releasenotes.rst:42
-msgid "**2021-05-08** - `Where possible yyyy-mm-dd is used where no date is recorded to maintain formatting consistency in anticipation of Polkadot smart contract scraping.`"
-msgstr ""
-
-#: ../../source/releasenotes.rst:43
-msgid "**2021-05-08** - `Creditor data updated since last release (accrued interest, latest deposits etc). Some accounts still require reconciling and new credits exist that are not on record yet.`"
-msgstr ""
-
-#: ../../source/releasenotes.rst:44
-msgid "**2021-05-08** - `The content segment was extensive because each creditor had a dedicated entry. Solved this (merged two .rst's and changed header types). Now content segment is brief.`"
-msgstr ""
-
-#: ../../source/releasenotes.rst:45
-msgid "**2021-05-06** - `Older version titles ('wave-token-wit' changed to 'datro-creditors') and semantic versions ('0.1.x' changed to '0.0.x') in this release, however archive titles and semantic versions remain unchanged as per archive/\"wayback\" policy.`"
-msgstr ""
-
-#: ../../source/releasenotes.rst:49
-msgid "Version 0.0.3"
-msgstr ""
-
-#: ../../source/releasenotes.rst:51
-msgid "This document has the following updates since version 0.0.2 was published:"
-msgstr ""
-
-#: ../../source/releasenotes.rst:53
-msgid "**yyyy-mm-dd** - Further lending obtained, records updated!"
-msgstr ""
-
-#: ../../source/releasenotes.rst:56
-msgid "To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://datro.world.xyz/wayback/>`__."
-msgstr ""
-
-#: ../../source/releasenotes.rst:60
 msgid "Known and Corrected Issues"
 msgstr ""
 
-#: ../../source/releasenotes.rst:62
+#: ../../source/releasenotes.rst:35
 msgid "Below is a table of pending issues that have been reported to our team. These issues will be cleared from this list as and when they are remedied."
 msgstr ""
 
-#: ../../source/releasenotes.rst:66
+#: ../../source/releasenotes.rst:39
 msgid "Known Issues"
 msgstr ""
 
 #: ../../source/_static/issues.csv:1
-msgid "**Date**"
-msgstr ""
-
-#: ../../source/_static/issues.csv:1
-msgid "**Version**"
+msgid "**Issue Date**"
 msgstr ""
 
 #: ../../source/_static/issues.csv:1
 msgid "**Subject**"
 msgstr ""
 
-#: ../../source/_static/issues.csv:1
-msgid "**Description**"
+#: ../../source/tenders.rst:2
+msgid "Tenders"
 msgstr ""
 
-#: ../../source/_static/issues.csv:1
-msgid "0.0.6"
+#: ../../source/tenders.rst:4
+msgid "See below the tenders to client 8cc:"
 msgstr ""
 
-#: ../../source/_static/issues.csv:1
-msgid "data"
+#: ../../source/tenders.rst:7
+msgid "Estimates"
 msgstr ""
 
-#: ../../source/_static/issues.csv:1
-msgid "`Account Reconsiling Pending`"
+#: ../../source/tenders.rst:10
+msgid "**Estimate**"
+msgstr ""
+
+#: ../../source/tenders.rst:10
+msgid "**Currency (¤)**"
+msgstr ""
+
+#: ../../source/tenders.rst:12
+msgid "2021/06/15"
+msgstr ""
+
+#: ../../source/tenders.rst:12
+#: ../../source/_static/custom/estimates-master.csv:1
+msgid ":ref:`Element/Matrix VPS`"
+msgstr ""
+
+#: ../../source/tenders.rst:12
+msgid "2,500"
+msgstr ""
+
+#: ../../source/tenders.rst:14
+#: ../../source/tenders.rst:16
+msgid "2021/08/19"
+msgstr ""
+
+#: ../../source/tenders.rst:14
+msgid ":ref:`HotspotBnB+`"
+msgstr ""
+
+#: ../../source/tenders.rst:14
+msgid "10,000"
+msgstr ""
+
+#: ../../source/tenders.rst:16
+msgid ":ref:`x7 (RPi4) Homeservers`"
+msgstr ""
+
+#: ../../source/tenders.rst:16
+msgid "1,750"
+msgstr ""
+
+#: ../../source/tenders.rst:19
+msgid "8cc - Estimates"
+msgstr ""
+
+#: ../../source/tenders.rst:25
+msgid "Quotes"
+msgstr ""
+
+#: ../../source/tenders.rst:27
+msgid "8cc - Quotes"
+msgstr ""
+
+#: ../../source/tenders.rst:34
+msgid "Invoices"
+msgstr ""
+
+#: ../../source/tenders.rst:36
+msgid "8cc - Invoices"
 msgstr ""

@@ -1,5 +1,4 @@
-
-project = u'Client File - 8CC'
+project = u'Client ID - 8CC'
 copyright = u'2021, DATRO Consortium'
 author = u'DATRO Consortium'
 
@@ -47,21 +46,21 @@ latex_elements = {
 
 
 latex_documents = [
-    (master_doc, 'consortium_finance-funding_sales8cc.tex', u'Client File - 8CC',
+    (master_doc, 'consortium_finance-funding_sales8cc.tex', u'Client ID - 8CC',
      u'Author: DATRO Consortium', 'manual'),
 ]
 
 
 man_pages = [
-    (master_doc, 'consortium_finance-funding_sales8cc', u'Client File - 8CC',
+    (master_doc, 'consortium_finance-funding_sales8cc', u'Client ID - 8CC',
      [author], 1)
 ]
 
 
 
 texinfo_documents = [
-    (master_doc, 'consortium_finance-funding_sales8cc', u'Client File - 8CC',
-     author, 'consortium_finance-funding_sales8cc', 'Client File - 8CC',
+    (master_doc, 'consortium_finance-funding_sales8cc', u'Client ID - 8CC',
+     author, 'consortium_finance-funding_sales8cc', 'Client ID - 8CC',
      'manual'),
 ]
 

@@ -15,7 +15,7 @@
 #   ██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝
 #   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
 #................................................
-#       rebuild.sh  _theme-docs.08-rc2.4
+#       rebuild.sh  _theme-docs.08-rc2.5
 #................................................
 #                   datro.xyz
 #................................................
@@ -51,14 +51,14 @@ sleep 1 &&
 
 # custom e.g. pull in latest custom data e.g. fiscal
 #sh custom.sh 2> /dev/null &&
-touch build.log
-make clean > build.log 2>&1
+touch /tmp/build.log 2> /dev/null &&
+make clean > /tmp/build.log 2>&1
 
 
 
 # error check
 if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
-echo "  ... ABORTING - Current directory isn't right" && exit 1 & sleep 0.1 && exit 0 & sleep 0.1 && exit & sleep 0.1 && exit 0 & sleep 0.1 && exit 1 & sleep 0.1 && end 
+echo "  ... ABORT 1 " && cat /tmp/build.log && exit 1  
 fi
 
 
@@ -72,13 +72,13 @@ do
 done
 
 
-make gettext > build.log 2>&1 &&
+make gettext > /tmp/build.log 2>&1 &&
 # copy .po into source/locales/{language-code}/LC_MESSAGES/
 sleep 2 &&
-sphinx-intl update -p build/gettext -l es -l de -l fr  > build.log 2>&1 &&
+sphinx-intl update -p build/gettext -l es -l de -l fr  > /tmp/build.log 2>&1 &&
 sleep 2 &&
 chown -R $user:$user ./
-make html > build.log 2>&1 &&
+make html > /tmp/build.log 2>&1 &&
 sleep 2 &&
 
 
@@ -90,17 +90,17 @@ cd ..
 mv en html &&
 cd ..
 sleep 2 &&
-sphinx-build -b html source build/html/es -D language='es' > build.log 2>&1 &&
+sphinx-build -b html source build/html/es -D language='es' > /tmp/build.log 2>&1 &&
 sleep 2 &&
-sphinx-build -b html source build/html/de -D language='de' > build.log 2>&1 &&
+sphinx-build -b html source build/html/de -D language='de' > /tmp/build.log 2>&1 &&
 sleep 2 &&
-sphinx-build -b html source build/html/fr -D language='fr' > build.log 2>&1 &&
+sphinx-build -b html source build/html/fr -D language='fr' > /tmp/build.log 2>&1 &&
 sleep 2 &&
 
 
 # error check
 if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
-echo "  ... ABORTING - Current directory isn't right" && exit 1 & sleep 0.1 && exit 0 & sleep 0.1 && exit & sleep 0.1 && exit 0 & sleep 0.1 && exit 1 & sleep 0.1 && end 
+echo "  ... ABORT 2 " && cat /tmp/build.log && exit 1  
 fi
 
 
@@ -125,7 +125,7 @@ cd ..
 
 # error check
 if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
-echo "  ... ABORTING - Current directory isn't right" && exit 1 & sleep 0.1 && exit 0 & sleep 0.1 && exit & sleep 0.1 && exit 0 & sleep 0.1 && exit 1 & sleep 0.1 && end 
+echo "  ... ABORT 3 " && cat /tmp/build.log && exit 1  
 fi
 
 
@@ -144,7 +144,7 @@ cd build
 mkdir -p pdfs/{en,es,de,fr}
 cd ..
 
-make  -e SPHINXOPTS="-D language='en'" latexpdf  --keep-going --silent > build.log 2>&1 &&
+make  -e SPHINXOPTS="-D language='en'" latexpdf  --keep-going --silent > /tmp/build.log 2>&1 &&
 
 sleep 2 && cd build && mv latex/*.pdf pdfs/en && cd latex && find . -type f ! -iname "*.pdf" -delete &&
 
@@ -154,15 +154,15 @@ cd ..
 
 # error check
 if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
-echo "  ... ABORTING - Current directory isn't right" && exit 1 & sleep 0.1 && exit 0 & sleep 0.1 && exit & sleep 0.1 && exit 0 & sleep 0.1 && exit 1 & sleep 0.1 && end 
+echo "  ... ABORT 4 " && cat /tmp/build.log && exit 1  
 fi
 
 
-make  -e SPHINXOPTS="-D language='es'" latexpdf  --keep-going --silent > build.log 2>&1 &&
+make  -e SPHINXOPTS="-D language='es'" latexpdf  --keep-going --silent > /tmp/build.log 2>&1 &&
 cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/es && cd .. && cd .. &&
-make  -e SPHINXOPTS="-D language='de'" latexpdf  --keep-going --silent > build.log 2>&1 &&
+make  -e SPHINXOPTS="-D language='de'" latexpdf  --keep-going --silent > /tmp/build.log 2>&1 &&
 cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/de && cd .. && cd .. &&
-make  -e SPHINXOPTS="-D language='fr'" latexpdf  --keep-going --silent > build.log 2>&1 &&
+make  -e SPHINXOPTS="-D language='fr'" latexpdf  --keep-going --silent > /tmp/build.log 2>&1 &&
 cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/fr && cd .. && cd .. &&
 
 
@@ -171,7 +171,7 @@ rm -r build/pdfs
 
 # error check
 if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
-echo "  ... ABORTING - Current directory isn't right" && exit 1 & sleep 0.1 && exit 0 & sleep 0.1 && exit & sleep 0.1 && exit 0 & sleep 0.1 && exit 1 & sleep 0.1 && end 
+echo "  ... ABORT 5 " && cat /tmp/build.log && exit 1  
 fi
 
 
@@ -228,7 +228,7 @@ cd ..
 
 # error check
 if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
-echo "  ... ABORTING - Current directory isn't right" && exit 1 & sleep 0.1 && exit 0 & sleep 0.1 && exit & sleep 0.1 && exit 0 & sleep 0.1 && exit 1 & sleep 0.1 && end 
+echo "  ... ABORT 6 " && cat /tmp/build.log && exit 1  
 fi
 
 printf "\e[2;3;33m Done! \n\e[0m"
@@ -242,13 +242,13 @@ done
 
 # error check
 if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
-echo "  ... ABORTING - Current directory isn't right" && exit 1 & sleep 0.1 && exit 0 & sleep 0.1 && exit & sleep 0.1 && exit 0 & sleep 0.1 && exit 1 & sleep 0.1 && end 
+echo "  ... ABORT 7 " && cat /tmp/build.log && exit 1  
 fi
 
 
 # Select a color theme (default blue)
-cp -r ../../../_theme-docs/grey.sh grey.sh 2> /dev/null && mv ./grey.sh ./theme.sh &&
-#cp -r ../../../_theme-docs/blue.sh blue.sh 2> /dev/null && mv ./blue.sh ./theme.sh &&
+#cp -r ../../../_theme-docs/grey.sh grey.sh 2> /dev/null && mv ./grey.sh ./theme.sh &&
+cp -r ../../../_theme-docs/blue.sh blue.sh 2> /dev/null && mv ./blue.sh ./theme.sh &&
 
 chown -R $user:$user ./theme.sh &&
 sudo chmod +x ./theme.sh &&
@@ -263,7 +263,7 @@ sleep 2 &&
 
 # error check
 if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
-echo "  ... ABORTING - Current directory isn't right" && exit 1 & sleep 0.1 && exit 0 & sleep 0.1 && exit & sleep 0.1 && exit 0 & sleep 0.1 && exit 1 & sleep 0.1 && end 
+echo "  ... ABORT 8 " && cat /tmp/build.log && exit 1  
 fi
 
 
@@ -288,7 +288,7 @@ cd ..
 
 # error check
 if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
-echo "  ... ABORTING - Current directory isn't right" && exit 1 & sleep 0.1 && exit 0 & sleep 0.1 && exit & sleep 0.1 && exit 0 & sleep 0.1 && exit 1 & sleep 0.1 && end 
+echo "  ... ABORT 9 " && cat /tmp/build.log && exit 1  
 fi
 
 printf "\e[2;3;33m Done! \n\e[0m"

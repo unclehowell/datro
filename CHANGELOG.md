@@ -24,6 +24,8 @@ Jul-24 - Added a custom.sh in one of the docs in library (see library changelog)
 Jul-29 - Removed some bad code in library `github_wiki/index.html` which caused a bug. see library changelog for details   
 
 ### Changed 
+Sep-27 - Minor changes to library and review for up and coming licence changes e.g. GPL to OGL   
+Sep-25 - Changed index.html text  
 Sep-13 - After sparse checkout of Library (see previous entry) salvagable changes (stylesheets only) from backup, were re-introduced   
 Sep-13 - Local copy of Library got screwed up with a typo during 'grep find replace'. Performed sparse checkout of library, from last commit, to remedy   
 Sep-12 - Major improvement to static/gui - It's now going to takeon the role of datro.world as a 3rd type of content it's able to serve   
