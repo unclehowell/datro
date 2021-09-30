@@ -11,6 +11,7 @@ This directory and changelog belongs to [![GitHub release (latest by date includ
 ## [_theme-docs.08-rc2.2] - Q3/2021
 
 ### Added
+Sep-29 - `rebuild-master.sh` (> v08-rc.2.6) Added some PDF notes and code tips at the bottom  
 Sep-14 - `rebuild-master.sh` (> v08-rc2.2) Added simple error check/safeguard, 1) Reverts path to `./latest` after each task, 2) Confirm, 3) Resume script (abort if 2 = mismatch)   
 
 ### Changed

@@ -15,7 +15,7 @@
 #   ██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝
 #   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
 #................................................
-#       rebuild.sh  _theme-docs.08-rc2.5
+#       rebuild.sh  _theme-docs.08-rc2.6
 #................................................
 #                   datro.xyz
 #................................................
@@ -322,10 +322,47 @@ printf "\e[2;3;33m Preview Link (adjust to suite your local machine) \n\e[0m\n"
 printf "\e[2;3;33m http://localhost/${PWD#${PWD%/*/*/*/*/*/*/*}/} \n\e[0m\n"
 cd latest
 
-#change NAME to PDF name before running
-#pdftk build/latex/NAME.pdf cat 1-10 11 13 15 17 19 20 21  output build/latex/NAME-tmp.pdf &&
-#mv build/latex/NAME-tmp.pdf build/latex/NAME.pdf
+
+
+
+# 1. PDF Business - How to doctor a page after publication e.g. page 16
+# ```
+# pdftk document.pdf cat 16 output target.pdf
+# pdftk document.pdf cat 1-15 output prior.pdf
+# pdftk document.pdf cat 17-end output after.pdf
+# ```
+
+
+# 2. PDF to image
+# ```
+# convert -density 189.810 target.pdf target.png
+# ```
 #
+# adjustmentments of 0.005 or lower are negligable in mm
+
+# 3. edit image and save:
+# ```
+# target.png
+# ```
+
+# 4. convert image to pdf
+# ```
+# convert -density 74.75 target.png target.pdf
+# ```
+
+# 5. append the new pdf to the first half
+# ```
+# pdftk A=prior.pdf B=target.pdf cat A1-15 B A16-end output prior-new.pdf
+# mv prior-new.pdf prior.pdf
+# ```
+
+# 6. append the second half to the first half (remembering to increase the page range of A by one)
+# ```
+# pdftk A=prior.pdf B=after.pdf cat A1-16 B A17-end output document-new.pdf
+# ```
+
+
+
 # going wild here to make absultely sure the script escapes - it can hang for all sorts of reasons
 sleep 0.1 &&
 exit 1 &
