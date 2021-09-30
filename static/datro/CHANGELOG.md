@@ -18,6 +18,7 @@ Sep-13 - manifest.json
 Sep-06 - Added current year to page title (and a "view all" option for commits) to the following page `html/statistics/website.html`  
 
 ### Changed
+Sep-30 - Changed video location in `html/videos/intro-hbnb.html` - see corresponding changelog for details  
 Sep-25 - Changed index.html and ../../index.html text  
 Sep-13 - Improved the dropdown menu look, it has been anoying us for a long while  
 Aug-29 - Changed ScottishBay to DAS (Decentralized Autonomous Society) - operation is no longer stationary/static, we're going mobile/itenerant   

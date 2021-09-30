@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [-html-videos-0.3] - Q3/2021
 
 ### Changed
+Sep-30 - Moved video from `gh-pages` branch to `netlify` branch, because all the push/pulling on the first branch was causing corruption  
 Sep-06 - Changed date format on this changelog from DD-MM to MM-DD  
 Sep-06 - Replaced hbnb-intro.jpg with .webp version, generated using Sqoosh CLI command `npx @squoosh/cli --webp auto ./*.jpg`  
 

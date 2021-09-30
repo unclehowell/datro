@@ -24,6 +24,7 @@ Jul-24 - Added a custom.sh in one of the docs in library (see library changelog)
 Jul-29 - Removed some bad code in library `github_wiki/index.html` which caused a bug. see library changelog for details   
 
 ### Changed 
+Sep-30 - Change made to video location of datro website splashpage - see `static/datro/` changelog for details  
 Sep-27 - Minor changes to library and review for up and coming licence changes e.g. GPL to OGL   
 Sep-25 - Changed index.html text  
 Sep-13 - After sparse checkout of Library (see previous entry) salvagable changes (stylesheets only) from backup, were re-introduced   
