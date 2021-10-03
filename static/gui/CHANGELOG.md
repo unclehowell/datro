@@ -9,6 +9,19 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 ## [Unreleased] 
 
 
+## [gui-0.4] - Q4/2021
+
+### Added
+Oct-02 - Introduced a `manifest.json` to begin PWA'ing. And referenced it in `index.html` - more content needs appending to it   
+
+### Changes
+Oct-02 - Set the splashpage of the GUI to what it should be, it was still in a state of testing from testing  
+Oct-02 - Weighing out if we make gui-0.3 change `beta.datro.xyz`instead of `world.datro.xyz` or scrapping the whole idea of it   
+
+
+### Removed
+Oct-02 - Took out template text from README.md  
+
 ## [gui-0.3] - Q3/2021
 
 Sep-12 - Not in the habbit of raising the semantic version mid quarter, we're not that active, but some serious changes are happening with the GUI right now  

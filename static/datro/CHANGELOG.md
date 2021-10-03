@@ -13,6 +13,9 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [-datro.04] - Q3/2021
 
+### Added
+Oct-02 - `index.html` was missing `<link rel="manifest" href="manifest.json">`, so it was added   
+
 ### Fixed
 Oct-02 - Some spelling errors on the splashpages and the styling of the `learn more` dropdown needed tweaking  
 Oct-01 - The video on the splashpage was a broken link - fixed it   
