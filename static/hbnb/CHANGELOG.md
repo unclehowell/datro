@@ -6,6 +6,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [hbnb.02] - Q4/2021
+
+### Fixed 
+Oct-02 - `manifest.json` was missing `:` after `"icons"`. Final comma also removed to clear errors    
+
 
 ## [-hbnb.01] - Q3/2021
 

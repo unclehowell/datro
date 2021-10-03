@@ -18,6 +18,8 @@ Oct-02 - `manifest.json` added in the top level directory with an reference in `
 Oct-02 - Minor edits to `static/datro` webpage - see the changelog in the directory for more info   
 Oct-02 - Removed and Re-injected analytics to all html pages, which also regenerates Sitemap - see `static/monoreapo/analytics/README.md` for more info    
 
+### Fixed
+Oct-02 - `manifest.json` was missing `:` after `"icons"`. Final comma also removed to clear errors    
 
 ## [0.0.1-rtw.12] - Q3/2021
 

@@ -17,8 +17,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Oct-02 - `index.html` was missing `<link rel="manifest" href="manifest.json">`, so it was added   
 
 ### Fixed
+Oct-02 - `manifest.json` was missing `:` after `"icons"`. Final comma also removed to clear errors    
 Oct-02 - Some spelling errors on the splashpages and the styling of the `learn more` dropdown needed tweaking  
 Oct-01 - The video on the splashpage was a broken link - fixed it   
+
+### Removed
+Oct-02 - Removed analytics and some java to increase pagespeed load time. Not sure with analytics regen how we exclude pages,, yet  
 
 ## [-datro.04] - Q3/2021
 
