@@ -6,6 +6,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [library.05] - Q4/2021
+
+### Added
+Oct-02 - `manifest.json` - but it still needs all the images adding, thus far its just favicons  
+
 ## [-library.04] - Q3/2021
 
 ### Added
