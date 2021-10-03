@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.1-rtw.12] - Q4/2021
+
+### Changed
+Oct-02 - Minor edits to `static/datro` webpage - see the changelog in the directory for more info   
+Oct-02 - Removed and Re-injected analytics to all html pages, which also regenerates Sitemap - see `static/monoreapo/analytics/README.md` for more info    
+
+
 ## [0.0.1-rtw.12] - Q3/2021
 
 ### Added

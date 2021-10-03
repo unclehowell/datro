@@ -13,6 +13,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [-datro.04] - Q3/2021
 
+### Fixed
+Oct-02 - Some spelling errors on the splashpages and the styling of the `learn more` dropdown needed tweaking  
+Oct-01 - The video on the splashpage was a broken link - fixed it   
+
+## [-datro.04] - Q3/2021
+
 ### Added
 Sep-13 - manifest.json  
 Sep-06 - Added current year to page title (and a "view all" option for commits) to the following page `html/statistics/website.html`  
