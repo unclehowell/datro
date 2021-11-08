@@ -11,6 +11,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Added
 Oct-02 - `manifest.json` - but it still needs all the images adding, thus far its just favicons  
 
+### Changed
+Nov-08 - Added the generic media files from the html build to the `theme-docs` directory as prep for removal of duplicate css and js files  
+Nov-08 - Improved `consortium_finance/funding_sales8cc` but it's still in draft  
+
+
 ## [-library.04] - Q3/2021
 
 ### Added

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DATRO Consortium Creditors 0.0.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-26 20:58-0400\n"
+"POT-Creation-Date: 2021-11-08 16:12-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,267 +18,108 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../source/activity.rst:2
-msgid "Activity"
+#: ../../source/aftersales.rst:2 ../../source/annex-list.rst:36
+msgid "After Sales"
 msgstr ""
 
-#: ../../source/activity.rst:4
-msgid "See below the activity for client 8cc:"
+#: ../../source/aftersales.rst:4
+msgid "See below aftersales made to clientID: 8CC e.g. Credit Notes:"
 msgstr ""
 
-#: ../../source/activity.rst:8
-msgid "Statement"
+#: ../../source/aftersales.rst:7 ../../source/annex-list.rst:39
+msgid "Credits"
 msgstr ""
 
-#: ../../source/activity.rst:10
-msgid "8cc - Statement"
+#: ../../source/aftersales.rst:9
+msgid "8cc - Credit Notes"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
+#: ../../source/_static/custom/credits-master.csv:1
 #: ../../source/_static/custom/estimates-master.csv:1
 #: ../../source/_static/custom/invoices-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
 #: ../../source/_static/custom/receipts-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-#: ../../source/tenders.rst:10
 msgid "**Date**"
 msgstr ""
 
+#: ../../source/_static/custom/credits-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid "**Annex ID**"
+msgstr ""
+
+#: ../../source/_static/custom/credits-master.csv:1
 #: ../../source/_static/custom/estimates-master.csv:1
 #: ../../source/_static/custom/invoices-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
 #: ../../source/_static/custom/receipts-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-#: ../../source/tenders.rst:10
 msgid "**Reference**"
 msgstr ""
 
+#: ../../source/_static/custom/credits-master.csv:1
 #: ../../source/_static/custom/estimates-master.csv:1
 #: ../../source/_static/custom/invoices-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
 #: ../../source/_static/custom/receipts-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
 msgid "**Volume**"
 msgstr ""
 
+#: ../../source/_static/custom/credits-master.csv:1
 #: ../../source/_static/custom/estimates-master.csv:1
 #: ../../source/_static/custom/invoices-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
 #: ../../source/_static/custom/receipts-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
 msgid "**¤**"
 msgstr ""
 
+#: ../../source/_static/custom/credits-master.csv:1
 #: ../../source/_static/custom/estimates-master.csv:1
 #: ../../source/_static/custom/invoices-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
 #: ../../source/_static/custom/receipts-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
 msgid "**GBP**"
 msgstr ""
 
-#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/credits-master.csv:1
 #: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
 #: ../../source/_static/custom/receipts-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-msgid "**Bal (£)**"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-msgid "2021/07/01"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-msgid "INV-0019 - Element/Matrix (VPS)"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-msgid "2500.00"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-#: ../../source/tenders.rst:12 ../../source/tenders.rst:14
-#: ../../source/tenders.rst:16
-msgid "USD"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-msgid "1816.52"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-msgid "2021/07/19"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-msgid "Credit (INV-0019)"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-msgid "-2500.00"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-msgid "-1816.52"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-msgid "0.00"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-msgid "2021/08/26"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-msgid "INV-0021 - HBnB+ Project Deposit"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-msgid "1000.00"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-msgid "730.12"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
 msgid "2021/08/30"
 msgstr ""
 
+#: ../../source/_static/custom/credits-master.csv:1
+msgid ":ref:`CRE-001`"
+msgstr ""
+
+#: ../../source/_static/custom/credits-master.csv:1
+msgid "Hardware Included"
+msgstr ""
+
+#: ../../source/_static/custom/credits-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid "1750.00"
+msgstr ""
+
+#: ../../source/_static/custom/credits-master.csv:1
 #: ../../source/_static/custom/estimates-master.csv:1
 #: ../../source/_static/custom/invoices-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
 #: ../../source/_static/custom/receipts-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-msgid "Credit (INV-0021)"
+msgid "USD"
 msgstr ""
 
-#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/credits-master.csv:1
 #: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
 #: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-msgid "-1000.00"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-msgid "-730.12"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-msgid "**End Balance**"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/transactions-master.csv:1
-msgid "**0.00**"
-msgstr ""
-
-#: ../../source/activity.rst:16
-msgid "Transactions"
-msgstr ""
-
-#: ../../source/activity.rst:18
-msgid "8cc - Transactions"
+msgid "1272.03"
 msgstr ""
 
 #: ../../source/annex-list.rst:2
@@ -286,40 +127,21 @@ msgid "Annexures"
 msgstr ""
 
 #: ../../source/annex-list.rst:4
-msgid ""
-"This section contains the Annexures, referenced in the text above. The "
-"ref Download Links for these Annexures can be found at the very end of "
-"this document:"
+msgid "This section contains the Annexures, referenced in the text above."
 msgstr ""
 
-#: ../../source/annex-list.rst:10
-msgid "Element/Matrix VPS"
-msgstr ""
-
-#: ../../source/annex-list.rst:14
-msgid "HotspotBnB+"
-msgstr ""
-
-#: ../../source/annex-list.rst:19
-msgid "2021-08-19: Quote for HotspotBnB+ Project Deposit"
-msgstr ""
-
-#: ../../source/annex-list.rst:23
-msgid "2021-08-26: Invoice for HotspotBnB+ Project Deposit"
-msgstr ""
-
-#: ../../source/annex-list.rst:27
+#: ../../source/annex-list.rst:7
 msgid "Download Links"
 msgstr ""
 
-#: ../../source/annex-list.rst:29
+#: ../../source/annex-list.rst:9
 msgid ""
-"See below a table of the download links for the Annexed items in this "
-"document:"
+"This table contains the download links for the Annexed document previews "
+"which follow:"
 msgstr ""
 
-#: ../../source/annex-list.rst:31
-msgid "Download Link of Annexures"
+#: ../../source/annex-list.rst:11
+msgid "Annexures Download Links"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/issues.csv:1
@@ -454,28 +276,145 @@ msgid ""
 "4068_61.png>`__"
 msgstr ""
 
+#: ../../source/annex-list.rst:19 ../../source/tenders.rst:2
+msgid "Tenders"
+msgstr ""
+
+#: ../../source/annex-list.rst:22 ../../source/tenders.rst:17
+msgid "Quotes"
+msgstr ""
+
+#: ../../source/annex-list.rst:26 ../../source/billables.rst:2
+msgid "Billables"
+msgstr ""
+
+#: ../../source/annex-list.rst:29 ../../source/billables.rst:8
+msgid "Invoices"
+msgstr ""
+
+#: ../../source/annex-list.rst:32 ../../source/billables.rst:18
+msgid "Receipts"
+msgstr ""
+
+#: ../../source/annex-list.rst:42
+msgid "Refunds"
+msgstr ""
+
+#: ../../source/billables.rst:4
+msgid "See below the billables for client 8cc:"
+msgstr ""
+
+#: ../../source/billables.rst:10
+msgid "8cc - Invoices"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "**ID**"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid "2021/10/18"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid ":ref:`???-????`"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid "OpenBios Upgrade"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "1000.00"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid "728.39"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid "Hardware (x7 Pi4's)"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "2021/08/26"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid ":ref:`INV-0021`"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid "HBnB+ Project (10%)"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "730.12"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "2021/07/01"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid "Element/Matrix(VPS)"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "2500.00"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "1816.52"
+msgstr ""
+
+#: ../../source/billables.rst:20
+msgid "8cc - Receipts"
+msgstr ""
+
 #: ../../source/index.rst:2
 msgid "Client ID - 8cc"
 msgstr ""
 
-#: ../../source/index.rst:17
+#: ../../source/index.rst:18
 msgid "**Document Author:**"
 msgstr ""
 
-#: ../../source/index.rst:21
+#: ../../source/index.rst:22
 msgid "DATRO Consortium"
-msgstr ""
-
-#: ../../source/receipts.rst:2
-msgid "Receipts"
-msgstr ""
-
-#: ../../source/receipts.rst:4
-msgid "See below the receipts for client 8cc:"
-msgstr ""
-
-#: ../../source/receipts.rst:7
-msgid "8cc - Receipts"
 msgstr ""
 
 #: ../../source/releasenotes.rst:2
@@ -560,76 +499,128 @@ msgstr ""
 msgid "**Subject**"
 msgstr ""
 
-#: ../../source/tenders.rst:2
-msgid "Tenders"
+#: ../../source/statement.rst:2
+msgid "Statement"
+msgstr ""
+
+#: ../../source/statement.rst:4
+msgid "8cc - Statement"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "**Bal (£)**"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "INV-0019 - Element/Matrix (VPS)"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "2021/07/19"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "Credit (INV-0019)"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "-2500.00"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "-1816.52"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "0.00"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "INV-0021 - HBnB+ Project Deposit"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "Credit (INV-0021)"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "-1000.00"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "-730.12"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "**End Balance**"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "**0.00**"
 msgstr ""
 
 #: ../../source/tenders.rst:4
-msgid "See below the tenders to client 8cc:"
+msgid ""
+"See below the tenders made to clientID: 8CC e.g. Estimates and Fixed "
+"Quotes:"
 msgstr ""
 
 #: ../../source/tenders.rst:7
 msgid "Estimates"
 msgstr ""
 
-#: ../../source/tenders.rst:10
-msgid "**Estimate**"
-msgstr ""
-
-#: ../../source/tenders.rst:10
-msgid "**Currency (¤)**"
-msgstr ""
-
-#: ../../source/tenders.rst:12
-msgid "2021/06/15"
-msgstr ""
-
-#: ../../source/tenders.rst:12
-msgid ":ref:`Element/Matrix VPS`"
-msgstr ""
-
-#: ../../source/tenders.rst:12
-msgid "2,500"
-msgstr ""
-
-#: ../../source/tenders.rst:14 ../../source/tenders.rst:16
-msgid "2021/08/19"
-msgstr ""
-
-#: ../../source/tenders.rst:14
-msgid ":ref:`HotspotBnB+`"
-msgstr ""
-
-#: ../../source/tenders.rst:14
-msgid "10,000"
-msgstr ""
-
-#: ../../source/tenders.rst:16
-msgid ":ref:`x7 (RPi4) Homeservers`"
-msgstr ""
-
-#: ../../source/tenders.rst:16
-msgid "1,750"
-msgstr ""
-
-#: ../../source/tenders.rst:19
+#: ../../source/tenders.rst:9
 msgid "8cc - Estimates"
 msgstr ""
 
-#: ../../source/tenders.rst:25
-msgid "Quotes"
+#: ../../source/_static/custom/estimates-master.csv:1
+msgid "**GO**"
 msgstr ""
 
-#: ../../source/tenders.rst:27
+#: ../../source/_static/custom/estimates-master.csv:1
+msgid "HBnB+ Project"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+msgid "10000.00"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+msgid "7300.12"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "✔"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "Element/Matrix VPS"
+msgstr ""
+
+#: ../../source/tenders.rst:19
 msgid "8cc - Quotes"
 msgstr ""
 
-#: ../../source/tenders.rst:34
-msgid "Invoices"
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "**Go**"
 msgstr ""
 
-#: ../../source/tenders.rst:36
-msgid "8cc - Invoices"
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid ":ref:`Q-0021`"
+msgstr ""
+
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid ":ref:`?-????`"
+msgstr ""
+
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "HBnB+ Project 10%"
+msgstr ""
+
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid ":ref:`Q-0029`"
 msgstr ""
 
 #~ msgid "DATRO Consortium Creditors"
@@ -3783,5 +3774,163 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "unlabelled 2"
+#~ msgstr ""
+
+#~ msgid "**Estimate**"
+#~ msgstr ""
+
+#~ msgid "**Currency (¤)**"
+#~ msgstr ""
+
+#~ msgid "2021/06/15"
+#~ msgstr ""
+
+#~ msgid "2,500"
+#~ msgstr ""
+
+#~ msgid "2021/08/19"
+#~ msgstr ""
+
+#~ msgid ":ref:`HotspotBnB+`"
+#~ msgstr ""
+
+#~ msgid "10,000"
+#~ msgstr ""
+
+#~ msgid ":ref:`x7 (RPi4) Homeservers`"
+#~ msgstr ""
+
+#~ msgid "1,750"
+#~ msgstr ""
+
+#~ msgid "Ruling"
+#~ msgstr ""
+
+#~ msgid "HBnB+ 10% Deposit"
+#~ msgstr ""
+
+#~ msgid "Quote?"
+#~ msgstr ""
+
+#~ msgid "2021/10/06"
+#~ msgstr ""
+
+#~ msgid "HBnB+ Project (10% Deposit)"
+#~ msgstr ""
+
+#~ msgid "INV-0021 - OpenBios Upgrade"
+#~ msgstr ""
+
+#~ msgid "QUO-0021 - HBnB+ Project Deposit"
+#~ msgstr ""
+
+#~ msgid "QUO-0019 - Element/Matrix (VPS)"
+#~ msgstr ""
+
+#~ msgid "See below the activity for client 8cc:"
+#~ msgstr ""
+
+#~ msgid "Transactions"
+#~ msgstr ""
+
+#~ msgid "8cc - Transactions"
+#~ msgstr ""
+
+#~ msgid "Credits"
+#~ msgstr ""
+
+#~ msgid "See below the receipts for client 8cc:"
+#~ msgstr ""
+
+#~ msgid "Activity"
+#~ msgstr ""
+
+#~ msgid ":ref:`Element/Matrix VPS`"
+#~ msgstr ""
+
+#~ msgid "Credit Notes"
+#~ msgstr ""
+
+#~ msgid ":ref:`Element/Matrix(VPS)`"
+#~ msgstr ""
+
+#~ msgid ":ref:'INV-0021 - HBnB+ Project Deposit'"
+#~ msgstr ""
+
+#~ msgid ":ref:'Element/Matrix(VPS)'"
+#~ msgstr ""
+
+#~ msgid "OpenBios Upgrade - QUO-0021"
+#~ msgstr ""
+
+#~ msgid "HBnB+ Project Deposit - QUO-????"
+#~ msgstr ""
+
+#~ msgid "Element/Matrix (VPS) - QUO-0029"
+#~ msgstr ""
+
+#~ msgid "Proceed"
+#~ msgstr ""
+
+#~ msgid "**Proceed**"
+#~ msgstr ""
+
+#~ msgid "HBnB+ Project Deposit"
+#~ msgstr ""
+
+#~ msgid "See below the tenders to client 8cc:"
+#~ msgstr ""
+
+#~ msgid "Tenders"
+#~ msgstr ""
+
+#~ msgid "Bids"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "See below the tenders made to "
+#~ "clientID: 8CC, including Estimates, Fixed "
+#~ "Quotes and Credit Notes:"
+#~ msgstr ""
+
+#~ msgid "Hardware Reimbursed"
+#~ msgstr ""
+
+#~ msgid "Element/Matrix (VPS)"
+#~ msgstr ""
+
+#~ msgid ":ref:`QUO-0021`"
+#~ msgstr ""
+
+#~ msgid ":ref:`QUO-0029`"
+#~ msgstr ""
+
+#~ msgid ":ref:`C-001`"
+#~ msgstr ""
+
+#~ msgid "HotspotBnB+"
+#~ msgstr ""
+
+#~ msgid "2021-08-19: Quote for HotspotBnB+ Project Deposit"
+#~ msgstr ""
+
+#~ msgid "2021-08-26: Invoice for HotspotBnB+ Project Deposit"
+#~ msgstr ""
+
+#~ msgid "Download Link of Annexures"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This section contains the Annexures, "
+#~ "referenced in the text above. The "
+#~ "ref Download Links for these Annexures"
+#~ " can be found at the very end"
+#~ " of this document:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "See below a table of the download"
+#~ " links for the Annexed items in "
+#~ "this document:"
 #~ msgstr ""
 

@@ -7,6 +7,10 @@ This directory and changelog belongs to [![GitHub release (latest by date includ
 
 ## [Unreleased]  
 
+## [_theme-docs.08-rc2.3] - Q4/2021
+
+### Added
+Nov-08 - Introduced a `html` directory with all the generatic css,img & js from the html builds. Part of a plan to remove duplicates during the build   
 
 ## [_theme-docs.08-rc2.2] - Q3/2021
 

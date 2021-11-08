@@ -1,7 +1,5 @@
-       **Date**,                      **Reference**,  **Volume**,  **¤**,     **GBP**, **Bal (£)**
-2021/07/01,INV-0019 - Element/Matrix (VPS), 2500.00,USD,  1816.52, 1816.52
-2021/07/19,Credit (INV-0019)              ,-2500.00,USD, -1816.52, 0.00
-2021/08/26,INV-0021 - HBnB+ Project Deposit, 1000.00,USD,   730.12, 730.12
-2021/08/30,Credit (INV-0021)              ,-1000.00,USD,  -730.12, 0.00
-          ,                               ,        ,   ,         ,
-          ,                               ,        ,   ,**End Balance**, **0.00**
+  **Date**,         **ID**,       **Reference**,  **Volume**,  **¤**,  **GBP**
+2021/10/18,:ref:`???-????`, OpenBios Upgrade   ,     1000.00,    USD, 728.39
+2021/08/30,:ref:`???-????`, Hardware (x7 Pi4's),     1750.00,    USD, 1272.03
+2021/08/26,:ref:`INV-0021`, HBnB+ Project (10%),     1000.00,    USD, 730.12
+2021/07/01,:ref:`???-????`, Element/Matrix(VPS),     2500.00,    USD, 1816.52

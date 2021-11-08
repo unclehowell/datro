@@ -1,30 +1,25 @@
 Tenders
 ======================
 
-See below the tenders to client 8cc:
+See below the tenders made to clientID: 8CC e.g. Estimates and Fixed Quotes:
 
 Estimates
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. csv-table:: 8cc - Estimates
    :file: _static/custom/estimates-master.csv
-   :widths: 15, 35, 15, 10, 15, 10
+   :widths: 15, 45, 15, 10, 15, 5
    :header-rows: 1
+
+|
 
 Quotes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. csv-table:: 8cc - Quotes
    :file: _static/custom/quotes-master.csv
-   :widths: 15, 35, 15, 10, 15, 10
+   :widths: 15, 15, 25, 15, 10, 15, 5
    :header-rows: 1
 
-
-Invoices
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. csv-table:: 8cc - Invoices
-   :file: _static/custom/invoices-master.csv
-   :widths: 15, 35, 15, 10, 15, 10
-   :header-rows: 1
+|
 

@@ -22,6 +22,10 @@ today_fmt = 'Sep 01, 2021'
 
 exclude_patterns = ['_build']
 
+numfig = True
+numfig_format = {'figure': 'Figure %s', 'table:': 'Table: %s',
+                 'code-block': 'Listing %s', 'section': 'Section %s'}
+
 
 pygments_style = None
 

@@ -7,8 +7,9 @@ Client ID - 8cc
    
    releasenotes
    tenders
-   activity
-   receipts
+   billables
+   aftersales
+   statement
    annex-list 
    
 
