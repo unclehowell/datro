@@ -3,7 +3,7 @@ Client ID - 8cc
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    
    releasenotes
    tenders

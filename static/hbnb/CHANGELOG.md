@@ -11,6 +11,8 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Fixed 
 Oct-02 - `manifest.json` was missing `:` after `"icons"`. Final comma also removed to clear errors    
 
+### Changed
+Nov-30 - Cleared _config.yml and inserted `exclude: - Gemfile` instead (trying to get this site published via netlify)   
 
 ## [-hbnb.01] - Q3/2021
 
