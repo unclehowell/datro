@@ -12,7 +12,13 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Oct-02 - `manifest.json` was missing `:` after `"icons"`. Final comma also removed to clear errors    
 
 ### Changed
+Dec-03 - Changed URL of Demo, now it runs a lookup. If the address bar is `hbnb.datro.xyz` then `datro.xyz/static/gui/` is displayed. Otherwise `../gui` is displayed & sufficient  
+Dec-01 - Added `lookup.html` and `js/jquery-3.3.1.min.js` - url detection, to determin url of demo based on url in address bar  
 Nov-30 - Cleared _config.yml and inserted `exclude: - Gemfile` instead (trying to get this site published via netlify)   
+
+### Removed
+Dec-01 - Removed _config.yml, not needed  
+
 
 ## [-hbnb.01] - Q3/2021
 
