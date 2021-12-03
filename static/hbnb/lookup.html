@@ -8,8 +8,8 @@
 
         <script src="js/jquery-3.3.1.min.js"></script>
         <script>
-        if (window.parent.location.href.IndexOf("https://hbnb.datro.xyz") > -1) {
-           location.href = 'https://datro.xyz/static/gui/';
+        if(document.URL.IndexOf("https://hbnb.datro.xyz") > -1){
+           window.location.href =  'https://datro.xyz/static/hbnb/lookup.html' ;
            }
         if(document.URL.IndexOf("https://hbnb.datro.xyz") <= -1){
            window.location.href =  '../gui/' ;
