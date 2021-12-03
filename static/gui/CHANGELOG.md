@@ -15,6 +15,7 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 Oct-02 - Introduced a `manifest.json` to begin PWA'ing. And referenced it in `index.html` - more content needs appending to it   
 
 ### Changes
+Dec-03 - Lookup files work in `static/gui/` on the `datro.xyz` url, but not in `static/hbnb` or on `hbnb.datro.xyz` for some reason. So hbnb's lookup is in gui, as a temp measure  
 Oct-02 - Set the splashpage of the GUI to what it should be, it was still in a state of testing from testing  
 Oct-02 - Weighing out if we make gui-0.3 change `beta.datro.xyz`instead of `world.datro.xyz` or scrapping the whole idea of it   
 
