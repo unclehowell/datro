@@ -1,6 +1,6 @@
 [
   {
-    "name": "<div class='title-line enable-link'><div class='icon f-datro'></div>Document Library</div>",
+    "name": "<div class='title-line enable-link'><div class='icon f-datro'></div>Documents</div>",
     "path": "./library",
     "_links": {
       "html": "./library"
@@ -14,24 +14,17 @@
     }
   },
   {
-    "name": "<div class='title-line enable-link'><div class='icon i-hbnb'></div>Hβnβ Dashboard</div>",
+    "name": "<div class='title-line enable-link'><div class='icon i-hbnb'></div>Hβnβ GUI</div>",
     "path": "./gui",
     "_links": {
       "html": "./gui"
     }
   },
   {
-    "name": "<div class='title-line enable-link caps1'><div class='icon f-datro'></div>DATRO.xyz</div>",
+    "name": "<div class='title-line enable-link caps1'><div class='icon f-datro'></div>DATRO</div>",
     "path": "./datro/index.html",
     "_links": {
       "html": "./datro/index.html"
-    }
-  },
-  {
-    "name": "<div class='title-line enable-link caps1'><div class='icon f-datro'></div>world.datro.xyz</div>",
-    "path": "https://datro.world",
-    "_links": {
-      "html": "https://world.datro.xyz"
     }
   },
   {
