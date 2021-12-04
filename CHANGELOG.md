@@ -25,6 +25,7 @@ Oct-02 - Minor edits to `static/datro` webpage - see the changelog in the direct
 Oct-02 - Removed and Re-injected analytics to all html pages, which also regenerates Sitemap - see `static/monoreapo/analytics/README.md` for more info    
 
 ### Fixed
+Dec-03 - axios security vulnerability - patch `=>0.21.2`  & grunt security vunerability patch `=>1.3.0`  
 Oct-02 - `manifest.json` was missing `:` after `"icons"`. Final comma also removed to clear errors    
 
 ## [0.0.1-rtw.12] - Q3/2021
