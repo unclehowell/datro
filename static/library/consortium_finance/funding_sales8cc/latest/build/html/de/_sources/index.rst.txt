@@ -6,10 +6,10 @@ Client ID - 8cc
    :maxdepth: 1
    
    releasenotes
+   statement
    tenders
    billables
    aftersales
-   statement
    annex-list 
    
 

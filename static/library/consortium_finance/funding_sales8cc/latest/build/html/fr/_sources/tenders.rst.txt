@@ -18,7 +18,7 @@ Quotes
 
 .. csv-table:: 8cc - Quotes
    :file: _static/custom/quotes-master.csv
-   :widths: 15, 15, 25, 15, 10, 15, 5
+   :widths: 15, 20, 20, 15, 10, 15, 5
    :header-rows: 1
 
 |
