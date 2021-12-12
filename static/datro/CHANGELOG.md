@@ -11,6 +11,14 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+
+## [-datro.04] - Q4/2021
+
+
+### Removed
+Dec-11 - Removed the `academy link` because its a very incomplete page  
+
+
 ## [-datro.04] - Q3/2021
 
 ### Added

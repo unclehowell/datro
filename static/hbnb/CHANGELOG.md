@@ -12,6 +12,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Oct-02 - `manifest.json` was missing `:` after `"icons"`. Final comma also removed to clear errors    
 
 ### Changed
+Dec-11 - Link to demo changed, demo now has its own url: `gui.datro.xyz`  
 Dec-03 - Replaced link to demos with link to github repo and datro website   
 Dec-03 - Changed URL of Demo. Temp fix. Ideally a lookup needs to be used so that if the address in the address bar is not `hbnb.datro.xyz` then `../gui/` is returned, in order it works offline too    
 Dec-01 - Added `lookup.html` and `js/jquery-3.3.1.min.js` - url detection, to determin url of demo based on url in address bar  
