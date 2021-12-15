@@ -12,6 +12,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Oct-02 - `manifest.json` - but it still needs all the images adding, thus far its just favicons  
 
 ### Changed
+Dec-15 - Changed all `.treeview.json` to `_treeview.json` - TWOK in library.datro.xyz  
 Dec-15 - Changed `.treeview.json` to `_treeview.json` in top level directory only. Troubleshooting Netlify and `library.datro.xyz`  
 Dec-07 - Minor edits to `consortium_finance/funding_sales8cc` - But semantic version is kept same as doc is still in draft.   
 Nov-08 - Added the generic media files from the html build to the `theme-docs` directory as prep for removal of duplicate css and js files  
