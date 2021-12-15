@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Client ID - 8CC 0.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-07 02:39-0400\n"
+"POT-Creation-Date: 2021-12-12 09:19-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,6 @@ msgid "8cc - Credit Notes"
 msgstr ""
 
 #: ../../source/_static/custom/credits-master.csv:1
-#: ../../source/_static/annex.csv:1
 #: ../../source/_static/quotes.csv:1
 #: ../../source/_static/invoices.csv:1
 #: ../../source/_static/receipts.csv:1
@@ -49,6 +48,8 @@ msgid "**Date**"
 msgstr ""
 
 #: ../../source/_static/custom/credits-master.csv:1
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/invoices.csv:1
 #: ../../source/_static/custom/receipts-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
@@ -210,7 +211,6 @@ msgstr ""
 
 #: ../../source/_static/annex.csv:1
 #: ../../source/_static/quotes.csv:1
-#: ../../source/_static/invoices.csv:1
 #: ../../source/_static/receipts.csv:1
 #: ../../source/_static/credits.csv:1
 #: ../../source/_static/olderversions.csv:1
@@ -243,25 +243,12 @@ msgid "**PNG**"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-#: ../../source/_static/annex.csv:1
-#: ../../source/_static/annex.csv:1
-#: ../../source/_static/annex.csv:1
-#: ../../source/_static/annex.csv:1
-#: ../../source/_static/annex.csv:1
-#: ../../source/_static/annex.csv:1
-#: ../../source/_static/annex.csv:1
-#: ../../source/_static/quotes.csv:1
-#: ../../source/_static/quotes.csv:1
-#: ../../source/_static/quotes.csv:1
-#: ../../source/_static/quotes.csv:1
-#: ../../source/_static/receipts.csv:1
-#: ../../source/_static/receipts.csv:1
-#: ../../source/_static/receipts.csv:1
-#: ../../source/_static/credits.csv:1
-#: ../../source/_static/credits.csv:1
-msgid "2021-00-00"
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid ":ref:`INV-0012`"
 msgstr ""
 
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/annex.csv:1
 #: ../../source/_static/annex.csv:1
 #: ../../source/_static/annex.csv:1
 #: ../../source/_static/annex.csv:1
@@ -282,6 +269,58 @@ msgstr ""
 msgid "`link(0kb) <https://datro.xyz>`__"
 msgstr ""
 
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid ":ref:`RCT-0013`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid ":ref:`RCT-0023`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid ":ref:`INV-0032`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid ":ref:`RCT-0033`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid ":ref:`CRE-0034`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/invoices.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid ":ref:`INV-0042`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "Open Bios Upgrade"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(31kb) <https://world.datro.xyz/wayback/2021-10-18_consortium_finance-funding_sales8cc_en_inv-0042.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid ":ref:`RCT-0043`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid ":ref:`CRE-0044`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid ":ref:`INV-0082`"
+msgstr ""
+
 #: ../../source/annex-list.rst:19
 #: ../../source/tenders.rst:2
 msgid "Tenders"
@@ -298,6 +337,18 @@ msgstr ""
 
 #: ../../source/annex-list.rst:26
 msgid "Quote Download Links"
+msgstr ""
+
+#: ../../source/_static/quotes.csv:1
+#: ../../source/_static/quotes.csv:1
+#: ../../source/_static/quotes.csv:1
+#: ../../source/_static/quotes.csv:1
+#: ../../source/_static/receipts.csv:1
+#: ../../source/_static/receipts.csv:1
+#: ../../source/_static/receipts.csv:1
+#: ../../source/_static/credits.csv:1
+#: ../../source/_static/credits.csv:1
+msgid "2021-00-00"
 msgstr ""
 
 #: ../../source/annex-list.rst:34
@@ -323,11 +374,6 @@ msgid "2021-10-18"
 msgstr ""
 
 #: ../../source/_static/invoices.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-msgid ":ref:`INV-0042`"
-msgstr ""
-
-#: ../../source/_static/invoices.csv:1
 msgid "`link(83kb) <https://world.datro.xyz/wayback/2021-10-18_consortium_finance-funding_sales8cc_en_inv-0042.pdf>`__"
 msgstr ""
 
@@ -340,7 +386,6 @@ msgid "`link(83kb) <https://datro.xyz/static/library/consortium_finance/funding_
 msgstr ""
 
 #: ../../source/annex-list.rst:50
-#: ../../source/_static/custom/statement-master.csv:1
 msgid "INV-0042"
 msgstr ""
 
@@ -396,10 +441,6 @@ msgid "2021/07/01"
 msgstr ""
 
 #: ../../source/_static/custom/invoices-master.csv:1
-msgid ":ref:`INV-0012`"
-msgstr ""
-
-#: ../../source/_static/custom/invoices-master.csv:1
 #: ../../source/_static/custom/receipts-master.csv:1
 msgid "Element/Matrix(VPS)"
 msgstr ""
@@ -422,10 +463,6 @@ msgid "1816.52"
 msgstr ""
 
 #: ../../source/_static/custom/invoices-master.csv:1
-msgid ":ref:`INV-0032`"
-msgstr ""
-
-#: ../../source/_static/custom/invoices-master.csv:1
 #: ../../source/_static/custom/receipts-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
 msgid "Hardware (x7 Pi4's)"
@@ -441,10 +478,6 @@ msgstr ""
 #: ../../source/_static/custom/statement-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
 msgid "2021/12/07"
-msgstr ""
-
-#: ../../source/_static/custom/invoices-master.csv:1
-msgid ":ref:`INV-0082`"
 msgstr ""
 
 #: ../../source/_static/custom/invoices-master.csv:1
@@ -471,27 +504,11 @@ msgid "2021/07/19"
 msgstr ""
 
 #: ../../source/_static/custom/receipts-master.csv:1
-msgid ":ref:`RCT-0013`"
-msgstr ""
-
-#: ../../source/_static/custom/receipts-master.csv:1
-msgid ":ref:`RCT-0023`"
-msgstr ""
-
-#: ../../source/_static/custom/receipts-master.csv:1
 msgid "HBnB+ Project (10%)"
 msgstr ""
 
 #: ../../source/_static/custom/receipts-master.csv:1
 msgid "730.12"
-msgstr ""
-
-#: ../../source/_static/custom/receipts-master.csv:1
-msgid ":ref:`RCT-0033`"
-msgstr ""
-
-#: ../../source/_static/custom/receipts-master.csv:1
-msgid ":ref:`RCT-0043`"
 msgstr ""
 
 #: ../../source/index.rst:2
@@ -671,6 +688,10 @@ msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
 msgid "-2002.15"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid ":ref:`INV-0042'"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
