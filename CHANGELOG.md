@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Nov-11 - Made it so commits to this monoreapo produce NFT's - Added a badge in the README.md  
 
 ### Changed
+Dec-18 - Minor edits to README.md  
 Dec-03 - Fixed broken demo link on `static/hbnb/`  
 Nov-30 - Changed `static/hbnb/` - see corresponding changelog for details  
 Nov-08 - See library changelog - minor edits   
