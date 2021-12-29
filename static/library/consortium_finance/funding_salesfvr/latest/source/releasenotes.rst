@@ -5,10 +5,12 @@ This section provides information about what is new or changed, including urgent
 - 'Updates' are the term used to describe significant changes to our public source code and/or records.  
  
 
-This Release (0.0.0)
+This Release (0.0.1)
 ~~~~~~~~~~~~~~~~~~~~~
 
-- **2021-12-27** - `First Draft`
+- **2021-12-28** - `Fixed some broken links`  
+- **2021-12-28** - `Quote 0091 accepted. Invoice 0092 Published to request 50% deposit and begin works package`  
+
 
 Older Versions
 ####################
@@ -23,6 +25,11 @@ The date the file was archived will differ from the date of the document label, 
    :widths: 20, 20, 20, 40
    :header-rows: 1
    
+
+Release (0.0.0)
+-----------------------
+
+- **2021-12-27** - `First Draft`
 
 
 To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://wayback.datro.xyz/>`__.

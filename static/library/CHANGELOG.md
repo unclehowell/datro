@@ -9,6 +9,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [library.05] - Q4/2021
 
 ### Added
+Dec-28 - `funding_salesevr 0.0.0 => 0.0.1`  
 Dec-27 - Added a new client file `consortium_finance/funding_salesevr`  
 Oct-02 - `manifest.json` - but it still needs all the images adding, thus far its just favicons  
 

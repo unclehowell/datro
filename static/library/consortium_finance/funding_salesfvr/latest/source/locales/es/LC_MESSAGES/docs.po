@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DATRO Consortium Creditors 0.0.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-27 21:59-0400\n"
+"POT-Creation-Date: 2021-12-28 23:59-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../source/aftersales.rst:2 ../../source/annex-list.rst:75
+#: ../../source/aftersales.rst:2 ../../source/annex-list.rst:85
 msgid "After Sales"
 msgstr ""
 
@@ -26,55 +26,63 @@ msgstr ""
 msgid "See below aftersales made to clientID: Fvr e.g. Credit Notes, Refunds etc:"
 msgstr ""
 
-#: ../../source/aftersales.rst:7 ../../source/annex-list.rst:78
+#: ../../source/aftersales.rst:7 ../../source/annex-list.rst:88
 msgid "Credits"
 msgstr ""
 
 #: ../../source/aftersales.rst:9
-msgid "Fvr - Credit Notes"
+msgid "FVR - Credit Notes"
 msgstr ""
 
 #: ../../source/_static/credits.csv:1
 #: ../../source/_static/custom/credits-master.csv:1
 #: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/invoices.csv:1 ../../source/_static/receipts.csv:1
-#: ../../source/_static/refunds.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/receipts.csv:1 ../../source/_static/refunds.csv:1
 msgid "**Date**"
 msgstr ""
 
-#: ../../source/_static/annex.csv:1
 #: ../../source/_static/custom/credits-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/invoices.csv:1 ../../source/_static/quotes.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/quotes.csv:1
 msgid "**Annex ID**"
 msgstr ""
 
 #: ../../source/_static/custom/credits-master.csv:1
 #: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
 msgid "**Reference**"
 msgstr ""
 
 #: ../../source/_static/custom/credits-master.csv:1
 #: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
 msgid "**Volume**"
 msgstr ""
 
 #: ../../source/_static/custom/credits-master.csv:1
 #: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
 msgid "**¤**"
 msgstr ""
 
 #: ../../source/_static/custom/credits-master.csv:1
 #: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
 msgid "**GBP**"
 msgstr ""
 
-#: ../../source/aftersales.rst:16 ../../source/annex-list.rst:90
+#: ../../source/aftersales.rst:16 ../../source/annex-list.rst:100
 msgid "Refunds"
 msgstr ""
 
@@ -96,68 +104,6 @@ msgid ""
 "which follow:"
 msgstr ""
 
-#: ../../source/annex-list.rst:11
-msgid "Annexures Download Links"
-msgstr ""
-
-#: ../../source/_static/annex.csv:1 ../../source/_static/credits.csv:1
-#: ../../source/_static/issues.csv:1 ../../source/_static/olderversions.csv:1
-#: ../../source/_static/quotes.csv:1 ../../source/_static/receipts.csv:1
-#: ../../source/_static/refunds.csv:1
-msgid "**Description**"
-msgstr ""
-
-#: ../../source/_static/annex.csv:1 ../../source/_static/credits.csv:1
-#: ../../source/_static/invoices.csv:1 ../../source/_static/quotes.csv:1
-#: ../../source/_static/receipts.csv:1 ../../source/_static/refunds.csv:1
-msgid "**PDF**"
-msgstr ""
-
-#: ../../source/_static/annex.csv:1 ../../source/_static/credits.csv:1
-#: ../../source/_static/invoices.csv:1 ../../source/_static/quotes.csv:1
-#: ../../source/_static/receipts.csv:1 ../../source/_static/refunds.csv:1
-msgid "**SVG**"
-msgstr ""
-
-#: ../../source/_static/annex.csv:1 ../../source/_static/credits.csv:1
-#: ../../source/_static/invoices.csv:1 ../../source/_static/quotes.csv:1
-#: ../../source/_static/receipts.csv:1 ../../source/_static/refunds.csv:1
-msgid "**PNG**"
-msgstr ""
-
-#: ../../source/_static/annex.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/quotes.csv:1
-msgid ":ref:`QUO-0091`"
-msgstr ""
-
-#: ../../source/_static/annex.csv:1
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/quotes.csv:1
-msgid "Business Case"
-msgstr ""
-
-#: ../../source/_static/annex.csv:1
-msgid ""
-"`link(31.9kb) <https://wayback.datro.xyz/2021-12-27_consortium_finance-"
-"funding_salesfvr_quo-0091_en_0-0-1.pdf>`__"
-msgstr ""
-
-#: ../../source/_static/annex.csv:1
-msgid ""
-"`link(97.4kb) "
-"<https://library.datro.xyz/consortium_finance/funding_salesfvr/latest/build/html/en/_static/custom/img/2021-12"
-"-27_quo-0091_en_0-0-1.svg>`__"
-msgstr ""
-
-#: ../../source/_static/annex.csv:1
-msgid ""
-"`link(44.5kb) "
-"<https://library.datro.xyz/consortium_finance/funding_salesfvr/latest/build/html/en/_static/custom/img/2021-12"
-"-27_quo-0091_en_0-0-1.png>`__"
-msgstr ""
-
 #: ../../source/annex-list.rst:19 ../../source/tenders.rst:2
 msgid "Tenders"
 msgstr ""
@@ -174,25 +120,57 @@ msgstr ""
 msgid "Quote Download Links"
 msgstr ""
 
+#: ../../source/_static/credits.csv:1 ../../source/_static/issues.csv:1
+#: ../../source/_static/olderversions.csv:1 ../../source/_static/quotes.csv:1
+#: ../../source/_static/receipts.csv:1 ../../source/_static/refunds.csv:1
+msgid "**Description**"
+msgstr ""
+
+#: ../../source/_static/credits.csv:1 ../../source/_static/quotes.csv:1
+#: ../../source/_static/receipts.csv:1 ../../source/_static/refunds.csv:1
+msgid "**PDF**"
+msgstr ""
+
+#: ../../source/_static/credits.csv:1 ../../source/_static/quotes.csv:1
+#: ../../source/_static/receipts.csv:1 ../../source/_static/refunds.csv:1
+msgid "**SVG**"
+msgstr ""
+
+#: ../../source/_static/credits.csv:1 ../../source/_static/quotes.csv:1
+#: ../../source/_static/receipts.csv:1 ../../source/_static/refunds.csv:1
+msgid "**PNG**"
+msgstr ""
+
+#: ../../source/_static/custom/quotes-master.csv:1
 #: ../../source/_static/quotes.csv:1
-msgid ""
-"`link(31.9kb) <https://datro.xyz/static/library/consortium-finances"
-"/funding-salesfvr/latest/build/_static/custom/pdf/2021-12-27_quo-"
-"0092_en.pdf>`__"
+msgid ":ref:`QUO-0091`"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/quotes.csv:1
+msgid "Business Case"
 msgstr ""
 
 #: ../../source/_static/quotes.csv:1
 msgid ""
-"`link(97.4kb) <https://datro.xyz/static/library/consortium-finances"
-"/funding-salesfvr/latest/build/_static/custom/img/2021-12-27_quo-"
-"0092_en.svg>`__"
+"`link(31.9kb) <https://wayback.datro.xyz/2021-12-27_consortium_finance-"
+"funding_salesfvr_en_quo-0091_v0-0-1.pdf>`__"
 msgstr ""
 
 #: ../../source/_static/quotes.csv:1
 msgid ""
-"`link(44.5kb) <https://datro.xyz/static/library/consortium-finances"
-"/funding-salesfvr/latest/build/_static/custom/img/2021-12-27_quo-"
-"0092_en.png>`__"
+"`link(97.4kb) "
+"<https://library.datro.xyz/consortium_finance/funding_salesfvr/latest/build/html/en/_static/custom/img/2021-12"
+"-27_quo-0091_en_0-0-1.svg>`__"
+msgstr ""
+
+#: ../../source/_static/quotes.csv:1
+msgid ""
+"`link(44.5kb) "
+"<https://library.datro.xyz/consortium_finance/funding_salesfvr/latest/build/html/en/_static/custom/img/2021-12"
+"-27_quo-0091_en_0-0-1.png>`__"
 msgstr ""
 
 #: ../../source/annex-list.rst:34
@@ -201,12 +179,11 @@ msgstr ""
 
 #: ../../source/annex-list.rst:36
 msgid ""
-"Download in `PDF Format <https://datro.xyz/static/library/consortium-"
-"finances/funding-salesfvr/latest/build/_static/custom/pdf/2021-12-27_quo-"
-"0091_en_0-0-1.pdf>`__ and/or `SVG Format "
-"<https://datro.xyz/static/library/consortium-finances/funding-"
-"salesfvr/latest/build/_static/custom/img/2021-12-27_quo-"
-"0091_en_0-0-1.svg>`__"
+"Download in `PDF Format <https://wayback.datro.xyz/2021-12"
+"-27_consortium_finance-funding_salesfvr_en_quo-0091_v0-0-1.pdf>`__ and/or"
+" `SVG Format "
+"<https://library.datro.xyz/consortium_finance/funding_salesfvr/latest/build/html/en/_static/custom/img/2021-12"
+"-27_quo-0091_en_0-0-1.svg>`__"
 msgstr ""
 
 #: ../../source/annex-list.rst:46 ../../source/billables.rst:2
@@ -221,44 +198,107 @@ msgstr ""
 msgid "This table contains the download links for the Invoices which follow:"
 msgstr ""
 
-#: ../../source/annex-list.rst:53
-msgid "Invoice Download Links"
+#: ../../source/annex-list.rst:61
+msgid "INV-0092"
 msgstr ""
 
-#: ../../source/annex-list.rst:63 ../../source/billables.rst:18
+#: ../../source/annex-list.rst:63
+msgid ""
+"Download in `PDF Format <https://wayback.datro.xyz/2021-12"
+"-28_consortium_finance-funding_salesfvr_en_inv-0091_v0-0-0.pdf>`__ and/or"
+" `SVG Format "
+"<https://library.datro.xyz/consortium_finance/funding_salesfvr/latest/build/html/en/_static/custom/img/2021-12"
+"-28_inv-0092_en_0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/annex-list.rst:73 ../../source/billables.rst:18
 msgid "Receipts"
 msgstr ""
 
-#: ../../source/annex-list.rst:65
+#: ../../source/annex-list.rst:75
 msgid "This table contains the download links for the Receipts which follow:"
 msgstr ""
 
-#: ../../source/annex-list.rst:67
+#: ../../source/annex-list.rst:77
 msgid "Receipt Download Links"
 msgstr ""
 
-#: ../../source/annex-list.rst:80
+#: ../../source/annex-list.rst:90
 msgid "This table contains the download links for the Credit Notes:"
 msgstr ""
 
-#: ../../source/annex-list.rst:82
+#: ../../source/annex-list.rst:92
 msgid "Credit Note Download Links"
 msgstr ""
 
-#: ../../source/annex-list.rst:92
+#: ../../source/annex-list.rst:102
 msgid "This table contains the download links for any Refunds:"
 msgstr ""
 
-#: ../../source/annex-list.rst:94
+#: ../../source/annex-list.rst:104
 msgid "Refund Download Links"
 msgstr ""
 
 #: ../../source/billables.rst:4
-msgid "See below the billables for client Fvr:"
+msgid "See below the billables for client FVR:"
+msgstr ""
+
+#: ../../source/billables.rst:10
+msgid "FVR - Invoices"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "**ID**"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/olderversions.csv:1
+msgid "2021/12/28"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid ":ref:`INV-0092`"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "500.00"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "USD"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "372.47"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "**Total**"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "**500.00**"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "**USD**"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "**372.47**"
 msgstr ""
 
 #: ../../source/index.rst:2
-msgid "Client ID - Fvr"
+msgid "Client ID - FVR"
 msgstr ""
 
 #: ../../source/index.rst:18
@@ -282,24 +322,25 @@ msgid ""
 msgstr ""
 
 #: ../../source/releasenotes.rst:9
-msgid "This Release (0.0.0)"
+msgid "This Release (0.0.1)"
 msgstr ""
 
 #: ../../source/releasenotes.rst:11
-msgid ""
-"**2021-12-06** - `Previous billables may need replacing with annnexures "
-"from this publication`"
+msgid "**2021-12-28** - `Fixed some broken links`"
 msgstr ""
 
 #: ../../source/releasenotes.rst:12
-msgid "**2021-09-01** - `First Draft`"
+#, python-format
+msgid ""
+"**2021-12-28** - `Quote 0091 accepted. Invoice 0092 Published to request "
+"50% deposit and begin works package`"
 msgstr ""
 
-#: ../../source/releasenotes.rst:15
+#: ../../source/releasenotes.rst:16
 msgid "Older Versions"
 msgstr ""
 
-#: ../../source/releasenotes.rst:17
+#: ../../source/releasenotes.rst:18
 msgid ""
 "In the table below the last entry displays a link to an archived copy of "
 "the last report. To keep the filename from overflowing in the table below"
@@ -308,7 +349,7 @@ msgid ""
 "creation date."
 msgstr ""
 
-#: ../../source/releasenotes.rst:22
+#: ../../source/releasenotes.rst:23
 msgid "Older Versions of this Document"
 msgstr ""
 
@@ -324,28 +365,46 @@ msgstr ""
 msgid "**Download Link**"
 msgstr ""
 
-#: ../../source/_static/issues.csv:1 ../../source/_static/olderversions.csv:1
-msgid "N/A"
+#: ../../source/_static/olderversions.csv:1
+msgid "0.0.0"
 msgstr ""
 
-#: ../../source/releasenotes.rst:29
+#: ../../source/_static/olderversions.csv:1
+msgid "see notes"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
 msgid ""
-"To view releasenotes of versions older than the one above, visit the "
-"DATRO Consortiums `Wayback Archive <https://world.datro.xyz/wayback/>`__."
+"`2021-12-27_v0.0.0.pdf <https://wayback.datro.xyz/2021-12"
+"-27_consortium_finance-funding_salesfvr_en_v0-0-0.pdf>`__"
 msgstr ""
 
-#: ../../source/releasenotes.rst:33
-msgid "Known and Corrected Issues"
+#: ../../source/releasenotes.rst:30
+msgid "Release (0.0.0)"
+msgstr ""
+
+#: ../../source/releasenotes.rst:32
+msgid "**2021-12-27** - `First Draft`"
 msgstr ""
 
 #: ../../source/releasenotes.rst:35
+msgid ""
+"To view releasenotes of versions older than the one above, visit the "
+"DATRO Consortiums `Wayback Archive <https://wayback.datro.xyz/>`__."
+msgstr ""
+
+#: ../../source/releasenotes.rst:39
+msgid "Known and Corrected Issues"
+msgstr ""
+
+#: ../../source/releasenotes.rst:41
 msgid ""
 "Below is a table of pending issues that have been reported to our team. "
 "These issues will be cleared from this list as and when they are "
 "remedied."
 msgstr ""
 
-#: ../../source/releasenotes.rst:39
+#: ../../source/releasenotes.rst:45
 msgid "Known Issues"
 msgstr ""
 
@@ -357,13 +416,29 @@ msgstr ""
 msgid "**Subject**"
 msgstr ""
 
+#: ../../source/_static/issues.csv:1
+msgid "N/A"
+msgstr ""
+
 #: ../../source/statement.rst:2
 msgid "Statement"
 msgstr ""
 
+#: ../../source/statement.rst:4
+msgid "FVR - Statement"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "**Bal (£)**"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "**Balance**"
+msgstr ""
+
 #: ../../source/tenders.rst:4
 msgid ""
-"See below the tenders made to clientID: Fvr e.g. Estimates and Fixed "
+"See below the tenders made to clientID: FVR e.g. Estimates and Fixed "
 "Quotes:"
 msgstr ""
 
@@ -372,7 +447,7 @@ msgid "Estimates"
 msgstr ""
 
 #: ../../source/tenders.rst:9
-msgid "Fvr - Estimates"
+msgid "FVR - Estimates"
 msgstr ""
 
 #: ../../source/_static/custom/estimates-master.csv:1
@@ -390,20 +465,16 @@ msgstr ""
 
 #: ../../source/_static/custom/estimates-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
-msgid "USD"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
 msgid "744.03"
 msgstr ""
 
 #: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
 msgid "✔"
 msgstr ""
 
 #: ../../source/tenders.rst:19
-msgid "Fvr - Quotes"
+msgid "FVR - Quotes"
 msgstr ""
 
 #: ../../source/_static/custom/quotes-master.csv:1
@@ -412,6 +483,14 @@ msgstr ""
 
 #: ../../source/_static/custom/quotes-master.csv:1
 msgid "2021/12/27"
+msgstr ""
+
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "**1000.00**"
+msgstr ""
+
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "**744.03**"
 msgstr ""
 
 #~ msgid "DATRO Consortium Creditors"
@@ -4370,5 +4449,122 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "8cc - Estimates"
+#~ msgstr ""
+
+#~ msgid "Annexures Download Links"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(31.9kb) <https://wayback.datro.xyz/2021-12"
+#~ "-27_consortium_finance-funding_salesfvr_quo-"
+#~ "0091_en_0-0-1.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(31.9kb) <https://datro.xyz/static/library/consortium-"
+#~ "finances/funding-"
+#~ "salesfvr/latest/build/_static/custom/pdf/2021-12-27_quo-"
+#~ "0092_en.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(97.4kb) <https://datro.xyz/static/library/consortium-"
+#~ "finances/funding-"
+#~ "salesfvr/latest/build/_static/custom/img/2021-12-27_quo-"
+#~ "0092_en.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(44.5kb) <https://datro.xyz/static/library/consortium-"
+#~ "finances/funding-"
+#~ "salesfvr/latest/build/_static/custom/img/2021-12-27_quo-"
+#~ "0092_en.png>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://datro.xyz/static/library/consortium-finances"
+#~ "/funding-salesfvr/latest/build/_static/custom/pdf/2021-12"
+#~ "-27_quo-0091_en_0-0-1.pdf>`__ and/or `SVG Format"
+#~ " <https://datro.xyz/static/library/consortium-finances"
+#~ "/funding-salesfvr/latest/build/_static/custom/img/2021-12"
+#~ "-27_quo-0091_en_0-0-1.svg>`__"
+#~ msgstr ""
+
+#~ msgid "This Release (0.0.0)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**2021-12-06** - `Previous billables may "
+#~ "need replacing with annnexures from this"
+#~ " publication`"
+#~ msgstr ""
+
+#~ msgid "**2021-09-01** - `First Draft`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "To view releasenotes of versions older"
+#~ " than the one above, visit the "
+#~ "DATRO Consortiums `Wayback Archive "
+#~ "<https://world.datro.xyz/wayback/>`__."
+#~ msgstr ""
+
+#~ msgid "Fvr - Credit Notes"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(31.9kb) <https://library.datro.xyz/2021-12"
+#~ "-27_consortium_finance-funding_salesfvr_en_quo-0091_0-0-1.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://library.datro.xyz/2021-12-27_consortium_finance-"
+#~ "funding_salesfvr_en_quo-0091_0-0-1.pdf>`__ and/or `SVG "
+#~ "Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_salesfvr/latest/build/html/en/_static/custom/img/2021-12"
+#~ "-27_quo-0091_en_0-0-1.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://library.datro.xyz/2021-12-28_consortium_finance-"
+#~ "funding_salesfvr_en_inv-0092_0-0-0.pdf>`__ and/or `SVG "
+#~ "Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_salesfvr/latest/build/html/en/_static/custom/img/2021-12"
+#~ "-28_inv-0092_en_0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid "See below the billables for client Fvr:"
+#~ msgstr ""
+
+#~ msgid "Fvr - Invoices"
+#~ msgstr ""
+
+#~ msgid "Client ID - Fvr"
+#~ msgstr ""
+
+#~ msgid "2021-12-27_ClientFile_FVR"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`<https://wayback.datro.xyz/2021-12-27_consortium_finance-"
+#~ "funding_salesfvr_en_v0-0-0.pdf>`__"
+#~ msgstr ""
+
+#~ msgid "2021-12-28"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "See below the tenders made to "
+#~ "clientID: Fvr e.g. Estimates and Fixed"
+#~ " Quotes:"
+#~ msgstr ""
+
+#~ msgid "Fvr - Estimates"
+#~ msgstr ""
+
+#~ msgid "Fvr - Quotes"
 #~ msgstr ""
 
