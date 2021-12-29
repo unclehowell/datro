@@ -3,10 +3,12 @@ Annexures
 
 This section contains the Annexures, referenced in the text above.
 
+|
+
 Download Links
 ~~~~~~~~~~~~~~~~
 
-This table contains the download links for the Annexed document previews which follow:
+This table contains the download links for the Annexed documents:
 
 .. csv-table:: Annexures Download Links
    :file: _static/annex.csv
@@ -21,7 +23,7 @@ Tenders
 Quotes
 --------
 
-This table contains the download links for the Quotes which follow:
+This table contains the download links for the Quotes:
 
 .. csv-table:: Quote Download Links
    :file: _static/quotes.csv
@@ -48,7 +50,7 @@ Billables
 Invoices
 ----------
 
-This table contains the download links for the Invoices which follow:
+This table contains the download links for the Invoices:
 
 .. csv-table:: Invoice Download Links
    :file: _static/invoices.csv
@@ -72,7 +74,7 @@ Download in `PDF Format <https://wayback.datro.xyz/2021-12-28_consortium_finance
 Receipts
 ---------
 
-This table contains the download links for the Receipts which follow:
+This table contains the download links for the Receipts:
 
 .. csv-table:: Receipt Download Links
    :file: _static/receipts.csv

@@ -8,8 +8,7 @@ This section provides information about what is new or changed, including urgent
 This Release (0.0.1)
 ~~~~~~~~~~~~~~~~~~~~~
 
-- **2021-12-28** - `Fixed some broken links`  
-- **2021-12-28** - `Quote 0091 accepted. Invoice 0092 Published to request 50% deposit and begin works package`  
+- **2021-12-28** - `Quote 0091 accepted, Invoice 0092 raised & Fixed broken links`  
 
 
 Older Versions
@@ -26,13 +25,13 @@ The date the file was archived will differ from the date of the document label, 
    :header-rows: 1
    
 
-Release (0.0.0)
+Version 0.0.0
 -----------------------
 
 - **2021-12-27** - `First Draft`
 
 
-To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://wayback.datro.xyz/>`__.
+To view releasenotes of versions older than the one above, visit the DATRO `Wayback Archive <https://wayback.datro.xyz/>`__.
    
 
 Known and Corrected Issues
