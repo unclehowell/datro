@@ -5,10 +5,10 @@ This section provides information about what is new or changed, including urgent
 - 'Updates' are the term used to describe significant changes to our public source code and/or records.  
  
 
-This Release (0.0.1)
+This Release (0.0.2)
 ~~~~~~~~~~~~~~~~~~~~~
 
-- **2021-12-28** - `Quote 0091 accepted, Invoice 0092 raised & Fixed broken links`  
+- **2021-12-30** - `Updated invoice 0092 (0.0.0 => 0.0.1) - Just a minor correction`  
 
 
 Older Versions
@@ -24,6 +24,11 @@ The date the file was archived will differ from the date of the document label, 
    :widths: 20, 20, 20, 40
    :header-rows: 1
    
+
+Version 0.0.1
+-----------------------
+
+- **2021-12-28** - `Quote 0091 accepted, Invoice 0092 raised & Fixed broken links`
 
 Version 0.0.0
 -----------------------

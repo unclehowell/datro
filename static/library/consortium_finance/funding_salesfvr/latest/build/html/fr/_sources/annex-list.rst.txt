@@ -62,10 +62,10 @@ This table contains the download links for the Invoices:
 INV-0092
 ##########
 
- Download in `PDF Format <https://wayback.datro.xyz/2021-12-28_consortium_finance-funding_salesfvr_en_inv-0091_v0-0-0.pdf>`__   and/or                       
- `SVG Format <https://library.datro.xyz/consortium_finance/funding_salesfvr/latest/build/html/en/_static/custom/img/2021-12-28_inv-0092_en_v0-0-0.svg>`__    
+ Download in `PDF Format <https://wayback.datro.xyz/2021-12-28_consortium_finance-funding_salesfvr_en_inv-0092_v0-0-1.pdf>`__   and/or                       
+ `SVG Format <https://library.datro.xyz/consortium_finance/funding_salesfvr/latest/build/html/en/_static/custom/img/2021-12-28_inv-0092_en_v0-0-1.svg>`__    
 
- .. image:: _static/custom/img/2021-12-28_inv-0092_en_v0-0-0.png                                                                                              
+ .. image:: _static/custom/img/2021-12-28_inv-0092_en_v0-0-1.png                                                                                              
   :width: 420                                                                                                                                                 
   :align: center
 

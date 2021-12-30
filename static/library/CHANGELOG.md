@@ -9,11 +9,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [library.05] - Q4/2021
 
 ### Added
-Dec-28 - `funding_salesevr 0.0.0 => 0.0.1`  
 Dec-27 - Added a new client file `consortium_finance/funding_salesevr`  
 Oct-02 - `manifest.json` - but it still needs all the images adding, thus far its just favicons  
 
 ### Changed
+Dec-30 - Corrected an error in an invoice `funding_salesevr 0.0.1 => 0.0.2`  
+Dec-28 - `funding_salesevr 0.0.0 => 0.0.1`  
 Dec-28 - Minor edit to `funding_salesevr 0.0.1`, but semantic version kept the same  
 Dec-15 - Changed all `.treeview.json` to `_treeview.json` - TWOK in library.datro.xyz  
 Dec-15 - Changed `.treeview.json` to `_treeview.json` in top level directory only. Troubleshooting Netlify and `library.datro.xyz`  
