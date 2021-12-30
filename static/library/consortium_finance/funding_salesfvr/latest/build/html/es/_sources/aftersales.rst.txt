@@ -1,7 +1,7 @@
 After Sales
 ======================
 
-See below aftersales made to clientID: Fvr e.g. Credit Notes, Refunds etc:
+See below aftersales made to clientID: FVR e.g. Credit Notes, Refunds etc:
 
 Credits
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -11,6 +11,7 @@ Credits
    :widths: 15, 15, 30, 15, 10, 15
    :header-rows: 1
 
+|
 
 Refunds
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

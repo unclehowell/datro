@@ -1,7 +1,7 @@
 After Sales
 ======================
 
-See below aftersales made to clientID: 8CC e.g. Credit Notes:
+See below aftersales made to ClientID: 8CC e.g. Credit Notes:
 
 Credits
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
