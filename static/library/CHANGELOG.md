@@ -13,6 +13,7 @@ Dec-27 - Added a new client file `consortium_finance/funding_salesevr`
 Oct-02 - `manifest.json` - but it still needs all the images adding, thus far its just favicons  
 
 ### Changed
+Dec-31 - `funding_sales8cc 0.0.0` has changed from draft to release   
 Dec-30 - Corrected an error in an invoice `funding_salesevr 0.0.1 => 0.0.2`  
 Dec-28 - `funding_salesevr 0.0.0 => 0.0.1`  
 Dec-28 - Minor edit to `funding_salesevr 0.0.1`, but semantic version kept the same  

@@ -40,6 +40,7 @@ htmlhelp_basename = 'consortium_finance-funding_sales8cc'
 
 #latex_logo = '_static/logo.jpg'
 
+latex_engine = 'xelatex'
 latex_elements = {
 
 'classoptions': ',openany,oneside', 'babel' : '\\usepackage[english]{babel}',
@@ -47,8 +48,6 @@ latex_elements = {
 'releasename': "Latest Release  |  Version",
 
 }
-
-
 
 
 latex_documents = [
