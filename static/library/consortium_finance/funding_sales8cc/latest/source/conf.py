@@ -44,9 +44,11 @@ latex_elements = {
 
 'classoptions': ',openany,oneside', 'babel' : '\\usepackage[english]{babel}',
 
-'releasename': "Latest Release  |  Version"
+'releasename': "Latest Release  |  Version",
 
 }
+
+
 
 
 latex_documents = [

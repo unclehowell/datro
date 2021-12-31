@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.9.18)  29 DEC 2021 22:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.9.18)  31 DEC 2021 11:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -31,21 +31,40 @@ LaTeX Info: Redefining \and on input line 35.
 Package: inputenc 2018/08/11 v1.3c Input encoding file
 \inpenc@prehook=\toks15
 \inpenc@posthook=\toks16
-)
-   defining Unicode char U+00A0 (decimal 160)
-   defining Unicode char U+2500 (decimal 9472)
-   defining Unicode char U+2502 (decimal 9474)
-   defining Unicode char U+2514 (decimal 9492)
-   defining Unicode char U+251C (decimal 9500)
-   defining Unicode char U+2572 (decimal 9586)
 
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+))
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+Package: ucs 2013/05/11 v2.2 UCS: Unicode input support
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-global.def
+File: uni-global.def 2013/05/13 UCS: Unicode global data
+)
+\uc@secondtry=\count177
+\uc@combtoks=\toks17
+\uc@combtoksb=\toks18
+\uc@temptokena=\toks19
+)
 (/usr/share/texlive/texmf-dist/tex/latex/cmap/cmap.sty
 Package: cmap 2008/03/06 v1.0h CMap support: searchable PDF
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
-<<t1.cmap>>)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+
+
+! Package fontenc Error: Encoding file `t2aenc.def' not found.
+(fontenc)                You might have misspelt the name of the encoding.
+
+See the fontenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.111 \ProcessOptions*
+                      
+? R
+OK, entering \nonstopmode...
+<<t1.cmap>>) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2020/01/20 v2.17e AMS math features
 \@mathmargin=\skip49
 
@@ -55,7 +74,7 @@ Package: amstext 2000/06/29 v2.01 AMS text
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks17
+\@emptytoks=\toks20
 \ex@=\dimen135
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
@@ -65,13 +84,13 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count177
+\inf@bad=\count178
 LaTeX Info: Redefining \frac on input line 227.
-\uproot@=\count178
-\leftroot@=\count179
+\uproot@=\count179
+\leftroot@=\count180
 LaTeX Info: Redefining \overline on input line 389.
-\classnum@=\count180
-\DOTSCASE@=\count181
+\classnum@=\count181
+\DOTSCASE@=\count182
 LaTeX Info: Redefining \ldots on input line 486.
 LaTeX Info: Redefining \dots on input line 489.
 LaTeX Info: Redefining \cdots on input line 610.
@@ -80,26 +99,26 @@ LaTeX Info: Redefining \cdots on input line 610.
 \big@size=\dimen137
 LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
-\macc@depth=\count182
-\c@MaxMatrixCols=\count183
+\macc@depth=\count183
+\c@MaxMatrixCols=\count184
 \dotsspace@=\muskip16
-\c@parentequation=\count184
-\dspbrk@lvl=\count185
-\tag@help=\toks18
-\row@=\count186
-\column@=\count187
-\maxfields@=\count188
-\andhelp@=\toks19
+\c@parentequation=\count185
+\dspbrk@lvl=\count186
+\tag@help=\toks21
+\row@=\count187
+\column@=\count188
+\maxfields@=\count189
+\andhelp@=\toks22
 \eqnshift@=\dimen138
 \alignsep@=\dimen139
 \tagshift@=\dimen140
 \tagwidth@=\dimen141
 \totwidth@=\dimen142
 \lineht@=\dimen143
-\@envbody=\toks20
+\@envbody=\toks23
 \multlinegap=\skip50
 \multlinetaggap=\skip51
-\mathdisplay@stack=\toks21
+\mathdisplay@stack=\toks24
 LaTeX Info: Redefining \[ on input line 2859.
 LaTeX Info: Redefining \] on input line 2860.
 )
@@ -119,14 +138,14 @@ Package: babel 2020/07/13 3.47 The Babel package
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2020/07/13 3.47 Babel common definitions
-\babel@savecnt=\count189
+\babel@savecnt=\count190
 \U@D=\dimen144
 \l@babelnohyphens=\language30
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read2
 )
-\bbl@dirlevel=\count190
+\bbl@dirlevel=\count191
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
 Language: english 2017/06/06 v3.3r English support from the babel system
@@ -141,15 +160,19 @@ Package babel Info: \l@australian = using hyphenrules for english
 Package babel Info: \l@newzealand = using hyphenrules for english
 (babel)             (\language0) on input line 108.
 ))
-(/usr/share/texmf/tex/latex/tex-gyre/tgtermes.sty
-Package: tgtermes 2009/09/27 v1.2 TeX Gyre Termes as default roman family
+(/usr/share/texlive/texmf-dist/tex/latex/substitutefont/substitutefont.sty
+Package: substitutefont 2012/07/07 v0.1.3 combine font families
+)
+(./sphinxpackagecyrillic.sty
+Package: sphinxpackagecyrillic 2018/11/21 v2.0 support for Cyrillic in non-Cyri
+llic documents
 
 (/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks22
+\KV@toks@=\toks25
 )
 (/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
@@ -157,6 +180,9 @@ Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
 )))
+(/usr/share/texmf/tex/latex/tex-gyre/tgtermes.sty
+Package: tgtermes 2009/09/27 v1.2 TeX Gyre Termes as default roman family
+)
 (/usr/share/texmf/tex/latex/tex-gyre/tgheros.sty
 Package: tgheros 2009/09/27 v1.2 TeX Gyre Heros as default sans serif family
 )
@@ -169,8 +195,8 @@ Package: fncychap 2007/07/30 v1.34 LaTeX package (Revised chapters)
 \py=\skip56
 \pyy=\skip57
 \pxx=\skip58
-\c@AlphaCnt=\count191
-\c@AlphaDecCnt=\count192
+\c@AlphaCnt=\count192
+\c@AlphaDecCnt=\count193
 ) (./sphinx.sty
 Package: sphinx 2021/01/27 v4.0.0 LaTeX package (Sphinx markup)
 
@@ -212,18 +238,18 @@ Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 )
 (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count193
-\float@exts=\toks23
+\c@float@type=\count194
+\float@exts=\toks26
 \float@box=\box47
-\@float@everytoks=\toks24
+\@float@everytoks=\toks27
 \@floatcapt=\box48
 )
 (/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 \wrapoverhang=\dimen151
 \WF@size=\dimen152
-\c@WF@wrappedlines=\count194
+\c@WF@wrappedlines=\count195
 \WF@box=\box49
-\WF@everypar=\toks25
+\WF@everypar=\toks28
 Package: wrapfig 2003/01/31  v 3.6
 )
 (/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty
@@ -231,14 +257,14 @@ Package: capt-of 2009/12/29 v0.2 standard captions outside of floats
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
-\c@tracingmulticols=\count195
+\c@tracingmulticols=\count196
 \mult@box=\box50
 \multicol@leftmargin=\dimen153
-\c@unbalance=\count196
-\c@collectmore=\count197
-\doublecol@number=\count198
-\multicoltolerance=\count199
-\multicolpretolerance=\count266
+\c@unbalance=\count197
+\c@collectmore=\count198
+\doublecol@number=\count199
+\multicoltolerance=\count266
+\multicolpretolerance=\count267
 \full@width=\dimen154
 \page@free=\dimen155
 \premulticols=\dimen156
@@ -289,15 +315,15 @@ Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 \@tempa=\box91
 \@tempa=\box92
 \@tempa=\box93
-\c@minrows=\count267
-\c@columnbadness=\count268
-\c@finalcolumnbadness=\count269
+\c@minrows=\count268
+\c@columnbadness=\count269
+\c@finalcolumnbadness=\count270
 \last@try=\dimen159
 \multicolovershoot=\dimen160
 \multicolundershoot=\dimen161
 \mult@nat@firstbox=\box94
 \colbreak@box=\box95
-\mc@col@check@num=\count270
+\mc@col@check@num=\count271
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
@@ -336,11 +362,11 @@ File: sphinxlatexliterals.sty 2021/01/27 code-blocks and parsed literals
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2020/05/03 v3.6 verbatim text (tvz,hv)
-\FV@CodeLineNo=\count271
+\FV@CodeLineNo=\count272
 \FV@InFile=\read3
 \FV@TabBox=\box97
-\c@FancyVerbLine=\count272
-\FV@StepNumber=\count273
+\c@FancyVerbLine=\count273
+\FV@StepNumber=\count274
 \FV@OutFile=\write3
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty
@@ -377,12 +403,12 @@ Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
 \col@sep=\dimen169
 \ar@mcellbox=\box103
 \extrarowheight=\dimen170
-\NC@list=\toks26
+\NC@list=\toks29
 \extratabsurround=\skip62
 \backup@length=\skip63
 \ar@cellbox=\box104
 )
-\TY@count=\count274
+\TY@count=\count275
 \TY@linewidth=\dimen171
 \tymin=\dimen172
 \tymax=\dimen173
@@ -394,22 +420,22 @@ Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
 \LTright=\skip65
 \LTpre=\skip66
 \LTpost=\skip67
-\LTchunksize=\count275
+\LTchunksize=\count276
 \LTcapwidth=\dimen175
 \LT@head=\box105
 \LT@firsthead=\box106
 \LT@foot=\box107
 \LT@lastfoot=\box108
-\LT@cols=\count276
-\LT@rows=\count277
-\c@LT@tables=\count278
-\c@LT@chunks=\count279
-\LT@p@ftn=\toks27
+\LT@cols=\count277
+\LT@rows=\count278
+\c@LT@tables=\count279
+\c@LT@chunks=\count280
+\LT@p@ftn=\toks30
 )
 (/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \@vwid@box=\box109
-\sift@deathcycles=\count280
+\sift@deathcycles=\count281
 \@vwid@loff=\dimen176
 \@vwid@roff=\dimen177
 )
@@ -420,13 +446,13 @@ File: sphinxlatexnumfig.sty 2021/01/27 numbering
 ) (./sphinxlatexlists.sty
 File: sphinxlatexlists.sty 2021/01/27 lists
 )
-\c@sphinxscope=\count281
-\c@sphinxexplicit=\count282
+\c@sphinxscope=\count282
+\c@sphinxexplicit=\count283
  (./sphinxpackagefootnote.sty
 Package: sphinxpackagefootnote 2021/02/04 v1.1d footnotehyper adapted to sphinx
  (Sphinx team)
 \FNH@notes=\box110
-\FNH@toks=\toks28
+\FNH@toks=\toks31
 \FNH@width=\dimen179
 ) (./sphinxlatexindbibtoc.sty
 File: sphinxlatexindbibtoc.sty 2021/01/27 index, bib., toc
@@ -467,7 +493,7 @@ Package: titlesec 2019/10/16 v2.13 Sectioning titles
 \aftertitleunit=\skip78
 \ttl@plus=\dimen180
 \ttl@minus=\dimen181
-\ttl@toksa=\toks29
+\ttl@toksa=\toks32
 \titlewidth=\dimen182
 \titlewidthlast=\dimen183
 \titlewidthfirst=\dimen184
@@ -489,9 +515,9 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2020/03/06 v1.0d TeX engine tests
 ))
-\Gm@cnth=\count283
-\Gm@cntv=\count284
-\c@Gm@tempcnt=\count285
+\Gm@cnth=\count284
+\Gm@cntv=\count285
+\c@Gm@tempcnt=\count286
 \Gm@bindingoffset=\dimen185
 \Gm@wd@mp=\dimen186
 \Gm@odd@mp=\dimen187
@@ -500,7 +526,7 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 \Gm@layoutheight=\dimen190
 \Gm@layouthoffset=\dimen191
 \Gm@layoutvoffset=\dimen192
-\Gm@dimlist=\toks30
+\Gm@dimlist=\toks33
 )
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
@@ -532,13 +558,11 @@ Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
 Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 )
 \@linkdim=\dimen193
-\Hy@linkcounter=\count286
-\Hy@pagecounter=\count287
+\Hy@linkcounter=\count287
+\Hy@pagecounter=\count288
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2020-05-15 v7.00e Hyperref: PDFDocEncoding definition (HO)
-Now handling font encoding PD1 ...
-... no UTF-8 mapping file for font encoding PD1
 )
 (/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
@@ -546,13 +570,11 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count288
+\Hy@SavedSpaceFactor=\count289
 Package hyperref Info: Option `unicode' set `true' on input line 4338.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2020-05-15 v7.00e Hyperref: PDF Unicode definition (HO)
-Now handling font encoding PU ...
-... no UTF-8 mapping file for font encoding PU
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 4338.
 Package hyperref Info: Option `breaklinks' set `true' on input line 4338.
@@ -563,7 +585,7 @@ Package hyperref Info: Plain pages OFF on input line 4479.
 Package hyperref Info: Backreferencing OFF on input line 4484.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4717.
-\c@Hy@tempcnt=\count289
+\c@Hy@tempcnt=\count290
 
 (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
@@ -579,7 +601,7 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count290
+\Fld@menulength=\count291
 \Field@Width=\dimen195
 \Fld@charsize=\dimen196
 Package hyperref Info: Hyper figures OFF on input line 6347.
@@ -595,9 +617,9 @@ LaTeX Info: Redefining \pageref on input line 6421.
 (/usr/share/texlive/texmf-dist/tex/generic/atbegshi/atbegshi.sty
 Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
 )
-\Hy@abspage=\count291
-\c@Item=\count292
-\c@Hfootnote=\count293
+\Hy@abspage=\count292
+\c@Item=\count293
+\c@Hfootnote=\count294
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
@@ -608,8 +630,8 @@ File: hpdftex.def 2020-05-15 v7.00e Hyperref driver for pdfTeX
 Package: atveryend 2019-12-11 v1.11 Hooks at the very end of document (HO)
 Package atveryend Info: \enddocument detected (standard20110627).
 )
-\Fld@listcount=\count294
-\c@bookmark@seq@number=\count295
+\Fld@listcount=\count295
+\c@bookmark@seq@number=\count296
 
 (/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
@@ -635,49 +657,52 @@ Package: sphinxmessages 2019/01/04 v2.0 Localized LaTeX macros (Sphinx team)
 Writing index file consortium_finance-funding_sales8cc.idx
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-06-29 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count296
+\l__kernel_color_stack_int=\count297
 \l__pdf_internal_box=\box112
 )
 (./consortium_finance-funding_sales8cc.aux)
 \openout1 = `consortium_finance-funding_sales8cc.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Trying to load font information for T1+qtm on input line 69
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Trying to load font information for T1+qtm on input line 78
 .
 
 (/usr/share/texmf/tex/latex/tex-gyre/t1qtm.fd
 File: t1qtm.fd 2009/09/25 v1.2 font definition file for T1/qtm
 )
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def
+File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
+)
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count297
+\scratchcounter=\count298
 \scratchdimen=\dimen197
 \scratchbox=\box113
-\nofMPsegments=\count298
-\nofMParguments=\count299
-\everyMPshowfont=\toks31
-\MPscratchCnt=\count300
+\nofMPsegments=\count299
+\nofMParguments=\count300
+\everyMPshowfont=\toks34
+\MPscratchCnt=\count301
 \MPscratchDim=\dimen198
-\MPnumerator=\count301
-\makeMPintoPDFobject=\count302
-\everyMPtoPDFconversion=\toks32
+\MPnumerator=\count302
+\makeMPintoPDFobject=\count303
+\everyMPtoPDFconversion=\toks35
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -687,7 +712,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@literalblock=\count303
+\c@literalblock=\count304
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -724,7 +749,7 @@ e
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box114
-Package hyperref Info: Link coloring ON on input line 69.
+Package hyperref Info: Link coloring ON on input line 78.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
@@ -734,27 +759,27 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count304
+\c@section@level=\count305
 )
-LaTeX Info: Redefining \ref on input line 69.
-LaTeX Info: Redefining \pageref on input line 69.
-LaTeX Info: Redefining \nameref on input line 69.
+LaTeX Info: Redefining \ref on input line 78.
+LaTeX Info: Redefining \pageref on input line 78.
+LaTeX Info: Redefining \nameref on input line 78.
 \@outlinefile=\write5
 \openout5 = `consortium_finance-funding_sales8cc.out'.
 
-Package hyperref Info: Option `pageanchor' set `false' on input line 77.
-LaTeX Font Info:    Trying to load font information for T1+qhv on input line 77
+Package hyperref Info: Option `pageanchor' set `false' on input line 86.
+LaTeX Font Info:    Trying to load font information for T1+qhv on input line 86
 .
 
 (/usr/share/texmf/tex/latex/tex-gyre/t1qhv.fd
 File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
 )<<ot1.cmap>><<oml.cmap>><<oms.cmap>><<omx.cmap>>
-LaTeX Font Info:    Trying to load font information for U+msa on input line 77.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 86.
 
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 77.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 86.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -771,8 +796,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ]
 Chapter 1.
-LaTeX Font Info:    Trying to load font information for TS1+qtm on input line 9
-4.
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
+File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
+)
+LaTeX Font Info:    Trying to load font information for TS1+qtm on input line 1
+03.
+
 (/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd
 File: ts1qtm.fd 2009/09/25 v1.2 font definition file for TS1/qtm
 ) [1
@@ -780,98 +809,129 @@ File: ts1qtm.fd 2009/09/25 v1.2 font definition file for TS1/qtm
 
 ]
 Chapter 2.
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-0.def
+File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
+)
 LaTeX Font Info:    Trying to load font information for TS1+qhv on input line 2
-25.
+38.
+
 (/usr/share/texmf/tex/latex/tex-gyre/ts1qhv.fd
 File: ts1qhv.fd 2009/09/25 v1.2 font definition file for TS1/qhv
 )
 
 LaTeX Warning: Hyper reference `annex-list:inv-0012' on page 2 undefined on inp
-ut line 238.
+ut line 251.
 
 
 LaTeX Warning: Hyper reference `annex-list:rct-0013' on page 2 undefined on inp
-ut line 257.
+ut line 270.
 
 
 LaTeX Warning: Hyper reference `annex-list:rct-0023' on page 2 undefined on inp
-ut line 276.
+ut line 289.
 
 
 LaTeX Warning: Hyper reference `annex-list:inv-0032' on page 2 undefined on inp
-ut line 295.
+ut line 308.
 
 
 LaTeX Warning: Hyper reference `annex-list:rct-0033' on page 2 undefined on inp
-ut line 314.
+ut line 327.
 
 
 LaTeX Warning: Hyper reference `annex-list:cre-0034' on page 2 undefined on inp
-ut line 333.
+ut line 346.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 344--347
+Underfull \hbox (badness 10000) in paragraph at lines 357--360
 []|\T1/qtm/m/n/10 -
  []
 
 
 LaTeX Warning: Hyper reference `annex-list:inv-0042' on page 2 undefined on inp
-ut line 352.
+ut line 365.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 363--366
-[]|\T1/qtm/m/n/10 -
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-34.def
+File: uni-34.def 2013/05/13 UCS: Unicode data U+2200..U+22FF
+)
+Overfull \hbox (5.7423pt too wide) in paragraph at lines 376--379
+[]|$\OMS/cmsy/m/n/10 ^^@$\T1/qtm/m/n/10 1051.66| 
  []
 
 
 LaTeX Warning: Hyper reference `annex-list:rct-0043' on page 2 undefined on inp
-ut line 371.
+ut line 384.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 382--385
-[]|\T1/qtm/m/n/10 -
+Overfull \hbox (5.7423pt too wide) in paragraph at lines 395--398
+[]|$\OMS/cmsy/m/n/10 ^^@$\T1/qtm/m/n/10 2051.66| 
  []
 
 
 LaTeX Warning: Hyper reference `annex-list:cre-0044' on page 2 undefined on inp
-ut line 390.
+ut line 403.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 401--404
-[]|\T1/qtm/m/n/10 -
+Overfull \hbox (5.7423pt too wide) in paragraph at lines 414--417
+[]|$\OMS/cmsy/m/n/10 ^^@$\T1/qtm/m/n/10 3348.82| 
  []
 
 
 LaTeX Warning: Hyper reference `annex-list:inv-0052' on page 2 undefined on inp
-ut line 409.
+ut line 422.
+
+
+Overfull \hbox (0.7423pt too wide) in paragraph at lines 433--436
+[]|$\OMS/cmsy/m/n/10 ^^@$\T1/qtm/m/n/10 537.81| 
+ []
 
 
 LaTeX Warning: Hyper reference `annex-list:inv-0062' on page 2 undefined on inp
-ut line 428.
+ut line 441.
 
 [2
 
 ]
 Chapter 3.
 
-Overfull \hbox (5.60976pt too wide) in paragraph at lines 489--492
+Overfull \hbox (5.60976pt too wide) in paragraph at lines 502--505
 []|\T1/qhv/b/n/10 GO| 
  []
 
 
-Overfull \hbox (2.82224pt too wide) in paragraph at lines 570--573
+Overfull \hbox (2.82224pt too wide) in paragraph at lines 583--586
 []|\T1/qhv/b/n/10 Go| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 580--582
+LaTeX Warning: Hyper reference `annex-list:quo-0011' on page 3 undefined on inp
+ut line 591.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 593--595
 []|\T1/qtm/m/n/10 El-e-ment/Matrix
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 624--626
+LaTeX Warning: Hyper reference `annex-list:quo-0031' on page 3 undefined on inp
+ut line 613.
+
+
+LaTeX Warning: Hyper reference `annex-list:quo-0041' on page 3 undefined on inp
+ut line 635.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 637--639
 []|\T1/qtm/m/n/10 Hard-ware (Up-
  []
+
+
+LaTeX Warning: Hyper reference `annex-list:quo-0051' on page 3 undefined on inp
+ut line 657.
+
+
+LaTeX Warning: Hyper reference `annex-list:quo-0061' on page 3 undefined on inp
+ut line 676.
 
 [3
 
@@ -879,39 +939,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 624--626
 Chapter 4.
 
 LaTeX Warning: Hyper reference `annex-list:inv-0012' on page 4 undefined on inp
-ut line 728.
+ut line 741.
 
 
 LaTeX Warning: Hyper reference `annex-list:inv-0032' on page 4 undefined on inp
-ut line 747.
+ut line 760.
 
 
 LaTeX Warning: Hyper reference `annex-list:inv-0042' on page 4 undefined on inp
-ut line 766.
+ut line 779.
 
 
 LaTeX Warning: Hyper reference `annex-list:inv-0052' on page 4 undefined on inp
-ut line 785.
+ut line 798.
 
 
 LaTeX Warning: Hyper reference `annex-list:inv-0062' on page 4 undefined on inp
-ut line 804.
+ut line 817.
 
 
 LaTeX Warning: Hyper reference `annex-list:rct-0013' on page 4 undefined on inp
-ut line 863.
+ut line 876.
 
 
 LaTeX Warning: Hyper reference `annex-list:rct-0023' on page 4 undefined on inp
-ut line 882.
+ut line 895.
 
 
 LaTeX Warning: Hyper reference `annex-list:rct-0033' on page 4 undefined on inp
-ut line 901.
+ut line 914.
 
 
 LaTeX Warning: Hyper reference `annex-list:rct-0043' on page 4 undefined on inp
-ut line 920.
+ut line 933.
 
 [4
 
@@ -919,39 +979,319 @@ ut line 920.
 Chapter 5.
 
 LaTeX Warning: Hyper reference `annex-list:cre-0034' on page 5 undefined on inp
-ut line 981.
+ut line 994.
 
 
 LaTeX Warning: Hyper reference `annex-list:cre-0044' on page 5 undefined on inp
-ut line 1000.
+ut line 1013.
 
 [5
 
 ]
 Chapter 6.
 
+LaTeX Warning: Hyper reference `annex-list:quo-0011' on page 6 undefined on inp
+ut line 1097.
+
+
+LaTeX Warning: Hyper reference `annex-list:quo-0031' on page 6 undefined on inp
+ut line 1113.
+
+
+LaTeX Warning: Hyper reference `annex-list:quo-0041' on page 6 undefined on inp
+ut line 1129.
+
+
+LaTeX Warning: Hyper reference `annex-list:quo-0051' on page 6 undefined on inp
+ut line 1145.
+
+
+LaTeX Warning: Hyper reference `annex-list:quo-0061' on page 6 undefined on inp
+ut line 1161.
+
+
 LaTeX Warning: Hyper reference `annex-list:inv-0012' on page 6 undefined on inp
-ut line 1158.
+ut line 1177.
 
 
 LaTeX Warning: Hyper reference `annex-list:inv-0032' on page 6 undefined on inp
-ut line 1174.
+ut line 1193.
 
 
 LaTeX Warning: Hyper reference `annex-list:inv-0042' on page 6 undefined on inp
-ut line 1190.
+ut line 1209.
 
 
 LaTeX Warning: Hyper reference `annex-list:inv-0052' on page 6 undefined on inp
-ut line 1206.
+ut line 1225.
 
 
 LaTeX Warning: Hyper reference `annex-list:inv-0062' on page 6 undefined on inp
-ut line 1222.
+ut line 1241.
+
+
+LaTeX Warning: Hyper reference `annex-list:rct-0013' on page 6 undefined on inp
+ut line 1257.
+
+
+LaTeX Warning: Hyper reference `annex-list:rct-0023' on page 6 undefined on inp
+ut line 1273.
+
+
+LaTeX Warning: Hyper reference `annex-list:rct-0033' on page 6 undefined on inp
+ut line 1289.
+
+
+LaTeX Warning: Hyper reference `annex-list:rct-0043' on page 6 undefined on inp
+ut line 1305.
+
+
+LaTeX Warning: Hyper reference `annex-list:cre-0034' on page 6 undefined on inp
+ut line 1321.
+
+
+LaTeX Warning: Hyper reference `annex-list:cre-0044' on page 6 undefined on inp
+ut line 1337.
 
 [6
 
 ]
-!pdfTeX error: pdflatex (file ./2021-12-27_quo-0091_en_v0-0-1.png): reading ima
-ge file failed
- ==> Fatal error occurred, no output PDF file produced!
+
+LaTeX Warning: Hyper reference `annex-list:quo-0011' on page 7 undefined on inp
+ut line 1408.
+
+
+LaTeX Warning: Hyper reference `annex-list:quo-0031' on page 7 undefined on inp
+ut line 1424.
+
+
+LaTeX Warning: Hyper reference `annex-list:quo-0041' on page 7 undefined on inp
+ut line 1440.
+
+
+LaTeX Warning: Hyper reference `annex-list:quo-0051' on page 7 undefined on inp
+ut line 1456.
+
+<2021-07-10_quo-0011_en_v0-0-0.png, id=141, 597.73312pt x 845.40843pt>
+LaTeX Font Info:    Trying to load font information for T1+txtt on input line 1
+483.
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd
+File: t1txtt.fd 2000/12/15 v3.1
+)
+File: 2021-07-10_quo-0011_en_v0-0-0.png Graphic file (type png)
+<use 2021-07-10_quo-0011_en_v0-0-0.png>
+Package pdftex.def Info: 2021-07-10_quo-0011_en_v0-0-0.png  used on input line 
+1483.
+(pdftex.def)             Requested size: 316.1792pt x 447.20004pt.
+ [7]
+<2021-08-30_quo-0031_en_v0-0-0.png, id=154, 597.73312pt x 845.40843pt>
+File: 2021-08-30_quo-0031_en_v0-0-0.png Graphic file (type png)
+<use 2021-08-30_quo-0031_en_v0-0-0.png>
+Package pdftex.def Info: 2021-08-30_quo-0031_en_v0-0-0.png  used on input line 
+1492.
+(pdftex.def)             Requested size: 316.1792pt x 447.20004pt.
+ [8 <./2021-07-10_quo-0011_en_v0-0-0.png>]
+<2021-10-18_quo-0041_en_v0-0-0.png, id=163, 597.73312pt x 845.40843pt>
+File: 2021-10-18_quo-0041_en_v0-0-0.png Graphic file (type png)
+<use 2021-10-18_quo-0041_en_v0-0-0.png>
+Package pdftex.def Info: 2021-10-18_quo-0041_en_v0-0-0.png  used on input line 
+1501.
+(pdftex.def)             Requested size: 316.1792pt x 447.20004pt.
+ [9 <./2021-08-30_quo-0031_en_v0-0-0.png>]
+<2021-11-14_quo-0051_en_v0-0-0.png, id=172, 597.73312pt x 845.40843pt>
+File: 2021-11-14_quo-0051_en_v0-0-0.png Graphic file (type png)
+<use 2021-11-14_quo-0051_en_v0-0-0.png>
+Package pdftex.def Info: 2021-11-14_quo-0051_en_v0-0-0.png  used on input line 
+1510.
+(pdftex.def)             Requested size: 316.1792pt x 447.20004pt.
+ [10 <./2021-10-18_quo-0041_en_v0-0-0.png>]
+<2021-12-14_quo-0061_en_v0-0-0.png, id=181, 597.73312pt x 845.40843pt>
+File: 2021-12-14_quo-0061_en_v0-0-0.png Graphic file (type png)
+<use 2021-12-14_quo-0061_en_v0-0-0.png>
+Package pdftex.def Info: 2021-12-14_quo-0061_en_v0-0-0.png  used on input line 
+1519.
+(pdftex.def)             Requested size: 316.1792pt x 447.20004pt.
+ [11 <./2021-11-14_quo-0051_en_v0-0-0.png>]
+
+LaTeX Warning: Hyper reference `annex-list:inv-0012' on page 12 undefined on in
+put line 1557.
+
+
+LaTeX Warning: Hyper reference `annex-list:inv-0032' on page 12 undefined on in
+put line 1573.
+
+
+LaTeX Warning: Hyper reference `annex-list:inv-0042' on page 12 undefined on in
+put line 1589.
+
+
+LaTeX Warning: Hyper reference `annex-list:inv-0052' on page 12 undefined on in
+put line 1605.
+
+
+LaTeX Warning: Hyper reference `annex-list:inv-0062' on page 12 undefined on in
+put line 1621.
+
+[12 <./2021-12-14_quo-0061_en_v0-0-0.png>]
+<2021-07-10_inv-0012_en_v0-0-0.png, id=213, 597.73312pt x 845.40843pt>
+File: 2021-07-10_inv-0012_en_v0-0-0.png Graphic file (type png)
+<use 2021-07-10_inv-0012_en_v0-0-0.png>
+Package pdftex.def Info: 2021-07-10_inv-0012_en_v0-0-0.png  used on input line 
+1648.
+(pdftex.def)             Requested size: 316.1792pt x 447.20004pt.
+ [13 <./2021-07-10_inv-0012_en_v0-0-0.png>]
+<2021-08-24_inv-0022_en_v0-0-0.png, id=223, 597.73312pt x 845.40843pt>
+File: 2021-08-24_inv-0022_en_v0-0-0.png Graphic file (type png)
+<use 2021-08-24_inv-0022_en_v0-0-0.png>
+Package pdftex.def Info: 2021-08-24_inv-0022_en_v0-0-0.png  used on input line 
+1657.
+(pdftex.def)             Requested size: 316.1792pt x 447.20004pt.
+<2021-08-30_inv-0032_en_v0-0-0.png, id=226, 597.73312pt x 845.40843pt>
+File: 2021-08-30_inv-0032_en_v0-0-0.png Graphic file (type png)
+<use 2021-08-30_inv-0032_en_v0-0-0.png>
+Package pdftex.def Info: 2021-08-30_inv-0032_en_v0-0-0.png  used on input line 
+1666.
+(pdftex.def)             Requested size: 316.1792pt x 447.20004pt.
+ [14 <./2021-08-24_inv-0022_en_v0-0-0.png>]
+<2021-10-18_inv-0042_en_v0-0-0.png, id=235, 597.73312pt x 845.40843pt>
+File: 2021-10-18_inv-0042_en_v0-0-0.png Graphic file (type png)
+<use 2021-10-18_inv-0042_en_v0-0-0.png>
+Package pdftex.def Info: 2021-10-18_inv-0042_en_v0-0-0.png  used on input line 
+1675.
+(pdftex.def)             Requested size: 316.1792pt x 447.20004pt.
+ [15 <./2021-08-30_inv-0032_en_v0-0-0.png>]
+<2021-11-28_inv-0052_en_v0-0-0.png, id=244, 597.73312pt x 845.40843pt>
+File: 2021-11-28_inv-0052_en_v0-0-0.png Graphic file (type png)
+<use 2021-11-28_inv-0052_en_v0-0-0.png>
+Package pdftex.def Info: 2021-11-28_inv-0052_en_v0-0-0.png  used on input line 
+1684.
+(pdftex.def)             Requested size: 316.1792pt x 447.20004pt.
+ [16 <./2021-10-18_inv-0042_en_v0-0-0.png>]
+<2021-12-28_inv-0062_en_v0-0-0.png, id=253, 597.73312pt x 845.40843pt>
+File: 2021-12-28_inv-0062_en_v0-0-0.png Graphic file (type png)
+<use 2021-12-28_inv-0062_en_v0-0-0.png>
+Package pdftex.def Info: 2021-12-28_inv-0062_en_v0-0-0.png  used on input line 
+1693.
+(pdftex.def)             Requested size: 316.1792pt x 447.20004pt.
+ [17 <./2021-11-28_inv-0052_en_v0-0-0.png>]
+
+LaTeX Warning: Hyper reference `annex-list:rct-0013' on page 18 undefined on in
+put line 1728.
+
+
+LaTeX Warning: Hyper reference `annex-list:rct-0023' on page 18 undefined on in
+put line 1744.
+
+
+LaTeX Warning: Hyper reference `annex-list:rct-0033' on page 18 undefined on in
+put line 1760.
+
+
+LaTeX Warning: Hyper reference `annex-list:rct-0043' on page 18 undefined on in
+put line 1776.
+
+[18 <./2021-12-28_inv-0062_en_v0-0-0.png>]
+<2021-07-19_rct-0013_en_v0-0-0.png, id=284, 597.73312pt x 845.40843pt>
+File: 2021-07-19_rct-0013_en_v0-0-0.png Graphic file (type png)
+<use 2021-07-19_rct-0013_en_v0-0-0.png>
+Package pdftex.def Info: 2021-07-19_rct-0013_en_v0-0-0.png  used on input line 
+1802.
+(pdftex.def)             Requested size: 316.1792pt x 447.20004pt.
+<2021-08-30_rct-0023_en_v0-0-0.png, id=287, 597.73312pt x 845.40843pt>
+File: 2021-08-30_rct-0023_en_v0-0-0.png Graphic file (type png)
+<use 2021-08-30_rct-0023_en_v0-0-0.png>
+Package pdftex.def Info: 2021-08-30_rct-0023_en_v0-0-0.png  used on input line 
+1811.
+(pdftex.def)             Requested size: 316.1792pt x 447.20004pt.
+ [19 <./2021-07-19_rct-0013_en_v0-0-0.png>]
+<2021-10-04_rct-0033_en_v0-0-0.png, id=296, 597.73312pt x 845.40843pt>
+File: 2021-10-04_rct-0033_en_v0-0-0.png Graphic file (type png)
+<use 2021-10-04_rct-0033_en_v0-0-0.png>
+Package pdftex.def Info: 2021-10-04_rct-0033_en_v0-0-0.png  used on input line 
+1820.
+(pdftex.def)             Requested size: 316.1792pt x 447.20004pt.
+ [20 <./2021-08-30_rct-0023_en_v0-0-0.png>]
+<2021-10-30_rct-0043_en_v0-0-0.png, id=305, 597.73312pt x 845.40843pt>
+File: 2021-10-30_rct-0043_en_v0-0-0.png Graphic file (type png)
+<use 2021-10-30_rct-0043_en_v0-0-0.png>
+Package pdftex.def Info: 2021-10-30_rct-0043_en_v0-0-0.png  used on input line 
+1829.
+(pdftex.def)             Requested size: 316.1792pt x 447.20004pt.
+ [21 <./2021-10-04_rct-0033_en_v0-0-0.png>]
+
+LaTeX Warning: Hyper reference `annex-list:cre-0034' on page 22 undefined on in
+put line 1867.
+
+
+LaTeX Warning: Hyper reference `annex-list:cre-0044' on page 22 undefined on in
+put line 1883.
+
+[22 <./2021-10-30_rct-0043_en_v0-0-0.png>]
+<2021-10-04_cre-0034_en_v0-0-0.png, id=329, 597.73312pt x 845.40843pt>
+File: 2021-10-04_cre-0034_en_v0-0-0.png Graphic file (type png)
+<use 2021-10-04_cre-0034_en_v0-0-0.png>
+Package pdftex.def Info: 2021-10-04_cre-0034_en_v0-0-0.png  used on input line 
+1909.
+(pdftex.def)             Requested size: 316.1792pt x 447.20004pt.
+<2021-11-08_cre-0044_en_v0-0-0.png, id=332, 597.73312pt x 845.40843pt>
+File: 2021-11-08_cre-0044_en_v0-0-0.png Graphic file (type png)
+<use 2021-11-08_cre-0044_en_v0-0-0.png>
+Package pdftex.def Info: 2021-11-08_cre-0044_en_v0-0-0.png  used on input line 
+1918.
+(pdftex.def)             Requested size: 316.1792pt x 447.20004pt.
+ [23 <./2021-10-04_cre-0034_en_v0-0-0.png>] [24 <./2021-11-08_cre-0044_en_v0-0-
+0.png>]
+Chapter 7.
+No file consortium_finance-funding_sales8cc.ind.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1933.
+[25
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1933.
+ (./consortium_finance-funding_sales8cc.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1933.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1933.
+
+
+
+Package rerunfilecheck Warning: File `consortium_finance-funding_sales8cc.out' 
+has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `consortium_finance-funding_sales8cc
+.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  4F411DA7ECE2A4B604FAC4003AD4BD6C;4496.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1933.
+ ) 
+Here is how much of TeX's memory you used:
+ 15951 strings out of 482269
+ 228848 string characters out of 5944625
+ 533068 words of memory out of 5000000
+ 30967 multiletter control sequences out of 15000+600000
+ 591396 words of font info for 70 fonts, out of 8000000 for 9000
+ 310 hyphenation exceptions out of 8191
+ 44i,19n,51p,377b,704s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ec.enc}{/usr/share/texmf/fonts/e
+nc/dvips/tex-gyre/q-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/symbols/msam10.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></u
+sr/share/texmf/fonts/type1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/ty
+pe1/public/tex-gyre/qhvr.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmb
+.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf/f
+onts/type1/public/tex-gyre/qtmri.pfb>
+Output written on consortium_finance-funding_sales8cc.pdf (27 pages, 1188379 by
+tes).
+PDF statistics:
+ 403 PDF objects out of 1000 (max. 8388607)
+ 323 compressed objects within 4 object streams
+ 83 named destinations out of 1000 (max. 500000)
+ 106 words of extra memory for PDF output out of 10000 (max. 10000000)
+

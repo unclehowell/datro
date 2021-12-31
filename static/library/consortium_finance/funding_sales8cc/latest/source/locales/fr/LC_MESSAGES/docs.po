@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DATRO Consortium Creditors 0.0.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-29 17:36-0400\n"
+"POT-Creation-Date: 2021-12-31 11:37-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../source/aftersales.rst:2 ../../source/annex-list.rst:188
+#: ../../source/aftersales.rst:2 ../../source/annex-list.rst:238
 msgid "After Sales"
 msgstr ""
 
@@ -26,7 +26,7 @@ msgstr ""
 msgid "See below aftersales made to ClientID: 8CC e.g. Credit Notes:"
 msgstr ""
 
-#: ../../source/aftersales.rst:7 ../../source/annex-list.rst:191
+#: ../../source/aftersales.rst:7 ../../source/annex-list.rst:242
 msgid "Credits"
 msgstr ""
 
@@ -89,21 +89,19 @@ msgid "**GBP**"
 msgstr ""
 
 #: ../../source/_static/custom/credits-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
 #: ../../source/_static/custom/receipts-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "2021/08/30"
+msgid "2021/10/04"
 msgstr ""
 
-#: ../../source/_static/credits.csv:1
+#: ../../source/_static/annex.csv:1 ../../source/_static/credits.csv:1
 #: ../../source/_static/custom/credits-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
 msgid ":ref:`CRE-0034`"
 msgstr ""
 
 #: ../../source/_static/custom/credits-master.csv:1
-msgid "Hardware Rebate 1"
+msgid "Eqpt. Rebate (Pi’s)"
 msgstr ""
 
 #: ../../source/_static/custom/credits-master.csv:1
@@ -124,45 +122,27 @@ msgid "USD"
 msgstr ""
 
 #: ../../source/_static/custom/credits-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
 #: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-msgid "1272.03"
+msgid "1289.63"
 msgstr ""
 
 #: ../../source/_static/custom/credits-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "2021/10/18"
+msgid "2021/11/08"
 msgstr ""
 
-#: ../../source/_static/credits.csv:1
+#: ../../source/_static/annex.csv:1 ../../source/_static/credits.csv:1
 #: ../../source/_static/custom/credits-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
 msgid ":ref:`CRE-0044`"
 msgstr ""
 
 #: ../../source/_static/custom/credits-master.csv:1
-msgid "Hardware Rebate 2"
+msgid "Eqpt. Rebate (UpBoards)"
 msgstr ""
 
 #: ../../source/_static/custom/credits-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-msgid "1000.00"
-msgstr ""
-
-#: ../../source/_static/custom/credits-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-msgid "728.39"
+msgid "1297.16"
 msgstr ""
 
 #: ../../source/annex-list.rst:2
@@ -173,15 +153,15 @@ msgstr ""
 msgid "This section contains the Annexures, referenced in the text above."
 msgstr ""
 
-#: ../../source/annex-list.rst:9
+#: ../../source/annex-list.rst:8
 msgid "Download Links"
 msgstr ""
 
-#: ../../source/annex-list.rst:11
+#: ../../source/annex-list.rst:10
 msgid "This table contains the download links for the Annexed documents:"
 msgstr ""
 
-#: ../../source/annex-list.rst:13
+#: ../../source/annex-list.rst:12
 msgid "Annexures Download Links"
 msgstr ""
 
@@ -225,22 +205,22 @@ msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/quotes.csv:1
 msgid ""
-"`link(xx.xkb) <https://wayback.datro.xyz/2021-07-01_quo-"
-"0011_en_v0-0-0.pdf>`__"
+"`link(34.3kb) <https://wayback.datro.xyz/2021-07-10_consortium_finance-"
+"funding_sales8cc_en_quo-0011_v0-0-0.pdf>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/quotes.csv:1
 msgid ""
-"`link(xx.xkb) "
+"`link(54.6kb) "
 "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-07"
-"-01_quo-0011_en_v0-0-0.svg>`__"
+"-10_quo-0011_en_v0-0-0.svg>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/quotes.csv:1
 msgid ""
-"`link(xx.xkb) "
+"`link(96.3kb) "
 "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-07"
-"-01_quo-0011_en_v0-0-0.png>`__"
+"-10_quo-0011_en_v0-0-0.png>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
@@ -256,20 +236,20 @@ msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/quotes.csv:1
 msgid ""
-"`link(xx.xkb) <https://wayback.datro.xyz/2021-08-30_quo-"
-"0031_en_v0-0-0.pdf>`__"
+"`link(34.6kb) <https://wayback.datro.xyz/2021-08-30_consortium_finance-"
+"funding_sales8cc_en_quo-0031_v0-0-0.pdf>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/quotes.csv:1
 msgid ""
-"`link(xx.xkb) "
+"`link(54.6kb) "
 "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-08"
 "-30_quo-0031_en_v0-0-0.svg>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/quotes.csv:1
 msgid ""
-"`link(xx.xkb) "
+"`link(97.8kb) "
 "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-08"
 "-30_quo-0031_en_v0-0-0.png>`__"
 msgstr ""
@@ -290,20 +270,20 @@ msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/quotes.csv:1
 msgid ""
-"`link(xx.xkb) <https://wayback.datro.xyz/2021-10-18_quo-"
-"0041_en_v0-0-0.pdf>`__"
+"`link(33.9kb) <https://wayback.datro.xyz/2021-10-18_consortium_finance-"
+"funding_sales8cc_en_quo-0041_v0-0-0.pdf>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/quotes.csv:1
 msgid ""
-"`link(xx.xkb) "
+"`link(54.5kb) "
 "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
 "-18_quo-0041_en_v0-0-0.svg>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/quotes.csv:1
 msgid ""
-"`link(xx.xkb) "
+"`link(94.3kb) "
 "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
 "-18_quo-0041_en_v0-0-0.png>`__"
 msgstr ""
@@ -311,90 +291,61 @@ msgstr ""
 #: ../../source/_static/annex.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
 #: ../../source/_static/quotes.csv:1
-msgid ":ref:`QUO-0052`"
+msgid ":ref:`QUO-0051`"
 msgstr ""
 
-#: ../../source/_static/annex.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
+#: ../../source/_static/quotes.csv:1
 msgid "OS Mandate & Brief"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/quotes.csv:1
 msgid ""
-"`link(xx.xkb) <https://wayback.datro.xyz/2021-11-14_quo-"
-"0052_en_v0-0-0.pdf>`__"
+"`link(35.1kb) <https://wayback.datro.xyz/2021-11-14_consortium_finance-"
+"funding_sales8cc_en_quo-0051_v0-0-0.pdf>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/quotes.csv:1
 msgid ""
-"`link(xx.xkb) "
+"`link(54.6kb) "
 "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-11"
 "-14_quo-0052_en_v0-0-0.svg>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/quotes.csv:1
 msgid ""
-"`link(xx.xkb) "
+"`link(96.9kb) "
 "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-11"
 "-14_quo-0052_en_v0-0-0.png>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/quotes.csv:1
-msgid ":ref:`QUO-0062`"
+msgid ":ref:`QUO-0061`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
+msgid "OS Plan & Execution"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-msgid "OS Plan & Execute"
-msgstr ""
-
-#: ../../source/_static/annex.csv:1 ../../source/_static/quotes.csv:1
 msgid ""
-"`link(xx.xkb) <https://wayback.datro.xyz/2021-12-14_quo-"
-"0062_en_v0-0-0.pdf>`__"
-msgstr ""
-
-#: ../../source/_static/annex.csv:1 ../../source/_static/quotes.csv:1
-msgid ""
-"`link(xx.xkb) "
-"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-12"
-"-14_quo-0062_en_v0-0-0.svg>`__"
-msgstr ""
-
-#: ../../source/_static/annex.csv:1 ../../source/_static/quotes.csv:1
-msgid ""
-"`link(xx.xkb) "
-"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-12"
-"-14_quo-0062_en_v0-0-0.png>`__"
-msgstr ""
-
-#: ../../source/_static/annex.csv:1 ../../source/_static/quotes.csv:1
-msgid ":ref:`QUO-0072`"
+"`link(34.7kb) <https://wayback.datro.xyz/2021-12-14_consortium_finance-"
+"funding_sales8cc_en_quo-0061_v0-0-0.pdf>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-msgid "OS Deliverables"
+msgid ""
+"`link(54.6kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-12"
+"-14_quo-0061_en_v0-0-0.svg>`__"
 msgstr ""
 
-#: ../../source/_static/annex.csv:1 ../../source/_static/quotes.csv:1
+#: ../../source/_static/annex.csv:1
 msgid ""
-"`link(xx.xkb) <https://wayback.datro.xyz/2022-01-14_quo-"
-"0072_en_v0-0-0.pdf>`__"
-msgstr ""
-
-#: ../../source/_static/annex.csv:1 ../../source/_static/quotes.csv:1
-msgid ""
-"`link(xx.xkb) "
-"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2022-01"
-"-14_quo-0072_en_v0-0-0.svg>`__"
-msgstr ""
-
-#: ../../source/_static/annex.csv:1 ../../source/_static/quotes.csv:1
-msgid ""
-"`link(xx.xkb) "
-"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2022-01"
-"-14_quo-0072_en_v0-0-0.png>`__"
+"`link(96.9kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-12"
+"-14_quo-0061_en_v0-0-0.png>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
@@ -413,22 +364,22 @@ msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
 msgid ""
-"`link(xx.xkb) <https://wayback.datro.xyz/2021-07-01_consortium_finance-"
+"`link(34.3kb) <https://wayback.datro.xyz/2021-07-10_consortium_finance-"
 "funding_sales8cc_en_inv-0012_v0-0-0.pdf>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
 msgid ""
-"`link(xx.xkb) "
-"<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/svg/2021-07"
-"-01_inv-0012_v0-0-0.svg>`__"
+"`link(50.2kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/svg/2021-07"
+"-10_inv-0012_en_v0-0-0.svg>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
 msgid ""
-"`link(xx.xkb) "
-"<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/png/2021-07"
-"-01_inv-0012_v0-0-0.png>`__"
+"`link(94.1kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/png/2021-07"
+"-10_inv-0012_en_v0-0-0.png>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
@@ -440,22 +391,22 @@ msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
 msgid ""
-"`link(xx.xkb) <https://wayback.datro.xyz/2021-08-30_consortium_finance-"
+"`link(35.0kb) <https://wayback.datro.xyz/2021-08-30_consortium_finance-"
 "funding_sales8cc_en_inv-0032_v0-0-0.pdf>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
 msgid ""
-"`link(xx.xkb) "
-"<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/svg/2021-08"
-"-30_inv-0032_v0-0-0.svg>`__"
+"`link(50.3kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/svg/2021-08"
+"-30_inv-0032_en_v0-0-0.svg>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
 msgid ""
-"`link(xx.xkb) "
-"<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/png/2021-08"
-"-30_inv-0042_v0-0-0.png>`__"
+"`link(96.3kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/png/2021-08"
+"-30_inv-0042_en_v0-0-0.png>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
@@ -467,22 +418,22 @@ msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
 msgid ""
-"`link(xx.xkb) <https://wayback.datro.xyz/2021-10-18_consortium_finance-"
+"`link(31.3kb) <https://wayback.datro.xyz/2021-10-18_consortium_finance-"
 "funding_sales8cc_en_inv-0042_v0-0-0.pdf>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
 msgid ""
-"`link(xx.xkb) "
-"<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/svg/2021-10"
-"-18_inv-0042_v0-0-0.svg>`__"
+"`link(40.8kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/svg/2021-10"
+"-18_inv-0042_en_v0-0-0.svg>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
 msgid ""
-"`link(xx.xkb) "
-"<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/png/2021-10"
-"-18_inv-0042_v0-0-0.png>`__"
+"`link(82.8kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/png/2021-10"
+"-18_inv-0042_en_v0-0-0.png>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
@@ -493,27 +444,23 @@ msgid ":ref:`INV-0052`"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
-msgid "Mandate & Brief"
-msgstr ""
-
-#: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
 msgid ""
-"`link(xx.xkb) <https://wayback.datro.xyz/2021-11-28_consortium_finance-"
+"`link(34.5kb) <https://wayback.datro.xyz/2021-11-28_consortium_finance-"
 "funding_sales8cc_en_inv-0052_v0-0-0.pdf>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
 msgid ""
-"`link(xx.xkb) "
-"<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/svg/2021-12"
-"-28_inv-0052_v0-0-0.svg>`__"
+"`link(50.3kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/svg/2021-12"
+"-28_inv-0052_en_v0-0-0.svg>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
 msgid ""
-"`link(xx.xkb) "
-"<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/png/2021-11"
-"-28_inv-0052_v0-0-0.png>`__"
+"`link(95.1kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/png/2021-11"
+"-28_inv-0052_en_v0-0-0.png>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
@@ -524,119 +471,288 @@ msgid ":ref:`INV-0062`"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
-msgid "Plan & Execute"
-msgstr ""
-
-#: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
 msgid ""
-"`link(xx.xkb) <https://wayback.datro.xyz/2021-12-28_consortium_finance-"
+"`link(34.7kb) <https://wayback.datro.xyz/2021-12-28_consortium_finance-"
 "funding_sales8cc_en_inv-0062_v0-0-0.pdf>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
 msgid ""
-"`link(xx.xkb) "
-"<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/svg/2021-12"
-"-28_inv-0062_v0-0-0.svg>`__"
+"`link(50.3kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/svg/2021-12"
+"-28_inv-0062_en_v0-0-0.svg>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
 msgid ""
-"`link(xx.xkb) "
-"<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/png/2021-12"
-"-28_inv-0062_v0-0-0.png>`__"
+"`link(95.7kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/png/2021-12"
+"-28_inv-0062_en_v0-0-0.png>`__"
 msgstr ""
 
-#: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
-msgid ":ref:`INV-0072`"
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/receipts.csv:1
+msgid ":ref:`RCT-0013`"
 msgstr ""
 
-#: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
-msgid "Output & Delivery"
-msgstr ""
-
-#: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
+#: ../../source/_static/annex.csv:1 ../../source/_static/receipts.csv:1
 msgid ""
-"`link(xx.xkb) <https://wayback.datro.xyz/2022-01-28_consortium_finance-"
-"funding_sales8cc_en_inv-0072_v0-0-0.pdf>`__"
+"`link(28.8kb) <https://wayback.datro.xyz/2021-07-19_consortium_finance-"
+"funding_sales8cc_en_rct-0013_v0-0-0.pdf>`__"
 msgstr ""
 
-#: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
+#: ../../source/_static/annex.csv:1 ../../source/_static/receipts.csv:1
 msgid ""
-"`link(xx.xkb) "
-"<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/svg/2022-01"
-"-28_inv-0072_v0-0-0.svg>`__"
+"`link(42.0kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/svg/2021-07"
+"-19_rct-0013_en_v0-0-0.svg>`__"
 msgstr ""
 
-#: ../../source/_static/annex.csv:1 ../../source/_static/invoices.csv:1
+#: ../../source/_static/annex.csv:1 ../../source/_static/receipts.csv:1
 msgid ""
-"`link(xx.xkb) "
-"<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/png/2022-01"
-"-28_inv-0072_v0-0-0.png>`__"
+"`link(65.5kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/png/2021-07"
+"-19_rct-0013_en_v0-0-0.png>`__"
 msgstr ""
 
-#: ../../source/annex-list.rst:21 ../../source/tenders.rst:2
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/receipts.csv:1
+msgid ":ref:`RCT-0023`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1 ../../source/_static/receipts.csv:1
+msgid "HBnB+ Project Deposit"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1 ../../source/_static/receipts.csv:1
+msgid ""
+"`link(28.7kb) <https://wayback.datro.xyz/2021-08-30_consortium_finance-"
+"funding_sales8cc_en_rct-0023_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1 ../../source/_static/receipts.csv:1
+msgid ""
+"`link(42.0kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/svg/2021-08"
+"-30_rct-0013_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1 ../../source/_static/receipts.csv:1
+msgid ""
+"`link(65.8kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/png/2021-08"
+"-30_rct-0013_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/receipts.csv:1
+msgid ":ref:`RCT-0033`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1 ../../source/_static/receipts.csv:1
+msgid ""
+"`link(28.7kb) <https://wayback.datro.xyz/2021-10-04_consortium_finance-"
+"funding_sales8cc_en_rct-0033_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1 ../../source/_static/receipts.csv:1
+msgid ""
+"`link(42.0kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/svg/2021-10"
+"-04_rct-0033_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1 ../../source/_static/receipts.csv:1
+msgid ""
+"`link(66.2kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/png/2021-10"
+"-04_rct-0033_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/receipts.csv:1
+msgid ":ref:`RCT-0043`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1 ../../source/_static/credits.csv:1
+#: ../../source/_static/receipts.csv:1
+msgid "OpenBios Upgrade"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1 ../../source/_static/receipts.csv:1
+msgid ""
+"`link(28.7kb) <https://wayback.datro.xyz/2021-10-30_consortium_finance-"
+"funding_sales8cc_en_rct-0043_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1 ../../source/_static/receipts.csv:1
+msgid ""
+"`link(42.0kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/svg/2021-10"
+"-30_rct-0043_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1 ../../source/_static/receipts.csv:1
+msgid ""
+"`link(70.0kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/png/2021-10"
+"-30_rct-0043_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1 ../../source/_static/credits.csv:1
+msgid "Hardware Rebate (Pi’s)"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1 ../../source/_static/credits.csv:1
+msgid ""
+"`link(29.2kb) <https://wayback.datro.xyz/2021-10-04_consortium_finance-"
+"funding_sales8cc_en_rct-0034_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1 ../../source/_static/credits.csv:1
+msgid ""
+"`link(42.0kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/svg/2021-10"
+"-04_rct-0034_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1 ../../source/_static/credits.csv:1
+msgid ""
+"`link(66.4kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/png/2021-10"
+"-04_rct-0034_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1 ../../source/_static/credits.csv:1
+msgid ""
+"`link(29.6kb) <https://wayback.datro.xyz/2021-11-08_consortium_finance-"
+"funding_sales8cc_en_rct-0044_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1 ../../source/_static/credits.csv:1
+msgid ""
+"`link(42.3kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/svg/2021-11"
+"-08_rct-0044_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1 ../../source/_static/credits.csv:1
+msgid ""
+"`link(71.0kb) "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/png/2021-11"
+"-08_rct-0044_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/annex-list.rst:20 ../../source/tenders.rst:2
 msgid "Tenders"
 msgstr ""
 
-#: ../../source/annex-list.rst:24 ../../source/tenders.rst:17
+#: ../../source/annex-list.rst:23 ../../source/tenders.rst:17
 msgid "Quotes"
 msgstr ""
 
-#: ../../source/annex-list.rst:26
+#: ../../source/annex-list.rst:25
 msgid "This table contains the download links for the Quotes:"
 msgstr ""
 
-#: ../../source/annex-list.rst:28
+#: ../../source/annex-list.rst:27
 msgid "Quote Download Links"
 msgstr ""
 
-#: ../../source/_static/quotes.csv:1
-msgid "Mandate&Brief"
+#: ../../source/annex-list.rst:35
+msgid "QUO-0011"
 msgstr ""
 
-#: ../../source/_static/quotes.csv:1
-msgid "Plan&Execute"
+#: ../../source/annex-list.rst:37
+msgid ""
+"Download in `PDF Format <https://wayback.datro.xyz/2021-07"
+"-10_consortium_finance-funding_sales8cc_en_quo-0011_v0-0-0.pdf>`__ and/or"
+" `SVG Format "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-07"
+"-10_quo-0011_en_v0-0-0.svg>`__"
 msgstr ""
 
-#: ../../source/_static/quotes.csv:1
-msgid "Deliverables"
+#: ../../source/annex-list.rst:47
+msgid "QUO-0031"
 msgstr ""
 
-#: ../../source/annex-list.rst:36
-msgid "QUO-0091"
+#: ../../source/annex-list.rst:49
+msgid ""
+"Download in `PDF Format <https://wayback.datro.xyz/2021-08"
+"-30_consortium_finance-funding_sales8cc_en_quo-0031_v0-0-0.pdf>`__ and/or"
+" `SVG Format "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-08"
+"-30_quo-0031_en_v0-0-0.svg>`__"
 msgstr ""
 
-#: ../../source/annex-list.rst:38
+#: ../../source/annex-list.rst:60
+msgid "QUO-0041"
+msgstr ""
+
+#: ../../source/annex-list.rst:62
+msgid ""
+"Download in `PDF Format <https://wayback.datro.xyz/2021-10"
+"-18_consortium_finance-funding_sales8cc_en_quo-0041_v0-0-0.pdf>`__ and/or"
+" `SVG Format "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
+"-18_quo-0041_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/annex-list.rst:73
+msgid "QUO-0051"
+msgstr ""
+
+#: ../../source/annex-list.rst:75
+msgid ""
+"Download in `PDF Format <https://wayback.datro.xyz/2021-11"
+"-14_consortium_finance-funding_sales8cc_en_quo-0051_v0-0-0.pdf>`__ and/or"
+" `SVG Format "
+"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-11"
+"-14_quo-0051_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/annex-list.rst:85
+msgid "QUO-0061"
+msgstr ""
+
+#: ../../source/annex-list.rst:87
 msgid ""
 "Download in `PDF Format <https://wayback.datro.xyz/2021-12"
-"-27_consortium_finance-funding_sales8cc_en_quo-0091_v0-0-1.pdf>`__ and/or"
+"-14_consortium_finance-funding_sales8cc_en_quo-0061_v0-0-0.pdf>`__ and/or"
 " `SVG Format "
 "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-12"
-"-27_quo-0091_en_v0-0-1.svg>`__"
+"-14_quo-0061_en_v0-0-0.svg>`__"
 msgstr ""
 
-#: ../../source/annex-list.rst:49 ../../source/billables.rst:2
+#: ../../source/annex-list.rst:99 ../../source/billables.rst:2
 msgid "Billables"
 msgstr ""
 
-#: ../../source/annex-list.rst:52 ../../source/billables.rst:8
+#: ../../source/annex-list.rst:103 ../../source/billables.rst:8
 msgid "Invoices"
 msgstr ""
 
-#: ../../source/annex-list.rst:54
+#: ../../source/annex-list.rst:105
 msgid "This table contains the download links for the Invoices:"
 msgstr ""
 
-#: ../../source/annex-list.rst:56
+#: ../../source/annex-list.rst:107
 msgid "Invoice Download Links"
 msgstr ""
 
-#: ../../source/annex-list.rst:64
+#: ../../source/annex-list.rst:114
 msgid "INV-0012"
 msgstr ""
 
-#: ../../source/annex-list.rst:66
+#: ../../source/annex-list.rst:116
 msgid ""
 "Download in `PDF Format <https://wayback.datro.xyz/2021-07"
 "-10_consortium_finance-funding_sales8cc_en_inv-0012_v0-0-0.pdf>`__ and/or"
@@ -645,11 +761,11 @@ msgid ""
 "-10_inv-0012_en_v0-0-0.svg>`__"
 msgstr ""
 
-#: ../../source/annex-list.rst:75
+#: ../../source/annex-list.rst:125
 msgid "INV-0022"
 msgstr ""
 
-#: ../../source/annex-list.rst:77
+#: ../../source/annex-list.rst:127
 msgid ""
 "Download in `PDF Format <https://wayback.datro.xyz/2021-08"
 "-24_consortium_finance-funding_sales8cc_en_inv-0022_v0-0-0.pdf>`__ and/or"
@@ -658,11 +774,11 @@ msgid ""
 "-24_inv-0022_en_v0-0-0.svg>`__"
 msgstr ""
 
-#: ../../source/annex-list.rst:86
+#: ../../source/annex-list.rst:136
 msgid "INV-0032"
 msgstr ""
 
-#: ../../source/annex-list.rst:88
+#: ../../source/annex-list.rst:138
 msgid ""
 "Download in `PDF Format <https://wayback.datro.xyz/2021-08"
 "-30_consortium_finance-funding_sales8cc_en_inv-0032_v0-0-0.pdf>`__ and/or"
@@ -671,11 +787,11 @@ msgid ""
 "-30_inv-0032_en_v0-0-0.svg>`__"
 msgstr ""
 
-#: ../../source/annex-list.rst:97
+#: ../../source/annex-list.rst:147
 msgid "INV-0042"
 msgstr ""
 
-#: ../../source/annex-list.rst:99
+#: ../../source/annex-list.rst:149
 msgid ""
 "Download in `PDF Format <https://wayback.datro.xyz/2021-10"
 "-18_consortium_finance-funding_sales8cc_en_inv-0042_v0-0-0.pdf>`__ and/or"
@@ -684,11 +800,11 @@ msgid ""
 "-18_inv-0042_en_v0-0-0.svg>`__"
 msgstr ""
 
-#: ../../source/annex-list.rst:108
+#: ../../source/annex-list.rst:158
 msgid "INV-0052"
 msgstr ""
 
-#: ../../source/annex-list.rst:110
+#: ../../source/annex-list.rst:160
 msgid ""
 "Download in `PDF Format <https://wayback.datro.xyz/2021-11"
 "-28_consortium_finance-funding_sales8cc_en_inv-0052_v0-0-0.pdf>`__ and/or"
@@ -697,11 +813,11 @@ msgid ""
 "-28_inv-0052_en_v0-0-0.svg>`__"
 msgstr ""
 
-#: ../../source/annex-list.rst:120
+#: ../../source/annex-list.rst:170
 msgid "INV-0062"
 msgstr ""
 
-#: ../../source/annex-list.rst:122
+#: ../../source/annex-list.rst:172
 msgid ""
 "Download in `PDF Format <https://wayback.datro.xyz/2021-12"
 "-28_consortium_finance-funding_sales8cc_en_inv-0062_v0-0-0.pdf>`__ and/or"
@@ -710,135 +826,23 @@ msgid ""
 "-28_inv-0062_en_v0-0-0.svg>`__"
 msgstr ""
 
-#: ../../source/annex-list.rst:132 ../../source/billables.rst:18
+#: ../../source/annex-list.rst:182 ../../source/billables.rst:18
 msgid "Receipts"
 msgstr ""
 
-#: ../../source/annex-list.rst:134
+#: ../../source/annex-list.rst:184
 msgid "This table contains the download links for the Receipts:"
 msgstr ""
 
-#: ../../source/annex-list.rst:136
+#: ../../source/annex-list.rst:186
 msgid "Receipt Download Links"
 msgstr ""
 
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/receipts.csv:1
-msgid ":ref:`RCT-0013`"
-msgstr ""
-
-#: ../../source/_static/receipts.csv:1
-msgid ""
-"`link(xx.xkb) <https://wayback.datro.xyz/2021-07-19_consortium_finance-"
-"funding_sales8cc_en_rct-0013_v0-0-0.pdf>`__"
-msgstr ""
-
-#: ../../source/_static/receipts.csv:1
-msgid ""
-"`link(xx.xkb) "
-"<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/svg/2021-07"
-"-19_rct-0013_v0-0-0.svg>`__"
-msgstr ""
-
-#: ../../source/_static/receipts.csv:1
-msgid ""
-"`link(xx.xkb) "
-"<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/png/2021-07"
-"-19_rct-0013_v0-0-0.png>`__"
-msgstr ""
-
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/receipts.csv:1
-msgid ":ref:`RCT-0023`"
-msgstr ""
-
-#: ../../source/_static/receipts.csv:1
-msgid "HBnB+ Project 10%"
-msgstr ""
-
-#: ../../source/_static/receipts.csv:1
-msgid ""
-"`link(xx.xkb) <https://wayback.datro.xyz/2021-08-30_consortium_finance-"
-"funding_sales8cc_en_rct-0023_v0-0-0.pdf>`__"
-msgstr ""
-
-#: ../../source/_static/receipts.csv:1
-msgid ""
-"`link(xx.xkb) "
-"<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/svg/2021-08"
-"-30_rct-0023_v0-0-0.svg>`__"
-msgstr ""
-
-#: ../../source/_static/receipts.csv:1
-msgid ""
-"`link(xx.xkb) "
-"<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/png/2021-08"
-"-30_rct-0023_v0-0-0.png>`__"
-msgstr ""
-
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/receipts.csv:1
-msgid ":ref:`RCT-0033`"
-msgstr ""
-
-#: ../../source/_static/receipts.csv:1
-msgid ""
-"`link(xx.xkb) <https://wayback.datro.xyz/2021-10-04_consortium_finance-"
-"funding_sales8cc_en_rct-0033_v0-0-0.pdf>`__"
-msgstr ""
-
-#: ../../source/_static/receipts.csv:1
-msgid ""
-"`link(xx.xkb) "
-"<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/svg/2021-10"
-"-04_rct-0033_v0-0-0.svg>`__"
-msgstr ""
-
-#: ../../source/_static/receipts.csv:1
-msgid ""
-"`link(xx.xkb) "
-"<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/png/2021-10"
-"-04_rct-0033_v0-0-0.png>`__"
-msgstr ""
-
-#: ../../source/_static/custom/receipts-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/receipts.csv:1
-msgid ":ref:`RCT-0043`"
-msgstr ""
-
-#: ../../source/_static/receipts.csv:1
-msgid "OpenBios Upgrade"
-msgstr ""
-
-#: ../../source/_static/receipts.csv:1
-msgid ""
-"`link(xx.xkb) <https://wayback.datro.xyz/2021-10-30_consortium_finance-"
-"funding_sales8cc_en_rct-0043_v0-0-0.pdf>`__"
-msgstr ""
-
-#: ../../source/_static/receipts.csv:1
-msgid ""
-"`link(xx.xkb) "
-"<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/svg/2021-10"
-"-30_rct-0043_v0-0-0.svg>`__"
-msgstr ""
-
-#: ../../source/_static/receipts.csv:1
-msgid ""
-"`link(xx.xkb) "
-"<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/png/2021-10"
-"-30_rct-0043_v0-0-0.png>`__"
-msgstr ""
-
-#: ../../source/annex-list.rst:144
+#: ../../source/annex-list.rst:193
 msgid "RCT-0013"
 msgstr ""
 
-#: ../../source/annex-list.rst:146
+#: ../../source/annex-list.rst:195
 msgid ""
 "Download in `PDF Format <https://wayback.datro.xyz/2021-07"
 "-19_consortium_finance-funding_sales8cc_en_rct-0013_v0-0-0.pdf>`__ and/or"
@@ -847,11 +851,11 @@ msgid ""
 "-19_rct-0013_en_v0-0-0.svg>`__"
 msgstr ""
 
-#: ../../source/annex-list.rst:155
+#: ../../source/annex-list.rst:204
 msgid "RCT-0023"
 msgstr ""
 
-#: ../../source/annex-list.rst:157
+#: ../../source/annex-list.rst:206
 msgid ""
 "Download in `PDF Format <https://wayback.datro.xyz/2021-08"
 "-30_consortium_finance-funding_sales8cc_en_rct-0023_v0-0-0.pdf>`__ and/or"
@@ -860,11 +864,11 @@ msgid ""
 "-30_rct-0023_en_v0-0-0.svg>`__"
 msgstr ""
 
-#: ../../source/annex-list.rst:166
+#: ../../source/annex-list.rst:215
 msgid "RCT-0033"
 msgstr ""
 
-#: ../../source/annex-list.rst:168
+#: ../../source/annex-list.rst:217
 msgid ""
 "Download in `PDF Format <https://wayback.datro.xyz/2021-10"
 "-04_consortium_finance-funding_sales8cc_en_rct-0033_v0-0-0.pdf>`__ and/or"
@@ -873,11 +877,11 @@ msgid ""
 "-04_rct-0033_en_v0-0-0.svg>`__"
 msgstr ""
 
-#: ../../source/annex-list.rst:177
+#: ../../source/annex-list.rst:226
 msgid "RCT-0043"
 msgstr ""
 
-#: ../../source/annex-list.rst:179
+#: ../../source/annex-list.rst:228
 msgid ""
 "Download in `PDF Format <https://wayback.datro.xyz/2021-10"
 "-30_consortium_finance-funding_sales8cc_en_rct-0043_v0-0-0.pdf>`__ and/or"
@@ -886,67 +890,19 @@ msgid ""
 "-30_rct-0043_en_v0-0-0.svg>`__"
 msgstr ""
 
-#: ../../source/annex-list.rst:193
+#: ../../source/annex-list.rst:244
 msgid "This table contains the download links for the Credit Notes:"
 msgstr ""
 
-#: ../../source/annex-list.rst:195
+#: ../../source/annex-list.rst:246
 msgid "Credit Note Download Links"
 msgstr ""
 
-#: ../../source/_static/credits.csv:1
-msgid "Hardware Rebated 1"
-msgstr ""
-
-#: ../../source/_static/credits.csv:1
-msgid ""
-"`link(xx.xkb) <https://wayback.datro.xyz/2021-10-04_cre-"
-"0034_en_v0-0-0.pdf>`__"
-msgstr ""
-
-#: ../../source/_static/credits.csv:1
-msgid ""
-"`link(xx.xkb) "
-"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
-"-04_cre-0034_en_v0-0-0.svg>`__"
-msgstr ""
-
-#: ../../source/_static/credits.csv:1
-msgid ""
-"`link(xx.xkb) "
-"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
-"-04_cre-0034_en_v0-0-0.png>`__"
-msgstr ""
-
-#: ../../source/_static/credits.csv:1
-msgid "Hardware Rebated 2"
-msgstr ""
-
-#: ../../source/_static/credits.csv:1
-msgid ""
-"`link(xx.xkb) <https://wayback.datro.xyz/2021-10-30_cre-"
-"0044_en_v0-0-0.pdf>`__"
-msgstr ""
-
-#: ../../source/_static/credits.csv:1
-msgid ""
-"`link(xx.xkb) "
-"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
-"-30_cre-0044_en_v0-0-0.svg>`__"
-msgstr ""
-
-#: ../../source/_static/credits.csv:1
-msgid ""
-"`link(xx.xkb) "
-"<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
-"-30_cre-0044_en_v0-0-0.png>`__"
-msgstr ""
-
-#: ../../source/annex-list.rst:203
+#: ../../source/annex-list.rst:254
 msgid "CRE-0034"
 msgstr ""
 
-#: ../../source/annex-list.rst:205
+#: ../../source/annex-list.rst:256
 msgid ""
 "Download in `PDF Format <https://wayback.datro.xyz/2021-10"
 "-04_consortium_finance-funding_sales8cc_en_cre-0034_v0-0-0.pdf>`__ and/or"
@@ -955,11 +911,11 @@ msgid ""
 "-04_cre-0034_en_v0-0-0.svg>`__"
 msgstr ""
 
-#: ../../source/annex-list.rst:214
+#: ../../source/annex-list.rst:265
 msgid "CRE-0044"
 msgstr ""
 
-#: ../../source/annex-list.rst:216
+#: ../../source/annex-list.rst:267
 msgid ""
 "Download in `PDF Format <https://wayback.datro.xyz/2021-11"
 "-08_consortium_finance-funding_sales8cc_en_cre-0044_v0-0-0.pdf>`__ and/or"
@@ -968,12 +924,8 @@ msgid ""
 "-08_cre-0044_en_v0-0-0.svg>`__"
 msgstr ""
 
-#: ../../source/annex-list.rst:226
-msgid "Refunds"
-msgstr ""
-
-#: ../../source/annex-list.rst:228
-msgid "This table contains the download links for any Refunds:"
+#: ../../source/annex-list.rst:276
+msgid "End."
 msgstr ""
 
 #: ../../source/billables.rst:4
@@ -988,10 +940,10 @@ msgstr ""
 msgid "**ID**"
 msgstr ""
 
-#: ../../source/_static/custom/estimates-master.csv:1
 #: ../../source/_static/custom/invoices-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
-msgid "2021/07/01"
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "2021/07/10"
 msgstr ""
 
 #: ../../source/_static/custom/estimates-master.csv:1
@@ -1002,12 +954,17 @@ msgstr ""
 msgid "2500.00"
 msgstr ""
 
-#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "1799.16"
+msgstr ""
+
 #: ../../source/_static/custom/invoices-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
 #: ../../source/_static/custom/receipts-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "1816.52"
+msgid "2021/08/30"
 msgstr ""
 
 #: ../../source/_static/custom/invoices-master.csv:1
@@ -1017,8 +974,36 @@ msgid "Hardware (x7 Pi4's)"
 msgstr ""
 
 #: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "1271.57"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "2021/10/18"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "1000.00"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "728.39"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
 msgid "2021/11/28"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "1/3 Mandate & Brief"
 msgstr ""
 
 #: ../../source/_static/custom/invoices-master.csv:1
@@ -1038,12 +1023,12 @@ msgid "2021/12/28"
 msgstr ""
 
 #: ../../source/_static/custom/invoices-master.csv:1
-msgid "OS Development Plan"
+msgid "2/3 Plan & Execute"
 msgstr ""
 
 #: ../../source/_static/custom/invoices-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "2792.56"
+msgid "2791.80"
 msgstr ""
 
 #: ../../source/billables.rst:20
@@ -1055,12 +1040,26 @@ msgstr ""
 msgid "2021/07/19"
 msgstr ""
 
+#: ../../source/_static/custom/estimates-master.csv:1
 #: ../../source/_static/custom/receipts-master.csv:1
-msgid "HBnB+ Project (10%)"
+msgid "1816.52"
 msgstr ""
 
 #: ../../source/_static/custom/receipts-master.csv:1
-msgid "730.12"
+msgid "OS Project Deposit"
+msgstr ""
+
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid "726.61"
+msgstr ""
+
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "2021/10/30"
+msgstr ""
+
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid "730.61"
 msgstr ""
 
 #: ../../source/index.rst:2
@@ -1092,20 +1091,24 @@ msgid "This Release (0.0.0)"
 msgstr ""
 
 #: ../../source/releasenotes.rst:11
+msgid "**2021-12-30** - `updated doc`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:12
 msgid ""
 "**2021-12-06** - `Previous billables may need replacing with annnexures "
 "from this publication`"
 msgstr ""
 
-#: ../../source/releasenotes.rst:12
+#: ../../source/releasenotes.rst:13
 msgid "**2021-09-01** - `First Draft`"
 msgstr ""
 
-#: ../../source/releasenotes.rst:15
+#: ../../source/releasenotes.rst:16
 msgid "Older Versions"
 msgstr ""
 
-#: ../../source/releasenotes.rst:17
+#: ../../source/releasenotes.rst:18
 msgid ""
 "In the table below the last entry displays a link to an archived copy of "
 "the last report. To keep the filename from overflowing in the table below"
@@ -1114,7 +1117,7 @@ msgid ""
 "creation date."
 msgstr ""
 
-#: ../../source/releasenotes.rst:22
+#: ../../source/releasenotes.rst:23
 msgid "Older Versions of this Document"
 msgstr ""
 
@@ -1134,24 +1137,24 @@ msgstr ""
 msgid "N/A"
 msgstr ""
 
-#: ../../source/releasenotes.rst:29
+#: ../../source/releasenotes.rst:30
 msgid ""
 "To view releasenotes of versions older than the one above, visit the "
 "DATRO Consortiums `Wayback Archive <https://world.datro.xyz/wayback/>`__."
 msgstr ""
 
-#: ../../source/releasenotes.rst:33
+#: ../../source/releasenotes.rst:34
 msgid "Known and Corrected Issues"
 msgstr ""
 
-#: ../../source/releasenotes.rst:35
+#: ../../source/releasenotes.rst:36
 msgid ""
 "Below is a table of pending issues that have been reported to our team. "
 "These issues will be cleared from this list as and when they are "
 "remedied."
 msgstr ""
 
-#: ../../source/releasenotes.rst:39
+#: ../../source/releasenotes.rst:40
 msgid "Known Issues"
 msgstr ""
 
@@ -1176,10 +1179,6 @@ msgid "**Bal (£)**"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "2021/07/10"
-msgstr ""
-
-#: ../../source/_static/custom/statement-master.csv:1
 msgid "-2500.00"
 msgstr ""
 
@@ -1188,7 +1187,7 @@ msgid "-1816.52"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "0.00"
+msgid "-17.36"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
@@ -1196,15 +1195,15 @@ msgid "-1000.00"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "-730.12"
+msgid "-726.61"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "541.92"
+msgid "-743.97"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "2021/10/04"
+msgid "527.60"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
@@ -1212,39 +1211,43 @@ msgid "-1750.00"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "-1272.03"
+msgid "-1289.63"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "-2002.15"
+msgid "-762.03"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "-1273.76"
+msgid "-2051.66"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "2021/10/30"
+msgid "−1051.66"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "-730.50"
+msgid "-730.61"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "-2004.26"
+msgid "−2051.66"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "-2734.76"
+msgid "-1297.16"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "76.25"
+msgid "−3348.82"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "2868.81"
+msgid "−537.81"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "2253.99"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
@@ -1252,7 +1255,7 @@ msgid "**Balance**"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "**2868.81**"
+msgid "**2253.99**"
 msgstr ""
 
 #: ../../source/tenders.rst:4
@@ -1271,6 +1274,10 @@ msgstr ""
 
 #: ../../source/_static/custom/estimates-master.csv:1
 msgid "**GO**"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+msgid "2021/07/01"
 msgstr ""
 
 #: ../../source/_static/custom/estimates-master.csv:1
@@ -1303,11 +1310,15 @@ msgid "**Go**"
 msgstr ""
 
 #: ../../source/_static/custom/quotes-master.csv:1
+msgid "726.68"
+msgstr ""
+
+#: ../../source/_static/custom/quotes-master.csv:1
 msgid "2021/11/14"
 msgstr ""
 
 #: ../../source/_static/custom/quotes-master.csv:1
-msgid "33% Mandate/Brief"
+msgid "1/3 Mandate/Brief"
 msgstr ""
 
 #: ../../source/_static/custom/quotes-master.csv:1
@@ -1319,7 +1330,7 @@ msgid "2021/12/14"
 msgstr ""
 
 #: ../../source/_static/custom/quotes-master.csv:1
-msgid "33% Plan&Execute"
+msgid "2/3 Plan&Execute"
 msgstr ""
 
 #: ../../source/_static/custom/quotes-master.csv:1
@@ -5073,5 +5084,714 @@ msgstr ""
 #~ " Format "
 #~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-12"
 #~ "-27_quo-0091_en_0-01.svg>`__"
+#~ msgstr ""
+
+#~ msgid "Hardware Rebate 1"
+#~ msgstr ""
+
+#~ msgid "Hardware Rebate 2"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) <https://wayback.datro.xyz/2021-07-01_quo-"
+#~ "0011_en_v0-0-0.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-07"
+#~ "-01_quo-0011_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-07"
+#~ "-01_quo-0011_en_v0-0-0.png>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) <https://wayback.datro.xyz/2021-08-30_quo-"
+#~ "0031_en_v0-0-0.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-08"
+#~ "-30_quo-0031_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-08"
+#~ "-30_quo-0031_en_v0-0-0.png>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) <https://wayback.datro.xyz/2021-10-18_quo-"
+#~ "0041_en_v0-0-0.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
+#~ "-18_quo-0041_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
+#~ "-18_quo-0041_en_v0-0-0.png>`__"
+#~ msgstr ""
+
+#~ msgid ":ref:`QUO-0052`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) <https://wayback.datro.xyz/2021-11-14_quo-"
+#~ "0052_en_v0-0-0.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-11"
+#~ "-14_quo-0052_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-11"
+#~ "-14_quo-0052_en_v0-0-0.png>`__"
+#~ msgstr ""
+
+#~ msgid ":ref:`QUO-0062`"
+#~ msgstr ""
+
+#~ msgid "OS Plan & Execute"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) <https://wayback.datro.xyz/2021-12-14_quo-"
+#~ "0062_en_v0-0-0.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-12"
+#~ "-14_quo-0062_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-12"
+#~ "-14_quo-0062_en_v0-0-0.png>`__"
+#~ msgstr ""
+
+#~ msgid ":ref:`QUO-0072`"
+#~ msgstr ""
+
+#~ msgid "OS Deliverables"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) <https://wayback.datro.xyz/2022-01-14_quo-"
+#~ "0072_en_v0-0-0.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2022-01"
+#~ "-14_quo-0072_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2022-01"
+#~ "-14_quo-0072_en_v0-0-0.png>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) <https://wayback.datro.xyz/2021-07"
+#~ "-01_consortium_finance-funding_sales8cc_en_inv-"
+#~ "0012_v0-0-0.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/svg/2021-07"
+#~ "-01_inv-0012_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/png/2021-07"
+#~ "-01_inv-0012_v0-0-0.png>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) <https://wayback.datro.xyz/2021-08"
+#~ "-30_consortium_finance-funding_sales8cc_en_inv-"
+#~ "0032_v0-0-0.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/svg/2021-08"
+#~ "-30_inv-0032_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/png/2021-08"
+#~ "-30_inv-0042_v0-0-0.png>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) <https://wayback.datro.xyz/2021-10"
+#~ "-18_consortium_finance-funding_sales8cc_en_inv-"
+#~ "0042_v0-0-0.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/svg/2021-10"
+#~ "-18_inv-0042_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/png/2021-10"
+#~ "-18_inv-0042_v0-0-0.png>`__"
+#~ msgstr ""
+
+#~ msgid "Mandate & Brief"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) <https://wayback.datro.xyz/2021-11"
+#~ "-28_consortium_finance-funding_sales8cc_en_inv-"
+#~ "0052_v0-0-0.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/svg/2021-12"
+#~ "-28_inv-0052_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/png/2021-11"
+#~ "-28_inv-0052_v0-0-0.png>`__"
+#~ msgstr ""
+
+#~ msgid "Plan & Execute"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) <https://wayback.datro.xyz/2021-12"
+#~ "-28_consortium_finance-funding_sales8cc_en_inv-"
+#~ "0062_v0-0-0.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/svg/2021-12"
+#~ "-28_inv-0062_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/png/2021-12"
+#~ "-28_inv-0062_v0-0-0.png>`__"
+#~ msgstr ""
+
+#~ msgid "Output & Delivery"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) <https://wayback.datro.xyz/2022-01"
+#~ "-28_consortium_finance-funding_sales8cc_en_inv-"
+#~ "0072_v0-0-0.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/svg/2022-01"
+#~ "-28_inv-0072_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/png/2022-01"
+#~ "-28_inv-0072_v0-0-0.png>`__"
+#~ msgstr ""
+
+#~ msgid "Mandate&Brief"
+#~ msgstr ""
+
+#~ msgid "Plan&Execute"
+#~ msgstr ""
+
+#~ msgid "Deliverables"
+#~ msgstr ""
+
+#~ msgid "QUO-0091"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-12-27_consortium_finance-"
+#~ "funding_sales8cc_en_quo-0091_v0-0-1.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-12"
+#~ "-27_quo-0091_en_v0-0-1.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-07-10_consortium_finance-"
+#~ "funding_sales8cc_en_inv-0012_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-07"
+#~ "-10_inv-0012_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-08-24_consortium_finance-"
+#~ "funding_sales8cc_en_inv-0022_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-08"
+#~ "-24_inv-0022_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-08-30_consortium_finance-"
+#~ "funding_sales8cc_en_inv-0032_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-08"
+#~ "-30_inv-0032_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-10-18_consortium_finance-"
+#~ "funding_sales8cc_en_inv-0042_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
+#~ "-18_inv-0042_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-11-28_consortium_finance-"
+#~ "funding_sales8cc_en_inv-0052_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-11"
+#~ "-28_inv-0052_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-12-28_consortium_finance-"
+#~ "funding_sales8cc_en_inv-0062_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-12"
+#~ "-28_inv-0062_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) <https://wayback.datro.xyz/2021-07"
+#~ "-19_consortium_finance-funding_sales8cc_en_rct-"
+#~ "0013_v0-0-0.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/svg/2021-07"
+#~ "-19_rct-0013_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/png/2021-07"
+#~ "-19_rct-0013_v0-0-0.png>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) <https://wayback.datro.xyz/2021-08"
+#~ "-30_consortium_finance-funding_sales8cc_en_rct-"
+#~ "0023_v0-0-0.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/svg/2021-08"
+#~ "-30_rct-0023_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/png/2021-08"
+#~ "-30_rct-0023_v0-0-0.png>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) <https://wayback.datro.xyz/2021-10"
+#~ "-04_consortium_finance-funding_sales8cc_en_rct-"
+#~ "0033_v0-0-0.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/svg/2021-10"
+#~ "-04_rct-0033_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/png/2021-10"
+#~ "-04_rct-0033_v0-0-0.png>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) <https://wayback.datro.xyz/2021-10"
+#~ "-30_consortium_finance-funding_sales8cc_en_rct-"
+#~ "0043_v0-0-0.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/svg/2021-10"
+#~ "-30_rct-0043_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://datro.xyz/static/library/consortium_finance/funding_sales8cc/latest/source/_static/custom/png/2021-10"
+#~ "-30_rct-0043_v0-0-0.png>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-07-19_consortium_finance-"
+#~ "funding_sales8cc_en_rct-0013_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-07"
+#~ "-19_rct-0013_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-08-30_consortium_finance-"
+#~ "funding_sales8cc_en_rct-0023_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-08"
+#~ "-30_rct-0023_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-10-04_consortium_finance-"
+#~ "funding_sales8cc_en_rct-0033_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
+#~ "-04_rct-0033_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-10-30_consortium_finance-"
+#~ "funding_sales8cc_en_rct-0043_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
+#~ "-30_rct-0043_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid "Hardware Rebated 1"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) <https://wayback.datro.xyz/2021-10-04_cre-"
+#~ "0034_en_v0-0-0.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
+#~ "-04_cre-0034_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
+#~ "-04_cre-0034_en_v0-0-0.png>`__"
+#~ msgstr ""
+
+#~ msgid "Hardware Rebated 2"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) <https://wayback.datro.xyz/2021-10-30_cre-"
+#~ "0044_en_v0-0-0.pdf>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
+#~ "-30_cre-0044_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`link(xx.xkb) "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
+#~ "-30_cre-0044_en_v0-0-0.png>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-10-04_consortium_finance-"
+#~ "funding_sales8cc_en_cre-0034_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
+#~ "-04_cre-0034_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-11-08_consortium_finance-"
+#~ "funding_sales8cc_en_cre-0044_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-11"
+#~ "-08_cre-0044_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid "OS Development Plan"
+#~ msgstr ""
+
+#~ msgid "2792.56"
+#~ msgstr ""
+
+#~ msgid "HBnB+ Project (10%)"
+#~ msgstr ""
+
+#~ msgid "730.12"
+#~ msgstr ""
+
+#~ msgid "0.00"
+#~ msgstr ""
+
+#~ msgid "-730.12"
+#~ msgstr ""
+
+#~ msgid "541.92"
+#~ msgstr ""
+
+#~ msgid "-1272.03"
+#~ msgstr ""
+
+#~ msgid "-2002.15"
+#~ msgstr ""
+
+#~ msgid "-1273.76"
+#~ msgstr ""
+
+#~ msgid "-730.50"
+#~ msgstr ""
+
+#~ msgid "-2004.26"
+#~ msgstr ""
+
+#~ msgid "-2734.76"
+#~ msgstr ""
+
+#~ msgid "76.25"
+#~ msgstr ""
+
+#~ msgid "2868.81"
+#~ msgstr ""
+
+#~ msgid "**2868.81**"
+#~ msgstr ""
+
+#~ msgid "33% Mandate/Brief"
+#~ msgstr ""
+
+#~ msgid "33% Plan&Execute"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-10-18_consortium_finance-"
+#~ "funding_sales8cc_inv-0042_en_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
+#~ "-18_inv-0042_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid "Refunds"
+#~ msgstr ""
+
+#~ msgid "This table contains the download links for any Refunds:"
+#~ msgstr ""
+
+#~ msgid "Refund Download Links"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-07-10_consortium_finance-"
+#~ "funding_sales8cc_quo-0011_en_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-07"
+#~ "-10_quo-0011_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-08-30_consortium_finance-"
+#~ "funding_sales8cc_quo-0031_en_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-08"
+#~ "-30_quo-0031_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-10-18_consortium_finance-"
+#~ "funding_sales8cc_quo-0041_en_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
+#~ "-18_quo-0041_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-11-14_consortium_finance-"
+#~ "funding_sales8cc_quo-0051_en_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-11"
+#~ "-14_quo-0051_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-12-14_consortium_finance-"
+#~ "funding_sales8cc_quo-0061_en_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-12"
+#~ "-14_quo-0061_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-07-10_consortium_finance-"
+#~ "funding_sales8cc_inv-0012_en_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-07"
+#~ "-10_inv-0012_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-08-24_consortium_finance-"
+#~ "funding_sales8cc_inv-0022_en_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-08"
+#~ "-24_inv-0022_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-08-30_consortium_finance-"
+#~ "funding_sales8cc_inv-0032_en_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-08"
+#~ "-30_inv-0032_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-11-28_consortium_finance-"
+#~ "funding_sales8cc_inv-0052_en_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-11"
+#~ "-28_inv-0052_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-12-28_consortium_finance-"
+#~ "funding_sales8cc_inv-0062_en_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-12"
+#~ "-28_inv-0062_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-07-19_consortium_finance-"
+#~ "funding_sales8cc_rct-0013_en_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-07"
+#~ "-19_rct-0013_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-08-30_consortium_finance-"
+#~ "funding_sales8cc_rct-0023_en_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-08"
+#~ "-30_rct-0023_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-10-04_consortium_finance-"
+#~ "funding_sales8cc_rct-0033_en_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
+#~ "-04_rct-0033_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-10-30_consortium_finance-"
+#~ "funding_sales8cc_rct-0043_en_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
+#~ "-30_rct-0043_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-10-04_consortium_finance-"
+#~ "funding_sales8cc_cre-0034_en_v0-0-0.pdf>`__and/or `SVG "
+#~ "Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
+#~ "-04_cre-0034_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-11-08_consortium_finance-"
+#~ "funding_sales8cc_cre-0044_en_v0-0-0.pdf>`__ and/or `SVG"
+#~ " Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-11"
+#~ "-08_cre-0044_en_v0-0-0.svg>`__"
+#~ msgstr ""
+
+#~ msgid "."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Download in `PDF Format "
+#~ "<https://wayback.datro.xyz/2021-10-04_consortium_finance-"
+#~ "funding_sales8cc_en_cre-0034_v0-0-0.pdf>`__and/or `SVG "
+#~ "Format "
+#~ "<https://library.datro.xyz/consortium_finance/funding_sales8cc/latest/build/html/en/_static/custom/img/2021-10"
+#~ "-04_cre-0034_en_v0-0-0.svg>`__"
 #~ msgstr ""
 

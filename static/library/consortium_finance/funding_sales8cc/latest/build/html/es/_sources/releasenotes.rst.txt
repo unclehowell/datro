@@ -8,6 +8,7 @@ This section provides information about what is new or changed, including urgent
 This Release (0.0.0)
 ~~~~~~~~~~~~~~~~~~~~~
 
+- **2021-12-30** - `updated doc`
 - **2021-12-06** - `Previous billables may need replacing with annnexures from this publication`
 - **2021-09-01** - `First Draft`
 

@@ -11,32 +11,41 @@
 \PassOptionsToPackage{bookmarksdepth=5}{hyperref}
 
 \PassOptionsToPackage{warn}{textcomp}
-\usepackage[utf8]{inputenc}
-\ifdefined\DeclareUnicodeCharacter
-% support both utf8 and utf8x syntaxes
-  \ifdefined\DeclareUnicodeCharacterAsOptional
-    \def\sphinxDUC#1{\DeclareUnicodeCharacter{"#1}}
-  \else
-    \let\sphinxDUC\DeclareUnicodeCharacter
-  \fi
-  \sphinxDUC{00A0}{\nobreakspace}
-  \sphinxDUC{2500}{\sphinxunichar{2500}}
-  \sphinxDUC{2502}{\sphinxunichar{2502}}
-  \sphinxDUC{2514}{\sphinxunichar{2514}}
-  \sphinxDUC{251C}{\sphinxunichar{251C}}
-  \sphinxDUC{2572}{\textbackslash}
-\fi
+\usepackage[utf8x]{inputenc}
+
 \usepackage{cmap}
-\usepackage[T1]{fontenc}
+\usepackage[T2A,TS1,T1]{fontenc}
 \usepackage{amsmath,amssymb,amstext}
 \usepackage[english]{babel}
-
-
+\usepackage{substitutefont}
+\usepackage[TtwoA]{sphinxpackagecyrillic}
 
 \usepackage{tgtermes}
 \usepackage{tgheros}
 \renewcommand{\ttdefault}{txtt}
 
+
+\expandafter\ifx\csname T@LGR\endcsname\relax
+\else
+% LGR was declared as font encoding
+  \substitutefont{LGR}{\rmdefault}{cmr}
+  \substitutefont{LGR}{\sfdefault}{cmss}
+  \substitutefont{LGR}{\ttdefault}{cmtt}
+\fi
+\expandafter\ifx\csname T@X2\endcsname\relax
+  \expandafter\ifx\csname T@T2A\endcsname\relax
+  \else
+  % T2A was declared as font encoding
+    \substitutefont{T2A}{\rmdefault}{cmr}
+    \substitutefont{T2A}{\sfdefault}{cmss}
+    \substitutefont{T2A}{\ttdefault}{cmtt}
+  \fi
+\else
+% X2 was declared as font encoding
+  \substitutefont{X2}{\rmdefault}{cmr}
+  \substitutefont{X2}{\sfdefault}{cmss}
+  \substitutefont{X2}{\ttdefault}{cmtt}
+\fi
 
 
 \usepackage[Bjarne]{fncychap}
@@ -91,6 +100,10 @@ This section provides information about what is new or changed, including urgent
 
 \section{This Release (0.0.0)}
 \label{\detokenize{releasenotes:this-release-0-0-0}}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstylestrong{2021\sphinxhyphen{}12\sphinxhyphen{}30} \sphinxhyphen{} \sphinxtitleref{updated doc}
+
 \item {} 
 \sphinxAtStartPar
 \sphinxstylestrong{2021\sphinxhyphen{}12\sphinxhyphen{}06} \sphinxhyphen{} \sphinxtitleref{Previous billables may need replacing with annnexures from this publication}
@@ -244,10 +257,10 @@ N/A
 USD
 &
 \sphinxAtStartPar
-1816.52
+1799.16
 &
 \sphinxAtStartPar
-1816.52
+1799.16
 \\
 \hline
 \sphinxAtStartPar
@@ -266,7 +279,7 @@ USD
 \sphinxhyphen{}1816.52
 &
 \sphinxAtStartPar
-0.00
+\sphinxhyphen{}17.36
 \\
 \hline
 \sphinxAtStartPar
@@ -282,10 +295,10 @@ USD
 USD
 &
 \sphinxAtStartPar
-\sphinxhyphen{}730.12
+\sphinxhyphen{}726.61
 &
 \sphinxAtStartPar
-\sphinxhyphen{}730.12
+\sphinxhyphen{}743.97
 \\
 \hline
 \sphinxAtStartPar
@@ -301,10 +314,10 @@ USD
 USD
 &
 \sphinxAtStartPar
-1272.03
+1271.57
 &
 \sphinxAtStartPar
-541.92
+527.60
 \\
 \hline
 \sphinxAtStartPar
@@ -320,10 +333,10 @@ USD
 USD
 &
 \sphinxAtStartPar
-\sphinxhyphen{}1272.03
+\sphinxhyphen{}1289.63
 &
 \sphinxAtStartPar
-\sphinxhyphen{}730.12
+\sphinxhyphen{}762.03
 \\
 \hline
 \sphinxAtStartPar
@@ -339,10 +352,10 @@ USD
 USD
 &
 \sphinxAtStartPar
-\sphinxhyphen{}1272.03
+\sphinxhyphen{}1289.63
 &
 \sphinxAtStartPar
-\sphinxhyphen{}2002.15
+\sphinxhyphen{}2051.66
 \\
 \hline
 \sphinxAtStartPar
@@ -361,7 +374,7 @@ USD
 728.39
 &
 \sphinxAtStartPar
-\sphinxhyphen{}1273.76
+−1051.66
 \\
 \hline
 \sphinxAtStartPar
@@ -377,29 +390,29 @@ USD
 USD
 &
 \sphinxAtStartPar
-\sphinxhyphen{}730.50
+\sphinxhyphen{}730.61
 &
 \sphinxAtStartPar
-\sphinxhyphen{}2004.26
+−2051.66
 \\
 \hline
 \sphinxAtStartPar
-2021/10/30
+2021/11/08
 &
 \sphinxAtStartPar
 {\hyperref[\detokenize{annex-list:cre-0044}]{\sphinxcrossref{\DUrole{std,std-ref}{CRE\sphinxhyphen{}0044}}}}
 &
 \sphinxAtStartPar
-\sphinxhyphen{}1000.00
+\sphinxhyphen{}1750.00
 &
 \sphinxAtStartPar
 USD
 &
 \sphinxAtStartPar
-\sphinxhyphen{}730.50
+\sphinxhyphen{}1297.16
 &
 \sphinxAtStartPar
-\sphinxhyphen{}2734.76
+−3348.82
 \\
 \hline
 \sphinxAtStartPar
@@ -418,7 +431,7 @@ USD
 2811.01
 &
 \sphinxAtStartPar
-76.25
+−537.81
 \\
 \hline
 \sphinxAtStartPar
@@ -434,10 +447,10 @@ USD
 USD
 &
 \sphinxAtStartPar
-2792.56
+2791.80
 &
 \sphinxAtStartPar
-2868.81
+2253.99
 \\
 \hline&&&&&\\
 \hline&&&&
@@ -445,7 +458,7 @@ USD
 \sphinxstylestrong{Balance}
 &
 \sphinxAtStartPar
-\sphinxstylestrong{2868.81}
+\sphinxstylestrong{2253.99}
 \\
 \hline
 \end{tabular}
@@ -572,10 +585,10 @@ USD
 \\
 \hline
 \sphinxAtStartPar
-2021/07/01
+2021/07/10
 &
 \sphinxAtStartPar
-\DUrole{xref,std,std-ref}{QUO\sphinxhyphen{}0011}
+{\hyperref[\detokenize{annex-list:quo-0011}]{\sphinxcrossref{\DUrole{std,std-ref}{QUO\sphinxhyphen{}0011}}}}
 &
 \sphinxAtStartPar
 Element/Matrix VPS
@@ -587,7 +600,7 @@ Element/Matrix VPS
 USD
 &
 \sphinxAtStartPar
-1816.52
+1799.16
 &
 \sphinxAtStartPar
 \(\pmb{\checkmark}\)
@@ -597,7 +610,7 @@ USD
 2021/08/30
 &
 \sphinxAtStartPar
-\DUrole{xref,std,std-ref}{QUO\sphinxhyphen{}0031}
+{\hyperref[\detokenize{annex-list:quo-0031}]{\sphinxcrossref{\DUrole{std,std-ref}{QUO\sphinxhyphen{}0031}}}}
 &
 \sphinxAtStartPar
 Hardware (x7 Pi4’s)
@@ -609,7 +622,7 @@ Hardware (x7 Pi4’s)
 USD
 &
 \sphinxAtStartPar
-1272.03
+1271.57
 &
 \sphinxAtStartPar
 \(\pmb{\checkmark}\)
@@ -619,7 +632,7 @@ USD
 2021/10/18
 &
 \sphinxAtStartPar
-\DUrole{xref,std,std-ref}{QUO\sphinxhyphen{}0041}
+{\hyperref[\detokenize{annex-list:quo-0041}]{\sphinxcrossref{\DUrole{std,std-ref}{QUO\sphinxhyphen{}0041}}}}
 &
 \sphinxAtStartPar
 Hardware (UpBoards)
@@ -631,7 +644,7 @@ Hardware (UpBoards)
 USD
 &
 \sphinxAtStartPar
-728.39
+726.68
 &
 \sphinxAtStartPar
 \(\pmb{\checkmark}\)
@@ -641,10 +654,10 @@ USD
 2021/11/14
 &
 \sphinxAtStartPar
-\DUrole{xref,std,std-ref}{QUO\sphinxhyphen{}0052}
+{\hyperref[\detokenize{annex-list:quo-0051}]{\sphinxcrossref{\DUrole{std,std-ref}{QUO\sphinxhyphen{}0051}}}}
 &
 \sphinxAtStartPar
-33\% Mandate/Brief
+1/3 Mandate/Brief
 &
 \sphinxAtStartPar
 3750.00
@@ -660,10 +673,10 @@ USD
 2021/12/14
 &
 \sphinxAtStartPar
-\DUrole{xref,std,std-ref}{QUO\sphinxhyphen{}0062}
+{\hyperref[\detokenize{annex-list:quo-0061}]{\sphinxcrossref{\DUrole{std,std-ref}{QUO\sphinxhyphen{}0061}}}}
 &
 \sphinxAtStartPar
-33\% Plan\&Execute
+2/3 Plan\&Execute
 &
 \sphinxAtStartPar
 3750.00
@@ -722,7 +735,7 @@ See below the billables for client 8cc:
 \\
 \hline
 \sphinxAtStartPar
-2021/07/01
+2021/07/10
 &
 \sphinxAtStartPar
 {\hyperref[\detokenize{annex-list:inv-0012}]{\sphinxcrossref{\DUrole{std,std-ref}{INV\sphinxhyphen{}0012}}}}
@@ -737,7 +750,7 @@ Element/Matrix(VPS)
 USD
 &
 \sphinxAtStartPar
-1816.52
+1799.16
 \\
 \hline
 \sphinxAtStartPar
@@ -756,7 +769,7 @@ Hardware (x7 Pi4’s)
 USD
 &
 \sphinxAtStartPar
-1272.03
+1271.57
 \\
 \hline
 \sphinxAtStartPar
@@ -785,7 +798,7 @@ USD
 {\hyperref[\detokenize{annex-list:inv-0052}]{\sphinxcrossref{\DUrole{std,std-ref}{INV\sphinxhyphen{}0052}}}}
 &
 \sphinxAtStartPar
-OS Mandate \& Brief
+1/3 Mandate \& Brief
 &
 \sphinxAtStartPar
 3750.00
@@ -804,7 +817,7 @@ USD
 {\hyperref[\detokenize{annex-list:inv-0062}]{\sphinxcrossref{\DUrole{std,std-ref}{INV\sphinxhyphen{}0062}}}}
 &
 \sphinxAtStartPar
-OS Development Plan
+2/3 Plan \& Execute
 &
 \sphinxAtStartPar
 3750.00
@@ -813,7 +826,7 @@ OS Development Plan
 USD
 &
 \sphinxAtStartPar
-2792.56
+2791.80
 \\
 \hline
 \end{tabular}
@@ -882,7 +895,7 @@ USD
 {\hyperref[\detokenize{annex-list:rct-0023}]{\sphinxcrossref{\DUrole{std,std-ref}{RCT\sphinxhyphen{}0023}}}}
 &
 \sphinxAtStartPar
-HBnB+ Project (10\%)
+OS Project Deposit
 &
 \sphinxAtStartPar
 1000.00
@@ -891,11 +904,11 @@ HBnB+ Project (10\%)
 USD
 &
 \sphinxAtStartPar
-730.12
+726.61
 \\
 \hline
 \sphinxAtStartPar
-2021/08/30
+2021/10/04
 &
 \sphinxAtStartPar
 {\hyperref[\detokenize{annex-list:rct-0033}]{\sphinxcrossref{\DUrole{std,std-ref}{RCT\sphinxhyphen{}0033}}}}
@@ -910,11 +923,11 @@ Hardware (x7 Pi4’s)
 USD
 &
 \sphinxAtStartPar
-1272.03
+1289.63
 \\
 \hline
 \sphinxAtStartPar
-2021/10/18
+2021/10/30
 &
 \sphinxAtStartPar
 {\hyperref[\detokenize{annex-list:rct-0043}]{\sphinxcrossref{\DUrole{std,std-ref}{RCT\sphinxhyphen{}0043}}}}
@@ -929,7 +942,7 @@ Hardware (UpBoards)
 USD
 &
 \sphinxAtStartPar
-728.39
+730.61
 \\
 \hline
 \end{tabular}
@@ -975,13 +988,13 @@ See below aftersales made to ClientID: 8CC e.g. Credit Notes:
 \\
 \hline
 \sphinxAtStartPar
-2021/08/30
+2021/10/04
 &
 \sphinxAtStartPar
 {\hyperref[\detokenize{annex-list:cre-0034}]{\sphinxcrossref{\DUrole{std,std-ref}{CRE\sphinxhyphen{}0034}}}}
 &
 \sphinxAtStartPar
-Hardware Rebate 1
+Eqpt. Rebate (Pi’s)
 &
 \sphinxAtStartPar
 1750.00
@@ -990,26 +1003,26 @@ Hardware Rebate 1
 USD
 &
 \sphinxAtStartPar
-1272.03
+1289.63
 \\
 \hline
 \sphinxAtStartPar
-2021/10/18
+2021/11/08
 &
 \sphinxAtStartPar
 {\hyperref[\detokenize{annex-list:cre-0044}]{\sphinxcrossref{\DUrole{std,std-ref}{CRE\sphinxhyphen{}0044}}}}
 &
 \sphinxAtStartPar
-Hardware Rebate 2
+Eqpt. Rebate (UpBoards)
 &
 \sphinxAtStartPar
-1000.00
+1750.00
 &
 \sphinxAtStartPar
 USD
 &
 \sphinxAtStartPar
-728.39
+1297.16
 \\
 \hline
 \end{tabular}
@@ -1022,10 +1035,6 @@ USD
 \sphinxAtStartPar
 This section contains the Annexures, referenced in the text above.
 
-\begin{DUlineblock}{0em}
-\item[] 
-\end{DUlineblock}
-
 
 \section{Download Links}
 \label{\detokenize{annex-list:download-links}}
@@ -1033,13 +1042,9 @@ This section contains the Annexures, referenced in the text above.
 This table contains the download links for the Annexed documents:
 
 
-\begin{savenotes}\sphinxattablestart
-\centering
-\sphinxcapstartof{table}
-\sphinxthecaptionisattop
-\sphinxcaption{Annexures Download Links}\label{\detokenize{annex-list:id1}}
-\sphinxaftertopcaption
-\begin{tabular}[t]{|\X{20}{100}|\X{35}{100}|\X{15}{100}|\X{15}{100}|\X{15}{100}|}
+\begin{savenotes}\sphinxatlongtablestart\begin{longtable}[c]{|\X{20}{100}|\X{35}{100}|\X{15}{100}|\X{15}{100}|\X{15}{100}|}
+\sphinxthelongtablecaptionisattop
+\caption{Annexures Download Links\strut}\label{\detokenize{annex-list:id1}}\\*[\sphinxlongtablecapskipadjust]
 \hline
 \sphinxstyletheadfamily 
 \sphinxAtStartPar
@@ -1058,100 +1063,114 @@ This table contains the download links for the Annexed documents:
 \sphinxstylestrong{PNG}
 \\
 \hline
+\endfirsthead
+
+\multicolumn{5}{c}%
+{\makebox[0pt]{\sphinxtablecontinued{\tablename\ \thetable{} \textendash{} continued from previous page}}}\\
+\hline
+\sphinxstyletheadfamily 
 \sphinxAtStartPar
-\DUrole{xref,std,std-ref}{QUO\sphinxhyphen{}0011}
+\sphinxstylestrong{Annex ID}
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+\sphinxstylestrong{Description}
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+\sphinxstylestrong{PDF}
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+\sphinxstylestrong{SVG}
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+\sphinxstylestrong{PNG}
+\\
+\hline
+\endhead
+
+\hline
+\multicolumn{5}{r}{\makebox[0pt][r]{\sphinxtablecontinued{continues on next page}}}\\
+\endfoot
+
+\endlastfoot
+
+\sphinxAtStartPar
+{\hyperref[\detokenize{annex-list:quo-0011}]{\sphinxcrossref{\DUrole{std,std-ref}{QUO\sphinxhyphen{}0011}}}}
 &
 \sphinxAtStartPar
 Element/Matrix VPS
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-07-01\_quo-0011\_en\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-07-10\_consortium\_finance-funding\_sales8cc\_en\_quo-0011\_v0-0-0.pdf}{link(34.3kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-07-01\_quo-0011\_en\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-07-10\_quo-0011\_en\_v0-0-0.svg}{link(54.6kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-07-01\_quo-0011\_en\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-07-10\_quo-0011\_en\_v0-0-0.png}{link(96.3kb)}
 \\
 \hline
 \sphinxAtStartPar
-\DUrole{xref,std,std-ref}{QUO\sphinxhyphen{}0031}
+{\hyperref[\detokenize{annex-list:quo-0031}]{\sphinxcrossref{\DUrole{std,std-ref}{QUO\sphinxhyphen{}0031}}}}
 &
 \sphinxAtStartPar
 Hardware (x7 Pi4’s)
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-08-30\_quo-0031\_en\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-08-30\_consortium\_finance-funding\_sales8cc\_en\_quo-0031\_v0-0-0.pdf}{link(34.6kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-08-30\_quo-0031\_en\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-08-30\_quo-0031\_en\_v0-0-0.svg}{link(54.6kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-08-30\_quo-0031\_en\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-08-30\_quo-0031\_en\_v0-0-0.png}{link(97.8kb)}
 \\
 \hline
 \sphinxAtStartPar
-\DUrole{xref,std,std-ref}{QUO\sphinxhyphen{}0041}
+{\hyperref[\detokenize{annex-list:quo-0041}]{\sphinxcrossref{\DUrole{std,std-ref}{QUO\sphinxhyphen{}0041}}}}
 &
 \sphinxAtStartPar
 Hardware (UpBoards)
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-10-18\_quo-0041\_en\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-10-18\_consortium\_finance-funding\_sales8cc\_en\_quo-0041\_v0-0-0.pdf}{link(33.9kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-10-18\_quo-0041\_en\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-10-18\_quo-0041\_en\_v0-0-0.svg}{link(54.5kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-10-18\_quo-0041\_en\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-10-18\_quo-0041\_en\_v0-0-0.png}{link(94.3kb)}
 \\
 \hline
 \sphinxAtStartPar
-\DUrole{xref,std,std-ref}{QUO\sphinxhyphen{}0052}
+{\hyperref[\detokenize{annex-list:quo-0051}]{\sphinxcrossref{\DUrole{std,std-ref}{QUO\sphinxhyphen{}0051}}}}
 &
 \sphinxAtStartPar
 OS Mandate \& Brief
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-11-14\_quo-0052\_en\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-11-14\_consortium\_finance-funding\_sales8cc\_en\_quo-0051\_v0-0-0.pdf}{link(35.1kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-11-14\_quo-0052\_en\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-11-14\_quo-0052\_en\_v0-0-0.svg}{link(54.6kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-11-14\_quo-0052\_en\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-11-14\_quo-0052\_en\_v0-0-0.png}{link(96.9kb)}
 \\
 \hline
 \sphinxAtStartPar
-\DUrole{xref,std,std-ref}{QUO\sphinxhyphen{}0062}
+{\hyperref[\detokenize{annex-list:quo-0061}]{\sphinxcrossref{\DUrole{std,std-ref}{QUO\sphinxhyphen{}0061}}}}
 &
 \sphinxAtStartPar
-OS Plan \& Execute
+OS Plan \& Execution
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-12-14\_quo-0062\_en\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-12-14\_consortium\_finance-funding\_sales8cc\_en\_quo-0061\_v0-0-0.pdf}{link(34.7kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-12-14\_quo-0062\_en\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-12-14\_quo-0061\_en\_v0-0-0.svg}{link(54.6kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-12-14\_quo-0062\_en\_v0-0-0.png}{link(xx.xkb)}
-\\
-\hline
-\sphinxAtStartPar
-\DUrole{xref,std,std-ref}{QUO\sphinxhyphen{}0072}
-&
-\sphinxAtStartPar
-OS Deliverables
-&
-\sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2022-01-14\_quo-0072\_en\_v0-0-0.pdf}{link(xx.xkb)}
-&
-\sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2022-01-14\_quo-0072\_en\_v0-0-0.svg}{link(xx.xkb)}
-&
-\sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2022-01-14\_quo-0072\_en\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-12-14\_quo-0061\_en\_v0-0-0.png}{link(96.9kb)}
 \\
 \hline
 \sphinxAtStartPar
@@ -1161,13 +1180,13 @@ OS Deliverables
 Element/Matrix(VPS)
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-07-01\_consortium\_finance-funding\_sales8cc\_en\_inv-0012\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-07-10\_consortium\_finance-funding\_sales8cc\_en\_inv-0012\_v0-0-0.pdf}{link(34.3kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/svg/2021-07-01\_inv-0012\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-07-10\_inv-0012\_en\_v0-0-0.svg}{link(50.2kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/png/2021-07-01\_inv-0012\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-07-10\_inv-0012\_en\_v0-0-0.png}{link(94.1kb)}
 \\
 \hline
 \sphinxAtStartPar
@@ -1177,13 +1196,13 @@ Element/Matrix(VPS)
 Hardware (x7 Pi4’s)
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-08-30\_consortium\_finance-funding\_sales8cc\_en\_inv-0032\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-08-30\_consortium\_finance-funding\_sales8cc\_en\_inv-0032\_v0-0-0.pdf}{link(35.0kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/svg/2021-08-30\_inv-0032\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-08-30\_inv-0032\_en\_v0-0-0.svg}{link(50.3kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/png/2021-08-30\_inv-0042\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-08-30\_inv-0042\_en\_v0-0-0.png}{link(96.3kb)}
 \\
 \hline
 \sphinxAtStartPar
@@ -1193,72 +1212,162 @@ Hardware (x7 Pi4’s)
 Hardware (UpBoards)
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-10-18\_consortium\_finance-funding\_sales8cc\_en\_inv-0042\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-10-18\_consortium\_finance-funding\_sales8cc\_en\_inv-0042\_v0-0-0.pdf}{link(31.3kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/svg/2021-10-18\_inv-0042\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-10-18\_inv-0042\_en\_v0-0-0.svg}{link(40.8kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/png/2021-10-18\_inv-0042\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-10-18\_inv-0042\_en\_v0-0-0.png}{link(82.8kb)}
 \\
 \hline
 \sphinxAtStartPar
 {\hyperref[\detokenize{annex-list:inv-0052}]{\sphinxcrossref{\DUrole{std,std-ref}{INV\sphinxhyphen{}0052}}}}
 &
 \sphinxAtStartPar
-Mandate \& Brief
+OS Mandate \& Brief
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-11-28\_consortium\_finance-funding\_sales8cc\_en\_inv-0052\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-11-28\_consortium\_finance-funding\_sales8cc\_en\_inv-0052\_v0-0-0.pdf}{link(34.5kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/svg/2021-12-28\_inv-0052\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-12-28\_inv-0052\_en\_v0-0-0.svg}{link(50.3kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/png/2021-11-28\_inv-0052\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-11-28\_inv-0052\_en\_v0-0-0.png}{link(95.1kb)}
 \\
 \hline
 \sphinxAtStartPar
 {\hyperref[\detokenize{annex-list:inv-0062}]{\sphinxcrossref{\DUrole{std,std-ref}{INV\sphinxhyphen{}0062}}}}
 &
 \sphinxAtStartPar
-Plan \& Execute
+OS Plan \& Execution
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-12-28\_consortium\_finance-funding\_sales8cc\_en\_inv-0062\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-12-28\_consortium\_finance-funding\_sales8cc\_en\_inv-0062\_v0-0-0.pdf}{link(34.7kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/svg/2021-12-28\_inv-0062\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-12-28\_inv-0062\_en\_v0-0-0.svg}{link(50.3kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/png/2021-12-28\_inv-0062\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-12-28\_inv-0062\_en\_v0-0-0.png}{link(95.7kb)}
 \\
 \hline
 \sphinxAtStartPar
-\DUrole{xref,std,std-ref}{INV\sphinxhyphen{}0072}
+{\hyperref[\detokenize{annex-list:rct-0013}]{\sphinxcrossref{\DUrole{std,std-ref}{RCT\sphinxhyphen{}0013}}}}
 &
 \sphinxAtStartPar
-Output \& Delivery
+Element/Matrix(VPS)
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2022-01-28\_consortium\_finance-funding\_sales8cc\_en\_inv-0072\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-07-19\_consortium\_finance-funding\_sales8cc\_en\_rct-0013\_v0-0-0.pdf}{link(28.8kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/svg/2022-01-28\_inv-0072\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-07-19\_rct-0013\_en\_v0-0-0.svg}{link(42.0kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/png/2022-01-28\_inv-0072\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-07-19\_rct-0013\_en\_v0-0-0.png}{link(65.5kb)}
+\\
+\hline
+\sphinxAtStartPar
+{\hyperref[\detokenize{annex-list:rct-0023}]{\sphinxcrossref{\DUrole{std,std-ref}{RCT\sphinxhyphen{}0023}}}}
+&
+\sphinxAtStartPar
+HBnB+ Project Deposit
+&
+\sphinxAtStartPar
+\sphinxhref{https://wayback.datro.xyz/2021-08-30\_consortium\_finance-funding\_sales8cc\_en\_rct-0023\_v0-0-0.pdf}{link(28.7kb)}
+&
+\sphinxAtStartPar
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-08-30\_rct-0013\_en\_v0-0-0.svg}{link(42.0kb)}
+&
+\sphinxAtStartPar
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-08-30\_rct-0013\_en\_v0-0-0.png}{link(65.8kb)}
+\\
+\hline
+\sphinxAtStartPar
+{\hyperref[\detokenize{annex-list:rct-0033}]{\sphinxcrossref{\DUrole{std,std-ref}{RCT\sphinxhyphen{}0033}}}}
+&
+\sphinxAtStartPar
+Hardware (x7 Pi4’s)
+&
+\sphinxAtStartPar
+\sphinxhref{https://wayback.datro.xyz/2021-10-04\_consortium\_finance-funding\_sales8cc\_en\_rct-0033\_v0-0-0.pdf}{link(28.7kb)}
+&
+\sphinxAtStartPar
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-10-04\_rct-0033\_en\_v0-0-0.svg}{link(42.0kb)}
+&
+\sphinxAtStartPar
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-10-04\_rct-0033\_en\_v0-0-0.png}{link(66.2kb)}
+\\
+\hline
+\sphinxAtStartPar
+{\hyperref[\detokenize{annex-list:rct-0043}]{\sphinxcrossref{\DUrole{std,std-ref}{RCT\sphinxhyphen{}0043}}}}
+&
+\sphinxAtStartPar
+OpenBios Upgrade
+&
+\sphinxAtStartPar
+\sphinxhref{https://wayback.datro.xyz/2021-10-30\_consortium\_finance-funding\_sales8cc\_en\_rct-0043\_v0-0-0.pdf}{link(28.7kb)}
+&
+\sphinxAtStartPar
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-10-30\_rct-0043\_en\_v0-0-0.svg}{link(42.0kb)}
+&
+\sphinxAtStartPar
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-10-30\_rct-0043\_en\_v0-0-0.png}{link(70.0kb)}
+\\
+\hline
+\sphinxAtStartPar
+{\hyperref[\detokenize{annex-list:cre-0034}]{\sphinxcrossref{\DUrole{std,std-ref}{CRE\sphinxhyphen{}0034}}}}
+&
+\sphinxAtStartPar
+Hardware Rebate (Pi’s)
+&
+\sphinxAtStartPar
+\sphinxhref{https://wayback.datro.xyz/2021-10-04\_consortium\_finance-funding\_sales8cc\_en\_rct-0034\_v0-0-0.pdf}{link(29.2kb)}
+&
+\sphinxAtStartPar
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-10-04\_rct-0034\_en\_v0-0-0.svg}{link(42.0kb)}
+&
+\sphinxAtStartPar
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-10-04\_rct-0034\_en\_v0-0-0.png}{link(66.4kb)}
+\\
+\hline
+\sphinxAtStartPar
+{\hyperref[\detokenize{annex-list:cre-0044}]{\sphinxcrossref{\DUrole{std,std-ref}{CRE\sphinxhyphen{}0044}}}}
+&
+\sphinxAtStartPar
+OpenBios Upgrade
+&
+\sphinxAtStartPar
+\sphinxhref{https://wayback.datro.xyz/2021-11-08\_consortium\_finance-funding\_sales8cc\_en\_rct-0044\_v0-0-0.pdf}{link(29.6kb)}
+&
+\sphinxAtStartPar
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-11-08\_rct-0044\_en\_v0-0-0.svg}{link(42.3kb)}
+&
+\sphinxAtStartPar
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-11-08\_rct-0044\_en\_v0-0-0.png}{link(71.0kb)}
 \\
 \hline&&&&\\
 \hline&&&&\\
+\hline&&&&\\
+\hline&&&&\\
+\hline&&&&\\
+\hline&&&&\\
+\hline&&&&\\
+\hline&&&&\\
+\hline&&&&\\
+\hline&&&&\\
+\hline&&&&\\
+\hline&&&&\\
+\hline&&&&\\
+\hline&&&&\\
+\hline&&&&\\
+\hline&&&&\\
+\hline&&&&\\
+\hline&&&&\\
 \hline
-\end{tabular}
-\par
-\sphinxattableend\end{savenotes}
-
-\begin{DUlineblock}{0em}
-\item[] 
-\end{DUlineblock}
+\end{longtable}\sphinxatlongtableend\end{savenotes}
 
 
 \section{Tenders}
@@ -1296,99 +1405,67 @@ This table contains the download links for the Quotes:
 \\
 \hline
 \sphinxAtStartPar
-\DUrole{xref,std,std-ref}{QUO\sphinxhyphen{}0011}
+{\hyperref[\detokenize{annex-list:quo-0011}]{\sphinxcrossref{\DUrole{std,std-ref}{QUO\sphinxhyphen{}0011}}}}
 &
 \sphinxAtStartPar
 Element/Matrix VPS
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-07-01\_quo-0011\_en\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-07-10\_consortium\_finance-funding\_sales8cc\_en\_quo-0011\_v0-0-0.pdf}{link(34.3kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-07-01\_quo-0011\_en\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-07-10\_quo-0011\_en\_v0-0-0.svg}{link(54.6kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-07-01\_quo-0011\_en\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-07-10\_quo-0011\_en\_v0-0-0.png}{link(96.3kb)}
 \\
 \hline
 \sphinxAtStartPar
-\DUrole{xref,std,std-ref}{QUO\sphinxhyphen{}0031}
+{\hyperref[\detokenize{annex-list:quo-0031}]{\sphinxcrossref{\DUrole{std,std-ref}{QUO\sphinxhyphen{}0031}}}}
 &
 \sphinxAtStartPar
 Hardware (x7 Pi4’s)
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-08-30\_quo-0031\_en\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-08-30\_consortium\_finance-funding\_sales8cc\_en\_quo-0031\_v0-0-0.pdf}{link(34.6kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-08-30\_quo-0031\_en\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-08-30\_quo-0031\_en\_v0-0-0.svg}{link(54.6kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-08-30\_quo-0031\_en\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-08-30\_quo-0031\_en\_v0-0-0.png}{link(97.8kb)}
 \\
 \hline
 \sphinxAtStartPar
-\DUrole{xref,std,std-ref}{QUO\sphinxhyphen{}0041}
+{\hyperref[\detokenize{annex-list:quo-0041}]{\sphinxcrossref{\DUrole{std,std-ref}{QUO\sphinxhyphen{}0041}}}}
 &
 \sphinxAtStartPar
 Hardware (UpBoards)
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-10-18\_quo-0041\_en\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-10-18\_consortium\_finance-funding\_sales8cc\_en\_quo-0041\_v0-0-0.pdf}{link(33.9kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-10-18\_quo-0041\_en\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-10-18\_quo-0041\_en\_v0-0-0.svg}{link(54.5kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-10-18\_quo-0041\_en\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-10-18\_quo-0041\_en\_v0-0-0.png}{link(94.3kb)}
 \\
 \hline
 \sphinxAtStartPar
-\DUrole{xref,std,std-ref}{QUO\sphinxhyphen{}0052}
+{\hyperref[\detokenize{annex-list:quo-0051}]{\sphinxcrossref{\DUrole{std,std-ref}{QUO\sphinxhyphen{}0051}}}}
 &
 \sphinxAtStartPar
-Mandate\&Brief
+OS Mandate \& Brief
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-11-14\_quo-0052\_en\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-11-14\_consortium\_finance-funding\_sales8cc\_en\_quo-0051\_v0-0-0.pdf}{link(35.1kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-11-14\_quo-0052\_en\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-11-14\_quo-0052\_en\_v0-0-0.svg}{link(54.6kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-11-14\_quo-0052\_en\_v0-0-0.png}{link(xx.xkb)}
-\\
-\hline
-\sphinxAtStartPar
-\DUrole{xref,std,std-ref}{QUO\sphinxhyphen{}0062}
-&
-\sphinxAtStartPar
-Plan\&Execute
-&
-\sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-12-14\_quo-0062\_en\_v0-0-0.pdf}{link(xx.xkb)}
-&
-\sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-12-14\_quo-0062\_en\_v0-0-0.svg}{link(xx.xkb)}
-&
-\sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-12-14\_quo-0062\_en\_v0-0-0.png}{link(xx.xkb)}
-\\
-\hline
-\sphinxAtStartPar
-\DUrole{xref,std,std-ref}{QUO\sphinxhyphen{}0072}
-&
-\sphinxAtStartPar
-Deliverables
-&
-\sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2022-01-14\_quo-0072\_en\_v0-0-0.pdf}{link(xx.xkb)}
-&
-\sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2022-01-14\_quo-0072\_en\_v0-0-0.svg}{link(xx.xkb)}
-&
-\sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2022-01-14\_quo-0072\_en\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-11-14\_quo-0052\_en\_v0-0-0.png}{link(96.9kb)}
 \\
 \hline&&&&\\
 \hline
@@ -1396,22 +1473,50 @@ Deliverables
 \par
 \sphinxattableend\end{savenotes}
 
-\begin{DUlineblock}{0em}
-\item[] 
-\end{DUlineblock}
 
-
-\subsubsection{QUO\sphinxhyphen{}0091}
-\label{\detokenize{annex-list:quo-0091}}
+\subsubsection{QUO\sphinxhyphen{}0011}
+\label{\detokenize{annex-list:quo-0011}}
 \sphinxAtStartPar
-Download in \sphinxhref{https://wayback.datro.xyz/2021-12-27\_consortium\_finance-funding\_sales8cc\_en\_quo-0091\_v0-0-1.pdf}{PDF Format} and/or
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-12-27\_quo-0091\_en\_v0-0-1.svg}{SVG Format}
+Download in \sphinxhref{https://wayback.datro.xyz/2021-07-10\_consortium\_finance-funding\_sales8cc\_en\_quo-0011\_v0-0-0.pdf}{PDF Format} and/or
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-07-10\_quo-0011\_en\_v0-0-0.svg}{SVG Format}
 
-\noindent\sphinxincludegraphics[width=420\sphinxpxdimen]{{2021-12-27_quo-0091_en_v0-0-1}.png}
+\noindent\sphinxincludegraphics[width=420\sphinxpxdimen]{{2021-07-10_quo-0011_en_v0-0-0}.png}
 
-\begin{DUlineblock}{0em}
-\item[] 
-\end{DUlineblock}
+
+\subsubsection{QUO\sphinxhyphen{}0031}
+\label{\detokenize{annex-list:quo-0031}}
+\sphinxAtStartPar
+Download in \sphinxhref{https://wayback.datro.xyz/2021-08-30\_consortium\_finance-funding\_sales8cc\_en\_quo-0031\_v0-0-0.pdf}{PDF Format} and/or
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-08-30\_quo-0031\_en\_v0-0-0.svg}{SVG Format}
+
+\noindent\sphinxincludegraphics[width=420\sphinxpxdimen]{{2021-08-30_quo-0031_en_v0-0-0}.png}
+
+
+\subsubsection{QUO\sphinxhyphen{}0041}
+\label{\detokenize{annex-list:quo-0041}}
+\sphinxAtStartPar
+Download in \sphinxhref{https://wayback.datro.xyz/2021-10-18\_consortium\_finance-funding\_sales8cc\_en\_quo-0041\_v0-0-0.pdf}{PDF Format} and/or
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-10-18\_quo-0041\_en\_v0-0-0.svg}{SVG Format}
+
+\noindent\sphinxincludegraphics[width=420\sphinxpxdimen]{{2021-10-18_quo-0041_en_v0-0-0}.png}
+
+
+\subsubsection{QUO\sphinxhyphen{}0051}
+\label{\detokenize{annex-list:quo-0051}}
+\sphinxAtStartPar
+Download in \sphinxhref{https://wayback.datro.xyz/2021-11-14\_consortium\_finance-funding\_sales8cc\_en\_quo-0051\_v0-0-0.pdf}{PDF Format} and/or
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-11-14\_quo-0051\_en\_v0-0-0.svg}{SVG Format}
+
+\noindent\sphinxincludegraphics[width=420\sphinxpxdimen]{{2021-11-14_quo-0051_en_v0-0-0}.png}
+
+
+\subsubsection{QUO\sphinxhyphen{}0061}
+\label{\detokenize{annex-list:quo-0061}}
+\sphinxAtStartPar
+Download in \sphinxhref{https://wayback.datro.xyz/2021-12-14\_consortium\_finance-funding\_sales8cc\_en\_quo-0061\_v0-0-0.pdf}{PDF Format} and/or
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-12-14\_quo-0061\_en\_v0-0-0.svg}{SVG Format}
+
+\noindent\sphinxincludegraphics[width=420\sphinxpxdimen]{{2021-12-14_quo-0061_en_v0-0-0}.png}
 
 
 \section{Billables}
@@ -1455,13 +1560,13 @@ This table contains the download links for the Invoices:
 Element/Matrix(VPS)
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-07-01\_consortium\_finance-funding\_sales8cc\_en\_inv-0012\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-07-10\_consortium\_finance-funding\_sales8cc\_en\_inv-0012\_v0-0-0.pdf}{link(34.3kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/svg/2021-07-01\_inv-0012\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-07-10\_inv-0012\_en\_v0-0-0.svg}{link(50.2kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/png/2021-07-01\_inv-0012\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-07-10\_inv-0012\_en\_v0-0-0.png}{link(94.1kb)}
 \\
 \hline
 \sphinxAtStartPar
@@ -1471,13 +1576,13 @@ Element/Matrix(VPS)
 Hardware (x7 Pi4’s)
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-08-30\_consortium\_finance-funding\_sales8cc\_en\_inv-0032\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-08-30\_consortium\_finance-funding\_sales8cc\_en\_inv-0032\_v0-0-0.pdf}{link(35.0kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/svg/2021-08-30\_inv-0032\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-08-30\_inv-0032\_en\_v0-0-0.svg}{link(50.3kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/png/2021-08-30\_inv-0042\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-08-30\_inv-0042\_en\_v0-0-0.png}{link(96.3kb)}
 \\
 \hline
 \sphinxAtStartPar
@@ -1487,70 +1592,51 @@ Hardware (x7 Pi4’s)
 Hardware (UpBoards)
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-10-18\_consortium\_finance-funding\_sales8cc\_en\_inv-0042\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-10-18\_consortium\_finance-funding\_sales8cc\_en\_inv-0042\_v0-0-0.pdf}{link(31.3kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/svg/2021-10-18\_inv-0042\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-10-18\_inv-0042\_en\_v0-0-0.svg}{link(40.8kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/png/2021-10-18\_inv-0042\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-10-18\_inv-0042\_en\_v0-0-0.png}{link(82.8kb)}
 \\
 \hline
 \sphinxAtStartPar
 {\hyperref[\detokenize{annex-list:inv-0052}]{\sphinxcrossref{\DUrole{std,std-ref}{INV\sphinxhyphen{}0052}}}}
 &
 \sphinxAtStartPar
-Mandate \& Brief
+OS Mandate \& Brief
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-11-28\_consortium\_finance-funding\_sales8cc\_en\_inv-0052\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-11-28\_consortium\_finance-funding\_sales8cc\_en\_inv-0052\_v0-0-0.pdf}{link(34.5kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/svg/2021-12-28\_inv-0052\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-12-28\_inv-0052\_en\_v0-0-0.svg}{link(50.3kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/png/2021-11-28\_inv-0052\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-11-28\_inv-0052\_en\_v0-0-0.png}{link(95.1kb)}
 \\
 \hline
 \sphinxAtStartPar
 {\hyperref[\detokenize{annex-list:inv-0062}]{\sphinxcrossref{\DUrole{std,std-ref}{INV\sphinxhyphen{}0062}}}}
 &
 \sphinxAtStartPar
-Plan \& Execute
+OS Plan \& Execution
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-12-28\_consortium\_finance-funding\_sales8cc\_en\_inv-0062\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-12-28\_consortium\_finance-funding\_sales8cc\_en\_inv-0062\_v0-0-0.pdf}{link(34.7kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/svg/2021-12-28\_inv-0062\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-12-28\_inv-0062\_en\_v0-0-0.svg}{link(50.3kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/png/2021-12-28\_inv-0062\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-12-28\_inv-0062\_en\_v0-0-0.png}{link(95.7kb)}
 \\
-\hline
-\sphinxAtStartPar
-\DUrole{xref,std,std-ref}{INV\sphinxhyphen{}0072}
-&
-\sphinxAtStartPar
-Output \& Delivery
-&
-\sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2022-01-28\_consortium\_finance-funding\_sales8cc\_en\_inv-0072\_v0-0-0.pdf}{link(xx.xkb)}
-&
-\sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/svg/2022-01-28\_inv-0072\_v0-0-0.svg}{link(xx.xkb)}
-&
-\sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/png/2022-01-28\_inv-0072\_v0-0-0.png}{link(xx.xkb)}
-\\
+\hline&&&&\\
 \hline
 \end{tabular}
 \par
 \sphinxattableend\end{savenotes}
-
-\begin{DUlineblock}{0em}
-\item[] 
-\end{DUlineblock}
 
 
 \subsubsection{INV\sphinxhyphen{}0012}
@@ -1645,29 +1731,29 @@ This table contains the download links for the Receipts:
 Element/Matrix(VPS)
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-07-19\_consortium\_finance-funding\_sales8cc\_en\_rct-0013\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-07-19\_consortium\_finance-funding\_sales8cc\_en\_rct-0013\_v0-0-0.pdf}{link(28.8kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/svg/2021-07-19\_rct-0013\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-07-19\_rct-0013\_en\_v0-0-0.svg}{link(42.0kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/png/2021-07-19\_rct-0013\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-07-19\_rct-0013\_en\_v0-0-0.png}{link(65.5kb)}
 \\
 \hline
 \sphinxAtStartPar
 {\hyperref[\detokenize{annex-list:rct-0023}]{\sphinxcrossref{\DUrole{std,std-ref}{RCT\sphinxhyphen{}0023}}}}
 &
 \sphinxAtStartPar
-HBnB+ Project 10\%
+HBnB+ Project Deposit
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-08-30\_consortium\_finance-funding\_sales8cc\_en\_rct-0023\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-08-30\_consortium\_finance-funding\_sales8cc\_en\_rct-0023\_v0-0-0.pdf}{link(28.7kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/svg/2021-08-30\_rct-0023\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-08-30\_rct-0013\_en\_v0-0-0.svg}{link(42.0kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/png/2021-08-30\_rct-0023\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-08-30\_rct-0013\_en\_v0-0-0.png}{link(65.8kb)}
 \\
 \hline
 \sphinxAtStartPar
@@ -1677,13 +1763,13 @@ HBnB+ Project 10\%
 Hardware (x7 Pi4’s)
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-10-04\_consortium\_finance-funding\_sales8cc\_en\_rct-0033\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-10-04\_consortium\_finance-funding\_sales8cc\_en\_rct-0033\_v0-0-0.pdf}{link(28.7kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/svg/2021-10-04\_rct-0033\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-10-04\_rct-0033\_en\_v0-0-0.svg}{link(42.0kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/png/2021-10-04\_rct-0033\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-10-04\_rct-0033\_en\_v0-0-0.png}{link(66.2kb)}
 \\
 \hline
 \sphinxAtStartPar
@@ -1693,22 +1779,18 @@ Hardware (x7 Pi4’s)
 OpenBios Upgrade
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-10-30\_consortium\_finance-funding\_sales8cc\_en\_rct-0043\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-10-30\_consortium\_finance-funding\_sales8cc\_en\_rct-0043\_v0-0-0.pdf}{link(28.7kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/svg/2021-10-30\_rct-0043\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-10-30\_rct-0043\_en\_v0-0-0.svg}{link(42.0kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://datro.xyz/static/library/consortium\_finance/funding\_sales8cc/latest/source/\_static/custom/png/2021-10-30\_rct-0043\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-10-30\_rct-0043\_en\_v0-0-0.png}{link(70.0kb)}
 \\
 \hline
 \end{tabular}
 \par
 \sphinxattableend\end{savenotes}
-
-\begin{DUlineblock}{0em}
-\item[] 
-\end{DUlineblock}
 
 
 \subsubsection{RCT\sphinxhyphen{}0013}
@@ -1785,41 +1867,37 @@ This table contains the download links for the Credit Notes:
 {\hyperref[\detokenize{annex-list:cre-0034}]{\sphinxcrossref{\DUrole{std,std-ref}{CRE\sphinxhyphen{}0034}}}}
 &
 \sphinxAtStartPar
-Hardware Rebated 1
+Hardware Rebate (Pi’s)
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-10-04\_cre-0034\_en\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-10-04\_consortium\_finance-funding\_sales8cc\_en\_rct-0034\_v0-0-0.pdf}{link(29.2kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-10-04\_cre-0034\_en\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-10-04\_rct-0034\_en\_v0-0-0.svg}{link(42.0kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-10-04\_cre-0034\_en\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-10-04\_rct-0034\_en\_v0-0-0.png}{link(66.4kb)}
 \\
 \hline
 \sphinxAtStartPar
 {\hyperref[\detokenize{annex-list:cre-0044}]{\sphinxcrossref{\DUrole{std,std-ref}{CRE\sphinxhyphen{}0044}}}}
 &
 \sphinxAtStartPar
-Hardware Rebated 2
+OpenBios Upgrade
 &
 \sphinxAtStartPar
-\sphinxhref{https://wayback.datro.xyz/2021-10-30\_cre-0044\_en\_v0-0-0.pdf}{link(xx.xkb)}
+\sphinxhref{https://wayback.datro.xyz/2021-11-08\_consortium\_finance-funding\_sales8cc\_en\_rct-0044\_v0-0-0.pdf}{link(29.6kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-10-30\_cre-0044\_en\_v0-0-0.svg}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/svg/2021-11-08\_rct-0044\_en\_v0-0-0.svg}{link(42.3kb)}
 &
 \sphinxAtStartPar
-\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/img/2021-10-30\_cre-0044\_en\_v0-0-0.png}{link(xx.xkb)}
+\sphinxhref{https://library.datro.xyz/consortium\_finance/funding\_sales8cc/latest/build/html/en/\_static/custom/png/2021-11-08\_rct-0044\_en\_v0-0-0.png}{link(71.0kb)}
 \\
 \hline
 \end{tabular}
 \par
 \sphinxattableend\end{savenotes}
-
-\begin{DUlineblock}{0em}
-\item[] 
-\end{DUlineblock}
 
 
 \subsubsection{CRE\sphinxhyphen{}0034}
@@ -1839,15 +1917,8 @@ Download in \sphinxhref{https://wayback.datro.xyz/2021-11-08\_consortium\_financ
 
 \noindent\sphinxincludegraphics[width=420\sphinxpxdimen]{{2021-11-08_cre-0044_en_v0-0-0}.png}
 
-
-\subsection{Refunds}
-\label{\detokenize{annex-list:refunds}}
 \sphinxAtStartPar
-This table contains the download links for any Refunds:
-
-\begin{DUlineblock}{0em}
-\item[] 
-\end{DUlineblock}
+End.
 
 
 \chapter{\sphinxstylestrong{Document Author:}}
