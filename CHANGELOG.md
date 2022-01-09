@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.1-rtw.13] - Q1/2022
+
+### Added
+
+### Changed
+
+Jan-08 - Updated a document (`library/consortium_finance/funding_sales8cc` 0.0.0 => 0.0.1) See document changelog for details    
+
 ## [0.0.1-rtw.12] - Q4/2021
 
 ### Added

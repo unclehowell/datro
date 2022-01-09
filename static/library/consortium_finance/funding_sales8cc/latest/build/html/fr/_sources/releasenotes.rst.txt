@@ -5,10 +5,14 @@ This section provides information about what is new or changed, including urgent
 - 'Updates' are the term used to describe significant changes to our public source code and/or records.  
  
 
-This Release (0.0.0)
+This Release (0.0.1)
 ~~~~~~~~~~~~~~~~~~~~~
 
-- **2021-12-31** - `N/A`
+
+- **2022-01-08** - `Cropped height of PNG files (preview of annexed SVG & PDF's) to reduce whitespace and pagebreaks`
+- **2022-01-08** - `Increased Statements last column width, in Table 2.1, to elimnate overflow`
+- **2022-01-08** - `Minor correction to statement. It was miscalculated to the tune of $3.02 (£2.22)`
+
 
 Older Versions
 ####################
@@ -23,7 +27,12 @@ The date the file was archived will differ from the date of the document label, 
    :widths: 20, 20, 20, 40
    :header-rows: 1
    
+|
 
+Version 0.0.0
+---------------
+
+- **2021-12-31** - `N/A`
 
 To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://wayback.datro.xyz/>`__.
    
