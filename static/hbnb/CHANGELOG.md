@@ -6,6 +6,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [hbnb.03] - Q1/2022
+
+### Added
+Jan-12 - Added sitemap directory with a sitemap.xml generator script  
+
 ## [hbnb.02] - Q4/2021
 
 ### Fixed 

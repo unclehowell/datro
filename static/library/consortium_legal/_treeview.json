@@ -1,5 +1,19 @@
 [
   {
+    "name": "<div class='title-line title-disable'><div class='icon f-datro'></div>Disclaimers</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+   "name": "<div class='subtitle-line enable-link'>Whitepapers</div>",
+    "path": "./disclaimers_whitepapers",
+    "_links": {
+      "html": "./disclaimers_whitepapers"
+    }
+  },
+  {
     "name": "<div class='title-line title-disable'><div class='icon f-datro'></div>Policies</div>",
     "path": "javascript:void(0)",
     "_links": {

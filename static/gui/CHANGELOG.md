@@ -8,6 +8,10 @@ and a combination of [Prince2 Project Management](https://prince2.com).
    
 ## [Unreleased] 
 
+## [gui-0.5] - Q1/2022
+
+### Added
+Jan-12 - Added sitemap directory with a sitemap.xml generator script  
 
 ## [gui-0.4] - Q4/2021
 

@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.13] - Q1/2022
 
 ### Added
+Jan-12 - Added sitemap directory which contains a sitemap.xml generator script. To hbnb,library and gui directories. And I generated sitemaps   
 
 ### Changed
 

@@ -6,6 +6,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [-theme-explorer.03] - Q1/2022
+
+### Added 
+Jan-12 - Added sitemap.xml maker so library has its own one for the url library.datro.xyz  
+
 ## [-theme-explorer.02] - Q3/2021
 Sep-04 - Buggy design, ref last point. Worked on it some more  
 Sep-03 - Added multiple language support, so stylesheet had to adopt to fit all the HTML/PDF languages on the screen  

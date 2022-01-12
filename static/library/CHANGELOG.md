@@ -6,7 +6,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+
 ## [library.06] - Q1/2022
+
+### Added
+Jan-12 -  Added sitemap directory with a sitemap.xml generator script  
 Jan-08 - `funding_sales8cc v0.0.0 => v0.0.1`  
 
 ### Changed
