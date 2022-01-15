@@ -44,7 +44,7 @@ latex_elements = { 'classoptions': ',openany,oneside', 'babel' : '\\usepackage[e
 
 latex_documents = [
     (master_doc, 'consortium_legal-disclaimers_whitepapers.tex', u'Whitepaper Disclaimer',
-     u'Author(s): Sion H. Buckler, DATRO CONS.', 'manual'),
+     u'Author(s): DATRO Consortium', 'manual'),
 ]
 
 
