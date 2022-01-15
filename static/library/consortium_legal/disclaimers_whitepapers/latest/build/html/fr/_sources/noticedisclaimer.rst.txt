@@ -10,7 +10,7 @@ While this disclaimer may not refer to the aforementioned whitepaper by name or 
 This disclaimer uses the term Corresponding Whitepaper to acknowledge, reciprocate and return reference to whitepapers which choose to reference this disclaimer.
 This term may also be seen next to the term 'website(s)' to return acknowledgement to website(s) which refer and provide a link to this disclaimer. 
 Otherwise the term `website` may be used in conjunction with the term 'Corresponding Whitepaper' e.g. 'Corresponding Whitepaper and/or Website', 
-in order to reflect a publiction of the aformentioned whitepaper in HTML format as opposed to, or in addition to, a document format such as PDF.     
+in order to reflect a publication of the aformentioned whitepaper in HTML format as opposed to, or in addition to, a document format such as PDF.     
  
 **“Ecosystem"** refers to the solution being presented within the 'Corresponding Whitepaper', which may be a cryptocurrency token, an NFT, a website/service or other technologies of sorts.
 

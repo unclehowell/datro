@@ -15,6 +15,7 @@ Jan-12 -  Added sitemap directory with a sitemap.xml generator script
 Jan-08 - `funding_sales8cc v0.0.0 => v0.0.1`  
 
 ### Changed
+Jan-15 - Corrected a typo in `consortium_legal/disclaimers_whitepapers`  
 Jan-08 - Renamed file `bloculus/_treeview.js` to what it should have been `bloculus/_treeview.json`  
 
 ## [library.05] - Q4/2021

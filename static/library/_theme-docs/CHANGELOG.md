@@ -7,6 +7,11 @@ This directory and changelog belongs to [![GitHub release (latest by date includ
 
 ## [Unreleased]  
 
+## [_theme-docs.08-rc2.4] - Q1/2022
+
+### Added
+Jan-15 - Updated `rebuild-master.sh`. The preview link was incorrect, now it is correct  
+
 ## [_theme-docs.08-rc2.3] - Q4/2021
 
 ### Added
