@@ -14,13 +14,13 @@ in order to reflect a publiction of the aformentioned whitepaper in HTML format 
  
 **“Ecosystem"** refers to the solution being presented within the 'Corresponding Whitepaper', which may be a cryptocurrency token, an NFT, a website/service or other technologies of sorts.
 
-**"Company"** means the legally incorporated company or organitation under, and within which, 'The Ecosystem' will be developed, incubated and/or operated. 
+**"Company"** means the legally incorporated company or organisation under, and within which, 'The Ecosystem' will be developed, incubated and/or operated. 
 Unless otherwise stated, The Company does not refer to the DATRO Consortium, nor does it imply, unless otherwise stated, that 'The Company' is a subsidiary or affiliate, partner or client of the DATRO Consortium.
 
 **"Team** means the individual(s), group(s) which pioneer, develop and/or maintain (and/or currently pioneer and/or maintain) the Ecosystem described in The Corresponding Whitepaper.
 
-**"Advocate"** means a reader of the Correspondng Whitepaper which takes helpful action to fruition the aforementioned Ecosystem e.g. contribute resources, develop, purchase products/services, share on socal media etc. 
-Simply understanding and agreeing wth the Corresponding Whitepaper and its Ecosystem and taking no immedate action, may also constitute the reader being deemed an advocate of the Corresponding Whitepaper/website,Team and Ecosystem. 
+**"Advocate"** means a reader of the Corresponding Whitepaper which takes helpful action to fruition the aforementioned Ecosystem e.g. contribute resources, develop, purchase products/services, share on social media etc. 
+Simply understanding and agreeing with the Corresponding Whitepaper and its Ecosystem and taking no immedate action, may also constitute the reader being deemed an advocate of the Corresponding Whitepaper/website,Team and Ecosystem. 
 
 
 Introduction
@@ -53,7 +53,7 @@ is under any obligation to update or correct this document in connection therewi
 Token Documentation
 ======================
 
-Nothing in the Corresponding Whitepaper or website constitutes any offer by the Company or the Team to sell any products/servics (as defined herein) 
+Nothing in the Corresponding Whitepaper or website constitutes any offer by the Company or the Team to sell any products/services (as defined herein) 
 nor shall it, or any part of it, nor the fact of its presentation, form the basis of, or be relied upon in connection with, any contract or investment decision. 
 Nothing contained in the Corresponding Whitepaper or website is, or may be relied upon as a promise, representation or undertaking as to the future performance of the aforementioned Ecosystem.
 The agreement between the Advocate and/or third parties, in relation to any distribution or transfer of said Ecosystem, as stipulated in the Corresponding Whitepaper, is to be governed only by the separate terms
