@@ -1,0 +1,477 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, DATRO Consortium
+# This file is distributed under the same license as the Client ID - EVL package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Client ID - EVL 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-27 18:02-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/aftersales.rst:2
+#: ../../source/annex-list.rst:100
+msgid "After Sales"
+msgstr ""
+
+#: ../../source/aftersales.rst:4
+msgid "See below aftersales made to ClientID: EVL e.g. Credit Notes:"
+msgstr ""
+
+#: ../../source/aftersales.rst:7
+#: ../../source/annex-list.rst:104
+msgid "Credits"
+msgstr ""
+
+#: ../../source/aftersales.rst:9
+msgid "EVL - Credit Notes"
+msgstr ""
+
+#: ../../source/_static/custom/credits-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "**Date**"
+msgstr ""
+
+#: ../../source/_static/custom/credits-master.csv:1
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/quotes.csv:1
+#: ../../source/_static/invoices.csv:1
+#: ../../source/_static/receipts.csv:1
+#: ../../source/_static/credits.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "**Annex ID**"
+msgstr ""
+
+#: ../../source/_static/custom/credits-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "**Reference**"
+msgstr ""
+
+#: ../../source/_static/custom/credits-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "**Volume**"
+msgstr ""
+
+#: ../../source/_static/custom/credits-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "**¤**"
+msgstr ""
+
+#: ../../source/_static/custom/credits-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "**GBP**"
+msgstr ""
+
+#: ../../source/annex-list.rst:2
+msgid "Annexures"
+msgstr ""
+
+#: ../../source/annex-list.rst:4
+msgid "This section contains the Annexures, referenced in the text above."
+msgstr ""
+
+#: ../../source/annex-list.rst:8
+msgid "Download Links"
+msgstr ""
+
+#: ../../source/annex-list.rst:10
+msgid "This table contains the download links for the Annexed documents:"
+msgstr ""
+
+#: ../../source/annex-list.rst:12
+msgid "Annexures Download Links"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/quotes.csv:1
+#: ../../source/_static/invoices.csv:1
+#: ../../source/_static/receipts.csv:1
+#: ../../source/_static/credits.csv:1
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "**Description**"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/quotes.csv:1
+#: ../../source/_static/invoices.csv:1
+#: ../../source/_static/receipts.csv:1
+#: ../../source/_static/credits.csv:1
+msgid "**PDF**"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/quotes.csv:1
+#: ../../source/_static/invoices.csv:1
+#: ../../source/_static/receipts.csv:1
+#: ../../source/_static/credits.csv:1
+msgid "**SVG**"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/quotes.csv:1
+#: ../../source/_static/invoices.csv:1
+#: ../../source/_static/receipts.csv:1
+#: ../../source/_static/credits.csv:1
+msgid "**PNG**"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/quotes.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid ":ref:`QUO-0071`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/quotes.csv:1
+#: ../../source/_static/invoices.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "EL Web3.0 Mandate"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/quotes.csv:1
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-01-27_consortium_finance-funding_salesevl_quo-0071_en_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2021-07-10_quo-0011_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(96.3kb) <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2021-07-10_quo-0011_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/invoices.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid ":ref:`INV-0072`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/invoices.csv:1
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-01-27_consortium_finance-funding_salesevl_inv-0072_en_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(50.2kb) <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2021-07-10_inv-0012_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(94.1kb) <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2021-07-10_inv-0012_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/annex-list.rst:20
+#: ../../source/tenders.rst:2
+msgid "Tenders"
+msgstr ""
+
+#: ../../source/annex-list.rst:23
+#: ../../source/tenders.rst:17
+msgid "Quotes"
+msgstr ""
+
+#: ../../source/annex-list.rst:25
+msgid "This table contains the download links for the Quotes:"
+msgstr ""
+
+#: ../../source/annex-list.rst:27
+msgid "Quote Download Links"
+msgstr ""
+
+#: ../../source/_static/quotes.csv:1
+msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-01-27_quo-0071_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/quotes.csv:1
+msgid "`link(96.3kb) <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-01-27_quo-0071_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/annex-list.rst:39
+msgid "QUO-0071"
+msgstr ""
+
+#: ../../source/annex-list.rst:41
+msgid "Download in `PDF Format <https://wayback.datro.xyz/2022-01-27_consortium_finance-funding_salesevl_quo-0071_en_v0-0-0.pdf>`__ and/or `SVG Format <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-01-27_quo-0071_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/annex-list.rst:50
+#: ../../source/billables.rst:2
+msgid "Billables"
+msgstr ""
+
+#: ../../source/annex-list.rst:54
+#: ../../source/billables.rst:8
+msgid "Invoices"
+msgstr ""
+
+#: ../../source/annex-list.rst:56
+msgid "This table contains the download links for the Invoices:"
+msgstr ""
+
+#: ../../source/annex-list.rst:58
+msgid "Invoice Download Links"
+msgstr ""
+
+#: ../../source/_static/invoices.csv:1
+msgid "`link(50.2kb) <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-01-27_inv-0072_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/invoices.csv:1
+msgid "`link(94.1kb) <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-01-27_inv-0072_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/annex-list.rst:70
+msgid "INV-0072"
+msgstr ""
+
+#: ../../source/annex-list.rst:72
+msgid "Download in `PDF Format <https://wayback.datro.xyz/2022-01-27_consortium_finance-funding_salesevl_inv-0072_en_v0-0-0.pdf>`__ and/or `SVG Format <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-01-27_inv-0072_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/annex-list.rst:83
+#: ../../source/billables.rst:18
+msgid "Receipts"
+msgstr ""
+
+#: ../../source/annex-list.rst:85
+msgid "This table contains the download links for the Receipts:"
+msgstr ""
+
+#: ../../source/annex-list.rst:87
+msgid "Receipt Download Links"
+msgstr ""
+
+#: ../../source/annex-list.rst:106
+msgid "This table contains the download links for the Credit Notes:"
+msgstr ""
+
+#: ../../source/annex-list.rst:108
+msgid "Credit Note Download Links"
+msgstr ""
+
+#: ../../source/billables.rst:4
+msgid "See below the billables for client Evl:"
+msgstr ""
+
+#: ../../source/billables.rst:10
+msgid "Evl - Invoices"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "**ID**"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "2022/01/27"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+msgid "EL W3 Mandate (50%)"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "1200.00"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "USD"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "896.58"
+msgstr ""
+
+#: ../../source/billables.rst:20
+msgid "Evl - Receipts"
+msgstr ""
+
+#: ../../source/index.rst:2
+msgid "Client ID - EVL"
+msgstr ""
+
+#: ../../source/index.rst:18
+msgid "**Document Author:**"
+msgstr ""
+
+#: ../../source/index.rst:22
+msgid "DATRO Consortium"
+msgstr ""
+
+#: ../../source/releasenotes.rst:2
+msgid "Release Notes and Notices"
+msgstr ""
+
+#: ../../source/releasenotes.rst:4
+msgid "This section provides information about what is new or changed, including urgent issues, documentation updates, maintenance, and new releases. - 'Updates' are the term used to describe significant changes to our public source code and/or records."
+msgstr ""
+
+#: ../../source/releasenotes.rst:9
+msgid "This Release (0.0.0)"
+msgstr ""
+
+#: ../../source/releasenotes.rst:11
+msgid "**2022-01-27** - `First Draft`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:15
+msgid "Older Versions"
+msgstr ""
+
+#: ../../source/releasenotes.rst:17
+msgid "In the table below the last entry displays a link to an archived copy of the last report. To keep the filename from overflowing in the table below the name displayed may differ from the file name. The date the file was archived will differ from the date of the document label, which is its creation date."
+msgstr ""
+
+#: ../../source/releasenotes.rst:22
+msgid "Older Versions of this Document"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "**Archive Date**"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "**Version**"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "**Download Link**"
+msgstr ""
+
+#: ../../source/releasenotes.rst:29
+msgid "To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://wayback.datro.xyz/>`__."
+msgstr ""
+
+#: ../../source/releasenotes.rst:33
+msgid "Known and Corrected Issues"
+msgstr ""
+
+#: ../../source/releasenotes.rst:35
+msgid "Below is a table of pending issues that have been reported to our team. These issues will be cleared from this list as and when they are remedied."
+msgstr ""
+
+#: ../../source/releasenotes.rst:39
+msgid "Known Issues"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "**Issue Date**"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "**Subject**"
+msgstr ""
+
+#: ../../source/statement.rst:2
+msgid "Statement"
+msgstr ""
+
+#: ../../source/statement.rst:4
+msgid "Evl - Statement"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "**Bal (£)**"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "**Balance**"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "**896.58**"
+msgstr ""
+
+#: ../../source/tenders.rst:4
+msgid "See below the tenders made to clientID: EVL e.g. Estimates and Fixed Quotes:"
+msgstr ""
+
+#: ../../source/tenders.rst:7
+msgid "Estimates"
+msgstr ""
+
+#: ../../source/tenders.rst:9
+msgid "Evl - Estimates"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+msgid "**GO**"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+msgid "2022/01/25"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+msgid "EL Web3.0 Whitepaper"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "2400.00"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+msgid "1776.53"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "1793.16"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "✔"
+msgstr ""
+
+#: ../../source/tenders.rst:19
+msgid "Evl - Quotes"
+msgstr ""
+
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "**Go**"
+msgstr ""

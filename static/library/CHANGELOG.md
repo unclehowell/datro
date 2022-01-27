@@ -10,13 +10,18 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [library.06] - Q1/2022
 
 ### Added
-Jan-14 -  Added `consortium_legal/disclaimers_whitepapers`  
-Jan-12 -  Added sitemap directory with a sitemap.xml generator script   
+Jan-27 - Added client file `consortium_finance/funding_salesevl`  
+Jan-14 - Added `consortium_legal/disclaimers_whitepapers`  
+Jan-12 - Added sitemap directory with a sitemap.xml generator script   
 Jan-08 - `funding_sales8cc v0.0.0 => v0.0.1`  
 
 ### Changed
+Jan-21 - `funding_sales8cc` date in conf.py was Jan 2021, change to Jan 2022  
 Jan-15 - Corrected a typo in `consortium_legal/disclaimers_whitepapers`  
 Jan-08 - Renamed file `bloculus/_treeview.js` to what it should have been `bloculus/_treeview.json`  
+
+### Issue
+Jan-27 - The client file `8cc` encounters a html formatting issue when rebuild.sh is run   
 
 ## [library.05] - Q4/2021
 

@@ -14,11 +14,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.13] - Q1/2022
 
 ### Added
+Jan-27 - Added clientfile - see library/CHANGELOG.md  
 Jan-12 - Added sitemap directory which contains a sitemap.xml generator script. To hbnb,library and gui directories. And I generated sitemaps   
 
 ### Changed
-
 Jan-08 - Updated a document (`library/consortium_finance/funding_sales8cc` 0.0.0 => 0.0.1) See document changelog for details    
+
+### Issue 
+Jan-27 - Sitemap dates aren't correct when running sitemap makers (in static/monoreapo and elsewhere e.g. library/_theme-explorer/sitemap/ etc)  
 
 ## [0.0.1-rtw.12] - Q4/2021
 

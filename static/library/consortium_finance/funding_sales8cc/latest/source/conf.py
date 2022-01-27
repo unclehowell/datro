@@ -18,7 +18,7 @@ locale_dirs = ['locales']
 gettext_auto_build = True
 gettext_compact = "docs"
 
-today_fmt = 'January 8th, 2021'
+today_fmt = 'January 8th, 2022'
 
 exclude_patterns = ['_build']
 
