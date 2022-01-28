@@ -10,6 +10,7 @@ This directory and changelog belongs to [![GitHub release (latest by date includ
 ## [_theme-docs.08-rc2.4] - Q1/2022
 
 ### Added
+Jan-27 - Updated `blue.sh` and `grey.sh` (v0.4-rc.2 => v0.4-rc.3) fixing the position of the breadcrumb broke after pip/wheel update  
 Jan-15 - Updated `rebuild-master.sh`. The preview link was incorrect, now it is correct  
 
 ## [_theme-docs.08-rc2.3] - Q4/2021

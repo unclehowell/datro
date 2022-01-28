@@ -20,6 +20,10 @@ Jan-21 - `funding_sales8cc` date in conf.py was Jan 2021, change to Jan 2022
 Jan-15 - Corrected a typo in `consortium_legal/disclaimers_whitepapers`  
 Jan-08 - Renamed file `bloculus/_treeview.js` to what it should have been `bloculus/_treeview.json`  
 
+### Removed
+Jan-27 - Removed some buggy lines from `_theme-docs` - see corresponding changelog  
+Jan-27 - Removed seperate segment for whitepapers - whitepapers will not sit with Project Briefs, in Projects segment  
+
 ### Issue
 Jan-27 - The client file `8cc` encounters a html formatting issue when rebuild.sh is run   
 
