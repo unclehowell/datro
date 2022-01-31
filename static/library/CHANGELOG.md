@@ -10,6 +10,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [library.06] - Q1/2022
 
 ### Added
+Jan-30 - Added HotspotBnB WebApp (Draft) Mandate `hotspotbnb_apps/property_evlmandate`  
 Jan-27 - Added client file `consortium_finance/funding_salesevl`  
 Jan-14 - Added `consortium_legal/disclaimers_whitepapers`  
 Jan-12 - Added sitemap directory with a sitemap.xml generator script   

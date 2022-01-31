@@ -20,8 +20,8 @@
 #                   datro.xyz
 #................................................
 
-sed -i 's/.wy-plain-list-disc,article ul{list-style:disc;line-height:24px;/.wy-plain-list-disc,article ul{list-style:disc;line-height:25px;font-size:120%;/g' build/html/_static/css/theme.css && sleep 0.1 &&
-sed -i 's/.wy-plain-list-disc,article ul{/.wy-plain-list-disc,article ul{display:grid;/g' build/html/_static/css/theme.css && sleep 0.1 &&
+sed -i 's/.wy-plain-list-disc,article ul{list-style:disc;line-height:24px;/.wy-plain-list-disc,article ul{display:list-item;line-height:3px;font-size:100%;white-space:pre-wrap;margin-bottom:3em;/g' build/html/_static/css/theme.css && sleep 0.1 &&
+#sed -i 's/.wy-plain-list-disc,article ul{/.wy-plain-list-disc,article ul{display:list-item;/g' build/html/_static/css/theme.css && sleep 0.1 &&
 sed -i 's/<\/head>/<style>html{overflow-y:scroll;} ::-webkit-scrollbar{width:0px;background:transparent;} div#author-s{text-align:left;}<\/style><\/head>/g' build/html/*.html && sleep 0.1 &&
 sed -i '/\<li class\="wy-breadcrumbs-aside">/,+6d' build/html/*.html && sleep 0.1 &&
 sed -i 's/<div class="version">/<div class="version"> Document Version : /g' build/html/*.html && sleep 0.1 &&
