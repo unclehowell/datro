@@ -1,6 +1,34 @@
 [
   {
-    "name": "<div class='title-line title-disable'><div class='icon f-hbnb'></div>Entertainment</div>",
+    "name": "<div class='title-line title-disable'><div class='icon i-hbnb'></div>User Guides</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Communications</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line enable-link'>Element</div>",
+    "path": "./comms_element",
+    "_links": {
+      "html": "./comms_element"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line enable-link'>Althea</div>",
+    "path": "./comms_althea",
+    "_links": {
+      "html": "./comms_althea"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Entertainment</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
@@ -21,7 +49,14 @@
     }
    },
   {
-    "name": "<div class='title-line title-disable'><div class='icon f-hbnb'></div>Smart Home/IoT</div>",
+    "name": "<div class='depth2-subtitle-line subtitle-disable'>Controllers</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Smart Home/IoT</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
@@ -41,8 +76,8 @@
       "html": "javascript:void(0)"
     }
    },
-  {
-    "name": "<div class='title-line title-disable' ><div class='icon f-hbnb'></div>Safety & Security</div>",
+ {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Safety & Security</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
@@ -56,35 +91,7 @@
     }
    },
   {
-    "name": "<div class='title-line title-disable'><div class='icon f-hbnb'></div>Communications</div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
-    }
-   },
-  {
-    "name": "<div class='depth2-subtitle-line enable-link'>Element</div>",
-    "path": "./comms_element",
-    "_links": {
-      "html": "./comms_element"
-    }
-   },
-  {
-    "name": "<div class='depth2-subtitle-line enable-link'>Althea</div>",
-    "path": "./comms_althea",
-    "_links": {
-      "html": "./comms_althea"
-    }
-   },
-  {
-    "name": "<div class='title-line title-disable'><div class='icon f-hbnb'></div>Energy</div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
-    }
-   },
-  {
-    "name": "<div class='title-line title-disable'><div class='icon f-hbnb'></div>Business</div>",
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Business</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
@@ -98,7 +105,7 @@
     }
    },
   {
-    "name": "<div class='title-line title-disable'><div class='icon f-hbnb'></div>Background Services</div>",
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Background Services</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
@@ -112,7 +119,7 @@
     }
    },
   {
-    "name": "<div class='title-line title-disable'><div class='icon f-hbnb'></div>Settings</div>",
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Settings</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
@@ -133,7 +140,7 @@
     }
    },
   {
-    "name": "<div class='title-line title-disable'><div class='icon f-hbnb'></div>Developers</div>",
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Developers</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
@@ -147,14 +154,189 @@
     }
    },
   {
-    "name": "<div class='title-line title-disable'><div class='icon f-hbnb'></div>Integrated</div>",
+    "name": "<div class='title-line title-disable'><div class='icon i-hbnb'></div>Plans (Latest)</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+ {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Communications</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
    },
   {
-    "name": "<div class='depth2-subtitle-line subtitle-disable'>Controllers</div>",
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Entertainment</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+ {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Smart Home/IoT</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+{
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Safety & Security</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Business</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Background Services</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Settings</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Developers</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='title-line title-disable'><div class='icon i-hbnb'></div>Briefs/Whitepapers (Latest)</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Communications</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Entertainment</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+ {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Smart Home/IoT</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+{
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Safety & Security</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Business</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Background Services</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Settings</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Developers</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='title-line title-disable'><div class='icon i-hbnb'></div>Mandates (Latest)</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+ {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Communications</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Entertainment</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+ {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Smart Home/IoT</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+{
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Safety & Security</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Business</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Background Services</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Settings</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line-mini subtitle-mini-disable'><div class='icon f-datro'></div>Developers</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
@@ -168,4 +350,3 @@
     }
    }
 ]
-
