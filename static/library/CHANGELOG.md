@@ -10,6 +10,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [library.06] - Q1/2022
 
 ### Added
+Feb-20 - Added `consortium_projects/mandate_guide`  
 Jan-30 - Added HotspotBnB WebApp (Draft) Mandate `hotspotbnb_apps/property_evlmandate`  
 Jan-27 - Added client file `consortium_finance/funding_salesevl`  
 Jan-14 - Added `consortium_legal/disclaimers_whitepapers`  
@@ -17,6 +18,7 @@ Jan-12 - Added sitemap directory with a sitemap.xml generator script
 Jan-08 - `funding_sales8cc v0.0.0 => v0.0.1`  
 
 ### Changed
+Feb-20 - Changed library layout, minor edits in projects
 Feb-19 - Removed everything but userguides section in the hotspotbnb webapps. And added all mandates, briefs and plans to consortium projects  
 Jan-21 - `funding_sales8cc` date in conf.py was Jan 2021, change to Jan 2022  
 Jan-15 - Corrected a typo in `consortium_legal/disclaimers_whitepapers`  

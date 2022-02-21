@@ -1,33 +1,5 @@
 [
   {
-    "name": "<div class='title-line title-disable'><div class='icon f-datro'></div>Project Whitepapers</div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
-    }
-   },
-  {
-    "name": "<div class='subtitle-line subtitle-disable'>8CC</div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
-    }
-   },
-  {
-    "name": "<div class='subtitle-line subtitle-disable'>CEoT</div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
-    }
-   },
-  {
-    "name": "<div class='subtitle-line subtitle-disable'>EVL</div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
-    }
-   },
-  {
     "name": "<div class='title-line title-disable'><div class='icon f-datro'></div>Project Mandates</div>",
     "path": "javascript:void(0)",
     "_links": {
@@ -55,9 +27,8 @@
       "html": "javascript:void(0)"
     }
    },
-
   {
-    "name": "<div class='title-line title-disable' ><div class='icon f-datro'></div>Project Briefs</div>",
+    "name": "<div class='title-line title-disable' ><div class='icon f-datro'></div>Project Briefs/Whitepapers</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
@@ -120,11 +91,24 @@
     }
    },
   {
-    "name": "<div class='page-scroll-fix title-disable'></div>",
+    "name": "<div class='title-line title-disable'><div class='icon f-datro'></div>Project Guides</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line subtitle-enable'>Mandate</div>",
+    "path": "./mandate_guide/",
+    "_links": {
+      "html": "./mandate_guide/"
+    }
+   },
+  {
+    "name": "<div class='page-scroll-fix'></div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
    }
 ]
-
