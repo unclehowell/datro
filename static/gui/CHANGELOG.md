@@ -13,6 +13,9 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 ### Added
 Jan-12 - Added sitemap directory with a sitemap.xml generator script  
 
+### Fixed
+Feb-22 - Security Fix `grunt >=1.3.0` in `dashboard/featherlight/package.json`
+
 ## [gui-0.4] - Q4/2021
 
 ### Added

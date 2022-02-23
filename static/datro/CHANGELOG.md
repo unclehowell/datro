@@ -11,9 +11,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [-datro.05] - Q1/2022
+
+### Fixed
+Feb-22 - Security Fix `follow-redirects >=1.14.8` & `engine.io >=4.0.0"` in `static/datro/html/videos/package-lock.json`  
 
 ## [-datro.04] - Q4/2021
-
 
 ### Removed
 Dec-11 - Removed the `academy link` because its a very incomplete page  
