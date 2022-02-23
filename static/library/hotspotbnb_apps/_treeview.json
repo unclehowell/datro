@@ -15,16 +15,16 @@
    },
   {
     "name": "<div class='subtitle-line enable-link'>Element</div>",
-    "path": "./comms_element",
+    "path": "./comms_element/index.html",
     "_links": {
-      "html": "./comms_element"
+      "html": "./comms_element/index.html"
     }
    },
   {
     "name": "<div class='subtitle-line enable-link'>Althea</div>",
-    "path": "./comms_althea",
+    "path": "./comms_althea/index.html",
     "_links": {
-      "html": "./comms_althea"
+      "html": "./comms_althea/index.html"
     }
    },
   {
@@ -64,9 +64,9 @@
    },
   {
     "name": "<div class='depth2-subtitle-line enable-link'>OpenHAB</div>",
-    "path": "./smarthome_openhab",
+    "path": "./smarthome_openhab/index.html",
     "_links": {
-      "html": "./smarthome_openhab"
+      "html": "./smarthome_openhab/index.html"
     }
    },
   {
@@ -162,9 +162,9 @@
    },
   {
     "name": "<div class='depth2-subtitle-line enable-link'>Weblate</div>",
-    "path": "./developers_weblate/",
+    "path": "./developers_weblate/index.html",
     "_links": {
-      "html": "./developers_weblate/"
+      "html": "./developers_weblate/index.html"
     }
    }
 ]

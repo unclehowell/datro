@@ -1,23 +1,23 @@
 [
   {
     "name": "<div class='title-line enable-link'><div class='icon f-datro'></div>Documents</div>",
-    "path": "./library",
+    "path": "./library/index.html",
     "_links": {
-      "html": "./library"
+      "html": "./library/index.html"
     }
   },
   {
    "name": "<div class='title-line enable-link'><div class='icon i-hbnb'></div>Hotspotβnβ</div>",
-    "path": "./hbnb",
+    "path": "./hbnb/index.html",
     "_links": {
-      "html": "./hbnb"
+      "html": "./hbnb/index.html"
     }
   },
   {
     "name": "<div class='title-line enable-link'><div class='icon i-hbnb'></div>Hβnβ GUI</div>",
-    "path": "./gui",
+    "path": "./gui/index.html",
     "_links": {
-      "html": "./gui"
+      "html": "./gui/index.html"
     }
   },
   {

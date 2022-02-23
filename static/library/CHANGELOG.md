@@ -18,6 +18,7 @@ Jan-12 - Added sitemap directory with a sitemap.xml generator script
 Jan-08 - `funding_sales8cc v0.0.0 => v0.0.1`  
 
 ### Changed
+Feb-22 - Feedback states library url's were broken. Their device wasn't resolving `index.html` when url ended in `/`. Had to manually add `index.html` to each `_treeview.json` files  
 Feb-20 - Changed library layout, minor edits in projects
 Feb-19 - Removed everything but userguides section in the hotspotbnb webapps. And added all mandates, briefs and plans to consortium projects  
 Jan-21 - `funding_sales8cc` date in conf.py was Jan 2021, change to Jan 2022  

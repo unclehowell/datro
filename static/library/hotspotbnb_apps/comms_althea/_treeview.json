@@ -14,55 +14,41 @@
     }
    },
   {
-    "name": "<div class='language-subtitle-line enable-link gish'>Latest</div>",
+    "name": "<div class='language-subtitle-line enable-link gish' title=''>Latest</div>",
     "path": "./latest/build/html/en/index.html",
     "_links": {
       "html": "./latest/build/html/en/index.html"
     }
    },
   {
-    "name": "<div class='language-subtitle-line enable-link rish'>0-0-1</div>",
-    "path": "./latest/build/latex/en/consortium_contracts-techhouse2_lease5.pdf",
+    "name": "<div class='language-subtitle-line enable-link rish' title=''>0-0-0</div>",
+    "path": "./latest/build/latex/en/hotspotbnb_apps-comms_althea.pdf",
     "_links": {
-      "html": "./latest/build/latex/en/consortium_contracts-techhouse2_lease5.pdf"
+      "html": "./latest/build/latex/en/hotspotbnb_apps-comms_althea.pdf"
     }
    },
- {
-    "name": "<div class='language-subtitle-line enable-link rish'>0-0-0</div>",
-    "path": "https://world.datro.xyz/wayback/2021-09-01_consortium_contracts-techhouse2_lease5_en_v0-0-0.pdf",
-    "_links": {
-      "html": "https://world.datro.xyz/wayback/2021-09-01_consortium_contracts-techhouse2_lease5_en_v0-0-0.pdf"
-    }
-   },
-  {
-    "name": "<div class='title-line title-disable'><div class='flag f-es'></div>Español</div>",
+{
+    "name": "<div class='title-line title-disable' ><div class='flag f-es'></div>Español</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
    },
   {
-    "name": "<div class='language-subtitle-line enable-link gish'>Reciente</div>",
-    "path": "../techhouse2_lease5_es/latest/build/html/es/index.html",
+    "name": "<div class='language-subtitle-line subtitle-disable gish'>Reciente</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": "../techhouse2_lease5_es/latest/build/html/es/index.html"
+      "html": "javascript:void(0)"
     }
    },
   {
-    "name": "<div class='language-subtitle-line enable-link rish'>0-0-1</div>",
-    "path": "../techhouse2_lease5_es/latest/build/latex/es/consortium_contracts-techhouse2_lease5_es.pdf",
+    "name": "<div class='language-subtitle-line subtitle-disable rish'>x-x-x</div>",
+    "path": "javascript:void(0)",
     "_links": {
-      "html": "../techhouse2_lease5_es/latest/build/latex/es/consortium_contracts-techhouse2_lease5_es.pdf"
+      "html": "javascript:void(0)"
     }
    },
-   {
-    "name": "<div class='language-subtitle-line enable-link rish'>0-0-0</div>",
-    "path": "https://world.datro.xyz/wayback/2021-09-01_consortium_contracts-techhouse2_lease5_es_v0-0-0.pdf",
-    "_links": {
-      "html": "https://world.datro.xyz/wayback/2021-09-01_consortium_contracts-techhouse2_lease5_es_v0-0-0.pdf"
-    }
-   },
-  {
+ {
     "name": "<div class='title-line title-disable'><div class='flag f-de'></div>Deutsch</div>",
     "path": "javascript:void(0)",
     "_links": {
@@ -112,3 +98,4 @@
     }
    }
 ]
+
