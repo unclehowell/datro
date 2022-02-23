@@ -21,8 +21,8 @@ Jan-12 - Added sitemap directory which contains a sitemap.xml generator script. 
 Feb-22 - Feedback states library url's were broken. Their device wasn't resolving `index.html` when url ended in `/`. Had to manually add `index.html` to `_treeview.json` files  
 Jan-08 - Updated a document (`library/consortium_finance/funding_sales8cc` 0.0.0 => 0.0.1) See document changelog for details    
 
-### Issue 
-Jan-27 - Sitemap dates aren't correct when running sitemap makers (in static/monoreapo and elsewhere e.g. library/_theme-explorer/sitemap/ etc)  
+### Fixed
+Feb-22 - Removed Issues from CHANGELOG.md - Only issue was a sitemap.xml one, but it wasn't an issue  
 
 ## [0.0.1-rtw.12] - Q4/2021
 

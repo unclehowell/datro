@@ -15,6 +15,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 Feb-22 - Security Fix `follow-redirects >=1.14.8` & `engine.io >=4.0.0"` in `static/datro/html/videos/package-lock.json`  
+Feb-22 - Security Fix `ansi-regex >=5.0.1` & `engine.io >=4.1.2` in `static/datro/html/videos/package-lock.json`  
 
 ## [-datro.04] - Q4/2021
 
