@@ -8,9 +8,10 @@ This section provides information about what is new or changed, including urgent
 This Release (0.0.1)
 ~~~~~~~~~~~~~~~~~~~~~
 
-- **2022-03-10** - 
-- **2022-03-10** - `Added Receipt 2of2 for completion/delivery of the Project Mandate`
-- **2022-02-28** - `Added Invoice 2of2 for completion/delivery of the Project Mandate. And Quote for delivery of the Project Brief`
+- **2022-03-10** - `UZZI Consulting to consult with Client (OBO DATRO) ref Project Brief Phase billing`
+- **2022-03-10** - `Retracted Project Brief Estimate`  
+- **2022-03-10** - `Added minor issue - Delay in Mandate payment (2 of 2)`
+- **2022-03-10** - `Added Receipt (2 of 2) for for Project Mandate`  
 
 
 Older Versions
@@ -33,7 +34,6 @@ Version 0.0.0
 
 - **2022-01-27** - `First Draft`
 
-|
 
 To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://wayback.datro.xyz/>`__.
    

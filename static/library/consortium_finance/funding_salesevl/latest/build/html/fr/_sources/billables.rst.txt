@@ -1,15 +1,15 @@
 Billables
 ======================
 
-See below the billables for client Evl:
+See below the billables for client EVL:
 
 
 Invoices
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. csv-table:: Evl - Invoices
+.. csv-table:: EVL - Invoices
    :file: _static/custom/invoices-master.csv
-   :widths: 15, 15, 30, 15, 10, 15
+   :widths: 15, 20, 25, 15, 10, 15
    :header-rows: 1
 
 |
@@ -17,7 +17,7 @@ Invoices
 Receipts
 ~~~~~~~~~~
 
-.. csv-table:: Evl - Receipts
+.. csv-table:: EVL - Receipts
    :file: _static/custom/receipts-master.csv
-   :widths: 15, 15, 30, 15, 10, 15
+   :widths: 15, 20, 25, 15, 10, 15
    :header-rows: 1

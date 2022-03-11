@@ -77,6 +77,16 @@ Download in `PDF Format <https://wayback.datro.xyz/2022-01-27_consortium_finance
 	:alt:
 
 
+INV-02022
+##########
+
+Download in `PDF Format <https://wayback.datro.xyz/2022-02-28_consortium_finance-funding_salesevl_inv-02022_en_v0-0-0.pdf>`__ and/or
+`SVG Format <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-02-28_inv-02022_en_v0-0-0.svg>`__
+
+.. image:: _static/custom/img/2022-02-28_inv-02022_en_v0-0-0.png
+        :width: 600
+        :alt:
+
 
 
 Receipts
@@ -88,6 +98,29 @@ This table contains the download links for the Receipts:
 	 :file: _static/receipts.csv
 	 :widths: 20, 35, 15, 15, 15
 	 :header-rows: 1
+
+
+RCT-02013
+##########
+
+Download in `PDF Format <https://wayback.datro.xyz/2022-02-02_consortium_finance-funding_salesevl_rct-02013_en_v0-0-0.pdf>`__ and/or
+`SVG Format <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-02-02_rct-02013_en_v0-0-0.svg>`__
+
+.. image:: _static/custom/img/2022-02-02_rct-02013_en_v0-0-0.png
+        :width: 600
+        :alt:
+
+
+RCT-02023
+##########
+
+Download in `PDF Format <https://wayback.datro.xyz/2022-03-10_consortium_finance-funding_salesevl_rct-02023_en_v0-0-0.pdf>`__ and/or
+`SVG Format <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-03-10_rct-02023_en_v0-0-0.svg>`__
+
+.. image:: _static/custom/img/2022-03-10_rct-02023_en_v0-0-0.png
+        :width: 600
+        :alt:
+
 
 
 .. raw:: latex

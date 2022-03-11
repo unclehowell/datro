@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Client ID - EVL 0.0.0\n"
+"Project-Id-Version: Client ID - EVL 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-27 22:00-0400\n"
+"POT-Creation-Date: 2022-03-11 06:58-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../source/aftersales.rst:2
-#: ../../source/annex-list.rst:100
+#: ../../source/annex-list.rst:133
 msgid "After Sales"
 msgstr ""
 
@@ -26,7 +26,7 @@ msgid "See below aftersales made to ClientID: EVL e.g. Credit Notes:"
 msgstr ""
 
 #: ../../source/aftersales.rst:7
-#: ../../source/annex-list.rst:104
+#: ../../source/annex-list.rst:137
 msgid "Credits"
 msgstr ""
 
@@ -151,12 +151,7 @@ msgid ":ref:`QUO-0071`"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-#: ../../source/_static/annex.csv:1
-#: ../../source/_static/quotes.csv:1
-#: ../../source/_static/invoices.csv:1
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-msgid "EL Web3.0 Mandate"
+msgid "Mandate Quote"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
@@ -182,6 +177,10 @@ msgid ":ref:`INV-0072`"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
+msgid "Mandate Bill 1of2"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
 #: ../../source/_static/invoices.csv:1
 msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-01-27_consortium_finance-funding_salesevl_inv-0072_en_v0-0-0.pdf>`__"
 msgstr ""
@@ -194,6 +193,76 @@ msgstr ""
 #: ../../source/_static/annex.csv:1
 #: ../../source/_static/invoices.csv:1
 msgid "`link(94.1kb) <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-01-27_inv-0072_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/invoices.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid ":ref:`INV-02022`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "Mandate Bill 2of2"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/invoices.csv:1
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-02-28_consortium_finance-funding_salesevl_inv-02022_en_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/invoices.csv:1
+msgid "`link(50.2kb) <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-02-28_inv-02022_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/invoices.csv:1
+msgid "`link(94.1kb) <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-02-28_inv-02022_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/receipts.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid ":ref:`RCT-02013`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "Mandate Receipt 1 of 2"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-02-02_consortium_finance-funding_salesevl_rct-02013_en_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(50.2kb) <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-02-02_inv-02013_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(94.1kb) <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-02-02_rct-02013_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/receipts.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid ":ref:`RCT-02023`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "Manadate Receipt 2 of 2"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-03-10_consortium_finance-funding_salesevl_rct-02023_en_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(50.2kb) <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-03-10_rct-02023_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(94.1kb) <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-03-10_rct-02023_en_v0-0-0.png>`__"
 msgstr ""
 
 #: ../../source/annex-list.rst:20
@@ -212,6 +281,11 @@ msgstr ""
 
 #: ../../source/annex-list.rst:27
 msgid "Quote Download Links"
+msgstr ""
+
+#: ../../source/_static/quotes.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+msgid "Web3 Project Mandate"
 msgstr ""
 
 #: ../../source/annex-list.rst:39
@@ -240,6 +314,14 @@ msgstr ""
 msgid "Invoice Download Links"
 msgstr ""
 
+#: ../../source/_static/invoices.csv:1
+msgid "Mandate 1of2"
+msgstr ""
+
+#: ../../source/_static/invoices.csv:1
+msgid "Mandate 2of2"
+msgstr ""
+
 #: ../../source/annex-list.rst:70
 msgid "INV-0072"
 msgstr ""
@@ -248,33 +330,92 @@ msgstr ""
 msgid "Download in `PDF Format <https://wayback.datro.xyz/2022-01-27_consortium_finance-funding_salesevl_inv-0072_en_v0-0-0.pdf>`__ and/or `SVG Format <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-01-27_inv-0072_en_v0-0-0.svg>`__"
 msgstr ""
 
+#: ../../source/annex-list.rst:81
+msgid "INV-02022"
+msgstr ""
+
 #: ../../source/annex-list.rst:83
+msgid "Download in `PDF Format <https://wayback.datro.xyz/2022-02-28_consortium_finance-funding_salesevl_inv-02022_en_v0-0-0.pdf>`__ and/or `SVG Format <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-02-28_inv-02022_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/annex-list.rst:93
 #: ../../source/billables.rst:18
 msgid "Receipts"
 msgstr ""
 
-#: ../../source/annex-list.rst:85
+#: ../../source/annex-list.rst:95
 msgid "This table contains the download links for the Receipts:"
 msgstr ""
 
-#: ../../source/annex-list.rst:87
+#: ../../source/annex-list.rst:97
 msgid "Receipt Download Links"
 msgstr ""
 
+#: ../../source/_static/receipts.csv:1
+msgid "Project Mandate 1of2"
+msgstr ""
+
+#: ../../source/_static/receipts.csv:1
+msgid "`link(31.9kb) <https://wayback.datro.xyz/2022-02-02_consortium-finance_funding-salesevl_en_rct-02013_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/receipts.csv:1
+msgid "`link(97.4kb) <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-02-02_rct-02013_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/receipts.csv:1
+msgid "`link(44.5kb) <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-02-02_rct-02013_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/_static/receipts.csv:1
+msgid "Project Mandate 2of2"
+msgstr ""
+
+#: ../../source/_static/receipts.csv:1
+msgid "`link(31.9kb) <https://wayback.datro.xyz/2022-03-10_consortium-finance_funding-salesevl_en_rct-02023_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/receipts.csv:1
+msgid "`link(97.4kb) <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-03-10_rct-02023_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/receipts.csv:1
+msgid "`link(44.5kb) <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-03-10_rct-02023_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/annex-list.rst:104
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid "RCT-02013"
+msgstr ""
+
 #: ../../source/annex-list.rst:106
+msgid "Download in `PDF Format <https://wayback.datro.xyz/2022-02-02_consortium_finance-funding_salesevl_rct-02013_en_v0-0-0.pdf>`__ and/or `SVG Format <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-02-02_rct-02013_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/annex-list.rst:115
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "RCT-02023"
+msgstr ""
+
+#: ../../source/annex-list.rst:117
+msgid "Download in `PDF Format <https://wayback.datro.xyz/2022-03-10_consortium_finance-funding_salesevl_rct-02023_en_v0-0-0.pdf>`__ and/or `SVG Format <https://library.datro.xyz/consortium_finance/funding_salesevl/latest/build/html/en/_static/custom/img/2022-03-10_rct-02023_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/annex-list.rst:139
 msgid "This table contains the download links for the Credit Notes:"
 msgstr ""
 
-#: ../../source/annex-list.rst:108
+#: ../../source/annex-list.rst:141
 msgid "Credit Note Download Links"
 msgstr ""
 
 #: ../../source/billables.rst:4
-msgid "See below the billables for client Evl:"
+msgid "See below the billables for client EVL:"
 msgstr ""
 
 #: ../../source/billables.rst:10
-msgid "Evl - Invoices"
+msgid "EVL - Invoices"
 msgstr ""
 
 #: ../../source/_static/custom/invoices-master.csv:1
@@ -289,17 +430,27 @@ msgid "2022/01/27"
 msgstr ""
 
 #: ../../source/_static/custom/invoices-master.csv:1
-msgid "EL W3 Mandate (50%)"
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid "Mandate 1 of 2"
 msgstr ""
 
 #: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
 msgid "1200.00"
 msgstr ""
 
 #: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
 #: ../../source/_static/custom/estimates-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
 msgid "USD"
@@ -311,8 +462,46 @@ msgstr ""
 msgid "896.58"
 msgstr ""
 
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "2022/02/28"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid "Mandate 2 of 2"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "899.28"
+msgstr ""
+
 #: ../../source/billables.rst:20
-msgid "Evl - Receipts"
+msgid "EVL - Receipts"
+msgstr ""
+
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid "02/02/2022"
+msgstr ""
+
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid "-1200"
+msgstr ""
+
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "-884.59"
+msgstr ""
+
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid "10/03/2022"
+msgstr ""
+
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "-907.73"
 msgstr ""
 
 #: ../../source/index.rst:2
@@ -336,22 +525,34 @@ msgid "This section provides information about what is new or changed, including
 msgstr ""
 
 #: ../../source/releasenotes.rst:9
-msgid "This Release (0.0.0)"
+msgid "This Release (0.0.1)"
 msgstr ""
 
 #: ../../source/releasenotes.rst:11
-msgid "**2022-01-27** - `First Draft`"
+msgid "**2022-03-10** - `UZZI Consulting to consult with Client (OBO DATRO) ref Project Brief Phase billing`"
 msgstr ""
 
-#: ../../source/releasenotes.rst:15
+#: ../../source/releasenotes.rst:12
+msgid "**2022-03-10** - `Retracted Project Brief Estimate`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:13
+msgid "**2022-03-10** - `Added minor issue - Delay in Mandate payment (2 of 2)`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:14
+msgid "**2022-03-10** - `Added Receipt (2 of 2) for for Project Mandate`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:18
 msgid "Older Versions"
 msgstr ""
 
-#: ../../source/releasenotes.rst:17
+#: ../../source/releasenotes.rst:20
 msgid "In the table below the last entry displays a link to an archived copy of the last report. To keep the filename from overflowing in the table below the name displayed may differ from the file name. The date the file was archived will differ from the date of the document label, which is its creation date."
 msgstr ""
 
-#: ../../source/releasenotes.rst:22
+#: ../../source/releasenotes.rst:25
 msgid "Older Versions of this Document"
 msgstr ""
 
@@ -368,19 +569,43 @@ msgstr ""
 msgid "**Download Link**"
 msgstr ""
 
-#: ../../source/releasenotes.rst:29
-msgid "To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://wayback.datro.xyz/>`__."
+#: ../../source/_static/olderversions.csv:1
+msgid "2022-03-10"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "0.0.0"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "See Notes"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "`2022-01-27_v0-0-0.pdf <https://wayback.datro.xyz/2022-01-27_consortium_finance-funding_salesevl_en_v0-0-0.pdf>`__"
 msgstr ""
 
 #: ../../source/releasenotes.rst:33
-msgid "Known and Corrected Issues"
+msgid "Version 0.0.0"
 msgstr ""
 
 #: ../../source/releasenotes.rst:35
+msgid "**2022-01-27** - `First Draft`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:38
+msgid "To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://wayback.datro.xyz/>`__."
+msgstr ""
+
+#: ../../source/releasenotes.rst:43
+msgid "Known and Corrected Issues"
+msgstr ""
+
+#: ../../source/releasenotes.rst:45
 msgid "Below is a table of pending issues that have been reported to our team. These issues will be cleared from this list as and when they are remedied."
 msgstr ""
 
-#: ../../source/releasenotes.rst:39
+#: ../../source/releasenotes.rst:49
 msgid "Known Issues"
 msgstr ""
 
@@ -390,6 +615,44 @@ msgstr ""
 
 #: ../../source/_static/issues.csv:1
 msgid "**Subject**"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "03/03/2022"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+#: ../../source/_static/issues.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "N/A"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "Payment delayed/ delays (see project highlight report)"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "09/03/2022"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "EST-02030"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "Estimate for project brief nullified. Consult UZZI Consulting"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "15/02/2022"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "Styling"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "ID Labelling for files adjusted to contain another digit - Columns widened"
 msgstr ""
 
 #: ../../source/statement.rst:2
@@ -405,11 +668,31 @@ msgid "**Bal (£)**"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
+msgid "2022/02/02"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "11.99"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "911.27"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "2022/03/10"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "3.54"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
 msgid "**Balance**"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "**896.58**"
+msgid "**3.54**"
 msgstr ""
 
 #: ../../source/tenders.rst:4
@@ -429,21 +712,8 @@ msgid "**GO**"
 msgstr ""
 
 #: ../../source/_static/custom/estimates-master.csv:1
-msgid "2022/01/25"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-msgid "EL Web3.0 Whitepaper"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/estimates-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
 msgid "2400.00"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-msgid "1776.53"
 msgstr ""
 
 #: ../../source/_static/custom/estimates-master.csv:1
@@ -462,4 +732,8 @@ msgstr ""
 
 #: ../../source/_static/custom/quotes-master.csv:1
 msgid "**Go**"
+msgstr ""
+
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "Mandate"
 msgstr ""
