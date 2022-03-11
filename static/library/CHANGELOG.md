@@ -10,6 +10,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [library.06] - Q1/2022
 
 ### Added
+Mar-10 - Added `consortium_projects/mandate_evlweb3` but it's incomplete  
 Feb-20 - Added `consortium_projects/mandate_guide`  
 Jan-30 - Added HotspotBnB WebApp (Draft) Mandate `hotspotbnb_apps/property_evlmandate`  
 Jan-27 - Added client file `consortium_finance/funding_salesevl`  
