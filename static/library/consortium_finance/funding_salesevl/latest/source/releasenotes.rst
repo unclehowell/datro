@@ -5,10 +5,12 @@ This section provides information about what is new or changed, including urgent
 - 'Updates' are the term used to describe significant changes to our public source code and/or records.  
  
 
-This Release (0.0.0)
+This Release (0.0.1)
 ~~~~~~~~~~~~~~~~~~~~~
 
-- **2022-01-27** - `First Draft`
+- **2022-03-10** - 
+- **2022-03-10** - `Added Receipt 2of2 for completion/delivery of the Project Mandate`
+- **2022-02-28** - `Added Invoice 2of2 for completion/delivery of the Project Mandate. And Quote for delivery of the Project Brief`
 
 
 Older Versions
@@ -26,8 +28,16 @@ The date the file was archived will differ from the date of the document label, 
    
 |
 
+Version 0.0.0
+----------------------
+
+- **2022-01-27** - `First Draft`
+
+|
+
 To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://wayback.datro.xyz/>`__.
    
+
 
 Known and Corrected Issues
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -40,7 +50,5 @@ These issues will be cleared from this list as and when they are remedied.
    :file: _static/issues.csv
    :widths: 20, 20, 20, 40
    :header-rows: 1
-
-
 
 
