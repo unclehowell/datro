@@ -7,7 +7,7 @@ The :ref:`Download Links` for these Annexures can be found at the very end of th
 
 Origional Map (Remastered)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Download in `PDF Format <https://datro.xyz/static/library/datro-consortium/consortium-campus/latest/build/html/_static/2021-04-16_origional-map.pdf>`__ and/or `SVG Format <https://datro.xyz/static/library/datro-consortium/consortium-campus/latest/build/html/_static/2021-04-16_origional-map.svg>`__
+Download in `PDF Format <https://datro.xyz/static/library/consortium_campuses/campus4_sitesurvey/latest/build/html/en/_static/2021-04-16_origional-map.pdf>`__ and/or `SVG Format <https://datro.xyz/static/library/consortium_campuses/campus4_sitesurvey/latest/build/html/en/_static/2021-04-16_origional-map.svg>`__
 
 .. image:: _static/2021-04-16_origional-map.png
   :width: 800
@@ -18,7 +18,7 @@ Sotherby Market Analysis (Preview)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  - `www.williamholdenreality.com <https://williamholdenrealty.com/>`__  
- - `View Full Report <https://datro.xyz/static/library/datro-consortium/consortium-campus/latest/build/html/_static/2019-07-31_sotherbys-market-analysis.pdf>`__
+ - `View Full Report <https://datro.xyz/static/library/consortium_campuses/campus4_sitesurvey/latest/build/html/en/_static/2019-07-31_sotherbys-market-analysis.pdf>`__
 
 .. image:: _static/2019-07-31_sotherbys-market-analysis.png
   :width: 800

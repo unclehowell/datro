@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DATRO Business Plan 0.0.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-11 12:40-0400\n"
+"POT-Creation-Date: 2022-03-11 23:51-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../source/index.rst:2
-msgid "Borderless Fidicuary"
+msgid "Borderless Fiduciary"
 msgstr ""
 
 #: ../../source/index.rst:14
@@ -891,8 +891,12 @@ msgid ""
 "<https://library.datro.xyz/consortium_projects/mandate_guide/>`_."
 msgstr ""
 
-#: ../../source/terminology.rst:3 ../../source/terminology.rst:7
+#: ../../source/terminology.rst:3
 msgid "Terminology"
+msgstr ""
+
+#: ../../source/terminology.rst:7
+msgid "Terminology Table"
 msgstr ""
 
 #: ../../source/_static/terminology.csv:1
@@ -4099,5 +4103,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "XYZ"
+#~ msgstr ""
+
+#~ msgid "Borderless Fidicuary"
 #~ msgstr ""
 

@@ -1,5 +1,5 @@
 
-project = u'Borderless Fidicuary'
+project = u'Borderless Fiduciary'
 copyright = u'2021, DATRO Consortium'
 author = u'DATRO | UZZI | Client'
 
@@ -47,21 +47,21 @@ latex_elements = {
 
 
 latex_documents = [
-    (master_doc, 'consortium_projects-mandate_evlweb3.tex', u'Borderless Fidicuary',
+    (master_doc, 'consortium_projects-mandate_evlweb3.tex', u'Borderless Fiduciary',
      u'Author(s): DATRO | UZZI | Client', 'manual'),
 ]
 
 
 man_pages = [
-    (master_doc, 'consortium_projects-mandate_evlweb3', u'Borderless Fidicuary',
+    (master_doc, 'consortium_projects-mandate_evlweb3', u'Borderless Fiduciary',
      [author], 1)
 ]
 
 
 
 texinfo_documents = [
-    (master_doc, 'consortium_projects-mandate_evlweb3', u'Borderless Fidicuary',
-     author, 'consortium_projects-mandate_evlweb3', 'Borderless Fidicuary',
+    (master_doc, 'consortium_projects-mandate_evlweb3', u'Borderless Fiduciary',
+     author, 'consortium_projects-mandate_evlweb3', 'Borderless Fiduciary',
      'manual'),
 ]
 

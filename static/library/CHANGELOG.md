@@ -19,6 +19,7 @@ Jan-12 - Added sitemap directory with a sitemap.xml generator script
 Jan-08 - `funding_sales8cc v0.0.0 => v0.0.1`  
 
 ### Changed
+Mar-12 - Spelling correction on `consortium_projects/mandate_evlweb3`  
 Mar-10 - Updated `consortium_finance/funding_salesevl` (mainly just added a receipt)   
 Feb-22 - Feedback states library url's were broken. Their device wasn't resolving `index.html` when url ended in `/`. Had to manually add `index.html` to each `_treeview.json` files  
 Feb-20 - Changed library layout, minor edits in projects
@@ -33,6 +34,10 @@ Jan-27 - Removed seperate segment for whitepapers - whitepapers will not sit wit
 
 ### Issue
 Jan-27 - The client file `8cc` encounters a html formatting issue when rebuild.sh is run   
+
+### Fixed
+Mar-11 - Loads of broken links in the `consortium_campuses/campus4_sitesurvey` - fixed them, did a rebuild of the doc, but kept semantic version the same  
+
 
 ## [library.05] - Q4/2021
 

@@ -29,7 +29,7 @@ Sellers Notes/ Surmises
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Meeting Minutes (2021-04-14)**  
-The Seller (Mr. Adrian Cronin, Founder & CEO of `Aurora Apart Hotels <https://auroraaparthotel.com/>`__ ), took the liberty of answering a `DATRO Consortium <https://datro.world>`__  questionnaire, ahead of this documents publication:
+The Seller (Mr. Adrian Cronin, Founder & CEO of `Aurora Apart Hotels <https://auroraaparthotel.com/>`__ ), took the liberty of answering a `DATRO Consortium <https://datro.xyz>`__  questionnaire, ahead of this documents publication:
  
 1. The Seller is the owner of this plot of land - Following purchase of the site, almost 2 years ago. 
 
