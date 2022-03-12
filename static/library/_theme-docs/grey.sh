@@ -28,6 +28,7 @@ sed -i 's/<div class="version">/<div class="version"> Document Version : /g' bui
 sed -i 's/#33368C/darkslateblue/g' build/html/_static/css/theme.css &&
 sed -i 's/color:initial}/color:lightgrey;}/g' build/html/_static/css/theme.css &&
 sed -i 's/#9b59b6/#29808A/g' build/html/_static/css/theme.css &&
+sed -i 's/.rst-content section ul li>:first-child{/.rst-content section ul li>:first-child{white-space:nowrap;/g' build/html/_static/css/theme.css && sleep 0.1 &&
 sed -i 's/#4d4d4d/grey/g' build/html/_static/css/theme.css &&
 sed -i 's/#4e4a4a/#333569/g' build/html/_static/css/theme.css &&
 sed -i 's/#c9c9c9/#2C2C2C/g' build/html/_static/css/theme.css &&

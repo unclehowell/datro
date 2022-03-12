@@ -26,6 +26,7 @@ sed -i 's/<\/head>/<style>html{overflow-y:scroll;} ::-webkit-scrollbar{width:0px
 sed -i '/\<li class\="wy-breadcrumbs-aside">/,+6d' build/html/*.html && sleep 0.1 &&
 sed -i 's/<div class="version">/<div class="version"> Document Version : /g' build/html/*.html && sleep 0.1 &&
 sed -i 's/#33368C/darkslateblue/g' build/html/_static/css/theme.css && sleep 0.1 &&
+sed -i 's/.rst-content section ul li>:first-child{/.rst-content section ul li>:first-child{white-space:nowrap;/g' build/html/_static/css/theme.css && sleep 0.1 &&
 sed -i 's/color:initial}/color:lightgrey;}/g' build/html/_static/css/theme.css && sleep 0.1 &&
 sed -i 's/#9b59b6/#29808A/g' build/html/_static/css/theme.css && sleep 0.1 &&
 sed -i 's/#4d4d4d/grey/g' build/html/_static/css/theme.css && sleep 0.1 &&

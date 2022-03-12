@@ -14,6 +14,7 @@ Jan-27 - Updated `blue.sh` and `grey.sh` (v0.4-rc.2 => v0.4-rc.3) fixing the pos
 Jan-15 - Updated `rebuild-master.sh`. The preview link was incorrect, now it is correct  
 
 ### Fixed
+Mar-12 - Stylesheet bug on narrow mobile devices - fixed it in blue.sh and grey.sh    
 Mar-12 - Search Result format was poor. This change bug fixes the stylesheet  
 
 ## [_theme-docs.08-rc2.3] - Q4/2021
