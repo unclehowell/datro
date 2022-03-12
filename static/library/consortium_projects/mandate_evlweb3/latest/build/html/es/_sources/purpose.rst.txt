@@ -16,9 +16,12 @@ Motivations
 -------------
 
 New Sources of Income 
-~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Generate new sources of income for The Client's company, resulting in returns for shareholders and increases remuneration for employees: 
+“Generate new sources of income for The Client's company, resulting in returns for shareholders and increases remuneration for employees:“
+
+xxx
+““““
 
 
 Enrich Service Offering

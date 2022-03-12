@@ -13,6 +13,9 @@ This directory and changelog belongs to [![GitHub release (latest by date includ
 Jan-27 - Updated `blue.sh` and `grey.sh` (v0.4-rc.2 => v0.4-rc.3) fixing the position of the breadcrumb broke after pip/wheel update  
 Jan-15 - Updated `rebuild-master.sh`. The preview link was incorrect, now it is correct  
 
+### Fixed
+Mar-12 - Search Result format was poor. This change bug fixes the stylesheet  
+
 ## [_theme-docs.08-rc2.3] - Q4/2021
 
 ### Added

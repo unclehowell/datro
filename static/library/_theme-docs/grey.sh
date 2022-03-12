@@ -107,4 +107,6 @@ sed -i 's/.wy-nav-top a{color:#fff;font-weight:700/.wy-nav-top a{color:#fff;font
 sed -i 's/YYYY DATRO/2012\<script>new Date().getFullYear()>2012\&\&document.write("-"+new Date().getFullYear());\<\/script> DATRO/g' build/html/*.html &&
 sed -i 's/color:#000/color:#FFF/g' build/html/_static/css/theme.css &&
 sed -i 's/DATRO Consortium<\/strong><\/b>  ./DATRO Consortium<\/strong><\/b>/g' build/html/*.html &&
+sed -i 's/#search-results .search li a{font-size:120%;margin-bottom:12px;display:inline-block}#search-results/#search-results .search li a{font-size:120%;margin-bottom:2px;display:inline-block}#search-results/g' build/html/_static/css/theme.css && sleep 0.1 &&
+sed -i 's/#search-results .search li a{/#search-results .search li a{min-width:668px;margin-left:3vw;line-height:3px;/g' build/html/_static/css/theme.css && sleep 0.1 &&
 exit 0

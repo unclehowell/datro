@@ -18,7 +18,7 @@ To view releasenotes of versions older than the one above, visit the DATRO Conso
 
 .. csv-table:: Older Versions of this Document
    :file: _static/olderversions.csv
-   :widths: 25, 15, 35, 25
+   :widths: 15, 15, 25, 45
    :header-rows: 1
    
 
@@ -28,16 +28,16 @@ Known and Corrected Issues
 
 Below is a table of pending issues which have been reported to our team. 
 These issues will be cleared from this list as and when they are remedied. 
+The data's split into two tables since 1 table causes blank pages in Latex PDF.
 
 .. csv-table:: Known Issues
    :file: _static/issues.csv
-   :widths: 15, 10, 40, 35
+   :widths: 15, 15, 25, 45
    :header-rows: 1
-
 
 .. csv-table:: Known Issues (extended)
    :file: _static/issues2.csv
-   :widths: 15, 10, 40, 35
+   :widths: 15, 15, 25, 45
    :header-rows: 1
    
 
