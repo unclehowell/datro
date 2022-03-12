@@ -18,6 +18,7 @@ Jan-27 - Added clientfile - see library/CHANGELOG.md
 Jan-12 - Added sitemap directory which contains a sitemap.xml generator script. To hbnb,library and gui directories. And I generated sitemaps   
 
 ### Changed
+Mar-12 - Regenerated sitemap.xml  
 Feb-22 - Feedback states library url's were broken. Their device wasn't resolving `index.html` when url ended in `/`. Had to manually add `index.html` to `_treeview.json` files  
 Jan-08 - Updated a document (`library/consortium_finance/funding_sales8cc` 0.0.0 => 0.0.1) See document changelog for details    
 
