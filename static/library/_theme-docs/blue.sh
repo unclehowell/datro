@@ -5,7 +5,7 @@
 
 
 #.................................................
-#         DATRO Consortium - 2021 Copyleft
+#         DATRO Consortium - 2022 Copyleft
 #.................................................
 #
 #   ██████╗  █████╗ ████████╗██████╗  ██████╗
@@ -15,11 +15,12 @@
 #   ██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝
 #   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
 #................................................
-#                  blue.sh v0.4-rc.3
+#                  blue.sh v0.4-rc.4
 #................................................
 #                   datro.xyz
 #................................................
 
+sed -i 's/d:last-child{/d:last-child{white-space:normal;/g' build/html/_static/css/theme.css && sleep 0.1 &&
 sed -i 's/.wy-plain-list-disc,article ul{list-style:disc;line-height:24px;/.wy-plain-list-disc,article ul{display:list-item;line-height:3px;font-size:100%;white-space:pre-wrap;margin-bottom:3em;/g' build/html/_static/css/theme.css && sleep 0.1 &&
 #sed -i 's/.wy-plain-list-disc,article ul{/.wy-plain-list-disc,article ul{display:list-item;/g' build/html/_static/css/theme.css && sleep 0.1 &&
 sed -i 's/<\/head>/<style>html{overflow-y:scroll;} ::-webkit-scrollbar{width:0px;background:transparent;} div#author-s{text-align:left;}<\/style><\/head>/g' build/html/*.html && sleep 0.1 &&

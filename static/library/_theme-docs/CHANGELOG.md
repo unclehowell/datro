@@ -10,12 +10,16 @@ This directory and changelog belongs to [![GitHub release (latest by date includ
 ## [_theme-docs.08-rc2.4] - Q1/2022
 
 ### Added
+Mar-22 - Updated `blue.sh` and `grey.sh` (v0.4-rc.3 => v0.4-rc.4) added `white-space:normal` to prevent overflow of text in main column   
 Jan-27 - Updated `blue.sh` and `grey.sh` (v0.4-rc.2 => v0.4-rc.3) fixing the position of the breadcrumb broke after pip/wheel update  
 Jan-15 - Updated `rebuild-master.sh`. The preview link was incorrect, now it is correct  
 
 ### Fixed
 Mar-12 - Stylesheet bug on narrow mobile devices - fixed it in blue.sh and grey.sh    
 Mar-12 - Search Result format was poor. This change bug fixes the stylesheet  
+
+### Issues
+Mar-22 - Some of the bug fixed in `blue.sh` are missing from `grey.sh`  
 
 ## [_theme-docs.08-rc2.3] - Q4/2021
 

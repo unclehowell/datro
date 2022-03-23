@@ -1,0 +1,641 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, DATRO Consortium
+# This file is distributed under the same license as the CEoT Project Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CEoT Project Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-21 21:23-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/crowdsourcing.rst:2
+msgid "Crowdsourcing"
+msgstr ""
+
+#: ../../source/crowdsourcing.rst:4
+msgid "Since Carbon Labelling is slow to gain traction, crowdsourcing can be used, in much the same way sense.com operates, in order to estimate an item's carbon label when one doesn’t exist. These crowdsourced estimates can be validated with a calculation dedicated to this purpose and the data sold to manufacturers and packaging companies for inclusion on their products. A phase lock loop effect will quickly occur, between the end-users crowdsourced estimates, the label produced based on this data, and the repurchase and re-crowdsourcing of the data, combined with a validating calculation. Eventually improving the real-time accuracy of the carbon label on every item. The richer and more accurate the data becomes the more it can be depended on for the emergence of a secondary market e.g. carbon labelling tracking as an index for trades to occur on or a forecast/ market research and insights platform etc."
+msgstr ""
+
+#: ../../source/definitions.rst:2
+msgid "Definitions"
+msgstr ""
+
+#: ../../source/definitions.rst:4
+msgid "“Things”  will henceforth be used to describe “Goods”, “Services”, “Products”, physical \"objects\" and/or “Items”."
+msgstr ""
+
+#: ../../source/definitions.rst:7
+msgid "“CEoT’s” , as explained in more depth below, is a decentralised autonomous self-organising public record in the form of bespoke Non-Fungible Tokens   (NFT’s) `[9] <#CleanEnergyofThings(CEoT).xhtml#id.1bc63erel7mf>`__  e.g. Smart Contracts/ Group of Smart Contracts, written on the Loopring zkRollup L2 `[10] <#CleanEnergyofThings(CEoT).xhtml#id.1bc63erel7mf>`__  on the Ethereum Blockchain `[10] <https://www.google.com/url?q=https://ethereum.org/en/&sa=D&source=editors&ust=1647909382070762&usg=AOvVaw3lT_oLShePaO-7h1HJYCC7>`__ . They are generated upon request by a self service webapp website which features an API for more automated machine-to-machine processes. Their intended use is a kind of digital wallet/ ledger for each Thing in existence and produced in the future."
+msgstr ""
+
+#: ../../source/definitions.rst:20
+msgid "The tokens held on the ledger relates to the carbon scoring of the Thing. As part of the CEoT Ecosystem system and its launch, the unique address of the CEoT can be advertised with a QR Code, which can be easily added to virtual and real-world Things. There are several ways to reduce the negligence, incompetence or manipulation of multiple Things QR Codes refering to the same CEoT. Otherwise they’d be no better than the barcodes used for the last 50+ years. CEoT also seeks to solve multiple CEoT’s referring to the same Thing. It’s now technically possible to reference snippets of CCTV footage in the CEoT, to playback video footage corresponding to the specific Things' entire journey from its manufacture to the moment it arrives in your hand. This growing ability to validify the chain of custody of the Thing is, in the case of this whitepaper's objectives, only restricted by the hypocrisy of the growing carbon footprint this feature would cause. But as the gap between current carbon emission and carbon zero shrinks, so too will the feasibility of making the CEoT-Ready Thing and its corresponding CEoT record inseparable."
+msgstr ""
+
+#: ../../source/definitions.rst:38
+msgid "“CEoT In Thing”  doesn’t mean the Thing hosts a node that contains a unique CEoT. Without breaking much of a sweat, IoT capabilities in Things could achieve this, perhaps using Unstructured Supplementary Service Data (USSD) and Near Field Communications (NFC) to ensure maximum uptime for synchronisation with the blockchain and offline intractability. But the bandwidth of USSD and other factors between now and the carbon countdown clock deadline, doesn’t permit this or  is so challenging at his juncture, that complication and perhaps failure appears to be inevitable."
+msgstr ""
+
+#: ../../source/definitions.rst:48
+msgid "In the interim the CEoT Ecosystem will instead exist on the Loopring/ Ethereum blockchain online for added security, better bandwidth, adoptability, support etc. But this isn’t to say that CEoT won't be able to source a web3.0 device which would connect into the Thing owner's wireless access point, so the general public have an almost physical possession of the CEoT’s which correspond to the Things in their possession. In fact, by simply adding mesh capabilities between neighbours there would be no more need for any web2.0 infrastructure, not even the ISP. But this migration should perhaps be explored after 2028 since more centralised infrastructure running on greener energy and using more efficient industrial scale energy saving techniques are far better for our current greenhouse-gas emission goals than depending the CEoT Ecosystem on residential end-users, with less efficient residential-grade energy saving solutions or bandwidth."
+msgstr ""
+
+#: ../../source/definitions.rst:63
+msgid "Tradeoffs like this, perhaps not all so sovereign in nature, will need to be considered to ensure the 2028 deadline is priority and not the ego of technical supremacy. One example of this is the Palm NFT platform which has chosen to use a centralised Proof of Authority algorithm `[11] <#CleanEnergyofThings(CEoT).xhtml#id.1bc63erel7mf>`__  which is even more energy efficient than proof-of-stake. Although efforts are being made to decentralise their Proof of Authority algorithm, it’s somewhat a better priority to have, in light of the approaching carbon clock deadline, than prioritising decentralisation which is currently worse for the environment."
+msgstr ""
+
+#: ../../source/definitions.rst:74
+msgid "Both environmental impact and architectural integrity, particularly security, are paradoxical when it comes to prioritising them, because poor structural integrity could jeopardise the CEoT Ecosystem from ever fulfilling its goal in time for the 2028 deadline, but equally what is the point of having such a durable and rigorous ecosystem if in doing so it defeats its own objective by having a carbon footprint which could have been avoided. Striking a balance is even an understatement because we will miss our window. Environmental impact must be a non-negotiable top priority for the next 6 years. And this is why the tradeoff is made to describe the CEoT being “in the Thing” when it's actually not technically physically in it, we’re just trusting people in the manufacturing process and supply chain to be diligent in their duties. It’s either that or we exhaust resources and raise our carbon footprint to catalogue and survey the Thing, from cradle to grave, to try to absolutely ensure a bad actor doesn’t corrupt or manipulate the CEoT Ecosystem and data. So yes, eggs will be broken in this race to make our CEoT omelette, but its floor, quite literally, will be cleaned after the carbon clock strikes zero."
+msgstr ""
+
+#: ../../source/engraving.rst:2
+msgid "Engraving QR Code"
+msgstr ""
+
+#: ../../source/engraving.rst:4
+msgid "Engraving the product with the QR Code, which corresponds to the NFT featuring the Carbon Label/ Scoring Ledger, is seemingly the best way to reduce the likelihood of the Ecosystem being tampered with. Sometimes bad actors will swap barcodes on items at stores to deceive the cashier and get a lower price on a similar product with more features. In the case of CEoT’s NFT QR-Codes, it wouldn’t be very feasible, effective or disruptive for bad actors to tamper with individual Clean Energy Things even if they were stuck onto the Thing and not engraved."
+msgstr ""
+
+#: ../../source/engraving.rst:13
+msgid "What is interesting is that fruit and vegetables can now be laser engraved. While this new method promises a positive environmental impact due to the reduced level of packaging required, or the need to peel a gluey-goo barcode from fresh fruit before you eat it. And the method claims not to accelerate the expiration date of the fruit or vegetable. It still doesn’t tackle the problem of carbon labelling, which would traditionally be on the packaging alongside other labels such as the manufacturer's brand and the ingredients and allergy warnings e.g. contains nuts, dairy etc. On an apple for example, it would resemble an old graffitied wall. So the answer is a QR-Code containing all the aforementioned information, and at a stretch perhaps the brand logo. Until our planet's needs are met and the threats to our planet are curbed, carbon labelling may need to have equal if not more emphasis than the Items retail price."
+msgstr ""
+
+#: ../../source/engraving.rst:28
+msgid "Finally laser engraving CEoT’s NFT QR-Codes on products leaves a miniscule carbon footprint, almost negligible, but at scale this is still a factor to consider when calculating CEoT’s own carbon footprint."
+msgstr ""
+
+#: ../../source/futurevision.rst:2
+msgid "Future Vision"
+msgstr ""
+
+#: ../../source/futurevision.rst:4
+msgid "Extropianism, also referred to as the philosophy of extropy, is an \"evolving framework of values and standards for continuously improving the human condition\". The belief is that advances in science and technology will some day let people live indefinitely. An extropian may wish to contribute to this goal, e.g. by doing research and development or by volunteering to test new technology. Considering what CEoT represents, its importance and the short timeframe remaining, CEoT is a currency with which to reach the countdown clock’s goal."
+msgstr ""
+
+#: ../../source/futurevision.rst:13
+msgid "This paper isn’t suggesting implanting or tattooing a CEoT onto ourselves, but we aren’t exempt from calculating our bodies cabron scoring or generating a CEoT for ourselves. Their “CEoT Personhood” (or “CEoT Person(s)” for short) could be displayed on our social media profiles and our public selves, for others to scan and see. Such an act could help bind two people in marriage onto the blockchain or using the McDonalds example above, help us to retrace our steps in the event we lose our car keys or forget where we parked our car for example."
+msgstr ""
+
+#: ../../source/futurevision.rst:22
+msgid "Post 2028 this role playing of neohumanism would be over and our CEoT Personhood could be retired, traded, loaned out etc without the consequences of irreversible, catastrophic weather patterns and rising sea levels and the significant loss of human life it could cause, which is a very real threat we have an opportunity to mitigate these next 6 years. After a best effort has been made to counter the aforementioned threat these next few years, CEoT Personhood could be used in other campaigns to counter other threats to human life. Had the pandemic occurred post CEoT Personhood and 2028, our CEoT QR-Codes could have also contained vaccination statuses and a shortlist we’d control of who we permit to view it. The concept can even be used to store your medical and legal file and information such as blood type, living wills, and even preferences of organ dining upon your death. Information which you may only choose to make visible to your spouse or local hospital."
+msgstr ""
+
+#: ../../source/howitworks.rst:2
+msgid "How it Works"
+msgstr ""
+
+#: ../../source/howitworks.rst:4
+msgid "Before we dive into the precise technology the CEoT ecosystem will require in order to happen, it's important we be clear from the offset of our technical mandate, what we know and don’t know how to do, what we have solutions for and what we need to figure out solutions for. This paper has already portrayed a vision for the technology and a non-technical mandate. We’ve already established that:"
+msgstr ""
+
+#: ../../source/howitworks.rst:11
+msgid "The owner of the Thing in question will need a corresponding key to authenticate edits to the CEoT’s while the Thing is in their lawful custody"
+msgstr ""
+
+#: ../../source/howitworks.rst:15
+msgid "The owner will need to use their corresponding key to authenticate transfer of ownership of the Things CEoT"
+msgstr ""
+
+#: ../../source/howitworks.rst:18
+msgid "But their corresponding key should not expire, but instead its privileges should reduce so that they may continue to edit the destination address of where their royalties should be sent in the event of future resales of the Thing (a feature of NFT’s which allows previous owners, from the manufacturer(s), retailer(s) and previous owner(s) to receive a predetermined royalty from each future resale)"
+msgstr ""
+
+#: ../../source/howitworks.rst:25
+msgid "All corresponding keys are subject to reduced privileges on the same date as the estimated expiration date of the Thing. Thereafter the CEoT remains on the blockchain and visible, and in the possession of the last owner, but is no longer editable. Except maybe by the CEoT team who’ll maintain a master key, for purposes of correcting or transferring the CEoT tokens out of the CEoT’s ledger."
+msgstr ""
+
+#: ../../source/howitworks.rst:32
+msgid "There is no ability for a current owner to edit previous owners' entries"
+msgstr ""
+
+#: ../../source/howitworks.rst:35
+msgid "The wallet address of the owner is held in the CEoT when they claim ownership as part of the transfer of ownership/ chain of custody. The field the custodian can edit is the pseudonym of their wallet address e.g. Amazon.com, Inc."
+msgstr ""
+
+#: ../../source/howitworks.rst:40
+msgid "The roles and privileges of the keys are as follows:"
+msgstr ""
+
+#: ../../source/howitworks.rst:42
+msgid "Table 1.0 - Role and Privileges of Keys"
+msgstr ""
+
+#: ../../source/howitworks.rst:45
+msgid "Roles"
+msgstr ""
+
+#: ../../source/howitworks.rst:45
+msgid "Privileges"
+msgstr ""
+
+#: ../../source/howitworks.rst:47
+msgid "Allodium"
+msgstr ""
+
+#: ../../source/howitworks.rst:47
+msgid "Ultimate Control/ Master Key - Held by ceot.org"
+msgstr ""
+
+#: ../../source/howitworks.rst:49
+msgid "Vestee"
+msgstr ""
+
+#: ../../source/howitworks.rst:49
+msgid "Can edit their segments ‘destination wallet address’ for royalties"
+msgstr ""
+
+#: ../../source/howitworks.rst:52
+msgid "Beneficiary"
+msgstr ""
+
+#: ../../source/howitworks.rst:52
+msgid "Current Holder/ Custodian  - Active editing of the active segment"
+msgstr ""
+
+#: ../../source/howitworks.rst:55
+msgid "Trustee"
+msgstr ""
+
+#: ../../source/howitworks.rst:55
+msgid "Ownership reverts to beneficiary and key is non-vestee after a period"
+msgstr ""
+
+#: ../../source/howitworks.rst:59
+msgid "The NFT and blockchain technology used would need to be as green as possible to avoid hypocrisy. Even with the advent of Etherium 2.0 which is 95% more energy efficient than Etherium 1.0 and undergoes its merge to transition from proof-of-work to proof-of-stake in the first half of 2022 . Phase two, called the surge, plans to give Ethereum increased scalability, massive bandwidth and throughput, particularly on zk-Rollups."
+msgstr ""
+
+#: ../../source/howitworks.rst:67
+msgid "Subsequently CEoT would not begin to be able to calculate its Ecosystems offset of carbon emissions starting at zero. It would need to begin its calculation at a deficit based on its own carbon footprint of the production of the CEoT"
+msgstr ""
+
+#: ../../source/howitworks.rst:72
+msgid "An NFT sale entitled Beeple may have racked up $69.3m, but it also generated 78.5Mg of CO₂ emissions—the same amount of electricity used by more than 13 homes in an entire year"
+msgstr ""
+
+#: ../../source/howitworks.rst:76
+msgid "One NFT (minted on Super Rare) is equal to around 211 kg of CO₂. That means the launch of the Palm NFT platform (which uses a centralised, with a promise to become decentralised, Proof of Authority algorithm, even more energy efficient than proof-of-stake) would have generated more than 2m kg of CO₂, the equivalent of 432 cars being driven for a year"
+msgstr ""
+
+#: ../../source/howitworks.rst:82
+msgid "To put this into perspective, the Oatly carbon label solution says that the carbon footprint of each carton of oat milk is 0.41kg CO2e/kg"
+msgstr ""
+
+#: ../../source/howitworks.rst:86
+msgid "where CO2e/kg is the greenhouse gas emissions per kilogramme of product, converted to an equivalent amount of carbon dioxide (carbon dioxide equivalents or CO2e"
+msgstr ""
+
+#: ../../source/howitworks.rst:89
+msgid "This is the standard unit for measuring carbon footprints so that they can be compared. But how many shoppers would know this and, more to the point, is 0.41kg CO2e/kg a high or low figure"
+msgstr ""
+
+#: ../../source/howitworks.rst:92
+msgid "Here is where the emergence of CEoT becomes interesting. Because only in 2022 is an NFT able to be created with a minimal carbon footprint. And with the rise of trends like laser engraving and other technological advantages which could see CEoT go mainstream, a cruiciendo is reached where CEoT-enabling a pint of milk, becomes fathomly feasible to do."
+msgstr ""
+
+#: ../../source/howitworks.rst:99
+msgid "Each NFT generated by the CEoT Ecosystem will have generated a corresponding authentication key to make edits. When a manufacturer ships to a wholesaler or retailer, or end-user directly (internet long tail), the privileges of the manufacturer's corresponding key will be reduced to, say, only editing their address for any future royalties. And the new owner will have a new key generated for them upon handover/takeover in order they be able to manage the NFT, but only where it concerns their phase of the chain of custody."
+msgstr ""
+
+#: ../../source/howitworks.rst:108
+msgid "If owner 1 sells or transfers a CEoT-enabled Thing to a new owner, owner 1’s key will be the one authorising the generation of a new owner key, and in such an even the previous owners key reduces in privileges. This is a core feature of the smart contract of the NFT and what makes CEoT what it is. Furthermore a new owner entry is made in the NFT to represent the new custodian and it is only this owner entry the custodian can amend."
+msgstr ""
+
+#: ../../source/howitworks.rst:116
+msgid "CEoT (the NFT the QR-Code refers to) will contain a ledger, a kind of wallet of its own, which will be able to hold a number of cryptocurrency tokens equal in volume to the carbon label reading/scoring of the Thing:"
+msgstr ""
+
+#: ../../source/howitworks.rst:121
+msgid "The ledger on the CEoT will always be an inversion of the carbon label reading/scoring. And will always be divisible by 1,000 CEoTT’s (Tokens):"
+msgstr ""
+
+#: ../../source/howitworks.rst:125
+msgid "So if a pint of milk has a carbon label of 0.41kg CO2e/kg and a pint weighs 0.49 kg, the pint of milk has a carbon footprint of 0.2kg. Or in the case of the corresponding CEoT’s built in ledger, its balance will be set at negative 0.2 CEoTT."
+msgstr ""
+
+#: ../../source/howitworks.rst:129
+msgid "In carbon neutral products and carbon absorbing ones, the carbon scoring will be a 0 or minus. Say a 0.49g pack of grass seeds with a Carbon Score of -0.2kg CO2e/kg ( a minus since it’s a carbon absorbing Thing). The CEoT ledger will begin with a positive balance of 0.2 CEoTT."
+msgstr ""
+
+#: ../../source/howitworks.rst:134
+msgid "The CEoTT ledger is actually a sum total of two ledgers. A CEoTT positive ledger, which can only hold CEoT positive Tokens (CEoTT+) and a CEoTT negative ledger, which can only hold CEoT negative Tokens (CEoTT+). In essence this allows for supply of a negative balance token as well as a positive one."
+msgstr ""
+
+#: ../../source/howitworks.rst:139
+msgid "Another point to mention is that a zero balance in CEoT is actually not true zero. In much the way zero celcius and farenheit vary. The reason for this is that there must be some reward for a carbon zero Thing. This variant is also logarithmic so that it eventually corrects in both directions. The logarithm itself is still being determined, so the below table is only an illustration. And to simplify the examples in this whitepaper all references to the CEoT ledger will use true zero."
+msgstr ""
+
+#: ../../source/howitworks.rst:148
+msgid "Table 1.1 - CEoT Logarithmic (Illustration Only)"
+msgstr ""
+
+#: ../../source/howitworks.rst:151
+msgid "Carbon Score"
+msgstr ""
+
+#: ../../source/howitworks.rst:151
+#: ../../source/howitworks.rst:152
+msgid "-11"
+msgstr ""
+
+#: ../../source/howitworks.rst:151
+msgid "-1"
+msgstr ""
+
+#: ../../source/howitworks.rst:151
+#: ../../source/howitworks.rst:152
+msgid "0"
+msgstr ""
+
+#: ../../source/howitworks.rst:151
+msgid "1"
+msgstr ""
+
+#: ../../source/howitworks.rst:151
+msgid "2"
+msgstr ""
+
+#: ../../source/howitworks.rst:151
+msgid "3"
+msgstr ""
+
+#: ../../source/howitworks.rst:151
+msgid "4"
+msgstr ""
+
+#: ../../source/howitworks.rst:151
+#: ../../source/howitworks.rst:152
+msgid "11"
+msgstr ""
+
+#: ../../source/howitworks.rst:152
+msgid "CEoT Ledger"
+msgstr ""
+
+#: ../../source/howitworks.rst:152
+msgid "2.5"
+msgstr ""
+
+#: ../../source/howitworks.rst:152
+msgid "1.7"
+msgstr ""
+
+#: ../../source/howitworks.rst:152
+msgid "-2.5"
+msgstr ""
+
+#: ../../source/howitworks.rst:152
+msgid "3.7"
+msgstr ""
+
+#: ../../source/howitworks.rst:152
+msgid "4.9"
+msgstr ""
+
+#: ../../source/howitworks.rst:155
+msgid "The fee charged when making entries and changes to a CEoT with a ledger balance of 0.2 CEoT Tokens, will be 0.2 CEoT Tokens. The custodian's wallet is what is charged."
+msgstr ""
+
+#: ../../source/howitworks.rst:159
+msgid "The only thing able to adjust the ledgers on the CEoT’s will be the CEoT’s Decentralised Autonomous Organisation (DAO).  Adjustments may be proposed, voted on and executed, such as “tolerance” e.g. +/- 10%. In much the same way the countdown clock was just adjusted by almost 9%, so too could the carbon labelling value of everything in the ECoT ecosystem be corrected by a small percentage. Say if the carbon calculation formula is updated."
+msgstr ""
+
+#: ../../source/howitworks.rst:167
+msgid "When a CEoT’s ledger balance is -0.2  CEoT Tokens and the owner gains lawful possession of the corresponding, carbon absorbing Thing, their wallet is rewarded with 0.2 CEoT Tokens.  The CEoT can store many fields of information, such as the weight of a Thing. And applications interacting with the CEoT can perform calculations such as converting the CO2e/kg unit of measure to a more easily readable format that makes more sense e.g. Carbon Footprint = 0.2kg (of Carbon into the atmosphere, during lifespan of the Thing)."
+msgstr ""
+
+#: ../../source/howitworks.rst:180
+msgid "The CEoT Tokens contained “in each Thing” are not redeemable but if"
+msgstr ""
+
+#: ../../source/howitworks.rst:177
+msgid "they are made redeemable it should not be before the climate goals are met and/or the carbon countdown clock reaches zero. In which case they will serve as collectibles and/or memorabilia and hold information about participants in the fulfilment of  the goals."
+msgstr ""
+
+#: ../../source/index.rst:2
+msgid "CEoT Project Mandate"
+msgstr ""
+
+#: ../../source/index.rst:28
+msgid "**Document Author(s):**"
+msgstr ""
+
+#: ../../source/index.rst:30
+msgid "**DATRO Consortium**"
+msgstr ""
+
+#: ../../source/insights.rst:2
+msgid "CEoT Data, Analytics & Insights"
+msgstr ""
+
+#: ../../source/insights.rst:4
+msgid "The coin offering would serve as analytics in the CEoT Ecosystem to visualise how many Things are identified as harmful for the environment. A balance will be struck between accuracy of CEoT analytics and privacy of custodians of the affiliated items. For example, the api requests of the custodians software application (used to interact with the CEoT QR Barcode) may, unless in incognito/VPN mode, disclose their country of origin. Which can generally be presumed to be the location of the item in question."
+msgstr ""
+
+#: ../../source/insights.rst:13
+msgid "A visual of thE CEoT Ecosystem can coincide with the countdown clock to see how the CEoT platform and community performs against others. Success will slowly but surely build on success as people see tangible results and our collective impact on the environment. Participation can occur in much the same way a jogger will monitor his miles run, or a shopper will try to build up and redeem points in the supermarket. A free application will be provided which can communicate with EPoS receipts, to award redeemable points based on the carbon labels of each product. This same mobile application may be used to scan barcodes to display carbon labels too."
+msgstr ""
+
+#: ../../source/introduction.rst:2
+msgid "Introduction"
+msgstr ""
+
+#: ../../source/introduction.rst:4
+msgid "In September 2021 a significant miscalculation was corrected on the global warming countdown “Climate Clock `[1] <#CleanEnergyofThings(CEoT).xhtml#id.1bc63erel7mf>`__ ” displayed in New York. It’s now estimated our civilization only has until 28th July 2028 to curb our skyrocketing carbon emissions to merely increase the likelihood of limiting global warming to 1.5°C. We have this short window to take decisive action and reduce our carbon emissions, otherwise we face irreversible ice sheet loss, catastrophic weather patterns and rising sea levels. This correction was presumably in response to land protection of indigneous peoples and the research behind the Paris Agreements’ `[2] <#CleanEnergyofThings(CEoT).xhtml#id.1bc63erel7mf>`__  follow-up conference in Scotland, called COP26: The “Glasgow Climate Pact `[3] <#CleanEnergyofThings(CEoT).xhtml#id.1bc63erel7mf>`__ '', which was recently signed by nearly 200 countries."
+msgstr ""
+
+#: ../../source/introduction.rst:20
+msgid "To give some perspective on how soon 2028 will arrive, each child conceived after today may not even have a developed enough brain to know if things are “right” or “wrong” when the countdown reaches zero. For those of us who can tell the difference, let us focus for a second on our elected representatives and the corporations empowered by our consumer spending choices. In 2009 our developed nations promised to mobilise $100+ billion for vulnerable countries by 2020, a promise that was reaffirmed during the midway point Paris Agreement. During COP26 when held to account, our elected representatives responded by asking for more time to honour this promise. The  Glasgow Climate Pact also only says we must “phase down” unabated coal and only phase out “inefficient” fossil fuel subsidies `[4] <#CleanEnergyofThings(CEoT).xhtml#id.1bc63erel7mf>`__ . For those who smell a rat or sense red flags, 2022 is absolutely the year to get involved and take direct action ourselves. Those already active in this space might also want to ask themselves two simple questions: how can we do better and what more can we do?"
+msgstr ""
+
+#: ../../source/introduction.rst:38
+msgid "The critical time window to reach zero emissions (our “Deadline”) could be the most extraordinary day in human history. Should we succeed the day will surely feel like the afterparty of a well played and spirited game of Welsh rugby, where fans from all teams fill the capital city’s pubs and stadium, enjoy a few cold drinks and hot foods, sing songs, dance and cuddle and kiss anyone who'll allow it. Post-game days in Cardiff City centre are a wave of joyful celtic fans and the nicest, most heartfelt good energy to be around. Everyone’s so absolutely merry that no pandemic, war, injustice or terror attack in history has ever managed to, nor ever will, stop this long standing tradition and great experience and feeling `[5] <#CleanEnergyofThings(CEoT).xhtml#id.1bc63erel7mf>`__ .  The countdown clock effectively schedules a fixed date in all our calendars, for what could be the greatest planet-wide celebration in human history."
+msgstr ""
+
+#: ../../source/introduction.rst:53
+msgid "Climate Countdown Clocks are now being erected in every major city worldwide `[1] <#CleanEnergyofThings(CEoT).xhtml#id.1bc63erel7mf>`__ . This whitepaper serves as an Act of Union and call-to-action for everyone in agreement with the concept described in this paper, so we begin self-organising into a global community of unified, diligent and original influencers, teams and supporters. By taking on responsibility and exercising a reasonable degree of commitment and loyalty to this cause, CEoT will quickly grow strong in numbers, secure our children's future in the critical window we have remaining and do so without further delay."
+msgstr ""
+
+#: ../../source/iot.rst:2
+msgid "IoT & CEoT"
+msgstr ""
+
+#: ../../source/iot.rst:4
+msgid "Much like the Internet of Things (IoT) whereby a device such as a lamp can be wirelessly monitored and controlled from a smartphone, thanks to some built in wireless relay and/or sensory devices, everyone in an authorised chain of custody of a device (by authorised we mean those in lawful possession of the authorisation key to interact with the NFT QR/ Barcode) as well as the actual product itself, will soon see its QR/Barcode has been read/written too as part of the purchase/ sale/ swap."
+msgstr ""
+
+#: ../../source/iot.rst:13
+msgid "CEoT may even be deployed to existing/ already sold devices via OTA upgrades. Take Sensibo for example, an IR–to-Wi-Fi control unit which sticks onto any old air conditioning unit, instantly making it a “smart” IoT device. Sensibo would be able to remotely CEoT-enable their entire network CEoT carbon score, which can increase as their product is used and the energy saving it creates by efficient control of the air condition unit is calculated."
+msgstr ""
+
+#: ../../source/labelling.rst:2
+msgid "Augmented Packaging & Labelling"
+msgstr ""
+
+#: ../../source/labelling.rst:4
+msgid "Interacting with products displaying QR Codes might be more possible today than even thanks to smart watches, phones and other devices which can scan the QR Code and display the content of the corresponding NFT e.g. Carbon Label/ Scoring, Manufacturer, Supplier etc onto the actual Item. This process of augmenting the information can even playback cctv video snippets from the NFT, of the Items entire journey, all the way from the manufacturer to the self it’s sitting on. Or better still, shopping online you’d see the journey all the way into the Amazon warehouse where the item is sitting safely, waiting to be ordered. More assuring than a string of track and trace numbers, which requires more faith and gives less assurance to the consumer. Technically speaking you could engrave a McDonald's hamburger with the same feature, so the customer can skip through surveillance of it reaching them, to ensure everyone handling their meal meets their hygiene standards."
+msgstr ""
+
+#: ../../source/nomenclature.rst:2
+msgid "CEoT Nomenclature"
+msgstr ""
+
+#: ../../source/nomenclature.rst:4
+msgid "The letter ‘o’ followed by the capital letter ‘T’ is part of an established group of nomenclatures ending in the phrase “of Things”, which became commonly understood with the rise of the “Internet of Things `[6] <#CleanEnergyofThings(CEoT).xhtml#id.1bc63erel7mf>`__ ”. It has since been used in other contexts including “Blockchain of Things”, “Web of Things” and more. And in the case of this whitepaper: Clean Energy of Things (CEoT)."
+msgstr ""
+
+#: ../../source/references.rst:2
+msgid "References"
+msgstr ""
+
+#: ../../source/references.rst:4
+msgid "[0]  Whitepaper Disclaimer (latest)    Accessed: 2022/01/19 `https://library.datro.xyz/consortium_legal/disclaimers_whitepapers/ <https://www.google.com/url?q=https://library.datro.xyz/consortium_legal/disclaimers_whitepapers/&sa=D&source=editors&ust=1647909382111776&usg=AOvVaw2DhUfgXydItJdiEnRgJg7V>`__"
+msgstr ""
+
+#: ../../source/references.rst:8
+msgid "[1] Climate Clock `https://climateclock.world <https://www.google.com/url?q=https://climateclock.world&sa=D&source=editors&ust=1647909382112516&usg=AOvVaw3RnTj-0AtZVoFUAvj0jmBB>`__  Accessed: 2022/01/19"
+msgstr ""
+
+#: ../../source/references.rst:12
+msgid "[2] Paris Agreement   Accessed 2022/01/19 `https://www.un.org/en/climatechange/paris-agreement <https://www.google.com/url?q=https://www.un.org/en/climatechange/paris-agreement&sa=D&source=editors&ust=1647909382113267&usg=AOvVaw3deS6U-WeL02SR0xYaL7C3>`__"
+msgstr ""
+
+#: ../../source/references.rst:16
+msgid "[3] Glasgow Climate Pact `https://ukcop26.org/ <https://www.google.com/url?q=https://ukcop26.org/&sa=D&source=editors&ust=1647909382113840&usg=AOvVaw0YMJO4VXI7HhOARTE3AXwr>`__   Accessed 2022/01/19"
+msgstr ""
+
+#: ../../source/references.rst:20
+msgid "[4]  COP26: What is in the Glasgow Climate Pact `https://www.ft.com/content/3781134d-5567-4eaf-a122-b2595246d4ac <https://www.google.com/url?q=https://www.ft.com/content/3781134d-5567-4eaf-a122-b2595246d4ac&sa=D&source=editors&ust=1647909382114558&usg=AOvVaw0PEPU587H-woENHp_JXuiG>`__"
+msgstr ""
+
+#: ../../source/references.rst:24
+msgid "[5] How Cardiff Looked As Rugby Fans Flocked To The City `https://www.walesonline.co.uk/news/wales-news/gallery/how-cardiff-looked-rugby-fans-22092314 <https://www.google.com/url?q=https://www.walesonline.co.uk/news/wales-news/gallery/how-cardiff-looked-rugby-fans-22092314&sa=D&source=editors&ust=1647909382115249&usg=AOvVaw30E0CrmEj-fQnLb3Orj8W5>`__  Accessed 2022/01/19"
+msgstr ""
+
+#: ../../source/references.rst:28
+msgid "[6] Internet of Things   Accessed 2022/01/19 `https://www.oracle.com/internet-of-things/what-is-iot/ <https://www.google.com/url?q=https://www.oracle.com/internet-of-things/what-is-iot/&sa=D&source=editors&ust=1647909382115980&usg=AOvVaw1g9uFmzjSF6klsquAovERY>`__"
+msgstr ""
+
+#: ../../source/references.rst:32
+msgid "[7] Most Effective Co 2   Absorbing Houseplant `https://balconygardenweb.com/most-effective-co2-absorbing-houseplants-proven-by-science/ <https://www.google.com/url?q=https://balconygardenweb.com/most-effective-co2-absorbing-houseplants-proven-by-science/&sa=D&source=editors&ust=1647909382116848&usg=AOvVaw2jJt9tIUD8fwJ6ZvWv8D0w>`__     Accessed 2022/01/19"
+msgstr ""
+
+#: ../../source/references.rst:36
+msgid "[8] Retailers Join Forces To Tackle Climate Change `https://www.wbcsd.org/Programs/Climate-and-Energy/Climate/News/Retailers-join-forces-to-tackle-climate-change-in-the-Race-to-Zero <https://www.google.com/url?q=https://www.wbcsd.org/Programs/Climate-and-Energy/Climate/News/Retailers-join-forces-to-tackle-climate-change-in-the-Race-to-Zero&sa=D&source=editors&ust=1647909382117748&usg=AOvVaw24bqlOaMa8oEj95z3ZH68Y>`__"
+msgstr ""
+
+#: ../../source/references.rst:40
+msgid "[9] NFTs Are Here To Stay   Accessed 2022/01/19 `https://news.crunchbase.com/news/nft-outlook-2021/ <https://www.google.com/url?q=https://news.crunchbase.com/news/nft-outlook-2021/&sa=D&source=editors&ust=1647909382118508&usg=AOvVaw0Y5mYZkMebTDd7oGUalPbA>`__"
+msgstr ""
+
+#: ../../source/references.rst:44
+msgid "[10] Loopring Now Supports NFTs on L2 `https://medium.loopring.io/loopring-now-supports-nfts-on-l2-29174a343d0d <https://www.google.com/url?q=https://medium.loopring.io/loopring-now-supports-nfts-on-l2-29174a343d0d&sa=D&source=editors&ust=1647909382119221&usg=AOvVaw2vAgwvRy8qtWn5i6cTik4y>`__   Accessed 2022/01/19"
+msgstr ""
+
+#: ../../source/references.rst:48
+msgid "[11] Palm Network and Proof of Authority `https://palm.io/studio/on-gas-palms-commitment-to-sustainability/ <https://www.google.com/url?q=https://palm.io/studio/on-gas-palms-commitment-to-sustainability/&sa=D&source=editors&ust=1647909382119918&usg=AOvVaw0x3XkRFf4tq8xvmDn3O8Ln>`__"
+msgstr ""
+
+#: ../../source/references.rst:52
+msgid "[12] David Cameron: The Next Age Of Government `https://www.ted.com/talks/david_cameron_the_next_age_of_government/ <https://www.google.com/url?q=https://www.ted.com/talks/david_cameron_the_next_age_of_government/transcript?language%3Den&sa=D&source=editors&ust=1647909382120608&usg=AOvVaw05kvvz8AmT-TOzX8yHO5uo>`__"
+msgstr ""
+
+#: ../../source/releasenotes.rst:3
+msgid "Release Notes and Notices"
+msgstr ""
+
+#: ../../source/releasenotes.rst:5
+msgid "This section provides information about what is new or changed, including urgent issues and documentation updates."
+msgstr ""
+
+#: ../../source/releasenotes.rst:9
+msgid "This Release (Version 0.0.0)"
+msgstr ""
+
+#: ../../source/releasenotes.rst:11
+msgid "**2022-Feb-20** - `First Draft`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:15
+msgid "Older Versions"
+msgstr ""
+
+#: ../../source/releasenotes.rst:17
+msgid "To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://wayback.datro.xyz/>`__."
+msgstr ""
+
+#: ../../source/releasenotes.rst:19
+msgid "Older Versions of this Document"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "**Archive Date**"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "**Version**"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "**Description**"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "**Download Link**"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/olderversions.csv:1
+#: ../../source/_static/issues.csv:1
+#: ../../source/_static/issues.csv:1
+#: ../../source/_static/issues.csv:1
+#: ../../source/_static/issues.csv:1
+msgid "N/A"
+msgstr ""
+
+#: ../../source/releasenotes.rst:26
+msgid "Known and Corrected Issues"
+msgstr ""
+
+#: ../../source/releasenotes.rst:28
+msgid "Below is a table of pending issues which have been reported to our team. These issues will be cleared from this list as and when they are remedied."
+msgstr ""
+
+#: ../../source/releasenotes.rst:31
+msgid "Known Issues"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "**Date**"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "**Subject**"
+msgstr ""
+
+#: ../../source/releasenotes.rst:38
+msgid "Notice and Disclaimer"
+msgstr ""
+
+#: ../../source/releasenotes.rst:40
+msgid "The company and/or its team members, distributor(s) and/or affiliates, do not accept any liability as a result of this whitepaper, the corresponding website or publications thereof. Consult your own advisor(s) for legal, business, financial or tax advice, not this document. See our full legal disclaimer `[0] <#CleanEnergyofThings(CEoT).xhtml#id.1bc63erel7mf>`__  for more."
+msgstr ""
+
+#: ../../source/scenario.rst:2
+msgid "Scenario"
+msgstr ""
+
+#: ../../source/scenario.rst:4
+msgid "In Britain a brother and sister of the Griffiths family, decide to buy each other gifts. They set each other a budget of exactly £249.99. The brother buys his sister a collection of exotic flowers and the sister buys a new laptop for her brother."
+msgstr ""
+
+#: ../../source/scenario.rst:9
+msgid "Both receipts contain passphrase(s) which correspond to the CEoT QR code(s) laser-engraved onto the gifts. When the siblings scan the QR Code on their Things, they’re taken to a CEoT layer 2 web app which displays the CEoT (NFT) corresponding to their Things e.g. manufacturer, estimated lifespan, expiration/obsolescence  date, supply-chain of custody and most notably its carbon label. An option is also displayed to take ownership of the CEoT by entering the passphrase. Which the siblings do."
+msgstr ""
+
+#: ../../source/scenario.rst:18
+msgid "The first thing that occurs after the siblings claim possession of the CEoT is the privileges of the keys of the retailer(s), reduces  from Beneficiary to Vestee. The second thing which happens is a new segment is generated on the CEoT, containing the field: “owner”and the entry: {the wallet address holding the CEoT}. Since the siblings are now the new custodians e.g. holders of a key with beneficiary privileges, they are able to display a pseudonym in place of their wallet address e.g. Griffiths Family Estate."
+msgstr ""
+
+#: ../../source/scenario.rst:27
+msgid "The laptop carbon label reads 220 kg CO2e and the plants -50kg. Their CEoT’s Carbon ledgers subsequently have a balance of -220 and 50 CEoTT respectively. On the day the carbon clock countdown reaches zero, the sister would have more of a chance of winning a major prize in the CEoT prize draw, since the sisters CEoTT balance is the greater of the two. Furthermore the retail value of the CEoTT has, perhaps unbeknown to the siblings, was impacted by the CEoT’s."
+msgstr ""
+
+#: ../../source/scenario.rst:35
+msgid "For example, had the siblings gone into the store to purchase their gifts for each other, before the introduction of CEoT’s, the retail prices would have been different. The laptop would have been £239.99 and the plants would have been £259.99. This is because the manufacturer, supply chains and recipients participating in the CEoT Ecosystem incur an additional cost of sale for carbon producing Things, a cost they will undoubtedly pass onto the consumers. Equally the same entities in the supply chain which supplies  carbon zero or carbon producing products, intravenously receive a subsidy for each CEoT they assign to each Thing, a saving they will undoubtedly pass onto the consumer. So in effect the brothers decision to purchase flowers for his sister, were at a discounted rate of £10 (2.5%). And the sister's decision to purchase a laptop for her brother, cost her a premium of £10 (2.5%)."
+msgstr ""
+
+#: ../../source/spendingchoices.rst:2
+msgid "Making Better Consumer Spending Choices"
+msgstr ""
+
+#: ../../source/spendingchoices.rst:4
+msgid "Acid/Alkaline food and drinks are a prime example of where supermarkets are a dis-service when it comes to our health. A majority of foods and drinks in supermarkets are petrochemical or acidic or synthesised with unnatural preservatives and even RNA pesticides engineered into crops in order to shut down a bugs nervous system and kill them. Our absolute nativity thinking washing fruit and vegetables will keep our bodies pure."
+msgstr ""
+
+#: ../../source/spendingchoices.rst:12
+msgid "In much the same way, hopefully looking back and not forward, supermarkets are as much a dis-service when it comes to the carbon footprint of a food or drink on sale. While all sorts of agendas may be in play, the consumer must be empowered to have transparency and not blind(-folded) trust, so that we may make our own uncorrupted, informative judgments of what we wish to purchase or not. Mobile applications that can scan the product and labelling on Things which display the content are assets in this regard. However a standard supermarket has become some seriously dangerous and difficult waters to navigate if you want to avoid petrochemicals, RNA, acids, pharmaceuticals, sugars, synthetics, GMO’s and other conveniences to the supply chain at the cost of your health."
+msgstr ""
+
+#: ../../source/spendingchoices.rst:25
+msgid "Unlawful but completely legal false advertising is an ever greater gateway to hell. For example 100% Fruit Juice means one of the ingredients of an artificial drink contains real fruit. And what about French Truffles, which means the packaging was made in france. Or that cola, used as a pesticide in some regions of the world, is alone in its own category at the bottom of the absolute worst and most harmful acidic a human body can consume. What possesses us to repeatedly abuse and destroy our body in the same way we’ve been destroying our home planet, is ultimately our social conditioning. Those stealing our liberty to harvest us of our power,  brainwash masses to make management and control of us easier on themselves. Before even thinking of trying to save our home, we must first save ourselves."
+msgstr ""
+
+#: ../../source/spendingchoices.rst:38
+msgid "Those who buy farm fresh or grow their own food may be the first to endorse the CEoT Ecosystem. Now we are in the age of the prosumer, home based business owners effectively sell their ideological and pure Things direct to other proactive, environmentally conscious types. Who for the most part may have lost all faith in Governments and Corporations to better this world over lining their pockets and furthering their political agendas. If anything the supermarket's could break out of the norm of a web of deceitful, poisonous products, conveyor-belt fed to radicalised sugar jihaddy junkies and use CEoT to reinvent themselves and stock their shelves and price their products based on what is perhaps the current most ethical metric of this new decade."
+msgstr ""
+
+#: ../../source/summary.rst:2
+msgid "Summary"
+msgstr ""
+
+#: ../../source/summary.rst:4
+msgid "Various hardware and software solutions are being deployed to manufacturers, supply chains, retailers and consumers, but the solutions are all very fragmented with a lot of different goals moving in very different directions. There is no standard, universal protocol or procedure in place as yet. The CEoT Exchange, Tokens and overall Ecosystem expects to be more inclusive since it incorporates so many of the different hardware and software solutions in this space, such as laser etching/ engraving, QR codes, carbon labelling, blockchain and NFT’s and more. The result is a common goal and direction and time frame. CEoT also fully complies with industry standard carbon labelling practises, such as ISO 14067, PAS 2050, PAS 2060 and GHG Protocol. Not to mention web technology standards and practises e.g. ERC-721 , ERC-20 etc"
+msgstr ""
+
+#: ../../source/synopsis.rst:2
+msgid "Synopsis"
+msgstr ""
+
+#: ../../source/synopsis.rst:4
+msgid "This CEoT Whitepaper discusses the concept of CEoT: A Non-Fungible Token (NFT) featuring a built-in \"Inverse Carbon Label\" Ledger. Made visible using QR Codes, that can be easily added to literally, all Things. And fully editable using corresponding and authorised, cryptographic keys. CEoT is designed to empower every legitimate actor in the chain of custody of Things (from manufacturing to end-user use and enjoyment of the Thing). CEoT is a solution to be able to easily endorse and benefit-from carbon absorbing and carbon neutral Things as well as easily identify, report and reject Things which cause our environment harm and/or loss. The CEoT Ecosystem aims to introduce a universal protocol to all newly manufactured and even pre-existing Things to ensure they're identifiable as cheap or expensive, but in environmental impact terms, not just monetary terms. And inherently causing the former to influence and perhaps even outrank the latter as part of our journey to a post-information, resource based economy. CEoT is expected to cause a sharp turn in consumer spending, away from environmentally unfriendly Things and towards carbon absorbing and neutral Things `[7] <#CleanEnergyofThings(CEoT).xhtml#id.1bc63erel7mf>`__ . Combined with other initiatives `[8] <#CleanEnergyofThings(CEoT).xhtml#id.1bc63erel7mf>`__ , CEoT's have the potential to cause the movement required in consumer spending which is needed to increase the likelihood of a slow down (and eventual stop) of the current rise in carbon emission, before the climate clock reaches zero."
+msgstr ""
+
+#: ../../source/technology.rst:2
+msgid "Technology"
+msgstr ""
+
+#: ../../source/technology.rst:4
+msgid "The CEoT platform is being built on Ethereum’s Loopring and zkRollup Layer2, which on Jan 5, 2022, demonstrated an NFT collection running on their platform, tied to the $LRC ticker and available to Loopring L2 users."
+msgstr ""
+
+#: ../../source/technology.rst:9
+msgid "Loopring zkRollup now supports NFT minting, trading, and transfers, directly on L2"
+msgstr ""
+
+#: ../../source/technology.rst:11
+msgid "Any NFT minted on L2 can be withdrawn to L1"
+msgstr ""
+
+#: ../../source/technology.rst:12
+msgid "Both ERC1155 and ERC721 NFT token standards are supported."
+msgstr ""
+
+#: ../../source/technology.rst:13
+msgid "L1 NFTs can be deposited to L2"
+msgstr ""
+
+#: ../../source/technology.rst:14
+msgid "No restrictions: all L2 accounts can mint NFTs"
+msgstr ""
+
+#: ../../source/technology.rst:15
+msgid "NFT support will be available as part of the Loopring 3.6.2 release end of August 2021"
+msgstr ""
+
+#: ../../source/technology.rst:17
+msgid "Loopring is exploring use-cases + partnerships to help bring NFTs to the next level on Ethereum L2"
+msgstr ""
+
+#: ../../source/technology.rst:19
+msgid "Using an AWS server, proofs for circuits can be generated (with 2**28 constraints in ~7 minutes) costing ~$0.0001/trade"
+msgstr ""
+
+#: ../../source/trending.rst:2
+msgid "Trending CEoT"
+msgstr ""
+
+#: ../../source/trending.rst:4
+msgid "Many years ago David Cameron, the former Prime Minister of the UK (of all people) tried but failed to get UK Citizens to share their energy data with each other to encourage some vanity and pride over the use of green energy and savings using smart technologies, even before IoT gained traction and became a multi-billion pound market sector `[12] <#CleanEnergyofThings(CEoT).xhtml#id.1bc63erel7mf>`__ . CEoT may be able to succeed where this British Government's vision failed. CEoT will empower regular people to have a clear visual of the carbon rating of the products we consume. Which can easily be compared to community averages to see if you are underperforming or overachieving based on the carbon labels of the Things you purchase, without actually disclosing your purchases. Furthermore CEoT-Ready items act as a simple points system, whereby the number of CEoT points (cryptocurrency tokens/coins) supplied with the item at the Point of Sale (PoS), and equate in volume to the Carbon Label reading, instead of the R.R.P of an item, which serve as a sort of shares certificate, generating royalties which can be exchanged for other crypto or fiat currencies."
+msgstr ""

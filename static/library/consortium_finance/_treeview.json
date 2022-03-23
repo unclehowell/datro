@@ -35,17 +35,17 @@
     }
    },
   {
-    "name": "<div class='subtitle-line-mini enable-link'><div class='icon ml-creditors bright2'></div>Lines of Credit</div>",
-    "path": "./funding_creditors/index.html",
-    "_links": {
-      "html": "./funding_creditors/index.html"
-    }
-   },
-  {
     "name": "<div class='subtitle-line-mini enable-link'><div class='icon ml-investors bright'></div>Investments</div>",
     "path": "./funding_investors/index.html",
     "_links": {
       "html": "./funding_investors/index.html"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line-mini enable-link'><div class='icon ml-creditors bright2'></div>Lines of Credit</div>",
+    "path": "./funding_creditors/index.html",
+    "_links": {
+      "html": "./funding_creditors/index.html"
     }
    },
   {

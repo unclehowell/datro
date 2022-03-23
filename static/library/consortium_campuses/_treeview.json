@@ -1,65 +1,37 @@
 [
   {
-    "name": "<div class='title-line title-disable'><div class='icon ml-campus'></div>Campus IV (2022)</div>",
+    "name": "<div class='title-line title-disable'><div class='icon ml-campus'></div>Campuses</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
    },
   {
-    "name": "<div class='depth2-subtitle-line enable-link'>Site Survey</div>",
+    "name": "<div class='depth2-subtitle-line enable-link'><strong>Campus IV:</strong>&nbsp;Survey 2021</div>",
     "path": "./campus4_sitesurvey/index.html",
     "_links": {
       "html": "./campus4_sitesurvey/index.html"
     }
    },
   {
-    "name": "<div class='title-line title-disable' ><div class='icon i-techhouse'></div>Tech House II (2018+)</div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
-    }
-   },
-  {
-    "name": "<div class='depth2-subtitle-line enable-link'>Full Report</div>",
-    "path": "./techhouse2_casestudy/index.html",
-    "_links": {
-      "html": "./techhouse2_casestudy/index.html"
-    }
-   },
-  {
-    "name": "<div class='title-line title-disable'><div class='icon i-techhouse'></div>Tech House I (2017)</div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
-    }
-   },
-  {
-    "name": "<div class='title-line title-disable'><div class='icon ml-campus'></div>Campus III (2016/17)</div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
-    }
-   },
-  {
-    "name": "<div class='title-line title-disable'><div class='icon ml-campus'></div>Campus II (2015)</div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
-    }
-   },
-  {
-    "name": "<div class='title-line title-disable'><div class='icon ml-campus'></div>Campus I (2014)</div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
-    }
-   },
-  {
-    "name": "<div class='subtitle-line subtitle-enable link-enabled'>Case Study</div>",
+    "name": "<div class='subtitle-line subtitle-enable link-enabled'><strong>Campus I:</strong>&nbsp;Case Study 2014</div>",
     "path": "./campus1_casestudy/index.html",
     "_links": {
       "html": "./campus1_casestudy/index.html"
+    }
+   },
+  {
+    "name": "<div class='title-line title-disable' ><div class='icon i-techhouse'></div>Houses</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='depth2-subtitle-line enable-link'><strong>House II:</strong>&nbsp;Report 2019/20/21</div>",
+    "path": "./techhouse2_casestudy/index.html",
+    "_links": {
+      "html": "./techhouse2_casestudy/index.html"
     }
    },
   {
@@ -70,4 +42,3 @@
     }
    }
 ]
-

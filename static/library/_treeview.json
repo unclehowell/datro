@@ -1,23 +1,9 @@
 [
   {
-    "name": "<div class='title-line enable-link'><div class='icon ml-bloculus'></div>Bloculus</div>",
-    "path": "./bloculus/index.html",
-    "_links": {
-      "html": "./bloculus/index.html"
-    }
-  },
-  {
     "name": "<div class='title-line title-disable'><div class='icon f-datro'></div>Consortium</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
-    }
-  },
-  {
-   "name": "<div class='subtitle-line enable-link'>Campuses</div>",
-    "path": "./consortium_campuses/index.html",
-    "_links": {
-      "html": "./consortium_campuses/index.html"
     }
   },
   {
@@ -28,7 +14,7 @@
     }
   },
   {
-    "name": "<div class='subtitle-line enable-link'>Financials</div>",
+    "name": "<div class='subtitle-line enable-link'>Finances</div>",
     "path": "./consortium_finance/index.html",
     "_links": {
       "html": "./consortium_finance/index.html"
@@ -48,6 +34,13 @@
       "html": "./consortium_other/index.html"
     }
   },
+ {
+   "name": "<div class='subtitle-line enable-link'>Projects</div>",
+    "path": "./consortium_projects/index.html",
+    "_links": {
+      "html": "./consortium_projects/index.html"
+    }
+  },
   {
     "name": "<div class='subtitle-line enable-link'>Plans</div>",
     "path": "./consortium_plans/index.html",
@@ -56,10 +49,10 @@
     }
   },
   {
-    "name": "<div class='subtitle-line enable-link'>Projects</div>",
-    "path": "./consortium_projects/index.html",
+   "name": "<div class='subtitle-line enable-link'>Properties</div>",
+    "path": "./consortium_campuses/index.html",
     "_links": {
-      "html": "./consortium_projects/index.html"
+      "html": "./consortium_campuses/index.html"
     }
   },
   {
@@ -91,59 +84,10 @@
     }
   },
   {
-    "name": "<div class='indraft-title title-disable'>Pending Publication (Draft)</div>",
-    "path": "javascript:void(0)",
+    "name": "<div class='subtitle-line enable-link'>Projects</div>",
+    "path": "./hotspotbnb_projects/index.html",
     "_links": {
-      "html": "javascript:void(0)"
+      "html": "./hotspotbnb_projects/index.html"
     }
-  },
-  {
-    "name": "<div class='title-line title-disable'><div class='icon f-datro'></div>DAS (DAO Society)</div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
-    }
-  },
-  {
-    "name": "<div class='title-line title-disable'><div class='icon f-datro'></div>Library/Docs Explorer</div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
-    }
-   },
-  {
-    "name": "<div class='title-line title-disable'><div class='icon f-datro'></div>MonoREAPo</div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
-    }
-  },
-  {
-    "name": "<div class='title-line title-disable'><div class='icon f-datro'></div>NΞΩ DΩMΞ</div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
-    }
-  },
-  {
-    "name": "<div class='title-line title-disable'><div class='icon f-datro'></div>Test Net</div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
-    }
-  },
-  {
-    "name": "<div class='title-line title-disable'><div class='icon f-datro'></div>To-Go USB</div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
-    }
-   },
-  {
-    "name": "<div class='page-scroll-fix'></div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
-    }
-   }
+  }
 ]

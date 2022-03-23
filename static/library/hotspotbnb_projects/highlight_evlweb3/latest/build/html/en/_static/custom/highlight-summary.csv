@@ -1,0 +1,98 @@
+user-scalable=1,minimum-scale=1,maximum-scale=2.5,initial-scale=1,width=device-width"><meta http-equiv="X-UA-Compatible" content="IE=edge;"><meta name="referrer" content="origin"><title>B-Fiduciary Project - Highlight Report (New) - Google Drive</title><link rel="shortcut icon" href="//ssl.gstatic.com/docs/spreadsheets/favicon3.ico"><link href='/static/spreadsheets2/client/css/1468646945-waffle_k_ltr.css' type='text/css' rel='stylesheet' nonce="1OZn+Ae5t8F9qW3jgmCMbA"><style type="text/css" nonce="1OZn+Ae5t8F9qW3jgmCMbA">
+        html { overflow: visible; }
+        #sheets-viewport { overflow: auto; }
+        #sheets-viewport.widget-viewport { overflow: hidden; }
+        .grid-container { overflow: visible; background: white;}
+        .grid-table-container { overflow: visible; }
+        #top-bar {
+          margin: 0;
+          overflow: hidden;
+        }
+        #top-bar {
+          border-bottom: 1px solid #ccc;
+          padding: 6px 6px 0;
+        }
+        #doc-title { padding-bottom: 5px; }
+        #doc-title .name { font-size: 15px; }
+        #sheet-menu {
+          font-size: 13px;
+          margin: 6px 0 0;
+          padding: 0 0 5px;
+        }
+        #sheet-menu li {
+          display: inline;
+          list-style-type: none;
+          margin: 0;
+          padding: 5px 8px;
+        }
+        #sheet-menu li.active {
+          background-color: #fff;
+          font-weight: bold;
+          border: 1px solid #999;
+        }
+        #top-bar #sheet-menu li.active {
+          border-bottom: 0;
+        }
+ #sheet-menu a:visited { color: #07c; }
+        #footer {
+          background: #f0f0f0;
+          border-top: 1px #ccc solid;
+          border-bottom: 1px #ccc solid;
+          font-size: 13;
+          padding: 10px 10px;
+        }
+        .dash {
+          padding: 0 6px;
+        }
+Arial;font-size:11pt;vertical-align:bottom;white-space:nowrap;direction:ltr;padding:0px 3px 0px 3px;}.ritz .waffle .s7{background-color:#f3f3f3;text-align:center;color:#000000;font-family:'Arial';font-size:10pt;vertical-align:bottom;white-space:nowrap;direction:ltr;padding:0px 3px 0px 3px;}.ritz .waffle .s0{background-color:#000000;text-align:center;font-weight:bold;color:#ffffff;font-family:'docs-Lato',Arial;font-size:10pt;vertical-align:middle;white-space:nowrap;direction:ltr;padding:0px 3px 0px 3px;}.ritz .waffle .s2{border-right:1px SOLID #333333;background-color:#000000;text-align:left;font-weight:bold;color:#ffffff;font-family:'docs-Lato',Arial;font-size:10pt;vertical-align:middle;white-space:nowrap;direction:ltr;padding:0px 3px 0px 3px;}.ritz .waffle .s9{border-right:1px SOLID #333333;background-color:#f3f3f3;text-align:left;color:#000000;font-family:'Arial';font-size:9pt;vertical-align:middle;white-space:nowrap;direction:ltr;padding:0px 3px 0px 3px;}.ritz .waffle .s1{border-right:1px SOLID #000000;background-color:#000000;text-align:center;font-weight:bold;color:#ffffff;font-family:'docs-Lato',Arial;font-size:10pt;vertical-align:middle;white-space:nowrap;direction:ltr;padding:0px 3px 0px 3px;}.ritz .waffle .s10{background-color:#f3f3f3;text-align:center;color:#000000;font-family:'docs-Inconsolata',Arial;font-size:11pt;vertical-align:bottom;white-space:nowrap;direction:ltr;padding:0px 3px 0px 3px;}.ritz .waffle .s4{border-right:1px SOLID #000000;background-color:#ffffff;text-align:center;color:#000000;font-family:'Arial';font-size:10pt;vertical-align:bottom;white-space:nowrap;direction:ltr;padding:0px 3px 0px 3px;}.ritz .waffle .s5{border-right:1px SOLID #333333;background-color:#ffffff;text-align:left;color:#000000;font-family:'Arial';font-size:9pt;vertical-align:middle;white-space:nowrap;direction:ltr;padding:0px 3px 0px 3px;}.ritz .waffle .s3{background-color:#ffffff;text-align:center;color:#000000;font-family:'Arial';font-size:10pt;vertical-align:bottom;white-space:nowrap;direction:ltr;padding:0px 3px 0px 3px;}.ritz .waffle .s8{border-right:1px SOLID #000000;background-color:#f3f3f3;text-align:center;color:#000000;font-family:'Arial';font-size:10pt;vertical-align:bottom;white-space:nowrap;direction:ltr;padding:0px 3px 0px 3px;}</style><script type="text/javascript" nonce="pgZpnqE9aNj/53GuZ0e0nA">
+        var activeSheetId;
+
+        function switchToSheet(id) {
+          if (document.getElementById('sheet-menu')) {
+            document.getElementById('sheet-button-' + activeSheetId)
+                .className = '';
+            document.getElementById('sheet-button-' + id).className = 'active';
+          }
+
+          document.getElementById(activeSheetId).style.display = 'none';
+          document.getElementById(id).style.display = '';
+          activeSheetId = id;
+
+          // posObjs() is defined in embeddedObjectJs (see EmbeddedObjectHtmlBuilder.java)
+          posObjs();
+          return false;
+        }
+        
+        function init() {
+        var optPageSwitcher;
+        
+        function resize() {
+          var optMobileWebHeader = document.getElementById('docs-ml-header-id');
+          var optTopBar = document.getElementById('top-bar');
+          var optFooter = document.getElementById('footer');
+          var sheetsViewport = document.getElementById('sheets-viewport');
+
+          if (optMobileWebHeader) {
+            sheetsViewport.style.marginTop = optMobileWebHeader.offsetHeight +
+                (optTopBar ? optTopBar.offsetHeight : 0) + 'px';
+          }
+          var adjustedHeight = window.innerHeight -
+              (optTopBar ? optTopBar.offsetHeight : 0) -
+              (optFooter ? optFooter.offsetHeight : 0);
+          var adjustedWidth = window.innerWidth;
+          sheetsViewport.style.width = (adjustedWidth + 'px');
+          sheetsViewport.style.height = (adjustedHeight + 'px');
+          if (optPageSwitcher) {
+ adjustedHeight);
+          }
+        }
+        resize();
+        window.onresize = resize;
+        var currentUrl = window.location.href;
+ '?');
+ '');
+ '&');
+ '');
+ '', newUrl);
+        }
+"docs-smheo":false,"info_params":{"includes_info_params":true},"ilcm":{"eui":"ADFN-cv6qX7xkenCfILfKIcqorRrEd_ECaHzoeRJ_JkpJyxs0I8d114xcT3tdxhA5AmU1sFIlcT2","je":1,"sstu":1647718616217000,"si":"CN_svJb20vYCFdsUqQEdONYFRg","gsc":0
