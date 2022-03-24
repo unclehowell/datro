@@ -18,6 +18,7 @@ Jan-27 - Added clientfile - see library/CHANGELOG.md
 Jan-12 - Added sitemap directory which contains a sitemap.xml generator script. To hbnb,library and gui directories. And I generated sitemaps   
 
 ### Changed
+Mar-24 - Upgrading local machine from Ubuntu 20.10 to 21.04 (to 21.10). Pushing latest local changes, if any, before this upgrade completes   
 Mar-22 - LICENCE.md (GNU>GPL). This is completion of a move to GPL and Crown Copyright, which began in 2021  
 Mar-12 - Regenerated sitemap.xml  
 Feb-22 - Feedback states library url's were broken. Their device wasn't resolving `index.html` when url ended in `/`. Had to manually add `index.html` to `_treeview.json` files  

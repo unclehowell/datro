@@ -28,7 +28,7 @@ The Bloculus protocol is being developed in order to overcome a few core challen
 
 Solution & Outcomes
 ~~~~~~~~~~~~~~~~~~~~~~~
-This new protocol has been named Bloculus, which is a combination of the two primary words which best describe it:
+This new protocol has been named Bloculus; A combination of two words which best describe it:
  - 'Bloc' is a referece to Blockchain (particularly the Polkadot blockchain which is used in this protocols day-to-day operations) 
  - 'Loculus' is an architectural and biological reference, used to describe a "little place" and/or compartmentalisation   
 
