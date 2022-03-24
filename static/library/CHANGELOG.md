@@ -37,6 +37,7 @@ Jan-27 - Removed seperate segment for whitepapers - whitepapers will not sit wit
 Jan-27 - The client file `8cc` encounters a html formatting issue when rebuild.sh is run   
 
 ### Fixed
+Mar-22 - Lease in contracts was broken link - fixed it  
 Mar-12 - Client noticed a broken link in `projects/mandate_evlweb3/` - fixed it  
 Mar-11 - Loads of broken links in the `consortium_campuses/campus4_sitesurvey` - fixed them, did a rebuild of the doc, but kept semantic version the same  
 

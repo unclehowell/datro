@@ -11,6 +11,9 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Added 
 Jan-12 - Added sitemap.xml maker so library has its own one for the url library.datro.xyz  
 
+### Changed
+Mar-22 - Changed Red color (key for PDF) to be more prominent. It was looking like purple  
+
 ## [-theme-explorer.02] - Q3/2021
 Sep-04 - Buggy design, ref last point. Worked on it some more  
 Sep-03 - Added multiple language support, so stylesheet had to adopt to fit all the HTML/PDF languages on the screen  

@@ -15,13 +15,13 @@
 #   ██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝
 #   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
 #................................................
-#                  grey.sh v0.4-rc.4
+#                  grey.sh v0.4-rc.5
 #................................................
 #                   datro.xyz
 #................................................
 
 
-sed -i 's/d:last-child{/d:last-child{white-space:normal;/g' build/html/_static/css/theme.css &&
+sed -i 's/d:last-child{/d:last-child{white-space:pre-line;/g' build/html/_static/css/theme.css &&
 sed -i 's/<\/head>/<style>html{overflow-y:scroll;} ::-webkit-scrollbar{width:0px;background:transparent;} div#author-s{text-align:left;}<\/style><\/head>/g' build/html/*.html &&
 sed -i '/\<li class\="wy-breadcrumbs-aside">/,+6d' build/html/*.html &&
 sed -i 's/<div class="version">/<div class="version"> Document Version : /g' build/html/*.html &&

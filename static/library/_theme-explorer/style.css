@@ -26,7 +26,7 @@ p.main-title {
 }
 
 .redish {
-    color: rgba(51,51,230,0.8);
+    color: rgb(255,0,0,0.6);
     position: absolute;
     display: inline-block;
     font-size: 0.5em;
@@ -56,7 +56,7 @@ p.main-title {
 }
 
 .rish {
-    border: 2px solid rgba(51,51,255,0.33)!important;
+    border: 2px solid rgba(255,0,0,0.4)!important;
 }
 
 
@@ -437,7 +437,7 @@ ul {
     padding: 0.1em 0.05em 0.16em 0.01em;
     float: left;
     opacity: 1;
-    border-radius: 0.41em;
+    border-radius: 0.11em;
     max-height: 14px;
 }
 
