@@ -10,19 +10,6 @@
 ! -path ./stats/\*
 ! -path ./.git/\*
 ! -path .svn/\*
-! -path ./*html/videos/\*
-! -path ./*/html/statistics/\*
-! -path ./*/html/search-box/\*
-! -path ./*/html/multistep-menu/\*
-! -path ./*/html/more-footer/\*
-! -path ./*/html/SimpleDropDownEffects/\*
-! -path ./*/html/forms/\*
-! -path ./*/html/ideal-footer/\*
-! -path ./*/html/content/\*
-! -path ./*/featherlight/\*
-! -path ./*/screen-lookups/\*
-! -path ./*/_theme-explorer/\*
-! -path ./_static/\*
   -name "*.html"
 ! -name "fetch.html"
 ! -name "*lookup.html"

@@ -11,6 +11,9 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Added
 Jan-12 - Added sitemap directory with a sitemap.xml generator script  
 
+### Fixed
+Mar-22 - Small bug fixed - Some dashboards weren't loading  
+
 ## [hbnb.02] - Q4/2021
 
 ### Fixed 
