@@ -9,6 +9,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [hbnb.03] - Q1/2022
 
 ### Added
+Mar-24 - Added link to video, next to link to demo (loop back to this task later and add a featherlight popup)  
 Jan-12 - Added sitemap directory with a sitemap.xml generator script  
 
 ### Fixed
