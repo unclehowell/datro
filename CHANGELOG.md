@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.1-rtw.13] - Q2/2022
+
+### Added
+
+### Changed
+Apr-02 - Ran `git submodule update`  
+
 ## [0.0.1-rtw.13] - Q1/2022
 
 ### Added
