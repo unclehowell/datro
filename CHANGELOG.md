@@ -14,8 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.13] - Q2/2022
 
 ### Added
+Apr-11 - `Operation Tech Sax` Declassified and added to Library for use as a point of reference in a Terms Sheet  
 
 ### Changed
+Apr-11 - `static/monoreapo/sitemap/make-sitemap.sh.options` updated to exclude non-english directories containing html e.g. `*/es/*`, `/de/` etc  
 Apr-02 - Ran `git submodule update`  
 
 ## [0.0.1-rtw.13] - Q1/2022

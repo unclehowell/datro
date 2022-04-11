@@ -6,6 +6,13 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [library.07] - Q2/2022
+
+### Added 
+Apr-11 - Added a filter to `_theme-explorer/sitemap/make-sitemap.sh.options` to exclude non-english directories until transations done   
+Apr-11 - Tidy-up of `Operation Tech Saxon` since it will be refered in other documents   
+Apr-11 - Upgraded local machine to Ubuntu Impish Indri and `rebuild.sh` - had to `pip install -v PACKAGE` most packages to remedy    
+
 
 ## [library.06] - Q1/2022
 

@@ -10,6 +10,9 @@
 ! -path ./stats/\*
 ! -path ./.git/\*
 ! -path .svn/\*
+! -path ./*/de/\*
+! -path ./*/es/\*
+! -path ./*/fr/\*
 ! -path ./*html/videos/\*
 ! -path ./*/html/statistics/\*
 ! -path ./*/html/search-box/\*

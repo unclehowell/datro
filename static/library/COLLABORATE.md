@@ -28,6 +28,9 @@ sudo apt install latexmk
 
 sudo apt-get install xdg-utils  
 
+sudo apt-get install texlive-lang-european # or by language try sudo apt-get install texlive-lang-spanish  
+```
+
 To open index.html & *.pdf from commandline use xdg-open e.g. `xdg-open build/html/index.html` or `xdg-open build/latex/business-plan.pdf`
 
 

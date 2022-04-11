@@ -11,6 +11,9 @@
 ! -path ./.git/\*
 ! -path .svn/\*
 ! -path ./*html/videos/\*
+! -path ./*/de/\*
+! -path ./*/es/\*
+! -path ./*/fr/\*
 ! -path ./*/html/statistics/\*
 ! -path ./*/html/search-box/\*
 ! -path ./*/html/multistep-menu/\*

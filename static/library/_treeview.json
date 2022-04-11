@@ -28,6 +28,13 @@
     }
   },
   {
+    "name": "<div class='subtitle-line enable-link'>Operations</div>",
+    "path": "./consortium_ops/index.html",
+    "_links": {
+      "html": "./consortium_ops/index.html"
+    }
+  },
+  {
     "name": "<div class='subtitle-line enable-link'>Other</div>",
     "path": "./consortium_other/index.html",
     "_links": {
@@ -70,7 +77,7 @@
     }
   },
   {
-    "name": "<div class='subtitle-line enable-link'>Operations</div>",
+    "name": "<div class='subtitle-line enable-link'>Business</div>",
     "path": "./hotspotbnb_business/index.html",
     "_links": {
       "html": "./hotspotbnb_business/index.html"
