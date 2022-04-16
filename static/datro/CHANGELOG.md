@@ -11,6 +11,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [-datro.06] - Q2/2022
+
+### Fixed
+Apr-15 - The edit link at the bottom of `technology.html` didn't correspond to the page in github. Now it does   
+
 ## [-datro.05] - Q1/2022
 
 ### Fixed

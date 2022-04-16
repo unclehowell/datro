@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Apr-11 - `Operation Tech Sax` Declassified and added to Library for use as a point of reference in a Terms Sheet  
 
 ### Changed
+Apr-16 - More copywrite changes  
 Apr-14 - Copywrite changes to datro.xyz mainpage e.g. `index.html` and `static/datro/index.html`  
 Apr-11 - `static/monoreapo/sitemap/make-sitemap.sh.options` updated to exclude non-english directories containing html e.g. `*/es/*`, `/de/` etc  
 Apr-02 - Ran `git submodule update`  
