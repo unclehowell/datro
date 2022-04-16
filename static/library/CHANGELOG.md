@@ -13,6 +13,8 @@ Apr-11 - Added a filter to `_theme-explorer/sitemap/make-sitemap.sh.options` to 
 Apr-11 - Tidy-up of `Operation Tech Saxon` since it will be refered in other documents   
 Apr-11 - Upgraded local machine to Ubuntu Impish Indri and `rebuild.sh` - had to `pip install -v PACKAGE` most packages to remedy    
 
+### Removed
+Apr-15 - Removed all the `Filed Accounts` in `Finances` since they'll not be made public anytime soon  
 
 ## [library.06] - Q1/2022
 
