@@ -13,10 +13,14 @@ Each sub-directory also features its own CHANGELOG.md file, which correspond to 
 
 ## [Unreleased]
 
+## [0.0.1-rc.11] - Q2/2022
+
+### Fixed
+Apr-27 - Fixed ARM builder/ net installer and updated outdated licence in header  
+
 ## [0.0.1-rc.10] - Q3/2021
 
 ### Added
-
 Jul-24 - Added this CHANGELOG.md and README.md to this directory (wiki needed to link to directory and a README seemed purposeful)
 
 ### Removed

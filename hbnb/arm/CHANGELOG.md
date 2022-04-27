@@ -7,6 +7,16 @@ and [Prince2 Highlight Reports](https://prince2.wiki/management-products/highlig
 
 ## [Unreleased]
 
+## [0.0.1-rc.9-hbnb-arm.14] - Q2/2022
+
+### Added
+Apr-27 - Added this to compile.sh `apt install -y gnupg1 && cp -a /usr/bin/gpg /usr/bin/gpg2 && ln -sf /usr/bin/gpg1 /usr/bin/gpg`  
+       - Local machine/ Persistent Live USB is now Ubuntu 21.10 and this script failed on it until the above was added`  
+
+### Changed
+Apr-27 - Renamed `compile.bash' to `compile.sh`  
+Apr-27 - Changed Licence in `compile.sh` from Copyleft (GNU) to Crown Copyright Open Government Licence (OGL)   
+
 ## [0.0.1-rc.9-hbnb-arm.13] - Q1/2021
 17-Mar - install-config.txt > post-install.txt > {.bashrc > giodt.sh > hbnbuild.service > hbnbuild.sh} = loop
        - should solve failure to connect to internet

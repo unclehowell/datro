@@ -3,13 +3,13 @@
 #unset CDPATH
 
 #.......................................................
-#            2021 Copyleft - DATRO Consortium
+#     2022 Crown Copyright (OGL) - DATRO Consortium
 #.......................................................
-#         DATRO Document Library by Unclehowell
+# HotspotBnB: Arm Net-Installer Builder by Unclehowell
 #.......................................................
-#                   https://datro.world/
+#                   https://datro.xyz/
 #.......................................................
-#                  V0.0.1-rc.9-hbnb-arm.13
+#                  V0.0.1-rc.9-hbnb-arm.14
 #.......................................................
 
 function ProgressBar {
@@ -37,7 +37,8 @@ do
         ProgressBar ${number} ${_end}
 done
 
-sudo apt-get install git curl bzip2 zip xz-utils gnupg kpartx dosfstools binutils bc &&
+sudo apt-get install git curl bzip2 zip xz-utils gnupg gnupg1 kpartx dosfstools binutils bc &&
+cp -a /usr/bin/gpg /usr/bin/gpg2 && ln -sf /usr/bin/gpg1 /usr/bin/gpg &&
 printf "\e[2;3;33m Step 1 Complete! \n\e[0m"
 
 printf "\n\e[2;3;33m Step 2 of 5. Fetching latest files \n\e[0m\n"
