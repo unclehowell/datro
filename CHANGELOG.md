@@ -22,6 +22,12 @@ Apr-14 - Copywrite changes to datro.xyz mainpage e.g. `index.html` and `static/d
 Apr-11 - `static/monoreapo/sitemap/make-sitemap.sh.options` updated to exclude non-english directories containing html e.g. `*/es/*`, `/de/` etc  
 Apr-02 - Ran `git submodule update`  
 
+### Fixed 
+Apr-17 - Github was saying `Some checks were not successful`. Upon investigation the error was with Vercel, which we were trying out    
+       - Command "jekyll build" exited with 127 - https://vercel.com/unclehowell/datro/9qhf4WRfUivqCch2e1Y88DiZxgwL  
+       - Followed a remedy which saying to produce a Gemfile and Gemfile.lock with `bundle install` command   
+       - Also had to run `gem install -n /usr/local/bin jekyll --user-install`  
+
 ## [0.0.1-rtw.13] - Q1/2022
 
 ### Added

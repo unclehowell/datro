@@ -62,6 +62,12 @@ The remaining 2 branches have a '-dev' on the end of their names and are used to
 
 We adhear closely to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).  
 
+### Gemfile
+
+`bundle install` produces Gemfile.lock from Gemfile. This was done because `git push` was showing a failure on github where it concerned Netlify  
+Also had to run `gem install -n /usr/local/bin jekyll --user-install`  
+
+
 #### Exceptions
 
 1. Extensions: DATRO doesn't just use the 'Release Candidate' (RC) or 'Release to Web' (RTW) semantic version extensions.  
