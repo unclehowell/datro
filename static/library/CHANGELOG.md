@@ -9,6 +9,8 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [library.07] - Q2/2022
 
 ### Added 
+May-24 - Added Client File `consortium_finance/funding_salesenv`   
+May-12 - Removed `Lease V` from `consortium_contracts/_treeview.json`. Lease was never renewed. Lessor refused to carry across the security deposit  
 Apr-11 - Added a filter to `_theme-explorer/sitemap/make-sitemap.sh.options` to exclude non-english directories until transations done   
 Apr-11 - Tidy-up of `Operation Tech Saxon` since it will be refered in other documents   
 Apr-11 - Upgraded local machine to Ubuntu Impish Indri and `rebuild.sh` - had to `pip install -v PACKAGE` most packages to remedy    
