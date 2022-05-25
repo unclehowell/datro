@@ -8,7 +8,8 @@ This section provides information about what is new or changed, including urgent
 This Release (0.0.0)
 ~~~~~~~~~~~~~~~~~~~~~
 
-- **2022-05-24** - `Initial draft of Client File`
+- **2022-05-24** - `Added 2 Quotes e.g. Conference and Bankroll for June 2022`  
+- **2022-05-24** - `Initial draft of Client File`  
 
 
 Older Versions

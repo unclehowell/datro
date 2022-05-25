@@ -46,6 +46,16 @@ Download in `PDF Format <https://wayback.datro.xyz/2022-05-24_consortium_finance
 	:alt:
 
 
+QUO-04021
+##########
+
+Download in `PDF Format <https://wayback.datro.xyz/2022-05-24_consortium_finance-funding_salesenv_quo-04021_en_v0-0-0.pdf>`__ and/or
+`SVG Format <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/source/_static/custom/img/2022-05-24_quo-04021_en_v0-0-0.svg>`__
+
+.. image:: _static/custom/img/2022-05-24_quo-04021_en_v0-0-0.png
+        :width: 600
+        :alt:
+
 
 
 Billables

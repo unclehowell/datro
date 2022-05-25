@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Client ID - ENV 0.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-25 16:11-0400\n"
+"POT-Creation-Date: 2022-05-25 17:59-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../source/aftersales.rst:2
-#: ../../source/annex-list.rst:79
+#: ../../source/annex-list.rst:89
 msgid "After Sales"
 msgstr ""
 
@@ -26,7 +26,7 @@ msgid "See below aftersales made to ClientID: Env e.g. Credit Notes:"
 msgstr ""
 
 #: ../../source/aftersales.rst:7
-#: ../../source/annex-list.rst:83
+#: ../../source/annex-list.rst:93
 msgid "Credits"
 msgstr ""
 
@@ -150,7 +150,7 @@ msgid ":ref:`QUO-04011`"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-msgid "Conference Quote"
+msgid "Attending Conference"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
@@ -164,7 +164,34 @@ msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_sales
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-msgid "`link(96.3kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-01-24_quo-04011_en_v0-0-0.png>`__"
+#: ../../source/_static/quotes.csv:1
+msgid "`link(96.3kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-05-24_quo-04011_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/quotes.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid ":ref:`QUO-04021`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/quotes.csv:1
+msgid "Bankroll - June Activity"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/quotes.csv:1
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-05-24_consortium_finance-funding_salesenv_quo-04021_en_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/quotes.csv:1
+msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-05-24_quo-04021_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/quotes.csv:1
+msgid "`link(96.3kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-05-24_quo-04021_en_v0-0-0.png>`__"
 msgstr ""
 
 #: ../../source/annex-list.rst:20
@@ -173,7 +200,8 @@ msgid "Tenders"
 msgstr ""
 
 #: ../../source/annex-list.rst:23
-#: ../../source/tenders.rst:17
+#: ../../source/_static/issues.csv:1
+#: ../../source/tenders.rst:18
 msgid "Quotes"
 msgstr ""
 
@@ -189,10 +217,6 @@ msgstr ""
 msgid "Conference"
 msgstr ""
 
-#: ../../source/_static/quotes.csv:1
-msgid "`link(96.3kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-05-24_quo-04011_en_v0-0-0.png>`__"
-msgstr ""
-
 #: ../../source/annex-list.rst:39
 msgid "QUO-04011"
 msgstr ""
@@ -201,42 +225,50 @@ msgstr ""
 msgid "Download in `PDF Format <https://wayback.datro.xyz/2022-05-24_consortium_finance-funding_salesenv_quo-04011_en_v0-0-0.pdf>`__ and/or `SVG Format <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/source/_static/custom/img/2022-05-24_quo-04011_en_v0-0-0.svg>`__"
 msgstr ""
 
+#: ../../source/annex-list.rst:50
+msgid "QUO-04021"
+msgstr ""
+
 #: ../../source/annex-list.rst:52
+msgid "Download in `PDF Format <https://wayback.datro.xyz/2022-05-24_consortium_finance-funding_salesenv_quo-04021_en_v0-0-0.pdf>`__ and/or `SVG Format <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/source/_static/custom/img/2022-05-24_quo-04021_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/annex-list.rst:62
 #: ../../source/billables.rst:2
 msgid "Billables"
 msgstr ""
 
-#: ../../source/annex-list.rst:56
+#: ../../source/annex-list.rst:66
 #: ../../source/billables.rst:8
 msgid "Invoices"
 msgstr ""
 
-#: ../../source/annex-list.rst:58
+#: ../../source/annex-list.rst:68
 msgid "This table contains the download links for the Invoices:"
 msgstr ""
 
-#: ../../source/annex-list.rst:60
+#: ../../source/annex-list.rst:70
 msgid "Invoice Download Links"
 msgstr ""
 
-#: ../../source/annex-list.rst:68
+#: ../../source/annex-list.rst:78
 #: ../../source/billables.rst:18
 msgid "Receipts"
 msgstr ""
 
-#: ../../source/annex-list.rst:70
+#: ../../source/annex-list.rst:80
 msgid "This table contains the download links for the Receipts:"
 msgstr ""
 
-#: ../../source/annex-list.rst:72
+#: ../../source/annex-list.rst:82
 msgid "Receipt Download Links"
 msgstr ""
 
-#: ../../source/annex-list.rst:85
+#: ../../source/annex-list.rst:95
 msgid "This table contains the download links for the Credit Notes:"
 msgstr ""
 
-#: ../../source/annex-list.rst:87
+#: ../../source/annex-list.rst:97
 msgid "Credit Note Download Links"
 msgstr ""
 
@@ -285,18 +317,22 @@ msgid "This Release (0.0.0)"
 msgstr ""
 
 #: ../../source/releasenotes.rst:11
+msgid "**2022-05-24** - `Added 2 Quotes e.g. Conference and Bankroll for June 2022`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:12
 msgid "**2022-05-24** - `Initial draft of Client File`"
 msgstr ""
 
-#: ../../source/releasenotes.rst:15
+#: ../../source/releasenotes.rst:16
 msgid "Older Versions"
 msgstr ""
 
-#: ../../source/releasenotes.rst:17
+#: ../../source/releasenotes.rst:18
 msgid "In the table below the last entry displays a link to an archived copy of the last report. To keep the filename from overflowing in the table below the name displayed may differ from the file name. The date the file was archived will differ from the date of the document label, which is its creation date."
 msgstr ""
 
-#: ../../source/releasenotes.rst:22
+#: ../../source/releasenotes.rst:23
 msgid "Older Versions of this Document"
 msgstr ""
 
@@ -313,19 +349,19 @@ msgstr ""
 msgid "**Download Link**"
 msgstr ""
 
-#: ../../source/releasenotes.rst:29
+#: ../../source/releasenotes.rst:30
 msgid "To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://wayback.datro.xyz/>`__."
 msgstr ""
 
-#: ../../source/releasenotes.rst:33
+#: ../../source/releasenotes.rst:34
 msgid "Known and Corrected Issues"
 msgstr ""
 
-#: ../../source/releasenotes.rst:35
+#: ../../source/releasenotes.rst:36
 msgid "Below is a table of pending issues that have been reported to our team. These issues will be cleared from this list as and when they are remedied."
 msgstr ""
 
-#: ../../source/releasenotes.rst:39
+#: ../../source/releasenotes.rst:40
 msgid "Known Issues"
 msgstr ""
 
@@ -335,6 +371,18 @@ msgstr ""
 
 #: ../../source/_static/issues.csv:1
 msgid "**Subject**"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "2022-05-24"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "v0.0.0"
+msgstr ""
+
+#: ../../source/_static/issues.csv:1
+msgid "Client raised concern quotes are high. Awaiting counteroffer before revisiting"
 msgstr ""
 
 #: ../../source/statement.rst:2
@@ -358,14 +406,14 @@ msgid "**n/a**"
 msgstr ""
 
 #: ../../source/tenders.rst:4
-msgid "See below the tenders made to clientID: Env e.g. Estimates and Fixed Quotes:"
+msgid "See below the tenders made to clientID: Env e.g. Estimates and Fixed Quotes: No dedicated documents are produced for estimates. Only the table below displays the estimates."
 msgstr ""
 
-#: ../../source/tenders.rst:7
+#: ../../source/tenders.rst:8
 msgid "Estimates"
 msgstr ""
 
-#: ../../source/tenders.rst:9
+#: ../../source/tenders.rst:10
 msgid "Env - Estimates"
 msgstr ""
 
@@ -373,7 +421,50 @@ msgstr ""
 msgid "**GO**"
 msgstr ""
 
-#: ../../source/tenders.rst:19
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "2022/05/24"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+msgid ":ref:`EST-04010`"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "5000"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "USD"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "?"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+msgid ":ref:`EST-04020`"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "4000"
+msgstr ""
+
+#: ../../source/tenders.rst:20
 msgid "Env - Quotes"
 msgstr ""
 
@@ -382,22 +473,9 @@ msgid "**Go**"
 msgstr ""
 
 #: ../../source/_static/custom/quotes-master.csv:1
-msgid "2022/05/24"
+msgid "Conference(O/B Client)"
 msgstr ""
 
 #: ../../source/_static/custom/quotes-master.csv:1
-msgid "Conference (O/B Client)"
-msgstr ""
-
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-msgid "5000"
-msgstr ""
-
-#: ../../source/_static/custom/quotes-master.csv:1
-msgid "USD"
-msgstr ""
-
-#: ../../source/_static/custom/quotes-master.csv:1
-msgid "?"
+msgid "Bankroll - June 2022"
 msgstr ""

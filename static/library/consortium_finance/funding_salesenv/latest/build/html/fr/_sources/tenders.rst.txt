@@ -2,6 +2,7 @@ Tenders
 ======================
 
 See below the tenders made to clientID: Env e.g. Estimates and Fixed Quotes:
+No dedicated documents are produced for estimates. Only the table below displays the estimates.
 
 Estimates
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
