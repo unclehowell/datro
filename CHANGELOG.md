@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.13] - Q2/2022
 
 ### Added
+May-25 - Ran sitemap maker and analytics on entire monorepo   
 May-24 - Added new client file `ENV` to document library - see library/CHANGELOG.md for details    
 Apr-11 - `Operation Tech Sax` Declassified and added to Library for use as a point of reference in a Terms Sheet  
 
