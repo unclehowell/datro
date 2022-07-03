@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Client ID - ENV 0.0.0\n"
+"Project-Id-Version: Client ID - ENV 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-25 17:59-0400\n"
+"POT-Creation-Date: 2022-07-03 04:23-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../source/aftersales.rst:2
-#: ../../source/annex-list.rst:89
+#: ../../source/annex-list.rst:99
 msgid "After Sales"
 msgstr ""
 
@@ -26,7 +26,7 @@ msgid "See below aftersales made to ClientID: Env e.g. Credit Notes:"
 msgstr ""
 
 #: ../../source/aftersales.rst:7
-#: ../../source/annex-list.rst:93
+#: ../../source/annex-list.rst:103
 msgid "Credits"
 msgstr ""
 
@@ -35,57 +35,53 @@ msgid "Env - Credit Notes"
 msgstr ""
 
 #: ../../source/_static/custom/credits-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
 #: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
 #: ../../source/_static/custom/receipts-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
 msgid "**Date**"
 msgstr ""
 
-#: ../../source/_static/custom/credits-master.csv:1
 #: ../../source/_static/annex.csv:1
-#: ../../source/_static/quotes.csv:1
-#: ../../source/_static/invoices.csv:1
-#: ../../source/_static/receipts.csv:1
 #: ../../source/_static/credits.csv:1
+#: ../../source/_static/custom/credits-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
 #: ../../source/_static/custom/receipts-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/invoices.csv:1
+#: ../../source/_static/quotes.csv:1
+#: ../../source/_static/receipts.csv:1
 msgid "**Annex ID**"
 msgstr ""
 
 #: ../../source/_static/custom/credits-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/receipts-master.csv:1
 #: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
 msgid "**Reference**"
 msgstr ""
 
 #: ../../source/_static/custom/credits-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
 #: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
 #: ../../source/_static/custom/receipts-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
 msgid "**Volume**"
 msgstr ""
 
 #: ../../source/_static/custom/credits-master.csv:1
+#: ../../source/_static/custom/estimates-master.csv:1
 #: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
 #: ../../source/_static/custom/receipts-master.csv:1
 #: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
 msgid "**¤**"
 msgstr ""
 
 #: ../../source/_static/custom/credits-master.csv:1
-#: ../../source/_static/custom/invoices-master.csv:1
-#: ../../source/_static/custom/statement-master.csv:1
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
 msgid "**USD**"
 msgstr ""
 
@@ -102,7 +98,7 @@ msgid "Download Links"
 msgstr ""
 
 #: ../../source/annex-list.rst:10
-msgid "This table contains the download links for the Annexed documents:"
+msgid "This table contains the download links for the annexed documents:"
 msgstr ""
 
 #: ../../source/annex-list.rst:12
@@ -110,88 +106,195 @@ msgid "Annexures Download Links"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-#: ../../source/_static/quotes.csv:1
-#: ../../source/_static/invoices.csv:1
-#: ../../source/_static/receipts.csv:1
 #: ../../source/_static/credits.csv:1
+#: ../../source/_static/invoices.csv:1
 #: ../../source/_static/olderversions.csv:1
-#: ../../source/_static/issues.csv:1
+#: ../../source/_static/quotes.csv:1
+#: ../../source/_static/receipts.csv:1
 msgid "**Description**"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-#: ../../source/_static/quotes.csv:1
-#: ../../source/_static/invoices.csv:1
-#: ../../source/_static/receipts.csv:1
 #: ../../source/_static/credits.csv:1
+#: ../../source/_static/invoices.csv:1
+#: ../../source/_static/quotes.csv:1
+#: ../../source/_static/receipts.csv:1
 msgid "**PDF**"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-#: ../../source/_static/quotes.csv:1
-#: ../../source/_static/invoices.csv:1
-#: ../../source/_static/receipts.csv:1
 #: ../../source/_static/credits.csv:1
+#: ../../source/_static/invoices.csv:1
+#: ../../source/_static/quotes.csv:1
+#: ../../source/_static/receipts.csv:1
 msgid "**SVG**"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-#: ../../source/_static/quotes.csv:1
-#: ../../source/_static/invoices.csv:1
-#: ../../source/_static/receipts.csv:1
 #: ../../source/_static/credits.csv:1
+#: ../../source/_static/invoices.csv:1
+#: ../../source/_static/quotes.csv:1
+#: ../../source/_static/receipts.csv:1
 msgid "**PNG**"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-#: ../../source/_static/quotes.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/quotes.csv:1
 msgid ":ref:`QUO-04011`"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-msgid "Attending Conference"
+msgid "Attend NACAS Conference"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-#: ../../source/_static/quotes.csv:1
-msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-05-24_consortium_finance-funding_salesenv_quo-04011_en_v0-0-0.pdf>`__"
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-05-24_consortium_finance-funding_salesenv_quo-04011_en_v0-0-1.pdf>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-#: ../../source/_static/quotes.csv:1
-msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-05-24_quo-04011_en_v0-0-0.svg>`__"
+msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-05-24_quo-04011_en_v0-0-1.svg>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-#: ../../source/_static/quotes.csv:1
-msgid "`link(96.3kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-05-24_quo-04011_en_v0-0-0.png>`__"
+msgid "`link(96.3kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-05-24_quo-04011_en_v0-0-1.png>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-#: ../../source/_static/quotes.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/quotes.csv:1
 msgid ":ref:`QUO-04021`"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-#: ../../source/_static/quotes.csv:1
-msgid "Bankroll - June Activity"
+msgid "June Agreement (Terms A)"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-#: ../../source/_static/quotes.csv:1
-msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-05-24_consortium_finance-funding_salesenv_quo-04021_en_v0-0-0.pdf>`__"
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-05-28_consortium_finance-funding_salesenv_quo-04021_en_v0-0-0.pdf>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-#: ../../source/_static/quotes.csv:1
-msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-05-24_quo-04021_en_v0-0-0.svg>`__"
+msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-05-28_quo-04021_en_v0-0-0.svg>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-#: ../../source/_static/quotes.csv:1
-msgid "`link(96.3kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-05-24_quo-04021_en_v0-0-0.png>`__"
+msgid "`link(96.3kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-05-28_quo-04021_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid ":ref:`QUO-04031`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "July Agreement (Terms A)"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-07-02_consortium_finance-funding_salesenv_quo-04041_en_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-07-02_quo-04041_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(96.3kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-07-02_quo-04011_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid ":ref:`QUO-04041`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "July Agreement (Terms B)"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-07-02_consortium_finance-funding_salesenv_quo-04051_en_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-07-02_quo-04051_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(96.3kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-07-02_quo-04051_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid ":ref:`QUO-04051`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "July Agreement (Terms C)"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-07-02_consortium_finance-funding_salesenv_quo-04061_en_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-07-02_quo-04061_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(96.3kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-07-02_quo-04061_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid ":ref:`QUO-04061`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "July Agreement (Terms B+C)"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-07-02_consortium_finance-funding_salesenv_quo-04071_en_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-07-02_quo-04071_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(96.3kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-07-02_quo-04071_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/invoices.csv:1
+msgid ":ref:`INV-04012`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-06-05_consortium_finance-funding_salesenv_inv-04012_en_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-06-05_inv-04012_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(96.3kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-06-05_inv-04021_en_v0-0-0.png>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid ":ref:`INV-04023`"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-06-05_consortium_finance-funding_salesenv_inv-04031_en_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-06-05_quo-04021_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/annex.csv:1
+msgid "`link(96.3kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-06-05_quo-04021_en_v0-0-0.png>`__"
 msgstr ""
 
 #: ../../source/annex-list.rst:20
@@ -200,7 +303,6 @@ msgid "Tenders"
 msgstr ""
 
 #: ../../source/annex-list.rst:23
-#: ../../source/_static/issues.csv:1
 #: ../../source/tenders.rst:18
 msgid "Quotes"
 msgstr ""
@@ -213,8 +315,39 @@ msgstr ""
 msgid "Quote Download Links"
 msgstr ""
 
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
 #: ../../source/_static/quotes.csv:1
-msgid "Conference"
+msgid "NACAS Conference"
+msgstr ""
+
+#: ../../source/_static/quotes.csv:1
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-05-28_consortium_finance-funding_salesenv_quo-04011_en_v0-0-1.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/quotes.csv:1
+msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-05-28_quo-04011_en_v0-0-1.svg>`__"
+msgstr ""
+
+#: ../../source/_static/quotes.csv:1
+msgid "`link(96.3kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-05-28_quo-04011_en_v0-0-1.png>`__"
+msgstr ""
+
+#: ../../source/_static/quotes.csv:1
+msgid "June (Terms A)"
+msgstr ""
+
+#: ../../source/_static/quotes.csv:1
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-05-24_consortium_finance-funding_salesenv_quo-04021_en_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/_static/quotes.csv:1
+msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-05-24_quo-04021_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/_static/quotes.csv:1
+msgid "`link(96.3kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-05-24_quo-04021_en_v0-0-0.png>`__"
 msgstr ""
 
 #: ../../source/annex-list.rst:39
@@ -230,45 +363,59 @@ msgid "QUO-04021"
 msgstr ""
 
 #: ../../source/annex-list.rst:52
-msgid "Download in `PDF Format <https://wayback.datro.xyz/2022-05-24_consortium_finance-funding_salesenv_quo-04021_en_v0-0-0.pdf>`__ and/or `SVG Format <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/source/_static/custom/img/2022-05-24_quo-04021_en_v0-0-0.svg>`__"
+msgid "Download in `PDF Format <https://wayback.datro.xyz/2022-05-28_consortium_finance-funding_salesenv_quo-04021_en_v0-0-0.pdf>`__ and/or `SVG Format <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/source/_static/custom/img/2022-05-28_quo-04021_en_v0-0-0.svg>`__"
 msgstr ""
 
-#: ../../source/annex-list.rst:62
+#: ../../source/annex-list.rst:61
+msgid "QUO-04031"
+msgstr ""
+
+#: ../../source/annex-list.rst:63
+msgid "Download in `PDF Format <https://wayback.datro.xyz/2022-05-28_consortium_finance-funding_salesenv_quo-04031_en_v0-0-0.pdf>`__ and/or `SVG Format <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/source/_static/custom/img/2022-05-28_quo-04031_en_v0-0-0.svg>`__"
+msgstr ""
+
+#: ../../source/annex-list.rst:72
 #: ../../source/billables.rst:2
 msgid "Billables"
 msgstr ""
 
-#: ../../source/annex-list.rst:66
+#: ../../source/annex-list.rst:76
 #: ../../source/billables.rst:8
 msgid "Invoices"
 msgstr ""
 
-#: ../../source/annex-list.rst:68
+#: ../../source/annex-list.rst:78
 msgid "This table contains the download links for the Invoices:"
 msgstr ""
 
-#: ../../source/annex-list.rst:70
+#: ../../source/annex-list.rst:80
 msgid "Invoice Download Links"
 msgstr ""
 
-#: ../../source/annex-list.rst:78
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+#: ../../source/_static/invoices.csv:1
+msgid ":ref:`INV-04022`"
+msgstr ""
+
+#: ../../source/annex-list.rst:88
 #: ../../source/billables.rst:18
 msgid "Receipts"
 msgstr ""
 
-#: ../../source/annex-list.rst:80
+#: ../../source/annex-list.rst:90
 msgid "This table contains the download links for the Receipts:"
 msgstr ""
 
-#: ../../source/annex-list.rst:82
+#: ../../source/annex-list.rst:92
 msgid "Receipt Download Links"
 msgstr ""
 
-#: ../../source/annex-list.rst:95
+#: ../../source/annex-list.rst:105
 msgid "This table contains the download links for the Credit Notes:"
 msgstr ""
 
-#: ../../source/annex-list.rst:97
+#: ../../source/annex-list.rst:107
 msgid "Credit Note Download Links"
 msgstr ""
 
@@ -284,12 +431,75 @@ msgstr ""
 msgid "**ID**"
 msgstr ""
 
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "**BTC**"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "2022/06/05"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "2500"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "USD"
+msgstr ""
+
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid "June - Terms A"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+#: ../../source/_static/custom/invoices-master.csv:1
+#: ../../source/_static/custom/quotes-master.csv:1
+#: ../../source/_static/custom/receipts-master.csv:1
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "4000"
+msgstr ""
+
 #: ../../source/billables.rst:20
 msgid "Env - Receipts"
 msgstr ""
 
 #: ../../source/_static/custom/receipts-master.csv:1
-msgid "**GBP**"
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "2022/06/14"
+msgstr ""
+
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid ":ref:`RCT-04031`"
+msgstr ""
+
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid "Conference v0.1"
+msgstr ""
+
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid "0.114772"
+msgstr ""
+
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid ":ref:`RCT-04021`"
+msgstr ""
+
+#: ../../source/_static/custom/receipts-master.csv:1
+msgid "0.183635"
 msgstr ""
 
 #: ../../source/index.rst:2
@@ -313,26 +523,22 @@ msgid "This section provides information about what is new or changed, including
 msgstr ""
 
 #: ../../source/releasenotes.rst:9
-msgid "This Release (0.0.0)"
+msgid "This Release (0.0.1)"
 msgstr ""
 
 #: ../../source/releasenotes.rst:11
-msgid "**2022-05-24** - `Added 2 Quotes e.g. Conference and Bankroll for June 2022`"
+msgid "**2022-07-02** - `Proposed 3 new terms/ billing options (Terms B, C or B+C)`"
 msgstr ""
 
-#: ../../source/releasenotes.rst:12
-msgid "**2022-05-24** - `Initial draft of Client File`"
-msgstr ""
-
-#: ../../source/releasenotes.rst:16
+#: ../../source/releasenotes.rst:14
 msgid "Older Versions"
 msgstr ""
 
-#: ../../source/releasenotes.rst:18
+#: ../../source/releasenotes.rst:16
 msgid "In the table below the last entry displays a link to an archived copy of the last report. To keep the filename from overflowing in the table below the name displayed may differ from the file name. The date the file was archived will differ from the date of the document label, which is its creation date."
 msgstr ""
 
-#: ../../source/releasenotes.rst:23
+#: ../../source/releasenotes.rst:21
 msgid "Older Versions of this Document"
 msgstr ""
 
@@ -341,7 +547,6 @@ msgid "**Archive Date**"
 msgstr ""
 
 #: ../../source/_static/olderversions.csv:1
-#: ../../source/_static/issues.csv:1
 msgid "**Version**"
 msgstr ""
 
@@ -349,40 +554,48 @@ msgstr ""
 msgid "**Download Link**"
 msgstr ""
 
-#: ../../source/releasenotes.rst:30
-msgid "To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://wayback.datro.xyz/>`__."
-msgstr ""
-
-#: ../../source/releasenotes.rst:34
-msgid "Known and Corrected Issues"
-msgstr ""
-
-#: ../../source/releasenotes.rst:36
-msgid "Below is a table of pending issues that have been reported to our team. These issues will be cleared from this list as and when they are remedied."
-msgstr ""
-
-#: ../../source/releasenotes.rst:40
-msgid "Known Issues"
-msgstr ""
-
-#: ../../source/_static/issues.csv:1
-msgid "**Issue Date**"
-msgstr ""
-
-#: ../../source/_static/issues.csv:1
-msgid "**Subject**"
-msgstr ""
-
-#: ../../source/_static/issues.csv:1
+#: ../../source/_static/olderversions.csv:1
 msgid "2022-05-24"
 msgstr ""
 
-#: ../../source/_static/issues.csv:1
-msgid "v0.0.0"
+#: ../../source/_static/olderversions.csv:1
+msgid "0.0.0"
 msgstr ""
 
-#: ../../source/_static/issues.csv:1
-msgid "Client raised concern quotes are high. Awaiting counteroffer before revisiting"
+#: ../../source/_static/olderversions.csv:1
+msgid "First Release"
+msgstr ""
+
+#: ../../source/_static/olderversions.csv:1
+msgid "`2022-05-24_v0.0.0.pdf <https://wayback.datro.xyz/2022-05-24_consortium_finance-funding_salesenv_en_v0-0-0.pdf>`__"
+msgstr ""
+
+#: ../../source/releasenotes.rst:28
+msgid "This Release (0.0.0)"
+msgstr ""
+
+#: ../../source/releasenotes.rst:30
+msgid "**2022-05-28** - `Updated \"Conference v0.0\" > v0.1 (Applied 50% Discount)`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:31
+msgid "**2022-05-24** - `Added 2 Quotes e.g. \"Conference v0.0\" and \"June (Terms A)\"`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:32
+msgid "**2022-05-24** - `First publication of client file`"
+msgstr ""
+
+#: ../../source/releasenotes.rst:35
+msgid "To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://wayback.datro.xyz/>`__."
+msgstr ""
+
+#: ../../source/releasenotes.rst:39
+msgid "Known and Corrected Issues"
+msgstr ""
+
+#: ../../source/releasenotes.rst:41
+msgid "Below is a table of pending issues that have been reported to our team. These issues will be cleared from this list as and when they are remedied."
 msgstr ""
 
 #: ../../source/statement.rst:2
@@ -394,7 +607,27 @@ msgid "Env - Statement"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "**Bal ($)**"
+msgid "**Bal (₿)**"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid ":ref:`RCT-04013`"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "-2500"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid ":ref:`RCT-04023`"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "-4000"
+msgstr ""
+
+#: ../../source/_static/custom/statement-master.csv:1
+msgid "2022/07/02"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
@@ -402,11 +635,11 @@ msgid "**Balance**"
 msgstr ""
 
 #: ../../source/_static/custom/statement-master.csv:1
-msgid "**n/a**"
+msgid "**0.00**"
 msgstr ""
 
 #: ../../source/tenders.rst:4
-msgid "See below the tenders made to clientID: Env e.g. Estimates and Fixed Quotes: No dedicated documents are produced for estimates. Only the table below displays the estimates."
+msgid "See below the tenders made to ClientID: Env e.g. Estimates and Fixed Quotes: No dedicated documents are produced for estimates. Only the table below displays the estimates."
 msgstr ""
 
 #: ../../source/tenders.rst:8
@@ -422,46 +655,52 @@ msgid "**GO**"
 msgstr ""
 
 #: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
 msgid "2022/05/24"
 msgstr ""
 
 #: ../../source/_static/custom/estimates-master.csv:1
-msgid ":ref:`EST-04010`"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
 msgid "5000"
 msgstr ""
 
 #: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-msgid "USD"
+msgid "0.171636"
 msgstr ""
 
 #: ../../source/_static/custom/estimates-master.csv:1
+msgid "x"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+msgid "June Agreement - Terms A"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+msgid "0.137308"
+msgstr ""
+
 #: ../../source/_static/custom/estimates-master.csv:1
 #: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
+msgid "✓"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+msgid "2022/06/28"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+msgid "July Agreement - T=NOT A"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+msgid "11k-14k"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
+msgid "0.571444"
+msgstr ""
+
+#: ../../source/_static/custom/estimates-master.csv:1
 msgid "?"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-msgid ":ref:`EST-04020`"
-msgstr ""
-
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/estimates-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-#: ../../source/_static/custom/quotes-master.csv:1
-msgid "4000"
 msgstr ""
 
 #: ../../source/tenders.rst:20
@@ -473,9 +712,13 @@ msgid "**Go**"
 msgstr ""
 
 #: ../../source/_static/custom/quotes-master.csv:1
-msgid "Conference(O/B Client)"
+msgid "2022/05/28"
 msgstr ""
 
 #: ../../source/_static/custom/quotes-master.csv:1
-msgid "Bankroll - June 2022"
+msgid "0.087151"
+msgstr ""
+
+#: ../../source/_static/custom/quotes-master.csv:1
+msgid "0.139442"
 msgstr ""

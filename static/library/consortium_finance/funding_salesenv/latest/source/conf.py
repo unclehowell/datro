@@ -2,8 +2,8 @@ project = u'Client ID - ENV'
 copyright = u'2021, DATRO Consortium'
 author = u'Scottish Bay LLC'
 
-version = u'0.0.0'
-release = u'0.0.0'
+version = u'0.0.1'
+release = u'0.0.1'
 
 extensions = ['sphinx.ext.autosectionlabel']
 
@@ -18,7 +18,7 @@ locale_dirs = ['locales']
 gettext_auto_build = True
 gettext_compact = "docs"
 
-today_fmt = 'May 24th, 2022'
+today_fmt = 'July 2nd, 2022'
 
 exclude_patterns = ['_build']
 

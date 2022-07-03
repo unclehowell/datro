@@ -9,6 +9,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [library.07] - Q2/2022
 
 ### Added 
+Jul-02 - Added to client file `consortium-finance/funding_salesenv`  
 May-24 - Added Client File `consortium_finance/funding_salesenv`   
 May-12 - Removed `Lease V` from `consortium_contracts/_treeview.json`. Lease was never renewed. Lessor refused to carry across the security deposit  
 Apr-11 - Added a filter to `_theme-explorer/sitemap/make-sitemap.sh.options` to exclude non-english directories until transations done   

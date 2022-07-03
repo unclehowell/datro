@@ -5,12 +5,10 @@ This section provides information about what is new or changed, including urgent
 - 'Updates' are the term used to describe significant changes to our public source code and/or records.  
  
 
-This Release (0.0.0)
+This Release (0.0.1)
 ~~~~~~~~~~~~~~~~~~~~~
 
-- **2022-05-24** - `Added 2 Quotes e.g. Conference and Bankroll for June 2022`  
-- **2022-05-24** - `Initial draft of Client File`  
-
+- **2022-07-02** - `Proposed 3 new terms/ billing options (Terms B, C or B+C)`
 
 Older Versions
 ####################
@@ -25,7 +23,14 @@ The date the file was archived will differ from the date of the document label, 
    :widths: 20, 20, 20, 40
    :header-rows: 1
    
-|
+
+This Release (0.0.0)
+~~~~~~~~~~~~~~~~~~~~~
+
+- **2022-05-28** - `Updated "Conference v0.0" > v0.1 (Applied 50% Discount)` 
+- **2022-05-24** - `Added 2 Quotes e.g. "Conference v0.0" and "June (Terms A)"`
+- **2022-05-24** - `First publication of client file`
+
 
 To view releasenotes of versions older than the one above, visit the DATRO Consortiums `Wayback Archive <https://wayback.datro.xyz/>`__.
    

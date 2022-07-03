@@ -7,7 +7,7 @@ This section contains the Annexures, referenced in the text above.
 Download Links
 ~~~~~~~~~~~~~~~~
 
-This table contains the download links for the Annexed documents:
+This table contains the download links for the annexed documents:
 
 .. csv-table:: Annexures Download Links
 	 :file: _static/annex.csv
@@ -49,13 +49,23 @@ Download in `PDF Format <https://wayback.datro.xyz/2022-05-24_consortium_finance
 QUO-04021
 ##########
 
-Download in `PDF Format <https://wayback.datro.xyz/2022-05-24_consortium_finance-funding_salesenv_quo-04021_en_v0-0-0.pdf>`__ and/or
-`SVG Format <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/source/_static/custom/img/2022-05-24_quo-04021_en_v0-0-0.svg>`__
+Download in `PDF Format <https://wayback.datro.xyz/2022-05-28_consortium_finance-funding_salesenv_quo-04021_en_v0-0-0.pdf>`__ and/or
+`SVG Format <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/source/_static/custom/img/2022-05-28_quo-04021_en_v0-0-0.svg>`__
 
-.. image:: _static/custom/img/2022-05-24_quo-04021_en_v0-0-0.png
+.. image:: _static/custom/img/2022-05-28_quo-04021_en_v0-0-0.png
         :width: 600
         :alt:
 
+
+QUO-04031
+##########
+
+Download in `PDF Format <https://wayback.datro.xyz/2022-05-28_consortium_finance-funding_salesenv_quo-04031_en_v0-0-0.pdf>`__ and/or
+`SVG Format <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/source/_static/custom/img/2022-05-28_quo-04031_en_v0-0-0.svg>`__
+
+.. image:: _static/custom/img/2022-05-28_quo-04031_en_v0-0-0.png
+        :width: 600
+        :alt:
 
 
 Billables
