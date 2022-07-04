@@ -8,7 +8,7 @@ This section provides information about what is new or changed, including urgent
 This Release (0.0.1)
 ~~~~~~~~~~~~~~~~~~~~~
 
-- **2022-07-02** - `Proposed 3 new terms/ billing options (Terms B, C or B+C)`
+- **2022-07-02** - `Proposed 3 new terms/ billing options - Terms B, C or (most recommended for client) B and C combined`
 
 Older Versions
 ####################

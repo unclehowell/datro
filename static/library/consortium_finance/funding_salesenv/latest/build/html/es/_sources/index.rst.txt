@@ -9,7 +9,6 @@ Client ID - ENV
    statement
    tenders
    billables
-   aftersales
    annex-list 
    
 

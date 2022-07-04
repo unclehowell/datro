@@ -9,6 +9,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [library.07] - Q2/2022
 
 ### Added 
+Jul-04 - Staging the `consortium-fiance/funding_salesenv` directory, pre-final publication of v0.0.1  
 Jul-02 - Added to client file `consortium-finance/funding_salesenv`  
 May-24 - Added Client File `consortium_finance/funding_salesenv`   
 May-12 - Removed `Lease V` from `consortium_contracts/_treeview.json`. Lease was never renewed. Lessor refused to carry across the security deposit  

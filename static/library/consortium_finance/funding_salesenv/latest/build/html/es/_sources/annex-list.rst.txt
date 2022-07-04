@@ -4,8 +4,8 @@ Annexures
 This section contains the Annexures, referenced in the text above.
 
 
-Download Links
-~~~~~~~~~~~~~~~~
+Download Links (all)
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 This table contains the download links for the annexed documents:
 
@@ -13,8 +13,6 @@ This table contains the download links for the annexed documents:
 	 :file: _static/annex.csv
 	 :widths: 20, 35, 15, 15, 15
 	 :header-rows: 1
-
-
 
 Tenders
 ~~~~~~~~~~~~
@@ -30,21 +28,17 @@ This table contains the download links for the Quotes:
 	 :header-rows: 1
 
 
-.. raw:: latex
-
-    \newpage
-
-
 QUO-04011
 ##########
 
-Download in `PDF Format <https://wayback.datro.xyz/2022-05-24_consortium_finance-funding_salesenv_quo-04011_en_v0-0-0.pdf>`__ and/or
-`SVG Format <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/source/_static/custom/img/2022-05-24_quo-04011_en_v0-0-0.svg>`__
+Download in `PDF Format <https://wayback.datro.xyz/2022-05-28_consortium_finance-funding_salesenv_quo-04011_en_v0-0-1.pdf>`__ and/or
+`SVG Format <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/source/_static/custom/img/2022-05-28_quo-04011_en_v0-0-1.svg>`__
 
-.. image:: _static/custom/img/2022-05-24_quo-04011_en_v0-0-0.png
+.. image:: _static/custom/img/2022-05-28_quo-04011_en_v0-0-1.png
 	:width: 600
 	:alt:
 
+|
 
 QUO-04021
 ##########
@@ -57,16 +51,57 @@ Download in `PDF Format <https://wayback.datro.xyz/2022-05-28_consortium_finance
         :alt:
 
 
+|
+
 QUO-04031
 ##########
 
-Download in `PDF Format <https://wayback.datro.xyz/2022-05-28_consortium_finance-funding_salesenv_quo-04031_en_v0-0-0.pdf>`__ and/or
-`SVG Format <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/source/_static/custom/img/2022-05-28_quo-04031_en_v0-0-0.svg>`__
+Download in `PDF Format <https://wayback.datro.xyz/2022-07-02_consortium_finance-funding_salesenv_quo-04031_en_v0-0-0.pdf>`__ and/or
+`SVG Format <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/source/_static/custom/img/2022-07-02_quo-04031_en_v0-0-0.svg>`__
 
-.. image:: _static/custom/img/2022-05-28_quo-04031_en_v0-0-0.png
+.. image:: _static/custom/img/2022-07-02_quo-04031_en_v0-0-0.png
         :width: 600
         :alt:
 
+
+|
+
+QUO-04041
+##########
+
+Download in `PDF Format <https://wayback.datro.xyz/2022-07-02_consortium_finance-funding_salesenv_quo-04041_en_v0-0-0.pdf>`__ and/or
+`SVG Format <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/source/_static/custom/img/2022-07-02_quo-04041_en_v0-0-0.svg>`__
+
+.. image:: _static/custom/img/2022-07-02_quo-04041_en_v0-0-0.png
+        :width: 600
+        :alt:
+
+|
+
+
+QUO-04051
+##########
+
+Download in `PDF Format <https://wayback.datro.xyz/2022-07-02_consortium_finance-funding_salesenv_quo-04051_en_v0-0-0.pdf>`__ and/or
+`SVG Format <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/source/_static/custom/img/2022-07-02_quo-04051_en_v0-0-0.svg>`__
+
+.. image:: _static/custom/img/2022-07-02_quo-04051_en_v0-0-0.png
+        :width: 600
+        :alt:
+
+|
+
+QUO-04061
+##########
+
+Download in `PDF Format <https://wayback.datro.xyz/2022-07-02_consortium_finance-funding_salesenv_quo-04061_en_v0-0-0.pdf>`__ and/or
+`SVG Format <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/source/_static/custom/img/2022-07-02_quo-04061_en_v0-0-0.svg>`__
+
+.. image:: _static/custom/img/2022-07-02_quo-04061_en_v0-0-0.png
+        :width: 600
+        :alt:
+
+|
 
 Billables
 ~~~~~~~~~~~~~~
@@ -83,6 +118,31 @@ This table contains the download links for the Invoices:
 	 :header-rows: 1
 
 
+|
+
+INV-04012
+##########
+Download in `PDF Format <https://wayback.datro.xyz/2022-06-05_consortium_finance-funding_salesenv_inv-04012_en_v0-0-0.pdf>`__ and/or
+`SVG Format <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/source/_static/custom/img/2022-06-05_inv-04012_en_v0-0-0.svg>`__
+
+.. image:: _static/custom/img/2022-06-05_inv-04012_en_v0-0-0.png
+        :width: 600
+        :alt:
+
+|
+
+INV-04022
+##########
+
+Download in `PDF Format <https://wayback.datro.xyz/2022-06-05_consortium_finance-funding_salesenv_inv-04022_en_v0-0-0.pdf>`__ and/or
+`SVG Format <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/source/_static/custom/img/2022-06-05_inv-04022_en_v0-0-0.svg>`__
+
+.. image:: _static/custom/img/2022-06-05_inv-04022_en_v0-0-0.png
+        :width: 600
+        :alt:
+
+
+
 
 Receipts
 ---------
@@ -95,19 +155,31 @@ This table contains the download links for the Receipts:
 	 :header-rows: 1
 
 
-After Sales
-~~~~~~~~~~~~~~~~
+|
 
+RCT-04013
+##########
 
-Credits
---------
+Download in `PDF Format <https://wayback.datro.xyz/2022-06-14_consortium_finance-funding_salesenv_rct-04013_en_v0-0-0.pdf>`__ and/or
+`SVG Format <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/source/_static/custom/img/2022-06-14_rct-04013_en_v0-0-0.svg>`__
 
-This table contains the download links for the Credit Notes:
+.. image:: _static/custom/img/2022-06-14_rct-04013_en_v0-0-0.png
+        :width: 600
+        :alt:
 
-.. csv-table:: Credit Note Download Links
-	 :file: _static/credits.csv
-	 :widths: 20, 35, 15, 15, 15
-	 :header-rows: 1
+|
+
+RCT-04023
+##########
+
+Download in `PDF Format <https://wayback.datro.xyz/2022-06-14_consortium_finance-funding_salesenv_rct-04023_en_v0-0-0.pdf>`__ and/or
+`SVG Format <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/source/_static/custom/img/2022-06-14_rct-04023_en_v0-0-0.svg>`__
+
+.. image:: _static/custom/img/2022-06-14_rct-04023_en_v0-0-0.png
+        :width: 600
+        :alt:
+
+|
 
 .. raw:: latex
 
