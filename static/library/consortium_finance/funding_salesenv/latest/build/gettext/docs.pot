@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Client ID - ENV 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-04 11:31-0400\n"
+"POT-Creation-Date: 2022-07-24 17:23-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,10 +128,12 @@ msgid "June.(Terms-A)"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
+#: ../../source/_static/quotes.csv:1
 msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-05-28_consortium_finance-funding_salesenv_quo-04021_en_v0-0-0.pdf>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
+#: ../../source/_static/quotes.csv:1
 msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-05-28_quo-04021_en_v0-0-0.svg>`__"
 msgstr ""
 
@@ -149,7 +151,7 @@ msgstr ""
 
 #: ../../source/_static/annex.csv:1
 #: ../../source/_static/quotes.csv:1
-msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-07-02_consortium_finance-funding_salesenv_quo-04041_en_v0-0-0.pdf>`__"
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-07-02_consortium_finance-funding_salesenv_quo-04031_en_v0-0-0.pdf>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
@@ -171,7 +173,7 @@ msgstr ""
 
 #: ../../source/_static/annex.csv:1
 #: ../../source/_static/quotes.csv:1
-msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-07-02_consortium_finance-funding_salesenv_quo-04051_en_v0-0-0.pdf>`__"
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-07-02_consortium_finance-funding_salesenv_quo-04041_en_v0-0-0.pdf>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
@@ -193,7 +195,7 @@ msgstr ""
 
 #: ../../source/_static/annex.csv:1
 #: ../../source/_static/quotes.csv:1
-msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-07-02_consortium_finance-funding_salesenv_quo-04061_en_v0-0-0.pdf>`__"
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-07-02_consortium_finance-funding_salesenv_quo-04051_en_v0-0-0.pdf>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
@@ -215,11 +217,8 @@ msgid "July.(Terms-BC)"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-07-02_consortium_finance-funding_salesenv_quo-04071_en_v0-0-0.pdf>`__"
-msgstr ""
-
-#: ../../source/_static/annex.csv:1
-msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-07-02_quo-04071_en_v0-0-0.svg>`__"
+#: ../../source/_static/quotes.csv:1
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-07-02_consortium_finance-funding_salesenv_quo-04061_en_v0-0-0.pdf>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
@@ -247,11 +246,13 @@ msgid ":ref:`INV-04022`"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-06-05_consortium_finance-funding_salesenv_inv-04031_en_v0-0-0.pdf>`__"
+#: ../../source/_static/invoices.csv:1
+msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-06-05_consortium_finance-funding_salesenv_inv-04022_en_v0-0-0.pdf>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
-msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-06-05_quo-04021_en_v0-0-0.svg>`__"
+#: ../../source/_static/invoices.csv:1
+msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-06-05_inv-04022_en_v0-0-0.svg>`__"
 msgstr ""
 
 #: ../../source/_static/annex.csv:1
@@ -303,18 +304,6 @@ msgstr ""
 
 #: ../../source/annex-list.rst:25
 msgid "Quote Download Links"
-msgstr ""
-
-#: ../../source/_static/quotes.csv:1
-msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-05-24_consortium_finance-funding_salesenv_quo-04021_en_v0-0-0.pdf>`__"
-msgstr ""
-
-#: ../../source/_static/quotes.csv:1
-msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-05-24_quo-04021_en_v0-0-0.svg>`__"
-msgstr ""
-
-#: ../../source/_static/quotes.csv:1
-msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-07-02_consortium_finance-funding_salesenv_quo-04031_en_v0-0-0.pdf>`__"
 msgstr ""
 
 #: ../../source/_static/quotes.csv:1
@@ -385,14 +374,6 @@ msgstr ""
 
 #: ../../source/annex-list.rst:115
 msgid "Invoice Download Links"
-msgstr ""
-
-#: ../../source/_static/invoices.csv:1
-msgid "`link(34.3kb) <https://wayback.datro.xyz/2022-06-05_consortium_finance-funding_salesenv_inv-04022_en_v0-0-0.pdf>`__"
-msgstr ""
-
-#: ../../source/_static/invoices.csv:1
-msgid "`link(54.6kb) <https://library.datro.xyz/consortium_finance/funding_salesenv/latest/build/html/en/_static/custom/img/2022-06-05_quo-04022_en_v0-0-0.svg>`__"
 msgstr ""
 
 #: ../../source/annex-list.rst:124
