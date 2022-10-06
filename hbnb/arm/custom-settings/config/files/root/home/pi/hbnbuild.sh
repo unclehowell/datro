@@ -28,16 +28,20 @@ sudo sleep 0.1 &&
 sudo rm -r /tmp/html &&
 
 sleep 5 &&
+# but has /var/www/html been created already ? can't see it has 
 sudo chmod -R 755 /var/www/html &&
 
 sudo apt -y install php php-common php-cli php-fpm php-json php-mysql php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath libapache2-mod-php &&
+# this generates a promot which needs answering  
 sudo update-alternatives --config php &&
 sudo systemctl restart apache2 &&
+# when was lighttpd installed ? can't see it was. Needs installing before running this command
 sudo lighttpd-enable-mod fastcgi-php &&
 sudo service lighttpd force-reload &&
 sudo systemctl restart lighttpd.service &&
+# last two need re-ordering. can't force-reload if not started. so restart, then reload
 
-# Optimize configuration of php-cgi.
+# Can't see this codeblock is needed. Investigate!
 function _optimize_php() {
     if [ "$upgrade" == 0 ]; then
         _install_log "Optimize PHP configuration"
