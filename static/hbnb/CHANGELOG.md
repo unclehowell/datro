@@ -6,6 +6,16 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.0.1-rtw.14] - 02/09/2024
+
+### Changed
+- Changed the website in the monorepo https://github.com/unclehowell/datro/tree/gh-pages/static/hbnb to React.js
+- Implemented modern web design using React.js + Tailwind CSS 
+
+### Fixed
+- Responsive issues and JavaScript errors that appeared on https://hbnb.datro.xyz/ were fixed.
+
+
 ## [hbnb.03] - Q1/2022
 
 ### Added
