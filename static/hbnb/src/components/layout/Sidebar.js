@@ -28,7 +28,7 @@ export default function SidebarWithLogo() {
         <>
             <div className="relative lg:flex bg-gray-300">
                 <Card className="lg:w-1/2 md:w-3/4 sm:w-full -top-40 bg-transparent left-0 z-10 rounded-br-6xl text-white/10 lg:-inset-y-24 shadow-none">
-                    <Card className="w-full sidebar-left text white lg:pt-16 md:pt-32 sm:pt-36">
+                    <Card className="w-full sidebar-left text white lg:pt-16 md:pt-32 sm:pt-36 phonecase">
                         <div className="mt-8 lg:mr-32 md:mr-32">
                             <CardBody className="flex flex-col gap-4 text-white shadow-none">
                                 <Typography variant="small" className="font-normal text-white opacity-80">

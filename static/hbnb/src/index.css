@@ -29,6 +29,13 @@ code {
   /* border-bottom-right-radius: 3rem; */
 }
 
+@media (max-width: 540px) {
+  .phonecase {
+    padding-top: 8rem;
+  }
+  
+}
+
 .sidebar-left1 {
   background-color: transparent;
   box-shadow: none;
