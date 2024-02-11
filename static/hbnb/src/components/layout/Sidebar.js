@@ -61,7 +61,6 @@ export default function SidebarWithLogo() {
                             </CardBody>
                         </div>
                     </Card>
-
                     <div style={{ top: "25%" }} className="lg:mt-6 md:mt-24 sm:mt-12 lg:absolute md:absolute lg:-right-40 md:-right-40 z-10 mx-auto flex lg:w-64 md:w-72 sm:w-96 rounded-xl shadow-xl">
                         <Card className="mt-6 bg-white" color="gray">
                             <CardHeader color="blue-gray" className="flex items-center bg-white relative h-56">
