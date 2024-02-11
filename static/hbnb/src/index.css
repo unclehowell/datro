@@ -23,6 +23,15 @@ code {
 .sidebar-left {
   --tw-bg-opacity: 0.8;
   background-color: rgb(42 42 42/var(--tw-bg-opacity));
+  min-height: calc(100vh - 64px);
+
+  /* border-top-right-radius: 3rem; */
+  /* border-bottom-right-radius: 3rem; */
+}
+
+.sidebar-left1 {
+  background-color: transparent;
+  box-shadow: none;
 
   /* border-top-right-radius: 3rem; */
   /* border-bottom-right-radius: 3rem; */
