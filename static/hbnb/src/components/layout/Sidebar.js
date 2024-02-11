@@ -26,9 +26,9 @@ export default function SidebarWithLogo() {
 
     return (
         <>
-            <div className="relative lg:flex bg-gray-300 h-[calc(100vh-96px)]">
-                <Card className="lg:w-1/2 md:w-3/4 sm:w-full sidebar-left h-[calc(100vh)] -top-40 left-0 z-10 rounded-br-6xl text-white/10 lg:-inset-y-24 shadow-none">
-                    <Card className="w-full sidebar-left text white pt-16">
+            <div className="relative lg:flex bg-gray-300">
+                <Card className="lg:w-1/2 md:w-3/4 sm:w-full -top-40 bg-transparent left-0 z-10 rounded-br-6xl text-white/10 lg:-inset-y-24 shadow-none">
+                    <Card className="w-full sidebar-left text white lg:pt-16 md:pt-32 sm:pt-36">
                         <div className="mt-8 lg:mr-32 md:mr-32">
                             <CardBody className="flex flex-col gap-4 text-white shadow-none">
                                 <Typography variant="small" className="font-normal text-white opacity-80">
@@ -62,7 +62,7 @@ export default function SidebarWithLogo() {
                         </div>
                     </Card>
 
-                    <div style={{ top: "25%" }} className="lg:absolute md:absolute lg:-right-40 md:-right-40 z-10 mx-auto flex lg:w-64 md:w-72 sm:w-96 rounded-xl shadow-xl">
+                    <div style={{ top: "25%" }} className="md:mt-24 sm:mt-12 lg:absolute md:absolute lg:-right-40 md:-right-40 z-10 mx-auto flex lg:w-64 md:w-72 sm:w-96 rounded-xl shadow-xl">
                         <Card className="mt-6 bg-white" color="gray">
                             <CardHeader color="blue-gray" className="flex items-center bg-white relative h-56">
                                 <img
