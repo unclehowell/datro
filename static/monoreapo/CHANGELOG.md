@@ -4,6 +4,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [monoreapo-0.0.1] - Q1/2024
+
+## Changed
+Feb-14 - Re-ran make-sitemap.xml  
+
 ## [monoreapo-0.0.1] - Q2/2022
 
 ### Added 
