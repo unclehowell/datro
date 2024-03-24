@@ -6,17 +6,17 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-## [0.0.1-rtw.14] - 02/09/2024
+## [0.0.1-rtw.14] - Q1/2024
+Mar-12 - Added sitemap to the public directory, but the script in the generator directory produces one for the build directory too and it's not needed FYI  
 
 ### Changed
-- Changed the website in the monorepo https://github.com/unclehowell/datro/tree/gh-pages/static/hbnb to React.js
-- Implemented modern web design using React.js + Tailwind CSS 
+Feb-09 - Changed the website in the monorepo https://github.com/unclehowell/datro/tree/gh-pages/static/hbnb to React.js  
+Feb-09 - Implemented modern web design using React.js + Tailwind CSS  
 
 ### Fixed
-- Responsive issues and JavaScript errors that appeared on https://hbnb.datro.xyz/ were fixed.
+Feb-09 - Responsive issues and JavaScript errors that appeared on https://hbnb.datro.xyz/ were fixed.  
 
-
-## [hbnb.03] - Q1/2022
+### [hbnb.03] - Q1/2022
 
 ### Added
 Mar-25 - Added link to video, next to link to demo (loop back to this task later and add a featherlight popup)  

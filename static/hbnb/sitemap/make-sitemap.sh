@@ -31,4 +31,4 @@ done
 echo "</urlset>"
 
 cd sitemap/
-mv sitemap.xml ../
+mv sitemap.xml ../public

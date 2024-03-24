@@ -11,8 +11,4 @@
 ! -path ./.git/\*
 ! -path .svn/\*
   -name "*.html"
-! -name "fetch.html"
-! -name "*lookup.html"
-! -name "*genindex.html"
-! -name "*search.html"
 ! -name "*404.html"

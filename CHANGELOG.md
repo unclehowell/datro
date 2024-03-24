@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.14] - Q1/2024
 
 ### Changed  
+Mar-24 - There's a few items that shouldn't be in the sitemap.xml in the top level directory - circle back to that at a later date  
+Mar-24 - Added a sitemap to hbnb website (static/hbnb directory) - see changelog in the directory for more details   
 Feb-14 - Changed CHANGELOG.md - It was a bit disjointed  
 Feb-09 - Changed the website in the monorepo https://github.com/unclehowell/datro/tree/gh-pages/static/hbnb to React.js  
 Feb-09 - Implemented modern web design using React.js + Tailwind CSS  
