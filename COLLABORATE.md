@@ -194,7 +194,7 @@ Now all the cheapskates get to continue enjoying their media center, with free I
         /web/
       ````
 
- - Some genius baked up a solution to automate the above step:
+ - Some genius baked up a solution to automate the above step:  
 
       ````bash
       # get our shell script, set the permissions and run it
@@ -207,20 +207,26 @@ Now all the cheapskates get to continue enjoying their media center, with free I
       # don't worry, as soon as you pull (next step) the file comes back
 
       rm -r checkout.sh
-
-
-7. Now proceed to actually retrieve the files you want on your local machine:
+      ````
+	
+7. Now proceed to actually retrieve the files you want on your local machine:  
 
       ````bash
       # git fetch maybe more appropriate than git pull - be wise!
 
       git chechout -b 'YOUR BRANCH NAME'
+
+      # then finally run the pull command to get all the files!
+
+      git pull origin 'BRANCH NAME'
       ````
 
-8. Make your edits, bug fixes, enhancements etc ... TAKE NOTE: Here's how you checkout extra folders you may need, while you're working:
+Make your edits, bug fixes, enhancements etc:  
+
+8. If you do sprase-checkout and want to checkout more folders do this:  
 
       ````bash
-
+      # TAKE NOTE: Here's how you checkout extra folders you may need, while you're working!
       git read-tree -mu HEAD
       git pull origin master
       git config core.sprasecheckout true
@@ -228,33 +234,28 @@ Now all the cheapskates get to continue enjoying their media center, with free I
       git sparse-checkout set FOLDER1 FOLDER2 FOLDER3 etc
       ````
 
-9. Once completed with your changes, you'll want to run 'git add'
+9. Once completed with your changes, you'll want to prep the upload of your changes:  
 
       ````bash
-      # first run a pull again, incase there's been some changes
-
+      # UPDATE CHANGELOG.md (in the top level directory of the monorepo and the CHANGELOG.md in the subdirectory you worked on).
+      # If someone else is likely to have posted a change to the public fork, run a pull again just incase 
       git pull origin 'BRANCH NAME'
-
+      
+      # then go ahead and add files to the commit! 
       git add ./
-      ````
 
-10. Next commit with a brief summary of your changes
-
-      ````bash
-      #
+      # Next commit changes with a brief description
       git commit -m "BRIEF SUMMARY OF YOUR CHANGES"     
       ````
 
-
-11. Then 'git push' to push your branch to GitHub
+10. Then 'git push' to push your branch to GitHub  
 
       ````bash
-      #
+      # you need to generate a ssh key of your fork of this repo in github since username/password auth is depreciated by github! 
        git push origin 'YOUR-BRANCH-NAME'
       ````
 
-
-12. Finally make a pull request, so the administrator of the project can review your changes and merge your branch into the master branch of this proje
+11. Finally make a pull request, so the administrator of the project can review your changes and merge your branch into the master branch of this proje
 
  - visit the repo address in your web browser e.g. https://github.com/unclehowell/datro  
  - find and click the **Compare & pull request** button  
