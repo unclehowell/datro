@@ -37,9 +37,9 @@ export default function SidebarWithLogo() {
                                         <Accordion open={open1 === 1} animate={CUSTOM_ANIMATION} className="inline">
                                             <u onClick={() => handleOpen1(1)} className="text-red-400 cursor-pointer">Free Upgrade</u>
                                             <AccordionBody className="text-white">
-                                                We&apos;re not always in the position that we want to be at. We&apos;re constantly
+                                                {/* We&apos;re not always in the position that we want to be at. We&apos;re constantly
                                                 growing. We&apos;re constantly making mistakes. We&apos;re constantly trying to express
-                                                ourselves and actualize our dreams.
+                                                ourselves and actualize our dreams. */}
                                                 <Card className="w-full my-3 text-white bg-white">
                                                     <List>
                                                         <ListItem>-works on 100M+ devices. 1M+ users by 2025</ListItem>
