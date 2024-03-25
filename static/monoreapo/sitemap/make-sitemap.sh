@@ -30,5 +30,4 @@ done
 # print foot
 echo "</urlset>"
 
-cd static/monoreapo/sitemap/
-mv sitemap.xml ../../../
+#mv sitemap.xml ../../../

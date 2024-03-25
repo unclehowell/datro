@@ -1,7 +1,11 @@
 -prune
 ! -iname robots.txt
+! -iname *.png
 ! -iname sitemap.\*
 ! -iname .\*
+! -name "*.png"
+! -name "*.ico"
+! -name "*.json"
 ! -path ./css/\*
 ! -path ./js/\*
 ! -path ./img/\*
@@ -10,5 +14,6 @@
 ! -path ./stats/\*
 ! -path ./.git/\*
 ! -path .svn/\*
-  -name "*.html"
+! -path ./build/\*
 ! -name "*404.html"
+

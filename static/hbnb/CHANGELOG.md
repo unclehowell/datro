@@ -7,6 +7,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [Unreleased]
 
 ## [0.0.1-rtw.14] - Q1/2024
+Mar-25 - Improved the sitemap generator code in /static/hbnb/  
 Mar-12 - Added sitemap to the public directory, but the script in the generator directory produces one for the build directory too and it's not needed FYI  
 
 ### Changed
