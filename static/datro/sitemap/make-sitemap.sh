@@ -16,7 +16,7 @@
 #................................................
 #       make-sitemap-new.sh  0.1-rtw(?)
 #................................................
-#                  gui.datro.xyz
+#                   datro.xyz
 #................................................
 
 
@@ -37,7 +37,7 @@ _80=80
 _end=100
 
 # url configuration
-URL="https://gui.datro.xyz/"
+URL="https://datro.xyz/"
 # values: always hourly daily weekly monthly or yearly
 FREQ="monthly"
 
@@ -57,7 +57,7 @@ done
 rm -r sitemap.xml 2> /dev/null &&
 
 # values: changable 
-rm -r ../sitemap.xml 2> /dev/null &
+rm -r sitemap/sitemap.xml 2> /dev/null &
 
 printf "\e[2;3;33m Done! \n\e[0m"
 printf "\n\e[2;3;33m Step 2 of 5. Generating sitemap.xml file \n\e[0m\n"
@@ -95,6 +95,8 @@ while read -r line; do
   echo -ne "\n<changefreq>$FREQ</changefreq>" >> sitemap/sitemap.xml &&
   echo -ne "\n</url>" >> sitemap/sitemap.xml
 done
+
+#exec >/dev/tty &&
 
 cd sitemap/
 

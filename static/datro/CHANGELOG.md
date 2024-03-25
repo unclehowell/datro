@@ -11,6 +11,13 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [-datro.07] - Q1/2024
+
+### Added
+
+Mar-25 - Added a sitemap generator script in sub-directory `sitemap`  
+
+
 ## [-datro.06] - Q2/2022
 
 ### Fixed

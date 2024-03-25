@@ -6,6 +6,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [library.08] - Q1/2024
+
+### Added
+Mar-25 - Added sitemap generator/ sitemap directory to static/library  
+
 ## [library.07] - Q2/2022
 
 ### Added 

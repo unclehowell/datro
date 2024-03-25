@@ -16,7 +16,7 @@
 #................................................
 #       make-sitemap-new.sh  0.1-rtw(?)
 #................................................
-#                  gui.datro.xyz
+#               library.datro.xyz
 #................................................
 
 
@@ -37,7 +37,7 @@ _80=80
 _end=100
 
 # url configuration
-URL="https://gui.datro.xyz/"
+URL="https://library.datro.xyz/"
 # values: always hourly daily weekly monthly or yearly
 FREQ="monthly"
 
@@ -45,7 +45,7 @@ FREQ="monthly"
 
 printf "\n\e[2;3;33m ------------------------------------------------- \n\e[0m\n"
 inner_output="${PWD#*/*/*/*/*/}" && 
-printf "\e[2;3;33mProducing sitemap.xml for \e[2;3;33m %s\n" "${inner_output%/*}/"
+printf "\e[2;3;33mProducing sitemap.xml for \e[2;3;33m %s\n" "${inner_output%/*}/ "
 
 printf "\n\e[2;3;33m Step 1 of 5. Removing old sitemaps \n\e[0m\n"
 for number in $(seq ${_start} ${_20})
@@ -96,11 +96,13 @@ while read -r line; do
   echo -ne "\n</url>" >> sitemap/sitemap.xml
 done
 
+#exec >/dev/tty &&
+
 cd sitemap/
 
 echo -ne "\n</urlset>" >> sitemap.xml &&
 
-mv sitemap.xml ../ 
+mv sitemap.xml ../
 
 printf "\e[2;3;33m Done! \n\e[0m"
 printf "\n\e[2;3;33m Step 4 of 5. Displaying sitemap.xml ... \n\e[0m\n" &&

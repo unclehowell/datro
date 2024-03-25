@@ -39,7 +39,7 @@ _end=100
 # url configuration
 URL="https://hbnb.datro.xyz/"
 # values: always hourly daily weekly monthly or yearly
-FREQ="hourly"
+FREQ="monthly"
 
 # values: changable 
 
