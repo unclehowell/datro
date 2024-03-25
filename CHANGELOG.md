@@ -9,6 +9,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [0.0.1-rtwx.4-rc.6] - Q1/2024
 
 ### Added
+Mar-25 - See changelog for wayback - sitemap.xml regerenated with new sitemap generator script  
 Feb-24 - Cloudflare Pages Build error - Update deployment ID (Code 8000009) - I disabled cloudflare pages since netlify and gh-pages are enough  
 
 ## [0.0.1-rtwx.4-rc.5] - Q4/2023

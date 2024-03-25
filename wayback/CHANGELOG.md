@@ -6,6 +6,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [-wayback.04] - Q1/2024
+
+### Added
+Mar-25 - Added sitemap generator and generated new sitemap.xml for wayback e.g. wayback.datro.xyz  
+
 ## [-wayback.03] - Q2/2022
 
 ### Added
