@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1-rtw.14] - Q1/2024
 
 ### Changed  
+Mar-26 - Added library2 directory in /static/ to trial Docusaurus as a replacement for the library backend   
 Mar-25 - Added sitemap generator to /static/gui/ and /static/library/  
 Mar-25 - Improved sitemap maker in /static/hbnb/  
 Mar-24 - There's a few items that shouldn't be in the sitemap.xml in the top level directory - circle back to that at a later date  

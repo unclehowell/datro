@@ -41,10 +41,10 @@ URL="https://datro.xyz/"
 # values: always hourly daily weekly monthly or yearly
 FREQ="monthly"
 
-# values: changable 
+# values: changable
 
 printf "\n\e[2;3;33m ------------------------------------------------- \n\e[0m\n"
-inner_output="${PWD#*/*/*/*/*/}" && 
+inner_output="${PWD#*/*/*/*/*/}" &&
 printf "\e[2;3;33mProducing sitemap.xml for \e[2;3;33m %s\n" "${inner_output%/*}/"
 
 printf "\n\e[2;3;33m Step 1 of 5. Removing old sitemaps \n\e[0m\n"
@@ -102,7 +102,7 @@ cd sitemap/
 
 echo -ne "\n</urlset>" >> sitemap.xml &&
 
-mv sitemap.xml ../ 
+mv sitemap.xml ../
 
 printf "\e[2;3;33m Done! \n\e[0m"
 printf "\n\e[2;3;33m Step 4 of 5. Displaying sitemap.xml ... \n\e[0m\n" &&

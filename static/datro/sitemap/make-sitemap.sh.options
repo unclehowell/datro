@@ -22,6 +22,7 @@
 ! -name "*.ico"
 ! -name "*.json"
 ! -path ./css/\*
+! -path ./store/\*
 ! -path ./sitemap/\*
 ! -path ./html/videos/node_modules/\*
 ! -path ./videos/\*
