@@ -4,11 +4,11 @@
 	<meta charset="utf-8">
 	<link href="//datro.xyz/static/datro/index.html" rel="canonical">
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport"><!-- GitHub Pages -->
-	<script type="type/javascript">
-	                var host = "datro.xyz";
-	                if {{ host == window.location.host} && {window.location.protocol != "https:""}}
-	                window.location.protocol = "https";
-	</script>
+        <script>
+                if (window.location.hostname === "datro.xyz" && window.location.protocol !== "https:") {
+                        window.location.protocol = "https";
+                }
+        </script>
 	<meta content="DATRO Consortium" name="description">
 	<meta content="Unclehowell" name="author">
 	<title>DATRO Consortium</title>
@@ -31,7 +31,6 @@
 	<meta content="#ffffff" name="theme-color">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/reset.min.css" rel="stylesheet">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/featherlight.css" rel="stylesheet" type="text/css">
 	<link href="css/style.css" rel="stylesheet">
 	<link href="css/carousel.css" rel="stylesheet">
@@ -77,22 +76,18 @@ body{color:#202020}
 
 	</style>
 
-	<script src="js/lazy.min.js">
-	</script>
+        <script defer src="js/lazy.min.js"></script>
 
-        <script src="js/ism-2.2.min.js">
-        </script>
+        <script defer src="js/ism-2.2.min.js"></script>
 
-        <script src="js/jquery-3.3.1.min.js">
-        </script>
+        <script defer src="js/jquery-3.3.1.min.js"></script>
 	<script>
 	           function pageLoad(){
 	            document.getElementById('mainWrapper').style.visibility="visible";
 	           }
 	</script>
 	<link href="html/search-box/app.css" rel="stylesheet">
-	<script src="js/menu.js">
-        </script>
+        <script defer src="js/menu.js"></script>
 
         <!-- attempt to improve pagespeed score <script src="js/preloader/jquery-1.9.1.js" >
         </script> 
@@ -445,22 +440,16 @@ Crown Copyright <script>new Date().getFullYear()>2017&&document.write("© "+new 
                 </footer>
 	</div>
 
-<script src="js/bootstrap.min.js"></script>
+<script defer src="js/bootstrap.min.js"></script>
 
-	<script src="js/holder2.js">
-	</script>
+        <script defer src="js/holder2.js"></script>
 
-	<script src="js/carousel-dropdown.js">
-	</script>
-	<script src="js/currencydrop.js">
-	</script>
-	<script src="js/scale.fix.js">
-	</script>
-	<script src="js/jquery.min.js">
-	</script>
-	<script src="html/featherlight/release/featherlight.min.js">
-	</script>
-	<script src="js/smoothloader2.js"></script> 
+        <script defer src="js/carousel-dropdown.js"></script>
+        <script defer src="js/currencydrop.js"></script>
+        <script defer src="js/scale.fix.js"></script>
+        <script defer src="js/jquery.min.js"></script>
+        <script defer src="html/featherlight/release/featherlight.min.js"></script>
+        <script defer src="js/smoothloader2.js"></script>
 
 </body>
 </html>
