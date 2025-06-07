@@ -3,10 +3,11 @@
 
 	<head>
 		<meta charset="utf-8">
-		<script type="type/javascript">
+		<script type="text/javascript">
 			  var host = "datro.xyz";
-			  if {{ host == window.location.host} && {window.location.protocol != "https:""}}
+			  if (host == window.location.host && window.location.protocol != "https:") {
 			  window.location.protocol = "https";
+}
 		</script>
 		<script async src="https://cdn.ampproject.org/v0.js"></script>
 		<meta content="1" http-equiv="Expires">
