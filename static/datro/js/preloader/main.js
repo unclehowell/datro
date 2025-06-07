@@ -13,10 +13,8 @@ Enjoy responsibly!
 */
 
 $(document).ready(function() {
-	
-	setTimeout(function(){
-		$('body').addClass('loaded');
-		$('h1').css('color','#34485D')
-	}, 3000);
+
+        $('body').addClass('loaded');
+        $('h1').css('color','#34485D');
 
 });
