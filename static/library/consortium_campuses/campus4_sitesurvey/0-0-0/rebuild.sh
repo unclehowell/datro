@@ -227,16 +227,4 @@ cd latest
 #pdftk build/latex/NAME.pdf cat 1-10 11 13 15 17 19 20 21  output build/latex/NAME-tmp.pdf &&
 #mv build/latex/NAME-tmp.pdf build/latex/NAME.pdf
 #
-# going wild here to make absultely sure the script escapes - it can hang for all sorts of reasons
-sleep 0.1 &&
-exit 1 &
-sleep 0.1 &&
-exit 0 &
-sleep 0.1 &&
-exit
-sleep 0.1 &&
 exit 0
-sleep 0.1 &&
-exit 1
-sleep 0.1 &&
-end

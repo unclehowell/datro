@@ -192,10 +192,4 @@ sleep 1 &&
 printf "\e[2;3;33m HTML - https://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*/*}/}/build/html/index.html \n\e[0m\n"
 printf "\e[2;3;33m  PDF - https://localhost/datro-gh-pages/static/library/${PWD#${PWD%/*/*/*}/}/build/latex/datro_consortium-investors_detailed.pdf \n\e[0m\n"
 
-# going wild here to make absultely sure the script escapes - it can hang for all sorts of reasons
-exit 1 &
-exit 0 &
-exit
 exit 0
-exit 1
-end
