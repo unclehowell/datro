@@ -200,8 +200,8 @@ v:after{
 	margin:0;
 	padding-top:55.5px;
 	padding-bottom:0;
-	background:-webkit-gradient(radial,50% 50%,450,50% 50%,860,from(#f3f5f8),to(#fff));
-	verticle-align:top
+        background:-webkit-gradient(radial,50% 50%,450,50% 50%,860,from(#f3f5f8),to(#fff));
+        vertical-align:top
 }
 .segment{
 	padding-left:5vw;
@@ -209,8 +209,8 @@ v:after{
 	height:inherit;
 	padding-top:2rem;
 	padding-bottom:2rem;
-	background:-webkit-gradient(radial,50% 50%,450,50% 50%,860,from(#333434),to(#33335d));
-	verticle-align:top
+        background:-webkit-gradient(radial,50% 50%,450,50% 50%,860,from(#333434),to(#33335d));
+        vertical-align:top
 }
 .segment-bottom{
 	display:flex;
@@ -220,8 +220,8 @@ v:after{
 	height:inherit;
 	padding-top:calc(10vh);
 	padding-bottom:1rem;
-	background:0 0;
-	verticle-align:top
+        background:0 0;
+        vertical-align:top
 }
 .segment-title{
 	color:#d3d3d3!Important;
