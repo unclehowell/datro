@@ -174,7 +174,7 @@ As explained in the previous lines, once you're in `static/library/` you can onl
 Weather it be `consortium_campuses-techhouse2_casestudy` or `consortium_contracts-patents_google`,   
 The next phase is to make the library more progressive e.g. webelements, manifest.json, reactjs etc.  
  - Instead of custom mods to codes to update `index.html` and `treeview.json` to include new docs, it can be made into an autonomous script (like the sitemap generator we made).  
- - The can also be an offline gui to manage the library (a single php page admin panel exists, source code is in the monorepo somewhere too)  
+ - There can also be an offline GUI to manage the library (a single php page admin panel exists, source code is in the monorepo somewhere too)  
  - Make the whole thing install with a package manager e.g. npm  
 
 View the COLLABORATE.md file to learn more  

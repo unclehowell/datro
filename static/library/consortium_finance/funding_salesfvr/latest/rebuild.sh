@@ -363,16 +363,4 @@ cd latest
 
 
 
-# going wild here to make absultely sure the script escapes - it can hang for all sorts of reasons
-sleep 0.1 &&
-exit 1 &
-sleep 0.1 &&
-exit 0 &
-sleep 0.1 &&
-exit
-sleep 0.1 &&
 exit 0
-sleep 0.1 &&
-exit 1
-sleep 0.1 &&
-end
