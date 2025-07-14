@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js is-responsive is-mobile-first">
+<head>
+  <meta charset="utf-8">
+  <title>Statz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="statzCanvas"></canvas>
+  <script>
+    const totalBalls = 69551332;
+    const canvas = document.getElementById('statzCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const radius = 2;
+    const diameter = radius * 2;
+    const fontSize = 3;
+    ctx.font = fontSize + 'px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    let index = 1;
+    for (let y = radius; y < canvas.height && index <= totalBalls; y += diameter) {
+      for (let x = radius; x < canvas.width && index <= totalBalls; x += diameter) {
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#fff';
+        ctx.fillText(index, x, y);
+        ctx.fillStyle = '#000';
+        index++;
+      }
+    }
+  </script>
+</body>
+</html>
