@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js is-responsive is-mobile-first">
+<head>
+  <meta charset="utf-8">
+  <title>Statz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    #glCanvas, #textCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="glCanvas"></canvas>
+  <canvas id="textCanvas"></canvas>
+  <script>
+    const TOTAL_NUMBERS = 69551332;
+    const GROUP_SIZE = 100000;
+    const circleCount = Math.ceil(TOTAL_NUMBERS / GROUP_SIZE);
+
+    const glCanvas = document.getElementById('glCanvas');
+    const textCanvas = document.getElementById('textCanvas');
+    const gl = glCanvas.getContext('webgl');
+    const ctx = textCanvas.getContext('2d');
+
+    let circleColors = [];
+
+    function loadData() {
+      return fetch('statz.csv')
+        .then(r => r.text())
+        .then(text => {
+          const lines = text.trim().split('\n').slice(1);
+          circleColors = lines.map(line => {
+            const [id, red, green, yellow, black] = line.split(',');
+            if (red === '1') return 'red';
+            if (green === '1') return 'green';
+            if (yellow === '1') return 'yellow';
+            if (black === '1') return 'black';
+            return null;
+          });
+        });
+    }
+
+    function resize() {
+      glCanvas.width = window.innerWidth;
+      glCanvas.height = window.innerHeight;
+      textCanvas.width = glCanvas.width;
+      textCanvas.height = glCanvas.height;
+    }
+    window.addEventListener('resize', () => { resize(); draw(); });
+    resize();
+
+    const vsSource = `
+      attribute vec2 a_position;
+      uniform vec2 u_resolution;
+      uniform float u_pointSize;
+      void main() {
+        vec2 zeroToOne = a_position / u_resolution;
+        vec2 clipSpace = zeroToOne * 2.0 - 1.0;
+        gl_Position = vec4(clipSpace * vec2(1, -1), 0, 1);
+        gl_PointSize = u_pointSize;
+      }
+    `;
+
+    const fsSource = `
+      precision mediump float;
+      void main() {
+        vec2 c = gl_PointCoord - vec2(0.5);
+        if (length(c) > 0.5) discard;
+        gl_FragColor = vec4(0.2, 0.5, 0.8, 1.0);
+      }
+    `;
+
+    function createShader(gl, type, source) {
+      const shader = gl.createShader(type);
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+      return shader;
+    }
+
+    const vertexShader = createShader(gl, gl.VERTEX_SHADER, vsSource);
+    const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fsSource);
+    const program = gl.createProgram();
+    gl.attachShader(program, vertexShader);
+    gl.attachShader(program, fragmentShader);
+    gl.linkProgram(program);
+
+    const positionLocation = gl.getAttribLocation(program, 'a_position');
+    const resolutionLocation = gl.getUniformLocation(program, 'u_resolution');
+    const sizeLocation = gl.getUniformLocation(program, 'u_pointSize');
+
+    const positionBuffer = gl.createBuffer();
+
+    function computeLayout() {
+      const columns = Math.ceil(Math.sqrt(circleCount * glCanvas.width / glCanvas.height));
+      const rows = Math.ceil(circleCount / columns);
+      const cellWidth = glCanvas.width / columns;
+      const cellHeight = glCanvas.height / rows;
+      const radius = Math.min(cellWidth, cellHeight) * 0.4;
+      const positions = [];
+      let index = 0;
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < columns; c++) {
+          if (index >= circleCount) break;
+          const x = c * cellWidth + cellWidth / 2;
+          const y = r * cellHeight + cellHeight / 2;
+          positions.push(x, y);
+          index++;
+        }
+      }
+      return {positions, radius};
+    }
+
+    function draw() {
+      const {positions, radius} = computeLayout();
+      gl.viewport(0, 0, glCanvas.width, glCanvas.height);
+      gl.clearColor(1, 1, 1, 1);
+      gl.clear(gl.COLOR_BUFFER_BIT);
+
+      gl.useProgram(program);
+      gl.enableVertexAttribArray(positionLocation);
+      gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+      gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+      gl.uniform2f(resolutionLocation, glCanvas.width, glCanvas.height);
+      gl.uniform1f(sizeLocation, radius * 2);
+
+      gl.drawArrays(gl.POINTS, 0, positions.length / 2);
+
+      ctx.clearRect(0, 0, textCanvas.width, textCanvas.height);
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.font = `${radius * 0.8}px Arial`;
+
+      for (let i = 0; i < positions.length; i += 2) {
+        const num = i / 2 + 1;
+        const color = circleColors[i / 2];
+        if (color) {
+          ctx.strokeStyle = color;
+          ctx.lineWidth = radius * 0.1;
+          ctx.beginPath();
+          ctx.arc(positions[i], positions[i + 1], radius, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+        ctx.fillStyle = '#000';
+        ctx.fillText(num, positions[i], positions[i + 1]);
+      }
+    }
+
+    loadData().then(draw);
+  </script>
+</body>
+</html>
