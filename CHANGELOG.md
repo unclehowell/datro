@@ -6,6 +6,9 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased] 
 
+# [0.0.1-rtwx.4-rc.7] - Q3/2025
+Aug-08 - Added a video called Service 
+
 ## [0.0.1-rtwx.4-rc.6] - Q1/2024
 
 ### Added
