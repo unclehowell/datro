@@ -7,6 +7,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [Unreleased] 
 
 # [0.0.1-rtwx.4-rc.7] - Q3/2025
+Sep-10 - Added a brief for the Taking Chance WebApp - see `wayback/taking_chance_web_app_v0.0.1_en.pdf` - and link on the page: ceo.datro.xyz 
 Aug-08 - Added a video called Service 
 
 ## [0.0.1-rtwx.4-rc.6] - Q1/2024
