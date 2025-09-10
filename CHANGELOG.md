@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.1-rtw.16] - Q3/2025
 
+Sep-10 - Reset countdown on webapp 'static/forces' for another month as development raise was far from target  
 Sep-10 - Added /static/forces  - published to ceo.datro.xyz - a webapp called 'TakingChance' , like in the Kevin Bacon 2009 movie 
 
 ## [0.0.1-rtw.15] - Q3/2024
