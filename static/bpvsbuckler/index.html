@@ -3,494 +3,849 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BP vs Buckler Evidence Timeline</title>
+  <title>Great House Farm Timeline</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
       color-scheme: light;
+      --page-background: #f3f4f6;
+      --surface: rgba(255, 255, 255, 0.94);
+      --surface-muted: rgba(255, 255, 255, 0.82);
+      --surface-border: rgba(59, 130, 246, 0.16);
+      --heading-color: #0f172a;
+      --text-primary: #1f2937;
+      --text-muted: rgba(17, 24, 39, 0.75);
+      --text-soft: rgba(17, 24, 39, 0.6);
+      --accent-primary: #2563eb;
+      --accent-primary-strong: #1e3a8a;
+      --accent-muted: rgba(59, 130, 246, 0.18);
+      --buckler-surface: linear-gradient(135deg, #d1fae5, #ecfdf5);
+      --buckler-border: #10b981;
+      --bp-surface: linear-gradient(135deg, #fee2e2, #fff1f2);
+      --bp-border: #ef4444;
+      --shared-surface: linear-gradient(135deg, #e0e7ff, #eef2ff);
+      --shared-border: #4338ca;
+      --shadow-soft: 0 22px 36px -24px rgba(15, 23, 42, 0.55);
+      --shadow-strong: 0 30px 52px -32px rgba(15, 23, 42, 0.65);
+      --modal-backdrop: rgba(15, 23, 42, 0.55);
+      --axis-column-width: 150px;
+      --entry-gap: 32px;
+      --bubble-size: 60px;
     }
+
+    body[data-theme='dark'] {
+      color-scheme: dark;
+      --page-background: #060b16;
+      --surface: rgba(15, 23, 42, 0.9);
+      --surface-muted: rgba(30, 41, 59, 0.82);
+      --surface-border: rgba(96, 165, 250, 0.28);
+      --heading-color: #e2e8f0;
+      --text-primary: #e2e8f0;
+      --text-muted: rgba(203, 213, 225, 0.85);
+      --text-soft: rgba(148, 163, 184, 0.8);
+      --accent-primary: #60a5fa;
+      --accent-primary-strong: #bfdbfe;
+      --accent-muted: rgba(96, 165, 250, 0.32);
+      --buckler-surface: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(16, 185, 129, 0.1));
+      --buckler-border: rgba(34, 197, 94, 0.75);
+      --bp-surface: linear-gradient(135deg, rgba(248, 113, 113, 0.25), rgba(248, 113, 113, 0.1));
+      --bp-border: rgba(248, 113, 113, 0.75);
+      --shared-surface: linear-gradient(135deg, rgba(96, 165, 250, 0.25), rgba(129, 140, 248, 0.1));
+      --shared-border: rgba(129, 140, 248, 0.85);
+      --shadow-soft: 0 24px 44px -26px rgba(8, 47, 73, 0.7);
+      --shadow-strong: 0 34px 56px -30px rgba(8, 47, 73, 0.85);
+      --modal-backdrop: rgba(6, 12, 24, 0.75);
+    }
+
+    body {
+      background: var(--page-background);
+      color: var(--text-primary);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    a {
+      color: var(--accent-primary);
+    }
+
+    .page-title {
+      color: var(--heading-color);
+    }
+
+    .page-subtitle {
+      color: var(--text-muted);
+    }
+
+    .round-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, var(--accent-primary), rgba(37, 99, 235, 0.85));
+      color: #ffffff;
+      font-size: 1.35rem;
+      border: none;
+      box-shadow: 0 16px 36px -20px rgba(37, 99, 235, 0.55);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    body[data-theme='dark'] .round-button {
+      color: var(--heading-color);
+      background: linear-gradient(135deg, rgba(96, 165, 250, 0.95), rgba(59, 130, 246, 0.75));
+      box-shadow: 0 18px 40px -22px rgba(30, 64, 175, 0.65);
+    }
+
+    .round-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 36px -18px rgba(37, 99, 235, 0.55);
+    }
+
+    .round-button:focus-visible {
+      outline: 3px solid rgba(59, 130, 246, 0.45);
+      outline-offset: 3px;
+    }
+
+    .intro-panel {
+      background: var(--surface);
+      border-radius: 18px;
+      border: 1px solid var(--surface-border);
+      box-shadow: 0 28px 48px -28px rgba(15, 23, 42, 0.55);
+      padding: 28px 32px;
+      margin: 28px auto 0;
+      max-width: 720px;
+      text-align: left;
+    }
+
+    .intro-heading {
+      color: var(--accent-primary-strong);
+    }
+
+    .intro-body p {
+      color: var(--text-muted);
+    }
+
+    .intro-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .intro-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .intro-card {
+      background: var(--surface-muted);
+      border-radius: 16px;
+      border: 1px solid var(--surface-border);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .intro-card h3 {
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .intro-card ul {
+      color: var(--text-muted);
+      margin: 0;
+      padding-left: 1.1rem;
+      list-style: disc;
+      display: grid;
+      gap: 0.5rem;
+    }
+
     .timeline {
       position: relative;
-      max-width: 960px;
+      max-width: 980px;
       margin: 0 auto;
-      padding: 24px 0 48px;
+      padding: 24px 0 64px;
     }
+
     .timeline::before {
       content: '';
       position: absolute;
       width: 6px;
-      background: linear-gradient(180deg, #1f2937 0%, #3b82f6 100%);
+      background: linear-gradient(180deg, rgba(31, 41, 55, 0.85) 0%, rgba(59, 130, 246, 0.85) 100%);
       top: 0;
       bottom: 0;
       left: 50%;
-      margin-left: -3px;
-    }
-    .timeline-item {
-      position: relative;
-      width: 100%;
-      padding: 32px 0;
-    }
-    .year-marker {
-      background-color: #111827;
-      color: #f9fafb;
-      padding: 10px 24px;
+      transform: translateX(-50%);
       border-radius: 9999px;
-      display: inline-block;
-      font-weight: 700;
-      position: relative;
-      z-index: 1;
-      letter-spacing: 0.05em;
-      box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.45);
     }
-    .year-marker::before {
+
+    body[data-theme='dark'] .timeline::before {
+      background: linear-gradient(180deg, rgba(59, 130, 246, 0.8) 0%, rgba(14, 116, 144, 0.85) 100%);
+    }
+
+    .timeline-century + .timeline-century {
+      margin-top: 48px;
+    }
+
+    .timeline-century__header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .timeline-century__heading {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--heading-color);
+    }
+
+    .timeline-century__range {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      margin-top: 6px;
+    }
+
+    .timeline-century__summary {
+      max-width: 640px;
+      margin: 18px auto 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .timeline-century__entries {
+      display: grid;
+      gap: 36px;
+    }
+
+    .timeline-entry {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) var(--axis-column-width) minmax(0, 1fr);
+      column-gap: var(--entry-gap);
+      align-items: center;
+      position: relative;
+    }
+
+    .timeline-entry__column {
+      display: flex;
+      align-items: center;
+      min-height: var(--bubble-size);
+    }
+
+    .timeline-entry__column--left {
+      justify-content: flex-end;
+    }
+
+    .timeline-entry__column--right {
+      justify-content: flex-start;
+    }
+
+    .timeline-entry__column--empty {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .timeline-axis {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timeline-node {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1rem;
+      border-radius: 9999px;
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      box-shadow: var(--shadow-soft);
+      color: var(--heading-color);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    body[data-theme='dark'] .timeline-node {
+      background: rgba(15, 23, 42, 0.92);
+      color: var(--heading-color);
+    }
+
+    .timeline-node::before {
       content: '';
       position: absolute;
-      width: 22px;
-      height: 22px;
-      background-color: #3b82f6;
-      border-radius: 50%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: -1;
-      box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.15);
-    }
-    .timeline-content {
-      position: absolute;
-      width: 36%;
-      padding: 18px 22px;
-      border-radius: 18px;
-      box-shadow: 0 20px 35px -18px rgba(15, 23, 42, 0.45);
-      top: 24px;
-      font-size: 1rem;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .timeline-content:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 25px 45px -20px rgba(15, 23, 42, 0.55);
-    }
-    .timeline-content.buckler {
-      left: 6%;
-      background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);
-      border-left: 4px solid #10b981;
-      color: #065f46;
-    }
-    .timeline-content.bp {
-      right: 6%;
-      background: linear-gradient(135deg, #fee2e2 0%, #fff1f2 100%);
-      border-right: 4px solid #ef4444;
-      color: #7f1d1d;
-    }
-    .timeline-content.both {
-      left: 50%;
-      transform: translateX(-50%);
-      width: 70%;
-      background: linear-gradient(135deg, #e0e7ff 0%, #eef2ff 100%);
-      border-left: 4px solid #4338ca;
-      border-right: 4px solid #4338ca;
-      color: #1e3a8a;
-    }
-    .event-label {
-      align-self: flex-start;
-      background-color: rgba(17, 24, 39, 0.1);
+      width: 18px;
+      height: 18px;
       border-radius: 9999px;
-      padding: 4px 12px;
+      background: rgba(59, 130, 246, 0.95);
+      box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.18);
+      z-index: -1;
+      opacity: 0.35;
+    }
+
+    body[data-theme='dark'] .timeline-node::before {
+      background: rgba(96, 165, 250, 0.9);
+    }
+
+    .timeline-year {
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-bubble {
+      width: var(--bubble-size);
+      height: var(--bubble-size);
+      border-radius: 9999px;
+      border: 2px solid var(--shared-border);
+      background: var(--shared-surface);
+      color: var(--heading-color);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       font-weight: 700;
-      font-size: 0.9rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .event-summary {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: rgba(17, 24, 39, 0.85);
-    }
-    .event-context {
-      list-style: disc;
-      padding-left: 1.2rem;
-      margin: 0;
-      color: rgba(17, 24, 39, 0.8);
-      display: grid;
-      gap: 0.35rem;
-      font-size: 0.95rem;
-    }
-    .event-context li::marker {
-      color: rgba(59, 130, 246, 0.6);
-    }
-    .evidence-section {
-      background-color: rgba(255, 255, 255, 0.45);
-      border-radius: 14px;
-      padding: 12px 14px;
-      backdrop-filter: blur(4px);
-    }
-    .evidence-heading {
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: rgba(55, 65, 81, 0.7);
-      margin-bottom: 8px;
-    }
-    .evidence-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 10px;
-    }
-    .evidence-tile {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(15, 23, 42, 0.1);
-      background-color: rgba(255, 255, 255, 0.8);
-      color: #1f2937;
-      font-size: 0.9rem;
-      text-align: left;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+      font-size: 1.15rem;
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
       cursor: pointer;
     }
-    .evidence-tile:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 20px -18px rgba(17, 24, 39, 0.6);
-      border-color: rgba(59, 130, 246, 0.35);
-    }
-    .evidence-icon {
-      font-size: 1.2rem;
-      line-height: 1;
-      width: 1.5rem;
-      flex-shrink: 0;
-    }
-    .filter-button {
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .filter-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 30px -20px rgba(15, 23, 42, 0.6);
-    }
-    .legend-dot {
-      width: 14px;
-      height: 14px;
+
+    .timeline-bubble::before {
+      content: attr(data-title);
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translate(-50%, 8px);
+      background: var(--surface);
       border-radius: 9999px;
-      display: inline-block;
+      border: 1px solid var(--surface-border);
+      padding: 0.4rem 0.75rem;
+      white-space: nowrap;
+      font-size: 0.85rem;
+      color: var(--text-primary);
+      box-shadow: var(--shadow-soft);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
     }
+
+    .timeline-bubble:hover::before,
+    .timeline-bubble:focus-visible::before {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .timeline-bubble:hover,
+    .timeline-bubble:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px -20px rgba(59, 130, 246, 0.45);
+    }
+
+    .timeline-entry[data-position='left'] .timeline-bubble::after,
+    .timeline-entry[data-position='right'] .timeline-bubble::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      height: 2px;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .timeline-entry[data-position='left'] .timeline-bubble::after {
+      right: calc(-1 * (var(--entry-gap) + var(--axis-column-width) / 2));
+      width: calc(var(--entry-gap) + var(--axis-column-width) / 2);
+      background: linear-gradient(90deg, rgba(59, 130, 246, 0.65), rgba(59, 130, 246, 0));
+    }
+
+    .timeline-entry[data-position='right'] .timeline-bubble::after {
+      left: calc(-1 * (var(--entry-gap) + var(--axis-column-width) / 2));
+      width: calc(var(--entry-gap) + var(--axis-column-width) / 2);
+      background: linear-gradient(90deg, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.65));
+    }
+
+    .timeline-bubble--buckler {
+      background: var(--buckler-surface);
+      border-color: var(--buckler-border);
+      color: #065f46;
+    }
+
+    body[data-theme='dark'] .timeline-bubble--buckler {
+      color: var(--text-primary);
+    }
+
+    .timeline-bubble--bp {
+      background: var(--bp-surface);
+      border-color: var(--bp-border);
+      color: #7f1d1d;
+    }
+
+    body[data-theme='dark'] .timeline-bubble--bp {
+      color: var(--text-primary);
+    }
+
+    .timeline-bubble--both {
+      background: var(--shared-surface);
+      border-color: var(--shared-border);
+    }
+
+    .loading-text {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
     .modal {
       display: none;
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(15, 23, 42, 0.55);
+      inset: 0;
+      background: var(--modal-backdrop);
       z-index: 1000;
       justify-content: center;
       align-items: center;
       padding: 20px;
     }
+
     .modal.active {
       display: flex;
     }
+
     .modal-content {
-      background-color: #ffffff;
+      background: var(--surface);
       padding: 28px 30px;
       border-radius: 18px;
-      max-width: 640px;
+      max-width: 720px;
       width: 100%;
       position: relative;
-      box-shadow: 0 35px 50px -25px rgba(15, 23, 42, 0.55);
+      box-shadow: var(--shadow-strong);
       max-height: 90vh;
       overflow-y: auto;
     }
+
     .modal-content h3 {
-      margin-top: 0;
-      color: #1e3a8a;
+      color: var(--heading-color);
     }
+
     .close-btn {
       position: absolute;
       top: 14px;
       right: 16px;
       font-size: 1.8rem;
       font-weight: 600;
-      color: #1f2937;
+      color: var(--text-primary);
       cursor: pointer;
       background: none;
       border: none;
       line-height: 1;
     }
-    .close-btn:hover {
-      color: #ef4444;
+
+    .close-btn:hover,
+    .close-btn:focus-visible {
+      color: var(--accent-primary);
     }
-    .modal iframe,
-    .modal object {
+
+    .modal-description {
+      color: var(--text-muted);
+    }
+
+    .modal-body {
+      margin-top: 20px;
+      display: grid;
+      gap: 18px;
+      color: var(--text-muted);
+    }
+
+    .modal-section-heading {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-soft);
+      margin-bottom: 8px;
+    }
+
+    .modal-context {
+      list-style: disc;
+      padding-left: 1.2rem;
+      margin: 0;
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .modal-evidence {
+      display: grid;
+      gap: 14px;
+    }
+
+    .modal-evidence-item {
+      background: var(--surface-muted);
+      border-radius: 14px;
+      border: 1px solid var(--surface-border);
+      padding: 16px 18px;
+    }
+
+    .modal-evidence-item h5 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--heading-color);
+      margin-bottom: 6px;
+    }
+
+    .modal-evidence-item p {
+      margin: 6px 0 0;
+      color: var(--text-muted);
+    }
+
+    .modal-evidence-meta {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      margin-top: 8px;
+    }
+
+    .modal-evidence-item iframe,
+    .modal-evidence-item object {
       width: 100%;
-      min-height: 320px;
+      min-height: 300px;
       border: none;
       border-radius: 12px;
+      margin-top: 12px;
     }
-    .modal-actions a {
-      background-color: #2563eb;
-      color: #ffffff;
-      padding: 10px 16px;
-      border-radius: 10px;
-      font-size: 0.9rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: background-color 0.2s ease;
+
+    @media (max-width: 960px) {
+      :root {
+        --axis-column-width: 120px;
+        --entry-gap: 24px;
+      }
+
+      .timeline-century__heading {
+        font-size: 1.5rem;
+      }
     }
-    .modal-actions a:hover {
-      background-color: #1d4ed8;
-    }
-    #timeline-empty {
-      font-size: 1.1rem;
-    }
-    @media (max-width: 900px) {
+
+    @media (max-width: 760px) {
+      :root {
+        --axis-column-width: 100px;
+        --entry-gap: 18px;
+        --bubble-size: 54px;
+      }
+
+      .timeline {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
       .timeline::before {
-        left: 24px;
+        left: 22px;
       }
-      .timeline-item {
-        padding-left: 60px;
+
+      .timeline-entry {
+        grid-template-columns: var(--axis-column-width) 1fr;
+        column-gap: 16px;
       }
-      .year-marker {
-        margin-left: 24px;
+
+      .timeline-entry__column--left,
+      .timeline-entry__column--right {
+        grid-column: 2 / span 1;
+        justify-content: flex-start;
       }
-      .timeline-content,
-      .timeline-content.both {
-        position: relative;
-        width: calc(100% - 40px);
-        left: 0 !important;
-        right: 0 !important;
-        transform: none !important;
-        margin-top: 18px;
+
+      .timeline-entry[data-position='left'] .timeline-bubble::after,
+      .timeline-entry[data-position='right'] .timeline-bubble::after {
+        left: calc(-1 * (var(--axis-column-width) - 16px));
+        right: auto;
+        width: calc(var(--axis-column-width) - 12px);
+        background: linear-gradient(90deg, rgba(59, 130, 246, 0.65), rgba(59, 130, 246, 0));
       }
-      .timeline-content {
-        border-left-width: 5px;
-        border-right-width: 0;
-      }
-      .timeline-content.bp {
-        border-left-color: #ef4444;
-        border-right-width: 0;
-      }
-      .timeline-content.both {
-        border-right-width: 0;
+
+      .timeline-entry__column--left.timeline-entry__column--empty,
+      .timeline-entry__column--right.timeline-entry__column--empty {
+        display: none;
       }
     }
+
     @media (max-width: 540px) {
-      .timeline-content {
-        padding: 16px 18px;
+      .round-button {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
       }
-      .evidence-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+
+      .timeline-bubble::before {
+        font-size: 0.8rem;
+      }
+
+      .modal-content {
+        padding: 24px 22px;
       }
     }
   </style>
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="font-sans" data-theme="light">
   <div class="container mx-auto px-4 py-10">
     <header class="text-center">
-      <h1 id="case-title" class="text-4xl md:text-5xl font-extrabold text-gray-800 tracking-tight">BP vs Buckler</h1>
-      <p id="case-subtitle" class="text-lg md:text-xl text-gray-600 mt-3 max-w-3xl mx-auto">Mapping the chronology of Great House Farm</p>
-      <div id="case-intro" class="mt-6 max-w-4xl mx-auto text-gray-700 space-y-4 text-base leading-relaxed"></div>
-      <div id="key-themes" class="mt-10 grid gap-6 md:grid-cols-2"></div>
-      <div class="mt-10 flex flex-wrap justify-center gap-4" id="filter-buttons">
-        <button id="filter-buckler" class="filter-button bg-green-500 text-white px-4 py-2 rounded-full shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-green-600" type="button">Buckler account</button>
-        <button id="filter-both" class="filter-button bg-blue-500 text-white px-4 py-2 rounded-full shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600" type="button">Combined timeline</button>
-        <button id="filter-bp" class="filter-button bg-red-500 text-white px-4 py-2 rounded-full shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-red-600" type="button">BP / official record</button>
+      <div class="flex flex-col items-center gap-4">
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <div class="flex flex-wrap items-center justify-center gap-3">
+          <h1 id="case-title" class="text-4xl md:text-5xl font-extrabold tracking-tight page-title">Great House Farm</h1>
+          <div class="flex items-center gap-2">
+            <button id="theme-toggle" class="round-button" type="button" aria-pressed="false" title="Switch to dark theme">
+              <span class="sr-only">Toggle colour theme</span>
+              <span aria-hidden="true" data-theme-icon>☀️</span>
+            </button>
+            <button id="intro-toggle" class="round-button" type="button" aria-expanded="false" aria-controls="intro-panel" title="About this timeline">
+              <span aria-hidden="true">ℹ️</span>
+              <span class="sr-only">Toggle introduction</span>
+            </button>
+          </div>
+        </div>
+        <p id="case-subtitle" class="text-lg md:text-xl max-w-3xl mx-auto page-subtitle">Four centuries of Williams and Buckler family occupation, litigation, and community resistance in Llandough, Vale of Glamorgan.</p>
       </div>
-      <div class="mt-5 flex flex-wrap justify-center gap-6 text-sm text-gray-600">
-        <span class="flex items-center gap-2"><span class="legend-dot" style="background: linear-gradient(135deg,#d1fae5,#ecfdf5);"></span>Buckler family narrative</span>
-        <span class="flex items-center gap-2"><span class="legend-dot" style="background: linear-gradient(135deg,#e0e7ff,#eef2ff);"></span>Shared / contextual</span>
-        <span class="flex items-center gap-2"><span class="legend-dot" style="background: linear-gradient(135deg,#fee2e2,#fff1f2);"></span>BP &amp; official sources</span>
+      <div id="intro-panel" class="intro-panel hidden" aria-hidden="true" tabindex="-1">
+        <h2 class="text-2xl font-semibold intro-heading">About this timeline</h2>
+        <div id="case-intro" class="intro-body space-y-4"></div>
+        <div id="key-themes" class="intro-grid"></div>
       </div>
     </header>
 
     <section class="mt-14">
-      <div id="timeline-loading" class="text-center text-gray-500 text-lg">Loading timeline data…</div>
+      <div id="timeline-loading" class="text-center loading-text">Loading timeline data…</div>
       <div class="timeline" id="timeline" aria-live="polite"></div>
-      <div id="timeline-empty" class="hidden text-center text-gray-500 mt-6">No timeline entries match the selected perspective.</div>
     </section>
-
-    <section id="research" class="mt-16">
-      <h2 class="text-3xl font-semibold text-gray-800 text-center">Further research leads</h2>
-      <div id="further-research" class="mt-8 grid gap-6 md:grid-cols-2"></div>
-    </section>
-
-    <footer class="text-center mt-16 text-gray-600">
-      <p>Curated by Grok | Data consolidated from appellate judgments, archival catalogues, and contemporary reporting.</p>
-    </footer>
   </div>
 
   <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal-content">
-      <button class="close-btn" type="button" aria-label="Close evidence panel">&times;</button>
+      <button class="close-btn" type="button" aria-label="Close event details">&times;</button>
       <h3 id="modal-title" class="text-2xl font-semibold"></h3>
-      <p id="modal-source" class="text-sm text-blue-700 mt-2"></p>
-      <p id="modal-description" class="text-base text-gray-700 mt-4"></p>
-      <div id="modal-body" class="mt-4 space-y-3 text-gray-700"></div>
-      <div id="modal-actions" class="modal-actions mt-6"></div>
+      <p id="modal-source" class="text-sm mt-2 text-slate-500 dark:text-slate-300"></p>
+      <p id="modal-description" class="text-base modal-description mt-4"></p>
+      <div id="modal-body" class="modal-body"></div>
     </div>
   </div>
 
   <script>
     (function () {
-      const timelineContainer = document.getElementById('timeline');
-      const loadingMessage = document.getElementById('timeline-loading');
-      const emptyState = document.getElementById('timeline-empty');
+      const body = document.body;
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeIcon = themeToggle ? themeToggle.querySelector('[data-theme-icon]') : null;
+      const introToggle = document.getElementById('intro-toggle');
+      const introPanel = document.getElementById('intro-panel');
       const caseTitle = document.getElementById('case-title');
       const caseSubtitle = document.getElementById('case-subtitle');
       const caseIntro = document.getElementById('case-intro');
       const keyThemes = document.getElementById('key-themes');
-      const furtherResearch = document.getElementById('further-research');
-      const researchSection = document.getElementById('research');
-      const filterButtons = {
-        buckler: document.getElementById('filter-buckler'),
-        both: document.getElementById('filter-both'),
-        bp: document.getElementById('filter-bp')
-      };
+      const timelineContainer = document.getElementById('timeline');
+      const loadingMessage = document.getElementById('timeline-loading');
       const modal = document.getElementById('modal');
+      const closeBtn = modal.querySelector('.close-btn');
       const modalTitle = document.getElementById('modal-title');
       const modalSource = document.getElementById('modal-source');
       const modalDescription = document.getElementById('modal-description');
       const modalBody = document.getElementById('modal-body');
-      const modalActions = document.getElementById('modal-actions');
-      const closeBtn = document.querySelector('.close-btn');
 
-      const evidenceIndex = new Map();
-      let timelineItems = [];
+      const eventIndex = new Map();
+      const storageKey = 'ghf-theme';
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+      let sharedSidePreference = 'right';
 
-      function iconForType(type) {
-        const icons = {
-          document: '📄',
-          archive: '🗂️',
-          press: '📰',
-          hansard: '🏛️',
-          transcript: '📝',
-          book: '📚',
-          report: '📑',
-          video: '🎬',
-          audio: '🎧',
-          image: '🖼️'
-        };
-        return icons[type] || '🔍';
+      function setTheme(theme, persist = true) {
+        const normalized = theme === 'dark' ? 'dark' : 'light';
+        body.dataset.theme = normalized;
+        if (themeToggle) {
+          themeToggle.setAttribute('aria-pressed', normalized === 'dark' ? 'true' : 'false');
+          themeToggle.setAttribute('title', normalized === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+        }
+        if (themeIcon) {
+          themeIcon.textContent = normalized === 'dark' ? '🌙' : '☀️';
+        }
+        if (persist) {
+          try {
+            localStorage.setItem(storageKey, normalized);
+          } catch (error) {
+            console.warn('Unable to persist theme preference', error);
+          }
+        }
       }
 
-      function createEvidenceTile(evidence, eventId) {
-        evidenceIndex.set(evidence.id, { ...evidence, eventId });
-        const button = document.createElement('button');
-        button.className = 'evidence-tile';
-        button.type = 'button';
-        button.dataset.evidenceId = evidence.id;
-        button.innerHTML = `
-          <span class="evidence-icon">${iconForType(evidence.type)}</span>
-          <span>${evidence.title}</span>
-        `;
-        button.addEventListener('click', () => openEvidence(evidence.id));
-        return button;
+      const savedTheme = (() => {
+        try {
+          return localStorage.getItem(storageKey);
+        } catch (error) {
+          return null;
+        }
+      })();
+
+      if (savedTheme) {
+        setTheme(savedTheme, false);
+      } else {
+        setTheme(prefersDark.matches ? 'dark' : 'light', false);
       }
 
-      function renderTimeline(events) {
-        timelineContainer.innerHTML = '';
-        evidenceIndex.clear();
-        timelineItems = [];
-
-        events.forEach(event => {
-          const timelineItem = document.createElement('div');
-          timelineItem.className = 'timeline-item';
-          timelineItem.dataset.side = event.side;
-
-          const yearMarker = document.createElement('div');
-          yearMarker.className = 'year-marker';
-          yearMarker.innerHTML = event.year;
-          timelineItem.appendChild(yearMarker);
-
-          const timelineContent = document.createElement('div');
-          timelineContent.className = `timeline-content ${event.side}`;
-          timelineContent.dataset.side = event.side;
-          timelineContent.dataset.year = event.year;
-          timelineContent.dataset.eventId = event.id;
-
-          const label = document.createElement('div');
-          label.className = 'event-label';
-          label.textContent = event.label;
-          timelineContent.appendChild(label);
-
-          const title = document.createElement('h3');
-          title.className = 'text-xl font-semibold';
-          title.textContent = event.title;
-          timelineContent.appendChild(title);
-
-          const summary = document.createElement('p');
-          summary.className = 'event-summary';
-          summary.textContent = event.summary;
-          timelineContent.appendChild(summary);
-
-          if (Array.isArray(event.context) && event.context.length) {
-            const contextList = document.createElement('ul');
-            contextList.className = 'event-context';
-            event.context.forEach(line => {
-              const item = document.createElement('li');
-              item.textContent = line;
-              contextList.appendChild(item);
-            });
-            timelineContent.appendChild(contextList);
-          }
-
-          if (Array.isArray(event.evidence) && event.evidence.length) {
-            const evidenceSection = document.createElement('div');
-            evidenceSection.className = 'evidence-section';
-
-            const heading = document.createElement('div');
-            heading.className = 'evidence-heading';
-            heading.textContent = 'Evidence & records';
-            evidenceSection.appendChild(heading);
-
-            const grid = document.createElement('div');
-            grid.className = 'evidence-grid';
-            event.evidence.forEach(ev => {
-              grid.appendChild(createEvidenceTile(ev, event.id));
-            });
-            evidenceSection.appendChild(grid);
-            timelineContent.appendChild(evidenceSection);
-          }
-
-          timelineItem.appendChild(timelineContent);
-          timelineContainer.appendChild(timelineItem);
-          timelineItems.push(timelineItem);
+      if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+          const next = body.dataset.theme === 'dark' ? 'light' : 'dark';
+          setTheme(next, true);
         });
+      }
+
+      prefersDark.addEventListener('change', event => {
+        try {
+          if (!localStorage.getItem(storageKey)) {
+            setTheme(event.matches ? 'dark' : 'light', false);
+          }
+        } catch (error) {
+          setTheme(event.matches ? 'dark' : 'light', false);
+        }
+      });
+
+      function choosePosition(event) {
+        if (event.side === 'buckler') {
+          return 'left';
+        }
+        if (event.side === 'bp') {
+          return 'right';
+        }
+        sharedSidePreference = sharedSidePreference === 'left' ? 'right' : 'left';
+        return sharedSidePreference;
+      }
+
+      function buildEvent(event, century) {
+        const position = choosePosition(event);
+        const entry = document.createElement('div');
+        entry.className = 'timeline-entry';
+        entry.dataset.position = position;
+        entry.dataset.eventId = event.id;
+
+        const leftColumn = document.createElement('div');
+        leftColumn.className = 'timeline-entry__column timeline-entry__column--left';
+
+        const axisColumn = document.createElement('div');
+        axisColumn.className = 'timeline-axis';
+        const node = document.createElement('div');
+        node.className = 'timeline-node';
+        const year = document.createElement('div');
+        year.className = 'timeline-year';
+        year.textContent = event.year;
+        node.appendChild(year);
+        axisColumn.appendChild(node);
+
+        const rightColumn = document.createElement('div');
+        rightColumn.className = 'timeline-entry__column timeline-entry__column--right';
+
+        const bubble = document.createElement('button');
+        bubble.className = `timeline-bubble timeline-bubble--${event.side || 'both'}`;
+        bubble.type = 'button';
+        bubble.dataset.eventId = event.id;
+        bubble.dataset.title = event.title;
+        bubble.setAttribute('aria-label', `${event.title} (${event.year})`);
+        bubble.textContent = event.label || '•';
+        bubble.addEventListener('click', () => openEvent(event.id));
+        bubble.addEventListener('keydown', eventKey => {
+          if (eventKey.key === 'Enter' || eventKey.key === ' ') {
+            eventKey.preventDefault();
+            openEvent(event.id);
+          }
+        });
+
+        if (position === 'left') {
+          leftColumn.appendChild(bubble);
+          rightColumn.classList.add('timeline-entry__column--empty');
+        } else {
+          rightColumn.appendChild(bubble);
+          leftColumn.classList.add('timeline-entry__column--empty');
+        }
+
+        entry.appendChild(leftColumn);
+        entry.appendChild(axisColumn);
+        entry.appendChild(rightColumn);
+
+        eventIndex.set(event.id, { event, century });
+        return entry;
+      }
+
+      function renderTimeline(data) {
+        timelineContainer.innerHTML = '';
+        eventIndex.clear();
+        sharedSidePreference = 'right';
+
+        const centuries = Array.isArray(data.centuries) ? data.centuries : [];
+        centuries.forEach(century => {
+          const section = document.createElement('section');
+          section.className = 'timeline-century';
+
+          const header = document.createElement('div');
+          header.className = 'timeline-century__header';
+
+          const heading = document.createElement('h2');
+          heading.className = 'timeline-century__heading';
+          heading.textContent = century.title || 'Century of occupation';
+          header.appendChild(heading);
+
+          if (century.range) {
+            const range = document.createElement('p');
+            range.className = 'timeline-century__range';
+            range.textContent = century.range;
+            header.appendChild(range);
+          }
+
+          section.appendChild(header);
+
+          if (century.summary) {
+            const summary = document.createElement('p');
+            summary.className = 'timeline-century__summary';
+            summary.textContent = century.summary;
+            section.appendChild(summary);
+          }
+
+          const entries = document.createElement('div');
+          entries.className = 'timeline-century__entries';
+
+          const events = Array.isArray(century.events) ? century.events : [];
+          events.forEach(event => {
+            const entry = buildEvent(event, century);
+            entries.appendChild(entry);
+          });
+
+          section.appendChild(entries);
+          timelineContainer.appendChild(section);
+        });
+
+        if (!centuries.length) {
+          const empty = document.createElement('p');
+          empty.className = 'text-center text-slate-500 dark:text-slate-300';
+          empty.textContent = 'No timeline entries available.';
+          timelineContainer.appendChild(empty);
+        }
       }
 
       function renderIntro(data) {
         if (data.caseTitle) {
-          caseTitle.innerHTML = data.caseTitle;
+          caseTitle.textContent = data.caseTitle;
         }
         if (data.caseSubtitle) {
-          caseSubtitle.innerHTML = data.caseSubtitle;
+          caseSubtitle.textContent = data.caseSubtitle;
         }
-        if (Array.isArray(data.introduction)) {
-          caseIntro.innerHTML = '';
+
+        const hasIntro = Array.isArray(data.introduction) && data.introduction.length;
+        caseIntro.innerHTML = '';
+        if (hasIntro) {
           data.introduction.forEach(paragraph => {
             const p = document.createElement('p');
             p.innerHTML = paragraph;
             caseIntro.appendChild(p);
           });
+          caseIntro.classList.remove('hidden');
+        } else {
+          caseIntro.classList.add('hidden');
         }
-        if (Array.isArray(data.keyThemes) && data.keyThemes.length) {
-          keyThemes.innerHTML = '';
+
+        const hasThemes = Array.isArray(data.keyThemes) && data.keyThemes.length;
+        keyThemes.innerHTML = '';
+        if (hasThemes) {
           data.keyThemes.forEach(theme => {
             const card = document.createElement('div');
-            card.className = 'bg-white/80 rounded-2xl shadow-sm border border-gray-200 p-6 text-left backdrop-blur';
+            card.className = 'intro-card';
 
             const heading = document.createElement('h3');
-            heading.className = 'text-lg font-semibold text-gray-800';
             heading.textContent = theme.title;
             card.appendChild(heading);
 
-            if (Array.isArray(theme.items)) {
+            if (Array.isArray(theme.items) && theme.items.length) {
               const list = document.createElement('ul');
-              list.className = 'mt-3 space-y-2 text-gray-700 text-sm list-disc list-inside';
               theme.items.forEach(item => {
                 const li = document.createElement('li');
                 li.textContent = item;
@@ -505,112 +860,145 @@
         } else {
           keyThemes.classList.add('hidden');
         }
-        if (Array.isArray(data.furtherResearch) && data.furtherResearch.length) {
-          furtherResearch.innerHTML = '';
-          data.furtherResearch.forEach(section => {
-            const card = document.createElement('div');
-            card.className = 'bg-white/80 rounded-2xl shadow-sm border border-gray-200 p-6 text-left backdrop-blur';
 
-            const title = document.createElement('h3');
-            title.className = 'text-xl font-semibold text-gray-800';
-            title.textContent = section.heading;
-            card.appendChild(title);
-
-            if (Array.isArray(section.items)) {
-              const list = document.createElement('ul');
-              list.className = 'mt-3 space-y-2 text-gray-700 list-disc list-inside';
-              section.items.forEach(item => {
-                const li = document.createElement('li');
-                li.innerHTML = item;
-                list.appendChild(li);
-              });
-              card.appendChild(list);
-            }
-
-            furtherResearch.appendChild(card);
-          });
-          researchSection.classList.remove('hidden');
-        }
-        if (!Array.isArray(data.furtherResearch) || data.furtherResearch.length === 0) {
-          furtherResearch.innerHTML = '';
-          researchSection.classList.add('hidden');
+        if (introPanel && introToggle) {
+          const hasPanelContent = hasIntro || hasThemes;
+          introPanel.classList.add('hidden');
+          introPanel.setAttribute('aria-hidden', 'true');
+          introToggle.setAttribute('aria-expanded', 'false');
+          introToggle.classList.toggle('hidden', !hasPanelContent);
+          introToggle.setAttribute('title', hasPanelContent ? 'About this timeline' : '');
         }
       }
 
-      function updateFilterButtons(active) {
-        Object.entries(filterButtons).forEach(([key, button]) => {
-          const isActive = key === active;
-          button.classList.toggle('ring-4', isActive);
-          button.classList.toggle('ring-offset-2', isActive);
-          button.classList.toggle('ring-gray-200', isActive);
-          button.classList.toggle('shadow-lg', isActive);
-          button.setAttribute('aria-pressed', isActive);
+      function buildContextSection(event) {
+        if (!Array.isArray(event.context) || !event.context.length) {
+          return null;
+        }
+        const wrapper = document.createElement('div');
+        const heading = document.createElement('div');
+        heading.className = 'modal-section-heading';
+        heading.textContent = 'Context';
+        wrapper.appendChild(heading);
+
+        const list = document.createElement('ul');
+        list.className = 'modal-context';
+        event.context.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          list.appendChild(li);
         });
+        wrapper.appendChild(list);
+        return wrapper;
       }
 
-      function setFilter(side) {
-        let visibleCount = 0;
-        timelineItems.forEach(item => {
-          const itemSide = item.dataset.side;
-          const matches = side === 'both' || itemSide === side || itemSide === 'both';
-          item.classList.toggle('hidden', !matches);
-          if (matches) {
-            visibleCount += 1;
+      function buildEvidenceSection(event) {
+        if (!Array.isArray(event.evidence) || !event.evidence.length) {
+          return null;
+        }
+        const wrapper = document.createElement('div');
+        const heading = document.createElement('div');
+        heading.className = 'modal-section-heading';
+        heading.textContent = 'Evidence & records';
+        wrapper.appendChild(heading);
+
+        const grid = document.createElement('div');
+        grid.className = 'modal-evidence';
+
+        event.evidence.forEach(evidence => {
+          const block = document.createElement('article');
+          block.className = 'modal-evidence-item';
+
+          const title = document.createElement('h5');
+          title.textContent = evidence.title;
+          block.appendChild(title);
+
+          if (evidence.description) {
+            const description = document.createElement('p');
+            description.textContent = evidence.description;
+            block.appendChild(description);
           }
+
+          if (Array.isArray(evidence.content) && evidence.content.length) {
+            evidence.content.forEach(paragraph => {
+              const p = document.createElement('p');
+              p.textContent = paragraph;
+              block.appendChild(p);
+            });
+          }
+
+          if (evidence.embed && evidence.embed.type && evidence.embed.src) {
+            if (evidence.embed.type === 'iframe') {
+              const iframe = document.createElement('iframe');
+              iframe.src = evidence.embed.src;
+              iframe.loading = 'lazy';
+              iframe.title = evidence.embed.title || evidence.title;
+              block.appendChild(iframe);
+            } else if (evidence.embed.type === 'object') {
+              const object = document.createElement('object');
+              object.data = evidence.embed.src;
+              object.type = evidence.embed.mime || 'application/pdf';
+              block.appendChild(object);
+            }
+          }
+
+          if (evidence.source && (evidence.source.name || evidence.source.url)) {
+            const meta = document.createElement('p');
+            meta.className = 'modal-evidence-meta';
+            if (evidence.source.url) {
+              const link = document.createElement('a');
+              link.href = evidence.source.url;
+              link.target = '_blank';
+              link.rel = 'noopener';
+              link.textContent = evidence.source.name || evidence.source.url;
+              meta.appendChild(document.createTextNode('Source: '));
+              meta.appendChild(link);
+            } else {
+              meta.textContent = `Source: ${evidence.source.name}`;
+            }
+            block.appendChild(meta);
+          }
+
+          grid.appendChild(block);
         });
-        emptyState.classList.toggle('hidden', visibleCount > 0);
-        updateFilterButtons(side);
+
+        wrapper.appendChild(grid);
+        return wrapper;
       }
 
-      function openEvidence(evidenceId) {
-        const evidence = evidenceIndex.get(evidenceId);
-        if (!evidence) {
+      function openEvent(eventId) {
+        const record = eventIndex.get(eventId);
+        if (!record) {
           return;
         }
-        modalTitle.textContent = evidence.title;
-        if (evidence.source && evidence.source.name) {
-          if (evidence.source.url) {
-            modalSource.innerHTML = `Source: <a class="underline decoration-dotted" href="${evidence.source.url}" target="_blank" rel="noopener">${evidence.source.name}</a>`;
-          } else {
-            modalSource.textContent = `Source: ${evidence.source.name}`;
-          }
+        const { event, century } = record;
+        modalTitle.textContent = event.title;
+
+        if (century) {
+          const details = [century.title, century.range, event.year].filter(Boolean).join(' • ');
+          modalSource.textContent = details;
         } else {
-          modalSource.textContent = '';
+          modalSource.textContent = event.year || '';
         }
-        modalDescription.textContent = evidence.description || '';
+
+        if (event.summary) {
+          modalDescription.textContent = event.summary;
+          modalDescription.classList.remove('hidden');
+        } else {
+          modalDescription.textContent = '';
+          modalDescription.classList.add('hidden');
+        }
 
         modalBody.innerHTML = '';
-        if (Array.isArray(evidence.content)) {
-          evidence.content.forEach(paragraph => {
-            const p = document.createElement('p');
-            p.textContent = paragraph;
-            modalBody.appendChild(p);
-          });
+
+        const contextSection = buildContextSection(event);
+        if (contextSection) {
+          modalBody.appendChild(contextSection);
         }
 
-        modalActions.innerHTML = '';
-        if (evidence.embed && evidence.embed.type) {
-          if (evidence.embed.type === 'iframe' && evidence.embed.src) {
-            const iframe = document.createElement('iframe');
-            iframe.src = evidence.embed.src;
-            iframe.loading = 'lazy';
-            iframe.title = evidence.embed.title || evidence.title;
-            modalBody.appendChild(iframe);
-          } else if (evidence.embed.type === 'object' && evidence.embed.src) {
-            const object = document.createElement('object');
-            object.data = evidence.embed.src;
-            object.type = evidence.embed.mime || 'application/pdf';
-            modalBody.appendChild(object);
-          }
-        }
-
-        if (evidence.source && evidence.source.url) {
-          const link = document.createElement('a');
-          link.href = evidence.source.url;
-          link.target = '_blank';
-          link.rel = 'noopener';
-          link.innerHTML = 'Open source <span aria-hidden="true">↗</span>';
-          modalActions.appendChild(link);
+        const evidenceSection = buildEvidenceSection(event);
+        if (evidenceSection) {
+          modalBody.appendChild(evidenceSection);
         }
 
         modal.classList.add('active');
@@ -625,20 +1013,31 @@
       }
 
       closeBtn.addEventListener('click', closeModal);
-      modal.addEventListener('click', (event) => {
+      modal.addEventListener('click', event => {
         if (event.target === modal) {
           closeModal();
         }
       });
-      document.addEventListener('keydown', (event) => {
+      document.addEventListener('keydown', event => {
         if (event.key === 'Escape' && modal.classList.contains('active')) {
           closeModal();
         }
       });
 
-      Object.entries(filterButtons).forEach(([key, button]) => {
-        button.addEventListener('click', () => setFilter(key));
-      });
+      if (introToggle && introPanel) {
+        introToggle.addEventListener('click', () => {
+          const isExpanded = introToggle.getAttribute('aria-expanded') === 'true';
+          const nextState = !isExpanded;
+          introToggle.setAttribute('aria-expanded', String(nextState));
+          introPanel.classList.toggle('hidden', !nextState);
+          introPanel.setAttribute('aria-hidden', nextState ? 'false' : 'true');
+          introToggle.setAttribute('title', nextState ? 'Hide timeline introduction' : 'About this timeline');
+          if (nextState) {
+            introPanel.focus();
+            introPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      }
 
       fetch('data/timeline.json')
         .then(response => {
@@ -650,8 +1049,7 @@
         .then(data => {
           loadingMessage.classList.add('hidden');
           renderIntro(data);
-          renderTimeline(data.events || []);
-          setFilter('both');
+          renderTimeline(data);
         })
         .catch(error => {
           console.error(error);
