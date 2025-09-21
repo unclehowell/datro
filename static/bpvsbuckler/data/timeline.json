@@ -1,6 +1,6 @@
 {
     "caseTitle": "Great House Farm",
-    "caseSubtitle": "Four centuries of Williams and Buckler family occupation in Llandough, Vale of Glamorgan",
+    "caseSubtitle": "Occupied for centuries by the Williams/ Buckler family",
     "introduction": [
         "Great House Farm stands above the village of Llandough in the Vale of Glamorgan. Family history gathered in the 2012 blog post <em>The Great House Farm Story</em> traces the Williams line's arrival on the holding in the early seventeenth century and the farm's continuous stewardship through four centuries.",
         "The timeline arranges that story into four century-long arcs running along a single year spine. Each marker on the spine carries the year, while numbered bubbles to the left and right hold events drawn from family testimony, estate papers, and later litigation.",
@@ -37,8 +37,18 @@
             "id": "century-1",
             "title": "1st century (years 0\u201399)",
             "range": "Years 0\u201399 of occupation \u2022 c. 1600\u20131699",
-            "summary": "Family narratives and estate notes place the Williams ancestors at Great House Farm throughout the Stuart era, laying the foundations for later Buckler claims.",
             "events": [
+                {
+                    "id": "1600s-family-overview",
+                    "year": "1600s",
+                    "side": "both",
+                    "title": "Williams stewardship anchors the family's later claims",
+                    "summary": "Family narratives and estate notes place the Williams ancestors at Great House Farm throughout the Stuart era, laying the foundations for later Buckler claims.",
+                    "context": [
+                        "The Great House Farm Story blog ties seventeenth-century estate notebooks to the Williams family's long possession.",
+                        "Those recollections explain why later Buckler arguments leaned on a continuous line of Williams occupation."
+                    ]
+                },
                 {
                     "id": "1600s-williams-lease",
                     "label": "1",
@@ -101,8 +111,18 @@
             "id": "century-2",
             "title": "2nd century (years 100\u2013199)",
             "range": "Years 100\u2013199 of occupation \u2022 1700\u20131799",
-            "summary": "Parish registers and estate correspondence cited in the blog show the Williams family maintaining possession across the eighteenth century.",
             "events": [
+                {
+                    "id": "1700s-family-overview",
+                    "year": "1700s",
+                    "side": "both",
+                    "title": "Eighteenth-century records confirm Williams continuity",
+                    "summary": "Parish registers and estate correspondence cited in the blog show the Williams family maintaining possession across the eighteenth century.",
+                    "context": [
+                        "St Dochdwy's registers and Bute estate letters reproduced in the blog chart successive Williams tenants.",
+                        "The paperwork demonstrates the unbroken occupation that later supported Buckler family claims."
+                    ]
+                },
                 {
                     "id": "1700s-parish-registers",
                     "label": "3",
@@ -165,8 +185,18 @@
             "id": "century-3",
             "title": "3rd century (years 200\u2013299)",
             "range": "Years 200\u2013299 of occupation \u2022 1800\u20131899",
-            "summary": "Victorian-era maps and marriages documented in the blog show the Williams holding transitioning toward the Buckler family by the end of the nineteenth century.",
             "events": [
+                {
+                    "id": "1800s-family-overview",
+                    "year": "1800s",
+                    "side": "both",
+                    "title": "Victorian sources trace the shift toward the Bucklers",
+                    "summary": "Victorian-era maps and marriages documented in the blog show the Williams holding transitioning toward the Buckler family by the end of the nineteenth century.",
+                    "context": [
+                        "Tithe surveys and valuation maps keep the Williams name on Great House Farm throughout the nineteenth century.",
+                        "Late-century marriages link the holding to the Bucklers who continued the family's stewardship."
+                    ]
+                },
                 {
                     "id": "1840s-tithe-map",
                     "label": "5",
@@ -229,8 +259,18 @@
             "id": "century-4",
             "title": "4th century (years 300\u2013399)",
             "range": "Years 300\u2013399 of occupation \u2022 1900\u20131999",
-            "summary": "Twentieth-century tenancies, litigation, and community advocacy culminated in the Court of Appeal decision in <em>BP v Buckler</em> (1987).",
             "events": [
+                {
+                    "id": "1900s-family-overview",
+                    "year": "1980s",
+                    "side": "both",
+                    "title": "Twentieth-century battles end in the Court of Appeal",
+                    "summary": "Twentieth-century tenancies, litigation, and community advocacy culminated in the Court of Appeal decision in <em>BP v Buckler</em> (1987).",
+                    "context": [
+                        "Generations of Williams and Buckler occupation carried into modern tenancy disputes with corporate landlords.",
+                        "Campaigners and courts focused on that history when the appeal judgment arrived in 1987."
+                    ]
+                },
                 {
                     "id": "1916-tenancy",
                     "label": "7",
