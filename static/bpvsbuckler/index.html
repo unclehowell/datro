@@ -8,6 +8,8 @@
   <style>
     :root {
       color-scheme: light;
+      --timeline-center-width: 90px;
+      --timeline-gap: 24px;
     }
     .timeline {
       position: relative;
@@ -28,19 +30,27 @@
     .timeline-item {
       position: relative;
       width: 100%;
-      padding: 32px 0;
+      padding: 40px 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) var(--timeline-center-width) minmax(0, 1fr);
+      gap: var(--timeline-gap);
+      align-items: center;
     }
     .year-marker {
       background-color: #111827;
       color: #f9fafb;
       padding: 10px 24px;
       border-radius: 9999px;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       font-weight: 700;
       position: relative;
       z-index: 1;
       letter-spacing: 0.05em;
       box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.45);
+      grid-column: 2;
+      justify-self: center;
     }
     .year-marker::before {
       content: '';
@@ -55,13 +65,49 @@
       z-index: -1;
       box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.15);
     }
+    .info-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff;
+      font-size: 1.4rem;
+      box-shadow: 0 16px 36px -20px rgba(29, 78, 216, 0.65);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .info-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 38px -22px rgba(29, 78, 216, 0.65);
+    }
+    .info-button:focus-visible {
+      outline: 3px solid rgba(59, 130, 246, 0.45);
+      outline-offset: 3px;
+    }
+    .intro-panel {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 18px;
+      border: 1px solid rgba(59, 130, 246, 0.16);
+      box-shadow: 0 28px 48px -28px rgba(15, 23, 42, 0.55);
+      padding: 28px 32px;
+      margin: 28px auto 0;
+      max-width: 720px;
+      text-align: left;
+    }
+    .intro-panel h2 {
+      margin-top: 0;
+      margin-bottom: 18px;
+      color: #1e3a8a;
+    }
     .timeline-content {
-      position: absolute;
-      width: 36%;
+      position: relative;
+      width: 100%;
+      max-width: 100%;
       padding: 18px 22px;
       border-radius: 18px;
       box-shadow: 0 20px 35px -18px rgba(15, 23, 42, 0.45);
-      top: 24px;
       font-size: 1rem;
       text-align: left;
       display: flex;
@@ -74,25 +120,48 @@
       box-shadow: 0 25px 45px -20px rgba(15, 23, 42, 0.55);
     }
     .timeline-content.buckler {
-      left: 6%;
+      grid-column: 1;
+      justify-self: end;
       background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);
       border-left: 4px solid #10b981;
       color: #065f46;
     }
     .timeline-content.bp {
-      right: 6%;
+      grid-column: 3;
+      justify-self: start;
       background: linear-gradient(135deg, #fee2e2 0%, #fff1f2 100%);
       border-right: 4px solid #ef4444;
       color: #7f1d1d;
     }
     .timeline-content.both {
-      left: 50%;
-      transform: translateX(-50%);
-      width: 70%;
+      grid-column: 1 / span 3;
+      justify-self: center;
+      width: min(720px, 100%);
       background: linear-gradient(135deg, #e0e7ff 0%, #eef2ff 100%);
       border-left: 4px solid #4338ca;
       border-right: 4px solid #4338ca;
       color: #1e3a8a;
+    }
+    .timeline-content.both::after {
+      display: none;
+    }
+    .timeline-content.buckler::after,
+    .timeline-content.bp::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: calc(var(--timeline-gap) + var(--timeline-center-width) / 2);
+      height: 2px;
+      background: linear-gradient(90deg, rgba(59, 130, 246, 0.65), rgba(59, 130, 246, 0));
+      pointer-events: none;
+    }
+    .timeline-content.buckler::after {
+      right: calc(-1 * (var(--timeline-gap) + var(--timeline-center-width) / 2));
+    }
+    .timeline-content.bp::after {
+      left: calc(-1 * (var(--timeline-gap) + var(--timeline-center-width) / 2));
+      background: linear-gradient(90deg, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.65));
     }
     .event-label {
       align-self: flex-start;
@@ -248,23 +317,34 @@
       font-size: 1.1rem;
     }
     @media (max-width: 900px) {
+      :root {
+        --timeline-center-width: 0px;
+        --timeline-gap: 18px;
+      }
+      .timeline {
+        padding-left: 12px;
+      }
       .timeline::before {
-        left: 24px;
+        left: 18px;
       }
       .timeline-item {
-        padding-left: 60px;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 28px 0 28px 24px;
       }
       .year-marker {
-        margin-left: 24px;
+        grid-column: 1;
+        justify-self: flex-start;
+        margin: 0;
       }
       .timeline-content,
       .timeline-content.both {
-        position: relative;
-        width: calc(100% - 40px);
-        left: 0 !important;
-        right: 0 !important;
-        transform: none !important;
-        margin-top: 18px;
+        grid-column: 1;
+        justify-self: stretch !important;
+        width: 100%;
+      }
+      .timeline-content::after {
+        display: none;
       }
       .timeline-content {
         border-left-width: 5px;
@@ -285,16 +365,33 @@
       .evidence-grid {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       }
+      .intro-panel {
+        padding: 22px 20px;
+      }
+      .info-button {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
 <body class="bg-gray-100 font-sans">
   <div class="container mx-auto px-4 py-10">
     <header class="text-center">
-      <h1 id="case-title" class="text-4xl md:text-5xl font-extrabold text-gray-800 tracking-tight">BP vs Buckler</h1>
+      <div class="flex items-center justify-center gap-3">
+        <h1 id="case-title" class="text-4xl md:text-5xl font-extrabold text-gray-800 tracking-tight">BP vs Buckler</h1>
+        <button id="intro-toggle" class="info-button" type="button" aria-expanded="false" aria-controls="intro-panel" title="About this timeline">
+          <span aria-hidden="true">ℹ️</span>
+          <span class="sr-only">Toggle introduction</span>
+        </button>
+      </div>
       <p id="case-subtitle" class="text-lg md:text-xl text-gray-600 mt-3 max-w-3xl mx-auto">Mapping the chronology of Great House Farm</p>
-      <div id="case-intro" class="mt-6 max-w-4xl mx-auto text-gray-700 space-y-4 text-base leading-relaxed"></div>
-      <div id="key-themes" class="mt-10 grid gap-6 md:grid-cols-2"></div>
+      <div id="intro-panel" class="intro-panel hidden" aria-hidden="true" tabindex="-1">
+        <h2 class="text-2xl font-semibold">About this timeline</h2>
+        <div id="case-intro" class="space-y-4 text-base leading-relaxed text-gray-700"></div>
+        <div id="key-themes" class="mt-6 grid gap-6 md:grid-cols-2 text-gray-700"></div>
+      </div>
       <div class="mt-10 flex flex-wrap justify-center gap-4" id="filter-buttons">
         <button id="filter-buckler" class="filter-button bg-green-500 text-white px-4 py-2 rounded-full shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-green-600" type="button">Buckler account</button>
         <button id="filter-both" class="filter-button bg-blue-500 text-white px-4 py-2 rounded-full shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600" type="button">Combined timeline</button>
@@ -341,6 +438,8 @@
       const emptyState = document.getElementById('timeline-empty');
       const caseTitle = document.getElementById('case-title');
       const caseSubtitle = document.getElementById('case-subtitle');
+      const introToggle = document.getElementById('intro-toggle');
+      const introPanel = document.getElementById('intro-panel');
       const caseIntro = document.getElementById('case-intro');
       const keyThemes = document.getElementById('key-themes');
       const furtherResearch = document.getElementById('further-research');
@@ -469,16 +568,22 @@
         if (data.caseSubtitle) {
           caseSubtitle.innerHTML = data.caseSubtitle;
         }
-        if (Array.isArray(data.introduction)) {
-          caseIntro.innerHTML = '';
+        const hasIntro = Array.isArray(data.introduction) && data.introduction.length;
+        caseIntro.innerHTML = '';
+        if (hasIntro) {
           data.introduction.forEach(paragraph => {
             const p = document.createElement('p');
             p.innerHTML = paragraph;
             caseIntro.appendChild(p);
           });
+          caseIntro.classList.remove('hidden');
+        } else {
+          caseIntro.classList.add('hidden');
         }
-        if (Array.isArray(data.keyThemes) && data.keyThemes.length) {
-          keyThemes.innerHTML = '';
+
+        const hasThemes = Array.isArray(data.keyThemes) && data.keyThemes.length;
+        keyThemes.innerHTML = '';
+        if (hasThemes) {
           data.keyThemes.forEach(theme => {
             const card = document.createElement('div');
             card.className = 'bg-white/80 rounded-2xl shadow-sm border border-gray-200 p-6 text-left backdrop-blur';
@@ -504,6 +609,15 @@
           keyThemes.classList.remove('hidden');
         } else {
           keyThemes.classList.add('hidden');
+        }
+
+        if (introPanel && introToggle) {
+          const hasPanelContent = hasIntro || hasThemes;
+          introPanel.classList.add('hidden');
+          introPanel.setAttribute('aria-hidden', 'true');
+          introToggle.setAttribute('aria-expanded', 'false');
+          introToggle.setAttribute('title', 'About this timeline');
+          introToggle.classList.toggle('hidden', !hasPanelContent);
         }
         if (Array.isArray(data.furtherResearch) && data.furtherResearch.length) {
           furtherResearch.innerHTML = '';
@@ -639,6 +753,21 @@
       Object.entries(filterButtons).forEach(([key, button]) => {
         button.addEventListener('click', () => setFilter(key));
       });
+
+      if (introToggle && introPanel) {
+        introToggle.addEventListener('click', () => {
+          const isExpanded = introToggle.getAttribute('aria-expanded') === 'true';
+          const nextState = !isExpanded;
+          introToggle.setAttribute('aria-expanded', String(nextState));
+          introPanel.classList.toggle('hidden', !nextState);
+          introPanel.setAttribute('aria-hidden', nextState ? 'false' : 'true');
+          introToggle.setAttribute('title', nextState ? 'Hide timeline introduction' : 'About this timeline');
+          if (nextState) {
+            introPanel.focus();
+            introPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      }
 
       fetch('data/timeline.json')
         .then(response => {
