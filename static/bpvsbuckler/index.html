@@ -3,20 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buckler Family Land Dispute Timeline</title>
+  <title>BP vs Buckler Evidence Timeline</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    :root {
+      color-scheme: light;
+    }
     .timeline {
       position: relative;
-      max-width: 800px;
+      max-width: 960px;
       margin: 0 auto;
-      padding: 20px 0;
+      padding: 24px 0 48px;
     }
     .timeline::before {
       content: '';
       position: absolute;
       width: 6px;
-      background-color: #4b5563;
+      background: linear-gradient(180deg, #1f2937 0%, #3b82f6 100%);
       top: 0;
       bottom: 0;
       left: 50%;
@@ -25,75 +28,154 @@
     .timeline-item {
       position: relative;
       width: 100%;
-      padding: 20px 0;
-      text-align: center;
+      padding: 32px 0;
     }
     .year-marker {
-      background-color: #1f2937;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 20px;
+      background-color: #111827;
+      color: #f9fafb;
+      padding: 10px 24px;
+      border-radius: 9999px;
       display: inline-block;
-      font-weight: bold;
+      font-weight: 700;
       position: relative;
       z-index: 1;
+      letter-spacing: 0.05em;
+      box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.45);
     }
     .year-marker::before {
       content: '';
       position: absolute;
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       background-color: #3b82f6;
       border-radius: 50%;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: -1;
+      box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.15);
     }
     .timeline-content {
       position: absolute;
-      width: 35%;
-      padding: 10px;
-      border-radius: 8px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-      top: 10px;
-      font-size: 1.2rem;
-      text-align: center;
-      cursor: pointer;
+      width: 36%;
+      padding: 18px 22px;
+      border-radius: 18px;
+      box-shadow: 0 20px 35px -18px rgba(15, 23, 42, 0.45);
+      top: 24px;
+      font-size: 1rem;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .timeline-content:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 25px 45px -20px rgba(15, 23, 42, 0.55);
     }
     .timeline-content.buckler {
-      left: 5%;
-      background-color: #d1fae5;
-      color: #1f2937;
+      left: 6%;
+      background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);
+      border-left: 4px solid #10b981;
+      color: #065f46;
     }
     .timeline-content.bp {
-      right: 5%;
-      background-color: #fee2e2;
-      color: #1f2937;
+      right: 6%;
+      background: linear-gradient(135deg, #fee2e2 0%, #fff1f2 100%);
+      border-right: 4px solid #ef4444;
+      color: #7f1d1d;
     }
     .timeline-content.both {
+      left: 50%;
+      transform: translateX(-50%);
       width: 70%;
-      left: 15%;
-      background-color: #e0e7ff;
+      background: linear-gradient(135deg, #e0e7ff 0%, #eef2ff 100%);
+      border-left: 4px solid #4338ca;
+      border-right: 4px solid #4338ca;
+      color: #1e3a8a;
+    }
+    .event-label {
+      align-self: flex-start;
+      background-color: rgba(17, 24, 39, 0.1);
+      border-radius: 9999px;
+      padding: 4px 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .event-summary {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: rgba(17, 24, 39, 0.85);
+    }
+    .event-context {
+      list-style: disc;
+      padding-left: 1.2rem;
+      margin: 0;
+      color: rgba(17, 24, 39, 0.8);
+      display: grid;
+      gap: 0.35rem;
+      font-size: 0.95rem;
+    }
+    .event-context li::marker {
+      color: rgba(59, 130, 246, 0.6);
+    }
+    .evidence-section {
+      background-color: rgba(255, 255, 255, 0.45);
+      border-radius: 14px;
+      padding: 12px 14px;
+      backdrop-filter: blur(4px);
+    }
+    .evidence-heading {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(55, 65, 81, 0.7);
+      margin-bottom: 8px;
+    }
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px;
+    }
+    .evidence-tile {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(15, 23, 42, 0.1);
+      background-color: rgba(255, 255, 255, 0.8);
       color: #1f2937;
+      font-size: 0.9rem;
+      text-align: left;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+      cursor: pointer;
     }
-    .timeline-content.buckler::before {
-      content: '';
-      position: absolute;
-      top: 15px;
-      right: -10px;
-      border-left: 10px solid #d1fae5;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
+    .evidence-tile:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 20px -18px rgba(17, 24, 39, 0.6);
+      border-color: rgba(59, 130, 246, 0.35);
     }
-    .timeline-content.bp::before {
-      content: '';
-      position: absolute;
-      top: 15px;
-      left: -10px;
-      border-right: 10px solid #fee2e2;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
+    .evidence-icon {
+      font-size: 1.2rem;
+      line-height: 1;
+      width: 1.5rem;
+      flex-shrink: 0;
+    }
+    .filter-button {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .filter-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px -20px rgba(15, 23, 42, 0.6);
+    }
+    .legend-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 9999px;
+      display: inline-block;
     }
     .modal {
       display: none;
@@ -102,301 +184,480 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.5);
+      background-color: rgba(15, 23, 42, 0.55);
       z-index: 1000;
       justify-content: center;
       align-items: center;
+      padding: 20px;
+    }
+    .modal.active {
+      display: flex;
     }
     .modal-content {
-      background-color: white;
-      padding: 20px;
-      border-radius: 8px;
-      max-width: 500px;
-      width: 90%;
+      background-color: #ffffff;
+      padding: 28px 30px;
+      border-radius: 18px;
+      max-width: 640px;
+      width: 100%;
       position: relative;
+      box-shadow: 0 35px 50px -25px rgba(15, 23, 42, 0.55);
+      max-height: 90vh;
+      overflow-y: auto;
     }
     .modal-content h3 {
       margin-top: 0;
-      color: #1e40af;
+      color: #1e3a8a;
     }
     .close-btn {
       position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 1.5rem;
+      top: 14px;
+      right: 16px;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #1f2937;
       cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
     }
-    @media (max-width: 600px) {
+    .close-btn:hover {
+      color: #ef4444;
+    }
+    .modal iframe,
+    .modal object {
+      width: 100%;
+      min-height: 320px;
+      border: none;
+      border-radius: 12px;
+    }
+    .modal-actions a {
+      background-color: #2563eb;
+      color: #ffffff;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background-color 0.2s ease;
+    }
+    .modal-actions a:hover {
+      background-color: #1d4ed8;
+    }
+    #timeline-empty {
+      font-size: 1.1rem;
+    }
+    @media (max-width: 900px) {
       .timeline::before {
-        left: 20px;
+        left: 24px;
       }
       .timeline-item {
-        padding-left: 50px;
-        text-align: left;
+        padding-left: 60px;
       }
       .year-marker {
-        margin-left: 30px;
+        margin-left: 24px;
+      }
+      .timeline-content,
+      .timeline-content.both {
+        position: relative;
+        width: calc(100% - 40px);
+        left: 0 !important;
+        right: 0 !important;
+        transform: none !important;
+        margin-top: 18px;
       }
       .timeline-content {
-        width: 70%;
-        left: 50px !important;
-        right: auto !important;
+        border-left-width: 5px;
+        border-right-width: 0;
       }
-      .timeline-content.buckler::before,
-      .timeline-content.bp::before {
-        left: -10px !important;
-        border-right: 10px solid transparent !important;
-        border-left: 10px solid transparent !important;
-        border-bottom: 10px solid #d1fae5;
+      .timeline-content.bp {
+        border-left-color: #ef4444;
+        border-right-width: 0;
       }
-      .timeline-content.bp::before {
-        border-bottom: 10px solid #fee2e2;
+      .timeline-content.both {
+        border-right-width: 0;
+      }
+    }
+    @media (max-width: 540px) {
+      .timeline-content {
+        padding: 16px 18px;
+      }
+      .evidence-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       }
     }
   </style>
 </head>
 <body class="bg-gray-100 font-sans">
-  <div class="container mx-auto px-4 py-8">
-    <header class="text-center mb-12">
-      <h1 class="text-4xl font-bold text-gray-800">BP vs Buckler</h1>
-      <p class="text-lg text-gray-600 mt-2">This is to become the home of a chronology of the timeline of legal battle between BP and the Buckler Family of Great House Farm, Cardiff, Wales.</p>
-      <div class="mt-4 flex justify-center space-x-4">
-        <button id="filter-buckler" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Buckler's Account</button>
-        <button id="filter-both" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Both Accounts</button>
-        <button id="filter-bp" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">BP/UK Gov's Account</button>
+  <div class="container mx-auto px-4 py-10">
+    <header class="text-center">
+      <h1 id="case-title" class="text-4xl md:text-5xl font-extrabold text-gray-800 tracking-tight">BP vs Buckler</h1>
+      <p id="case-subtitle" class="text-lg md:text-xl text-gray-600 mt-3 max-w-3xl mx-auto">Mapping the chronology of Great House Farm</p>
+      <div id="case-intro" class="mt-6 max-w-4xl mx-auto text-gray-700 space-y-4 text-base leading-relaxed"></div>
+      <div id="key-themes" class="mt-10 grid gap-6 md:grid-cols-2"></div>
+      <div class="mt-10 flex flex-wrap justify-center gap-4" id="filter-buttons">
+        <button id="filter-buckler" class="filter-button bg-green-500 text-white px-4 py-2 rounded-full shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-green-600" type="button">Buckler account</button>
+        <button id="filter-both" class="filter-button bg-blue-500 text-white px-4 py-2 rounded-full shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600" type="button">Combined timeline</button>
+        <button id="filter-bp" class="filter-button bg-red-500 text-white px-4 py-2 rounded-full shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-red-600" type="button">BP / official record</button>
+      </div>
+      <div class="mt-5 flex flex-wrap justify-center gap-6 text-sm text-gray-600">
+        <span class="flex items-center gap-2"><span class="legend-dot" style="background: linear-gradient(135deg,#d1fae5,#ecfdf5);"></span>Buckler family narrative</span>
+        <span class="flex items-center gap-2"><span class="legend-dot" style="background: linear-gradient(135deg,#e0e7ff,#eef2ff);"></span>Shared / contextual</span>
+        <span class="flex items-center gap-2"><span class="legend-dot" style="background: linear-gradient(135deg,#fee2e2,#fff1f2);"></span>BP &amp; official sources</span>
       </div>
     </header>
 
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="year-marker">1916</div>
-        <div class="timeline-content buckler" data-year="1916" data-side="buckler">
-          <p>A</p>
-          <div class="full-text hidden">
-            <h3>February 1916</h3>
-            <p>The Marquis of Bute grants a yearly agricultural tenancy of Great House Farm, including the farmhouse and garden, to John Williams, maternal grandfather of William Buckler and father of Mary Buckler (née Williams).</p>
-          </div>
-        </div>
-      </div>
+    <section class="mt-14">
+      <div id="timeline-loading" class="text-center text-gray-500 text-lg">Loading timeline data…</div>
+      <div class="timeline" id="timeline" aria-live="polite"></div>
+      <div id="timeline-empty" class="hidden text-center text-gray-500 mt-6">No timeline entries match the selected perspective.</div>
+    </section>
 
-      <div class="timeline-item">
-        <div class="year-marker">1938</div>
-        <div class="timeline-content both" data-year="1938" data-side="both">
-          <p>B</p>
-          <div class="full-text hidden">
-            <h3>1938</h3>
-            <p>The reversion of the tenancy is conveyed to Western Ground Rents Ltd., making them the freeholder. Frederick Buckler, Mary’s husband, succeeds to the periodic tenancy, protected under the Agricultural Holdings Act 1948.</p>
-          </div>
-        </div>
-      </div>
+    <section id="research" class="mt-16">
+      <h2 class="text-3xl font-semibold text-gray-800 text-center">Further research leads</h2>
+      <div id="further-research" class="mt-8 grid gap-6 md:grid-cols-2"></div>
+    </section>
 
-      <div class="timeline-item">
-        <div class="year-marker">1953</div>
-        <div class="timeline-content buckler" data-year="1953" data-side="buckler">
-          <p>C</p>
-          <div class="full-text hidden">
-            <h3>1953</h3>
-            <p>Last recorded rent payment by Frederick Buckler, made under a court judgment for arrears. No further rent is paid for the farmhouse and garden, setting the stage for adverse possession claims.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="year-marker">1955</div>
-        <div class="timeline-content bp" data-year="1955" data-side="bp">
-          <p>D</p>
-          <div class="full-text hidden">
-            <h3>February 2, 1955</h3>
-            <p>Western Ground Rents serves a notice to quit, terminating the tenancy. They initiate summary possession proceedings under Order 14, obtaining a possession order (unenforced).</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="year-marker">1959</div>
-        <div class="timeline-content buckler" data-year="1959" data-side="buckler">
-          <p>E</p>
-          <div class="full-text hidden">
-            <h3>circa 1959</h3>
-            <p>Mary Buckler develops a belief that she holds ownership title to Great House Farm through her grandfather, asserting undocumented inherited rights. She rejects Western Ground Rents’ tenancy offers, viewing them as unnecessary.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="year-marker">1962</div>
-        <div class="timeline-content bp" data-year="1962" data-side="bp">
-          <p>F</p>
-          <div class="full-text hidden">
-            <h3>1962</h3>
-            <p>Western Ground Rents sues Frederick and Mary Buckler for possession of the farmhouse and garden, plus mesne profits since 1955. A possession order is granted but not enforced, partly due to Mary’s disability (recent leg amputation).</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="year-marker">1963</div>
-        <div class="timeline-content bp" data-year="1963" data-side="bp">
-          <p>G</p>
-          <div class="full-text hidden">
-            <h3>June 1963</h3>
-            <p>A suspended committal order is issued against Frederick Buckler for non-compliance with the 1955 possession order, but enforcement is delayed.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="year-marker">1965</div>
-        <div class="timeline-content buckler" data-year="1965" data-side="buckler">
-          <p>H</p>
-          <div class="full-text hidden">
-            <h3>March 1965</h3>
-            <p>Mary Buckler rejects another tenancy offer from Western Ground Rents, insisting on her ownership claim. Frederick complains the offer wasn’t extended to him, but defers to Mary’s stance.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="year-marker">1965–1967</div>
-        <div class="timeline-content buckler" data-year="1965-1967" data-side="buckler">
-          <p>I</p>
-          <div class="full-text hidden">
-            <h3>1965–1967</h3>
-            <p>Frederick Buckler dies, leaving Mary and their children, including William Buckler, in possession of the farmhouse and garden. Mary’s belief in her title continues to drive the family’s resistance.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="year-marker">1969</div>
-        <div class="timeline-content bp" data-year="1969" data-side="bp">
-          <p>J</p>
-          <div class="full-text hidden">
-            <h3>December 1969</h3>
-            <p>Western Ground Rents sells Great House Farm, including the disputed property, to BP Pension Trust Ltd. The sale includes the benefit of prior possession orders.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="year-marker">1974</div>
-        <div class="timeline-content bp" data-year="1974" data-side="bp">
-          <p>K</p>
-          <div class="full-text hidden">
-            <h3>1974</h3>
-            <p>BP Pension Trust Ltd. initiates possession proceedings in Cardiff County Court against Mary Buckler (sued as Mrs. Williams) and family. The case is stayed amid publicity over Mary’s disability. BP sends letters offering rent-free occupation, later deemed a unilateral license.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="year-marker">1977</div>
-        <div class="timeline-content buckler" data-year="1977" data-side="buckler">
-          <p>L</p>
-          <div class="full-text hidden">
-            <h3>1977</h3>
-            <p>Mary Buckler dies. William Buckler continues occupation, defending the adverse possession claim based on his mother’s belief and the family’s uninterrupted possession.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="year-marker">1987</div>
-        <div class="timeline-content bp" data-year="1987" data-side="bp">
-          <p>M</p>
-          <div class="full-text hidden">
-            <h3>1987</h3>
-            <p>The Court of Appeal in <em>BP Properties Ltd v Buckler</em> [1987] EWCA Civ 2 rules against William Buckler, finding that BP’s 1974 letters created an unrepudiated license, interrupting the adverse possession period. The claim is dismissed.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="year-marker">Archival Note</div>
-        <div class="timeline-content both" data-year="archival" data-side="both">
-          <p>N</p>
-          <div class="full-text hidden">
-            <h3>Archival Note: J 90 Series</h3>
-            <p>Exhibits from the 1955–1963 High Court equity suits (e.g., tenancy documents, correspondence) may be held in The National Archives at Kew under series J 90, which stores evidence from Chancery Division cases post-1875. Search the Discovery catalogue or visit Kew for access.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="modal" class="modal">
-      <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <div id="modal-text"></div>
-      </div>
-    </div>
-
-    <footer class="text-center mt-12 text-gray-600">
-      <p>Created by Grok, powered by xAI | Data sourced from <em>BP Properties Ltd v Buckler</em> [1987] EWCA Civ 2 and related records.</p>
+    <footer class="text-center mt-16 text-gray-600">
+      <p>Curated by Grok | Data consolidated from appellate judgments, archival catalogues, and contemporary reporting.</p>
     </footer>
   </div>
 
-  <script>
-    // Toggle filter functionality
-    const filterBoth = document.getElementById('filter-both');
-    const filterBuckler = document.getElementById('filter-buckler');
-    const filterBp = document.getElementById('filter-bp');
-    const timelineContents = document.querySelectorAll('.timeline-content');
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close-btn" type="button" aria-label="Close evidence panel">&times;</button>
+      <h3 id="modal-title" class="text-2xl font-semibold"></h3>
+      <p id="modal-source" class="text-sm text-blue-700 mt-2"></p>
+      <p id="modal-description" class="text-base text-gray-700 mt-4"></p>
+      <div id="modal-body" class="mt-4 space-y-3 text-gray-700"></div>
+      <div id="modal-actions" class="modal-actions mt-6"></div>
+    </div>
+  </div>
 
-    function setFilter(side) {
-      timelineContents.forEach(content => {
-        if (side === 'both') {
-          content.classList.remove('hidden');
+  <script>
+    (function () {
+      const timelineContainer = document.getElementById('timeline');
+      const loadingMessage = document.getElementById('timeline-loading');
+      const emptyState = document.getElementById('timeline-empty');
+      const caseTitle = document.getElementById('case-title');
+      const caseSubtitle = document.getElementById('case-subtitle');
+      const caseIntro = document.getElementById('case-intro');
+      const keyThemes = document.getElementById('key-themes');
+      const furtherResearch = document.getElementById('further-research');
+      const researchSection = document.getElementById('research');
+      const filterButtons = {
+        buckler: document.getElementById('filter-buckler'),
+        both: document.getElementById('filter-both'),
+        bp: document.getElementById('filter-bp')
+      };
+      const modal = document.getElementById('modal');
+      const modalTitle = document.getElementById('modal-title');
+      const modalSource = document.getElementById('modal-source');
+      const modalDescription = document.getElementById('modal-description');
+      const modalBody = document.getElementById('modal-body');
+      const modalActions = document.getElementById('modal-actions');
+      const closeBtn = document.querySelector('.close-btn');
+
+      const evidenceIndex = new Map();
+      let timelineItems = [];
+
+      function iconForType(type) {
+        const icons = {
+          document: '📄',
+          archive: '🗂️',
+          press: '📰',
+          hansard: '🏛️',
+          transcript: '📝',
+          book: '📚',
+          report: '📑',
+          video: '🎬',
+          audio: '🎧',
+          image: '🖼️'
+        };
+        return icons[type] || '🔍';
+      }
+
+      function createEvidenceTile(evidence, eventId) {
+        evidenceIndex.set(evidence.id, { ...evidence, eventId });
+        const button = document.createElement('button');
+        button.className = 'evidence-tile';
+        button.type = 'button';
+        button.dataset.evidenceId = evidence.id;
+        button.innerHTML = `
+          <span class="evidence-icon">${iconForType(evidence.type)}</span>
+          <span>${evidence.title}</span>
+        `;
+        button.addEventListener('click', () => openEvidence(evidence.id));
+        return button;
+      }
+
+      function renderTimeline(events) {
+        timelineContainer.innerHTML = '';
+        evidenceIndex.clear();
+        timelineItems = [];
+
+        events.forEach(event => {
+          const timelineItem = document.createElement('div');
+          timelineItem.className = 'timeline-item';
+          timelineItem.dataset.side = event.side;
+
+          const yearMarker = document.createElement('div');
+          yearMarker.className = 'year-marker';
+          yearMarker.innerHTML = event.year;
+          timelineItem.appendChild(yearMarker);
+
+          const timelineContent = document.createElement('div');
+          timelineContent.className = `timeline-content ${event.side}`;
+          timelineContent.dataset.side = event.side;
+          timelineContent.dataset.year = event.year;
+          timelineContent.dataset.eventId = event.id;
+
+          const label = document.createElement('div');
+          label.className = 'event-label';
+          label.textContent = event.label;
+          timelineContent.appendChild(label);
+
+          const title = document.createElement('h3');
+          title.className = 'text-xl font-semibold';
+          title.textContent = event.title;
+          timelineContent.appendChild(title);
+
+          const summary = document.createElement('p');
+          summary.className = 'event-summary';
+          summary.textContent = event.summary;
+          timelineContent.appendChild(summary);
+
+          if (Array.isArray(event.context) && event.context.length) {
+            const contextList = document.createElement('ul');
+            contextList.className = 'event-context';
+            event.context.forEach(line => {
+              const item = document.createElement('li');
+              item.textContent = line;
+              contextList.appendChild(item);
+            });
+            timelineContent.appendChild(contextList);
+          }
+
+          if (Array.isArray(event.evidence) && event.evidence.length) {
+            const evidenceSection = document.createElement('div');
+            evidenceSection.className = 'evidence-section';
+
+            const heading = document.createElement('div');
+            heading.className = 'evidence-heading';
+            heading.textContent = 'Evidence & records';
+            evidenceSection.appendChild(heading);
+
+            const grid = document.createElement('div');
+            grid.className = 'evidence-grid';
+            event.evidence.forEach(ev => {
+              grid.appendChild(createEvidenceTile(ev, event.id));
+            });
+            evidenceSection.appendChild(grid);
+            timelineContent.appendChild(evidenceSection);
+          }
+
+          timelineItem.appendChild(timelineContent);
+          timelineContainer.appendChild(timelineItem);
+          timelineItems.push(timelineItem);
+        });
+      }
+
+      function renderIntro(data) {
+        if (data.caseTitle) {
+          caseTitle.innerHTML = data.caseTitle;
+        }
+        if (data.caseSubtitle) {
+          caseSubtitle.innerHTML = data.caseSubtitle;
+        }
+        if (Array.isArray(data.introduction)) {
+          caseIntro.innerHTML = '';
+          data.introduction.forEach(paragraph => {
+            const p = document.createElement('p');
+            p.innerHTML = paragraph;
+            caseIntro.appendChild(p);
+          });
+        }
+        if (Array.isArray(data.keyThemes) && data.keyThemes.length) {
+          keyThemes.innerHTML = '';
+          data.keyThemes.forEach(theme => {
+            const card = document.createElement('div');
+            card.className = 'bg-white/80 rounded-2xl shadow-sm border border-gray-200 p-6 text-left backdrop-blur';
+
+            const heading = document.createElement('h3');
+            heading.className = 'text-lg font-semibold text-gray-800';
+            heading.textContent = theme.title;
+            card.appendChild(heading);
+
+            if (Array.isArray(theme.items)) {
+              const list = document.createElement('ul');
+              list.className = 'mt-3 space-y-2 text-gray-700 text-sm list-disc list-inside';
+              theme.items.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                list.appendChild(li);
+              });
+              card.appendChild(list);
+            }
+
+            keyThemes.appendChild(card);
+          });
+          keyThemes.classList.remove('hidden');
         } else {
-          content.classList.toggle('hidden', content.dataset.side !== side && content.dataset.side !== 'both');
+          keyThemes.classList.add('hidden');
+        }
+        if (Array.isArray(data.furtherResearch) && data.furtherResearch.length) {
+          furtherResearch.innerHTML = '';
+          data.furtherResearch.forEach(section => {
+            const card = document.createElement('div');
+            card.className = 'bg-white/80 rounded-2xl shadow-sm border border-gray-200 p-6 text-left backdrop-blur';
+
+            const title = document.createElement('h3');
+            title.className = 'text-xl font-semibold text-gray-800';
+            title.textContent = section.heading;
+            card.appendChild(title);
+
+            if (Array.isArray(section.items)) {
+              const list = document.createElement('ul');
+              list.className = 'mt-3 space-y-2 text-gray-700 list-disc list-inside';
+              section.items.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = item;
+                list.appendChild(li);
+              });
+              card.appendChild(list);
+            }
+
+            furtherResearch.appendChild(card);
+          });
+          researchSection.classList.remove('hidden');
+        }
+        if (!Array.isArray(data.furtherResearch) || data.furtherResearch.length === 0) {
+          furtherResearch.innerHTML = '';
+          researchSection.classList.add('hidden');
+        }
+      }
+
+      function updateFilterButtons(active) {
+        Object.entries(filterButtons).forEach(([key, button]) => {
+          const isActive = key === active;
+          button.classList.toggle('ring-4', isActive);
+          button.classList.toggle('ring-offset-2', isActive);
+          button.classList.toggle('ring-gray-200', isActive);
+          button.classList.toggle('shadow-lg', isActive);
+          button.setAttribute('aria-pressed', isActive);
+        });
+      }
+
+      function setFilter(side) {
+        let visibleCount = 0;
+        timelineItems.forEach(item => {
+          const itemSide = item.dataset.side;
+          const matches = side === 'both' || itemSide === side || itemSide === 'both';
+          item.classList.toggle('hidden', !matches);
+          if (matches) {
+            visibleCount += 1;
+          }
+        });
+        emptyState.classList.toggle('hidden', visibleCount > 0);
+        updateFilterButtons(side);
+      }
+
+      function openEvidence(evidenceId) {
+        const evidence = evidenceIndex.get(evidenceId);
+        if (!evidence) {
+          return;
+        }
+        modalTitle.textContent = evidence.title;
+        if (evidence.source && evidence.source.name) {
+          if (evidence.source.url) {
+            modalSource.innerHTML = `Source: <a class="underline decoration-dotted" href="${evidence.source.url}" target="_blank" rel="noopener">${evidence.source.name}</a>`;
+          } else {
+            modalSource.textContent = `Source: ${evidence.source.name}`;
+          }
+        } else {
+          modalSource.textContent = '';
+        }
+        modalDescription.textContent = evidence.description || '';
+
+        modalBody.innerHTML = '';
+        if (Array.isArray(evidence.content)) {
+          evidence.content.forEach(paragraph => {
+            const p = document.createElement('p');
+            p.textContent = paragraph;
+            modalBody.appendChild(p);
+          });
+        }
+
+        modalActions.innerHTML = '';
+        if (evidence.embed && evidence.embed.type) {
+          if (evidence.embed.type === 'iframe' && evidence.embed.src) {
+            const iframe = document.createElement('iframe');
+            iframe.src = evidence.embed.src;
+            iframe.loading = 'lazy';
+            iframe.title = evidence.embed.title || evidence.title;
+            modalBody.appendChild(iframe);
+          } else if (evidence.embed.type === 'object' && evidence.embed.src) {
+            const object = document.createElement('object');
+            object.data = evidence.embed.src;
+            object.type = evidence.embed.mime || 'application/pdf';
+            modalBody.appendChild(object);
+          }
+        }
+
+        if (evidence.source && evidence.source.url) {
+          const link = document.createElement('a');
+          link.href = evidence.source.url;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          link.innerHTML = 'Open source <span aria-hidden="true">↗</span>';
+          modalActions.appendChild(link);
+        }
+
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+          closeModal();
         }
       });
-      filterBoth.classList.toggle('bg-blue-700', side === 'both');
-      filterBoth.classList.toggle('bg-blue-500', side !== 'both');
-      filterBuckler.classList.toggle('bg-green-700', side === 'buckler');
-      filterBuckler.classList.toggle('bg-green-500', side !== 'buckler');
-      filterBp.classList.toggle('bg-red-700', side === 'bp');
-      filterBp.classList.toggle('bg-red-500', side !== 'bp');
-    }
-
-    filterBoth.addEventListener('click', () => setFilter('both'));
-    filterBuckler.addEventListener('click', () => setFilter('buckler'));
-    filterBp.addEventListener('click', () => setFilter('bp'));
-
-    // Initialize with 'both' view
-    setFilter('both');
-
-    // Modal functionality
-    const modal = document.getElementById('modal');
-    const modalText = document.getElementById('modal-text');
-    const closeBtn = document.querySelector('.close-btn');
-
-    timelineContents.forEach(content => {
-      content.addEventListener('click', () => {
-        const fullText = content.querySelector('.full-text').innerHTML;
-        modalText.innerHTML = fullText;
-        modal.style.display = 'flex';
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.classList.contains('active')) {
+          closeModal();
+        }
       });
-    });
 
-    closeBtn.addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.style.display = 'none';
-      }
-    });
-
-    // Add hover effect to timeline content
-    timelineContents.forEach(content => {
-      content.addEventListener('mouseenter', () => {
-        content.classList.add('opacity-75');
+      Object.entries(filterButtons).forEach(([key, button]) => {
+        button.addEventListener('click', () => setFilter(key));
       });
-      content.addEventListener('mouseleave', () => {
-        content.classList.remove('opacity-75');
-      });
-    });
+
+      fetch('data/timeline.json')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to load timeline data');
+          }
+          return response.json();
+        })
+        .then(data => {
+          loadingMessage.classList.add('hidden');
+          renderIntro(data);
+          renderTimeline(data.events || []);
+          setFilter('both');
+        })
+        .catch(error => {
+          console.error(error);
+          loadingMessage.textContent = 'We could not load the timeline data. Please refresh the page.';
+        });
+    })();
   </script>
 </body>
 </html>
