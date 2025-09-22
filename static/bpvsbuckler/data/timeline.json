@@ -1,6 +1,6 @@
 {
     "caseTitle": "Great House Farm",
-    "caseSubtitle": "Four centuries of Williams and Buckler family occupation in Llandough, Vale of Glamorgan",
+    "caseSubtitle": "Occupied for centuries by the Williams/ Buckler family",
     "introduction": [
         "Great House Farm stands above the village of Llandough in the Vale of Glamorgan. Family history gathered in the 2012 blog post <em>The Great House Farm Story</em> traces the Williams line's arrival on the holding in the early seventeenth century and the farm's continuous stewardship through four centuries.",
         "The timeline arranges that story into four century-long arcs running along a single year spine. Each marker on the spine carries the year, while numbered bubbles to the left and right hold events drawn from family testimony, estate papers, and later litigation.",
@@ -35,10 +35,21 @@
     "centuries": [
         {
             "id": "century-1",
-            "title": "1st century (years 0\u201399)",
-            "range": "Years 0\u201399 of occupation \u2022 c. 1600\u20131699",
-            "summary": "Family narratives and estate notes place the Williams ancestors at Great House Farm throughout the Stuart era, laying the foundations for later Buckler claims.",
+            "title": "Seventeenth century",
+            "range": "1600–1699",
             "events": [
+                {
+                    "id": "1600s-family-overview",
+                    "year": "1600s",
+                    "side": "both",
+                    "title": "Williams stewardship anchors the family's later claims",
+                    "summary": "Family narratives and estate notes place the Williams ancestors at Great House Farm throughout the Stuart era, laying the foundations for later Buckler claims.",
+                    "context": [
+                        "The Great House Farm Story blog ties seventeenth-century estate notebooks to the Williams family's long possession.",
+                        "Those recollections explain why later Buckler arguments leaned on a continuous line of Williams occupation."
+                    ],
+                    "yearValue": 1650
+                },
                 {
                     "id": "1600s-williams-lease",
                     "label": "1",
@@ -56,7 +67,7 @@
                             "title": "\"The Great House Farm Story\" account of the first lease",
                             "type": "blog",
                             "source": {
-                                "name": "United Technocracy \u2013 The Great House Farm Story (2012)",
+                                "name": "United Technocracy – The Great House Farm Story (2012)",
                                 "url": "https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"
                             },
                             "description": "The blog recounts how early seventeenth-century estate papers and parish registers identify the Williams family as tenants of Great House Farm.",
@@ -65,7 +76,8 @@
                                 "The narrative emphasises the continuity of occupation that later underpinned the Buckler family's moral claim."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1600
                 },
                 {
                     "id": "1650s-farmstead-notes",
@@ -84,7 +96,7 @@
                             "title": "Blog extracts from seventeenth-century surveys",
                             "type": "blog",
                             "source": {
-                                "name": "United Technocracy \u2013 The Great House Farm Story (2012)",
+                                "name": "United Technocracy – The Great House Farm Story (2012)",
                                 "url": "https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"
                             },
                             "description": "Transcribed passages in the blog outline the farmhouse rooms, garden walls, and stock listed in mid-seventeenth-century estate memoranda.",
@@ -93,16 +105,30 @@
                                 "They provide qualitative context for later arguments about the family's equitable stake."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1655
                 }
-            ]
+            ],
+            "startYear": 1600,
+            "endYear": 1699
         },
         {
             "id": "century-2",
-            "title": "2nd century (years 100\u2013199)",
-            "range": "Years 100\u2013199 of occupation \u2022 1700\u20131799",
-            "summary": "Parish registers and estate correspondence cited in the blog show the Williams family maintaining possession across the eighteenth century.",
+            "title": "Eighteenth century",
+            "range": "1700–1799",
             "events": [
+                {
+                    "id": "1700s-family-overview",
+                    "year": "1700s",
+                    "side": "both",
+                    "title": "Eighteenth-century records confirm Williams continuity",
+                    "summary": "Parish registers and estate correspondence cited in the blog show the Williams family maintaining possession across the eighteenth century.",
+                    "context": [
+                        "St Dochdwy's registers and Bute estate letters reproduced in the blog chart successive Williams tenants.",
+                        "The paperwork demonstrates the unbroken occupation that later supported Buckler family claims."
+                    ],
+                    "yearValue": 1750
+                },
                 {
                     "id": "1700s-parish-registers",
                     "label": "3",
@@ -120,7 +146,7 @@
                             "title": "Blog transcription of eighteenth-century parish records",
                             "type": "blog",
                             "source": {
-                                "name": "United Technocracy \u2013 The Great House Farm Story (2012)",
+                                "name": "United Technocracy – The Great House Farm Story (2012)",
                                 "url": "https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"
                             },
                             "description": "The blog reproduces register entries connecting the Williams family to Great House Farm across the Georgian period.",
@@ -129,7 +155,8 @@
                                 "This genealogical continuity became part of the twentieth-century advocacy campaign."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1725
                 },
                 {
                     "id": "1790s-bute-renewal",
@@ -148,7 +175,7 @@
                             "title": "Blog summary of Bute estate letters",
                             "type": "blog",
                             "source": {
-                                "name": "United Technocracy \u2013 The Great House Farm Story (2012)",
+                                "name": "United Technocracy – The Great House Farm Story (2012)",
                                 "url": "https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"
                             },
                             "description": "Quoted passages in the blog describe estate clerks acknowledging the Williams family's rent payments and improvements in the 1790s.",
@@ -157,16 +184,30 @@
                                 "The material supports later claims of long possession when the dispute reached the courts."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1792
                 }
-            ]
+            ],
+            "startYear": 1700,
+            "endYear": 1799
         },
         {
             "id": "century-3",
-            "title": "3rd century (years 200\u2013299)",
-            "range": "Years 200\u2013299 of occupation \u2022 1800\u20131899",
-            "summary": "Victorian-era maps and marriages documented in the blog show the Williams holding transitioning toward the Buckler family by the end of the nineteenth century.",
+            "title": "Nineteenth century",
+            "range": "1800–1899",
             "events": [
+                {
+                    "id": "1800s-family-overview",
+                    "year": "1800s",
+                    "side": "both",
+                    "title": "Victorian sources trace the shift toward the Bucklers",
+                    "summary": "Victorian-era maps and marriages documented in the blog show the Williams holding transitioning toward the Buckler family by the end of the nineteenth century.",
+                    "context": [
+                        "Tithe surveys and valuation maps keep the Williams name on Great House Farm throughout the nineteenth century.",
+                        "Late-century marriages link the holding to the Bucklers who continued the family's stewardship."
+                    ],
+                    "yearValue": 1885
+                },
                 {
                     "id": "1840s-tithe-map",
                     "label": "5",
@@ -184,7 +225,7 @@
                             "title": "Blog references to tithe apportionment records",
                             "type": "blog",
                             "source": {
-                                "name": "United Technocracy \u2013 The Great House Farm Story (2012)",
+                                "name": "United Technocracy – The Great House Farm Story (2012)",
                                 "url": "https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"
                             },
                             "description": "The blog links to tithe and valuation extracts identifying the Williams family as occupiers of Great House Farm in the 1840s.",
@@ -193,7 +234,8 @@
                                 "They help explain the local perception that the family held an equitable stake in the property."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1845
                 },
                 {
                     "id": "1890s-buckler-marriage",
@@ -201,7 +243,7 @@
                     "year": "1890s",
                     "side": "buckler",
                     "title": "Williams heirs marry into the Buckler family",
-                    "summary": "The blog notes that late nineteenth-century marriages connected the Williams daughters to Frederick Buckler, setting the stage for Mary Buckler (n\u00e9e Williams) to claim inheritance of the farm.",
+                    "summary": "The blog notes that late nineteenth-century marriages connected the Williams daughters to Frederick Buckler, setting the stage for Mary Buckler (née Williams) to claim inheritance of the farm.",
                     "context": [
                         "Family papers describe dowry livestock and household furniture remaining on site as the surnames intertwined.",
                         "These alliances explain why Mary Buckler later insisted the property had always belonged to her branch of the Williams family."
@@ -209,10 +251,10 @@
                     "evidence": [
                         {
                             "id": "ev-1890s-blog-marriage",
-                            "title": "Blog narrative of the Williams\u2013Buckler marriage",
+                            "title": "Blog narrative of the Williams–Buckler marriage",
                             "type": "blog",
                             "source": {
-                                "name": "United Technocracy \u2013 The Great House Farm Story (2012)",
+                                "name": "United Technocracy – The Great House Farm Story (2012)",
                                 "url": "https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"
                             },
                             "description": "Marriage certificates and family reminiscences reproduced in the blog mark the union that brought the Buckler name to Great House Farm.",
@@ -221,23 +263,37 @@
                                 "It underpins Mary Buckler's later conviction that she inherited the property outright."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1892
                 }
-            ]
+            ],
+            "startYear": 1800,
+            "endYear": 1899
         },
         {
             "id": "century-4",
-            "title": "4th century (years 300\u2013399)",
-            "range": "Years 300\u2013399 of occupation \u2022 1900\u20131999",
-            "summary": "Twentieth-century tenancies, litigation, and community advocacy culminated in the Court of Appeal decision in <em>BP v Buckler</em> (1987).",
+            "title": "Twentieth century",
+            "range": "1900–1999",
             "events": [
+                {
+                    "id": "1900s-family-overview",
+                    "year": "1980s",
+                    "side": "both",
+                    "title": "Twentieth-century battles end in the Court of Appeal",
+                    "summary": "Twentieth-century tenancies, litigation, and community advocacy culminated in the Court of Appeal decision in <em>BP v Buckler</em> (1987).",
+                    "context": [
+                        "Generations of Williams and Buckler occupation carried into modern tenancy disputes with corporate landlords.",
+                        "Campaigners and courts focused on that history when the appeal judgment arrived in 1987."
+                    ],
+                    "yearValue": 1988
+                },
                 {
                     "id": "1916-tenancy",
                     "label": "7",
                     "year": "1916",
                     "side": "buckler",
                     "title": "Yearly tenancy granted to John Williams",
-                    "summary": "The Marquess of Bute lets Great House Farm, including its farmhouse and garden, to John Williams\u2014Mary Buckler's father\u2014on an agricultural yearly tenancy.",
+                    "summary": "The Marquess of Bute lets Great House Farm, including its farmhouse and garden, to John Williams—Mary Buckler's father—on an agricultural yearly tenancy.",
                     "context": [
                         "The Williams family moves into Great House Farm during the First World War. Rent is paid annually and the tenancy is protected by agricultural holdings legislation.",
                         "Mary Williams later marries Frederick Buckler; their son William is born and grows up on the holding."
@@ -245,10 +301,10 @@
                     "evidence": [
                         {
                             "id": "ev-1916-bailii-background",
-                            "title": "Court of Appeal background summary (paras 2\u20134)",
+                            "title": "Court of Appeal background summary (paras 2–4)",
                             "type": "document",
                             "source": {
-                                "name": "BAILII \u2013 BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+                                "name": "BAILII – BP Properties Ltd v Buckler [1987] EWCA Civ 2",
                                 "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
                             },
                             "description": "Slade LJ opens the judgment by recording the 1916 grant of the agricultural tenancy to John Williams and the family's uninterrupted possession thereafter.",
@@ -257,7 +313,8 @@
                                 "Those paragraphs establish the Bucklers' status as tenants rather than freeholders, a point that underpinned every later pleading."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1916
                 },
                 {
                     "id": "1938-reversion",
@@ -276,16 +333,17 @@
                             "title": "Corporate transfer recorded in the appeal judgment",
                             "type": "document",
                             "source": {
-                                "name": "BAILII \u2013 BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+                                "name": "BAILII – BP Properties Ltd v Buckler [1987] EWCA Civ 2",
                                 "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
                             },
-                            "description": "Paragraphs 5\u20137 of the judgment explain how Western Ground Rents obtained the reversion and acknowledged Frederick Buckler as the tenant of the farmhouse and curtilage.",
+                            "description": "Paragraphs 5–7 of the judgment explain how Western Ground Rents obtained the reversion and acknowledged Frederick Buckler as the tenant of the farmhouse and curtilage.",
                             "content": [
                                 "The Court of Appeal noted that the company's files treated Frederick as the lawful tenant after the 1938 conveyance.",
                                 "This corporate acquisition set up later procedural steps, including formal notices to quit and rent enforcement."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1938
                 },
                 {
                     "id": "1953-arrears",
@@ -304,7 +362,7 @@
                             "title": "Arrears litigation referenced by the Court of Appeal",
                             "type": "document",
                             "source": {
-                                "name": "BAILII \u2013 BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+                                "name": "BAILII – BP Properties Ltd v Buckler [1987] EWCA Civ 2",
                                 "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
                             },
                             "description": "The appeal judgment summarises the 1953 rent proceedings and records that no further payments were made thereafter.",
@@ -313,7 +371,8 @@
                                 "That finding was central to later arguments about whether possession became adverse."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1953
                 },
                 {
                     "id": "1955-notice",
@@ -332,10 +391,10 @@
                             "title": "Possession order outlined in the appeal record",
                             "type": "document",
                             "source": {
-                                "name": "BAILII \u2013 BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+                                "name": "BAILII – BP Properties Ltd v Buckler [1987] EWCA Civ 2",
                                 "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
                             },
-                            "description": "Paragraphs 8\u201311 recount the 1955 litigation, the grant of an Order 14 possession order, and the award of mesne profits against the Bucklers.",
+                            "description": "Paragraphs 8–11 recount the 1955 litigation, the grant of an Order 14 possession order, and the award of mesne profits against the Bucklers.",
                             "content": [
                                 "The Court of Appeal emphasised that a valid possession order already existed decades before BP entered the picture.",
                                 "While unenforced, the order demonstrated that the Bucklers' continued occupation was unlawful from 1955 onward."
@@ -346,7 +405,7 @@
                             "title": "High Court equity suit papers (J 90 series)",
                             "type": "archive",
                             "source": {
-                                "name": "The National Archives \u2013 Chancery Division case files (J 90)",
+                                "name": "The National Archives – Chancery Division case files (J 90)",
                                 "url": "https://discovery.nationalarchives.gov.uk/results/r?_ser=J+90&_sd=1955&_ed=1965&_q=Western+Ground+Rents"
                             },
                             "description": "Discovery catalogue entries list exhibits and pleadings from Western Ground Rents' possession suits against the Bucklers, including copies of the 1955 notice to quit and court order.",
@@ -355,7 +414,8 @@
                                 "The bundles include tenancy agreements, rent ledgers, and affidavits relied on in the summary judgment."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1955
                 },
                 {
                     "id": "1959-ownership-claim",
@@ -374,7 +434,7 @@
                             "title": "Mary Buckler's belief described by Slade LJ",
                             "type": "document",
                             "source": {
-                                "name": "BAILII \u2013 BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+                                "name": "BAILII – BP Properties Ltd v Buckler [1987] EWCA Civ 2",
                                 "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
                             },
                             "description": "The judgment records Mary Buckler's longstanding conviction that her family owned the premises outright, explaining why she rejected further tenancy agreements.",
@@ -383,7 +443,8 @@
                                 "Her stance influenced William Buckler's later approach to the litigation."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1959
                 },
                 {
                     "id": "1962-high-court",
@@ -402,7 +463,7 @@
                             "title": "Chronology of the 1962 High Court claim",
                             "type": "document",
                             "source": {
-                                "name": "BAILII \u2013 BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+                                "name": "BAILII – BP Properties Ltd v Buckler [1987] EWCA Civ 2",
                                 "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
                             },
                             "description": "Slade LJ outlines the relief sought in 1962 and the continued non-compliance that followed.",
@@ -411,7 +472,8 @@
                                 "Court officers documented Mary Buckler's recent leg amputation when considering enforcement."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1962
                 },
                 {
                     "id": "1963-committal",
@@ -430,7 +492,7 @@
                             "title": "Committal history narrated in the appellate judgment",
                             "type": "document",
                             "source": {
-                                "name": "BAILII \u2013 BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+                                "name": "BAILII – BP Properties Ltd v Buckler [1987] EWCA Civ 2",
                                 "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
                             },
                             "description": "The Court of Appeal notes that committal was contemplated but not pursued, highlighting the court's reluctance to jail the occupiers.",
@@ -439,7 +501,8 @@
                                 "Despite judicial warnings, the family held firm in the farmhouse."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1963
                 },
                 {
                     "id": "1965-tenancy-offer",
@@ -458,7 +521,7 @@
                             "title": "Correspondence reviewed by the Court of Appeal",
                             "type": "document",
                             "source": {
-                                "name": "BAILII \u2013 BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+                                "name": "BAILII – BP Properties Ltd v Buckler [1987] EWCA Civ 2",
                                 "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
                             },
                             "description": "Letters reproduced in the judgment reveal the 1965 tenancy proposal and Mary Buckler's refusal.",
@@ -467,15 +530,16 @@
                                 "Mary's rejection foreshadowed later disputes over whether she could ever be treated as a licensee."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1965
                 },
                 {
                     "id": "1967-frederick-death",
                     "label": "15",
-                    "year": "1965\u20131967",
+                    "year": "1965–1967",
                     "side": "buckler",
                     "title": "Frederick Buckler dies; Mary and children remain",
-                    "summary": "Frederick Buckler passes away in the mid-1960s, leaving Mary Buckler and their children\u2014William among them\u2014in sole occupation of the farmhouse.",
+                    "summary": "Frederick Buckler passes away in the mid-1960s, leaving Mary Buckler and their children—William among them—in sole occupation of the farmhouse.",
                     "context": [
                         "Mary's resolve intensifies, and William begins to take a leading role in defending the family's position.",
                         "The death complicates the landlord's efforts to enforce older possession orders addressed to Frederick."
@@ -486,7 +550,7 @@
                             "title": "Family succession noted by the appellate court",
                             "type": "document",
                             "source": {
-                                "name": "BAILII \u2013 BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+                                "name": "BAILII – BP Properties Ltd v Buckler [1987] EWCA Civ 2",
                                 "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
                             },
                             "description": "The judgment narrates Mary Buckler's continued occupation with her children after Frederick's death.",
@@ -495,7 +559,8 @@
                                 "The family's occupation remains continuous, which later fuels the adverse possession argument."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1966
                 },
                 {
                     "id": "1969-sale-to-bp",
@@ -514,16 +579,17 @@
                             "title": "Sale documentation referenced in appellate record",
                             "type": "document",
                             "source": {
-                                "name": "BAILII \u2013 BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+                                "name": "BAILII – BP Properties Ltd v Buckler [1987] EWCA Civ 2",
                                 "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
                             },
-                            "description": "Paragraphs 14\u201316 describe the 1969 conveyance and BP's assumption of the earlier possession orders.",
+                            "description": "Paragraphs 14–16 describe the 1969 conveyance and BP's assumption of the earlier possession orders.",
                             "content": [
                                 "The trustees recognised that enforcement would attract scrutiny because Mary Buckler was a well-known local figure.",
                                 "BP's internal deliberations laid the groundwork for the 1974 correspondence that later proved decisive."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1969
                 },
                 {
                     "id": "1974-cc-proceedings",
@@ -542,7 +608,7 @@
                             "title": "Text of BP's 1974 licence letters",
                             "type": "document",
                             "source": {
-                                "name": "BAILII \u2013 BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+                                "name": "BAILII – BP Properties Ltd v Buckler [1987] EWCA Civ 2",
                                 "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
                             },
                             "description": "The judgment reproduces BP's May and July 1974 letters, in which the company permits Mary Buckler to remain rent-free while reserving the right to recover possession later.",
@@ -556,7 +622,7 @@
                             "title": "Local press coverage of the Buckler campaign",
                             "type": "press",
                             "source": {
-                                "name": "Western Mail & South Wales Echo archives (May\u2013July 1974)",
+                                "name": "Western Mail & South Wales Echo archives (May–July 1974)",
                                 "url": "https://www.britishnewspaperarchive.co.uk/"
                             },
                             "description": "Regional newspapers reported on Mary Buckler's resistance to eviction, publishing photographs of the farmhouse and interviews with supporters during 1974.",
@@ -565,7 +631,8 @@
                                 "Clippings can be consulted via the British Newspaper Archive or local library microfilm collections."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1974
                 },
                 {
                     "id": "1976-parliament",
@@ -584,7 +651,7 @@
                             "title": "Hansard: Buckler Family (Cardiff) debate, 10 June 1976",
                             "type": "hansard",
                             "source": {
-                                "name": "UK Parliament \u2013 Historic Hansard",
+                                "name": "UK Parliament – Historic Hansard",
                                 "url": "https://hansard.parliament.uk/Commons/1976-06-10/debates/d9a4b7be-6a35-4eef-a467-15d5d2ce77d7/BucklerFamily(Cardiff)"
                             },
                             "description": "Members of Parliament questioned the Secretary of State for Wales about BP's attempts to remove the Bucklers, citing Mary Buckler's disability and longevity on the farm.",
@@ -593,7 +660,8 @@
                                 "The debate documents the public policy context that influenced BP's approach to enforcement."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1976
                 },
                 {
                     "id": "1977-mary-death",
@@ -612,7 +680,7 @@
                             "title": "Succession after Mary's death noted by the Court of Appeal",
                             "type": "document",
                             "source": {
-                                "name": "BAILII \u2013 BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+                                "name": "BAILII – BP Properties Ltd v Buckler [1987] EWCA Civ 2",
                                 "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
                             },
                             "description": "The judgment explains how William Buckler remained in possession on his mother's death, continuing to rely on her earlier claims to ownership.",
@@ -621,7 +689,8 @@
                                 "The family's occupation therefore remained continuous for the purposes of the Limitation Act 1980."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1977
                 },
                 {
                     "id": "1985-county-court",
@@ -649,7 +718,8 @@
                                 "It confirms the evidential weight given to BP's letters and the absence of any formal repudiation by the Bucklers."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1985
                 },
                 {
                     "id": "1987-court-of-appeal",
@@ -668,7 +738,7 @@
                             "title": "Full Court of Appeal judgment",
                             "type": "document",
                             "source": {
-                                "name": "BAILII \u2013 BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+                                "name": "BAILII – BP Properties Ltd v Buckler [1987] EWCA Civ 2",
                                 "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
                             },
                             "description": "The complete appellate decision analyses the licence letters, the Limitation Act 1980, and earlier authorities such as <em>Powell v McFarlane</em>.",
@@ -696,7 +766,8 @@
                                 "Practitioners often cite the All ER or WLR versions in pleadings and academic commentary."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1987
                 },
                 {
                     "id": "1991-commentary",
@@ -729,7 +800,7 @@
                             "title": "Law Commission Working Paper No. 126",
                             "type": "report",
                             "source": {
-                                "name": "Law Commission \u2013 Land Registration: Reform of the Law (1989\u20131991)",
+                                "name": "Law Commission – Land Registration: Reform of the Law (1989–1991)",
                                 "url": "https://www.lawcom.gov.uk/project/land-registration/"
                             },
                             "description": "Consultation papers on reforming land registration cite <em>BP v Buckler</em> to illustrate the difficulties owners face once occupation is treated as adverse.",
@@ -738,9 +809,12 @@
                                 "Those proposals ultimately fed into the Land Registration Act 2002."
                             ]
                         }
-                    ]
+                    ],
+                    "yearValue": 1991
                 }
-            ]
+            ],
+            "startYear": 1900,
+            "endYear": 1999
         }
     ],
     "furtherResearch": [
@@ -754,7 +828,7 @@
         {
             "heading": "Community memory",
             "items": [
-                "United Technocracy's 2012 blog post \"The Great House Farm Story\" collates parish records, family papers, and oral testimony about the Williams\u2013Buckler lineage.",
+                "United Technocracy's 2012 blog post \"The Great House Farm Story\" collates parish records, family papers, and oral testimony about the Williams–Buckler lineage.",
                 "Local history groups in Llandough and Penarth hold photographs and interviews that supplement the litigation record."
             ]
         },
