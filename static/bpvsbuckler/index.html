@@ -172,6 +172,10 @@
     }
 
     .timeline-century__header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
       text-align: center;
       margin-bottom: 28px;
     }
@@ -180,12 +184,56 @@
       font-size: 1.75rem;
       font-weight: 700;
       color: var(--heading-color);
+      margin: 0;
     }
 
-    .timeline-century__range {
-      color: var(--text-soft);
-      font-size: 0.95rem;
-      margin-top: 6px;
+    .timeline-century__heading-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.55rem 1.3rem;
+      border-radius: 9999px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      box-shadow: none;
+      position: relative;
+    }
+
+    .timeline-century__heading-button::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg);
+      transition: transform 0.2s ease;
+    }
+
+    .timeline-century__heading-button[aria-expanded='false']::after {
+      transform: rotate(-45deg);
+    }
+
+    .timeline-century__heading-button:hover,
+    .timeline-century__heading-button:focus-visible {
+      background: var(--surface);
+      border-color: var(--surface-border);
+      box-shadow: var(--shadow-soft);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    body[data-theme='dark'] .timeline-century__heading-button {
+      color: var(--heading-color);
+    }
+
+    body[data-theme='dark'] .timeline-century__heading-button:hover,
+    body[data-theme='dark'] .timeline-century__heading-button:focus-visible {
+      background: rgba(15, 23, 42, 0.92);
+      border-color: rgba(96, 165, 250, 0.35);
     }
 
     .timeline-century__summary {
@@ -201,6 +249,10 @@
       min-height: calc(var(--century-span, 100) * var(--year-scale));
       margin-top: 32px;
       overflow: visible;
+    }
+
+    .timeline-century--collapsed .timeline-century__entries {
+      display: none;
     }
 
     .timeline-century__scale {
@@ -351,6 +403,9 @@
       align-items: center;
       transform: translateY(-50%);
       z-index: 2;
+      --bubble-offset: 0px;
+      --bubble-scale: 1;
+      --connector-length: calc(var(--entry-gap) + var(--axis-column-width) / 2);
     }
 
     .timeline-entry__column {
@@ -435,6 +490,8 @@
       position: relative;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       cursor: pointer;
+      transform: translateX(calc(var(--bubble-shift, 0px))) scale(var(--bubble-scale, 1));
+      transform-origin: center;
     }
 
     .timeline-bubble::before {
@@ -464,7 +521,7 @@
 
     .timeline-bubble:hover,
     .timeline-bubble:focus-visible {
-      transform: translateY(-3px);
+      transform: translateX(calc(var(--bubble-shift, 0px))) translateY(-3px) scale(var(--bubble-scale, 1));
       box-shadow: 0 16px 32px -20px rgba(59, 130, 246, 0.45);
     }
 
@@ -479,15 +536,36 @@
     }
 
     .timeline-entry[data-position='left'] .timeline-bubble::after {
-      right: calc(-1 * (var(--entry-gap) + var(--axis-column-width) / 2));
-      width: calc(var(--entry-gap) + var(--axis-column-width) / 2);
-      background: linear-gradient(90deg, rgba(59, 130, 246, 0.65), rgba(59, 130, 246, 0));
+      right: calc(-1 * (var(--connector-length) + 6px));
+      width: calc(var(--connector-length) + 6px);
+      background: linear-gradient(90deg,
+        rgba(59, 130, 246, 0.75) 0%,
+        rgba(59, 130, 246, 0.68) 74%,
+        rgba(59, 130, 246, 0.92) 100%
+      );
     }
 
     .timeline-entry[data-position='right'] .timeline-bubble::after {
-      left: calc(-1 * (var(--entry-gap) + var(--axis-column-width) / 2));
-      width: calc(var(--entry-gap) + var(--axis-column-width) / 2);
-      background: linear-gradient(90deg, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.65));
+      left: calc(-1 * (var(--connector-length) + 6px));
+      width: calc(var(--connector-length) + 6px);
+      background: linear-gradient(90deg,
+        rgba(59, 130, 246, 0.92) 0%,
+        rgba(59, 130, 246, 0.68) 26%,
+        rgba(59, 130, 246, 0.75) 100%
+      );
+    }
+
+    .timeline-entry[data-position='left'] .timeline-bubble {
+      --bubble-shift: calc(-1 * var(--bubble-offset, 0px));
+    }
+
+    .timeline-entry[data-position='right'] .timeline-bubble {
+      --bubble-shift: var(--bubble-offset, 0px);
+    }
+
+    .timeline-bubble:focus-visible {
+      outline: 3px solid rgba(59, 130, 246, 0.4);
+      outline-offset: 4px;
     }
 
     .timeline-bubble--buckler {
@@ -940,6 +1018,15 @@
         axisColumn.className = 'timeline-axis';
         axisColumn.setAttribute('aria-hidden', 'true');
 
+        const yearWrapper = document.createElement('div');
+        yearWrapper.className = 'timeline-year';
+        const node = document.createElement('div');
+        node.className = 'timeline-node';
+        const yearLabel = (event.year && String(event.year).trim()) || (Number.isFinite(eventYear) ? String(eventYear) : '');
+        node.textContent = yearLabel || '•';
+        yearWrapper.appendChild(node);
+        axisColumn.appendChild(yearWrapper);
+
         const rightColumn = document.createElement('div');
         rightColumn.className = 'timeline-entry__column timeline-entry__column--right';
 
@@ -948,8 +1035,23 @@
         bubble.type = 'button';
         bubble.dataset.eventId = event.id;
         bubble.dataset.title = event.title;
-        bubble.setAttribute('aria-label', `${event.title} (${event.year})`);
-        bubble.textContent = event.label || '•';
+
+        const bubbleYear = (() => {
+          if (Number.isFinite(eventYear)) {
+            return Math.round(eventYear);
+          }
+          const match = typeof event.year === 'string' ? event.year.match(/(1[5-9]\d{2}|20\d{2})/) : null;
+          if (match) {
+            return Number(match[0]);
+          }
+          const fallbackMatch = typeof event.label === 'string' ? event.label.match(/(1[5-9]\d{2}|20\d{2})/) : null;
+          return fallbackMatch ? Number(fallbackMatch[0]) : null;
+        })();
+
+        const bubbleLabel = bubbleYear != null ? String(bubbleYear).padStart(4, '0') : (event.year ? String(event.year) : (event.label || '•'));
+
+        bubble.setAttribute('aria-label', bubbleYear != null ? `${event.title} (${bubbleLabel})` : `${event.title}`);
+        bubble.textContent = bubbleLabel;
         bubble.addEventListener('click', () => openEvent(event.id));
         bubble.addEventListener('keydown', eventKey => {
           if (eventKey.key === 'Enter' || eventKey.key === ' ') {
@@ -974,13 +1076,184 @@
         return entry;
       }
 
+      const layoutConfig = {
+        step: 28,
+        maxOffset: 180,
+        minScale: 0.65,
+        scaleStep: 0.08,
+        spacing: 14,
+      };
+
+      let layoutFrame = null;
+
+      function computeAdjustedRect(rect, position, offset, scale) {
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const shift = position === 'left' ? -offset : offset;
+        const width = rect.width * scale;
+        const height = rect.height * scale;
+        const left = centerX + shift - width / 2;
+        const top = centerY - height / 2;
+        return {
+          left,
+          right: left + width,
+          top,
+          bottom: top + height,
+        };
+      }
+
+      function rectanglesOverlap(a, b, spacing) {
+        const verticalOverlap = a.bottom > b.top - spacing && a.top < b.bottom + spacing;
+        const horizontalOverlap = a.right > b.left - spacing && a.left < b.right + spacing;
+        return verticalOverlap && horizontalOverlap;
+      }
+
+      function resolveOverlaps(entries) {
+        if (!entries.length) {
+          return [];
+        }
+        const data = entries
+          .map(entry => {
+            const bubble = entry.querySelector('.timeline-bubble');
+            if (!bubble) {
+              return null;
+            }
+            const rect = bubble.getBoundingClientRect();
+            const position = entry.dataset.position === 'left' ? 'left' : 'right';
+            return { entry, bubble, rect, position };
+          })
+          .filter(Boolean)
+          .sort((a, b) => a.rect.top - b.rect.top);
+
+        const placements = { left: [], right: [] };
+        const adjustments = [];
+
+        data.forEach(item => {
+          const placed = placements[item.position];
+          let offset = 0;
+          let scale = 1;
+          let candidate = computeAdjustedRect(item.rect, item.position, offset, scale);
+          let iterations = 0;
+          const limit = 24;
+
+          while (iterations < limit && placed.some(rect => rectanglesOverlap(rect, candidate, layoutConfig.spacing))) {
+            if (offset < layoutConfig.maxOffset) {
+              offset += layoutConfig.step;
+            } else if (scale > layoutConfig.minScale) {
+              scale = Math.max(layoutConfig.minScale, scale - layoutConfig.scaleStep);
+            } else {
+              offset += layoutConfig.step;
+            }
+            candidate = computeAdjustedRect(item.rect, item.position, offset, scale);
+            iterations += 1;
+          }
+
+          placed.push(candidate);
+          adjustments.push({ entry: item.entry, offset, scale });
+        });
+
+        return adjustments;
+      }
+
+      function resetEntryLayout(section) {
+        if (!section || section.classList.contains('timeline-century--collapsed')) {
+          return;
+        }
+        const entries = section.querySelector('.timeline-century__entries');
+        if (!entries || entries.hidden) {
+          return;
+        }
+        entries.querySelectorAll('.timeline-entry').forEach(entry => {
+          entry.style.removeProperty('--bubble-offset');
+          entry.style.removeProperty('--bubble-scale');
+          entry.style.removeProperty('--connector-length');
+        });
+      }
+
+      function updateConnectorLengths(section) {
+        if (!section || section.classList.contains('timeline-century--collapsed')) {
+          return;
+        }
+        const entries = section.querySelector('.timeline-century__entries');
+        if (!entries || entries.hidden) {
+          return;
+        }
+        const scaleElement = entries.querySelector('.timeline-century__scale');
+        const axisRect = scaleElement ? scaleElement.getBoundingClientRect() : null;
+        const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
+        entryNodes.forEach(entry => {
+          const bubble = entry.querySelector('.timeline-bubble');
+          if (!bubble) {
+            return;
+          }
+          const bubbleRect = bubble.getBoundingClientRect();
+          const targetNode = entry.querySelector('.timeline-year .timeline-node');
+          const targetRect = targetNode ? targetNode.getBoundingClientRect() : axisRect;
+          if (!targetRect) {
+            return;
+          }
+          const axisCenter = targetRect.left + targetRect.width / 2;
+          const distance = entry.dataset.position === 'left'
+            ? axisCenter - bubbleRect.right
+            : bubbleRect.left - axisCenter;
+          entry.style.setProperty('--connector-length', `${Math.max(distance, 0)}px`);
+        });
+      }
+
+      function applyLayout() {
+        const sections = Array.from(timelineContainer.querySelectorAll('.timeline-century'));
+        sections.forEach(resetEntryLayout);
+
+        requestAnimationFrame(() => {
+          sections.forEach(section => {
+            if (section.classList.contains('timeline-century--collapsed')) {
+              return;
+            }
+            const entries = section.querySelector('.timeline-century__entries');
+            if (!entries || entries.hidden) {
+              return;
+            }
+            const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
+            const adjustments = resolveOverlaps(entryNodes);
+            adjustments.forEach(({ entry, offset, scale }) => {
+              entry.style.setProperty('--bubble-offset', `${offset}px`);
+              entry.style.setProperty('--bubble-scale', scale.toFixed(3));
+            });
+          });
+
+          requestAnimationFrame(() => {
+            sections.forEach(updateConnectorLengths);
+          });
+        });
+      }
+
+      function scheduleLayout() {
+        if (layoutFrame) {
+          cancelAnimationFrame(layoutFrame);
+        }
+        layoutFrame = requestAnimationFrame(() => {
+          layoutFrame = null;
+          applyLayout();
+        });
+      }
+
+      function applyCenturyState(section, entries, control, expanded) {
+        section.classList.toggle('timeline-century--collapsed', !expanded);
+        entries.hidden = !expanded;
+        entries.setAttribute('aria-hidden', expanded ? 'false' : 'true');
+        control.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        if (!expanded) {
+          resetEntryLayout(section);
+        }
+      }
+
       function renderTimeline(data) {
         timelineContainer.innerHTML = '';
         eventIndex.clear();
         sharedSidePreference = 'right';
 
         const centuries = Array.isArray(data.centuries) ? [...data.centuries].reverse() : [];
-        centuries.forEach(century => {
+        centuries.forEach((century, index) => {
           const section = document.createElement('section');
           section.className = 'timeline-century';
 
@@ -989,15 +1262,30 @@
 
           const heading = document.createElement('h2');
           heading.className = 'timeline-century__heading';
-          heading.textContent = century.title || 'Century of occupation';
+
+          const headingButton = document.createElement('button');
+          headingButton.type = 'button';
+          headingButton.className = 'timeline-century__heading-button';
+          headingButton.textContent = century.title || 'Century of occupation';
+          heading.appendChild(headingButton);
+
           header.appendChild(heading);
 
-          if (century.range) {
-            const range = document.createElement('p');
-            range.className = 'timeline-century__range';
-            range.textContent = century.range;
-            header.appendChild(range);
-          }
+          const entries = document.createElement('div');
+          entries.className = 'timeline-century__entries';
+          const idSeed = (century.id || `century-${index + 1}`).toString();
+          const normalizedId = idSeed.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+          const entriesId = `${normalizedId || `century-${index + 1}`}-entries`;
+          entries.id = entriesId;
+
+          headingButton.setAttribute('aria-controls', entriesId);
+          headingButton.setAttribute('aria-expanded', 'false');
+          headingButton.addEventListener('click', () => {
+            const currentlyExpanded = !section.classList.contains('timeline-century--collapsed');
+            const nextState = !currentlyExpanded;
+            applyCenturyState(section, entries, headingButton, nextState);
+            scheduleLayout();
+          });
 
           section.appendChild(header);
 
@@ -1007,9 +1295,6 @@
             summary.textContent = century.summary;
             section.appendChild(summary);
           }
-
-          const entries = document.createElement('div');
-          entries.className = 'timeline-century__entries';
 
           const bounds = normalizeCenturyBounds(century);
           entries.style.setProperty('--century-span', String(bounds.span || 100));
@@ -1031,6 +1316,11 @@
 
           section.appendChild(entries);
           timelineContainer.appendChild(section);
+
+          const isTwentiethCentury = /twentieth/i.test(String(century.title || ''))
+            || /1900/.test(String(century.range || ''))
+            || (century.id && /century-4/i.test(String(century.id)));
+          applyCenturyState(section, entries, headingButton, Boolean(isTwentiethCentury));
         });
 
         if (!centuries.length) {
@@ -1038,6 +1328,8 @@
           empty.className = 'text-center text-slate-500 dark:text-slate-300';
           empty.textContent = 'No timeline entries available.';
           timelineContainer.appendChild(empty);
+        } else {
+          scheduleLayout();
         }
       }
 
@@ -1266,6 +1558,21 @@
             introPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         });
+      }
+
+      const handleWindowResize = () => scheduleLayout();
+      window.addEventListener('resize', handleWindowResize);
+      window.addEventListener('orientationchange', handleWindowResize);
+
+      const timelineLayoutObserver = typeof ResizeObserver !== 'undefined' && timelineContainer
+        ? new ResizeObserver(() => scheduleLayout())
+        : null;
+      if (timelineLayoutObserver) {
+        timelineLayoutObserver.observe(timelineContainer);
+      }
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => scheduleLayout());
       }
 
       fetch('data/timeline.json')
