@@ -180,12 +180,61 @@
       font-size: 1.75rem;
       font-weight: 700;
       color: var(--heading-color);
+      margin: 0;
     }
 
-    .timeline-century__range {
-      color: var(--text-soft);
-      font-size: 0.95rem;
-      margin-top: 6px;
+    .timeline-century__toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: 100%;
+      padding: 12px 18px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 9999px;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+      transition: background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .timeline-century__title {
+      color: inherit;
+      font-weight: inherit;
+    }
+
+    .timeline-century__toggle:hover,
+    .timeline-century__toggle:focus-visible {
+      background: rgba(59, 130, 246, 0.08);
+      border-color: rgba(59, 130, 246, 0.35);
+      box-shadow: 0 12px 30px -20px rgba(37, 99, 235, 0.45);
+    }
+
+    body[data-theme='dark'] .timeline-century__toggle:hover,
+    body[data-theme='dark'] .timeline-century__toggle:focus-visible {
+      background: rgba(59, 130, 246, 0.16);
+      border-color: rgba(148, 163, 184, 0.35);
+      box-shadow: 0 16px 32px -22px rgba(30, 64, 175, 0.55);
+    }
+
+    .timeline-century__toggle:focus-visible {
+      outline: none;
+    }
+
+    .timeline-century__chevron {
+      font-size: 1rem;
+      line-height: 1;
+      transition: transform 0.2s ease;
+    }
+
+    .timeline-century--collapsed .timeline-century__chevron {
+      transform: rotate(-90deg);
+    }
+
+    .timeline-century--collapsed .timeline-century__entries,
+    .timeline-century--collapsed .timeline-century__summary {
+      display: none;
     }
 
     .timeline-century__summary {
@@ -360,16 +409,22 @@
     }
 
     .timeline-entry__column--left {
-      justify-content: flex-end;
+      justify-content: flex-start;
+      --timeline-column-offset: clamp(48px, 14vw, 340px);
+      padding-right: var(--timeline-column-offset);
     }
 
     .timeline-entry__column--right {
-      justify-content: flex-start;
+      justify-content: flex-end;
+      --timeline-column-offset: clamp(48px, 14vw, 340px);
+      padding-left: var(--timeline-column-offset);
     }
 
     .timeline-entry__column--empty {
       opacity: 0;
       pointer-events: none;
+      padding: 0;
+      --timeline-column-offset: 0px;
     }
 
     .timeline-axis {
@@ -480,13 +535,13 @@
 
     .timeline-entry[data-position='left'] .timeline-bubble::after {
       right: calc(-1 * (var(--entry-gap) + var(--axis-column-width) / 2));
-      width: calc(var(--entry-gap) + var(--axis-column-width) / 2);
+      width: calc(var(--entry-gap) + var(--axis-column-width) / 2 + var(--timeline-column-offset, 0px));
       background: linear-gradient(90deg, rgba(59, 130, 246, 0.65), rgba(59, 130, 246, 0));
     }
 
     .timeline-entry[data-position='right'] .timeline-bubble::after {
       left: calc(-1 * (var(--entry-gap) + var(--axis-column-width) / 2));
-      width: calc(var(--entry-gap) + var(--axis-column-width) / 2);
+      width: calc(var(--entry-gap) + var(--axis-column-width) / 2 + var(--timeline-column-offset, 0px));
       background: linear-gradient(90deg, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.65));
     }
 
@@ -671,6 +726,8 @@
       .timeline-entry__column--right {
         grid-column: 2 / span 1;
         justify-content: flex-start;
+        padding: 0;
+        --timeline-column-offset: 0px;
       }
 
       .timeline-entry[data-position='left'] .timeline-bubble::after,
@@ -709,7 +766,6 @@
     <header class="text-center">
       <div class="flex flex-col items-center gap-4">
         <div class="flex flex-wrap items-center justify-center gap-3">
-          <div class="flex flex-wrap items-center justify-center gap-3">
           <h1 id="case-title" class="text-4xl md:text-5xl font-extrabold tracking-tight page-title">Great House Farm</h1>
           <div class="flex items-center gap-2">
             <button id="theme-toggle" class="round-button" type="button" aria-pressed="false" title="Switch to dark theme">
@@ -947,9 +1003,18 @@
         bubble.className = `timeline-bubble timeline-bubble--${event.side || 'both'}`;
         bubble.type = 'button';
         bubble.dataset.eventId = event.id;
-        bubble.dataset.title = event.title;
-        bubble.setAttribute('aria-label', `${event.title} (${event.year})`);
-        bubble.textContent = event.label || '•';
+        const bubbleYearLabel = Number.isFinite(eventYear)
+          ? String(eventYear)
+          : (event.year ? String(event.year) : '•');
+        const tooltipTitle = event.title
+          ? `${bubbleYearLabel} · ${event.title}`
+          : bubbleYearLabel;
+        bubble.dataset.title = tooltipTitle;
+        bubble.setAttribute(
+          'aria-label',
+          event.title ? `${event.title} (${bubbleYearLabel})` : bubbleYearLabel
+        );
+        bubble.textContent = bubbleYearLabel;
         bubble.addEventListener('click', () => openEvent(event.id));
         bubble.addEventListener('keydown', eventKey => {
           if (eventKey.key === 'Enter' || eventKey.key === ' ') {
@@ -980,24 +1045,35 @@
         sharedSidePreference = 'right';
 
         const centuries = Array.isArray(data.centuries) ? [...data.centuries].reverse() : [];
-        centuries.forEach(century => {
+        centuries.forEach((century, index) => {
           const section = document.createElement('section');
           section.className = 'timeline-century';
+          const sectionId = century.id || `century-${index + 1}`;
+          section.id = sectionId;
 
           const header = document.createElement('div');
           header.className = 'timeline-century__header';
 
           const heading = document.createElement('h2');
           heading.className = 'timeline-century__heading';
-          heading.textContent = century.title || 'Century of occupation';
-          header.appendChild(heading);
+          const toggle = document.createElement('button');
+          toggle.type = 'button';
+          toggle.className = 'timeline-century__toggle';
+          toggle.setAttribute('aria-expanded', 'true');
 
-          if (century.range) {
-            const range = document.createElement('p');
-            range.className = 'timeline-century__range';
-            range.textContent = century.range;
-            header.appendChild(range);
-          }
+          const title = document.createElement('span');
+          title.className = 'timeline-century__title';
+          title.textContent = century.title || 'Century of occupation';
+          toggle.appendChild(title);
+
+          const chevron = document.createElement('span');
+          chevron.className = 'timeline-century__chevron';
+          chevron.setAttribute('aria-hidden', 'true');
+          chevron.textContent = '▾';
+          toggle.appendChild(chevron);
+
+          heading.appendChild(toggle);
+          header.appendChild(heading);
 
           section.appendChild(header);
 
@@ -1010,6 +1086,9 @@
 
           const entries = document.createElement('div');
           entries.className = 'timeline-century__entries';
+          const entriesId = `${sectionId}-entries`;
+          entries.id = entriesId;
+          toggle.setAttribute('aria-controls', entriesId);
 
           const bounds = normalizeCenturyBounds(century);
           entries.style.setProperty('--century-span', String(bounds.span || 100));
@@ -1028,6 +1107,20 @@
             const entry = buildEvent(event, century, bounds);
             entries.appendChild(entry);
           });
+
+          const setExpandedState = expanded => {
+            const isExpanded = Boolean(expanded);
+            toggle.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+            section.classList.toggle('timeline-century--collapsed', !isExpanded);
+            entries.hidden = !isExpanded;
+          };
+
+          toggle.addEventListener('click', () => {
+            const next = toggle.getAttribute('aria-expanded') !== 'true';
+            setExpandedState(next);
+          });
+
+          setExpandedState(true);
 
           section.appendChild(entries);
           timelineContainer.appendChild(section);
