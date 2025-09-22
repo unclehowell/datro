@@ -31,6 +31,7 @@
       --axis-column-width: 150px;
       --entry-gap: 32px;
       --bubble-size: 60px;
+      --year-scale: 7px;
     }
 
     body[data-theme='dark'] {
@@ -166,22 +167,6 @@
       padding: 24px 0 64px;
     }
 
-    .timeline::before {
-      content: '';
-      position: absolute;
-      width: 6px;
-      background: linear-gradient(180deg, rgba(31, 41, 55, 0.85) 0%, rgba(59, 130, 246, 0.85) 100%);
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      border-radius: 9999px;
-    }
-
-    body[data-theme='dark'] .timeline::before {
-      background: linear-gradient(180deg, rgba(59, 130, 246, 0.8) 0%, rgba(14, 116, 144, 0.85) 100%);
-    }
-
     .timeline-century + .timeline-century {
       margin-top: 48px;
     }
@@ -211,16 +196,161 @@
     }
 
     .timeline-century__entries {
-      display: grid;
-      gap: 36px;
+      position: relative;
+      padding: 56px 0;
+      min-height: calc(var(--century-span, 100) * var(--year-scale));
+      margin-top: 32px;
+      overflow: visible;
+    }
+
+    .timeline-century__scale {
+      position: absolute;
+      inset: 0;
+      left: 50%;
+      width: var(--axis-column-width);
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .timeline-century__scale::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      left: 50%;
+      width: 2px;
+      transform: translateX(-50%);
+      background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(59, 130, 246, 0.4) 0%,
+        rgba(59, 130, 246, 0.4) 2px,
+        transparent 2px,
+        transparent 12px
+      );
+    }
+
+    body[data-theme='dark'] .timeline-century__scale::before {
+      background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(96, 165, 250, 0.55) 0%,
+        rgba(96, 165, 250, 0.55) 2px,
+        transparent 2px,
+        transparent 12px
+      );
+    }
+
+    .timeline-century__ticks {
+      position: absolute;
+      inset: 0;
+    }
+
+    .timeline-century__tick {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .timeline-century__tick-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--heading-color);
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 9999px;
+      padding: 2px 8px;
+      box-shadow: 0 18px 32px -28px rgba(15, 23, 42, 0.65);
+    }
+
+    body[data-theme='dark'] .timeline-century__tick-label {
+      color: var(--text-primary);
+      background: rgba(15, 23, 42, 0.92);
+      border-color: rgba(96, 165, 250, 0.35);
+      box-shadow: 0 18px 32px -28px rgba(6, 12, 24, 0.85);
+    }
+
+    .timeline-century__tick-mark {
+      position: relative;
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 9999px;
+      background: rgba(37, 99, 235, 0.75);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
+    }
+
+    body[data-theme='dark'] .timeline-century__tick-mark {
+      background: rgba(96, 165, 250, 0.8);
+      box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.18);
+    }
+
+    .timeline-century__tick-mark::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 1px;
+      background: rgba(37, 99, 235, 0.4);
+      width: 18px;
+    }
+
+    body[data-theme='dark'] .timeline-century__tick-mark::after {
+      background: rgba(96, 165, 250, 0.45);
+    }
+
+    .timeline-century__tick--year .timeline-century__tick-mark::after {
+      width: 0;
+      height: 0;
+    }
+
+    .timeline-century__tick--quin .timeline-century__tick-mark {
+      width: 7px;
+      height: 7px;
+    }
+
+    .timeline-century__tick--quin .timeline-century__tick-mark::after {
+      width: 26px;
+      opacity: 0.5;
+    }
+
+    .timeline-century__tick--decade .timeline-century__tick-mark {
+      width: 9px;
+      height: 9px;
+    }
+
+    .timeline-century__tick--decade .timeline-century__tick-mark::after {
+      width: 38px;
+      height: 2px;
+      opacity: 0.7;
+    }
+
+    .timeline-century__tick--century .timeline-century__tick-mark {
+      width: 11px;
+      height: 11px;
+    }
+
+    .timeline-century__tick--century .timeline-century__tick-mark::after {
+      width: 52px;
+      height: 3px;
+      opacity: 0.95;
     }
 
     .timeline-entry {
+      position: absolute;
+      left: 0;
+      width: 100%;
       display: grid;
       grid-template-columns: minmax(0, 1fr) var(--axis-column-width) minmax(0, 1fr);
       column-gap: var(--entry-gap);
       align-items: center;
-      position: relative;
+      transform: translateY(-50%);
+      z-index: 2;
     }
 
     .timeline-entry__column {
@@ -592,7 +722,7 @@
             </button>
           </div>
         </div>
-        <p id="case-subtitle" class="text-lg md:text-xl max-w-3xl mx-auto page-subtitle">Four centuries of Williams and Buckler family occupation, litigation, and community resistance in Llandough, Vale of Glamorgan.</p>
+        <p id="case-subtitle" class="text-lg md:text-xl max-w-3xl mx-auto page-subtitle">Occupied for centuries by the Williams/ Buckler family.</p>
       </div>
       <div id="intro-panel" class="intro-panel hidden" aria-hidden="true" tabindex="-1">
         <h2 class="text-2xl font-semibold intro-heading">About this timeline</h2>
@@ -703,25 +833,112 @@
         return sharedSidePreference;
       }
 
-      function buildEvent(event, century) {
+      function normalizeCenturyBounds(century) {
+        const start = Number(century?.startYear);
+        const end = Number(century?.endYear);
+        if (Number.isFinite(start) && Number.isFinite(end) && end > start) {
+          return { startYear: start, endYear: end, span: Math.max(1, end - start) };
+        }
+        if (Number.isFinite(start)) {
+          const inferredEnd = start + 99;
+          return { startYear: start, endYear: inferredEnd, span: Math.max(1, inferredEnd - start) };
+        }
+        if (Number.isFinite(end)) {
+          const inferredStart = end - 99;
+          return { startYear: inferredStart, endYear: end, span: Math.max(1, end - inferredStart) };
+        }
+        return { startYear: 0, endYear: 99, span: 99 };
+      }
+
+      function getEventYearValue(event, bounds) {
+        if (!event) {
+          return bounds.endYear;
+        }
+        const direct = Number(event.yearValue);
+        if (Number.isFinite(direct)) {
+          return direct;
+        }
+        const match = typeof event.year === 'string' ? event.year.match(/(1[6-9]\d{2}|20\d{2})/) : null;
+        if (match) {
+          return Number(match[0]);
+        }
+        return bounds.endYear;
+      }
+
+      function positionForYear(year, bounds) {
+        const { startYear, endYear, span } = bounds;
+        if (!Number.isFinite(year)) {
+          return 0;
+        }
+        const clamped = Math.min(Math.max(year, startYear), endYear);
+        const offset = endYear - clamped;
+        const raw = (offset / span) * 100;
+        return Math.min(98, Math.max(2, raw));
+      }
+
+      function buildCenturyScale(container, bounds) {
+        if (!container) {
+          return;
+        }
+        const scale = document.createElement('div');
+        scale.className = 'timeline-century__scale';
+
+        const ticks = document.createElement('div');
+        ticks.className = 'timeline-century__ticks';
+        scale.appendChild(ticks);
+
+        const { startYear, endYear, span } = bounds;
+        for (let year = endYear; year >= startYear; year -= 1) {
+          const tick = document.createElement('div');
+          tick.className = 'timeline-century__tick timeline-century__tick--year';
+          if (year % 5 === 0) {
+            tick.classList.add('timeline-century__tick--quin');
+          }
+          if (year % 10 === 0) {
+            tick.classList.add('timeline-century__tick--decade');
+          }
+          if (year % 100 === 0) {
+            tick.classList.add('timeline-century__tick--century');
+          }
+
+          const offset = ((endYear - year) / span) * 100;
+          const position = Math.min(100, Math.max(0, offset));
+          tick.style.top = `${position}%`;
+
+          if (year % 10 === 0) {
+            const label = document.createElement('span');
+            label.className = 'timeline-century__tick-label';
+            label.textContent = String(year);
+            tick.appendChild(label);
+          }
+
+          const mark = document.createElement('span');
+          mark.className = 'timeline-century__tick-mark';
+          tick.appendChild(mark);
+
+          ticks.appendChild(tick);
+        }
+
+        container.prepend(scale);
+      }
+
+      function buildEvent(event, century, bounds) {
         const position = choosePosition(event);
         const entry = document.createElement('div');
         entry.className = 'timeline-entry';
         entry.dataset.position = position;
         entry.dataset.eventId = event.id;
 
+        const eventYear = getEventYearValue(event, bounds);
+        const topPosition = positionForYear(eventYear, bounds);
+        entry.style.top = `${topPosition}%`;
+
         const leftColumn = document.createElement('div');
         leftColumn.className = 'timeline-entry__column timeline-entry__column--left';
 
         const axisColumn = document.createElement('div');
         axisColumn.className = 'timeline-axis';
-        const node = document.createElement('div');
-        node.className = 'timeline-node';
-        const year = document.createElement('div');
-        year.className = 'timeline-year';
-        year.textContent = event.year;
-        node.appendChild(year);
-        axisColumn.appendChild(node);
+        axisColumn.setAttribute('aria-hidden', 'true');
 
         const rightColumn = document.createElement('div');
         rightColumn.className = 'timeline-entry__column timeline-entry__column--right';
@@ -762,7 +979,7 @@
         eventIndex.clear();
         sharedSidePreference = 'right';
 
-        const centuries = Array.isArray(data.centuries) ? data.centuries : [];
+        const centuries = Array.isArray(data.centuries) ? [...data.centuries].reverse() : [];
         centuries.forEach(century => {
           const section = document.createElement('section');
           section.className = 'timeline-century';
@@ -794,9 +1011,21 @@
           const entries = document.createElement('div');
           entries.className = 'timeline-century__entries';
 
-          const events = Array.isArray(century.events) ? century.events : [];
+          const bounds = normalizeCenturyBounds(century);
+          entries.style.setProperty('--century-span', String(bounds.span || 100));
+          buildCenturyScale(entries, bounds);
+
+          const events = Array.isArray(century.events) ? [...century.events] : [];
+          events.sort((a, b) => {
+            const yearA = getEventYearValue(a, bounds);
+            const yearB = getEventYearValue(b, bounds);
+            if (yearA === yearB) {
+              return (a.label || a.id || '').localeCompare(b.label || b.id || '');
+            }
+            return yearB - yearA;
+          });
           events.forEach(event => {
-            const entry = buildEvent(event, century);
+            const entry = buildEvent(event, century, bounds);
             entries.appendChild(entry);
           });
 
