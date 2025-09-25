@@ -182,6 +182,10 @@
     const eventYear = getEventYearValue(event, bounds);
     const topPosition = positionForYear(eventYear, bounds);
     entry.style.top = `${topPosition}%`;
+    entry.dataset.yearPosition = topPosition.toFixed(3);
+    if (Number.isFinite(eventYear)) {
+      entry.dataset.yearValue = String(eventYear);
+    }
 
     const leftColumn = document.createElement('div');
     leftColumn.className = 'timeline-entry__column timeline-entry__column--left';
@@ -254,6 +258,7 @@
     minScale: 0.65,
     scaleStep: 0.08,
     spacing: 14,
+    yearSpacing: 12,
   };
 
   let layoutFrame = null;
@@ -327,6 +332,35 @@
     return adjustments;
   }
 
+  function spreadYearLabels(entries) {
+    if (!entries.length) {
+      return new Map();
+    }
+
+    const nodes = entries
+      .map(entry => {
+        const year = entry.querySelector('.timeline-year');
+        if (!year) {
+          return null;
+        }
+        return { entry, rect: year.getBoundingClientRect() };
+      })
+      .filter(Boolean)
+      .sort((a, b) => a.rect.top - b.rect.top);
+
+    const offsets = new Map();
+    let lastBottom = -Infinity;
+
+    nodes.forEach(item => {
+      const desiredTop = Math.max(item.rect.top, lastBottom + layoutConfig.yearSpacing);
+      const offset = desiredTop - item.rect.top;
+      offsets.set(item.entry, offset);
+      lastBottom = desiredTop + item.rect.height;
+    });
+
+    return offsets;
+  }
+
   function resetEntryLayout(section) {
     if (!section || section.classList.contains('timeline-century--collapsed')) {
       return;
@@ -339,6 +373,7 @@
       entry.style.removeProperty('--bubble-offset');
       entry.style.removeProperty('--bubble-scale');
       entry.style.removeProperty('--connector-length');
+      entry.style.removeProperty('--entry-y-offset');
     });
   }
 
@@ -387,9 +422,16 @@
         }
         const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
         const adjustments = resolveOverlaps(entryNodes);
+        const yearOffsets = spreadYearLabels(entryNodes);
+
         adjustments.forEach(({ entry, offset, scale }) => {
           entry.style.setProperty('--bubble-offset', `${offset}px`);
           entry.style.setProperty('--bubble-scale', scale.toFixed(3));
+        });
+
+        entryNodes.forEach(entry => {
+          const yearOffset = yearOffsets.has(entry) ? yearOffsets.get(entry) : 0;
+          entry.style.setProperty('--entry-y-offset', `${yearOffset}px`);
         });
       });
 
