@@ -377,11 +377,11 @@
   }
 
   function resetEntryLayout(section) {
-    if (!section || section.classList.contains('timeline-century--collapsed')) {
+    if (!section) {
       return;
     }
     const entries = section.querySelector('.timeline-century__entries');
-    if (!entries || entries.hidden) {
+    if (!entries) {
       return;
     }
     entries.querySelectorAll('.timeline-entry').forEach(entry => {
@@ -390,6 +390,44 @@
       entry.style.removeProperty('--connector-length');
       entry.style.removeProperty('--entry-y-offset');
     });
+    entries.style.removeProperty('--entries-extra-padding');
+    delete entries.dataset.baseHeight;
+  }
+
+  function updateEntriesHeight(entries) {
+    if (!entries) {
+      return;
+    }
+    const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
+    if (!entryNodes.length) {
+      entries.style.removeProperty('--entries-extra-padding');
+      delete entries.dataset.baseHeight;
+      return;
+    }
+
+    if (!entries.dataset.baseHeight) {
+      entries.dataset.baseHeight = String(entries.offsetHeight);
+    }
+
+    const baseHeight = Number(entries.dataset.baseHeight) || entries.offsetHeight;
+    const containerRect = entries.getBoundingClientRect();
+    const containerTop = containerRect.top;
+
+    let maxBottom = baseHeight;
+    entryNodes.forEach(entry => {
+      const rect = entry.getBoundingClientRect();
+      const bottom = rect.bottom - containerTop;
+      if (bottom > maxBottom) {
+        maxBottom = bottom;
+      }
+    });
+
+    const extra = Math.max(0, Math.ceil(maxBottom - baseHeight));
+    if (extra > 0) {
+      entries.style.setProperty('--entries-extra-padding', `${extra}px`);
+    } else {
+      entries.style.removeProperty('--entries-extra-padding');
+    }
   }
 
   function updateConnectorLengths(section) {
@@ -448,6 +486,8 @@
           const yearOffset = yearOffsets.has(entry) ? yearOffsets.get(entry) : 0;
           entry.style.setProperty('--entry-y-offset', `${yearOffset}px`);
         });
+
+        updateEntriesHeight(entries);
       });
 
       requestAnimationFrame(() => {
