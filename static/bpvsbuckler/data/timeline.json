@@ -34,6 +34,59 @@
     ],
     "centuries": [
         {
+            "id": "century-0",
+            "title": "Medieval and Tudor foundations",
+            "range": "1100–1599",
+            "events": [
+                {
+                    "id": "1100s-medieval-monastery",
+                    "year": "12th century",
+                    "side": "both",
+                    "title": "Llandough hosts an early monastery and medieval grange",
+                    "summary": "Long before the Williams family era, the Llandough holding served as a monastic centre and, later, a grange farm leased by Tewkesbury Abbey.",
+                    "context": [
+                        "Norman-era charters describe Robert FitzHamon granting Llandough to Tewkesbury Abbey, which managed a grange near St Dochdwy's church.",
+                        "Archaeological excavations at Great House Farm have uncovered more than a thousand early-medieval burials, confirming the presence of a substantial monastic community on the site."
+                    ],
+                    "evidence": [
+                        {
+                            "id": "ev-medieval-grange",
+                            "title": "Monastic grange at Llandough noted in local history",
+                            "type": "blog",
+                            "source": {
+                                "name": "United Technocracy – The Great House Farm Story (2012)",
+                                "url": "https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"
+                            },
+                            "description": "The family-compiled history outlines Llandough's monastic past under Tewkesbury Abbey and charts the grange's fate at the Dissolution.",
+                            "content": [
+                                "The abbey ran a grange at Llandough from the twelfth century until the Dissolution, when the Crown sold the holding into private hands.",
+                                "By the fifteenth century the abbey leased the farm to lay tenants, demonstrating continuous agricultural use centuries before the Williams line."
+                            ]
+                        },
+                        {
+                            "id": "ev-1994-cemetery-report",
+                            "title": "Early medieval cemetery excavation report",
+                            "type": "report",
+                            "source": {
+                                "name": "Thomas & Holbrook, Excavations at Llandough (1994)",
+                                "url": "https://archaeologydataservice.ac.uk/archives/view/archaeologyreport_2020/"
+                            },
+                            "description": "The published excavation confirms a major Dark Age monastery and cemetery beneath Great House Farm.",
+                            "content": [
+                                "Investigators documented 1,026 inhumation burials, making Llandough the largest Early Christian cemetery excavated in Wales.",
+                                "Some graves contained Roman brooches and glass beads, signalling the community's roots in the late Roman period."
+                            ]
+                        }
+                    ],
+                    "yearValue": 1150,
+                    "icon": "⛪",
+                    "iconLabel": "Monastic heritage"
+                }
+            ],
+            "startYear": 1100,
+            "endYear": 1599
+        },
+        {
             "id": "century-1",
             "title": "Seventeenth century",
             "range": "1600–1699",
@@ -48,7 +101,9 @@
                         "The Great House Farm Story blog ties seventeenth-century estate notebooks to the Williams family's long possession.",
                         "Those recollections explain why later Buckler arguments leaned on a continuous line of Williams occupation."
                     ],
-                    "yearValue": 1650
+                    "yearValue": 1650,
+                    "icon": "👪",
+                    "iconLabel": "Family history"
                 },
                 {
                     "id": "1600s-williams-lease",
@@ -77,7 +132,9 @@
                             ]
                         }
                     ],
-                    "yearValue": 1600
+                    "yearValue": 1600,
+                    "icon": "📜",
+                    "iconLabel": "Tenancy record"
                 },
                 {
                     "id": "1650s-farmstead-notes",
@@ -106,7 +163,9 @@
                             ]
                         }
                     ],
-                    "yearValue": 1655
+                    "yearValue": 1655,
+                    "icon": "📜",
+                    "iconLabel": "Estate survey"
                 }
             ],
             "startYear": 1600,
@@ -127,7 +186,9 @@
                         "St Dochdwy's registers and Bute estate letters reproduced in the blog chart successive Williams tenants.",
                         "The paperwork demonstrates the unbroken occupation that later supported Buckler family claims."
                     ],
-                    "yearValue": 1750
+                    "yearValue": 1750,
+                    "icon": "👪",
+                    "iconLabel": "Family history"
                 },
                 {
                     "id": "1700s-parish-registers",
@@ -156,7 +217,9 @@
                             ]
                         }
                     ],
-                    "yearValue": 1725
+                    "yearValue": 1725,
+                    "icon": "📜",
+                    "iconLabel": "Parish records"
                 },
                 {
                     "id": "1790s-bute-renewal",
@@ -185,7 +248,9 @@
                             ]
                         }
                     ],
-                    "yearValue": 1792
+                    "yearValue": 1792,
+                    "icon": "📜",
+                    "iconLabel": "Lease renewal"
                 }
             ],
             "startYear": 1700,
@@ -206,7 +271,9 @@
                         "Tithe surveys and valuation maps keep the Williams name on Great House Farm throughout the nineteenth century.",
                         "Late-century marriages link the holding to the Bucklers who continued the family's stewardship."
                     ],
-                    "yearValue": 1885
+                    "yearValue": 1885,
+                    "icon": "👪",
+                    "iconLabel": "Family history"
                 },
                 {
                     "id": "1840s-tithe-map",
@@ -235,7 +302,39 @@
                             ]
                         }
                     ],
-                    "yearValue": 1845
+                    "yearValue": 1845,
+                    "icon": "🗺️",
+                    "iconLabel": "Tithe map"
+                },
+                {
+                    "id": "1880s-soldier-find",
+                    "year": "c. 1880",
+                    "side": "both",
+                    "title": "Victorians uncover a medieval soldier's remains beneath the farmhouse",
+                    "summary": "Late nineteenth-century renovations exposed the skeleton of an armoured horseman beneath the dining room floor, fuelling stories of medieval conflict at Great House Farm.",
+                    "context": [
+                        "Family accounts describe workmen lifting a stone floor and finding an armoured rider and horse interred below the farmhouse.",
+                        "The startled household reburied the bones in St Dochdwy's churchyard and preserved the soldier's visor and lance, which later entered the National Museum of Wales collections."
+                    ],
+                    "evidence": [
+                        {
+                            "id": "ev-1880-soldier-blog",
+                            "title": "Blog account of skeleton found under the floor",
+                            "type": "blog",
+                            "source": {
+                                "name": "United Technocracy – The Great House Farm Story (2012)",
+                                "url": "https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"
+                            },
+                            "description": "Family recollections recount the discovery of a buried horseman during nineteenth-century refurbishments.",
+                            "content": [
+                                "The narrative records that the remains of a soldier and his horse were uncovered beneath the dining room and later reinterred in the parish churchyard.",
+                                "Mary Buckler's relatives retained the visor and lance as keepsakes before donating them to the national museum."
+                            ]
+                        }
+                    ],
+                    "yearValue": 1880,
+                    "icon": "🛡️",
+                    "iconLabel": "Historic discovery"
                 },
                 {
                     "id": "1890s-buckler-marriage",
@@ -264,7 +363,39 @@
                             ]
                         }
                     ],
-                    "yearValue": 1892
+                    "yearValue": 1892,
+                    "icon": "💍",
+                    "iconLabel": "Marriage"
+                },
+                {
+                    "id": "1897-marconi-visit",
+                    "year": "1897",
+                    "side": "both",
+                    "title": "Marconi conducts wireless experiments with help from Great House Farm",
+                    "summary": "In May 1897 Guglielmo Marconi stayed at Great House Farm while organising the pioneering wireless telegraphy tests between Lavernock Point and Flat Holm, relying on the Williams family for transport and support.",
+                    "context": [
+                        "Family tradition holds that Marconi lodged at the farmhouse and borrowed a four-poster bed while refining his equipment in the Vale of Glamorgan.",
+                        "The Williams family helped haul his apparatus by horse and cart to Lavernock Point, where he transmitted the world's first over-sea wireless signal."
+                    ],
+                    "evidence": [
+                        {
+                            "id": "ev-1897-marconi-blog",
+                            "title": "Family history note on Marconi's 1897 visit",
+                            "type": "blog",
+                            "source": {
+                                "name": "United Technocracy – The Great House Farm Story (2012)",
+                                "url": "https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"
+                            },
+                            "description": "The blog recounts Marconi's brief residence and the family's assistance during his wireless telegraphy experiment.",
+                            "content": [
+                                "Between 11 and 13 May 1897 the Williams family transported Marconi and his equipment to Lavernock Point for the over-sea signal test.",
+                                "The household even retained a dining table associated with Marconi's stay as a family relic into the late twentieth century."
+                            ]
+                        }
+                    ],
+                    "yearValue": 1897,
+                    "icon": "📡",
+                    "iconLabel": "Wireless experiment"
                 }
             ],
             "startYear": 1800,
@@ -285,7 +416,9 @@
                         "Generations of Williams and Buckler occupation carried into modern tenancy disputes with corporate landlords.",
                         "Campaigners and courts focused on that history when the appeal judgment arrived in 1987."
                     ],
-                    "yearValue": 1988
+                    "yearValue": 1988,
+                    "icon": "👪",
+                    "iconLabel": "Family history"
                 },
                 {
                     "id": "1916-tenancy",
@@ -314,7 +447,9 @@
                             ]
                         }
                     ],
-                    "yearValue": 1916
+                    "yearValue": 1916,
+                    "icon": "📜",
+                    "iconLabel": "Tenancy grant"
                 },
                 {
                     "id": "1938-reversion",
@@ -343,7 +478,9 @@
                             ]
                         }
                     ],
-                    "yearValue": 1938
+                    "yearValue": 1938,
+                    "icon": "📜",
+                    "iconLabel": "Reversion transfer"
                 },
                 {
                     "id": "1953-arrears",
@@ -372,7 +509,9 @@
                             ]
                         }
                     ],
-                    "yearValue": 1953
+                    "yearValue": 1953,
+                    "icon": "⚖️",
+                    "iconLabel": "Court order"
                 },
                 {
                     "id": "1955-notice",
@@ -415,7 +554,9 @@
                             ]
                         }
                     ],
-                    "yearValue": 1955
+                    "yearValue": 1955,
+                    "icon": "⚖️",
+                    "iconLabel": "Court action"
                 },
                 {
                     "id": "1959-ownership-claim",
@@ -444,7 +585,9 @@
                             ]
                         }
                     ],
-                    "yearValue": 1959
+                    "yearValue": 1959,
+                    "icon": "👪",
+                    "iconLabel": "Family claim"
                 },
                 {
                     "id": "1962-high-court",
@@ -473,7 +616,9 @@
                             ]
                         }
                     ],
-                    "yearValue": 1962
+                    "yearValue": 1962,
+                    "icon": "⚖️",
+                    "iconLabel": "High Court case"
                 },
                 {
                     "id": "1963-committal",
@@ -502,7 +647,9 @@
                             ]
                         }
                     ],
-                    "yearValue": 1963
+                    "yearValue": 1963,
+                    "icon": "⚖️",
+                    "iconLabel": "Committal order"
                 },
                 {
                     "id": "1965-tenancy-offer",
@@ -531,7 +678,39 @@
                             ]
                         }
                     ],
-                    "yearValue": 1965
+                    "yearValue": 1965,
+                    "icon": "📜",
+                    "iconLabel": "Tenancy offer"
+                },
+                {
+                    "id": "1960s-land-developed",
+                    "year": "1960s",
+                    "side": "both",
+                    "title": "Housing estate and school rise on Great House Farm's former fields",
+                    "summary": "By the late 1960s Great House Farm's acreage was carved up for suburban housing and, in 1970, a new primary school, shrinking the land surrounding the farmhouse.",
+                    "context": [
+                        "A housing estate was laid out across former Great House Farm fields, reducing the area the family had long cultivated.",
+                        "Llandough Primary School opened in 1970 on another portion of the farm, an occasion marked by a visit from local MP and future Prime Minister James Callaghan."
+                    ],
+                    "evidence": [
+                        {
+                            "id": "ev-1970-school-wiki",
+                            "title": "Wikipedia entry noting development on farm land",
+                            "type": "document",
+                            "source": {
+                                "name": "Llandough, Penarth – Wikipedia (2025)",
+                                "url": "https://en.wikipedia.org/wiki/Llandough,_Penarth"
+                            },
+                            "description": "Village history records that housing and a primary school were constructed on former Great House Farm ground by 1970.",
+                            "content": [
+                                "The entry notes that post-war housing was built on what had been Great House Farm's fields and that the modern school opened in 1970.",
+                                "It observes that the Buckler family occupied only the farmhouse and garden once the wider estate became a residential suburb."
+                            ]
+                        }
+                    ],
+                    "yearValue": 1965,
+                    "icon": "🏘️",
+                    "iconLabel": "Housing development"
                 },
                 {
                     "id": "1967-frederick-death",
@@ -560,7 +739,9 @@
                             ]
                         }
                     ],
-                    "yearValue": 1966
+                    "yearValue": 1966,
+                    "icon": "🕯️",
+                    "iconLabel": "Death in family"
                 },
                 {
                     "id": "1969-sale-to-bp",
@@ -589,7 +770,9 @@
                             ]
                         }
                     ],
-                    "yearValue": 1969
+                    "yearValue": 1969,
+                    "icon": "📜",
+                    "iconLabel": "Estate sale"
                 },
                 {
                     "id": "1974-cc-proceedings",
@@ -597,10 +780,11 @@
                     "year": "1974",
                     "side": "bp",
                     "title": "BP issues county court proceedings but offers licence",
-                    "summary": "BP Pension Trust instructs solicitors to commence possession proceedings in Cardiff County Court against Mary Buckler (sued in her maiden name of Williams). Amid press interest, BP writes offering rent-free occupation provided the family recognises BP's title.",
+                    "summary": "BP Pension Trust issues fresh possession proceedings but, under pressure from a 1,700-signature petition, writes to Mary Buckler offering a rent-free licence that would acknowledge BP's title.",
                     "context": [
-                        "Two letters dated May and July 1974 become the focal point of later litigation. The Court of Appeal ultimately treats them as granting a revocable licence, halting adverse possession time from running.",
-                        "The county court stay allows Mary Buckler to remain in situ while public sympathy grows."
+                        "Two letters dated May and July 1974 become the focal point of later litigation; the Court of Appeal ultimately treats them as granting a revocable licence that halted adverse possession from running.",
+                        "Local campaigners organised a petition and public meetings, prompting BP to temper its stance even as it labelled Mary a \"squatter\" in correspondence.",
+                        "Mary Buckler refused to concede ownership, insisting the permission was unnecessary even while remaining in the farmhouse."
                     ],
                     "evidence": [
                         {
@@ -611,10 +795,24 @@
                                 "name": "BAILII – BP Properties Ltd v Buckler [1987] EWCA Civ 2",
                                 "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
                             },
-                            "description": "The judgment reproduces BP's May and July 1974 letters, in which the company permits Mary Buckler to remain rent-free while reserving the right to recover possession later.",
+                            "description": "The judgment reproduces BP's May and July 1974 letters, in which the company permitted Mary Buckler to remain rent-free while reserving the right to recover possession later.",
                             "content": [
-                                "Slade LJ held that Mary Buckler's failure to repudiate the licence meant her occupation ceased to be adverse from July 1974.",
-                                "The letters also reference a public meeting and local newspaper coverage of Mary Buckler's circumstances."
+                                "Slade LJ noted that BP described Mary as a squatter while granting her a licence to stay for life, a concession intended to interrupt adverse possession.",
+                                "The court emphasised that Mary neither accepted nor rejected the offer, but her silence meant the family's occupation was no longer adverse from July 1974."
+                            ]
+                        },
+                        {
+                            "id": "ev-1974-petition-blog",
+                            "title": "Community petition prompts BP's licence offer",
+                            "type": "blog",
+                            "source": {
+                                "name": "United Technocracy – The Great House Farm Story (2012)",
+                                "url": "https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"
+                            },
+                            "description": "Family history recalls the 1974 petition that persuaded BP to offer Mary Buckler a rent-free licence and her refusal to recognise the company's title.",
+                            "content": [
+                                "Supporters gathered 1,700 signatures seeking preservation of the farm, after which BP's trustees offered Mary a lifetime licence.",
+                                "Mary reportedly told BP, 'It's my land. It's not your permission to give,' underscoring her refusal to legitimise the company's claim."
                             ]
                         },
                         {
@@ -632,7 +830,9 @@
                             ]
                         }
                     ],
-                    "yearValue": 1974
+                    "yearValue": 1974,
+                    "icon": "⚖️",
+                    "iconLabel": "County court action"
                 },
                 {
                     "id": "1976-parliament",
@@ -661,36 +861,70 @@
                             ]
                         }
                     ],
-                    "yearValue": 1976
+                    "yearValue": 1976,
+                    "icon": "🏛️",
+                    "iconLabel": "Parliament debate"
                 },
                 {
-                    "id": "1977-mary-death",
-                    "label": "19",
-                    "year": "1977",
-                    "side": "buckler",
-                    "title": "Death of Mary Buckler",
-                    "summary": "Mary Buckler dies in 1977, leaving William Buckler as head of the household and continuing occupier of Great House Farm.",
+                    "id": "1979-roman-villa",
+                    "year": "1979",
+                    "side": "both",
+                    "title": "Roman villa remains are discovered on former Great House Farm land",
+                    "summary": "Construction work on the southern fields in 1979 exposed the remains of a second- to fourth-century Roman villa, complete with mosaic flooring and a hypocaust bath system.",
                     "context": [
-                        "William maintains the stance that the family owns the property outright, now relying on adverse possession arguments spanning more than twenty years.",
-                        "BP refrains from immediate enforcement but keeps the licence letters on file."
+                        "The Glamorgan-Gwent Archaeological Trust led an emergency excavation after builders uncovered Roman masonry and artefacts while preparing foundations for new flats.",
+                        "Archaeologists recorded plastered walls, red tile roofing, a sunken bath and human burials, although the site was ultimately built over once documentation finished."
                     ],
                     "evidence": [
                         {
-                            "id": "ev-1977-bailii-transition",
-                            "title": "Succession after Mary's death noted by the Court of Appeal",
+                            "id": "ev-1979-penarth-times",
+                            "title": "Penarth Times report on Roman villa find",
+                            "type": "news",
+                            "source": {
+                                "name": "Penarth Times (summarised via Llandough, Penarth – Wikipedia)",
+                                "url": "https://en.wikipedia.org/wiki/Llandough,_Penarth"
+                            },
+                            "description": "Local coverage described the villa discovery and the unsuccessful attempt to preserve the remains in situ.",
+                            "content": [
+                                "Reports detailed second- to fourth-century structures with tiled roofs, painted plaster and a well-preserved sunken bath at the villa.",
+                                "A late bid to save the archaeology failed, and the complex was removed before modern housing went ahead."
+                            ]
+                        }
+                    ],
+                    "yearValue": 1979,
+                    "icon": "🏺",
+                    "iconLabel": "Roman archaeology"
+                },
+                {
+                    "id": "1983-mary-buckler-death",
+                    "label": "19",
+                    "year": "1983",
+                    "side": "buckler",
+                    "title": "Mary Buckler's passing leaves her son to continue the fight",
+                    "summary": "Mary Buckler (née Williams) dies in 1983 after decades at Great House Farm, leaving her son William to press the family's adverse possession claim alone.",
+                    "context": [
+                        "Mary had lived on the farm since childhood and refused to leave even after rent payments ceased in the 1950s, embodying four centuries of family stewardship.",
+                        "Following her death, William Buckler remained in occupation without paying rent, arguing that the family's long possession had already extinguished BP's title."
+                    ],
+                    "evidence": [
+                        {
+                            "id": "ev-1983-court-record",
+                            "title": "Court of Appeal note on Mary Buckler's death",
                             "type": "document",
                             "source": {
                                 "name": "BAILII – BP Properties Ltd v Buckler [1987] EWCA Civ 2",
                                 "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
                             },
-                            "description": "The judgment explains how William Buckler remained in possession on his mother's death, continuing to rely on her earlier claims to ownership.",
+                            "description": "The 1987 judgment records Mary Buckler's death in 1983 and William's continuation in possession.",
                             "content": [
-                                "William used the same solicitors who had assisted his mother and kept her correspondence with BP as part of his case file.",
-                                "The family's occupation therefore remained continuous for the purposes of the Limitation Act 1980."
+                                "The court observed that Mary had lived rent-free since 1953 and that William carried on in the property after her death.",
+                                "Judges noted Mary's conviction that the land was hers, a belief that informed William's resolve to pursue the appeal."
                             ]
                         }
                     ],
-                    "yearValue": 1977
+                    "yearValue": 1983,
+                    "icon": "🕯️",
+                    "iconLabel": "Death in family"
                 },
                 {
                     "id": "1985-county-court",
@@ -719,7 +953,9 @@
                             ]
                         }
                     ],
-                    "yearValue": 1985
+                    "yearValue": 1985,
+                    "icon": "⚖️",
+                    "iconLabel": "County court ruling"
                 },
                 {
                     "id": "1987-court-of-appeal",
@@ -767,7 +1003,69 @@
                             ]
                         }
                     ],
-                    "yearValue": 1987
+                    "yearValue": 1987,
+                    "icon": "⚖️",
+                    "iconLabel": "Court of Appeal judgment"
+                },
+                {
+                    "id": "1988-demolition",
+                    "year": "1988",
+                    "side": "bp",
+                    "title": "Great House Farm is demolished after 33 years of dispute",
+                    "summary": "On the night of 6 December 1988 BP Properties demolished Great House Farm soon after securing legal victory, ending the Williams/Buckler family's four centuries on the site.",
+                    "context": [
+                        "BP moved quickly following the Court of Appeal ruling, serving a final quit notice and deploying heavy machinery to level the historic buildings.",
+                        "Local supporters who had petitioned for the farm's preservation were outraged, but with litigation exhausted the farmhouse was reduced to rubble overnight."
+                    ],
+                    "evidence": [
+                        {
+                            "id": "ev-1988-blog-entry",
+                            "title": "Family blog on the December 1988 demolition",
+                            "type": "blog",
+                            "source": {
+                                "name": "United Technocracy – The Great House Farm Story (2012)",
+                                "url": "https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"
+                            },
+                            "description": "The blog describes how BP demolished Great House Farm overnight in December 1988 following the adverse possession litigation.",
+                            "content": [
+                                "Family members recount bulldozers arriving on 6 December 1988 to demolish the farmhouse under cover of darkness.",
+                                "They reflect on the loss of a 400-year-old home and the abrupt conclusion to the protracted dispute."
+                            ]
+                        }
+                    ],
+                    "yearValue": 1988,
+                    "icon": "🏚️",
+                    "iconLabel": "Demolition"
+                },
+                {
+                    "id": "1990-archaeology-watch",
+                    "year": "1990",
+                    "side": "both",
+                    "title": "Archaeologists survey the cleared site ahead of redevelopment",
+                    "summary": "Trial trenches dug by the Glamorgan-Gwent Archaeological Trust in 1990 mapped the demolished farmhouse and recommended watching briefs for the most sensitive areas before construction proceeded.",
+                    "context": [
+                        "Evaluation trenches revealed stone walls and demolition rubble from Great House Farm's buildings, pinpointing their former layout after the 1988 clearance.",
+                        "The trust concluded that much of the ground held limited archaeology but advised close monitoring where structural remains survived."
+                    ],
+                    "evidence": [
+                        {
+                            "id": "ev-1990-ggat-report",
+                            "title": "GGAT 1990 assessment summary",
+                            "type": "report",
+                            "source": {
+                                "name": "Glamorgan-Gwent Archaeological Trust – Report No. GGAT1990",
+                                "url": "https://archaeologydataservice.ac.uk/archives/view/archaeologyreport_2020/"
+                            },
+                            "description": "A summary of the 1990 trial excavation outlines the findings and recommendations for the cleared farmstead.",
+                            "content": [
+                                "Archaeologists determined that large parts of the site were of low archaeological priority, while selected zones merited further watching briefs.",
+                                "The report captured wall lines and demolition deposits that preserved the farmhouse footprint for the record."
+                            ]
+                        }
+                    ],
+                    "yearValue": 1990,
+                    "icon": "🧭",
+                    "iconLabel": "Archaeological survey"
                 },
                 {
                     "id": "1991-commentary",
@@ -810,7 +1108,39 @@
                             ]
                         }
                     ],
-                    "yearValue": 1991
+                    "yearValue": 1991,
+                    "icon": "📚",
+                    "iconLabel": "Legal commentary"
+                },
+                {
+                    "id": "1994-cemetery-excavation",
+                    "year": "1994",
+                    "side": "both",
+                    "title": "Excavation uncovers an early-medieval cemetery beneath the farm",
+                    "summary": "Before new housing went up in 1994, archaeologists excavated 1,026 burials dating from the seventh to tenth centuries, proving that Great House Farm once formed part of a major monastic settlement.",
+                    "context": [
+                        "The dig north of St Dochdwy's church confirmed traditions of a Dark Age monastery, with graves laid out in ordered rows and some edged or marked by stones.",
+                        "Although most burials lacked grave goods, a handful produced Roman brooches, glass beads, imported pottery and late coins, linking the community to the final years of Roman Britain."
+                    ],
+                    "evidence": [
+                        {
+                            "id": "ev-1994-excavation-ads",
+                            "title": "Summary of 1994 Llandough excavation results",
+                            "type": "journal",
+                            "source": {
+                                "name": "Medieval Archaeology, Vol. 49 (2005)",
+                                "url": "https://medievalarchaeology.co.uk/journal/"
+                            },
+                            "description": "Published findings detail the scale of the cemetery and the material culture recovered during the 1994 excavation.",
+                            "content": [
+                                "Archaeologists recorded 1,026 burials, making Llandough one of Britain's largest early-medieval cemetery excavations.",
+                                "Select graves yielded a complete Roman brooch, glass beads, amphora fragments and late Roman coins, indicating continuity from the Roman period into the early Middle Ages."
+                            ]
+                        }
+                    ],
+                    "yearValue": 1994,
+                    "icon": "🏺",
+                    "iconLabel": "Cemetery excavation"
                 }
             ],
             "startYear": 1900,

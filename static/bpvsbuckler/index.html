@@ -401,7 +401,7 @@
       grid-template-columns: minmax(0, 1fr) var(--axis-column-width) minmax(0, 1fr);
       column-gap: var(--entry-gap);
       align-items: center;
-      transform: translateY(-50%);
+      transform: translateY(calc(-50% + var(--entry-y-offset, 0px)));
       z-index: 2;
       --bubble-offset: 0px;
       --bubble-scale: 1;
