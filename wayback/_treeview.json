@@ -6,7 +6,13 @@
       "html": "javascript:void(0)"
     }
   },
-
+  {
+   "name": "<div class='subtitle-line enable-link caps'>TXT's</div>",
+    "path": "./txt",
+    "_links": {
+      "html": "./txt"
+    }
+  },
   {
    "name": "<div class='subtitle-line enable-link caps'>PDF's</div>",
     "path": "./pdf",

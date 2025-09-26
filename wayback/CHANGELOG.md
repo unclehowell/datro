@@ -6,6 +6,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [-wayback.05] - Q3/2025
+
+### Added
+Sep -26 - Added Welsh/ English song lyrics (v1.0) to library   
+
+
 ## [-wayback.04] - Q1/2024
 
 ### Added
