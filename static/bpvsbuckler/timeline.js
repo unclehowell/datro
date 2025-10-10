@@ -422,6 +422,35 @@
     });
   }
 
+  function updateEntriesHeight(section) {
+    if (!section || section.classList.contains('timeline-century--collapsed')) {
+      return;
+    }
+    const entries = section.querySelector('.timeline-century__entries');
+    if (!entries || entries.hidden) {
+      return;
+    }
+
+    entries.style.removeProperty('--entries-height');
+
+    const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
+    if (!entryNodes.length) {
+      return;
+    }
+
+    const computed = window.getComputedStyle(entries);
+    const minHeight = Number.parseFloat(computed.minHeight) || 0;
+    const containerTop = entries.getBoundingClientRect().top;
+
+    const requiredBoxHeight = entryNodes.reduce((max, entry) => {
+      const rect = entry.getBoundingClientRect();
+      return Math.max(max, rect.bottom - containerTop);
+    }, 0);
+
+    const requiredHeight = Math.max(minHeight, requiredBoxHeight);
+    entries.style.setProperty('--entries-height', `${Math.ceil(requiredHeight)}px`);
+  }
+
   function applyLayout() {
     const sections = Array.from(timelineContainer.querySelectorAll('.timeline-century'));
     sections.forEach(resetEntryLayout);
@@ -451,7 +480,10 @@
       });
 
       requestAnimationFrame(() => {
-        sections.forEach(updateConnectorLengths);
+        sections.forEach(section => {
+          updateEntriesHeight(section);
+          updateConnectorLengths(section);
+        });
       });
     });
   }
@@ -473,6 +505,7 @@
     control.setAttribute('aria-expanded', expanded ? 'true' : 'false');
     if (!expanded) {
       resetEntryLayout(section);
+      entries.style.removeProperty('--entries-height');
     }
   }
 

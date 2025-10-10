@@ -246,7 +246,9 @@
     .timeline-century__entries {
       position: relative;
       padding: 56px 0;
+      box-sizing: border-box;
       min-height: calc(var(--century-span, 100) * var(--year-scale));
+      height: var(--entries-height, calc(var(--century-span, 100) * var(--year-scale)));
       margin-top: 32px;
       overflow: visible;
     }
