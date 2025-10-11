@@ -74,6 +74,8 @@
 
     .page-subtitle {
       color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.01em;
     }
 
     .round-button {
@@ -245,7 +247,8 @@
 
     .timeline-century__entries {
       position: relative;
-      padding: 56px 0;
+      padding-top: 56px;
+      padding-bottom: 120px;
       min-height: calc(var(--century-span, 100) * var(--year-scale));
       margin-top: 32px;
       overflow: visible;
@@ -308,14 +311,14 @@
     }
 
     .timeline-century__tick-label {
-      font-size: 0.7rem;
+      font-size: 0.52rem;
       font-weight: 600;
       letter-spacing: 0.08em;
       color: var(--heading-color);
       background: var(--surface);
       border: 1px solid var(--surface-border);
       border-radius: 9999px;
-      padding: 2px 8px;
+      padding: 2px 6px;
       box-shadow: 0 18px 32px -28px rgba(15, 23, 42, 0.65);
     }
 
@@ -408,6 +411,13 @@
       --connector-length: calc(var(--entry-gap) + var(--axis-column-width) / 2);
     }
 
+    .timeline--layouting .timeline-entry,
+    .timeline--layouting .timeline-bubble,
+    .timeline--layouting .timeline-year,
+    .timeline--layouting .timeline-bubble::after {
+      transition: none !important;
+    }
+
     .timeline-entry__column {
       display: flex;
       align-items: center;
@@ -438,13 +448,14 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.75rem 1rem;
+      padding: 0.5rem 0.75rem;
       border-radius: 9999px;
       background: var(--surface);
       border: 1px solid var(--surface-border);
       box-shadow: var(--shadow-soft);
       color: var(--heading-color);
       font-weight: 700;
+      font-size: 0.8rem;
       letter-spacing: 0.06em;
       text-transform: uppercase;
     }
@@ -486,7 +497,7 @@
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       position: relative;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       cursor: pointer;
@@ -505,7 +516,7 @@
       border: 1px solid var(--surface-border);
       padding: 0.4rem 0.75rem;
       white-space: nowrap;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--text-primary);
       box-shadow: var(--shadow-soft);
       opacity: 0;
@@ -785,22 +796,21 @@
 <body class="font-sans" data-theme="light">
   <div class="container mx-auto px-4 py-10">
     <header class="text-center">
-      <div class="flex flex-col items-center gap-4">
-        <div class="flex flex-wrap items-center justify-center gap-3">
-          <div class="flex flex-wrap items-center justify-center gap-3">
+      <div class="flex flex-col items-center gap-5">
+        <div class="flex flex-col items-center gap-2">
           <h1 id="case-title" class="text-4xl md:text-5xl font-extrabold tracking-tight page-title">Great House Farm</h1>
-          <div class="flex items-center gap-2">
-            <button id="theme-toggle" class="round-button" type="button" aria-pressed="false" title="Switch to dark theme">
-              <span class="sr-only">Toggle colour theme</span>
-              <span aria-hidden="true" data-theme-icon>☀️</span>
-            </button>
-            <button id="intro-toggle" class="round-button" type="button" aria-expanded="false" aria-controls="intro-panel" title="About this timeline">
-              <span aria-hidden="true">ℹ️</span>
-              <span class="sr-only">Toggle introduction</span>
-            </button>
-          </div>
+          <p id="case-subtitle" class="text-lg md:text-xl max-w-3xl mx-auto page-subtitle">Occupied for centuries by the Williams/ Buckler family.</p>
         </div>
-        <p id="case-subtitle" class="text-lg md:text-xl max-w-3xl mx-auto page-subtitle">Occupied for centuries by the Williams/ Buckler family.</p>
+        <div class="flex items-center justify-center gap-2">
+          <button id="theme-toggle" class="round-button" type="button" aria-pressed="false" title="Switch to dark theme">
+            <span class="sr-only">Toggle colour theme</span>
+            <span aria-hidden="true" data-theme-icon>☀️</span>
+          </button>
+          <button id="intro-toggle" class="round-button" type="button" aria-expanded="false" aria-controls="intro-panel" title="About this timeline">
+            <span aria-hidden="true">ℹ️</span>
+            <span class="sr-only">Toggle introduction</span>
+          </button>
+        </div>
       </div>
       <div id="intro-panel" class="intro-panel hidden" aria-hidden="true" tabindex="-1">
         <h2 class="text-2xl font-semibold intro-heading">About this timeline</h2>

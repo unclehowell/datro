@@ -276,6 +276,16 @@
     yearSpacing: 12,
   };
 
+  const yearScale = (() => {
+    const root = document.documentElement;
+    if (!root || typeof window === 'undefined' || !window.getComputedStyle) {
+      return 7;
+    }
+    const raw = window.getComputedStyle(root).getPropertyValue('--year-scale');
+    const numeric = parseFloat(raw);
+    return Number.isFinite(numeric) ? numeric : 7;
+  })();
+
   let layoutFrame = null;
 
   function computeAdjustedRect(rect, position, offset, scale) {
@@ -377,11 +387,11 @@
   }
 
   function resetEntryLayout(section) {
-    if (!section || section.classList.contains('timeline-century--collapsed')) {
+    if (!section) {
       return;
     }
     const entries = section.querySelector('.timeline-century__entries');
-    if (!entries || entries.hidden) {
+    if (!entries) {
       return;
     }
     entries.querySelectorAll('.timeline-entry').forEach(entry => {
@@ -390,6 +400,51 @@
       entry.style.removeProperty('--connector-length');
       entry.style.removeProperty('--entry-y-offset');
     });
+    entries.dataset.currentHeight = '';
+    const baseHeight = Number(entries.dataset.baseHeight);
+    if (Number.isFinite(baseHeight) && baseHeight > 0) {
+      entries.style.minHeight = `${Math.ceil(baseHeight)}px`;
+    } else {
+      entries.style.removeProperty('min-height');
+    }
+  }
+
+  function updateEntriesHeight(entries) {
+    if (!entries) {
+      return;
+    }
+    const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
+    if (!entryNodes.length) {
+      const baseHeight = Number(entries.dataset.baseHeight);
+      if (Number.isFinite(baseHeight) && baseHeight > 0) {
+        entries.style.minHeight = `${Math.ceil(baseHeight)}px`;
+      } else {
+        entries.style.removeProperty('min-height');
+      }
+      entries.dataset.currentHeight = '';
+      return;
+    }
+
+    const containerRect = entries.getBoundingClientRect();
+    const containerTop = containerRect.top;
+    let maxBottom = Number(entries.dataset.baseHeight) || containerRect.height;
+
+    entryNodes.forEach(entry => {
+      const rect = entry.getBoundingClientRect();
+      const bubble = entry.querySelector('.timeline-bubble');
+      const bubbleRect = bubble ? bubble.getBoundingClientRect() : rect;
+      const relativeBottom = Math.max(rect.bottom, bubbleRect.bottom) - containerTop;
+      if (relativeBottom > maxBottom) {
+        maxBottom = relativeBottom;
+      }
+    });
+
+    const desired = Math.ceil(Math.max(maxBottom + 48, Number(entries.dataset.baseHeight) || 0));
+    const current = Number(entries.dataset.currentHeight);
+    if (!Number.isFinite(current) || Math.abs(desired - current) >= 1) {
+      entries.style.minHeight = `${desired}px`;
+      entries.dataset.currentHeight = String(desired);
+    }
   }
 
   function updateConnectorLengths(section) {
@@ -423,10 +478,16 @@
   }
 
   function applyLayout() {
+    if (!timelineContainer) {
+      return;
+    }
     const sections = Array.from(timelineContainer.querySelectorAll('.timeline-century'));
+    timelineContainer.classList.add('timeline--layouting');
     sections.forEach(resetEntryLayout);
 
     requestAnimationFrame(() => {
+      const activeSections = [];
+
       sections.forEach(section => {
         if (section.classList.contains('timeline-century--collapsed')) {
           return;
@@ -448,10 +509,23 @@
           const yearOffset = yearOffsets.has(entry) ? yearOffsets.get(entry) : 0;
           entry.style.setProperty('--entry-y-offset', `${yearOffset}px`);
         });
+
+        activeSections.push({ section, entries });
       });
 
       requestAnimationFrame(() => {
-        sections.forEach(updateConnectorLengths);
+        activeSections.forEach(({ entries }) => {
+          updateEntriesHeight(entries);
+        });
+
+        requestAnimationFrame(() => {
+          activeSections.forEach(({ section }) => {
+            updateConnectorLengths(section);
+          });
+          requestAnimationFrame(() => {
+            timelineContainer.classList.remove('timeline--layouting');
+          });
+        });
       });
     });
   }
@@ -527,6 +601,9 @@
 
       const bounds = normalizeCenturyBounds(century);
       entries.style.setProperty('--century-span', String(bounds.span || 100));
+      const baseHeight = Math.max(0, (bounds.span || 100) * yearScale);
+      entries.dataset.baseHeight = String(baseHeight);
+      entries.style.minHeight = `${Math.ceil(baseHeight)}px`;
       buildCenturyScale(entries, bounds);
 
       const events = Array.isArray(century.events) ? [...century.events] : [];
@@ -792,13 +869,6 @@
   const handleWindowResize = () => scheduleLayout();
   window.addEventListener('resize', handleWindowResize);
   window.addEventListener('orientationchange', handleWindowResize);
-
-  const timelineLayoutObserver = typeof ResizeObserver !== 'undefined' && timelineContainer
-    ? new ResizeObserver(() => scheduleLayout())
-    : null;
-  if (timelineLayoutObserver) {
-    timelineLayoutObserver.observe(timelineContainer);
-  }
 
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(() => scheduleLayout());
