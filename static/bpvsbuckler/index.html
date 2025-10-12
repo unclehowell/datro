@@ -107,6 +107,75 @@
       outline-offset: 3px;
     }
 
+    .controls-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: stretch;
+      gap: 12px;
+      width: 100%;
+      max-width: 520px;
+    }
+
+    .controls-group__buttons {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .century-select {
+      position: relative;
+      display: inline-block;
+      flex: 1 1 220px;
+      min-width: 220px;
+      width: 100%;
+      appearance: none;
+      -webkit-appearance: none;
+      padding: 0.8rem 3.25rem 0.8rem 1.1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(37, 99, 235, 0.35);
+      background: linear-gradient(135deg, rgba(219, 234, 254, 0.96), rgba(191, 219, 254, 0.92));
+      color: #1e293b;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      box-shadow: 0 18px 34px -24px rgba(37, 99, 235, 0.55);
+      transition: border 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%233256eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1.1rem center;
+      background-size: 18px;
+    }
+
+    .century-select:disabled {
+      cursor: progress;
+      opacity: 0.7;
+    }
+
+    .century-select:focus,
+    .century-select:focus-visible {
+      border-color: rgba(37, 99, 235, 0.75);
+      box-shadow: 0 18px 34px -20px rgba(37, 99, 235, 0.6), 0 0 0 4px rgba(59, 130, 246, 0.25);
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    body[data-theme='dark'] .century-select {
+      border-color: rgba(96, 165, 250, 0.45);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(30, 41, 59, 0.86));
+      color: #e2e8f0;
+      box-shadow: 0 18px 34px -24px rgba(15, 23, 42, 0.85);
+      background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%2396a5fa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+
+    body[data-theme='dark'] .century-select:focus,
+    body[data-theme='dark'] .century-select:focus-visible {
+      border-color: rgba(147, 197, 253, 0.8);
+      box-shadow: 0 18px 34px -22px rgba(8, 47, 73, 0.85), 0 0 0 4px rgba(96, 165, 250, 0.35);
+    }
+
     .intro-panel {
       background: var(--surface);
       border-radius: 18px;
@@ -165,6 +234,10 @@
       max-width: 980px;
       margin: 0 auto;
       padding: 24px 0 64px;
+    }
+
+    .timeline-section {
+      padding-bottom: 20vh;
     }
 
     .timeline-century + .timeline-century {
@@ -786,10 +859,13 @@
   <div class="container mx-auto px-4 py-10">
     <header class="text-center">
       <div class="flex flex-col items-center gap-4">
-        <div class="flex flex-wrap items-center justify-center gap-3">
-          <div class="flex flex-wrap items-center justify-center gap-3">
-          <h1 id="case-title" class="text-4xl md:text-5xl font-extrabold tracking-tight page-title">Great House Farm</h1>
-          <div class="flex items-center gap-2">
+        <h1 id="case-title" class="text-4xl md:text-5xl font-extrabold tracking-tight page-title">Great House Farm</h1>
+        <p id="case-subtitle" class="text-lg md:text-xl max-w-3xl mx-auto page-subtitle">Occupied for centuries by the Williams/ Buckler family.</p>
+      </div>
+      <div id="century-selector" class="mt-8 flex flex-col items-center gap-3">
+        <label for="century-select" class="text-xs font-semibold tracking-[0.28em] uppercase text-slate-500 dark:text-slate-300">Century</label>
+        <div class="controls-group">
+          <div class="controls-group__buttons">
             <button id="theme-toggle" class="round-button" type="button" aria-pressed="false" title="Switch to dark theme">
               <span class="sr-only">Toggle colour theme</span>
               <span aria-hidden="true" data-theme-icon>☀️</span>
@@ -799,8 +875,10 @@
               <span class="sr-only">Toggle introduction</span>
             </button>
           </div>
+          <select id="century-select" class="century-select" disabled>
+            <option value="">Loading centuries…</option>
+          </select>
         </div>
-        <p id="case-subtitle" class="text-lg md:text-xl max-w-3xl mx-auto page-subtitle">Occupied for centuries by the Williams/ Buckler family.</p>
       </div>
       <div id="intro-panel" class="intro-panel hidden" aria-hidden="true" tabindex="-1">
         <h2 class="text-2xl font-semibold intro-heading">About this timeline</h2>
@@ -809,7 +887,7 @@
       </div>
     </header>
 
-    <section class="mt-14">
+    <section class="mt-14 timeline-section">
       <div id="timeline-loading" class="text-center loading-text">Loading timeline data…</div>
       <div class="timeline" id="timeline" aria-live="polite"></div>
     </section>
