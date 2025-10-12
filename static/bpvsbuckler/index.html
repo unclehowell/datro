@@ -528,7 +528,7 @@
       grid-template-columns: minmax(0, 1fr) var(--axis-column-width) minmax(0, 1fr);
       column-gap: var(--entry-gap);
       align-items: center;
-      transform: translateY(calc(-50% + var(--entry-y-offset, 0px)));
+      transform: translateY(-50%);
       z-index: 2;
       --bubble-offset: 0px;
       --bubble-scale: 1;
@@ -818,6 +818,43 @@
       display: grid;
       gap: 18px;
       color: var(--text-muted);
+    }
+
+    .modal-photo-album {
+      margin-top: 4px;
+    }
+
+    .photo-album-placeholder {
+      padding: 28px;
+      border-radius: 18px;
+      border: 2px dashed var(--accent-muted);
+      background: var(--surface-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-align: center;
+      color: var(--text-muted);
+      min-height: 180px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+    }
+
+    .photo-album-placeholder__icon {
+      font-size: 2.75rem;
+    }
+
+    .photo-album-placeholder__text {
+      font-size: 0.95rem;
+      max-width: 32ch;
+      line-height: 1.6;
+    }
+
+    body[data-theme='dark'] .photo-album-placeholder {
+      background: rgba(15, 23, 42, 0.68);
+      border-color: rgba(96, 165, 250, 0.35);
+      color: var(--text-soft);
+      box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.08);
     }
 
     .modal-section-heading {
