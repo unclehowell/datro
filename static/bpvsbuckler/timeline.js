@@ -26,6 +26,59 @@
   let sharedSidePreference = 'right';
   let centuriesData = [];
 
+  function createPhotoAlbumEvent(year) {
+    const numericYear = Number(year);
+    if (!Number.isFinite(numericYear)) {
+      return null;
+    }
+    const roundedYear = Math.round(numericYear);
+    const id = `photos-${roundedYear}`;
+    return {
+      id,
+      year: String(roundedYear).padStart(4, '0'),
+      yearValue: roundedYear,
+      side: 'both',
+      title: `${roundedYear} Photos`,
+      summary: `Open the ${roundedYear} photo album to view and organise images from this year.`,
+      icon: '📸',
+      iconLabel: 'Photo album',
+      type: 'photo-album',
+      albumYear: roundedYear,
+    };
+  }
+
+  function ensurePhotoAlbumsForCentury(century, bounds) {
+    const baseEvents = Array.isArray(century?.events) ? [...century.events] : [];
+    const existingIds = new Set(baseEvents.map(event => event.id));
+    const years = new Set();
+
+    baseEvents.forEach(event => {
+      const eventYear = getEventYearValue(event, bounds);
+      if (Number.isFinite(eventYear)) {
+        years.add(Math.round(eventYear));
+      } else if (typeof event.year === 'string') {
+        const match = event.year.match(/(1[5-9]\d{2}|20\d{2})/);
+        if (match) {
+          years.add(Number(match[0]));
+        }
+      }
+    });
+
+    years.forEach(year => {
+      const id = `photos-${year}`;
+      if (existingIds.has(id)) {
+        return;
+      }
+      const albumEvent = createPhotoAlbumEvent(year);
+      if (albumEvent) {
+        baseEvents.push(albumEvent);
+        existingIds.add(id);
+      }
+    });
+
+    return baseEvents;
+  }
+
   function setTheme(theme, persist = true) {
     const normalized = theme === 'dark' ? 'dark' : 'light';
     body.dataset.theme = normalized;
@@ -502,7 +555,7 @@
     entries.style.setProperty('--century-span', String(bounds.span || 100));
     buildCenturyScale(entries, bounds);
 
-    const events = Array.isArray(century.events) ? [...century.events] : [];
+    const events = ensurePhotoAlbumsForCentury(century, bounds);
     events.sort((a, b) => {
       const yearA = getEventYearValue(a, bounds);
       const yearB = getEventYearValue(b, bounds);
@@ -840,6 +893,29 @@
     const evidenceSection = buildEvidenceSection(event);
     if (evidenceSection) {
       modalBody.appendChild(evidenceSection);
+    }
+
+    if (event.type === 'photo-album') {
+      const albumWrapper = document.createElement('div');
+      albumWrapper.className = 'modal-photo-album';
+
+      const placeholder = document.createElement('div');
+      placeholder.className = 'photo-album-placeholder';
+
+      const icon = document.createElement('div');
+      icon.className = 'photo-album-placeholder__icon';
+      icon.textContent = event.icon || '📸';
+      placeholder.appendChild(icon);
+
+      const text = document.createElement('p');
+      text.className = 'photo-album-placeholder__text';
+      const albumYear = event.albumYear || event.yearValue || event.year || '';
+      const readableYear = albumYear ? String(albumYear) : 'selected year';
+      text.textContent = `This space will showcase the ${readableYear} photo collection.`;
+      placeholder.appendChild(text);
+
+      albumWrapper.appendChild(placeholder);
+      modalBody.appendChild(albumWrapper);
     }
 
     modal.classList.add('active');
