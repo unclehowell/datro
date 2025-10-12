@@ -8,6 +8,8 @@
   const caseSubtitle = document.getElementById('case-subtitle');
   const caseIntro = document.getElementById('case-intro');
   const keyThemes = document.getElementById('key-themes');
+  const centurySelector = document.getElementById('century-selector');
+  const centurySelect = document.getElementById('century-select');
   const timelineContainer = document.getElementById('timeline');
   const loadingMessage = document.getElementById('timeline-loading');
   const modal = document.getElementById('modal');
@@ -21,6 +23,7 @@
   const storageKey = 'ghf-theme';
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
   let sharedSidePreference = 'right';
+  let centuriesData = [];
 
   function setTheme(theme, persist = true) {
     const normalized = theme === 'dark' ? 'dark' : 'light';
@@ -121,7 +124,7 @@
       return 0;
     }
     const clamped = Math.min(Math.max(year, startYear), endYear);
-    const offset = endYear - clamped;
+    const offset = clamped - startYear;
     const raw = (offset / span) * 100;
     return Math.min(98, Math.max(2, raw));
   }
@@ -138,7 +141,7 @@
     scale.appendChild(ticks);
 
     const { startYear, endYear, span } = bounds;
-    for (let year = endYear; year >= startYear; year -= 1) {
+    for (let year = startYear; year <= endYear; year += 1) {
       const tick = document.createElement('div');
       tick.className = 'timeline-century__tick timeline-century__tick--year';
       if (year % 5 === 0) {
@@ -151,7 +154,7 @@
         tick.classList.add('timeline-century__tick--century');
       }
 
-      const offset = ((endYear - year) / span) * 100;
+      const offset = ((year - startYear) / span) * 100;
       const position = Math.min(100, Math.max(0, offset));
       tick.style.top = `${position}%`;
 
@@ -466,100 +469,145 @@
     });
   }
 
-  function applyCenturyState(section, entries, control, expanded) {
-    section.classList.toggle('timeline-century--collapsed', !expanded);
-    entries.hidden = !expanded;
-    entries.setAttribute('aria-hidden', expanded ? 'false' : 'true');
-    control.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-    if (!expanded) {
-      resetEntryLayout(section);
+  function buildCenturySection(century, index) {
+    const section = document.createElement('section');
+    section.className = 'timeline-century';
+
+    const header = document.createElement('div');
+    header.className = 'timeline-century__header';
+
+    const heading = document.createElement('h2');
+    heading.className = 'timeline-century__heading';
+    const headingText = century.title || 'Century of occupation';
+    heading.textContent = century.range ? `${headingText} (${century.range})` : headingText;
+    header.appendChild(heading);
+
+    section.appendChild(header);
+
+    if (century.summary) {
+      const summary = document.createElement('p');
+      summary.className = 'timeline-century__summary';
+      summary.textContent = century.summary;
+      section.appendChild(summary);
     }
+
+    const entries = document.createElement('div');
+    entries.className = 'timeline-century__entries';
+    const idSeed = (century.id || `century-${index + 1}`).toString();
+    const normalizedId = idSeed.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    entries.id = `${normalizedId || `century-${index + 1}`}-entries`;
+
+    const bounds = normalizeCenturyBounds(century);
+    entries.style.setProperty('--century-span', String(bounds.span || 100));
+    buildCenturyScale(entries, bounds);
+
+    const events = Array.isArray(century.events) ? [...century.events] : [];
+    events.sort((a, b) => {
+      const yearA = getEventYearValue(a, bounds);
+      const yearB = getEventYearValue(b, bounds);
+      if (yearA === yearB) {
+        return (a.label || a.id || '').localeCompare(b.label || b.id || '');
+      }
+      return yearA - yearB;
+    });
+    events.forEach(event => {
+      const entry = buildEvent(event, century, bounds);
+      entries.appendChild(entry);
+    });
+
+    section.appendChild(entries);
+    return section;
   }
 
-  function renderTimeline(data) {
+  function showEmptyTimelineState() {
+    timelineContainer.innerHTML = '';
+    const empty = document.createElement('p');
+    empty.className = 'text-center text-slate-500 dark:text-slate-300';
+    empty.textContent = 'No timeline entries available.';
+    timelineContainer.appendChild(empty);
+  }
+
+  function displayCentury(value) {
+    if (!Array.isArray(centuriesData) || !centuriesData.length) {
+      showEmptyTimelineState();
+      return;
+    }
+
+    let record = centuriesData.find(entry => entry.value === value);
+    if (!record) {
+      [record] = centuriesData;
+      if (!record) {
+        showEmptyTimelineState();
+        return;
+      }
+      if (centurySelect) {
+        centurySelect.value = record.value;
+      }
+    }
+
     timelineContainer.innerHTML = '';
     eventIndex.clear();
     sharedSidePreference = 'right';
 
+    const section = buildCenturySection(record.century, record.index);
+    timelineContainer.appendChild(section);
+    scheduleLayout();
+  }
+
+  function renderTimeline(data) {
     const centuries = Array.isArray(data.centuries) ? [...data.centuries].reverse() : [];
-    centuries.forEach((century, index) => {
-      const section = document.createElement('section');
-      section.className = 'timeline-century';
-
-      const header = document.createElement('div');
-      header.className = 'timeline-century__header';
-
-      const heading = document.createElement('h2');
-      heading.className = 'timeline-century__heading';
-
-      const headingButton = document.createElement('button');
-      headingButton.type = 'button';
-      headingButton.className = 'timeline-century__heading-button';
-      headingButton.textContent = century.title || 'Century of occupation';
-      heading.appendChild(headingButton);
-
-      header.appendChild(heading);
-
-      const entries = document.createElement('div');
-      entries.className = 'timeline-century__entries';
+    centuriesData = centuries.map((century, index) => {
       const idSeed = (century.id || `century-${index + 1}`).toString();
       const normalizedId = idSeed.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
-      const entriesId = `${normalizedId || `century-${index + 1}`}-entries`;
-      entries.id = entriesId;
-
-      headingButton.setAttribute('aria-controls', entriesId);
-      headingButton.setAttribute('aria-expanded', 'false');
-      headingButton.addEventListener('click', () => {
-        const currentlyExpanded = !section.classList.contains('timeline-century--collapsed');
-        const nextState = !currentlyExpanded;
-        applyCenturyState(section, entries, headingButton, nextState);
-        scheduleLayout();
-      });
-
-      section.appendChild(header);
-
-      if (century.summary) {
-        const summary = document.createElement('p');
-        summary.className = 'timeline-century__summary';
-        summary.textContent = century.summary;
-        section.appendChild(summary);
-      }
-
-      const bounds = normalizeCenturyBounds(century);
-      entries.style.setProperty('--century-span', String(bounds.span || 100));
-      buildCenturyScale(entries, bounds);
-
-      const events = Array.isArray(century.events) ? [...century.events] : [];
-      events.sort((a, b) => {
-        const yearA = getEventYearValue(a, bounds);
-        const yearB = getEventYearValue(b, bounds);
-        if (yearA === yearB) {
-          return (a.label || a.id || '').localeCompare(b.label || b.id || '');
-        }
-        return yearB - yearA;
-      });
-      events.forEach(event => {
-        const entry = buildEvent(event, century, bounds);
-        entries.appendChild(entry);
-      });
-
-      section.appendChild(entries);
-      timelineContainer.appendChild(section);
-
-      const isTwentiethCentury = /twentieth/i.test(String(century.title || ''))
-        || /1900/.test(String(century.range || ''))
-        || (century.id && /century-4/i.test(String(century.id)));
-      applyCenturyState(section, entries, headingButton, Boolean(isTwentiethCentury));
+      return {
+        century,
+        index,
+        value: normalizedId || `century-${index + 1}`,
+      };
     });
 
-    if (!centuries.length) {
-      const empty = document.createElement('p');
-      empty.className = 'text-center text-slate-500 dark:text-slate-300';
-      empty.textContent = 'No timeline entries available.';
-      timelineContainer.appendChild(empty);
-    } else {
-      scheduleLayout();
+    if (centurySelect) {
+      centurySelect.innerHTML = '';
+      if (!centuriesData.length) {
+        const option = document.createElement('option');
+        option.value = '';
+        option.textContent = 'No centuries available';
+        centurySelect.appendChild(option);
+        centurySelect.disabled = true;
+      } else {
+        centuriesData.forEach(entry => {
+          const option = document.createElement('option');
+          option.value = entry.value;
+          const title = entry.century.title || entry.century.range || `Century ${entry.index + 1}`;
+          if (entry.century.title && entry.century.range) {
+            option.textContent = `${entry.century.title} (${entry.century.range})`;
+          } else {
+            option.textContent = title;
+          }
+          centurySelect.appendChild(option);
+        });
+        centurySelect.disabled = centuriesData.length <= 1;
+      }
+
+      if (centurySelector) {
+        centurySelector.classList.toggle('hidden', !centuriesData.length);
+      }
+
+      centurySelect.onchange = event => {
+        displayCentury(event.target.value);
+      };
     }
+
+    if (!centuriesData.length) {
+      showEmptyTimelineState();
+      return;
+    }
+
+    const defaultCentury = centuriesData[0];
+    if (centurySelect) {
+      centurySelect.value = defaultCentury.value;
+    }
+    displayCentury(defaultCentury.value);
   }
 
   function renderIntro(data) {
