@@ -26,6 +26,59 @@
   let sharedSidePreference = 'right';
   let centuriesData = [];
 
+  function createPhotoAlbumEvent(year) {
+    const numericYear = Number(year);
+    if (!Number.isFinite(numericYear)) {
+      return null;
+    }
+    const roundedYear = Math.round(numericYear);
+    const id = `photos-${roundedYear}`;
+    return {
+      id,
+      year: String(roundedYear).padStart(4, '0'),
+      yearValue: roundedYear,
+      side: 'both',
+      title: `${roundedYear} Photos`,
+      summary: `Open the ${roundedYear} photo album to view and organise images from this year.`,
+      icon: '📸',
+      iconLabel: 'Photo album',
+      type: 'photo-album',
+      albumYear: roundedYear,
+    };
+  }
+
+  function ensurePhotoAlbumsForCentury(century, bounds) {
+    const baseEvents = Array.isArray(century?.events) ? [...century.events] : [];
+    const existingIds = new Set(baseEvents.map(event => event.id));
+    const years = new Set();
+
+    baseEvents.forEach(event => {
+      const eventYear = getEventYearValue(event, bounds);
+      if (Number.isFinite(eventYear)) {
+        years.add(Math.round(eventYear));
+      } else if (typeof event.year === 'string') {
+        const match = event.year.match(/(1[5-9]\d{2}|20\d{2})/);
+        if (match) {
+          years.add(Number(match[0]));
+        }
+      }
+    });
+
+    years.forEach(year => {
+      const id = `photos-${year}`;
+      if (existingIds.has(id)) {
+        return;
+      }
+      const albumEvent = createPhotoAlbumEvent(year);
+      if (albumEvent) {
+        baseEvents.push(albumEvent);
+        existingIds.add(id);
+      }
+    });
+
+    return baseEvents;
+  }
+
   function setTheme(theme, persist = true) {
     const normalized = theme === 'dark' ? 'dark' : 'light';
     body.dataset.theme = normalized;
@@ -277,7 +330,6 @@
     minScale: 0.65,
     scaleStep: 0.08,
     spacing: 14,
-    yearSpacing: 12,
   };
 
   let layoutFrame = null;
@@ -308,6 +360,9 @@
     if (!entries.length) {
       return [];
     }
+    const compactLayout = typeof window.matchMedia === 'function'
+      ? window.matchMedia('(max-width: 760px)').matches
+      : false;
     const data = entries
       .map(entry => {
         const bubble = entry.querySelector('.timeline-bubble');
@@ -321,11 +376,11 @@
       .filter(Boolean)
       .sort((a, b) => a.rect.top - b.rect.top);
 
-    const placements = { left: [], right: [] };
+    const placements = compactLayout ? [] : { left: [], right: [] };
     const adjustments = [];
 
     data.forEach(item => {
-      const placed = placements[item.position];
+      const placed = compactLayout ? placements : placements[item.position];
       let offset = 0;
       let scale = 1;
       let candidate = computeAdjustedRect(item.rect, item.position, offset, scale);
@@ -351,35 +406,6 @@
     return adjustments;
   }
 
-  function spreadYearLabels(entries) {
-    if (!entries.length) {
-      return new Map();
-    }
-
-    const nodes = entries
-      .map(entry => {
-        const year = entry.querySelector('.timeline-year');
-        if (!year) {
-          return null;
-        }
-        return { entry, rect: year.getBoundingClientRect() };
-      })
-      .filter(Boolean)
-      .sort((a, b) => a.rect.top - b.rect.top);
-
-    const offsets = new Map();
-    let lastBottom = -Infinity;
-
-    nodes.forEach(item => {
-      const desiredTop = Math.max(item.rect.top, lastBottom + layoutConfig.yearSpacing);
-      const offset = desiredTop - item.rect.top;
-      offsets.set(item.entry, offset);
-      lastBottom = desiredTop + item.rect.height;
-    });
-
-    return offsets;
-  }
-
   function resetEntryLayout(section) {
     if (!section || section.classList.contains('timeline-century--collapsed')) {
       return;
@@ -392,7 +418,6 @@
       entry.style.removeProperty('--bubble-offset');
       entry.style.removeProperty('--bubble-scale');
       entry.style.removeProperty('--connector-length');
-      entry.style.removeProperty('--entry-y-offset');
     });
   }
 
@@ -441,16 +466,10 @@
         }
         const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
         const adjustments = resolveOverlaps(entryNodes);
-        const yearOffsets = spreadYearLabels(entryNodes);
 
         adjustments.forEach(({ entry, offset, scale }) => {
           entry.style.setProperty('--bubble-offset', `${offset}px`);
           entry.style.setProperty('--bubble-scale', scale.toFixed(3));
-        });
-
-        entryNodes.forEach(entry => {
-          const yearOffset = yearOffsets.has(entry) ? yearOffsets.get(entry) : 0;
-          entry.style.setProperty('--entry-y-offset', `${yearOffset}px`);
         });
       });
 
@@ -502,7 +521,7 @@
     entries.style.setProperty('--century-span', String(bounds.span || 100));
     buildCenturyScale(entries, bounds);
 
-    const events = Array.isArray(century.events) ? [...century.events] : [];
+    const events = ensurePhotoAlbumsForCentury(century, bounds);
     events.sort((a, b) => {
       const yearA = getEventYearValue(a, bounds);
       const yearB = getEventYearValue(b, bounds);
@@ -840,6 +859,29 @@
     const evidenceSection = buildEvidenceSection(event);
     if (evidenceSection) {
       modalBody.appendChild(evidenceSection);
+    }
+
+    if (event.type === 'photo-album') {
+      const albumWrapper = document.createElement('div');
+      albumWrapper.className = 'modal-photo-album';
+
+      const placeholder = document.createElement('div');
+      placeholder.className = 'photo-album-placeholder';
+
+      const icon = document.createElement('div');
+      icon.className = 'photo-album-placeholder__icon';
+      icon.textContent = event.icon || '📸';
+      placeholder.appendChild(icon);
+
+      const text = document.createElement('p');
+      text.className = 'photo-album-placeholder__text';
+      const albumYear = event.albumYear || event.yearValue || event.year || '';
+      const readableYear = albumYear ? String(albumYear) : 'selected year';
+      text.textContent = `This space will showcase the ${readableYear} photo collection.`;
+      placeholder.appendChild(text);
+
+      albumWrapper.appendChild(placeholder);
+      modalBody.appendChild(albumWrapper);
     }
 
     modal.classList.add('active');
