@@ -21,8 +21,80 @@
   const entryContextList = document.getElementById('entry-context-list');
   const entryEvidence = document.getElementById('entry-evidence');
   const entryEvidenceList = document.getElementById('entry-evidence-list');
+  const detailCard = document.querySelector('.detail-card');
+  const detailBackLink = detailCard ? detailCard.querySelector('.detail-back-link') : null;
 
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+  function createPhotoAlbumEvent(year) {
+    const numericYear = Number(year);
+    if (!Number.isFinite(numericYear)) {
+      return null;
+    }
+    const roundedYear = Math.round(numericYear);
+    const id = `photos-${roundedYear}`;
+    return {
+      id,
+      year: String(roundedYear).padStart(4, '0'),
+      yearValue: roundedYear,
+      side: 'both',
+      title: `${roundedYear} Photos`,
+      summary: `Open the ${roundedYear} photo album to view and organise images from this year.`,
+      icon: '📸',
+      iconLabel: 'Photo album',
+      type: 'photo-album',
+      albumYear: roundedYear,
+    };
+  }
+
+  function extractEventYear(event) {
+    if (!event) {
+      return null;
+    }
+    if (Number.isFinite(event.yearValue)) {
+      return Math.round(event.yearValue);
+    }
+    if (typeof event.year === 'string') {
+      const match = event.year.match(/(1[5-9]\d{2}|20\d{2})/);
+      if (match) {
+        return Number(match[0]);
+      }
+    }
+    if (typeof event.label === 'string') {
+      const match = event.label.match(/(1[5-9]\d{2}|20\d{2})/);
+      if (match) {
+        return Number(match[0]);
+      }
+    }
+    return null;
+  }
+
+  function ensurePhotoAlbumsForCentury(century) {
+    if (!century || !Array.isArray(century.events)) {
+      return;
+    }
+    const existingIds = new Set(century.events.map(event => event.id));
+    const years = new Set();
+
+    century.events.forEach(event => {
+      const year = extractEventYear(event);
+      if (Number.isFinite(year)) {
+        years.add(year);
+      }
+    });
+
+    years.forEach(year => {
+      const id = `photos-${year}`;
+      if (existingIds.has(id)) {
+        return;
+      }
+      const albumEvent = createPhotoAlbumEvent(year);
+      if (albumEvent) {
+        century.events.push(albumEvent);
+        existingIds.add(id);
+      }
+    });
+  }
 
   function setTheme(theme, persist = true) {
     const normalized = theme === 'dark' ? 'dark' : 'light';
@@ -252,6 +324,62 @@
     entryEvidence.classList.remove('hidden');
   }
 
+  function renderPhotoAlbum(event) {
+    if (!detailCard) {
+      return;
+    }
+
+    const existingSection = detailCard.querySelector('.detail-photo-album');
+    if (!event || event.type !== 'photo-album') {
+      if (existingSection) {
+        existingSection.remove();
+      }
+      return;
+    }
+
+    let section = existingSection;
+    if (!section) {
+      section = document.createElement('section');
+      section.className = 'detail-section detail-photo-album';
+
+      const heading = document.createElement('h3');
+      heading.textContent = 'Photo album';
+      section.appendChild(heading);
+
+      const placeholder = document.createElement('div');
+      placeholder.className = 'photo-album-placeholder';
+
+      const icon = document.createElement('div');
+      icon.className = 'photo-album-placeholder__icon';
+      icon.textContent = event.icon || '📸';
+      placeholder.appendChild(icon);
+
+      const text = document.createElement('p');
+      text.className = 'photo-album-placeholder__text';
+      placeholder.appendChild(text);
+
+      section.appendChild(placeholder);
+
+      if (detailBackLink) {
+        detailCard.insertBefore(section, detailBackLink);
+      } else {
+        detailCard.appendChild(section);
+      }
+    }
+
+    const textNode = section.querySelector('.photo-album-placeholder__text');
+    if (textNode) {
+      const albumYear = event.albumYear || event.yearValue || event.year || '';
+      const readableYear = albumYear ? String(albumYear) : 'selected year';
+      textNode.textContent = `This space will showcase the ${readableYear} photo collection.`;
+    }
+
+    const iconNode = section.querySelector('.photo-album-placeholder__icon');
+    if (iconNode) {
+      iconNode.textContent = event.icon || '📸';
+    }
+  }
+
   function normaliseCenturyValue(idSeed, fallback) {
     const normalized = idSeed.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
     return normalized || fallback;
@@ -304,6 +432,7 @@
 
   function renderEntry(data) {
     const centuries = Array.isArray(data.centuries) ? [...data.centuries].reverse() : [];
+    centuries.forEach(ensurePhotoAlbumsForCentury);
     const centuriesData = centuries.map((century, index) => {
       const idSeed = (century.id || `century-${index + 1}`).toString();
       return {
@@ -357,10 +486,12 @@
     if (selectedEvent) {
       renderContext(selectedEvent);
       renderEvidence(selectedEvent);
+      renderPhotoAlbum(selectedEvent);
       const pageTitle = data.caseTitle ? `${selectedEvent.title} – ${data.caseTitle} timeline` : selectedEvent.title;
       document.title = pageTitle;
     } else if (entrySummary) {
       entrySummary.textContent = 'We could not find details for this timeline entry.';
+      renderPhotoAlbum(null);
     }
 
     populateCenturies(centuriesData, selectedCenturyValue);
