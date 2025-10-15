@@ -26,6 +26,59 @@
   let sharedSidePreference = 'right';
   let centuriesData = [];
 
+  function createPhotoAlbumEvent(year) {
+    const numericYear = Number(year);
+    if (!Number.isFinite(numericYear)) {
+      return null;
+    }
+    const roundedYear = Math.round(numericYear);
+    const id = `photos-${roundedYear}`;
+    return {
+      id,
+      year: String(roundedYear).padStart(4, '0'),
+      yearValue: roundedYear,
+      side: 'both',
+      title: `${roundedYear} Photos`,
+      summary: `Open the ${roundedYear} photo album to view and organise images from this year.`,
+      icon: '📸',
+      iconLabel: 'Photo album',
+      type: 'photo-album',
+      albumYear: roundedYear,
+    };
+  }
+
+  function ensurePhotoAlbumsForCentury(century, bounds) {
+    const baseEvents = Array.isArray(century?.events) ? [...century.events] : [];
+    const existingIds = new Set(baseEvents.map(event => event.id));
+    const years = new Set();
+
+    baseEvents.forEach(event => {
+      const eventYear = getEventYearValue(event, bounds);
+      if (Number.isFinite(eventYear)) {
+        years.add(Math.round(eventYear));
+      } else if (typeof event.year === 'string') {
+        const match = event.year.match(/(1[5-9]\d{2}|20\d{2})/);
+        if (match) {
+          years.add(Number(match[0]));
+        }
+      }
+    });
+
+    years.forEach(year => {
+      const id = `photos-${year}`;
+      if (existingIds.has(id)) {
+        return;
+      }
+      const albumEvent = createPhotoAlbumEvent(year);
+      if (albumEvent) {
+        baseEvents.push(albumEvent);
+        existingIds.add(id);
+      }
+    });
+
+    return baseEvents;
+  }
+
   function setTheme(theme, persist = true) {
     const normalized = theme === 'dark' ? 'dark' : 'light';
     body.dataset.theme = normalized;
@@ -76,12 +129,19 @@
     }
   });
 
-  function choosePosition(event) {
-    if (event.side === 'buckler') {
+  function choosePosition(event, counters) {
+    const normalizedSide = typeof event.side === 'string' ? event.side.toLowerCase() : '';
+    if (normalizedSide === 'buckler' || normalizedSide === 'left') {
       return 'left';
     }
-    if (event.side === 'bp') {
+    if (normalizedSide === 'bp' || normalizedSide === 'right') {
       return 'right';
+    }
+    if (counters) {
+      const preferred = counters.left <= counters.right ? 'left' : 'right';
+      if (normalizedSide === 'both' || !normalizedSide) {
+        return preferred;
+      }
     }
     sharedSidePreference = sharedSidePreference === 'left' ? 'right' : 'left';
     return sharedSidePreference;
@@ -176,8 +236,11 @@
     container.prepend(scale);
   }
 
-  function buildEvent(event, century, bounds) {
-    const position = choosePosition(event);
+  function buildEvent(event, century, bounds, counters) {
+    const position = choosePosition(event, counters);
+    if (counters && position in counters) {
+      counters[position] += 1;
+    }
     const entry = document.createElement('div');
     entry.className = 'timeline-entry';
     entry.dataset.position = position;
@@ -202,8 +265,8 @@
     yearWrapper.className = 'timeline-year';
     const node = document.createElement('div');
     node.className = 'timeline-node';
-    const yearLabel = (event.year && String(event.year).trim()) || (Number.isFinite(eventYear) ? String(eventYear) : '');
-    node.textContent = yearLabel || '•';
+    node.textContent = '';
+    node.setAttribute('aria-hidden', 'true');
     yearWrapper.appendChild(node);
     axisColumn.appendChild(yearWrapper);
 
@@ -229,7 +292,7 @@
     })();
 
     const bubbleIcon = typeof event.icon === 'string' && event.icon.trim().length ? event.icon.trim() : null;
-    const bubbleLabel = bubbleIcon || (bubbleYear != null ? String(bubbleYear).padStart(4, '0') : (event.year ? String(event.year) : (event.label || '•')));
+    const bubbleLabel = bubbleIcon || '•';
     const bubbleIconLabel = typeof event.iconLabel === 'string' && event.iconLabel.trim().length ? event.iconLabel.trim() : null;
 
     const accessibilityLabelParts = [event.title];
@@ -272,24 +335,29 @@
   }
 
   const layoutConfig = {
-    step: 28,
-    maxOffset: 180,
-    minScale: 0.65,
-    scaleStep: 0.08,
-    spacing: 14,
-    yearSpacing: 12,
+    baseOffset: 72,
+    compactBaseOffset: 0,
+    stepX: 16,
+    maxOffset: 72,
+    minScale: 0.82,
+    scaleStep: 0.04,
+    verticalSpacing: 28,
+    verticalStep: 20,
+    maxVerticalOffset: 320,
   };
 
   let layoutFrame = null;
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  const webglInstances = new WeakMap();
 
-  function computeAdjustedRect(rect, position, offset, scale) {
+  function computeAdjustedRect(rect, position, offsetX, scale, offsetY) {
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-    const shift = position === 'left' ? -offset : offset;
+    const horizontalShift = position === 'left' ? -offsetX : offsetX;
     const width = rect.width * scale;
     const height = rect.height * scale;
-    const left = centerX + shift - width / 2;
-    const top = centerY - height / 2;
+    const left = centerX + horizontalShift - width / 2;
+    const top = centerY + offsetY - height / 2;
     return {
       left,
       right: left + width,
@@ -298,16 +366,259 @@
     };
   }
 
+  function ensureConnectorsElement(entries) {
+    let connectors = entries.querySelector('.timeline-connectors');
+    if (!connectors) {
+      connectors = document.createElementNS(SVG_NS, 'svg');
+      connectors.classList.add('timeline-connectors');
+      connectors.setAttribute('aria-hidden', 'true');
+      connectors.setAttribute('focusable', 'false');
+      entries.appendChild(connectors);
+    }
+    return connectors;
+  }
+
+  function createShader(gl, type, source) {
+    const shader = gl.createShader(type);
+    if (!shader) {
+      return null;
+    }
+    gl.shaderSource(shader, source);
+    gl.compileShader(shader);
+    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+      gl.deleteShader(shader);
+      return null;
+    }
+    return shader;
+  }
+
+  function createProgram(gl, vertexShader, fragmentShader) {
+    const program = gl.createProgram();
+    if (!program) {
+      return null;
+    }
+    gl.attachShader(program, vertexShader);
+    gl.attachShader(program, fragmentShader);
+    gl.linkProgram(program);
+    const linked = gl.getProgramParameter(program, gl.LINK_STATUS);
+    gl.deleteShader(vertexShader);
+    gl.deleteShader(fragmentShader);
+    if (!linked) {
+      gl.deleteProgram(program);
+      return null;
+    }
+    return program;
+  }
+
+  function ensureWebGLBackground(entries) {
+    if (!entries) {
+      return null;
+    }
+    if (webglInstances.has(entries)) {
+      return webglInstances.get(entries);
+    }
+    const canvas = document.createElement('canvas');
+    canvas.className = 'timeline-webgl';
+    entries.prepend(canvas);
+
+    const gl = canvas.getContext('webgl', { antialias: true, alpha: true, premultipliedAlpha: false });
+    if (!gl) {
+      canvas.remove();
+      webglInstances.set(entries, null);
+      return null;
+    }
+
+    const vertexSource = `
+      attribute vec2 a_position;
+      void main() {
+        gl_Position = vec4(a_position, 0.0, 1.0);
+      }
+    `;
+    const fragmentSource = `
+      precision mediump float;
+      uniform vec2 u_resolution;
+      uniform float u_axis;
+      void main() {
+        vec2 st = gl_FragCoord.xy / u_resolution;
+        float distanceFromAxis = abs(st.x - u_axis);
+        float glow = exp(-14.0 * distanceFromAxis * distanceFromAxis);
+        vec3 base = vec3(0.074, 0.108, 0.188);
+        vec3 accent = vec3(0.337, 0.537, 0.933);
+        vec3 color = mix(base, accent, glow);
+        float alpha = 0.08 + 0.32 * glow;
+        gl_FragColor = vec4(color, alpha);
+      }
+    `;
+
+    const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexSource);
+    const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentSource);
+    if (!vertexShader || !fragmentShader) {
+      canvas.remove();
+      webglInstances.set(entries, null);
+      return null;
+    }
+
+    const program = createProgram(gl, vertexShader, fragmentShader);
+    if (!program) {
+      canvas.remove();
+      webglInstances.set(entries, null);
+      return null;
+    }
+
+    const positionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+      -1, -1,
+      1, -1,
+      -1, 1,
+      -1, 1,
+      1, -1,
+      1, 1,
+    ]), gl.STATIC_DRAW);
+
+    const positionLocation = gl.getAttribLocation(program, 'a_position');
+    const resolutionLocation = gl.getUniformLocation(program, 'u_resolution');
+    const axisLocation = gl.getUniformLocation(program, 'u_axis');
+
+    const instance = {
+      gl,
+      canvas,
+      program,
+      buffers: {
+        position: positionBuffer,
+      },
+      locations: {
+        position: positionLocation,
+        resolution: resolutionLocation,
+        axis: axisLocation,
+      },
+    };
+
+    webglInstances.set(entries, instance);
+    return instance;
+  }
+
+  function renderWebGLBackground(entries, axisRatio, width, height) {
+    const instance = ensureWebGLBackground(entries);
+    if (!instance) {
+      return;
+    }
+    const { gl, canvas, program, buffers, locations } = instance;
+    const dpr = window.devicePixelRatio || 1;
+    const pixelWidth = Math.max(1, Math.round(width * dpr));
+    const pixelHeight = Math.max(1, Math.round(height * dpr));
+
+    if (canvas.width !== pixelWidth || canvas.height !== pixelHeight) {
+      canvas.width = pixelWidth;
+      canvas.height = pixelHeight;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+    }
+
+    gl.viewport(0, 0, pixelWidth, pixelHeight);
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+
+    gl.useProgram(program);
+    gl.bindBuffer(gl.ARRAY_BUFFER, buffers.position);
+    gl.enableVertexAttribArray(locations.position);
+    gl.vertexAttribPointer(locations.position, 2, gl.FLOAT, false, 0, 0);
+    gl.uniform2f(locations.resolution, pixelWidth, pixelHeight);
+    gl.uniform1f(locations.axis, Math.min(1, Math.max(0, axisRatio || 0.5)));
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
+  }
+
   function rectanglesOverlap(a, b, spacing) {
-    const verticalOverlap = a.bottom > b.top - spacing && a.top < b.bottom + spacing;
-    const horizontalOverlap = a.right > b.left - spacing && a.left < b.right + spacing;
-    return verticalOverlap && horizontalOverlap;
+    const buffer = Math.max(1, Number.isFinite(spacing) ? spacing : 0);
+    return a.bottom > b.top - buffer && a.top < b.bottom + buffer;
+  }
+
+  function calculateVerticalOffset(rect, stacks, spacing, maxOffset, startingOffset = 0) {
+    const buffer = Math.max(1, Number.isFinite(spacing) ? spacing : 0);
+    const limit = Number.isFinite(maxOffset) ? Math.max(0, maxOffset) : Number.POSITIVE_INFINITY;
+    let offset = Math.max(0, Number.isFinite(startingOffset) ? startingOffset : 0);
+
+    stacks
+      .filter(Array.isArray)
+      .forEach(list => {
+        list.forEach(existing => {
+          const candidateTop = rect.top + offset;
+          const candidateBottom = rect.bottom + offset;
+          const overlaps = candidateBottom > existing.top - buffer && candidateTop < existing.bottom + buffer;
+          if (overlaps) {
+            const required = existing.bottom + buffer - rect.top;
+            if (required > offset) {
+              offset = required;
+            }
+          }
+        });
+      });
+
+    return Math.min(offset, limit);
+  }
+
+  function updateConnectors(section) {
+    if (!section || section.classList.contains('timeline-century--collapsed')) {
+      return;
+    }
+    const entries = section.querySelector('.timeline-century__entries');
+    if (!entries || entries.hidden) {
+      return;
+    }
+    const connectors = ensureConnectorsElement(entries);
+    const scaleElement = entries.querySelector('.timeline-century__scale');
+    const entriesRect = entries.getBoundingClientRect();
+    const width = Math.max(entriesRect.width, 1);
+    const height = Math.max(entriesRect.height, 1);
+    connectors.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    connectors.setAttribute('width', width);
+    connectors.setAttribute('height', height);
+    connectors.innerHTML = '';
+
+    if (!scaleElement) {
+      renderWebGLBackground(entries, 0.5, width, height);
+      return;
+    }
+
+    const scaleRect = scaleElement.getBoundingClientRect();
+    const axisX = scaleRect.left + scaleRect.width / 2 - entriesRect.left;
+    const axisRatio = width ? axisX / width : 0.5;
+
+    const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
+    entryNodes.forEach(entry => {
+      const bubble = entry.querySelector('.timeline-bubble');
+      if (!bubble) {
+        return;
+      }
+      const bubbleRect = bubble.getBoundingClientRect();
+      const bubbleX = bubbleRect.left + bubbleRect.width / 2 - entriesRect.left;
+      const bubbleY = bubbleRect.top + bubbleRect.height / 2 - entriesRect.top;
+      const yearPosition = Number(entry.dataset.yearPosition);
+      if (!Number.isFinite(yearPosition)) {
+        return;
+      }
+      const anchorY = scaleRect.top + (scaleRect.height * (yearPosition / 100)) - entriesRect.top;
+      const path = document.createElementNS(SVG_NS, 'path');
+      const deltaX = bubbleX - axisX;
+      const controlOffset = deltaX * 0.55;
+      const controlY1 = anchorY + (bubbleY - anchorY) * 0.2;
+      const controlY2 = anchorY + (bubbleY - anchorY) * 0.8;
+      const d = `M ${axisX} ${anchorY} C ${axisX + controlOffset} ${controlY1} ${bubbleX - controlOffset} ${controlY2} ${bubbleX} ${bubbleY}`;
+      path.setAttribute('d', d);
+      path.setAttribute('class', 'timeline-connector-line');
+      connectors.appendChild(path);
+    });
+
+    renderWebGLBackground(entries, axisRatio, width, height);
   }
 
   function resolveOverlaps(entries) {
     if (!entries.length) {
       return [];
     }
+    const compactLayout = typeof window.matchMedia === 'function'
+      ? window.matchMedia('(max-width: 760px)').matches
+      : false;
     const data = entries
       .map(entry => {
         const bubble = entry.querySelector('.timeline-bubble');
@@ -321,63 +632,72 @@
       .filter(Boolean)
       .sort((a, b) => a.rect.top - b.rect.top);
 
-    const placements = { left: [], right: [] };
+    const placements = compactLayout ? { shared: [] } : { left: [], right: [], shared: [] };
     const adjustments = [];
 
     data.forEach(item => {
-      const placed = placements[item.position];
-      let offset = 0;
+      const stackKey = compactLayout ? 'shared' : item.position;
+      const placed = placements[stackKey];
+      const baseOffset = compactLayout ? layoutConfig.compactBaseOffset : layoutConfig.baseOffset;
+      let offset = baseOffset;
       let scale = 1;
-      let candidate = computeAdjustedRect(item.rect, item.position, offset, scale);
-      let iterations = 0;
-      const limit = 24;
+      let vertical = 0;
+      let candidate = computeAdjustedRect(item.rect, item.position, offset, scale, vertical);
+      const spacing = Math.max(1, layoutConfig.verticalSpacing);
+      const stacks = compactLayout ? [placed] : [placed, placements.shared];
 
-      while (iterations < limit && placed.some(rect => rectanglesOverlap(rect, candidate, layoutConfig.spacing))) {
-        if (offset < layoutConfig.maxOffset) {
-          offset += layoutConfig.step;
+      const intersectsExisting = rect =>
+        stacks
+          .filter(Array.isArray)
+          .some(list => list.some(existing => rectanglesOverlap(existing, rect, spacing)));
+
+      for (let iterations = 0; iterations < 48; iterations += 1) {
+        const baseRect = computeAdjustedRect(item.rect, item.position, offset, scale, 0);
+        const requiredVertical = calculateVerticalOffset(
+          baseRect,
+          stacks,
+          spacing,
+          layoutConfig.maxVerticalOffset,
+          vertical,
+        );
+
+        if (requiredVertical !== vertical) {
+          vertical = requiredVertical;
+          candidate = computeAdjustedRect(item.rect, item.position, offset, scale, vertical);
+        }
+
+        if (!intersectsExisting(candidate)) {
+          break;
+        }
+
+        let adjusted = false;
+        if (!compactLayout && offset < layoutConfig.maxOffset) {
+          offset += layoutConfig.stepX;
+          adjusted = true;
         } else if (scale > layoutConfig.minScale) {
           scale = Math.max(layoutConfig.minScale, scale - layoutConfig.scaleStep);
-        } else {
-          offset += layoutConfig.step;
+          adjusted = true;
+        } else if (vertical < layoutConfig.maxVerticalOffset) {
+          vertical = Math.min(layoutConfig.maxVerticalOffset, vertical + layoutConfig.verticalStep);
+          adjusted = true;
         }
-        candidate = computeAdjustedRect(item.rect, item.position, offset, scale);
-        iterations += 1;
+
+        candidate = computeAdjustedRect(item.rect, item.position, offset, scale, vertical);
+
+        if (!adjusted) {
+          break;
+        }
       }
 
+      candidate = computeAdjustedRect(item.rect, item.position, offset, scale, vertical);
       placed.push(candidate);
-      adjustments.push({ entry: item.entry, offset, scale });
+      if (!compactLayout && placements.shared) {
+        placements.shared.push(candidate);
+      }
+      adjustments.push({ entry: item.entry, offset, scale, vertical });
     });
 
     return adjustments;
-  }
-
-  function spreadYearLabels(entries) {
-    if (!entries.length) {
-      return new Map();
-    }
-
-    const nodes = entries
-      .map(entry => {
-        const year = entry.querySelector('.timeline-year');
-        if (!year) {
-          return null;
-        }
-        return { entry, rect: year.getBoundingClientRect() };
-      })
-      .filter(Boolean)
-      .sort((a, b) => a.rect.top - b.rect.top);
-
-    const offsets = new Map();
-    let lastBottom = -Infinity;
-
-    nodes.forEach(item => {
-      const desiredTop = Math.max(item.rect.top, lastBottom + layoutConfig.yearSpacing);
-      const offset = desiredTop - item.rect.top;
-      offsets.set(item.entry, offset);
-      lastBottom = desiredTop + item.rect.height;
-    });
-
-    return offsets;
   }
 
   function resetEntryLayout(section) {
@@ -391,38 +711,8 @@
     entries.querySelectorAll('.timeline-entry').forEach(entry => {
       entry.style.removeProperty('--bubble-offset');
       entry.style.removeProperty('--bubble-scale');
-      entry.style.removeProperty('--connector-length');
-      entry.style.removeProperty('--entry-y-offset');
-    });
-  }
-
-  function updateConnectorLengths(section) {
-    if (!section || section.classList.contains('timeline-century--collapsed')) {
-      return;
-    }
-    const entries = section.querySelector('.timeline-century__entries');
-    if (!entries || entries.hidden) {
-      return;
-    }
-    const scaleElement = entries.querySelector('.timeline-century__scale');
-    const axisRect = scaleElement ? scaleElement.getBoundingClientRect() : null;
-    const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
-    entryNodes.forEach(entry => {
-      const bubble = entry.querySelector('.timeline-bubble');
-      if (!bubble) {
-        return;
-      }
-      const bubbleRect = bubble.getBoundingClientRect();
-      const targetNode = entry.querySelector('.timeline-year .timeline-node');
-      const targetRect = targetNode ? targetNode.getBoundingClientRect() : axisRect;
-      if (!targetRect) {
-        return;
-      }
-      const axisCenter = targetRect.left + targetRect.width / 2;
-      const distance = entry.dataset.position === 'left'
-        ? axisCenter - bubbleRect.right
-        : bubbleRect.left - axisCenter;
-      entry.style.setProperty('--connector-length', `${Math.max(distance, 0)}px`);
+      entry.style.removeProperty('--bubble-y-offset');
+      delete entry.dataset.verticalOffset;
     });
   }
 
@@ -441,21 +731,17 @@
         }
         const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
         const adjustments = resolveOverlaps(entryNodes);
-        const yearOffsets = spreadYearLabels(entryNodes);
 
-        adjustments.forEach(({ entry, offset, scale }) => {
+        adjustments.forEach(({ entry, offset, scale, vertical }) => {
           entry.style.setProperty('--bubble-offset', `${offset}px`);
           entry.style.setProperty('--bubble-scale', scale.toFixed(3));
-        });
-
-        entryNodes.forEach(entry => {
-          const yearOffset = yearOffsets.has(entry) ? yearOffsets.get(entry) : 0;
-          entry.style.setProperty('--entry-y-offset', `${yearOffset}px`);
+          entry.style.setProperty('--bubble-y-offset', `${vertical}px`);
+          entry.dataset.verticalOffset = String(vertical);
         });
       });
 
       requestAnimationFrame(() => {
-        sections.forEach(updateConnectorLengths);
+        sections.forEach(updateConnectors);
       });
     });
   }
@@ -501,8 +787,10 @@
     const bounds = normalizeCenturyBounds(century);
     entries.style.setProperty('--century-span', String(bounds.span || 100));
     buildCenturyScale(entries, bounds);
+    ensureWebGLBackground(entries);
+    ensureConnectorsElement(entries);
 
-    const events = Array.isArray(century.events) ? [...century.events] : [];
+    const events = ensurePhotoAlbumsForCentury(century, bounds);
     events.sort((a, b) => {
       const yearA = getEventYearValue(a, bounds);
       const yearB = getEventYearValue(b, bounds);
@@ -511,8 +799,9 @@
       }
       return yearA - yearB;
     });
+    const sideCounts = { left: 0, right: 0 };
     events.forEach(event => {
-      const entry = buildEvent(event, century, bounds);
+      const entry = buildEvent(event, century, bounds, sideCounts);
       entries.appendChild(entry);
     });
 
@@ -840,6 +1129,29 @@
     const evidenceSection = buildEvidenceSection(event);
     if (evidenceSection) {
       modalBody.appendChild(evidenceSection);
+    }
+
+    if (event.type === 'photo-album') {
+      const albumWrapper = document.createElement('div');
+      albumWrapper.className = 'modal-photo-album';
+
+      const placeholder = document.createElement('div');
+      placeholder.className = 'photo-album-placeholder';
+
+      const icon = document.createElement('div');
+      icon.className = 'photo-album-placeholder__icon';
+      icon.textContent = event.icon || '📸';
+      placeholder.appendChild(icon);
+
+      const text = document.createElement('p');
+      text.className = 'photo-album-placeholder__text';
+      const albumYear = event.albumYear || event.yearValue || event.year || '';
+      const readableYear = albumYear ? String(albumYear) : 'selected year';
+      text.textContent = `This space will showcase the ${readableYear} photo collection.`;
+      placeholder.appendChild(text);
+
+      albumWrapper.appendChild(placeholder);
+      modalBody.appendChild(albumWrapper);
     }
 
     modal.classList.add('active');
