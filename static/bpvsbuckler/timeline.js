@@ -119,17 +119,6 @@
     return bounds.endYear;
   }
 
-  function positionForYear(year, bounds) {
-    const { startYear, endYear, span } = bounds;
-    if (!Number.isFinite(year)) {
-      return 0;
-    }
-    const clamped = Math.min(Math.max(year, startYear), endYear);
-    const offset = clamped - startYear;
-    const raw = (offset / span) * 100;
-    return Math.min(98, Math.max(2, raw));
-  }
-
   function buildCenturyScale(container, bounds) {
     if (!container) {
       return;
@@ -184,9 +173,6 @@
     entry.dataset.eventId = event.id;
 
     const eventYear = getEventYearValue(event, bounds);
-    const topPosition = positionForYear(eventYear, bounds);
-    entry.style.top = `${topPosition}%`;
-    entry.dataset.yearPosition = topPosition.toFixed(3);
     if (Number.isFinite(eventYear)) {
       entry.dataset.yearValue = String(eventYear);
     }
@@ -271,130 +257,12 @@
     return entry;
   }
 
-  const layoutConfig = {
-    step: 28,
-    maxOffset: 180,
-    minScale: 0.65,
-    scaleStep: 0.08,
-    spacing: 14,
-    yearSpacing: 12,
+  const rowLayout = {
+    fallbackRowHeight: 184,
+    padding: 112,
   };
 
   let layoutFrame = null;
-
-  function computeAdjustedRect(rect, position, offset, scale) {
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const shift = position === 'left' ? -offset : offset;
-    const width = rect.width * scale;
-    const height = rect.height * scale;
-    const left = centerX + shift - width / 2;
-    const top = centerY - height / 2;
-    return {
-      left,
-      right: left + width,
-      top,
-      bottom: top + height,
-    };
-  }
-
-  function rectanglesOverlap(a, b, spacing) {
-    const verticalOverlap = a.bottom > b.top - spacing && a.top < b.bottom + spacing;
-    const horizontalOverlap = a.right > b.left - spacing && a.left < b.right + spacing;
-    return verticalOverlap && horizontalOverlap;
-  }
-
-  function resolveOverlaps(entries) {
-    if (!entries.length) {
-      return [];
-    }
-    const data = entries
-      .map(entry => {
-        const bubble = entry.querySelector('.timeline-bubble');
-        if (!bubble) {
-          return null;
-        }
-        const rect = bubble.getBoundingClientRect();
-        const position = entry.dataset.position === 'left' ? 'left' : 'right';
-        return { entry, bubble, rect, position };
-      })
-      .filter(Boolean)
-      .sort((a, b) => a.rect.top - b.rect.top);
-
-    const placements = { left: [], right: [] };
-    const adjustments = [];
-
-    data.forEach(item => {
-      const placed = placements[item.position];
-      let offset = 0;
-      let scale = 1;
-      let candidate = computeAdjustedRect(item.rect, item.position, offset, scale);
-      let iterations = 0;
-      const limit = 24;
-
-      while (iterations < limit && placed.some(rect => rectanglesOverlap(rect, candidate, layoutConfig.spacing))) {
-        if (offset < layoutConfig.maxOffset) {
-          offset += layoutConfig.step;
-        } else if (scale > layoutConfig.minScale) {
-          scale = Math.max(layoutConfig.minScale, scale - layoutConfig.scaleStep);
-        } else {
-          offset += layoutConfig.step;
-        }
-        candidate = computeAdjustedRect(item.rect, item.position, offset, scale);
-        iterations += 1;
-      }
-
-      placed.push(candidate);
-      adjustments.push({ entry: item.entry, offset, scale });
-    });
-
-    return adjustments;
-  }
-
-  function spreadYearLabels(entries) {
-    if (!entries.length) {
-      return new Map();
-    }
-
-    const nodes = entries
-      .map(entry => {
-        const year = entry.querySelector('.timeline-year');
-        if (!year) {
-          return null;
-        }
-        return { entry, rect: year.getBoundingClientRect() };
-      })
-      .filter(Boolean)
-      .sort((a, b) => a.rect.top - b.rect.top);
-
-    const offsets = new Map();
-    let lastBottom = -Infinity;
-
-    nodes.forEach(item => {
-      const desiredTop = Math.max(item.rect.top, lastBottom + layoutConfig.yearSpacing);
-      const offset = desiredTop - item.rect.top;
-      offsets.set(item.entry, offset);
-      lastBottom = desiredTop + item.rect.height;
-    });
-
-    return offsets;
-  }
-
-  function resetEntryLayout(section) {
-    if (!section || section.classList.contains('timeline-century--collapsed')) {
-      return;
-    }
-    const entries = section.querySelector('.timeline-century__entries');
-    if (!entries || entries.hidden) {
-      return;
-    }
-    entries.querySelectorAll('.timeline-entry').forEach(entry => {
-      entry.style.removeProperty('--bubble-offset');
-      entry.style.removeProperty('--bubble-scale');
-      entry.style.removeProperty('--connector-length');
-      entry.style.removeProperty('--entry-y-offset');
-    });
-  }
 
   function updateConnectorLengths(section) {
     if (!section || section.classList.contains('timeline-century--collapsed')) {
@@ -426,36 +294,36 @@
     });
   }
 
-  function applyLayout() {
+  function applyRowLayout() {
     const sections = Array.from(timelineContainer.querySelectorAll('.timeline-century'));
-    sections.forEach(resetEntryLayout);
+
+    sections.forEach(section => {
+      if (section.classList.contains('timeline-century--collapsed')) {
+        return;
+      }
+
+      const entries = section.querySelector('.timeline-century__entries');
+      if (!entries || entries.hidden) {
+        return;
+      }
+
+      const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
+      entryNodes.forEach((entry, index) => {
+        entry.style.setProperty('--entry-row-index', index);
+      });
+
+      const computed = window.getComputedStyle(entries);
+      const baseMinHeight = parseFloat(computed.minHeight) || 0;
+      const rowHeightValue = parseFloat(computed.getPropertyValue('--timeline-row-height')) || rowLayout.fallbackRowHeight;
+      const requiredHeight = Math.max(baseMinHeight, entryNodes.length * rowHeightValue + rowLayout.padding);
+      if (requiredHeight > 0) {
+        entries.style.minHeight = `${Math.ceil(requiredHeight)}px`;
+      }
+    });
 
     requestAnimationFrame(() => {
       sections.forEach(section => {
-        if (section.classList.contains('timeline-century--collapsed')) {
-          return;
-        }
-        const entries = section.querySelector('.timeline-century__entries');
-        if (!entries || entries.hidden) {
-          return;
-        }
-        const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
-        const adjustments = resolveOverlaps(entryNodes);
-        const yearOffsets = spreadYearLabels(entryNodes);
-
-        adjustments.forEach(({ entry, offset, scale }) => {
-          entry.style.setProperty('--bubble-offset', `${offset}px`);
-          entry.style.setProperty('--bubble-scale', scale.toFixed(3));
-        });
-
-        entryNodes.forEach(entry => {
-          const yearOffset = yearOffsets.has(entry) ? yearOffsets.get(entry) : 0;
-          entry.style.setProperty('--entry-y-offset', `${yearOffset}px`);
-        });
-      });
-
-      requestAnimationFrame(() => {
-        sections.forEach(updateConnectorLengths);
+        updateConnectorLengths(section);
       });
     });
   }
@@ -466,7 +334,7 @@
     }
     layoutFrame = requestAnimationFrame(() => {
       layoutFrame = null;
-      applyLayout();
+      applyRowLayout();
     });
   }
 
