@@ -32,6 +32,7 @@
       --entry-gap: 32px;
       --bubble-size: 60px;
       --year-scale: 7px;
+      --timeline-row-height: 184px;
     }
 
     body[data-theme='dark'] {
@@ -528,10 +529,9 @@
       grid-template-columns: minmax(0, 1fr) var(--axis-column-width) minmax(0, 1fr);
       column-gap: var(--entry-gap);
       align-items: center;
-      transform: translateY(calc(-50% + var(--entry-y-offset, 0px)));
+      height: var(--timeline-row-height);
+      top: calc(var(--entry-row-index, 0) * var(--timeline-row-height));
       z-index: 2;
-      --bubble-offset: 0px;
-      --bubble-scale: 1;
       --connector-length: calc(var(--entry-gap) + var(--axis-column-width) / 2);
     }
 
@@ -879,6 +879,7 @@
       :root {
         --axis-column-width: 120px;
         --entry-gap: 24px;
+        --timeline-row-height: 176px;
       }
 
       .timeline-century__heading {
@@ -891,39 +892,16 @@
         --axis-column-width: 100px;
         --entry-gap: 18px;
         --bubble-size: 54px;
+        --timeline-row-height: 168px;
       }
 
       .timeline {
         padding-left: 12px;
         padding-right: 12px;
       }
-
-      .timeline::before {
-        left: 22px;
-      }
-
+      
       .timeline-entry {
-        grid-template-columns: var(--axis-column-width) 1fr;
-        column-gap: 16px;
-      }
-
-      .timeline-entry__column--left,
-      .timeline-entry__column--right {
-        grid-column: 2 / span 1;
-        justify-content: flex-start;
-      }
-
-      .timeline-entry[data-position='left'] .timeline-bubble::after,
-      .timeline-entry[data-position='right'] .timeline-bubble::after {
-        left: calc(-1 * (var(--axis-column-width) - 16px));
-        right: auto;
-        width: calc(var(--axis-column-width) - 12px);
-        background: linear-gradient(90deg, rgba(59, 130, 246, 0.65), rgba(59, 130, 246, 0));
-      }
-
-      .timeline-entry__column--left.timeline-entry__column--empty,
-      .timeline-entry__column--right.timeline-entry__column--empty {
-        display: none;
+        column-gap: 14px;
       }
     }
 
