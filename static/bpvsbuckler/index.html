@@ -14,58 +14,22 @@
       --surface-border: rgba(59, 130, 246, 0.16);
       --heading-color: #0f172a;
       --text-primary: #1f2937;
-      --text-muted: rgba(17, 24, 39, 0.75);
-      --text-soft: rgba(17, 24, 39, 0.6);
+      --text-muted: rgba(17, 24, 39, 0.72);
+      --text-soft: rgba(17, 24, 39, 0.58);
       --accent-primary: #2563eb;
       --accent-primary-strong: #1e3a8a;
       --accent-muted: rgba(59, 130, 246, 0.18);
       --buckler-surface: linear-gradient(135deg, #d1fae5, #ecfdf5);
-      --buckler-border: #10b981;
+      --buckler-border: rgba(16, 185, 129, 0.45);
       --bp-surface: linear-gradient(135deg, #fee2e2, #fff1f2);
-      --bp-border: #ef4444;
+      --bp-border: rgba(239, 68, 68, 0.45);
       --shared-surface: linear-gradient(135deg, #e0e7ff, #eef2ff);
-      --shared-border: #4338ca;
-      --shadow-soft: 0 22px 36px -24px rgba(15, 23, 42, 0.55);
-      --shadow-strong: 0 30px 52px -32px rgba(15, 23, 42, 0.65);
-      --modal-backdrop: rgba(15, 23, 42, 0.55);
-      --axis-column-width: 150px;
-      --entry-gap: 32px;
-      --bubble-size: 60px;
-      --year-scale: 7px;
-      --timeline-row-height: 184px;
-    }
-
-    body[data-theme='dark'] {
-      color-scheme: dark;
-      --page-background: #000000;
-      --text-primary: #f8fafc;
-      --text-muted: rgba(226, 232, 240, 0.6);
-      --accent: #38bdf8;
-      --row-history-height: clamp(92px, 15vh, 132px);
-      --row-spacer-height: clamp(18px, 4vh, 28px);
-      --entry-row-height: clamp(92px, 16vh, 138px);
-      --entry-gap: clamp(12px, 3vh, 20px);
-      --horizontal-band-height: var(--row-history-height);
-      --horizontal-padding: clamp(48px, 7vw, 96px);
-      --horizontal-padding-right: clamp(48px, 8vw, 120px);
-      --horizontal-gap: clamp(18px, 2.6vw, 28px);
-      --horizontal-icon: clamp(18px, 4.6vw, 30px);
-      --vertical-gap: clamp(12px, 4vh, 20px);
-      --fade-width: 20%;
-      --icon-size-small: clamp(16px, 3.8vw, 26px);
-      --visible-columns: 8;
-      --focus-column-index: 2;
-      --horizontal-top: calc(var(--row-history-height) * 2);
-      --year-slot-width: calc(
-        (
-          100vw - var(--horizontal-padding) - var(--horizontal-padding-right) -
-          var(--horizontal-gap) * (var(--visible-columns) - 1)
-        ) / var(--visible-columns)
-      );
-      --focus-offset-width: calc(
-        (var(--year-slot-width) + var(--horizontal-gap)) * var(--focus-column-index)
-      );
-      --horizontal-trailing-space: calc((var(--year-slot-width) + var(--horizontal-gap)) * 3);
+      --shared-border: rgba(67, 56, 202, 0.45);
+      --shadow-soft: 0 22px 36px -24px rgba(15, 23, 42, 0.45);
+      --shadow-strong: 0 32px 52px -24px rgba(15, 23, 42, 0.55);
+      --axis-width: 4px;
+      --axis-highlight: rgba(37, 99, 235, 0.85);
+      --axis-fade: rgba(14, 165, 233, 0.18);
     }
 
     *, *::before, *::after {
@@ -74,11 +38,15 @@
 
     html, body {
       margin: 0;
-      height: 100%;
+      min-height: 100%;
       background: var(--page-background);
       color: var(--text-primary);
       font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
     }
 
     a {
@@ -91,372 +59,371 @@
     }
 
     .xmb-shell {
-      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
       background: var(--page-background);
-      isolation: isolate;
+      padding: clamp(32px, 6vh, 72px) clamp(32px, 6vw, 80px);
+      gap: clamp(24px, 4vh, 36px);
     }
 
-    .xmb-stage {
-      position: relative;
+    .timeline-layout {
       flex: 1;
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .xmb-vertical {
-      position: absolute;
-      left: calc(var(--horizontal-padding) + var(--focus-offset-width));
-      right: clamp(40px, 22vw, 420px);
-      top: 0;
-      bottom: 0;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      z-index: 2;
-    }
-
-    .xmb-vertical__viewport {
-      width: min(420px, 36vw);
-      max-width: 420px;
-      height: 100%;
-      overflow: visible;
-      position: relative;
-    }
-
-    .xmb-vertical__list {
-      position: relative;
-      width: 100%;
-      min-height: calc(
-        var(--row-history-height) * 2 + var(--horizontal-band-height) +
-        var(--row-spacer-height) + var(--entry-row-height) * 2 + var(--entry-gap)
-      );
-      padding-left: clamp(2px, 1vw, 12px);
-      padding-right: clamp(12px, 2vw, 24px);
-      padding-bottom: clamp(36px, 8vh, 64px);
-    }
-
-    .xmb-entry {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      display: inline-flex;
       flex-direction: row;
-      align-items: center;
-      justify-content: flex-start;
-      gap: clamp(10px, 2vw, 18px);
-      min-width: clamp(200px, 32vw, 260px);
-      max-width: clamp(260px, 44vw, 340px);
-      padding: clamp(10px, 2vh, 14px) clamp(10px, 2vw, 18px);
-      color: var(--text-primary);
-      text-align: left;
-      height: var(--entry-row-height);
-      transform: translateY(var(--entry-offset, 0px));
-      transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1),
-        opacity 0.35s ease;
-      pointer-events: auto;
-    }
-
-    .xmb-entry__icon {
-      width: var(--icon-size-small);
-      height: var(--icon-size-small);
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
+      align-items: stretch;
       justify-content: center;
-      font-size: calc(var(--icon-size-small) * 0.62);
-      line-height: 1;
-      background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.55), rgba(56, 189, 248, 0.08) 65%, rgba(15, 23, 42, 0));
-      box-shadow: 0 16px 36px rgba(2, 6, 23, 0.55);
-      flex-shrink: 0;
+      gap: clamp(24px, 5vw, 64px);
+      position: relative;
+      min-height: 0;
     }
 
-    .xmb-entry__copy {
+    .timeline-nav {
+      width: clamp(200px, 22vw, 280px);
       display: flex;
       flex-direction: column;
-      gap: clamp(4px, 1vh, 8px);
-      text-transform: uppercase;
-      font-size: clamp(0.75rem, 1.6vw, 0.9rem);
-      letter-spacing: 0.08em;
-      align-items: flex-start;
-      text-align: left;
-    }
-
-    .xmb-entry__title {
-      font-weight: 700;
-      color: var(--text-primary);
-      font-size: clamp(0.85rem, 2vw, 1rem);
-    }
-
-    .xmb-entry__subtitle {
-      color: var(--text-muted);
-      font-size: clamp(0.62rem, 1.4vw, 0.82rem);
-      letter-spacing: 0.06em;
-    }
-
-    .xmb-entry.is-active {
-      opacity: 1;
-    }
-
-    .xmb-entry.is-active .xmb-entry__title {
-      animation: xmbTitlePulse 1.4s ease-in-out infinite alternate;
-    }
-
-    .xmb-entry.is-active .xmb-entry__icon {
-      opacity: 1;
-    }
-
-    .xmb-entry.is-before {
-      opacity: 0.88;
-    }
-
-    .xmb-entry.is-history-slot-1,
-    .xmb-entry.is-history-slot-2 {
-      pointer-events: auto;
-    }
-
-    .xmb-entry.is-history-slot-1 {
-      opacity: 0.88;
-    }
-
-    .xmb-entry.is-history-slot-2 {
-      opacity: 0.8;
-    }
-
-    .xmb-entry.is-hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .xmb-entry:not(.is-active):not(.is-history-slot-1):not(.is-history-slot-2) .xmb-entry__icon {
-      opacity: 0.6;
-    }
-
-    .xmb-entry:not(.is-active) .xmb-entry__title,
-    .xmb-entry:not(.is-active) .xmb-entry__subtitle {
-      opacity: 0.75;
-    }
-
-    .xmb-entry:focus-visible {
-      outline: 3px solid var(--accent);
-      outline-offset: 4px;
-    }
-
-    .xmb-horizontal {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: var(--horizontal-top);
-      bottom: auto;
-      height: var(--horizontal-band-height);
-      display: flex;
-      align-items: flex-end;
-      padding-bottom: clamp(20px, 5vh, 32px);
-      background: transparent;
-      z-index: 4;
-    }
-
-    .xmb-horizontal__viewport {
-      flex: 1;
-      overflow: hidden;
-      padding-left: var(--horizontal-padding);
-      padding-right: var(--horizontal-padding-right);
+      align-items: stretch;
+      justify-content: center;
       position: relative;
+      z-index: 3;
     }
 
-    .timeline-century__tick--century .timeline-century__tick-mark::after {
-      width: 52px;
-      height: 3px;
-      opacity: 0.95;
+    .timeline-nav__viewport {
+      flex: 1;
+      max-height: calc(100vh - clamp(160px, 20vh, 240px));
+      overflow-y: auto;
+      padding-right: clamp(4px, 1vw, 12px);
+      margin-right: clamp(2px, 0.6vw, 8px);
+      scroll-behavior: smooth;
     }
 
-    .timeline-entry {
-      position: absolute;
-      left: 0;
-      width: 100%;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) var(--axis-column-width) minmax(0, 1fr);
-      column-gap: var(--entry-gap);
-      align-items: center;
-      height: var(--timeline-row-height);
-      top: calc(var(--entry-row-index, 0) * var(--timeline-row-height));
-      z-index: 2;
-      --connector-length: calc(var(--entry-gap) + var(--axis-column-width) / 2);
-    }
-
-    .timeline-entry__column {
+    .timeline-nav__track {
       display: flex;
-      align-items: flex-end;
-      gap: var(--horizontal-gap);
-      transform: translateX(0);
-      transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
-      will-change: transform;
-      padding-right: var(--horizontal-trailing-space);
+      flex-direction: column;
+      gap: clamp(12px, 2vh, 20px);
     }
 
     .xmb-year {
-      position: relative;
-      display: inline-flex;
+      display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: flex-start;
-      gap: clamp(12px, 1.8vw, 18px);
-      min-width: var(--year-slot-width);
-      flex: 0 0 var(--year-slot-width);
-      padding: clamp(6px, 1.4vh, 10px) 0;
-      background: transparent;
-      border: none;
+      gap: clamp(10px, 1.8vw, 18px);
+      border: 1px solid transparent;
+      border-radius: 18px;
+      padding: clamp(12px, 1.8vh, 18px) clamp(14px, 2vw, 22px);
+      background: var(--surface);
       color: var(--text-primary);
       cursor: pointer;
-      transform: translateY(0) scale(1);
-      transition: transform 0.4s cubic-bezier(0.33, 1, 0.68, 1),
-        color 0.35s ease;
-      opacity: 0.9;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+      text-align: left;
     }
 
     .xmb-year__icon {
-      width: var(--horizontal-icon);
-      height: var(--horizontal-icon);
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: calc(var(--horizontal-icon) * 0.68);
-      background: radial-gradient(circle at 35% 35%, rgba(56, 189, 248, 0.65), rgba(56, 189, 248, 0.08) 70%, rgba(15, 23, 42, 0));
-      box-shadow: 0 20px 42px rgba(2, 6, 23, 0.6);
-    }
-
-    .xmb-year:not(.is-active) .xmb-year__icon {
-      opacity: 0.9;
-    }
-
-    .xmb-year.is-active .xmb-year__icon {
-      opacity: 1;
+      font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+      filter: drop-shadow(0 10px 18px rgba(15, 23, 42, 0.25));
     }
 
     .xmb-year__label {
       font-weight: 700;
-      font-size: clamp(0.85rem, 1.6vw, 1.05rem);
+      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
       letter-spacing: 0.14em;
       text-transform: uppercase;
       white-space: nowrap;
     }
 
     .xmb-year.is-active {
-      transform: translateY(-12px) scale(1.12);
+      background: var(--accent-primary);
       color: #ffffff;
-      opacity: 1;
+      transform: translateX(12px);
+      box-shadow: var(--shadow-strong);
     }
 
     .xmb-year:focus-visible {
-      outline: 3px solid var(--accent);
-      outline-offset: 5px;
+      outline: 3px solid var(--accent-primary-strong);
+      outline-offset: 4px;
     }
 
-    .xmb-horizontal__fade {
+    .timeline-stage {
+      flex: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(24px, 6vh, 56px) 0;
+      overflow: hidden;
+    }
+
+    .timeline-stage::before {
+      content: "";
       position: absolute;
-      top: clamp(12px, 3vh, 24px);
-      bottom: clamp(12px, 3vh, 24px);
-      right: 0;
-      width: var(--fade-width);
-      background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 90%);
-      pointer-events: none;
-      z-index: 4;
+      top: clamp(12px, 6vh, 48px);
+      bottom: clamp(12px, 6vh, 48px);
+      left: 50%;
+      width: var(--axis-width);
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, var(--axis-highlight) 0%, var(--axis-fade) 100%);
+      border-radius: 999px;
+      z-index: 1;
+      opacity: 0.9;
     }
 
-    .xmb-year-placeholder {
-      flex: 0 0 var(--year-slot-width);
-      min-width: var(--year-slot-width);
-      height: var(--horizontal-icon);
-      pointer-events: none;
-      opacity: 0;
+    .timeline-stage__viewport {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: visible;
+      scroll-snap-type: x proximity;
+      padding: clamp(16px, 4vh, 32px) 0;
+      display: flex;
+      justify-content: center;
     }
 
-    .xmb-loading {
-      position: fixed;
-      top: 18px;
-      right: 18px;
-      padding: 0.65rem 1.2rem;
+    .timeline-stage__viewport::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .timeline-stage__viewport::-webkit-scrollbar-thumb {
+      background: rgba(15, 23, 42, 0.25);
+      border-radius: 999px;
+    }
+
+    .timeline-stage__list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(24px, 5vh, 40px);
+      min-width: min(100%, 960px);
+    }
+
+    .timeline-year-header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(8px, 2vh, 16px);
+      align-items: center;
+    }
+
+    .timeline-year-header__icon {
+      width: clamp(60px, 8vw, 90px);
+      height: clamp(60px, 8vw, 90px);
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(37, 99, 235, 0.08);
+      box-shadow: 0 18px 34px rgba(15, 23, 42, 0.12);
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    }
+
+    .timeline-year-header__year {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--heading-color);
+    }
+
+    .timeline-year-header__subtitle {
+      color: var(--text-muted);
+      font-size: clamp(0.85rem, 1.4vw, 1rem);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .timeline-empty {
+      font-size: 1rem;
+      color: var(--text-muted);
+      text-align: center;
+      max-width: 520px;
+      margin: clamp(16px, 4vh, 28px) auto 0;
+    }
+
+    .timeline-card-row {
+      display: flex;
+      flex-direction: row;
+      gap: clamp(18px, 4vw, 36px);
+      justify-content: center;
+      align-items: stretch;
+      flex-wrap: nowrap;
+      min-width: 100%;
+    }
+
+    .timeline-card {
+      flex: 0 0 clamp(240px, 24vw, 320px);
+      border-radius: 24px;
+      padding: clamp(18px, 3vh, 26px);
+      border: 1px solid var(--surface-border);
+      box-shadow: var(--shadow-soft);
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      gap: clamp(12px, 2vh, 18px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      scroll-snap-align: center;
+    }
+
+    .timeline-card:focus-visible {
+      outline: 3px solid var(--accent-primary);
+      outline-offset: 4px;
+    }
+
+    .timeline-card.is-active {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .timeline-card__side {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--text-soft);
+    }
+
+    .timeline-card__title {
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      font-weight: 700;
+      color: var(--heading-color);
+      line-height: 1.3;
+    }
+
+    .timeline-card__summary {
+      font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .timeline-card__link {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      color: var(--accent-primary-strong);
+    }
+
+    .timeline-card__link::after {
+      content: '→';
+      font-size: 0.95rem;
+      transition: transform 0.3s ease;
+    }
+
+    .timeline-card__link:hover::after {
+      transform: translateX(4px);
+    }
+
+    .timeline-card--buckler {
+      background: var(--buckler-surface);
+      border-color: var(--buckler-border);
+    }
+
+    .timeline-card--bp {
+      background: var(--bp-surface);
+      border-color: var(--bp-border);
+    }
+
+    .timeline-card--both {
+      background: var(--shared-surface);
+      border-color: var(--shared-border);
+    }
+
+    .timeline-loading {
+      align-self: flex-end;
+      padding: 0.65rem 1.4rem;
       background: rgba(15, 23, 42, 0.85);
       border-radius: 999px;
       border: 1px solid rgba(56, 189, 248, 0.4);
-      color: var(--text-muted);
+      color: #e2e8f0;
       font-size: 0.95rem;
       box-shadow: 0 18px 48px rgba(2, 6, 23, 0.6);
-      z-index: 5;
     }
 
-    .xmb-loading.is-hidden {
+    .timeline-loading.is-hidden {
       display: none;
     }
 
-    @media (max-width: 960px) {
-      :root {
-        --axis-column-width: 120px;
-        --entry-gap: 24px;
-        --timeline-row-height: 176px;
+    @media (max-width: 1100px) {
+      .timeline-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(32px, 6vh, 48px);
       }
-      100% {
-        text-shadow: 0 0 12px rgba(56, 189, 248, 0.9);
+
+      .timeline-nav {
+        width: min(100%, 560px);
+      }
+
+      .timeline-nav__viewport {
+        max-height: none;
+      }
+
+      .xmb-year.is-active {
+        transform: translateY(-6px);
+      }
+
+      .timeline-stage {
+        width: 100%;
       }
     }
 
-    @media (max-width: 900px) {
-      :root {
-        --axis-column-width: 100px;
-        --entry-gap: 18px;
-        --bubble-size: 54px;
-        --timeline-row-height: 168px;
+    @media (max-width: 720px) {
+      .timeline-card-row {
+        flex-wrap: wrap;
+        justify-content: center;
       }
 
-      .timeline {
-        padding-left: 12px;
-        padding-right: 12px;
-      }
-      
-      .timeline-entry {
-        column-gap: 14px;
+      .timeline-card {
+        flex: 1 1 calc(50% - 16px);
+        min-width: 240px;
       }
 
-      .xmb-vertical {
-        left: clamp(24px, 10vw, 40px);
-        right: clamp(20px, 18vw, 60px);
+      .timeline-stage__list {
+        min-width: 100%;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .xmb-shell {
+        padding: clamp(24px, 6vh, 40px) clamp(16px, 6vw, 32px);
       }
 
-      .xmb-vertical__viewport {
-        width: 100%;
-        height: 100%;
+      .xmb-year {
+        flex-direction: column;
+        align-items: flex-start;
       }
 
-      .xmb-year__label {
-        font-size: clamp(0.95rem, 4vw, 1.2rem);
+      .timeline-card {
+        flex: 1 1 100%;
+        min-width: 100%;
+      }
+
+      .timeline-stage__viewport {
+        padding: clamp(12px, 4vh, 24px) 0;
       }
     }
   </style>
 </head>
 <body>
   <div class="xmb-shell">
-    <main class="xmb-stage">
-      <section class="xmb-vertical" aria-label="Timeline entries">
-        <div class="xmb-vertical__viewport" id="timeline-entry-viewport">
-          <div class="xmb-vertical__list" id="timeline-year-entries"></div>
+    <div class="timeline-layout">
+      <nav class="timeline-nav" aria-label="Timeline years">
+        <div class="timeline-nav__viewport" id="year-bar-viewport">
+          <div class="timeline-nav__track" id="timeline-year-track" role="listbox" aria-label="Timeline years"></div>
         </div>
-      </section>
-    </main>
-
-    <nav class="xmb-horizontal" aria-label="Timeline years">
-      <div class="xmb-horizontal__viewport" id="year-bar-viewport">
-        <div class="xmb-horizontal__track" id="timeline-year-track" role="listbox" aria-label="Timeline years"></div>
-        <div class="xmb-horizontal__fade" aria-hidden="true"></div>
-      </div>
-    </nav>
-
-    <div id="timeline-loading" class="xmb-loading">Loading timeline…</div>
+      </nav>
+      <main class="timeline-stage" aria-label="Timeline entries">
+        <div class="timeline-stage__viewport" id="timeline-entry-viewport">
+          <div class="timeline-stage__list" id="timeline-year-entries"></div>
+        </div>
+      </main>
+    </div>
+    <div id="timeline-loading" class="timeline-loading">Loading timeline…</div>
   </div>
 
   <script src="timeline.js"></script>

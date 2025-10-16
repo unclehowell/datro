@@ -1,5 +1,4 @@
 (function () {
-  const rootElement = document.documentElement;
   const yearTrack = document.getElementById('timeline-year-track');
   const yearViewport = document.getElementById('year-bar-viewport');
   const entryViewport = document.getElementById('timeline-entry-viewport');
@@ -10,35 +9,25 @@
     return;
   }
 
-  const LEADING_PLACEHOLDER_COUNT = 2;
-
   let yearGroups = [];
   let yearButtons = [];
   let entryItems = [];
   let activeYearIndex = 0;
   let activeEntryIndex = 0;
-  let suppressFocusSync = false;
-  let focusColumnOffset = 0;
-  const layoutMetrics = {
-    historyHeight: 0,
-    horizontalHeight: 0,
-    spacerHeight: 0,
-    entryHeight: 0,
-    entryGap: 0,
-  };
 
-  function readCssNumber(variableName, fallback = 0) {
-    const raw = getComputedStyle(rootElement).getPropertyValue(variableName);
-    const parsed = parseFloat(raw);
-    return Number.isFinite(parsed) ? parsed : fallback;
+  function showLoading(message) {
+    if (!loadingBanner) {
+      return;
+    }
+    loadingBanner.textContent = message;
+    loadingBanner.classList.remove('is-hidden');
   }
 
-  function refreshLayoutMetrics() {
-    layoutMetrics.historyHeight = readCssNumber('--row-history-height', 96);
-    layoutMetrics.horizontalHeight = readCssNumber('--horizontal-band-height', layoutMetrics.historyHeight);
-    layoutMetrics.spacerHeight = readCssNumber('--row-spacer-height', 24);
-    layoutMetrics.entryHeight = readCssNumber('--entry-row-height', layoutMetrics.historyHeight);
-    layoutMetrics.entryGap = readCssNumber('--entry-gap', 16);
+  function hideLoading() {
+    if (!loadingBanner) {
+      return;
+    }
+    loadingBanner.classList.add('is-hidden');
   }
 
   function limitWords(value, maxWords) {
@@ -49,52 +38,72 @@
     return words.slice(0, Math.max(1, maxWords)).join(' ');
   }
 
-  function getYearSubtitle(group) {
-    if (!group || !group.events.length) {
-      return '';
+  function normaliseSide(side) {
+    if (!side) {
+      return 'both';
     }
-    const primaryEvent = group.events[0].event;
-    const subtitleSource = primaryEvent.iconLabel || primaryEvent.title || primaryEvent.year || '';
-    return limitWords(subtitleSource, 4);
+    const normalised = String(side).toLowerCase();
+    if (normalised === 'buckler' || normalised === 'bp' || normalised === 'both') {
+      return normalised;
+    }
+    return 'both';
   }
 
-  function getEventSubtitle(event) {
-    if (!event) {
-      return '';
+  function describeSide(side) {
+    switch (normaliseSide(side)) {
+      case 'buckler':
+        return 'Buckler family';
+      case 'bp':
+        return 'BP';
+      default:
+        return 'Shared history';
     }
-    if (event.summary) {
-      return limitWords(event.summary, 4);
-    }
-    if (event.title) {
-      return limitWords(event.title, 4);
-    }
-    return limitWords(event.year, 4);
   }
 
-  function buildCenturyScale(container, bounds) {
-    if (!container) {
+  function ensureButtonVisible(button) {
+    if (!button || !yearViewport) {
       return;
     }
-    const scale = document.createElement('div');
-    scale.className = 'timeline-century__scale';
+    const buttonRect = button.getBoundingClientRect();
+    const viewportRect = yearViewport.getBoundingClientRect();
+    if (buttonRect.top < viewportRect.top) {
+      yearViewport.scrollBy({
+        top: buttonRect.top - viewportRect.top - 16,
+        behavior: 'smooth',
+      });
+    } else if (buttonRect.bottom > viewportRect.bottom) {
+      yearViewport.scrollBy({
+        top: buttonRect.bottom - viewportRect.bottom + 16,
+        behavior: 'smooth',
+      });
+    }
+  }
 
-    const ticks = document.createElement('div');
-    ticks.className = 'timeline-century__ticks';
-    scale.appendChild(ticks);
+  function ensureEntryVisible(entry) {
+    if (!entry || !entryViewport) {
+      return;
+    }
+    const entryRect = entry.getBoundingClientRect();
+    const viewportRect = entryViewport.getBoundingClientRect();
+    if (entryRect.left < viewportRect.left) {
+      entryViewport.scrollBy({
+        left: entryRect.left - viewportRect.left - 24,
+        behavior: 'smooth',
+      });
+    } else if (entryRect.right > viewportRect.right) {
+      entryViewport.scrollBy({
+        left: entryRect.right - viewportRect.right + 24,
+        behavior: 'smooth',
+      });
+    }
+  }
 
-    const { startYear, endYear, span } = bounds;
-    for (let year = startYear; year <= endYear; year += 1) {
-      const tick = document.createElement('div');
-      tick.className = 'timeline-century__tick timeline-century__tick--year';
-      if (year % 5 === 0) {
-        tick.classList.add('timeline-century__tick--quin');
-      }
-      if (year % 10 === 0) {
-        tick.classList.add('timeline-century__tick--decade');
-      }
-      if (year % 100 === 0) {
-        tick.classList.add('timeline-century__tick--century');
-      }
+  function buildYearGroups(data) {
+    if (!data || !Array.isArray(data.centuries)) {
+      return [];
+    }
+
+    const groups = new Map();
 
     data.centuries.forEach((century, centuryIndex) => {
       const events = Array.isArray(century?.events) ? century.events : [];
@@ -129,212 +138,167 @@
     });
 
     const ordered = Array.from(groups.values());
+
     ordered.sort((a, b) => {
-      const aValue = Number.isFinite(a.sortValue) ? a.sortValue : Number.NEGATIVE_INFINITY;
-      const bValue = Number.isFinite(b.sortValue) ? b.sortValue : Number.NEGATIVE_INFINITY;
+      const aValue = Number.isFinite(a.sortValue) ? a.sortValue : Number.POSITIVE_INFINITY;
+      const bValue = Number.isFinite(b.sortValue) ? b.sortValue : Number.POSITIVE_INFINITY;
       if (aValue !== bValue) {
-        return bValue - aValue;
+        return aValue - bValue;
       }
-      return b.label.localeCompare(a.label, undefined, { numeric: true });
+      return a.label.localeCompare(b.label, undefined, { numeric: true });
     });
 
-    ordered.forEach((group, index) => {
+    ordered.forEach(group => {
       group.events.sort((a, b) => {
-        const aValue = Number.isFinite(a.event.yearValue) ? a.event.yearValue : Number.NEGATIVE_INFINITY;
-        const bValue = Number.isFinite(b.event.yearValue) ? b.event.yearValue : Number.NEGATIVE_INFINITY;
+        const aValue = Number.isFinite(a.event.yearValue) ? a.event.yearValue : Number.POSITIVE_INFINITY;
+        const bValue = Number.isFinite(b.event.yearValue) ? b.event.yearValue : Number.POSITIVE_INFINITY;
         if (aValue !== bValue) {
-          return bValue - aValue;
+          return aValue - bValue;
         }
         return a.eventIndex - b.eventIndex;
       });
       const primaryEventWithIcon = group.events.find(entry => entry.event.icon);
       const primaryEvent = group.events[0]?.event;
       group.icon = primaryEventWithIcon?.event?.icon || '🕰️';
-      group.yearLabel = limitWords(primaryEvent?.year || group.label, 2) || `Year ${index + 1}`;
-      group.subtitle = getYearSubtitle(group);
+      group.yearLabel = limitWords(primaryEvent?.year || group.label, 3) || group.label;
+      group.subtitle = limitWords(primaryEvent?.summary || primaryEvent?.title || group.label, 6);
     });
 
     return ordered;
   }
 
-  function hideLoading() {
-    if (loadingBanner) {
-      loadingBanner.classList.add('is-hidden');
-    }
-  }
-
-  function buildEvent(event, century, bounds) {
-    const position = choosePosition(event);
-    const entry = document.createElement('div');
-    entry.className = 'timeline-entry';
-    entry.dataset.position = position;
-    entry.dataset.eventId = event.id;
-
-    const eventYear = getEventYearValue(event, bounds);
-    if (Number.isFinite(eventYear)) {
-      entry.dataset.yearValue = String(eventYear);
-    }
-  }
-
-  function clearEntryList() {
+  function clearEntries() {
     entryList.innerHTML = '';
-    entryList.style.minHeight = '';
     entryItems = [];
     activeEntryIndex = 0;
   }
 
-  function updateFocusOffset() {
-    const firstButton = yearButtons[0];
-    focusColumnOffset = firstButton ? firstButton.offsetLeft : 0;
-  }
-
-  function alignYearTrack() {
-    const activeButton = yearButtons[activeYearIndex];
-    if (!activeButton) {
-      yearTrack.style.transform = 'translateX(0)';
-      return;
-    }
-
-    updateFocusOffset();
-
-    const offset = activeButton.offsetLeft;
-    const viewportWidth = yearViewport?.clientWidth || 0;
-    const trackWidth = yearTrack.scrollWidth;
-    const desired = focusColumnOffset - offset;
-    const lastButton = yearButtons[yearButtons.length - 1];
-    let minTranslate = Math.min(0, viewportWidth - trackWidth);
-    if (lastButton) {
-      const lastRight = lastButton.offsetLeft + lastButton.offsetWidth;
-      const boundary = viewportWidth - lastRight;
-      minTranslate = Math.min(minTranslate, boundary);
-      minTranslate = Math.min(minTranslate, focusColumnOffset - lastButton.offsetLeft);
-    }
-    const maxTranslate = 0;
-    const clamped = Math.max(minTranslate, Math.min(maxTranslate, desired));
-    yearTrack.style.transform = `translateX(${clamped}px)`;
-  }
-
-  function applyEntryPositions() {
+  function setActiveEntry(index, { focus = false } = {}) {
     if (!entryItems.length) {
-      entryList.style.minHeight = '';
+      activeEntryIndex = 0;
       return;
     }
 
-    refreshLayoutMetrics();
+    const clamped = Math.max(0, Math.min(entryItems.length - 1, index));
+    activeEntryIndex = clamped;
 
-    const baseTop = layoutMetrics.historyHeight * 2 + layoutMetrics.horizontalHeight + layoutMetrics.spacerHeight;
-    const step = layoutMetrics.entryHeight + layoutMetrics.entryGap;
-    const minFutureItems = 2;
+    entryItems.forEach((item, itemIndex) => {
+      const isActive = itemIndex === clamped;
+      item.classList.toggle('is-active', isActive);
+      if (isActive && focus) {
+        item.focus({ preventScroll: false });
+      }
+    });
 
-  const rowLayout = {
-    fallbackRowHeight: 184,
-    padding: 112,
-  };
+    ensureEntryVisible(entryItems[clamped]);
+  }
 
-  let layoutFrame = null;
+  function renderEntryList(group) {
+    clearEntries();
 
-  function updateConnectorLengths(section) {
-    if (!section || section.classList.contains('timeline-century--collapsed')) {
+    if (!group || !group.events.length) {
+      const empty = document.createElement('p');
+      empty.textContent = 'No timeline entries available for this year yet.';
+      empty.className = 'timeline-empty';
+      entryList.appendChild(empty);
       return;
     }
-    const entries = section.querySelector('.timeline-century__entries');
-    if (!entries || entries.hidden) {
-      return;
+
+    const header = document.createElement('div');
+    header.className = 'timeline-year-header';
+
+    const icon = document.createElement('div');
+    icon.className = 'timeline-year-header__icon';
+    icon.textContent = group.icon || '🕰️';
+    header.appendChild(icon);
+
+    const yearLabel = document.createElement('div');
+    yearLabel.className = 'timeline-year-header__year';
+    yearLabel.textContent = group.yearLabel;
+    header.appendChild(yearLabel);
+
+    if (group.subtitle) {
+      const subtitle = document.createElement('div');
+      subtitle.className = 'timeline-year-header__subtitle';
+      subtitle.textContent = group.subtitle;
+      header.appendChild(subtitle);
     }
-    const scaleElement = entries.querySelector('.timeline-century__scale');
-    const axisRect = scaleElement ? scaleElement.getBoundingClientRect() : null;
-    const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
-    entryNodes.forEach(entry => {
-      const bubble = entry.querySelector('.timeline-bubble');
-      if (!bubble) {
-        return;
-      }
-      const bubbleRect = bubble.getBoundingClientRect();
-      const targetNode = entry.querySelector('.timeline-year .timeline-node');
-      const targetRect = targetNode ? targetNode.getBoundingClientRect() : axisRect;
-      if (!targetRect) {
-        return;
+
+    entryList.appendChild(header);
+
+    const row = document.createElement('div');
+    row.className = 'timeline-card-row';
+    entryList.appendChild(row);
+
+    entryItems = group.events.map((entry, index) => {
+      const { event } = entry;
+      const side = normaliseSide(event.side);
+
+      const card = document.createElement('article');
+      card.className = `timeline-card timeline-card--${side}`;
+      card.dataset.eventId = event.id;
+      card.tabIndex = 0;
+
+      const sideLabel = document.createElement('span');
+      sideLabel.className = 'timeline-card__side';
+      sideLabel.textContent = describeSide(side);
+      card.appendChild(sideLabel);
+
+      const title = document.createElement('h3');
+      title.className = 'timeline-card__title';
+      title.textContent = event.title || group.label;
+      card.appendChild(title);
+
+      if (event.summary) {
+        const summary = document.createElement('p');
+        summary.className = 'timeline-card__summary';
+        summary.textContent = event.summary;
+        card.appendChild(summary);
       }
 
-  function applyRowLayout() {
-    const sections = Array.from(timelineContainer.querySelectorAll('.timeline-century'));
+      const link = document.createElement('a');
+      link.className = 'timeline-card__link';
+      link.href = `entries/${event.id}.html`;
+      link.textContent = 'View details';
+      link.setAttribute('aria-label', `${event.title || group.label} details`);
+      card.appendChild(link);
 
-    sections.forEach(section => {
-      if (section.classList.contains('timeline-century--collapsed')) {
-        return;
-      }
-
-      const entries = section.querySelector('.timeline-century__entries');
-      if (!entries || entries.hidden) {
-        return;
-      }
-
-      const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
-      entryNodes.forEach((entry, index) => {
-        entry.style.setProperty('--entry-row-index', index);
+      card.addEventListener('focus', () => {
+        setActiveEntry(index, { focus: false });
       });
 
-      const computed = window.getComputedStyle(entries);
-      const baseMinHeight = parseFloat(computed.minHeight) || 0;
-      const rowHeightValue = parseFloat(computed.getPropertyValue('--timeline-row-height')) || rowLayout.fallbackRowHeight;
-      const requiredHeight = Math.max(baseMinHeight, entryNodes.length * rowHeightValue + rowLayout.padding);
-      if (requiredHeight > 0) {
-        entries.style.minHeight = `${Math.ceil(requiredHeight)}px`;
-      }
+      row.appendChild(card);
+      return card;
     });
 
-    requestAnimationFrame(() => {
-      sections.forEach(section => {
-        updateConnectorLengths(section);
-      });
-    });
-
-  function scheduleLayout() {
-    if (layoutFrame) {
-      cancelAnimationFrame(layoutFrame);
-    }
-    layoutFrame = requestAnimationFrame(() => {
-      layoutFrame = null;
-      applyRowLayout();
-    });
+    setActiveEntry(0, { focus: false });
   }
 
   function setActiveYear(index, { focusYear = false } = {}) {
     if (!yearGroups.length) {
       return;
     }
+
     const clamped = Math.max(0, Math.min(yearGroups.length - 1, index));
-    if (clamped === activeYearIndex && !focusYear) {
-      return;
-    }
     activeYearIndex = clamped;
-    const group = yearGroups[activeYearIndex];
+    const group = yearGroups[clamped];
 
     yearButtons.forEach((button, buttonIndex) => {
-      const isActive = buttonIndex === activeYearIndex;
+      const isActive = buttonIndex === clamped;
       button.classList.toggle('is-active', isActive);
       button.setAttribute('aria-selected', isActive ? 'true' : 'false');
       button.tabIndex = isActive ? 0 : -1;
-      if (isActive && focusYear && !suppressFocusSync) {
-        requestAnimationFrame(() => {
-          button.focus({ preventScroll: true });
-        });
+      if (isActive && focusYear) {
+        button.focus({ preventScroll: true });
       }
     });
 
-    alignYearTrack();
+    ensureButtonVisible(yearButtons[clamped]);
     renderEntryList(group);
   }
 
   function renderYearButtons(groups) {
     yearTrack.innerHTML = '';
-
-    for (let i = 0; i < LEADING_PLACEHOLDER_COUNT; i += 1) {
-      const spacer = document.createElement('div');
-      spacer.className = 'xmb-year-placeholder';
-      spacer.setAttribute('aria-hidden', 'true');
-      yearTrack.appendChild(spacer);
-    }
 
     yearButtons = groups.map((group, index) => {
       const button = document.createElement('button');
@@ -348,30 +312,25 @@
 
       const icon = document.createElement('span');
       icon.className = 'xmb-year__icon';
-      icon.textContent = group.icon;
+      icon.textContent = group.icon || '🕰️';
       button.appendChild(icon);
 
       const label = document.createElement('span');
       label.className = 'xmb-year__label';
-      label.textContent = limitWords(group.yearLabel, 2) || `Year ${index + 1}`;
+      label.textContent = limitWords(group.yearLabel || group.label, 3);
       button.appendChild(label);
 
       button.addEventListener('click', () => {
-        setActiveYear(index, { focusYear: true });
+        setActiveYear(index, { focusYear: false });
       });
 
       button.addEventListener('focus', () => {
-        if (suppressFocusSync) {
-          return;
-        }
         setActiveYear(index, { focusYear: false });
       });
 
       yearTrack.appendChild(button);
       return button;
     });
-
-    updateFocusOffset();
   }
 
   function handleKeydown(event) {
@@ -379,80 +338,60 @@
       return;
     }
 
-    const target = event.target;
-    if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
-      return;
-    }
-
     switch (event.key) {
-      case 'ArrowRight': {
-        if (!yearGroups.length) {
-          return;
-        }
-        event.preventDefault();
-        const next = Math.min(yearGroups.length - 1, activeYearIndex + 1);
-        setActiveYear(next, { focusYear: true });
-        break;
-      }
-      case 'ArrowLeft': {
-        if (!yearGroups.length) {
-          return;
-        }
-        event.preventDefault();
-        const next = Math.max(0, activeYearIndex - 1);
-        setActiveYear(next, { focusYear: true });
-        break;
-      }
       case 'ArrowDown': {
-        if (!entryItems.length) {
+        if (!yearGroups.length) {
           return;
         }
         event.preventDefault();
-        if (document.activeElement && yearButtons.includes(document.activeElement)) {
-          setActiveEntry(0, { focus: true });
-        } else {
-          setActiveEntry(activeEntryIndex + 1, { focus: true });
-        }
+        setActiveYear(Math.min(yearGroups.length - 1, activeYearIndex + 1), { focusYear: true });
         break;
       }
       case 'ArrowUp': {
+        if (!yearGroups.length) {
+          return;
+        }
+        event.preventDefault();
+        setActiveYear(Math.max(0, activeYearIndex - 1), { focusYear: true });
+        break;
+      }
+      case 'ArrowRight': {
         if (!entryItems.length) {
           return;
         }
         event.preventDefault();
-        if (document.activeElement && entryItems.includes(document.activeElement)) {
-          if (activeEntryIndex === 0) {
-            const activeButton = yearButtons[activeYearIndex];
-            if (activeButton) {
-              suppressFocusSync = true;
-              activeButton.focus({ preventScroll: true });
-              suppressFocusSync = false;
-            }
-          } else {
-            setActiveEntry(activeEntryIndex - 1, { focus: true });
-          }
-        } else {
-          const activeButton = yearButtons[activeYearIndex];
-          if (activeButton) {
-            suppressFocusSync = true;
-            activeButton.focus({ preventScroll: true });
-            suppressFocusSync = false;
-          }
+        setActiveEntry(Math.min(entryItems.length - 1, activeEntryIndex + 1), { focus: true });
+        break;
+      }
+      case 'ArrowLeft': {
+        if (!entryItems.length) {
+          return;
         }
+        event.preventDefault();
+        setActiveEntry(Math.max(0, activeEntryIndex - 1), { focus: true });
+        break;
+      }
+      case 'Home': {
+        if (!yearGroups.length) {
+          return;
+        }
+        event.preventDefault();
+        setActiveYear(0, { focusYear: true });
+        break;
+      }
+      case 'End': {
+        if (!yearGroups.length) {
+          return;
+        }
+        event.preventDefault();
+        setActiveYear(yearGroups.length - 1, { focusYear: true });
         break;
       }
       default:
     }
   }
 
-  function handleResize() {
-    updateFocusOffset();
-    alignYearTrack();
-    applyEntryPositions();
-  }
-
   document.addEventListener('keydown', handleKeydown);
-  window.addEventListener('resize', handleResize);
 
   fetch('data/timeline.json')
     .then(response => {
@@ -470,8 +409,7 @@
       renderYearButtons(yearGroups);
       hideLoading();
       requestAnimationFrame(() => {
-        refreshLayoutMetrics();
-        setActiveYear(0, { focusYear: true });
+        setActiveYear(0, { focusYear: false });
       });
     })
     .catch(error => {
