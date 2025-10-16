@@ -7,6 +7,35 @@
   <link rel="stylesheet" href="tailwind.css">
   <style>
     :root {
+      color-scheme: light;
+      --page-background: #f3f4f6;
+      --surface: rgba(255, 255, 255, 0.94);
+      --surface-muted: rgba(255, 255, 255, 0.82);
+      --surface-border: rgba(59, 130, 246, 0.16);
+      --heading-color: #0f172a;
+      --text-primary: #1f2937;
+      --text-muted: rgba(17, 24, 39, 0.75);
+      --text-soft: rgba(17, 24, 39, 0.6);
+      --accent-primary: #2563eb;
+      --accent-primary-strong: #1e3a8a;
+      --accent-muted: rgba(59, 130, 246, 0.18);
+      --buckler-surface: linear-gradient(135deg, #d1fae5, #ecfdf5);
+      --buckler-border: #10b981;
+      --bp-surface: linear-gradient(135deg, #fee2e2, #fff1f2);
+      --bp-border: #ef4444;
+      --shared-surface: linear-gradient(135deg, #e0e7ff, #eef2ff);
+      --shared-border: #4338ca;
+      --shadow-soft: 0 22px 36px -24px rgba(15, 23, 42, 0.55);
+      --shadow-strong: 0 30px 52px -32px rgba(15, 23, 42, 0.65);
+      --modal-backdrop: rgba(15, 23, 42, 0.55);
+      --axis-column-width: 150px;
+      --entry-gap: 32px;
+      --bubble-size: 60px;
+      --year-scale: 7px;
+      --timeline-row-height: 184px;
+    }
+
+    body[data-theme='dark'] {
       color-scheme: dark;
       --page-background: #000000;
       --text-primary: #f8fafc;
@@ -240,7 +269,27 @@
       position: relative;
     }
 
-    .xmb-horizontal__track {
+    .timeline-century__tick--century .timeline-century__tick-mark::after {
+      width: 52px;
+      height: 3px;
+      opacity: 0.95;
+    }
+
+    .timeline-entry {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) var(--axis-column-width) minmax(0, 1fr);
+      column-gap: var(--entry-gap);
+      align-items: center;
+      height: var(--timeline-row-height);
+      top: calc(var(--entry-row-index, 0) * var(--timeline-row-height));
+      z-index: 2;
+      --connector-length: calc(var(--entry-gap) + var(--axis-column-width) / 2);
+    }
+
+    .timeline-entry__column {
       display: flex;
       align-items: flex-end;
       gap: var(--horizontal-gap);
@@ -346,9 +395,11 @@
       display: none;
     }
 
-    @keyframes xmbTitlePulse {
-      0% {
-        text-shadow: 0 0 0 rgba(56, 189, 248, 0.7);
+    @media (max-width: 960px) {
+      :root {
+        --axis-column-width: 120px;
+        --entry-gap: 24px;
+        --timeline-row-height: 176px;
       }
       100% {
         text-shadow: 0 0 12px rgba(56, 189, 248, 0.9);
@@ -357,34 +408,19 @@
 
     @media (max-width: 900px) {
       :root {
-        --row-history-height: clamp(88px, 24vh, 140px);
-        --horizontal-band-height: var(--row-history-height);
-        --row-spacer-height: clamp(16px, 6vh, 30px);
-        --entry-row-height: clamp(94px, 30vh, 160px);
-        --entry-gap: clamp(18px, 7vh, 32px);
-        --horizontal-padding: clamp(28px, 8vw, 72px);
-        --horizontal-padding-right: clamp(32px, 10vw, 80px);
-        --horizontal-gap: clamp(20px, 8vw, 36px);
-        --horizontal-icon: clamp(22px, 8vw, 40px);
-        --vertical-gap: clamp(14px, 4vh, 22px);
-        --icon-size-small: clamp(20px, 6vw, 32px);
-        --horizontal-top: calc(var(--row-history-height) * 2);
+        --axis-column-width: 100px;
+        --entry-gap: 18px;
+        --bubble-size: 54px;
+        --timeline-row-height: 168px;
       }
 
-      .xmb-year {
-        min-width: var(--year-slot-width);
-        flex-basis: var(--year-slot-width);
+      .timeline {
+        padding-left: 12px;
+        padding-right: 12px;
       }
-    }
-
-    @media (max-width: 640px) {
-      :root {
-        --entry-gap: clamp(16px, 6vh, 28px);
-        --row-spacer-height: clamp(14px, 5vh, 24px);
-      }
-
-      html, body {
-        overflow: hidden;
+      
+      .timeline-entry {
+        column-gap: 14px;
       }
 
       .xmb-vertical {

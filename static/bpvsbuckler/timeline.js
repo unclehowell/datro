@@ -71,12 +71,30 @@
     return limitWords(event.year, 4);
   }
 
-  function buildYearGroups(data) {
-    if (!Array.isArray(data?.centuries)) {
-      return [];
+  function buildCenturyScale(container, bounds) {
+    if (!container) {
+      return;
     }
+    const scale = document.createElement('div');
+    scale.className = 'timeline-century__scale';
 
-    const groups = new Map();
+    const ticks = document.createElement('div');
+    ticks.className = 'timeline-century__ticks';
+    scale.appendChild(ticks);
+
+    const { startYear, endYear, span } = bounds;
+    for (let year = startYear; year <= endYear; year += 1) {
+      const tick = document.createElement('div');
+      tick.className = 'timeline-century__tick timeline-century__tick--year';
+      if (year % 5 === 0) {
+        tick.classList.add('timeline-century__tick--quin');
+      }
+      if (year % 10 === 0) {
+        tick.classList.add('timeline-century__tick--decade');
+      }
+      if (year % 100 === 0) {
+        tick.classList.add('timeline-century__tick--century');
+      }
 
     data.centuries.forEach((century, centuryIndex) => {
       const events = Array.isArray(century?.events) ? century.events : [];
@@ -145,10 +163,16 @@
     }
   }
 
-  function showLoading(message) {
-    if (loadingBanner) {
-      loadingBanner.textContent = message;
-      loadingBanner.classList.remove('is-hidden');
+  function buildEvent(event, century, bounds) {
+    const position = choosePosition(event);
+    const entry = document.createElement('div');
+    entry.className = 'timeline-entry';
+    entry.dataset.position = position;
+    entry.dataset.eventId = event.id;
+
+    const eventYear = getEventYearValue(event, bounds);
+    if (Number.isFinite(eventYear)) {
+      entry.dataset.yearValue = String(eventYear);
     }
   }
 
@@ -202,112 +226,77 @@
     const step = layoutMetrics.entryHeight + layoutMetrics.entryGap;
     const minFutureItems = 2;
 
-    entryItems.forEach((item, index) => {
-      item.classList.remove('is-history-slot-1', 'is-history-slot-2', 'is-hidden');
+  const rowLayout = {
+    fallbackRowHeight: 184,
+    padding: 112,
+  };
 
-      let offset;
+  let layoutFrame = null;
 
-      if (index === activeEntryIndex) {
-        offset = baseTop;
-      } else if (index === activeEntryIndex + 1) {
-        offset = baseTop + step;
-      } else if (index > activeEntryIndex + 1) {
-        const diff = index - (activeEntryIndex + 1);
-        offset = baseTop + step + diff * step;
-      } else if (index === activeEntryIndex - 1) {
-        offset = layoutMetrics.historyHeight;
-        item.classList.add('is-history-slot-1');
-      } else if (index === activeEntryIndex - 2) {
-        offset = 0;
-        item.classList.add('is-history-slot-2');
-      } else {
-        item.classList.add('is-hidden');
-        item.style.removeProperty('--entry-offset');
+  function updateConnectorLengths(section) {
+    if (!section || section.classList.contains('timeline-century--collapsed')) {
+      return;
+    }
+    const entries = section.querySelector('.timeline-century__entries');
+    if (!entries || entries.hidden) {
+      return;
+    }
+    const scaleElement = entries.querySelector('.timeline-century__scale');
+    const axisRect = scaleElement ? scaleElement.getBoundingClientRect() : null;
+    const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
+    entryNodes.forEach(entry => {
+      const bubble = entry.querySelector('.timeline-bubble');
+      if (!bubble) {
+        return;
+      }
+      const bubbleRect = bubble.getBoundingClientRect();
+      const targetNode = entry.querySelector('.timeline-year .timeline-node');
+      const targetRect = targetNode ? targetNode.getBoundingClientRect() : axisRect;
+      if (!targetRect) {
         return;
       }
 
-      item.style.setProperty('--entry-offset', `${offset}px`);
-    });
+  function applyRowLayout() {
+    const sections = Array.from(timelineContainer.querySelectorAll('.timeline-century'));
 
-    const visibleFutureCount = Math.max(minFutureItems, entryItems.length - activeEntryIndex);
-    const totalHeight = baseTop + visibleFutureCount * step + layoutMetrics.entryHeight;
-    entryList.style.minHeight = `${totalHeight}px`;
-  }
-
-  function setActiveEntry(index, { focus = false } = {}) {
-    if (!entryItems.length) {
-      entryList.style.minHeight = '';
-      return;
-    }
-
-    const clamped = Math.max(0, Math.min(entryItems.length - 1, index));
-    activeEntryIndex = clamped;
-
-    entryItems.forEach((item, itemIndex) => {
-      const isActive = itemIndex === activeEntryIndex;
-      const isBefore = itemIndex < activeEntryIndex;
-      item.classList.toggle('is-active', isActive);
-      item.classList.toggle('is-before', isBefore);
-      item.tabIndex = isActive ? 0 : -1;
-      if (isActive && focus) {
-        requestAnimationFrame(() => {
-          item.focus({ preventScroll: true });
-        });
-      }
-    });
-
-    applyEntryPositions();
-  }
-
-  function renderEntryList(group) {
-    clearEntryList();
-    if (!group || !group.events.length) {
-      return;
-    }
-
-    group.events.forEach(({ event }) => {
-      const link = document.createElement('a');
-      link.className = 'xmb-entry';
-      link.href = `entries/${event.id}.html`;
-      link.setAttribute('role', 'menuitem');
-      link.setAttribute('aria-label', event.title || event.year || 'Timeline entry');
-      link.tabIndex = -1;
-
-      const icon = document.createElement('span');
-      icon.className = 'xmb-entry__icon';
-      icon.textContent = event.icon || '📘';
-      link.appendChild(icon);
-
-      const copy = document.createElement('span');
-      copy.className = 'xmb-entry__copy';
-
-      const title = document.createElement('span');
-      title.className = 'xmb-entry__title';
-      title.textContent = limitWords(event.iconLabel || event.title || event.year || 'Entry', 2);
-      copy.appendChild(title);
-
-      const subtitleText = getEventSubtitle(event);
-      if (subtitleText) {
-        const subtitle = document.createElement('span');
-        subtitle.className = 'xmb-entry__subtitle';
-        subtitle.textContent = subtitleText;
-        copy.appendChild(subtitle);
+    sections.forEach(section => {
+      if (section.classList.contains('timeline-century--collapsed')) {
+        return;
       }
 
-      link.appendChild(copy);
+      const entries = section.querySelector('.timeline-century__entries');
+      if (!entries || entries.hidden) {
+        return;
+      }
 
-      link.addEventListener('focus', () => {
-        const index = entryItems.indexOf(link);
-        if (index >= 0 && index !== activeEntryIndex) {
-          setActiveEntry(index, { focus: false });
-        }
+      const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
+      entryNodes.forEach((entry, index) => {
+        entry.style.setProperty('--entry-row-index', index);
       });
 
-      entryList.appendChild(link);
-      entryItems.push(link);
+      const computed = window.getComputedStyle(entries);
+      const baseMinHeight = parseFloat(computed.minHeight) || 0;
+      const rowHeightValue = parseFloat(computed.getPropertyValue('--timeline-row-height')) || rowLayout.fallbackRowHeight;
+      const requiredHeight = Math.max(baseMinHeight, entryNodes.length * rowHeightValue + rowLayout.padding);
+      if (requiredHeight > 0) {
+        entries.style.minHeight = `${Math.ceil(requiredHeight)}px`;
+      }
     });
 
-    setActiveEntry(0);
+    requestAnimationFrame(() => {
+      sections.forEach(section => {
+        updateConnectorLengths(section);
+      });
+    });
+
+  function scheduleLayout() {
+    if (layoutFrame) {
+      cancelAnimationFrame(layoutFrame);
+    }
+    layoutFrame = requestAnimationFrame(() => {
+      layoutFrame = null;
+      applyRowLayout();
+    });
   }
 
   function setActiveYear(index, { focusYear = false } = {}) {
