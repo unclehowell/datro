@@ -7,64 +7,34 @@
   <link rel="stylesheet" href="tailwind.css">
   <style>
     :root {
-      color-scheme: light;
-      --page-background: #0f172a;
-      --surface: rgba(15, 23, 42, 0.7);
-      --surface-strong: rgba(15, 23, 42, 0.9);
-      --surface-muted: rgba(15, 23, 42, 0.6);
-      --surface-border: rgba(148, 163, 184, 0.2);
-      --heading-color: #f8fafc;
-      --text-primary: #e2e8f0;
-      --text-muted: rgba(226, 232, 240, 0.75);
-      --accent: #38bdf8;
-      --accent-soft: rgba(56, 189, 248, 0.2);
-      --accent-strong: #0ea5e9;
-      --shadow-soft: 0 30px 80px -40px rgba(15, 23, 42, 0.8);
-      --shadow-strong: 0 40px 120px -60px rgba(14, 165, 233, 0.4);
-      --bottom-band-height: clamp(240px, 33vh, 360px);
-      --horizontal-gap: clamp(18px, 4vw, 36px);
-      --horizontal-padding: clamp(54px, 6vw, 112px);
-      --vertical-gap: clamp(16px, 2.8vh, 28px);
-    }
-
-    body[data-theme='light'] {
-      color-scheme: light;
-      --page-background: #f1f5f9;
-      --surface: rgba(255, 255, 255, 0.72);
-      --surface-strong: rgba(255, 255, 255, 0.92);
-      --surface-muted: rgba(255, 255, 255, 0.6);
-      --surface-border: rgba(148, 163, 184, 0.18);
-      --heading-color: #0f172a;
-      --text-primary: #1e293b;
-      --text-muted: rgba(30, 41, 59, 0.7);
-      --accent: #2563eb;
-      --accent-soft: rgba(37, 99, 235, 0.12);
-      --accent-strong: #1d4ed8;
-      --shadow-soft: 0 30px 80px -48px rgba(15, 23, 42, 0.25);
-      --shadow-strong: 0 40px 120px -60px rgba(37, 99, 235, 0.35);
-    }
-
-    body[data-theme='dark'] {
       color-scheme: dark;
+      --page-background: #04070c;
+      --surface: rgba(12, 18, 32, 0.82);
+      --surface-strong: rgba(20, 30, 48, 0.94);
+      --surface-border: rgba(148, 163, 184, 0.18);
+      --text-primary: #e2e8f0;
+      --text-muted: rgba(148, 163, 184, 0.75);
+      --accent: #38bdf8;
+      --horizontal-band-height: clamp(220px, 34vh, 320px);
+      --horizontal-padding: clamp(40px, 8vw, 128px);
+      --horizontal-gap: clamp(36px, 8vw, 72px);
+      --horizontal-icon: clamp(48px, 10vw, 96px);
+      --vertical-gap: clamp(18px, 4vh, 32px);
+      --vertical-icon: clamp(40px, 7vw, 68px);
+      --fade-width: 20%;
     }
 
     *, *::before, *::after {
       box-sizing: border-box;
     }
 
-    .hidden {
-      display: none !important;
-    }
-
-    body {
+    html, body {
       margin: 0;
-      font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 42%),
-        radial-gradient(circle at top right, rgba(14, 165, 233, 0.24), transparent 48%),
-        var(--page-background);
+      height: 100%;
+      background: var(--page-background);
       color: var(--text-primary);
-      min-height: 100vh;
-      overflow-x: hidden;
+      font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow: hidden;
     }
 
     a {
@@ -72,189 +42,45 @@
       text-decoration: none;
     }
 
-    a:focus-visible,
-    button:focus-visible {
-      outline: 3px solid var(--accent);
-      outline-offset: 4px;
+    .is-hidden {
+      display: none !important;
     }
 
-    .timeline-app {
+    .xmb-shell {
       position: relative;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      padding-bottom: var(--bottom-band-height);
+      background: var(--page-background);
+      isolation: isolate;
     }
 
-    .timeline-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: clamp(32px, 6vw, 48px) clamp(36px, 8vw, 96px) clamp(16px, 4vw, 24px);
-      position: relative;
-      z-index: 1;
-    }
-
-    .brand {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      max-width: min(640px, 70vw);
-    }
-
-    .brand h1 {
-      margin: 0;
-      font-size: clamp(2.1rem, 4vw, 3rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: var(--heading-color);
-    }
-
-    .brand p {
-      margin: 0;
-      font-size: clamp(1rem, 2vw, 1.3rem);
-      color: var(--text-muted);
-      max-width: 42ch;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .round-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 48px;
-      height: 48px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-      color: #fff;
-      font-size: 1.35rem;
-      box-shadow: var(--shadow-soft);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .round-button:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-strong);
-    }
-
-    .timeline-overview {
-      padding: 0 clamp(36px, 8vw, 96px) clamp(24px, 6vw, 48px);
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: clamp(24px, 6vw, 48px);
-      position: relative;
-      z-index: 1;
-    }
-
-    .intro-body p {
-      margin: 0 0 1rem;
-      background: var(--surface);
-      border-radius: 16px;
-      padding: 20px 24px;
-      line-height: 1.6;
-      border: 1px solid var(--surface-border);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .key-themes {
-      display: grid;
-      gap: 18px;
-    }
-
-    .key-theme-card {
-      background: var(--surface);
-      border-radius: 16px;
-      padding: 20px 24px;
-      border: 1px solid var(--surface-border);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .key-theme-card h3 {
-      margin: 0 0 0.75rem;
-      font-size: 1.1rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--heading-color);
-    }
-
-    .key-theme-card ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: grid;
-      gap: 0.65rem;
-      color: var(--text-muted);
-    }
-
-    .timeline-main {
-      flex: 1;
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: stretch;
-      justify-content: flex-start;
-      padding: clamp(24px, 6vw, 48px);
-    }
-
-    .entry-stage {
+    .xmb-stage {
       position: relative;
       flex: 1;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .xmb-vertical {
+      position: absolute;
+      left: var(--horizontal-padding);
+      right: calc(var(--horizontal-padding) + var(--horizontal-gap));
+      bottom: calc(var(--horizontal-band-height) + clamp(18px, 4vh, 36px));
       display: flex;
       align-items: flex-end;
       justify-content: flex-start;
-      padding-bottom: calc(var(--bottom-band-height) + clamp(24px, 4vw, 48px));
+      z-index: 1;
     }
 
-    .entry-panel {
-      position: relative;
-      max-width: min(560px, 70vw);
-      width: 100%;
-      background: var(--surface-strong);
-      border-radius: 28px;
-      padding: clamp(24px, 5vw, 40px);
-      border: 1px solid rgba(56, 189, 248, 0.18);
-      box-shadow: 0 40px 120px -60px rgba(15, 23, 42, 0.45);
-    }
-
-    .entry-header {
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-      margin-bottom: clamp(18px, 4vw, 32px);
-    }
-
-    .entry-header h2 {
-      margin: 0;
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      color: var(--heading-color);
-    }
-
-    .entry-header p {
-      margin: 0;
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .entry-list-viewport {
-      position: relative;
+    .xmb-vertical__viewport {
+      width: min(480px, 46vw);
+      max-width: 520px;
+      height: clamp(200px, 32vh, 300px);
       overflow: hidden;
-      height: clamp(240px, 42vh, 420px);
-      padding-top: clamp(18px, 3vh, 32px);
-      padding-bottom: clamp(18px, 4vh, 36px);
     }
 
-    .entry-list {
+    .xmb-vertical__list {
       display: flex;
       flex-direction: column;
       gap: var(--vertical-gap);
@@ -262,234 +88,250 @@
       transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
     }
 
-    .entry-card {
-      display: block;
+    .xmb-entry {
+      display: flex;
+      align-items: center;
+      gap: clamp(14px, 3vw, 28px);
+      padding: clamp(16px, 3vw, 28px) clamp(20px, 4vw, 32px);
       background: var(--surface);
-      border-radius: 22px;
-      padding: clamp(18px, 3vw, 28px);
-      border: 1px solid var(--surface-border);
-      box-shadow: var(--shadow-soft);
-      transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+      border-radius: clamp(22px, 6vw, 32px);
+      border: 1px solid transparent;
+      color: var(--text-primary);
+      filter: drop-shadow(0 24px 45px rgba(2, 6, 23, 0.55));
+      opacity: 0.65;
+      transform: scale(0.96);
+      transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
+        opacity 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease;
+      pointer-events: auto;
     }
 
-    .entry-card h3 {
-      margin: 0 0 0.55rem;
-      font-size: clamp(1.05rem, 2.4vw, 1.35rem);
-      color: var(--heading-color);
+    .xmb-entry__icon {
+      font-size: var(--vertical-icon);
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1em;
+    }
+
+    .xmb-entry__copy {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(4px, 1vh, 8px);
+      text-transform: none;
+      font-size: clamp(0.85rem, 2vw, 1rem);
+    }
+
+    .xmb-entry__title {
       font-weight: 700;
-      letter-spacing: -0.01em;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      font-size: clamp(0.9rem, 2.2vw, 1.05rem);
     }
 
-    .entry-card p {
-      margin: 0;
+    .xmb-entry__subtitle {
       color: var(--text-muted);
-      line-height: 1.55;
-      font-size: 0.98rem;
+      font-size: clamp(0.75rem, 1.8vw, 0.9rem);
+      letter-spacing: 0.04em;
     }
 
-    .entry-card.is-active {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.28), rgba(37, 99, 235, 0.18));
-      border-color: rgba(56, 189, 248, 0.5);
-      transform: translateX(6px);
+    .xmb-entry.is-active {
+      opacity: 1;
+      background: var(--surface-strong);
+      border-color: rgba(56, 189, 248, 0.35);
+      transform: scale(1.02);
     }
 
-    .entry-card:focus-visible {
-      transform: translateX(10px);
+    .xmb-entry:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
     }
 
-    .year-bar {
-      position: fixed;
+    .xmb-horizontal {
+      position: absolute;
       left: 0;
       right: 0;
       bottom: 0;
-      height: var(--bottom-band-height);
-      padding: clamp(24px, 4vw, 36px) 0 clamp(18px, 4vw, 32px);
+      height: var(--horizontal-band-height);
       display: flex;
       align-items: flex-end;
-      background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0.78) 80%, rgba(15, 23, 42, 0.92) 100%);
+      padding-bottom: clamp(32px, 6vh, 52px);
+      background: transparent;
       z-index: 2;
     }
 
-    body[data-theme='light'] .year-bar {
-      background: linear-gradient(180deg, rgba(241, 245, 249, 0) 0%, rgba(241, 245, 249, 0.85) 78%, rgba(241, 245, 249, 0.96) 100%);
-    }
-
-    .year-bar-viewport {
-      position: relative;
+    .xmb-horizontal__viewport {
       flex: 1;
       overflow: hidden;
       padding-left: var(--horizontal-padding);
-      padding-right: clamp(36px, 6vw, 84px);
+      padding-right: clamp(32px, 6vw, 64px);
+      position: relative;
     }
 
-    .year-bar-fade {
-      position: absolute;
-      right: 0;
-      top: clamp(24px, 4vw, 36px);
-      bottom: clamp(18px, 4vw, 32px);
-      width: 20%;
-      pointer-events: none;
-      background: linear-gradient(90deg, rgba(15, 23, 42, 0), rgba(15, 23, 42, 0.72));
-    }
-
-    body[data-theme='light'] .year-bar-fade {
-      background: linear-gradient(90deg, rgba(241, 245, 249, 0), rgba(241, 245, 249, 0.96));
-    }
-
-    .year-track {
+    .xmb-horizontal__track {
       display: flex;
       align-items: center;
       gap: var(--horizontal-gap);
       transform: translateX(0);
       transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+      will-change: transform;
     }
 
-    .year-item {
-      flex: 0 0 auto;
-      min-width: clamp(140px, 18vw, 220px);
+    .xmb-year {
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: clamp(16px, 3vw, 32px);
+      padding: clamp(18px, 4vw, 32px) clamp(24px, 6vw, 40px);
+      border-radius: clamp(26px, 7vw, 40px);
       background: var(--surface);
-      border-radius: 22px;
       border: 1px solid var(--surface-border);
-      box-shadow: var(--shadow-soft);
-      padding: clamp(16px, 3vw, 24px);
-      font-size: clamp(1.05rem, 2.6vw, 1.5rem);
+      color: var(--text-primary);
+      cursor: pointer;
+      filter: drop-shadow(0 26px 48px rgba(2, 6, 23, 0.52));
+      transform: translateY(0) scale(1);
+      transition: transform 0.4s cubic-bezier(0.33, 1, 0.68, 1),
+        border-color 0.35s ease,
+        background 0.35s ease,
+        color 0.35s ease;
+      min-width: clamp(200px, 28vw, 280px);
+    }
+
+    .xmb-year__icon {
+      font-size: var(--horizontal-icon);
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1em;
+    }
+
+    .xmb-year__copy {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(4px, 1vh, 10px);
+      text-align: left;
+    }
+
+    .xmb-year__title {
       font-weight: 700;
+      font-size: clamp(1rem, 2.6vw, 1.35rem);
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      cursor: pointer;
-      color: var(--heading-color);
-      transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
-        box-shadow 0.35s ease, border-color 0.35s ease;
+      color: var(--text-primary);
     }
 
-    .year-item.is-active {
-      transform: scale(1.08) translateY(-6px);
-      box-shadow: var(--shadow-strong);
-      border-color: rgba(56, 189, 248, 0.5);
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(37, 99, 235, 0.18));
-    }
-
-    .loading-banner {
-      position: fixed;
-      top: 18px;
-      right: 18px;
-      padding: 0.65rem 1rem;
-      background: var(--surface-strong);
-      border-radius: 999px;
-      border: 1px solid var(--surface-border);
-      box-shadow: var(--shadow-soft);
-      font-size: 0.95rem;
+    .xmb-year__subtitle {
+      font-size: clamp(0.8rem, 2vw, 0.95rem);
+      letter-spacing: 0.05em;
       color: var(--text-muted);
+    }
+
+    .xmb-year.is-active {
+      transform: translateY(-12px) scale(1.12);
+      background: var(--surface-strong);
+      border-color: rgba(56, 189, 248, 0.4);
+      color: #f8fafc;
+    }
+
+    .xmb-year:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 5px;
+    }
+
+    .xmb-horizontal__fade {
+      position: absolute;
+      top: clamp(12px, 3vh, 24px);
+      bottom: clamp(12px, 3vh, 24px);
+      right: 0;
+      width: var(--fade-width);
+      background: linear-gradient(90deg, rgba(4, 7, 12, 0) 0%, rgba(4, 7, 12, 0.95) 90%);
+      pointer-events: none;
       z-index: 3;
     }
 
-    .loading-banner.hidden {
+    .xmb-loading {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      padding: 0.65rem 1.2rem;
+      background: var(--surface-strong);
+      border-radius: 999px;
+      border: 1px solid var(--surface-border);
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      box-shadow: 0 18px 48px rgba(2, 6, 23, 0.45);
+      z-index: 4;
+    }
+
+    .xmb-loading.is-hidden {
       display: none;
     }
 
-    @media (max-width: 1024px) {
-      .timeline-overview {
-        grid-template-columns: 1fr;
-      }
-
-      .entry-panel {
-        max-width: min(600px, 100%);
-      }
-    }
-
-    @media (max-width: 760px) {
+    @media (max-width: 900px) {
       :root {
-        --bottom-band-height: clamp(220px, 40vh, 320px);
+        --horizontal-band-height: clamp(220px, 42vh, 320px);
+        --horizontal-padding: clamp(28px, 8vw, 72px);
+        --horizontal-gap: clamp(28px, 10vw, 48px);
+        --horizontal-icon: clamp(48px, 14vw, 72px);
+        --vertical-gap: clamp(14px, 4vh, 24px);
+        --vertical-icon: clamp(36px, 10vw, 58px);
       }
 
-      .timeline-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 18px;
+      .xmb-vertical__viewport {
+        width: min(420px, 80vw);
       }
 
-      .header-actions {
-        align-self: flex-end;
-      }
-
-      .timeline-overview {
-        padding-left: clamp(18px, 6vw, 32px);
-        padding-right: clamp(18px, 6vw, 32px);
-      }
-
-      .timeline-main {
-        padding: clamp(18px, 6vw, 32px);
-      }
-
-      .entry-stage {
-        padding-bottom: calc(var(--bottom-band-height) + clamp(24px, 6vw, 40px));
-      }
-
-      .entry-panel {
-        border-radius: 24px;
-      }
-
-      .year-item {
-        min-width: clamp(120px, 42vw, 180px);
+      .xmb-year {
+        min-width: clamp(160px, 44vw, 220px);
       }
     }
 
-    @media (max-width: 540px) {
-      .entry-panel {
-        padding: clamp(18px, 6vw, 28px);
+    @media (max-width: 640px) {
+      html, body {
+        overflow: hidden;
       }
 
-      .entry-list-viewport {
-        height: clamp(220px, 48vh, 360px);
+      .xmb-horizontal {
+        padding-bottom: clamp(24px, 8vh, 40px);
+      }
+
+      .xmb-vertical {
+        left: clamp(20px, 8vw, 32px);
+        right: clamp(20px, 12vw, 40px);
+      }
+
+      .xmb-vertical__viewport {
+        width: 100%;
+        height: clamp(220px, 44vh, 320px);
+      }
+
+      .xmb-year__title {
+        font-size: clamp(0.95rem, 4vw, 1.2rem);
       }
     }
   </style>
 </head>
-<body data-theme="light">
-  <div class="timeline-app">
-    <header class="timeline-header">
-      <div class="brand">
-        <h1 id="case-title">Great House Farm</h1>
-        <p id="case-subtitle"></p>
-      </div>
-      <div class="header-actions">
-        <button id="theme-toggle" class="round-button" type="button" aria-pressed="false" title="Switch to dark theme">
-          <span class="sr-only">Toggle colour theme</span>
-          <span aria-hidden="true" data-theme-icon>☀️</span>
-        </button>
-      </div>
-    </header>
-
-    <section class="timeline-overview">
-      <div id="case-intro" class="intro-body"></div>
-      <div id="key-themes" class="key-themes"></div>
-    </section>
-
-    <main class="timeline-main">
-      <div class="entry-stage">
-        <div class="entry-panel">
-          <header class="entry-header">
-            <p id="timeline-year-meta"></p>
-            <h2 id="timeline-year-title"></h2>
-          </header>
-          <div class="entry-list-viewport" id="timeline-entry-viewport">
-            <div class="entry-list" id="timeline-year-entries"></div>
-          </div>
+<body>
+  <div class="xmb-shell">
+    <main class="xmb-stage">
+      <section class="xmb-vertical" aria-label="Timeline entries">
+        <div class="xmb-vertical__viewport" id="timeline-entry-viewport">
+          <div class="xmb-vertical__list" id="timeline-year-entries"></div>
         </div>
-      </div>
+      </section>
     </main>
 
-    <nav class="year-bar" aria-label="Timeline years">
-      <div class="year-bar-viewport" id="year-bar-viewport">
-        <div class="year-track" id="timeline-year-track" role="listbox" aria-label="Timeline years"></div>
+    <nav class="xmb-horizontal" aria-label="Timeline years">
+      <div class="xmb-horizontal__viewport" id="year-bar-viewport">
+        <div class="xmb-horizontal__track" id="timeline-year-track" role="listbox" aria-label="Timeline years"></div>
+        <div class="xmb-horizontal__fade" aria-hidden="true"></div>
       </div>
-      <div class="year-bar-fade" aria-hidden="true"></div>
     </nav>
 
-    <div id="timeline-loading" class="loading-banner">Loading timeline…</div>
+    <div id="timeline-loading" class="xmb-loading">Loading timeline…</div>
   </div>
 
   <script src="timeline.js"></script>
