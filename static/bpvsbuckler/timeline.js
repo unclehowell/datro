@@ -71,30 +71,99 @@
     return limitWords(event.year, 4);
   }
 
-  function buildCenturyScale(container, bounds) {
-    if (!container) {
-      return;
+  function normalizeMenuEntries(menuConfig) {
+    if (!menuConfig || !Array.isArray(menuConfig.entries)) {
+      return [];
     }
-    const scale = document.createElement('div');
-    scale.className = 'timeline-century__scale';
 
-    const ticks = document.createElement('div');
-    ticks.className = 'timeline-century__ticks';
-    scale.appendChild(ticks);
+    return menuConfig.entries
+      .map(entry => {
+        if (!entry) {
+          return null;
+        }
+        const rawKey = typeof entry.key === 'string' ? entry.key.trim() : '';
+        if (!rawKey) {
+          return null;
+        }
+        const normalized = rawKey.toLowerCase();
+        const text = typeof entry.text === 'string' ? entry.text.trim() : '';
+        const icon = typeof entry.icon === 'string' ? entry.icon.trim() : '';
+        const ariaLabel = typeof entry.ariaLabel === 'string' ? entry.ariaLabel.trim() : '';
 
-    const { startYear, endYear, span } = bounds;
-    for (let year = startYear; year <= endYear; year += 1) {
-      const tick = document.createElement('div');
-      tick.className = 'timeline-century__tick timeline-century__tick--year';
-      if (year % 5 === 0) {
-        tick.classList.add('timeline-century__tick--quin');
+        return {
+          key: normalized,
+          text: text || null,
+          icon: icon || null,
+          ariaLabel: ariaLabel || null,
+        };
+      })
+      .filter(Boolean);
+  }
+
+  function applyMenuConfiguration(groups, menuConfig) {
+    if (!Array.isArray(groups) || !groups.length) {
+      return Array.isArray(groups) ? groups : [];
+    }
+
+    const normalized = normalizeMenuEntries(menuConfig);
+    if (!normalized.length) {
+      return groups;
+    }
+
+    const byKey = new Map();
+    groups.forEach(group => {
+      if (group && typeof group.key === 'string') {
+        byKey.set(group.key.toLowerCase(), group);
       }
-      if (year % 10 === 0) {
-        tick.classList.add('timeline-century__tick--decade');
+    });
+
+    const remainingOrder = new Set(byKey.keys());
+    const ordered = [];
+
+    normalized.forEach(entry => {
+      const group = byKey.get(entry.key);
+      if (!group) {
+        return;
       }
-      if (year % 100 === 0) {
-        tick.classList.add('timeline-century__tick--century');
+
+      if (entry.text) {
+        group.yearLabel = entry.text;
       }
+      if (entry.icon) {
+        group.icon = entry.icon;
+      }
+      if (entry.ariaLabel) {
+        group.label = entry.ariaLabel;
+      } else if (entry.text) {
+        group.label = entry.text;
+      }
+
+      ordered.push(group);
+      remainingOrder.delete(entry.key);
+    });
+
+    if (remainingOrder.size) {
+      groups.forEach(group => {
+        if (!group || typeof group.key !== 'string') {
+          return;
+        }
+        const key = group.key.toLowerCase();
+        if (remainingOrder.has(key)) {
+          ordered.push(group);
+          remainingOrder.delete(key);
+        }
+      });
+    }
+
+    return ordered;
+  }
+
+  function buildYearGroups(data) {
+    if (!data || !Array.isArray(data.centuries)) {
+      return [];
+    }
+
+    const groups = new Map();
 
     data.centuries.forEach((century, centuryIndex) => {
       const events = Array.isArray(century?.events) ? century.events : [];
@@ -163,16 +232,10 @@
     }
   }
 
-  function buildEvent(event, century, bounds) {
-    const position = choosePosition(event);
-    const entry = document.createElement('div');
-    entry.className = 'timeline-entry';
-    entry.dataset.position = position;
-    entry.dataset.eventId = event.id;
-
-    const eventYear = getEventYearValue(event, bounds);
-    if (Number.isFinite(eventYear)) {
-      entry.dataset.yearValue = String(eventYear);
+  function showLoading(message) {
+    if (loadingBanner) {
+      loadingBanner.textContent = message;
+      loadingBanner.classList.remove('is-hidden');
     }
   }
 
@@ -226,77 +289,112 @@
     const step = layoutMetrics.entryHeight + layoutMetrics.entryGap;
     const minFutureItems = 2;
 
-  const rowLayout = {
-    fallbackRowHeight: 184,
-    padding: 112,
-  };
+    entryItems.forEach((item, index) => {
+      item.classList.remove('is-history-slot-1', 'is-history-slot-2', 'is-hidden');
 
-  let layoutFrame = null;
+      let offset;
 
-  function updateConnectorLengths(section) {
-    if (!section || section.classList.contains('timeline-century--collapsed')) {
+      if (index === activeEntryIndex) {
+        offset = baseTop;
+      } else if (index === activeEntryIndex + 1) {
+        offset = baseTop + step;
+      } else if (index > activeEntryIndex + 1) {
+        const diff = index - (activeEntryIndex + 1);
+        offset = baseTop + step + diff * step;
+      } else if (index === activeEntryIndex - 1) {
+        offset = layoutMetrics.historyHeight;
+        item.classList.add('is-history-slot-1');
+      } else if (index === activeEntryIndex - 2) {
+        offset = 0;
+        item.classList.add('is-history-slot-2');
+      } else {
+        item.classList.add('is-hidden');
+        item.style.removeProperty('--entry-offset');
+        return;
+      }
+
+      item.style.setProperty('--entry-offset', `${offset}px`);
+    });
+
+    const visibleFutureCount = Math.max(minFutureItems, entryItems.length - activeEntryIndex);
+    const totalHeight = baseTop + visibleFutureCount * step + layoutMetrics.entryHeight;
+    entryList.style.minHeight = `${totalHeight}px`;
+  }
+
+  function setActiveEntry(index, { focus = false } = {}) {
+    if (!entryItems.length) {
+      entryList.style.minHeight = '';
       return;
     }
-    const entries = section.querySelector('.timeline-century__entries');
-    if (!entries || entries.hidden) {
+
+    const clamped = Math.max(0, Math.min(entryItems.length - 1, index));
+    activeEntryIndex = clamped;
+
+    entryItems.forEach((item, itemIndex) => {
+      const isActive = itemIndex === activeEntryIndex;
+      const isBefore = itemIndex < activeEntryIndex;
+      item.classList.toggle('is-active', isActive);
+      item.classList.toggle('is-before', isBefore);
+      item.tabIndex = isActive ? 0 : -1;
+      if (isActive && focus) {
+        requestAnimationFrame(() => {
+          item.focus({ preventScroll: true });
+        });
+      }
+    });
+
+    applyEntryPositions();
+  }
+
+  function renderEntryList(group) {
+    clearEntryList();
+    if (!group || !group.events.length) {
       return;
     }
-    const scaleElement = entries.querySelector('.timeline-century__scale');
-    const axisRect = scaleElement ? scaleElement.getBoundingClientRect() : null;
-    const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
-    entryNodes.forEach(entry => {
-      const bubble = entry.querySelector('.timeline-bubble');
-      if (!bubble) {
-        return;
-      }
-      const bubbleRect = bubble.getBoundingClientRect();
-      const targetNode = entry.querySelector('.timeline-year .timeline-node');
-      const targetRect = targetNode ? targetNode.getBoundingClientRect() : axisRect;
-      if (!targetRect) {
-        return;
+
+    group.events.forEach(({ event }) => {
+      const link = document.createElement('a');
+      link.className = 'xmb-entry';
+      link.href = `entries/${event.id}.html`;
+      link.setAttribute('role', 'menuitem');
+      link.setAttribute('aria-label', event.title || event.year || 'Timeline entry');
+      link.tabIndex = -1;
+
+      const icon = document.createElement('span');
+      icon.className = 'xmb-entry__icon';
+      icon.textContent = event.icon || '📘';
+      link.appendChild(icon);
+
+      const copy = document.createElement('span');
+      copy.className = 'xmb-entry__copy';
+
+      const title = document.createElement('span');
+      title.className = 'xmb-entry__title';
+      title.textContent = limitWords(event.iconLabel || event.title || event.year || 'Entry', 2);
+      copy.appendChild(title);
+
+      const subtitleText = getEventSubtitle(event);
+      if (subtitleText) {
+        const subtitle = document.createElement('span');
+        subtitle.className = 'xmb-entry__subtitle';
+        subtitle.textContent = subtitleText;
+        copy.appendChild(subtitle);
       }
 
-  function applyRowLayout() {
-    const sections = Array.from(timelineContainer.querySelectorAll('.timeline-century'));
+      link.appendChild(copy);
 
-    sections.forEach(section => {
-      if (section.classList.contains('timeline-century--collapsed')) {
-        return;
-      }
-
-      const entries = section.querySelector('.timeline-century__entries');
-      if (!entries || entries.hidden) {
-        return;
-      }
-
-      const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
-      entryNodes.forEach((entry, index) => {
-        entry.style.setProperty('--entry-row-index', index);
+      link.addEventListener('focus', () => {
+        const index = entryItems.indexOf(link);
+        if (index >= 0 && index !== activeEntryIndex) {
+          setActiveEntry(index, { focus: false });
+        }
       });
 
-      const computed = window.getComputedStyle(entries);
-      const baseMinHeight = parseFloat(computed.minHeight) || 0;
-      const rowHeightValue = parseFloat(computed.getPropertyValue('--timeline-row-height')) || rowLayout.fallbackRowHeight;
-      const requiredHeight = Math.max(baseMinHeight, entryNodes.length * rowHeightValue + rowLayout.padding);
-      if (requiredHeight > 0) {
-        entries.style.minHeight = `${Math.ceil(requiredHeight)}px`;
-      }
+      entryList.appendChild(link);
+      entryItems.push(link);
     });
 
-    requestAnimationFrame(() => {
-      sections.forEach(section => {
-        updateConnectorLengths(section);
-      });
-    });
-
-  function scheduleLayout() {
-    if (layoutFrame) {
-      cancelAnimationFrame(layoutFrame);
-    }
-    layoutFrame = requestAnimationFrame(() => {
-      layoutFrame = null;
-      applyRowLayout();
-    });
+    setActiveEntry(0);
   }
 
   function setActiveYear(index, { focusYear = false } = {}) {
@@ -343,7 +441,8 @@
       button.dataset.yearKey = group.key;
       button.setAttribute('role', 'option');
       button.setAttribute('aria-selected', 'false');
-      button.setAttribute('aria-label', group.label);
+      const ariaLabel = group.label || group.yearLabel || group.key || `Year ${index + 1}`;
+      button.setAttribute('aria-label', ariaLabel);
       button.tabIndex = index === 0 ? 0 : -1;
 
       const icon = document.createElement('span');
@@ -353,7 +452,8 @@
 
       const label = document.createElement('span');
       label.className = 'xmb-year__label';
-      label.textContent = limitWords(group.yearLabel, 2) || `Year ${index + 1}`;
+      const displayLabel = group.yearLabel || group.label || `Year ${index + 1}`;
+      label.textContent = limitWords(displayLabel, 3) || `Year ${index + 1}`;
       button.appendChild(label);
 
       button.addEventListener('click', () => {
@@ -454,15 +554,25 @@
   document.addEventListener('keydown', handleKeydown);
   window.addEventListener('resize', handleResize);
 
-  fetch('data/timeline.json')
-    .then(response => {
+  function fetchJson(url) {
+    return fetch(url).then(response => {
       if (!response.ok) {
-        throw new Error('Failed to load timeline data');
+        throw new Error(`Failed to load ${url}`);
       }
       return response.json();
-    })
-    .then(data => {
-      yearGroups = buildYearGroups(data);
+    });
+  }
+
+  Promise.all([
+    fetchJson('data/timeline.json'),
+    fetchJson('data/menu.json').catch(error => {
+      console.warn('Menu configuration could not be loaded:', error);
+      return null;
+    }),
+  ])
+    .then(([timelineData, menuConfig]) => {
+      const groups = buildYearGroups(timelineData) || [];
+      yearGroups = applyMenuConfiguration(groups, menuConfig);
       if (!yearGroups.length) {
         showLoading('No timeline data available.');
         return;
