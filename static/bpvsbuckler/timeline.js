@@ -15,6 +15,7 @@
   let activeYearIndex = 0;
   let activeEntryIndex = 0;
   let suppressFocusSync = false;
+  let focusColumnOffset = 0;
 
   function limitWords(value, maxWords) {
     if (!value) {
@@ -130,6 +131,12 @@
     entryList.innerHTML = '';
     entryList.style.transform = 'translateY(0)';
     entryItems = [];
+    activeEntryIndex = 0;
+  }
+
+  function updateFocusOffset() {
+    const firstButton = yearButtons[0];
+    focusColumnOffset = firstButton ? firstButton.offsetLeft : 0;
   }
 
   function alignYearTrack() {
@@ -139,12 +146,21 @@
       return;
     }
 
+    updateFocusOffset();
+
     const offset = activeButton.offsetLeft;
     const viewportWidth = yearViewport?.clientWidth || 0;
     const trackWidth = yearTrack.scrollWidth;
+    const desired = focusColumnOffset - offset;
+    const lastButton = yearButtons[yearButtons.length - 1];
+    let minTranslate = Math.min(0, viewportWidth - trackWidth);
+    if (lastButton) {
+      const lastRight = lastButton.offsetLeft + lastButton.offsetWidth;
+      const boundary = viewportWidth - lastRight;
+      minTranslate = Math.min(minTranslate, boundary);
+      minTranslate = Math.min(minTranslate, focusColumnOffset - lastButton.offsetLeft);
+    }
     const maxTranslate = 0;
-    const minTranslate = Math.min(0, viewportWidth - trackWidth);
-    const desired = -offset;
     const clamped = Math.max(minTranslate, Math.min(maxTranslate, desired));
     yearTrack.style.transform = `translateX(${clamped}px)`;
   }
@@ -162,11 +178,9 @@
     const paddingBottom = parseFloat(styles.paddingBottom) || 0;
     const offset = activeEntry.offsetTop - paddingTop;
     const listHeight = entryList.scrollHeight - paddingTop - paddingBottom;
-    const activeHeight = activeEntry.offsetHeight;
-    const focusOffset = Math.max(0, viewportHeight - activeHeight);
-    const desired = focusOffset - offset;
+    const desired = -offset;
+    const maxTranslate = 0;
     const minTranslate = Math.min(0, viewportHeight - (listHeight + paddingTop));
-    const maxTranslate = Math.max(0, focusOffset - paddingTop);
     const clamped = Math.max(minTranslate, Math.min(maxTranslate, desired));
     entryList.style.transform = `translateY(${clamped}px)`;
   }
@@ -291,23 +305,10 @@
       icon.textContent = group.icon;
       button.appendChild(icon);
 
-      const copy = document.createElement('span');
-      copy.className = 'xmb-year__copy';
-
-      const title = document.createElement('span');
-      title.className = 'xmb-year__title';
-      title.textContent = limitWords(group.label, 2) || `Year ${index + 1}`;
-      copy.appendChild(title);
-
-      const subtitleText = group.subtitle;
-      if (subtitleText) {
-        const subtitle = document.createElement('span');
-        subtitle.className = 'xmb-year__subtitle';
-        subtitle.textContent = subtitleText;
-        copy.appendChild(subtitle);
-      }
-
-      button.appendChild(copy);
+      const label = document.createElement('span');
+      label.className = 'xmb-year__label';
+      label.textContent = limitWords(group.label, 2) || `Year ${index + 1}`;
+      button.appendChild(label);
 
       button.addEventListener('click', () => {
         setActiveYear(index, { focusYear: true });
@@ -323,6 +324,8 @@
       yearTrack.appendChild(button);
       return button;
     });
+
+    updateFocusOffset();
   }
 
   function handleKeydown(event) {
@@ -397,6 +400,7 @@
   }
 
   function handleResize() {
+    updateFocusOffset();
     alignYearTrack();
     alignEntryList();
   }

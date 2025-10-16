@@ -12,16 +12,27 @@
       --text-primary: #f8fafc;
       --text-muted: rgba(226, 232, 240, 0.6);
       --accent: #38bdf8;
-      --horizontal-band-height: clamp(230px, 36vh, 320px);
-      --horizontal-offset: clamp(110px, 22vh, 200px);
-      --horizontal-padding: clamp(48px, 9vw, 128px);
-      --horizontal-gap: clamp(40px, 8vw, 80px);
-      --horizontal-icon: clamp(42px, 9vw, 84px);
-      --vertical-gap: clamp(22px, 6vh, 36px);
-      --vertical-icon: clamp(36px, 7.5vw, 60px);
+      --horizontal-band-height: clamp(230px, 34vh, 300px);
+      --horizontal-padding: clamp(48px, 8vw, 112px);
+      --horizontal-padding-right: clamp(48px, 8vw, 128px);
+      --horizontal-gap: clamp(22px, 3vw, 36px);
+      --horizontal-icon: clamp(30px, 6vw, 52px);
+      --vertical-gap: clamp(18px, 5vh, 28px);
       --fade-width: 20%;
-      --icon-size-small: clamp(30px, 6vw, 48px);
-      --vertical-first-gap: calc(var(--icon-size-small) * 1.25);
+      --icon-size-small: clamp(24px, 5vw, 38px);
+      --vertical-first-gap: calc(var(--icon-size-small) * 1.4);
+      --visible-columns: 8;
+      --focus-column-index: 2;
+      --year-slot-width: calc(
+        (
+          100vw - var(--horizontal-padding) - var(--horizontal-padding-right) -
+          var(--horizontal-gap) * (var(--visible-columns) - 1)
+        ) / var(--visible-columns)
+      );
+      --focus-offset-width: calc(
+        (var(--year-slot-width) + var(--horizontal-gap)) * var(--focus-column-index)
+      );
+      --horizontal-trailing-space: calc(var(--year-slot-width) * 2);
     }
 
     *, *::before, *::after {
@@ -64,8 +75,8 @@
 
     .xmb-vertical {
       position: absolute;
-      left: var(--horizontal-padding);
-      right: calc(var(--horizontal-padding) + var(--horizontal-gap));
+      left: calc(var(--horizontal-padding) + var(--focus-offset-width));
+      right: clamp(40px, 22vw, 420px);
       bottom: calc(var(--horizontal-band-height) - clamp(36px, 9vh, 84px) - var(--vertical-first-gap));
       display: flex;
       align-items: flex-end;
@@ -74,10 +85,10 @@
     }
 
     .xmb-vertical__viewport {
-      width: min(420px, 42vw);
-      max-width: 480px;
-      height: clamp(180px, 28vh, 260px);
-      overflow: hidden;
+      width: min(420px, 36vw);
+      max-width: 420px;
+      height: clamp(200px, 32vh, 280px);
+      overflow: visible;
       position: relative;
       pointer-events: auto;
     }
@@ -85,28 +96,29 @@
     .xmb-vertical__list {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: stretch;
       gap: var(--vertical-gap);
       transform: translateY(0);
       transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
-      padding-left: clamp(4px, 2vw, 16px);
+      padding-left: clamp(2px, 1vw, 12px);
+      padding-right: clamp(12px, 2vw, 24px);
       padding-top: var(--vertical-first-gap);
+      padding-bottom: clamp(36px, 8vh, 64px);
     }
 
     .xmb-entry {
       position: relative;
       display: inline-flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
       justify-content: flex-start;
-      gap: clamp(10px, 2vh, 18px);
-      min-width: clamp(140px, 32vw, 180px);
-      max-width: clamp(160px, 36vw, 220px);
-      padding: clamp(10px, 2vh, 16px) 0;
+      gap: clamp(12px, 2.2vw, 20px);
+      min-width: clamp(200px, 32vw, 260px);
+      max-width: clamp(240px, 40vw, 320px);
+      padding: clamp(10px, 2vh, 16px) clamp(10px, 2vw, 18px);
       color: var(--text-primary);
-      text-align: center;
-      opacity: 0.55;
-      transform: scale(0.92);
+      text-align: left;
+      transform: translateY(0);
       transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
         opacity 0.35s ease;
       pointer-events: auto;
@@ -115,14 +127,15 @@
     .xmb-entry__icon {
       width: var(--icon-size-small);
       height: var(--icon-size-small);
-      border-radius: 24px;
+      border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: calc(var(--icon-size-small) * 0.66);
+      font-size: calc(var(--icon-size-small) * 0.62);
       line-height: 1;
-      background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.55), rgba(56, 189, 248, 0.1) 65%, rgba(15, 23, 42, 0));
-      box-shadow: 0 18px 46px rgba(2, 6, 23, 0.55);
+      background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.55), rgba(56, 189, 248, 0.08) 65%, rgba(15, 23, 42, 0));
+      box-shadow: 0 16px 36px rgba(2, 6, 23, 0.55);
+      flex-shrink: 0;
     }
 
     .xmb-entry__copy {
@@ -130,7 +143,7 @@
       flex-direction: column;
       gap: clamp(4px, 1vh, 8px);
       text-transform: uppercase;
-      font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+      font-size: clamp(0.75rem, 1.6vw, 0.9rem);
       letter-spacing: 0.08em;
     }
 
@@ -142,13 +155,29 @@
 
     .xmb-entry__subtitle {
       color: var(--text-muted);
-      font-size: clamp(0.65rem, 1.6vw, 0.85rem);
+      font-size: clamp(0.62rem, 1.4vw, 0.82rem);
       letter-spacing: 0.06em;
     }
 
     .xmb-entry.is-active {
       opacity: 1;
-      transform: scale(1.08);
+    }
+
+    .xmb-entry.is-active .xmb-entry__title {
+      animation: xmbTitlePulse 1.4s ease-in-out infinite alternate;
+    }
+
+    .xmb-entry.is-active .xmb-entry__icon {
+      opacity: 1;
+    }
+
+    .xmb-entry:not(.is-active) .xmb-entry__icon {
+      opacity: 0.55;
+    }
+
+    .xmb-entry:not(.is-active) .xmb-entry__title,
+    .xmb-entry:not(.is-active) .xmb-entry__subtitle {
+      opacity: 0.7;
     }
 
     .xmb-entry:focus-visible {
@@ -174,7 +203,7 @@
       flex: 1;
       overflow: hidden;
       padding-left: var(--horizontal-padding);
-      padding-right: clamp(32px, 6vw, 64px);
+      padding-right: var(--horizontal-padding-right);
       position: relative;
     }
 
@@ -185,7 +214,7 @@
       transform: translateX(0);
       transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
       will-change: transform;
-      padding-right: clamp(280px, 40vw, 420px);
+      padding-right: var(--horizontal-trailing-space);
     }
 
     .xmb-year {
@@ -194,9 +223,10 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      gap: clamp(12px, 3vh, 20px);
-      min-width: clamp(180px, 26vw, 260px);
-      padding: clamp(8px, 2vh, 12px) 0;
+      gap: clamp(10px, 2vh, 16px);
+      min-width: var(--year-slot-width);
+      flex: 0 0 var(--year-slot-width);
+      padding: clamp(6px, 1.6vh, 10px) 0;
       background: transparent;
       border: none;
       color: var(--text-primary);
@@ -204,45 +234,44 @@
       transform: translateY(0) scale(1);
       transition: transform 0.4s cubic-bezier(0.33, 1, 0.68, 1),
         color 0.35s ease;
+      opacity: 0.9;
+    }
+
+    .xmb-year:first-child {
+      margin-left: var(--focus-offset-width);
     }
 
     .xmb-year__icon {
       width: var(--horizontal-icon);
       height: var(--horizontal-icon);
-      border-radius: 28px;
+      border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       font-size: calc(var(--horizontal-icon) * 0.68);
       background: radial-gradient(circle at 35% 35%, rgba(56, 189, 248, 0.65), rgba(56, 189, 248, 0.08) 70%, rgba(15, 23, 42, 0));
-      box-shadow: 0 26px 52px rgba(2, 6, 23, 0.6);
+      box-shadow: 0 20px 42px rgba(2, 6, 23, 0.6);
     }
 
-    .xmb-year__copy {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: clamp(4px, 1vh, 10px);
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
+    .xmb-year:not(.is-active) .xmb-year__icon {
+      opacity: 0.9;
     }
 
-    .xmb-year__title {
+    .xmb-year.is-active .xmb-year__icon {
+      opacity: 1;
+    }
+
+    .xmb-year__label {
       font-weight: 700;
-      font-size: clamp(0.95rem, 2.8vw, 1.35rem);
-      color: var(--text-primary);
-    }
-
-    .xmb-year__subtitle {
-      font-size: clamp(0.7rem, 2vw, 0.95rem);
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
+      font-size: clamp(0.85rem, 2.2vw, 1.2rem);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
     .xmb-year.is-active {
-      transform: translateY(-14px) scale(1.16);
+      transform: translateY(-12px) scale(1.12);
       color: #ffffff;
+      opacity: 1;
     }
 
     .xmb-year:focus-visible {
@@ -279,22 +308,29 @@
       display: none;
     }
 
+    @keyframes xmbTitlePulse {
+      0% {
+        text-shadow: 0 0 0 rgba(56, 189, 248, 0.7);
+      }
+      100% {
+        text-shadow: 0 0 12px rgba(56, 189, 248, 0.9);
+      }
+    }
+
     @media (max-width: 900px) {
       :root {
         --horizontal-band-height: clamp(220px, 42vh, 320px);
         --horizontal-padding: clamp(28px, 8vw, 72px);
-        --horizontal-gap: clamp(28px, 10vw, 48px);
-        --horizontal-icon: clamp(36px, 10.5vw, 54px);
-        --vertical-gap: clamp(14px, 4vh, 24px);
-        --vertical-icon: clamp(27px, 7.5vw, 43px);
-      }
-
-      .xmb-vertical__viewport {
-        width: min(420px, 80vw);
+        --horizontal-padding-right: clamp(32px, 10vw, 80px);
+        --horizontal-gap: clamp(20px, 8vw, 36px);
+        --horizontal-icon: clamp(28px, 8vw, 44px);
+        --vertical-gap: clamp(14px, 4vh, 22px);
+        --icon-size-small: clamp(22px, 6vw, 34px);
       }
 
       .xmb-year {
-        min-width: clamp(160px, 44vw, 220px);
+        min-width: var(--year-slot-width);
+        flex-basis: var(--year-slot-width);
       }
     }
 
@@ -304,8 +340,8 @@
       }
 
       .xmb-vertical {
-        left: clamp(20px, 8vw, 32px);
-        right: clamp(20px, 12vw, 40px);
+        left: clamp(24px, 10vw, 40px);
+        right: clamp(20px, 18vw, 60px);
       }
 
       .xmb-vertical__viewport {
@@ -313,7 +349,7 @@
         height: clamp(220px, 44vh, 320px);
       }
 
-      .xmb-year__title {
+      .xmb-year__label {
         font-size: clamp(0.95rem, 4vw, 1.2rem);
       }
     }
