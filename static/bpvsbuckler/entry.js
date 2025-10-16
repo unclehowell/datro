@@ -21,8 +21,27 @@
   const entryContextList = document.getElementById('entry-context-list');
   const entryEvidence = document.getElementById('entry-evidence');
   const entryEvidenceList = document.getElementById('entry-evidence-list');
+  const backLink = document.querySelector('.detail-back-link');
 
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+  function enhanceBackLink() {
+    if (!backLink) {
+      return;
+    }
+    backLink.setAttribute('aria-label', 'Back to timeline');
+    backLink.innerHTML = '';
+
+    const icon = document.createElement('span');
+    icon.setAttribute('aria-hidden', 'true');
+    icon.textContent = '◀';
+    backLink.appendChild(icon);
+
+    const srText = document.createElement('span');
+    srText.className = 'sr-only';
+    srText.textContent = 'Back to timeline';
+    backLink.appendChild(srText);
+  }
 
   function setTheme(theme, persist = true) {
     const normalized = theme === 'dark' ? 'dark' : 'light';
@@ -56,6 +75,8 @@
   } else {
     setTheme(prefersDark.matches ? 'dark' : 'light', false);
   }
+
+  enhanceBackLink();
 
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
