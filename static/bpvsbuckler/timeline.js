@@ -71,6 +71,94 @@
     return limitWords(event.year, 4);
   }
 
+  function normalizeMenuEntries(menuConfig) {
+    if (!menuConfig || !Array.isArray(menuConfig.entries)) {
+      return [];
+    }
+
+    return menuConfig.entries
+      .map(entry => {
+        if (!entry) {
+          return null;
+        }
+        const rawKey = typeof entry.key === 'string' ? entry.key.trim() : '';
+        if (!rawKey) {
+          return null;
+        }
+        const normalized = rawKey.toLowerCase();
+        const text = typeof entry.text === 'string' ? entry.text.trim() : '';
+        const icon = typeof entry.icon === 'string' ? entry.icon.trim() : '';
+        const ariaLabel =
+          typeof entry.ariaLabel === 'string' ? entry.ariaLabel.trim() : '';
+
+        return {
+          key: normalized,
+          text: text || null,
+          icon: icon || null,
+          ariaLabel: ariaLabel || null,
+        };
+      })
+      .filter(Boolean);
+  }
+
+  function applyMenuConfiguration(groups, menuConfig) {
+    if (!Array.isArray(groups) || !groups.length) {
+      return Array.isArray(groups) ? groups : [];
+    }
+
+    const normalized = normalizeMenuEntries(menuConfig);
+    if (!normalized.length) {
+      return groups;
+    }
+
+    const byKey = new Map();
+    groups.forEach(group => {
+      if (group && typeof group.key === 'string') {
+        byKey.set(group.key.toLowerCase(), group);
+      }
+    });
+
+    const remainingOrder = new Set(byKey.keys());
+    const ordered = [];
+
+    normalized.forEach(entry => {
+      const group = byKey.get(entry.key);
+      if (!group) {
+        return;
+      }
+
+      if (entry.text) {
+        group.yearLabel = entry.text;
+      }
+      if (entry.icon) {
+        group.icon = entry.icon;
+      }
+      if (entry.ariaLabel) {
+        group.label = entry.ariaLabel;
+      } else if (entry.text) {
+        group.label = entry.text;
+      }
+
+      ordered.push(group);
+      remainingOrder.delete(entry.key);
+    });
+
+    if (remainingOrder.size) {
+      groups.forEach(group => {
+        if (!group || typeof group.key !== 'string') {
+          return;
+        }
+        const key = group.key.toLowerCase();
+        if (remainingOrder.has(key)) {
+          ordered.push(group);
+          remainingOrder.delete(key);
+        }
+      });
+    }
+
+    return ordered;
+  }
+
   function buildCenturyScale(container, bounds) {
     if (!container) {
       return;
@@ -82,7 +170,7 @@
     ticks.className = 'timeline-century__ticks';
     scale.appendChild(ticks);
 
-    const { startYear, endYear, span } = bounds;
+    const { startYear, endYear } = bounds;
     for (let year = startYear; year <= endYear; year += 1) {
       const tick = document.createElement('div');
       tick.className = 'timeline-century__tick timeline-century__tick--year';
@@ -95,6 +183,19 @@
       if (year % 100 === 0) {
         tick.classList.add('timeline-century__tick--century');
       }
+      ticks.appendChild(tick);
+    }
+
+    container.appendChild(scale);
+    return scale;
+  }
+
+  function buildYearGroups(data) {
+    if (!data || !Array.isArray(data.centuries)) {
+      return [];
+    }
+
+    const groups = new Map();
 
     data.centuries.forEach((century, centuryIndex) => {
       const events = Array.isArray(century?.events) ? century.events : [];
@@ -343,7 +444,8 @@
       button.dataset.yearKey = group.key;
       button.setAttribute('role', 'option');
       button.setAttribute('aria-selected', 'false');
-      button.setAttribute('aria-label', group.label);
+      const ariaLabel = group.label || group.yearLabel || group.key || `Year ${index + 1}`;
+      button.setAttribute('aria-label', ariaLabel);
       button.tabIndex = index === 0 ? 0 : -1;
 
       const icon = document.createElement('span');
@@ -353,7 +455,8 @@
 
       const label = document.createElement('span');
       label.className = 'xmb-year__label';
-      label.textContent = limitWords(group.yearLabel, 2) || `Year ${index + 1}`;
+      const displayLabel = group.yearLabel || group.label || `Year ${index + 1}`;
+      label.textContent = limitWords(displayLabel, 3) || `Year ${index + 1}`;
       button.appendChild(label);
 
       button.addEventListener('click', () => {
@@ -454,15 +557,25 @@
   document.addEventListener('keydown', handleKeydown);
   window.addEventListener('resize', handleResize);
 
-  fetch('data/timeline.json')
-    .then(response => {
+  function fetchJson(url) {
+    return fetch(url).then(response => {
       if (!response.ok) {
-        throw new Error('Failed to load timeline data');
+        throw new Error(`Failed to load ${url}`);
       }
       return response.json();
-    })
-    .then(data => {
-      yearGroups = buildYearGroups(data);
+    });
+  }
+
+  Promise.all([
+    fetchJson('data/timeline.json'),
+    fetchJson('data/menu.json').catch(error => {
+      console.warn('Menu configuration could not be loaded:', error);
+      return null;
+    }),
+  ])
+    .then(([timelineData, menuConfig]) => {
+      const groups = buildYearGroups(timelineData) || [];
+      yearGroups = applyMenuConfiguration(groups, menuConfig);
       if (!yearGroups.length) {
         showLoading('No timeline data available.');
         return;
