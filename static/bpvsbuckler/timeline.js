@@ -1,122 +1,74 @@
 (function () {
-  const body = document.body;
-  const themeToggle = document.getElementById('theme-toggle');
-  const themeIcon = themeToggle ? themeToggle.querySelector('[data-theme-icon]') : null;
-  const introToggle = document.getElementById('intro-toggle');
-  const introPanel = document.getElementById('intro-panel');
-  const introClose = document.getElementById('intro-close');
-  const caseTitle = document.getElementById('case-title');
-  const caseSubtitle = document.getElementById('case-subtitle');
-  const caseIntro = document.getElementById('case-intro');
-  const keyThemes = document.getElementById('key-themes');
-  const centurySelector = document.getElementById('century-selector');
-  const centurySelect = document.getElementById('century-select');
-  const timelineContainer = document.getElementById('timeline');
-  const loadingMessage = document.getElementById('timeline-loading');
-  const modal = document.getElementById('modal');
-  const closeBtn = modal ? modal.querySelector('.close-btn') : null;
-  const modalTitle = document.getElementById('modal-title');
-  const modalSource = document.getElementById('modal-source');
-  const modalDescription = document.getElementById('modal-description');
-  const modalBody = document.getElementById('modal-body');
+  const rootElement = document.documentElement;
+  const yearTrack = document.getElementById('timeline-year-track');
+  const yearViewport = document.getElementById('year-bar-viewport');
+  const entryViewport = document.getElementById('timeline-entry-viewport');
+  const entryList = document.getElementById('timeline-year-entries');
+  const loadingBanner = document.getElementById('timeline-loading');
 
-  const eventIndex = new Map();
-  const storageKey = 'ghf-theme';
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-  let sharedSidePreference = 'right';
-  let centuriesData = [];
-
-  function setTheme(theme, persist = true) {
-    const normalized = theme === 'dark' ? 'dark' : 'light';
-    body.dataset.theme = normalized;
-    if (themeToggle) {
-      themeToggle.setAttribute('aria-pressed', normalized === 'dark' ? 'true' : 'false');
-      themeToggle.setAttribute('title', normalized === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
-    }
-    if (themeIcon) {
-      themeIcon.textContent = normalized === 'dark' ? '🌙' : '☀️';
-    }
-    if (persist) {
-      try {
-        localStorage.setItem(storageKey, normalized);
-      } catch (error) {
-        console.warn('Unable to persist theme preference', error);
-      }
-    }
+  if (!yearTrack || !entryViewport || !entryList) {
+    return;
   }
 
-  const savedTheme = (() => {
-    try {
-      return localStorage.getItem(storageKey);
-    } catch (error) {
-      return null;
-    }
-  })();
+  const LEADING_PLACEHOLDER_COUNT = 2;
 
-  if (savedTheme) {
-    setTheme(savedTheme, false);
-  } else {
-    setTheme(prefersDark.matches ? 'dark' : 'light', false);
+  let yearGroups = [];
+  let yearButtons = [];
+  let entryItems = [];
+  let activeYearIndex = 0;
+  let activeEntryIndex = 0;
+  let suppressFocusSync = false;
+  let focusColumnOffset = 0;
+  const layoutMetrics = {
+    historyHeight: 0,
+    horizontalHeight: 0,
+    spacerHeight: 0,
+    entryHeight: 0,
+    entryGap: 0,
+  };
+
+  function readCssNumber(variableName, fallback = 0) {
+    const raw = getComputedStyle(rootElement).getPropertyValue(variableName);
+    const parsed = parseFloat(raw);
+    return Number.isFinite(parsed) ? parsed : fallback;
   }
 
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      const next = body.dataset.theme === 'dark' ? 'light' : 'dark';
-      setTheme(next, true);
-    });
+  function refreshLayoutMetrics() {
+    layoutMetrics.historyHeight = readCssNumber('--row-history-height', 96);
+    layoutMetrics.horizontalHeight = readCssNumber('--horizontal-band-height', layoutMetrics.historyHeight);
+    layoutMetrics.spacerHeight = readCssNumber('--row-spacer-height', 24);
+    layoutMetrics.entryHeight = readCssNumber('--entry-row-height', layoutMetrics.historyHeight);
+    layoutMetrics.entryGap = readCssNumber('--entry-gap', 16);
   }
 
-  prefersDark.addEventListener('change', event => {
-    try {
-      if (!localStorage.getItem(storageKey)) {
-        setTheme(event.matches ? 'dark' : 'light', false);
-      }
-    } catch (error) {
-      setTheme(event.matches ? 'dark' : 'light', false);
+  function limitWords(value, maxWords) {
+    if (!value) {
+      return '';
     }
-  });
-
-  function choosePosition(event) {
-    if (event.side === 'buckler') {
-      return 'left';
-    }
-    if (event.side === 'bp') {
-      return 'right';
-    }
-    sharedSidePreference = sharedSidePreference === 'left' ? 'right' : 'left';
-    return sharedSidePreference;
+    const words = String(value).trim().split(/\s+/);
+    return words.slice(0, Math.max(1, maxWords)).join(' ');
   }
 
-  function normalizeCenturyBounds(century) {
-    const start = Number(century?.startYear);
-    const end = Number(century?.endYear);
-    if (Number.isFinite(start) && Number.isFinite(end) && end > start) {
-      return { startYear: start, endYear: end, span: Math.max(1, end - start) };
+  function getYearSubtitle(group) {
+    if (!group || !group.events.length) {
+      return '';
     }
-    if (Number.isFinite(start)) {
-      const inferredEnd = start + 99;
-      return { startYear: start, endYear: inferredEnd, span: Math.max(1, inferredEnd - start) };
-    }
-    if (Number.isFinite(end)) {
-      const inferredStart = end - 99;
-      return { startYear: inferredStart, endYear: end, span: Math.max(1, end - inferredStart) };
-    }
-    return { startYear: 0, endYear: 99, span: 99 };
+    const primaryEvent = group.events[0].event;
+    const subtitleSource = primaryEvent.iconLabel || primaryEvent.title || primaryEvent.year || '';
+    return limitWords(subtitleSource, 4);
   }
 
-  function getEventYearValue(event, bounds) {
+  function getEventSubtitle(event) {
     if (!event) {
-      return bounds.endYear;
+      return '';
     }
-    const direct = Number(event.yearValue);
-    if (Number.isFinite(direct)) {
-      return direct;
+    if (event.summary) {
+      return limitWords(event.summary, 4);
     }
-    const match = typeof event.year === 'string' ? event.year.match(/(1[6-9]\d{2}|20\d{2})/) : null;
-    if (match) {
-      return Number(match[0]);
+    if (event.title) {
+      return limitWords(event.title, 4);
     }
-    return bounds.endYear;
+    return limitWords(event.year, 4);
   }
 
   function buildCenturyScale(container, bounds) {
@@ -144,25 +96,71 @@
         tick.classList.add('timeline-century__tick--century');
       }
 
-      const offset = ((year - startYear) / span) * 100;
-      const position = Math.min(100, Math.max(0, offset));
-      tick.style.top = `${position}%`;
+    data.centuries.forEach((century, centuryIndex) => {
+      const events = Array.isArray(century?.events) ? century.events : [];
+      events.forEach((event, eventIndex) => {
+        if (!event || !event.id) {
+          return;
+        }
+        const label = (typeof event.year === 'string' && event.year.trim()) || 'Undated';
+        const key = label.toLowerCase();
+        if (!groups.has(key)) {
+          groups.set(key, {
+            label,
+            key,
+            events: [],
+            sortValue: Number.isFinite(event.yearValue) ? event.yearValue : null,
+          });
+        }
+        const group = groups.get(key);
+        const yearValue = Number.isFinite(event.yearValue) ? event.yearValue : null;
+        if (Number.isFinite(yearValue)) {
+          if (!Number.isFinite(group.sortValue) || yearValue < group.sortValue) {
+            group.sortValue = yearValue;
+          }
+        }
+        group.events.push({
+          event,
+          century,
+          centuryIndex,
+          eventIndex,
+        });
+      });
+    });
 
-      if (year % 10 === 0) {
-        const label = document.createElement('span');
-        label.className = 'timeline-century__tick-label';
-        label.textContent = String(year);
-        tick.appendChild(label);
+    const ordered = Array.from(groups.values());
+    ordered.sort((a, b) => {
+      const aValue = Number.isFinite(a.sortValue) ? a.sortValue : Number.NEGATIVE_INFINITY;
+      const bValue = Number.isFinite(b.sortValue) ? b.sortValue : Number.NEGATIVE_INFINITY;
+      if (aValue !== bValue) {
+        return bValue - aValue;
       }
+      return b.label.localeCompare(a.label, undefined, { numeric: true });
+    });
 
-      const mark = document.createElement('span');
-      mark.className = 'timeline-century__tick-mark';
-      tick.appendChild(mark);
+    ordered.forEach((group, index) => {
+      group.events.sort((a, b) => {
+        const aValue = Number.isFinite(a.event.yearValue) ? a.event.yearValue : Number.NEGATIVE_INFINITY;
+        const bValue = Number.isFinite(b.event.yearValue) ? b.event.yearValue : Number.NEGATIVE_INFINITY;
+        if (aValue !== bValue) {
+          return bValue - aValue;
+        }
+        return a.eventIndex - b.eventIndex;
+      });
+      const primaryEventWithIcon = group.events.find(entry => entry.event.icon);
+      const primaryEvent = group.events[0]?.event;
+      group.icon = primaryEventWithIcon?.event?.icon || '🕰️';
+      group.yearLabel = limitWords(primaryEvent?.year || group.label, 2) || `Year ${index + 1}`;
+      group.subtitle = getYearSubtitle(group);
+    });
 
-      ticks.appendChild(tick);
+    return ordered;
+  }
+
+  function hideLoading() {
+    if (loadingBanner) {
+      loadingBanner.classList.add('is-hidden');
     }
-
-    container.prepend(scale);
   }
 
   function buildEvent(event, century, bounds) {
@@ -176,86 +174,57 @@
     if (Number.isFinite(eventYear)) {
       entry.dataset.yearValue = String(eventYear);
     }
-
-    const leftColumn = document.createElement('div');
-    leftColumn.className = 'timeline-entry__column timeline-entry__column--left';
-
-    const axisColumn = document.createElement('div');
-    axisColumn.className = 'timeline-axis';
-    axisColumn.setAttribute('aria-hidden', 'true');
-
-    const yearWrapper = document.createElement('div');
-    yearWrapper.className = 'timeline-year';
-    const node = document.createElement('div');
-    node.className = 'timeline-node';
-    const yearLabel = (event.year && String(event.year).trim()) || (Number.isFinite(eventYear) ? String(eventYear) : '');
-    node.textContent = yearLabel || '•';
-    yearWrapper.appendChild(node);
-    axisColumn.appendChild(yearWrapper);
-
-    const rightColumn = document.createElement('div');
-    rightColumn.className = 'timeline-entry__column timeline-entry__column--right';
-
-    const bubble = document.createElement('button');
-    bubble.className = `timeline-bubble timeline-bubble--${event.side || 'both'}`;
-    bubble.type = 'button';
-    bubble.dataset.eventId = event.id;
-    bubble.dataset.title = event.title;
-
-    const bubbleYear = (() => {
-      if (Number.isFinite(eventYear)) {
-        return Math.round(eventYear);
-      }
-      const match = typeof event.year === 'string' ? event.year.match(/(1[5-9]\d{2}|20\d{2})/) : null;
-      if (match) {
-        return Number(match[0]);
-      }
-      const fallbackMatch = typeof event.label === 'string' ? event.label.match(/(1[5-9]\d{2}|20\d{2})/) : null;
-      return fallbackMatch ? Number(fallbackMatch[0]) : null;
-    })();
-
-    const bubbleIcon = typeof event.icon === 'string' && event.icon.trim().length ? event.icon.trim() : null;
-    const bubbleLabel = bubbleIcon || (bubbleYear != null ? String(bubbleYear).padStart(4, '0') : (event.year ? String(event.year) : (event.label || '•')));
-    const bubbleIconLabel = typeof event.iconLabel === 'string' && event.iconLabel.trim().length ? event.iconLabel.trim() : null;
-
-    const accessibilityLabelParts = [event.title];
-    if (bubbleIconLabel) {
-      accessibilityLabelParts.push(bubbleIconLabel);
-    }
-    if (bubbleYear != null) {
-      accessibilityLabelParts.push(String(bubbleYear));
-    } else if (event.year) {
-      accessibilityLabelParts.push(String(event.year));
-    }
-
-    const accessibilityLabel = accessibilityLabelParts.join(' – ');
-
-    bubble.setAttribute('aria-label', accessibilityLabel);
-    bubble.setAttribute('title', accessibilityLabel);
-    bubble.textContent = bubbleLabel;
-    bubble.addEventListener('click', () => openEvent(event.id));
-    bubble.addEventListener('keydown', eventKey => {
-      if (eventKey.key === 'Enter' || eventKey.key === ' ') {
-        eventKey.preventDefault();
-        openEvent(event.id);
-      }
-    });
-
-    if (position === 'left') {
-      leftColumn.appendChild(bubble);
-      rightColumn.classList.add('timeline-entry__column--empty');
-    } else {
-      rightColumn.appendChild(bubble);
-      leftColumn.classList.add('timeline-entry__column--empty');
-    }
-
-    entry.appendChild(leftColumn);
-    entry.appendChild(axisColumn);
-    entry.appendChild(rightColumn);
-
-    eventIndex.set(event.id, { event, century });
-    return entry;
   }
+
+  function clearEntryList() {
+    entryList.innerHTML = '';
+    entryList.style.minHeight = '';
+    entryItems = [];
+    activeEntryIndex = 0;
+  }
+
+  function updateFocusOffset() {
+    const firstButton = yearButtons[0];
+    focusColumnOffset = firstButton ? firstButton.offsetLeft : 0;
+  }
+
+  function alignYearTrack() {
+    const activeButton = yearButtons[activeYearIndex];
+    if (!activeButton) {
+      yearTrack.style.transform = 'translateX(0)';
+      return;
+    }
+
+    updateFocusOffset();
+
+    const offset = activeButton.offsetLeft;
+    const viewportWidth = yearViewport?.clientWidth || 0;
+    const trackWidth = yearTrack.scrollWidth;
+    const desired = focusColumnOffset - offset;
+    const lastButton = yearButtons[yearButtons.length - 1];
+    let minTranslate = Math.min(0, viewportWidth - trackWidth);
+    if (lastButton) {
+      const lastRight = lastButton.offsetLeft + lastButton.offsetWidth;
+      const boundary = viewportWidth - lastRight;
+      minTranslate = Math.min(minTranslate, boundary);
+      minTranslate = Math.min(minTranslate, focusColumnOffset - lastButton.offsetLeft);
+    }
+    const maxTranslate = 0;
+    const clamped = Math.max(minTranslate, Math.min(maxTranslate, desired));
+    yearTrack.style.transform = `translateX(${clamped}px)`;
+  }
+
+  function applyEntryPositions() {
+    if (!entryItems.length) {
+      entryList.style.minHeight = '';
+      return;
+    }
+
+    refreshLayoutMetrics();
+
+    const baseTop = layoutMetrics.historyHeight * 2 + layoutMetrics.horizontalHeight + layoutMetrics.spacerHeight;
+    const step = layoutMetrics.entryHeight + layoutMetrics.entryGap;
+    const minFutureItems = 2;
 
   const rowLayout = {
     fallbackRowHeight: 184,
@@ -286,13 +255,6 @@
       if (!targetRect) {
         return;
       }
-      const axisCenter = targetRect.left + targetRect.width / 2;
-      const distance = entry.dataset.position === 'left'
-        ? axisCenter - bubbleRect.right
-        : bubbleRect.left - axisCenter;
-      entry.style.setProperty('--connector-length', `${Math.max(distance, 0)}px`);
-    });
-  }
 
   function applyRowLayout() {
     const sections = Array.from(timelineContainer.querySelectorAll('.timeline-century'));
@@ -326,7 +288,6 @@
         updateConnectorLengths(section);
       });
     });
-  }
 
   function scheduleLayout() {
     if (layoutFrame) {
@@ -338,449 +299,160 @@
     });
   }
 
-  function buildCenturySection(century, index) {
-    const section = document.createElement('section');
-    section.className = 'timeline-century';
+  function setActiveYear(index, { focusYear = false } = {}) {
+    if (!yearGroups.length) {
+      return;
+    }
+    const clamped = Math.max(0, Math.min(yearGroups.length - 1, index));
+    if (clamped === activeYearIndex && !focusYear) {
+      return;
+    }
+    activeYearIndex = clamped;
+    const group = yearGroups[activeYearIndex];
 
-    const header = document.createElement('div');
-    header.className = 'timeline-century__header';
+    yearButtons.forEach((button, buttonIndex) => {
+      const isActive = buttonIndex === activeYearIndex;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      button.tabIndex = isActive ? 0 : -1;
+      if (isActive && focusYear && !suppressFocusSync) {
+        requestAnimationFrame(() => {
+          button.focus({ preventScroll: true });
+        });
+      }
+    });
 
-    const heading = document.createElement('h2');
-    heading.className = 'timeline-century__heading';
-    const headingText = century.title || 'Century of occupation';
-    heading.textContent = century.range ? `${headingText} (${century.range})` : headingText;
-    header.appendChild(heading);
+    alignYearTrack();
+    renderEntryList(group);
+  }
 
-    section.appendChild(header);
+  function renderYearButtons(groups) {
+    yearTrack.innerHTML = '';
 
-    if (century.summary) {
-      const summary = document.createElement('p');
-      summary.className = 'timeline-century__summary';
-      summary.textContent = century.summary;
-      section.appendChild(summary);
+    for (let i = 0; i < LEADING_PLACEHOLDER_COUNT; i += 1) {
+      const spacer = document.createElement('div');
+      spacer.className = 'xmb-year-placeholder';
+      spacer.setAttribute('aria-hidden', 'true');
+      yearTrack.appendChild(spacer);
     }
 
-    const entries = document.createElement('div');
-    entries.className = 'timeline-century__entries';
-    const idSeed = (century.id || `century-${index + 1}`).toString();
-    const normalizedId = idSeed.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    entries.id = `${normalizedId || `century-${index + 1}`}-entries`;
+    yearButtons = groups.map((group, index) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'xmb-year';
+      button.dataset.yearKey = group.key;
+      button.setAttribute('role', 'option');
+      button.setAttribute('aria-selected', 'false');
+      button.setAttribute('aria-label', group.label);
+      button.tabIndex = index === 0 ? 0 : -1;
 
-    const bounds = normalizeCenturyBounds(century);
-    entries.style.setProperty('--century-span', String(bounds.span || 100));
-    buildCenturyScale(entries, bounds);
+      const icon = document.createElement('span');
+      icon.className = 'xmb-year__icon';
+      icon.textContent = group.icon;
+      button.appendChild(icon);
 
-    const events = Array.isArray(century.events) ? [...century.events] : [];
-    events.sort((a, b) => {
-      const yearA = getEventYearValue(a, bounds);
-      const yearB = getEventYearValue(b, bounds);
-      if (yearA === yearB) {
-        return (a.label || a.id || '').localeCompare(b.label || b.id || '');
-      }
-      return yearA - yearB;
+      const label = document.createElement('span');
+      label.className = 'xmb-year__label';
+      label.textContent = limitWords(group.yearLabel, 2) || `Year ${index + 1}`;
+      button.appendChild(label);
+
+      button.addEventListener('click', () => {
+        setActiveYear(index, { focusYear: true });
+      });
+
+      button.addEventListener('focus', () => {
+        if (suppressFocusSync) {
+          return;
+        }
+        setActiveYear(index, { focusYear: false });
+      });
+
+      yearTrack.appendChild(button);
+      return button;
     });
-    events.forEach(event => {
-      const entry = buildEvent(event, century, bounds);
-      entries.appendChild(entry);
-    });
 
-    section.appendChild(entries);
-    return section;
+    updateFocusOffset();
   }
 
-  function showEmptyTimelineState() {
-    timelineContainer.innerHTML = '';
-    const empty = document.createElement('p');
-    empty.className = 'text-center text-slate-500 dark:text-slate-300';
-    empty.textContent = 'No timeline entries available.';
-    timelineContainer.appendChild(empty);
-  }
-
-  function displayCentury(value) {
-    if (!Array.isArray(centuriesData) || !centuriesData.length) {
-      showEmptyTimelineState();
+  function handleKeydown(event) {
+    if (event.altKey || event.ctrlKey || event.metaKey) {
       return;
     }
 
-    let record = centuriesData.find(entry => entry.value === value);
-    if (!record) {
-      [record] = centuriesData;
-      if (!record) {
-        showEmptyTimelineState();
-        return;
-      }
-      if (centurySelect) {
-        centurySelect.value = record.value;
-      }
-    }
-
-    timelineContainer.innerHTML = '';
-    eventIndex.clear();
-    sharedSidePreference = 'right';
-
-    const section = buildCenturySection(record.century, record.index);
-    timelineContainer.appendChild(section);
-    scheduleLayout();
-  }
-
-  function renderTimeline(data) {
-    const centuries = Array.isArray(data.centuries) ? [...data.centuries].reverse() : [];
-    centuriesData = centuries.map((century, index) => {
-      const idSeed = (century.id || `century-${index + 1}`).toString();
-      const normalizedId = idSeed.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
-      return {
-        century,
-        index,
-        value: normalizedId || `century-${index + 1}`,
-      };
-    });
-
-    if (centurySelect) {
-      centurySelect.innerHTML = '';
-      if (!centuriesData.length) {
-        const option = document.createElement('option');
-        option.value = '';
-        option.textContent = 'No centuries available';
-        centurySelect.appendChild(option);
-        centurySelect.disabled = true;
-      } else {
-        centuriesData.forEach(entry => {
-          const option = document.createElement('option');
-          option.value = entry.value;
-          const title = entry.century.title || entry.century.range || `Century ${entry.index + 1}`;
-          if (entry.century.title && entry.century.range) {
-            option.textContent = `${entry.century.title} (${entry.century.range})`;
-          } else {
-            option.textContent = title;
-          }
-          centurySelect.appendChild(option);
-        });
-        centurySelect.disabled = centuriesData.length <= 1;
-      }
-
-      if (centurySelector) {
-        centurySelector.classList.toggle('hidden', !centuriesData.length);
-      }
-
-      centurySelect.onchange = event => {
-        const { value } = event.target;
-        displayCentury(value);
-        try {
-          const url = new URL(window.location.href);
-          if (value) {
-            url.searchParams.set('century', value);
-          } else {
-            url.searchParams.delete('century');
-          }
-          window.history.replaceState(null, '', url);
-        } catch (error) {
-          // ignore URL update issues
-        }
-      };
-    }
-
-    if (!centuriesData.length) {
-      showEmptyTimelineState();
+    const target = event.target;
+    if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
       return;
     }
 
-    let defaultCentury = centuriesData[0];
-    try {
-      const url = new URL(window.location.href);
-      const searchCentury = url.searchParams.get('century');
-      const hashCentury = window.location.hash ? window.location.hash.replace(/^#/, '') : '';
-      const requested = searchCentury || hashCentury || '';
-      if (requested) {
-        const found = centuriesData.find(entry => entry.value === requested);
-        if (found) {
-          defaultCentury = found;
+    switch (event.key) {
+      case 'ArrowRight': {
+        if (!yearGroups.length) {
+          return;
         }
+        event.preventDefault();
+        const next = Math.min(yearGroups.length - 1, activeYearIndex + 1);
+        setActiveYear(next, { focusYear: true });
+        break;
       }
-    } catch (error) {
-      // ignore URL parsing issues
-    }
-    if (centurySelect) {
-      centurySelect.value = defaultCentury.value;
-    }
-    displayCentury(defaultCentury.value);
-  }
-
-  function renderIntro(data) {
-    if (data.caseTitle) {
-      caseTitle.textContent = data.caseTitle;
-    }
-    if (data.caseSubtitle) {
-      caseSubtitle.textContent = data.caseSubtitle;
-    }
-
-    const hasIntro = Array.isArray(data.introduction) && data.introduction.length;
-    caseIntro.innerHTML = '';
-    if (hasIntro) {
-      data.introduction.forEach(paragraph => {
-        const p = document.createElement('p');
-        p.innerHTML = paragraph;
-        caseIntro.appendChild(p);
-      });
-      caseIntro.classList.remove('hidden');
-    } else {
-      caseIntro.classList.add('hidden');
-    }
-
-    const hasThemes = Array.isArray(data.keyThemes) && data.keyThemes.length;
-    keyThemes.innerHTML = '';
-    if (hasThemes) {
-      data.keyThemes.forEach(theme => {
-        const card = document.createElement('div');
-        card.className = 'intro-card';
-
-        const heading = document.createElement('h3');
-        heading.textContent = theme.title;
-        card.appendChild(heading);
-
-        if (Array.isArray(theme.items) && theme.items.length) {
-          const list = document.createElement('ul');
-          theme.items.forEach(item => {
-            const li = document.createElement('li');
-            li.textContent = item;
-            list.appendChild(li);
-          });
-          card.appendChild(list);
+      case 'ArrowLeft': {
+        if (!yearGroups.length) {
+          return;
         }
-
-        keyThemes.appendChild(card);
-      });
-      keyThemes.classList.remove('hidden');
-    } else {
-      keyThemes.classList.add('hidden');
-    }
-
-    if (introPanel && introToggle) {
-      const hasPanelContent = hasIntro || hasThemes;
-      introPanel.classList.add('hidden');
-      introPanel.setAttribute('aria-hidden', 'true');
-      introToggle.setAttribute('aria-expanded', 'false');
-      introToggle.classList.toggle('hidden', !hasPanelContent);
-      introToggle.setAttribute('title', hasPanelContent ? 'About this timeline' : '');
-      if (introClose) {
-        introClose.classList.toggle('hidden', !hasPanelContent);
+        event.preventDefault();
+        const next = Math.max(0, activeYearIndex - 1);
+        setActiveYear(next, { focusYear: true });
+        break;
       }
-    }
-  }
-
-  function buildContextSection(event) {
-    if (!Array.isArray(event.context) || !event.context.length) {
-      return null;
-    }
-    const wrapper = document.createElement('div');
-    const heading = document.createElement('div');
-    heading.className = 'modal-section-heading';
-    heading.textContent = 'Context';
-    wrapper.appendChild(heading);
-
-    const list = document.createElement('ul');
-    list.className = 'modal-context';
-    event.context.forEach(item => {
-      const li = document.createElement('li');
-      li.textContent = item;
-      list.appendChild(li);
-    });
-    wrapper.appendChild(list);
-    return wrapper;
-  }
-
-  function buildEvidenceSection(event) {
-    if (!Array.isArray(event.evidence) || !event.evidence.length) {
-      return null;
-    }
-    const wrapper = document.createElement('div');
-    const heading = document.createElement('div');
-    heading.className = 'modal-section-heading';
-    heading.textContent = 'Evidence & records';
-    wrapper.appendChild(heading);
-
-    const grid = document.createElement('div');
-    grid.className = 'modal-evidence';
-
-    event.evidence.forEach(evidence => {
-      const block = document.createElement('article');
-      block.className = 'modal-evidence-item';
-
-      const title = document.createElement('h5');
-      title.textContent = evidence.title;
-      block.appendChild(title);
-
-      if (evidence.description) {
-        const description = document.createElement('p');
-        description.textContent = evidence.description;
-        block.appendChild(description);
-      }
-
-      if (Array.isArray(evidence.content) && evidence.content.length) {
-        evidence.content.forEach(paragraph => {
-          const p = document.createElement('p');
-          p.textContent = paragraph;
-          block.appendChild(p);
-        });
-      }
-
-      if (evidence.embed && evidence.embed.type && evidence.embed.src) {
-        if (evidence.embed.type === 'iframe') {
-          const iframe = document.createElement('iframe');
-          iframe.src = evidence.embed.src;
-          iframe.loading = 'lazy';
-          iframe.title = evidence.embed.title || evidence.title;
-          block.appendChild(iframe);
-        } else if (evidence.embed.type === 'object') {
-          const object = document.createElement('object');
-          object.data = evidence.embed.src;
-          object.type = evidence.embed.mime || 'application/pdf';
-          block.appendChild(object);
+      case 'ArrowDown': {
+        if (!entryItems.length) {
+          return;
         }
-      }
-
-      if (evidence.source && (evidence.source.name || evidence.source.url)) {
-        const meta = document.createElement('p');
-        meta.className = 'modal-evidence-meta';
-        if (evidence.source.url) {
-          const link = document.createElement('a');
-          link.href = evidence.source.url;
-          link.target = '_blank';
-          link.rel = 'noopener';
-          link.textContent = evidence.source.name || evidence.source.url;
-          meta.appendChild(document.createTextNode('Source: '));
-          meta.appendChild(link);
+        event.preventDefault();
+        if (document.activeElement && yearButtons.includes(document.activeElement)) {
+          setActiveEntry(0, { focus: true });
         } else {
-          meta.textContent = `Source: ${evidence.source.name}`;
+          setActiveEntry(activeEntryIndex + 1, { focus: true });
         }
-        block.appendChild(meta);
+        break;
       }
-
-      grid.appendChild(block);
-    });
-
-    wrapper.appendChild(grid);
-    return wrapper;
-  }
-
-  function openEvent(eventId) {
-    if (!modal) {
-      return;
-    }
-    const record = eventIndex.get(eventId);
-    if (!record) {
-      return;
-    }
-    const { event, century } = record;
-    modalTitle.textContent = event.title;
-
-    if (century) {
-      const details = [century.title, century.range, event.year].filter(Boolean).join(' • ');
-      modalSource.textContent = details;
-    } else {
-      modalSource.textContent = event.year || '';
-    }
-
-    if (event.summary) {
-      modalDescription.classList.remove('hidden');
-      modalDescription.innerHTML = '';
-      const summary = document.createElement('span');
-      summary.className = 'modal-summary-text';
-      summary.innerHTML = event.summary;
-      modalDescription.appendChild(summary);
-
-      const learnMoreLink = document.createElement('a');
-      learnMoreLink.className = 'modal-learn-more';
-      learnMoreLink.href = `entries/${encodeURIComponent(event.id)}.html`;
-      learnMoreLink.textContent = 'Learn more';
-      modalDescription.appendChild(learnMoreLink);
-    } else {
-      modalDescription.innerHTML = '';
-      modalDescription.classList.add('hidden');
-    }
-
-    modalBody.innerHTML = '';
-
-    const contextSection = buildContextSection(event);
-    if (contextSection) {
-      modalBody.appendChild(contextSection);
-    }
-
-    const evidenceSection = buildEvidenceSection(event);
-    if (evidenceSection) {
-      modalBody.appendChild(evidenceSection);
-    }
-
-    modal.classList.add('active');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeModal() {
-    if (!modal) {
-      return;
-    }
-    modal.classList.remove('active');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closeModal);
-  }
-
-  if (modal) {
-    modal.addEventListener('click', event => {
-      if (event.target === modal) {
-        closeModal();
+      case 'ArrowUp': {
+        if (!entryItems.length) {
+          return;
+        }
+        event.preventDefault();
+        if (document.activeElement && entryItems.includes(document.activeElement)) {
+          if (activeEntryIndex === 0) {
+            const activeButton = yearButtons[activeYearIndex];
+            if (activeButton) {
+              suppressFocusSync = true;
+              activeButton.focus({ preventScroll: true });
+              suppressFocusSync = false;
+            }
+          } else {
+            setActiveEntry(activeEntryIndex - 1, { focus: true });
+          }
+        } else {
+          const activeButton = yearButtons[activeYearIndex];
+          if (activeButton) {
+            suppressFocusSync = true;
+            activeButton.focus({ preventScroll: true });
+            suppressFocusSync = false;
+          }
+        }
+        break;
       }
-    });
-  }
-
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && modal && modal.classList.contains('active')) {
-      closeModal();
-    }
-  });
-
-  function updateIntroState(nextState) {
-    if (!introToggle || !introPanel) {
-      return;
-    }
-    introToggle.setAttribute('aria-expanded', String(nextState));
-    introPanel.classList.toggle('hidden', !nextState);
-    introPanel.setAttribute('aria-hidden', nextState ? 'false' : 'true');
-    introToggle.setAttribute('title', nextState ? 'Hide timeline introduction' : 'About this timeline');
-    if (nextState) {
-      introPanel.focus();
-      introPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      default:
     }
   }
 
-  if (introToggle && introPanel) {
-    introToggle.addEventListener('click', () => {
-      const isExpanded = introToggle.getAttribute('aria-expanded') === 'true';
-      updateIntroState(!isExpanded);
-    });
+  function handleResize() {
+    updateFocusOffset();
+    alignYearTrack();
+    applyEntryPositions();
   }
 
-  if (introClose) {
-    introClose.addEventListener('click', () => updateIntroState(false));
-  }
-
-  const handleWindowResize = () => scheduleLayout();
-  window.addEventListener('resize', handleWindowResize);
-  window.addEventListener('orientationchange', handleWindowResize);
-
-  const timelineLayoutObserver = typeof ResizeObserver !== 'undefined' && timelineContainer
-    ? new ResizeObserver(() => scheduleLayout())
-    : null;
-  if (timelineLayoutObserver) {
-    timelineLayoutObserver.observe(timelineContainer);
-  }
-
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(() => scheduleLayout());
-  }
+  document.addEventListener('keydown', handleKeydown);
+  window.addEventListener('resize', handleResize);
 
   fetch('data/timeline.json')
     .then(response => {
@@ -790,13 +462,20 @@
       return response.json();
     })
     .then(data => {
-      loadingMessage.classList.add('hidden');
-      renderIntro(data);
-      renderTimeline(data);
+      yearGroups = buildYearGroups(data);
+      if (!yearGroups.length) {
+        showLoading('No timeline data available.');
+        return;
+      }
+      renderYearButtons(yearGroups);
+      hideLoading();
+      requestAnimationFrame(() => {
+        refreshLayoutMetrics();
+        setActiveYear(0, { focusYear: true });
+      });
     })
     .catch(error => {
       console.error(error);
-      loadingMessage.textContent = 'We could not load the timeline data. Please refresh the page.';
+      showLoading('We could not load the timeline data. Please refresh the page.');
     });
 })();
-
