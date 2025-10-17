@@ -1,4 +1,5 @@
 (function () {
+  const rootElement = document.documentElement;
   const yearTrack = document.getElementById('timeline-year-track');
   const yearViewport = document.getElementById('year-bar-viewport');
   const entryViewport = document.getElementById('timeline-entry-viewport');
@@ -18,6 +19,27 @@
   let activeEntryIndex = 0;
   let suppressFocusSync = false;
   let focusColumnOffset = 0;
+  const layoutMetrics = {
+    historyHeight: 0,
+    horizontalHeight: 0,
+    spacerHeight: 0,
+    entryHeight: 0,
+    entryGap: 0,
+  };
+
+  function readCssNumber(variableName, fallback = 0) {
+    const raw = getComputedStyle(rootElement).getPropertyValue(variableName);
+    const parsed = parseFloat(raw);
+    return Number.isFinite(parsed) ? parsed : fallback;
+  }
+
+  function refreshLayoutMetrics() {
+    layoutMetrics.historyHeight = readCssNumber('--row-history-height', 96);
+    layoutMetrics.horizontalHeight = readCssNumber('--horizontal-band-height', layoutMetrics.historyHeight);
+    layoutMetrics.spacerHeight = readCssNumber('--row-spacer-height', 24);
+    layoutMetrics.entryHeight = readCssNumber('--entry-row-height', layoutMetrics.historyHeight);
+    layoutMetrics.entryGap = readCssNumber('--entry-gap', 16);
+  }
 
   function limitWords(value, maxWords) {
     if (!value) {
@@ -48,11 +70,6 @@
     }
     return limitWords(event.year, 4);
   }
-
-  function buildYearGroups(data) {
-    if (!Array.isArray(data?.centuries)) {
-      return [];
-    }
 
     const groups = new Map();
 
@@ -123,16 +140,22 @@
     }
   }
 
-  function showLoading(message) {
-    if (loadingBanner) {
-      loadingBanner.textContent = message;
-      loadingBanner.classList.remove('is-hidden');
+  function buildEvent(event, century, bounds) {
+    const position = choosePosition(event);
+    const entry = document.createElement('div');
+    entry.className = 'timeline-entry';
+    entry.dataset.position = position;
+    entry.dataset.eventId = event.id;
+
+    const eventYear = getEventYearValue(event, bounds);
+    if (Number.isFinite(eventYear)) {
+      entry.dataset.yearValue = String(eventYear);
     }
   }
 
   function clearEntryList() {
     entryList.innerHTML = '';
-    entryList.style.transform = 'translateY(0)';
+    entryList.style.minHeight = '';
     entryItems = [];
     activeEntryIndex = 0;
   }
@@ -168,103 +191,86 @@
     yearTrack.style.transform = `translateX(${clamped}px)`;
   }
 
-  function alignEntryList() {
-    const activeEntry = entryItems[activeEntryIndex];
-    if (!activeEntry) {
-      entryList.style.transform = 'translateY(0)';
-      return;
-    }
-
-    const viewportHeight = entryViewport?.clientHeight || 0;
-    const styles = window.getComputedStyle(entryList);
-    const paddingTop = parseFloat(styles.paddingTop) || 0;
-    const paddingBottom = parseFloat(styles.paddingBottom) || 0;
-    const offset = activeEntry.offsetTop - paddingTop;
-    const listHeight = entryList.scrollHeight - paddingTop - paddingBottom;
-    const desired = -offset;
-    const maxTranslate = 0;
-    const minTranslate = Math.min(0, viewportHeight - (listHeight + paddingTop));
-    const clamped = Math.max(minTranslate, Math.min(maxTranslate, desired));
-    entryList.style.transform = `translateY(${clamped}px)`;
-  }
-
-  function setActiveEntry(index, { focus = false } = {}) {
+  function applyEntryPositions() {
     if (!entryItems.length) {
-      entryList.style.transform = 'translateY(0)';
+      entryList.style.minHeight = '';
       return;
     }
-    const clamped = Math.max(0, Math.min(entryItems.length - 1, index));
-    activeEntryIndex = clamped;
-    entryItems.forEach((item, itemIndex) => {
-      const isActive = itemIndex === activeEntryIndex;
-      const isBefore = itemIndex < activeEntryIndex;
-      item.classList.toggle('is-active', isActive);
-      item.classList.toggle('is-before', isBefore);
-      item.tabIndex = isActive ? 0 : -1;
-      if (isActive && focus) {
-        requestAnimationFrame(() => {
-          item.focus({ preventScroll: true });
-        });
-      }
-    });
-    alignEntryList();
-  }
+
+    refreshLayoutMetrics();
+
+    const baseTop = layoutMetrics.historyHeight * 2 + layoutMetrics.horizontalHeight + layoutMetrics.spacerHeight;
+    const step = layoutMetrics.entryHeight + layoutMetrics.entryGap;
+    const minFutureItems = 2;
+
+  const rowLayout = {
+    fallbackRowHeight: 184,
+    padding: 112,
+  };
+
+  let layoutFrame = null;
 
   function renderEntryList(group) {
     clearEntryList();
     if (!group || !group.events.length) {
       return;
     }
-
-    group.events.forEach(({ event }) => {
-      const link = document.createElement('a');
-      link.className = 'xmb-entry';
-      link.href = `entries/${event.id}.html`;
-      link.setAttribute('role', 'menuitem');
-      link.setAttribute('aria-label', event.title || event.year || 'Timeline entry');
-      link.tabIndex = -1;
-
-      const icon = document.createElement('span');
-      icon.className = 'xmb-entry__icon';
-      icon.textContent = event.icon || '📘';
-      link.appendChild(icon);
-
-      const copy = document.createElement('span');
-      copy.className = 'xmb-entry__copy';
-
-      const title = document.createElement('span');
-      title.className = 'xmb-entry__title';
-      title.textContent = limitWords(event.iconLabel || event.title || event.year || 'Entry', 2);
-      copy.appendChild(title);
-
-      const subtitleText = getEventSubtitle(event);
-      if (subtitleText) {
-        const subtitle = document.createElement('span');
-        subtitle.className = 'xmb-entry__subtitle';
-        subtitle.textContent = subtitleText;
-        copy.appendChild(subtitle);
+    const scaleElement = entries.querySelector('.timeline-century__scale');
+    const axisRect = scaleElement ? scaleElement.getBoundingClientRect() : null;
+    const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
+    entryNodes.forEach(entry => {
+      const bubble = entry.querySelector('.timeline-bubble');
+      if (!bubble) {
+        return;
+      }
+      const bubbleRect = bubble.getBoundingClientRect();
+      const targetNode = entry.querySelector('.timeline-year .timeline-node');
+      const targetRect = targetNode ? targetNode.getBoundingClientRect() : axisRect;
+      if (!targetRect) {
+        return;
       }
 
-      link.appendChild(copy);
+  function applyRowLayout() {
+    const sections = Array.from(timelineContainer.querySelectorAll('.timeline-century'));
 
-      link.addEventListener('focus', () => {
-        const index = entryItems.indexOf(link);
-        if (index >= 0) {
-          activeEntryIndex = index;
-          alignEntryList();
-          entryItems.forEach((item, idx) => {
-            item.classList.toggle('is-active', idx === index);
-            item.classList.toggle('is-before', idx < index);
-            item.tabIndex = idx === index ? 0 : -1;
-          });
-        }
+    sections.forEach(section => {
+      if (section.classList.contains('timeline-century--collapsed')) {
+        return;
+      }
+
+      const entries = section.querySelector('.timeline-century__entries');
+      if (!entries || entries.hidden) {
+        return;
+      }
+
+      const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
+      entryNodes.forEach((entry, index) => {
+        entry.style.setProperty('--entry-row-index', index);
       });
 
-      entryList.appendChild(link);
-      entryItems.push(link);
+      const computed = window.getComputedStyle(entries);
+      const baseMinHeight = parseFloat(computed.minHeight) || 0;
+      const rowHeightValue = parseFloat(computed.getPropertyValue('--timeline-row-height')) || rowLayout.fallbackRowHeight;
+      const requiredHeight = Math.max(baseMinHeight, entryNodes.length * rowHeightValue + rowLayout.padding);
+      if (requiredHeight > 0) {
+        entries.style.minHeight = `${Math.ceil(requiredHeight)}px`;
+      }
     });
 
-    setActiveEntry(0);
+    requestAnimationFrame(() => {
+      sections.forEach(section => {
+        updateConnectorLengths(section);
+      });
+    });
+
+  function scheduleLayout() {
+    if (layoutFrame) {
+      cancelAnimationFrame(layoutFrame);
+    }
+    layoutFrame = requestAnimationFrame(() => {
+      layoutFrame = null;
+      applyRowLayout();
+    });
   }
 
   function setActiveYear(index, { focusYear = false } = {}) {
@@ -416,7 +422,7 @@
   function handleResize() {
     updateFocusOffset();
     alignYearTrack();
-    alignEntryList();
+    applyEntryPositions();
   }
 
   document.addEventListener('keydown', handleKeydown);
@@ -438,6 +444,7 @@
       renderYearButtons(yearGroups);
       hideLoading();
       requestAnimationFrame(() => {
+        refreshLayoutMetrics();
         setActiveYear(0, { focusYear: true });
       });
     })

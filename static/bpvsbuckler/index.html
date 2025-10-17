@@ -7,23 +7,55 @@
   <link rel="stylesheet" href="tailwind.css">
   <style>
     :root {
+      color-scheme: light;
+      --page-background: #f3f4f6;
+      --surface: rgba(255, 255, 255, 0.94);
+      --surface-muted: rgba(255, 255, 255, 0.82);
+      --surface-border: rgba(59, 130, 246, 0.16);
+      --heading-color: #0f172a;
+      --text-primary: #1f2937;
+      --text-muted: rgba(17, 24, 39, 0.75);
+      --text-soft: rgba(17, 24, 39, 0.6);
+      --accent-primary: #2563eb;
+      --accent-primary-strong: #1e3a8a;
+      --accent-muted: rgba(59, 130, 246, 0.18);
+      --buckler-surface: linear-gradient(135deg, #d1fae5, #ecfdf5);
+      --buckler-border: #10b981;
+      --bp-surface: linear-gradient(135deg, #fee2e2, #fff1f2);
+      --bp-border: #ef4444;
+      --shared-surface: linear-gradient(135deg, #e0e7ff, #eef2ff);
+      --shared-border: #4338ca;
+      --shadow-soft: 0 22px 36px -24px rgba(15, 23, 42, 0.55);
+      --shadow-strong: 0 30px 52px -32px rgba(15, 23, 42, 0.65);
+      --modal-backdrop: rgba(15, 23, 42, 0.55);
+      --axis-column-width: 150px;
+      --entry-gap: 32px;
+      --bubble-size: 60px;
+      --year-scale: 7px;
+      --timeline-row-height: 184px;
+    }
+
+    body[data-theme='dark'] {
       color-scheme: dark;
       --page-background: #000000;
       --text-primary: #f8fafc;
       --text-muted: rgba(226, 232, 240, 0.6);
       --accent: #38bdf8;
-      --horizontal-band-height: clamp(220px, 32vh, 280px);
+      --row-history-height: clamp(92px, 15vh, 132px);
+      --row-spacer-height: clamp(18px, 4vh, 28px);
+      --entry-row-height: clamp(92px, 16vh, 138px);
+      --entry-gap: clamp(12px, 3vh, 20px);
+      --horizontal-band-height: var(--row-history-height);
       --horizontal-padding: clamp(48px, 7vw, 96px);
       --horizontal-padding-right: clamp(48px, 8vw, 120px);
       --horizontal-gap: clamp(18px, 2.6vw, 28px);
-      --horizontal-icon: clamp(24px, 5vw, 40px);
-      --vertical-gap: clamp(16px, 4.5vh, 26px);
+      --horizontal-icon: clamp(18px, 4.6vw, 30px);
+      --vertical-gap: clamp(12px, 4vh, 20px);
       --fade-width: 20%;
-      --icon-size-small: clamp(20px, 4.4vw, 30px);
-      --vertical-first-gap: calc(var(--icon-size-small) * 2.2);
+      --icon-size-small: clamp(16px, 3.8vw, 26px);
       --visible-columns: 8;
       --focus-column-index: 2;
-      --horizontal-top: 10.1em;
+      --horizontal-top: calc(var(--row-history-height) * 2);
       --year-slot-width: calc(
         (
           100vw - var(--horizontal-padding) - var(--horizontal-padding-right) -
@@ -78,42 +110,43 @@
       position: absolute;
       left: calc(var(--horizontal-padding) + var(--focus-offset-width));
       right: clamp(40px, 22vw, 420px);
-      top: calc(var(--horizontal-top) + var(--horizontal-icon) + var(--icon-size-small));
-      bottom: auto;
+      top: 0;
+      bottom: 0;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       justify-content: flex-start;
-      z-index: 1;
+      z-index: 2;
     }
 
     .xmb-vertical__viewport {
       width: min(420px, 36vw);
       max-width: 420px;
-      height: clamp(200px, 32vh, 280px);
+      height: 100%;
       overflow: visible;
       position: relative;
-      pointer-events: auto;
     }
 
     .xmb-vertical__list {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      gap: var(--vertical-gap);
-      transform: translateY(0);
-      transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+      position: relative;
+      width: 100%;
+      min-height: calc(
+        var(--row-history-height) * 2 + var(--horizontal-band-height) +
+        var(--row-spacer-height) + var(--entry-row-height) * 2 + var(--entry-gap)
+      );
       padding-left: clamp(2px, 1vw, 12px);
       padding-right: clamp(12px, 2vw, 24px);
-      padding-top: var(--vertical-first-gap);
       padding-bottom: clamp(36px, 8vh, 64px);
     }
 
     .xmb-entry {
-      position: relative;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
       display: inline-flex;
       flex-direction: row;
-      align-items: flex-start;
+      align-items: center;
       justify-content: flex-start;
       gap: clamp(10px, 2vw, 18px);
       min-width: clamp(200px, 32vw, 260px);
@@ -121,8 +154,9 @@
       padding: clamp(10px, 2vh, 14px) clamp(10px, 2vw, 18px);
       color: var(--text-primary);
       text-align: left;
-      transform: translateY(0);
-      transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
+      height: var(--entry-row-height);
+      transform: translateY(var(--entry-offset, 0px));
+      transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1),
         opacity 0.35s ease;
       pointer-events: auto;
     }
@@ -177,11 +211,29 @@
     }
 
     .xmb-entry.is-before {
-      transform: translateY(-14px);
-      opacity: 0.85;
+      opacity: 0.88;
     }
 
-    .xmb-entry:not(.is-active):not(.is-before) .xmb-entry__icon {
+    .xmb-entry.is-history-slot-1,
+    .xmb-entry.is-history-slot-2 {
+      pointer-events: auto;
+    }
+
+    .xmb-entry.is-history-slot-1 {
+      opacity: 0.88;
+    }
+
+    .xmb-entry.is-history-slot-2 {
+      opacity: 0.8;
+    }
+
+    .xmb-entry.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .xmb-entry:not(.is-active):not(.is-history-slot-1):not(.is-history-slot-2) .xmb-entry__icon {
       opacity: 0.6;
     }
 
@@ -204,9 +256,9 @@
       height: var(--horizontal-band-height);
       display: flex;
       align-items: flex-end;
-      padding-bottom: clamp(24px, 6vh, 40px);
+      padding-bottom: clamp(20px, 5vh, 32px);
       background: transparent;
-      z-index: 3;
+      z-index: 4;
     }
 
     .xmb-horizontal__viewport {
@@ -217,7 +269,26 @@
       position: relative;
     }
 
-    .xmb-horizontal__track {
+    .xmb-entry:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .xmb-horizontal {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) var(--axis-column-width) minmax(0, 1fr);
+      column-gap: var(--entry-gap);
+      align-items: center;
+      height: var(--timeline-row-height);
+      top: calc(var(--entry-row-index, 0) * var(--timeline-row-height));
+      z-index: 2;
+      --connector-length: calc(var(--entry-gap) + var(--axis-column-width) / 2);
+    }
+
+    .timeline-entry__column {
       display: flex;
       align-items: flex-end;
       gap: var(--horizontal-gap);
@@ -252,6 +323,7 @@
       height: var(--horizontal-icon);
       border-radius: 50%;
       display: inline-flex;
+      flex-direction: row;
       align-items: center;
       justify-content: center;
       font-size: calc(var(--horizontal-icon) * 0.68);
@@ -323,9 +395,11 @@
       display: none;
     }
 
-    @keyframes xmbTitlePulse {
-      0% {
-        text-shadow: 0 0 0 rgba(56, 189, 248, 0.7);
+    @media (max-width: 960px) {
+      :root {
+        --axis-column-width: 120px;
+        --entry-gap: 24px;
+        --timeline-row-height: 176px;
       }
       100% {
         text-shadow: 0 0 12px rgba(56, 189, 248, 0.9);
@@ -334,37 +408,31 @@
 
     @media (max-width: 900px) {
       :root {
-        --horizontal-band-height: clamp(220px, 42vh, 320px);
-        --horizontal-padding: clamp(28px, 8vw, 72px);
-        --horizontal-padding-right: clamp(32px, 10vw, 80px);
-        --horizontal-gap: clamp(20px, 8vw, 36px);
-        --horizontal-icon: clamp(28px, 8vw, 44px);
-        --vertical-gap: clamp(14px, 4vh, 22px);
-        --icon-size-small: clamp(22px, 6vw, 34px);
-        --horizontal-top: clamp(7.5em, 24vh, 10.1em);
+        --axis-column-width: 100px;
+        --entry-gap: 18px;
+        --bubble-size: 54px;
+        --timeline-row-height: 168px;
       }
 
-      .xmb-year {
-        min-width: var(--year-slot-width);
-        flex-basis: var(--year-slot-width);
+      .timeline {
+        padding-left: 12px;
+        padding-right: 12px;
       }
-    }
-
-    @media (max-width: 640px) {
-      html, body {
-        overflow: hidden;
+      
+      .timeline-entry {
+        column-gap: 14px;
       }
 
       .xmb-vertical {
         left: clamp(24px, 10vw, 40px);
         right: clamp(20px, 18vw, 60px);
-        top: calc(var(--horizontal-top) + var(--horizontal-icon) + var(--icon-size-small) * 0.8);
       }
 
       .xmb-vertical__viewport {
         width: 100%;
-        height: clamp(220px, 44vh, 320px);
+        height: 100%;
       }
+    }
 
       .xmb-year__label {
         font-size: clamp(0.95rem, 4vw, 1.2rem);
