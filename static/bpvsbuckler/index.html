@@ -7,21 +7,65 @@
   <link rel="stylesheet" href="tailwind.css">
   <style>
     :root {
+      color-scheme: light;
+      --page-background: #f3f4f6;
+      --surface: rgba(255, 255, 255, 0.94);
+      --surface-muted: rgba(255, 255, 255, 0.82);
+      --surface-border: rgba(59, 130, 246, 0.16);
+      --heading-color: #0f172a;
+      --text-primary: #1f2937;
+      --text-muted: rgba(17, 24, 39, 0.75);
+      --text-soft: rgba(17, 24, 39, 0.6);
+      --accent-primary: #2563eb;
+      --accent-primary-strong: #1e3a8a;
+      --accent-muted: rgba(59, 130, 246, 0.18);
+      --buckler-surface: linear-gradient(135deg, #d1fae5, #ecfdf5);
+      --buckler-border: #10b981;
+      --bp-surface: linear-gradient(135deg, #fee2e2, #fff1f2);
+      --bp-border: #ef4444;
+      --shared-surface: linear-gradient(135deg, #e0e7ff, #eef2ff);
+      --shared-border: #4338ca;
+      --shadow-soft: 0 22px 36px -24px rgba(15, 23, 42, 0.55);
+      --shadow-strong: 0 30px 52px -32px rgba(15, 23, 42, 0.65);
+      --modal-backdrop: rgba(15, 23, 42, 0.55);
+      --axis-column-width: 150px;
+      --entry-gap: 32px;
+      --bubble-size: 60px;
+      --year-scale: 7px;
+      --timeline-row-height: 184px;
+    }
+
+    body[data-theme='dark'] {
       color-scheme: dark;
       --page-background: #000000;
       --text-primary: #f8fafc;
       --text-muted: rgba(226, 232, 240, 0.6);
       --accent: #38bdf8;
-      --horizontal-band-height: clamp(230px, 36vh, 320px);
-      --horizontal-offset: clamp(110px, 22vh, 200px);
-      --horizontal-padding: clamp(48px, 9vw, 128px);
-      --horizontal-gap: clamp(40px, 8vw, 80px);
-      --horizontal-icon: clamp(42px, 9vw, 84px);
-      --vertical-gap: clamp(22px, 6vh, 36px);
-      --vertical-icon: clamp(36px, 7.5vw, 60px);
+      --row-history-height: clamp(92px, 15vh, 132px);
+      --row-spacer-height: clamp(18px, 4vh, 28px);
+      --entry-row-height: clamp(92px, 16vh, 138px);
+      --entry-gap: clamp(12px, 3vh, 20px);
+      --horizontal-band-height: var(--row-history-height);
+      --horizontal-padding: clamp(48px, 7vw, 96px);
+      --horizontal-padding-right: clamp(48px, 8vw, 120px);
+      --horizontal-gap: clamp(18px, 2.6vw, 28px);
+      --horizontal-icon: clamp(18px, 4.6vw, 30px);
+      --vertical-gap: clamp(12px, 4vh, 20px);
       --fade-width: 20%;
-      --icon-size-small: clamp(30px, 6vw, 48px);
-      --vertical-first-gap: calc(var(--icon-size-small) * 1.25);
+      --icon-size-small: clamp(16px, 3.8vw, 26px);
+      --visible-columns: 8;
+      --focus-column-index: 2;
+      --horizontal-top: calc(var(--row-history-height) * 2);
+      --year-slot-width: calc(
+        (
+          100vw - var(--horizontal-padding) - var(--horizontal-padding-right) -
+          var(--horizontal-gap) * (var(--visible-columns) - 1)
+        ) / var(--visible-columns)
+      );
+      --focus-offset-width: calc(
+        (var(--year-slot-width) + var(--horizontal-gap)) * var(--focus-column-index)
+      );
+      --horizontal-trailing-space: calc((var(--year-slot-width) + var(--horizontal-gap)) * 3);
     }
 
     *, *::before, *::after {
@@ -64,50 +108,55 @@
 
     .xmb-vertical {
       position: absolute;
-      left: var(--horizontal-padding);
-      right: calc(var(--horizontal-padding) + var(--horizontal-gap));
-      bottom: calc(var(--horizontal-band-height) - clamp(36px, 9vh, 84px) - var(--vertical-first-gap));
+      left: calc(var(--horizontal-padding) + var(--focus-offset-width));
+      right: clamp(40px, 22vw, 420px);
+      top: 0;
+      bottom: 0;
       display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      z-index: 1;
-    }
-
-    .xmb-vertical__viewport {
-      width: min(420px, 42vw);
-      max-width: 480px;
-      height: clamp(180px, 28vh, 260px);
-      overflow: hidden;
-      position: relative;
-      pointer-events: auto;
-    }
-
-    .xmb-vertical__list {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--vertical-gap);
-      transform: translateY(0);
-      transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
-      padding-left: clamp(4px, 2vw, 16px);
-      padding-top: var(--vertical-first-gap);
-    }
-
-    .xmb-entry {
-      position: relative;
-      display: inline-flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      gap: clamp(10px, 2vh, 18px);
-      min-width: clamp(140px, 32vw, 180px);
-      max-width: clamp(160px, 36vw, 220px);
-      padding: clamp(10px, 2vh, 16px) 0;
+      z-index: 2;
+    }
+
+    .xmb-vertical__viewport {
+      width: min(420px, 36vw);
+      max-width: 420px;
+      height: 100%;
+      overflow: visible;
+      position: relative;
+    }
+
+    .xmb-vertical__list {
+      position: relative;
+      width: 100%;
+      min-height: calc(
+        var(--row-history-height) * 2 + var(--horizontal-band-height) +
+        var(--row-spacer-height) + var(--entry-row-height) * 2 + var(--entry-gap)
+      );
+      padding-left: clamp(2px, 1vw, 12px);
+      padding-right: clamp(12px, 2vw, 24px);
+      padding-bottom: clamp(36px, 8vh, 64px);
+    }
+
+    .xmb-entry {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      gap: clamp(10px, 2vw, 18px);
+      min-width: clamp(200px, 32vw, 260px);
+      max-width: clamp(260px, 44vw, 340px);
+      padding: clamp(10px, 2vh, 14px) clamp(10px, 2vw, 18px);
       color: var(--text-primary);
-      text-align: center;
-      opacity: 0.55;
-      transform: scale(0.92);
-      transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
+      text-align: left;
+      height: var(--entry-row-height);
+      transform: translateY(var(--entry-offset, 0px));
+      transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1),
         opacity 0.35s ease;
       pointer-events: auto;
     }
@@ -115,14 +164,15 @@
     .xmb-entry__icon {
       width: var(--icon-size-small);
       height: var(--icon-size-small);
-      border-radius: 24px;
+      border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: calc(var(--icon-size-small) * 0.66);
+      font-size: calc(var(--icon-size-small) * 0.62);
       line-height: 1;
-      background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.55), rgba(56, 189, 248, 0.1) 65%, rgba(15, 23, 42, 0));
-      box-shadow: 0 18px 46px rgba(2, 6, 23, 0.55);
+      background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.55), rgba(56, 189, 248, 0.08) 65%, rgba(15, 23, 42, 0));
+      box-shadow: 0 16px 36px rgba(2, 6, 23, 0.55);
+      flex-shrink: 0;
     }
 
     .xmb-entry__copy {
@@ -130,8 +180,10 @@
       flex-direction: column;
       gap: clamp(4px, 1vh, 8px);
       text-transform: uppercase;
-      font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+      font-size: clamp(0.75rem, 1.6vw, 0.9rem);
       letter-spacing: 0.08em;
+      align-items: flex-start;
+      text-align: left;
     }
 
     .xmb-entry__title {
@@ -142,13 +194,52 @@
 
     .xmb-entry__subtitle {
       color: var(--text-muted);
-      font-size: clamp(0.65rem, 1.6vw, 0.85rem);
+      font-size: clamp(0.62rem, 1.4vw, 0.82rem);
       letter-spacing: 0.06em;
     }
 
     .xmb-entry.is-active {
       opacity: 1;
-      transform: scale(1.08);
+    }
+
+    .xmb-entry.is-active .xmb-entry__title {
+      animation: xmbTitlePulse 1.4s ease-in-out infinite alternate;
+    }
+
+    .xmb-entry.is-active .xmb-entry__icon {
+      opacity: 1;
+    }
+
+    .xmb-entry.is-before {
+      opacity: 0.88;
+    }
+
+    .xmb-entry.is-history-slot-1,
+    .xmb-entry.is-history-slot-2 {
+      pointer-events: auto;
+    }
+
+    .xmb-entry.is-history-slot-1 {
+      opacity: 0.88;
+    }
+
+    .xmb-entry.is-history-slot-2 {
+      opacity: 0.8;
+    }
+
+    .xmb-entry.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .xmb-entry:not(.is-active):not(.is-history-slot-1):not(.is-history-slot-2) .xmb-entry__icon {
+      opacity: 0.6;
+    }
+
+    .xmb-entry:not(.is-active) .xmb-entry__title,
+    .xmb-entry:not(.is-active) .xmb-entry__subtitle {
+      opacity: 0.75;
     }
 
     .xmb-entry:focus-visible {
@@ -160,42 +251,63 @@
       position: absolute;
       left: 0;
       right: 0;
-      bottom: var(--horizontal-offset);
+      top: var(--horizontal-top);
+      bottom: auto;
       height: var(--horizontal-band-height);
       display: flex;
       align-items: flex-end;
-      padding-bottom: clamp(24px, 6vh, 40px);
+      padding-bottom: clamp(20px, 5vh, 32px);
       background: transparent;
-      z-index: 3;
+      z-index: 4;
     }
 
     .xmb-horizontal__viewport {
       flex: 1;
       overflow: hidden;
       padding-left: var(--horizontal-padding);
-      padding-right: clamp(32px, 6vw, 64px);
+      padding-right: var(--horizontal-padding-right);
       position: relative;
     }
 
-    .xmb-horizontal__track {
+    .xmb-entry:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .xmb-horizontal {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) var(--axis-column-width) minmax(0, 1fr);
+      column-gap: var(--entry-gap);
+      align-items: center;
+      height: var(--timeline-row-height);
+      top: calc(var(--entry-row-index, 0) * var(--timeline-row-height));
+      z-index: 2;
+      --connector-length: calc(var(--entry-gap) + var(--axis-column-width) / 2);
+    }
+
+    .timeline-entry__column {
       display: flex;
       align-items: flex-end;
       gap: var(--horizontal-gap);
       transform: translateX(0);
       transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
       will-change: transform;
-      padding-right: clamp(280px, 40vw, 420px);
+      padding-right: var(--horizontal-trailing-space);
     }
 
     .xmb-year {
       position: relative;
       display: inline-flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
       justify-content: flex-start;
-      gap: clamp(12px, 3vh, 20px);
-      min-width: clamp(180px, 26vw, 260px);
-      padding: clamp(8px, 2vh, 12px) 0;
+      gap: clamp(12px, 1.8vw, 18px);
+      min-width: var(--year-slot-width);
+      flex: 0 0 var(--year-slot-width);
+      padding: clamp(6px, 1.4vh, 10px) 0;
       background: transparent;
       border: none;
       color: var(--text-primary);
@@ -203,45 +315,42 @@
       transform: translateY(0) scale(1);
       transition: transform 0.4s cubic-bezier(0.33, 1, 0.68, 1),
         color 0.35s ease;
+      opacity: 0.9;
     }
 
     .xmb-year__icon {
       width: var(--horizontal-icon);
       height: var(--horizontal-icon);
-      border-radius: 28px;
+      border-radius: 50%;
       display: inline-flex;
+      flex-direction: row;
       align-items: center;
       justify-content: center;
       font-size: calc(var(--horizontal-icon) * 0.68);
       background: radial-gradient(circle at 35% 35%, rgba(56, 189, 248, 0.65), rgba(56, 189, 248, 0.08) 70%, rgba(15, 23, 42, 0));
-      box-shadow: 0 26px 52px rgba(2, 6, 23, 0.6);
+      box-shadow: 0 20px 42px rgba(2, 6, 23, 0.6);
     }
 
-    .xmb-year__copy {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: clamp(4px, 1vh, 10px);
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
+    .xmb-year:not(.is-active) .xmb-year__icon {
+      opacity: 0.9;
     }
 
-    .xmb-year__title {
+    .xmb-year.is-active .xmb-year__icon {
+      opacity: 1;
+    }
+
+    .xmb-year__label {
       font-weight: 700;
-      font-size: clamp(0.95rem, 2.8vw, 1.35rem);
-      color: var(--text-primary);
-    }
-
-    .xmb-year__subtitle {
-      font-size: clamp(0.7rem, 2vw, 0.95rem);
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
+      font-size: clamp(0.85rem, 1.6vw, 1.05rem);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .xmb-year.is-active {
-      transform: translateY(-14px) scale(1.16);
+      transform: translateY(-12px) scale(1.12);
       color: #ffffff;
+      opacity: 1;
     }
 
     .xmb-year:focus-visible {
@@ -258,6 +367,14 @@
       background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 90%);
       pointer-events: none;
       z-index: 4;
+    }
+
+    .xmb-year-placeholder {
+      flex: 0 0 var(--year-slot-width);
+      min-width: var(--year-slot-width);
+      height: var(--horizontal-icon);
+      pointer-events: none;
+      opacity: 0;
     }
 
     .xmb-loading {
@@ -278,41 +395,46 @@
       display: none;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
       :root {
-        --horizontal-band-height: clamp(220px, 42vh, 320px);
-        --horizontal-padding: clamp(28px, 8vw, 72px);
-        --horizontal-gap: clamp(28px, 10vw, 48px);
-        --horizontal-icon: clamp(36px, 10.5vw, 54px);
-        --vertical-gap: clamp(14px, 4vh, 24px);
-        --vertical-icon: clamp(27px, 7.5vw, 43px);
+        --axis-column-width: 120px;
+        --entry-gap: 24px;
+        --timeline-row-height: 176px;
       }
-
-      .xmb-vertical__viewport {
-        width: min(420px, 80vw);
-      }
-
-      .xmb-year {
-        min-width: clamp(160px, 44vw, 220px);
+      100% {
+        text-shadow: 0 0 12px rgba(56, 189, 248, 0.9);
       }
     }
 
-    @media (max-width: 640px) {
-      html, body {
-        overflow: hidden;
+    @media (max-width: 900px) {
+      :root {
+        --axis-column-width: 100px;
+        --entry-gap: 18px;
+        --bubble-size: 54px;
+        --timeline-row-height: 168px;
       }
 
+      .timeline {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+      
+      .timeline-entry {
+        column-gap: 14px;
+      }
+    }
+
       .xmb-vertical {
-        left: clamp(20px, 8vw, 32px);
-        right: clamp(20px, 12vw, 40px);
+        left: clamp(24px, 10vw, 40px);
+        right: clamp(20px, 18vw, 60px);
       }
 
       .xmb-vertical__viewport {
         width: 100%;
-        height: clamp(220px, 44vh, 320px);
+        height: 100%;
       }
 
-      .xmb-year__title {
+      .xmb-year__label {
         font-size: clamp(0.95rem, 4vw, 1.2rem);
       }
     }
