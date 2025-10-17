@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Great House Farm Timeline</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%232563eb%22/%3E%3Ctext%20x%3D%2232%22%20y%3D%2242%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2232%22%20fill%3D%22%23ffffff%22%3EGH%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="tailwind.css">
   <style>
     :root {
@@ -418,7 +419,7 @@
         padding-left: 12px;
         padding-right: 12px;
       }
-      
+
       .timeline-entry {
         column-gap: 14px;
       }
@@ -436,6 +437,288 @@
 
       .xmb-year__label {
         font-size: clamp(0.95rem, 4vw, 1.2rem);
+      }
+    }
+
+    /* Layout overrides to support the static deployment */
+    html,
+    body {
+      overflow: auto;
+    }
+
+    .xmb-stage {
+      overflow: visible;
+      display: flex;
+      justify-content: center;
+      padding: clamp(48px, 8vw, 96px) clamp(24px, 6vw, 72px)
+        clamp(72px, 10vw, 120px);
+    }
+
+    .xmb-vertical {
+      position: relative;
+      left: auto;
+      right: auto;
+      top: auto;
+      bottom: auto;
+      width: 100%;
+      max-width: 1120px;
+    }
+
+    .xmb-vertical__viewport {
+      width: 100%;
+      max-width: none;
+      height: auto;
+      overflow: visible;
+    }
+
+    .xmb-vertical__list {
+      position: relative;
+      min-height: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .xmb-entry {
+      position: relative;
+      min-width: 100%;
+      max-width: none;
+      height: auto;
+      transform: none !important;
+      background: var(--surface);
+      border-radius: 24px;
+      border: 1px solid var(--surface-border);
+      box-shadow: var(--shadow-soft);
+      padding: clamp(1rem, 2.4vw, 1.6rem);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: clamp(0.9rem, 2vw, 1.4rem);
+      transition: box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .xmb-entry[data-side='buckler'] {
+      background: var(--buckler-surface);
+      border-left: 6px solid var(--buckler-border);
+    }
+
+    .xmb-entry[data-side='bp'] {
+      background: var(--bp-surface);
+      border-left: 6px solid var(--bp-border);
+    }
+
+    .xmb-entry[data-side='shared'],
+    .xmb-entry[data-side='both'],
+    .xmb-entry[data-side='either'] {
+      background: var(--shared-surface);
+      border-left: 6px solid var(--shared-border);
+    }
+
+    .xmb-entry.is-active {
+      box-shadow: var(--shadow-strong);
+    }
+
+    .xmb-entry__icon {
+      width: clamp(3rem, 6vw, 3.75rem);
+      height: clamp(3rem, 6vw, 3.75rem);
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      background: rgba(15, 23, 42, 0.12);
+      box-shadow: none;
+    }
+
+    .xmb-entry__copy {
+      text-transform: none;
+      letter-spacing: 0;
+      gap: clamp(0.35rem, 1.2vw, 0.75rem);
+    }
+
+    .xmb-entry__title {
+      font-size: clamp(1.05rem, 2.4vw, 1.4rem);
+      letter-spacing: 0;
+    }
+
+    .xmb-entry__subtitle {
+      font-size: clamp(0.85rem, 1.8vw, 1rem);
+      color: var(--text-muted);
+      letter-spacing: 0;
+    }
+
+    .xmb-entry__body {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(0.65rem, 1.5vw, 0.9rem);
+      color: var(--text-soft);
+      font-size: clamp(0.85rem, 1.8vw, 1rem);
+      line-height: 1.6;
+    }
+
+    .xmb-entry__body ul {
+      margin: 0;
+      padding-left: 1.1em;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .xmb-entry__body li strong {
+      display: block;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .xmb-entry details {
+      background: rgba(15, 23, 42, 0.04);
+      border-radius: 16px;
+      padding: clamp(0.65rem, 1.4vw, 0.9rem)
+        clamp(0.75rem, 1.8vw, 1.1rem);
+    }
+
+    .xmb-entry summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--heading-color);
+      list-style: none;
+    }
+
+    .xmb-entry summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .xmb-entry summary::before {
+      content: '▸';
+      display: inline-block;
+      margin-right: 0.5rem;
+      transition: transform 0.2s ease;
+    }
+
+    .xmb-entry details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .xmb-horizontal {
+      position: sticky;
+      top: 0;
+      padding: clamp(1.1rem, 3vw, 1.8rem) clamp(1.5rem, 5vw, 5rem);
+      margin: 0 auto;
+      backdrop-filter: blur(12px);
+      box-shadow: inset 0 -1px 0 rgba(15, 23, 42, 0.08);
+      z-index: 10;
+    }
+
+    .xmb-horizontal__viewport {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 0;
+      scrollbar-width: thin;
+    }
+
+    .xmb-horizontal__track {
+      display: inline-flex;
+      gap: clamp(0.75rem, 1.5vw, 1.1rem);
+      padding-bottom: 0.25rem;
+    }
+
+    .xmb-year {
+      min-width: auto;
+      flex: none;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      gap: 0.6rem;
+      transform: none;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      transition: background 0.3s ease, color 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .xmb-year__icon {
+      width: 2.2rem;
+      height: 2.2rem;
+      font-size: 1.1rem;
+      background: rgba(59, 130, 246, 0.18);
+      box-shadow: none;
+    }
+
+    .xmb-year__label {
+      white-space: nowrap;
+      font-size: 0.95rem;
+    }
+
+    .xmb-year__subtitle {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+
+    .xmb-year.is-active {
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+      color: #ffffff;
+    }
+
+    .xmb-year:focus-visible {
+      outline-offset: 3px;
+    }
+
+    .xmb-horizontal__fade {
+      display: none;
+    }
+
+    .xmb-loading {
+      top: 1rem;
+      right: 1rem;
+    }
+
+    .xmb-century-header {
+      background: var(--surface-muted);
+      border-left: 6px solid var(--accent-primary);
+      border-radius: 20px;
+      padding: clamp(1rem, 2vw, 1.4rem) clamp(1.2rem, 3vw, 1.8rem);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .xmb-century-header__title {
+      margin: 0;
+      font-size: clamp(1.25rem, 3vw, 1.6rem);
+      font-weight: 700;
+      color: var(--heading-color);
+    }
+
+    .xmb-century-header__range {
+      margin: 0;
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    @media (max-width: 768px) {
+      .xmb-stage {
+        padding: clamp(36px, 10vw, 56px) clamp(18px, 5vw, 32px)
+          clamp(80px, 12vw, 120px);
+      }
+
+      .xmb-horizontal {
+        padding-left: clamp(1rem, 6vw, 2rem);
+        padding-right: clamp(1rem, 6vw, 2rem);
+      }
+
+      .xmb-entry {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .xmb-entry__icon {
+        justify-self: flex-start;
       }
     }
   </style>
