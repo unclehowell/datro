@@ -21,8 +21,33 @@
   const entryContextList = document.getElementById('entry-context-list');
   const entryEvidence = document.getElementById('entry-evidence');
   const entryEvidenceList = document.getElementById('entry-evidence-list');
+  const backButton = document.querySelector('.detail-back-button');
 
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+  function enhanceBackButton() {
+    if (!backButton) {
+      return;
+    }
+    backButton.setAttribute('aria-label', 'Back to timeline');
+
+    let icon = backButton.querySelector('.detail-back-button__icon');
+    if (!icon) {
+      icon = document.createElement('span');
+      icon.className = 'detail-back-button__icon';
+      icon.setAttribute('aria-hidden', 'true');
+      icon.textContent = '◀';
+      backButton.insertBefore(icon, backButton.firstChild);
+    }
+
+    let srText = backButton.querySelector('.sr-only');
+    if (!srText) {
+      srText = document.createElement('span');
+      srText.className = 'sr-only';
+      srText.textContent = 'Back to timeline';
+      backButton.appendChild(srText);
+    }
+  }
 
   function setTheme(theme, persist = true) {
     const normalized = theme === 'dark' ? 'dark' : 'light';
@@ -56,6 +81,8 @@
   } else {
     setTheme(prefersDark.matches ? 'dark' : 'light', false);
   }
+
+  enhanceBackButton();
 
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
