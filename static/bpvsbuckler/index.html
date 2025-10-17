@@ -269,13 +269,12 @@
       position: relative;
     }
 
-    .timeline-century__tick--century .timeline-century__tick-mark::after {
-      width: 52px;
-      height: 3px;
-      opacity: 0.95;
+    .xmb-entry:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
     }
 
-    .timeline-entry {
+    .xmb-horizontal {
       position: absolute;
       left: 0;
       width: 100%;
@@ -324,6 +323,7 @@
       height: var(--horizontal-icon);
       border-radius: 50%;
       display: inline-flex;
+      flex-direction: row;
       align-items: center;
       justify-content: center;
       font-size: calc(var(--horizontal-icon) * 0.68);
@@ -432,6 +432,7 @@
         width: 100%;
         height: 100%;
       }
+    }
 
       .xmb-year__label {
         font-size: clamp(0.95rem, 4vw, 1.2rem);

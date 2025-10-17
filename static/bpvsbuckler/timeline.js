@@ -71,30 +71,7 @@
     return limitWords(event.year, 4);
   }
 
-  function buildCenturyScale(container, bounds) {
-    if (!container) {
-      return;
-    }
-    const scale = document.createElement('div');
-    scale.className = 'timeline-century__scale';
-
-    const ticks = document.createElement('div');
-    ticks.className = 'timeline-century__ticks';
-    scale.appendChild(ticks);
-
-    const { startYear, endYear, span } = bounds;
-    for (let year = startYear; year <= endYear; year += 1) {
-      const tick = document.createElement('div');
-      tick.className = 'timeline-century__tick timeline-century__tick--year';
-      if (year % 5 === 0) {
-        tick.classList.add('timeline-century__tick--quin');
-      }
-      if (year % 10 === 0) {
-        tick.classList.add('timeline-century__tick--decade');
-      }
-      if (year % 100 === 0) {
-        tick.classList.add('timeline-century__tick--century');
-      }
+    const groups = new Map();
 
     data.centuries.forEach((century, centuryIndex) => {
       const events = Array.isArray(century?.events) ? century.events : [];
@@ -233,12 +210,9 @@
 
   let layoutFrame = null;
 
-  function updateConnectorLengths(section) {
-    if (!section || section.classList.contains('timeline-century--collapsed')) {
-      return;
-    }
-    const entries = section.querySelector('.timeline-century__entries');
-    if (!entries || entries.hidden) {
+  function renderEntryList(group) {
+    clearEntryList();
+    if (!group || !group.events.length) {
       return;
     }
     const scaleElement = entries.querySelector('.timeline-century__scale');
