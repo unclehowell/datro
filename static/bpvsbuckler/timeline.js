@@ -25,7 +25,6 @@
     spacerHeight: 0,
     entryHeight: 0,
     entryGap: 0,
-    baseOffset: 0,
   };
 
   function readCssNumber(variableName, fallback = 0) {
@@ -40,9 +39,6 @@
     layoutMetrics.spacerHeight = readCssNumber('--row-spacer-height', 24);
     layoutMetrics.entryHeight = readCssNumber('--entry-row-height', layoutMetrics.historyHeight);
     layoutMetrics.entryGap = readCssNumber('--entry-gap', 16);
-    const fallbackBase =
-      layoutMetrics.historyHeight * 2 + layoutMetrics.horizontalHeight + layoutMetrics.spacerHeight;
-    layoutMetrics.baseOffset = readCssNumber('--vertical-base-offset', fallbackBase);
   }
 
   function limitWords(value, maxWords) {
@@ -74,11 +70,6 @@
     }
     return limitWords(event.year, 4);
   }
-
-  function buildYearGroups(data) {
-    if (!Array.isArray(data?.centuries)) {
-      return [];
-    }
 
     const groups = new Map();
 
@@ -149,10 +140,16 @@
     }
   }
 
-  function showLoading(message) {
-    if (loadingBanner) {
-      loadingBanner.textContent = message;
-      loadingBanner.classList.remove('is-hidden');
+  function buildEvent(event, century, bounds) {
+    const position = choosePosition(event);
+    const entry = document.createElement('div');
+    entry.className = 'timeline-entry';
+    entry.dataset.position = position;
+    entry.dataset.eventId = event.id;
+
+    const eventYear = getEventYearValue(event, bounds);
+    if (Number.isFinite(eventYear)) {
+      entry.dataset.yearValue = String(eventYear);
     }
   }
 
@@ -165,9 +162,7 @@
 
   function updateFocusOffset() {
     const firstButton = yearButtons[0];
-    const fallback = readCssNumber('--focus-offset-width', 0);
-    focusColumnOffset = firstButton ? firstButton.offsetLeft : fallback;
-    rootElement.style.setProperty('--computed-focus-offset', `${focusColumnOffset}px`);
+    focusColumnOffset = firstButton ? firstButton.offsetLeft : 0;
   }
 
   function alignYearTrack() {
@@ -204,66 +199,16 @@
 
     refreshLayoutMetrics();
 
-    const baseTop = layoutMetrics.baseOffset;
+    const baseTop = layoutMetrics.historyHeight * 2 + layoutMetrics.horizontalHeight + layoutMetrics.spacerHeight;
     const step = layoutMetrics.entryHeight + layoutMetrics.entryGap;
     const minFutureItems = 2;
 
-    entryItems.forEach((item, index) => {
-      item.classList.remove('is-history-slot-1', 'is-history-slot-2', 'is-hidden');
+  const rowLayout = {
+    fallbackRowHeight: 184,
+    padding: 112,
+  };
 
-      let offset;
-
-      if (index === activeEntryIndex) {
-        offset = baseTop;
-      } else if (index === activeEntryIndex + 1) {
-        offset = baseTop + step;
-      } else if (index > activeEntryIndex + 1) {
-        const diff = index - (activeEntryIndex + 1);
-        offset = baseTop + step + diff * step;
-      } else if (index === activeEntryIndex - 1) {
-        offset = layoutMetrics.historyHeight;
-        item.classList.add('is-history-slot-1');
-      } else if (index === activeEntryIndex - 2) {
-        offset = 0;
-        item.classList.add('is-history-slot-2');
-      } else {
-        item.classList.add('is-hidden');
-        item.style.removeProperty('--entry-offset');
-        return;
-      }
-
-      item.style.setProperty('--entry-offset', `${offset}px`);
-    });
-
-    const visibleFutureCount = Math.max(minFutureItems, entryItems.length - activeEntryIndex);
-    const totalHeight = baseTop + visibleFutureCount * step + layoutMetrics.entryHeight;
-    entryList.style.minHeight = `${totalHeight}px`;
-  }
-
-  function setActiveEntry(index, { focus = false } = {}) {
-    if (!entryItems.length) {
-      entryList.style.minHeight = '';
-      return;
-    }
-
-    const clamped = Math.max(0, Math.min(entryItems.length - 1, index));
-    activeEntryIndex = clamped;
-
-    entryItems.forEach((item, itemIndex) => {
-      const isActive = itemIndex === activeEntryIndex;
-      const isBefore = itemIndex < activeEntryIndex;
-      item.classList.toggle('is-active', isActive);
-      item.classList.toggle('is-before', isBefore);
-      item.tabIndex = isActive ? 0 : -1;
-      if (isActive && focus) {
-        requestAnimationFrame(() => {
-          item.focus({ preventScroll: true });
-        });
-      }
-    });
-
-    applyEntryPositions();
-  }
+  let layoutFrame = null;
 
   function renderEntryList(group) {
     clearEntryList();
@@ -300,20 +245,47 @@
         copy.appendChild(subtitle);
       }
 
-      link.appendChild(copy);
+  function applyRowLayout() {
+    const sections = Array.from(timelineContainer.querySelectorAll('.timeline-century'));
 
-      link.addEventListener('focus', () => {
-        const index = entryItems.indexOf(link);
-        if (index >= 0 && index !== activeEntryIndex) {
-          setActiveEntry(index, { focus: false });
-        }
+    sections.forEach(section => {
+      if (section.classList.contains('timeline-century--collapsed')) {
+        return;
+      }
+
+      const entries = section.querySelector('.timeline-century__entries');
+      if (!entries || entries.hidden) {
+        return;
+      }
+
+      const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
+      entryNodes.forEach((entry, index) => {
+        entry.style.setProperty('--entry-row-index', index);
       });
 
-      entryList.appendChild(link);
-      entryItems.push(link);
+      const computed = window.getComputedStyle(entries);
+      const baseMinHeight = parseFloat(computed.minHeight) || 0;
+      const rowHeightValue = parseFloat(computed.getPropertyValue('--timeline-row-height')) || rowLayout.fallbackRowHeight;
+      const requiredHeight = Math.max(baseMinHeight, entryNodes.length * rowHeightValue + rowLayout.padding);
+      if (requiredHeight > 0) {
+        entries.style.minHeight = `${Math.ceil(requiredHeight)}px`;
+      }
     });
 
-    setActiveEntry(0);
+    requestAnimationFrame(() => {
+      sections.forEach(section => {
+        updateConnectorLengths(section);
+      });
+    });
+
+  function scheduleLayout() {
+    if (layoutFrame) {
+      cancelAnimationFrame(layoutFrame);
+    }
+    layoutFrame = requestAnimationFrame(() => {
+      layoutFrame = null;
+      applyRowLayout();
+    });
   }
 
   function setActiveYear(index, { focusYear = false } = {}) {
@@ -360,8 +332,7 @@
       button.dataset.yearKey = group.key;
       button.setAttribute('role', 'option');
       button.setAttribute('aria-selected', 'false');
-      const yearLabel = group.label || `Year ${index + 1}`;
-      button.setAttribute('aria-label', yearLabel);
+      button.setAttribute('aria-label', group.label);
       button.tabIndex = index === 0 ? 0 : -1;
 
       const icon = document.createElement('span');
@@ -370,8 +341,8 @@
       button.appendChild(icon);
 
       const label = document.createElement('span');
-      label.className = 'xmb-year__year';
-      label.textContent = yearLabel;
+      label.className = 'xmb-year__label';
+      label.textContent = limitWords(group.yearLabel, 2) || `Year ${index + 1}`;
       button.appendChild(label);
 
       button.addEventListener('click', () => {

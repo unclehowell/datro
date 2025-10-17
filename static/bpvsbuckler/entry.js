@@ -21,32 +21,26 @@
   const entryContextList = document.getElementById('entry-context-list');
   const entryEvidence = document.getElementById('entry-evidence');
   const entryEvidenceList = document.getElementById('entry-evidence-list');
-  const backButton = document.querySelector('.detail-back-button');
+  const backLink = document.querySelector('.detail-back-link');
 
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
-  function enhanceBackButton() {
-    if (!backButton) {
+  function enhanceBackLink() {
+    if (!backLink) {
       return;
     }
-    backButton.setAttribute('aria-label', 'Back to timeline');
+    backLink.setAttribute('aria-label', 'Back to timeline');
+    backLink.innerHTML = '';
 
-    let icon = backButton.querySelector('.detail-back-button__icon');
-    if (!icon) {
-      icon = document.createElement('span');
-      icon.className = 'detail-back-button__icon';
-      icon.setAttribute('aria-hidden', 'true');
-      icon.textContent = '◀';
-      backButton.insertBefore(icon, backButton.firstChild);
-    }
+    const icon = document.createElement('span');
+    icon.setAttribute('aria-hidden', 'true');
+    icon.textContent = '◀';
+    backLink.appendChild(icon);
 
-    let srText = backButton.querySelector('.sr-only');
-    if (!srText) {
-      srText = document.createElement('span');
-      srText.className = 'sr-only';
-      srText.textContent = 'Back to timeline';
-      backButton.appendChild(srText);
-    }
+    const srText = document.createElement('span');
+    srText.className = 'sr-only';
+    srText.textContent = 'Back to timeline';
+    backLink.appendChild(srText);
   }
 
   function setTheme(theme, persist = true) {
@@ -82,7 +76,7 @@
     setTheme(prefersDark.matches ? 'dark' : 'light', false);
   }
 
-  enhanceBackButton();
+  enhanceBackLink();
 
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
