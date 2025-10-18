@@ -343,6 +343,21 @@ body[data-theme='dark'] .detail-card {
   margin-bottom: 0.5rem;
 }
 
+.detail-evidence-notice {
+  margin-top: 0.75rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 12px;
+  border: 1px dashed var(--surface-border);
+  background: var(--surface);
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
+.detail-evidence-notice a {
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
 .detail-back-link {
   position: fixed;
   top: clamp(18px, 5vw, 32px);
