@@ -1,5 +1,4 @@
 (function () {
-  const rootElement = document.documentElement;
   const yearTrack = document.getElementById('timeline-year-track');
   const yearViewport = document.getElementById('year-bar-viewport');
   const entryViewport = document.getElementById('timeline-entry-viewport');
@@ -10,35 +9,27 @@
     return;
   }
 
-  const LEADING_PLACEHOLDER_COUNT = 2;
-
   let yearGroups = [];
   let yearButtons = [];
-  let entryItems = [];
-  let activeYearIndex = 0;
-  let activeEntryIndex = 0;
+  let entryCards = [];
+  let activeYearIndex = -1;
+  let activeEntryIndex = -1;
   let suppressFocusSync = false;
-  let focusColumnOffset = 0;
-  const layoutMetrics = {
-    historyHeight: 0,
-    horizontalHeight: 0,
-    spacerHeight: 0,
-    entryHeight: 0,
-    entryGap: 0,
-  };
 
-  function readCssNumber(variableName, fallback = 0) {
-    const raw = getComputedStyle(rootElement).getPropertyValue(variableName);
-    const parsed = parseFloat(raw);
-    return Number.isFinite(parsed) ? parsed : fallback;
+  function showLoading(message) {
+    if (!loadingBanner) {
+      return;
+    }
+    if (typeof message === 'string' && message.trim()) {
+      loadingBanner.textContent = message.trim();
+    }
+    loadingBanner.classList.remove('is-hidden');
   }
 
-  function refreshLayoutMetrics() {
-    layoutMetrics.historyHeight = readCssNumber('--row-history-height', 96);
-    layoutMetrics.horizontalHeight = readCssNumber('--horizontal-band-height', layoutMetrics.historyHeight);
-    layoutMetrics.spacerHeight = readCssNumber('--row-spacer-height', 24);
-    layoutMetrics.entryHeight = readCssNumber('--entry-row-height', layoutMetrics.historyHeight);
-    layoutMetrics.entryGap = readCssNumber('--entry-gap', 16);
+  function hideLoading() {
+    if (loadingBanner) {
+      loadingBanner.classList.add('is-hidden');
+    }
   }
 
   function limitWords(value, maxWords) {
@@ -55,7 +46,7 @@
     }
     const primaryEvent = group.events[0].event;
     const subtitleSource = primaryEvent.iconLabel || primaryEvent.title || primaryEvent.year || '';
-    return limitWords(subtitleSource, 4);
+    return limitWords(subtitleSource, 6);
   }
 
   function getEventSubtitle(event) {
@@ -63,13 +54,18 @@
       return '';
     }
     if (event.summary) {
-      return limitWords(event.summary, 4);
+      return limitWords(event.summary, 8);
     }
     if (event.title) {
-      return limitWords(event.title, 4);
+      return limitWords(event.title, 8);
     }
-    return limitWords(event.year, 4);
+    return limitWords(event.year, 8);
   }
+
+  function buildYearGroups(data) {
+    if (!Array.isArray(data?.centuries)) {
+      return [];
+    }
 
     const groups = new Map();
 
@@ -86,15 +82,13 @@
             label,
             key,
             events: [],
-            sortValue: Number.isFinite(event.yearValue) ? event.yearValue : null,
+            sortValue: Number.isFinite(event.yearValue) ? event.yearValue : Number.POSITIVE_INFINITY,
           });
         }
         const group = groups.get(key);
-        const yearValue = Number.isFinite(event.yearValue) ? event.yearValue : null;
-        if (Number.isFinite(yearValue)) {
-          if (!Number.isFinite(group.sortValue) || yearValue < group.sortValue) {
-            group.sortValue = yearValue;
-          }
+        const yearValue = Number.isFinite(event.yearValue) ? event.yearValue : Number.POSITIVE_INFINITY;
+        if (!Number.isFinite(group.sortValue) || yearValue < group.sortValue) {
+          group.sortValue = yearValue;
         }
         group.events.push({
           event,
@@ -107,62 +101,31 @@
 
     const ordered = Array.from(groups.values());
     ordered.sort((a, b) => {
-      const aValue = Number.isFinite(a.sortValue) ? a.sortValue : Number.NEGATIVE_INFINITY;
-      const bValue = Number.isFinite(b.sortValue) ? b.sortValue : Number.NEGATIVE_INFINITY;
+      const aValue = Number.isFinite(a.sortValue) ? a.sortValue : Number.POSITIVE_INFINITY;
+      const bValue = Number.isFinite(b.sortValue) ? b.sortValue : Number.POSITIVE_INFINITY;
       if (aValue !== bValue) {
-        return bValue - aValue;
+        return aValue - bValue;
       }
-      return b.label.localeCompare(a.label, undefined, { numeric: true });
+      return a.label.localeCompare(b.label, undefined, { numeric: true });
     });
 
     ordered.forEach((group, index) => {
       group.events.sort((a, b) => {
-        const aValue = Number.isFinite(a.event.yearValue) ? a.event.yearValue : Number.NEGATIVE_INFINITY;
-        const bValue = Number.isFinite(b.event.yearValue) ? b.event.yearValue : Number.NEGATIVE_INFINITY;
+        const aValue = Number.isFinite(a.event.yearValue) ? a.event.yearValue : Number.POSITIVE_INFINITY;
+        const bValue = Number.isFinite(b.event.yearValue) ? b.event.yearValue : Number.POSITIVE_INFINITY;
         if (aValue !== bValue) {
-          return bValue - aValue;
+          return aValue - bValue;
         }
         return a.eventIndex - b.eventIndex;
       });
       const primaryEventWithIcon = group.events.find(entry => entry.event.icon);
       const primaryEvent = group.events[0]?.event;
       group.icon = primaryEventWithIcon?.event?.icon || '🕰️';
-      group.yearLabel = limitWords(primaryEvent?.year || group.label, 2) || `Year ${index + 1}`;
+      group.yearLabel = limitWords(primaryEvent?.year || group.label, 3) || `Year ${index + 1}`;
       group.subtitle = getYearSubtitle(group);
     });
 
     return ordered;
-  }
-
-  function hideLoading() {
-    if (loadingBanner) {
-      loadingBanner.classList.add('is-hidden');
-    }
-  }
-
-  function buildEvent(event, century, bounds) {
-    const position = choosePosition(event);
-    const entry = document.createElement('div');
-    entry.className = 'timeline-entry';
-    entry.dataset.position = position;
-    entry.dataset.eventId = event.id;
-
-    const eventYear = getEventYearValue(event, bounds);
-    if (Number.isFinite(eventYear)) {
-      entry.dataset.yearValue = String(eventYear);
-    }
-  }
-
-  function clearEntryList() {
-    entryList.innerHTML = '';
-    entryList.style.minHeight = '';
-    entryItems = [];
-    activeEntryIndex = 0;
-  }
-
-  function updateFocusOffset() {
-    const firstButton = yearButtons[0];
-    focusColumnOffset = firstButton ? firstButton.offsetLeft : 0;
   }
 
   function alignYearTrack() {
@@ -172,57 +135,88 @@
       return;
     }
 
-    updateFocusOffset();
-
-    const offset = activeButton.offsetLeft;
     const viewportWidth = yearViewport?.clientWidth || 0;
     const trackWidth = yearTrack.scrollWidth;
-    const desired = focusColumnOffset - offset;
-    const lastButton = yearButtons[yearButtons.length - 1];
-    let minTranslate = Math.min(0, viewportWidth - trackWidth);
-    if (lastButton) {
-      const lastRight = lastButton.offsetLeft + lastButton.offsetWidth;
-      const boundary = viewportWidth - lastRight;
-      minTranslate = Math.min(minTranslate, boundary);
-      minTranslate = Math.min(minTranslate, focusColumnOffset - lastButton.offsetLeft);
-    }
+    const buttonCenter = activeButton.offsetLeft + activeButton.offsetWidth / 2;
+    let translate = viewportWidth / 2 - buttonCenter;
+    const minTranslate = Math.min(0, viewportWidth - trackWidth);
     const maxTranslate = 0;
-    const clamped = Math.max(minTranslate, Math.min(maxTranslate, desired));
-    yearTrack.style.transform = `translateX(${clamped}px)`;
+    if (!Number.isFinite(translate)) {
+      translate = 0;
+    }
+    translate = Math.max(minTranslate, Math.min(maxTranslate, translate));
+    yearTrack.style.transform = `translateX(${translate}px)`;
   }
 
-  function applyEntryPositions() {
-    if (!entryItems.length) {
-      entryList.style.minHeight = '';
+  function alignEntryList() {
+    const activeCard = entryCards[activeEntryIndex];
+    if (!activeCard) {
+      entryList.style.transform = 'translateY(0)';
       return;
     }
 
-    refreshLayoutMetrics();
+    const viewportHeight = entryViewport?.clientHeight || 0;
+    const listHeight = entryList.scrollHeight;
+    const cardCenter = activeCard.offsetTop + activeCard.offsetHeight / 2;
+    let translate = viewportHeight / 2 - cardCenter;
+    const minTranslate = Math.min(0, viewportHeight - listHeight);
+    const maxTranslate = 0;
+    if (!Number.isFinite(translate)) {
+      translate = 0;
+    }
+    translate = Math.max(minTranslate, Math.min(maxTranslate, translate));
+    entryList.style.transform = `translateY(${translate}px)`;
+  }
 
-    const baseTop = layoutMetrics.historyHeight * 2 + layoutMetrics.horizontalHeight + layoutMetrics.spacerHeight;
-    const step = layoutMetrics.entryHeight + layoutMetrics.entryGap;
-    const minFutureItems = 2;
+  function clearEntries() {
+    entryList.innerHTML = '';
+    entryList.style.transform = 'translateY(0)';
+    entryCards = [];
+    activeEntryIndex = -1;
+  }
 
-  const rowLayout = {
-    fallbackRowHeight: 184,
-    padding: 112,
-  };
+  function setActiveEntry(index, { focus = false } = {}) {
+    if (!entryCards.length) {
+      return;
+    }
+    const clamped = Math.max(0, Math.min(entryCards.length - 1, index));
+    activeEntryIndex = clamped;
 
-  let layoutFrame = null;
+    entryCards.forEach((card, cardIndex) => {
+      const isActive = cardIndex === activeEntryIndex;
+      card.classList.toggle('is-active', isActive);
+      card.tabIndex = isActive ? 0 : -1;
+    });
+
+    const activeCard = entryCards[activeEntryIndex];
+    if (focus && activeCard) {
+      requestAnimationFrame(() => {
+        activeCard.focus({ preventScroll: true });
+      });
+    }
+
+    requestAnimationFrame(alignEntryList);
+  }
 
   function renderEntryList(group) {
-    clearEntryList();
+    clearEntries();
     if (!group || !group.events.length) {
       return;
     }
 
-    group.events.forEach(({ event }) => {
+    const fragment = document.createDocumentFragment();
+
+    group.events.forEach(({ event }, index) => {
       const link = document.createElement('a');
       link.className = 'xmb-entry';
       link.href = `entries/${event.id}.html`;
-      link.setAttribute('role', 'menuitem');
+      link.setAttribute('role', 'option');
       link.setAttribute('aria-label', event.title || event.year || 'Timeline entry');
       link.tabIndex = -1;
+
+      if (event.side) {
+        link.dataset.side = event.side;
+      }
 
       const icon = document.createElement('span');
       icon.className = 'xmb-entry__icon';
@@ -234,7 +228,7 @@
 
       const title = document.createElement('span');
       title.className = 'xmb-entry__title';
-      title.textContent = limitWords(event.iconLabel || event.title || event.year || 'Entry', 2);
+      title.textContent = limitWords(event.iconLabel || event.title || event.year || 'Entry', 6);
       copy.appendChild(title);
 
       const subtitleText = getEventSubtitle(event);
@@ -245,47 +239,79 @@
         copy.appendChild(subtitle);
       }
 
-  function applyRowLayout() {
-    const sections = Array.from(timelineContainer.querySelectorAll('.timeline-century'));
+      link.appendChild(copy);
 
-    sections.forEach(section => {
-      if (section.classList.contains('timeline-century--collapsed')) {
-        return;
-      }
-
-      const entries = section.querySelector('.timeline-century__entries');
-      if (!entries || entries.hidden) {
-        return;
-      }
-
-      const entryNodes = Array.from(entries.querySelectorAll('.timeline-entry'));
-      entryNodes.forEach((entry, index) => {
-        entry.style.setProperty('--entry-row-index', index);
+      link.addEventListener('mouseenter', () => {
+        setActiveEntry(index, { focus: false });
       });
 
-      const computed = window.getComputedStyle(entries);
-      const baseMinHeight = parseFloat(computed.minHeight) || 0;
-      const rowHeightValue = parseFloat(computed.getPropertyValue('--timeline-row-height')) || rowLayout.fallbackRowHeight;
-      const requiredHeight = Math.max(baseMinHeight, entryNodes.length * rowHeightValue + rowLayout.padding);
-      if (requiredHeight > 0) {
-        entries.style.minHeight = `${Math.ceil(requiredHeight)}px`;
-      }
-    });
-
-    requestAnimationFrame(() => {
-      sections.forEach(section => {
-        updateConnectorLengths(section);
+      link.addEventListener('focus', () => {
+        if (suppressFocusSync) {
+          return;
+        }
+        setActiveEntry(index, { focus: false });
       });
+
+      fragment.appendChild(link);
     });
 
-  function scheduleLayout() {
-    if (layoutFrame) {
-      cancelAnimationFrame(layoutFrame);
-    }
-    layoutFrame = requestAnimationFrame(() => {
-      layoutFrame = null;
-      applyRowLayout();
+    entryList.appendChild(fragment);
+    entryCards = Array.from(entryList.querySelectorAll('.xmb-entry'));
+    setActiveEntry(0, { focus: false });
+  }
+
+  function renderYearButtons(groups) {
+    yearTrack.innerHTML = '';
+    const fragment = document.createDocumentFragment();
+
+    groups.forEach((group, index) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'xmb-year';
+      button.dataset.yearKey = group.key;
+      button.setAttribute('role', 'option');
+      button.setAttribute('aria-selected', 'false');
+      button.setAttribute('aria-label', group.label);
+      button.tabIndex = -1;
+
+      const icon = document.createElement('span');
+      icon.className = 'xmb-year__icon';
+      icon.textContent = group.icon;
+      button.appendChild(icon);
+
+      const copy = document.createElement('span');
+      copy.className = 'xmb-year__copy';
+
+      const title = document.createElement('span');
+      title.className = 'xmb-year__title';
+      title.textContent = group.yearLabel;
+      copy.appendChild(title);
+
+      if (group.subtitle) {
+        const subtitle = document.createElement('span');
+        subtitle.className = 'xmb-year__subtitle';
+        subtitle.textContent = group.subtitle;
+        copy.appendChild(subtitle);
+      }
+
+      button.appendChild(copy);
+
+      button.addEventListener('click', () => {
+        setActiveYear(index, { focusYear: true });
+      });
+
+      button.addEventListener('focus', () => {
+        if (suppressFocusSync) {
+          return;
+        }
+        setActiveYear(index, { focusYear: false });
+      });
+
+      fragment.appendChild(button);
     });
+
+    yearTrack.appendChild(fragment);
+    yearButtons = Array.from(yearTrack.querySelectorAll('.xmb-year'));
   }
 
   function setActiveYear(index, { focusYear = false } = {}) {
@@ -296,6 +322,7 @@
     if (clamped === activeYearIndex && !focusYear) {
       return;
     }
+
     activeYearIndex = clamped;
     const group = yearGroups[activeYearIndex];
 
@@ -311,56 +338,8 @@
       }
     });
 
-    alignYearTrack();
     renderEntryList(group);
-  }
-
-  function renderYearButtons(groups) {
-    yearTrack.innerHTML = '';
-
-    for (let i = 0; i < LEADING_PLACEHOLDER_COUNT; i += 1) {
-      const spacer = document.createElement('div');
-      spacer.className = 'xmb-year-placeholder';
-      spacer.setAttribute('aria-hidden', 'true');
-      yearTrack.appendChild(spacer);
-    }
-
-    yearButtons = groups.map((group, index) => {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'xmb-year';
-      button.dataset.yearKey = group.key;
-      button.setAttribute('role', 'option');
-      button.setAttribute('aria-selected', 'false');
-      button.setAttribute('aria-label', group.label);
-      button.tabIndex = index === 0 ? 0 : -1;
-
-      const icon = document.createElement('span');
-      icon.className = 'xmb-year__icon';
-      icon.textContent = group.icon;
-      button.appendChild(icon);
-
-      const label = document.createElement('span');
-      label.className = 'xmb-year__label';
-      label.textContent = limitWords(group.yearLabel, 2) || `Year ${index + 1}`;
-      button.appendChild(label);
-
-      button.addEventListener('click', () => {
-        setActiveYear(index, { focusYear: true });
-      });
-
-      button.addEventListener('focus', () => {
-        if (suppressFocusSync) {
-          return;
-        }
-        setActiveYear(index, { focusYear: false });
-      });
-
-      yearTrack.appendChild(button);
-      return button;
-    });
-
-    updateFocusOffset();
+    alignYearTrack();
   }
 
   function handleKeydown(event) {
@@ -393,7 +372,7 @@
         break;
       }
       case 'ArrowDown': {
-        if (!entryItems.length) {
+        if (!entryCards.length) {
           return;
         }
         event.preventDefault();
@@ -405,12 +384,12 @@
         break;
       }
       case 'ArrowUp': {
-        if (!entryItems.length) {
+        if (!entryCards.length) {
           return;
         }
         event.preventDefault();
-        if (document.activeElement && entryItems.includes(document.activeElement)) {
-          if (activeEntryIndex === 0) {
+        if (document.activeElement && entryCards.includes(document.activeElement)) {
+          if (activeEntryIndex <= 0) {
             const activeButton = yearButtons[activeYearIndex];
             if (activeButton) {
               suppressFocusSync = true;
@@ -435,13 +414,16 @@
   }
 
   function handleResize() {
-    updateFocusOffset();
-    alignYearTrack();
-    applyEntryPositions();
+    requestAnimationFrame(() => {
+      alignYearTrack();
+      alignEntryList();
+    });
   }
 
   document.addEventListener('keydown', handleKeydown);
   window.addEventListener('resize', handleResize);
+
+  showLoading('Loading timeline…');
 
   fetch('data/timeline.json')
     .then(response => {
@@ -459,7 +441,6 @@
       renderYearButtons(yearGroups);
       hideLoading();
       requestAnimationFrame(() => {
-        refreshLayoutMetrics();
         setActiveYear(0, { focusYear: true });
       });
     })
