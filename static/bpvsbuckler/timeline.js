@@ -1,5 +1,5 @@
 (function () {
-  const rootElement = document.documentElement;
+  const rootElement = document.body || document.documentElement;
   const yearTrack = document.getElementById('timeline-year-track');
   const yearViewport = document.getElementById('year-bar-viewport');
   const entryViewport = document.getElementById('timeline-entry-viewport');

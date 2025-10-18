@@ -274,18 +274,16 @@
       outline-offset: 4px;
     }
 
-    .xmb-horizontal {
-      position: absolute;
-      left: 0;
-      width: 100%;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) var(--axis-column-width) minmax(0, 1fr);
-      column-gap: var(--entry-gap);
+    .xmb-horizontal__track {
+      position: relative;
+      display: flex;
+      flex-direction: row;
       align-items: center;
-      height: var(--timeline-row-height);
-      top: calc(var(--entry-row-index, 0) * var(--timeline-row-height));
-      z-index: 2;
-      --connector-length: calc(var(--entry-gap) + var(--axis-column-width) / 2);
+      gap: var(--horizontal-gap);
+      transform: translateX(0);
+      transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+      will-change: transform;
+      padding-right: var(--horizontal-trailing-space);
     }
 
     .timeline-entry__column {
@@ -439,7 +437,7 @@
     }
   </style>
 </head>
-<body>
+<body data-theme="dark">
   <div class="xmb-shell">
     <main class="xmb-stage">
       <section class="xmb-vertical" aria-label="Timeline entries">
