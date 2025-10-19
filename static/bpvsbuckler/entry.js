@@ -1,6 +1,20 @@
 (function () {
   const body = document.body;
-  const entryId = body.dataset.entryId;
+
+  function deriveEntryId() {
+    const datasetValue = body?.dataset?.entryId;
+    if (datasetValue) {
+      return datasetValue;
+    }
+    const path = window.location.pathname || '';
+    const match = path.match(/([^/]+?)(?:\.html)?$/);
+    if (match && match[1]) {
+      return decodeURIComponent(match[1]);
+    }
+    return null;
+  }
+
+  const entryId = deriveEntryId();
   const storageKey = 'ghf-theme';
 
   const themeToggle = document.getElementById('theme-toggle');
@@ -423,9 +437,25 @@
       document.title = pageTitle;
     } else if (entrySummary) {
       entrySummary.textContent = 'We could not find details for this timeline entry.';
+      if (entryMeta) {
+        entryMeta.textContent = '';
+      }
     }
 
     populateCenturies(centuriesData, selectedCenturyValue);
+  }
+
+  if (!entryId) {
+    if (entrySummary) {
+      entrySummary.textContent = 'We could not determine which entry to load.';
+    }
+    if (entryMeta) {
+      entryMeta.textContent = '';
+    }
+    if (centurySelector) {
+      centurySelector.classList.add('hidden');
+    }
+    return;
   }
 
   fetch('../data/timeline.json')
