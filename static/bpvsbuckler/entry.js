@@ -199,6 +199,42 @@
     }
   }
 
+  function isExternalResource(value) {
+    if (!value) {
+      return false;
+    }
+    const trimmed = String(value).trim();
+    if (!trimmed) {
+      return false;
+    }
+    const lower = trimmed.toLowerCase();
+    if (lower.startsWith('data:') || lower.startsWith('blob:')) {
+      return false;
+    }
+
+    try {
+      const parsed = new URL(trimmed, window.location.href);
+      return parsed.origin !== window.location.origin;
+    } catch (error) {
+      return /^(?:https?:)?\/\//i.test(trimmed);
+    }
+  }
+
+  function createExternalNotice(src, title) {
+    const notice = document.createElement('p');
+    notice.className = 'detail-evidence-notice';
+    notice.appendChild(document.createTextNode('External resource: '));
+
+    const link = document.createElement('a');
+    link.href = src;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.textContent = title || src;
+    notice.appendChild(link);
+
+    return notice;
+  }
+
   function renderEvidence(event) {
     if (!entryEvidence || !entryEvidenceList) {
       return;
@@ -233,21 +269,26 @@
       }
 
       if (evidence.embed && evidence.embed.type && evidence.embed.src) {
-        if (evidence.embed.type === 'iframe') {
-          const iframe = document.createElement('iframe');
-          iframe.src = evidence.embed.src;
-          iframe.loading = 'lazy';
-          iframe.title = evidence.embed.title || evidence.title;
-          iframe.style.width = '100%';
-          iframe.style.minHeight = '320px';
-          block.appendChild(iframe);
-        } else if (evidence.embed.type === 'object') {
-          const object = document.createElement('object');
-          object.data = evidence.embed.src;
-          object.type = evidence.embed.mime || 'application/pdf';
-          object.style.width = '100%';
-          object.style.minHeight = '320px';
-          block.appendChild(object);
+        const embedSrc = String(evidence.embed.src).trim();
+        if (embedSrc && !isExternalResource(embedSrc)) {
+          if (evidence.embed.type === 'iframe') {
+            const iframe = document.createElement('iframe');
+            iframe.src = embedSrc;
+            iframe.loading = 'lazy';
+            iframe.title = evidence.embed.title || evidence.title;
+            iframe.style.width = '100%';
+            iframe.style.minHeight = '320px';
+            block.appendChild(iframe);
+          } else if (evidence.embed.type === 'object') {
+            const object = document.createElement('object');
+            object.data = embedSrc;
+            object.type = evidence.embed.mime || 'application/pdf';
+            object.style.width = '100%';
+            object.style.minHeight = '320px';
+            block.appendChild(object);
+          }
+        } else if (embedSrc) {
+          block.appendChild(createExternalNotice(embedSrc, evidence.embed.title || evidence.title));
         }
       }
 
