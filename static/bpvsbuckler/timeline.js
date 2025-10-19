@@ -148,6 +148,27 @@
     yearList.style.transform = `translateY(${translate}px)`;
   }
 
+  function readAnchorRatio() {
+    try {
+      const styles = window.getComputedStyle(document.documentElement);
+      const rawValue = styles.getPropertyValue('--timeline-anchor');
+      if (!rawValue) {
+        return 0.5;
+      }
+      const numeric = parseFloat(rawValue);
+      if (!Number.isFinite(numeric)) {
+        return 0.5;
+      }
+      if (rawValue.includes('%') || numeric > 1) {
+        return Math.min(0.8, Math.max(0.2, numeric / 100));
+      }
+      return Math.min(0.8, Math.max(0.2, numeric));
+    } catch (error) {
+      console.warn('Failed to read timeline anchor ratio', error);
+      return 0.5;
+    }
+  }
+
   function alignEntryTrack() {
     const activeCard = entryCards[activeEntryIndex];
     if (!activeCard) {
@@ -158,15 +179,28 @@
     const viewportWidth = entryViewport?.clientWidth || 0;
     const trackWidth = entryTrack.scrollWidth;
     const cardCenter = activeCard.offsetLeft + activeCard.offsetWidth / 2;
-    let translate = viewportWidth / 2 - cardCenter;
-    const minTranslate = Math.min(0, viewportWidth - trackWidth);
-    const maxTranslate = 0;
+    const anchorRatio = readAnchorRatio();
+    const anchor = viewportWidth * anchorRatio;
+    const firstCard = entryCards[0];
+    const lastCard = entryCards[entryCards.length - 1];
+    const firstCenter = firstCard ? firstCard.offsetLeft + firstCard.offsetWidth / 2 : cardCenter;
+    const lastCenter = lastCard ? lastCard.offsetLeft + lastCard.offsetWidth / 2 : cardCenter;
+    let translate = anchor - cardCenter;
+    const maxCandidate = Number.isFinite(anchor - firstCenter) ? anchor - firstCenter : 0;
+    const limitedMax = firstCard ? Math.min(maxCandidate, firstCard.offsetLeft) : maxCandidate;
+    const maxTranslate = Math.max(limitedMax, 0);
+    const minCandidate = Number.isFinite(anchor - lastCenter) ? anchor - lastCenter : viewportWidth - trackWidth;
+    const minTranslate = Math.max(Math.min(minCandidate, 0), viewportWidth - trackWidth);
     if (!Number.isFinite(translate)) {
       translate = 0;
     }
     translate = Math.max(minTranslate, Math.min(maxTranslate, translate));
     entryTrack.style.transform = `translateX(${translate}px)`;
   }
+
+  window.addEventListener('resize', () => {
+    requestAnimationFrame(alignEntryTrack);
+  });
 
   function clearEntries() {
     entryTrack.innerHTML = '';
