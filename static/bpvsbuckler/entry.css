@@ -397,6 +397,17 @@ body[data-theme='dark'] .detail-back-link {
   color: #0f172a;
 }
 
+.noscript-warning {
+  margin: 2rem auto 0;
+  max-width: 720px;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  background: var(--surface-muted);
+  color: var(--text-muted);
+  text-align: center;
+  border: 1px dashed var(--surface-border);
+}
+
 @media (max-width: 768px) {
   .round-button {
     width: 40px;
