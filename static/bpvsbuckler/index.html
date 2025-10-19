@@ -12,11 +12,12 @@
       --text-primary: #f8fafc;
       --text-muted: rgba(226, 232, 240, 0.6);
       --accent: #38bdf8;
-      --horizontal-band-height: clamp(230px, 36vh, 320px);
-      --horizontal-offset: clamp(110px, 22vh, 200px);
+      --horizontal-band-height: clamp(210px, 34vh, 300px);
       --horizontal-padding: clamp(48px, 9vw, 128px);
-      --horizontal-gap: clamp(40px, 8vw, 80px);
-      --horizontal-icon: clamp(56px, 12vw, 112px);
+      --horizontal-gap: clamp(10px, 2vw, 20px);
+      --horizontal-icon: clamp(48px, 10vw, 80px);
+      --horizontal-safe-zone: clamp(32px, 9vh, 72px);
+      --horizontal-item-width: calc((100% - (7 * var(--horizontal-gap))) / 8);
       --vertical-gap: clamp(22px, 6vh, 36px);
       --vertical-icon: clamp(48px, 10vw, 80px);
       --fade-width: 20%;
@@ -69,6 +70,7 @@
       display: flex;
       align-items: flex-end;
       justify-content: flex-start;
+      padding-bottom: calc(var(--horizontal-safe-zone) + clamp(12px, 3vh, 28px));
       z-index: 1;
     }
 
@@ -158,41 +160,48 @@
       position: absolute;
       left: 0;
       right: 0;
-      bottom: var(--horizontal-offset);
-      height: var(--horizontal-band-height);
+      top: 50%;
+      bottom: auto;
+      transform: translateY(-50%);
+      min-height: var(--horizontal-band-height);
       display: flex;
-      align-items: flex-end;
-      padding-bottom: clamp(24px, 6vh, 40px);
+      align-items: center;
+      padding: var(--horizontal-safe-zone) 0;
       background: transparent;
       z-index: 3;
     }
 
     .xmb-horizontal__viewport {
       flex: 1;
+      height: 100%;
       overflow: hidden;
       padding-left: var(--horizontal-padding);
-      padding-right: clamp(32px, 6vw, 64px);
+      padding-right: clamp(24px, 5vw, 48px);
       position: relative;
+      display: flex;
+      align-items: center;
     }
 
     .xmb-horizontal__track {
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       gap: var(--horizontal-gap);
       transform: translateX(0);
       transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
       will-change: transform;
-      padding-right: clamp(280px, 40vw, 420px);
+      padding-right: 0;
     }
 
     .xmb-year {
       position: relative;
-      display: inline-flex;
+      display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      gap: clamp(12px, 3vh, 20px);
-      min-width: clamp(180px, 26vw, 260px);
+      gap: clamp(12px, 3vh, 18px);
+      flex: 0 0 var(--horizontal-item-width);
+      min-width: var(--horizontal-item-width);
+      max-width: var(--horizontal-item-width);
       padding: clamp(8px, 2vh, 12px) 0;
       background: transparent;
       border: none;
@@ -249,8 +258,8 @@
 
     .xmb-horizontal__fade {
       position: absolute;
-      top: clamp(12px, 3vh, 24px);
-      bottom: clamp(12px, 3vh, 24px);
+      top: 0;
+      bottom: 0;
       right: 0;
       width: var(--fade-width);
       background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 90%);
@@ -278,12 +287,14 @@
 
     @media (max-width: 900px) {
       :root {
-        --horizontal-band-height: clamp(220px, 42vh, 320px);
+        --horizontal-band-height: clamp(200px, 40vh, 280px);
         --horizontal-padding: clamp(28px, 8vw, 72px);
-        --horizontal-gap: clamp(28px, 10vw, 48px);
-        --horizontal-icon: clamp(48px, 14vw, 72px);
+        --horizontal-gap: clamp(8px, 2.4vw, 16px);
+        --horizontal-icon: clamp(44px, 12vw, 66px);
+        --horizontal-safe-zone: clamp(24px, 8vh, 64px);
         --vertical-gap: clamp(14px, 4vh, 24px);
         --vertical-icon: clamp(36px, 10vw, 58px);
+        --horizontal-item-width: calc((100% - (7 * var(--horizontal-gap))) / 8);
       }
 
       .xmb-vertical__viewport {
@@ -291,11 +302,21 @@
       }
 
       .xmb-year {
-        min-width: clamp(160px, 44vw, 220px);
+        min-width: var(--horizontal-item-width);
+        max-width: var(--horizontal-item-width);
       }
     }
 
     @media (max-width: 640px) {
+      :root {
+        --horizontal-band-height: clamp(190px, 44vh, 260px);
+        --horizontal-padding: clamp(16px, 6vw, 28px);
+        --horizontal-gap: clamp(6px, 1.8vw, 12px);
+        --horizontal-icon: clamp(36px, 14vw, 56px);
+        --horizontal-safe-zone: clamp(20px, 9vh, 56px);
+        --horizontal-item-width: calc((100% - (7 * var(--horizontal-gap))) / 8);
+      }
+
       html, body {
         overflow: hidden;
       }

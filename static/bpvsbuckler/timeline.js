@@ -14,6 +14,7 @@
   let entryCards = [];
   let activeYearIndex = -1;
   let activeEntryIndex = -1;
+  let yearTrackOffset = 0;
   let suppressFocusSync = false;
 
   function showLoading(message) {
@@ -131,21 +132,40 @@
   function alignYearTrack() {
     const activeButton = yearButtons[activeYearIndex];
     if (!activeButton) {
+      yearTrackOffset = 0;
       yearTrack.style.transform = 'translateX(0)';
       return;
     }
 
     const viewportWidth = yearViewport?.clientWidth || 0;
     const trackWidth = yearTrack.scrollWidth;
-    const buttonCenter = activeButton.offsetLeft + activeButton.offsetWidth / 2;
-    let translate = viewportWidth / 2 - buttonCenter;
-    const minTranslate = Math.min(0, viewportWidth - trackWidth);
-    const maxTranslate = 0;
-    if (!Number.isFinite(translate)) {
-      translate = 0;
+    if (trackWidth <= viewportWidth) {
+      yearTrackOffset = 0;
+      yearTrack.style.transform = 'translateX(0)';
+      return;
     }
-    translate = Math.max(minTranslate, Math.min(maxTranslate, translate));
-    yearTrack.style.transform = `translateX(${translate}px)`;
+
+    const buttonLeft = activeButton.offsetLeft;
+    const buttonRight = buttonLeft + activeButton.offsetWidth;
+    const visibleLeft = -yearTrackOffset;
+    const visibleRight = visibleLeft + viewportWidth;
+
+    if (buttonLeft < visibleLeft) {
+      yearTrackOffset = -buttonLeft;
+    } else if (buttonRight > visibleRight) {
+      yearTrackOffset = viewportWidth - buttonRight;
+    }
+
+    const minOffset = Math.min(0, viewportWidth - trackWidth);
+    const maxOffset = 0;
+
+    if (!Number.isFinite(yearTrackOffset)) {
+      yearTrackOffset = 0;
+    } else {
+      yearTrackOffset = Math.max(minOffset, Math.min(maxOffset, yearTrackOffset));
+    }
+
+    yearTrack.style.transform = `translateX(${yearTrackOffset}px)`;
   }
 
   function alignEntryList() {
@@ -312,6 +332,8 @@
 
     yearTrack.appendChild(fragment);
     yearButtons = Array.from(yearTrack.querySelectorAll('.xmb-year'));
+    yearTrackOffset = 0;
+    yearTrack.style.transform = 'translateX(0)';
   }
 
   function setActiveYear(index, { focusYear = false } = {}) {
