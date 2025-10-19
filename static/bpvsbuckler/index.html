@@ -338,7 +338,17 @@
 
   <script src="timeline.js"></script>
 <div data-netlify-deploy-id="68f0642b66127200088703cf" data-netlify-site-id="e7130a7c-7fa0-41b7-be06-ed9d819853e6" data-vcs="github" style="position:fixed">
-  
-  <script async src="/.netlify/scripts/cdp"></script>
+  <script>
+    (function () {
+      var host = window.location && window.location.hostname;
+      if (!host || host === "localhost" || host === "127.0.0.1" || host === "[::1]") {
+        return;
+      }
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "/.netlify/scripts/cdp";
+      document.currentScript.parentNode.appendChild(script);
+    })();
+  </script>
 </div></body>
 </html>
