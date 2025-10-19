@@ -17,7 +17,16 @@
       --horizontal-gap: clamp(10px, 2vw, 20px);
       --horizontal-icon: clamp(48px, 10vw, 80px);
       --horizontal-safe-zone: clamp(32px, 9vh, 72px);
-      --horizontal-item-width: calc((100% - (7 * var(--horizontal-gap))) / 8);
+      --horizontal-band-max-width: min(100vw, 1280px);
+      --horizontal-item-width: clamp(
+        56px,
+        calc(
+          (var(--horizontal-band-max-width) - (2 * var(--horizontal-padding)) - (7 * var(--horizontal-gap))) /
+            8
+        ),
+        160px
+      );
+      --horizontal-icon-size: min(var(--horizontal-icon), calc(var(--horizontal-item-width) * 0.78));
       --vertical-gap: clamp(22px, 6vh, 36px);
       --vertical-icon: clamp(48px, 10vw, 80px);
       --fade-width: 20%;
@@ -66,12 +75,13 @@
       position: absolute;
       left: var(--horizontal-padding);
       right: calc(var(--horizontal-padding) + var(--horizontal-gap));
-      bottom: calc(var(--horizontal-band-height) - clamp(36px, 9vh, 84px));
+      top: calc(50% + (var(--horizontal-band-height) / 2) + clamp(18px, 3vh, 36px));
+      bottom: clamp(32px, 8vh, 72px);
       display: flex;
       align-items: flex-end;
       justify-content: flex-start;
-      padding-bottom: calc(var(--horizontal-safe-zone) + clamp(12px, 3vh, 28px));
-      z-index: 1;
+      padding-bottom: clamp(12px, 3vh, 28px);
+      z-index: 2;
     }
 
     .xmb-vertical__viewport {
@@ -166,17 +176,19 @@
       min-height: var(--horizontal-band-height);
       display: flex;
       align-items: center;
+      justify-content: center;
       padding: var(--horizontal-safe-zone) 0;
       background: transparent;
       z-index: 3;
     }
 
     .xmb-horizontal__viewport {
-      flex: 1;
+      flex: 0 1 var(--horizontal-band-max-width);
+      width: min(100%, var(--horizontal-band-max-width));
       height: 100%;
       overflow: hidden;
       padding-left: var(--horizontal-padding);
-      padding-right: clamp(24px, 5vw, 48px);
+      padding-right: var(--horizontal-padding);
       position: relative;
       display: flex;
       align-items: center;
@@ -185,7 +197,9 @@
     .xmb-horizontal__track {
       display: flex;
       align-items: center;
+      justify-content: flex-start;
       gap: var(--horizontal-gap);
+      min-width: 100%;
       transform: translateX(0);
       transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
       will-change: transform;
@@ -213,13 +227,13 @@
     }
 
     .xmb-year__icon {
-      width: var(--horizontal-icon);
-      height: var(--horizontal-icon);
+      width: var(--horizontal-icon-size);
+      height: var(--horizontal-icon-size);
       border-radius: 28px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: calc(var(--horizontal-icon) * 0.68);
+      font-size: calc(var(--horizontal-icon-size) * 0.68);
       background: radial-gradient(circle at 35% 35%, rgba(56, 189, 248, 0.65), rgba(56, 189, 248, 0.08) 70%, rgba(15, 23, 42, 0));
       box-shadow: 0 26px 52px rgba(2, 6, 23, 0.6);
     }
@@ -294,7 +308,15 @@
         --horizontal-safe-zone: clamp(24px, 8vh, 64px);
         --vertical-gap: clamp(14px, 4vh, 24px);
         --vertical-icon: clamp(36px, 10vw, 58px);
-        --horizontal-item-width: calc((100% - (7 * var(--horizontal-gap))) / 8);
+        --horizontal-band-max-width: min(100vw, 960px);
+        --horizontal-item-width: clamp(
+          52px,
+          calc(
+            (var(--horizontal-band-max-width) - (2 * var(--horizontal-padding)) - (7 * var(--horizontal-gap))) /
+              8
+          ),
+          132px
+        );
       }
 
       .xmb-vertical__viewport {
@@ -314,7 +336,15 @@
         --horizontal-gap: clamp(6px, 1.8vw, 12px);
         --horizontal-icon: clamp(36px, 14vw, 56px);
         --horizontal-safe-zone: clamp(20px, 9vh, 56px);
-        --horizontal-item-width: calc((100% - (7 * var(--horizontal-gap))) / 8);
+        --horizontal-band-max-width: min(100vw, 720px);
+        --horizontal-item-width: clamp(
+          48px,
+          calc(
+            (var(--horizontal-band-max-width) - (2 * var(--horizontal-padding)) - (7 * var(--horizontal-gap))) /
+              8
+          ),
+          120px
+        );
       }
 
       html, body {
