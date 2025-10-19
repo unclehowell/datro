@@ -1,11 +1,11 @@
 (function () {
-  const yearTrack = document.getElementById('timeline-year-track');
-  const yearViewport = document.getElementById('year-bar-viewport');
-  const entryViewport = document.getElementById('timeline-entry-viewport');
-  const entryList = document.getElementById('timeline-year-entries');
+  const yearList = document.getElementById('timeline-year-list');
+  const yearViewport = document.getElementById('year-list-viewport');
+  const entryViewport = document.getElementById('entry-bar-viewport');
+  const entryTrack = document.getElementById('timeline-entry-track');
   const loadingBanner = document.getElementById('timeline-loading');
 
-  if (!yearTrack || !entryViewport || !entryList) {
+  if (!yearList || !yearViewport || !entryViewport || !entryTrack) {
     return;
   }
 
@@ -128,49 +128,49 @@
     return ordered;
   }
 
-  function alignYearTrack() {
+  function alignYearList() {
     const activeButton = yearButtons[activeYearIndex];
     if (!activeButton) {
-      yearTrack.style.transform = 'translateX(0)';
+      yearList.style.transform = 'translateY(0)';
       return;
     }
 
-    const viewportWidth = yearViewport?.clientWidth || 0;
-    const trackWidth = yearTrack.scrollWidth;
-    const buttonCenter = activeButton.offsetLeft + activeButton.offsetWidth / 2;
-    let translate = viewportWidth / 2 - buttonCenter;
-    const minTranslate = Math.min(0, viewportWidth - trackWidth);
-    const maxTranslate = 0;
-    if (!Number.isFinite(translate)) {
-      translate = 0;
-    }
-    translate = Math.max(minTranslate, Math.min(maxTranslate, translate));
-    yearTrack.style.transform = `translateX(${translate}px)`;
-  }
-
-  function alignEntryList() {
-    const activeCard = entryCards[activeEntryIndex];
-    if (!activeCard) {
-      entryList.style.transform = 'translateY(0)';
-      return;
-    }
-
-    const viewportHeight = entryViewport?.clientHeight || 0;
-    const listHeight = entryList.scrollHeight;
-    const cardCenter = activeCard.offsetTop + activeCard.offsetHeight / 2;
-    let translate = viewportHeight / 2 - cardCenter;
+    const viewportHeight = yearViewport?.clientHeight || 0;
+    const listHeight = yearList.scrollHeight;
+    const buttonCenter = activeButton.offsetTop + activeButton.offsetHeight / 2;
+    let translate = viewportHeight / 2 - buttonCenter;
     const minTranslate = Math.min(0, viewportHeight - listHeight);
     const maxTranslate = 0;
     if (!Number.isFinite(translate)) {
       translate = 0;
     }
     translate = Math.max(minTranslate, Math.min(maxTranslate, translate));
-    entryList.style.transform = `translateY(${translate}px)`;
+    yearList.style.transform = `translateY(${translate}px)`;
+  }
+
+  function alignEntryTrack() {
+    const activeCard = entryCards[activeEntryIndex];
+    if (!activeCard) {
+      entryTrack.style.transform = 'translateX(0)';
+      return;
+    }
+
+    const viewportWidth = entryViewport?.clientWidth || 0;
+    const trackWidth = entryTrack.scrollWidth;
+    const cardCenter = activeCard.offsetLeft + activeCard.offsetWidth / 2;
+    let translate = viewportWidth / 2 - cardCenter;
+    const minTranslate = Math.min(0, viewportWidth - trackWidth);
+    const maxTranslate = 0;
+    if (!Number.isFinite(translate)) {
+      translate = 0;
+    }
+    translate = Math.max(minTranslate, Math.min(maxTranslate, translate));
+    entryTrack.style.transform = `translateX(${translate}px)`;
   }
 
   function clearEntries() {
-    entryList.innerHTML = '';
-    entryList.style.transform = 'translateY(0)';
+    entryTrack.innerHTML = '';
+    entryTrack.style.transform = 'translateX(0)';
     entryCards = [];
     activeEntryIndex = -1;
   }
@@ -186,6 +186,7 @@
       const isActive = cardIndex === activeEntryIndex;
       card.classList.toggle('is-active', isActive);
       card.tabIndex = isActive ? 0 : -1;
+      card.setAttribute('aria-selected', isActive ? 'true' : 'false');
     });
 
     const activeCard = entryCards[activeEntryIndex];
@@ -195,10 +196,10 @@
       });
     }
 
-    requestAnimationFrame(alignEntryList);
+    requestAnimationFrame(alignEntryTrack);
   }
 
-  function renderEntryList(group) {
+  function renderEntryTrack(group) {
     clearEntries();
     if (!group || !group.events.length) {
       return;
@@ -212,6 +213,7 @@
       link.href = `entries/${event.id}.html`;
       link.setAttribute('role', 'option');
       link.setAttribute('aria-label', event.title || event.year || 'Timeline entry');
+      link.setAttribute('aria-selected', 'false');
       link.tabIndex = -1;
 
       if (event.side) {
@@ -255,13 +257,13 @@
       fragment.appendChild(link);
     });
 
-    entryList.appendChild(fragment);
-    entryCards = Array.from(entryList.querySelectorAll('.xmb-entry'));
+    entryTrack.appendChild(fragment);
+    entryCards = Array.from(entryTrack.querySelectorAll('.xmb-entry'));
     setActiveEntry(0, { focus: false });
   }
 
   function renderYearButtons(groups) {
-    yearTrack.innerHTML = '';
+    yearList.innerHTML = '';
     const fragment = document.createDocumentFragment();
 
     groups.forEach((group, index) => {
@@ -310,8 +312,8 @@
       fragment.appendChild(button);
     });
 
-    yearTrack.appendChild(fragment);
-    yearButtons = Array.from(yearTrack.querySelectorAll('.xmb-year'));
+    yearList.appendChild(fragment);
+    yearButtons = Array.from(yearList.querySelectorAll('.xmb-year'));
   }
 
   function setActiveYear(index, { focusYear = false } = {}) {
@@ -338,8 +340,8 @@
       }
     });
 
-    renderEntryList(group);
-    alignYearTrack();
+    renderEntryTrack(group);
+    alignYearList();
   }
 
   function handleKeydown(event) {
@@ -353,7 +355,7 @@
     }
 
     switch (event.key) {
-      case 'ArrowRight': {
+      case 'ArrowDown': {
         if (!yearGroups.length) {
           return;
         }
@@ -362,7 +364,7 @@
         setActiveYear(next, { focusYear: true });
         break;
       }
-      case 'ArrowLeft': {
+      case 'ArrowUp': {
         if (!yearGroups.length) {
           return;
         }
@@ -371,7 +373,7 @@
         setActiveYear(next, { focusYear: true });
         break;
       }
-      case 'ArrowDown': {
+      case 'ArrowRight': {
         if (!entryCards.length) {
           return;
         }
@@ -383,7 +385,7 @@
         }
         break;
       }
-      case 'ArrowUp': {
+      case 'ArrowLeft': {
         if (!entryCards.length) {
           return;
         }
@@ -415,8 +417,8 @@
 
   function handleResize() {
     requestAnimationFrame(() => {
-      alignYearTrack();
-      alignEntryList();
+      alignYearList();
+      alignEntryTrack();
     });
   }
 

@@ -63,19 +63,19 @@
 
     .xmb-vertical {
       position: absolute;
+      top: clamp(32px, 10vh, 84px);
+      bottom: clamp(32px, 18vh, 140px);
       left: var(--horizontal-padding);
-      right: calc(var(--horizontal-padding) + var(--horizontal-gap));
-      bottom: calc(var(--horizontal-band-height) - clamp(36px, 9vh, 84px));
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: flex-start;
-      z-index: 1;
+      z-index: 2;
     }
 
     .xmb-vertical__viewport {
       width: min(420px, 42vw);
       max-width: 480px;
-      height: clamp(180px, 28vh, 260px);
+      height: 100%;
       overflow: hidden;
       position: relative;
       pointer-events: auto;
@@ -84,11 +84,12 @@
     .xmb-vertical__list {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: stretch;
       gap: var(--vertical-gap);
       transform: translateY(0);
       transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
-      padding-left: clamp(4px, 2vw, 16px);
+      padding-left: clamp(2px, 1vw, 12px);
+      padding-right: clamp(6px, 2vw, 16px);
     }
 
     .xmb-entry {
@@ -97,56 +98,55 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      gap: clamp(10px, 2vh, 18px);
-      min-width: clamp(140px, 32vw, 180px);
-      max-width: clamp(160px, 36vw, 220px);
-      padding: clamp(10px, 2vh, 16px) 0;
+      gap: clamp(12px, 3vh, 20px);
+      min-width: clamp(180px, 28vw, 260px);
+      padding: clamp(8px, 2vh, 12px) 0;
       color: var(--text-primary);
       text-align: center;
-      opacity: 0.55;
-      transform: scale(0.92);
+      opacity: 0.7;
+      transform: translateY(0) scale(1);
       transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
         opacity 0.35s ease;
       pointer-events: auto;
     }
 
     .xmb-entry__icon {
-      width: var(--icon-size-small);
-      height: var(--icon-size-small);
-      border-radius: 24px;
+      width: var(--horizontal-icon);
+      height: var(--horizontal-icon);
+      border-radius: 28px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: calc(var(--icon-size-small) * 0.66);
+      font-size: calc(var(--horizontal-icon) * 0.68);
       line-height: 1;
-      background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.55), rgba(56, 189, 248, 0.1) 65%, rgba(15, 23, 42, 0));
-      box-shadow: 0 18px 46px rgba(2, 6, 23, 0.55);
+      background: radial-gradient(circle at 35% 35%, rgba(56, 189, 248, 0.65), rgba(56, 189, 248, 0.08) 70%, rgba(15, 23, 42, 0));
+      box-shadow: 0 26px 52px rgba(2, 6, 23, 0.6);
     }
 
     .xmb-entry__copy {
       display: flex;
       flex-direction: column;
-      gap: clamp(4px, 1vh, 8px);
+      align-items: center;
+      gap: clamp(4px, 1vh, 10px);
       text-transform: uppercase;
-      font-size: clamp(0.75rem, 1.8vw, 0.95rem);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
     }
 
     .xmb-entry__title {
       font-weight: 700;
+      font-size: clamp(0.95rem, 2.8vw, 1.35rem);
       color: var(--text-primary);
-      font-size: clamp(0.85rem, 2vw, 1rem);
     }
 
     .xmb-entry__subtitle {
+      font-size: clamp(0.7rem, 2vw, 0.95rem);
       color: var(--text-muted);
-      font-size: clamp(0.65rem, 1.6vw, 0.85rem);
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
     }
 
     .xmb-entry.is-active {
       opacity: 1;
-      transform: scale(1.08);
+      transform: translateY(-14px) scale(1.12);
     }
 
     .xmb-entry:focus-visible {
@@ -187,59 +187,57 @@
 
     .xmb-year {
       position: relative;
-      display: inline-flex;
-      flex-direction: column;
+      display: flex;
       align-items: center;
-      justify-content: flex-start;
       gap: clamp(12px, 3vh, 20px);
-      min-width: clamp(180px, 26vw, 260px);
-      padding: clamp(8px, 2vh, 12px) 0;
+      padding: clamp(12px, 2.2vh, 18px) clamp(12px, 2vw, 20px);
       background: transparent;
       border: none;
       color: var(--text-primary);
       cursor: pointer;
-      transform: translateY(0) scale(1);
-      transition: transform 0.4s cubic-bezier(0.33, 1, 0.68, 1),
-        color 0.35s ease;
+      opacity: 0.55;
+      transform: translateY(0) scale(0.94);
+      transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
+        opacity 0.35s ease;
+      text-align: left;
     }
 
     .xmb-year__icon {
-      width: var(--horizontal-icon);
-      height: var(--horizontal-icon);
-      border-radius: 28px;
+      width: var(--vertical-icon);
+      height: var(--vertical-icon);
+      border-radius: 24px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: calc(var(--horizontal-icon) * 0.68);
-      background: radial-gradient(circle at 35% 35%, rgba(56, 189, 248, 0.65), rgba(56, 189, 248, 0.08) 70%, rgba(15, 23, 42, 0));
-      box-shadow: 0 26px 52px rgba(2, 6, 23, 0.6);
+      font-size: calc(var(--vertical-icon) * 0.66);
+      background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.55), rgba(56, 189, 248, 0.1) 65%, rgba(15, 23, 42, 0));
+      box-shadow: 0 18px 46px rgba(2, 6, 23, 0.55);
     }
 
     .xmb-year__copy {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: clamp(4px, 1vh, 10px);
-      text-align: center;
+      gap: clamp(4px, 1vh, 8px);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+      letter-spacing: 0.08em;
     }
 
     .xmb-year__title {
       font-weight: 700;
-      font-size: clamp(0.95rem, 2.8vw, 1.35rem);
       color: var(--text-primary);
+      font-size: clamp(0.85rem, 2vw, 1rem);
     }
 
     .xmb-year__subtitle {
-      font-size: clamp(0.7rem, 2vw, 0.95rem);
       color: var(--text-muted);
-      letter-spacing: 0.08em;
+      font-size: clamp(0.65rem, 1.6vw, 0.85rem);
+      letter-spacing: 0.06em;
     }
 
     .xmb-year.is-active {
-      transform: translateY(-14px) scale(1.16);
-      color: #ffffff;
+      opacity: 1;
+      transform: translateY(-6px) scale(1.04);
     }
 
     .xmb-year:focus-visible {
@@ -291,7 +289,8 @@
       }
 
       .xmb-year {
-        min-width: clamp(160px, 44vw, 220px);
+        width: 100%;
+        padding: clamp(10px, 2.4vh, 16px) clamp(10px, 5vw, 18px);
       }
     }
 
@@ -302,7 +301,8 @@
 
       .xmb-vertical {
         left: clamp(20px, 8vw, 32px);
-        right: clamp(20px, 12vw, 40px);
+        right: auto;
+        width: calc(100% - clamp(40px, 20vw, 64px));
       }
 
       .xmb-vertical__viewport {
@@ -319,16 +319,16 @@
 <body>
   <div class="xmb-shell">
     <main class="xmb-stage">
-      <section class="xmb-vertical" aria-label="Timeline entries">
-        <div class="xmb-vertical__viewport" id="timeline-entry-viewport">
-          <div class="xmb-vertical__list" id="timeline-year-entries"></div>
+      <section class="xmb-vertical" aria-label="Timeline years">
+        <div class="xmb-vertical__viewport" id="year-list-viewport">
+          <div class="xmb-vertical__list" id="timeline-year-list" role="listbox" aria-label="Timeline years"></div>
         </div>
       </section>
     </main>
 
-    <nav class="xmb-horizontal" aria-label="Timeline years">
-      <div class="xmb-horizontal__viewport" id="year-bar-viewport">
-        <div class="xmb-horizontal__track" id="timeline-year-track" role="listbox" aria-label="Timeline years"></div>
+    <nav class="xmb-horizontal" aria-label="Timeline entries">
+      <div class="xmb-horizontal__viewport" id="entry-bar-viewport">
+        <div class="xmb-horizontal__track" id="timeline-entry-track" role="listbox" aria-label="Timeline entries"></div>
         <div class="xmb-horizontal__fade" aria-hidden="true"></div>
       </div>
     </nav>
@@ -338,7 +338,17 @@
 
   <script src="timeline.js"></script>
 <div data-netlify-deploy-id="68f0642b66127200088703cf" data-netlify-site-id="e7130a7c-7fa0-41b7-be06-ed9d819853e6" data-vcs="github" style="position:fixed">
-  
-  <script async src="/.netlify/scripts/cdp"></script>
+  <script>
+    (function () {
+      var host = window.location && window.location.hostname;
+      if (!host || host === "localhost" || host === "127.0.0.1" || host === "[::1]") {
+        return;
+      }
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "/.netlify/scripts/cdp";
+      document.currentScript.parentNode.appendChild(script);
+    })();
+  </script>
 </div></body>
 </html>
