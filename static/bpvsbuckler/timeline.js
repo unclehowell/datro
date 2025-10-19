@@ -40,6 +40,23 @@
     return words.slice(0, Math.max(1, maxWords)).join(' ');
   }
 
+  function limitCharacters(value, maxChars) {
+    if (!value) {
+      return '';
+    }
+    const trimmed = String(value).trim();
+    if (!Number.isFinite(maxChars) || maxChars <= 0 || trimmed.length <= maxChars) {
+      return trimmed;
+    }
+
+    const shortened = trimmed.slice(0, maxChars);
+    const withoutDangling = shortened.replace(/\s+\S*$/, '');
+    if (withoutDangling.length >= Math.max(3, Math.floor(maxChars * 0.6))) {
+      return withoutDangling;
+    }
+    return shortened.slice(0, Math.max(1, maxChars - 1));
+  }
+
   function getYearSubtitle(group) {
     if (!group || !group.events.length) {
       return '';
@@ -49,17 +66,17 @@
     return limitWords(subtitleSource, 6);
   }
 
-  function getEventSubtitle(event) {
+  function getEventSubtitle(event, maxChars) {
     if (!event) {
       return '';
     }
     if (event.summary) {
-      return limitWords(event.summary, 8);
+      return limitCharacters(limitWords(event.summary, 8), maxChars);
     }
     if (event.title) {
-      return limitWords(event.title, 8);
+      return limitCharacters(limitWords(event.title, 8), maxChars);
     }
-    return limitWords(event.year, 8);
+    return limitCharacters(limitWords(event.year, 8), maxChars);
   }
 
   function formatOrdinal(value) {
@@ -330,14 +347,18 @@
 
       const title = document.createElement('span');
       title.className = 'xmb-entry__title';
-      title.textContent = limitWords(event.iconLabel || event.title || event.year || 'Entry', 6);
+      const titleText = limitWords(event.iconLabel || event.title || event.year || 'Entry', 2);
+      title.textContent = titleText;
       copy.appendChild(title);
 
-      const subtitleText = getEventSubtitle(event);
+      const normalizedTitleLength = titleText.replace(/\s+/g, '').length;
+      const maxSubtitleChars = Math.max(12, Math.round(normalizedTitleLength * 1.8));
+      const subtitleText = getEventSubtitle(event, maxSubtitleChars);
       if (subtitleText) {
         const subtitle = document.createElement('span');
         subtitle.className = 'xmb-entry__subtitle';
         subtitle.textContent = subtitleText;
+        subtitle.title = subtitleText;
         copy.appendChild(subtitle);
       }
 
@@ -360,6 +381,7 @@
     entryTrack.appendChild(fragment);
     entryCards = Array.from(entryTrack.querySelectorAll('.xmb-entry'));
     setActiveEntry(0, { focus: false });
+    requestAnimationFrame(updateEntrySubtitleWidths);
   }
 
   function renderYearButtons(groups) {
@@ -437,6 +459,25 @@
     alignYearList();
   }
 
+  function updateEntrySubtitleWidths() {
+    if (!entryCards.length) {
+      return;
+    }
+    entryCards.forEach(card => {
+      const title = card.querySelector('.xmb-entry__title');
+      const subtitle = card.querySelector('.xmb-entry__subtitle');
+      if (!title || !subtitle) {
+        return;
+      }
+      subtitle.style.maxWidth = '';
+      const rect = title.getBoundingClientRect();
+      const width = rect?.width;
+      if (Number.isFinite(width) && width > 0) {
+        subtitle.style.maxWidth = `${Math.ceil(width)}px`;
+      }
+    });
+  }
+
   function handleKeydown(event) {
     if (event.altKey || event.ctrlKey || event.metaKey) {
       return;
@@ -512,6 +553,7 @@
     requestAnimationFrame(() => {
       alignYearList();
       alignEntryTrack();
+      updateEntrySubtitleWidths();
     });
   }
 
