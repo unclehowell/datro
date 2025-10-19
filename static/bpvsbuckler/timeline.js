@@ -62,6 +62,71 @@
     return limitWords(event.year, 8);
   }
 
+  function formatOrdinal(value) {
+    const absValue = Math.abs(value);
+    const mod100 = absValue % 100;
+    if (mod100 >= 11 && mod100 <= 13) {
+      return `${value}th`;
+    }
+    switch (absValue % 10) {
+      case 1:
+        return `${value}st`;
+      case 2:
+        return `${value}nd`;
+      case 3:
+        return `${value}rd`;
+      default:
+        return `${value}th`;
+    }
+  }
+
+  function formatYearLabel(event, fallbackLabel) {
+    const fallback = (fallbackLabel || event?.year || '').trim() || 'Undated';
+    if (!event) {
+      return fallback;
+    }
+
+    const raw = (event.year || '').trim();
+    if (/^\d{4}$/.test(raw)) {
+      return raw;
+    }
+
+    const centuryMatch = raw.match(/(\d+)(?:st|nd|rd|th)?\s*century/i);
+    if (centuryMatch) {
+      const centuryNumber = parseInt(centuryMatch[1], 10);
+      if (Number.isFinite(centuryNumber)) {
+        return `${formatOrdinal(centuryNumber)} century`;
+      }
+    }
+
+    const value = Number.isFinite(event.yearValue) ? event.yearValue : Number.NaN;
+
+    if (raw.toLowerCase().includes('century') && Number.isFinite(value)) {
+      const inferredCentury = Math.ceil(value / 100);
+      if (inferredCentury >= 1) {
+        return `${formatOrdinal(inferredCentury)} century`;
+      }
+    }
+
+    if (Number.isFinite(value)) {
+      const decade = Math.floor(value / 10) * 10;
+      const padded = decade.toString().padStart(4, '0');
+      return `${padded}'s`;
+    }
+
+    const explicitYear = raw.match(/(\d{4})/);
+    if (explicitYear) {
+      return explicitYear[1];
+    }
+
+    const decadeMatch = raw.match(/(\d{3})/);
+    if (decadeMatch) {
+      return `${decadeMatch[1]}0's`;
+    }
+
+    return fallback;
+  }
+
   function buildYearGroups(data) {
     if (!Array.isArray(data?.centuries)) {
       return [];
@@ -101,12 +166,12 @@
 
     const ordered = Array.from(groups.values());
     ordered.sort((a, b) => {
-      const aValue = Number.isFinite(a.sortValue) ? a.sortValue : Number.POSITIVE_INFINITY;
-      const bValue = Number.isFinite(b.sortValue) ? b.sortValue : Number.POSITIVE_INFINITY;
+      const aValue = Number.isFinite(a.sortValue) ? a.sortValue : Number.NEGATIVE_INFINITY;
+      const bValue = Number.isFinite(b.sortValue) ? b.sortValue : Number.NEGATIVE_INFINITY;
       if (aValue !== bValue) {
-        return aValue - bValue;
+        return bValue - aValue;
       }
-      return a.label.localeCompare(b.label, undefined, { numeric: true });
+      return b.label.localeCompare(a.label, undefined, { numeric: true });
     });
 
     ordered.forEach((group, index) => {
@@ -119,10 +184,11 @@
         return a.eventIndex - b.eventIndex;
       });
       const primaryEventWithIcon = group.events.find(entry => entry.event.icon);
-      const primaryEvent = group.events[0]?.event;
+      const representativeEvent = group.events.find(entry => Number.isFinite(entry.event.yearValue))?.event
+        || group.events[0]?.event;
       group.icon = primaryEventWithIcon?.event?.icon || '🕰️';
-      group.yearLabel = limitWords(primaryEvent?.year || group.label, 3) || `Year ${index + 1}`;
-      group.subtitle = getYearSubtitle(group);
+      group.yearLabel = formatYearLabel(representativeEvent, group.label) || `Year ${index + 1}`;
+      group.subtitle = '';
     });
 
     return ordered;
@@ -322,13 +388,6 @@
       title.className = 'xmb-year__title';
       title.textContent = group.yearLabel;
       copy.appendChild(title);
-
-      if (group.subtitle) {
-        const subtitle = document.createElement('span');
-        subtitle.className = 'xmb-year__subtitle';
-        subtitle.textContent = group.subtitle;
-        copy.appendChild(subtitle);
-      }
 
       button.appendChild(copy);
 

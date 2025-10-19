@@ -15,7 +15,7 @@
       --horizontal-band-height: clamp(230px, 36vh, 320px);
       --horizontal-offset: clamp(110px, 22vh, 200px);
       --horizontal-gap: clamp(28px, 6vw, 60px);
-      --horizontal-icon: clamp(48px, 10vw, 96px);
+      --horizontal-icon: clamp(48px, 10vw, 80px);
       --vertical-gap: clamp(22px, 6vh, 36px);
       --vertical-icon: clamp(48px, 10vw, 80px);
       --fade-width: 20%;
@@ -182,12 +182,12 @@
       display: flex;
       align-items: flex-end;
       gap: var(--horizontal-gap);
-      margin-left: 20vw;
+      margin-left: clamp(6vw, 10vw, 14vw);
       transform: translateX(0);
       transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
       will-change: transform;
-      padding-left: clamp(260px, 38vw, 420px);
-      padding-right: clamp(260px, 38vw, 400px);
+      padding-left: clamp(140px, 26vw, 320px);
+      padding-right: clamp(200px, 34vw, 360px);
     }
 
     .xmb-year {
@@ -284,7 +284,7 @@
       :root {
         --horizontal-band-height: clamp(220px, 42vh, 320px);
         --horizontal-gap: clamp(24px, 9vw, 44px);
-        --horizontal-icon: clamp(44px, 12vw, 68px);
+        --horizontal-icon: clamp(40px, 11vw, 64px);
         --vertical-gap: clamp(14px, 4vh, 24px);
         --vertical-icon: clamp(40px, 11vw, 64px);
         --vertical-offset: clamp(28px, 8vw, 72px);
