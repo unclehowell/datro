@@ -1,0 +1,11 @@
+@use "../abstract/" as *;
+
+.xmb-title.music{
+    .xmb-contents{
+        margin-right: 25px !important;
+        .submenu.one{
+            margin-left: 10px;
+            padding-bottom: 20px;
+        }
+    }
+}
