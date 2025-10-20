@@ -366,8 +366,13 @@
       loop
       playsinline
       preload="auto"
+      src="https://wayback.datro.xyz/2025-10-19_timeline-background_video_v0.0.1.mp4"
       data-video-src="https://wayback.datro.xyz/2025-10-19_timeline-background_video_v0.0.1.mp4"
     >
+      <source
+        src="https://wayback.datro.xyz/2025-10-19_timeline-background_video_v0.0.1.mp4"
+        type="video/mp4"
+      />
       Your browser does not support the background video.
     </video>
     <div class="background-video__overlay"></div>
@@ -378,12 +383,21 @@
       const video = document.querySelector(".background-video");
       if (!video) return;
 
-      const baseSource = video.getAttribute("data-video-src");
+      const baseSource =
+        video.getAttribute("data-video-src") ||
+        video.currentSrc ||
+        video.getAttribute("src");
       if (!baseSource) return;
+
+      const sourceEl = video.querySelector("source");
 
       const setSource = (nextSrc) => {
         if (video.src !== nextSrc) {
           video.src = nextSrc;
+        }
+        if (sourceEl && sourceEl.src !== nextSrc) {
+          sourceEl.src = nextSrc;
+          sourceEl.setAttribute("src", nextSrc);
         }
       };
 
