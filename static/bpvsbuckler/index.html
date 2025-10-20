@@ -358,12 +358,99 @@
 </head>
 <body>
   <div class="background-video-container" aria-hidden="true">
-    <video class="background-video" autoplay muted loop playsinline preload="auto">
+    <video
+      class="background-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      crossorigin="anonymous"
+    >
       <source src="https://wayback.datro.xyz/2025-10-19_timeline-background_video_v0.0.1.mp4" type="video/mp4" />
       Your browser does not support the background video.
     </video>
     <div class="background-video__overlay"></div>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const video = document.querySelector(".background-video");
+      if (!video) return;
+
+      const ensureAttributes = () => {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.loop = true;
+        video.playsInline = true;
+        video.controls = false;
+        video.setAttribute("muted", "");
+        video.setAttribute("playsinline", "");
+        video.setAttribute("autoplay", "");
+      };
+
+      const tryPlay = () => {
+        ensureAttributes();
+        const playAttempt = video.play();
+        if (playAttempt && typeof playAttempt.then === "function") {
+          playAttempt.catch(() => {
+            video.load();
+            requestAnimationFrame(() => {
+              const retryAttempt = video.play();
+              if (retryAttempt && typeof retryAttempt.then === "function") {
+                retryAttempt.catch(() => {
+                  video.controls = true;
+                });
+              }
+            });
+          });
+        }
+      };
+
+      if (video.readyState >= 2) {
+        tryPlay();
+      } else {
+        const onCanPlay = () => {
+          video.removeEventListener("canplay", onCanPlay);
+          video.removeEventListener("loadeddata", onCanPlay);
+          video.removeEventListener("loadedmetadata", onCanPlay);
+          tryPlay();
+        };
+        video.addEventListener("canplay", onCanPlay);
+        video.addEventListener("loadeddata", onCanPlay);
+        video.addEventListener("loadedmetadata", onCanPlay);
+        video.addEventListener("error", () => {
+          setTimeout(() => {
+            video.load();
+          }, 1200);
+        });
+      }
+
+      requestAnimationFrame(tryPlay);
+
+      video.addEventListener("pause", () => {
+        if (!video.seeking && !document.hidden) {
+          tryPlay();
+        }
+      });
+
+      ["waiting", "stalled"].forEach((eventName) => {
+        video.addEventListener(eventName, () => {
+          tryPlay();
+        });
+      });
+
+      video.addEventListener("playing", () => {
+        video.controls = false;
+      });
+
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) {
+          tryPlay();
+        }
+      });
+    });
+  </script>
   <div class="xmb-shell">
     <main class="xmb-stage">
       <section class="xmb-vertical" aria-label="Timeline years">
