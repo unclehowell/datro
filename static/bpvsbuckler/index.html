@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Great House Farm Timeline</title>
+  <link rel="preload" as="video" href="https://wayback.datro.xyz/2025-10-19_timeline-background_video_v0.0.1.mp4" type="video/mp4">
   <link rel="stylesheet" href="tailwind.css">
   <style>
     :root {
@@ -365,9 +366,8 @@
       loop
       playsinline
       preload="auto"
-      crossorigin="anonymous"
+      data-video-src="https://wayback.datro.xyz/2025-10-19_timeline-background_video_v0.0.1.mp4"
     >
-      <source src="https://wayback.datro.xyz/2025-10-19_timeline-background_video_v0.0.1.mp4" type="video/mp4" />
       Your browser does not support the background video.
     </video>
     <div class="background-video__overlay"></div>
@@ -377,6 +377,24 @@
     document.addEventListener("DOMContentLoaded", () => {
       const video = document.querySelector(".background-video");
       if (!video) return;
+
+      const baseSource = video.getAttribute("data-video-src");
+      if (!baseSource) return;
+
+      const setSource = (nextSrc) => {
+        if (video.src !== nextSrc) {
+          video.src = nextSrc;
+        }
+      };
+
+      let retryCount = 0;
+      const maxRetryDelay = 4000;
+
+      const buildSrc = () => {
+        if (!retryCount) return baseSource;
+        const retryToken = Date.now();
+        return `${baseSource}?retry=${retryCount}-${retryToken}`;
+      };
 
       const ensureAttributes = () => {
         video.muted = true;
@@ -391,10 +409,13 @@
 
       const tryPlay = () => {
         ensureAttributes();
+        if (!video.src) {
+          setSource(buildSrc());
+        }
+
         const playAttempt = video.play();
         if (playAttempt && typeof playAttempt.then === "function") {
           playAttempt.catch(() => {
-            video.load();
             requestAnimationFrame(() => {
               const retryAttempt = video.play();
               if (retryAttempt && typeof retryAttempt.then === "function") {
@@ -420,10 +441,17 @@
         video.addEventListener("loadeddata", onCanPlay);
         video.addEventListener("loadedmetadata", onCanPlay);
         video.addEventListener("error", () => {
+          retryCount += 1;
+          const retryDelay = Math.min(maxRetryDelay, 600 * retryCount);
           setTimeout(() => {
-            video.load();
-          }, 1200);
+            setSource(buildSrc());
+            tryPlay();
+          }, retryDelay);
         });
+      }
+
+      if (!video.src) {
+        setSource(baseSource);
       }
 
       requestAnimationFrame(tryPlay);
@@ -441,6 +469,7 @@
       });
 
       video.addEventListener("playing", () => {
+        retryCount = 0;
         video.controls = false;
       });
 
