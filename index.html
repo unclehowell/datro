@@ -117,8 +117,12 @@ body{color:#202020}
 </script>
 <!-- google tracking code end -->
 </head>
-<body style="background-color:#333666;background:#333666;" data-role="page" onload="pageLoad()">
-	<header id="mainWrapper">
+<body class="has-background-video" style="background-color:#333666;background:#333666;" data-role="page" onload="pageLoad()">
+        <video id="background-video" autoplay loop muted playsinline>
+                <source src="https://wayback.datro.xyz/2025-10-19_timeline-background_video_v0.0.1.mp4" type="video/mp4">
+                Your browser does not support the background video.
+        </video>
+        <header id="mainWrapper">
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 			 <h1 class="v-h">Site Navigation</h1>
                          <a data-content="DATRO" href="index.html" title="DATRO">
@@ -144,7 +148,7 @@ body{color:#202020}
 		<div class="loader-section section-left"></div>
 		<div class="loader-section section-right"></div>
 	</div>
-	<main style="background-color: #333366;">
+        <main style="background-color: rgba(51, 51, 102, 0.85);">
 		<div class="carousel" data-ride="carousel" id="myCarousel">
 			<div class="carousel-inner" style="overflow:visible!important;">
 				<div class="carousel-item active">
