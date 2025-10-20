@@ -6,7 +6,7 @@
   <title>Great House Farm Timeline</title>
   <link
     rel="preload"
-    as="video"
+    as="fetch"
     href="https://wayback.datro.xyz/2025-10-19_timeline-background_video_v0.0.1.mp4"
     type="video/mp4"
     crossorigin="anonymous"
@@ -48,7 +48,7 @@
     .background-video-container {
       position: fixed;
       inset: 0;
-      z-index: 1;
+      z-index: 0;
       overflow: hidden;
       pointer-events: none;
     }
@@ -60,7 +60,7 @@
       height: 100%;
       object-fit: cover;
       filter: saturate(1.05) contrast(1.05) brightness(0.95);
-      z-index: 1;
+      z-index: 0;
     }
 
     .background-video__overlay {
@@ -68,7 +68,7 @@
       inset: 0;
       background: radial-gradient(circle at 30% 20%, rgba(15, 118, 226, 0.22), rgba(2, 6, 23, 0.65) 55%),
         linear-gradient(180deg, rgba(2, 6, 23, 0.55) 0%, rgba(2, 6, 23, 0.88) 75%);
-      z-index: 2;
+      z-index: 1;
       pointer-events: none;
     }
 
@@ -83,7 +83,7 @@
 
     .xmb-shell {
       position: relative;
-      z-index: 3;
+      z-index: 2;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -207,7 +207,7 @@
       align-items: flex-end;
       padding-bottom: clamp(24px, 6vh, 40px);
       background: transparent;
-      z-index: 4;
+      z-index: 3;
     }
 
     .xmb-horizontal__viewport {
@@ -216,6 +216,22 @@
       padding-left: clamp(16px, 3vw, 28px);
       padding-right: clamp(24px, 5vw, 48px);
       position: relative;
+      mask-image: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) calc(100% - var(--fade-width)),
+        rgba(0, 0, 0, 0) 100%
+      );
+      -webkit-mask-image: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) calc(100% - var(--fade-width)),
+        rgba(0, 0, 0, 0) 100%
+      );
+      mask-size: 100% 100%;
+      -webkit-mask-size: 100% 100%;
+      mask-repeat: no-repeat;
+      -webkit-mask-repeat: no-repeat;
     }
 
     .xmb-horizontal__track {
@@ -289,17 +305,6 @@
     .xmb-year:focus-visible {
       outline: 3px solid var(--accent);
       outline-offset: 5px;
-    }
-
-    .xmb-horizontal__fade {
-      position: absolute;
-      top: clamp(12px, 3vh, 24px);
-      bottom: clamp(12px, 3vh, 24px);
-      right: 0;
-      width: var(--fade-width);
-      background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 90%);
-      pointer-events: none;
-      z-index: 5;
     }
 
     .xmb-loading {
@@ -530,7 +535,6 @@
     <nav class="xmb-horizontal" aria-label="Timeline entries">
       <div class="xmb-horizontal__viewport" id="entry-bar-viewport">
         <div class="xmb-horizontal__track" id="timeline-entry-track" role="listbox" aria-label="Timeline entries"></div>
-        <div class="xmb-horizontal__fade" aria-hidden="true"></div>
       </div>
     </nav>
 
