@@ -69,6 +69,17 @@ body{color:#202020}
     clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
     clip: rect(1px, 1px, 1px, 1px);
 }
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
+    background-color: #000;
+}
 	</style>
 	<script src="static/datro/js/lazy.min.js">
 	</script>
@@ -118,6 +129,10 @@ body{color:#202020}
 <!-- google tracking code end -->
 </head>
 <body style="background-color:#333666;background:#333666;" data-role="page" onload="pageLoad()">
+        <video autoplay muted loop playsinline id="bg-video">
+                <source src="./vid.mp4" type="video/mp4">
+		Your browser does not support the video tag.
+	</video>
 	<header id="mainWrapper">
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 			 <h1 class="v-h">Site Navigation</h1>
