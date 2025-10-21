@@ -4,18 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Great House Farm Timeline</title>
-  <link
-    rel="preload"
-    as="video"
-    href="./vid.mp4"
-    type="video/mp4"
-  >
   <link rel="stylesheet" href="tailwind.css">
   <style>
     :root {
       color-scheme: dark;
-      --page-background: #000000;
-      --surface-overlay: rgba(2, 6, 23, 0.76);
+      --page-background: transparent;
+      --surface-overlay: transparent;
       --text-primary: #f8fafc;
       --text-muted: rgba(226, 232, 240, 0.6);
       --accent: #38bdf8;
@@ -31,7 +25,12 @@
       --timeline-anchor: 45%;
     }
 
-@@ -43,79 +43,68 @@
+    html {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: transparent;
       color: var(--text-primary);
       font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       overflow: hidden;
@@ -51,14 +50,17 @@
 
     #background-video {
       position: absolute;
-      inset: 0;
+      right: 0;
+      top: 0;
+      z-index: -1;
       width: 100%;
       height: 100%;
       object-fit: cover;
       background-size: cover;
       filter: saturate(1.05) contrast(1.05) brightness(0.95);
-      opacity: 1;
-      transition: opacity 1.2s ease;
+      opacity: 0;
+      transition: opacity 10s;
+      pointer-events: none;
     }
 
     .background-overlay {
@@ -85,9 +87,8 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      background: var(--surface-overlay);
+      background: transparent;
       isolation: isolate;
-      backdrop-filter: blur(18px);
     }
 
     .xmb-stage {
@@ -380,10 +381,7 @@
 </head>
 <body>
   <div class="background-media" aria-hidden="true">
-    <video autoplay muted loop playsinline preload="auto" id="background-video">
-      <source src="./vid.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+    <video autoplay muted loop playsinline preload="auto" id="background-video" src="./vid.mp4" type="video/mp4"></video>
     <div class="background-overlay"></div>
   </div>
 

@@ -560,6 +560,28 @@
   document.addEventListener('keydown', handleKeydown);
   window.addEventListener('resize', handleResize);
 
+  const backgroundVideo = document.getElementById('background-video');
+  if (backgroundVideo) {
+    window.addEventListener('load', () => {
+      const playPromise = backgroundVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          backgroundVideo.style.opacity = '1';
+        }).catch(error => {
+          console.warn('Video autoplay was prevented:', error);
+          const enablePlayback = () => {
+            backgroundVideo.play().then(() => {
+              backgroundVideo.style.opacity = '1';
+            }).catch(err => console.warn('Video playback failed:', err));
+          };
+          document.addEventListener('click', enablePlayback, { once: true });
+          document.addEventListener('touchstart', enablePlayback, { once: true });
+          document.addEventListener('keydown', enablePlayback, { once: true });
+        });
+      }
+    });
+  }
+
   showLoading('Loading timeline…');
 
   fetch('data/timeline.json')
