@@ -4,7 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Great House Farm Timeline</title>
-  <link rel="preload" as="video" href="https://wayback.datro.xyz/2025-10-19_timeline-background_video_v0.0.1.mp4" type="video/mp4">
+  <link
+    rel="preload"
+    as="fetch"
+    href="./vid.mp4"
+    type="video/mp4"
+    crossorigin="anonymous"
+  >
   <link rel="stylesheet" href="tailwind.css">
   <style>
     :root {
@@ -39,7 +45,11 @@
       overflow: hidden;
     }
 
-    .background-video-container {
+    body {
+      position: relative;
+    }
+
+    .background-media {
       position: fixed;
       inset: 0;
       z-index: 0;
@@ -47,18 +57,41 @@
       pointer-events: none;
     }
 
-    .background-video {
+    #background-video {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      background-size: cover;
       filter: saturate(1.05) contrast(1.05) brightness(0.95);
+      opacity: 1;
+      transition: opacity 1.2s ease;
     }
 
-    .background-video__overlay {
+    .background-overlay {
       position: absolute;
       inset: 0;
+      z-index: 1;
       background: radial-gradient(circle at 30% 20%, rgba(15, 118, 226, 0.22), rgba(2, 6, 23, 0.65) 55%),
         linear-gradient(180deg, rgba(2, 6, 23, 0.55) 0%, rgba(2, 6, 23, 0.88) 75%);
+      pointer-events: none;
+    }
+
+    body[data-video-state="initial"] #background-video,
+    body[data-video-state="buffering"] #background-video,
+    body[data-video-state="paused"] #background-video,
+    body[data-video-state="stalled"] #background-video {
+      opacity: 0;
+    }
+
+    body[data-video-state="ready"] #background-video,
+    body[data-video-state="playing"] #background-video {
+      opacity: 1;
+    }
+
+    body[data-video-state="error"] .background-media {
+      display: none;
     }
 
     a {
@@ -72,7 +105,7 @@
 
     .xmb-shell {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -205,6 +238,22 @@
       padding-left: clamp(16px, 3vw, 28px);
       padding-right: clamp(24px, 5vw, 48px);
       position: relative;
+      mask-image: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) calc(100% - var(--fade-width)),
+        rgba(0, 0, 0, 0) 100%
+      );
+      -webkit-mask-image: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) calc(100% - var(--fade-width)),
+        rgba(0, 0, 0, 0) 100%
+      );
+      mask-size: 100% 100%;
+      -webkit-mask-size: 100% 100%;
+      mask-repeat: no-repeat;
+      -webkit-mask-repeat: no-repeat;
     }
 
     .xmb-horizontal__track {
@@ -280,17 +329,6 @@
       outline-offset: 5px;
     }
 
-    .xmb-horizontal__fade {
-      position: absolute;
-      top: clamp(12px, 3vh, 24px);
-      bottom: clamp(12px, 3vh, 24px);
-      right: 0;
-      width: var(--fade-width);
-      background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 90%);
-      pointer-events: none;
-      z-index: 4;
-    }
-
     .xmb-loading {
       position: fixed;
       top: 18px;
@@ -302,7 +340,7 @@
       color: var(--text-muted);
       font-size: 0.95rem;
       box-shadow: 0 18px 48px rgba(2, 6, 23, 0.6);
-      z-index: 5;
+      z-index: 6;
     }
 
     .xmb-loading.is-hidden {
@@ -356,128 +394,123 @@
       }
     }
   </style>
+  <noscript>
+    <style>
+      #background-video {
+        opacity: 1 !important;
+      }
+    </style>
+  </noscript>
 </head>
-<body>
-  <div class="background-video-container" aria-hidden="true">
+<body data-video-state="initial">
+  <div class="background-media" aria-hidden="true">
     <video
-      class="background-video"
       autoplay
       muted
       loop
       playsinline
       preload="auto"
-      data-video-src="https://wayback.datro.xyz/2025-10-19_timeline-background_video_v0.0.1.mp4"
+      id="background-video"
+      crossorigin="anonymous"
     >
-      Your browser does not support the background video.
+      <source src="./vid.mp4" type="video/mp4">
+      Your browser does not support the video tag.
     </video>
-    <div class="background-video__overlay"></div>
+    <div class="background-overlay"></div>
   </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const video = document.querySelector(".background-video");
+      const video = document.getElementById("background-video");
       if (!video) return;
 
-      const baseSource = video.getAttribute("data-video-src");
-      if (!baseSource) return;
+      const setState = (state) => {
+        if (!state) return;
+        document.body.dataset.videoState = state;
+      };
 
-      const setSource = (nextSrc) => {
-        if (video.src !== nextSrc) {
-          video.src = nextSrc;
+      const debugLog = (...args) => {
+        if (window.console && typeof console.info === "function") {
+          console.info("[background-video]", ...args);
         }
       };
 
-      let retryCount = 0;
-      const maxRetryDelay = 4000;
-
-      const buildSrc = () => {
-        if (!retryCount) return baseSource;
-        const retryToken = Date.now();
-        return `${baseSource}?retry=${retryCount}-${retryToken}`;
-      };
-
-      const ensureAttributes = () => {
-        video.muted = true;
-        video.defaultMuted = true;
-        video.loop = true;
-        video.playsInline = true;
-        video.controls = false;
-        video.setAttribute("muted", "");
-        video.setAttribute("playsinline", "");
-        video.setAttribute("autoplay", "");
-      };
-
-      const tryPlay = () => {
-        ensureAttributes();
-        if (!video.src) {
-          setSource(buildSrc());
+      const warnLog = (...args) => {
+        if (window.console && typeof console.warn === "function") {
+          console.warn("[background-video]", ...args);
         }
+      };
 
-        const playAttempt = video.play();
-        if (playAttempt && typeof playAttempt.then === "function") {
-          playAttempt.catch(() => {
-            requestAnimationFrame(() => {
-              const retryAttempt = video.play();
-              if (retryAttempt && typeof retryAttempt.then === "function") {
-                retryAttempt.catch(() => {
-                  video.controls = true;
-                });
-              }
+      const tryPlay = (reason) => {
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.then === "function") {
+          playPromise
+            .then(() => {
+              debugLog("play() resolved", reason || "manual");
+            })
+            .catch((error) => {
+              warnLog("play() rejected", reason || "manual", error);
+              video.controls = true;
             });
-          });
+        } else {
+          debugLog("play() invoked without promise", reason || "manual");
         }
       };
 
-      if (video.readyState >= 2) {
-        tryPlay();
-      } else {
-        const onCanPlay = () => {
-          video.removeEventListener("canplay", onCanPlay);
-          video.removeEventListener("loadeddata", onCanPlay);
-          video.removeEventListener("loadedmetadata", onCanPlay);
-          tryPlay();
-        };
-        video.addEventListener("canplay", onCanPlay);
-        video.addEventListener("loadeddata", onCanPlay);
-        video.addEventListener("loadedmetadata", onCanPlay);
-        video.addEventListener("error", () => {
-          retryCount += 1;
-          const retryDelay = Math.min(maxRetryDelay, 600 * retryCount);
-          setTimeout(() => {
-            setSource(buildSrc());
-            tryPlay();
-          }, retryDelay);
-        });
-      }
-
-      if (!video.src) {
-        setSource(baseSource);
-      }
-
-      requestAnimationFrame(tryPlay);
-
-      video.addEventListener("pause", () => {
-        if (!video.seeking && !document.hidden) {
-          tryPlay();
+      const markReady = (reason) => {
+        if (document.body.dataset.videoState !== "playing") {
+          setState("ready");
         }
+        if (reason) {
+          debugLog(reason);
+        }
+      };
+
+      video.addEventListener("loadeddata", () => {
+        markReady("data loaded");
+        tryPlay("loadeddata");
       });
 
-      ["waiting", "stalled"].forEach((eventName) => {
-        video.addEventListener(eventName, () => {
-          tryPlay();
-        });
-      });
+      video.addEventListener("canplay", () => markReady("canplay"));
+      video.addEventListener("canplaythrough", () => markReady("canplaythrough"));
 
       video.addEventListener("playing", () => {
-        retryCount = 0;
+        setState("playing");
         video.controls = false;
+        debugLog("playing");
       });
 
-      document.addEventListener("visibilitychange", () => {
-        if (!document.hidden) {
-          tryPlay();
-        }
+      video.addEventListener("pause", () => setState("paused"));
+      video.addEventListener("stalled", () => {
+        setState("stalled");
+        warnLog("playback stalled");
       });
+      video.addEventListener("waiting", () => {
+        setState("buffering");
+        debugLog("waiting for data");
+      });
+
+      video.addEventListener("error", (event) => {
+        const mediaError = event?.target?.error;
+        const code = mediaError?.code;
+        let message = "Unknown media error";
+        if (code === mediaError?.MEDIA_ERR_ABORTED) {
+          message = "Fetching was aborted.";
+        } else if (code === mediaError?.MEDIA_ERR_NETWORK) {
+          message = "Network error while fetching the video.";
+        } else if (code === mediaError?.MEDIA_ERR_DECODE) {
+          message = "Video playback was aborted due to a corruption problem or unsupported features.";
+        } else if (code === mediaError?.MEDIA_ERR_SRC_NOT_SUPPORTED) {
+          message = "Video source format is not supported or could not be loaded.";
+        }
+
+        setState("error");
+        warnLog(message, { code, error: mediaError });
+        video.controls = true;
+      });
+
+      setState("initial");
+      tryPlay("startup");
     });
   </script>
   <div class="xmb-shell">
@@ -492,7 +525,6 @@
     <nav class="xmb-horizontal" aria-label="Timeline entries">
       <div class="xmb-horizontal__viewport" id="entry-bar-viewport">
         <div class="xmb-horizontal__track" id="timeline-entry-track" role="listbox" aria-label="Timeline entries"></div>
-        <div class="xmb-horizontal__fade" aria-hidden="true"></div>
       </div>
     </nav>
 
@@ -500,18 +532,5 @@
   </div>
 
   <script src="timeline.js"></script>
-<div data-netlify-deploy-id="68f0642b66127200088703cf" data-netlify-site-id="e7130a7c-7fa0-41b7-be06-ed9d819853e6" data-vcs="github" style="position:fixed">
-  <script>
-    (function () {
-      var host = window.location && window.location.hostname;
-      if (!host || host === "localhost" || host === "127.0.0.1" || host === "[::1]") {
-        return;
-      }
-      var script = document.createElement("script");
-      script.async = true;
-      script.src = "/.netlify/scripts/cdp";
-      document.currentScript.parentNode.appendChild(script);
-    })();
-  </script>
-</div></body>
+</body>
 </html>
