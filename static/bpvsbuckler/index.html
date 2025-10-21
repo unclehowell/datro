@@ -65,8 +65,13 @@
       object-fit: cover;
       background-size: cover;
       filter: saturate(1.05) contrast(1.05) brightness(0.95);
+      opacity: 0;
+      transition: opacity 10s ease;
+      pointer-events: none;
+    }
+
+    #background-video.is-visible {
       opacity: 1;
-      transition: opacity 1.2s ease;
     }
 
     .background-overlay {
@@ -76,22 +81,6 @@
       background: radial-gradient(circle at 30% 20%, rgba(15, 118, 226, 0.22), rgba(2, 6, 23, 0.65) 55%),
         linear-gradient(180deg, rgba(2, 6, 23, 0.55) 0%, rgba(2, 6, 23, 0.88) 75%);
       pointer-events: none;
-    }
-
-    body[data-video-state="initial"] #background-video,
-    body[data-video-state="buffering"] #background-video,
-    body[data-video-state="paused"] #background-video,
-    body[data-video-state="stalled"] #background-video {
-      opacity: 0;
-    }
-
-    body[data-video-state="ready"] #background-video,
-    body[data-video-state="playing"] #background-video {
-      opacity: 1;
-    }
-
-    body[data-video-state="error"] .background-media {
-      display: none;
     }
 
     a {
@@ -402,7 +391,7 @@
     </style>
   </noscript>
 </head>
-<body data-video-state="initial">
+<body>
   <div class="background-media" aria-hidden="true">
     <video
       autoplay
@@ -420,97 +409,38 @@
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    window.addEventListener("load", () => {
       const video = document.getElementById("background-video");
-      if (!video) return;
+      if (!video) {
+        return;
+      }
 
-      const setState = (state) => {
-        if (!state) return;
-        document.body.dataset.videoState = state;
+      const revealVideo = () => {
+        video.classList.add("is-visible");
       };
 
-      const debugLog = (...args) => {
-        if (window.console && typeof console.info === "function") {
-          console.info("[background-video]", ...args);
-        }
-      };
-
-      const warnLog = (...args) => {
-        if (window.console && typeof console.warn === "function") {
-          console.warn("[background-video]", ...args);
-        }
-      };
-
-      const tryPlay = (reason) => {
+      const tryPlay = () => {
         const playPromise = video.play();
         if (playPromise && typeof playPromise.then === "function") {
           playPromise
             .then(() => {
-              debugLog("play() resolved", reason || "manual");
+              revealVideo();
             })
-            .catch((error) => {
-              warnLog("play() rejected", reason || "manual", error);
+            .catch(() => {
               video.controls = true;
             });
         } else {
-          debugLog("play() invoked without promise", reason || "manual");
+          revealVideo();
         }
       };
 
-      const markReady = (reason) => {
-        if (document.body.dataset.videoState !== "playing") {
-          setState("ready");
-        }
-        if (reason) {
-          debugLog(reason);
-        }
-      };
+      if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+        revealVideo();
+      } else {
+        video.addEventListener("loadeddata", revealVideo, { once: true });
+      }
 
-      video.addEventListener("loadeddata", () => {
-        markReady("data loaded");
-        tryPlay("loadeddata");
-      });
-
-      video.addEventListener("canplay", () => markReady("canplay"));
-      video.addEventListener("canplaythrough", () => markReady("canplaythrough"));
-
-      video.addEventListener("playing", () => {
-        setState("playing");
-        video.controls = false;
-        debugLog("playing");
-      });
-
-      video.addEventListener("pause", () => setState("paused"));
-      video.addEventListener("stalled", () => {
-        setState("stalled");
-        warnLog("playback stalled");
-      });
-      video.addEventListener("waiting", () => {
-        setState("buffering");
-        debugLog("waiting for data");
-      });
-
-      video.addEventListener("error", (event) => {
-        const mediaError = event?.target?.error;
-        const code = mediaError?.code;
-        let message = "Unknown media error";
-        if (code === mediaError?.MEDIA_ERR_ABORTED) {
-          message = "Fetching was aborted.";
-        } else if (code === mediaError?.MEDIA_ERR_NETWORK) {
-          message = "Network error while fetching the video.";
-        } else if (code === mediaError?.MEDIA_ERR_DECODE) {
-          message = "Video playback was aborted due to a corruption problem or unsupported features.";
-        } else if (code === mediaError?.MEDIA_ERR_SRC_NOT_SUPPORTED) {
-          message = "Video source format is not supported or could not be loaded.";
-        }
-
-        setState("error");
-        warnLog(message, { code, error: mediaError });
-        video.controls = true;
-      });
-
-      setState("initial");
-      tryPlay("startup");
+      tryPlay();
     });
   </script>
   <div class="xmb-shell">
