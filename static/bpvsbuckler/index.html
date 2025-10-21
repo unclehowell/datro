@@ -6,7 +6,7 @@
   <title>Great House Farm Timeline</title>
   <link
     rel="preload"
-    as="fetch"
+    as="video"
     href="vid.mp4"
     type="video/mp4"
     crossorigin="anonymous"
@@ -32,14 +32,7 @@
       --timeline-anchor: 45%;
     }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      margin: 0;
-      height: 100%;
-      background: var(--page-background);
+@@ -43,79 +43,68 @@
       color: var(--text-primary);
       font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       overflow: hidden;
@@ -65,8 +58,13 @@
       object-fit: cover;
       background-size: cover;
       filter: saturate(1.05) contrast(1.05) brightness(0.95);
+      opacity: 0;
+      transition: opacity 10s ease;
+      pointer-events: none;
+    }
+
+    #background-video.is-visible {
       opacity: 1;
-      transition: opacity 1.2s ease;
     }
 
     .background-overlay {
@@ -76,22 +74,6 @@
       background: radial-gradient(circle at 30% 20%, rgba(15, 118, 226, 0.22), rgba(2, 6, 23, 0.65) 55%),
         linear-gradient(180deg, rgba(2, 6, 23, 0.55) 0%, rgba(2, 6, 23, 0.88) 75%);
       pointer-events: none;
-    }
-
-    body[data-video-state="initial"] #background-video,
-    body[data-video-state="buffering"] #background-video,
-    body[data-video-state="paused"] #background-video,
-    body[data-video-state="stalled"] #background-video {
-      opacity: 0;
-    }
-
-    body[data-video-state="ready"] #background-video,
-    body[data-video-state="playing"] #background-video {
-      opacity: 1;
-    }
-
-    body[data-video-state="error"] .background-media {
-      display: none;
     }
 
     a {
@@ -119,264 +101,7 @@
       flex: 1;
       width: 100%;
       overflow: hidden;
-    }
-
-    .xmb-vertical {
-      position: absolute;
-      top: clamp(32px, 10vh, 84px);
-      bottom: clamp(32px, 18vh, 140px);
-      left: 50%;
-      transform: translateX(calc(-50% - var(--vertical-offset)));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: min(380px, 34vw);
-      z-index: 2;
-    }
-
-    .xmb-vertical__viewport {
-      width: 100%;
-      max-width: 420px;
-      height: 100%;
-      overflow: hidden;
-      position: relative;
-      pointer-events: auto;
-    }
-
-    .xmb-vertical__list {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--vertical-gap);
-      transform: translateY(0);
-      transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
-      padding-left: clamp(2px, 1vw, 12px);
-      padding-right: clamp(6px, 2vw, 16px);
-    }
-
-    .xmb-entry {
-      position: relative;
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      gap: clamp(10px, 2.5vh, 18px);
-      min-width: clamp(150px, 22vw, 210px);
-      padding: clamp(6px, 1.8vh, 10px) 0;
-      color: var(--text-primary);
-      text-align: center;
-      opacity: 0.7;
-      transform: translateY(0) scale(1);
-      transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
-        opacity 0.35s ease;
-      pointer-events: auto;
-    }
-
-    .xmb-entry__icon {
-      width: var(--horizontal-icon);
-      height: var(--horizontal-icon);
-      border-radius: 24px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: calc(var(--horizontal-icon) * 0.64);
-      line-height: 1;
-      background: radial-gradient(circle at 35% 35%, rgba(56, 189, 248, 0.65), rgba(56, 189, 248, 0.08) 70%, rgba(15, 23, 42, 0));
-      box-shadow: 0 26px 52px rgba(2, 6, 23, 0.6);
-    }
-
-    .xmb-entry__copy {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: clamp(2px, 0.8vh, 8px);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .xmb-entry__title {
-      font-weight: 700;
-      font-size: clamp(0.85rem, 2.4vw, 1.15rem);
-      color: var(--text-primary);
-    }
-
-    .xmb-entry__subtitle {
-      font-size: clamp(0.62rem, 1.8vw, 0.85rem);
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .xmb-entry.is-active {
-      opacity: 1;
-      transform: translateY(-8px) scale(1.04);
-    }
-
-    .xmb-entry:focus-visible {
-      outline: 3px solid var(--accent);
-      outline-offset: 4px;
-    }
-
-    .xmb-horizontal {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: var(--horizontal-offset);
-      height: var(--horizontal-band-height);
-      display: flex;
-      align-items: flex-end;
-      padding-bottom: clamp(24px, 6vh, 40px);
-      background: transparent;
-      z-index: 3;
-    }
-
-    .xmb-horizontal__viewport {
-      flex: 1;
-      overflow: hidden;
-      padding-left: clamp(16px, 3vw, 28px);
-      padding-right: clamp(24px, 5vw, 48px);
-      position: relative;
-      mask-image: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 1) 0%,
-        rgba(0, 0, 0, 1) calc(100% - var(--fade-width)),
-        rgba(0, 0, 0, 0) 100%
-      );
-      -webkit-mask-image: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 1) 0%,
-        rgba(0, 0, 0, 1) calc(100% - var(--fade-width)),
-        rgba(0, 0, 0, 0) 100%
-      );
-      mask-size: 100% 100%;
-      -webkit-mask-size: 100% 100%;
-      mask-repeat: no-repeat;
-      -webkit-mask-repeat: no-repeat;
-    }
-
-    .xmb-horizontal__track {
-      display: flex;
-      align-items: flex-end;
-      gap: var(--horizontal-gap);
-      margin-left: clamp(6vw, 10vw, 14vw);
-      transform: translateX(0);
-      transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
-      will-change: transform;
-      padding-left: clamp(140px, 26vw, 320px);
-      padding-right: clamp(200px, 34vw, 360px);
-    }
-
-    .xmb-year {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: clamp(12px, 3vh, 20px);
-      width: clamp(200px, 24vw, 280px);
-      padding: clamp(12px, 2.2vh, 18px) clamp(12px, 2vw, 20px);
-      background: transparent;
-      border: none;
-      color: var(--text-primary);
-      cursor: pointer;
-      opacity: 0.55;
-      transform: translateY(0) scale(0.94);
-      transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
-        opacity 0.35s ease;
-      text-align: left;
-    }
-
-    .xmb-year__icon {
-      width: var(--vertical-icon);
-      height: var(--vertical-icon);
-      border-radius: 24px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: calc(var(--vertical-icon) * 0.66);
-      background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.55), rgba(56, 189, 248, 0.1) 65%, rgba(15, 23, 42, 0));
-      box-shadow: 0 18px 46px rgba(2, 6, 23, 0.55);
-    }
-
-    .xmb-year__copy {
-      display: flex;
-      flex-direction: column;
-      gap: clamp(4px, 1vh, 8px);
-      text-transform: uppercase;
-      font-size: clamp(0.75rem, 1.8vw, 0.95rem);
-      letter-spacing: 0.08em;
-    }
-
-    .xmb-year__title {
-      font-weight: 700;
-      color: var(--text-primary);
-      font-size: clamp(0.85rem, 2vw, 1rem);
-    }
-
-    .xmb-year__subtitle {
-      color: var(--text-muted);
-      font-size: clamp(0.65rem, 1.6vw, 0.85rem);
-      letter-spacing: 0.06em;
-    }
-
-    .xmb-year.is-active {
-      opacity: 1;
-      transform: translateY(-6px) scale(1.04);
-    }
-
-    .xmb-year:focus-visible {
-      outline: 3px solid var(--accent);
-      outline-offset: 5px;
-    }
-
-    .xmb-loading {
-      position: fixed;
-      top: 18px;
-      right: 18px;
-      padding: 0.65rem 1.2rem;
-      background: rgba(15, 23, 42, 0.85);
-      border-radius: 999px;
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      box-shadow: 0 18px 48px rgba(2, 6, 23, 0.6);
-      z-index: 6;
-    }
-
-    .xmb-loading.is-hidden {
-      display: none;
-    }
-
-    @media (max-width: 900px) {
-      :root {
-        --horizontal-band-height: clamp(220px, 42vh, 320px);
-        --horizontal-gap: clamp(24px, 9vw, 44px);
-        --horizontal-icon: clamp(40px, 11vw, 64px);
-        --vertical-gap: clamp(14px, 4vh, 24px);
-        --vertical-icon: clamp(40px, 11vw, 64px);
-        --vertical-offset: clamp(28px, 8vw, 72px);
-        --timeline-anchor: 47%;
-      }
-
-      .xmb-vertical__viewport {
-        max-width: 360px;
-      }
-
-      .xmb-year {
-        width: min(100%, 300px);
-        padding: clamp(10px, 2.4vh, 16px) clamp(10px, 5vw, 18px);
-      }
-    }
-
-    @media (max-width: 640px) {
-      :root {
-        --timeline-anchor: 50%;
-      }
-
-      html, body {
-        overflow: hidden;
-      }
-
+@@ -380,157 +369,109 @@
       .xmb-vertical {
         left: clamp(20px, 8vw, 32px);
         transform: none;
@@ -402,7 +127,8 @@
     </style>
   </noscript>
 </head>
-<body data-video-state="initial">
+<body>
+<body>
   <div class="background-media" aria-hidden="true">
     <video
       autoplay
@@ -420,97 +146,49 @@
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    window.addEventListener("load", () => {
       const video = document.getElementById("background-video");
-      if (!video) return;
+      if (!video) {
+        return;
+      }
 
-      const setState = (state) => {
-        if (!state) return;
-        document.body.dataset.videoState = state;
+      const revealVideo = () => {
+        video.classList.add("is-visible");
       };
 
-      const debugLog = (...args) => {
-        if (window.console && typeof console.info === "function") {
-          console.info("[background-video]", ...args);
-        }
-      };
-
-      const warnLog = (...args) => {
-        if (window.console && typeof console.warn === "function") {
-          console.warn("[background-video]", ...args);
-        }
-      };
-
-      const tryPlay = (reason) => {
+      const tryPlay = () => {
         const playPromise = video.play();
         if (playPromise && typeof playPromise.then === "function") {
           playPromise
             .then(() => {
-              debugLog("play() resolved", reason || "manual");
+              revealVideo();
             })
-            .catch((error) => {
-              warnLog("play() rejected", reason || "manual", error);
+             .catch(() => {
               video.controls = true;
             });
         } else {
-          debugLog("play() invoked without promise", reason || "manual");
+          revealVideo();
         }
       };
 
-      const markReady = (reason) => {
-        if (document.body.dataset.videoState !== "playing") {
-          setState("ready");
-        }
-        if (reason) {
-          debugLog(reason);
-        }
-      };
+      if (video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
+        revealVideo();
+      } else {
+        const onFirstFrame = () => {
+          revealVideo();
+        };
+        video.addEventListener("loadeddata", onFirstFrame, { once: true });
+        video.addEventListener("canplaythrough", onFirstFrame, { once: true });
+        video.addEventListener(
+          "error",
+          () => {
+            video.classList.add("is-visible");
+          },
+          { once: true },
+        );
+      }
 
-      video.addEventListener("loadeddata", () => {
-        markReady("data loaded");
-        tryPlay("loadeddata");
-      });
-
-      video.addEventListener("canplay", () => markReady("canplay"));
-      video.addEventListener("canplaythrough", () => markReady("canplaythrough"));
-
-      video.addEventListener("playing", () => {
-        setState("playing");
-        video.controls = false;
-        debugLog("playing");
-      });
-
-      video.addEventListener("pause", () => setState("paused"));
-      video.addEventListener("stalled", () => {
-        setState("stalled");
-        warnLog("playback stalled");
-      });
-      video.addEventListener("waiting", () => {
-        setState("buffering");
-        debugLog("waiting for data");
-      });
-
-      video.addEventListener("error", (event) => {
-        const mediaError = event?.target?.error;
-        const code = mediaError?.code;
-        let message = "Unknown media error";
-        if (code === mediaError?.MEDIA_ERR_ABORTED) {
-          message = "Fetching was aborted.";
-        } else if (code === mediaError?.MEDIA_ERR_NETWORK) {
-          message = "Network error while fetching the video.";
-        } else if (code === mediaError?.MEDIA_ERR_DECODE) {
-          message = "Video playback was aborted due to a corruption problem or unsupported features.";
-        } else if (code === mediaError?.MEDIA_ERR_SRC_NOT_SUPPORTED) {
-          message = "Video source format is not supported or could not be loaded.";
-        }
-
-        setState("error");
-        warnLog(message, { code, error: mediaError });
-        video.controls = true;
-      });
-
-      setState("initial");
-      tryPlay("startup");
+      tryPlay();
     });
   </script>
   <div class="xmb-shell">
