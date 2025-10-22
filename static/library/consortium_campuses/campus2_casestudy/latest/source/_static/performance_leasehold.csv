@@ -1,0 +1,14 @@
+**Date**  , **Details**         ,**Debit**  , **Credit** , **Lessee**      , **Lessor**
+2014-05-28, Opening Balances    ,           ,            ,                 ,  
+2014-05-28, Sec. Dep. Bill      ,  -5000    ,            ,                 ,  
+2014-05-28, Lease - Bill 1/6    ,  -2500    ,            ,                 ,  
+2014-06-01, Sec. Dep. Payment   ,           , 5000       , -5000           ,  5000
+2014-06-01, Lease Payment 1/6   ,           , 2500       , -7500           ,  7500
+2014-06-28, Lease Bill 2/6      ,  -2500    ,            ,                 ,   
+2014-07-01, Lease Payment 2/6   ,           , 2500       , -10000          ,  10000
+2014-07-28, Lease Bill 3/6      ,  -2500    ,            ,                 ,  
+2014-08-01, Lease Payment 3/6   ,           , 2500       , -12500          ,  12500
+2014-08-28, Lease Bill 4/6      ,  -2500    ,            ,                 ,  
+2014-09-01, Lease Payment 4/6   ,           , 2500       , -15000          ,  15000
+2014-09-28, Lease Bill 5/6      ,  -2500    ,            ,                 ,  
+2014-10-01, Lease Payment 5/6   ,           , 2500       , -17500          ,  17500

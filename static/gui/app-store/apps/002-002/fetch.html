@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Page-Enter" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
+    <meta http-equiv="Page-Exit" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
+    <script src="../../../dashboard/js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Check if the URL contains "datro."
+            if (window.location.hostname.includes("datro.")) {
+                window.location.href = 'https://emulatorjs.org/demo.html';
+            } else {
+                // Redirect to the local server
+                window.location.href = 'http://' + window.location.hostname + ':83' + window.location.port;
+            }
+
+            // Add a timeout to handle cases where the port doesn't load within a reasonable timeframe
+            setTimeout(function() {
+                // Redirect back to the previous page with an error message
+                window.history.back();
+                // You can also display an alert or some other message to inform the user about the issue
+                alert("Failed to load the local server. Please try again later.");
+            }, 10000); // Adjust the timeout duration (in milliseconds) as needed
+        });
+    </script>
+</head>
+<body id="body">
+</body>
+</html>

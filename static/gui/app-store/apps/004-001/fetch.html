@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Redirect Page</title>
+    <script src="../../../dashboard/js/jquery-3.3.1.min.js"></script>
+<script>
+        window.onload = function() {
+            var hostname = window.location.hostname;
+
+            // Check if the hostname contains "datro"
+            if (hostname.indexOf("datro") !== -1) {
+                // Redirect to the demo URL
+                window.location.replace("https://demo.openhab.org/#!/page/floorplan_tabs");
+            } else {
+                // Construct the URL for the local server with port 8080
+                var redirectUrl = "http://" + hostname + ":8080";
+
+                // Redirect to the local server URL
+                window.location.replace(redirectUrl);
+            }
+        };
+    </script>
+</head>
+<body>
+   
+</body>
+</html>
+

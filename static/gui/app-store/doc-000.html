@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hβnβ Documents</title>
+	<meta content="text/html; charset=utf-8" http-equiv="content-type">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<link href="css/breadcrumb.css" rel="stylesheet">
+	<link href="css/docs.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="fonts/fontawesome-webfont.eot" rel="preload" type="font/eot">
+	<style>
+
+	@font-face {
+	     font-family: 'FontAwesome';
+	     src: url('../fonts/fontawesome-webfont.eot');
+	}
+
+	html {overflow-x: hidden!important;height: -webkit-fill-available;}
+
+	body::-webkit-scrollbar {
+	   width: 30px;
+	   height: 30px;
+	}
+
+	body:not(.loaded) #slider img {
+	 display:none;
+	}
+
+	html::-webkit-scrollbar-thumb {
+	   background: -webkit-gradient(linear,left top,left bottom,from(#ff8a00),to(#e52e71));
+	   background: linear-gradient(180deg,#ff8a00,#e52e71);
+	   border-radius: 30px;
+	   box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+	}
+
+	html::-webkit-scrollbar-track {
+	   background: linear-gradient(90deg,#201c29,#201c29 1px,#100e17 0,#100e17);
+	}
+
+	a:link, a, a:hover {color: rgba(255,255,255,0.8); font-size: 1.6rem;}
+
+	<!-- .container .box {
+	   width: 82vw;
+	   margin-left: 0.5vw;
+	   display: table;
+	   border-radius: 20px;
+	   min-height:98px;
+	}
+
+	.container .box .box-row {
+	   display:table-row;
+	   color:rgba(255,255,255,0.6);
+	}
+
+	.container .box .box-cell {
+	   display:table-cell;
+	   width:28vw;
+	   padding:20px 45px 13px 20px;
+	}
+
+	.container .box .box-cell.box1 {
+	   background:transparent;
+	   text-align:left;
+	   position:fixed;
+	   min-height:10vh;
+	}
+
+	.container .box .box-cell.box2 {
+	   background: transparent;
+	   font-size: 2rem;
+	   text-align: center;
+	   padding-left: 100px;
+	   font-weight: bold;
+	}
+
+	.container .box .box-cell.box3 {
+	   background:transparent;
+	   text-align:right;
+	   position: relative;
+	} -->
+
+	.noHover{
+	   pointer-events: none;
+	}
+	.breadcrumb {opacity:0.4;}
+
+	ul.breadcrumb li a:hover {
+    padding-left: 0px!important;
+    border: 2px solid rgba(255,255,255,0.51);
+    margin-top: 0px;
+    background: black;
+    box-shadow: none!important;
+    margin-left: -2px!important;
+    max-height: 48px;
+    max-width: 49px;
+	}
+
+	.square {
+	background:rgb(44,12,33)!important;
+	border: 2px solid rgba(255,255,255,0.1);
+	}
+
+.nohighlight:hover {
+    border: 0.01em solid rgb(255,255,255,0.12)!important;
+    background: rgb(44,12,33)!important;
+    pointer-events:none!important;
+}
+
+
+	</style>
+	<script src="js/jquery-2.1.4.min.js">
+	</script>
+	<script>
+	     $(document).ready(function(){
+	       // Set trigger and container variables
+	       var trigger = $('#nav ul li a'),
+	           container = $('#content');
+
+	       // Fire on click
+	       trigger.on('click', function(){
+	         // Set $this for re-use. Set target from data attribute
+	         var $this = $(this),
+	           target = $this.data('target');
+
+	         // Load target page into container
+	         container.load(target + '.html');
+
+	         // Stop normal link behavior
+	         return false;
+	       });
+	     });
+	</script>
+
+<!-- google tracking code start --> 
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BTNPTMXBF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6BTNPTMXBF');
+</script>
+<!-- google tracking code end -->
+</head>
+<body onload="document.body.classList.add('loaded')">
+	<div class="container">
+		<div class="box">
+			<div class="box-row">
+				<div class="box-cell box1">
+					<ul class="breadcrumb" id="btn noHover">
+						<li class="btn noHover" style="    padding-left: 12px;">
+							<a href="doc-000.html" style="width:auto!Important;"><span class="text2">Categories</span></a>
+						</li>
+						<li class="btn noHover">
+							<a class="backtodash" href="doc-000.html"><span class="text2">Library</span></a>
+						</li>
+						<li class="btn">
+							<a href="../dashboard/001-a.html"><span class="icon icon-search"></span> <span class="text"></span></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="square nohighlight" style="opacity:0.4;pointer-events:none!Important;">
+		<div class="content nohighlight" style="pointer-events:none!important;">
+			<a href="#" class="nohighlight" style="pointer-events:none;">
+			<div class="table" style="pointer-events:none!Important;">
+				<div class="table-cell" style="pointer-events:none!important;">
+					<img class="rs" src="img/icons/search.svg" style="filter: opacity(0.3);pointer-events:none!Important;"><br>
+					<p class="categories-text" style="pointer-events:none!Important;opacity:0.2!important;">Search</p><br>
+				</div>
+			</div></a>
+		</div>
+	</div>
+	<div class="square">
+		<div class="content">
+			<a href="doc-002.html">
+			<div class="table">
+				<div class="table-cell">
+					<img class="rs" src="../dashboard/img/icons/001.svg"><br>
+					<p class="categories-text">Entertainment</p><br>
+				</div>
+			</div></a>
+		</div>
+	</div>
+	<div class="square">
+		<div class="content">
+			<a href="doc-003.html">
+			<div class="table">
+				<div class="table-cell">
+					<img class="rs" src="../dashboard/img/icons/002.svg"><br>
+					<p class="categories-text">Controllers</p><br>
+				</div>
+			</div></a>
+		</div>
+	</div>
+	<div class="square">
+		<div class="content">
+			<a href="doc-004.html">
+			<div class="table">
+				<div class="table-cell">
+					<img class="rs" src="../dashboard/img/icons/003.svg"><br>
+					<p class="categories-text">Smart Home</p><br>
+				</div>
+			</div></a>
+		</div>
+	</div>
+	<div class="square">
+		<div class="content">
+			<a href="doc-005.html">
+			<div class="table">
+				<div class="table-cell">
+					<img class="rs" src="../dashboard/img/icons/004.svg" style="opacity:0.8!important;"><br>
+					<p class="categories-text">Safety & Security</p><br>
+				</div>
+			</div></a>
+		</div>
+	</div>
+
+	<script src="js/jquery-2.1.1.js">
+	</script> 
+	<script src="js/breadcrumb.js">
+	</script> 
+	<script src="js/main.js">
+	</script>
+</body>
+</html>

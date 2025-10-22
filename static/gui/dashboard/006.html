@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hβnβ Entertainment Screen</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="media/css/breadcrumb.css">
+    <link rel="stylesheet" href="media/css/appstore.css">
+    <link rel="stylesheet" href="media/css/font-awesome.css">
+    <link rel="stylesheet" href="../app-store/apps/000-000/style.css"> <!--- for the 'suggest/upload app'  --->
+    <link rel="stylesheet" href="../app-store/apps/006-001/style.css">
+    <link rel="stylesheet" href="../app-store/apps/006-002/style.css">
+    <link rel="stylesheet" href="../app-store/apps/006-003/style.css">
+    <link rel="stylesheet" href="../app-store/apps/006-004/style.css">
+    <link rel="stylesheet" href="../app-store/apps/006-005/style.css">
+    <link rel="stylesheet" href="../app-store/apps/006-006/style.css">
+    <link rel="stylesheet" href="../app-store/apps/006-007/style.css">
+    <link rel="stylesheet" href="../app-store/apps/006-008/style.css">
+    <link rel="stylesheet" href="../app-store/apps/999-999/style.css">
+    <style>
+
+
+.title-span, object {
+    cursor: pointer;
+    user-select: auto; /* Ensure elements are selectable */
+}
+
+        @font-face {
+            font-family: 'FontAwesome';
+            src: url('../fonts/fontawesome-webfont.eot');
+        }
+
+        html {overflow-x: hidden!important;height: -webkit-fill-available;}
+        /* Sets the dimensions of the entire scrollbar */
+        body::-webkit-scrollbar {
+            width: 30px;
+            height: 30px;
+        }
+        /* The grabbable scrollbar button  */
+        html::-webkit-scrollbar-thumb {
+            background: -webkit-gradient(linear,left top,left bottom,from(#ff8a00),to(#e52e71));
+            background: linear-gradient(180deg,#ff8a00,#e52e71);
+            border-radius: 30px;
+            box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+        }
+
+        /* The vertical scrollbar background */
+        html::-webkit-scrollbar-track {
+            background: linear-gradient(90deg,#201c29,#201c29 1px,#100e17 0,#100e17);
+        }
+
+        .content .rs {
+            max-height: 35%;
+            width: auto;
+            margin-top: 10px;
+            overflow: hidden!important;
+            height: 6%;
+        }
+        a:link, a, a:hover {color: rgba(255,255,255,0.8); font-size: 1.6rem;}
+
+        .container .box {
+            width: 82vw;
+            margin-left: 0.5vw;
+            display: table;
+            border-radius: 20px;
+            min-height:98px;
+        }
+
+        .container .box .box-row {
+            display:table-row;
+            color:rgba(255,255,255,0.6);
+        }
+
+        .container .box .box-cell {
+            display:table-cell;
+            width:28vw;
+            padding:20px 45px 13px 20px;
+        }
+
+        .container .box .box-cell.box1 {
+            background:transparent;
+            text-align:left;
+            position:fixed;
+            min-height:10vh;
+        }
+
+        .container .box .box-cell.box2 {
+            background: transparent;
+            font-size: 2rem;
+            text-align: center;
+            padding-left: 100px;
+            font-weight: bold;
+        }
+
+        .container .box .box-cell.box3 {
+            background:transparent;
+            text-align:right;
+            position: relative;
+        }
+
+        img {
+            image-rendering: auto;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+        }
+        .breadcrumb {opacity:0.4;}
+        .noHover{
+            pointer-events: none;
+        }
+
+        .noHover a:hover{
+            pointer-events: none;
+        }
+
+        body:not(.loaded) #slider img {
+            display:none;
+        }
+
+        .forminput {
+            border: 1px solid transparent!important;
+            margin-top: -1.5rem;
+            background: transparent;
+            opacity: 0.6;
+            max-width: 17rem;
+            text-align: center;
+            padding: 5px;
+            position: fixed;
+            margin-left: -7.5rem;
+            color: dimgrey;
+            font-weight: 800!important;
+            letter-spacing: 0.2em;
+            font-size: 1.7rem;
+        }
+
+        .logo {
+            background:transparent!important;
+            opacity:1;
+            margin-top: 0.8rem;
+            max-width: calc(100vw - 80px)!important;
+            width: 23rem!important;
+            margin-right: calc(-9.5rem + 41.5vw)!important;
+            float: right!important;
+        }
+
+        .app {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            min-width: 17vw;
+            min-height: 5vw !important;
+            line-height: 16vw !important;
+            margin: 14px;
+            cursor: pointer;
+            border: 13px solid #454545;
+            border-radius: 40px 40px 40px 40px;
+        }
+
+        .apps-container {
+            max-width:90vw;
+        }
+    </style>
+</head>
+<body style="overflow: inherit !important; height: inherit !important; display: visible;" onload="document.body.classList.add('loaded'); updateHomeScreen();">
+<div id="apps-container" class="apps-container">
+</div>
+
+
+<script>
+
+function updateHomeScreen() {
+    const appsContainer = document.getElementById('apps-container');
+    appsContainer.innerHTML = ''; // Clear existing apps
+    const appIds = ['006-001', '006-002', '999-999']; // Using class-based IDs
+    appIds.forEach(appId => {
+        const appInstalled = localStorage.getItem(appId) === 'added';
+        if (appInstalled || appId === '999-999') {
+            const appElement = document.createElement('a');
+            appElement.href = getAppLink(appId); // Set the hyperlink
+            appElement.style.cursor = 'pointer';
+            appElement.innerHTML = `
+                <div class="square-${appId}">
+                    <div class="content-${appId}">
+                        <div class="table-${appId}">
+                            <div class="table-cell-${appId}">
+                                <img class="rs-${appId}" src="../app-store/apps/${appId}/logo.png">
+                                <br>
+                                <img src="../app-store/apps/${appId}/title.svg" style="width:75%; height:5vw; margin-top:-1.5pc;">                           
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            appElement.addEventListener('dragstart', handleDragStart);
+            appsContainer.appendChild(appElement);
+        }
+    });
+}
+
+
+function handleTitleObjectClick(appId) {
+    const appLink = getAppLink(appId);
+    window.location.href = appLink;
+}
+
+
+function handleAppLinkClick(event) {
+    // Prevent default link behavior to avoid reloading the page
+    event.preventDefault();
+    
+    // Redirect to the app link
+    const href = event.target.href;
+    window.location.href = href;
+}
+
+function getAppColor(appId) {
+    // Function can be removed if not used
+}
+
+function getAppLink(appId) {
+    switch (appId) {
+        case '006-001':
+            return '../app-store/apps/006-001/fetch.html';
+        case '006-002':
+            return '../app-store/apps/006-001/fetch.html';
+        case '999-999':
+            return '../app-store/006.html';
+    }
+}
+
+function handleDragStart(event) {
+    event.dataTransfer.setData('text/plain', event.target.id);
+}
+
+function handleDragOver(event) {
+    event.preventDefault();
+}
+
+function handleDrop(event) {
+    event.preventDefault();
+    const appId = event.dataTransfer.getData('text/plain');
+    const appElement = document.getElementById(appId);
+    if (appElement) {
+        // Check if the dropped app is the one you want to prevent from being deleted
+        if (appId !== '999-999') {
+            appElement.remove();
+            localStorage.removeItem(appId);
+            updateAppStore(); // Update app store after removal
+            
+            // Reload only the apps-container to update the remaining app icons
+            const appsContainer = document.getElementById('apps-container');
+    psContainer.innerHTML = ''; // Clear existing apps
+            updateHomeScreen(); // Repopulate the apps-container with updated app icons
+        } else {
+            // Do something (like displaying a message) to indicate that dropping this app is not allowed
+            console.log("You cannot delete this app.");
+        }
+    }
+}
+
+function updateAppStore() {
+    const appIds = ['006-001', '006-002', '999-999'];
+    appIds.forEach(appId => {
+        const installState = localStorage.getItem(appId);
+        const installAppCheckbox = document.getElementById(appId);
+        if (installAppCheckbox) {
+            // Assuming installAppCheckbox is an AppCheckbox element
+            installAppCheckbox.checked = installState === 'added';
+            // You may need to set other properties based on your AppCheckbox implementation
+        }
+    });
+}
+
+// Listen for changes in the localStorage and update home screen
+window.addEventListener('storage', updateHomeScreen);
+
+
+</script> 
+
+<script src="media/js/breadcrumb.js"></script>
+<script src="media/js/jquery-2.1.4.min.js"></script>
+<script src="media/js/main.js"></script>
+<script type="text/javascript" src="https://www.jqueryscript.net/demo/Simple-iFrame-Modal-Plugin-With-jQuery-modallink/src/jquery.modallink-1.0.0.js"></script>
+
+</body>
+</html>
+
+
