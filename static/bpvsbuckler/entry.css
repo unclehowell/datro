@@ -429,6 +429,7 @@ body[data-theme='dark'] .detail-back-link {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+<<<<<<< HEAD
 
 /* Active state feedback for touch */
 .xmb-year:active,
@@ -437,3 +438,5 @@ body[data-theme='dark'] .detail-back-link {
   transform: scale(0.95);
   opacity: 0.8;
 }
+=======
+>>>>>>> 60cb4bf1f4461eac2d6c104e3fb39df3f0e5b839

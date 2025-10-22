@@ -154,6 +154,7 @@
       }
     }
 
+<<<<<<< HEAD
 // Touch event handling for buttons
 if (themeToggle) {
   themeToggle.addEventListener('touchend', (event) => {
@@ -178,6 +179,8 @@ if (introClose) {
   }, { passive: false });
 }
 
+=======
+>>>>>>> 60cb4bf1f4461eac2d6c104e3fb39df3f0e5b839
     const hasThemes = Array.isArray(data.keyThemes) && data.keyThemes.length;
     if (keyThemes) {
       keyThemes.innerHTML = '';

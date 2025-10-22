@@ -1,0 +1,22 @@
+Pre-Usage Preparation
+============================
+
+This section helps prepaire the user(s) for Loyverse & ScrCpy (LaS), although there is very little preperation and planning required with LaS, since it is designed to function as an out-of-the-box, plug & play solution.
+
+Dependancies
+~~~~~~~~~~~~~
+
+**Power** The Raspberry Pi is very specific about its power supply being 5V and 2.5A. But in the case of LaS the PC's USB port is sufficient enough to power the Raspberry Pi. 
+
+**Networking** Use Wi-Fi to connect the PC to the internet, since the Ethernet port of the machine is used to communicate with the Raspberry Pi. You can scan for wireless networks to connect to, via the desktop interface, after the system has been booted up for the first time. The Raspberry Pi does has built in Wi-Fi, which you may be inclined to enable through the Android interface. **BUT DO NOT ENABLE THE RASPBERRY PI WI-FI. IT WILL CONFUSE THE LaS CONFIGURATION**. The LaS solution does not require an internet connection to display the Loyverse application on the PC, although Loyverse will demand internet to initially login. The PC connects to the wireless hotspot and the internet is shared to the ethernet port, which the Raspberry Pi is connected to. This is how the Raspberry Pi and Android and the Loyverse application gets its internet. Additionally the LaS solution can double-up as a source of music for your venue, which can be stored on the machine and played offline. Although music streaming over internet is a more popular option these days. The other main value of being connected to the internet is for the ongoing updates and bugfixes.  
+
+**Users** Users must have a basic knowledge of operating a computer e.g. selecting desktop icons to open them or checking devices such as printers are connected and powered up before trying to use them etc - It's worth noting that the screen may lock, in which case a password will be asked for. The default system password will be provided by your systems administrator or software distributor. Basic communications skills are important when dealing with support services. 
+
+**Environment** The computer hardware must be kept dry and to a reasonable humidity level. If you decide to load additional applications and programes to the Raspberry Pi's Android operating system and/or the PC's Ubunutu operating system, please be aware of (and vigilant against) viruses. Please also be aware that there are also a number of dependant applications running on both the PC's and Raspberry Pi's operating system, which may cause faults if removed e.g. Android uses a startup application to open the Loyverse application automatically upon bootup. 
+
+On the PC, the LaS solution is built on the Linux Ubuntu Operating System. For support using Ubuntu please visit https://help.ubuntu.com/stable/ubuntu-help/
+On the Raspberry Pi, The LaS Solution is built upon the LineageOS (Android for Raspberry Pi) Operating System. For support using Android please visit https://wiki.lineageos.org/ 
+
+ 
+
+

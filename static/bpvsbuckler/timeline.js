@@ -549,6 +549,7 @@
     }
   }
 
+<<<<<<< HEAD
 // Touch handling for year navigation
 let yearTouchStartY = null;
 let yearTouchStartTime = null;
@@ -621,6 +622,8 @@ entryViewport.addEventListener('touchend', () => {
   entryTouchStartTime = null;
 }, { passive: true });
 
+=======
+>>>>>>> 60cb4bf1f4461eac2d6c104e3fb39df3f0e5b839
   function handleResize() {
     requestAnimationFrame(() => {
       alignYearList();
