@@ -549,7 +549,6 @@
     }
   }
 
-<<<<<<< HEAD
 // Touch handling for year navigation
 let yearTouchStartY = null;
 let yearTouchStartTime = null;
