@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buckler Family Land Dispute Timeline</title>
+  <link rel="stylesheet" href="tailwind.css">
+  <style>
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: #4b5563;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+    }
+    .timeline-item {
+      position: relative;
+      width: 100%;
+      padding: 20px 0;
+      text-align: center;
+    }
+    .year-marker {
+      background-color: #1f2937;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      display: inline-block;
+      font-weight: bold;
+      position: relative;
+      z-index: 1;
+    }
+    .year-marker::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #3b82f6;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+    .timeline-content {
+      position: absolute;
+      width: 35%;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      top: 10px;
+      font-size: 1.2rem;
+      text-align: center;
+      cursor: pointer;
+    }
+    .timeline-content.buckler {
+      left: 5%;
+      background-color: #d1fae5;
+      color: #1f2937;
+    }
+    .timeline-content.bp {
+      right: 5%;
+      background-color: #fee2e2;
+      color: #1f2937;
+    }
+    .timeline-content.both {
+      width: 70%;
+      left: 15%;
+      background-color: #e0e7ff;
+      color: #1f2937;
+    }
+    .timeline-content.buckler::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      right: -10px;
+      border-left: 10px solid #d1fae5;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+    }
+    .timeline-content.bp::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: -10px;
+      border-right: 10px solid #fee2e2;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+    }
+    .modal-content h3 {
+      margin-top: 0;
+      color: #1e40af;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    @media (max-width: 600px) {
+      .timeline::before {
+        left: 20px;
+      }
+      .timeline-item {
+        padding-left: 50px;
+        text-align: left;
+      }
+      .year-marker {
+        margin-left: 30px;
+      }
+      .timeline-content {
+        width: 70%;
+        left: 50px !important;
+        right: auto !important;
+      }
+      .timeline-content.buckler::before,
+      .timeline-content.bp::before {
+        left: -10px !important;
+        border-right: 10px solid transparent !important;
+        border-left: 10px solid transparent !important;
+        border-bottom: 10px solid #d1fae5;
+      }
+      .timeline-content.bp::before {
+        border-bottom: 10px solid #fee2e2;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans">
+  <div class="container mx-auto px-4 py-8">
+    <header class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-800">BP vs Buckler</h1>
+      <p class="text-lg text-gray-600 mt-2">This is to become the home of a chronology of the timeline of legal battle between BP and the Buckler Family of Great House Farm, Cardiff, Wales.</p>
+      <div class="mt-4 flex justify-center space-x-4">
+        <button id="filter-buckler" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Buckler's Account</button>
+        <button id="filter-both" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Both Accounts</button>
+        <button id="filter-bp" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">BP/UK Gov's Account</button>
+      </div>
+    </header>
+
+    <!-- ========= EARLY HISTORY SECTION ========== -->
+    <section class="max-w-3xl mx-auto mb-10">
+      <button 
+        onclick="document.getElementById('early-history').classList.toggle('hidden')" 
+        class="w-full bg-indigo-700 text-white py-3 px-6 mb-2 rounded font-semibold shadow hover:bg-indigo-800 transition text-lg">
+        📜 Early History of Llandough & Great House Farm (Roman–19th C) <span class="text-sm">(click to expand/collapse)</span>
+      </button>
+      <div id="early-history" class="bg-white shadow rounded p-6 text-gray-800 leading-relaxed text-base max-h-96 overflow-y-scroll hidden">
+        <h2 class="text-2xl font-bold text-indigo-700 mb-2">Introduction</h2>
+        <p>
+          Alongside St Dochdwy's Church, Llandough once stood Great House Farm, the site of a Celtic monastery and missionary centre, overlaying one of the major early-medieval monasteries of Glamorgan.
+        </p>
+        <hr class="my-4"/>
+        
+        <div>
+          <b>1st Century:</b> N/A<br>
+          <b>2nd Century:</b> A Roman villa was constructed.<br>
+          <b>3rd Century:</b> Considerable development at the Roman villa. Occupied until the early 4th century.<br>
+          <b>370–640 AD:</b> Burials commenced at the site.<br>
+        </div>
+        <hr class="my-2"/>
+        <div>
+          <b>4th Century:</b> Christian villa chapels, though archaeologically elusive, are referenced in late Roman sources (e.g. Ausonius of Bordeaux, and Oratory at Lullingstone, Kent). Roman tombstones and cemeteries indicate early Christian presence.<br>
+          <b>5th Century:</b> Traditionally, Saint Dochdwy associated with Cadvan is said to have come into Wales early this century. Parish church dedicated to this Saint, possibly original monastery site (some say founded by St Cyngarus for twelve monks).<br>
+        </div>
+        <hr class="my-2"/>
+        <div>
+          <b>525 AD:</b> <u>Council of Clermont</u> (535) divided diocesan clergy: those of the city; those of rural parishes (later minsters); and those in villas (estate chapels). New churches required endowment; key feast days to be observed in city churches.<br>
+          <b>6th Century:</b> <u>Gregory of Tours</u> describes rural churches founded by landowners in Gaul; possible monastic, Christian and villa continuity at Llandough. Archaeological ceramics indicate settlement with nearby Dinas Powys; Dochdwy is probable founder.<br>
+        </div>
+        <hr class="my-2"/>
+        <div>
+          <b>8th Century:</b> Archaeologically evidenced by 30+ burials. c.1000–1284: Occasional burials found in villa ruins.<br>
+          <b>11th Century:</b> Llandough, including the monastery & village, granted to Tewkesbury Abbey; a grange was established. Community and cemetery fell into decline, coinciding with rise of Llandaff.<br>
+          <b>12th–13th Century:</b> Dovecote and barn overlay villa. Medieval houses use Roman stone. Notable finds include 12th-13th cent. house remains, and 13th cent. burial tile.<br>
+        </div>
+        <hr class="my-2"/>
+        <div>
+          <b>13th Century:</b> The Williams family occupied the house; under a replaced timber floor, the remains of a soldier and his horse were discovered, reburied in the churchyard. Local traditions of cheese, pork, and monastic hospitality.<br>
+          <b>15th Century:</b> Grange wealthy but by Dissolution (1536-41) lands confiscated and sold.<br>
+          <b>17th Century:</b> Great House Farm largely rebuilt. Norman chancel arch in church. Churchyard walls comparable with church masonry.
+        </div>
+        <hr class="my-2"/>
+        <div>
+          <b>18th Century:</b> In 1897, Guglielmo Marconi stayed while conducting wireless experiments. Williams family helped Marconi reach Lavernock Point for first radio trans-sea transmission.
+        </div>
+        <hr class="my-2"/>
+        <div>
+          <b>19th Century:</b> Daniel Thomas (quarryman) involved in land swaps; Williams family assert ownership after his passing. Landownership and water rights disputed into the 20th C.
+        </div>
+        <hr class="my-2"/>
+        <div>
+          <b>Archaeology:</b> 
+          <ul class="list-disc pl-6">
+            <li>Late Iron Age/Roman roundhouse, villa foundations, baths and barn found in excavations (1960s-79).</li>
+            <li>12th/13th-century barn reuses villa walls; curvilinear and row cemeteries found, one focused on church site.</li>
+            <li>Post-Roman/early Christian cemetery: over 1,000 inhumations, diverse burial practices. See <a href="http://ads.ahds.ac.uk/catalogue/resources.html?llandough_cadw_2004" target="_blank" class="text-blue-700 underline">digital archive</a> (ADS Llandough, Cadw 2004).</li>
+            <li>Detailed analysis: age, sex, burial positions, and body orientation. Rare finds: double burials, Roman artifacts, imported amphora sherds.</li>
+          </ul>
+        </div>
+        <hr class="my-2"/>
+        <div>
+          <b>References:</b>
+          <ul class="list-disc pl-6">
+            <li>Principal cemetery report: Holbrook & Thomas, <i>An Early Medieval Monastic Cemetery at Llandough, Glamorgan</i>, Medieval Archaeology XLIX (2005)</li>
+            <li>Palaeopathology: L. K. Loe, <i>Health and Socio-Economic Status in Early Medieval Wales</i>, BAR (forthcoming).</li>
+            <li>Archaeological records held at the National Museums and Galleries of Wales, Cardiff.</li>
+          </ul>
+        </div>
+        <p class="text-gray-500 mt-4 text-xs">For more info, contact Hywel Ap Buckler: +44 2031377118</p>
+      </div>
+    </section>
+    <!-- ========== TIMELINE SECTION FOLLOWS ========== -->
+    <div class="timeline">
+      <!-- ... your timeline code here, unchanged ... -->
+      <!-- the timeline code you already posted remains as-is -->
+      <div class="timeline-item">
+        <div class="year-marker">1916</div>
+        <div class="timeline-content buckler" data-year="1916" data-side="buckler">
+          <p>A</p>
+          <div class="full-text hidden">
+            <h3>February 1916</h3>
+            <p>The Marquis of Bute grants a yearly agricultural tenancy of Great House Farm, including the farmhouse and garden, to John Williams, maternal grandfather of William Buckler and father of Mary Buckler (née Williams).</p>
+          </div>
+        </div>
+      </div>
+      <!-- ... [rest of timeline, unchanged] ... -->
+      <div class="timeline-item">
+        <div class="year-marker">Archival Note</div>
+        <div class="timeline-content both" data-year="archival" data-side="both">
+          <p>N</p>
+          <div class="full-text hidden">

@@ -1,0 +1,164 @@
+{
+  "caseTitle": "Personal & Business",
+  "caseSubtitle": "Categories",
+  "introduction": [
+    "Two categories.",
+    "Events grouped."
+  ],
+  "keyThemes": [
+    {
+      "title": "Personal",
+      "items": [
+        "Life events.",
+        "Independent labels."
+      ]
+    },
+    {
+      "title": "Business",
+      "items": [
+        "Career events.",
+        "Separate titles."
+      ]
+    }
+  ],
+  "centuries": [
+    {
+      "id": "cat-1",
+      "title": "Personal",
+      "range": "Personal",
+      "events": [
+        {
+          "id": "p-event-1",
+          "year": "P1",
+          "side": "both",
+          "title": "Birth",
+          "summary": "Born.",
+          "context": [
+            "Hospital.",
+            "Family."
+          ],
+          "evidence": [
+            {
+              "id": "ev-p1",
+              "title": "Cert",
+              "type": "document",
+              "source": {
+                "name": "Archive",
+                "url": "#"
+              },
+              "description": "Birth."
+            }
+          ],
+          "yearValue": 1,
+          "icon": "👶",
+          "iconLabel": "Birth"
+        },
+        {
+          "id": "p-event-2",
+          "year": "P2",
+          "side": "buckler",
+          "title": "Graduation",
+          "summary": "Graduated.",
+          "context": [
+            "University.",
+            "Degree."
+          ],
+          "evidence": [
+            {
+              "id": "ev-p2",
+              "title": "Diploma",
+              "type": "document",
+              "source": {
+                "name": "Archive",
+                "url": "#"
+              },
+              "description": "Degree."
+            }
+          ],
+          "yearValue": 2,
+          "icon": "🎓",
+          "iconLabel": "Graduation"
+        }
+      ],
+      "startYear": 1987,
+      "endYear": 2025
+    },
+    {
+      "id": "cat-2",
+      "title": "Business",
+      "range": "Business",
+      "events": [
+        {
+          "id": "b-event-1",
+          "year": "B1",
+          "side": "both",
+          "title": "First Job",
+          "summary": "Hired.",
+          "context": [
+            "Startup.",
+            "Junior."
+          ],
+          "evidence": [
+            {
+              "id": "ev-b1",
+              "title": "Contract",
+              "type": "document",
+              "source": {
+                "name": "HR",
+                "url": "#"
+              },
+              "description": "Job."
+            }
+          ],
+          "yearValue": 3,
+          "icon": "💼",
+          "iconLabel": "Job"
+        },
+        {
+          "id": "b-event-2",
+          "year": "2025",
+          "side": "buckler",
+          "title": "Promotion",
+          "summary": "Promoted.",
+          "context": [
+            "Senior.",
+            "Raise."
+          ],
+          "evidence": [
+            {
+              "id": "ev-b2",
+              "title": "Letter",
+              "type": "document",
+              "source": {
+                "name": "HR",
+                "url": "#"
+              },
+              "description": "Promo."
+            }
+          ],
+          "yearValue": 4,
+          "icon": "🏆",
+          "iconLabel": "Test"
+        }
+      ],
+      "startYear": 3,
+      "endYear": 4
+    }
+  ],
+  "furtherResearch": [
+    {
+      "heading": "Archives",
+      "items": [
+        "Documents.",
+        "Records."
+      ]
+    },
+    {
+      "heading": "Media",
+      "items": [
+        "Photos.",
+        "Articles."
+      ]
+    }
+  ]
+}

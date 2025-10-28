@@ -1,0 +1,164 @@
+{
+  "caseTitle": "Demo Timeline",
+  "caseSubtitle": "Vertical & Horizontal Menus",
+  "introduction": [
+    "Vertical: century titles.",
+    "Horizontal: event titles."
+  ],
+  "keyThemes": [
+    {
+      "title": "Structure",
+      "items": [
+        "Centuries for vertical.",
+        "Events for horizontal."
+      ]
+    },
+    {
+      "title": "Independence",
+      "items": [
+        "Titles separate.",
+        "Change one, not other."
+      ]
+    }
+  ],
+  "centuries": [
+    {
+      "id": "century-1987",
+      "title": "1987",
+      "range": "Key Year",
+      "events": [
+        {
+          "id": "event-1",
+          "year": "1987",
+          "side": "both",
+          "title": "Cemetery Excavation",
+          "summary": "Dig site.",
+          "context": [
+            "Burials found.",
+            "Archaeology team."
+          ],
+          "evidence": [
+            {
+              "id": "ev-1",
+              "title": "Report",
+              "type": "doc",
+              "source": {
+                "name": "Archive",
+                "url": "#"
+              },
+              "description": "Excavation summary."
+            }
+          ],
+          "yearValue": 1987,
+          "icon": "🏺",
+          "iconLabel": "BP vs Buckler"
+        },
+        {
+          "id": "event-2",
+          "year": "1987",
+          "side": "buckler",
+          "title": "Site Clearance",
+          "summary": "Area cleared.",
+          "context": [
+            "Prep for build.",
+            "Safety ensured."
+          ],
+          "evidence": [
+            {
+              "id": "ev-2",
+              "title": "Log",
+              "type": "doc",
+              "source": {
+                "name": "Archive",
+                "url": "#"
+              },
+              "description": "Clearance records."
+            }
+          ],
+          "yearValue": 1987,
+          "icon": "🧹",
+          "iconLabel": "Clearance"
+        }
+      ],
+      "startYear": 1987,
+      "endYear": 1987
+    },
+    {
+      "id": "century-1995",
+      "title": "2007",
+      "range": "Next Year",
+      "events": [
+        {
+          "id": "event-3",
+          "year": "Business",
+          "side": "both",
+          "title": "Building Start",
+          "summary": "Ref 1987 Case",
+          "context": [
+            "Foundation laid.",
+            "Team onsite."
+          ],
+          "evidence": [
+            {
+              "id": "ev-3",
+              "title": "Permit",
+              "type": "doc",
+              "source": {
+                "name": "Archive",
+                "url": "https://example.com/1995/permit"
+              },
+              "description": "Build approval."
+            }
+          ],
+          "yearValue": 1995,
+          "icon": "🏗️",
+          "iconLabel": "Suing BP"
+        },
+        {
+          "id": "event-4",
+          "year": "1995",
+          "side": "buckler",
+          "title": "Official Opening",
+          "summary": "Ribbon cut.",
+          "context": [
+            "Public event.",
+            "Speeches given."
+          ],
+          "evidence": [
+            {
+              "id": "ev-4",
+              "title": "Photos",
+              "type": "img",
+              "source": {
+                "name": "Archive",
+                "url": "https://example.com/1995/photos"
+              },
+              "description": "Event images."
+            }
+          ],
+          "yearValue": 1995,
+          "icon": "🎀",
+          "iconLabel": "Opening"
+        }
+      ],
+      "startYear": 1995,
+      "endYear": 1995
+    }
+  ],
+  "furtherResearch": [
+    {
+      "heading": "Sources",
+      "items": [
+        "Archive docs.",
+        "Local records."
+      ]
+    },
+    {
+      "heading": "Media",
+      "items": [
+        "News clips.",
+        "Photo gallery."
+      ]
+    }
+  ]
+}

@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.1-rtw.17] - Q4/2025
+Oct-28 - Added a timeline with a nice menu /static/timeline - hoping to build this feature out  
 
 ## [0.0.1-rtw.16] - Q3/2025
 Sep-10 - Added a link to a draft pdf project brief in 'static/forces' page  

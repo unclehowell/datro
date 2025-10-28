@@ -656,7 +656,7 @@ entryViewport.addEventListener('touchend', () => {
 
   showLoading('Loading timeline…');
 
-  fetch('data/timeline.json')
+  fetch('data/bpvsbuckler.json')
     .then(response => {
       if (!response.ok) {
         throw new Error('Failed to load timeline data');
