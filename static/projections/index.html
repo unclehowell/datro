@@ -1,36 +1,1260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Financial Model</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* For smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-            animation: fadeIn 0.5s ease-out forwards;
-        }
-    </style>
-<script type="importmap">
-{
-  "imports": {
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Platinum Luxury Transportation – Business Plan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+  </style>
 </head>
-<body class="bg-slate-900">
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
+<body class="bg-slate-900 text-slate-300 font-sans antialiased">
+  <div class="min-h-screen flex flex-col">
+    <header class="bg-slate-900 text-white shadow-lg">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col items-center justify-center text-center py-16 sm:py-24">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
+            Platinum Luxury Transportation Ltd.
+          </h1>
+          <p class="mt-4 text-xl sm:text-2xl text-slate-300">
+            Business Plan &amp; Financial Model
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <nav id="page-nav" class="bg-slate-800 shadow-md sticky top-0 z-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-center overflow-x-auto">
+          <a href="#motion-graph" data-tab-target="motion-graph" class="py-4 px-3 sm:px-6 text-sm sm:text-base font-medium transition-colors duration-300 ease-in-out focus:outline-none whitespace-nowrap text-gray-400 hover:text-white">
+            Motion Graph
+          </a>
+          <a href="#timeline" data-tab-target="timeline" class="py-4 px-3 sm:px-6 text-sm sm:text-base font-medium transition-colors duration-300 ease-in-out focus:outline-none whitespace-nowrap text-gray-400 hover:text-white">
+            Timeline
+          </a>
+          <a href="#introduction" data-tab-target="introduction" class="py-4 px-3 sm:px-6 text-sm sm:text-base font-medium transition-colors duration-300 ease-in-out focus:outline-none whitespace-nowrap text-gray-400 hover:text-white">
+            Introduction
+          </a>
+          <a href="#business-plan" data-tab-target="business-plan" class="py-4 px-3 sm:px-6 text-sm sm:text-base font-medium transition-colors duration-300 ease-in-out focus:outline-none whitespace-nowrap text-gray-400 hover:text-white">
+            Business Plan
+          </a>
+          <a href="#financials" data-tab-target="financials" class="py-4 px-3 sm:px-6 text-sm sm:text-base font-medium transition-colors duration-300 ease-in-out focus:outline-none whitespace-nowrap text-gray-400 hover:text-white">
+            Financials
+          </a>
+          <a href="#investment" data-tab-target="investment" class="py-4 px-3 sm:px-6 text-sm sm:text-base font-medium transition-colors duration-300 ease-in-out focus:outline-none whitespace-nowrap text-gray-400 hover:text-white">
+            Investment
+          </a>
+          <a href="#contact" data-tab-target="contact" class="py-4 px-3 sm:px-6 text-sm sm:text-base font-medium transition-colors duration-300 ease-in-out focus:outline-none whitespace-nowrap text-gray-400 hover:text-white">
+            Contact
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="flex-1">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20">
+        <section id="motion-graph" data-section class="space-y-6">
+          <h2 class="text-3xl sm:text-4xl font-bold text-white border-b-2 border-amber-400 pb-3">
+            Financial Motion Graph
+          </h2>
+          <p class="text-lg text-slate-300">Interactive quadrants show how income, assets, liabilities, and expenses evolve between 2024 and 2029.</p>
+          <div class="bg-slate-800 p-2 sm:p-4 rounded-lg shadow-lg ring-1 ring-white/10 flex flex-col lg:flex-row gap-4 lg:h-[600px]">
+            <div class="flex flex-row lg:flex-col items-center justify-center lg:w-16 py-4">
+              <span id="slider-end" class="text-xs text-slate-400 font-semibold transform lg:-rotate-90 origin-center whitespace-nowrap mr-4 lg:mr-0"></span>
+              <input
+                id="year-slider"
+                type="range"
+                min="0"
+                step="1"
+                value="0"
+                class="w-full lg:w-auto lg:flex-grow h-2 lg:h-full bg-slate-700 rounded-lg appearance-none cursor-pointer my-4"
+                style="writing-mode: vertical-lr;"
+                aria-orientation="vertical"
+                aria-label="Financial Year Slider"
+              />
+              <span id="slider-start" class="text-xs text-slate-400 font-semibold transform lg:-rotate-90 origin-center whitespace-nowrap ml-4 lg:ml-0"></span>
+            </div>
+
+            <div class="flex-grow min-w-0 flex flex-col">
+              <div class="text-center mb-2">
+                <h3 id="year-label" class="text-lg font-bold text-amber-400"></h3>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4 flex-grow overflow-hidden">
+                <section class="relative p-3 rounded-lg flex flex-col bg-emerald-900/70 overflow-hidden" data-quadrant="income">
+                  <div aria-hidden="true" class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50"></div>
+                  <div class="relative z-10 flex-grow flex flex-col min-h-0">
+                    <div class="flex justify-between items-baseline border-b border-white/10 pb-1 mb-2 flex-shrink-0">
+                      <h4 class="text-sm sm:text-base font-bold text-white uppercase tracking-wider">Lenders / Income (Interest payments)</h4>
+                      <p class="text-lg sm:text-xl font-extrabold text-white" data-total></p>
+                    </div>
+                    <div class="flex-grow overflow-y-auto pr-1" data-entries aria-live="polite"></div>
+                  </div>
+                </section>
+
+                <section class="relative p-3 rounded-lg flex flex-col bg-sky-900/70 overflow-hidden" data-quadrant="assets">
+                  <div aria-hidden="true" class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50"></div>
+                  <div class="relative z-10 flex-grow flex flex-col min-h-0">
+                    <div class="flex justify-between items-baseline border-b border-white/10 pb-1 mb-2 flex-shrink-0">
+                      <h4 class="text-sm sm:text-base font-bold text-white uppercase tracking-wider">Assets (Owned Value)</h4>
+                      <p class="text-lg sm:text-xl font-extrabold text-white" data-total></p>
+                    </div>
+                    <div class="flex-grow overflow-y-auto pr-1" data-entries aria-live="polite"></div>
+                  </div>
+                </section>
+
+                <section class="relative p-3 rounded-lg flex flex-col bg-indigo-900/70 overflow-hidden" data-quadrant="liabilities">
+                  <div aria-hidden="true" class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50"></div>
+                  <div class="relative z-10 flex-grow flex flex-col min-h-0">
+                    <div class="flex justify-between items-baseline border-b border-white/10 pb-1 mb-2 flex-shrink-0">
+                      <h4 class="text-sm sm:text-base font-bold text-white uppercase tracking-wider">Liabilities (Owed Value)</h4>
+                      <p class="text-lg sm:text-xl font-extrabold text-white" data-total></p>
+                    </div>
+                    <div class="flex-grow overflow-y-auto pr-1" data-entries aria-live="polite"></div>
+                  </div>
+                </section>
+
+                <section class="relative p-3 rounded-lg flex flex-col bg-rose-900/70 overflow-hidden" data-quadrant="expenses">
+                  <div aria-hidden="true" class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50"></div>
+                  <div class="relative z-10 flex-grow flex flex-col min-h-0">
+                    <div class="flex justify-between items-baseline border-b border-white/10 pb-1 mb-2 flex-shrink-0">
+                      <h4 class="text-sm sm:text-base font-bold text-white uppercase tracking-wider">Expenses (Operational &amp; Financing)</h4>
+                      <p class="text-lg sm:text-xl font-extrabold text-white" data-total></p>
+                    </div>
+                    <div class="flex-grow overflow-y-auto pr-1" data-entries aria-live="polite"></div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="timeline" data-section class="space-y-6">
+          <h2 class="text-3xl sm:text-4xl font-bold text-white border-b-2 border-amber-400 pb-3">
+            Company Roadmap
+          </h2>
+          <div class="flex flex-wrap justify-center gap-2">
+            <button type="button" data-timeline-filter="All" class="px-4 py-2 text-sm font-semibold rounded-full transition-colors duration-200 bg-amber-400 text-slate-900">
+              All
+            </button>
+            <button type="button" data-timeline-filter="Milestone" class="px-4 py-2 text-sm font-semibold rounded-full transition-colors duration-200 bg-slate-700 text-slate-300 hover:bg-slate-600">
+              Milestone
+            </button>
+            <button type="button" data-timeline-filter="Finance" class="px-4 py-2 text-sm font-semibold rounded-full transition-colors duration-200 bg-slate-700 text-slate-300 hover:bg-slate-600">
+              Finance
+            </button>
+            <button type="button" data-timeline-filter="Expansion" class="px-4 py-2 text-sm font-semibold rounded-full transition-colors duration-200 bg-slate-700 text-slate-300 hover:bg-slate-600">
+              Expansion
+            </button>
+            <button type="button" data-timeline-filter="Operations" class="px-4 py-2 text-sm font-semibold rounded-full transition-colors duration-200 bg-slate-700 text-slate-300 hover:bg-slate-600">
+              Operations
+            </button>
+          </div>
+          <div id="timeline-events" class="relative border-l-2 border-slate-700 ml-4 md:ml-0"></div>
+        </section>
+
+        <section id="introduction" data-section class="space-y-6">
+          <h2 class="text-3xl sm:text-4xl font-bold text-white border-b-2 border-amber-400 pb-3">
+            Introduction
+          </h2>
+          <div class="text-lg text-slate-300 leading-relaxed space-y-6">
+            <p>
+              Platinum Luxury Transportation Ltd. is a newly established, fully foreign-owned company managed to European standards. The share capital stands at GBP 5,000,000, divided into 5,000,000 outstanding shares valued at GBP 1 each.
+            </p>
+            <p>
+              The company is awaiting European Central Bank certification to issue bonds valued at USD 1,000,000 to raise capital from investors.
+            </p>
+            <p>
+              Operating at a much higher standard than typical businesses in the Dominican Republic, we are experiencing growing demand for luxury services. After successfully running smaller-scale car rental and transportation businesses for three years, we now aim to expand to meet the demand for luxury-oriented services.
+            </p>
+            <p>
+              We will provide luxury VIP transfers for 5-star hotels in Punta Cana, partnering with establishments such as the Hard Rock Hotel and Live Aqua Hotel. Fixed-term contracts will cover the entire vehicle fleet, guaranteeing a minimum 2-year period, renewable for an additional 2 years. This strategy will fuel accelerated growth.
+            </p>
+          </div>
+        </section>
+
+        <section id="business-plan" data-section class="space-y-6">
+          <h2 class="text-3xl sm:text-4xl font-bold text-white border-b-2 border-amber-400 pb-3">
+            Our Vision &amp; Business Plan
+          </h2>
+          <p class="text-lg text-slate-300 leading-relaxed">
+            Based on market demand, we prepared this business plan to enable dynamic growth and penetrate the lucrative VIP transportation market. The plan is divided by time horizon.
+          </p>
+          <div class="space-y-12">
+            <div class="bg-slate-800 p-6 rounded-lg shadow-md border-l-4 border-amber-400 ring-1 ring-white/10">
+              <h3 class="text-2xl font-bold text-slate-100">Short-Term Plan</h3>
+              <p class="text-md text-gray-400 mb-4 font-semibold">6-12 months (Start: May 2024)</p>
+              <ul class="list-disc list-inside space-y-2 text-base">
+                <li><strong>Vehicle Purchase:</strong> Acquire 4 high-end SUVs (Chevrolet Suburban/Tahoe, Lincoln Navigator, Cadillac Escalade).</li>
+                <li><strong>Partnerships:</strong> Sign initial contracts with Hard Rock Hotel Punta Cana and Live Aqua Hotel.</li>
+                <li><strong>Banking:</strong> Select a primary banking partner to build credit history and secure future financing.</li>
+                <li><strong>Operations Hub:</strong> Establish a back-office in the Uvero Alto area with parking, offices, and a car wash.</li>
+                <li><strong>Capital Raising:</strong> Launch the first bond issue of USD 1,000,000.</li>
+                <li><strong>Financial Stability:</strong> Accumulate capital to repay startup investors and transition to bond/bank loan financing.</li>
+              </ul>
+            </div>
+            <div class="bg-slate-800 p-6 rounded-lg shadow-md border-l-4 border-amber-400 ring-1 ring-white/10">
+              <h3 class="text-2xl font-bold text-slate-100">Medium-Term Plan</h3>
+              <p class="text-md text-gray-400 mb-4 font-semibold">1-2 years</p>
+              <ul class="list-disc list-inside space-y-2 text-base">
+                <li><strong>Fleet Expansion:</strong> Purchase 8 additional luxury vehicles and 1 armored vehicle for VIP clients.</li>
+                <li><strong>Brand Merger:</strong> Incorporate an existing car rental company under the Platinum brand.</li>
+                <li><strong>Diversification:</strong> Renew rental fleet with 8 SUVs/2 convertibles and add 6 ATVs, 4 buggies, and tour buses.</li>
+                <li><strong>New Venture:</strong> Establish a subsidiary for importing and selling vehicles from the USA.</li>
+                <li><strong>Financing:</strong> Issue a second wave of bonds worth USD 1,000,000.</li>
+                <li><strong>Corporate Structure:</strong> Unify all business segments under a single comprehensive brand.</li>
+              </ul>
+            </div>
+            <div class="bg-slate-800 p-6 rounded-lg shadow-md border-l-4 border-amber-400 ring-1 ring-white/10">
+              <h3 class="text-2xl font-bold text-slate-100">Long-Term Plan</h3>
+              <p class="text-md text-gray-400 mb-4 font-semibold">2-5 years</p>
+              <ul class="list-disc list-inside space-y-2 text-base">
+                <li><strong>Headquarters:</strong> Purchase land in Punta Cana to build a company headquarters with offices, a showroom, service center, and more.</li>
+                <li><strong>Asset Monetization:</strong> Lease parts of the premises to third parties to increase cash flow.</li>
+                <li><strong>Major Funding:</strong> Issue 3rd, 4th, and 5th bond waves totaling USD 3,000,000 for construction.</li>
+                <li><strong>Financial Transition:</strong> Fully transition from bond financing to bank financing, refinance the HQ, and sell shares to private investors for long-term stability.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="financials" data-section class="space-y-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-white border-b-2 border-amber-400 pb-3">
+            Financial Projections
+          </h2>
+          <div class="p-4 mb-8 bg-sky-900/50 border-l-4 border-sky-500 text-sky-200 rounded-lg">
+            <p class="font-bold">New Financial Strategy</p>
+            <p>These projections reflect an aggressive dividend policy. The company retains only enough cash to cover 25% of the next month's operating costs, distributing all other profits to shareholders.</p>
+          </div>
+
+          <div>
+            <div class="bg-slate-800 p-4 sm:p-6 rounded-lg shadow-md mb-8 ring-1 ring-white/10">
+              <h3 class="text-lg font-bold text-slate-100 mb-4 text-center">Projected Profit &amp; Loss (2025-2027)</h3>
+              <div id="profit-loss-chart" class="h-80 w-full text-xs"></div>
+            </div>
+            <div class="overflow-x-auto rounded-lg shadow-md bg-slate-800 ring-1 ring-white/10">
+              <table class="w-full text-sm text-left text-slate-300">
+                <thead class="bg-slate-700 text-xs text-white uppercase tracking-wider">
+                  <tr>
+                    <th scope="col" class="px-6 py-3">Year</th>
+                    <th scope="col" class="px-6 py-3">Revenue</th>
+                    <th scope="col" class="px-6 py-3">Operating Costs</th>
+                    <th scope="col" class="px-6 py-3">Loan &amp; Interest</th>
+                    <th scope="col" class="px-6 py-3">Net Profit</th>
+                    <th scope="col" class="px-6 py-3">Dividends</th>
+                  </tr>
+                </thead>
+                <tbody id="profit-loss-rows"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div>
+            <div class="bg-slate-800 p-4 sm:p-6 rounded-lg shadow-md mb-8 ring-1 ring-white/10">
+              <h3 class="text-lg font-bold text-slate-100 mb-4 text-center">Projected Balance Sheet (2025-2027)</h3>
+              <div id="balance-sheet-chart" class="h-80 w-full text-xs"></div>
+            </div>
+            <div class="overflow-x-auto rounded-lg shadow-md bg-slate-800 ring-1 ring-white/10">
+              <table class="w-full text-sm text-left text-slate-300">
+                <thead class="bg-slate-700 text-xs text-white uppercase tracking-wider">
+                  <tr>
+                    <th scope="col" class="px-6 py-3">Year</th>
+                    <th scope="col" class="px-6 py-3">Assets</th>
+                    <th scope="col" class="px-6 py-3">Liabilities</th>
+                    <th scope="col" class="px-6 py-3">Equity</th>
+                  </tr>
+                </thead>
+                <tbody id="balance-sheet-rows"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div>
+            <div class="bg-slate-800 p-4 sm:p-6 rounded-lg shadow-md mb-8 ring-1 ring-white/10">
+              <h3 class="text-lg font-bold text-slate-100 mb-4 text-center">Year 1 Monthly Closing Cash Forecast (USD)</h3>
+              <div id="cashflow-chart" class="h-80 w-full text-xs"></div>
+            </div>
+            <div class="overflow-x-auto rounded-lg shadow-md bg-slate-800 ring-1 ring-white/10">
+              <table class="w-full text-sm text-left text-slate-300">
+                <thead class="bg-slate-700 text-xs text-white uppercase tracking-wider">
+                  <tr>
+                    <th scope="col" class="px-6 py-3">Month</th>
+                    <th scope="col" class="px-6 py-3">Contracts Revenue</th>
+                    <th scope="col" class="px-6 py-3">Operating Costs</th>
+                    <th scope="col" class="px-6 py-3">Loan Payments</th>
+                    <th scope="col" class="px-6 py-3">Dividends Paid</th>
+                    <th scope="col" class="px-6 py-3">Net Cashflow</th>
+                    <th scope="col" class="px-6 py-3">Closing Cash</th>
+                  </tr>
+                </thead>
+                <tbody id="cashflow-rows"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="operational-breakdown" class="pt-8">
+            <div class="bg-slate-800 p-4 sm:p-6 rounded-lg shadow-md mb-8 ring-1 ring-white/10">
+              <h3 class="text-lg font-bold text-slate-100 mb-4 text-center">Operational Cost Breakdown (Example Month)</h3>
+              <div id="operational-breakdown-chart" class="h-80 w-full text-xs"></div>
+            </div>
+            <div class="overflow-x-auto rounded-lg shadow-md bg-slate-800 ring-1 ring-white/10">
+              <table class="w-full text-sm text-left text-slate-300">
+                <thead class="bg-slate-700 text-xs text-white uppercase tracking-wider">
+                  <tr>
+                    <th scope="col" class="px-6 py-3">Category</th>
+                    <th scope="col" class="px-6 py-3">Detail</th>
+                    <th scope="col" class="px-6 py-3">Monthly Cost (USD)</th>
+                  </tr>
+                </thead>
+                <tbody id="operational-breakdown-rows"></tbody>
+              </table>
+            </div>
+            <p class="text-sm text-gray-400 mt-4">
+              This breakdown shows typical day-to-day operations for peak tourism months. Contracts are expected to yield an average of USD 60,000–65,000 per month with total operational costs around USD 19,000 (note: forecast tables use higher, more conservative estimates), resulting in strong net margins and predictable quarterly dividends for investors.
+            </p>
+          </div>
+        </section>
+
+        <section id="investment" data-section class="space-y-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-white border-b-2 border-amber-400 pb-3">
+            Investment Opportunities
+          </h2>
+          <div>
+            <p class="text-lg text-slate-300 leading-relaxed">
+              We have developed several financing alternatives for investors, offering a contract with a guaranteed fixed interest rate throughout the entire duration of the investment. Interest payments are made quarterly.
+            </p>
+            <div class="grid md:grid-cols-2 gap-8 my-8">
+              <div class="bg-slate-800 p-6 rounded-lg shadow-md text-center border-t-4 border-slate-600 ring-1 ring-white/10">
+                <h3 class="text-xl font-bold text-slate-100">Short-Term Investment</h3>
+                <p class="text-gray-400 mt-1">12-month duration</p>
+                <p class="text-3xl font-bold text-amber-400 mt-3">18% p.a. (1.5%/month)</p>
+              </div>
+              <div class="bg-slate-800 p-6 rounded-lg shadow-md text-center border-t-4 border-slate-600 ring-1 ring-white/10">
+                <h3 class="text-xl font-bold text-slate-100">Long-Term Investment</h3>
+                <p class="text-gray-400 mt-1">24-month duration</p>
+                <p class="text-3xl font-bold text-amber-400 mt-3">12% p.a. (1%/month)</p>
+              </div>
+            </div>
+            <div class="bg-slate-800/50 p-6 rounded-lg ring-1 ring-white/10 space-y-2">
+              <h3 class="font-bold text-xl text-slate-100 mb-3">Interest Payment Examples</h3>
+              <ul class="list-disc list-inside space-y-2">
+                <li>A <strong>USD 100,000</strong> investment over 12 months yields <strong>USD 18,000</strong> in total interest.</li>
+                <li>A <strong>USD 200,000</strong> investment over 12 months yields <strong>USD 36,000</strong> in total interest.</li>
+                <li>A <strong>USD 100,000</strong> investment over 24 months yields <strong>USD 24,000</strong> in total interest.</li>
+                <li>A <strong>USD 200,000</strong> investment over 24 months yields <strong>USD 48,000</strong> in total interest.</li>
+              </ul>
+              <p class="mt-4 pt-4 border-t border-gray-700 font-semibold">The fixed interest rate for future investors owning corporate bonds will be 11% per annum.</p>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-bold text-white">Guarantees &amp; Investment Protection</h3>
+            <p class="text-lg text-slate-300 leading-relaxed">
+              Depending on the total amount of the provided investment, we will be able to offer the investor various types of guarantees:
+            </p>
+            <div class="space-y-8 mt-8">
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0">
+                  <div class="flex items-center justify-center h-12 w-12 rounded-full bg-amber-400 text-slate-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.125-.504 1.125-1.125V14.25m-17.25 4.5v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 012.25 12v-1.5a3.375 3.375 0 003.375-3.375H7.5a1.125 1.125 0 011.125 1.125v1.5m12 1.5v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H7.5A3.375 3.375 0 004.125 6v1.5" />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="text-xl font-bold text-slate-100">Vehicle Registration</h4>
+                  <p class="mt-1 text-base">Procured vehicles can be registered in the investor’s name, with title directly issued. We also offer a notarial custody option against the title of the car registered under the company's name.</p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0">
+                  <div class="flex items-center justify-center h-12 w-12 rounded-full bg-amber-400 text-slate-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="text-xl font-bold text-slate-100">Real Estate Guarantee</h4>
+                  <p class="mt-1 text-base">A real guarantee in the form of land located in a very lucrative location of Las Terrenas of equal value of the provided investment. The total value of the land allocated for this purpose is over USD 1,000,000.</p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0">
+                  <div class="flex items-center justify-center h-12 w-12 rounded-full bg-amber-400 text-slate-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.75A.75.75 0 013 4.5h.75m0 0h.75A.75.75 0 015.25 6v.75m0 0H3.75m0 0A.75.75 0 013 6V5.25m5.25 0v.75A.75.75 0 018.25 6h-.75m0 0V5.25A.75.75 0 018.25 4.5h.75m0 0h.75a.75.75 0 01.75.75v.75m0 0h-1.5m0 0A.75.75 0 018.25 6V5.25m5.25 0v.75a.75.75 0 01-.75.75h-.75m0 0V5.25a.75.75 0 01.75-.75h.75m0 0h.75a.75.75 0 01.75.75v.75m0 0h-1.5m0 0a.75.75 0 01-.75-.75V5.25m-5.25 9v.75a.75.75 0 01-.75.75h-.75m0 0v-.75a.75.75 0 01.75-.75h.75m0 0h.75a.75.75 0 01.75.75v.75m0 0h-1.5m0 0a.75.75 0 01-.75-.75v-.75" />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="text-xl font-bold text-slate-100">Company Shares &amp; Bonds</h4>
+                  <p class="mt-1 text-base">Company shares and bonds guarantee in the total amount of USD 1,000,000.</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 space-y-4">
+              <p class="font-semibold">Upon conclusion of the investment period, the principal investment amount will be paid back in full. Interest is scheduled to be paid quarterly throughout the whole investment period.</p>
+              <p>In case of continuous collaboration after a 24-month investment period, we are open to negotiating the purchase of the company's shares or the purchase of bonds issued by the company.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" data-section class="space-y-6">
+          <h2 class="text-3xl sm:text-4xl font-bold text-white border-b-2 border-amber-400 pb-3">
+            Contact Information
+          </h2>
+          <div class="grid md:grid-cols-2 gap-12">
+            <div class="space-y-6">
+              <div class="flex items-center space-x-4 text-lg">
+                <div class="text-amber-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.071 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                  </svg>
+                </div>
+                <div>
+                  <a href="mailto:platinumluxurytransfer@gmail.com" class="hover:text-amber-300">platinumluxurytransfer@gmail.com</a>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4 text-lg">
+                <div class="text-amber-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.211-.998-.552-1.348l-5.116-4.404a2.25 2.25 0 00-2.818.056L11.25 12.334a12.025 12.025 0 01-6.196-6.196l.44-1.29a2.25 2.25 0 00.056-2.818l-4.404-5.116A2.25 2.25 0 003.622 2.25H2.25z" />
+                  </svg>
+                </div>
+                <div>
+                  <a href="tel:+18098836434" class="hover:text-amber-300">+1 809 883 6434</a>
+                </div>
+              </div>
+            </div>
+            <div class="space-y-6">
+              <div>
+                <h3 class="font-bold text-slate-100">UK Address</h3>
+                <p class="text-base">7 Bevans Terrace, Llansamlet, Winch Wen, SA7 9XR, Swansea, England &amp; Wales</p>
+                <p class="text-sm text-gray-400">Company Reg No: 15549430</p>
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-100">Dominican Republic Branch</h3>
+                <p class="text-base">Andeburg S.R.L., Torre Solazar, Piso 12B, Calle Gustavo Mejia Ricard No.54, Santo Domingo - Naco 10127, D.N.</p>
+                <p class="text-sm text-gray-400">Registro mercantil: 198432SD</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="bg-slate-900 text-gray-400 mt-20">
+      <div class="max-w-6xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center text-sm">
+        <p>&copy; <span id="current-year"></span> Platinum Luxury Transportation Ltd. All Rights Reserved.</p>
+        <p class="mt-1">Confidential Business Plan. Do not distribute.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const formatCurrency = (value) => {
+        return new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0,
+        }).format(value);
+      };
+
+      const formatCurrencyAbbreviated = (value) => {
+        if (value === 0) return '$0';
+        const absValue = Math.abs(value);
+        const sign = value < 0 ? '-' : '';
+        if (absValue >= 1_000_000) return `${sign}$${(absValue / 1_000_000).toFixed(1)}M`;
+        if (absValue >= 1_000) return `${sign}$${(absValue / 1_000).toFixed(0)}K`;
+        return formatCurrency(value);
+      };
+
+      const formatCurrencyExact = (value) => {
+        return new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0,
+        }).format(value);
+      };
+
+      const createInfoIcon = () => {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+        svg.setAttribute('fill', 'none');
+        svg.setAttribute('viewBox', '0 0 24 24');
+        svg.setAttribute('stroke-width', '2');
+        svg.setAttribute('stroke', 'currentColor');
+        svg.setAttribute('class', 'w-4 h-4 text-slate-400 group-hover:text-amber-300 transition-colors');
+
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('stroke-linecap', 'round');
+        path.setAttribute('stroke-linejoin', 'round');
+        path.setAttribute('d', 'm11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z');
+
+        svg.appendChild(path);
+        return svg;
+      };
+
+      const createPinGrid = (value) => {
+        const PIN_VALUE = 10000;
+        const pinCount = Math.floor(Math.abs(value) / PIN_VALUE);
+        if (pinCount === 0) return null;
+
+        const pinGrid = document.createElement('div');
+        pinGrid.className = 'flex flex-wrap gap-1 p-1 rounded-sm min-h-[1rem]';
+        const pinColor = value >= 0 ? 'bg-white' : 'bg-red-500';
+        const displayCount = Math.min(pinCount, 200);
+
+        for (let i = 0; i < displayCount; i += 1) {
+          const wrapper = document.createElement('div');
+          wrapper.className = 'w-2 h-2 rounded-full border border-slate-600/50 flex items-center justify-center';
+          wrapper.title = '$10,000';
+
+          const dot = document.createElement('div');
+          dot.className = `w-full h-full rounded-full ${pinColor} shadow-inner`;
+          wrapper.appendChild(dot);
+          pinGrid.appendChild(wrapper);
+        }
+
+        if (pinCount > displayCount) {
+          const more = document.createElement('div');
+          more.className = 'text-[10px] text-slate-400 self-center ml-1';
+          more.textContent = `+${pinCount - displayCount} more`;
+          pinGrid.appendChild(more);
+        }
+
+        return pinGrid;
+      };
+
+      const battleshipCsv = `Code,Description,2024,2025,2026,2027,2028,2029\n############# Lenders / Income (Interest payments) #############\n3200,Capital Fund (bond cash in/out incl. interest),1000,800,400,0,0,0\n3400,Interest Received (bank),0,82.5,110,115,120,125\n############# Assets (Owned Value) #############################\n0000,Bank Balance (+),0,200,450,700,950,1200\n1200,Vehicle Values (gross cost),220,830,1350,1680,2200,2600\n1300,Contracts / Receivables,50,210,450,700,950,1200\n############# Liabilities (Owed Value) #########################\n1600,Other (Office, Setup, etc.),-80,-180,-250,-310,-350,-400\n2000,Loan / Bond Payable,-1000,-800,-400,0,0,0\n2100,Accounts Payable,0,-25,-65,-105,-150,-190\n2300,Accumulated Depreciation (Vehicles),0,-110,-260,-430,-640,-870\n2400,Taxes,0,-20,-41,-63,-88,-115\n2500,Other,0,-10,-20,-35,-40,-42\n############# Expenses (Operational & Financing) ###############\n4000,Suppliers & Drivers,0,-120,-175,-220,-310,-400\n4500,Other (Admin/Overheads),0,-37,-45,-53,-67,-79`;
+
+      const USD_MULTIPLIER = 1000;
+      const START_YEAR = 2024;
+
+      const parseBattleshipData = (csv) => {
+        const lines = csv.split('\n').filter((line) => line.trim() !== '' && !line.toLowerCase().startsWith('code,description'));
+        const years = [0, 1, 2, 3, 4, 5];
+        const labels = years.map((year, index) => {
+          const currentYear = START_YEAR + year;
+          return index === 0 ? `${currentYear} (Startup)` : `${currentYear}`;
+        });
+
+        const rawData = {
+          income: [],
+          assets: [],
+          liabilities: [],
+          expenses: [],
+        };
+
+        let currentQuadrantKey = null;
+
+        lines.forEach((line) => {
+          if (line.startsWith('#############')) {
+            const header = line.toLowerCase();
+            if (header.includes('lenders / income')) currentQuadrantKey = 'income';
+            else if (header.includes('assets')) currentQuadrantKey = 'assets';
+            else if (header.includes('liabilities')) currentQuadrantKey = 'liabilities';
+            else if (header.includes('expenses')) currentQuadrantKey = 'expenses';
+            return;
+          }
+
+          if (!currentQuadrantKey) return;
+
+          const parts = line.split(',');
+          const code = parts[0];
+          const description = parts[1];
+          const values = parts.slice(2).map((v) => (parseFloat(v) || 0) * USD_MULTIPLIER);
+          rawData[currentQuadrantKey].push({ code, description, values });
+        });
+
+        const liabilities = rawData.liabilities;
+        const depreciationIndex = liabilities.findIndex((item) => item.description.toLowerCase().includes('accumulated depreciation'));
+        if (depreciationIndex > -1) {
+          const [depreciationItem] = liabilities.splice(depreciationIndex, 1);
+          rawData.assets.push(depreciationItem);
+        }
+
+        const yearlyData = years.map((_, index) => {
+          const yearEntry = {
+            year: START_YEAR + index,
+            label: labels[index],
+            income: { total: 0, nominals: [] },
+            assets: { total: 0, nominals: [] },
+            liabilities: { total: 0, nominals: [] },
+            expenses: { total: 0, nominals: [] },
+          };
+
+          Object.keys(rawData).forEach((key) => {
+            const quadrantData = rawData[key];
+            const nominalsForYear = quadrantData.map((item) => ({
+              code: item.code,
+              description: item.description,
+              value: item.values[index] || 0,
+            }));
+
+            const totalForYear = nominalsForYear.reduce((sum, nominal) => sum + nominal.value, 0);
+            yearEntry[key].nominals = nominalsForYear;
+            yearEntry[key].total = totalForYear;
+          });
+
+          return yearEntry;
+        });
+
+        if (yearlyData.length > 0) {
+          const totalCapitalFundFromPlan = 5_000_000;
+          const receivablesLine = lines.find((line) => line.includes('Contracts / Receivables'));
+          let totalReceivables = 0;
+          if (receivablesLine) {
+            const values = receivablesLine.split(',').slice(2).map((v) => parseFloat(v) || 0);
+            totalReceivables = values.reduce((sum, val) => sum + val, 0) * USD_MULTIPLIER;
+          }
+
+          const startupFrame = yearlyData[0];
+          const capitalFundNominal = startupFrame.income.nominals.find((n) => n.code === '3200');
+          if (capitalFundNominal) {
+            capitalFundNominal.value = totalCapitalFundFromPlan;
+          }
+
+          const receivablesNominal = startupFrame.assets.nominals.find((n) => n.code === '1300');
+          if (receivablesNominal) {
+            receivablesNominal.value = totalReceivables;
+          }
+
+          startupFrame.income.total = startupFrame.income.nominals.reduce((sum, n) => sum + n.value, 0);
+          startupFrame.assets.total = startupFrame.assets.nominals.reduce((sum, n) => sum + n.value, 0);
+        }
+
+        return yearlyData;
+      };
+
+      const battleshipData = parseBattleshipData(battleshipCsv);
+
+      const slider = document.getElementById('year-slider');
+      const sliderStart = document.getElementById('slider-start');
+      const sliderEnd = document.getElementById('slider-end');
+      const yearLabel = document.getElementById('year-label');
+
+      const quadrants = {
+        income: {
+          entries: document.querySelector('[data-quadrant="income"] [data-entries]'),
+          total: document.querySelector('[data-quadrant="income"] [data-total]'),
+        },
+        assets: {
+          entries: document.querySelector('[data-quadrant="assets"] [data-entries]'),
+          total: document.querySelector('[data-quadrant="assets"] [data-total]'),
+        },
+        liabilities: {
+          entries: document.querySelector('[data-quadrant="liabilities"] [data-entries]'),
+          total: document.querySelector('[data-quadrant="liabilities"] [data-total]'),
+        },
+        expenses: {
+          entries: document.querySelector('[data-quadrant="expenses"] [data-entries]'),
+          total: document.querySelector('[data-quadrant="expenses"] [data-total]'),
+        },
+      };
+
+      const buildShip = (nominal) => {
+        const ship = document.createElement('div');
+        ship.className = 'relative group bg-slate-700/50 rounded p-2 my-1 shadow-md ring-1 ring-black/20 animate-fade-in';
+
+        const tooltip = document.createElement('div');
+        tooltip.className = 'absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-xs px-3 py-1.5 bg-slate-900 text-white text-xs rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20';
+
+        const tooltipTitle = document.createElement('p');
+        tooltipTitle.className = 'font-bold border-b border-slate-600 pb-1 mb-1';
+        tooltipTitle.textContent = `${nominal.code} - ${nominal.description}`;
+        tooltip.appendChild(tooltipTitle);
+
+        const tooltipValue = document.createElement('p');
+        tooltipValue.className = 'font-bold';
+        tooltipValue.textContent = 'Value: ';
+        const tooltipValueSpan = document.createElement('span');
+        tooltipValueSpan.className = 'font-mono';
+        tooltipValueSpan.textContent = formatCurrencyExact(nominal.value);
+        tooltipValue.appendChild(tooltipValueSpan);
+        tooltip.appendChild(tooltipValue);
+
+        const tooltipArrow = document.createElement('div');
+        tooltipArrow.className = 'absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-slate-900';
+        tooltip.appendChild(tooltipArrow);
+        ship.appendChild(tooltip);
+
+        const topRow = document.createElement('div');
+        topRow.className = 'flex justify-between items-start gap-2';
+
+        const textContainer = document.createElement('div');
+        textContainer.className = 'flex-grow';
+
+        const headingRow = document.createElement('div');
+        headingRow.className = 'flex items-center gap-2';
+
+        const title = document.createElement('p');
+        title.className = 'text-xs font-bold text-white uppercase tracking-tighter';
+        title.textContent = nominal.description;
+        headingRow.appendChild(title);
+        headingRow.appendChild(createInfoIcon());
+        textContainer.appendChild(headingRow);
+
+        const valueDisplay = document.createElement('p');
+        valueDisplay.className = 'text-sm font-semibold text-amber-300';
+        valueDisplay.textContent = formatCurrencyAbbreviated(nominal.value);
+        textContainer.appendChild(valueDisplay);
+
+        topRow.appendChild(textContainer);
+        ship.appendChild(topRow);
+
+        const pinWrapper = document.createElement('div');
+        pinWrapper.className = 'mt-1 bg-slate-800/50 rounded';
+        const pinGrid = createPinGrid(nominal.value);
+        if (pinGrid) {
+          pinWrapper.appendChild(pinGrid);
+        }
+        ship.appendChild(pinWrapper);
+
+        return ship;
+      };
+
+      const renderQuadrant = (key, data) => {
+        const quadrant = quadrants[key];
+        if (!quadrant) return;
+        quadrant.total.textContent = formatCurrencyAbbreviated(data.total);
+        quadrant.entries.innerHTML = '';
+        quadrant.entries.scrollTop = 0;
+
+        const activeNominals = data.nominals.filter((nominal) => nominal.value !== 0);
+        if (activeNominals.length === 0) {
+          const placeholder = document.createElement('div');
+          placeholder.className = 'flex items-center justify-center h-full text-slate-500 text-sm';
+          placeholder.textContent = 'No Activity';
+          quadrant.entries.appendChild(placeholder);
+          return;
+        }
+
+        activeNominals.forEach((nominal) => {
+          const ship = buildShip(nominal);
+          quadrant.entries.appendChild(ship);
+        });
+      };
+
+      const renderFrame = (index) => {
+        const frame = battleshipData[index];
+        if (!frame) return;
+        yearLabel.textContent = frame.label;
+        slider.setAttribute('aria-valuetext', frame.label);
+        renderQuadrant('income', frame.income);
+        renderQuadrant('assets', frame.assets);
+        renderQuadrant('liabilities', frame.liabilities);
+        renderQuadrant('expenses', frame.expenses);
+      };
+
+      if (slider) {
+        slider.max = Math.max(0, battleshipData.length - 1);
+        slider.value = '0';
+
+        if (battleshipData.length > 0) {
+          sliderStart.textContent = battleshipData[0].year;
+          sliderEnd.textContent = battleshipData[battleshipData.length - 1].year;
+          renderFrame(0);
+        } else {
+          sliderStart.textContent = '';
+          sliderEnd.textContent = '';
+          yearLabel.textContent = 'No data available';
+          slider.disabled = true;
+        }
+
+        slider.addEventListener('input', (event) => {
+          const newIndex = Number(event.target.value);
+          renderFrame(newIndex);
+        });
+      }
+
+      const timelineData = [
+        { date: 'May 2024', title: 'Company Establishment & Fleet Acquisition', description: 'Platinum Luxury Transportation Ltd. is established. Initial fleet of 4 high-end SUVs is purchased.', category: 'Milestone' },
+        { date: 'June 2024', title: 'Secure Initial Hotel Partnerships', description: 'Initial fixed-term contracts signed with Hard Rock Hotel Punta Cana and Live Aqua Hotel, guaranteeing fleet usage.', category: 'Operations' },
+        { date: 'July 2024', title: 'Launch First Bond Issue', description: 'The first wave of corporate bonds, valued at USD 1,000,000, is launched to raise capital from investors.', category: 'Finance' },
+        { date: 'Q4 2024', title: 'Establish Operations Hub', description: 'A back-office is established in Uvero Alto, complete with parking, offices, and a car wash facility.', category: 'Operations' },
+        { date: 'H1 2025', title: 'Fleet Expansion & Diversification', description: 'Purchase 8 additional luxury vehicles and 1 armored VIP vehicle. Begin incorporating a rental car company under the Platinum brand.', category: 'Expansion' },
+        { date: 'H2 2025', title: 'Launch Second Bond Issue', description: 'A second wave of bonds worth USD 1,000,000 is issued to fund further expansion and diversification.', category: 'Finance' },
+        { date: '2026', title: 'Develop Vehicle Import Subsidiary', description: 'A new subsidiary for importing and selling vehicles from the USA is established to create a new revenue stream.', category: 'Expansion' },
+        { date: '2027', title: 'HQ Land Acquisition & Construction Start', description: 'Land is purchased in Punta Cana for a new company headquarters. The 3rd, 4th, and 5th bond waves are issued for construction.', category: 'Milestone' },
+        { date: '2028-2029', title: 'Transition to Bank Financing', description: 'The company fully transitions from bond financing to traditional bank financing, refinances the new HQ, and sells shares to private investors for long-term stability.', category: 'Finance' },
+      ];
+
+      const timelineStyles = {
+        Milestone: { bg: 'bg-indigo-500', text: 'text-indigo-100', border: 'border-indigo-500' },
+        Finance: { bg: 'bg-emerald-500', text: 'text-emerald-100', border: 'border-emerald-500' },
+        Expansion: { bg: 'bg-amber-500', text: 'text-amber-100', border: 'border-amber-500' },
+        Operations: { bg: 'bg-sky-500', text: 'text-sky-100', border: 'border-sky-500' },
+      };
+
+      const timelineContainer = document.getElementById('timeline-events');
+      const timelineFilters = Array.from(document.querySelectorAll('[data-timeline-filter]'));
+
+      const renderTimeline = (filter) => {
+        if (!timelineContainer) return;
+        timelineContainer.innerHTML = '';
+
+        const items = filter === 'All' ? timelineData : timelineData.filter((item) => item.category === filter);
+
+        items.forEach((event, index) => {
+          const wrapper = document.createElement('div');
+          wrapper.className = 'mb-10 ml-8';
+
+          const categoryStyle = timelineStyles[event.category];
+          const marker = document.createElement('span');
+          marker.className = `absolute -left-[11px] flex items-center justify-center w-6 h-6 ${categoryStyle.bg} rounded-full ring-8 ring-slate-900`;
+          marker.setAttribute('aria-hidden', 'true');
+          marker.textContent = '';
+
+          const card = document.createElement('div');
+          card.className = `p-4 rounded-lg shadow-md bg-slate-800 border-l-4 ${categoryStyle.border} ring-1 ring-white/10 animate-fade-in`;
+
+          const header = document.createElement('div');
+          header.className = 'flex items-center justify-between mb-2';
+
+          const date = document.createElement('span');
+          date.className = 'text-sm font-semibold text-gray-400';
+          date.textContent = event.date;
+          header.appendChild(date);
+
+          const badge = document.createElement('span');
+          badge.className = `px-2 py-1 text-xs font-bold leading-none ${categoryStyle.text} ${categoryStyle.bg} rounded-full`;
+          badge.textContent = event.category;
+          header.appendChild(badge);
+
+          const title = document.createElement('h3');
+          title.className = 'text-xl font-bold text-slate-100 mb-1';
+          title.textContent = event.title;
+
+          const description = document.createElement('p');
+          description.className = 'text-base text-slate-400';
+          description.textContent = event.description;
+
+          card.appendChild(header);
+          card.appendChild(title);
+          card.appendChild(description);
+
+          wrapper.appendChild(marker);
+          wrapper.appendChild(card);
+          timelineContainer.appendChild(wrapper);
+        });
+      };
+
+      timelineFilters.forEach((button) => {
+        button.addEventListener('click', () => {
+          timelineFilters.forEach((btn) => {
+            btn.classList.remove('bg-amber-400', 'text-slate-900');
+            btn.classList.add('bg-slate-700', 'text-slate-300');
+          });
+          button.classList.add('bg-amber-400', 'text-slate-900');
+          button.classList.remove('bg-slate-700', 'text-slate-300');
+          renderTimeline(button.getAttribute('data-timeline-filter'));
+        });
+      });
+
+      renderTimeline('All');
+
+      const monthlyCashflowData = [
+        { month: 'May', contractsRevenue: 25000, operatingCosts: 18000, loanPayments: 8000, dividendsPaid: 0, netCashflow: -1000, closingCash: -1000 },
+        { month: 'Jun', contractsRevenue: 40000, operatingCosts: 20000, loanPayments: 8000, dividendsPaid: 5250, netCashflow: 6750, closingCash: 5750 },
+        { month: 'Jul', contractsRevenue: 50000, operatingCosts: 23000, loanPayments: 8000, dividendsPaid: 18500, netCashflow: 500, closingCash: 6250 },
+        { month: 'Aug', contractsRevenue: 55000, operatingCosts: 25000, loanPayments: 8000, dividendsPaid: 21500, netCashflow: 500, closingCash: 6750 },
+        { month: 'Sep', contractsRevenue: 55000, operatingCosts: 27000, loanPayments: 8000, dividendsPaid: 19750, netCashflow: 250, closingCash: 7000 },
+        { month: 'Oct', contractsRevenue: 60000, operatingCosts: 28000, loanPayments: 8000, dividendsPaid: 23500, netCashflow: 500, closingCash: 7500 },
+        { month: 'Nov', contractsRevenue: 60000, operatingCosts: 30000, loanPayments: 8000, dividendsPaid: 21750, netCashflow: 250, closingCash: 7750 },
+        { month: 'Dec', contractsRevenue: 65000, operatingCosts: 31000, loanPayments: 8000, dividendsPaid: 26000, netCashflow: 0, closingCash: 7750 },
+        { month: 'Jan', contractsRevenue: 65000, operatingCosts: 31000, loanPayments: 8000, dividendsPaid: 25750, netCashflow: 250, closingCash: 8000 },
+        { month: 'Feb', contractsRevenue: 70000, operatingCosts: 32000, loanPayments: 8000, dividendsPaid: 29750, netCashflow: 250, closingCash: 8250 },
+        { month: 'Mar', contractsRevenue: 70000, operatingCosts: 33000, loanPayments: 8000, dividendsPaid: 29000, netCashflow: 0, closingCash: 8250 },
+        { month: 'Apr', contractsRevenue: 70000, operatingCosts: 33000, loanPayments: 8000, dividendsPaid: 29000, netCashflow: 0, closingCash: 8250 },
+      ];
+
+      const profitLossData = [
+        { year: 2025, revenue: 600000, operatingCosts: 300000, loanInterest: 100000, netProfit: 200000, dividends: 189583 },
+        { year: 2026, revenue: 1000000, operatingCosts: 500000, loanInterest: 150000, netProfit: 350000, dividends: 334375 },
+        { year: 2027, revenue: 1500000, operatingCosts: 750000, loanInterest: 200000, netProfit: 550000, dividends: 529167 },
+      ];
+
+      const balanceSheetData = [
+        { year: 2025, assets: 890417, liabilities: 650000, equity: 240417 },
+        { year: 2026, assets: 1106042, liabilities: 850000, equity: 256042 },
+        { year: 2027, assets: 1476875, liabilities: 1200000, equity: 276875 },
+      ];
+
+      const operationalBreakdownData = [
+        { category: 'Driver wages', detail: '8 drivers @ $1,000 each', monthlyCost: 8000 },
+        { category: 'Fuel', detail: 'SUV fleet consumption (~2,500L @ $1.40)', monthlyCost: 3500 },
+        { category: 'Maintenance', detail: 'Repairs, cleaning, servicing', monthlyCost: 1500 },
+        { category: 'Insurance & taxes', detail: 'Vehicle & business', monthlyCost: 2000 },
+        { category: 'Admin & office', detail: 'Rent, utilities, salaries', monthlyCost: 2500 },
+        { category: 'Marketing & IT', detail: 'Online ads, booking platform', monthlyCost: 1500 },
+      ];
+
+      const profitLossChartContainer = document.getElementById('profit-loss-chart');
+      const profitLossRows = document.getElementById('profit-loss-rows');
+      const balanceSheetChartContainer = document.getElementById('balance-sheet-chart');
+      const balanceSheetRows = document.getElementById('balance-sheet-rows');
+      const cashflowChartContainer = document.getElementById('cashflow-chart');
+      const cashflowRows = document.getElementById('cashflow-rows');
+      const operationalBreakdownChartContainer = document.getElementById('operational-breakdown-chart');
+      const operationalBreakdownRows = document.getElementById('operational-breakdown-rows');
+
+      const renderProfitLossChart = () => {
+        if (!profitLossChartContainer) return;
+        const maxValue = Math.max(...profitLossData.map((d) => d.revenue));
+        const yScale = (value) => 100 - (value / maxValue) * 100;
+        const barWidth = 320 / profitLossData.length / 4;
+
+        const bars = profitLossData
+          .map((item, index) => {
+            const x = 25 + index * (320 / profitLossData.length);
+            return `
+              <g>
+                <text x="${x + barWidth * 1.5}" y="195" text-anchor="middle" class="text-[10px] fill-gray-400 font-medium">${item.year}</text>
+                <g class="cursor-pointer">
+                  <rect x="${x}" y="${yScale(item.revenue)}%" width="${barWidth}" height="${100 - yScale(item.revenue)}%" class="fill-sky-500 transition-opacity duration-200" />
+                  <title>Revenue: ${formatCurrencyExact(item.revenue)}</title>
+                </g>
+                <g class="cursor-pointer">
+                  <rect x="${x + barWidth}" y="${yScale(item.operatingCosts)}%" width="${barWidth}" height="${100 - yScale(item.operatingCosts)}%" class="fill-amber-500 transition-opacity duration-200" />
+                  <title>Operating Costs: ${formatCurrencyExact(item.operatingCosts)}</title>
+                </g>
+                <g class="cursor-pointer">
+                  <rect x="${x + barWidth * 2}" y="${yScale(item.netProfit)}%" width="${barWidth}" height="${100 - yScale(item.netProfit)}%" class="fill-emerald-500 transition-opacity duration-200" />
+                  <title>Net Profit: ${formatCurrencyExact(item.netProfit)}</title>
+                </g>
+              </g>`;
+          })
+          .join('');
+
+        const guides = [0.25, 0.5, 0.75, 1]
+          .map((v) => {
+            const value = maxValue * v;
+            return `
+              <g class="text-gray-600">
+                <line x1="20" y1="${yScale(maxValue * (1 - v))}" x2="350" y2="${yScale(maxValue * (1 - v))}" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2,2" />
+                <text x="18" y="${yScale(maxValue * (1 - v)) + 3}" text-anchor="end" class="text-[8px] fill-gray-400">${formatCurrencyAbbreviated(value)}</text>
+              </g>`;
+          })
+          .join('');
+
+        profitLossChartContainer.innerHTML = `
+          <div class="w-full h-full flex flex-col">
+            <svg width="100%" height="90%" viewBox="0 0 350 200" preserveAspectRatio="xMidYMid meet">
+              ${guides}
+              ${bars}
+              <line x1="20" y1="185" x2="350" y2="185" stroke="currentColor" class="text-gray-700" stroke-width="1" />
+            </svg>
+            <div class="flex justify-center space-x-4 text-xs mt-2 text-slate-300">
+              <div class="flex items-center"><span class="w-3 h-3 rounded-full bg-sky-500 mr-2"></span>Revenue</div>
+              <div class="flex items-center"><span class="w-3 h-3 rounded-full bg-amber-500 mr-2"></span>Op. Costs</div>
+              <div class="flex items-center"><span class="w-3 h-3 rounded-full bg-emerald-500 mr-2"></span>Net Profit</div>
+            </div>
+          </div>`;
+      };
+
+      const renderProfitLossTable = () => {
+        if (!profitLossRows) return;
+        profitLossRows.innerHTML = profitLossData
+          .map((row) => `
+            <tr class="bg-slate-800 border-b border-slate-700 hover:bg-slate-700">
+              <td class="px-6 py-4 font-medium text-white whitespace-nowrap">${row.year}</td>
+              <td class="px-6 py-4">${formatCurrency(row.revenue)}</td>
+              <td class="px-6 py-4">
+                <a href="#operational-breakdown" data-scroll-target="operational-breakdown" class="text-amber-400 hover:underline font-semibold cursor-pointer" title="See Operational Breakdown">${formatCurrency(row.operatingCosts)}</a>
+              </td>
+              <td class="px-6 py-4">${formatCurrency(row.loanInterest)}</td>
+              <td class="px-6 py-4 font-semibold text-green-400">${formatCurrency(row.netProfit)}</td>
+              <td class="px-6 py-4 font-bold text-sky-400">${formatCurrency(row.dividends)}</td>
+            </tr>`)
+          .join('');
+      };
+
+      const renderBalanceSheetChart = () => {
+        if (!balanceSheetChartContainer) return;
+        const maxValue = Math.max(...balanceSheetData.map((d) => d.assets));
+        const yScale = (value) => 100 - (value / maxValue) * 100;
+        const barWidth = (320 / balanceSheetData.length) * 0.5;
+
+        const bars = balanceSheetData
+          .map((item, index) => {
+            const x = 25 + index * (320 / balanceSheetData.length);
+            const liabilitiesHeight = 100 - yScale(item.liabilities);
+            const equityHeight = 100 - yScale(item.equity);
+            return `
+              <g>
+                <text x="${x + barWidth / 2}" y="195" text-anchor="middle" class="text-[10px] fill-gray-400 font-medium">${item.year}</text>
+                <g class="cursor-pointer">
+                  <rect x="${x}" y="${yScale(item.equity)}%" width="${barWidth}" height="${equityHeight}%" class="fill-indigo-500 transition-opacity duration-200" />
+                  <title>Equity: ${formatCurrencyExact(item.equity)}</title>
+                </g>
+                <g class="cursor-pointer">
+                  <rect x="${x}" y="${yScale(item.equity) - liabilitiesHeight}%" width="${barWidth}" height="${liabilitiesHeight}%" class="fill-rose-500 transition-opacity duration-200" />
+                  <title>Liabilities: ${formatCurrencyExact(item.liabilities)}</title>
+                </g>
+              </g>`;
+          })
+          .join('');
+
+        const guides = [0.25, 0.5, 0.75, 1]
+          .map((v) => {
+            const value = maxValue * v;
+            return `
+              <g class="text-gray-600">
+                <line x1="20" y1="${yScale(maxValue * (1 - v))}" x2="350" y2="${yScale(maxValue * (1 - v))}" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2,2" />
+                <text x="18" y="${yScale(maxValue * (1 - v)) + 3}" text-anchor="end" class="text-[8px] fill-gray-400">${formatCurrencyAbbreviated(value)}</text>
+              </g>`;
+          })
+          .join('');
+
+        balanceSheetChartContainer.innerHTML = `
+          <div class="w-full h-full flex flex-col">
+            <svg width="100%" height="90%" viewBox="0 0 350 200" preserveAspectRatio="xMidYMid meet">
+              ${guides}
+              ${bars}
+              <line x1="20" y1="185" x2="350" y2="185" stroke="currentColor" class="text-gray-700" stroke-width="1" />
+            </svg>
+            <div class="flex justify-center space-x-4 text-xs mt-2 text-slate-300">
+              <div class="flex items-center"><span class="w-3 h-3 rounded-full bg-rose-500 mr-2"></span>Liabilities</div>
+              <div class="flex items-center"><span class="w-3 h-3 rounded-full bg-indigo-500 mr-2"></span>Equity</div>
+              <div class="flex items-center text-gray-500">(Total bar height represents Assets)</div>
+            </div>
+          </div>`;
+      };
+
+      const renderBalanceSheetTable = () => {
+        if (!balanceSheetRows) return;
+        balanceSheetRows.innerHTML = balanceSheetData
+          .map((row) => `
+            <tr class="bg-slate-800 border-b border-slate-700 hover:bg-slate-700">
+              <td class="px-6 py-4 font-medium text-white whitespace-nowrap">${row.year}</td>
+              <td class="px-6 py-4">${formatCurrency(row.assets)}</td>
+              <td class="px-6 py-4">${formatCurrency(row.liabilities)}</td>
+              <td class="px-6 py-4 font-semibold">${formatCurrency(row.equity)}</td>
+            </tr>`)
+          .join('');
+      };
+
+      const renderCashflowChart = () => {
+        if (!cashflowChartContainer || monthlyCashflowData.length === 0) return;
+        const values = monthlyCashflowData.map((d) => d.closingCash);
+        const minValue = Math.min(0, ...values);
+        const maxValue = Math.max(...values);
+        const range = maxValue - minValue || 1;
+        const width = 500;
+        const height = 200;
+        const padding = { top: 10, right: 10, bottom: 20, left: 30 };
+
+        const yScale = (value) => height - padding.bottom - ((value - minValue) / range) * (height - padding.top - padding.bottom);
+        const xScale = (index) => padding.left + index * ((width - padding.left - padding.right) / (monthlyCashflowData.length - 1 || 1));
+        const pathData = monthlyCashflowData.map((d, i) => `${i === 0 ? 'M' : 'L'} ${xScale(i)} ${yScale(d.closingCash)}`).join(' ');
+
+        const guides = Array.from({ length: 5 }).map((_, i) => {
+          const value = minValue + (range / 4) * i;
+          const y = yScale(value);
+          return `
+            <g class="text-gray-600">
+              <line x1="${padding.left}" y1="${y}" x2="${width - padding.right}" y2="${y}" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2,2" />
+              <text x="${padding.left - 4}" y="${y + 3}" text-anchor="end" class="text-[8px] fill-gray-400">${formatCurrencyAbbreviated(value)}</text>
+            </g>`;
+        }).join('');
+
+        const labels = monthlyCashflowData
+          .map((d, i) => `<text x="${xScale(i)}" y="${height - 5}" text-anchor="middle" class="text-[8px] fill-gray-400 font-medium">${d.month.substring(0, 3)}</text>`)
+          .join('');
+
+        const points = monthlyCashflowData
+          .map((d, i) => `<g class="group cursor-pointer"><circle cx="${xScale(i)}" cy="${yScale(d.closingCash)}" r="3" class="fill-emerald-500 transition-all duration-200 group-hover:r-4" /><title>${d.month}: ${formatCurrencyExact(d.closingCash)}</title></g>`)
+          .join('');
+
+        cashflowChartContainer.innerHTML = `
+          <svg width="100%" height="100%" viewBox="0 0 ${width} ${height}" preserveAspectRatio="xMidYMid meet">
+            ${guides}
+            ${labels}
+            <line x1="${padding.left}" y1="${yScale(0)}" x2="${width - padding.right}" y2="${yScale(0)}" stroke="currentColor" class="text-gray-500" stroke-width="1" />
+            <path d="${pathData}" fill="none" stroke="currentColor" class="text-emerald-500" stroke-width="2" />
+            ${points}
+          </svg>`;
+      };
+
+      const renderCashflowTable = () => {
+        if (!cashflowRows) return;
+        cashflowRows.innerHTML = monthlyCashflowData
+          .map((row) => `
+            <tr class="bg-slate-800 border-b border-slate-700 hover:bg-slate-700">
+              <td class="px-6 py-4 font-medium text-white whitespace-nowrap">${row.month}</td>
+              <td class="px-6 py-4 text-green-400">${formatCurrency(row.contractsRevenue)}</td>
+              <td class="px-6 py-4 text-red-400">(${formatCurrency(row.operatingCosts)})</td>
+              <td class="px-6 py-4 text-red-400">(${formatCurrency(row.loanPayments)})</td>
+              <td class="px-6 py-4 text-sky-400">(${formatCurrency(row.dividendsPaid)})</td>
+              <td class="px-6 py-4 font-semibold ${row.netCashflow < 0 ? 'text-red-400' : 'text-green-400'}">${formatCurrency(row.netCashflow)}</td>
+              <td class="px-6 py-4 font-bold ${row.closingCash < 0 ? 'text-red-500' : 'text-white'}">${formatCurrency(row.closingCash)}</td>
+            </tr>`)
+          .join('');
+      };
+
+      const renderOperationalBreakdownChart = () => {
+        if (!operationalBreakdownChartContainer) return;
+        const colors = ['#38bdf8', '#fbbf24', '#34d399', '#f472b6', '#818cf8', '#a78bfa'];
+        const totalCost = operationalBreakdownData.reduce((acc, item) => acc + item.monthlyCost, 0);
+        const radius = 85;
+        const circumference = 2 * Math.PI * radius;
+        let accumulatedOffset = 0;
+
+        const segments = operationalBreakdownData
+          .map((item, index) => {
+            const percentage = (item.monthlyCost / totalCost) * 100;
+            const strokeDashoffset = accumulatedOffset;
+            accumulatedOffset += (percentage / 100) * circumference;
+            return `<circle cx="100" cy="100" r="${radius}" fill="transparent" stroke="${colors[index % colors.length]}" stroke-width="30" stroke-dasharray="${circumference}" stroke-dashoffset="-${strokeDashoffset}" class="transition-all duration-500 ease-in-out"><title>${item.category}: ${percentage.toFixed(1)}% (${formatCurrencyExact(item.monthlyCost)})</title></circle>`;
+          })
+          .join('');
+
+        const legend = operationalBreakdownData
+          .map((item, index) => `<div class="flex items-center"><span style="background-color: ${colors[index % colors.length]}" class="w-3 h-3 rounded-full mr-2"></span><span class="font-semibold mr-1">${item.category}:</span><span>${((item.monthlyCost / totalCost) * 100).toFixed(1)}%</span></div>`)
+          .join('');
+
+        operationalBreakdownChartContainer.innerHTML = `
+          <div class="w-full h-full flex items-center justify-center sm:space-x-8 flex-col sm:flex-row">
+            <svg width="200" height="200" viewBox="0 0 200 200" class="flex-shrink-0">
+              <g transform="rotate(-90 100 100)">
+                ${segments}
+              </g>
+              <text x="50%" y="50%" text-anchor="middle" dy=".3em" class="text-2xl font-bold fill-slate-100">${formatCurrencyExact(totalCost)}</text>
+              <text x="50%" y="62%" text-anchor="middle" class="text-xs fill-gray-400">Total Monthly</text>
+            </svg>
+            <div class="flex flex-col justify-center text-xs space-y-2 mt-4 sm:mt-0 text-slate-300">
+              ${legend}
+            </div>
+          </div>`;
+      };
+
+      const renderOperationalBreakdownTable = () => {
+        if (!operationalBreakdownRows) return;
+        const rows = operationalBreakdownData
+          .map((row) => `
+            <tr class="bg-slate-800 border-b border-slate-700 hover:bg-slate-700">
+              <td class="px-6 py-4 font-medium text-white whitespace-nowrap">${row.category}</td>
+              <td class="px-6 py-4">${row.detail}</td>
+              <td class="px-6 py-4 font-semibold">${formatCurrency(row.monthlyCost)}</td>
+            </tr>`)
+          .join('');
+
+        const totalRow = `
+          <tr class="bg-slate-700 font-bold text-white">
+            <td class="px-6 py-4" colspan="2">Total Operating Cost</td>
+            <td class="px-6 py-4">${formatCurrency(operationalBreakdownData.reduce((acc, item) => acc + item.monthlyCost, 0))}</td>
+          </tr>`;
+
+        operationalBreakdownRows.innerHTML = rows + totalRow;
+      };
+
+      renderProfitLossChart();
+      renderProfitLossTable();
+      renderBalanceSheetChart();
+      renderBalanceSheetTable();
+      renderCashflowChart();
+      renderCashflowTable();
+      renderOperationalBreakdownChart();
+      renderOperationalBreakdownTable();
+
+      const nav = document.getElementById('page-nav');
+      const navLinks = Array.from(document.querySelectorAll('[data-tab-target]'));
+      const sections = Array.from(document.querySelectorAll('[data-section]'));
+
+      const setActiveTab = (id) => {
+        navLinks.forEach((link) => {
+          const target = link.getAttribute('data-tab-target');
+          if (target === id) {
+            link.classList.add('border-b-2', 'border-amber-400', 'text-white');
+            link.classList.remove('text-gray-400');
+          } else {
+            link.classList.remove('border-b-2', 'border-amber-400', 'text-white');
+            link.classList.add('text-gray-400');
+          }
+        });
+      };
+
+      const scrollToSection = (id, { highlight = false } = {}) => {
+        const section = document.getElementById(id);
+        if (!section) return;
+        const navHeight = nav ? nav.offsetHeight : 0;
+        const targetPosition = section.getBoundingClientRect().top + window.scrollY - navHeight;
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+
+        if (highlight) {
+          section.classList.add('transition-colors', 'duration-500', 'bg-amber-500/10');
+          setTimeout(() => {
+            section.classList.remove('bg-amber-500/10', 'transition-colors', 'duration-500');
+          }, 1500);
+        }
+      };
+
+      navLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          const target = link.getAttribute('data-tab-target');
+          if (target) {
+            scrollToSection(target);
+            setActiveTab(target);
+          }
+        });
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActiveTab(entry.target.id);
+            }
+          });
+        },
+        {
+          threshold: 0.5,
+          rootMargin: '-100px 0px -40%',
+        }
+      );
+
+      if (sections.length > 0) {
+        setActiveTab(sections[0].id);
+      }
+
+      sections.forEach((section) => observer.observe(section));
+
+      document.querySelectorAll('[data-scroll-target]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          const target = link.getAttribute('data-scroll-target');
+          if (target) {
+            scrollToSection(target, { highlight: true });
+          }
+        });
+      });
+
+      const yearSpan = document.getElementById('current-year');
+      if (yearSpan) {
+        yearSpan.textContent = String(new Date().getFullYear());
+      }
+    })();
+  </script>
 </body>
 </html>
