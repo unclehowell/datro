@@ -225,7 +225,10 @@
     const parseFinancialData = (csv) => {
       const USD_MULTIPLIER = 1000;
       const START_YEAR = 2024;
-      const lines = csv.split('\n').filter((line) => line.trim() !== '' && !line.toLowerCase().startsWith('code,description'));
+      const lines = csv
+        .split('\n')
+        .map((line) => line.trim())
+        .filter((line) => line !== '' && !line.toLowerCase().startsWith('code'));
       const years = [0, 1, 2, 3, 4, 5];
       const labels = years.map((year, index) => {
         const currentYear = START_YEAR + year;
@@ -253,7 +256,7 @@
 
         if (!currentQuadrantKey) return;
 
-        const parts = line.split(',');
+        const parts = line.split(',').map((part) => part.trim());
         const code = parts[0];
         const description = parts[1];
         const values = parts.slice(2).map((v) => (parseFloat(v) || 0) * USD_MULTIPLIER);
@@ -320,34 +323,15 @@
       return yearlyData;
     };
 
-    const csvData = `Code,Description,2024,2025,2026,2027,2028,2029
-############# Lenders / Income (Interest payments) #############
-3200,Capital Fund (bond cash in/out incl. interest),1000,800,400,0,0,0
-3400,Interest Received (bank),0,82.5,110,115,120,125
-############# Assets (Owned Value) #############################
-0000,Bank Balance (+),0,200,450,700,950,1200
-1200,Vehicle Values (gross cost),220,830,1350,1680,2200,2600
-1300,Contracts / Receivables,50,210,450,700,950,1200
-############# Liabilities (Owed Value) #########################
-1600,Other (Office, Setup, etc.),-80,-180,-250,-310,-350,-400
-2000,Loan / Bond Payable,-1000,-800,-400,0,0,0
-2100,Accounts Payable,0,-25,-65,-105,-150,-190
-2300,Accumulated Depreciation (Vehicles),0,-110,-260,-430,-640,-870
-2400,Taxes,0,-20,-41,-63,-88,-115
-2500,Other,0,-10,-20,-35,-40,-42
-############# Expenses (Operational & Financing) ###############
-4000,Suppliers & Drivers,0,-120,-175,-220,-310,-400
-4500,Other (Admin/Overheads),0,-37,-45,-53,-67,-79`;
-
-    const battleshipData = parseFinancialData(csvData);
-    if (battleshipData.length === 0) {
-      console.warn('No financial data available to display.');
-    }
+    let battleshipData = [];
 
     const slider = document.getElementById('year-slider');
     const sliderStart = document.getElementById('slider-start');
     const sliderEnd = document.getElementById('slider-end');
     const yearLabel = document.getElementById('year-label');
+
+    slider.disabled = true;
+    yearLabel.textContent = 'Loading projections…';
 
     const quadrants = {
       income: {
@@ -366,6 +350,17 @@
         entries: document.querySelector('[data-quadrant="expenses"] [data-entries]'),
         total: document.querySelector('[data-quadrant="expenses"] [data-total]'),
       },
+    };
+
+    const showStatusMessage = (message) => {
+      Object.values(quadrants).forEach((quadrant) => {
+        quadrant.total.textContent = formatCurrency(0);
+        quadrant.entries.innerHTML = '';
+        const placeholder = document.createElement('div');
+        placeholder.className = 'flex items-center justify-center h-full text-slate-500 text-sm text-center px-2';
+        placeholder.textContent = message;
+        quadrant.entries.appendChild(placeholder);
+      });
     };
 
     const renderQuadrant = (key, data) => {
@@ -401,23 +396,50 @@
       renderQuadrant('expenses', frame.expenses);
     };
 
-    slider.max = Math.max(0, battleshipData.length - 1);
-    slider.value = '0';
-
-    if (battleshipData.length > 0) {
-      sliderStart.textContent = battleshipData[0].year;
-      sliderEnd.textContent = battleshipData[battleshipData.length - 1].year;
-      renderFrame(0);
-    } else {
-      sliderStart.textContent = '';
-      sliderEnd.textContent = '';
-      yearLabel.textContent = 'No data available';
-    }
-
     slider.addEventListener('input', (event) => {
       const newIndex = Number(event.target.value);
       renderFrame(newIndex);
     });
+
+    const initialize = async () => {
+      try {
+        const response = await fetch('projections.csv');
+        if (!response.ok) {
+          throw new Error(`Request failed with status ${response.status}`);
+        }
+
+        const csvText = await response.text();
+        battleshipData = parseFinancialData(csvText);
+
+        if (battleshipData.length === 0) {
+          console.warn('No financial data available to display.');
+          slider.disabled = true;
+          slider.value = '0';
+          sliderStart.textContent = '';
+          sliderEnd.textContent = '';
+          yearLabel.textContent = 'No data available';
+          showStatusMessage('No data available');
+          return;
+        }
+
+        slider.disabled = false;
+        slider.max = Math.max(0, battleshipData.length - 1);
+        slider.value = '0';
+        sliderStart.textContent = battleshipData[0].year;
+        sliderEnd.textContent = battleshipData[battleshipData.length - 1].year;
+        renderFrame(0);
+      } catch (error) {
+        console.error('Error loading financial data:', error);
+        slider.disabled = true;
+        slider.value = '0';
+        sliderStart.textContent = '';
+        sliderEnd.textContent = '';
+        yearLabel.textContent = 'Unable to load data';
+        showStatusMessage('Unable to load data');
+      }
+    };
+
+    initialize();
   </script>
 </body>
 </html>
