@@ -27,12 +27,31 @@
       width: 0%;
     }
 
+    #year-slider {
+      writing-mode: vertical-rl;
+      direction: rtl;
+    }
+
     [data-row-group] {
-      transition: flex 0.35s ease;
+      transition: flex 0.35s ease, max-height 0.35s ease;
     }
 
     [data-row-group][data-expanded="true"] {
-      flex: 1.75 1 0%;
+      flex: 0 0 auto;
+    }
+
+    [data-row-group] section {
+      transition: max-height 0.35s ease;
+    }
+
+    [data-row-group][data-expanded="false"] [data-entries] {
+      overflow-y: auto;
+      max-height: 100%;
+    }
+
+    [data-row-group][data-expanded="true"] [data-entries] {
+      overflow-y: visible;
+      max-height: none;
     }
 
     [data-row-toggle] svg {
@@ -63,7 +82,6 @@
         step="1"
         value="0"
         class="flex-grow w-2 h-full bg-slate-700 rounded-lg appearance-none cursor-pointer my-4"
-        style="writing-mode: vertical-lr;"
         aria-orientation="vertical"
         aria-label="Financial Year Slider"
       />
@@ -414,38 +432,10 @@
         return yearEntry;
       });
 
-      if (yearlyData.length > 0) {
-        const totalCapitalFundFromPlan = 5_000_000;
-        const receivablesLine = lines.find((line) => {
-          const lower = line.toLowerCase();
-          return lower.includes('contracts / receivables') || lower.includes('accounts receivable');
-        });
-        let totalReceivables = 0;
-        if (receivablesLine) {
-          const values = receivablesLine.split(',').slice(2).map((v) => parseFloat(v) || 0);
-          totalReceivables = values.reduce((sum, val) => sum + val, 0) * USD_MULTIPLIER;
-        }
-
-        const startupFrame = yearlyData[0];
-        const capitalFundNominal = startupFrame.income.nominals.find((n) => n.code === '3200');
-        if (capitalFundNominal) {
-          capitalFundNominal.value = totalCapitalFundFromPlan;
-        }
-
-        const receivablesNominal = startupFrame.assets.nominals.find((n) => n.code === '1300');
-        if (receivablesNominal) {
-          receivablesNominal.value = totalReceivables;
-        }
-
-        startupFrame.income.total = startupFrame.income.nominals.reduce((sum, n) => sum + n.value, 0);
-        startupFrame.assets.total = startupFrame.assets.nominals.reduce((sum, n) => sum + n.value, 0);
-      }
-
       return yearlyData;
     };
 
     let battleshipData = [];
-    let sliderBaseYear = 2024;
 
     const slider = document.getElementById('year-slider');
     const sliderStart = document.getElementById('slider-start');
@@ -514,7 +504,7 @@
       const frame = battleshipData[index];
       if (!frame) return;
       yearLabel.textContent = frame.label;
-      slider.value = frame.year;
+      slider.value = String(index);
       slider.setAttribute('aria-valuetext', frame.label);
       slider.setAttribute('aria-valuenow', frame.year);
       renderQuadrant('income', frame.income);
@@ -525,8 +515,7 @@
 
     slider.addEventListener('input', (event) => {
       if (!battleshipData.length) return;
-      const selectedYear = Number(event.target.value);
-      const newIndex = Math.max(0, Math.min(battleshipData.length - 1, selectedYear - sliderBaseYear));
+      const newIndex = Math.max(0, Math.min(battleshipData.length - 1, Number(event.target.value)));
       renderFrame(newIndex);
     });
 
@@ -553,14 +542,16 @@
         }
 
         slider.disabled = false;
-        sliderBaseYear = battleshipData[0].year;
-        slider.min = sliderBaseYear;
-        slider.max = battleshipData[battleshipData.length - 1].year;
+        slider.min = 0;
+        slider.max = battleshipData.length - 1;
         slider.step = 1;
-        slider.setAttribute('aria-valuemin', slider.min);
-        slider.setAttribute('aria-valuemax', slider.max);
-        sliderEnd.textContent = slider.min;
-        sliderStart.textContent = slider.max;
+        slider.value = '0';
+        slider.setAttribute('aria-valuemin', String(battleshipData[0].year));
+        slider.setAttribute('aria-valuemax', String(battleshipData[battleshipData.length - 1].year));
+        slider.setAttribute('aria-valuenow', String(battleshipData[0].year));
+        slider.setAttribute('aria-valuetext', battleshipData[0].label);
+        sliderEnd.textContent = battleshipData[0].year;
+        sliderStart.textContent = battleshipData[battleshipData.length - 1].year;
         renderFrame(0);
       } catch (error) {
         console.error('Error loading financial data:', error);
