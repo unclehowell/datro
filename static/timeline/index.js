@@ -510,6 +510,140 @@
       showLoading('We could not load the menu data. Please refresh the page.');
     });
 })();
+document.addEventListener('DOMContentLoaded', () => {
+  const verticalList = document.getElementById('vertical-list');
+  const horizontalTrack = document.getElementById('horizontal-track');
+  const loadingIndicator = document.getElementById('loading-indicator');
+  const backgroundVideo = document.getElementById('background-video');
+
+  let timelineData = null;
+  let activeCategoryIndex = 0;
+  let activeEntryIndex = 0;
+
+  function showLoading() {
+    loadingIndicator.classList.remove('is-hidden');
+  }
+
+  function hideLoading() {
+    loadingIndicator.classList.add('is-hidden');
+  }
+
+  async function fetchData() {
+    showLoading();
+    try {
+      const response = await fetch('timeline-data.json');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      timelineData = await response.json();
+      buildVerticalMenu();
+      // Set initial state to the first category
+      updateActiveCategory(0);
+    } catch (error) {
+      console.error("Could not fetch timeline data:", error);
+      verticalList.innerHTML = '<p>Error loading timeline data.</p>';
+    } finally {
+      hideLoading();
+    }
+  }
+
+  function buildVerticalMenu() {
+    verticalList.innerHTML = '';
+    timelineData.categories.forEach((category, index) => {
+      const entry = document.createElement('a');
+      entry.href = '#';
+      entry.className = 'xmb-entry';
+      entry.dataset.index = index;
+      entry.innerHTML = `
+        <div class="xmb-entry__icon">${category.icon}</div>
+        <div class="xmb-entry__copy">
+          <span class="xmb-entry__title">${category.title}</span>
+          <span class="xmb-entry__subtitle">${category.subtitle}</span>
+        </div>
+      `;
+      entry.addEventListener('click', (e) => {
+        e.preventDefault();
+        updateActiveCategory(index);
+      });
+      verticalList.appendChild(entry);
+    });
+  }
+
+  function buildHorizontalMenu(categoryIndex) {
+    horizontalTrack.innerHTML = '';
+    const category = timelineData.categories[categoryIndex];
+    category.entries.forEach((item, index) => {
+      const year = document.createElement('a');
+      year.href = item.url;
+      year.className = 'xmb-year';
+      year.dataset.index = index;
+      year.innerHTML = `
+        <div class="xmb-year__icon">${item.icon}</div>
+        <div class="xmb-year__copy">
+          <span class="xmb-year__title">${item.title}</span>
+          <span class="xmb-year__subtitle">${item.subtitle}</span>
+        </div>
+      `;
+      year.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = item.url;
+      });
+      horizontalTrack.appendChild(year);
+    });
+  }
+
+  function updateActiveCategory(index) {
+    if (index === activeCategoryIndex && verticalList.children.length > 0 && horizontalTrack.children.length > 0) return;
+
+    activeCategoryIndex = index;
+    
+    // Update vertical menu active state
+    Array.from(verticalList.children).forEach((child, i) => {
+      child.classList.toggle('is-active', i === index);
+    });
+
+    // Center the active vertical item
+    const activeVerticalItem = verticalList.children[index];
+    if (activeVerticalItem) {
+      const listHeight = verticalList.clientHeight;
+      const itemTop = activeVerticalItem.offsetTop;
+      const itemHeight = activeVerticalItem.offsetHeight;
+      const offset = (listHeight / 2) - (itemTop + itemHeight / 2);
+      verticalList.style.transform = `translateY(${offset}px)`;
+    }
+
+    buildHorizontalMenu(index);
+    updateActiveEntry(0); // Reset to first entry of the new category
+  }
+
+  function updateActiveEntry(index) {
+    activeEntryIndex = index;
+
+    // Update horizontal menu active state
+    Array.from(horizontalTrack.children).forEach((child, i) => {
+      child.classList.toggle('is-active', i === index);
+    });
+
+    // Center the active horizontal item
+    const activeHorizontalItem = horizontalTrack.children[index];
+    if (activeHorizontalItem) {
+      const trackWidth = horizontalTrack.clientWidth;
+      const itemLeft = activeHorizontalItem.offsetLeft;
+      const itemWidth = activeHorizontalItem.offsetWidth;
+      // The anchor point is defined in CSS, we use it to align the item
+      const anchor = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--timeline-anchor')) / 100;
+      const offset = (trackWidth * anchor) - (itemLeft + itemWidth / 2);
+      horizontalTrack.style.transform = `translateX(${offset}px)`;
+    }
+  }
+  
+  // Fade in video when it can play
+  backgroundVideo.addEventListener('canplay', () => {
+    backgroundVideo.style.opacity = 1;
+  });
+
+  fetchData();
+});
 document.querySelectorAll('details').forEach((detail) => {
     detail.addEventListener('toggle', (event) => {
         if (event.target.open) {
@@ -519,4 +653,3 @@ document.querySelectorAll('details').forEach((detail) => {
         }
     });
 });
-

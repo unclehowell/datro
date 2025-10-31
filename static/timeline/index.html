@@ -80,13 +80,27 @@
       display: flex;
       flex-direction: column;
       background: transparent;
-      isolation: isolate;
+
+    }
+    .xmb-content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
     }
     .xmb-stage {
       position: relative;
       flex: 1;
       width: 100%;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .xmb-stage-inner {
+      position: relative;
+      flex: 1;
+      width: 100%;
+      -webkit-mask-image: linear-gradient(to right, transparent calc(50% - var(--vertical-offset) - 190px), black calc(50% - var(--vertical-offset) - 110px));
+      mask-image: linear-gradient(to right, transparent calc(50% - var(--vertical-offset) - 190px), black calc(50% - var(--vertical-offset) - 110px));
     }
     .xmb-vertical {
       position: absolute;
@@ -98,7 +112,7 @@
       align-items: center;
       justify-content: center;
       width: min(380px, 34vw);
-      z-index: 2;
+      z-index: 3;
     }
     .xmb-vertical__viewport {
       width: 100%;
@@ -117,6 +131,8 @@
       transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
       padding-left: clamp(2px, 1vw, 12px);
       padding-right: clamp(6px, 2vw, 16px);
+      position: relative;
+      z-index: 3;
     }
     .xmb-entry {
       position: relative;
@@ -172,6 +188,10 @@
       opacity: 1;
       transform: translateY(-8px) scale(1.04);
     }
+    .xmb-entry.is-receding {
+      transform: translateX(-300px) scale(0.9);
+      opacity: 0;
+    }
     .xmb-entry:focus-visible {
       outline: 3px solid var(--accent);
       outline-offset: 4px;
@@ -186,7 +206,7 @@
       align-items: flex-end;
       padding-bottom: clamp(114px, 6vh, 40px);
       background: transparent;
-      z-index: 3;
+      z-index: 1;
     }
     .xmb-horizontal__viewport {
       flex: 1;
@@ -195,21 +215,37 @@
       padding-right: clamp(24px, 5vw, 48px);
       position: relative;
       mask-image: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 1) 0%,
-        rgba(0, 0, 0, 1) calc(100% - var(--fade-width)),
-        rgba(0, 0, 0, 0) 100%
-      );
+          90deg,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 1) calc(100% - var(--fade-width)),
+          rgba(0, 0, 0, 0) 100%
+        ),
+        linear-gradient(
+          to right,
+          black,
+          black calc(50% - var(--vertical-offset) - 190px),
+          transparent calc(50% - var(--vertical-offset) - 190px),
+          transparent calc(50% - var(--vertical-offset) + 190px),
+          black calc(50% - var(--vertical-offset) + 190px),
+          black
+        );
       -webkit-mask-image: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 1) 0%,
-        rgba(0, 0, 0, 1) calc(100% - var(--fade-width)),
-        rgba(0, 0, 0, 0) 100%
-      );
-      mask-size: 100% 100%;
-      -webkit-mask-size: 100% 100%;
-      mask-repeat: no-repeat;
-      -webkit-mask-repeat: no-repeat;
+          90deg,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 1) calc(100% - var(--fade-width)),
+          rgba(0, 0, 0, 0) 100%
+        ),
+        linear-gradient(
+          to right,
+          black,
+          black calc(50% - var(--vertical-offset) - 190px),
+          transparent calc(50% - var(--vertical-offset) - 190px),
+          transparent calc(50% - var(--vertical-offset) + 190px),
+          black calc(50% - var(--vertical-offset) + 190px),
+          black
+        );
+      mask-composite: intersect;
+      -webkit-mask-composite: source-in;
     }
     .xmb-horizontal__track {
       display: flex;
@@ -322,6 +358,13 @@
         transform: none;
         width: calc(100% - clamp(40px, 20vw, 64px));
         justify-content: flex-start;
+        padding-left: clamp(20px, 8vw, 32px);
+        padding-right: clamp(20px, 8vw, 32px);
+        box-sizing: border-box;
+      }
+      .xmb-stage-inner {
+        -webkit-mask-image: none;
+        mask-image: none;
       }
       .xmb-vertical__viewport {
         width: 100%;
@@ -362,6 +405,59 @@
   transform: scale(0.95);
   opacity: 0.8;
 }
+
+/* === Fix for menu layering like xmb-on-web === */
+
+/* Ensure both menus share the same stacking context */
+.xmb-stage-inner {
+  isolation: isolate;
+  position: relative;
+  z-index: 0;
+}
+
+/* Vertical menu should appear ABOVE horizontal menu */
+.xmb-vertical {
+  position: absolute;
+  z-index: 3; /* higher than .xmb-horizontal */
+  transform: translateX(calc(-50% - var(--vertical-offset)));
+}
+
+/* Horizontal menu should appear BELOW when overlapping */
+.xmb-horizontal {
+  position: absolute;
+  z-index: 1; /* below vertical menu */
+  transform: none;
+}
+
+/* Prevent parent transforms from isolating z-index layers */
+.xmb-shell,
+.xmb-content,
+.xmb-stage {
+  transform: none !important;
+}
+
+.xmb-stage-inner {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.xmb-vertical__list {
+  transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1), translateZ 0.3s ease;
+}
+.xmb-entry.is-active {
+  transform: translateY(-8px) scale(1.04) translateZ(20px);
+}
+
+/* Leaping animation effect */
+.xmb-entry.inactive {
+  margin-top: -270px;
+  transition: all 250ms ease, opacity 200ms ease;
+  margin-bottom: 0px;
+}
+
   </style>
   <noscript>
     <style>
@@ -377,18 +473,22 @@
     <div class="background-overlay"></div>
   </div>
   <div class="xmb-shell">
-    <main class="xmb-stage">
-      <section class="xmb-vertical" aria-label="Menu categories">
-        <div class="xmb-vertical__viewport" id="year-list-viewport">
-          <div class="xmb-vertical__list" id="timeline-year-list" role="listbox" aria-label="Menu categories"></div>
+    <div class="xmb-content">
+      <main class="xmb-stage">
+        <div class="xmb-stage-inner">
+          <section class="xmb-vertical" aria-label="Menu categories">
+            <div class="xmb-vertical__viewport" id="year-list-viewport">
+              <div class="xmb-vertical__list" id="timeline-year-list" role="listbox" aria-label="Menu categories"></div>
+            </div>
+          </section>
+          <nav class="xmb-horizontal" aria-label="Menu items">
+            <div class="xmb-horizontal__viewport" id="entry-bar-viewport">
+              <div class="xmb-horizontal__track" id="timeline-entry-track" role="listbox" aria-label="Menu items"></div>
+            </div>
+          </nav>
         </div>
-      </section>
-    </main>
-    <nav class="xmb-horizontal" aria-label="Menu items">
-      <div class="xmb-horizontal__viewport" id="entry-bar-viewport">
-        <div class="xmb-horizontal__track" id="timeline-entry-track" role="listbox" aria-label="Menu items"></div>
-      </div>
-    </nav>
+      </main>
+    </div>
     <div id="timeline-loading" class="xmb-loading">Loading menu…</div>
   </div>
   <script src="index.js"></script>
