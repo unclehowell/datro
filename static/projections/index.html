@@ -1,36 +1,423 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Financial Model</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* For smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-            animation: fadeIn 0.5s ease-out forwards;
-        }
-    </style>
-<script type="importmap">
-{
-  "imports": {
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financial Model</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+  </style>
 </head>
-<body class="bg-slate-900">
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
+<body class="bg-slate-900 text-slate-300 font-sans antialiased min-h-screen flex items-center justify-center p-2 sm:p-4">
+  <main class="bg-slate-800 p-2 sm:p-4 rounded-lg shadow-lg ring-1 ring-white/10 flex gap-4 w-full max-w-7xl h-[90vh]">
+    <div class="flex flex-col items-center justify-center w-16 py-4">
+      <span id="slider-end" class="text-xs text-slate-400 font-semibold transform -rotate-90 origin-center whitespace-nowrap"></span>
+      <input
+        id="year-slider"
+        type="range"
+        min="0"
+        step="1"
+        value="0"
+        class="flex-grow w-2 h-full bg-slate-700 rounded-lg appearance-none cursor-pointer my-4"
+        style="writing-mode: vertical-lr;"
+        aria-orientation="vertical"
+        aria-label="Financial Year Slider"
+      />
+      <span id="slider-start" class="text-xs text-slate-400 font-semibold transform -rotate-90 origin-center whitespace-nowrap"></span>
+    </div>
+
+    <div class="flex-grow min-w-0 flex flex-col">
+      <div class="text-center mb-2">
+        <h3 id="year-label" class="text-lg font-bold text-amber-400"></h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4 flex-grow overflow-hidden">
+        <section class="relative p-3 rounded-lg flex flex-col bg-emerald-900/70 overflow-hidden" data-quadrant="income">
+          <div aria-hidden="true" class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50"></div>
+          <div class="relative z-10 flex-grow flex flex-col min-h-0">
+            <div class="flex justify-between items-baseline border-b border-white/10 pb-1 mb-2 flex-shrink-0">
+              <h4 class="text-sm sm:text-base font-bold text-white uppercase tracking-wider">Lenders / Income (Interest payments)</h4>
+              <p class="text-lg sm:text-xl font-extrabold text-white" data-total></p>
+            </div>
+            <div class="flex-grow overflow-y-auto pr-1" data-entries aria-live="polite"></div>
+          </div>
+        </section>
+
+        <section class="relative p-3 rounded-lg flex flex-col bg-sky-900/70 overflow-hidden" data-quadrant="assets">
+          <div aria-hidden="true" class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50"></div>
+          <div class="relative z-10 flex-grow flex flex-col min-h-0">
+            <div class="flex justify-between items-baseline border-b border-white/10 pb-1 mb-2 flex-shrink-0">
+              <h4 class="text-sm sm:text-base font-bold text-white uppercase tracking-wider">Assets (Owned Value)</h4>
+              <p class="text-lg sm:text-xl font-extrabold text-white" data-total></p>
+            </div>
+            <div class="flex-grow overflow-y-auto pr-1" data-entries aria-live="polite"></div>
+          </div>
+        </section>
+
+        <section class="relative p-3 rounded-lg flex flex-col bg-indigo-900/70 overflow-hidden" data-quadrant="liabilities">
+          <div aria-hidden="true" class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50"></div>
+          <div class="relative z-10 flex-grow flex flex-col min-h-0">
+            <div class="flex justify-between items-baseline border-b border-white/10 pb-1 mb-2 flex-shrink-0">
+              <h4 class="text-sm sm:text-base font-bold text-white uppercase tracking-wider">Liabilities (Owed Value)</h4>
+              <p class="text-lg sm:text-xl font-extrabold text-white" data-total></p>
+            </div>
+            <div class="flex-grow overflow-y-auto pr-1" data-entries aria-live="polite"></div>
+          </div>
+        </section>
+
+        <section class="relative p-3 rounded-lg flex flex-col bg-rose-900/70 overflow-hidden" data-quadrant="expenses">
+          <div aria-hidden="true" class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50"></div>
+          <div class="relative z-10 flex-grow flex flex-col min-h-0">
+            <div class="flex justify-between items-baseline border-b border-white/10 pb-1 mb-2 flex-shrink-0">
+              <h4 class="text-sm sm:text-base font-bold text-white uppercase tracking-wider">Expenses (Operational &amp; Financing)</h4>
+              <p class="text-lg sm:text-xl font-extrabold text-white" data-total></p>
+            </div>
+            <div class="flex-grow overflow-y-auto pr-1" data-entries aria-live="polite"></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const formatCurrency = (value) => {
+      if (value === 0) return '$0';
+      const absValue = Math.abs(value);
+      const sign = value < 0 ? '-' : '';
+      if (absValue >= 1_000_000) return `${sign}$${(absValue / 1_000_000).toFixed(1)}M`;
+      if (absValue >= 1_000) return `${sign}$${(absValue / 1_000).toFixed(0)}K`;
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      }).format(value);
+    };
+
+    const formatCurrencyExact = (value) => {
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      }).format(value);
+    };
+
+    const createInfoIcon = () => {
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      svg.setAttribute('fill', 'none');
+      svg.setAttribute('viewBox', '0 0 24 24');
+      svg.setAttribute('stroke-width', '2');
+      svg.setAttribute('stroke', 'currentColor');
+      svg.setAttribute('class', 'w-4 h-4 text-slate-400 group-hover:text-amber-300 transition-colors');
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('stroke-linecap', 'round');
+      path.setAttribute('stroke-linejoin', 'round');
+      path.setAttribute('d', 'm11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z');
+
+      svg.appendChild(path);
+      return svg;
+    };
+
+    const createPinGrid = (value) => {
+      const PIN_VALUE = 10000;
+      const pinCount = Math.floor(Math.abs(value) / PIN_VALUE);
+      if (pinCount === 0) return null;
+
+      const pinGrid = document.createElement('div');
+      pinGrid.className = 'flex flex-wrap gap-1 p-1 rounded-sm min-h-[1rem]';
+      const pinColor = value >= 0 ? 'bg-white' : 'bg-red-500';
+      const displayCount = Math.min(pinCount, 200);
+
+      for (let i = 0; i < displayCount; i += 1) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'w-2 h-2 rounded-full border border-slate-600/50 flex items-center justify-center';
+        wrapper.title = '$10,000';
+
+        const dot = document.createElement('div');
+        dot.className = `w-full h-full rounded-full ${pinColor} shadow-inner`;
+        wrapper.appendChild(dot);
+        pinGrid.appendChild(wrapper);
+      }
+
+      if (pinCount > displayCount) {
+        const more = document.createElement('div');
+        more.className = 'text-[10px] text-slate-400 self-center ml-1';
+        more.textContent = `+${pinCount - displayCount} more`;
+        pinGrid.appendChild(more);
+      }
+
+      return pinGrid;
+    };
+
+    const buildShip = (nominal) => {
+      const ship = document.createElement('div');
+      ship.className = 'relative group bg-slate-700/50 rounded p-2 my-1 shadow-md ring-1 ring-black/20 animate-fade-in';
+
+      const tooltip = document.createElement('div');
+      tooltip.className = 'absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-xs px-3 py-1.5 bg-slate-900 text-white text-xs rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20';
+
+      const tooltipTitle = document.createElement('p');
+      tooltipTitle.className = 'font-bold border-b border-slate-600 pb-1 mb-1';
+      tooltipTitle.textContent = `${nominal.code} - ${nominal.description}`;
+      tooltip.appendChild(tooltipTitle);
+
+      const tooltipValue = document.createElement('p');
+      tooltipValue.className = 'font-bold';
+      tooltipValue.textContent = 'Value: ';
+      const tooltipValueSpan = document.createElement('span');
+      tooltipValueSpan.className = 'font-mono';
+      tooltipValueSpan.textContent = formatCurrencyExact(nominal.value);
+      tooltipValue.appendChild(tooltipValueSpan);
+      tooltip.appendChild(tooltipValue);
+
+      const tooltipArrow = document.createElement('div');
+      tooltipArrow.className = 'absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-slate-900';
+      tooltip.appendChild(tooltipArrow);
+      ship.appendChild(tooltip);
+
+      const topRow = document.createElement('div');
+      topRow.className = 'flex justify-between items-start gap-2';
+
+      const textContainer = document.createElement('div');
+      textContainer.className = 'flex-grow';
+
+      const headingRow = document.createElement('div');
+      headingRow.className = 'flex items-center gap-2';
+
+      const title = document.createElement('p');
+      title.className = 'text-xs font-bold text-white uppercase tracking-tighter';
+      title.textContent = nominal.description;
+      headingRow.appendChild(title);
+      headingRow.appendChild(createInfoIcon());
+      textContainer.appendChild(headingRow);
+
+      const valueDisplay = document.createElement('p');
+      valueDisplay.className = 'text-sm font-semibold text-amber-300';
+      valueDisplay.textContent = formatCurrency(nominal.value);
+      textContainer.appendChild(valueDisplay);
+
+      topRow.appendChild(textContainer);
+      ship.appendChild(topRow);
+
+      const pinWrapper = document.createElement('div');
+      pinWrapper.className = 'mt-1 bg-slate-800/50 rounded';
+      const pinGrid = createPinGrid(nominal.value);
+      if (pinGrid) {
+        pinWrapper.appendChild(pinGrid);
+      }
+      ship.appendChild(pinWrapper);
+
+      return ship;
+    };
+
+    const parseFinancialData = (csv) => {
+      const USD_MULTIPLIER = 1000;
+      const START_YEAR = 2024;
+      const lines = csv.split('\n').filter((line) => line.trim() !== '' && !line.toLowerCase().startsWith('code,description'));
+      const years = [0, 1, 2, 3, 4, 5];
+      const labels = years.map((year, index) => {
+        const currentYear = START_YEAR + year;
+        return index === 0 ? `${currentYear} (Startup)` : `${currentYear}`;
+      });
+
+      const rawData = {
+        income: [],
+        assets: [],
+        liabilities: [],
+        expenses: [],
+      };
+
+      let currentQuadrantKey = null;
+
+      lines.forEach((line) => {
+        if (line.startsWith('#############')) {
+          const header = line.toLowerCase();
+          if (header.includes('lenders / income')) currentQuadrantKey = 'income';
+          else if (header.includes('assets')) currentQuadrantKey = 'assets';
+          else if (header.includes('liabilities')) currentQuadrantKey = 'liabilities';
+          else if (header.includes('expenses')) currentQuadrantKey = 'expenses';
+          return;
+        }
+
+        if (!currentQuadrantKey) return;
+
+        const parts = line.split(',');
+        const code = parts[0];
+        const description = parts[1];
+        const values = parts.slice(2).map((v) => (parseFloat(v) || 0) * USD_MULTIPLIER);
+        rawData[currentQuadrantKey].push({ code, description, values });
+      });
+
+      const liabilities = rawData.liabilities;
+      const depreciationIndex = liabilities.findIndex((item) => item.description.toLowerCase().includes('accumulated depreciation'));
+      if (depreciationIndex > -1) {
+        const [depreciationItem] = liabilities.splice(depreciationIndex, 1);
+        rawData.assets.push(depreciationItem);
+      }
+
+      const yearlyData = years.map((_, index) => {
+        const yearEntry = {
+          year: START_YEAR + index,
+          label: labels[index],
+          income: { total: 0, nominals: [] },
+          assets: { total: 0, nominals: [] },
+          liabilities: { total: 0, nominals: [] },
+          expenses: { total: 0, nominals: [] },
+        };
+
+        Object.keys(rawData).forEach((key) => {
+          const quadrantData = rawData[key];
+          const nominalsForYear = quadrantData.map((item) => ({
+            code: item.code,
+            description: item.description,
+            value: item.values[index] || 0,
+          }));
+
+          const totalForYear = nominalsForYear.reduce((sum, nominal) => sum + nominal.value, 0);
+          yearEntry[key].nominals = nominalsForYear;
+          yearEntry[key].total = totalForYear;
+        });
+
+        return yearEntry;
+      });
+
+      if (yearlyData.length > 0) {
+        const totalCapitalFundFromPlan = 5_000_000;
+        const receivablesLine = lines.find((line) => line.includes('Contracts / Receivables'));
+        let totalReceivables = 0;
+        if (receivablesLine) {
+          const values = receivablesLine.split(',').slice(2).map((v) => parseFloat(v) || 0);
+          totalReceivables = values.reduce((sum, val) => sum + val, 0) * USD_MULTIPLIER;
+        }
+
+        const startupFrame = yearlyData[0];
+        const capitalFundNominal = startupFrame.income.nominals.find((n) => n.code === '3200');
+        if (capitalFundNominal) {
+          capitalFundNominal.value = totalCapitalFundFromPlan;
+        }
+
+        const receivablesNominal = startupFrame.assets.nominals.find((n) => n.code === '1300');
+        if (receivablesNominal) {
+          receivablesNominal.value = totalReceivables;
+        }
+
+        startupFrame.income.total = startupFrame.income.nominals.reduce((sum, n) => sum + n.value, 0);
+        startupFrame.assets.total = startupFrame.assets.nominals.reduce((sum, n) => sum + n.value, 0);
+      }
+
+      return yearlyData;
+    };
+
+    const csvData = `Code,Description,2024,2025,2026,2027,2028,2029
+############# Lenders / Income (Interest payments) #############
+3200,Capital Fund (bond cash in/out incl. interest),1000,800,400,0,0,0
+3400,Interest Received (bank),0,82.5,110,115,120,125
+############# Assets (Owned Value) #############################
+0000,Bank Balance (+),0,200,450,700,950,1200
+1200,Vehicle Values (gross cost),220,830,1350,1680,2200,2600
+1300,Contracts / Receivables,50,210,450,700,950,1200
+############# Liabilities (Owed Value) #########################
+1600,Other (Office, Setup, etc.),-80,-180,-250,-310,-350,-400
+2000,Loan / Bond Payable,-1000,-800,-400,0,0,0
+2100,Accounts Payable,0,-25,-65,-105,-150,-190
+2300,Accumulated Depreciation (Vehicles),0,-110,-260,-430,-640,-870
+2400,Taxes,0,-20,-41,-63,-88,-115
+2500,Other,0,-10,-20,-35,-40,-42
+############# Expenses (Operational & Financing) ###############
+4000,Suppliers & Drivers,0,-120,-175,-220,-310,-400
+4500,Other (Admin/Overheads),0,-37,-45,-53,-67,-79`;
+
+    const battleshipData = parseFinancialData(csvData);
+    if (battleshipData.length === 0) {
+      console.warn('No financial data available to display.');
+    }
+
+    const slider = document.getElementById('year-slider');
+    const sliderStart = document.getElementById('slider-start');
+    const sliderEnd = document.getElementById('slider-end');
+    const yearLabel = document.getElementById('year-label');
+
+    const quadrants = {
+      income: {
+        entries: document.querySelector('[data-quadrant="income"] [data-entries]'),
+        total: document.querySelector('[data-quadrant="income"] [data-total]'),
+      },
+      assets: {
+        entries: document.querySelector('[data-quadrant="assets"] [data-entries]'),
+        total: document.querySelector('[data-quadrant="assets"] [data-total]'),
+      },
+      liabilities: {
+        entries: document.querySelector('[data-quadrant="liabilities"] [data-entries]'),
+        total: document.querySelector('[data-quadrant="liabilities"] [data-total]'),
+      },
+      expenses: {
+        entries: document.querySelector('[data-quadrant="expenses"] [data-entries]'),
+        total: document.querySelector('[data-quadrant="expenses"] [data-total]'),
+      },
+    };
+
+    const renderQuadrant = (key, data) => {
+      const quadrant = quadrants[key];
+      if (!quadrant) return;
+      quadrant.total.textContent = formatCurrency(data.total);
+      quadrant.entries.innerHTML = '';
+      quadrant.entries.scrollTop = 0;
+
+      const activeNominals = data.nominals.filter((nominal) => nominal.value !== 0);
+      if (activeNominals.length === 0) {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'flex items-center justify-center h-full text-slate-500 text-sm';
+        placeholder.textContent = 'No Activity';
+        quadrant.entries.appendChild(placeholder);
+        return;
+      }
+
+      activeNominals.forEach((nominal) => {
+        const ship = buildShip(nominal);
+        quadrant.entries.appendChild(ship);
+      });
+    };
+
+    const renderFrame = (index) => {
+      const frame = battleshipData[index];
+      if (!frame) return;
+      yearLabel.textContent = frame.label;
+      slider.setAttribute('aria-valuetext', frame.label);
+      renderQuadrant('income', frame.income);
+      renderQuadrant('assets', frame.assets);
+      renderQuadrant('liabilities', frame.liabilities);
+      renderQuadrant('expenses', frame.expenses);
+    };
+
+    slider.max = Math.max(0, battleshipData.length - 1);
+    slider.value = '0';
+
+    if (battleshipData.length > 0) {
+      sliderStart.textContent = battleshipData[0].year;
+      sliderEnd.textContent = battleshipData[battleshipData.length - 1].year;
+      renderFrame(0);
+    } else {
+      sliderStart.textContent = '';
+      sliderEnd.textContent = '';
+      yearLabel.textContent = 'No data available';
+    }
+
+    slider.addEventListener('input', (event) => {
+      const newIndex = Number(event.target.value);
+      renderFrame(newIndex);
+    });
+  </script>
 </body>
 </html>
