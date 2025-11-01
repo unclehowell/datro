@@ -81,6 +81,7 @@
       <span id="slider-end" class="text-xs text-slate-400 font-semibold transform -rotate-90 origin-center whitespace-nowrap"></span>
       <input
         id="year-slider"
+        class="year-slider"
         type="range"
         min="0"
         step="1"
@@ -191,7 +192,7 @@
           </button>
         </div>
       </div>
-    </div>
+    </section>
   </main>
 
   <script>
@@ -258,7 +259,7 @@
       svg.setAttribute('viewBox', '0 0 24 24');
       svg.setAttribute('stroke-width', '2');
       svg.setAttribute('stroke', 'currentColor');
-      svg.setAttribute('class', 'w-4 h-4 text-slate-400 group-hover:text-amber-300 transition-colors');
+      svg.setAttribute('class', 'info-icon');
 
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       path.setAttribute('stroke-linecap', 'round');
@@ -275,24 +276,23 @@
       if (pinCount === 0) return null;
 
       const pinGrid = document.createElement('div');
-      pinGrid.className = 'flex flex-wrap gap-1 p-1 rounded-sm min-h-[1rem]';
-      const pinColor = value >= 0 ? 'bg-white' : 'bg-red-500';
+      pinGrid.className = 'pin-grid';
       const displayCount = Math.min(pinCount, 200);
 
       for (let i = 0; i < displayCount; i += 1) {
         const wrapper = document.createElement('div');
-        wrapper.className = 'w-2 h-2 rounded-full border border-slate-600/50 flex items-center justify-center';
+        wrapper.className = 'pin-cell';
         wrapper.title = '$10,000';
 
         const dot = document.createElement('div');
-        dot.className = `w-full h-full rounded-full ${pinColor} shadow-inner`;
+        dot.className = `pin-dot ${value >= 0 ? 'positive' : 'negative'}`;
         wrapper.appendChild(dot);
         pinGrid.appendChild(wrapper);
       }
 
       if (pinCount > displayCount) {
         const more = document.createElement('div');
-        more.className = 'text-[10px] text-slate-400 self-center ml-1';
+        more.className = 'pin-more';
         more.textContent = `+${pinCount - displayCount} more`;
         pinGrid.appendChild(more);
       }
@@ -302,48 +302,44 @@
 
     const buildShip = (nominal) => {
       const ship = document.createElement('div');
-      ship.className = 'relative group bg-slate-700/50 rounded p-2 my-1 shadow-md ring-1 ring-black/20 animate-fade-in';
+      ship.className = 'entry-card animate-fade-in';
 
       const tooltip = document.createElement('div');
-      tooltip.className = 'absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-xs px-3 py-1.5 bg-slate-900 text-white text-xs rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20';
+      tooltip.className = 'entry-tooltip';
 
       const tooltipTitle = document.createElement('p');
-      tooltipTitle.className = 'font-bold border-b border-slate-600 pb-1 mb-1';
+      tooltipTitle.className = 'entry-tooltip-title';
       tooltipTitle.textContent = `${nominal.code} - ${nominal.description}`;
       tooltip.appendChild(tooltipTitle);
 
       const tooltipValue = document.createElement('p');
-      tooltipValue.className = 'font-bold';
+      tooltipValue.className = 'entry-tooltip-value';
       tooltipValue.textContent = 'Value: ';
       const tooltipValueSpan = document.createElement('span');
-      tooltipValueSpan.className = 'font-mono';
       tooltipValueSpan.textContent = formatCurrencyExact(nominal.value);
       tooltipValue.appendChild(tooltipValueSpan);
       tooltip.appendChild(tooltipValue);
 
-      const tooltipArrow = document.createElement('div');
-      tooltipArrow.className = 'absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-slate-900';
-      tooltip.appendChild(tooltipArrow);
       ship.appendChild(tooltip);
 
       const topRow = document.createElement('div');
-      topRow.className = 'flex justify-between items-start gap-2';
+      topRow.className = 'entry-content';
 
       const textContainer = document.createElement('div');
-      textContainer.className = 'flex-grow';
+      textContainer.className = 'entry-text';
 
       const headingRow = document.createElement('div');
-      headingRow.className = 'flex items-center gap-2';
+      headingRow.className = 'entry-heading';
 
       const title = document.createElement('p');
-      title.className = 'text-xs font-bold text-white uppercase tracking-tighter';
+      title.className = 'entry-title';
       title.textContent = nominal.description;
       headingRow.appendChild(title);
       headingRow.appendChild(createInfoIcon());
       textContainer.appendChild(headingRow);
 
       const valueDisplay = document.createElement('p');
-      valueDisplay.className = 'text-sm font-semibold text-amber-300';
+      valueDisplay.className = 'entry-value';
       valueDisplay.textContent = formatCurrency(nominal.value);
       textContainer.appendChild(valueDisplay);
 
@@ -351,7 +347,7 @@
       ship.appendChild(topRow);
 
       const pinWrapper = document.createElement('div');
-      pinWrapper.className = 'mt-1 bg-slate-800/50 rounded';
+      pinWrapper.className = 'entry-pin-wrapper';
       const pinGrid = createPinGrid(nominal.value);
       if (pinGrid) {
         pinWrapper.appendChild(pinGrid);
@@ -489,7 +485,7 @@
       const activeNominals = data.nominals.filter((nominal) => nominal.value !== 0);
       if (activeNominals.length === 0) {
         const placeholder = document.createElement('div');
-        placeholder.className = 'flex items-center justify-center h-full text-slate-500 text-sm';
+        placeholder.className = 'panel-placeholder';
         placeholder.textContent = 'No Activity';
         quadrant.entries.appendChild(placeholder);
         return;
@@ -501,9 +497,19 @@
       });
     };
 
+    const updateSliderForIndex = (index) => {
+      const frame = battleshipData[index];
+      if (!frame) return;
+      const sliderPosition = sliderMaxIndex - index;
+      slider.value = String(sliderPosition);
+      slider.setAttribute('aria-valuenow', String(frame.year));
+      slider.setAttribute('aria-valuetext', frame.label);
+    };
+
     const renderFrame = (index) => {
       const frame = battleshipData[index];
       if (!frame) return;
+      updateSliderForIndex(index);
       yearLabel.textContent = frame.label;
       const sliderPosition = sliderMaxIndex - index;
       slider.value = String(sliderPosition);
