@@ -99,10 +99,10 @@ body.page-body::selection {
 }
 
 .year-slider {
-  writing-mode: vertical-lr;
-  width: 0.5rem;
-  height: clamp(220px, 52vh, 360px);
-  flex: 1;
+  writing-mode: vertical-rl;
+  direction: rtl;
+  width: 19px;
+  min-height: 331px;
   margin-block: 0.75rem;
   appearance: none;
   background: transparent;
