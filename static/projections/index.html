@@ -196,22 +196,55 @@
       return svg;
     };
 
-    const createPinGrid = (value) => {
-      const TEN_K_PIN_VALUE = 10_000;
-      const HUNDRED_K_PIN_VALUE = 100_000;
-      const absValue = Math.abs(value);
+    const TEN_K_PIN_VALUE = 10_000;
+    const HUNDRED_K_PIN_VALUE = 100_000;
 
+    const evaluatePinBreakdown = (value) => {
+      const absValue = Math.abs(value);
       const hundredPinCount = Math.floor(absValue / HUNDRED_K_PIN_VALUE);
       const remainingAfterHundreds = absValue - hundredPinCount * HUNDRED_K_PIN_VALUE;
       const tenPinCount = Math.floor(remainingAfterHundreds / TEN_K_PIN_VALUE);
       const totalPinCount = hundredPinCount + tenPinCount;
+
+      return {
+        hundredPinCount,
+        tenPinCount,
+        totalPinCount,
+      };
+    };
+
+    const determineShipVariant = (pinCapacity) => {
+      if (pinCapacity <= 4) return 'patrol';
+      if (pinCapacity <= 8) return 'submarine';
+      if (pinCapacity <= 14) return 'destroyer';
+      if (pinCapacity <= 20) return 'battleship';
+      return 'carrier';
+    };
+
+    const determineGridColumns = (pinCapacity) => {
+      if (pinCapacity <= 4) return 2;
+      if (pinCapacity <= 6) return 3;
+      if (pinCapacity <= 12) return 4;
+      if (pinCapacity <= 18) return 5;
+      return 6;
+    };
+
+    const createPinGrid = (value, pinCapacity) => {
+      const { hundredPinCount, tenPinCount, totalPinCount } = evaluatePinBreakdown(value);
 
       if (totalPinCount === 0) return null;
 
       const pinGrid = document.createElement('div');
       pinGrid.className = 'pin-grid';
 
-      const maxVisiblePins = 200;
+      const gridCapacity = Math.max(pinCapacity, totalPinCount);
+      const gridColumns = determineGridColumns(gridCapacity);
+      const gridRows = Math.max(1, Math.ceil(gridCapacity / gridColumns));
+      pinGrid.style.setProperty('--pin-grid-columns', gridColumns);
+      pinGrid.style.setProperty('--pin-grid-rows', gridRows);
+      pinGrid.setAttribute('data-pin-capacity', String(pinCapacity));
+
+      const maxVisiblePins = 240;
       let renderedPins = 0;
 
       const makePin = (title, classes) => {
@@ -250,28 +283,134 @@
       return pinGrid;
     };
 
-    const buildShip = (nominal) => {
-      const ship = document.createElement('div');
-      ship.className = 'battleship-container animate-fade-in';
+    let hullIdCounter = 0;
+    const nextHullGradientId = (variant) => {
+      hullIdCounter += 1;
+      return `hull-gradient-${variant}-${hullIdCounter}`;
+    };
 
-      // Create SVG battleship shape - horizontal vessel like the board game
+    const hullShapes = {
+      patrol: 'M8,60 L26,42 L94,38 L126,46 L150,62 L8,62 Z',
+      submarine: 'M6,64 L30,42 L140,36 L182,44 L210,62 L6,64 Z',
+      destroyer: 'M6,66 L28,44 L168,36 L210,46 L242,60 L256,68 L6,66 Z',
+      battleship: 'M6,66 L32,42 L198,34 L238,46 L278,60 L298,70 L6,66 Z',
+      carrier: 'M6,68 L34,40 L230,32 L280,44 L320,60 L332,72 L6,68 Z',
+    };
+
+    const createHullSVG = (variant) => {
       const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      svg.setAttribute('class', 'battleship-shape');
-      svg.setAttribute('viewBox', '0 0 300 60');
-      svg.setAttribute('preserveAspectRatio', 'none');
-      
-      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      // Horizontal battleship: pointed bow on left, flat stern on right, with superstructure blocks
-      path.setAttribute('d', 'M10,45 L30,30 L60,30 L60,35 L90,35 L90,25 L120,25 L120,20 L150,20 L150,25 L180,25 L180,35 L240,35 L240,30 L270,30 L270,45 L280,45 L280,50 L10,50 Z');
-      path.setAttribute('fill', 'rgba(71, 85, 105, 0.85)');
-      path.setAttribute('stroke', 'rgba(148, 163, 184, 0.3)');
-      path.setAttribute('stroke-width', '1.5');
-      
-      svg.appendChild(path);
-      ship.appendChild(svg);
+      svg.setAttribute('class', 'battleship-hull');
+      svg.setAttribute('viewBox', '0 0 340 100');
+      svg.setAttribute('role', 'presentation');
+      svg.setAttribute('aria-hidden', 'true');
+
+      const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+      const gradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+      const gradientId = nextHullGradientId(variant);
+      gradient.setAttribute('id', gradientId);
+      gradient.setAttribute('x1', '0%');
+      gradient.setAttribute('x2', '100%');
+      gradient.setAttribute('y1', '0%');
+      gradient.setAttribute('y2', '100%');
+
+      const stopOne = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+      stopOne.setAttribute('offset', '0%');
+      stopOne.setAttribute('stop-color', 'rgba(71, 85, 105, 0.95)');
+      gradient.appendChild(stopOne);
+
+      const stopTwo = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+      stopTwo.setAttribute('offset', '70%');
+      stopTwo.setAttribute('stop-color', 'rgba(51, 65, 85, 0.9)');
+      gradient.appendChild(stopTwo);
+
+      defs.appendChild(gradient);
+      svg.appendChild(defs);
+
+      const hullPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      hullPath.setAttribute('d', hullShapes[variant] || hullShapes.destroyer);
+      hullPath.setAttribute('fill', `url(#${gradientId})`);
+      hullPath.setAttribute('stroke', 'rgba(15, 23, 42, 0.85)');
+      hullPath.setAttribute('stroke-width', '3');
+      hullPath.setAttribute('stroke-linejoin', 'round');
+      hullPath.setAttribute('stroke-linecap', 'round');
+      svg.appendChild(hullPath);
+
+      const deck = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      deck.setAttribute('x', '60');
+      deck.setAttribute('y', '44');
+      deck.setAttribute('width', '180');
+      deck.setAttribute('height', '16');
+      deck.setAttribute('rx', '6');
+      deck.setAttribute('fill', 'rgba(148, 163, 184, 0.35)');
+      svg.appendChild(deck);
+
+      const bridge = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      bridge.setAttribute('x', '110');
+      bridge.setAttribute('y', '36');
+      bridge.setAttribute('width', '46');
+      bridge.setAttribute('height', '18');
+      bridge.setAttribute('rx', '6');
+      bridge.setAttribute('fill', 'rgba(226, 232, 240, 0.45)');
+      svg.appendChild(bridge);
+
+      const portholeGroup = document.createDocumentFragment();
+      [0, 1, 2, 3].forEach((index) => {
+        const porthole = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        porthole.setAttribute('cx', String(80 + index * 36));
+        porthole.setAttribute('cy', '52');
+        porthole.setAttribute('r', '5');
+        porthole.setAttribute('fill', 'rgba(226, 232, 240, 0.6)');
+        porthole.setAttribute('stroke', 'rgba(15, 23, 42, 0.6)');
+        porthole.setAttribute('stroke-width', '1.5');
+        portholeGroup.appendChild(porthole);
+      });
+      svg.appendChild(portholeGroup);
+
+      return svg;
+    };
+
+    const buildShip = (nominal) => {
+      const pinCapacity = nominal.pinCapacity || 0;
+      const variant = determineShipVariant(pinCapacity);
+      const ship = document.createElement('div');
+      ship.className = `battleship-container animate-fade-in ship-${variant}`;
+
+      const info = document.createElement('div');
+      info.className = 'battleship-info';
+
+      const labelGroup = document.createElement('div');
+      labelGroup.className = 'battleship-label-group';
+
+      const codeBadge = document.createElement('span');
+      codeBadge.className = 'battleship-code';
+      codeBadge.textContent = nominal.code;
+      labelGroup.appendChild(codeBadge);
+
+      const title = document.createElement('span');
+      title.className = 'entry-title';
+      title.textContent = nominal.description;
+      labelGroup.appendChild(title);
+
+      const infoIcon = createInfoIcon();
+      infoIcon.setAttribute('aria-hidden', 'true');
+      infoIcon.setAttribute('focusable', 'false');
+      labelGroup.appendChild(infoIcon);
+
+      info.appendChild(labelGroup);
+
+      const valueBadge = document.createElement('span');
+      valueBadge.className = 'entry-value-badge';
+      valueBadge.textContent = formatCurrency(nominal.value);
+      info.appendChild(valueBadge);
+
+      ship.appendChild(info);
 
       const card = document.createElement('div');
       card.className = 'entry-card';
+      card.setAttribute('data-ship-variant', variant);
+
+      const hullSvg = createHullSVG(variant);
+      card.appendChild(hullSvg);
 
       const tooltip = document.createElement('div');
       tooltip.className = 'entry-tooltip';
@@ -291,33 +430,10 @@
 
       card.appendChild(tooltip);
 
-      const topRow = document.createElement('div');
-      topRow.className = 'entry-content';
-
-      const textContainer = document.createElement('div');
-      textContainer.className = 'entry-text';
-
-      const headingRow = document.createElement('div');
-      headingRow.className = 'entry-heading';
-
-      const title = document.createElement('p');
-      title.className = 'entry-title';
-      title.textContent = nominal.description;
-      headingRow.appendChild(title);
-      headingRow.appendChild(createInfoIcon());
-      textContainer.appendChild(headingRow);
-
-      const valueDisplay = document.createElement('p');
-      valueDisplay.className = 'entry-value';
-      valueDisplay.textContent = formatCurrency(nominal.value);
-      textContainer.appendChild(valueDisplay);
-
-      topRow.appendChild(textContainer);
-      card.appendChild(topRow);
-
       const pinWrapper = document.createElement('div');
       pinWrapper.className = 'entry-pin-wrapper';
-      const pinGrid = createPinGrid(nominal.value);
+      pinWrapper.setAttribute('data-pin-capacity', String(pinCapacity));
+      const pinGrid = createPinGrid(nominal.value, pinCapacity);
       if (pinGrid) {
         pinWrapper.appendChild(pinGrid);
       }
@@ -377,6 +493,16 @@
         rawData.assets.push(depreciationItem);
       }
 
+      Object.values(rawData).forEach((items) => {
+        items.forEach((item) => {
+          const maxPins = item.values.reduce((max, value) => {
+            const { totalPinCount } = evaluatePinBreakdown(value);
+            return Math.max(max, totalPinCount);
+          }, 0);
+          item.pinCapacity = maxPins;
+        });
+      });
+
       const yearlyData = years.map((_, index) => {
         const yearEntry = {
           year: START_YEAR + index,
@@ -393,6 +519,7 @@
             code: item.code,
             description: item.description,
             value: item.values[index] || 0,
+            pinCapacity: item.pinCapacity || 0,
           }));
 
           const totalForYear = nominalsForYear.reduce((sum, nominal) => sum + nominal.value, 0);
