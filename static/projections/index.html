@@ -440,7 +440,6 @@
     };
 
     let battleshipData = [];
-    let sliderMaxIndex = 0;
 
     const slider = document.getElementById('year-slider');
     const sliderStart = document.getElementById('slider-start');
@@ -448,9 +447,6 @@
     const yearLabel = document.getElementById('year-label');
 
     slider.disabled = true;
-    slider.value = '0';
-    slider.setAttribute('aria-valuemin', '0');
-    slider.setAttribute('aria-valuemax', '0');
     yearLabel.textContent = 'Loading projections…';
 
     const quadrants = {
@@ -528,8 +524,6 @@
     });
 
     const initialize = async () => {
-      startLoadingBar();
-      sliderMaxIndex = 0;
       try {
         const response = await fetch('projections.csv');
         if (!response.ok) {
@@ -543,11 +537,6 @@
           console.warn('No financial data available to display.');
           slider.disabled = true;
           slider.value = '0';
-          sliderMaxIndex = 0;
-          slider.setAttribute('aria-valuemin', '0');
-          slider.setAttribute('aria-valuemax', '0');
-          slider.removeAttribute('aria-valuenow');
-          slider.removeAttribute('aria-valuetext');
           sliderStart.textContent = '';
           sliderEnd.textContent = '';
           yearLabel.textContent = 'No data available';
@@ -556,62 +545,21 @@
         }
 
         slider.disabled = false;
-        slider.min = 0;
-        sliderMaxIndex = battleshipData.length - 1;
-        slider.max = sliderMaxIndex;
-        slider.step = 1;
-        slider.value = String(sliderMaxIndex);
-        slider.setAttribute('aria-valuemin', String(battleshipData[0].year));
-        slider.setAttribute('aria-valuemax', String(battleshipData[battleshipData.length - 1].year));
-        slider.setAttribute('aria-valuenow', String(battleshipData[0].year));
-        slider.setAttribute('aria-valuetext', battleshipData[0].label);
-        sliderEnd.textContent = battleshipData[0].year;
-        sliderStart.textContent = battleshipData[battleshipData.length - 1].year;
+        slider.max = Math.max(0, battleshipData.length - 1);
+        slider.value = '0';
+        sliderStart.textContent = battleshipData[0].year;
+        sliderEnd.textContent = battleshipData[battleshipData.length - 1].year;
         renderFrame(0);
       } catch (error) {
         console.error('Error loading financial data:', error);
         slider.disabled = true;
         slider.value = '0';
-        sliderMaxIndex = 0;
-        slider.setAttribute('aria-valuemin', '0');
-        slider.setAttribute('aria-valuemax', '0');
-        slider.removeAttribute('aria-valuenow');
-        slider.removeAttribute('aria-valuetext');
         sliderStart.textContent = '';
         sliderEnd.textContent = '';
         yearLabel.textContent = 'Unable to load data';
         showStatusMessage('Unable to load data');
-      } finally {
-        finishLoadingBar();
       }
     };
-
-    const rowGroups = document.querySelectorAll('[data-row-group]');
-    rowGroups.forEach((group) => {
-      const toggle = group.querySelector('[data-row-toggle]');
-      if (!toggle) return;
-
-      toggle.addEventListener('click', () => {
-        const isExpanded = group.getAttribute('data-expanded') === 'true';
-        const nextState = !isExpanded;
-        group.setAttribute('data-expanded', String(nextState));
-        toggle.setAttribute('aria-expanded', String(nextState));
-        toggle.setAttribute('title', nextState ? 'Collapse row' : 'Expand row');
-        const label = toggle.querySelector('[data-toggle-label]');
-        if (label) {
-          label.textContent = nextState ? 'Collapse row' : 'Expand row';
-        }
-        if (nextState) {
-          group.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
-        } else if (typeof toggle.focus === 'function') {
-          try {
-            toggle.focus({ preventScroll: true });
-          } catch (error) {
-            toggle.focus();
-          }
-        }
-      });
-    });
 
     initialize();
   </script>
