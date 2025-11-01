@@ -427,8 +427,7 @@
     const updateSliderForIndex = (index) => {
       const frame = battleshipData[index];
       if (!frame) return;
-      const sliderPosition = sliderMaxIndex - index;
-      slider.value = String(sliderPosition);
+      slider.value = String(index);
       slider.setAttribute('aria-valuenow', String(frame.year));
       slider.setAttribute('aria-valuetext', frame.label);
     };
@@ -449,8 +448,7 @@
       const sliderValue = Number(event.target.value);
       if (!Number.isFinite(sliderValue)) return;
       const constrainedValue = Math.max(0, Math.min(sliderMaxIndex, sliderValue));
-      const dataIndex = sliderMaxIndex - constrainedValue;
-      renderFrame(dataIndex);
+      renderFrame(constrainedValue);
     });
 
     const initialize = async () => {
@@ -486,7 +484,7 @@
         sliderMaxIndex = battleshipData.length - 1;
         slider.max = String(sliderMaxIndex);
         slider.step = '1';
-        slider.value = String(sliderMaxIndex);
+        slider.value = '0';
         slider.setAttribute('aria-valuemin', String(battleshipData[0].year));
         slider.setAttribute('aria-valuemax', String(battleshipData[sliderMaxIndex].year));
         sliderEnd.textContent = battleshipData[0].year;
