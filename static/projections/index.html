@@ -534,11 +534,11 @@
         slider.disabled = false;
         sliderMaxIndex = Math.max(0, battleshipData.length - 1);
         slider.max = String(sliderMaxIndex);
-        slider.value = '0';
+        slider.value = String(sliderMaxIndex);
         slider.setAttribute('aria-valuemin', '0');
         slider.setAttribute('aria-valuemax', String(sliderMaxIndex));
-        sliderStart.textContent = battleshipData[battleshipData.length - 1].year;
-        sliderEnd.textContent = battleshipData[0].year;
+        sliderStart.textContent = battleshipData[0].year;
+        sliderEnd.textContent = battleshipData[battleshipData.length - 1].year;
         renderFrame(0);
       } catch (error) {
         console.error('Error loading financial data:', error);
