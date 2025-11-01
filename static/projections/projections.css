@@ -100,7 +100,7 @@ body.page-body::selection {
 
 .year-slider {
   writing-mode: vertical-rl;
-  direction: rtl;
+  direction: ltr;
   width: 19px;
   min-height: 331px;
   margin-block: 0.75rem;
@@ -180,6 +180,17 @@ body.page-body::selection {
   flex-direction: column;
   gap: 0.75rem;
   width: 100%;
+  flex: 1 1 0%;
+  min-height: 0;
+  transition: flex 0.35s ease, max-height 0.35s ease;
+}
+
+.row-group section {
+  transition: max-height 0.35s ease;
+}
+
+.row-group[data-expanded="true"] {
+  flex: 0 0 auto;
 }
 
 .panel-grid {
@@ -483,12 +494,25 @@ body.page-body::selection {
   border-radius: 999px;
 }
 
-.pin-dot.positive {
+.pin-dot.pin-ten.positive {
   background: #f8fafc;
 }
 
-.pin-dot.negative {
+.pin-dot.pin-ten.negative {
   background: rgba(248, 113, 113, 0.85);
+}
+
+.pin-dot.pin-hundred {
+  background: #facc15;
+}
+
+.pin-dot.pin-hundred.positive {
+  box-shadow: 0 0 0 1px rgba(250, 204, 21, 0.6);
+}
+
+.pin-dot.pin-hundred.negative {
+  box-shadow: 0 0 0 1px rgba(248, 113, 113, 0.65);
+  opacity: 0.85;
 }
 
 .pin-more {
