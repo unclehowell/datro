@@ -424,13 +424,20 @@
       });
     };
 
+    const updateSliderForIndex = (index) => {
+      const frame = battleshipData[index];
+      if (!frame) return;
+      const sliderPosition = sliderMaxIndex - index;
+      slider.value = String(sliderPosition);
+      slider.setAttribute('aria-valuenow', String(frame.year));
+      slider.setAttribute('aria-valuetext', frame.label);
+    };
+
     const renderFrame = (index) => {
       const frame = battleshipData[index];
       if (!frame) return;
-      slider.value = String(index);
+      updateSliderForIndex(index);
       yearLabel.textContent = frame.label;
-      slider.setAttribute('aria-valuetext', frame.label);
-      slider.setAttribute('aria-valuenow', String(frame.year));
       renderQuadrant('income', frame.income);
       renderQuadrant('assets', frame.assets);
       renderQuadrant('liabilities', frame.liabilities);
@@ -442,7 +449,8 @@
       const sliderValue = Number(event.target.value);
       if (!Number.isFinite(sliderValue)) return;
       const constrainedValue = Math.max(0, Math.min(sliderMaxIndex, sliderValue));
-      renderFrame(constrainedValue);
+      const dataIndex = sliderMaxIndex - constrainedValue;
+      renderFrame(dataIndex);
     });
 
     const initialize = async () => {
@@ -474,15 +482,13 @@
         }
 
         slider.disabled = false;
-        slider.min = 0;
+        slider.min = '0';
         sliderMaxIndex = battleshipData.length - 1;
-        slider.max = sliderMaxIndex;
-        slider.step = 1;
-        slider.value = '0';
+        slider.max = String(sliderMaxIndex);
+        slider.step = '1';
+        slider.value = String(sliderMaxIndex);
         slider.setAttribute('aria-valuemin', String(battleshipData[0].year));
         slider.setAttribute('aria-valuemax', String(battleshipData[sliderMaxIndex].year));
-        slider.setAttribute('aria-valuenow', String(battleshipData[0].year));
-        slider.setAttribute('aria-valuetext', battleshipData[0].label);
         sliderEnd.textContent = battleshipData[0].year;
         sliderStart.textContent = battleshipData[sliderMaxIndex].year;
         renderFrame(0);
