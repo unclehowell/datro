@@ -16,10 +16,67 @@
     .animate-fade-in {
       animation: fadeIn 0.5s ease-out forwards;
     }
+    #loading-bar-container {
+      transition: opacity 0.3s ease;
+    }
+    #loading-bar-container[data-hidden="true"] {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #loading-bar {
+      width: 0%;
+    }
+
+    #year-slider {
+      writing-mode: vertical-rl;
+      direction: rtl;
+    }
+
+    [data-row-group] {
+      transition: flex 0.35s ease, max-height 0.35s ease;
+    }
+
+    [data-row-group][data-expanded="true"] {
+      flex: 0 0 auto;
+    }
+
+    [data-row-group] section {
+      transition: max-height 0.35s ease;
+    }
+
+    [data-row-group][data-expanded="false"] [data-entries] {
+      overflow-y: auto;
+      max-height: min(24rem, 60vh);
+    }
+
+    [data-row-group][data-expanded="true"] [data-entries] {
+      overflow-y: visible;
+      max-height: none;
+    }
+
+    [data-row-group][data-expanded="true"] section {
+      overflow: visible;
+    }
+
+    [data-row-toggle] svg {
+      transition: transform 0.3s ease;
+    }
+
+    [data-row-group][data-expanded="true"] [data-row-toggle] svg {
+      transform: rotate(180deg);
+    }
   </style>
 </head>
-<body class="bg-slate-900 text-slate-300 font-sans antialiased min-h-screen flex items-center justify-center p-2 sm:p-4">
-  <main class="bg-slate-800 p-2 sm:p-4 rounded-lg shadow-lg ring-1 ring-white/10 flex gap-4 w-full max-w-7xl h-[90vh]">
+<body class="bg-slate-900 text-slate-300 font-sans antialiased min-h-screen p-2 sm:p-4">
+  <div
+    id="loading-bar-container"
+    class="fixed top-0 left-0 w-full h-1 bg-slate-700/60 overflow-hidden z-50"
+    role="status"
+    aria-live="polite"
+  >
+    <div id="loading-bar" class="h-full bg-amber-400 shadow-lg shadow-amber-500/40 transition-all duration-200 ease-out"></div>
+  </div>
+  <main class="bg-slate-800 p-2 sm:p-4 rounded-lg shadow-lg ring-1 ring-white/10 flex gap-4 w-full max-w-7xl mx-auto">
     <div class="flex flex-col items-center justify-center w-16 py-4">
       <span id="slider-end" class="text-xs text-slate-400 font-semibold transform -rotate-90 origin-center whitespace-nowrap"></span>
       <input
@@ -29,7 +86,6 @@
         step="1"
         value="0"
         class="flex-grow w-2 h-full bg-slate-700 rounded-lg appearance-none cursor-pointer my-4"
-        style="writing-mode: vertical-lr;"
         aria-orientation="vertical"
         aria-label="Financial Year Slider"
       />
@@ -40,50 +96,100 @@
       <div class="text-center mb-2">
         <h3 id="year-label" class="text-lg font-bold text-amber-400"></h3>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4 flex-grow overflow-hidden">
-        <section class="relative p-3 rounded-lg flex flex-col bg-emerald-900/70 overflow-hidden" data-quadrant="income">
-          <div aria-hidden="true" class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50"></div>
-          <div class="relative z-10 flex-grow flex flex-col min-h-0">
-            <div class="flex justify-between items-baseline border-b border-white/10 pb-1 mb-2 flex-shrink-0">
-              <h4 class="text-sm sm:text-base font-bold text-white uppercase tracking-wider">Lenders / Income (Interest payments)</h4>
-              <p class="text-lg sm:text-xl font-extrabold text-white" data-total></p>
-            </div>
-            <div class="flex-grow overflow-y-auto pr-1" data-entries aria-live="polite"></div>
-          </div>
-        </section>
+      <div class="flex flex-col gap-3 flex-grow">
+        <div class="flex flex-col flex-1 min-h-0" data-row-group="top" data-expanded="false">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4 flex-1 min-h-0">
+            <section class="relative p-3 rounded-lg flex flex-col bg-emerald-900/70 overflow-hidden" data-quadrant="income">
+              <div aria-hidden="true" class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50"></div>
+              <div class="relative z-10 flex-grow flex flex-col min-h-0">
+                <div class="flex justify-between items-baseline border-b border-white/10 pb-1 mb-2 flex-shrink-0">
+                  <h4 class="text-sm sm:text-base font-bold text-white uppercase tracking-wider">Lenders / Financing Summary</h4>
+                  <p class="text-lg sm:text-xl font-extrabold text-white" data-total></p>
+                </div>
+                <div class="flex-grow overflow-y-auto pr-1" data-entries aria-live="polite"></div>
+              </div>
+            </section>
 
-        <section class="relative p-3 rounded-lg flex flex-col bg-sky-900/70 overflow-hidden" data-quadrant="assets">
-          <div aria-hidden="true" class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50"></div>
-          <div class="relative z-10 flex-grow flex flex-col min-h-0">
-            <div class="flex justify-between items-baseline border-b border-white/10 pb-1 mb-2 flex-shrink-0">
-              <h4 class="text-sm sm:text-base font-bold text-white uppercase tracking-wider">Assets (Owned Value)</h4>
-              <p class="text-lg sm:text-xl font-extrabold text-white" data-total></p>
-            </div>
-            <div class="flex-grow overflow-y-auto pr-1" data-entries aria-live="polite"></div>
+            <section class="relative p-3 rounded-lg flex flex-col bg-sky-900/70 overflow-hidden" data-quadrant="assets">
+              <div aria-hidden="true" class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50"></div>
+              <div class="relative z-10 flex-grow flex flex-col min-h-0">
+                <div class="flex justify-between items-baseline border-b border-white/10 pb-1 mb-2 flex-shrink-0">
+                  <h4 class="text-sm sm:text-base font-bold text-white uppercase tracking-wider">Assets (Owned Value)</h4>
+                  <p class="text-lg sm:text-xl font-extrabold text-white" data-total></p>
+                </div>
+                <div class="flex-grow overflow-y-auto pr-1" data-entries aria-live="polite"></div>
+              </div>
+            </section>
           </div>
-        </section>
+          <button
+            type="button"
+            class="mt-1 mx-auto inline-flex items-center justify-center rounded-full bg-slate-700/70 px-3 py-2 text-sm font-semibold text-slate-200 shadow ring-1 ring-white/10 transition hover:bg-slate-600/70"
+            data-row-toggle
+            aria-expanded="false"
+            title="Expand row"
+          >
+            <span aria-hidden="true" class="flex items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                class="w-5 h-5"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25 12 15.75 4.5 8.25M19.5 12.75 12 20.25 4.5 12.75" />
+              </svg>
+            </span>
+            <span class="sr-only" data-toggle-label>Expand row</span>
+          </button>
+        </div>
 
-        <section class="relative p-3 rounded-lg flex flex-col bg-indigo-900/70 overflow-hidden" data-quadrant="liabilities">
-          <div aria-hidden="true" class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50"></div>
-          <div class="relative z-10 flex-grow flex flex-col min-h-0">
-            <div class="flex justify-between items-baseline border-b border-white/10 pb-1 mb-2 flex-shrink-0">
-              <h4 class="text-sm sm:text-base font-bold text-white uppercase tracking-wider">Liabilities (Owed Value)</h4>
-              <p class="text-lg sm:text-xl font-extrabold text-white" data-total></p>
-            </div>
-            <div class="flex-grow overflow-y-auto pr-1" data-entries aria-live="polite"></div>
-          </div>
-        </section>
+        <div class="flex flex-col flex-1 min-h-0" data-row-group="bottom" data-expanded="false">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4 flex-1 min-h-0">
+            <section class="relative p-3 rounded-lg flex flex-col bg-indigo-900/70 overflow-hidden" data-quadrant="liabilities">
+              <div aria-hidden="true" class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50"></div>
+              <div class="relative z-10 flex-grow flex flex-col min-h-0">
+                <div class="flex justify-between items-baseline border-b border-white/10 pb-1 mb-2 flex-shrink-0">
+                  <h4 class="text-sm sm:text-base font-bold text-white uppercase tracking-wider">Liabilities (Owed Value)</h4>
+                  <p class="text-lg sm:text-xl font-extrabold text-white" data-total></p>
+                </div>
+                <div class="flex-grow overflow-y-auto pr-1" data-entries aria-live="polite"></div>
+              </div>
+            </section>
 
-        <section class="relative p-3 rounded-lg flex flex-col bg-rose-900/70 overflow-hidden" data-quadrant="expenses">
-          <div aria-hidden="true" class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50"></div>
-          <div class="relative z-10 flex-grow flex flex-col min-h-0">
-            <div class="flex justify-between items-baseline border-b border-white/10 pb-1 mb-2 flex-shrink-0">
-              <h4 class="text-sm sm:text-base font-bold text-white uppercase tracking-wider">Expenses (Operational &amp; Financing)</h4>
-              <p class="text-lg sm:text-xl font-extrabold text-white" data-total></p>
-            </div>
-            <div class="flex-grow overflow-y-auto pr-1" data-entries aria-live="polite"></div>
+            <section class="relative p-3 rounded-lg flex flex-col bg-rose-900/70 overflow-hidden" data-quadrant="expenses">
+              <div aria-hidden="true" class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50"></div>
+              <div class="relative z-10 flex-grow flex flex-col min-h-0">
+                <div class="flex justify-between items-baseline border-b border-white/10 pb-1 mb-2 flex-shrink-0">
+                  <h4 class="text-sm sm:text-base font-bold text-white uppercase tracking-wider">Expenses (Operational &amp; Financing)</h4>
+                  <p class="text-lg sm:text-xl font-extrabold text-white" data-total></p>
+                </div>
+                <div class="flex-grow overflow-y-auto pr-1" data-entries aria-live="polite"></div>
+              </div>
+            </section>
           </div>
-        </section>
+          <button
+            type="button"
+            class="mt-1 mx-auto inline-flex items-center justify-center rounded-full bg-slate-700/70 px-3 py-2 text-sm font-semibold text-slate-200 shadow ring-1 ring-white/10 transition hover:bg-slate-600/70"
+            data-row-toggle
+            aria-expanded="false"
+            title="Expand row"
+          >
+            <span aria-hidden="true" class="flex items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                class="w-5 h-5"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25 12 15.75 4.5 8.25M19.5 12.75 12 20.25 4.5 12.75" />
+              </svg>
+            </span>
+            <span class="sr-only" data-toggle-label>Expand row</span>
+          </button>
+        </div>
       </div>
     </div>
   </main>
@@ -110,6 +216,39 @@
         minimumFractionDigits: 0,
         maximumFractionDigits: 0,
       }).format(value);
+    };
+
+    const loadingBarContainer = document.getElementById('loading-bar-container');
+    const loadingBar = document.getElementById('loading-bar');
+    let loadingIntervalId = null;
+    let loadingProgress = 0;
+
+    const startLoadingBar = () => {
+      if (!loadingBarContainer || !loadingBar) return;
+      loadingBarContainer.style.display = 'block';
+      loadingBarContainer.removeAttribute('data-hidden');
+      loadingProgress = 0;
+      loadingBar.style.width = '0%';
+      if (loadingIntervalId) clearInterval(loadingIntervalId);
+      loadingIntervalId = setInterval(() => {
+        loadingProgress = Math.min(loadingProgress + Math.random() * 20 + 5, 90);
+        loadingBar.style.width = `${loadingProgress}%`;
+      }, 200);
+    };
+
+    const finishLoadingBar = () => {
+      if (!loadingBarContainer || !loadingBar) return;
+      if (loadingIntervalId) {
+        clearInterval(loadingIntervalId);
+        loadingIntervalId = null;
+      }
+      loadingBar.style.width = '100%';
+      setTimeout(() => {
+        loadingBarContainer.setAttribute('data-hidden', 'true');
+        setTimeout(() => {
+          loadingBarContainer.style.display = 'none';
+        }, 300);
+      }, 300);
     };
 
     const createInfoIcon = () => {
@@ -247,9 +386,10 @@
       lines.forEach((line) => {
         if (line.startsWith('#############')) {
           const header = line.toLowerCase();
-          if (header.includes('lenders / income')) currentQuadrantKey = 'income';
+          if (header.includes('lenders')) currentQuadrantKey = 'income';
+          else if (header.includes('contra-assets')) currentQuadrantKey = 'assets';
           else if (header.includes('assets')) currentQuadrantKey = 'assets';
-          else if (header.includes('liabilities')) currentQuadrantKey = 'liabilities';
+          else if (header.includes('liabilities') || header.includes('equity')) currentQuadrantKey = 'liabilities';
           else if (header.includes('expenses')) currentQuadrantKey = 'expenses';
           return;
         }
@@ -295,30 +435,6 @@
 
         return yearEntry;
       });
-
-      if (yearlyData.length > 0) {
-        const totalCapitalFundFromPlan = 5_000_000;
-        const receivablesLine = lines.find((line) => line.includes('Contracts / Receivables'));
-        let totalReceivables = 0;
-        if (receivablesLine) {
-          const values = receivablesLine.split(',').slice(2).map((v) => parseFloat(v) || 0);
-          totalReceivables = values.reduce((sum, val) => sum + val, 0) * USD_MULTIPLIER;
-        }
-
-        const startupFrame = yearlyData[0];
-        const capitalFundNominal = startupFrame.income.nominals.find((n) => n.code === '3200');
-        if (capitalFundNominal) {
-          capitalFundNominal.value = totalCapitalFundFromPlan;
-        }
-
-        const receivablesNominal = startupFrame.assets.nominals.find((n) => n.code === '1300');
-        if (receivablesNominal) {
-          receivablesNominal.value = totalReceivables;
-        }
-
-        startupFrame.income.total = startupFrame.income.nominals.reduce((sum, n) => sum + n.value, 0);
-        startupFrame.assets.total = startupFrame.assets.nominals.reduce((sum, n) => sum + n.value, 0);
-      }
 
       return yearlyData;
     };
@@ -389,7 +505,10 @@
       const frame = battleshipData[index];
       if (!frame) return;
       yearLabel.textContent = frame.label;
+      const sliderPosition = sliderMaxIndex - index;
+      slider.value = String(sliderPosition);
       slider.setAttribute('aria-valuetext', frame.label);
+      slider.setAttribute('aria-valuenow', frame.year);
       renderQuadrant('income', frame.income);
       renderQuadrant('assets', frame.assets);
       renderQuadrant('liabilities', frame.liabilities);
@@ -397,7 +516,10 @@
     };
 
     slider.addEventListener('input', (event) => {
-      const newIndex = Number(event.target.value);
+      if (!battleshipData.length) return;
+      const sliderValue = Number(event.target.value);
+      const constrainedValue = Math.max(0, Math.min(sliderMaxIndex, sliderValue));
+      const newIndex = sliderMaxIndex - constrainedValue;
       renderFrame(newIndex);
     });
 
