@@ -28,14 +28,16 @@ html {
 body.page-body {
   margin: 0;
   min-height: 100vh;
+  height: 100vh;
   background: var(--page-bg);
   color: var(--text-body);
   font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
-  padding: clamp(0.75rem, 1.5vw, 1.5rem);
+  line-height: 1.4;
+  padding: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: stretch;
+  overflow: hidden;
 }
 
 body.page-body::selection {
@@ -70,26 +72,28 @@ body.page-body::selection {
 }
 
 .dashboard {
-  width: min(100%, 1120px);
+  width: min(100%, 1400px);
+  height: 100%;
   background: var(--surface-bg);
   border: 1px solid var(--surface-border);
-  border-radius: 18px;
-  box-shadow: 0 24px 40px var(--surface-shadow);
+  border-radius: 12px;
+  box-shadow: 0 12px 24px var(--surface-shadow);
   display: flex;
-  gap: clamp(1rem, 3vw, 1.5rem);
-  padding: clamp(1rem, 3vw, 2rem);
+  gap: 0.75rem;
+  padding: 0.75rem;
+  overflow: hidden;
 }
 
 .slider-column {
-  width: 4rem;
+  width: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .slider-label {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--text-muted);
   font-weight: 600;
   transform: rotate(-90deg);
@@ -101,9 +105,9 @@ body.page-body::selection {
 .year-slider {
   writing-mode: vertical-rl;
   direction: ltr;
-  width: 19px;
-  min-height: 331px;
-  margin-block: 0.75rem;
+  width: 16px;
+  flex: 1;
+  margin-block: 0.5rem;
   appearance: none;
   background: transparent;
   cursor: pointer;
@@ -159,7 +163,8 @@ body.page-body::selection {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 0.5rem;
+  overflow: hidden;
 }
 
 .year-header {
@@ -168,7 +173,7 @@ body.page-body::selection {
 
 .year-title {
   margin: 0;
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-size: 1rem;
   font-weight: 700;
   color: var(--text-bright);
   letter-spacing: 0.08em;
@@ -178,7 +183,7 @@ body.page-body::selection {
 .row-group {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.4rem;
   width: 100%;
   flex: 1 1 0%;
   min-height: 0;
@@ -196,17 +201,17 @@ body.page-body::selection {
 .panel-grid {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: clamp(0.75rem, 2vw, 1.5rem);
+  gap: 0.5rem;
   flex: 1;
   min-height: 0;
 }
 
 .panel {
   position: relative;
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
-  padding: 1.1rem;
-  min-height: 240px;
+  padding: 0.5rem;
+  min-height: 140px;
   display: flex;
 }
 
@@ -249,7 +254,7 @@ body.page-body::selection {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.4rem;
   flex: 1;
   min-height: 0;
 }
@@ -258,14 +263,14 @@ body.page-body::selection {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 0.75rem;
-  padding-bottom: 0.5rem;
+  gap: 0.5rem;
+  padding-bottom: 0.3rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .panel-title {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 700;
@@ -274,7 +279,7 @@ body.page-body::selection {
 
 .panel-total {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 0.95rem;
   font-weight: 800;
   color: #fff;
   letter-spacing: 0.04em;
@@ -284,10 +289,10 @@ body.page-body::selection {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  padding-right: 0.35rem;
+  padding-right: 0.25rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.3rem;
 }
 
 .panel-placeholder {
@@ -296,8 +301,8 @@ body.page-body::selection {
   justify-content: center;
   text-align: center;
   color: rgba(226, 232, 240, 0.75);
-  font-size: 0.9rem;
-  min-height: 4rem;
+  font-size: 0.75rem;
+  min-height: 3rem;
   padding: 0.5rem;
 }
 
@@ -310,11 +315,11 @@ body.page-body::selection {
   border: 1px solid rgba(148, 163, 184, 0.4);
   color: var(--text-body);
   border-radius: 999px;
-  padding: 0.45rem 0.85rem;
-  font-size: 0.85rem;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.7rem;
   font-weight: 600;
   cursor: pointer;
-  gap: 0.4rem;
+  gap: 0.3rem;
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -338,7 +343,7 @@ body.page-body::selection {
 }
 
 .row-group[data-expanded="false"] .panel-entries {
-  max-height: min(24rem, 60vh);
+  max-height: min(16rem, 50vh);
   overflow-y: auto;
 }
 
@@ -351,42 +356,77 @@ body.page-body::selection {
   overflow: visible;
 }
 
+.battleship-container {
+  position: relative;
+  margin-bottom: 0.25rem;
+  min-height: 40px;
+}
+
+.battleship-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+}
+
 .entry-card {
   position: relative;
-  background: rgba(15, 23, 42, 0.6);
-  border-radius: 12px;
-  padding: 0.85rem;
-  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: rgba(71, 85, 105, 0.85);
+  border: 1.5px solid rgba(148, 163, 184, 0.3);
+  padding: 0.5rem 0.6rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  z-index: 1;
+  clip-path: polygon(
+    0% 35%,
+    2% 32%,
+    4% 28%,
+    7% 25%,
+    10% 22%,
+    15% 18%,
+    20% 15%,
+    100% 15%,
+    100% 85%,
+    20% 85%,
+    15% 82%,
+    10% 78%,
+    7% 75%,
+    4% 72%,
+    2% 68%,
+    0% 65%
+  );
 }
 
 .entry-card:hover,
 .entry-card:focus-within {
-  transform: translateY(-2px);
-  box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.35);
+  transform: translateY(-1px);
+  border-color: rgba(251, 191, 36, 0.5);
 }
 
 .entry-tooltip {
   position: absolute;
   bottom: 100%;
   left: 50%;
-  transform: translate(-50%, -6px);
-  padding: 0.55rem 0.75rem;
+  transform: translate(-50%, -4px);
+  padding: 0.4rem 0.5rem;
   background: rgba(15, 23, 42, 0.95);
   color: #fff;
-  border-radius: 8px;
-  font-size: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.65rem;
   width: max-content;
-  max-width: 220px;
-  box-shadow: 0 16px 28px rgba(15, 23, 42, 0.45);
+  max-width: 200px;
+  box-shadow: 0 12px 20px rgba(15, 23, 42, 0.45);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease;
   z-index: 10;
 }
 
-.entry-card:hover .entry-tooltip,
-.entry-card:focus-within .entry-tooltip {
+.battleship-container:hover .entry-tooltip,
+.battleship-container:focus-within .entry-tooltip {
   opacity: 1;
 }
 
@@ -396,16 +436,16 @@ body.page-body::selection {
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border-width: 6px;
+  border-width: 5px;
   border-style: solid;
   border-color: rgba(15, 23, 42, 0.95) transparent transparent transparent;
 }
 
 .entry-tooltip-title {
-  margin: 0 0 0.25rem;
+  margin: 0 0 0.2rem;
   font-weight: 700;
   border-bottom: 1px solid rgba(148, 163, 184, 0.35);
-  padding-bottom: 0.25rem;
+  padding-bottom: 0.2rem;
 }
 
 .entry-tooltip-value {
@@ -421,7 +461,7 @@ body.page-body::selection {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .entry-text {
@@ -431,56 +471,56 @@ body.page-body::selection {
 .entry-heading {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
-  margin-bottom: 0.25rem;
+  gap: 0.25rem;
+  margin-bottom: 0.15rem;
 }
 
 .entry-title {
   margin: 0;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   font-weight: 700;
   color: #fff;
 }
 
 .info-icon {
-  width: 16px;
-  height: 16px;
+  width: 13px;
+  height: 13px;
   color: var(--text-muted);
   flex-shrink: 0;
   transition: color 0.2s ease;
 }
 
-.entry-card:hover .info-icon,
-.entry-card:focus-within .info-icon {
+.battleship-container:hover .info-icon,
+.battleship-container:focus-within .info-icon {
   color: var(--text-bright);
 }
 
 .entry-value {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--text-bright);
 }
 
 .entry-pin-wrapper {
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
   background: rgba(15, 23, 42, 0.45);
-  border-radius: 10px;
-  padding: 0.4rem;
+  border-radius: 6px;
+  padding: 0.3rem;
 }
 
 .pin-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.25rem;
-  min-height: 0.75rem;
+  gap: 0.2rem;
+  min-height: 0.6rem;
 }
 
 .pin-cell {
-  width: 0.75rem;
-  height: 0.75rem;
+  width: 0.6rem;
+  height: 0.6rem;
   border-radius: 999px;
   border: 1px solid rgba(148, 163, 184, 0.4);
   display: flex;
@@ -516,10 +556,10 @@ body.page-body::selection {
 }
 
 .pin-more {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   color: var(--text-muted);
   align-self: center;
-  margin-left: 0.25rem;
+  margin-left: 0.2rem;
 }
 
 .sr-only {

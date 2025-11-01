@@ -254,18 +254,17 @@
       const ship = document.createElement('div');
       ship.className = 'battleship-container animate-fade-in';
 
-      // Create SVG battleship shape - horizontal vessel like the board game
+      // Create SVG battleship shape as background
       const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
       svg.setAttribute('class', 'battleship-shape');
-      svg.setAttribute('viewBox', '0 0 300 60');
+      svg.setAttribute('viewBox', '0 0 200 80');
       svg.setAttribute('preserveAspectRatio', 'none');
       
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      // Horizontal battleship: pointed bow on left, flat stern on right, with superstructure blocks
-      path.setAttribute('d', 'M10,45 L30,30 L60,30 L60,35 L90,35 L90,25 L120,25 L120,20 L150,20 L150,25 L180,25 L180,35 L240,35 L240,30 L270,30 L270,45 L280,45 L280,50 L10,50 Z');
-      path.setAttribute('fill', 'rgba(71, 85, 105, 0.85)');
-      path.setAttribute('stroke', 'rgba(148, 163, 184, 0.3)');
-      path.setAttribute('stroke-width', '1.5');
+      path.setAttribute('d', 'M20,70 L30,70 L30,50 L40,50 L40,40 L50,40 L50,30 L60,30 L60,20 L80,20 L80,10 L120,10 L120,20 L140,20 L140,30 L150,30 L150,40 L160,40 L160,50 L170,50 L170,70 L180,70 L180,75 L20,75 Z');
+      path.setAttribute('fill', 'rgba(15, 23, 42, 0.6)');
+      path.setAttribute('stroke', 'rgba(148, 163, 184, 0.15)');
+      path.setAttribute('stroke-width', '1');
       
       svg.appendChild(path);
       ship.appendChild(svg);
@@ -555,11 +554,11 @@
         slider.disabled = false;
         sliderMaxIndex = Math.max(0, battleshipData.length - 1);
         slider.max = String(sliderMaxIndex);
-        slider.value = '0';
+        slider.value = String(sliderMaxIndex);
         slider.setAttribute('aria-valuemin', '0');
         slider.setAttribute('aria-valuemax', String(sliderMaxIndex));
-        sliderStart.textContent = battleshipData[battleshipData.length - 1].year;
-        sliderEnd.textContent = battleshipData[0].year;
+        sliderStart.textContent = battleshipData[0].year;
+        sliderEnd.textContent = battleshipData[battleshipData.length - 1].year;
         renderFrame(0);
       } catch (error) {
         console.error('Error loading financial data:', error);
