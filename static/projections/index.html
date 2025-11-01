@@ -197,29 +197,53 @@
     };
 
     const createPinGrid = (value) => {
-      const PIN_VALUE = 10000;
-      const pinCount = Math.floor(Math.abs(value) / PIN_VALUE);
-      if (pinCount === 0) return null;
+      const TEN_K_PIN_VALUE = 10_000;
+      const HUNDRED_K_PIN_VALUE = 100_000;
+      const absValue = Math.abs(value);
+
+      const hundredPinCount = Math.floor(absValue / HUNDRED_K_PIN_VALUE);
+      const remainingAfterHundreds = absValue - hundredPinCount * HUNDRED_K_PIN_VALUE;
+      const tenPinCount = Math.floor(remainingAfterHundreds / TEN_K_PIN_VALUE);
+      const totalPinCount = hundredPinCount + tenPinCount;
+
+      if (totalPinCount === 0) return null;
 
       const pinGrid = document.createElement('div');
       pinGrid.className = 'pin-grid';
-      const displayCount = Math.min(pinCount, 200);
 
-      for (let i = 0; i < displayCount; i += 1) {
+      const maxVisiblePins = 200;
+      let renderedPins = 0;
+
+      const makePin = (title, classes) => {
         const wrapper = document.createElement('div');
         wrapper.className = 'pin-cell';
-        wrapper.title = '$10,000';
+        wrapper.title = title;
 
         const dot = document.createElement('div');
-        dot.className = `pin-dot ${value >= 0 ? 'positive' : 'negative'}`;
+        dot.className = ['pin-dot', ...classes].join(' ');
         wrapper.appendChild(dot);
-        pinGrid.appendChild(wrapper);
-      }
 
-      if (pinCount > displayCount) {
+        return wrapper;
+      };
+
+      const isPositive = value >= 0;
+      const tenPinClasses = ['pin-ten', isPositive ? 'positive' : 'negative'];
+      const hundredPinClasses = ['pin-hundred', isPositive ? 'positive' : 'negative'];
+
+      const appendPins = (count, title, classes) => {
+        for (let i = 0; i < count && renderedPins < maxVisiblePins; i += 1) {
+          pinGrid.appendChild(makePin(title, classes));
+          renderedPins += 1;
+        }
+      };
+
+      appendPins(hundredPinCount, '$100,000', hundredPinClasses);
+      appendPins(tenPinCount, '$10,000', tenPinClasses);
+
+      if (renderedPins < totalPinCount) {
         const more = document.createElement('div');
         more.className = 'pin-more';
-        more.textContent = `+${pinCount - displayCount} more`;
+        more.textContent = `+${totalPinCount - renderedPins} more`;
         pinGrid.appendChild(more);
       }
 
@@ -458,8 +482,7 @@
     const updateSliderForIndex = (index) => {
       const frame = battleshipData[index];
       if (!frame) return;
-      const sliderPosition = sliderMaxIndex - index;
-      slider.value = String(sliderPosition);
+      slider.value = String(index);
       slider.setAttribute('aria-valuenow', String(frame.year));
       slider.setAttribute('aria-valuetext', frame.label);
     };
@@ -478,8 +501,7 @@
     slider.addEventListener('input', (event) => {
       if (!battleshipData.length) return;
       const sliderValue = Number(event.target.value);
-      const constrainedValue = Math.max(0, Math.min(sliderMaxIndex, sliderValue));
-      const newIndex = sliderMaxIndex - constrainedValue;
+      const newIndex = Math.max(0, Math.min(sliderMaxIndex, sliderValue));
       renderFrame(newIndex);
     });
 
