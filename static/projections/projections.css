@@ -180,6 +180,17 @@ body.page-body::selection {
   flex-direction: column;
   gap: 0.75rem;
   width: 100%;
+  flex: 1 1 0%;
+  min-height: 0;
+  transition: flex 0.35s ease, max-height 0.35s ease;
+}
+
+.row-group section {
+  transition: max-height 0.35s ease;
+}
+
+.row-group[data-expanded="true"] {
+  flex: 0 0 auto;
 }
 
 .panel-grid {
