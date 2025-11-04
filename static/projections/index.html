@@ -4,12 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Financial Model</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap"
-    rel="stylesheet"
-  />
   <link rel="stylesheet" href="projections.css" />
 </head>
 <body class="page-body">
@@ -124,6 +118,7 @@
     </div>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <script>
     const formatCurrency = (value) => {
       if (value === 0) return '$0';
@@ -260,18 +255,17 @@
       const ship = document.createElement('div');
       ship.className = 'battleship-container animate-fade-in';
 
-      // Create SVG battleship shape - horizontal vessel like the board game
+      // Create SVG battleship shape as background
       const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
       svg.setAttribute('class', 'battleship-shape');
-      svg.setAttribute('viewBox', '0 0 300 60');
+      svg.setAttribute('viewBox', '0 0 200 80');
       svg.setAttribute('preserveAspectRatio', 'none');
       
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      // Horizontal battleship: pointed bow on left, flat stern on right, with superstructure blocks
-      path.setAttribute('d', 'M10,45 L30,30 L60,30 L60,35 L90,35 L90,25 L120,25 L120,20 L150,20 L150,25 L180,25 L180,35 L240,35 L240,30 L270,30 L270,45 L280,45 L280,50 L10,50 Z');
-      path.setAttribute('fill', 'rgba(71, 85, 105, 0.85)');
-      path.setAttribute('stroke', 'rgba(148, 163, 184, 0.3)');
-      path.setAttribute('stroke-width', '1.5');
+      path.setAttribute('d', 'M20,70 L30,70 L30,50 L40,50 L40,40 L50,40 L50,30 L60,30 L60,20 L80,20 L80,10 L120,10 L120,20 L140,20 L140,30 L150,30 L150,40 L160,40 L160,50 L170,50 L170,70 L180,70 L180,75 L20,75 Z');
+      path.setAttribute('fill', 'rgba(15, 23, 42, 0.6)');
+      path.setAttribute('stroke', 'rgba(148, 163, 184, 0.15)');
+      path.setAttribute('stroke-width', '1');
       
       svg.appendChild(path);
       ship.appendChild(svg);
@@ -335,81 +329,67 @@
     };
 
     const parseFinancialData = (csv) => {
-      const USD_MULTIPLIER = 1000;
-      const START_YEAR = 2024;
-      const lines = csv
-        .split('\n')
-        .map((line) => line.trim())
-        .filter((line) => line !== '' && !line.toLowerCase().startsWith('code'));
-      const years = [0, 1, 2, 3, 4, 5];
-      const labels = years.map((year, index) => {
-        const currentYear = START_YEAR + year;
-        return index === 0 ? `${currentYear} (Startup)` : `${currentYear}`;
-      });
+        const parsed = Papa.parse(csv, { header: true, skipEmptyLines: true, transformHeader: (h) => h.trim() });
+        const rows = parsed.data;
+        const headers = parsed.meta.fields || [];
+        const yearHeaders = headers.filter((h) => h && !isNaN(parseInt(h, 10)));
+        const yearNumbers = yearHeaders.map(Number);
+        const labels = yearNumbers.map((year, index) => (index === 0 ? `${year} (Startup)` : `${year}`));
+        const USD_MULTIPLIER = 1000;
 
-      const rawData = {
-        income: [],
-        assets: [],
-        liabilities: [],
-        expenses: [],
-      };
-
-      let currentQuadrantKey = null;
-
-      lines.forEach((line) => {
-        if (line.startsWith('#############')) {
-          const header = line.toLowerCase();
-          if (header.includes('lenders')) currentQuadrantKey = 'income';
-          else if (header.includes('contra-assets')) currentQuadrantKey = 'assets';
-          else if (header.includes('assets')) currentQuadrantKey = 'assets';
-          else if (header.includes('liabilities') || header.includes('equity')) currentQuadrantKey = 'liabilities';
-          else if (header.includes('expenses')) currentQuadrantKey = 'expenses';
-          return;
+        const rawData = { income: [], assets: [], liabilities: [], expenses: [] };
+        rows.forEach((row) => {
+            if (!row || !row.Code || !row.Description || !row['Quadron Group']) return;
+            const quadrantGroup = row['Quadron Group'].toLowerCase();
+            let quadrantKey = null;
+            if (quadrantGroup.includes('lenders') || quadrantGroup.includes('income')) quadrantKey = 'income';
+            else if (quadrantGroup.includes('assets')) quadrantKey = 'assets';
+            else if (quadrantGroup.includes('liabilities') || quadrantGroup.includes('equity')) quadrantKey = 'liabilities';
+            else if (quadrantGroup.includes('expenses')) quadrantKey = 'expenses';
+            if (quadrantKey) {
+                rawData[quadrantKey].push({
+                    code: row.Code,
+                    description: row.Description,
+                    values: yearHeaders.map((year) => (parseFloat(row[year]) || 0) * USD_MULTIPLIER),
+                    group: row['Quadron Group'],
+                });
+            }
+        });
+        
+        const depreciationIndex = rawData.liabilities.findIndex(item => item.description.toLowerCase().includes('accumulated depreciation'));
+        if (depreciationIndex > -1) {
+            const [depreciationItem] = rawData.liabilities.splice(depreciationIndex, 1);
+            depreciationItem.group = 'Assets';
+            rawData.assets.push(depreciationItem);
         }
 
-        if (!currentQuadrantKey) return;
+        const yearlyData = yearNumbers.map((_, index) => {
+            const yearEntry = {
+                year: yearNumbers[index],
+                label: labels[index],
+                income: { total: 0, nominals: [] },
+                assets: { total: 0, nominals: [] },
+                liabilities: { total: 0, nominals: [] },
+                expenses: { total: 0, nominals: [] },
+            };
 
-        const parts = line.split(',').map((part) => part.trim());
-        const code = parts[0];
-        const description = parts[1];
-        const values = parts.slice(2).map((v) => (parseFloat(v) || 0) * USD_MULTIPLIER);
-        rawData[currentQuadrantKey].push({ code, description, values });
-      });
+            Object.keys(rawData).forEach((key) => {
+                const quadrantData = rawData[key];
+                const nominalsForYear = quadrantData.map((item) => ({
+                    code: item.code,
+                    description: item.description,
+                    value: item.values[index] || 0,
+                }));
 
-      const liabilities = rawData.liabilities;
-      const depreciationIndex = liabilities.findIndex((item) => item.description.toLowerCase().includes('accumulated depreciation'));
-      if (depreciationIndex > -1) {
-        const [depreciationItem] = liabilities.splice(depreciationIndex, 1);
-        rawData.assets.push(depreciationItem);
-      }
+                const totalForYear = nominalsForYear.reduce((sum, nominal) => sum + nominal.value, 0);
+                yearEntry[key].nominals = nominalsForYear;
+                yearEntry[key].total = totalForYear;
+            });
 
-      const yearlyData = years.map((_, index) => {
-        const yearEntry = {
-          year: START_YEAR + index,
-          label: labels[index],
-          income: { total: 0, nominals: [] },
-          assets: { total: 0, nominals: [] },
-          liabilities: { total: 0, nominals: [] },
-          expenses: { total: 0, nominals: [] },
-        };
-
-        Object.keys(rawData).forEach((key) => {
-          const quadrantData = rawData[key];
-          const nominalsForYear = quadrantData.map((item) => ({
-            code: item.code,
-            description: item.description,
-            value: item.values[index] || 0,
-          }));
-
-          const totalForYear = nominalsForYear.reduce((sum, nominal) => sum + nominal.value, 0);
-          yearEntry[key].nominals = nominalsForYear;
-          yearEntry[key].total = totalForYear;
+            return yearEntry;
         });
 
-        return yearEntry;
-      });
-
-      return yearlyData;
+        return yearlyData;
     };
 
     let battleshipData = [];
@@ -533,57 +513,67 @@
     });
 
     const initialize = async () => {
-      startLoadingBar();
-      try {
-        const response = await fetch('projections.csv');
-        if (!response.ok) {
-          throw new Error(`Request failed with status ${response.status}`);
+        const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSMnK0oT27-glt_WaFY8ODN6SVG24Cen2QBHZvqKZQRTBS-acZMY0iIJNTO0vmh9w/pub?gid=25293627&single=true&output=csv';
+        startLoadingBar();
+        let csvText;
+        try {
+            const url = `${SHEET_URL}&v=${new Date().getTime()}`;
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`Failed to fetch spreadsheet data: ${response.statusText}`);
+            csvText = await response.text();
+        } catch (e) {
+            console.warn("Failed to fetch from Google Sheets, trying local file.", e);
+            const response = await fetch('projections.csv');
+            if (!response.ok) {
+                throw new Error(`Failed to fetch local CSV: ${response.statusText}`);
+            }
+            csvText = await response.text();
         }
 
-        const csvText = await response.text();
-        battleshipData = parseFinancialData(csvText);
+        try {
+            battleshipData = parseFinancialData(csvText);
 
-        if (battleshipData.length === 0) {
-          console.warn('No financial data available to display.');
-          slider.disabled = true;
-          sliderMaxIndex = 0;
-          slider.value = '0';
-          slider.setAttribute('aria-valuemax', '0');
-          slider.setAttribute('aria-valuenow', '0');
-          slider.setAttribute('aria-valuetext', '');
-          sliderStart.textContent = '';
-          sliderEnd.textContent = '';
-          yearLabel.textContent = 'No data available';
-          showStatusMessage('No data available');
-          return;
+            if (battleshipData.length === 0) {
+                console.warn('No financial data available to display.');
+                slider.disabled = true;
+                sliderMaxIndex = 0;
+                slider.value = '0';
+                slider.setAttribute('aria-valuemax', '0');
+                slider.setAttribute('aria-valuenow', '0');
+                slider.setAttribute('aria-valuetext', '');
+                sliderStart.textContent = '';
+                sliderEnd.textContent = '';
+                yearLabel.textContent = 'No data available';
+                showStatusMessage('No data available');
+                return;
+            }
+
+            slider.disabled = false;
+            sliderMaxIndex = Math.max(0, battleshipData.length - 1);
+            slider.max = String(sliderMaxIndex);
+            slider.value = '0';
+            slider.setAttribute('aria-valuemin', '0');
+            slider.setAttribute('aria-valuemax', String(sliderMaxIndex));
+            sliderStart.textContent = battleshipData[battleshipData.length - 1].year;
+            sliderEnd.textContent = battleshipData[0].year;
+            renderFrame(0);
+        } catch (error) {
+            console.error('Error processing financial data:', error);
+            slider.disabled = true;
+            sliderMaxIndex = 0;
+            slider.max = '0';
+            slider.value = '0';
+            slider.setAttribute('aria-valuemin', '0');
+            slider.setAttribute('aria-valuemax', '0');
+            slider.setAttribute('aria-valuenow', '0');
+            slider.setAttribute('aria-valuetext', '');
+            sliderStart.textContent = '';
+            sliderEnd.textContent = '';
+            yearLabel.textContent = 'Unable to load data';
+            showStatusMessage('Unable to load data');
+        } finally {
+            finishLoadingBar();
         }
-
-        slider.disabled = false;
-        sliderMaxIndex = Math.max(0, battleshipData.length - 1);
-        slider.max = String(sliderMaxIndex);
-        slider.value = '0';
-        slider.setAttribute('aria-valuemin', '0');
-        slider.setAttribute('aria-valuemax', String(sliderMaxIndex));
-        sliderStart.textContent = battleshipData[battleshipData.length - 1].year;
-        sliderEnd.textContent = battleshipData[0].year;
-        renderFrame(0);
-      } catch (error) {
-        console.error('Error loading financial data:', error);
-        slider.disabled = true;
-        sliderMaxIndex = 0;
-        slider.max = '0';
-        slider.value = '0';
-        slider.setAttribute('aria-valuemin', '0');
-        slider.setAttribute('aria-valuemax', '0');
-        slider.setAttribute('aria-valuenow', '0');
-        slider.setAttribute('aria-valuetext', '');
-        sliderStart.textContent = '';
-        sliderEnd.textContent = '';
-        yearLabel.textContent = 'Unable to load data';
-        showStatusMessage('Unable to load data');
-      } finally {
-        finishLoadingBar();
-      }
     };
 
     toggleGroups();
