@@ -79,17 +79,6 @@
 		</style>
 
 
-
-<!-- google tracking code start --> 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BTNPTMXBF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-6BTNPTMXBF');
-</script>
-<!-- google tracking code end -->
 	</head>
 
 	<body bgcolor="#333366" onload="pageLoad()">
@@ -142,7 +131,7 @@
 						</li>
 
 						<li class="nav-item">
-							<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" class="nav-link" href="../library/">Documents</a>
+							<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" class="nav-link" href="/library/">Documents</a>
 						</li>
 
 						<li class="nav-item">
@@ -268,7 +257,7 @@
 
 												</ul>
 											</div>
-								</div>
+									</div>
 									<div class="Grid-col Grid-col--tablet-3 Grid-col--desktopSmall-2 FooterNew-link-section">
 											<h5 class="FooterNew-link-title" data-footerlink="footer-link">About
 												<span class="Icon Icon--small Icon--light FooterNew-link-icon FooterNew-link-icon--disable"><svg class="Icon-image" xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"> <path d="M12 16c-.3 0-.5-.1-.7-.3l-6-6 1.4-1.4 5.3 5.3 5.3-5.3 1.4 1.4-6 6c-.2.2-.4.3-.7.3z"></path></svg>
@@ -500,6 +489,22 @@ document.getElementById('systemjs-config').addEventListener('load', function() {
 
 <!--// SystemJS  -->
 <script defer src="js/footer-accordion.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var libraryLinks = document.querySelectorAll('a[href*="library"]');
+    var hostname = window.location.hostname;
+
+    for (var i = 0; i < libraryLinks.length; i++) {
+      var link = libraryLinks[i];
+      if (hostname === 'datro.xyz') {
+        var oldHref = link.getAttribute('href');
+        var newHref = oldHref.replace('../library/', 'https://library.datro.xyz/');
+        newHref = newHref.replace('/library/', 'https://library.datro.xyz/');
+        link.setAttribute('href', newHref);
+      }
+    }
+  });
+</script>
 	</body>
 
 </html>

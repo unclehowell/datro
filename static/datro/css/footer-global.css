@@ -44,10 +44,7 @@ body {
 }
 
 body {
-    .primary-font();
-    min-width: 960px;
-    line-height: 1.4;
-    background-color: @site-bg-color;
+
 
     .is-mobile-first & {
         min-width: 0;
