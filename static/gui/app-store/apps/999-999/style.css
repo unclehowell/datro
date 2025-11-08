@@ -72,7 +72,8 @@ min-width: calc(100vw / 7);
     object-position: center !important;
     min-height: calc(1vh + 4.5vw);
     max-height: calc(4vh + 18vw);
-    opacity:0.2;
+    opacity:0.45;
+    filter: brightness(1.25);
 }
 
 @media screen and (max-width: 900px) {

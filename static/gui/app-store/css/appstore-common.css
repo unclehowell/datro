@@ -111,19 +111,31 @@
             float: right!important;
         }
 
-        .apps-container {
-            max-width:90vw;
-        }
+.apps-container {
+    max-width:90vw;
+}
+
+.app-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    max-width: 13vw !important;
+    width: 100%;
+}
+
+.app-title object {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
 
 .app-icon-image {
-    max-height: 10px;
     width: auto;
     margin-top: 0.4em;
     overflow: hidden!important;
-    height: 6%;
     max-width: 100%;
-    min-height: 8vw;
-    min-width: 8vw;
     image-rendering: auto;
     object-position: center!important;
 }
@@ -146,6 +158,35 @@
     cursor: pointer;
 }
 
+div[class^="table-cell-"],
+div[class*=" table-cell-"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    height: 100%;
+}
+
+div[class^="table-cell-"] > br,
+div[class*=" table-cell-"] > br {
+    display: none;
+}
+
+div[class^="table-cell-"] img[class^="rs-"],
+div[class*=" table-cell-"] img[class^="rs-"] {
+    width: clamp(5.5rem, 8vw, 6.5rem);
+    height: clamp(5.5rem, 8vw, 6.5rem);
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+div[class^="table-cell-"] .toggle,
+div[class*=" table-cell-"] .toggle {
+    margin-top: auto;
+}
+
 a:link, a, a:hover {color: rgba(255,255,255,0.8); font-size: 1.6rem;}
 
 .noHover{
@@ -154,14 +195,13 @@ a:link, a, a:hover {color: rgba(255,255,255,0.8); font-size: 1.6rem;}
 .breadcrumb {opacity:0.4;}
 
 ul.breadcrumb li a:hover {
-    padding-left: 0px!important;
-    border: 2px solid rgba(255,255,255,0.51);
-    margin-top: 0px;
-    background: black;
-    box-shadow: none!important;
-    margin-left: -2px!important;
-    max-height: 48px;
-    max-width: 49px;
+    background-color: var(--breadcrumb-bg);
+    border: 1px solid var(--breadcrumb-border-color);
+    padding-left: var(--breadcrumb-padding-left);
+    padding-right: var(--breadcrumb-padding-right);
+    margin-left: 0;
+    margin-top: 0;
+    box-shadow: none;
 }
 
 .square {

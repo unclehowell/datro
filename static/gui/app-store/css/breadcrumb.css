@@ -56,15 +56,20 @@ ul.breadcrumb li a {
   transition: all 0.2s;
   text-decoration: none;
   height: 50px;
-  color: white;
   text-align: center;
   width: 50px;
   display: block;
   line-height: 50px;
-  padding-left: 52px;
-  padding-right: 33.33333px;
-  width: 50px;
-  border: 1px solid grey;
+  --breadcrumb-bg: rgb(44,12,33);
+  --breadcrumb-border-color: grey;
+  --breadcrumb-text-color: white;
+  --breadcrumb-padding-left: 52px;
+  --breadcrumb-padding-right: 33.33333px;
+  padding-left: var(--breadcrumb-padding-left);
+  padding-right: var(--breadcrumb-padding-right);
+  border: 1px solid var(--breadcrumb-border-color);
+  background-color: var(--breadcrumb-bg);
+  color: var(--breadcrumb-text-color);
   font-size:3.8vw;
   word-spacing:0.4vw;
 }
@@ -102,9 +107,13 @@ ul.breadcrumb li a .text {
 }
 
 ul.breadcrumb li a:hover {
-    background-color:#303030;
-    color: white!important;
-    padding-left: 52px!Important;
+    background-color: var(--breadcrumb-bg);
+    color: var(--breadcrumb-text-color);
+    padding-left: var(--breadcrumb-padding-left);
+    padding-right: var(--breadcrumb-padding-right);
+    margin: 0;
+    box-shadow: none;
+    border-color: var(--breadcrumb-border-color);
 }
 ul.breadcrumb li a:hover .text {
   display: inline-block;
@@ -113,24 +122,23 @@ ul.breadcrumb li a:hover .text {
 }
 
 ul.breadcrumb li:last-child a {
-  padding: 0px;
+  --breadcrumb-bg: rgba(0,0,0,0.55);
+  --breadcrumb-border-color: rgba(255,255,255,0.4);
+  --breadcrumb-padding-left: 0px;
+  --breadcrumb-padding-right: 0px;
+  padding-left: var(--breadcrumb-padding-left);
+  padding-right: var(--breadcrumb-padding-right);
   opacity:1;
-  background:rgba(0,0,0,0.55);
+  background: var(--breadcrumb-bg);
 }
 ul.breadcrumb li:last-child:hover {
-    min-width: 48px;
-    max-width: 52px;
+    min-width: auto;
+    max-width: none;
 }
 ul.breadcrumb li:last-child:hover a {
-  margin:auto;
-   overflow: hidden;
-  -moz-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
-  text-decoration: none;
-  color: #2c2c2c;
-  display: block;
-  padding-left: 6px;
-  padding-right: -1px;
+  margin: 0;
+  overflow: hidden;
+  color: var(--breadcrumb-text-color);
+  padding-left: var(--breadcrumb-padding-left);
+  padding-right: var(--breadcrumb-padding-right);
 }
