@@ -1,0 +1,176 @@
+.title-span, object {
+    cursor: pointer;
+    user-select: auto; /* Ensure elements are selectable */
+}
+
+        @font-face {
+            font-family: 'FontAwesome';
+            src: url('../fonts/fontawesome-webfont.eot');
+        }
+
+        html {overflow-x: hidden!important;height: -webkit-fill-available;}
+        /* Sets the dimensions of the entire scrollbar */
+        body::-webkit-scrollbar {
+            width: 30px;
+            height: 30px;
+        }
+        /* The grabbable scrollbar button  */
+        html::-webkit-scrollbar-thumb {
+            background: -webkit-gradient(linear,left top,left bottom,from(#ff8a00),to(#e52e71));
+            background: linear-gradient(180deg,#ff8a00,#e52e71);
+            border-radius: 30px;
+            box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+        }
+
+        /* The vertical scrollbar background */
+        html::-webkit-scrollbar-track {
+            background: linear-gradient(90deg,#201c29,#201c29 1px,#100e17 0,#100e17);
+        }
+
+        .container .box {
+            width: 82vw;
+            margin-left: 0.5vw;
+            display: table;
+            border-radius: 20px;
+            min-height:98px;
+        }
+
+        .container .box .box-row {
+            display:table-row;
+            color:rgba(255,255,255,0.6);
+        }
+
+        .container .box .box-cell {
+            display:table-cell;
+            width:28vw;
+            padding:20px 45px 13px 20px;
+        }
+
+        .container .box .box-cell.box1 {
+            background:transparent;
+            text-align:left;
+            position:fixed;
+            min-height:10vh;
+        }
+
+        .container .box .box-cell.box2 {
+            background: transparent;
+            font-size: 2rem;
+            text-align: center;
+            padding-left: 100px;
+            font-weight: bold;
+        }
+
+        .container .box .box-cell.box3 {
+            background:transparent;
+            text-align:right;
+            position: relative;
+        }
+
+        img {
+            image-rendering: auto;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+        }
+        .breadcrumb {opacity:0.4;}
+        .noHover{
+            pointer-events: none;
+        }
+
+        .noHover a:hover{
+            pointer-events: none;
+        }
+
+        body:not(.loaded) #slider img {
+            display:none;
+        }
+
+        .forminput {
+            border: 1px solid transparent!important;
+            margin-top: -1.5rem;
+            background: transparent;
+            opacity: 0.6;
+            max-width: 17rem;
+            text-align: center;
+            padding: 5px;
+            position: fixed;
+            margin-left: -7.5rem;
+            color: dimgrey;
+            font-weight: 800!important;
+            letter-spacing: 0.2em;
+            font-size: 1.7rem;
+        }
+
+        .logo {
+            background:transparent!important;
+            opacity:1;
+            margin-top: 0.8rem;
+            max-width: calc(100vw - 80px)!important;
+            width: 23rem!important;
+            margin-right: calc(-9.5rem + 41.5vw)!important;
+            float: right!important;
+        }
+
+        .apps-container {
+            max-width:90vw;
+        }
+
+.app-icon-image {
+    max-height: 10px;
+    width: auto;
+    margin-top: 0.4em;
+    overflow: hidden!important;
+    height: 6%;
+    max-width: 100%;
+    min-height: 8vw;
+    min-width: 8vw;
+    image-rendering: auto;
+    object-position: center!important;
+}
+
+.category-square {
+    float: left;
+    position: relative;
+    width: 15.66%!important;
+    padding-bottom: 17%;
+    margin: 1.99%;
+    overflow: hidden;
+    border-radius: 40px 40px 40px 40px;
+    border: 13px solid #454545;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    min-width: 17vw;
+    min-height: 5vw !important;
+    line-height: 16vw !important;
+    cursor: pointer;
+}
+
+a:link, a, a:hover {color: rgba(255,255,255,0.8); font-size: 1.6rem;}
+
+.noHover{
+   pointer-events: none;
+}
+.breadcrumb {opacity:0.4;}
+
+ul.breadcrumb li a:hover {
+    padding-left: 0px!important;
+    border: 2px solid rgba(255,255,255,0.51);
+    margin-top: 0px;
+    background: black;
+    box-shadow: none!important;
+    margin-left: -2px!important;
+    max-height: 48px;
+    max-width: 49px;
+}
+
+.square {
+background:rgb(44,12,33)!important;
+border: 2px solid rgba(255,255,255,0.1);
+}
+
+.nohighlight:hover {
+    border: 0.01em solid rgb(255,255,255,0.12)!important;
+    background: rgb(44,12,33)!important;
+    pointer-events:none!important;
+}

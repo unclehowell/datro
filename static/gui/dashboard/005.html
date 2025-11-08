@@ -139,76 +139,75 @@ body:not(.loaded) #slider img {
 <!-- google tracking code end -->
   </head>
 
-<body style="overflow: inherit!important;height: inherit!important;display:visible;" onload="document.body.classList.add('loaded')">
-
-<!-- <div class="container">
-
-            <div class="box">
-
-                <div class="box-row">
-
-                    <div class="box-cell box1">
-
-
-<ul class="breadcrumb" id="btn noHover">
-  <li class='btn noHover'>
-    <a href="#" style="width:auto!Important;">
-      <img class="breadcrumb-icon-microscope" src="../dashboard/img/icons/004.svg"></span>
-      <span class="text2">safety & security</span>
-    </a>
-  </li>
-  <li >
-    <a href="000.html" style="width:auto!Important;background-color:#303030;">
-        <span class="text2" style="margin-left:1vw">categories</span>
-    </a>
-  </li>
-
-  <li class="btn noHover">
-    <a href="000.html" style="width:auto!Important;">
-      <span class="text2">hotspotβnβ</span>
-    </a>
-  </li>
-
-  <li class="btn noHover">
-    <a href="000.html">
-	      <span class="icon icon-th"></span>
-      <span class="text"></span>
-    </a>
-  </li>
-
-
-</ul>
-
-
-                    </div>
-
-
-
-
-                </div>
-
-            </div>
-
-        </div> -->
-
-
-        <a href="../app-store/005.html" style="cursor:pointer;">
-        <div class="square-999-999">
-                <div class="content-999-999">
-                        <div class="table-999-999">
-                                <div class="table-cell-999-999">
-                                        <img class="rs-999-999" src="../app-store/apps/999-999/logo.png"><br>
-                                        <span style="height: 3rem!Important; display: inline-block;">
- <object border="0" data="../app-store/apps/999-999/title.svg" height="50px" style="z-index: -1!important; position: relative;" type="text/plain" width="100%">
-                                        </object></span><br>
-                                </div>
-                        </div>
-                </div>
-        </div></a>
+<body style="overflow: inherit!important;height: inherit!important;display:visible;">
+<div id="apps-container" class="apps-container">
+</div>
 
 <script src="media/js/breadcrumb.js"></script>
 <script src="media/js/jquery-2.1.4.min.js"></script>
 <script src="media/js/main.js"></script>
+
+<script>
+function updateHomeScreen() {
+    const appsContainer = document.getElementById('apps-container');
+    appsContainer.innerHTML = ''; // Clear existing apps
+
+    let allAppIds = ['005-001', '005-002']; // All potential app IDs for this page
+    let appsToDisplay = [];
+
+    // Add installed apps
+    allAppIds.forEach(appId => {
+        if (localStorage.getItem(appId) === 'added') {
+            appsToDisplay.push(appId);
+        }
+    });
+
+    // Add the 'Add+' icon last
+    appsToDisplay.push('999-999');
+
+    appsToDisplay.forEach(appId => {
+        const appElement = document.createElement('a');
+        appElement.href = getAppLink(appId); // Set the hyperlink
+        appElement.style.cursor = 'pointer';
+
+        let logoFile;
+        // Assuming all logos are .png unless specified otherwise
+        logoFile = `../app-store/apps/${appId}/logo.png`;
+
+        appElement.innerHTML = `
+            <div class="square-${appId}">
+                <div class="content-${appId}">
+                    <div class="table-${appId}">
+                        <div class="table-cell-${appId}">
+                            <img class="rs-${appId}" src="${logoFile}">
+                            <br>
+                            <img src="../app-store/apps/${appId}/title.svg" style="width:75%; height:5vw; margin-top:-0.25pc;">
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        appsContainer.appendChild(appElement);
+    });
+}
+
+function getAppLink(appId) {
+    switch (appId) {
+        case '005-001':
+            return '#'; // Placeholder link
+        case '005-002':
+            return '#'; // Placeholder link
+        case '999-999':
+            return '../app-store/005.html'; // Link to its own app-store page
+        default:
+            return '#'; // Fallback for any unhandled appIds
+    }
+}
+
+document.addEventListener("DOMContentLoaded", updateHomeScreen);
+window.addEventListener('storage', updateHomeScreen);
+</script>
 
   </body>
 </html>

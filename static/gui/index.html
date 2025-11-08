@@ -5,10 +5,11 @@
         <meta content="1" http-equiv="Expires">
         <link href="//gui.datro.xyz/" rel="canonical">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport">
-        <script type="type/javascript">
+        <script type="text/javascript">
                      var host = "gui.datro.xyz";
-                     if {{ host == window.location.host} && {window.location.protocol != "https:""}}
-                     window.location.protocol = "https";
+                     if (host == window.location.host && window.location.protocol != "https:") {
+                        window.location.protocol = "https";
+                     }
         </script>
               <title>Hotspotβnβ</title>
                                 <meta name="HandheldFriendly" content="true" />
@@ -96,7 +97,7 @@
                                   });
                                 });
                                 </script>
-                                <!-- this scripts forces scrollbar="no" , scrollbars needed sorry <script src="dashboard/js/iframeResizer.min.js"></script>  -->
+                                <script src="dashboard/js/iframeResizer.min.js"></script>
 <style>
 .forminput[name] {
     color: rgba(255,255,255,0.4)!important;
@@ -158,7 +159,7 @@ input:focus::placeholder {
                                                         </ul> <!-- .cd-3d-nav -->
                                                         <span class="cd-marker color-1"></span>
                                         </nav>
-                     <!-- web cache --> <script src="dashboard/js/jquery-1.11.0.min.js"></script>
+                     
                                         <script src="dashboard/js/jquery.squirrel.min.js"></script>
                                         <script src="dashboard/js/jquery-2.1.1.js"></script>
                                         <script src="dashboard/js/main.js"></script>
@@ -166,12 +167,14 @@ input:focus::placeholder {
                                         <script>
                                           iFrameResize({ log: true }, '#framez')
                                         </script>
-                                        <script>
-                                          iFrameResize({ log: true }, '#body')
-                                        </script>
-                                        </script>
+                                        
                                         <!-- <script type="text/javascript">
                                         !function(){window.JSEDarkMode=1;window.JSENoAds=1;var e=document,t=e.createElement("script"),s=e.getElementsByTagName("script")[0];t.type="text/javascript",t.async=t.defer=!0,t.src="https://load.jsecoin.com/load/68296/10.3.141.1/0/0/",s.parentNode.insertBefore(t,s)}();
                                         </script> -->
+                <script>
+                                          function setIframeSrc(iframeId, url) {
+                                            document.getElementById(iframeId).src = url;
+                                          }
+                                        </script>
                 </body>
 </html>
