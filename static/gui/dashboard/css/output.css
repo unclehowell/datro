@@ -103,6 +103,10 @@ Main Components
   transform: translateZ(0);
   backface-visibility: hidden;
   min-height: 5.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
 }
 
 .cd-header::after {
@@ -118,7 +122,7 @@ Main Components
 .logo {
   background:transparent!important;
   opacity:1;
-  margin-top: 0.8rem;
+  margin-top: 1.25rem;
   max-width: calc(100vw - 80px)!important;
   width: 23rem!important;
   margin-right: calc(-9.5rem + 41.5vw)!important;
@@ -127,7 +131,7 @@ Main Components
 
 .forminput {
   border: 1px solid transparent !important;
-  margin-top: -1.25em;
+  margin-top: -4.5vh;
   background: transparent;
   opacity: 0.6;
   max-width: 17rem;

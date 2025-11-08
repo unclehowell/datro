@@ -1,0 +1,114 @@
+/* Shared layout for app store icon grids */
+body.app-store-page {
+  background-color: #303030;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+.app-store-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  padding: 2.5rem 4vw 4rem;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.app-card-link {
+  text-decoration: none;
+  color: inherit;
+  flex: 0 0 auto;
+}
+
+.app-card-link--inactive {
+  pointer-events: none;
+  cursor: default;
+}
+
+.app-card {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1.25rem;
+  padding: 2rem 1.75rem 1.5rem;
+  width: clamp(160px, 18vw, 240px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.25rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.app-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.35);
+}
+
+.app-card__icon-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.app-card__icon {
+  width: 100%;
+  max-width: 9.5rem;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  border-radius: 18%;
+  background-color: rgba(255, 255, 255, 0.02);
+  padding: 0.5rem;
+}
+
+.app-card__label {
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+}
+
+.app-card__label + .app-card__toggle {
+  margin-top: 0.5rem;
+}
+
+.app-card__toggle {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.app-card .toggle {
+  margin: 0;
+  width: clamp(120px, 70%, 200px);
+}
+
+.app-card .app-label {
+  min-width: clamp(70px, 40%, 120px);
+  max-width: clamp(70px, 40%, 120px);
+}
+
+.app-card[data-app-id="999-999"] .app-card__icon {
+  filter: brightness(1.35) saturate(0.85);
+  opacity: 0.85;
+}
+
+.app-card--disabled .app-card__toggle {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+@media (max-width: 900px) {
+  .app-store-grid {
+    gap: 1.75rem;
+    padding: 2rem 1.5rem 3rem;
+    justify-content: center;
+  }
+
+  .app-card {
+    width: min(240px, 70vw);
+  }
+}
