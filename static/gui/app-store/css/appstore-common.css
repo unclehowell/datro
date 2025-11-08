@@ -111,9 +111,21 @@
             float: right!important;
         }
 
-        .apps-container {
-            max-width:90vw;
-        }
+.apps-container {
+    max-width:90vw;
+}
+
+.app-title {
+    display: inline-block;
+    height: 3rem;
+    max-width: 13vw !important;
+    width: 100%;
+}
+
+.app-title object {
+    width: 100%;
+    height: 50px;
+}
 
 .app-icon-image {
     max-height: 10px;
