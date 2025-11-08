@@ -111,9 +111,21 @@
             float: right!important;
         }
 
-        .apps-container {
-            max-width:90vw;
-        }
+.apps-container {
+    max-width:90vw;
+}
+
+.app-title {
+    display: inline-block;
+    height: 3rem;
+    max-width: 13vw !important;
+    width: 100%;
+}
+
+.app-title object {
+    width: 100%;
+    height: 50px;
+}
 
 .app-icon-image {
     max-height: 10px;
@@ -154,14 +166,13 @@ a:link, a, a:hover {color: rgba(255,255,255,0.8); font-size: 1.6rem;}
 .breadcrumb {opacity:0.4;}
 
 ul.breadcrumb li a:hover {
-    padding-left: 0px!important;
-    border: 2px solid rgba(255,255,255,0.51);
-    margin-top: 0px;
-    background: black;
-    box-shadow: none!important;
-    margin-left: -2px!important;
-    max-height: 48px;
-    max-width: 49px;
+    background-color: var(--breadcrumb-bg);
+    border: 1px solid var(--breadcrumb-border-color);
+    padding-left: var(--breadcrumb-padding-left);
+    padding-right: var(--breadcrumb-padding-right);
+    margin-left: 0;
+    margin-top: 0;
+    box-shadow: none;
 }
 
 .square {

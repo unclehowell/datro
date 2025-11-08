@@ -7,6 +7,7 @@
         <link href="css/002e.css" rel="stylesheet">
         <link href="css/breadcrumb.css" rel="stylesheet">
         <link href="css/appstore.css" rel="stylesheet">
+        <link href="css/appstore-common.css" rel="stylesheet">
         <link href="apps/000-000/style.css" rel="stylesheet">
         <link href="apps/002-001/style.css" rel="stylesheet">
         <link href="apps/002-002/style.css" rel="stylesheet">
@@ -174,25 +175,6 @@
          float: right!important;
         }
 
-        ul.breadcrumb li a:hover {
-           padding-left: 0.0rem!important;
-           margin-top: 0px!Important;
-           margin-left: 0.0px!important;
-           background: black!important;
-           box-shadow: none!important;
-           margin-right: 0.0px!important;
-           border: 1px solid rgba(255,255,255,0.5);
-           position: initial;
-        }
-        ul.breadcrumb li > text2 a:hover {
-           padding-left: 0px!important;
-           border: 4px solid transparent;
-           margin-top: -4px;
-           margin-left: -3px!important;
-           background: black;
-           box-shadow: none!important;
-        }
-
 body {
     background-color: #454545;
 }
@@ -208,9 +190,9 @@ body {
     background-color: rgb(1, 1, 1, 0.1);
     color: white ! Important;
   }
-</style>
+        </style>
 </head>
-<body style="overflow: inherit !important; height: inherit !important; display: visible;" onload="document.body.classList.add('loaded'); updateHomeScreen();">
+<body style="overflow: inherit !important; height: inherit !important; display: visible;" onload="document.body.classList.add('loaded');">
         <div class="container">
                 <div class="box">
                         <div class="box-row">
@@ -220,7 +202,7 @@ body {
                                                         <a href="#" style="width:auto!Important;"><span class="icon icon-play"></span> <span class="text2">Entertainment</span></a>
                                                 </li>
                                                 <li>
-                                                        <a href='000.html' style='width:auto!Important;filter: brightness(1);background:rgba(0,0,0,0.55);border: 1px solid rgba(255,255,255,0.4);position: initial; padding-left: 48px!Important; margin-top: 0px;'><span class="text2" style="margin-left:1vw;">Categories</span></a>
+                                                        <a href='000.html' style='--breadcrumb-bg: rgba(0,0,0,0.55); --breadcrumb-border-color: rgba(255,255,255,0.4); --breadcrumb-text-color: rgba(255,255,255,0.8); --breadcrumb-padding-left: 48px; width:auto!Important; filter: brightness(1); background: var(--breadcrumb-bg); border: 1px solid var(--breadcrumb-border-color); position: initial; margin-top: 0px;'><span class="text2" style="margin-left:1vw;">Categories</span></a>
                                                 </li>
                                                 <li class="btn noHover">
                                                         <a class='backtodash' href='000.html'><span class="text2">App Store</span></a>
@@ -233,124 +215,85 @@ body {
                         </div>
                 </div>
         </div>
-
-        <a href="#" style="cursor:pointer;">
-        <div class="square-002-001">
-                <div class="content-002-001">
-                        <div class="table-002-001">
-                                <div class="table-cell-002-001">
-                                        <img class="rs-002-001" src="apps/002-001/logo.png"><br>
-
-                                                <div class="toggle">
-                                                        <input class="app-checkbox" id="002-001" type="checkbox"> <label class="app-label install" for="002-001"><span class="thumb"></span></label>
-                                                </div><span style="height: 3rem!important; display: inline-block; max-width: 13vw!important;"></span>
-                                        <br>
+        <div class="apps-container" id="apps-container">
+                <a class="app-link" href="apps/002-001/fetch.html" style="cursor:pointer;">
+                        <div class="square-002-001">
+                                <div class="content-002-001">
+                                        <div class="table-002-001">
+                                                <div class="table-cell-002-001">
+                                                        <img class="rs-002-001" src="apps/002-001/logo.png" alt="002-001 app icon"><br>
+                                                        <span class="app-title">
+                                                                <object data="apps/002-001/title.svg" type="image/svg+xml" aria-label="002-001 app title"></object>
+                                                        </span><br>
+                                                        <div class="toggle">
+                                                                <input class="app-checkbox" id="002-001" type="checkbox">
+                                                                <label class="app-label install" for="002-001"><span class="thumb"></span></label>
+                                                        </div>
+                                                </div>
+                                        </div>
                                 </div>
                         </div>
-                </div>
-        </div></a>
-
-
-        <a href="#" style="cursor:pointer;">
-        <div class="square-002-002">
-                <div class="content-002-002">
-                        <div class="table-002-002">
-                                <div class="table-cell-002-002">
-                                        <img class="rs-002-002" src="apps/002-002/logo.png"><br>
-                                                <div class="toggle">
-                                                        <input class="app-checkbox" id="002-002" type="checkbox"> <label class="app-label install" for="002-002"><span class="thumb"></span></label>
-                                                </div><span style="height: 3rem!Important; display: inline-block; max-width: 13vw!important;"></span>
-                                        <br>
+                </a>
+                <a class="app-link" href="apps/002-002/fetch.html" style="cursor:pointer;">
+                        <div class="square-002-002">
+                                <div class="content-002-002">
+                                        <div class="table-002-002">
+                                                <div class="table-cell-002-002">
+                                                        <img class="rs-002-002" src="apps/002-002/logo.png" alt="002-002 app icon"><br>
+                                                        <span class="app-title">
+                                                                <object data="apps/002-002/title.svg" type="image/svg+xml" aria-label="002-002 app title"></object>
+                                                        </span><br>
+                                                        <div class="toggle">
+                                                                <input class="app-checkbox" id="002-002" type="checkbox">
+                                                                <label class="app-label install" for="002-002"><span class="thumb"></span></label>
+                                                        </div>
+                                                </div>
+                                        </div>
                                 </div>
                         </div>
-                </div>
-        </div></a>
-
-        <a href="#" style="cursor:pointer;">
-        <div class="square-999-999">
-                <div class="content-999-999">
-                        <div class="table-999-999">
-                                <div class="table-cell-999-999">
-                                        <img class="rs-999-999" src="apps/999-999/logo.png"><br>
-                                                <div class="toggle">
-                                                        <input class="app-checkbox" id="999-999" type="checkbox" enabled checked> <label class="app-label install" for="999-999"><span class="thumb"></span></label>
-                                                </div><span style="height: 3rem!Important; display: inline-block; max-width: 13vw!important;"></span>
-                                        <br>
+                </a>
+                <a class="app-link" href="#" style="cursor:pointer;">
+                        <div class="square-002-003">
+                                <div class="content-002-003">
+                                        <div class="table-002-003">
+                                                <div class="table-cell-002-003">
+                                                        <img class="rs-002-003" src="apps/002-003/logo.png" alt="002-003 app icon"><br>
+                                                        <span class="app-title">
+                                                                <object data="apps/002-003/title.svg" type="image/svg+xml" aria-label="002-003 app title"></object>
+                                                        </span><br>
+                                                        <div class="toggle">
+                                                                <input class="app-checkbox" id="002-003" type="checkbox">
+                                                                <label class="app-label install" for="002-003"><span class="thumb"></span></label>
+                                                        </div>
+                                                </div>
+                                        </div>
                                 </div>
                         </div>
-                </div>
-        </div></a>
-
+                </a>
+                <a class="app-link" href="#" style="cursor:pointer;">
+                        <div class="square-999-999">
+                                <div class="content-999-999">
+                                        <div class="table-999-999">
+                                                <div class="table-cell-999-999">
+                                                        <img class="rs-999-999" src="apps/999-999/logo.png" alt="Add application icon"><br>
+                                                        <span class="app-title">
+                                                                <object data="apps/999-999/title.svg" type="image/svg+xml" aria-label="Add application title"></object>
+                                                        </span><br>
+                                                        <div class="toggle">
+                                                                <input class="app-checkbox" id="999-999" type="checkbox" checked disabled aria-disabled="true">
+                                                                <label class="app-label install" for="999-999"><span class="thumb"></span></label>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </a>
+        </div>
+        <script src="js/appstore-page.js"></script>
         <script>
-
-document.addEventListener("DOMContentLoaded", function() {
-function toggleAppInstallation(appId) {
-    if (appId === '999-999') return;
-    const appInstalled = isAppInstalled(appId);
-    localStorage.setItem(appId, appInstalled ? '' : 'added' );
-    updateHomeScreen();
-}
-
-    function isAppInstalled(appId) {
-        return localStorage.getItem(appId) === 'added';
-    }
-
-function updateHomeScreen() {
-    const appsContainer = document.getElementById('apps-container');
-    appsContainer.innerHTML = ''; // Clear existing apps
-    const appIds = ['002-001', '002-002', '999-999']; // Using class-based IDs
-    appIds.forEach(appId => {
-        const appInstalled = localStorage.getItem(appId) === 'added';
-        const appElement = document.createElement('a');
-        appElement.href = getAppLink(appId); // Set the hyperlink
-        appElement.style.cursor = 'pointer';
-        appElement.innerHTML = `
-            <div class="square-${appId}">
-                <div class="content-${appId}">
-                    <div class="table-${appId}">
-                        <div class="table-cell-${appId}">
-                            <img class="rs-${appId}" src="../app-store/apps/${appId}/logo.png">
-                            <br>
-                            <span style="height: 3rem!Important; display: inline-block;">
-                                <object border="0" data="../app-store/apps/${appId}/title.svg" height="50px" style="z-index: -1!important; position: relative;" type="text/plain" width="100%"></object>
-                            </span>
-                            <br>
-                            <div class="toggle">
-                                <input class="app-checkbox" id="${appId}" type="checkbox" ${appInstalled ? 'checked' : ''}>
-                                <label class="app-label install" for="${appId}"><span class="thumb"></span></label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-        appElement.addEventListener('dragstart', handleDragStart);
-        appsContainer.appendChild(appElement);
-    });
-}
-    function getAppColor(appId) {
-        switch (appId) {
-            case '002-001':
-                return 'red';
-            case '002-002':
-                return 'blue';
-            default:
-                return 'gray';
-        }
-    }
-
-    function handleDragStart(event) {
-        event.dataTransfer.setData('text/plain', event.target.id);
-    }
-
-    const checkboxes = document.querySelectorAll('.app-checkbox');
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('click', function() {
-            toggleAppInstallation(this.id);
+        document.addEventListener('DOMContentLoaded', function () {
+            initAppStore(['002-001', '002-002', '002-003', '999-999'], ['999-999']);
         });
-    });
-});
-
         </script>
 </body>
 </html>
