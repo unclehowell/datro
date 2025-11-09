@@ -20,8 +20,9 @@ body.app-store-page {
     color: rgba(255,255,255,0.85);
     padding-top: clamp(90px, 5vw + 60px, 140px);
     overflow: hidden;
-    --app-card-size: 16%;
-    --app-card-gap: 1.66%;
+    --app-card-size: 15.66%;
+    --app-card-gap: 1.99%;
+    --app-card-ratio: 0.92;
 }
 
 .breadcrumb {
@@ -216,9 +217,21 @@ background-color: rgba(255,255,255,0.3)!important;
     flex: 0 0 var(--app-card-size);
     max-width: var(--app-card-size);
     margin: var(--app-card-gap);
-    padding-bottom: var(--app-card-size);
     text-decoration: none;
     color: inherit;
+    aspect-ratio: var(--app-card-ratio);
+}
+
+.app-card-link::before {
+    content: "";
+    display: block;
+    padding-bottom: calc(100% / var(--app-card-ratio));
+}
+
+@supports (aspect-ratio: 1) {
+    .app-card-link::before {
+        display: none;
+    }
 }
 
 .app-card-link:hover,
@@ -238,13 +251,16 @@ background-color: rgba(255,255,255,0.3)!important;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 12% 10% 18%;
+    padding: clamp(14px, 11%, 24px) clamp(12px, 9%, 22px) clamp(18px, 14%, 28px);
     box-sizing: border-box;
     background: rgb(44,12,33);
-    border: 1.5px solid rgba(255,255,255,0.3);
+    border: 2px solid rgba(255,255,255,0.1);
     border-radius: 0.5em;
     transition: border-color 0.2s ease, background-color 0.2s ease;
-    gap: 6%;
+    gap: clamp(10px, 6%, 18px);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .app-card--disabled .app-card__toggle {
@@ -258,14 +274,14 @@ background-color: rgba(255,255,255,0.3)!important;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2% 0;
+    padding: 4% 0 6%;
 }
 
 .app-card__icon {
     display: block;
     width: 100%;
-    max-width: 60%;
-    max-height: 60%;
+    max-width: 70%;
+    max-height: 70%;
     object-fit: contain;
     object-position: center;
 }
@@ -280,7 +296,8 @@ background-color: rgba(255,255,255,0.3)!important;
     display: flex;
     justify-content: center;
     margin-top: auto;
-    padding-top: 6%;
+    padding-top: clamp(10px, 6%, 18px);
+    flex-shrink: 0;
 }
 
 .app-checkbox {
