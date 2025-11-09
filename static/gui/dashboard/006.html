@@ -170,13 +170,20 @@
 
 <script>
 
+function isAddIconProtected() {
+    return /dashboard\/006/i.test(window.location.pathname);
+}
+
 function updateHomeScreen() {
     const appsContainer = document.getElementById('apps-container');
     appsContainer.innerHTML = ''; // Clear existing apps
     const appIds = ['006-001', '006-002', '999-999']; // Using class-based IDs
+    const addIconProtected = isAddIconProtected();
     appIds.forEach(appId => {
         const appInstalled = localStorage.getItem(appId) === 'added';
-        if (appInstalled || appId === '999-999') {
+        const storedValue = localStorage.getItem(appId);
+        const shouldDisplay = appInstalled || (appId === '999-999' && (addIconProtected || storedValue !== 'removed'));
+        if (shouldDisplay) {
             const appElement = document.createElement('a');
             appElement.href = getAppLink(appId); // Set the hyperlink
             appElement.style.cursor = 'pointer';

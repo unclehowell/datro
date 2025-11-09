@@ -1,4 +1,8 @@
 (function () {
+  function isAddIconProtected() {
+    return /app-store\/006/i.test(window.location.pathname);
+  }
+
   function syncCheckboxState(card) {
     const appId = card.dataset.appId;
     const checkbox = card.querySelector('.app-checkbox');
@@ -7,24 +11,40 @@
     }
 
     const storedValue = localStorage.getItem(appId);
-    const isInstalled = storedValue === 'added' || (appId === '999-999' && storedValue !== 'removed');
+    const addIconProtected = appId === '999-999' && isAddIconProtected();
 
-    checkbox.checked = appId === '999-999' ? true : isInstalled;
+    let isInstalled = storedValue === 'added';
+    if (appId === '999-999') {
+      if (addIconProtected) {
+        isInstalled = true;
+      } else {
+        isInstalled = storedValue !== 'removed';
+      }
+    }
+
+    checkbox.checked = isInstalled;
 
     if (appId === '999-999') {
-      checkbox.setAttribute('disabled', 'disabled');
-      card.classList.add('app-card--disabled');
+      if (addIconProtected) {
+        checkbox.setAttribute('disabled', 'disabled');
+      } else {
+        checkbox.removeAttribute('disabled');
+      }
+      card.classList.toggle('app-card--disabled', addIconProtected);
     }
   }
 
   function toggleAppInstallation(appId, checkbox) {
-    if (appId === '999-999') {
+    const addIconProtected = appId === '999-999' && isAddIconProtected();
+    if (addIconProtected) {
       checkbox.checked = true;
       return;
     }
 
     if (checkbox.checked) {
       localStorage.setItem(appId, 'added');
+    } else if (appId === '999-999') {
+      localStorage.setItem(appId, 'removed');
     } else {
       localStorage.removeItem(appId);
     }

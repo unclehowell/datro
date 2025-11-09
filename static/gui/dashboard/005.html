@@ -148,6 +148,10 @@ body:not(.loaded) #slider img {
 <script src="media/js/main.js"></script>
 
 <script>
+function isAddIconProtected() {
+    return /dashboard\/006/i.test(window.location.pathname);
+}
+
 function updateHomeScreen() {
     const appsContainer = document.getElementById('apps-container');
     appsContainer.innerHTML = ''; // Clear existing apps
@@ -162,8 +166,11 @@ function updateHomeScreen() {
         }
     });
 
-    // Add the 'Add+' icon last
-    appsToDisplay.push('999-999');
+    // Add the 'Add+' icon last when allowed
+    const addIconState = localStorage.getItem('999-999');
+    if (isAddIconProtected() || addIconState !== 'removed') {
+        appsToDisplay.push('999-999');
+    }
 
     appsToDisplay.forEach(appId => {
         const appElement = document.createElement('a');
