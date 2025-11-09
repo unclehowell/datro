@@ -170,13 +170,22 @@
 
 <script>
 
+const ADD_ICON_ID = '999-999';
+const ALWAYS_SHOW_ADD_ICON = window.location.pathname.includes('/dashboard/006');
+
+function isAddIconEnabled() {
+    const storedValue = localStorage.getItem(ADD_ICON_ID);
+    return ALWAYS_SHOW_ADD_ICON || storedValue !== 'removed';
+}
+
 function updateHomeScreen() {
     const appsContainer = document.getElementById('apps-container');
     appsContainer.innerHTML = ''; // Clear existing apps
     const appIds = ['006-001', '006-002', '999-999']; // Using class-based IDs
     appIds.forEach(appId => {
         const appInstalled = localStorage.getItem(appId) === 'added';
-        if (appInstalled || appId === '999-999') {
+        const shouldShowApp = appId === ADD_ICON_ID ? isAddIconEnabled() : appInstalled;
+        if (shouldShowApp) {
             const appElement = document.createElement('a');
             appElement.href = getAppLink(appId); // Set the hyperlink
             appElement.style.cursor = 'pointer';
@@ -268,7 +277,7 @@ function updateAppStore() {
         const installAppCheckbox = document.getElementById(appId);
         if (installAppCheckbox) {
             // Assuming installAppCheckbox is an AppCheckbox element
-            installAppCheckbox.checked = installState === 'added';
+            installAppCheckbox.checked = appId === ADD_ICON_ID ? installState !== 'removed' : installState === 'added';
             // You may need to set other properties based on your AppCheckbox implementation
         }
     });

@@ -148,12 +148,20 @@ body:not(.loaded) #slider img {
 <script src="media/js/main.js"></script>
 
 <script>
+const ADD_ICON_ID = '999-999';
+const ALWAYS_SHOW_ADD_ICON = window.location.pathname.includes('/dashboard/006');
+
+function isAddIconEnabled() {
+    const storedValue = localStorage.getItem(ADD_ICON_ID);
+    return ALWAYS_SHOW_ADD_ICON || storedValue !== 'removed';
+}
+
 function updateHomeScreen() {
     const appsContainer = document.getElementById('apps-container');
     appsContainer.innerHTML = ''; // Clear existing apps
 
-    let allAppIds = ['005-001', '005-002']; // All potential app IDs for this page
-    let appsToDisplay = [];
+    const allAppIds = ['005-001', '005-002']; // All potential app IDs for this page
+    const appsToDisplay = [];
 
     // Add installed apps
     allAppIds.forEach(appId => {
@@ -162,17 +170,16 @@ function updateHomeScreen() {
         }
     });
 
-    // Add the 'Add+' icon last
-    appsToDisplay.push('999-999');
+    if (isAddIconEnabled()) {
+        appsToDisplay.push(ADD_ICON_ID);
+    }
 
     appsToDisplay.forEach(appId => {
         const appElement = document.createElement('a');
         appElement.href = getAppLink(appId); // Set the hyperlink
         appElement.style.cursor = 'pointer';
 
-        let logoFile;
-        // Assuming all logos are .png unless specified otherwise
-        logoFile = `../app-store/apps/${appId}/logo.png`;
+        const logoFile = `../app-store/apps/${appId}/logo.png`;
 
         appElement.innerHTML = `
             <div class="square-${appId}">
