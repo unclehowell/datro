@@ -16,7 +16,22 @@
 	     src: url('../fonts/fontawesome-webfont.eot');
 	}
 
-	html {overflow-x: hidden!important;height: -webkit-fill-available;}
+        html {
+           overflow-x: hidden!important;
+           height: -webkit-fill-available;
+           background-color: rgb(44,12,33);
+           width: 100%;
+           min-width: 100vw;
+        }
+
+        body {
+           margin: 0;
+           min-height: 100vh;
+           width: 100%;
+           min-width: 100vw;
+           background-color: rgb(44,12,33);
+           overflow-x: hidden;
+        }
 
 	body::-webkit-scrollbar {
 	   width: 30px;
@@ -85,16 +100,13 @@
 	}
 	.breadcrumb {opacity:0.4;}
 
-	ul.breadcrumb li a:hover {
-    padding-left: 0px!important;
-    border: 2px solid rgba(255,255,255,0.51);
-    margin-top: 0px;
-    background: black;
-    box-shadow: none!important;
-    margin-left: -2px!important;
-    max-height: 48px;
-    max-width: 49px;
-	}
+        ul.breadcrumb li a:hover {
+    background: inherit;
+    border-color: inherit;
+    color: inherit;
+    padding-left: 52px;
+    padding-right: 33.33333px;
+        }
 
 	.square {
 	background:rgb(44,12,33)!important;
@@ -238,6 +250,8 @@
 	</script> 
 	<script src="js/main.js" type="36d8ac766779005746c1cf8b-text/javascript">
 	</script>
-<script src="js/rocket-loader.min.js" data-cf-settings="36d8ac766779005746c1cf8b-|49" defer></script></body>
+<script src="js/rocket-loader.min.js" data-cf-settings="36d8ac766779005746c1cf8b-|49" defer></script>
+<!-- noop change -->
+</body>
 </html>
 
