@@ -148,22 +148,32 @@ body:not(.loaded) #slider img {
 <script src="media/js/main.js"></script>
 
 <script>
+const ADD_APP_ID = '999-999';
+
+function isAddAppAlwaysVisible() {
+    return window.location.pathname.includes('/dashboard/006');
+}
+
+function shouldDisplayAddAppIcon() {
+    return isAddAppAlwaysVisible() || localStorage.getItem(ADD_APP_ID) !== 'removed';
+}
+
 function updateHomeScreen() {
     const appsContainer = document.getElementById('apps-container');
-    appsContainer.innerHTML = ''; // Clear existing apps
+    appsContainer.innerHTML = '';
 
-    let allAppIds = ['005-001', '005-002']; // All potential app IDs for this page
-    let appsToDisplay = [];
+    const allAppIds = ['005-001', '005-002'];
+    const appsToDisplay = [];
 
-    // Add installed apps
     allAppIds.forEach(appId => {
         if (localStorage.getItem(appId) === 'added') {
             appsToDisplay.push(appId);
         }
     });
 
-    // Add the 'Add+' icon last
-    appsToDisplay.push('999-999');
+    if (shouldDisplayAddAppIcon()) {
+        appsToDisplay.push(ADD_APP_ID);
+    }
 
     appsToDisplay.forEach(appId => {
         const appElement = document.createElement('a');
@@ -195,13 +205,13 @@ function updateHomeScreen() {
 function getAppLink(appId) {
     switch (appId) {
         case '005-001':
-            return '#'; // Placeholder link
+            return '#';
         case '005-002':
-            return '#'; // Placeholder link
-        case '999-999':
-            return '../app-store/005.html'; // Link to its own app-store page
+            return '#';
+        case ADD_APP_ID:
+            return '../app-store/005.html';
         default:
-            return '#'; // Fallback for any unhandled appIds
+            return '#';
     }
 }
 

@@ -41,11 +41,34 @@
         <div id="apps-container" class="apps-container app-store-grid"></div>
 
         <script>
-function toggleAppInstallation(appId) {
-    if (appId === '999-999') return;
-    const appInstalled = localStorage.getItem(appId) === 'added';
-    localStorage.setItem(appId, appInstalled ? '' : 'added' );
-    // Removed updateHomeScreen() call here, as window.addEventListener('storage') will handle it
+const ADD_APP_ID = '999-999';
+
+function isAddAppAlwaysVisible() {
+    return window.location.pathname.includes('/app-store/006');
+}
+
+function isAddAppEnabled() {
+    return localStorage.getItem(ADD_APP_ID) !== 'removed';
+}
+
+function toggleAppInstallation(appId, shouldEnable) {
+    if (appId === ADD_APP_ID) {
+        if (isAddAppAlwaysVisible()) {
+            localStorage.setItem(ADD_APP_ID, 'added');
+        } else {
+            localStorage.setItem(ADD_APP_ID, shouldEnable ? 'added' : 'removed');
+        }
+        updateHomeScreen();
+        return;
+    }
+
+    if (shouldEnable) {
+        localStorage.setItem(appId, 'added');
+    } else {
+        localStorage.removeItem(appId);
+    }
+
+    updateHomeScreen();
 }
 
 function getAppLink(appId) {
@@ -54,7 +77,7 @@ function getAppLink(appId) {
             return '../app-store/apps/002-001/fetch.html';
         case '002-002':
             return 'http://hbnb.local:81';
-        case '999-999':
+        case ADD_APP_ID:
             return '../app-store/002b.html';
         default:
             return '#';
@@ -73,28 +96,34 @@ function updateHomeScreen() {
     const appsContainer = document.getElementById('apps-container');
     appsContainer.innerHTML = ''; // Clear existing apps
 
-    const appIds = ['002-001', '002-002', '999-999']; // Using class-based IDs
+    const appIds = ['002-001', '002-002', ADD_APP_ID];
     appIds.forEach(appId => {
+        const isPlaceholder = appId === ADD_APP_ID;
         const appInstalled = localStorage.getItem(appId) === 'added';
+        const addAppAlwaysVisible = isAddAppAlwaysVisible();
+        const addAppEnabled = addAppAlwaysVisible || isAddAppEnabled();
+        const checkboxShouldBeChecked = isPlaceholder ? addAppEnabled : appInstalled;
         const appElement = document.createElement('a');
-        const isPlaceholder = appId === '999-999';
-        appElement.href = getAppLink(appId); // Set the hyperlink
-        appElement.className = `app-card-link${isPlaceholder ? ' app-card-link--inactive' : ''}`;
+        appElement.href = getAppLink(appId);
+        appElement.className = 'app-card-link';
         appElement.dataset.appId = appId;
         appElement.draggable = true;
-        appElement.style.cursor = isPlaceholder ? 'default' : 'pointer';
-        if (isPlaceholder) {
+        appElement.style.cursor = 'pointer';
+
+        if (isPlaceholder && !addAppEnabled) {
             appElement.setAttribute('aria-disabled', 'true');
+        } else {
+            appElement.removeAttribute('aria-disabled');
         }
 
         const toggleAttributes = [];
-        if (appInstalled || isPlaceholder) {
+        if (checkboxShouldBeChecked) {
             toggleAttributes.push('checked');
         }
-        if (isPlaceholder) {
+        if (isPlaceholder && addAppAlwaysVisible) {
             toggleAttributes.push('disabled');
         }
-        const cardClasses = `app-card${isPlaceholder ? ' app-card--disabled' : ''}`;
+        const cardClasses = 'app-card';
         const altText = isPlaceholder ? 'Add new app' : `Hβnβ entertainment app icon ${appId}`;
 
         appElement.innerHTML = `
@@ -112,11 +141,10 @@ function updateHomeScreen() {
         appsContainer.appendChild(appElement);
     });
 
-    // Re-attach click listeners to newly created checkboxes
     const checkboxes = document.querySelectorAll('.app-checkbox');
     checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('click', function() {
-            toggleAppInstallation(this.id);
+        checkbox.addEventListener('change', function() {
+            toggleAppInstallation(this.id, this.checked);
         });
     });
 }
