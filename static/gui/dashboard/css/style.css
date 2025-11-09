@@ -129,6 +129,14 @@ Main Components
   transform: translateY(80px);
 }
 
+
+.cd-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
 .logo {
   background:transparent!important;
   opacity:1;
