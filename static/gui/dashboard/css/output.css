@@ -103,6 +103,10 @@ Main Components
   transform: translateZ(0);
   backface-visibility: hidden;
   min-height: 5.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
 }
 
 .cd-header::after {
