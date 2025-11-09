@@ -40,12 +40,31 @@
 
         <div id="apps-container" class="apps-container app-store-grid"></div>
 
-        <script>
+<script>
+const ADD_APP_ID = '999-999';
+
+function isAddAppAlwaysVisible() {
+    return window.location.pathname.includes('/app-store/006');
+}
+
+function isAddAppEnabled() {
+    return localStorage.getItem(ADD_APP_ID) !== 'removed';
+}
+
 function toggleAppInstallation(appId) {
-    if (appId === '999-999') return;
+    if (appId === ADD_APP_ID) {
+        if (isAddAppAlwaysVisible()) {
+            return;
+        }
+        const shouldEnable = !isAddAppEnabled();
+        localStorage.setItem(ADD_APP_ID, shouldEnable ? 'added' : 'removed');
+        updateHomeScreen();
+        return;
+    }
     const appInstalled = localStorage.getItem(appId) === 'added';
     localStorage.setItem(appId, appInstalled ? '' : 'added' );
-    // Removed updateHomeScreen() call here, as window.addEventListener('storage') will handle it
+    // Re-render locally so the UI reflects the updated toggle state immediately
+    updateHomeScreen();
 }
 
 function getAppLink(appId) {
@@ -54,7 +73,7 @@ function getAppLink(appId) {
             return '../app-store/apps/002-001/fetch.html';
         case '002-002':
             return 'http://hbnb.local:81';
-        case '999-999':
+        case ADD_APP_ID:
             return '../app-store/002b.html';
         default:
             return '#';
@@ -73,28 +92,34 @@ function updateHomeScreen() {
     const appsContainer = document.getElementById('apps-container');
     appsContainer.innerHTML = ''; // Clear existing apps
 
-    const appIds = ['002-001', '002-002', '999-999']; // Using class-based IDs
+    const appIds = ['002-001', '002-002', ADD_APP_ID]; // Using class-based IDs
     appIds.forEach(appId => {
         const appInstalled = localStorage.getItem(appId) === 'added';
         const appElement = document.createElement('a');
-        const isPlaceholder = appId === '999-999';
+        const isPlaceholder = appId === ADD_APP_ID;
+        const addAppAlwaysVisible = isAddAppAlwaysVisible();
+        const addAppEnabled = addAppAlwaysVisible || isAddAppEnabled();
         appElement.href = getAppLink(appId); // Set the hyperlink
-        appElement.className = `app-card-link${isPlaceholder ? ' app-card-link--inactive' : ''}`;
+        const inactiveClass = isPlaceholder && !addAppEnabled ? ' app-card-link--inactive' : '';
+        appElement.className = `app-card-link${inactiveClass}`;
         appElement.dataset.appId = appId;
         appElement.draggable = true;
-        appElement.style.cursor = isPlaceholder ? 'default' : 'pointer';
-        if (isPlaceholder) {
+        appElement.style.cursor = isPlaceholder && !addAppEnabled ? 'default' : 'pointer';
+        if (isPlaceholder && !addAppEnabled) {
             appElement.setAttribute('aria-disabled', 'true');
+        } else {
+            appElement.removeAttribute('aria-disabled');
         }
 
         const toggleAttributes = [];
-        if (appInstalled || isPlaceholder) {
+        const checkboxShouldBeChecked = isPlaceholder ? addAppEnabled : appInstalled;
+        if (checkboxShouldBeChecked) {
             toggleAttributes.push('checked');
         }
-        if (isPlaceholder) {
+        if (isPlaceholder && addAppAlwaysVisible) {
             toggleAttributes.push('disabled');
         }
-        const cardClasses = `app-card${isPlaceholder ? ' app-card--disabled' : ''}`;
+        const cardClasses = `app-card${isPlaceholder && !addAppEnabled ? ' app-card--disabled' : ''}`;
         const altText = isPlaceholder ? 'Add new app' : `Hβnβ entertainment app icon ${appId}`;
 
         appElement.innerHTML = `
