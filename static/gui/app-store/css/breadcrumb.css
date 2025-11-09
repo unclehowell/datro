@@ -58,12 +58,16 @@ ul.breadcrumb li a {
   padding-right: 33.33333px;
   width: 50px;
   border: 1px solid grey;
-  font-size:3.8vw;
+  --breadcrumb-link-size: 3.8vw;
+  font-size: 3.8vw;
+  font-size: var(--breadcrumb-link-size, 3.8vw);
   word-spacing:0.4vw;
 }
 @media screen and (min-width: 900px) {
 ul.breadcrumb li a {
+     --breadcrumb-link-size: 2vw;
      font-size: 2vw;
+     font-size: var(--breadcrumb-link-size, 2vw);
   }
 }
 
@@ -94,12 +98,17 @@ ul.breadcrumb li a .text {
   opacity: 0;
 }
 
-ul.breadcrumb li a:hover {
+ul.breadcrumb li a:hover,
+ul.breadcrumb li a:focus,
+ul.breadcrumb li a:active {
   background-color: inherit;
   color: inherit!important;
   padding-left: 52px;
   padding-right: 33.33333px;
   border-color: grey;
+  font-size: 3.8vw;
+  font-size: var(--breadcrumb-link-size, 3.8vw);
+  line-height: 50px;
 }
 ul.breadcrumb li a:hover .text {
   display: none;
@@ -113,10 +122,15 @@ ul.breadcrumb li:last-child a {
 }
 ul.breadcrumb li:last-child:hover,
 ul.breadcrumb li:last-child:hover a {
-  min-width: inherit;
   max-width: inherit;
   margin: 0;
-  padding-left: 52px;
-  padding-right: 33.33333px;
   color: inherit;
+  line-height: 50px;
+  float: right;
+  padding: 0 1.2px;
+  background-color: rgb(44, 12, 33);
+  border-radius: 50px;
+  margin-left: -25px;
+  margin-top: 1px;
+  opacity: 0.9;
 }
