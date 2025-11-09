@@ -7,7 +7,7 @@
 }  */
 
 body {
-  padding: 0 10px;
+  padding: 0;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 14px;
 }
@@ -30,17 +30,13 @@ ul.breadcrumb {
 }
 ul.breadcrumb li {
   float: right;
-  padding: 0px 2.5px 0px 2.5px;
+  padding: 0 2.5px;
   background-color:rgb(44,12,33);
   -moz-border-radius: 50px;
   -webkit-border-radius: 50px;
   border-radius: 50px;
   position:;
   margin-left: -50px;
-  -moz-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
   margin-top: 3px;
   opacity:0.9;
 }
@@ -50,10 +46,6 @@ ul.breadcrumb li a {
   -moz-border-radius: 50px;
   -webkit-border-radius: 50px;
   border-radius: 50px;
-  -moz-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
   text-decoration: none;
   height: 50px;
   color: white;
@@ -102,14 +94,15 @@ ul.breadcrumb li a .text {
 }
 
 ul.breadcrumb li a:hover {
-    background-color:#303030;
-    color: white!important;
-    padding-left: 52px!Important;
+  background-color: inherit;
+  color: inherit!important;
+  padding-left: 52px;
+  padding-right: 33.33333px;
+  border-color: grey;
 }
 ul.breadcrumb li a:hover .text {
-  display: inline-block;
-  opacity: 1;
-  color:white;
+  display: none;
+  opacity: 0;
 }
 
 ul.breadcrumb li:last-child a {
@@ -117,20 +110,12 @@ ul.breadcrumb li:last-child a {
   opacity:1;
   background:rgba(0,0,0,0.55);
 }
-ul.breadcrumb li:last-child:hover {
-    min-width: 48px;
-    max-width: 52px;
-}
+ul.breadcrumb li:last-child:hover,
 ul.breadcrumb li:last-child:hover a {
-  margin:auto;
-   overflow: hidden;
-  -moz-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
-  text-decoration: none;
-  color: #2c2c2c;
-  display: block;
-  padding-left: 6px;
-  padding-right: -1px;
+  min-width: inherit;
+  max-width: inherit;
+  margin: 0;
+  padding-left: 52px;
+  padding-right: 33.33333px;
+  color: inherit;
 }

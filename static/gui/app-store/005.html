@@ -4,16 +4,11 @@
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <title>App Store</title>
-        <link href="css/002e.css" rel="stylesheet">
         <link href="css/breadcrumb.css" rel="stylesheet">
         <link href="css/appstore.css" rel="stylesheet">
-        <link href="apps/000-000/style.css" rel="stylesheet">
-        <link href="apps/005-001/style.css" rel="stylesheet">
-        <link href="apps/005-002/style.css" rel="stylesheet">
-        <link href="apps/999-999/style.css" rel="stylesheet">
-        <link href="css/appstore-common.css" rel="stylesheet">
+        <link href="css/font-awesome.css" rel="stylesheet">
 </head>
-<body style="overflow: inherit !important; height: inherit !important; display: visible;" onload="document.body.classList.add('loaded');">
+<body class="app-store-page" style="overflow: inherit !important; height: inherit !important; display: visible;" onload="document.body.classList.add('loaded');">
         <div class="container">
                 <div class="box">
                         <div class="box-row">
@@ -36,72 +31,44 @@
                         </div>
                 </div>
         </div>
-        <div id="apps-container" class="apps-container"></div>
+        <main class="app-store-grid">
+                <a class="app-card-link" href="apps/005-001/fetch.html">
+                        <article class="app-card" data-app-id="005-001">
+                                <div class="app-card__icon-wrapper">
+                                        <img class="app-card__icon" src="apps/005-001/logo.png" alt="Safety and security app icon 005-001">
+                                </div>
+                                <div class="app-card__toggle">
+                                        <input class="app-checkbox" id="005-001" type="checkbox">
+                                        <label class="app-label install" for="005-001"><span class="thumb"></span></label>
+                                </div>
+                        </article>
+                </a>
 
-                <script>
-function toggleAppInstallation(appId) {
-    if (appId === '999-999') return;
-    const appInstalled = localStorage.getItem(appId) === 'added';
-    localStorage.setItem(appId, appInstalled ? '' : 'added' );
-}
+                <a class="app-card-link" href="apps/005-002/fetch.html">
+                        <article class="app-card" data-app-id="005-002">
+                                <div class="app-card__icon-wrapper">
+                                        <img class="app-card__icon" src="apps/005-002/logo.png" alt="Safety and security app icon 005-002">
+                                </div>
+                                <div class="app-card__toggle">
+                                        <input class="app-checkbox" id="005-002" type="checkbox">
+                                        <label class="app-label install" for="005-002"><span class="thumb"></span></label>
+                                </div>
+                        </article>
+                </a>
 
-function getAppLink(appId) {
-    switch (appId) {
-        case '005-001':
-            return '#'; // Placeholder link
-        case '005-002':
-            return '#'; // Placeholder link
-        case '999-999':
-            return '../app-store/005.html'; // Link to its own app-store page
-        default:
-            return '#';
-    }
-}
+                <a class="app-card-link app-card-link--inactive" href="#" aria-disabled="true">
+                        <article class="app-card app-card--disabled" data-app-id="999-999">
+                                <div class="app-card__icon-wrapper">
+                                        <img class="app-card__icon" src="apps/999-999/logo.png" alt="Add new app">
+                                </div>
+                                <div class="app-card__toggle">
+                                        <input class="app-checkbox" id="999-999" type="checkbox" checked>
+                                        <label class="app-label install" for="999-999"><span class="thumb"></span></label>
+                                </div>
+                        </article>
+                </a>
+        </main>
 
-function handleDragStart(event) {
-    event.dataTransfer.setData('text/plain', event.target.id);
-}
-
-function updateHomeScreen() {
-    const appsContainer = document.getElementById('apps-container');
-    appsContainer.innerHTML = ''; // Clear existing apps
-
-    const appIds = ['005-001', '005-002', '999-999']; // Using class-based IDs
-    appIds.forEach(appId => {
-        const appInstalled = localStorage.getItem(appId) === 'added';
-        const appElement = document.createElement('a');
-        appElement.href = getAppLink(appId); // Set the hyperlink
-        appElement.style.cursor = 'pointer';
-        appElement.innerHTML = `
-            <div class="square-${appId}">
-                <div class="content-${appId}">
-                    <div class="table-${appId}">
-                        <div class="table-cell-${appId}">
-                            <img class="app-icon-image" src="apps/${appId}/logo.png">
-                            <div class="toggle">
-                                <input class="app-checkbox" id="${appId}" type="checkbox" ${appInstalled ? 'checked' : ''}>
-                                <label class="app-label install" for="${appId}"><span class="thumb"></span></label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-        appElement.addEventListener('dragstart', handleDragStart);
-        appsContainer.appendChild(appElement);
-    });
-
-    // Re-attach click listeners to newly created checkboxes
-    const checkboxes = document.querySelectorAll('.app-checkbox');
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('click', function() {
-            toggleAppInstallation(this.id);
-        });
-    });
-}
-
-document.addEventListener("DOMContentLoaded", updateHomeScreen);
-window.addEventListener('storage', updateHomeScreen); // Listen for changes in localStorage
-</script>
+        <script src="js/app-toggle.js"></script>
 </body>
 </html>
