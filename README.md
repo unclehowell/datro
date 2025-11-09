@@ -17,6 +17,7 @@ This particular branch is entitled: 'gh-pages' *(short for 'GitHub Pages')*
 
 ### Detailed Structure
 
+
 The table below shows the content of this branch includes all the websites, the Hβnβ Dashboard(gui), the technical documents and some media e.g. academy videos etc  
 
 | Path                      | Details                                                                             |  
