@@ -41,10 +41,34 @@
         <div id="apps-container" class="apps-container app-store-grid"></div>
 
         <script>
-function toggleAppInstallation(appId) {
-    if (appId === '999-999') return;
-    const appInstalled = localStorage.getItem(appId) === 'added';
-    localStorage.setItem(appId, appInstalled ? '' : 'added' );
+const ADD_ICON_ID = '999-999';
+const SHOULD_LOCK_ADD_ICON = window.location.pathname.includes('/app-store/006');
+
+function isAddIconEnabled() {
+    const storedValue = localStorage.getItem(ADD_ICON_ID);
+    return SHOULD_LOCK_ADD_ICON || storedValue !== 'removed';
+}
+
+function toggleAppInstallation(appId, checkbox) {
+    if (appId === ADD_ICON_ID) {
+        if (SHOULD_LOCK_ADD_ICON) {
+            checkbox.checked = true;
+            return;
+        }
+
+        if (checkbox.checked) {
+            localStorage.setItem(appId, 'added');
+        } else {
+            localStorage.setItem(appId, 'removed');
+        }
+        return;
+    }
+
+    if (checkbox.checked) {
+        localStorage.setItem(appId, 'added');
+    } else {
+        localStorage.removeItem(appId);
+    }
     // Removed updateHomeScreen() call here, as window.addEventListener('storage') will handle it
 }
 
@@ -75,26 +99,31 @@ function updateHomeScreen() {
 
     const appIds = ['002-001', '002-002', '999-999']; // Using class-based IDs
     appIds.forEach(appId => {
-        const appInstalled = localStorage.getItem(appId) === 'added';
         const appElement = document.createElement('a');
-        const isPlaceholder = appId === '999-999';
+        const isPlaceholder = appId === ADD_ICON_ID;
+        const storedValue = localStorage.getItem(appId);
+        const isInstalled = storedValue === 'added';
+        const placeholderEnabled = isPlaceholder ? isAddIconEnabled() : false;
         appElement.href = getAppLink(appId); // Set the hyperlink
-        appElement.className = `app-card-link${isPlaceholder ? ' app-card-link--inactive' : ''}`;
-        appElement.dataset.appId = appId;
-        appElement.draggable = true;
-        appElement.style.cursor = isPlaceholder ? 'default' : 'pointer';
-        if (isPlaceholder) {
+        const linkClasses = ['app-card-link'];
+        if (isPlaceholder && SHOULD_LOCK_ADD_ICON) {
+            linkClasses.push('app-card-link--inactive');
             appElement.setAttribute('aria-disabled', 'true');
         }
+        appElement.className = linkClasses.join(' ');
+        appElement.dataset.appId = appId;
+        appElement.draggable = true;
+        appElement.style.cursor = isPlaceholder && SHOULD_LOCK_ADD_ICON ? 'default' : 'pointer';
 
         const toggleAttributes = [];
-        if (appInstalled || isPlaceholder) {
+        const isChecked = isPlaceholder ? placeholderEnabled : isInstalled;
+        if (isChecked) {
             toggleAttributes.push('checked');
         }
-        if (isPlaceholder) {
+        if (isPlaceholder && SHOULD_LOCK_ADD_ICON) {
             toggleAttributes.push('disabled');
         }
-        const cardClasses = `app-card${isPlaceholder ? ' app-card--disabled' : ''}`;
+        const cardClasses = `app-card${isPlaceholder && SHOULD_LOCK_ADD_ICON ? ' app-card--disabled' : ''}`;
         const altText = isPlaceholder ? 'Add new app' : `Hβnβ entertainment app icon ${appId}`;
 
         appElement.innerHTML = `
@@ -116,7 +145,7 @@ function updateHomeScreen() {
     const checkboxes = document.querySelectorAll('.app-checkbox');
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('click', function() {
-            toggleAppInstallation(this.id);
+            toggleAppInstallation(this.id, this);
         });
     });
 }

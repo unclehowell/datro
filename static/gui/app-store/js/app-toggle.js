@@ -1,4 +1,31 @@
 (function () {
+  function shouldLockAddAppIcon() {
+    const path = window.location.pathname || '';
+    return path.includes('/app-store/006');
+  }
+
+  function setAddIconCardState(card, checkbox, isLocked) {
+    const cardLink = card.closest('.app-card-link');
+
+    if (isLocked) {
+      checkbox.checked = true;
+      checkbox.setAttribute('disabled', 'disabled');
+      card.classList.add('app-card--disabled');
+      if (cardLink) {
+        cardLink.classList.add('app-card-link--inactive');
+        cardLink.setAttribute('aria-disabled', 'true');
+      }
+      return;
+    }
+
+    checkbox.removeAttribute('disabled');
+    card.classList.remove('app-card--disabled');
+    if (cardLink) {
+      cardLink.classList.remove('app-card-link--inactive');
+      cardLink.removeAttribute('aria-disabled');
+    }
+  }
+
   function syncCheckboxState(card) {
     const appId = card.dataset.appId;
     const checkbox = card.querySelector('.app-checkbox');
@@ -7,19 +34,35 @@
     }
 
     const storedValue = localStorage.getItem(appId);
-    const isInstalled = storedValue === 'added' || (appId === '999-999' && storedValue !== 'removed');
-
-    checkbox.checked = appId === '999-999' ? true : isInstalled;
 
     if (appId === '999-999') {
-      checkbox.setAttribute('disabled', 'disabled');
-      card.classList.add('app-card--disabled');
+      const isLocked = shouldLockAddAppIcon();
+      setAddIconCardState(card, checkbox, isLocked);
+      if (!isLocked) {
+        const isEnabled = storedValue !== 'removed';
+        checkbox.checked = isEnabled;
+      }
+      return;
     }
+
+    const isInstalled = storedValue === 'added';
+    checkbox.checked = isInstalled;
   }
 
-  function toggleAppInstallation(appId, checkbox) {
+  function toggleAppInstallation(appId, checkbox, card) {
     if (appId === '999-999') {
-      checkbox.checked = true;
+      const isLocked = shouldLockAddAppIcon();
+      if (isLocked) {
+        checkbox.checked = true;
+        setAddIconCardState(card, checkbox, true);
+        return;
+      }
+
+      if (checkbox.checked) {
+        localStorage.setItem(appId, 'added');
+      } else {
+        localStorage.setItem(appId, 'removed');
+      }
       return;
     }
 
@@ -43,7 +86,7 @@
       syncCheckboxState(card);
 
       checkbox.addEventListener('change', function () {
-        toggleAppInstallation(appId, checkbox);
+        toggleAppInstallation(appId, checkbox, card);
       });
     });
   });
