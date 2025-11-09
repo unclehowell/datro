@@ -14,7 +14,7 @@
         <link href="apps/999-999/style.css" rel="stylesheet">
         <link href="css/appstore-common.css" rel="stylesheet">
 </head>
-<body style="overflow: inherit !important; height: inherit !important; display: visible;" onload="document.body.classList.add('loaded');">
+<body class="app-store-page" style="overflow: inherit !important; height: inherit !important; display: visible;" onload="document.body.classList.add('loaded');">
         <div class="container">
                 <div class="box">
                         <div class="box-row">
@@ -38,7 +38,7 @@
                 </div>
         </div>
 
-        <div id="apps-container" class="apps-container"></div>
+        <div id="apps-container" class="apps-container app-store-grid"></div>
 
         <script>
 function toggleAppInstallation(appId) {
@@ -62,7 +62,11 @@ function getAppLink(appId) {
 }
 
 function handleDragStart(event) {
-    event.dataTransfer.setData('text/plain', event.target.id);
+    const source = event.currentTarget;
+    const appId = source.dataset.appId || source.id || '';
+    if (appId) {
+        event.dataTransfer.setData('text/plain', appId);
+    }
 }
 
 function updateHomeScreen() {
@@ -73,22 +77,36 @@ function updateHomeScreen() {
     appIds.forEach(appId => {
         const appInstalled = localStorage.getItem(appId) === 'added';
         const appElement = document.createElement('a');
+        const isPlaceholder = appId === '999-999';
         appElement.href = getAppLink(appId); // Set the hyperlink
-        appElement.style.cursor = 'pointer';
+        appElement.className = `app-card-link${isPlaceholder ? ' app-card-link--inactive' : ''}`;
+        appElement.dataset.appId = appId;
+        appElement.draggable = true;
+        appElement.style.cursor = isPlaceholder ? 'default' : 'pointer';
+        if (isPlaceholder) {
+            appElement.setAttribute('aria-disabled', 'true');
+        }
+
+        const toggleAttributes = [];
+        if (appInstalled || isPlaceholder) {
+            toggleAttributes.push('checked');
+        }
+        if (isPlaceholder) {
+            toggleAttributes.push('disabled');
+        }
+        const cardClasses = `app-card${isPlaceholder ? ' app-card--disabled' : ''}`;
+        const altText = isPlaceholder ? 'Add new app' : `Hβnβ entertainment app icon ${appId}`;
+
         appElement.innerHTML = `
-            <div class="square-${appId}">
-                <div class="content-${appId}">
-                    <div class="table-${appId}">
-                        <div class="table-cell-${appId}">
-                            <img class="app-icon-image" src="apps/${appId}/logo.png">
-                            <div class="toggle">
-                                <input class="app-checkbox" id="${appId}" type="checkbox" ${appInstalled ? 'checked' : ''}>
-                                <label class="app-label install" for="${appId}"><span class="thumb"></span></label>
-                            </div>
-                        </div>
-                    </div>
+            <article class="${cardClasses}" data-app-id="${appId}">
+                <div class="app-card__icon-wrapper">
+                    <img class="app-card__icon" src="apps/${appId}/logo.png" alt="${altText}">
                 </div>
-            </div>
+                <div class="app-card__toggle">
+                    <input class="app-checkbox" id="${appId}" type="checkbox" ${toggleAttributes.join(' ')}>
+                    <label class="app-label install" for="${appId}"><span class="thumb"></span></label>
+                </div>
+            </article>
         `;
         appElement.addEventListener('dragstart', handleDragStart);
         appsContainer.appendChild(appElement);
