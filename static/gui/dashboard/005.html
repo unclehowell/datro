@@ -148,6 +148,17 @@ body:not(.loaded) #slider img {
 <script src="media/js/main.js"></script>
 
 <script>
+const ADD_APP_ID = '999-999';
+
+function shouldDisplayAddApp() {
+    if (document.body.dataset.lockAddApp === 'true') {
+        return true;
+    }
+
+    const addAppState = localStorage.getItem(ADD_APP_ID);
+    return addAppState !== 'removed';
+}
+
 function updateHomeScreen() {
     const appsContainer = document.getElementById('apps-container');
     appsContainer.innerHTML = ''; // Clear existing apps
@@ -163,7 +174,9 @@ function updateHomeScreen() {
     });
 
     // Add the 'Add+' icon last
-    appsToDisplay.push('999-999');
+    if (shouldDisplayAddApp()) {
+        appsToDisplay.push(ADD_APP_ID);
+    }
 
     appsToDisplay.forEach(appId => {
         const appElement = document.createElement('a');
@@ -198,7 +211,7 @@ function getAppLink(appId) {
             return '#'; // Placeholder link
         case '005-002':
             return '#'; // Placeholder link
-        case '999-999':
+        case ADD_APP_ID:
             return '../app-store/005.html'; // Link to its own app-store page
         default:
             return '#'; // Fallback for any unhandled appIds

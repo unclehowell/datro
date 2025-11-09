@@ -163,20 +163,33 @@
         }
     </style>
 </head>
-<body style="overflow: inherit !important; height: inherit !important; display: visible;" onload="document.body.classList.add('loaded'); updateHomeScreen();">
+<body style="overflow: inherit !important; height: inherit !important; display: visible;" onload="document.body.classList.add('loaded'); updateHomeScreen();" data-lock-add-app="true">
 <div id="apps-container" class="apps-container">
 </div>
 
 
 <script>
 
+const ADD_APP_ID = '999-999';
+
+function shouldDisplayAddApp() {
+    if (document.body.dataset.lockAddApp === 'true') {
+        return true;
+    }
+
+    const addAppState = localStorage.getItem(ADD_APP_ID);
+    return addAppState !== 'removed';
+}
+
 function updateHomeScreen() {
     const appsContainer = document.getElementById('apps-container');
     appsContainer.innerHTML = ''; // Clear existing apps
-    const appIds = ['006-001', '006-002', '999-999']; // Using class-based IDs
+    const appIds = ['006-001', '006-002', ADD_APP_ID]; // Using class-based IDs
     appIds.forEach(appId => {
+        const isAddApp = appId === ADD_APP_ID;
         const appInstalled = localStorage.getItem(appId) === 'added';
-        if (appInstalled || appId === '999-999') {
+
+        if ((!isAddApp && appInstalled) || (isAddApp && shouldDisplayAddApp())) {
             const appElement = document.createElement('a');
             appElement.href = getAppLink(appId); // Set the hyperlink
             appElement.style.cursor = 'pointer';
@@ -226,7 +239,7 @@ function getAppLink(appId) {
             return '../app-store/apps/006-001/fetch.html';
         case '006-002':
             return '../app-store/apps/006-001/fetch.html';
-        case '999-999':
+        case ADD_APP_ID:
             return '../app-store/006.html';
     }
 }
@@ -262,13 +275,13 @@ function handleDrop(event) {
 }
 
 function updateAppStore() {
-    const appIds = ['006-001', '006-002', '999-999'];
+    const appIds = ['006-001', '006-002', ADD_APP_ID];
     appIds.forEach(appId => {
         const installState = localStorage.getItem(appId);
         const installAppCheckbox = document.getElementById(appId);
         if (installAppCheckbox) {
             // Assuming installAppCheckbox is an AppCheckbox element
-            installAppCheckbox.checked = installState === 'added';
+            installAppCheckbox.checked = appId === ADD_APP_ID ? installState !== 'removed' : installState === 'added';
             // You may need to set other properties based on your AppCheckbox implementation
         }
     });

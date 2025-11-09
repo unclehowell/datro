@@ -165,13 +165,26 @@
 
 <script>
 
+const ADD_APP_ID = '999-999';
+
+function shouldDisplayAddApp() {
+    if (document.body.dataset.lockAddApp === 'true') {
+        return true;
+    }
+
+    const addAppState = localStorage.getItem(ADD_APP_ID);
+    return addAppState !== 'removed';
+}
+
 function updateHomeScreen() {
     const appsContainer = document.getElementById('apps-container');
     appsContainer.innerHTML = ''; // Clear existing apps
-    const appIds = ['004-001', '004-002', '004-003', '004-004', '999-999']; // Using class-based IDs
+    const appIds = ['004-001', '004-002', '004-003', '004-004', ADD_APP_ID]; // Using class-based IDs
     appIds.forEach(appId => {
+        const isAddApp = appId === ADD_APP_ID;
         const appInstalled = localStorage.getItem(appId) === 'added';
-        if (appInstalled || appId === '999-999') {
+
+        if ((!isAddApp && appInstalled) || (isAddApp && shouldDisplayAddApp())) {
             const appElement = document.createElement('a');
             appElement.href = getAppLink(appId); // Set the hyperlink
             appElement.style.cursor = 'pointer';
@@ -225,7 +238,7 @@ function getAppLink(appId) {
             return '../app-store/apps/004-003/fetch.html';
         case '004-004':
             return '../app-store/apps/004-004/fetch.html';
-        case '999-999':
+        case ADD_APP_ID:
             return '../app-store/004.html';
     }
 }
@@ -261,13 +274,13 @@ function handleDrop(event) {
 }
 
 function updateAppStore() {
-    const appIds = ['004-001', '004-002', '004-003', '004-004', '999-999'];
+    const appIds = ['004-001', '004-002', '004-003', '004-004', ADD_APP_ID];
     appIds.forEach(appId => {
         const installState = localStorage.getItem(appId);
         const installAppCheckbox = document.getElementById(appId);
         if (installAppCheckbox) {
             // Assuming installAppCheckbox is an AppCheckbox element
-            installAppCheckbox.checked = installState === 'added';
+            installAppCheckbox.checked = appId === ADD_APP_ID ? installState !== 'removed' : installState === 'added';
             // You may need to set other properties based on your AppCheckbox implementation
         }
     });
