@@ -35,6 +35,17 @@
            overflow-x: hidden;
         }
 
+        body::before {
+           content: "";
+           position: fixed;
+           top: 0;
+           right: 0;
+           bottom: 0;
+           left: 0;
+           background: rgb(44,12,33)!important;
+           z-index: -1;
+        }
+
 	body::-webkit-scrollbar {
 	   width: 30px;
 	   height: 30px;
