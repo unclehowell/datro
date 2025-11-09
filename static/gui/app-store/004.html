@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <title>App Store</title>
-        <link href="css/002e.css" rel="stylesheet">
         <link href="css/breadcrumb.css" rel="stylesheet">
         <link href="css/appstore.css" rel="stylesheet">
         <link href="apps/000-000/style.css" rel="stylesheet">
@@ -13,9 +12,8 @@
         <link href="apps/004-003/style.css" rel="stylesheet">
         <link href="apps/004-004/style.css" rel="stylesheet">
         <link href="apps/999-999/style.css" rel="stylesheet">
-        <link href="css/appstore-common.css" rel="stylesheet">
 </head>
-<body style="overflow: inherit !important; height: inherit !important; display: visible;" onload="document.body.classList.add('loaded'); updateHomeScreen();">
+<body class="app-store-page" style="overflow: inherit !important; height: inherit !important; display: visible;" onload="document.body.classList.add('loaded');">
         <div class="container">
                 <div class="box">
                         <div class="box-row">
@@ -39,111 +37,68 @@
                 </div>
         </div>
 
-        <a href="#" style="cursor:pointer;">
-        <div class="square-004-001">
-                <div class="content-004-001">
-                        <div class="table-004-001">
-                                <div class="table-cell-004-001">
-                                        <img class="rs-004-001" src="apps/004-001/logo.png">
-                                                <div class="toggle">
-                                                        <input class="app-checkbox" id="004-001" type="checkbox"> <label class="app-label install" for="004-001"><span class="thumb"></span></label>
-                                                </div>
+        <main class="app-store-grid">
+                <a class="app-card-link" href="apps/004-001/fetch.html">
+                        <article class="app-card" data-app-id="004-001">
+                                <div class="app-card__icon-wrapper">
+                                        <img class="app-card__icon" src="apps/004-001/logo.png" alt="Smart home app icon 004-001">
                                 </div>
-                        </div>
-                </div>
-        </div></a>
-
-        <a href="#" style="cursor:pointer;">
-        <div class="square-004-002">
-                <div class="content-004-002">
-                        <div class="table-004-002">
-                                <div class="table-cell-004-002">
-                                        <img class="rs-004-002" src="apps/004-002/logo.png">
-                                                <div class="toggle">
-                                                        <input class="app-checkbox" id="004-002" type="checkbox"> <label class="app-label install" for="004-002"><span class="thumb"></span></label>
-                                                </div>
+                                <div class="app-card__toggle">
+                                        <input class="app-checkbox" id="004-001" type="checkbox">
+                                        <label class="app-label install" for="004-001"><span class="thumb"></span></label>
                                 </div>
-                        </div>
-                </div>
-        </div></a>
+                        </article>
+                </a>
 
-        <a href="#" style="cursor:pointer;">
-        <div class="square-004-003">
-                <div class="content-004-003">
-                        <div class="table-004-003">
-                                <div class="table-cell-004-003">
-                                        <img class="rs-004-003" src="apps/004-003/logo.png">
-                                                <div class="toggle">
-                                                        <input class="app-checkbox" id="004-003" type="checkbox"> <label class="app-label install" for="004-003"><span class="thumb"></span></label>
-                                                </div>
+                <a class="app-card-link" href="apps/004-002/fetch.html">
+                        <article class="app-card" data-app-id="004-002">
+                                <div class="app-card__icon-wrapper">
+                                        <img class="app-card__icon" src="apps/004-002/logo.png" alt="Smart home app icon 004-002">
                                 </div>
-                        </div>
-                </div>
-        </div></a>
-
-        <a href="#" style="cursor:pointer;">
-        <div class="square-004-004">
-                <div class="content-004-004">
-                        <div class="table-004-004">
-                                <div class="table-cell-004-004">
-                                        <img class="rs-004-004" src="apps/004-004/logo.svg">
-                                                <div class="toggle">
-                                                        <input class="app-checkbox" id="004-004" type="checkbox"> <label class="app-label install" for="004-004"><span class="thumb"></span></label>
-                                                </div>
+                                <div class="app-card__toggle">
+                                        <input class="app-checkbox" id="004-002" type="checkbox">
+                                        <label class="app-label install" for="004-002"><span class="thumb"></span></label>
                                 </div>
-                        </div>
-                </div>
-        </div></a>
+                        </article>
+                </a>
 
-        <a href="#" style="cursor:pointer;">
-        <div class="square-999-999">
-                <div class="content-999-999">
-                        <div class="table-999-999">
-                                <div class="table-cell-999-999">
-                                        <img class="rs-999-999" src="apps/999-999/logo.png">
-                                                <div class="toggle">
-                                                        <input class="app-checkbox" id="999-999" type="checkbox" checked> <label class="app-label install" for="999-999"><span class="thumb"></span></label>
-                                                </div>
+                <a class="app-card-link" href="apps/004-003/fetch.html">
+                        <article class="app-card" data-app-id="004-003">
+                                <div class="app-card__icon-wrapper">
+                                        <img class="app-card__icon" src="apps/004-003/logo.png" alt="Smart home app icon 004-003">
                                 </div>
-                        </div>
-                </div>
-        </div></a>
+                                <div class="app-card__toggle">
+                                        <input class="app-checkbox" id="004-003" type="checkbox">
+                                        <label class="app-label install" for="004-003"><span class="thumb"></span></label>
+                                </div>
+                        </article>
+                </a>
 
-                <script>
+                <a class="app-card-link" href="apps/004-004/fetch.html">
+                        <article class="app-card" data-app-id="004-004">
+                                <div class="app-card__icon-wrapper">
+                                        <img class="app-card__icon" src="apps/004-004/logo.png" alt="Smart home app icon 004-004">
+                                </div>
+                                <div class="app-card__toggle">
+                                        <input class="app-checkbox" id="004-004" type="checkbox">
+                                        <label class="app-label install" for="004-004"><span class="thumb"></span></label>
+                                </div>
+                        </article>
+                </a>
 
-document.addEventListener("DOMContentLoaded", function() {
-function toggleAppInstallation(appId) {
-    if (appId === '999-999') return;
-    const appInstalled = isAppInstalled(appId);
-    localStorage.setItem(appId, appInstalled ? '' : 'added' );
-    updateHomeScreen();
-}
+                <a class="app-card-link app-card-link--inactive" href="#" aria-disabled="true">
+                        <article class="app-card app-card--disabled" data-app-id="999-999">
+                                <div class="app-card__icon-wrapper">
+                                        <img class="app-card__icon" src="apps/999-999/logo.png" alt="Add new app">
+                                </div>
+                                <div class="app-card__toggle">
+                                        <input class="app-checkbox" id="999-999" type="checkbox" checked>
+                                        <label class="app-label install" for="999-999"><span class="thumb"></span></label>
+                                </div>
+                        </article>
+                </a>
+        </main>
 
-    function isAppInstalled(appId) {
-        return localStorage.getItem(appId) === 'added';
-    }
-
-function updateHomeScreen() {
-    const appIds = ['004-001', '004-002', '004-003', '004-004', '999-999']; // Using class-based IDs
-    appIds.forEach(appId => {
-        const checkbox = document.getElementById(appId);
-        if (checkbox) {
-            const appInstalled = localStorage.getItem(appId) === 'added';
-            checkbox.checked = appInstalled;
-        }
-    });
-}
-
-    const checkboxes = document.querySelectorAll('.app-checkbox');
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('click', function() {
-            toggleAppInstallation(this.id);
-        });
-    });
-
-    updateHomeScreen();
-});
-
-        </script>
+        <script src="js/app-toggle.js"></script>
 </body>
 </html>
