@@ -86,19 +86,21 @@
         }
 
         .forminput {
-            border: 1px solid transparent!important;
-            margin-top: -4.5vh;
+            border: 1px solid transparent !important;
+            margin-top: -1.25em;
             background: transparent;
             opacity: 0.6;
             max-width: 17rem;
             text-align: center;
-            padding: 5px;
+            padding: 0.75em;
             position: fixed;
             margin-left: -7.5rem;
-            color: dimgrey;
-            font-weight: 800!important;
+            font-weight: 800 !important;
             letter-spacing: 0.2em;
             font-size: 1.7rem;
+            height: 0;
+            margin-bottom: 100%;
+            width: 100%;
         }
 
         .logo {
@@ -154,14 +156,9 @@ a:link, a, a:hover {color: rgba(255,255,255,0.8); font-size: 1.6rem;}
 .breadcrumb {opacity:0.4;}
 
 ul.breadcrumb li a:hover {
-    padding-left: 0px!important;
-    border: 2px solid rgba(255,255,255,0.51);
-    margin-top: 0px;
-    background: black;
-    box-shadow: none!important;
-    margin-left: -2px!important;
-    max-height: 48px;
-    max-width: 49px;
+    background: inherit;
+    border-color: inherit;
+    color: inherit;
 }
 
 .square {
