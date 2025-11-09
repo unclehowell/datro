@@ -129,6 +129,14 @@ Main Components
   transform: translateY(80px);
 }
 
+
+.cd-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
 .logo {
   background:transparent!important;
   opacity:1;
@@ -1270,8 +1278,8 @@ a{
   opacity: 1;
   overflow-x: hidden!important;
   overflow-y: visible;
-  min-height: 100vh;
-  min-width: 100.20vw;
+  min-height: 105vh;
+  min-width: 103vw;
 }
 
 .demo-all-divs {
