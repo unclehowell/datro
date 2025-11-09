@@ -1,7 +1,13 @@
 
 (function () {
+  const ADD_APP_ID = '999-999';
+
+  function isAddApp(card) {
+    return Boolean(card && card.dataset.appId === ADD_APP_ID);
+  }
+
   function isAddAppLocked(card) {
-    if (!card || card.dataset.appId !== '999-999') {
+    if (!isAddApp(card)) {
       return false;
     }
 
@@ -12,6 +18,53 @@
     return document.body && document.body.dataset.lockAddApp === 'true';
   }
 
+  function ensureAddCardClickHandling(card) {
+    const wrapperLink = card.closest('.app-card-link');
+    if (!wrapperLink || wrapperLink.dataset.toggleHandlerBound) {
+      return;
+    }
+
+    wrapperLink.addEventListener('click', function (event) {
+      if (event.target.closest('.app-card__toggle')) {
+        event.preventDefault();
+      }
+    });
+    wrapperLink.dataset.toggleHandlerBound = 'true';
+  }
+
+  function setLinkInteractivity(card, shouldDisable) {
+    const wrapperLink = card.closest('.app-card-link');
+    if (!wrapperLink) {
+      return;
+    }
+
+    if (shouldDisable) {
+      wrapperLink.classList.add('app-card-link--inactive');
+      wrapperLink.setAttribute('aria-disabled', 'true');
+    } else {
+      wrapperLink.classList.remove('app-card-link--inactive');
+      wrapperLink.removeAttribute('aria-disabled');
+    }
+  }
+
+  function applyAddCardState(card, checkbox, isLocked, storedValue) {
+    if (isLocked) {
+      checkbox.checked = true;
+      checkbox.setAttribute('disabled', 'disabled');
+      card.classList.add('app-card--disabled');
+      setLinkInteractivity(card, true);
+      return;
+    }
+
+    checkbox.removeAttribute('disabled');
+    card.classList.remove('app-card--disabled');
+    setLinkInteractivity(card, false);
+    ensureAddCardClickHandling(card);
+
+    const isRemoved = storedValue === 'removed';
+    checkbox.checked = !isRemoved;
+  }
+
   function syncCheckboxState(card) {
     const appId = card.dataset.appId;
     const checkbox = card.querySelector('.app-checkbox');
@@ -19,60 +72,34 @@
       return;
     }
 
-    let storedValue = localStorage.getItem(appId);
-
-    if (appId === '999-999') {
+    if (isAddApp(card)) {
+      let storedValue = localStorage.getItem(ADD_APP_ID);
       if (storedValue === null) {
-        localStorage.setItem(appId, 'added');
+        localStorage.setItem(ADD_APP_ID, 'added');
         storedValue = 'added';
       }
 
-      if (isAddAppLocked(card)) {
-        checkbox.checked = true;
-        checkbox.setAttribute('disabled', 'disabled');
-        card.classList.add('app-card--disabled');
-        return;
-      }
-
-      checkbox.removeAttribute('disabled');
-      card.classList.remove('app-card--disabled');
-
-      const wrapperLink = card.closest('.app-card-link');
-      if (wrapperLink) {
-        wrapperLink.classList.remove('app-card-link--inactive');
-        wrapperLink.removeAttribute('aria-disabled');
-
-        if (!wrapperLink.dataset.toggleHandlerBound) {
-          wrapperLink.addEventListener('click', function (event) {
-            if (event.target.closest('.app-card__toggle')) {
-              event.preventDefault();
-            }
-          });
-          wrapperLink.dataset.toggleHandlerBound = 'true';
-        }
-      }
-
-      checkbox.checked = storedValue !== 'removed';
+      const locked = isAddAppLocked(card);
+      applyAddCardState(card, checkbox, locked, storedValue);
       return;
     }
 
-    const isInstalled = storedValue === 'added';
-    checkbox.checked = isInstalled;
+    checkbox.checked = localStorage.getItem(appId) === 'added';
   }
 
-  function toggleAppInstallation(appId, checkbox) {
-    if (appId === '999-999') {
-      const card = checkbox.closest('.app-card');
+  function toggleAppInstallation(card, checkbox) {
+    const appId = card.dataset.appId;
+    if (!appId) {
+      return;
+    }
+
+    if (isAddApp(card)) {
       if (isAddAppLocked(card)) {
         checkbox.checked = true;
         return;
       }
 
-      if (checkbox.checked) {
-        localStorage.setItem(appId, 'added');
-      } else {
-        localStorage.setItem(appId, 'removed');
-      }
+      localStorage.setItem(ADD_APP_ID, checkbox.checked ? 'added' : 'removed');
       return;
     }
 
@@ -87,7 +114,6 @@
     const cards = document.querySelectorAll('.app-card[data-app-id]');
 
     cards.forEach(function (card) {
-      const appId = card.dataset.appId;
       const checkbox = card.querySelector('.app-checkbox');
       if (!checkbox) {
         return;
@@ -96,7 +122,7 @@
       syncCheckboxState(card);
 
       checkbox.addEventListener('change', function () {
-        toggleAppInstallation(appId, checkbox);
+        toggleAppInstallation(card, checkbox);
       });
     });
   });

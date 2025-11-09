@@ -264,7 +264,7 @@ function handleDrop(event) {
             
             // Reload only the apps-container to update the remaining app icons
             const appsContainer = document.getElementById('apps-container');
-    psContainer.innerHTML = ''; // Clear existing apps
+            appsContainer.innerHTML = ''; // Clear existing apps
             updateHomeScreen(); // Repopulate the apps-container with updated app icons
         } else {
             // Do something (like displaying a message) to indicate that dropping this app is not allowed
