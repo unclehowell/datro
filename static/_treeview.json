@@ -7,7 +7,7 @@
     }
   },
   {
-   "name": "<div class='title-line enable-link'><div class='icon i-hbnb'></div>Hotspotβnβ</div>",
+    "name": "<div class='title-line enable-link'><div class='icon i-hbnb'></div>Hotspotβnβ</div>",
     "path": "./gui/index.html",
     "_links": {
       "html": "./gui/index.html"
@@ -20,11 +20,18 @@
       "html": "./datro/index.html"
     }
   },
- {
+  {
+    "name": "<div class='title-line enable-link'><div class='icon f-datro'></div>Politics</div>",
+    "path": "./datro/politics.html",
+    "_links": {
+      "html": "./datro/politics.html"
+    }
+  },
+  {
     "name": "<div class='page-scroll-fix'></div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
-   }
+  }
 ]
