@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js is-responsive is-mobile-first" lang="en">
 <head>
+        <!-- Minor no-op update to enable follow-up deployment -->
 	<meta charset="utf-8">
 	<link href="//datro.xyz/static/datro/index.html" rel="canonical">
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport"><!-- GitHub Pages -->
@@ -60,9 +61,204 @@ body{color:#202020}
 	               .add-to-cart-btn { width:120px; max-height:30px; min-height:25px; min-width:80px;  padding-top:3px; font-weight:lighter;}
 	              }
 
-	              .btn, a.btn {display:inline-block; background:#333366!important; color:#fff; font-size:1rem; min-height:2rem;  text-align:center; border-radius:4px; padding:1px;  border:1px solid white!important; min-width:90px;   max-width:120px; width:30vw; margin:1px; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
+                     .btn, a.btn {display:inline-block; background:#333366!important; color:#fff; font-size:1rem; min-height:2rem;  text-align:center; border-radius:4px; padding:1px;  border:1px solid white!important; min-width:90px;   max-width:120px; width:30vw; margin:1px; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
 
 .glyphinbutton {}
+        #mainWrapper + .release-timeline-bar {
+                margin-top: 82px;
+        }
+        .release-timeline-bar {
+                background: rgba(20, 20, 50, 0.88);
+                color: #fff;
+                padding: 16px;
+                position: relative;
+                z-index: 9;
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+        }
+        .release-timeline-inner {
+                display: flex;
+                align-items: center;
+                gap: 18px;
+                flex-wrap: nowrap;
+        }
+        .release-tier-controls {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                flex-shrink: 0;
+        }
+        .release-tier-button {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background: transparent;
+                border: 1px solid rgba(255, 255, 255, 0.4);
+                border-radius: 4px;
+                color: #fff;
+                padding: 6px 14px;
+                font-size: 0.85rem;
+                cursor: pointer;
+                transition: background 0.2s ease, color 0.2s ease;
+        }
+        .release-tier-button:hover,
+        .release-tier-button:focus {
+                background: rgba(255, 255, 255, 0.18);
+                color: #fff;
+                outline: none;
+        }
+        .release-tier-select {
+                background: rgba(14, 14, 35, 0.85);
+                border: 1px solid rgba(255, 255, 255, 0.35);
+                border-radius: 4px;
+                color: #fff;
+                padding: 6px 32px 6px 12px;
+                font-size: 0.85rem;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                min-width: 120px;
+                cursor: pointer;
+        }
+        .release-tier-select:focus {
+                outline: none;
+                box-shadow: 0 0 0 2px rgba(102, 204, 255, 0.45);
+        }
+        .release-slider-scroll {
+                overflow-x: auto;
+                scrollbar-width: thin;
+                padding: 8px 0 12px;
+                flex: 1 1 auto;
+                min-width: 0;
+        }
+        .release-slider-scroll::-webkit-scrollbar {
+                height: 6px;
+        }
+        .release-slider-scroll::-webkit-scrollbar-track {
+                background: rgba(255, 255, 255, 0.1);
+        }
+        .release-slider-scroll::-webkit-scrollbar-thumb {
+                background: rgba(255, 255, 255, 0.35);
+                border-radius: 10px;
+        }
+        .release-slider-track {
+                min-width: max(680px, calc(var(--stage-count, 1) * 140px));
+                padding: 0 12px;
+        }
+        .release-stage-slider {
+                width: 100%;
+                appearance: none;
+                background: linear-gradient(90deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15));
+                height: 6px;
+                border-radius: 999px;
+                outline: none;
+                position: relative;
+        }
+        .release-stage-slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                height: 18px;
+                width: 18px;
+                border-radius: 50%;
+                border: 2px solid #ffffff;
+                background: #66CCFF;
+                cursor: pointer;
+                margin-top: -6px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+                transition: transform 0.2s ease;
+        }
+        .release-stage-slider::-moz-range-thumb {
+                height: 18px;
+                width: 18px;
+                border-radius: 50%;
+                border: 2px solid #ffffff;
+                background: #66CCFF;
+                cursor: pointer;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+                transition: transform 0.2s ease;
+        }
+        .release-stage-slider::-webkit-slider-thumb:hover,
+        .release-stage-slider::-moz-range-thumb:hover {
+                transform: scale(1.05);
+        }
+        .release-slider-labels {
+                display: flex;
+                justify-content: space-between;
+                gap: 0;
+                margin-top: 12px;
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                letter-spacing: 0.03em;
+                color: rgba(255, 255, 255, 0.75);
+        }
+        .release-slider-label {
+                flex: 1 1 0;
+                text-align: center;
+                min-width: 120px;
+                cursor: pointer;
+                position: relative;
+                white-space: normal;
+                background: none;
+                border: none;
+                color: inherit;
+                padding: 34px 4px 0;
+                font: inherit;
+                display: inline-flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+        }
+        .release-slider-label::before {
+                content: '';
+                position: absolute;
+                top: -14px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 2px;
+                height: 10px;
+                background: rgba(255, 255, 255, 0.5);
+        }
+        .release-slider-label:focus {
+                outline: none;
+                color: #ffffff;
+        }
+        .release-slider-label.is-active {
+                color: #66CCFF;
+                font-weight: 600;
+        }
+        .release-slider-label.is-active::before {
+                background: #66CCFF;
+                height: 14px;
+        }
+        .release-padlock {
+                font-size: 1.4rem;
+                line-height: 1;
+                display: block;
+                transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .release-slider-label:hover .release-padlock,
+        .release-slider-label:focus .release-padlock {
+                transform: scale(1.05);
+        }
+        .release-slider-label.is-unlocked .release-padlock {
+                color: #66CCFF;
+        }
+        .release-stage-text {
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+        }
+        .release-popup-content {
+                display: none;
+                max-width: 520px;
+        }
+        .release-popup-content h2 {
+                font-size: 1.4rem;
+                margin-bottom: 0.75rem;
+                color: #333366;
+        }
+        .release-popup-content p {
+                margin-bottom: 0.5rem;
+                line-height: 1.5;
+        }
 	                  @media (max-width: 600px) and (min-width: 345px) and (orientation: portrait) {
 	                  .video-iframe {min-height:45vw; min-width: 78vw; max-height: 48vw!important; max-width: 80vw!Important;}
 	                  }
@@ -117,8 +313,81 @@ body{color:#202020}
 				</ul>
 			</div>
 		</nav>
-	</header>
-	<main style="background-color: #333366;">
+</header>
+        <section aria-label="Release timeline" class="release-timeline-bar">
+                <div class="release-timeline-inner">
+                        <div class="release-tier-controls" id="release-tier-controls">
+                                <button aria-label="Go back to primary options" class="release-tier-button" id="release-menu-back" type="button" hidden>Back</button>
+                                <select aria-label="Select an option" class="release-tier-select" id="release-tier-primary">
+                                        <option selected value="">Select option</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                </select>
+                                <select aria-label="Select a follow-on option" class="release-tier-select" id="release-tier-secondary" hidden></select>
+                        </div>
+                        <div aria-label="Release timeline slider" class="release-slider-scroll">
+                                <div class="release-slider-track" id="release-slider-track" style="--stage-count: 10;">
+                                        <input aria-describedby="release-slider-labels" aria-label="Release timeline" class="release-stage-slider" id="release-stage-slider" list="release-stage-list" max="9" min="0" step="1" type="range" value="0">
+                                        <datalist id="release-stage-list">
+                                                <option value="0" label="Free"></option>
+                                                <option value="1" label="Q1-2024"></option>
+                                                <option value="2" label="Q2-2024"></option>
+                                                <option value="3" label="Q3-2024"></option>
+                                                <option value="4" label="Q4-2024"></option>
+                                                <option value="5" label="Q1-2025"></option>
+                                                <option value="6" label="Q2-2025"></option>
+                                                <option value="7" label="Q3-2025"></option>
+                                                <option value="8" label="Q4-2025"></option>
+                                                <option value="9" label="Restricted"></option>
+                                        </datalist>
+                                        <div class="release-slider-labels" id="release-slider-labels">
+                                                <button type="button" class="release-slider-label is-active" data-index="0" data-target="#release-popup-free">
+                                                        <span aria-hidden="true" class="release-padlock">🔒</span>
+                                                        <span class="release-stage-text">Free</span>
+                                                </button>
+                                                <button type="button" class="release-slider-label" data-index="1" data-target="#release-popup-q1-2024">
+                                                        <span aria-hidden="true" class="release-padlock">🔒</span>
+                                                        <span class="release-stage-text">Q1-2024 Release</span>
+                                                </button>
+                                                <button type="button" class="release-slider-label" data-index="2" data-target="#release-popup-q2-2024">
+                                                        <span aria-hidden="true" class="release-padlock">🔒</span>
+                                                        <span class="release-stage-text">Q2-2024 Release</span>
+                                                </button>
+                                                <button type="button" class="release-slider-label" data-index="3" data-target="#release-popup-q3-2024">
+                                                        <span aria-hidden="true" class="release-padlock">🔒</span>
+                                                        <span class="release-stage-text">Q3-2024 Release</span>
+                                                </button>
+                                                <button type="button" class="release-slider-label" data-index="4" data-target="#release-popup-q4-2024">
+                                                        <span aria-hidden="true" class="release-padlock">🔒</span>
+                                                        <span class="release-stage-text">Q4-2024 Release</span>
+                                                </button>
+                                                <button type="button" class="release-slider-label" data-index="5" data-target="#release-popup-q1-2025">
+                                                        <span aria-hidden="true" class="release-padlock">🔒</span>
+                                                        <span class="release-stage-text">Q1-2025 Release</span>
+                                                </button>
+                                                <button type="button" class="release-slider-label" data-index="6" data-target="#release-popup-q2-2025">
+                                                        <span aria-hidden="true" class="release-padlock">🔒</span>
+                                                        <span class="release-stage-text">Q2-2025 Release</span>
+                                                </button>
+                                                <button type="button" class="release-slider-label" data-index="7" data-target="#release-popup-q3-2025">
+                                                        <span aria-hidden="true" class="release-padlock">🔒</span>
+                                                        <span class="release-stage-text">Q3-2025 Release</span>
+                                                </button>
+                                                <button type="button" class="release-slider-label" data-index="8" data-target="#release-popup-q4-2025">
+                                                        <span aria-hidden="true" class="release-padlock">🔒</span>
+                                                        <span class="release-stage-text">Q4-2025 Release</span>
+                                                </button>
+                                                <button type="button" class="release-slider-label" data-index="9" data-target="#release-popup-restricted">
+                                                        <span aria-hidden="true" class="release-padlock">🔒</span>
+                                                        <span class="release-stage-text">Restricted Access Preview</span>
+                                                </button>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </section>
+        <main style="background-color: #333366;">
 		<div class="carousel" data-ride="carousel" id="myCarousel">
 			<div class="carousel-inner" style="overflow:visible!important;">
 				<div class="carousel-item active">
@@ -406,7 +675,49 @@ Crown Copyright <script>new Date().getFullYear()>2017&&document.write("© "+new 
                                 </div>
                         </div>
                 </footer>
-	</div>
+        </div>
+        <div aria-hidden="true">
+                <div class="release-popup-content" id="release-popup-free">
+                        <h2>library.datro.xyz</h2>
+                        <p><a href="https://library.datro.xyz" rel="noopener" target="_blank">Visit library.datro.xyz</a></p>
+                </div>
+                <div class="release-popup-content" id="release-popup-q1-2024">
+                        <h2>library.datro.xyz</h2>
+                        <p><a href="https://library.datro.xyz" rel="noopener" target="_blank">Visit library.datro.xyz</a></p>
+                </div>
+                <div class="release-popup-content" id="release-popup-q2-2024">
+                        <h2>library.datro.xyz</h2>
+                        <p><a href="https://library.datro.xyz" rel="noopener" target="_blank">Visit library.datro.xyz</a></p>
+                </div>
+                <div class="release-popup-content" id="release-popup-q3-2024">
+                        <h2>library.datro.xyz</h2>
+                        <p><a href="https://library.datro.xyz" rel="noopener" target="_blank">Visit library.datro.xyz</a></p>
+                </div>
+                <div class="release-popup-content" id="release-popup-q4-2024">
+                        <h2>library.datro.xyz</h2>
+                        <p><a href="https://library.datro.xyz" rel="noopener" target="_blank">Visit library.datro.xyz</a></p>
+                </div>
+                <div class="release-popup-content" id="release-popup-q1-2025">
+                        <h2>library.datro.xyz</h2>
+                        <p><a href="https://library.datro.xyz" rel="noopener" target="_blank">Visit library.datro.xyz</a></p>
+                </div>
+                <div class="release-popup-content" id="release-popup-q2-2025">
+                        <h2>library.datro.xyz</h2>
+                        <p><a href="https://library.datro.xyz" rel="noopener" target="_blank">Visit library.datro.xyz</a></p>
+                </div>
+                <div class="release-popup-content" id="release-popup-q3-2025">
+                        <h2>library.datro.xyz</h2>
+                        <p><a href="https://library.datro.xyz" rel="noopener" target="_blank">Visit library.datro.xyz</a></p>
+                </div>
+                <div class="release-popup-content" id="release-popup-q4-2025">
+                        <h2>library.datro.xyz</h2>
+                        <p><a href="https://library.datro.xyz" rel="noopener" target="_blank">Visit library.datro.xyz</a></p>
+                </div>
+                <div class="release-popup-content" id="release-popup-restricted">
+                        <h2>library.datro.xyz</h2>
+                        <p><a href="https://library.datro.xyz" rel="noopener" target="_blank">Visit library.datro.xyz</a></p>
+                </div>
+        </div>
 
 <script defer src="js/bootstrap.min.js"></script>
 
@@ -420,17 +731,332 @@ Crown Copyright <script>new Date().getFullYear()>2017&&document.write("© "+new 
 
 <script defer src="js/footer-accordion.js"></script>
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener('DOMContentLoaded', function () {
+                var controls = document.getElementById('release-tier-controls');
+                var primarySelect = document.getElementById('release-tier-primary');
+                var secondarySelect = document.getElementById('release-tier-secondary');
+                var backButton = document.getElementById('release-menu-back');
+
+                if (controls && primarySelect && secondarySelect && backButton) {
+                        var secondaryOptionMap = {
+                                '1': [
+                                        { value: '1a', label: 'Community Overview' },
+                                        { value: '1b', label: 'Roadmap Highlights' },
+                                        { value: '1c', label: 'Support Channels' }
+                                ],
+                                '2': [
+                                        { value: '2a', label: 'Deployment Guides' },
+                                        { value: '2b', label: 'Pilot Programmes' },
+                                        { value: '2c', label: 'Integration Steps' }
+                                ],
+                                '3': [
+                                        { value: '3a', label: 'Partner Resources' },
+                                        { value: '3b', label: 'Training Tracks' },
+                                        { value: '3c', label: 'Market Access' }
+                                ]
+                        };
+
+                        function resetMenus() {
+                                controls.classList.remove('is-secondary', 'selection-made');
+                                backButton.hidden = true;
+                                primarySelect.hidden = false;
+                                primarySelect.value = '';
+                                secondarySelect.hidden = true;
+                                secondarySelect.innerHTML = '';
+                        }
+
+                        function buildSecondaryMenu(key) {
+                                var options = secondaryOptionMap[key];
+                                if (!options) {
+                                        resetMenus();
+                                        return;
+                                }
+
+                                secondarySelect.innerHTML = '';
+
+                                var placeholder = document.createElement('option');
+                                placeholder.value = '';
+                                placeholder.textContent = 'Select detail';
+                                placeholder.disabled = true;
+                                placeholder.selected = true;
+                                secondarySelect.appendChild(placeholder);
+
+                                options.forEach(function (entry) {
+                                        var option = document.createElement('option');
+                                        option.value = entry.value;
+                                        option.textContent = entry.label;
+                                        secondarySelect.appendChild(option);
+                                });
+
+                                controls.classList.add('is-secondary');
+                                primarySelect.hidden = true;
+                                secondarySelect.hidden = false;
+                                backButton.hidden = false;
+                                secondarySelect.focus();
+                        }
+
+                        primarySelect.addEventListener('change', function (event) {
+                                var value = event.target.value;
+                                if (value) {
+                                        buildSecondaryMenu(value);
+                                } else {
+                                        resetMenus();
+                                }
+                        });
+
+                        backButton.addEventListener('click', function () {
+                                resetMenus();
+                                primarySelect.focus();
+                        });
+
+                        secondarySelect.addEventListener('change', function () {
+                                if (secondarySelect.value) {
+                                        controls.classList.add('selection-made');
+                                }
+                        });
+                }
+
+                var sliderTrack = document.getElementById('release-slider-track');
+                var slider = document.getElementById('release-stage-slider');
+                var sliderLabels = document.getElementById('release-slider-labels');
+
+                var releaseStages = [
+                        { label: 'Free', target: '#release-popup-free' },
+                        { label: 'Q1-2024 Release', target: '#release-popup-q1-2024' },
+                        { label: 'Q2-2024 Release', target: '#release-popup-q2-2024' },
+                        { label: 'Q3-2024 Release', target: '#release-popup-q3-2024' },
+                        { label: 'Q4-2024 Release', target: '#release-popup-q4-2024' },
+                        { label: 'Q1-2025 Release', target: '#release-popup-q1-2025' },
+                        { label: 'Q2-2025 Release', target: '#release-popup-q2-2025' },
+                        { label: 'Q3-2025 Release', target: '#release-popup-q3-2025' },
+                        { label: 'Q4-2025 Release', target: '#release-popup-q4-2025' },
+                        { label: 'Restricted Access Preview', target: '#release-popup-restricted' }
+                ];
+
+                if (!(sliderTrack && slider && sliderLabels && releaseStages.length)) {
+                        return;
+                }
+
+                var labelButtons = Array.prototype.slice.call(sliderLabels.querySelectorAll('.release-slider-label'));
+
+                if (labelButtons.length !== releaseStages.length) {
+                        return;
+                }
+
+                sliderTrack.style.setProperty('--stage-count', releaseStages.length);
+                slider.setAttribute('max', releaseStages.length - 1);
+                slider.setAttribute('min', 0);
+                slider.setAttribute('step', 1);
+
+                function setPadlockState(button, isUnlocked) {
+                        if (!button) {
+                                return;
+                        }
+
+                        if (isUnlocked) {
+                                button.classList.add('is-unlocked');
+                        } else {
+                                button.classList.remove('is-unlocked');
+                        }
+
+                        var icon = button.querySelector('.release-padlock');
+                        if (icon) {
+                                icon.textContent = isUnlocked ? '🔓' : '🔒';
+                        }
+                }
+
+                function markStageUnlocked(index) {
+                        var button = labelButtons[index];
+                        if (!button) {
+                                return;
+                        }
+
+                        setPadlockState(button, true);
+                }
+
+                labelButtons.forEach(function (button) {
+                        setPadlockState(button, false);
+                });
+
+                function updateSliderFill(index) {
+                        var maxIndex = releaseStages.length > 1 ? releaseStages.length - 1 : 1;
+                        var percentage = maxIndex ? (index / maxIndex) * 100 : 0;
+                        var safePercent = Math.min(Math.max(percentage, 0), 100);
+                        slider.style.background = 'linear-gradient(90deg, #66CCFF 0%, #66CCFF ' + safePercent + '%, rgba(255, 255, 255, 0.15) ' + safePercent + '%, rgba(255, 255, 255, 0.15) 100%)';
+                }
+
+                function setActiveStage(index) {
+                        labelButtons.forEach(function (button, buttonIndex) {
+                                if (buttonIndex === index) {
+                                        button.classList.add('is-active');
+                                } else {
+                                        button.classList.remove('is-active');
+                                }
+                        });
+
+                        if (slider) {
+                                var stage = releaseStages[index];
+                                if (stage && stage.label) {
+                                        slider.setAttribute('aria-valuetext', stage.label);
+                                }
+                        }
+                }
+
+                function openStagePopup(index) {
+                        var stage = releaseStages[index];
+                        if (!stage || !stage.target) {
+                                return;
+                        }
+
+                        markStageUnlocked(index);
+
+                        if (window.jQuery && typeof $.featherlight === 'function') {
+                                $.featherlight($(stage.target), { persist: true });
+                        }
+                }
+
+                slider.addEventListener('input', function (event) {
+                        var index = Number(event.target.value);
+                        if (isNaN(index)) {
+                                index = 0;
+                        }
+                        index = Math.max(0, Math.min(index, releaseStages.length - 1));
+                        setActiveStage(index);
+                        updateSliderFill(index);
+                });
+
+                slider.addEventListener('change', function (event) {
+                        var index = Number(event.target.value);
+                        if (isNaN(index)) {
+                                index = 0;
+                        }
+                        index = Math.max(0, Math.min(index, releaseStages.length - 1));
+                        setActiveStage(index);
+                        updateSliderFill(index);
+                        openStagePopup(index);
+                });
+
+                labelButtons.forEach(function (button, index) {
+                        if (!button.getAttribute('data-index')) {
+                                button.setAttribute('data-index', index);
+                        }
+                        button.addEventListener('click', function () {
+                                slider.value = index;
+                                setActiveStage(index);
+                                updateSliderFill(index);
+                                openStagePopup(index);
+                                slider.focus();
+                        });
+
+                        button.addEventListener('keydown', function (event) {
+                                if (event.key !== 'Enter' && event.key !== ' ') {
+                                        return;
+                                }
+
+                                event.preventDefault();
+                                slider.value = index;
+                                setActiveStage(index);
+                                updateSliderFill(index);
+                                openStagePopup(index);
+                        });
+                });
+
+                var initialIndex = Number(slider.value);
+                if (isNaN(initialIndex)) {
+                        initialIndex = 0;
+                }
+                initialIndex = Math.max(0, Math.min(initialIndex, releaseStages.length - 1));
+                setActiveStage(initialIndex);
+                updateSliderFill(initialIndex);
+        });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
     var libraryLinks = document.querySelectorAll('a[href*="library"]');
-    var hostname = window.location.hostname;
+    if (!libraryLinks.length) {
+      return;
+    }
+
+    var remoteLibraryRoot = "https://library.datro.xyz";
+    var localLibraryRoot = "../library";
+    var hostname = window.location.hostname || "";
+    var protocol = window.location.protocol;
+    var offlineHosts = ["localhost", "127.0.0.1", "0.0.0.0", "::1", ""];
+    var isOffline = protocol === "file:" || offlineHosts.indexOf(hostname) > -1;
+    var parser = document.createElement("a");
+
+    function extractLibrarySuffix(href) {
+      if (!href) {
+        return null;
+      }
+
+      var lowerHref = href.toLowerCase();
+      var remoteIndex = lowerHref.indexOf(remoteLibraryRoot);
+      if (remoteIndex === 0) {
+        var remoteSuffix = href.substring(remoteLibraryRoot.length);
+        return remoteSuffix || "/";
+      }
+
+      parser.href = href;
+      var path = parser.pathname || "";
+      var lowerPath = path.toLowerCase();
+      var libraryPos = lowerPath.indexOf("/library");
+      var suffixPart;
+
+      if (libraryPos > -1) {
+        suffixPart = path.substring(libraryPos + "/library".length);
+        if (!suffixPart) {
+          suffixPart = "/";
+        }
+      } else {
+        var host = (parser.hostname || "").toLowerCase();
+        if (host.indexOf("library.datro.xyz") > -1) {
+          suffixPart = path || "/";
+        } else {
+          return null;
+        }
+      }
+
+      return suffixPart + (parser.search || "") + (parser.hash || "");
+    }
+
+    function normalizeSuffix(suffix) {
+      if (!suffix) {
+        return "/";
+      }
+
+      if (suffix.charAt(0) === "/") {
+        return "/" + suffix.replace(/^\/+/, "");
+      }
+
+      if (suffix.charAt(0) === "?" || suffix.charAt(0) === "#") {
+        return "/" + suffix;
+      }
+
+      return "/" + suffix.replace(/^\/+/, "");
+    }
+
+    function convertHref(href, useRemote) {
+      var suffix = extractLibrarySuffix(href);
+      if (suffix === null) {
+        return null;
+      }
+
+      var normalized = normalizeSuffix(suffix);
+      var base = useRemote ? remoteLibraryRoot : localLibraryRoot;
+      return base.replace(/\/+$/, "") + normalized;
+    }
 
     for (var i = 0; i < libraryLinks.length; i++) {
       var link = libraryLinks[i];
-      if (hostname === 'datro.xyz') {
-        var oldHref = link.getAttribute('href');
-        var newHref = oldHref.replace('../library/', 'https://library.datro.xyz/');
-        newHref = newHref.replace('/library/', 'https://library.datro.xyz/');
-        link.setAttribute('href', newHref);
+      var originalHref = link.getAttribute("href");
+      if (!originalHref) {
+        continue;
+      }
+
+      var targetHref = convertHref(originalHref, !isOffline);
+      if (targetHref) {
+        link.setAttribute("href", targetHref);
       }
     }
   });

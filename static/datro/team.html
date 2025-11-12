@@ -699,17 +699,92 @@ document.getElementById('systemjs-config').addEventListener('load', function() {
 
 <script defer src="js/footer-accordion.js"></script>
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function () {
     var libraryLinks = document.querySelectorAll('a[href*="library"]');
-    var hostname = window.location.hostname;
+    if (!libraryLinks.length) {
+      return;
+    }
+
+    var remoteLibraryRoot = "https://library.datro.xyz";
+    var localLibraryRoot = "../library";
+    var hostname = window.location.hostname || "";
+    var protocol = window.location.protocol;
+    var offlineHosts = ["localhost", "127.0.0.1", "0.0.0.0", "::1", ""];
+    var isOffline = protocol === "file:" || offlineHosts.indexOf(hostname) > -1;
+    var parser = document.createElement("a");
+
+    function extractLibrarySuffix(href) {
+      if (!href) {
+        return null;
+      }
+
+      var lowerHref = href.toLowerCase();
+      var remoteIndex = lowerHref.indexOf(remoteLibraryRoot);
+      if (remoteIndex === 0) {
+        var remoteSuffix = href.substring(remoteLibraryRoot.length);
+        return remoteSuffix || "/";
+      }
+
+      parser.href = href;
+      var path = parser.pathname || "";
+      var lowerPath = path.toLowerCase();
+      var libraryPos = lowerPath.indexOf("/library");
+      var suffixPart;
+
+      if (libraryPos > -1) {
+        suffixPart = path.substring(libraryPos + "/library".length);
+        if (!suffixPart) {
+          suffixPart = "/";
+        }
+      } else {
+        var host = (parser.hostname || "").toLowerCase();
+        if (host.indexOf("library.datro.xyz") > -1) {
+          suffixPart = path || "/";
+        } else {
+          return null;
+        }
+      }
+
+      return suffixPart + (parser.search || "") + (parser.hash || "");
+    }
+
+    function normalizeSuffix(suffix) {
+      if (!suffix) {
+        return "/";
+      }
+
+      if (suffix.charAt(0) === "/") {
+        return "/" + suffix.replace(/^\/+/, "");
+      }
+
+      if (suffix.charAt(0) === "?" || suffix.charAt(0) === "#") {
+        return "/" + suffix;
+      }
+
+      return "/" + suffix.replace(/^\/+/, "");
+    }
+
+    function convertHref(href, useRemote) {
+      var suffix = extractLibrarySuffix(href);
+      if (suffix === null) {
+        return null;
+      }
+
+      var normalized = normalizeSuffix(suffix);
+      var base = useRemote ? remoteLibraryRoot : localLibraryRoot;
+      return base.replace(/\/+$/, "") + normalized;
+    }
 
     for (var i = 0; i < libraryLinks.length; i++) {
       var link = libraryLinks[i];
-      if (hostname === 'datro.xyz') {
-        var oldHref = link.getAttribute('href');
-        var newHref = oldHref.replace('../library/', 'https://library.datro.xyz/');
-        newHref = newHref.replace('/library/', 'https://library.datro.xyz/');
-        link.setAttribute('href', newHref);
+      var originalHref = link.getAttribute("href");
+      if (!originalHref) {
+        continue;
+      }
+
+      var targetHref = convertHref(originalHref, !isOffline);
+      if (targetHref) {
+        link.setAttribute("href", targetHref);
       }
     }
   });
