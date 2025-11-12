@@ -120,7 +120,7 @@ jobs:
 
       - name: Deploy library (Preview) and comment URL
         if: github.event_name == 'pull_request' && steps.changes.outputs.library == 'true'
-        uses: andykenward/github-actions-cloudflare-pages@v3
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
         id: deploy_library
         with:
           cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -128,7 +128,7 @@ jobs:
           cloudflare-project-name: library
           directory: static/library
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          github-environment: library (Preview)
+          github-environment: library(preview)
 
       - name: Build hbnb
         if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
@@ -141,7 +141,7 @@ jobs:
 
       - name: Deploy hbnb (Preview) and comment URL
         if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
-        uses: andykenward/github-actions-cloudflare-pages@v3
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
         id: deploy_hbnb
         with:
           cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -149,7 +149,7 @@ jobs:
           cloudflare-project-name: hbnb
           directory: static/hbnb
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          github-environment: hbnb (Preview)
+          github-environment: hbnb(preview)
 
       - name: Build forces (ceo)
         if: github.event_name == 'pull_request' && steps.changes.outputs.forces == 'true'
@@ -162,7 +162,7 @@ jobs:
 
       - name: Deploy forces/ceo (Preview) and comment URL
         if: github.event_name == 'pull_request' && steps.changes.outputs.forces == 'true'
-        uses: andykenward/github-actions-cloudflare-pages@v3
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
         id: deploy_forces
         with:
           cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -170,7 +170,7 @@ jobs:
           cloudflare-project-name: ceo
           directory: static/forces
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          github-environment: ceo (Preview)
+          github-environment: ceo(preview)
 
       - name: Build gui
         if: github.event_name == 'pull_request' && steps.changes.outputs.gui == 'true'
@@ -183,7 +183,7 @@ jobs:
 
       - name: Deploy gui (Preview) and comment URL
         if: github.event_name == 'pull_request' && steps.changes.outputs.gui == 'true'
-        uses: andykenward/github-actions-cloudflare-pages@v3
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
         id: deploy_gui
         with:
           cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -191,7 +191,7 @@ jobs:
           cloudflare-project-name: gui
           directory: static/gui
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          github-environment: gui (Preview)
+          github-environment: gui(preview)
 
       - name: Build datro-homepage
         if: github.event_name == 'pull_request' && steps.changes.outputs.datro == 'true'
@@ -204,7 +204,7 @@ jobs:
 
       - name: Deploy datro-homepage (Preview) and comment URL
         if: github.event_name == 'pull_request' && steps.changes.outputs.datro == 'true'
-        uses: andykenward/github-actions-cloudflare-pages@v3
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
         id: deploy_datro
         with:
           cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -212,7 +212,7 @@ jobs:
           cloudflare-project-name: datro-homepage
           directory: static/datro
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          github-environment: datro (Preview)
+          github-environment: datro(preview)
 
       - name: Build projections
         if: github.event_name == 'pull_request' && steps.changes.outputs.projections == 'true'
@@ -225,7 +225,7 @@ jobs:
 
       - name: Deploy projections (Preview) and comment URL
         if: github.event_name == 'pull_request' && steps.changes.outputs.projections == 'true'
-        uses: andykenward/github-actions-cloudflare-pages@v3
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
         id: deploy_projections
         with:
           cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -233,7 +233,7 @@ jobs:
           cloudflare-project-name: projections
           directory: static/projections
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          github-environment: projections (Preview)
+          github-environment: projections(preview)
 
       - name: Build bpvsbuckler
         if: github.event_name == 'pull_request' && steps.changes.outputs.bpvsbuckler == 'true'
@@ -246,7 +246,7 @@ jobs:
 
       - name: Deploy bpvsbuckler (Preview) and comment URL
         if: github.event_name == 'pull_request' && steps.changes.outputs.bpvsbuckler == 'true'
-        uses: andykenward/github-actions-cloudflare-pages@v3
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
         id: deploy_bpvsbuckler
         with:
           cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -254,7 +254,7 @@ jobs:
           cloudflare-project-name: bpvsbuckler
           directory: static/bpvsbuckler
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          github-environment: bpvsbuckler (Preview)
+          github-environment: bpvsbuckler(preview)
 
       - name: Done
         run: echo "Conditional deploy workflow finished."
