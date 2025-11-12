@@ -1,0 +1,236 @@
+name: Cloudflare conditional deploy
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - main
+
+jobs:
+  detect-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine changed files
+        id: changes
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          echo "Determining changed files..."
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE_SHA="${{ github.event.pull_request.base.sha }}"
+            git fetch origin "${{ github.event.pull_request.base.ref }}" --depth=1 || true
+            DIFF=$(git diff --name-only "$BASE_SHA"...HEAD) || true
+          else
+            BEFORE="${{ github.event.before }}"
+            AFTER="${{ github.sha }}"
+            if [[ "$BEFORE" =~ ^0+$ ]]; then
+              DIFF=$(git ls-files) || true
+            else
+              DIFF=$(git diff --name-only "$BEFORE" "$AFTER") || true
+            fi
+          fi
+
+          echo "Changed files:"
+          echo "$DIFF"
+
+          # default outputs (false)
+          echo "library=false" >> "$GITHUB_OUTPUT"
+          echo "hbnb=false" >> "$GITHUB_OUTPUT"
+          echo "forces=false" >> "$GITHUB_OUTPUT"
+          echo "gui=false" >> "$GITHUB_OUTPUT"
+          echo "datro=false" >> "$GITHUB_OUTPUT"
+          echo "projections=false" >> "$GITHUB_OUTPUT"
+          echo "bpvsbuckler=false" >> "$GITHUB_OUTPUT"
+
+          # detect changes in each app directory
+          if echo "$DIFF" | grep -qE '^static/library/'; then
+            echo "library=true" >> "$GITHUB_OUTPUT"
+          fi
+          if echo "$DIFF" | grep -qE '^static/hbnb/'; then
+            echo "hbnb=true" >> "$GITHUB_OUTPUT"
+          fi
+          if echo "$DIFF" | grep -qE '^static/forces/'; then
+            echo "forces=true" >> "$GITHUB_OUTPUT"
+          fi
+          if echo "$DIFF" | grep -qE '^static/gui/'; then
+            echo "gui=true" >> "$GITHUB_OUTPUT"
+          fi
+          if echo "$DIFF" | grep -qE '^static/datro/'; then
+            echo "datro=true" >> "$GITHUB_OUTPUT"
+          fi
+          if echo "$DIFF" | grep -qE '^static/projections/'; then
+            echo "projections=true" >> "$GITHUB_OUTPUT"
+          fi
+          if echo "$DIFF" | grep -qE '^static/bpvsbuckler/'; then
+            echo "bpvsbuckler=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Debug outputs
+        run: |
+          echo "library: ${{ steps.changes.outputs.library }}"
+          echo "hbnb:   ${{ steps.changes.outputs.hbnb }}"
+          echo "forces: ${{ steps.changes.outputs.forces }}"
+          echo "gui:    ${{ steps.changes.outputs.gui }}"
+          echo "datro:  ${{ steps.changes.outputs.datro }}"
+          echo "projections: ${{ steps.changes.outputs.projections }}"
+          echo "bpvsbuckler: ${{ steps.changes.outputs.bpvsbuckler }}"
+
+      - name: Setup Node (for builds)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      # Build + Deploy per-app (run only if the corresponding output is true)
+      # Replace projectName values below with the exact Cloudflare Pages project names
+      # as configured in your Cloudflare dashboard for each site.
+
+      - name: Build library site
+        if: steps.changes.outputs.library == 'true'
+        run: |
+          echo "Building library site..."
+          if [ -f static/library/package.json ]; then
+            pushd static/library
+            npm ci
+            npm run build --if-present
+            popd
+          fi
+
+      - name: Deploy library (Cloudflare Pages)
+        if: steps.changes.outputs.library == 'true'
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: "library" # <-- REPLACE with your Pages project name for library.datro.xyz
+          directory: "static/library"
+
+      - name: Build hbnb site
+        if: steps.changes.outputs.hbnb == 'true'
+        run: |
+          echo "Building hbnb site..."
+          if [ -f static/hbnb/package.json ]; then
+            pushd static/hbnb
+            npm ci
+            npm run build --if-present
+            popd
+          fi
+
+      - name: Deploy hbnb (Cloudflare Pages)
+        if: steps.changes.outputs.hbnb == 'true'
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: "hbnb" # <-- REPLACE
+          directory: "static/hbnb"
+
+      - name: Build forces (ceo) site
+        if: steps.changes.outputs.forces == 'true'
+        run: |
+          echo "Building forces (ceo) site..."
+          if [ -f static/forces/package.json ]; then
+            pushd static/forces
+            npm ci
+            npm run build --if-present
+            popd
+          fi
+
+      - name: Deploy forces (Cloudflare Pages)
+        if: steps.changes.outputs.forces == 'true'
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: "ceo" # <-- REPLACE
+          directory: "static/forces"
+
+      - name: Build gui site
+        if: steps.changes.outputs.gui == 'true'
+        run: |
+          echo "Building gui site..."
+          if [ -f static/gui/package.json ]; then
+            pushd static/gui
+            npm ci
+            npm run build --if-present
+            popd
+          fi
+
+      - name: Deploy gui (Cloudflare Pages)
+        if: steps.changes.outputs.gui == 'true'
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: "gui" # <-- REPLACE
+          directory: "static/gui"
+
+      - name: Build datro site
+        if: steps.changes.outputs.datro == 'true'
+        run: |
+          echo "Building datro site..."
+          if [ -f static/datro/package.json ]; then
+            pushd static/datro
+            npm ci
+            npm run build --if-present
+            popd
+          fi
+
+      - name: Deploy datro (Cloudflare Pages)
+        if: steps.changes.outputs.datro == 'true'
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: "datro-homepage" # <-- REPLACE
+          directory: "static/datro"
+
+      - name: Build projections site
+        if: steps.changes.outputs.projections == 'true'
+        run: |
+          echo "Building projections site..."
+          if [ -f static/projections/package.json ]; then
+            pushd static/projections
+            npm ci
+            npm run build --if-present
+            popd
+          fi
+
+      - name: Deploy projections (Cloudflare Pages)
+        if: steps.changes.outputs.projections == 'true'
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: "projections" # <-- REPLACE
+          directory: "static/projections"
+
+      - name: Build bpvsbuckler site
+        if: steps.changes.outputs.bpvsbuckler == 'true'
+        run: |
+          echo "Building bpvsbuckler site..."
+          if [ -f static/bpvsbuckler/package.json ]; then
+            pushd static/bpvsbuckler
+            npm ci
+            npm run build --if-present
+            popd
+          fi
+
+      - name: Deploy bpvsbuckler (Cloudflare Pages)
+        if: steps.changes.outputs.bpvsbuckler == 'true'
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: "bpvsbuckler" # <-- REPLACE
+          directory: "static/bpvsbuckler"
+
+      - name: Done
+        run: echo "Conditional deploy workflow finished."
