@@ -1,11 +1,14 @@
 name: Cloudflare conditional deploy
 
 on:
+  # Previews on PRs targeting gh-pages (Codex PRs)
   pull_request:
     types: [opened, synchronize, reopened]
+    branches:
+      - gh-pages
+  # Production branch pushes (no prod steps yet; safe to keep for later)
   push:
     branches:
-      - main
       - gh-pages
 
 jobs:
@@ -13,11 +16,16 @@ jobs:
     name: Detect changes and deploy only touched apps
     runs-on: ubuntu-latest
 
-    # Important so the workflow can create a "Deployment" and PR comment
+    # Create PR comments + GitHub Deployments
     permissions:
       contents: read
       deployments: write
       pull-requests: write
+
+    # Auto-cancel older runs for the same PR/branch
+    concurrency:
+      group: cf-pages-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+      cancel-in-progress: true
 
     steps:
       - name: Checkout
@@ -61,27 +69,13 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
           # detect changes in each app directory
-          if echo "$DIFF" | grep -qE '^static/library/'; then
-            echo "library=true" >> "$GITHUB_OUTPUT"
-          fi
-          if echo "$DIFF" | grep -qE '^static/hbnb/'; then
-            echo "hbnb=true" >> "$GITHUB_OUTPUT"
-          fi
-          if echo "$DIFF" | grep -qE '^static/forces/'; then
-            echo "forces=true" >> "$GITHUB_OUTPUT"
-          fi
-          if echo "$DIFF" | grep -qE '^static/gui/'; then
-            echo "gui=true" >> "$GITHUB_OUTPUT"
-          fi
-          if echo "$DIFF" | grep -qE '^static/datro/'; then
-            echo "datro=true" >> "$GITHUB_OUTPUT"
-          fi
-          if echo "$DIFF" | grep -qE '^static/projections/'; then
-            echo "projections=true" >> "$GITHUB_OUTPUT"
-          fi
-          if echo "$DIFF" | grep -qE '^static/bpvsbuckler/'; then
-            echo "bpvsbuckler=true" >> "$GITHUB_OUTPUT"
-          fi
+          if echo "$DIFF" | grep -qE '^static/library/'; then echo "library=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/hbnb/'; then echo "hbnb=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/forces/'; then echo "forces=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/gui/'; then echo "gui=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/datro/'; then echo "datro=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/projections/'; then echo "projections=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/bpvsbuckler/'; then echo "bpvsbuckler=true" >> "$GITHUB_OUTPUT"; fi
 
       - name: Debug outputs
         run: |
@@ -101,12 +95,14 @@ jobs:
       ######################################################################
       # PREVIEW DEPLOYS FOR PRs — posts a comment with the preview URL(s)
       # Uses andykenward/github-actions-cloudflare-pages to create GH Deployments
-      # Secrets needed:
-      #   CLOUDFLARE_API_TOKEN (minimal scopes: Account:Read + Pages:Builds:Edit)
+      # Repo Secrets required:
+      #   CLOUDFLARE_API_TOKEN (Account:Read + Pages:Builds:Edit)
       #   CLOUDFLARE_ACCOUNT_ID
       #
-      # IMPORTANT: project names below must exactly match your CF Pages projects.
-      # (Per your message: library, hbnb, ceo, gui, datro-homepage, projections, bpvsbuckler)
+      # IMPORTANT: `cloudflare-project-name` must match CF Pages project names.
+      # IMPORTANT: `github-environment` must match your GitHub Environments:
+      #   library(preview), hbnb(preview), ceo(preview), gui(preview),
+      #   datro(preview), projections(preview), bpvsbuckler(preview)
       ######################################################################
 
       - name: Build library
