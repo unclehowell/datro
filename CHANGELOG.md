@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ## [0.0.1-rtw.17] - Q4/2025
+Nov-12 - Added `cloudflare-conditional-deploy.yml` to new top level directory .github/workflow `so preview links can be generated on pull requests'  
 Nov-09 - DATRO was previously soley the tech. Now it's expanding as a security group, tech being one of multiple arms of the security group  
 Oct-28 - Added a timeline with a nice menu /static/timeline - hoping to build this feature out  
 

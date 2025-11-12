@@ -1,16 +1,24 @@
 name: Cloudflare conditional deploy
+
 on:
   pull_request:
     types: [opened, synchronize, reopened]
   push:
     branches:
       - main
+      - gh-pages
 
 jobs:
   detect-and-deploy:
+    name: Detect changes and deploy only touched apps
     runs-on: ubuntu-latest
+
+    # Important so the workflow can create a "Deployment" and PR comment
     permissions:
       contents: read
+      deployments: write
+      pull-requests: write
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -42,13 +50,15 @@ jobs:
           echo "$DIFF"
 
           # default outputs (false)
-          echo "library=false" >> "$GITHUB_OUTPUT"
-          echo "hbnb=false" >> "$GITHUB_OUTPUT"
-          echo "forces=false" >> "$GITHUB_OUTPUT"
-          echo "gui=false" >> "$GITHUB_OUTPUT"
-          echo "datro=false" >> "$GITHUB_OUTPUT"
-          echo "projections=false" >> "$GITHUB_OUTPUT"
-          echo "bpvsbuckler=false" >> "$GITHUB_OUTPUT"
+          {
+            echo "library=false"
+            echo "hbnb=false"
+            echo "forces=false"
+            echo "gui=false"
+            echo "datro=false"
+            echo "projections=false"
+            echo "bpvsbuckler=false"
+          } >> "$GITHUB_OUTPUT"
 
           # detect changes in each app directory
           if echo "$DIFF" | grep -qE '^static/library/'; then
@@ -75,11 +85,11 @@ jobs:
 
       - name: Debug outputs
         run: |
-          echo "library: ${{ steps.changes.outputs.library }}"
-          echo "hbnb:   ${{ steps.changes.outputs.hbnb }}"
-          echo "forces: ${{ steps.changes.outputs.forces }}"
-          echo "gui:    ${{ steps.changes.outputs.gui }}"
-          echo "datro:  ${{ steps.changes.outputs.datro }}"
+          echo "library:     ${{ steps.changes.outputs.library }}"
+          echo "hbnb:        ${{ steps.changes.outputs.hbnb }}"
+          echo "forces:      ${{ steps.changes.outputs.forces }}"
+          echo "gui:         ${{ steps.changes.outputs.gui }}"
+          echo "datro:       ${{ steps.changes.outputs.datro }}"
           echo "projections: ${{ steps.changes.outputs.projections }}"
           echo "bpvsbuckler: ${{ steps.changes.outputs.bpvsbuckler }}"
 
@@ -88,149 +98,163 @@ jobs:
         with:
           node-version: '18'
 
-      # Build + Deploy per-app (run only if the corresponding output is true)
-      # Replace projectName values below with the exact Cloudflare Pages project names
-      # as configured in your Cloudflare dashboard for each site.
+      ######################################################################
+      # PREVIEW DEPLOYS FOR PRs — posts a comment with the preview URL(s)
+      # Uses andykenward/github-actions-cloudflare-pages to create GH Deployments
+      # Secrets needed:
+      #   CLOUDFLARE_API_TOKEN (minimal scopes: Account:Read + Pages:Builds:Edit)
+      #   CLOUDFLARE_ACCOUNT_ID
+      #
+      # IMPORTANT: project names below must exactly match your CF Pages projects.
+      # (Per your message: library, hbnb, ceo, gui, datro-homepage, projections, bpvsbuckler)
+      ######################################################################
 
-      - name: Build library site
-        if: steps.changes.outputs.library == 'true'
+      - name: Build library
+        if: github.event_name == 'pull_request' && steps.changes.outputs.library == 'true'
         run: |
-          echo "Building library site..."
           if [ -f static/library/package.json ]; then
-            pushd static/library
+            cd static/library
             npm ci
             npm run build --if-present
-            popd
           fi
 
-      - name: Deploy library (Cloudflare Pages)
-        if: steps.changes.outputs.library == 'true'
-        uses: cloudflare/pages-action@v1
+      - name: Deploy library (Preview) and comment URL
+        if: github.event_name == 'pull_request' && steps.changes.outputs.library == 'true'
+        uses: andykenward/github-actions-cloudflare-pages@v3
+        id: deploy_library
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: "library" # <-- REPLACE with your Pages project name for library.datro.xyz
-          directory: "static/library"
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: library
+          directory: static/library
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: library (Preview)
 
-      - name: Build hbnb site
-        if: steps.changes.outputs.hbnb == 'true'
+      - name: Build hbnb
+        if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
         run: |
-          echo "Building hbnb site..."
           if [ -f static/hbnb/package.json ]; then
-            pushd static/hbnb
+            cd static/hbnb
             npm ci
             npm run build --if-present
-            popd
           fi
 
-      - name: Deploy hbnb (Cloudflare Pages)
-        if: steps.changes.outputs.hbnb == 'true'
-        uses: cloudflare/pages-action@v1
+      - name: Deploy hbnb (Preview) and comment URL
+        if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
+        uses: andykenward/github-actions-cloudflare-pages@v3
+        id: deploy_hbnb
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: "hbnb" # <-- REPLACE
-          directory: "static/hbnb"
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: hbnb
+          directory: static/hbnb
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: hbnb (Preview)
 
-      - name: Build forces (ceo) site
-        if: steps.changes.outputs.forces == 'true'
+      - name: Build forces (ceo)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.forces == 'true'
         run: |
-          echo "Building forces (ceo) site..."
           if [ -f static/forces/package.json ]; then
-            pushd static/forces
+            cd static/forces
             npm ci
             npm run build --if-present
-            popd
           fi
 
-      - name: Deploy forces (Cloudflare Pages)
-        if: steps.changes.outputs.forces == 'true'
-        uses: cloudflare/pages-action@v1
+      - name: Deploy forces/ceo (Preview) and comment URL
+        if: github.event_name == 'pull_request' && steps.changes.outputs.forces == 'true'
+        uses: andykenward/github-actions-cloudflare-pages@v3
+        id: deploy_forces
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: "ceo" # <-- REPLACE
-          directory: "static/forces"
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: ceo
+          directory: static/forces
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: ceo (Preview)
 
-      - name: Build gui site
-        if: steps.changes.outputs.gui == 'true'
+      - name: Build gui
+        if: github.event_name == 'pull_request' && steps.changes.outputs.gui == 'true'
         run: |
-          echo "Building gui site..."
           if [ -f static/gui/package.json ]; then
-            pushd static/gui
+            cd static/gui
             npm ci
             npm run build --if-present
-            popd
           fi
 
-      - name: Deploy gui (Cloudflare Pages)
-        if: steps.changes.outputs.gui == 'true'
-        uses: cloudflare/pages-action@v1
+      - name: Deploy gui (Preview) and comment URL
+        if: github.event_name == 'pull_request' && steps.changes.outputs.gui == 'true'
+        uses: andykenward/github-actions-cloudflare-pages@v3
+        id: deploy_gui
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: "gui" # <-- REPLACE
-          directory: "static/gui"
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: gui
+          directory: static/gui
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: gui (Preview)
 
-      - name: Build datro site
-        if: steps.changes.outputs.datro == 'true'
+      - name: Build datro-homepage
+        if: github.event_name == 'pull_request' && steps.changes.outputs.datro == 'true'
         run: |
-          echo "Building datro site..."
           if [ -f static/datro/package.json ]; then
-            pushd static/datro
+            cd static/datro
             npm ci
             npm run build --if-present
-            popd
           fi
 
-      - name: Deploy datro (Cloudflare Pages)
-        if: steps.changes.outputs.datro == 'true'
-        uses: cloudflare/pages-action@v1
+      - name: Deploy datro-homepage (Preview) and comment URL
+        if: github.event_name == 'pull_request' && steps.changes.outputs.datro == 'true'
+        uses: andykenward/github-actions-cloudflare-pages@v3
+        id: deploy_datro
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: "datro-homepage" # <-- REPLACE
-          directory: "static/datro"
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: datro-homepage
+          directory: static/datro
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: datro (Preview)
 
-      - name: Build projections site
-        if: steps.changes.outputs.projections == 'true'
+      - name: Build projections
+        if: github.event_name == 'pull_request' && steps.changes.outputs.projections == 'true'
         run: |
-          echo "Building projections site..."
           if [ -f static/projections/package.json ]; then
-            pushd static/projections
+            cd static/projections
             npm ci
             npm run build --if-present
-            popd
           fi
 
-      - name: Deploy projections (Cloudflare Pages)
-        if: steps.changes.outputs.projections == 'true'
-        uses: cloudflare/pages-action@v1
+      - name: Deploy projections (Preview) and comment URL
+        if: github.event_name == 'pull_request' && steps.changes.outputs.projections == 'true'
+        uses: andykenward/github-actions-cloudflare-pages@v3
+        id: deploy_projections
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: "projections" # <-- REPLACE
-          directory: "static/projections"
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: projections
+          directory: static/projections
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: projections (Preview)
 
-      - name: Build bpvsbuckler site
-        if: steps.changes.outputs.bpvsbuckler == 'true'
+      - name: Build bpvsbuckler
+        if: github.event_name == 'pull_request' && steps.changes.outputs.bpvsbuckler == 'true'
         run: |
-          echo "Building bpvsbuckler site..."
           if [ -f static/bpvsbuckler/package.json ]; then
-            pushd static/bpvsbuckler
+            cd static/bpvsbuckler
             npm ci
             npm run build --if-present
-            popd
           fi
 
-      - name: Deploy bpvsbuckler (Cloudflare Pages)
-        if: steps.changes.outputs.bpvsbuckler == 'true'
-        uses: cloudflare/pages-action@v1
+      - name: Deploy bpvsbuckler (Preview) and comment URL
+        if: github.event_name == 'pull_request' && steps.changes.outputs.bpvsbuckler == 'true'
+        uses: andykenward/github-actions-cloudflare-pages@v3
+        id: deploy_bpvsbuckler
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: "bpvsbuckler" # <-- REPLACE
-          directory: "static/bpvsbuckler"
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: bpvsbuckler
+          directory: static/bpvsbuckler
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: bpvsbuckler (Preview)
 
       - name: Done
         run: echo "Conditional deploy workflow finished."
