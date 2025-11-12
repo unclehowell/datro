@@ -1,4 +1,4 @@
-name: Cloudflare conditional deploy
+name: Cloudflare conditional deploy (wrangler + deployments box, no comments)
 
 on:
   # Previews on PRs targeting gh-pages (Codex PRs)
@@ -12,11 +12,11 @@ on:
       - gh-pages
 
 jobs:
-  detect-and-deploy:
+  deploy:
     name: Detect changes and deploy only touched apps
     runs-on: ubuntu-latest
 
-    # Needed for GitHub Deployments (Deployments box on PR)
+    # Needed for GitHub Deployments box
     permissions:
       contents: read
       deployments: write
@@ -24,8 +24,13 @@ jobs:
 
     # Auto-cancel older runs for same PR/branch
     concurrency:
-      group: cf-pages-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+      group: cf-wrangler-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
+
+    env:
+      # Convenient refs
+      BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+      COMMIT_SHA:  ${{ github.event.pull_request.head.sha || github.sha }}
 
     steps:
       - name: Checkout
@@ -67,184 +72,387 @@ jobs:
             echo "bpvsbuckler=false"
           } >> "$GITHUB_OUTPUT"
 
-          if echo "$DIFF" | grep -qE '^static/library/'; then echo "library=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/hbnb/'; then echo "hbnb=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/forces/'; then echo "forces=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/gui/'; then echo "gui=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/datro/'; then echo "datro=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/library/';     then echo "library=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/hbnb/';        then echo "hbnb=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/forces/';      then echo "forces=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/gui/';         then echo "gui=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/datro/';       then echo "datro=true" >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/projections/'; then echo "projections=true" >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/bpvsbuckler/'; then echo "bpvsbuckler=true" >> "$GITHUB_OUTPUT"; fi
 
-      - name: Debug outputs
-        run: |
-          echo "library:     ${{ steps.changes.outputs.library }}"
-          echo "hbnb:        ${{ steps.changes.outputs.hbnb }}"
-          echo "forces:      ${{ steps.changes.outputs.forces }}"
-          echo "gui:         ${{ steps.changes.outputs.gui }}"
-          echo "datro:       ${{ steps.changes.outputs.datro }}"
-          echo "projections: ${{ steps.changes.outputs.projections }}"
-          echo "bpvsbuckler: ${{ steps.changes.outputs.bpvsbuckler }}"
-
-      - name: Setup Node (for builds)
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '22'   # Wrangler needs >= 20
+          node-version: '22'
+
+      - name: Install Wrangler
+        run: npm i -g wrangler@^4.47.0
 
       ######################################################################
-      # PREVIEW DEPLOYS (PRs) — no PR comments -> only the Deployments box
-      # Repo Secrets needed:
-      #   CLOUDFLARE_API_TOKEN (Account:Read + Pages:Edit or Pages:Builds:Edit)
-      #   CLOUDFLARE_ACCOUNT_ID
-      #
-      # IMPORTANT:
-      # - cloudflare-project-name must EXACTLY match your Pages project names
-      # - github-environment must EXACTLY match your GitHub Environments:
-      #   library(preview), hbnb(preview), ceo(preview), gui(preview),
-      #   datro(preview), projections(preview), bpvsbuckler(preview)
-      #
-      # We intentionally OMIT `github-token` so the action does NOT post a PR comment.
-      # The GitHub Deployments box will still appear on the PR.
+      # Helper: function to deploy and emit PREVIEW_URL for a given app
       ######################################################################
-
-      - name: Build library
-        if: github.event_name == 'pull_request' && steps.changes.outputs.library == 'true'
-        run: |
-          if [ -f static/library/package.json ]; then
-            cd static/library
-            npm ci || npm install
-            npm run build --if-present
-          fi
-
-      - name: Deploy library (Preview)
-        if: github.event_name == 'pull_request' && steps.changes.outputs.library == 'true'
-        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
+      - name: Deploy library (preview)
         id: deploy_library
-        with:
-          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          cloudflare-project-name: library
-          directory: static/library
-          github-environment: library(preview)
-
-      - name: Build hbnb
-        if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
+        if: github.event_name == 'pull_request' && steps.changes.outputs.library == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN:   ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID:          ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PROJECT_NAME:           library            # Cloudflare Pages project name
+          DIRECTORY:              static/library     # Adjust to build output if needed
+          BRANCH_NAME:            ${{ env.BRANCH_NAME }}
+          COMMIT_SHA:             ${{ env.COMMIT_SHA }}
+        shell: bash
         run: |
-          if [ -f static/hbnb/package.json ]; then
-            cd static/hbnb
-            npm ci || npm install
-            npm run build --if-present
+          set -euo pipefail
+          if [ -f "$DIRECTORY/package.json" ]; then
+            (cd "$DIRECTORY" && npm ci || npm install && npm run build --if-present)
           fi
+          OUT=$(wrangler pages deploy "$DIRECTORY" --project-name="$PROJECT_NAME" --branch="$BRANCH_NAME" --commit-dirty=true --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_library.log || true)
+          echo "$OUT"
+          URL=$(echo "$OUT" | grep -Eo 'https://[a-zA-Z0-9.-]+\.pages\.dev[[:alnum:]/._-]*' | tail -n1 || true)
+          if [ -z "${URL:-}" ]; then
+            echo "No preview URL detected in wrangler output"; exit 1
+          fi
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
 
-      - name: Deploy hbnb (Preview)
-        if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
-        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
+      - name: Deployment box: library(preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.library == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const ref = context.payload.pull_request?.head.sha || context.sha;
+            const env = "library(preview)";
+            const url = "${{ steps.deploy_library.outputs.url }}";
+            const { data: dep } = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref,
+              environment: env,
+              transient_environment: true,
+              auto_merge: false,
+              required_contexts: [],
+              description: "Cloudflare Pages preview"
+            });
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: dep.id,
+              state: "success",
+              environment: env,
+              environment_url: url,
+              log_url: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              auto_inactive: false
+            });
+
+      # ---------- hbnb ----------
+      - name: Deploy hbnb (preview)
         id: deploy_hbnb
-        with:
-          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          cloudflare-project-name: hbnb
-          directory: static/hbnb
-          github-environment: hbnb(preview)
-
-      - name: Build forces (ceo)
-        if: github.event_name == 'pull_request' && steps.changes.outputs.forces == 'true'
+        if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN:   ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID:          ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PROJECT_NAME:           hbnb
+          DIRECTORY:              static/hbnb
+          BRANCH_NAME:            ${{ env.BRANCH_NAME }}
+          COMMIT_SHA:             ${{ env.COMMIT_SHA }}
+        shell: bash
         run: |
-          if [ -f static/forces/package.json ]; then
-            cd static/forces
-            npm ci || npm install
-            npm run build --if-present
+          set -euo pipefail
+          if [ -f "$DIRECTORY/package.json" ]; then
+            (cd "$DIRECTORY" && npm ci || npm install && npm run build --if-present)
           fi
+          OUT=$(wrangler pages deploy "$DIRECTORY" --project-name="$PROJECT_NAME" --branch="$BRANCH_NAME" --commit-dirty=true --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_hbnb.log || true)
+          echo "$OUT"
+          URL=$(echo "$OUT" | grep -Eo 'https://[a-zA-Z0-9.-]+\.pages\.dev[[:alnum:]/._-]*' | tail -n1 || true)
+          if [ -z "${URL:-}" ]; then echo "No preview URL found"; exit 1; fi
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
 
-      - name: Deploy forces/ceo (Preview)
-        if: github.event_name == 'pull_request' && steps.changes.outputs.forces == 'true'
-        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
+      - name: Deployment box: hbnb(preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const ref = context.payload.pull_request?.head.sha || context.sha;
+            const env = "hbnb(preview)";
+            const url = "${{ steps.deploy_hbnb.outputs.url }}";
+            const { data: dep } = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref,
+              environment: env,
+              transient_environment: true,
+              auto_merge: false,
+              required_contexts: [],
+              description: "Cloudflare Pages preview"
+            });
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: dep.id,
+              state: "success",
+              environment: env,
+              environment_url: url,
+              log_url: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              auto_inactive: false
+            });
+
+      # ---------- forces (ceo) ----------
+      - name: Deploy forces/ceo (preview)
         id: deploy_forces
-        with:
-          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          cloudflare-project-name: ceo
-          directory: static/forces
-          github-environment: ceo(preview)
-
-      - name: Build gui
-        if: github.event_name == 'pull_request' && steps.changes.outputs.gui == 'true'
+        if: github.event_name == 'pull_request' && steps.changes.outputs.forces == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN:   ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID:          ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PROJECT_NAME:           ceo
+          DIRECTORY:              static/forces
+          BRANCH_NAME:            ${{ env.BRANCH_NAME }}
+          COMMIT_SHA:             ${{ env.COMMIT_SHA }}
+        shell: bash
         run: |
-          if [ -f static/gui/package.json ]; then
-            cd static/gui
-            npm ci || npm install
-            npm run build --if-present
+          set -euo pipefail
+          if [ -f "$DIRECTORY/package.json" ]; then
+            (cd "$DIRECTORY" && npm ci || npm install && npm run build --if-present)
           fi
+          OUT=$(wrangler pages deploy "$DIRECTORY" --project-name="$PROJECT_NAME" --branch="$BRANCH_NAME" --commit-dirty=true --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_forces.log || true)
+          echo "$OUT"
+          URL=$(echo "$OUT" | grep -Eo 'https://[a-zA-Z0-9.-]+\.pages\.dev[[:alnum:]/._-]*' | tail -n1 || true)
+          if [ -z "${URL:-}" ]; then echo "No preview URL found"; exit 1; fi
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
 
-      - name: Deploy gui (Preview)
-        if: github.event_name == 'pull_request' && steps.changes.outputs.gui == 'true'
-        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
+      - name: Deployment box: ceo(preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.forces == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const ref = context.payload.pull_request?.head.sha || context.sha;
+            const env = "ceo(preview)";
+            const url = "${{ steps.deploy_forces.outputs.url }}";
+            const { data: dep } = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref,
+              environment: env,
+              transient_environment: true,
+              auto_merge: false,
+              required_contexts: [],
+              description: "Cloudflare Pages preview"
+            });
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: dep.id,
+              state: "success",
+              environment: env,
+              environment_url: url,
+              log_url: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              auto_inactive: false
+            });
+
+      # ---------- gui ----------
+      - name: Deploy gui (preview)
         id: deploy_gui
-        with:
-          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          cloudflare-project-name: gui
-          directory: static/gui
-          github-environment: gui(preview)
-
-      - name: Build datro-homepage
-        if: github.event_name == 'pull_request' && steps.changes.outputs.datro == 'true'
+        if: github.event_name == 'pull_request' && steps.changes.outputs.gui == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN:   ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID:          ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PROJECT_NAME:           gui
+          DIRECTORY:              static/gui
+          BRANCH_NAME:            ${{ env.BRANCH_NAME }}
+          COMMIT_SHA:             ${{ env.COMMIT_SHA }}
+        shell: bash
         run: |
-          if [ -f static/datro/package.json ]; then
-            cd static/datro
-            npm ci || npm install
-            npm run build --if-present
+          set -euo pipefail
+          if [ -f "$DIRECTORY/package.json" ]; then
+            (cd "$DIRECTORY" && npm ci || npm install && npm run build --if-present)
           fi
+          OUT=$(wrangler pages deploy "$DIRECTORY" --project-name="$PROJECT_NAME" --branch="$BRANCH_NAME" --commit-dirty=true --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_gui.log || true)
+          echo "$OUT"
+          URL=$(echo "$OUT" | grep -Eo 'https://[a-zA-Z0-9.-]+\.pages\.dev[[:alnum:]/._-]*' | tail -n1 || true)
+          if [ -z "${URL:-}" ]; then echo "No preview URL found"; exit 1; fi
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
 
-      - name: Deploy datro-homepage (Preview)
-        if: github.event_name == 'pull_request' && steps.changes.outputs.datro == 'true'
-        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
+      - name: Deployment box: gui(preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.gui == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const ref = context.payload.pull_request?.head.sha || context.sha;
+            const env = "gui(preview)";
+            const url = "${{ steps.deploy_gui.outputs.url }}";
+            const { data: dep } = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref,
+              environment: env,
+              transient_environment: true,
+              auto_merge: false,
+              required_contexts: [],
+              description: "Cloudflare Pages preview"
+            });
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: dep.id,
+              state: "success",
+              environment: env,
+              environment_url: url,
+              log_url: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              auto_inactive: false
+            });
+
+      # ---------- datro-homepage ----------
+      - name: Deploy datro-homepage (preview)
         id: deploy_datro
-        with:
-          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          cloudflare-project-name: datro-homepage
-          directory: static/datro
-          github-environment: datro(preview)
-
-      - name: Build projections
-        if: github.event_name == 'pull_request' && steps.changes.outputs.projections == 'true'
+        if: github.event_name == 'pull_request' && steps.changes.outputs.datro == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN:   ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID:          ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PROJECT_NAME:           datro-homepage
+          DIRECTORY:              static/datro
+          BRANCH_NAME:            ${{ env.BRANCH_NAME }}
+          COMMIT_SHA:             ${{ env.COMMIT_SHA }}
+        shell: bash
         run: |
-          if [ -f static/projections/package.json ]; then
-            cd static/projections
-            npm ci || npm install
-            npm run build --if-present
+          set -euo pipefail
+          if [ -f "$DIRECTORY/package.json" ]; then
+            (cd "$DIRECTORY" && npm ci || npm install && npm run build --if-present)
           fi
+          OUT=$(wrangler pages deploy "$DIRECTORY" --project-name="$PROJECT_NAME" --branch="$BRANCH_NAME" --commit-dirty=true --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_datro.log || true)
+          echo "$OUT"
+          URL=$(echo "$OUT" | grep -Eo 'https://[a-zA-Z0-9.-]+\.pages\.dev[[:alnum:]/._-]*' | tail -n1 || true)
+          if [ -z "${URL:-}" ]; then echo "No preview URL found"; exit 1; fi
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
 
-      - name: Deploy projections (Preview)
-        if: github.event_name == 'pull_request' && steps.changes.outputs.projections == 'true'
-        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
+      - name: Deployment box: datro(preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.datro == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const ref = context.payload.pull_request?.head.sha || context.sha;
+            const env = "datro(preview)";
+            const url = "${{ steps.deploy_datro.outputs.url }}";
+            const { data: dep } = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref,
+              environment: env,
+              transient_environment: true,
+              auto_merge: false,
+              required_contexts: [],
+              description: "Cloudflare Pages preview"
+            });
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: dep.id,
+              state: "success",
+              environment: env,
+              environment_url: url,
+              log_url: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              auto_inactive: false
+            });
+
+      # ---------- projections ----------
+      - name: Deploy projections (preview)
         id: deploy_projections
-        with:
-          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          cloudflare-project-name: projections
-          directory: static/projections
-          github-environment: projections(preview)
-
-      - name: Build bpvsbuckler
-        if: github.event_name == 'pull_request' && steps.changes.outputs.bpvsbuckler == 'true'
+        if: github.event_name == 'pull_request' && steps.changes.outputs.projections == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN:   ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID:          ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PROJECT_NAME:           projections
+          DIRECTORY:              static/projections
+          BRANCH_NAME:            ${{ env.BRANCH_NAME }}
+          COMMIT_SHA:             ${{ env.COMMIT_SHA }}
+        shell: bash
         run: |
-          if [ -f static/bpvsbuckler/package.json ]; then
-            cd static/bpvsbuckler
-            npm ci || npm install
-            npm run build --if-present
+          set -euo pipefail
+          if [ -f "$DIRECTORY/package.json" ]; then
+            (cd "$DIRECTORY" && npm ci || npm install && npm run build --if-present)
           fi
+          OUT=$(wrangler pages deploy "$DIRECTORY" --project-name="$PROJECT_NAME" --branch="$BRANCH_NAME" --commit-dirty=true --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_projections.log || true)
+          echo "$OUT"
+          URL=$(echo "$OUT" | grep -Eo 'https://[a-zA-Z0-9.-]+\.pages\.dev[[:alnum:]/._-]*' | tail -n1 || true)
+          if [ -z "${URL:-}" ]; then echo "No preview URL found"; exit 1; fi
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
 
-      - name: Deploy bpvsbuckler (Preview)
-        if: github.event_name == 'pull_request' && steps.changes.outputs.bpvsbuckler == 'true'
-        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
-        id: deploy_bpvsbuckler
+      - name: Deployment box: projections(preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.projections == 'true'
+        uses: actions/github-script@v7
         with:
-          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          cloudflare-project-name: bpvsbuckler
-          directory: static/bpvsbuckler
-          github-environment: bpvsbuckler(preview)
+          script: |
+            const ref = context.payload.pull_request?.head.sha || context.sha;
+            const env = "projections(preview)";
+            const url = "${{ steps.deploy_projections.outputs.url }}";
+            const { data: dep } = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref,
+              environment: env,
+              transient_environment: true,
+              auto_merge: false,
+              required_contexts: [],
+              description: "Cloudflare Pages preview"
+            });
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: dep.id,
+              state: "success",
+              environment: env,
+              environment_url: url,
+              log_url: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              auto_inactive: false
+            });
 
-      - name: Done
-        run: echo "Conditional deploy workflow finished."
+      # ---------- bpvsbuckler ----------
+      - name: Deploy bpvsbuckler (preview)
+        id: deploy_bpvsbuckler
+        if: github.event_name == 'pull_request' && steps.changes.outputs.bpvsbuckler == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN:   ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID:          ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PROJECT_NAME:           bpvsbuckler
+          DIRECTORY:              static/bpvsbuckler
+          BRANCH_NAME:            ${{ env.BRANCH_NAME }}
+          COMMIT_SHA:             ${{ env.COMMIT_SHA }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -f "$DIRECTORY/package.json" ]; then
+            (cd "$DIRECTORY" && npm ci || npm install && npm run build --if-present)
+          fi
+          OUT=$(wrangler pages deploy "$DIRECTORY" --project-name="$PROJECT_NAME" --branch="$BRANCH_NAME" --commit-dirty=true --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_bpvs.log || true)
+          echo "$OUT"
+          URL=$(echo "$OUT" | grep -Eo 'https://[a-zA-Z0-9.-]+\.pages\.dev[[:alnum:]/._-]*' | tail -n1 || true)
+          if [ -z "${URL:-}" ]; then echo "No preview URL found"; exit 1; fi
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+
+      - name: Deployment box: bpvsbuckler(preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.bpvsbuckler == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const ref = context.payload.pull_request?.head.sha || context.sha;
+            const env = "bpvsbuckler(preview)";
+            const url = "${{ steps.deploy_bpvsbuckler.outputs.url }}";
+            const { data: dep } = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref,
+              environment: env,
+              transient_environment: true,
+              auto_merge: false,
+              required_contexts: [],
+              description: "Cloudflare Pages preview"
+            });
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: dep.id,
+              state: "success",
+              environment: env,
+              environment_url: url,
+              log_url: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              auto_inactive: false
+            });
+
