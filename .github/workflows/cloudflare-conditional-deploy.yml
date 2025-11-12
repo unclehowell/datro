@@ -75,7 +75,7 @@ jobs:
           if echo "$DIFF" | grep -qE '^static/library/';     then echo "library=true" >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/hbnb/';        then echo "hbnb=true" >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/forces/';      then echo "forces=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/gui/';         then echo "gui=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/gui/';         then echo "gui=true"   >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/datro/';       then echo "datro=true" >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/projections/'; then echo "projections=true" >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/bpvsbuckler/'; then echo "bpvsbuckler=true" >> "$GITHUB_OUTPUT"; fi
@@ -89,29 +89,46 @@ jobs:
         run: npm i -g wrangler@^4.47.0
 
       ######################################################################
-      # Helper: function to deploy and emit PREVIEW_URL for a given app
+      # Each app: wrangler pages deploy + GitHub Deployment box
+      # Requires repo secrets:
+      #   CLOUDFLARE_API_TOKEN
+      #   CLOUDFLARE_ACCOUNT_ID
+      #
+      # PROJECT_NAME must match your Cloudflare Pages project names:
+      #   library, hbnb, ceo, gui, datro-homepage, projections, bpvsbuckler
+      #
+      # GitHub Environments already created:
+      #   library(preview), hbnb(preview), ceo(preview), gui(preview),
+      #   datro(preview), projections(preview), bpvsbuckler(preview)
       ######################################################################
+
+      # ---------- library ----------
       - name: Deploy library (preview)
         id: deploy_library
         if: github.event_name == 'pull_request' && steps.changes.outputs.library == 'true'
         env:
-          CLOUDFLARE_API_TOKEN:   ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CF_ACCOUNT_ID:          ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          PROJECT_NAME:           library            # Cloudflare Pages project name
-          DIRECTORY:              static/library     # Adjust to build output if needed
-          BRANCH_NAME:            ${{ env.BRANCH_NAME }}
-          COMMIT_SHA:             ${{ env.COMMIT_SHA }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID:        ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PROJECT_NAME:         library
+          DIRECTORY:            static/library
+          BRANCH_NAME:          ${{ env.BRANCH_NAME }}
+          COMMIT_SHA:           ${{ env.COMMIT_SHA }}
         shell: bash
         run: |
           set -euo pipefail
           if [ -f "$DIRECTORY/package.json" ]; then
-            (cd "$DIRECTORY" && npm ci || npm install && npm run build --if-present)
+            (cd "$DIRECTORY" && (npm ci || npm install) && npm run build --if-present)
           fi
-          OUT=$(wrangler pages deploy "$DIRECTORY" --project-name="$PROJECT_NAME" --branch="$BRANCH_NAME" --commit-dirty=true --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_library.log || true)
+          OUT=$(wrangler pages deploy "$DIRECTORY" \
+            --project-name="$PROJECT_NAME" \
+            --branch="$BRANCH_NAME" \
+            --commit-dirty=true \
+            --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_library.log || true)
           echo "$OUT"
           URL=$(echo "$OUT" | grep -Eo 'https://[a-zA-Z0-9.-]+\.pages\.dev[[:alnum:]/._-]*' | tail -n1 || true)
           if [ -z "${URL:-}" ]; then
-            echo "No preview URL detected in wrangler output"; exit 1
+            echo "No preview URL detected in wrangler output"
+            exit 1
           fi
           echo "url=$URL" >> "$GITHUB_OUTPUT"
 
@@ -149,19 +166,23 @@ jobs:
         id: deploy_hbnb
         if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
         env:
-          CLOUDFLARE_API_TOKEN:   ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CF_ACCOUNT_ID:          ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          PROJECT_NAME:           hbnb
-          DIRECTORY:              static/hbnb
-          BRANCH_NAME:            ${{ env.BRANCH_NAME }}
-          COMMIT_SHA:             ${{ env.COMMIT_SHA }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID:        ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PROJECT_NAME:         hbnb
+          DIRECTORY:            static/hbnb
+          BRANCH_NAME:          ${{ env.BRANCH_NAME }}
+          COMMIT_SHA:           ${{ env.COMMIT_SHA }}
         shell: bash
         run: |
           set -euo pipefail
           if [ -f "$DIRECTORY/package.json" ]; then
-            (cd "$DIRECTORY" && npm ci || npm install && npm run build --if-present)
+            (cd "$DIRECTORY" && (npm ci || npm install) && npm run build --if-present)
           fi
-          OUT=$(wrangler pages deploy "$DIRECTORY" --project-name="$PROJECT_NAME" --branch="$BRANCH_NAME" --commit-dirty=true --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_hbnb.log || true)
+          OUT=$(wrangler pages deploy "$DIRECTORY" \
+            --project-name="$PROJECT_NAME" \
+            --branch="$BRANCH_NAME" \
+            --commit-dirty=true \
+            --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_hbnb.log || true)
           echo "$OUT"
           URL=$(echo "$OUT" | grep -Eo 'https://[a-zA-Z0-9.-]+\.pages\.dev[[:alnum:]/._-]*' | tail -n1 || true)
           if [ -z "${URL:-}" ]; then echo "No preview URL found"; exit 1; fi
@@ -201,19 +222,23 @@ jobs:
         id: deploy_forces
         if: github.event_name == 'pull_request' && steps.changes.outputs.forces == 'true'
         env:
-          CLOUDFLARE_API_TOKEN:   ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CF_ACCOUNT_ID:          ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          PROJECT_NAME:           ceo
-          DIRECTORY:              static/forces
-          BRANCH_NAME:            ${{ env.BRANCH_NAME }}
-          COMMIT_SHA:             ${{ env.COMMIT_SHA }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID:        ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PROJECT_NAME:         ceo
+          DIRECTORY:            static/forces
+          BRANCH_NAME:          ${{ env.BRANCH_NAME }}
+          COMMIT_SHA:           ${{ env.COMMIT_SHA }}
         shell: bash
         run: |
           set -euo pipefail
           if [ -f "$DIRECTORY/package.json" ]; then
-            (cd "$DIRECTORY" && npm ci || npm install && npm run build --if-present)
+            (cd "$DIRECTORY" && (npm ci || npm install) && npm run build --if-present)
           fi
-          OUT=$(wrangler pages deploy "$DIRECTORY" --project-name="$PROJECT_NAME" --branch="$BRANCH_NAME" --commit-dirty=true --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_forces.log || true)
+          OUT=$(wrangler pages deploy "$DIRECTORY" \
+            --project-name="$PROJECT_NAME" \
+            --branch="$BRANCH_NAME" \
+            --commit-dirty=true \
+            --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_forces.log || true)
           echo "$OUT"
           URL=$(echo "$OUT" | grep -Eo 'https://[a-zA-Z0-9.-]+\.pages\.dev[[:alnum:]/._-]*' | tail -n1 || true)
           if [ -z "${URL:-}" ]; then echo "No preview URL found"; exit 1; fi
@@ -253,19 +278,23 @@ jobs:
         id: deploy_gui
         if: github.event_name == 'pull_request' && steps.changes.outputs.gui == 'true'
         env:
-          CLOUDFLARE_API_TOKEN:   ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CF_ACCOUNT_ID:          ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          PROJECT_NAME:           gui
-          DIRECTORY:              static/gui
-          BRANCH_NAME:            ${{ env.BRANCH_NAME }}
-          COMMIT_SHA:             ${{ env.COMMIT_SHA }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID:        ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PROJECT_NAME:         gui
+          DIRECTORY:            static/gui
+          BRANCH_NAME:          ${{ env.BRANCH_NAME }}
+          COMMIT_SHA:           ${{ env.COMMIT_SHA }}
         shell: bash
         run: |
           set -euo pipefail
           if [ -f "$DIRECTORY/package.json" ]; then
-            (cd "$DIRECTORY" && npm ci || npm install && npm run build --if-present)
+            (cd "$DIRECTORY" && (npm ci || npm install) && npm run build --if-present)
           fi
-          OUT=$(wrangler pages deploy "$DIRECTORY" --project-name="$PROJECT_NAME" --branch="$BRANCH_NAME" --commit-dirty=true --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_gui.log || true)
+          OUT=$(wrangler pages deploy "$DIRECTORY" \
+            --project-name="$PROJECT_NAME" \
+            --branch="$BRANCH_NAME" \
+            --commit-dirty=true \
+            --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_gui.log || true)
           echo "$OUT"
           URL=$(echo "$OUT" | grep -Eo 'https://[a-zA-Z0-9.-]+\.pages\.dev[[:alnum:]/._-]*' | tail -n1 || true)
           if [ -z "${URL:-}" ]; then echo "No preview URL found"; exit 1; fi
@@ -305,19 +334,23 @@ jobs:
         id: deploy_datro
         if: github.event_name == 'pull_request' && steps.changes.outputs.datro == 'true'
         env:
-          CLOUDFLARE_API_TOKEN:   ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CF_ACCOUNT_ID:          ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          PROJECT_NAME:           datro-homepage
-          DIRECTORY:              static/datro
-          BRANCH_NAME:            ${{ env.BRANCH_NAME }}
-          COMMIT_SHA:             ${{ env.COMMIT_SHA }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID:        ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PROJECT_NAME:         datro-homepage
+          DIRECTORY:            static/datro
+          BRANCH_NAME:          ${{ env.BRANCH_NAME }}
+          COMMIT_SHA:           ${{ env.COMMIT_SHA }}
         shell: bash
         run: |
           set -euo pipefail
           if [ -f "$DIRECTORY/package.json" ]; then
-            (cd "$DIRECTORY" && npm ci || npm install && npm run build --if-present)
+            (cd "$DIRECTORY" && (npm ci || npm install) && npm run build --if-present)
           fi
-          OUT=$(wrangler pages deploy "$DIRECTORY" --project-name="$PROJECT_NAME" --branch="$BRANCH_NAME" --commit-dirty=true --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_datro.log || true)
+          OUT=$(wrangler pages deploy "$DIRECTORY" \
+            --project-name="$PROJECT_NAME" \
+            --branch="$BRANCH_NAME" \
+            --commit-dirty=true \
+            --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_datro.log || true)
           echo "$OUT"
           URL=$(echo "$OUT" | grep -Eo 'https://[a-zA-Z0-9.-]+\.pages\.dev[[:alnum:]/._-]*' | tail -n1 || true)
           if [ -z "${URL:-}" ]; then echo "No preview URL found"; exit 1; fi
@@ -357,19 +390,23 @@ jobs:
         id: deploy_projections
         if: github.event_name == 'pull_request' && steps.changes.outputs.projections == 'true'
         env:
-          CLOUDFLARE_API_TOKEN:   ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CF_ACCOUNT_ID:          ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          PROJECT_NAME:           projections
-          DIRECTORY:              static/projections
-          BRANCH_NAME:            ${{ env.BRANCH_NAME }}
-          COMMIT_SHA:             ${{ env.COMMIT_SHA }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID:        ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PROJECT_NAME:         projections
+          DIRECTORY:            static/projections
+          BRANCH_NAME:          ${{ env.BRANCH_NAME }}
+          COMMIT_SHA:           ${{ env.COMMIT_SHA }}
         shell: bash
         run: |
           set -euo pipefail
           if [ -f "$DIRECTORY/package.json" ]; then
-            (cd "$DIRECTORY" && npm ci || npm install && npm run build --if-present)
+            (cd "$DIRECTORY" && (npm ci || npm install) && npm run build --if-present)
           fi
-          OUT=$(wrangler pages deploy "$DIRECTORY" --project-name="$PROJECT_NAME" --branch="$BRANCH_NAME" --commit-dirty=true --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_projections.log || true)
+          OUT=$(wrangler pages deploy "$DIRECTORY" \
+            --project-name="$PROJECT_NAME" \
+            --branch="$BRANCH_NAME" \
+            --commit-dirty=true \
+            --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_projections.log || true)
           echo "$OUT"
           URL=$(echo "$OUT" | grep -Eo 'https://[a-zA-Z0-9.-]+\.pages\.dev[[:alnum:]/._-]*' | tail -n1 || true)
           if [ -z "${URL:-}" ]; then echo "No preview URL found"; exit 1; fi
@@ -409,19 +446,23 @@ jobs:
         id: deploy_bpvsbuckler
         if: github.event_name == 'pull_request' && steps.changes.outputs.bpvsbuckler == 'true'
         env:
-          CLOUDFLARE_API_TOKEN:   ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CF_ACCOUNT_ID:          ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          PROJECT_NAME:           bpvsbuckler
-          DIRECTORY:              static/bpvsbuckler
-          BRANCH_NAME:            ${{ env.BRANCH_NAME }}
-          COMMIT_SHA:             ${{ env.COMMIT_SHA }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID:        ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PROJECT_NAME:         bpvsbuckler
+          DIRECTORY:            static/bpvsbuckler
+          BRANCH_NAME:          ${{ env.BRANCH_NAME }}
+          COMMIT_SHA:           ${{ env.COMMIT_SHA }}
         shell: bash
         run: |
           set -euo pipefail
           if [ -f "$DIRECTORY/package.json" ]; then
-            (cd "$DIRECTORY" && npm ci || npm install && npm run build --if-present)
+            (cd "$DIRECTORY" && (npm ci || npm install) && npm run build --if-present)
           fi
-          OUT=$(wrangler pages deploy "$DIRECTORY" --project-name="$PROJECT_NAME" --branch="$BRANCH_NAME" --commit-dirty=true --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_bpvs.log || true)
+          OUT=$(wrangler pages deploy "$DIRECTORY" \
+            --project-name="$PROJECT_NAME" \
+            --branch="$BRANCH_NAME" \
+            --commit-dirty=true \
+            --commit-hash="$COMMIT_SHA" 2>&1 | tee /tmp/wrangler_bpvs.log || true)
           echo "$OUT"
           URL=$(echo "$OUT" | grep -Eo 'https://[a-zA-Z0-9.-]+\.pages\.dev[[:alnum:]/._-]*' | tail -n1 || true)
           if [ -z "${URL:-}" ]; then echo "No preview URL found"; exit 1; fi
@@ -455,4 +496,3 @@ jobs:
               log_url: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
               auto_inactive: false
             });
-
