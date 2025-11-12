@@ -64,10 +64,183 @@ body{color:#202020}
 	                  }
 .v-h {
     position: absolute !important;
-    height: 1px; width: 1px; 
+    height: 1px; width: 1px;
     overflow: hidden;
     clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
     clip: rect(1px, 1px, 1px, 1px);
+}
+#mainWrapper + .release-timeline-bar {
+        margin-top: 82px;
+}
+.release-timeline-bar {
+        background: rgba(20, 20, 50, 0.88);
+        color: #fff;
+        padding: 16px;
+        position: relative;
+        z-index: 9;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+.release-timeline-inner {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: nowrap;
+}
+.release-tier-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+}
+.release-tier-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 4px;
+        color: #fff;
+        padding: 6px 14px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: background 0.2s ease, color 0.2s ease;
+}
+.release-tier-button:hover,
+.release-tier-button:focus {
+        background: rgba(255, 255, 255, 0.18);
+        color: #fff;
+        outline: none;
+}
+.release-tier-select {
+        background: rgba(14, 14, 35, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 4px;
+        color: #fff;
+        padding: 6px 32px 6px 12px;
+        font-size: 0.85rem;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        min-width: 120px;
+        cursor: pointer;
+}
+.release-tier-select:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(102, 204, 255, 0.45);
+}
+.release-slider-scroll {
+        overflow-x: auto;
+        scrollbar-width: thin;
+        padding: 8px 0 12px;
+        flex: 1 1 auto;
+        min-width: 0;
+}
+.release-slider-scroll::-webkit-scrollbar {
+        height: 6px;
+}
+.release-slider-scroll::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+}
+.release-slider-scroll::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.35);
+        border-radius: 10px;
+}
+.release-slider-track {
+        min-width: max(680px, calc(var(--stage-count, 1) * 140px));
+        padding: 0 12px;
+}
+.release-stage-slider {
+        width: 100%;
+        appearance: none;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15));
+        height: 6px;
+        border-radius: 999px;
+        outline: none;
+        position: relative;
+}
+.release-stage-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 18px;
+        width: 18px;
+        border-radius: 50%;
+        border: 2px solid #ffffff;
+        background: #66CCFF;
+        cursor: pointer;
+        margin-top: -6px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        transition: transform 0.2s ease;
+}
+.release-stage-slider::-moz-range-thumb {
+        height: 18px;
+        width: 18px;
+        border-radius: 50%;
+        border: 2px solid #ffffff;
+        background: #66CCFF;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        transition: transform 0.2s ease;
+}
+.release-stage-slider::-webkit-slider-thumb:hover,
+.release-stage-slider::-moz-range-thumb:hover {
+        transform: scale(1.05);
+}
+.release-slider-labels {
+        display: flex;
+        justify-content: space-between;
+        gap: 0;
+        margin-top: 12px;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        color: rgba(255, 255, 255, 0.75);
+}
+.release-slider-label {
+        flex: 1 1 0;
+        text-align: center;
+        min-width: 120px;
+        cursor: pointer;
+        position: relative;
+        white-space: nowrap;
+        background: none;
+        border: none;
+        color: inherit;
+        padding: 18px 4px 0;
+        font: inherit;
+}
+.release-slider-label::before {
+        content: '';
+        position: absolute;
+        top: -14px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 10px;
+        background: rgba(255, 255, 255, 0.5);
+}
+.release-slider-label:focus {
+        outline: none;
+        color: #ffffff;
+}
+.release-slider-label.is-active {
+        color: #66CCFF;
+        font-weight: 600;
+}
+.release-slider-label.is-active::before {
+        background: #66CCFF;
+        height: 14px;
+}
+.release-popup-content {
+        display: none;
+        max-width: 520px;
+}
+.release-popup-content h2 {
+        font-size: 1.4rem;
+        margin-bottom: 0.75rem;
+        color: #333366;
+}
+.release-popup-content p {
+        margin-bottom: 0.5rem;
+        line-height: 1.5;
 }
 #bg-video {
     position: fixed;
@@ -133,11 +306,11 @@ body{color:#202020}
 		<source src="https://wayback.datro.xyz/2025-10-19_timeline-background_video_v0.0.1.mp4" type="video/mp4">
 		Your browser does not support the video tag.
 	</video>
-	<header id="mainWrapper">
-		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-			 <h1 class="v-h">Site Navigation</h1>
+        <header id="mainWrapper">
+                <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                         <h1 class="v-h">Site Navigation</h1>
                          <a data-content="DATRO" href="index.html" title="DATRO">
-			  <img alt="DATRO Header Logo" class="navbar-brand" src="static/datro/img/datro_logo.webp"></a>
+                          <img alt="DATRO Header Logo" class="navbar-brand" src="static/datro/img/datro_logo.webp"></a>
 				   <button aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarCollapse" data-toggle="collapse" type="button">
 				      <span class="navbar-toggler-icon"></span>
 					 </button>
@@ -151,9 +324,30 @@ body{color:#202020}
 						<a data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" class="nav-link" href="static/library/">Library</a>
 					</li>
 				</ul>
-			</div>
-		</nav>
-	</header>
+                        </div>
+                </nav>
+        </header>
+        <section aria-label="Release timeline" class="release-timeline-bar">
+                <div class="release-timeline-inner">
+                        <div class="release-tier-controls" id="release-tier-controls">
+                                <button aria-label="Go back to primary options" class="release-tier-button" id="release-menu-back" type="button" hidden>Back</button>
+                                <select aria-label="Select an option" class="release-tier-select" id="release-tier-primary">
+                                        <option selected value="">Select option</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                </select>
+                                <select aria-label="Select a follow-on option" class="release-tier-select" id="release-tier-secondary" hidden></select>
+                        </div>
+                        <div aria-label="Release timeline slider" class="release-slider-scroll">
+                                <div class="release-slider-track" id="release-slider-track">
+                                        <input aria-describedby="release-slider-labels" aria-label="Release timeline" class="release-stage-slider" id="release-stage-slider" max="0" min="0" step="1" type="range" value="0" list="release-stage-list">
+                                        <datalist id="release-stage-list"></datalist>
+                                        <div class="release-slider-labels" id="release-slider-labels"></div>
+                                </div>
+                        </div>
+                </div>
+        </section>
 <!-- preloader <div id="loader"></div> -->
 	<div id="loader-wrapper">
 		<div class="loader-section section-left"></div>
@@ -439,19 +633,270 @@ Crown Copyright <script>new Date().getFullYear()>2017&&document.write("© "+new 
 			</div>
 		</footer>
 	</div>
+        <div aria-hidden="true">
+                <div class="release-popup-content" id="release-popup-free">
+                        <h2>Free Tier Access</h2>
+                        <p>Explore the open DATRO experience with unrestricted community features and public knowledge base materials.</p>
+                        <p>Ideal for curious visitors who want to understand the vision and get started without commitment.</p>
+                </div>
+                <div class="release-popup-content" id="release-popup-q1-2024">
+                        <h2>Q1-2024 Release</h2>
+                        <p>Foundational connectivity services, platform login, and initial collaboration toolset are scheduled for this window.</p>
+                        <p>Includes onboarding resources for early participants and technical partners.</p>
+                </div>
+                <div class="release-popup-content" id="release-popup-q2-2024">
+                        <h2>Q2-2024 Release</h2>
+                        <p>Expands on the Q1 build with integrated analytics dashboards and enhanced governance controls.</p>
+                        <p>Designed for teams preparing pilot deployments and real-world field trials.</p>
+                </div>
+                <div class="release-popup-content" id="release-popup-q3-2024">
+                        <h2>Q3-2024 Release</h2>
+                        <p>Introduces partner APIs, data-exchange improvements, and wider interoperability for municipal roll-outs.</p>
+                        <p>Engineering notes include upgrade strategies and migration helpers.</p>
+                </div>
+                <div class="release-popup-content" id="release-popup-q4-2024">
+                        <h2>Q4-2024 Release</h2>
+                        <p>Focuses on resilience testing, internationalisation, and live support readiness.</p>
+                        <p>Recommended for operators scaling infrastructure beyond pilot programmes.</p>
+                </div>
+                <div class="release-popup-content" id="release-popup-q1-2025">
+                        <h2>Q1-2025 Release</h2>
+                        <p>Launches automated deployment pipelines and telemetry bundling for enterprise partners.</p>
+                        <p>Highlights include extended documentation sets and curated training paths.</p>
+                </div>
+                <div class="release-popup-content" id="release-popup-q2-2025">
+                        <h2>Q2-2025 Release</h2>
+                        <p>Delivers marketplace integrations, subscription tooling, and improved SLA reporting.</p>
+                        <p>Perfect for organisations aligning business operations with DATRO infrastructure.</p>
+                </div>
+                <div class="release-popup-content" id="release-popup-q3-2025">
+                        <h2>Q3-2025 Release</h2>
+                        <p>Centres on automation, AI-assisted monitoring, and policy templates for distributed governance.</p>
+                        <p>Provides action plans for compliance and regulatory reviews.</p>
+                </div>
+                <div class="release-popup-content" id="release-popup-q4-2025">
+                        <h2>Q4-2025 Release</h2>
+                        <p>Marks the full ecosystem release with federation services and comprehensive support tiers.</p>
+                        <p>Includes launch readiness kits and expanded customer success programmes.</p>
+                </div>
+                <div class="release-popup-content" id="release-popup-restricted">
+                        <h2>Restricted Access Preview</h2>
+                        <p>Request invitation-only access to experimental features, sandbox datasets, and early product concepts.</p>
+                        <p>Ideal for strategic partners collaborating on the roadmap beyond 2025.</p>
+                </div>
+        </div>
         <script src="static/datro/js/bootstrap.min.js"></script>
-	<script src="static/datro/js/holder2.js">
-	</script>
-	<script src="static/datro/js/carousel-dropdown.js">
-	</script>
+        <script src="static/datro/js/holder2.js">
+        </script>
+        <script src="static/datro/js/carousel-dropdown.js">
+        </script>
 	<script src="static/datro/js/currencydrop.js">
 	</script>
 	<script src="static/datro/js/scale.fix.js">
 	</script>
-	<script src="static/datro/html/featherlight/release/featherlight.min.js">
-	</script>
-	<script src="static/datro/js/smoothloader.js"></script>
+        <script src="static/datro/html/featherlight/release/featherlight.min.js">
+        </script>
+        <script src="static/datro/js/smoothloader.js"></script>
 <script defer src="static/datro/js/footer-accordion.js"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+                var controls = document.getElementById('release-tier-controls');
+                var primarySelect = document.getElementById('release-tier-primary');
+                var secondarySelect = document.getElementById('release-tier-secondary');
+                var backButton = document.getElementById('release-menu-back');
+
+                if (controls && primarySelect && secondarySelect && backButton) {
+                        var secondaryOptionMap = {
+                                '1': [
+                                        { value: '1a', label: 'Community Overview' },
+                                        { value: '1b', label: 'Roadmap Highlights' },
+                                        { value: '1c', label: 'Support Channels' }
+                                ],
+                                '2': [
+                                        { value: '2a', label: 'Deployment Guides' },
+                                        { value: '2b', label: 'Pilot Programmes' },
+                                        { value: '2c', label: 'Integration Steps' }
+                                ],
+                                '3': [
+                                        { value: '3a', label: 'Partner Resources' },
+                                        { value: '3b', label: 'Training Tracks' },
+                                        { value: '3c', label: 'Market Access' }
+                                ]
+                        };
+
+                        function resetMenus() {
+                                controls.classList.remove('is-secondary', 'selection-made');
+                                backButton.hidden = true;
+                                primarySelect.hidden = false;
+                                primarySelect.value = '';
+                                secondarySelect.hidden = true;
+                                secondarySelect.innerHTML = '';
+                        }
+
+                        function buildSecondaryMenu(key) {
+                                var options = secondaryOptionMap[key];
+                                if (!options) {
+                                        resetMenus();
+                                        return;
+                                }
+
+                                secondarySelect.innerHTML = '';
+
+                                var placeholder = document.createElement('option');
+                                placeholder.value = '';
+                                placeholder.textContent = 'Select detail';
+                                placeholder.disabled = true;
+                                placeholder.selected = true;
+                                secondarySelect.appendChild(placeholder);
+
+                                options.forEach(function (entry) {
+                                        var option = document.createElement('option');
+                                        option.value = entry.value;
+                                        option.textContent = entry.label;
+                                        secondarySelect.appendChild(option);
+                                });
+
+                                controls.classList.add('is-secondary');
+                                primarySelect.hidden = true;
+                                secondarySelect.hidden = false;
+                                backButton.hidden = false;
+                                secondarySelect.focus();
+                        }
+
+                        primarySelect.addEventListener('change', function (event) {
+                                var value = event.target.value;
+                                if (value) {
+                                        buildSecondaryMenu(value);
+                                } else {
+                                        resetMenus();
+                                }
+                        });
+
+                        backButton.addEventListener('click', function () {
+                                resetMenus();
+                                primarySelect.focus();
+                        });
+
+                        secondarySelect.addEventListener('change', function () {
+                                if (secondarySelect.value) {
+                                        controls.classList.add('selection-made');
+                                }
+                        });
+                }
+
+                var sliderTrack = document.getElementById('release-slider-track');
+                var slider = document.getElementById('release-stage-slider');
+                var sliderLabels = document.getElementById('release-slider-labels');
+                var sliderDataList = document.getElementById('release-stage-list');
+
+                var releaseStages = [
+                        { label: 'Free', target: '#release-popup-free' },
+                        { label: 'Q1-2024 Release', target: '#release-popup-q1-2024' },
+                        { label: 'Q2-2024 Release', target: '#release-popup-q2-2024' },
+                        { label: 'Q3-2024 Release', target: '#release-popup-q3-2024' },
+                        { label: 'Q4-2024 Release', target: '#release-popup-q4-2024' },
+                        { label: 'Q1-2025 Release', target: '#release-popup-q1-2025' },
+                        { label: 'Q2-2025 Release', target: '#release-popup-q2-2025' },
+                        { label: 'Q3-2025 Release', target: '#release-popup-q3-2025' },
+                        { label: 'Q4-2025 Release', target: '#release-popup-q4-2025' },
+                        { label: 'Restricted Access Preview', target: '#release-popup-restricted' }
+                ];
+
+                if (!(sliderTrack && slider && sliderLabels && sliderDataList && releaseStages.length)) {
+                        return;
+                }
+
+                sliderTrack.style.setProperty('--stage-count', releaseStages.length);
+                slider.setAttribute('max', releaseStages.length - 1);
+
+                sliderLabels.innerHTML = '';
+                sliderDataList.innerHTML = '';
+
+                releaseStages.forEach(function (stage, index) {
+                        var option = document.createElement('option');
+                        option.value = index;
+                        option.label = stage.label;
+                        sliderDataList.appendChild(option);
+
+                        var labelButton = document.createElement('button');
+                        labelButton.type = 'button';
+                        labelButton.className = 'release-slider-label';
+                        labelButton.textContent = stage.label;
+                        labelButton.setAttribute('data-index', index);
+                        labelButton.setAttribute('data-target', stage.target);
+                        sliderLabels.appendChild(labelButton);
+                });
+
+                function updateSliderFill(index) {
+                        var maxIndex = releaseStages.length > 1 ? releaseStages.length - 1 : 1;
+                        var percentage = maxIndex ? (index / maxIndex) * 100 : 0;
+                        var safePercent = Math.min(Math.max(percentage, 0), 100);
+                        slider.style.background = 'linear-gradient(90deg, #66CCFF 0%, #66CCFF ' + safePercent + '%, rgba(255, 255, 255, 0.15) ' + safePercent + '%, rgba(255, 255, 255, 0.15) 100%)';
+                }
+
+                function setActiveStage(index) {
+                        var labels = sliderLabels.querySelectorAll('.release-slider-label');
+                        labels.forEach(function (label) {
+                                if (Number(label.getAttribute('data-index')) === index) {
+                                        label.classList.add('is-active');
+                                } else {
+                                        label.classList.remove('is-active');
+                                }
+                        });
+                }
+
+                function openStagePopup(index) {
+                        var stage = releaseStages[index];
+                        if (!stage || !stage.target) {
+                                return;
+                        }
+
+                        if (window.jQuery && typeof $.featherlight === 'function') {
+                                $.featherlight($(stage.target), { persist: true });
+                        }
+                }
+
+                slider.addEventListener('input', function (event) {
+                        var index = Number(event.target.value) || 0;
+                        setActiveStage(index);
+                        updateSliderFill(index);
+                });
+
+                slider.addEventListener('change', function (event) {
+                        var index = Number(event.target.value) || 0;
+                        setActiveStage(index);
+                        updateSliderFill(index);
+                        openStagePopup(index);
+                });
+
+                sliderLabels.querySelectorAll('.release-slider-label').forEach(function (label) {
+                        label.addEventListener('click', function () {
+                                var index = Number(label.getAttribute('data-index')) || 0;
+                                slider.value = index;
+                                setActiveStage(index);
+                                updateSliderFill(index);
+                                openStagePopup(index);
+                        });
+
+                        label.addEventListener('keydown', function (event) {
+                                if (event.key !== 'Enter' && event.key !== ' ') {
+                                        return;
+                                }
+
+                                event.preventDefault();
+                                var index = Number(label.getAttribute('data-index')) || 0;
+                                slider.value = index;
+                                setActiveStage(index);
+                                updateSliderFill(index);
+                                openStagePopup(index);
+                        });
+                });
+
+                var initialIndex = Number(slider.value) || 0;
+                setActiveStage(initialIndex);
+                updateSliderFill(initialIndex);
+        });
+</script>
 </body>
 </html>
 
