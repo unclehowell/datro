@@ -90,8 +90,8 @@ jobs:
       - name: Setup Node (for builds)
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-
+            node-version: '22'   # or '20'
+            cache: 'npm'
       ######################################################################
       # PREVIEW DEPLOYS FOR PRs — posts a comment with the preview URL(s)
       # Uses andykenward/github-actions-cloudflare-pages to create GH Deployments
