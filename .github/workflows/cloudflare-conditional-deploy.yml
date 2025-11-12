@@ -91,7 +91,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
             node-version: '22'   # or '20'
-            cache: 'npm'
+
       ######################################################################
       # PREVIEW DEPLOYS FOR PRs — posts a comment with the preview URL(s)
       # Uses andykenward/github-actions-cloudflare-pages to create GH Deployments
