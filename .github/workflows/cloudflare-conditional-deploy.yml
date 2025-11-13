@@ -1,4 +1,4 @@
-name: Cloudflare conditional deploy
+name: Cloudflare Conditional Deploy
 
 on:
   # Previews on PRs targeting gh-pages (Codex PRs)
@@ -16,7 +16,7 @@ jobs:
     name: Detect changes and deploy only touched apps
     runs-on: ubuntu-latest
 
-    # Create PR comments + GitHub Deployments
+    # Crucial: Ensure the workflow has permission to write comments and deployment statuses
     permissions:
       contents: read
       deployments: write
@@ -33,6 +33,7 @@ jobs:
         with:
           fetch-depth: 0
 
+      # --- Change Detection Step (Retained your original logic) ---
       - name: Determine changed files
         id: changes
         shell: bash
@@ -41,7 +42,9 @@ jobs:
 
           echo "Determining changed files..."
           if [ "${{ github.event_name }}" = "pull_request" ]; then
+            # Use GitHub context to get base SHA for better reliability
             BASE_SHA="${{ github.event.pull_request.base.sha }}"
+            # Fetch base branch history if not fully available
             git fetch origin "${{ github.event.pull_request.base.ref }}" --depth=1 || true
             DIFF=$(git diff --name-only "$BASE_SHA"...HEAD) || true
           else
@@ -57,7 +60,7 @@ jobs:
           echo "Changed files:"
           echo "$DIFF"
 
-          # default outputs (false)
+          # Default outputs (false)
           {
             echo "library=false"
             echo "hbnb=false"
@@ -68,7 +71,7 @@ jobs:
             echo "bpvsbuckler=false"
           } >> "$GITHUB_OUTPUT"
 
-          # detect changes in each app directory
+          # Detect changes in each app directory
           if echo "$DIFF" | grep -qE '^static/library/'; then echo "library=true" >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/hbnb/'; then echo "hbnb=true" >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/forces/'; then echo "forces=true" >> "$GITHUB_OUTPUT"; fi
@@ -90,21 +93,13 @@ jobs:
       - name: Setup Node (for builds)
         uses: actions/setup-node@v4
         with:
-            node-version: '22'   # or '20'
+          node-version: '22'    # or '20'
 
       ######################################################################
-      # PREVIEW DEPLOYS FOR PRs — posts a comment with the preview URL(s)
-      # Uses andykenward/github-actions-cloudflare-pages to create GH Deployments
-      # Repo Secrets required:
-      #   CLOUDFLARE_API_TOKEN (Account:Read + Pages:Builds:Edit)
-      #   CLOUDFLARE_ACCOUNT_ID
-      #
-      # IMPORTANT: `cloudflare-project-name` must match CF Pages project names.
-      # IMPORTANT: `github-environment` must match your GitHub Environments:
-      #   library(preview), hbnb(preview), ceo(preview), gui(preview),
-      #   datro(preview), projections(preview), bpvsbuckler(preview)
+      # PREVIEW DEPLOYS FOR PRs — IMPORTANT: IDs MUST BE SET TO CAPTURE URLS
       ######################################################################
 
+      # --- Library ---
       - name: Build library
         if: github.event_name == 'pull_request' && steps.changes.outputs.library == 'true'
         run: |
@@ -114,10 +109,10 @@ jobs:
             npm run build --if-present
           fi
 
-      - name: Deploy library (Preview) and comment URL
+      - name: Deploy library (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.library == 'true'
         uses: andykenward/github-actions-cloudflare-pages@v3.1.0
-        id: deploy_library
+        id: deploy_library # Capture output here
         with:
           cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -125,7 +120,10 @@ jobs:
           directory: static/library
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: library(preview)
+          # Set `add-comment: false` to avoid comment conflicts
+          add-comment: false
 
+      # --- HBNB ---
       - name: Build hbnb
         if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
         run: |
@@ -135,10 +133,10 @@ jobs:
             npm run build --if-present
           fi
 
-      - name: Deploy hbnb (Preview) and comment URL
+      - name: Deploy hbnb (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
         uses: andykenward/github-actions-cloudflare-pages@v3.1.0
-        id: deploy_hbnb
+        id: deploy_hbnb # Capture output here
         with:
           cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -146,7 +144,9 @@ jobs:
           directory: static/hbnb
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: hbnb(preview)
+          add-comment: false
 
+      # --- Forces/CEO ---
       - name: Build forces (ceo)
         if: github.event_name == 'pull_request' && steps.changes.outputs.forces == 'true'
         run: |
@@ -156,10 +156,10 @@ jobs:
             npm run build --if-present
           fi
 
-      - name: Deploy forces/ceo (Preview) and comment URL
+      - name: Deploy forces/ceo (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.forces == 'true'
         uses: andykenward/github-actions-cloudflare-pages@v3.1.0
-        id: deploy_forces
+        id: deploy_forces # Capture output here
         with:
           cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -167,7 +167,9 @@ jobs:
           directory: static/forces
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: ceo(preview)
+          add-comment: false
 
+      # --- GUI ---
       - name: Build gui
         if: github.event_name == 'pull_request' && steps.changes.outputs.gui == 'true'
         run: |
@@ -177,10 +179,10 @@ jobs:
             npm run build --if-present
           fi
 
-      - name: Deploy gui (Preview) and comment URL
+      - name: Deploy gui (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.gui == 'true'
         uses: andykenward/github-actions-cloudflare-pages@v3.1.0
-        id: deploy_gui
+        id: deploy_gui # Capture output here
         with:
           cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -188,7 +190,9 @@ jobs:
           directory: static/gui
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: gui(preview)
+          add-comment: false
 
+      # --- DATRO-HOMEPAGE (The main app) ---
       - name: Build datro-homepage
         if: github.event_name == 'pull_request' && steps.changes.outputs.datro == 'true'
         run: |
@@ -198,10 +202,10 @@ jobs:
             npm run build --if-present
           fi
 
-      - name: Deploy datro-homepage (Preview) and comment URL
+      - name: Deploy datro-homepage (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.datro == 'true'
         uses: andykenward/github-actions-cloudflare-pages@v3.1.0
-        id: deploy_datro
+        id: deploy_datro # Capture output here
         with:
           cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -209,7 +213,9 @@ jobs:
           directory: static/datro
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: datro(preview)
+          add-comment: false
 
+      # --- Projections ---
       - name: Build projections
         if: github.event_name == 'pull_request' && steps.changes.outputs.projections == 'true'
         run: |
@@ -219,10 +225,10 @@ jobs:
             npm run build --if-present
           fi
 
-      - name: Deploy projections (Preview) and comment URL
+      - name: Deploy projections (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.projections == 'true'
         uses: andykenward/github-actions-cloudflare-pages@v3.1.0
-        id: deploy_projections
+        id: deploy_projections # Capture output here
         with:
           cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -230,7 +236,9 @@ jobs:
           directory: static/projections
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: projections(preview)
+          add-comment: false
 
+      # --- BPVSBuckler ---
       - name: Build bpvsbuckler
         if: github.event_name == 'pull_request' && steps.changes.outputs.bpvsbuckler == 'true'
         run: |
@@ -240,10 +248,10 @@ jobs:
             npm run build --if-present
           fi
 
-      - name: Deploy bpvsbuckler (Preview) and comment URL
+      - name: Deploy bpvsbuckler (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.bpvsbuckler == 'true'
         uses: andykenward/github-actions-cloudflare-pages@v3.1.0
-        id: deploy_bpvsbuckler
+        id: deploy_bpvsbuckler # Capture output here
         with:
           cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -251,7 +259,79 @@ jobs:
           directory: static/bpvsbuckler
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: bpvsbuckler(preview)
+          add-comment: false
 
-      - name: Done
-        run: echo "Conditional deploy workflow finished."
+      # --- FINAL AGGREGATION AND COMMENT STEP ---
+      - name: Post Consolidated Preview Comment
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const appUrls = [
+              { name: 'library', id: 'deploy_library', changed: '${{ steps.changes.outputs.library }}' },
+              { name: 'hbnb', id: 'deploy_hbnb', changed: '${{ steps.changes.outputs.hbnb }}' },
+              { name: 'ceo (forces)', id: 'deploy_forces', changed: '${{ steps.changes.outputs.forces }}' },
+              { name: 'gui', id: 'deploy_gui', changed: '${{ steps.changes.outputs.gui }}' },
+              { name: 'datro-homepage', id: 'deploy_datro', changed: '${{ steps.changes.outputs.datro }}' },
+              { name: 'projections', id: 'deploy_projections', changed: '${{ steps.changes.outputs.projections }}' },
+              { name: 'bpvsbuckler', id: 'deploy_bpvsbuckler', changed: '${{ steps.changes.outputs.bpvsbuckler }}' },
+            ];
+
+            let commentBody = '## 🚀 Cloudflare Pages Preview Deployments\n\n| Application | Status | Preview URL |\n| :--- | :--- | :--- |\n';
+            let deployedCount = 0;
+
+            for (const app of appUrls) {
+              const url = process.env[`STEPS_${app.id.toUpperCase()}_OUTPUTS_DEPLOYMENT_URL`];
+              const isDeployed = url && url !== 'null';
+              const status = isDeployed ? '✅ Deployed' : (app.changed === 'true' ? '❌ Failed' : '🚫 Skipped');
+              const link = isDeployed ? `[${url}](${url})` : 'N/A';
+              
+              commentBody += `| ${app.name} | ${status} | ${link} |\n`;
+              if (isDeployed) {
+                deployedCount++;
+              }
+            }
+            
+            commentBody += `\n**Total Deployed:** ${deployedCount} applications.`;
+
+            // If we are in a PR, post the comment.
+            if (context.payload.pull_request) {
+              // Create a unique comment header to allow replacing the comment on subsequent runs
+              const commentIdentifier = '<!-- Cloudflare Pages Preview Comment -->';
+              commentBody = commentIdentifier + '\n' + commentBody;
+
+              const issue_number = context.issue.number;
+              const { data: comments } = await github.rest.issues.listComments({
+                issue_number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+              });
+
+              const existingComment = comments.find(c => c.body.includes(commentIdentifier));
+
+              if (existingComment) {
+                await github.rest.issues.updateComment({
+                  comment_id: existingComment.id,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: commentBody
+                });
+              } else {
+                await github.rest.issues.createComment({
+                  issue_number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: commentBody
+                });
+              }
+            }
+        env:
+          # Pass outputs as environment variables (requires specific formatting)
+          STEPS_DEPLOY_LIBRARY_OUTPUTS_DEPLOYMENT_URL: ${{ steps.deploy_library.outputs.deployment-url }}
+          STEPS_DEPLOY_HBNB_OUTPUTS_DEPLOYMENT_URL: ${{ steps.deploy_hbnb.outputs.deployment-url }}
+          STEPS_DEPLOY_FORCES_OUTPUTS_DEPLOYMENT_URL: ${{ steps.deploy_forces.outputs.deployment-url }}
+          STEPS_DEPLOY_GUI_OUTPUTS_DEPLOYMENT_URL: ${{ steps.deploy_gui.outputs.deployment-url }}
+          STEPS_DEPLOY_DATRO_OUTPUTS_DEPLOYMENT_URL: ${{ steps.deploy_datro.outputs.deployment-url }}
+          STEPS_DEPLOY_PROJECTIONS_OUTPUTS_DEPLOYMENT_URL: ${{ steps.deploy_projections.outputs.deployment-url }}
+          STEPS_DEPLOY_BPVSBUCKLER_OUTPUTS_DEPLOYMENT_URL: ${{ steps.deploy_bpvsbuckler.outputs.deployment-url }}
 
