@@ -11,6 +11,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [-datro.08] - Q4/2025
+
+### Changed
+Nov-13 - Back in business with AI  
+
 ## [-datro.07] - Q1/2024
 
 ### Added
