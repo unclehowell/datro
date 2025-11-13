@@ -12,7 +12,7 @@
 	</script>
 	<meta content="DATRO Technology" name="description">
 	<meta content="DATRO Consortium" name="author">
-	<title>DATRO Technology Portfolio</title>
+        <title>DATRO Technology</title>
 	<link href="img/favicons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
 	<link href="img/favicons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
 	<link href="img/favicons/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
@@ -38,8 +38,9 @@
 	<link href="css/store.css" media="screen" rel="stylesheet" type="text/css">
 	<link href="css/footer.css" rel="stylesheet" type="text/css">
 	<link href="css/download-buttons.css" rel="stylesheet" type="text/css">
-	<link href="css/dropdownboxes.css" rel="stylesheet">
-	<link href="css/glyphicon.css" rel="stylesheet" type="text/css">
+        <link href="css/dropdownboxes.css" rel="stylesheet">
+        <link href="css/glyphicon.css" rel="stylesheet" type="text/css">
+        <link href="css/release-controls.css" rel="stylesheet">
 	<style>
 
 html {
@@ -121,14 +122,15 @@ html {
 
 	</style>
 
-	<script src="js/lazy.min.js">
-	</script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-	</script>
-	<script>
-	                        function pageLoad(){
-	                         document.getElementById('mainWrapper').style.visibility="visible";
-	                        }
+        <script src="js/lazy.min.js">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        </script>
+        <script defer src="js/release-controls.js"></script>
+        <script>
+                                function pageLoad(){
+                                 document.getElementById('mainWrapper').style.visibility="visible";
+                                }
 	</script><!-- search box -->
 	<link href="html/search-box/app.css" rel="stylesheet">
 	<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
@@ -145,7 +147,7 @@ html {
 	</script>
 	<style>
 	      body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
-	</style><noscript>
+        </style><noscript>
         <style>
            body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
         </style></noscript>
@@ -160,22 +162,6 @@ html {
   gtag('config', 'G-6BTNPTMXBF');
 </script>
 <!-- google tracking code end -->
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var libraryLinks = document.querySelectorAll('a[href*="library"]');
-    var hostname = window.location.hostname;
-
-    for (var i = 0; i < libraryLinks.length; i++) {
-      var link = libraryLinks[i];
-      if (hostname === 'datro.xyz') {
-        var oldHref = link.getAttribute('href');
-        var newHref = oldHref.replace('../library/', 'https://library.datro.xyz/');
-        newHref = newHref.replace('/library/', 'https://library.datro.xyz/');
-        link.setAttribute('href', newHref);
-      }
-    }
-  });
-</script>
 </head>
 <body bgcolor="#333366" onload="pageLoad()" style="font-size: 125%;">
 	<header id="mainWrapper" style="visibility: visible;">
@@ -184,8 +170,8 @@ html {
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item"></li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Portfolio</a>
+                                        <li class="nav-item">
+                                                <a class="nav-link" href="technology.html">Technology</a>
 					</li>
 					<li class="nav-item"></li>
 					<li class="nav-item">
@@ -195,9 +181,36 @@ html {
 			</div>
 		</nav>
 	</header>
-	<main class="main" role="main">
-		<div class="segment-top"></div>
-		<h1 class="segment-title">Portfolio</h1>
+        <main class="main" role="main">
+                <div class="release-topbar" role="region" aria-label="Release roadmap">
+                        <div class="release-dropdown-wrapper">
+                                <button type="button" class="release-back-button" aria-hidden="true" aria-label="Return to main options">&#8592; Back</button>
+                                <span class="v-h" id="release-primary-label-tech">Select a starting option</span>
+                                <select class="release-select release-select-initial" id="release-select-initial-tech" aria-labelledby="release-primary-label-tech">
+                                        <option value="">Choose an option</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                </select>
+                                <select class="release-select release-select-secondary" id="release-select-secondary-tech" aria-label="Select a secondary option" hidden></select>
+                        </div>
+                        <div class="release-slider" role="tablist" aria-label="Release checkpoints">
+                                <div class="release-item is-active">
+                                        <button type="button" class="release-toggle" role="tab" aria-selected="true">2010</button>
+                                        <button type="button" class="release-padlock is-unlocked" aria-label="Open 2010 details" data-library-href="/library/">🔓</button>
+                                </div>
+                                <div class="release-item">
+                                        <button type="button" class="release-toggle" role="tab" aria-selected="false">2020</button>
+                                        <button type="button" class="release-padlock" aria-label="Open 2020 details" data-library-href="/library/">🔒</button>
+                                </div>
+                                <div class="release-item">
+                                        <button type="button" class="release-toggle" role="tab" aria-selected="false">2030</button>
+                                        <button type="button" class="release-padlock" aria-label="Open 2030 details" data-library-href="/library/">🔒</button>
+                                </div>
+                        </div>
+                </div>
+                <div class="segment-top"></div>
+                <h1 class="segment-title">Technology</h1>
 		<div class="container marketing" style="margin-top:-2em;margin-bottom:3em;">
 			<div class="container">
 				<p class="product-paragraph" style="margin-top:11px!important;margin-bottom: 7em!important;font-weight:300;">See below DATR<span class="copy-left">&#xa9;</span>'s growing portfolio of technologies, including their product introduction videos and links to their respective homepages and source-code (vital statistics and compiled, downloadable software and technical documents - all contained within our single MonoREAPo</p>
