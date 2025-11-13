@@ -93,8 +93,8 @@ jobs:
           directory: static/library
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: library(preview)
-          post-comment: false # Stop automatic comment
-          log-output: false   # 🛑 CRITICAL FIX: Stop verbose log output
+          post-comment: false
+          log-output: false   # 🛑 Fix to suppress verbose output
           
       # --- HBNB (Built App - React) ---
       - name: Build hbnb
@@ -116,7 +116,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: hbnb(preview)
           post-comment: false
-          log-output: false   # 🛑 CRITICAL FIX: Stop verbose log output
+          log-output: false   # 🛑 Fix to suppress verbose output
 
       # --- Forces/CEO (Static HTML) ---
       - name: Deploy forces/ceo (Preview)
@@ -131,7 +131,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: ceo(preview)
           post-comment: false
-          log-output: false   # 🛑 CRITICAL FIX: Stop verbose log output
+          log-output: false   # 🛑 Fix to suppress verbose output
 
       # --- GUI (Static HTML) ---
       - name: Deploy gui (Preview)
@@ -146,7 +146,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: gui(preview)
           post-comment: false
-          log-output: false   # 🛑 CRITICAL FIX: Stop verbose log output
+          log-output: false   # 🛑 Fix to suppress verbose output
 
       # --- DATRO-HOMEPAGE (Static HTML) ---
       - name: Deploy datro-homepage (Preview)
@@ -161,7 +161,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: datro(preview)
           post-comment: false
-          log-output: false   # 🛑 CRITICAL FIX: Stop verbose log output
+          log-output: false   # 🛑 Fix to suppress verbose output
 
       # --- Projections (Static HTML) ---
       - name: Deploy projections (Preview)
@@ -176,7 +176,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: projections(preview)
           post-comment: false
-          log-output: false   # 🛑 CRITICAL FIX: Stop verbose log output
+          log-output: false   # 🛑 Fix to suppress verbose output
 
       # --- BPVSBuckler (Static HTML) ---
       - name: Deploy bpvsbuckler (Preview)
@@ -191,14 +191,13 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: bpvsbuckler(preview)
           post-comment: false
-          log-output: false   # 🛑 CRITICAL FIX: Stop verbose log output
+          log-output: false   # 🛑 Fix to suppress verbose output
 
-      # --- FINAL AGGREGATION AND COMMENT STEP ---
+      # --- FINAL AGGREGATION AND COMMENT STEP (Generates the Table) ---
       - name: Post Consolidated Preview Comment
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
         with:
-          # 🛑 CRITICAL FIX: Pass step outputs as environment variables
           script: |
             const appUrls = [
               { name: 'library', id: 'deploy_library', changed: '${{ steps.changes.outputs.library }}' },
@@ -224,7 +223,6 @@ jobs:
                   status = '✅ Deployed';
                   deployedCount++;
               } else if (app.changed === 'true') {
-                  // This error state is now more reliable since the deploy action should not log
                   status = '❌ Failed (Check CF Pages log)';
               } else {
                   status = '🚫 Skipped';
@@ -267,7 +265,7 @@ jobs:
             }
 
         env:
-          # 🛑 CRITICAL FIX: Pass the 'deployment-url' output as environment variables
+          # CRITICAL FIX: Pass the 'deployment-url' output as environment variables
           URL_DEPLOY_LIBRARY: ${{ steps.deploy_library.outputs.deployment-url }}
           URL_DEPLOY_HBNB: ${{ steps.deploy_hbnb.outputs.deployment-url }}
           URL_DEPLOY_FORCES: ${{ steps.deploy_forces.outputs.deployment-url }}
@@ -275,4 +273,3 @@ jobs:
           URL_DEPLOY_DATRO: ${{ steps.deploy_datro.outputs.deployment-url }}
           URL_DEPLOY_PROJECTIONS: ${{ steps.deploy_projections.outputs.deployment-url }}
           URL_DEPLOY_BPVSBUCKLER: ${{ steps.deploy_bpvsbuckler.outputs.deployment-url }}
-
