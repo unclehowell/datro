@@ -111,16 +111,16 @@ jobs:
 
       - name: Deploy library (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.library == 'true'
-        uses: cloudflare/pages-action@v1 # Upgraded to official action
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
         id: deploy_library # Capture output here
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: library
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: library
           directory: static/library
-          # Turn off automatic commenting from this action
-          comment-mode: 'off'
-          
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: library(preview)
+
       # --- HBNB ---
       - name: Build hbnb
         if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
@@ -133,14 +133,15 @@ jobs:
 
       - name: Deploy hbnb (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
-        uses: cloudflare/pages-action@v1 # Upgraded to official action
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
         id: deploy_hbnb # Capture output here
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: hbnb
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: hbnb
           directory: static/hbnb
-          comment-mode: 'off'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: hbnb(preview)
 
       # --- Forces/CEO ---
       - name: Build forces (ceo)
@@ -154,14 +155,15 @@ jobs:
 
       - name: Deploy forces/ceo (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.forces == 'true'
-        uses: cloudflare/pages-action@v1 # Upgraded to official action
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
         id: deploy_forces # Capture output here
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ceo
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: ceo
           directory: static/forces
-          comment-mode: 'off'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: ceo(preview)
 
       # --- GUI ---
       - name: Build gui
@@ -175,14 +177,15 @@ jobs:
 
       - name: Deploy gui (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.gui == 'true'
-        uses: cloudflare/pages-action@v1 # Upgraded to official action
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
         id: deploy_gui # Capture output here
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: gui
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: gui
           directory: static/gui
-          comment-mode: 'off'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: gui(preview)
 
       # --- DATRO-HOMEPAGE (The main app) ---
       - name: Build datro-homepage
@@ -196,14 +199,15 @@ jobs:
 
       - name: Deploy datro-homepage (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.datro == 'true'
-        uses: cloudflare/pages-action@v1 # Upgraded to official action
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
         id: deploy_datro # Capture output here
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: datro-homepage
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: datro-homepage
           directory: static/datro
-          comment-mode: 'off'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: datro(preview)
 
       # --- Projections ---
       - name: Build projections
@@ -217,14 +221,15 @@ jobs:
 
       - name: Deploy projections (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.projections == 'true'
-        uses: cloudflare/pages-action@v1 # Upgraded to official action
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
         id: deploy_projections # Capture output here
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: projections
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: projections
           directory: static/projections
-          comment-mode: 'off'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: projections(preview)
 
       # --- BPVSBuckler ---
       - name: Build bpvsbuckler
@@ -238,14 +243,15 @@ jobs:
 
       - name: Deploy bpvsbuckler (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.bpvsbuckler == 'true'
-        uses: cloudflare/pages-action@v1 # Upgraded to official action
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0
         id: deploy_bpvsbuckler # Capture output here
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: bpvsbuckler
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: bpvsbuckler
           directory: static/bpvsbuckler
-          comment-mode: 'off'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: bpvsbuckler(preview)
 
       # --- FINAL AGGREGATION AND COMMENT STEP ---
       - name: Post Consolidated Preview Comment
@@ -267,8 +273,8 @@ jobs:
             let deployedCount = 0;
 
             for (const app of appUrls) {
-              // Retrieve URL from environment variable, checking the new PAGES_URL output name
-              const envKey = `STEPS_${app.id.toUpperCase()}_OUTPUTS_PAGES_URL`;
+              // Retrieve URL from environment variable
+              const envKey = `STEPS_${app.id.toUpperCase()}_OUTPUTS_DEPLOYMENT_URL`;
               const url = process.env[envKey] || null;
 
               // Determine status
@@ -279,6 +285,7 @@ jobs:
                   deployedCount++;
               } else if (app.changed === 'true') {
                   // If the app changed, but deployment output failed (url is null/empty)
+                  // We assume failure because the step must have failed to produce no URL
                   status = '❌ Failed';
               } else {
                   // If the app didn't change, the deployment was correctly skipped by the IF condition
@@ -326,11 +333,11 @@ jobs:
             }
         env:
           # Pass outputs as environment variables (requires specific formatting)
-          # Note: The output name changed from 'deployment-url' to 'pages-url' with the new action.
-          STEPS_DEPLOY_LIBRARY_OUTPUTS_PAGES_URL: ${{ steps.deploy_library.outputs.pages-url }}
-          STEPS_DEPLOY_HBNB_OUTPUTS_PAGES_URL: ${{ steps.deploy_hbnb.outputs.pages-url }}
-          STEPS_DEPLOY_FORCES_OUTPUTS_PAGES_URL: ${{ steps.deploy_forces.outputs.pages-url }}
-          STEPS_DEPLOY_GUI_OUTPUTS_PAGES_URL: ${{ steps.deploy_gui.outputs.pages-url }}
-          STEPS_DEPLOY_DATRO_OUTPUTS_PAGES_URL: ${{ steps.deploy_datro.outputs.pages-url }}
-          STEPS_DEPLOY_PROJECTIONS_OUTPUTS_PAGES_URL: ${{ steps.deploy_projections.outputs.pages-url }}
-          STEPS_DEPLOY_BPVSBUCKLER_OUTPUTS_PAGES_URL: ${{ steps.deploy_bpvsbuckler.outputs.pages-url }}
+          STEPS_DEPLOY_LIBRARY_OUTPUTS_DEPLOYMENT_URL: ${{ steps.deploy_library.outputs.deployment-url }}
+          STEPS_DEPLOY_HBNB_OUTPUTS_DEPLOYMENT_URL: ${{ steps.deploy_hbnb.outputs.deployment-url }}
+          STEPS_DEPLOY_FORCES_OUTPUTS_DEPLOYMENT_URL: ${{ steps.deploy_forces.outputs.deployment-url }}
+          STEPS_DEPLOY_GUI_OUTPUTS_DEPLOYMENT_URL: ${{ steps.deploy_gui.outputs.deployment-url }}
+          STEPS_DEPLOY_DATRO_OUTPUTS_DEPLOYMENT_URL: ${{ steps.deploy_datro.outputs.deployment-url }}
+          STEPS_DEPLOY_PROJECTIONS_OUTPUTS_DEPLOYMENT_URL: ${{ steps.deploy_projections.outputs.deployment-url }}
+          STEPS_DEPLOY_BPVSBUCKLER_OUTPUTS_DEPLOYMENT_URL: ${{ steps.deploy_bpvsbuckler.outputs.deployment-url }}
+
