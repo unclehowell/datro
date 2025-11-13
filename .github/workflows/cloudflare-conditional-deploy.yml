@@ -138,7 +138,7 @@ jobs:
             for (const app of appUrls) {
               // CORRECTED: Output variables are available via steps.APP_ID.outputs['output-name']
               // We retrieve the output directly from the steps context rather than relying on environment variables.
-              const url = steps[app.id].outputs['pages-url'] || null; 
+              const url = steps[app.id].outputs['pages-url'] || null;
 
               const isDeployed = url && url !== 'null';
               let status;
@@ -189,10 +189,4 @@ jobs:
               });
             }
 
-        env:
-          # We don't need to pass all these env variables anymore!
-          # The script is simplified to pull the values directly from the steps context
-          # The Cloudflare action output is now directly accessed in the JavaScript block.
-          # You can remove all the previous STEPS_..._OUTPUTS_PAGES_URL lines here.
-          # Keep the 'env:' block empty or remove it entirely.
 
