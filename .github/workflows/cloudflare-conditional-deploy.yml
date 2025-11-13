@@ -9,7 +9,7 @@ on:
   push:
     branches:
       - gh-pages
-      - 'feature/auto-*'
+      - 'feature/auto-*' # Added for your automation script
 
 jobs:
   detect-and-deploy:
@@ -36,6 +36,8 @@ jobs:
         run: |
           set -euo pipefail
 
+          # ... (unchanged change detection script) ...
+
           echo "Determining changed files..."
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             BASE_SHA="${{ github.event.pull_request.base.sha }}"
@@ -55,14 +57,12 @@ jobs:
           echo "Changed files:"
           echo "$DIFF"
 
-          # Default outputs
           {
             echo "library=false"; echo "hbnb=false"; echo "forces=false"
             echo "gui=false"; echo "datro=false"; echo "projections=false"
             echo "bpvsbuckler=false"
           } >> "$GITHUB_OUTPUT"
 
-          # Detect changes in each app directory
           if echo "$DIFF" | grep -qE '^static/library/'; then echo "library=true" >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/hbnb/'; then echo "hbnb=true" >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/forces/'; then echo "forces=true" >> "$GITHUB_OUTPUT"; fi
@@ -72,31 +72,33 @@ jobs:
           if echo "$DIFF" | grep -qE '^static/bpvsbuckler/'; then echo "bpvsbuckler=true" >> "$GITHUB_OUTPUT"; fi
 
 
+      # --- Setup Node (only run if HBNB or other built apps need it) ---
+      - name: Setup Node (for builds)
+        if: steps.changes.outputs.hbnb == 'true' # Only run if a built app needs it
+        uses: actions/setup-node@v4
+        with:
+            node-version: '22'
+            
       ######################################################################
       # PREVIEW DEPLOYS FOR PRS 
       ######################################################################
-
+      
       # --- Library (Static HTML) ---
+      # No build step needed for static HTML
       - name: Deploy library (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.library == 'true'
-        uses: cloudflare/pages-action@v1 
-        id: deploy_library 
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0 # REVERTED TO WORKING ACTION
+        id: deploy_library
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: library
-          directory: static/library # STATIC APP ROOT DIRECTORY
-          comment-mode: 'off'
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: library
+          directory: static/library
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: library(preview)
+          post-comment: false # 🛑 CRITICAL FIX: Stop duplicate comments
+
       # --- HBNB (Built App - React) ---
-      - name: Setup Node for hbnb
-        if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          
       - name: Build hbnb
         if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
         run: |
@@ -106,88 +108,89 @@ jobs:
           
       - name: Deploy hbnb (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
-        uses: cloudflare/pages-action@v1 
-        id: deploy_hbnb 
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0 # REVERTED TO WORKING ACTION
+        id: deploy_hbnb
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: hbnb
-          directory: static/hbnb/build # ⚠️ CHECK THIS OUTPUT PATH: common React output folder
-          comment-mode: 'off'
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: hbnb
+          directory: static/hbnb/build # ⚠️ Using 'build' as standard React output path
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: hbnb(preview)
+          post-comment: false # 🛑 CRITICAL FIX: Stop duplicate comments
 
       # --- Forces/CEO (Static HTML) ---
       - name: Deploy forces/ceo (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.forces == 'true'
-        uses: cloudflare/pages-action@v1
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0 # REVERTED TO WORKING ACTION
         id: deploy_forces
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ceo
-          directory: static/forces # STATIC APP ROOT DIRECTORY
-          comment-mode: 'off'
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: ceo
+          directory: static/forces
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: ceo(preview)
+          post-comment: false # 🛑 CRITICAL FIX: Stop duplicate comments
 
       # --- GUI (Static HTML) ---
       - name: Deploy gui (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.gui == 'true'
-        uses: cloudflare/pages-action@v1 
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0 # REVERTED TO WORKING ACTION
         id: deploy_gui
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: gui
-          directory: static/gui # STATIC APP ROOT DIRECTORY
-          comment-mode: 'off'
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: gui
+          directory: static/gui
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: gui(preview)
+          post-comment: false # 🛑 CRITICAL FIX: Stop duplicate comments
 
       # --- DATRO-HOMEPAGE (Static HTML) ---
       - name: Deploy datro-homepage (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.datro == 'true'
-        uses: cloudflare/pages-action@v1 
-        id: deploy_datro 
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0 # REVERTED TO WORKING ACTION
+        id: deploy_datro
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: datro-homepage
-          directory: static/datro # STATIC APP ROOT DIRECTORY
-          comment-mode: 'off'
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: datro-homepage
+          directory: static/datro # Correct for static HTML
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: datro(preview)
+          post-comment: false # 🛑 CRITICAL FIX: Stop duplicate comments
 
       # --- Projections (Static HTML) ---
       - name: Deploy projections (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.projections == 'true'
-        uses: cloudflare/pages-action@v1 
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0 # REVERTED TO WORKING ACTION
         id: deploy_projections
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: projections
-          directory: static/projections # STATIC APP ROOT DIRECTORY
-          comment-mode: 'off'
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: projections
+          directory: static/projections
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: projections(preview)
+          post-comment: false # 🛑 CRITICAL FIX: Stop duplicate comments
 
       # --- BPVSBuckler (Static HTML) ---
       - name: Deploy bpvsbuckler (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.bpvsbuckler == 'true'
-        uses: cloudflare/pages-action@v1 
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0 # REVERTED TO WORKING ACTION
         id: deploy_bpvsbuckler
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: bpvsbuckler
-          directory: static/bpvsbuckler # STATIC APP ROOT DIRECTORY
-          comment-mode: 'off'
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: bpvsbuckler
+          directory: static/bpvsbuckler
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: bpvsbuckler(preview)
+          post-comment: false # 🛑 CRITICAL FIX: Stop duplicate comments
 
       # --- FINAL AGGREGATION AND COMMENT STEP ---
+      # This step reads the output URLs generated by the 'andykenward' action
       - name: Post Consolidated Preview Comment
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
@@ -207,8 +210,11 @@ jobs:
             let deployedCount = 0;
 
             for (const app of appUrls) {
-              const envKey = `URL_${app.id.toUpperCase()}`;
-              const url = process.env[envKey] || null;
+              // The 'andykenward' action outputs the URL as 'deployment-url'
+              const outputUrl = steps[app.id].outputs['deployment-url'] || null;
+              
+              // We use outputUrl directly as the URL
+              const url = outputUrl; 
               
               const isDeployed = url && url !== 'null' && url !== 'undefined';
               let status;
@@ -256,13 +262,4 @@ jobs:
                 body: commentBody
               });
             }
-
-        env:
-          URL_DEPLOY_LIBRARY: ${{ steps.deploy_library.outputs.pages-url }}
-          URL_DEPLOY_HBNB: ${{ steps.deploy_hbnb.outputs.pages-url }}
-          URL_DEPLOY_FORCES: ${{ steps.deploy_forces.outputs.pages-url }}
-          URL_DEPLOY_GUI: ${{ steps.deploy_gui.outputs.pages-url }}
-          URL_DEPLOY_DATRO: ${{ steps.deploy_datro.outputs.pages-url }}
-          URL_DEPLOY_PROJECTIONS: ${{ steps.deploy_projections.outputs.pages-url }}
-          URL_DEPLOY_BPVSBUCKLER: ${{ steps.deploy_bpvsbuckler.outputs.pages-url }}
 
