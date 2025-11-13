@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # --- Configuration ---
+# File used to force a commit and update the PR
+TRIGGER_FILE=".pr_trigger"
 # Prefix for the branch name
 BRANCH_PREFIX="feature/auto-"
 # Get the current local repository's default branch (e.g., main or master)
@@ -17,21 +19,14 @@ generate_branch_name() {
     TIMESTAMP=$(date +%Y%m%d-%H%M%S)
     
     # Generate a unique alphabetical identifier (simple counter)
-    # The script will try to use the next available letter (a, b, c, ...)
     local identifier="a"
     local counter=0
-    while git show-ref --quiet --verify "refs/heads/${BRANCH_PREFIX}${identifier}-${TIMESTAMP}"; do
-        counter=$((counter + 1))
-        # Simple cycle: 'a', 'b', ..., 'z', 'aa', 'ab', ...
-        identifier=$(printf "%s" $(echo "scale=0; ${counter}/26" | bc) | tr -d '\n')
-        identifier=$(printf "%s%c" "$identifier" "$(printf \\$(echo "obase=8; $((counter % 26 + 97))" | bc))")
-        # Ensure identifier doesn't get too long for practical use
-        if [ $counter -gt 100 ]; then
-            echo "⚠️ Warning: Excessive branch name generation attempts. Using a high number."
-            identifier="max-${counter}"
-            break
-        fi
-    done
+    # Use a simpler, non-looping identifier for efficiency
+    # The combination of the letter and the high-precision timestamp should be unique enough
+    
+    # Cycle through a few letters (a-z) to give some variety
+    counter=$(( (RANDOM % 26) ))
+    identifier=$(printf %c $((counter + 97)))
 
     echo "${BRANCH_PREFIX}${identifier}-${TIMESTAMP}"
 }
@@ -41,23 +36,28 @@ generate_branch_name() {
 echo "🤖 Starting Git Pull Request Automation Script..."
 echo "----------------------------------------------"
 
-# 1. Check for uncommitted changes
-if [ -z "$(git status -s)" ]; then
-    echo "✅ No uncommitted changes detected. Nothing to do."
-    exit 0
-fi
+# 1. Force a change by updating a hidden file with the current timestamp
+CURRENT_TIME=$(date +'%Y-%m-%d %H:%M:%S')
+echo "🕰️ Forcing update by writing timestamp to **$TRIGGER_FILE**"
+echo "Last run: $CURRENT_TIME" > $TRIGGER_FILE
 
-# 2. Stage all modified files
+# 2. Stage all modified files, including the trigger file
 echo "➡️ Staging all modified and new files..."
 git add -A
 
-# 3. Generate automatic commit message
-COMMIT_MESSAGE="Auto-commit: $(date +'%Y-%m-%d %H:%M:%S') - Automated update."
+# 3. Check for uncommitted changes (now guaranteed to have them due to the trigger file)
+if [ -z "$(git status --porcelain)" ]; then
+    echo "✅ No new changes to commit (this should not happen with the trigger file). Exiting."
+    exit 0
+fi
+
+# 4. Generate automatic commit message
+COMMIT_MESSAGE="Auto-commit: $CURRENT_TIME - Automated PR update."
 echo "➡️ Committing changes with message: **${COMMIT_MESSAGE}**"
 git commit -m "$COMMIT_MESSAGE"
 
-# 4. Determine Branch Action
-# Try to find a branch that is *not* the default branch
+# 5. Determine Branch Action
+# We assume the user wants to continue updating an existing PR if they are on a feature branch.
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 if [ "$CURRENT_BRANCH" == "main" ] || [ "$CURRENT_BRANCH" == "master" ]; then
@@ -74,11 +74,12 @@ else
     ACTION="UPDATE"
 fi
 
-# 5. Push the changes to the remote repository
+# 6. Push the changes to the remote repository
 echo "➡️ Pushing changes to remote branch: **$BRANCH_TO_USE**"
+# Note: You may be prompted for your SSH key passphrase here.
 git push -u origin "$BRANCH_TO_USE"
 
-# 6. Execute PR Action (Create or Update)
+# 7. Execute PR Action (Create or Update)
 PR_TITLE="[Auto-PR] ${COMMIT_MESSAGE}"
 
 if [ "$ACTION" == "CREATE" ]; then
@@ -91,12 +92,10 @@ if [ "$ACTION" == "CREATE" ]; then
         echo "🎉 **Successfully created Pull Request!**"
         echo "🔗 **Pull Request URL:** $PR_URL"
     else
-        echo "❌ **Error creating Pull Request using GitHub CLI.** Please check your permissions and connectivity."
+        echo "❌ **Error creating Pull Request using GitHub CLI.** Check authentication."
     fi
 
 elif [ "$ACTION" == "UPDATE" ]; then
-    # When updating, we just pushed to the existing branch.
-    # The push operation itself updates the existing PR linked to that branch.
     echo "🔄 **Updating existing Pull Request...**"
     
     # Find the PR URL for the current branch
@@ -106,9 +105,8 @@ elif [ "$ACTION" == "UPDATE" ]; then
         echo "🎉 **Successfully updated existing Pull Request!**"
         echo "🔗 **Pull Request URL:** $PR_URL"
     else
-        echo "⚠️ Could not find an existing Pull Request for branch **$BRANCH_TO_USE**. You may need to create it manually, or it was already merged."
-        # Offer to create one if it doesn't exist
-        echo "Attempting to create a new PR for this branch..."
+        echo "⚠️ Could not find an existing Pull Request for branch **$BRANCH_TO_USE**. Attempting to create a new one."
+        # Attempt to create one if it doesn't exist
         PR_URL=$(gh pr create --title "$PR_TITLE" --body "**Automated Pull Request**" --head "$BRANCH_TO_USE" --base "$DEFAULT_BRANCH" --fill)
         if [ "$?" -eq 0 ]; then
             echo "🎉 **Successfully created new Pull Request!**"
@@ -121,13 +119,5 @@ fi
 
 echo "----------------------------------------------"
 echo "✅ Script finished."
-# Final instruction to the user
-echo "To view your deployment preview, visit the provided PR URL and check the Checks/Deployments section for the Vercel/Netlify/Worker preview link, as configured by your .github/worker/yml file."
-
-# Return to the previous branch (before checkout if a new branch was created)
-# This is optional, but often cleaner. We skip it to keep the user on the feature branch.
-# if [ "$ACTION" == "CREATE" ]; then
-#     echo "➡️ Returning to original branch: **$DEFAULT_BRANCH**"
-#     git checkout "$DEFAULT_BRANCH"
-# fi
+echo "To view your deployment preview, visit the provided PR URL and check the Checks/Deployments section for the Vercel/Netlify/Worker preview link."
 
