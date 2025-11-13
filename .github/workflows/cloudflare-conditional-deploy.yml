@@ -120,8 +120,6 @@ jobs:
           directory: static/library
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: library(preview)
-          # Set `add-comment: false` to avoid comment conflicts
-          add-comment: false
 
       # --- HBNB ---
       - name: Build hbnb
@@ -144,7 +142,6 @@ jobs:
           directory: static/hbnb
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: hbnb(preview)
-          add-comment: false
 
       # --- Forces/CEO ---
       - name: Build forces (ceo)
@@ -167,7 +164,6 @@ jobs:
           directory: static/forces
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: ceo(preview)
-          add-comment: false
 
       # --- GUI ---
       - name: Build gui
@@ -190,7 +186,6 @@ jobs:
           directory: static/gui
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: gui(preview)
-          add-comment: false
 
       # --- DATRO-HOMEPAGE (The main app) ---
       - name: Build datro-homepage
@@ -213,7 +208,6 @@ jobs:
           directory: static/datro
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: datro(preview)
-          add-comment: false
 
       # --- Projections ---
       - name: Build projections
@@ -236,7 +230,6 @@ jobs:
           directory: static/projections
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: projections(preview)
-          add-comment: false
 
       # --- BPVSBuckler ---
       - name: Build bpvsbuckler
@@ -259,7 +252,6 @@ jobs:
           directory: static/bpvsbuckler
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-environment: bpvsbuckler(preview)
-          add-comment: false
 
       # --- FINAL AGGREGATION AND COMMENT STEP ---
       - name: Post Consolidated Preview Comment
@@ -281,15 +273,28 @@ jobs:
             let deployedCount = 0;
 
             for (const app of appUrls) {
-              const url = process.env[`STEPS_${app.id.toUpperCase()}_OUTPUTS_DEPLOYMENT_URL`];
+              // Retrieve URL from environment variable
+              const envKey = `STEPS_${app.id.toUpperCase()}_OUTPUTS_DEPLOYMENT_URL`;
+              const url = process.env[envKey] || null;
+
+              // Determine status
               const isDeployed = url && url !== 'null';
-              const status = isDeployed ? '✅ Deployed' : (app.changed === 'true' ? '❌ Failed' : '🚫 Skipped');
+              let status;
+              if (isDeployed) {
+                  status = '✅ Deployed';
+                  deployedCount++;
+              } else if (app.changed === 'true') {
+                  // If the app changed, but deployment output failed (url is null/empty)
+                  // We assume failure because the step must have failed to produce no URL
+                  status = '❌ Failed';
+              } else {
+                  // If the app didn't change, the deployment was correctly skipped by the IF condition
+                  status = '🚫 Skipped';
+              }
+              
               const link = isDeployed ? `[${url}](${url})` : 'N/A';
               
               commentBody += `| ${app.name} | ${status} | ${link} |\n`;
-              if (isDeployed) {
-                deployedCount++;
-              }
             }
             
             commentBody += `\n**Total Deployed:** ${deployedCount} applications.`;
@@ -307,6 +312,7 @@ jobs:
                 repo: context.repo.repo,
               });
 
+              // Find and replace the existing comment
               const existingComment = comments.find(c => c.body.includes(commentIdentifier));
 
               if (existingComment) {
