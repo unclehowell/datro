@@ -34,7 +34,8 @@
 	<link href="css/featherlight.css" rel="stylesheet" type="text/css">
 	<link href="css/style.css" rel="stylesheet">
 	<link href="css/carousel.css" rel="stylesheet">
-	<link href="css/dropdownboxes.css" rel="stylesheet">
+        <link href="css/dropdownboxes.css" rel="stylesheet">
+        <link href="css/release-controls.css" rel="stylesheet">
 	<link href="css/footer.css" rel="stylesheet" type="text/css">
 	<link href="css/download-buttons.css" rel="stylesheet" type="text/css">
 	<link href="css/glyphicon.css" rel="stylesheet" type="text/css">
@@ -83,6 +84,7 @@ body{color:#202020}
        <script defer src="js/jquery-3.3.1.min.js"></script>
 	<link href="html/search-box/app.css" rel="stylesheet">
         <script defer src="js/menu.js"></script>
+        <script defer src="js/release-controls.js"></script>
 
         <style>
 	html {
@@ -105,9 +107,9 @@ body{color:#202020}
 				      <span class="navbar-toggler-icon"></span>
 					 </button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="technology.html">Portfolio</a>
+                                <ul class="navbar-nav mr-auto">
+                                        <li class="nav-item">
+                                                <a class="nav-link" href="technology.html">Technology</a>
 					</li>
 					<li class="nav-item"></li>
 					<li class="nav-item">
@@ -118,7 +120,7 @@ body{color:#202020}
 			</div>
 		</nav>
 	</header>
-	<main style="background-color: #333366;">
+        <main style="background-color: #333366;">
 		<div class="carousel" data-ride="carousel" id="myCarousel">
 			<div class="carousel-inner" style="overflow:visible!important;">
 				<div class="carousel-item active">
@@ -263,7 +265,7 @@ and offline media center, a solar/IoT energy and IPCCTV camera monitor and a sel
 									</div>
 								</div>
 								<div class="Grid-col Grid-col--tablet-3 Grid-col--desktopSmall-2 FooterNew-link-section">
-									<h3 class="FooterNew-link-title" data-footerlink="footer-link">Portfolio <span class="Icon Icon--small Icon--light FooterNew-link-icon FooterNew-link-icon--disable"><svg class="Icon-image" height="24" viewbox="0 0 24 24" width="24" xmlns="https://www.w3.org/2000/svg">
+                                                                        <h3 class="FooterNew-link-title" data-footerlink="footer-link">Technology <span class="Icon Icon--small Icon--light FooterNew-link-icon FooterNew-link-icon--disable"><svg class="Icon-image" height="24" viewbox="0 0 24 24" width="24" xmlns="https://www.w3.org/2000/svg">
 									<path d="M12 16c-.3 0-.5-.1-.7-.3l-6-6 1.4-1.4 5.3 5.3 5.3-5.3 1.4 1.4-6 6c-.2.2-.4.3-.7.3z"></path></svg></span> <span class="Icon Icon--small Icon--light FooterNew-link-icon FooterNew-link-icon--active"><svg class="Icon-image" viewbox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
 									<path d="M12 8.3a.91.91 0 0 1 .7.3l6 6-1.4 1.4-5.3-5.3L6.7 16l-1.4-1.4 6-6a.91.91 0 0 1 .7-.3z"></path></svg></span></h3>
 									<div class="FooterNew-link-content">
@@ -419,21 +421,5 @@ Crown Copyright <script>new Date().getFullYear()>2017&&document.write("© "+new 
         <script defer src="js/smoothloader2.js"></script>
 
 <script defer src="js/footer-accordion.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var libraryLinks = document.querySelectorAll('a[href*="library"]');
-    var hostname = window.location.hostname;
-
-    for (var i = 0; i < libraryLinks.length; i++) {
-      var link = libraryLinks[i];
-      if (hostname === 'datro.xyz') {
-        var oldHref = link.getAttribute('href');
-        var newHref = oldHref.replace('../library/', 'https://library.datro.xyz/');
-        newHref = newHref.replace('/library/', 'https://library.datro.xyz/');
-        link.setAttribute('href', newHref);
-      }
-    }
-  });
-</script>
 </body>
 </html>

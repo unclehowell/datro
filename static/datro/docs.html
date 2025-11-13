@@ -107,6 +107,57 @@
     }
   });
 </script>
+<script data-release-controls-loader>
+(function() {
+  if (window.__releaseControlsLoaderInline) { return; }
+  window.__releaseControlsLoaderInline = true;
+  var marker = '/static/datro/';
+  var baseHref = window.location.href;
+  var idx = baseHref.toLowerCase().indexOf(marker);
+  if (idx !== -1) {
+    baseHref = baseHref.substring(0, idx + marker.length);
+  }
+  function toAbsolute(relative) {
+    try {
+      return new URL(relative, baseHref).href;
+    } catch (error) {
+      return relative;
+    }
+  }
+  function ensureStyles() {
+    if (document.querySelector('link[href*="release-controls.css"]')) {
+      return;
+    }
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = toAbsolute('css/release-controls.css');
+    link.setAttribute('data-release-controls-styles', 'true');
+    (document.head || document.documentElement).appendChild(link);
+  }
+  function ensureScript() {
+    if (document.querySelector('script[src*="release-controls.js"]')) {
+      return;
+    }
+    var script = document.createElement('script');
+    script.src = toAbsolute('js/release-controls.js');
+    script.defer = true;
+    script.setAttribute('data-release-controls-script', 'true');
+    (document.head || document.documentElement).appendChild(script);
+  }
+  var loadAssets = function() {
+    ensureStyles();
+    ensureScript();
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function handleReleaseControlsLoad() {
+    document.removeEventListener('DOMContentLoaded', handleReleaseControlsLoad);
+    loadAssets();
+  });
+  } else {
+    loadAssets();
+  }
+})();
+</script>
 </head>
 <body bgcolor="#333366" onload="pageLoad()" style="font-size: 125%;">
 	<header  id="mainWrapper" style="visibility: visible;">

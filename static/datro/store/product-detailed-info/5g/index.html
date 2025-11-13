@@ -107,7 +107,58 @@
   gtag('config', 'G-6BTNPTMXBF');
 </script>
 <!-- google tracking code end -->
-	 <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style> <noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>  </head> <body bgcolor="#333366" onload="pageLoad()">
+	 <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style> <noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>  <script data-release-controls-loader>
+(function() {
+  if (window.__releaseControlsLoaderInline) { return; }
+  window.__releaseControlsLoaderInline = true;
+  var marker = '/static/datro/';
+  var baseHref = window.location.href;
+  var idx = baseHref.toLowerCase().indexOf(marker);
+  if (idx !== -1) {
+    baseHref = baseHref.substring(0, idx + marker.length);
+  }
+  function toAbsolute(relative) {
+    try {
+      return new URL(relative, baseHref).href;
+    } catch (error) {
+      return relative;
+    }
+  }
+  function ensureStyles() {
+    if (document.querySelector('link[href*="release-controls.css"]')) {
+      return;
+    }
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = toAbsolute('css/release-controls.css');
+    link.setAttribute('data-release-controls-styles', 'true');
+    (document.head || document.documentElement).appendChild(link);
+  }
+  function ensureScript() {
+    if (document.querySelector('script[src*="release-controls.js"]')) {
+      return;
+    }
+    var script = document.createElement('script');
+    script.src = toAbsolute('js/release-controls.js');
+    script.defer = true;
+    script.setAttribute('data-release-controls-script', 'true');
+    (document.head || document.documentElement).appendChild(script);
+  }
+  var loadAssets = function() {
+    ensureStyles();
+    ensureScript();
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function handleReleaseControlsLoad() {
+    document.removeEventListener('DOMContentLoaded', handleReleaseControlsLoad);
+    loadAssets();
+  });
+  } else {
+    loadAssets();
+  }
+})();
+</script>
+</head> <body bgcolor="#333366" onload="pageLoad()">
 
 
 		<main role="main" class="main" style="background:#333366!important;">
