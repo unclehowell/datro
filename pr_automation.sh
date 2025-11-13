@@ -61,12 +61,10 @@ do
     esac
 done
 
-# 4. Push the changes to the remote repository
-# Note: This is the ONLY step that might require interaction (SSH passphrase)
-# We suppress the output but allow any SSH/Git errors to show.
-if ! git push -u origin "$BRANCH_TO_USE" > /dev/null 2>&1; then # <-- FIX IS HERE
+# 4. Push the changes to the remote repository (Silent, but allows errors/passphrase prompt)
+if ! git push -u origin "$BRANCH_TO_USE" > /dev/null 2>&1; then
     echo "----------------------------------------------"
-    echo "❌ **FATAL ERROR: Git push failed.** Please fix your SSH/access rights."
+    echo "❌ **FATAL ERROR: Git push failed.** Please fix your SSH/access rights (use ssh-add)."
     echo "----------------------------------------------"
     exit 1
 fi
@@ -97,4 +95,3 @@ else
     echo "❌ **Action Failed.** Could not determine or create the Pull Request URL."
 fi
 echo "----------------------------------------------"
-
