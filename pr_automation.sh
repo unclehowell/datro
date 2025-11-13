@@ -64,7 +64,7 @@ done
 # 4. Push the changes to the remote repository
 # Note: This is the ONLY step that might require interaction (SSH passphrase)
 # We suppress the output but allow any SSH/Git errors to show.
-if ! git push -u origin "$BRANCH_TO_USE"; then
+if ! git push -u origin "$BRANCH_TO_USE" > /dev/null 2>&1; then # <-- FIX IS HERE
     echo "----------------------------------------------"
     echo "❌ **FATAL ERROR: Git push failed.** Please fix your SSH/access rights."
     echo "----------------------------------------------"
