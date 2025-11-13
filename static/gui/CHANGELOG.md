@@ -11,7 +11,7 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 ## [gui-0.9] - Q4/2025
 
 ### Changes
-Nov-13 - Test A - TEST B  
+Nov-13 - Test A - TEST B - TEST C  
 
 ## [gui-0.8] - Q3/2024
 

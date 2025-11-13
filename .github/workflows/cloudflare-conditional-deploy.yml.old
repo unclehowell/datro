@@ -1,30 +1,24 @@
 name: Cloudflare Conditional Deploy
 
 on:
-  # 1. Previews on PRs targeting gh-pages (for the new branches)
   pull_request:
     types: [opened, synchronize, reopened]
     branches:
       - gh-pages
   
-  # 2. Runs when you push directly to a feature branch
   push:
     branches:
       - gh-pages
-      - 'feature/auto-*' # <-- Matches branches created by your script
+      - 'feature/auto-*' # Added for your automation script
 
 jobs:
   detect-and-deploy:
     name: Detect changes and deploy only touched apps
     runs-on: ubuntu-latest
-
-    # Crucial: Ensure the workflow has permission to write comments and deployment statuses
     permissions:
       contents: read
       deployments: write
       pull-requests: write
-
-    # Auto-cancel older runs for the same PR/branch
     concurrency:
       group: cf-pages-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
@@ -41,6 +35,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+
+          # ... (unchanged change detection script) ...
 
           echo "Determining changed files..."
           if [ "${{ github.event_name }}" = "pull_request" ]; then
@@ -61,18 +57,12 @@ jobs:
           echo "Changed files:"
           echo "$DIFF"
 
-          # Default outputs (false)
           {
-            echo "library=false"
-            echo "hbnb=false"
-            echo "forces=false"
-            echo "gui=false"
-            echo "datro=false"
-            echo "projections=false"
+            echo "library=false"; echo "hbnb=false"; echo "forces=false"
+            echo "gui=false"; echo "datro=false"; echo "projections=false"
             echo "bpvsbuckler=false"
           } >> "$GITHUB_OUTPUT"
 
-          # Detect changes in each app directory
           if echo "$DIFF" | grep -qE '^static/library/'; then echo "library=true" >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/hbnb/'; then echo "hbnb=true" >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/forces/'; then echo "forces=true" >> "$GITHUB_OUTPUT"; fi
@@ -81,31 +71,126 @@ jobs:
           if echo "$DIFF" | grep -qE '^static/projections/'; then echo "projections=true" >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/bpvsbuckler/'; then echo "bpvsbuckler=true" >> "$GITHUB_OUTPUT"; fi
 
-      # --- Deployments (Only one example shown; replace with your full list) ---
-      
-      - name: Build library
-        if: github.event_name == 'pull_request' && steps.changes.outputs.library == 'true'
-        run: |
-          if [ -f static/library/package.json ]; then
-            cd static/library
-            npm ci
-            npm run build --if-present
-          fi
 
+      # --- Setup Node (only run if HBNB or other built apps need it) ---
+      - name: Setup Node (for builds)
+        if: steps.changes.outputs.hbnb == 'true' # Only run if a built app needs it
+        uses: actions/setup-node@v4
+        with:
+            node-version: '22'
+            
+      ######################################################################
+      # PREVIEW DEPLOYS FOR PRS 
+      ######################################################################
+      
+      # --- Library (Static HTML) ---
+      # No build step needed for static HTML
       - name: Deploy library (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.library == 'true'
-        uses: cloudflare/pages-action@v1 
-        id: deploy_library # Capture output here
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0 # REVERTED TO WORKING ACTION
+        id: deploy_library
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: library
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: library
           directory: static/library
-          comment-mode: 'off'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: library(preview)
+          post-comment: false # 🛑 CRITICAL FIX: Stop duplicate comments
+
+      # --- HBNB (Built App - React) ---
+      - name: Build hbnb
+        if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
+        run: |
+          cd static/hbnb
+          npm ci
+          npm run build
           
-      # ⚠️ INSERT ALL YOUR OTHER BUILD/DEPLOY STEPS HERE (hbnb, forces, gui, datro, etc.)
+      - name: Deploy hbnb (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0 # REVERTED TO WORKING ACTION
+        id: deploy_hbnb
+        with:
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: hbnb
+          directory: static/hbnb/build # ⚠️ Using 'build' as standard React output path
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: hbnb(preview)
+          post-comment: false # 🛑 CRITICAL FIX: Stop duplicate comments
+
+      # --- Forces/CEO (Static HTML) ---
+      - name: Deploy forces/ceo (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.forces == 'true'
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0 # REVERTED TO WORKING ACTION
+        id: deploy_forces
+        with:
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: ceo
+          directory: static/forces
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: ceo(preview)
+          post-comment: false # 🛑 CRITICAL FIX: Stop duplicate comments
+
+      # --- GUI (Static HTML) ---
+      - name: Deploy gui (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.gui == 'true'
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0 # REVERTED TO WORKING ACTION
+        id: deploy_gui
+        with:
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: gui
+          directory: static/gui
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: gui(preview)
+          post-comment: false # 🛑 CRITICAL FIX: Stop duplicate comments
+
+      # --- DATRO-HOMEPAGE (Static HTML) ---
+      - name: Deploy datro-homepage (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.datro == 'true'
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0 # REVERTED TO WORKING ACTION
+        id: deploy_datro
+        with:
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: datro-homepage
+          directory: static/datro # Correct for static HTML
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: datro(preview)
+          post-comment: false # 🛑 CRITICAL FIX: Stop duplicate comments
+
+      # --- Projections (Static HTML) ---
+      - name: Deploy projections (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.projections == 'true'
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0 # REVERTED TO WORKING ACTION
+        id: deploy_projections
+        with:
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: projections
+          directory: static/projections
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: projections(preview)
+          post-comment: false # 🛑 CRITICAL FIX: Stop duplicate comments
+
+      # --- BPVSBuckler (Static HTML) ---
+      - name: Deploy bpvsbuckler (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.bpvsbuckler == 'true'
+        uses: andykenward/github-actions-cloudflare-pages@v3.1.0 # REVERTED TO WORKING ACTION
+        id: deploy_bpvsbuckler
+        with:
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare-project-name: bpvsbuckler
+          directory: static/bpvsbuckler
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-environment: bpvsbuckler(preview)
+          post-comment: false # 🛑 CRITICAL FIX: Stop duplicate comments
 
       # --- FINAL AGGREGATION AND COMMENT STEP ---
+      # This step reads the output URLs generated by the 'andykenward' action
       - name: Post Consolidated Preview Comment
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
@@ -125,9 +210,11 @@ jobs:
             let deployedCount = 0;
 
             for (const app of appUrls) {
-              // Access output URL via environment variables passed below (safest method)
-              const envKey = `URL_${app.id.toUpperCase()}`;
-              const url = process.env[envKey] || null;
+              // The 'andykenward' action outputs the URL as 'deployment-url'
+              const outputUrl = steps[app.id].outputs['deployment-url'] || null;
+              
+              // We use outputUrl directly as the URL
+              const url = outputUrl; 
               
               const isDeployed = url && url !== 'null' && url !== 'undefined';
               let status;
@@ -147,7 +234,7 @@ jobs:
             
             commentBody += `\n**Total Deployed:** ${deployedCount} applications.`;
 
-            // Function to find and update/create comment (retained your robust logic)
+            // Comment creation/update logic
             const issue_number = context.issue.number;
             const commentIdentifier = '';
             commentBody = commentIdentifier + '\n' + commentBody;
@@ -175,15 +262,4 @@ jobs:
                 body: commentBody
               });
             }
-
-        env:
-          # --- Environment variables for the JavaScript step (CRITICAL FIX) ---
-          # We pass all outputs here for the JavaScript step to read reliably.
-          URL_DEPLOY_LIBRARY: ${{ steps.deploy_library.outputs.pages-url }}
-          URL_DEPLOY_HBNB: ${{ steps.deploy_hbnb.outputs.pages-url }}
-          URL_DEPLOY_FORCES: ${{ steps.deploy_forces.outputs.pages-url }}
-          URL_DEPLOY_GUI: ${{ steps.deploy_gui.outputs.pages-url }}
-          URL_DEPLOY_DATRO: ${{ steps.deploy_datro.outputs.pages-url }}
-          URL_DEPLOY_PROJECTIONS: ${{ steps.deploy_projections.outputs.pages-url }}
-          URL_DEPLOY_BPVSBUCKLER: ${{ steps.deploy_bpvsbuckler.outputs.pages-url }}
 
