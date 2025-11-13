@@ -1,0 +1,188 @@
+.release-topbar {
+  margin: 5.5rem auto 1.5rem;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, rgba(30, 30, 80, 0.92), rgba(40, 40, 110, 0.92));
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .release-topbar {
+    margin-top: 4.75rem;
+    padding: 0.85rem 1rem;
+  }
+}
+
+.release-dropdown-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.release-back-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.release-back-button:hover,
+.release-back-button:focus {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.55);
+  outline: none;
+}
+
+.release-back-button.is-visible {
+  display: inline-flex;
+}
+
+.release-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 0.5rem 2.5rem 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  min-width: 160px;
+  position: relative;
+}
+
+.release-select option {
+  color: #222222;
+}
+
+.release-select:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 0 0 2px rgba(102, 204, 255, 0.25);
+}
+
+.release-slider {
+  display: flex;
+  align-items: stretch;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding: 0.35rem 0.25rem 0.2rem;
+  scroll-behavior: smooth;
+}
+
+.release-slider::-webkit-scrollbar {
+  height: 6px;
+}
+
+.release-slider::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+}
+
+.release-slider::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+}
+
+.release-slider {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.35) rgba(255, 255, 255, 0.08);
+}
+
+.release-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.85rem 0.55rem 1rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  text-align: left;
+  flex: 0 0 auto;
+  min-width: max-content;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.release-item.is-active {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(102, 204, 255, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.release-toggle {
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 0;
+}
+
+.release-toggle:focus {
+  outline: none;
+  text-decoration: underline;
+}
+
+.release-padlock {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 2.35rem;
+  height: 2.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.release-padlock:hover,
+.release-padlock:focus {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.55);
+  outline: none;
+}
+
+.release-padlock.is-unlocked {
+  border-color: rgba(102, 204, 255, 0.8);
+  color: #66ccff;
+  background: rgba(102, 204, 255, 0.15);
+}
+
+@media (max-width: 600px) {
+  .release-item {
+    padding: 0.5rem 0.75rem;
+  }
+  .release-toggle {
+    font-size: 0.85rem;
+  }
+  .release-padlock {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
+}
+
