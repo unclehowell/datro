@@ -11,7 +11,7 @@ on:
   push:
     branches:
       - gh-pages
-      - 'feature/auto-*' # <-- Matches branches created by your script
+      - 'feature/auto-*' # Matches branches created by your script
 
 jobs:
   detect-and-deploy:
@@ -81,8 +81,17 @@ jobs:
           if echo "$DIFF" | grep -qE '^static/projections/'; then echo "projections=true" >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/bpvsbuckler/'; then echo "bpvsbuckler=true" >> "$GITHUB_OUTPUT"; fi
 
-      # --- Deployments (Only one example shown; replace with your full list) ---
-      
+      # --- Setup Node (for builds) ---
+      - name: Setup Node (for builds)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'    # or '20'
+
+      ######################################################################
+      # PREVIEW DEPLOYS FOR PRs 
+      ######################################################################
+
+      # --- Library ---
       - name: Build library
         if: github.event_name == 'pull_request' && steps.changes.outputs.library == 'true'
         run: |
@@ -95,15 +104,153 @@ jobs:
       - name: Deploy library (Preview)
         if: github.event_name == 'pull_request' && steps.changes.outputs.library == 'true'
         uses: cloudflare/pages-action@v1 
-        id: deploy_library # Capture output here
+        id: deploy_library 
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: library
-          directory: static/library
+          directory: static/library/dist # ⚠️ Adjust directory if 'npm run build' outputs to 'dist'
           comment-mode: 'off'
+        env: # <-- CRITICAL: Pass token to the environment for CF CLI utility
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           
-      # ⚠️ INSERT ALL YOUR OTHER BUILD/DEPLOY STEPS HERE (hbnb, forces, gui, datro, etc.)
+      # --- HBNB ---
+      - name: Build hbnb
+        if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
+        run: |
+          if [ -f static/hbnb/package.json ]; then
+            cd static/hbnb
+            npm ci
+            npm run build --if-present
+          fi
+
+      - name: Deploy hbnb (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
+        uses: cloudflare/pages-action@v1 
+        id: deploy_hbnb 
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: hbnb
+          directory: static/hbnb # ⚠️ Adjust directory if necessary
+          comment-mode: 'off'
+        env: # <-- CRITICAL: Pass token to the environment for CF CLI utility
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+      # --- Forces/CEO ---
+      - name: Build forces (ceo)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.forces == 'true'
+        run: |
+          if [ -f static/forces/package.json ]; then
+            cd static/forces
+            npm ci
+            npm run build --if-present
+          fi
+
+      - name: Deploy forces/ceo (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.forces == 'true'
+        uses: cloudflare/pages-action@v1
+        id: deploy_forces
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ceo
+          directory: static/forces # ⚠️ Adjust directory if necessary
+          comment-mode: 'off'
+        env: # <-- CRITICAL: Pass token to the environment for CF CLI utility
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+      # --- GUI ---
+      - name: Build gui
+        if: github.event_name == 'pull_request' && steps.changes.outputs.gui == 'true'
+        run: |
+          if [ -f static/gui/package.json ]; then
+            cd static/gui
+            npm ci
+            npm run build --if-present
+          fi
+
+      - name: Deploy gui (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.gui == 'true'
+        uses: cloudflare/pages-action@v1 
+        id: deploy_gui
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: gui
+          directory: static/gui # ⚠️ Adjust directory if necessary
+          comment-mode: 'off'
+        env: # <-- CRITICAL: Pass token to the environment for CF CLI utility
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+      # --- DATRO-HOMEPAGE (The main app) ---
+      - name: Build datro-homepage
+        if: github.event_name == 'pull_request' && steps.changes.outputs.datro == 'true'
+        run: |
+          if [ -f static/datro/package.json ]; then
+            cd static/datro
+            npm ci
+            npm run build --if-present
+          fi
+
+      - name: Deploy datro-homepage (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.datro == 'true'
+        uses: cloudflare/pages-action@v1 
+        id: deploy_datro 
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: datro-homepage
+          directory: static/datro # ⚠️ Adjust directory if necessary
+          comment-mode: 'off'
+        env: # <-- CRITICAL: Pass token to the environment for CF CLI utility
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+      # --- Projections ---
+      - name: Build projections
+        if: github.event_name == 'pull_request' && steps.changes.outputs.projections == 'true'
+        run: |
+          if [ -f static/projections/package.json ]; then
+            cd static/projections
+            npm ci
+            npm run build --if-present
+          fi
+
+      - name: Deploy projections (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.projections == 'true'
+        uses: cloudflare/pages-action@v1 
+        id: deploy_projections
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: projections
+          directory: static/projections # ⚠️ Adjust directory if necessary
+          comment-mode: 'off'
+        env: # <-- CRITICAL: Pass token to the environment for CF CLI utility
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+      # --- BPVSBuckler ---
+      - name: Build bpvsbuckler
+        if: github.event_name == 'pull_request' && steps.changes.outputs.bpvsbuckler == 'true'
+        run: |
+          if [ -f static/bpvsbuckler/package.json ]; then
+            cd static/bpvsbuckler
+            npm ci
+            npm run build --if-present
+          fi
+
+      - name: Deploy bpvsbuckler (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.bpvsbuckler == 'true'
+        uses: cloudflare/pages-action@v1 
+        id: deploy_bpvsbuckler
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: bpvsbuckler
+          directory: static/bpvsbuckler # ⚠️ Adjust directory if necessary
+          comment-mode: 'off'
+        env: # <-- CRITICAL: Pass token to the environment for CF CLI utility
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 
       # --- FINAL AGGREGATION AND COMMENT STEP ---
       - name: Post Consolidated Preview Comment
@@ -147,7 +294,7 @@ jobs:
             
             commentBody += `\n**Total Deployed:** ${deployedCount} applications.`;
 
-            // Function to find and update/create comment (retained your robust logic)
+            // Comment creation/update logic
             const issue_number = context.issue.number;
             const commentIdentifier = '';
             commentBody = commentIdentifier + '\n' + commentBody;
@@ -177,8 +324,8 @@ jobs:
             }
 
         env:
-          # --- Environment variables for the JavaScript step (CRITICAL FIX) ---
-          # We pass all outputs here for the JavaScript step to read reliably.
+          # --- Environment variables for the JavaScript step (FINAL FIX) ---
+          # These pass the 'pages-url' output from the deploy steps to the JavaScript context.
           URL_DEPLOY_LIBRARY: ${{ steps.deploy_library.outputs.pages-url }}
           URL_DEPLOY_HBNB: ${{ steps.deploy_hbnb.outputs.pages-url }}
           URL_DEPLOY_FORCES: ${{ steps.deploy_forces.outputs.pages-url }}
