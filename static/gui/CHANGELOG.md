@@ -8,6 +8,11 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 
 ## [Unreleased] 
 
+## [gui-0.9] - Q4/2025
+
+### Changes
+Nov-13 - Test A - TEST B - TEST C - TEST D - CLAUD YML 1 - CLAUD 2  
+
 ## [gui-0.8] - Q3/2024
 
 ### Fixed
