@@ -11,7 +11,7 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 ## [gui-0.8] - Q3/2024
 
 ### Fixed
-Jun-07 -  Few stylesheet tweaks before we migrate to tailwind css  
+Jun-07 -  Few stylesheet tweaks before we migrate to tailwind css - TEST  
 
 ## [gui-0.7] - Q2/2024
 

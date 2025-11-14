@@ -15,7 +15,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-Mar-25 - Added a sitemap generator script in sub-directory `sitemap`  
+Mar-25 - Added a sitemap generator script in sub-directory `sitemap` - TEST  
 
 
 ## [-datro.06] - Q2/2022
