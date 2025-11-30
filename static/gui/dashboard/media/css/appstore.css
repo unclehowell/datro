@@ -1,23 +1,95 @@
 html {
-background-color:#454545;
+    min-width:100vw;
+    width:100%;
+    background: rgb(44,12,33)!important;
 }
 
 body {
-background-color:#454545;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-size: cover !important;
+    background: rgb(44,12,33)!important;
+    height: -webkit-fill-available;
+    width:100%;
+    min-width:100vw;
+    overflow-x:hidden;
+}
+
+body.app-store-page {
+    background: rgb(44,12,33)!important;
+    color: rgba(255,255,255,0.85);
+    padding-top: clamp(90px, 5vw + 60px, 140px);
+    overflow: hidden;
+}
+
+.breadcrumb {
+    opacity: 0.4;
+}
+
+.noHover {
+    pointer-events: none;
+}
+
+.noHover a {
+    pointer-events: none;
+}
+
+.noHover a:hover {
+    pointer-events: none;
+}
+
+body:not(.loaded) #slider img {
+    display: none;
+}
+
+.forminput {
+    border: 1px solid transparent !important;
+    margin-top: -4.5vh;
+    background: transparent;
+    opacity: 0.6;
+    max-width: 17rem;
+    text-align: center;
+    padding: 0.75em;
+    position: fixed;
+    margin-left: -7.5rem;
+    font-weight: 800 !important;
+    letter-spacing: 0.2em;
+    font-size: 1.7rem;
+    height: 0;
+    margin-bottom: 100%;
+    width: 100%;
+}
+
+.logo {
+    background: transparent!important;
+    opacity: 1;
+    margin-top: 0.8rem;
+    max-width: calc(100vw - 80px)!important;
+    width: 23rem!important;
+    margin-right: calc(-9.5rem + 41.5vw)!important;
+    float: right!important;
+}
+
+.backtodash {
+   font-weight: 800; 
+   color: rgba(255,255,255,0.9)!important; 
+   width: auto!Important; 
+   word-spacing: -0.06em; 
+   margin-left: 8px;
 }
 
 .content-empty {
-    position: absolute;
-    height: 90%;
-    width: 90%;
-    padding: 5%;
-    background-image: url(../../dashboard/img/icons/appstore-add.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 50% 50%;
-    opacity: 0.2;
+   position: absolute;
+   height: 90%;
+   width: 90%;
+   padding: 5%;
+   background-image: url(../../dashboard/img/icons/appstore-add.png);
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 50% 50%;
+   opacity: 0.2;
 }
-
 
 *:focus {
     -webkit-tap-highlight-color: transparent!Important;
@@ -41,6 +113,7 @@ a{
 ul.breadcrumb li span:hover {
     color: white!Important;
     opacity: 1;
+    margin-top: 0px!important;
 }
 
 .categories-text {
@@ -49,6 +122,8 @@ ul.breadcrumb li span:hover {
     background: transparent;
     max-width: 100%;
     padding: 1em;
+    padding-top: 1.5em;
+    margin-top: 0.75em;
     font-size: 1.2rem;
     border-radius: 1em;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -61,7 +136,6 @@ ul.breadcrumb li span:hover {
     text-size-adjust: 100%;
     opacity: 0.5;
     zoom: 0.8;
-    padding-top: 1em;
 }
 
 @media screen and (max-width:500px) {
@@ -106,17 +180,191 @@ height: -2em;
     width: 15.66%!important;
     padding-bottom: 17%;
     margin: 1.99%;
-    background:#303030;
     overflow: hidden;
     border-radius: 0.5em;
-    border: 1px solid white;
+    border:solid rgba(255,255,255,0.3) 1.5px;
 }
 
 .square:hover {
-background-color:#2c2c2c;
-border: 1px solid grey;
+background-color: rgba(255,255,255,0.3)!important;
 }
 
+
+.app-store-grid {
+    --app-card-columns: 5;
+    --app-card-gap: 1.99%;
+    --app-card-ratio: 1;
+    --app-card-size: calc((100% / var(--app-card-columns)) - (var(--app-card-gap) * 2));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    width: 100%;
+    clear: both;
+    position: fixed;
+    top: clamp(7rem, 10vh, 11rem);
+    left: 0;
+    right: 0;
+    bottom: 6vh;
+    margin: 0;
+    padding: 0 0 4vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.app-card-link {
+    position: relative;
+    display: block;
+    flex: 0 0 var(--app-card-size);
+    max-width: var(--app-card-size);
+    margin: var(--app-card-gap);
+    text-decoration: none;
+    color: inherit;
+    aspect-ratio: var(--app-card-ratio);
+}
+
+.app-card-link::before {
+    content: "";
+    display: block;
+    padding-bottom: calc(100% / var(--app-card-ratio));
+}
+
+@supports (aspect-ratio: 1) {
+    .app-card-link::before {
+        display: none;
+    }
+}
+
+.app-card-link:hover,
+.app-card-link:focus {
+    text-decoration: none;
+}
+
+.app-card-link--inactive {
+    cursor: default;
+    pointer-events: none;
+}
+
+.app-card {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    justify-items: center;
+    align-items: center;
+    padding: clamp(12px, 7%, 20px);
+    box-sizing: border-box;
+    background: rgb(44,12,33);
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 0.5em;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    row-gap: clamp(8px, 4%, 16px);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.app-card--disabled .app-card__toggle {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.app-card__icon-wrapper {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(6px, 4%, 12px) 0;
+}
+
+.app-card__icon {
+    display: block;
+    width: 100%;
+    max-width: 70%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.app-card[data-app-id="999-999"] .app-card__icon {
+    filter: brightness(1.35) saturate(0.85);
+    opacity: 0.85;
+}
+
+.app-card__toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: stretch;
+    padding-top: clamp(8px, 4%, 16px);
+}
+
+.app-checkbox {
+    display: none;
+}
+
+.app-label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 60px;
+    height: 28px;
+    padding: 4px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 999px;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.app-label .thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #F44336;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.app-checkbox:checked + .app-label {
+    background: rgba(153,220,57,0.25);
+    border-color: rgba(153,220,57,0.45);
+}
+
+.app-checkbox:checked + .app-label .thumb {
+    transform: translateX(32px);
+    background: #99dc39;
+}
+
+@media (max-width: 1400px) {
+    .app-store-grid {
+        --app-card-columns: 4;
+    }
+}
+
+@media (max-width: 820px) {
+    .app-store-grid {
+        --app-card-columns: 3;
+    }
+}
+
+@media (max-width: 640px) {
+    .app-store-grid {
+        --app-card-columns: 2;
+    }
+}
+
+@media (max-width: 420px) {
+    .app-store-grid {
+        --app-card-columns: 1;
+    }
+}
 
 @media screen and (max-width: 900px) {
 .square {
@@ -130,14 +378,51 @@ border: 1px solid grey;
     line-height: 8vw;
 }
 
-.categories-text {font-size:3.7vw; line-height: 1.3em;}
+.categories-text {font-size:3.7vw;line-height: 1em;}
 }
 
 .content .rs {
 overflow: hidden;
-min-height: 8vw;
 min-width: 8vw;
+max-height: 19%!important;
+    height: 89px;
+    min-height: calc(3vw + 3.3em)!important;
+    min-width: 10vw;
+    padding: 0px;
+    margin: 0px;
+    opacity: 1;
+    overflow: hidden;
+    max-width: 53%!important;
+    opacity:0.6;
 }
+
+.container .box .box-cell {
+    display:table-cell;
+    width:28vw;
+    padding:20px 45px 13px 20px;
+}
+
+.container .box .box-cell.box1 {
+    background:transparent;
+    text-align:left;
+    position:fixed;
+    min-heigh:10vh;
+}
+
+.container .box .box-cell.box2 {
+    background: transparent;
+    font-size: 2rem;
+    text-align: center;
+    padding-left: 100px;
+    font-weight: bold;
+}
+
+.container .box .box-cell.box3 {
+    background:transparent;
+    text-align:right;
+    position: relative;
+}
+
 
 /* Sets the dimensions of the entire scrollbar */
 body::-webkit-scrollbar {
@@ -148,7 +433,7 @@ body::-webkit-scrollbar {
 html::-webkit-scrollbar-thumb {
     background: -webkit-gradient(linear,left top,left bottom,from(#ff8a00),to(#e52e71));
     background: linear-gradient(180deg,#ff8a00,#e52e71);
-    border-radius: 30px;
+	 border-radius: 30px;
     box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
 }
 
@@ -177,7 +462,7 @@ max-height:0em;
     height:90%; /* = 100% - 2*5% padding */
     width:90%; /* = 100% - 2*5% padding */
     padding: 5%;
-
+    background:rgb(44,12,33);
 }
 
 
@@ -217,18 +502,16 @@ li{
 /*  For responsive images */
 .content .rs{
     width:auto;
-    min-height:14vw;
-    max-height:100%;
+    height:auto;
+    max-height:90%;
     max-width:100%;
+    opacity:1;
 }
 .content-empty .rs-empty{
-    width: auto;
-    height: 12vw;
-    max-height: 100%;
-    max-width: 100%;
-    filter: invert(1);
-    opacity: 0.6;
-    margin-top: 0.4rem;
+    width:auto;
+    height:50px;
+    max-height:90%;
+    max-width:100%;
 }
 
 /*  For responsive images as background */

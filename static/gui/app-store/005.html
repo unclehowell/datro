@@ -4,27 +4,36 @@
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <title>App Store</title>
-        <link href="css/breadcrumb.css" rel="stylesheet">
-        <link href="css/appstore.css" rel="stylesheet">
+        <link href="../dashboard/media/css/breadcrumb.css" rel="stylesheet">
+        <link href="../dashboard/media/css/appstore.css" rel="stylesheet">
         <link href="css/font-awesome.css" rel="stylesheet">
+        <style>
+            /* Additional styles specific to app-store pages if needed */
+            body {
+                background: rgb(44,12,33)!important;
+            }
+            .square {
+                border:solid rgba(255,255,255,0.3) 1.5px;
+            }
+        </style>
 </head>
-<body class="app-store-page" style="overflow: inherit !important; height: inherit !important; display: visible; margin-top: -10%; padding-top: 24vh;" onload="document.body.classList.add('loaded');">
+<body onload="document.body.classList.add('loaded');">
         <div class="container">
                 <div class="box">
                         <div class="box-row">
                                 <div class="box-cell box1">
                                         <ul class="breadcrumb" id="btn noHover">
+                                                <li class="btn">
+                                                        <a href="#"></a>
+                                                </li>
                                                 <li class='btn noHover'>
-                                                        <a href="#" style="width:auto!Important;"><span class="breadcrumb icon-lock"></span> <span class="text2">Safety & Security</span></a>
-                                                </li>
-                                                <li>
-                                                        <a href='000.html' style='width:auto!Important;filter: brightness(1);background:rgba(0,0,0,0.55);border: 1px solid rgba(255,255,255,0.4);position: initial; padding-left: 48px!Important; margin-top: 0px;'><span class="text2" style="margin-left:1vw;">Categories</span></a>
-                                                </li>
-                                                <li class="btn noHover">
-                                                        <a class='backtodash' href='000.html'><span class="text2">App Store</span></a>
+                                                        <a class="backtodash" href='000.html'><span class="text2">App Store</span></a>
                                                 </li>
                                                 <li class="btn">
-                                                        <a href='../dashboard/001-a.html'><span class="icon icon-search"></span> <span class="text"></span></a>
+                                                        <a href='000.html'><span class="text2">Categories</span></a>
+                                                </li>
+                                                <li class="btn">
+                                                        <a href='../dashboard/001-a.html'><span class="icon icon-search"></span> <span class="text">Search</span></a>
                                                 </li>
                                         </ul>
                                 </div>
@@ -32,7 +41,7 @@
                 </div>
         </div>
         <main class="app-store-grid">
-                <a class="app-card-link" href="apps/005-001/fetch.html">
+                <a class="app-card-link" href="app-description-005-001.html">
                         <article class="app-card" data-app-id="005-001">
                                 <div class="app-card__icon-wrapper">
                                         <img class="app-card__icon" src="apps/005-001/logo.png" alt="Safety and security app icon 005-001">
@@ -44,7 +53,7 @@
                         </article>
                 </a>
 
-                <a class="app-card-link" href="apps/005-002/fetch.html">
+                <a class="app-card-link" href="app-description-005-002.html">
                         <article class="app-card" data-app-id="005-002">
                                 <div class="app-card__icon-wrapper">
                                         <img class="app-card__icon" src="apps/005-002/logo.png" alt="Safety and security app icon 005-002">
@@ -70,5 +79,46 @@
         </main>
 
         <script src="js/app-toggle.js"></script>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            const squares = document.querySelectorAll('.square');
+            squares.forEach(square => {
+              const link = square.querySelector('a');
+              if (link) {
+                const href = link.getAttribute('href');
+                let appId = null;
+                let match = href.match(/app-description-(\d+-\d+)\.html/);
+                if (match && match[1]) {
+                  appId = match[1];
+                } else {
+                  match = href.match(/apps\/(\d+-\d+)\/fetch\.html/);
+                  if (match && match[1]) {
+                    appId = match[1];
+                  }
+                }
+
+                if (appId) {
+                  if (appId === '999-999') {
+                    return;
+                  }
+                  if (appId === '000') {
+                    if (localStorage.getItem(appId) !== 'added') {
+                      square.style.display = 'none';
+                    } else {
+                      square.style.display = '';
+                    }
+                    return;
+                  }
+
+                  if (localStorage.getItem(appId) === 'added') {
+                    square.style.display = '';
+                  } else {
+                    square.style.display = 'none';
+                  }
+                }
+              }
+            });
+          });
+        </script>
 </body>
 </html>

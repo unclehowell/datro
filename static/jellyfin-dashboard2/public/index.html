@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Jellyfin Dashboard</title>
+<style>
+  body{background:#111;color:#fff;font-family:system-ui;text-align:center;padding:40px;overflow-y:auto;margin:0}
+  .header{display:flex;align-items:center;justify-content:center;gap:40px;margin:40px auto}
+  .logo{width:180px;height:180px;background:url('https://jellyfin.org/images/logo.svg') center/contain no-repeat}
+  .status-text{font-size:1.2em;color:#888;margin-top:10px}
+  .status-text.active{color:#0f8}
+  .status-text.inactive{color:#c33}
+  .status-text.loading{color:#0099ff}
+  .buttons{margin:30px 0;display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+  button{padding:20px 80px;font-size:2.2em;border:0;border-radius:24px;cursor:pointer;min-width:360px;transition:all 0.2s}
+  button:hover:not(:disabled){transform:translateY(-2px);filter:brightness(1.1)}
+  button:disabled{opacity:0.5;cursor:not-allowed}
+  #open{background:#0099ff;color:#fff;box-shadow:0 12px 40px rgba(0,153,255,.5)}
+  #uninstall{background:#c33;color:#fff;box-shadow:0 12px 40px rgba(200,50,50,.5)}
+  #install{background:#00a85a;color:#fff;min-width:760px;box-shadow:0 12px 40px rgba(0,168,90,.5)}
+  #cancel{background:#c33;color:#fff;box-shadow:0 12px 40px rgba(200,50,50,.5)}
+  .modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:none;align-items:center;justify-content:center;z-index:100}
+  .modal.active{display:flex}
+  .modal-box{background:#222;padding:40px;border-radius:24px;text-align:center;max-width:500px}
+  .modal-box h2{font-size:2.5em;margin-bottom:20px}
+  .modal-box p{font-size:1.3em;color:#ccc;line-height:1.6}
+  .modal-buttons{margin-top:30px;display:flex;gap:20px;justify-content:center}
+  .modal-buttons button{font-size:1.8em;padding:14px 40px}
+  .yes{background:#c33;color:#fff}
+  .no{background:#666;color:#fff}
+  .log-container{position:relative;width:90%;max-width:900px;margin:30px auto}
+  .progress-ring{position:absolute;top:-20px;left:50%;transform:translateX(-50%) rotate(-90deg);width:calc(100% + 40px);height:calc(100% + 40px);pointer-events:none;opacity:0;transition:opacity 0.3s}
+  .progress-ring.active{opacity:1}
+  .progress-ring circle{fill:none;stroke-width:6}
+  .progress-bg{stroke:#333}
+  .progress-fg{stroke:#0099ff;stroke-linecap:round;transition:stroke-dashoffset 0.3s ease}
+  .log{background:#222;padding:20px;border-radius:16px;position:relative;overflow:hidden;border:2px solid #333}
+  .log.error{border-color:#c33}
+  .log.success{border-color:#0f8}
+  .log.loading{border-color:#0099ff}
+  pre{margin:0;min-height:400px;max-height:400px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#444 #222;line-height:1.6;white-space:pre-wrap;transition:max-height .3s;text-align:left;font-size:0.95em}
+  pre::-webkit-scrollbar{width:8px}
+  pre::-webkit-scrollbar-track{background:#222}
+  pre::-webkit-scrollbar-thumb{background:#444;border-radius:4px}
+  pre.collapsed{min-height:120px;max-height:120px}
+  .toggle{position:absolute;top:10px;right:10px;background:#444;color:#0f8;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-size:1em;transition:background 0.2s;z-index:1}
+  .toggle:hover{background:#555}
+  .error-msg{color:#f88;font-weight:bold}
+  .success-msg{color:#0f8;font-weight:bold}
+  .spinner{display:inline-block;width:20px;height:20px;border:3px solid rgba(255,255,255,0.3);border-radius:50%;border-top-color:#fff;animation:spin 1s linear infinite;margin-left:10px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .loading-indicator{display:none;align-items:center;justify-content:center;gap:10px;font-size:1.2em;color:#0099ff;margin:20px 0}
+  .loading-indicator.active{display:flex}
+</style></head>
+<body>
+
+<div class="header">
+  <div class="logo"></div>
+  <div>
+    <div class="status-text loading" id="status-text">Checking status...</div>
+  </div>
+</div>
+
+<div class="loading-indicator" id="loading-indicator">
+  <span>Checking Jellyfin status</span>
+  <div class="spinner"></div>
+</div>
+
+<div class="buttons" id="installed-view" style="display:none">
+  <button id="open">Open Jellyfin</button>
+  <button id="uninstall">Uninstall</button>
+</div>
+
+<div class="buttons" id="not-installed-view" style="display:none">
+  <button id="install">Install Jellyfin</button>
+</div>
+
+<div class="buttons" id="operating-view" style="display:none">
+  <button id="cancel">Cancel Operation</button>
+</div>
+
+<div class="modal" id="confirm-modal">
+  <div class="modal-box">
+    <h2>⚠️ Uninstall Jellyfin?</h2>
+    <p>This will completely remove Jellyfin and <strong>all your media library data</strong>.</p>
+    <p style="margin-top:15px;color:#f88">This action cannot be undone.</p>
+    <div class="modal-buttons">
+      <button class="yes">Yes, Uninstall</button>
+      <button class="no">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div class="log-container">
+  <svg class="progress-ring" id="progress-ring" viewBox="0 0 200 200">
+    <circle class="progress-bg" cx="100" cy="100" r="90"/>
+    <circle class="progress-fg" id="progress-fg" cx="100" cy="100" r="90" 
+            stroke-dasharray="565.48" stroke-dashoffset="565.48"/>
+  </svg>
+  <div class="log">
+    <pre id="log">Waiting for status check...</pre>
+    <button class="toggle" id="toggle">Collapse</button>
+  </div>
+</div>
+
+<script>
+const installedView = document.getElementById('installed-view');
+const notInstalledView = document.getElementById('not-installed-view');
+const operatingView = document.getElementById('operating-view');
+const openBtn = document.getElementById('open');
+const uninstallBtn = document.getElementById('uninstall');
+const installBtn = document.getElementById('install');
+const cancelBtn = document.getElementById('cancel');
+const modal = document.getElementById('confirm-modal');
+const log = document.getElementById('log');
+const logContainer = document.querySelector('.log');
+const toggle = document.getElementById('toggle');
+const progressRing = document.getElementById('progress-ring');
+const progressFg = document.getElementById('progress-fg');
+const statusText = document.getElementById('status-text');
+const loadingIndicator = document.getElementById('loading-indicator');
+let es = null;
+let isOperating = false;
+
+openBtn.onclick = () => window.open('http://localhost:8096','_blank');
+
+toggle.onclick = () => {
+  log.classList.toggle('collapsed');
+  toggle.textContent = log.classList.contains('collapsed') ? 'Show more' : 'Collapse';
+};
+
+function setProgress(p) {
+  if (p === null) {
+    progressRing.classList.remove('active');
+    return;
+  }
+  progressRing.classList.add('active');
+  const offset = 565.48 - (565.48 * p / 100);
+  progressFg.style.strokeDashoffset = offset;
+}
+
+function updateStatus(status, message) {
+  statusText.className = 'status-text ' + status;
+  statusText.textContent = message;
+}
+
+function appendLog(text, type = '') {
+  const prefix = type === 'error' ? '❌ ' : type === 'success' ? '✅ ' : '';
+  const className = type === 'error' ? 'error-msg' : type === 'success' ? 'success-msg' : '';
+  const line = className ? `<span class="${className}">${prefix}${text}</span>` : text;
+  log.innerHTML += line + '\n';
+  log.scrollTop = log.scrollHeight;
+}
+
+function clearLog() {
+  log.innerHTML = '';
+  logContainer.classList.remove('error', 'success', 'loading');
+}
+
+function hideAllViews() {
+  installedView.style.display = 'none';
+  notInstalledView.style.display = 'none';
+  operatingView.style.display = 'none';
+}
+
+async function checkStatus() {
+  loadingIndicator.classList.add('active');
+  updateStatus('loading', 'Checking status...');
+  setProgress(null);
+  
+  try {
+    const response = await fetch('http://127.0.0.1:27272/status');
+    const status = await response.text();
+    
+    loadingIndicator.classList.remove('active');
+    
+    if (status === 'active') {
+      hideAllViews();
+      installedView.style.display = 'flex';
+      setProgress(null);
+      updateStatus('active', '● Running');
+      log.textContent = 'Jellyfin is installed and running.\nClick "Open Jellyfin" to access the web interface.';
+      logContainer.classList.remove('error', 'loading');
+      logContainer.classList.add('success');
+    } else {
+      hideAllViews();
+      notInstalledView.style.display = 'flex';
+      setProgress(null);
+      updateStatus('inactive', '○ Not Installed');
+      log.textContent = 'Jellyfin is not installed.\nClick "Install Jellyfin" to begin installation.';
+      logContainer.classList.remove('error', 'success', 'loading');
+    }
+  } catch (error) {
+    loadingIndicator.classList.remove('active');
+    updateStatus('inactive', '⚠ Connection Error');
+    log.innerHTML = '<span class="error-msg">❌ Could not connect to helper service.\nMake sure privileged-server.js is running.</span>';
+    logContainer.classList.add('error');
+    setProgress(null);
+    hideAllViews();
+    notInstalledView.style.display = 'flex';
+  }
+}
+
+uninstallBtn.onclick = () => {
+  if (!isOperating) {
+    modal.classList.add('active');
+  }
+};
+
+document.querySelector('.modal .no').onclick = () => modal.classList.remove('active');
+
+document.querySelector('.modal .yes').onclick = () => {
+  modal.classList.remove('active');
+  isOperating = true;
+  
+  // Show ONLY cancel button
+  hideAllViews();
+  operatingView.style.display = 'flex';
+  
+  clearLog();
+  appendLog('🔄 Connecting to uninstall service...');
+  updateStatus('loading', '⟳ Uninstalling...');
+  logContainer.classList.add('loading');
+  setProgress(50);
+
+  es = new EventSource('http://127.0.0.1:27272/run/uninstall');
+  
+  es.onopen = () => {
+    appendLog('✓ Connected! Starting uninstallation...');
+  };
+  
+  es.onmessage = e => {
+    if (e.data) {
+      appendLog(e.data);
+    }
+  };
+  
+  es.onerror = () => {
+    es.close();
+    es = null;
+    isOperating = false;
+    appendLog('Uninstallation process completed.', 'success');
+    logContainer.classList.remove('loading');
+    logContainer.classList.add('success');
+    setProgress(100);
+    setTimeout(() => {
+      setProgress(null);
+      checkStatus();
+    }, 2000);
+  };
+};
+
+cancelBtn.onclick = () => {
+  if (es) {
+    es.close();
+    es = null;
+  }
+  isOperating = false;
+  appendLog('⚠ Operation cancelled by user.', 'error');
+  appendLog('Note: Background process may still be running.', 'error');
+  logContainer.classList.remove('loading');
+  logContainer.classList.add('error');
+  setProgress(null);
+  setTimeout(() => checkStatus(), 1000);
+};
+
+installBtn.onclick = () => {
+  if (isOperating) return;
+  
+  isOperating = true;
+  installBtn.disabled = true;
+  clearLog();
+  appendLog('🔄 Connecting to installation service...');
+  updateStatus('loading', '⟳ Installing...');
+  logContainer.classList.add('loading');
+  setProgress(50);
+
+  es = new EventSource('http://127.0.0.1:27272/run/install');
+  
+  es.onopen = () => {
+    appendLog('✓ Connected! Starting installation...');
+  };
+  
+  es.onmessage = e => {
+    if (e.data) {
+      appendLog(e.data);
+    }
+  };
+  
+  es.onerror = () => {
+    es.close();
+    es = null;
+    isOperating = false;
+    installBtn.disabled = false;
+    appendLog('Installation process completed.', 'success');
+    logContainer.classList.remove('loading');
+    logContainer.classList.add('success');
+    setProgress(100);
+    setTimeout(() => {
+      setProgress(null);
+      checkStatus();
+    }, 2000);
+  };
+};
+
+// Check status on page load
+checkStatus();
+
+// Refresh status every 30 seconds if not operating
+setInterval(() => {
+  if (!isOperating) {
+    checkStatus();
+  }
+}, 30000);
+</script>
+</body></html>
