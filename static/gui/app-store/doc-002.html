@@ -29,28 +29,12 @@
 <!-- google tracking code end -->
 </head>
 <body style="overflow: inherit !important; height: inherit !important; display: visible;" onload="document.body.classList.add('loaded');">
-	<div class="container">
-                <div class="box">
-                        <div class="box-row">
-                                <div class="box-cell box1">
-                                        <ul class="breadcrumb" id="btn noHover">
-                                                <li class='btn noHover'>
-                                                        <a href="#" style="width:auto!Important;"><span class="icon icon-home"></span> <span class="text2">Entertainment</span></a>
-                                                </li>
-                                                <li>
-                                                        <a href='doc-000.html' style='width:auto!Important;filter: brightness(1);background:rgba(0,0,0,0.55);border: 1px solid rgba(255,255,255,0.4);position: initial; padding-left: 48px!Important; margin-top: 0px;'><span class="text2" style="margin-left:1vw;">Categories</span></a>
-                                                </li>
-                                                <li class="btn noHover">
-                                                        <a class='backtodash' href='doc-000.html'><span class="text2">Library</span></a>
-                                                </li>
-                                                <li class="btn">
-                                                        <a href='../dashboard/001-a.html'><span class="icon icon-search"></span> <span class="text"></span></a>
-                                                </li>
-                                        </ul>
-                                </div>
-                        </div>
-                </div>
-        </div><div id="apps-container" class="apps-container"></div> 
+	<!-- Dynamic Breadcrumb Placeholder -->
+                                        <ul class="breadcrumb"></ul>
+                                        <!-- End Dynamic Breadcrumb Placeholder -->
+
+                                        <!-- Include the dynamic breadcrumb script -->
+                                        <script src="js/dynamic-breadcrumb.js"></script><div id="apps-container" class="apps-container"></div> 
 	<script>
 function toggleAppInstallation(appId) {
     if (appId === '999-999') return;

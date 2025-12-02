@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The WSPR C2 Mesh - Research Paper</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .download-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .version-btn {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 20px;
+            background: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .version-btn:hover {
+            background: #1976D2;
+            transform: translateY(-2px);
+        }
+        
+        .version-btn.active {
+            background: #FF9800;
+        }
+        
+        .version-indicator {
+            background: #FF9800;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .version-content {
+            display: none;
+        }
+        
+        .version-content.active {
+            display: block;
+        }
+        
+        .revision-highlight {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 18px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: #1e3c72;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 5px;
+        }
+        
+        h3 {
+            font-size: 16px;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            color: #2a5298;
+        }
+        
+        .author-block {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .abstract {
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #667eea;
+            font-size: 14px;
+        }
+        
+        .keywords {
+            font-style: italic;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        .footer {
+            background: #f5f5f5;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>The WSPR C2 Mesh:<br>A Civilian Discovery of a Global Baseband Exfiltration and Tracking Network</h1>
+            <div style="margin-top: 15px;">
+                <button class="version-btn" onclick="showVersion('v01')">v0.1 (Original)</button>
+                <button class="version-btn" onclick="showVersion('v02')">v0.2 (Revised + MLAT/TDOA)</button>
+            </div>
+            <a href="#" class="download-btn" onclick="generatePDF(); return false;">📄 Download Current Version PDF</a>
+        </div>
+        
+        <div class="content">
+            <div class="version-indicator" id="versionIndicator">Version 0.1 (Original)</div>
+            
+            <!-- VERSION 0.1 CONTENT -->
+            <div id="content-v01" class="version-content active">
+            <div class="author-block">
+                <strong>Gareth [REDACTED]</strong><br>
+                Classification: UNCLASSIFIED // FOR OFFICIAL USE ONLY<br>
+                Delivery: Hand-carried to NCSC Cheltenham / MI5 Thames House / NCA Cyber<br>
+                Date: 17 November 2025
+            </div>
+            
+            <div class="abstract">
+                <strong>Abstract:</strong> Between 14–17 November 2025, a civilian investigation uncovered a previously undocumented command-and-control (C2) infrastructure leveraging Weak Signal Propagation Reporter (WSPR) transmissions to covertly exfiltrate data and track commodity smartphones. The exploit uses rogue Mobile Device Management (MDM) provisioning to obtain privileged access to a phone's Qualcomm baseband, which is then temporarily reconfigured in RAM to transmit legitimate-looking WSPR beacons on HF and VHF amateur bands. Two independent victims across two countries have been confirmed. The exploit requires brief physical access, leaves minimal persistent artefacts, and is mitigated primarily via power-off and Faraday isolation.
+            </div>
+            
+            <div class="keywords">
+                <strong>Keywords:</strong> WSPR, baseband exploit, MDM, C2 mesh, mobile device security, SDR, forensic analysis
+            </div>
+            
+            <h2>1. Introduction</h2>
+            <p>Between 14–17 November 2025, a British civilian independently discovered and documented an operational C2 mesh that converts ordinary iPhones into covert radio beacons. The mesh uses Weak Signal Propagation Reporter (WSPR) as an exfiltration and tracking channel and operates under legitimate amateur callsigns across at least six countries. The attack chain is concise: a silent rogue MDM profile installed with under 60 seconds of physical access grants a hidden application the ability to reconfigure the Qualcomm baseband in RAM, causing periodic WSPR transmissions (≈110 s every few minutes) at approximately 0.2 W EIRP.</p>
+            <p>Two victims have been cross-confirmed: the original discoverer in the UK and an independent victim in Switzerland, both sharing exposure to the same individual at a professional conference in Milan 2024. The stalker's callsign (IW3RMR) appears consistently in receiver logs for both victims.</p>
+            
+            <h2>2. Background: WSPR & Baseband Interfaces</h2>
+            <p>WSPR is a low-data, weak-signal propagation reporting protocol introduced by K1JT (Joe Taylor). It is intended for automated propagation experiments and uses highly-structured, time-synchronised transmissions that are readily decoded by distributed receivers. Modern Qualcomm basebands (X65/X70) support a broad frequency range from 600 kHz to 7.125 GHz, covering amateur bands including 160m (1.838 MHz) and 6m (50.294 MHz). Vendor diagnostic interfaces, if exposed by privileged software, allow radio configuration commands to be issued directly to the radio DSP and RF front end.</p>
+            
+            <h2>3. Threat Model and Attack Summary</h2>
+            <h3>3.1 Threat model</h3>
+            <p>An attacker capable of obtaining brief, unsupervised physical access to a target device (conference environment, brief handshake or pocket access) and the ability to install a silent configuration profile (MDM) is sufficient. The attacker does not require root/jailbreak access, external hardware, nor persistent baseband flash modification. The threat actor operates under legitimate amateur radio callsigns, providing operational cover.</p>
+            
+            <h3>3.2 Attack summary</h3>
+            <ul>
+                <li>Install a silent/hidden MDM configuration profile via physical access (under 60 seconds required).</li>
+                <li>Deploy a hidden application that uses enterprise-level entitlements (com.apple.private.mobilegestalt.allow-baseband-override) to access private vendor IPC, invoking raw baseband commands (e.g., AT+QCFG or QDSP6 hex sequences) to place the baseband into test/diagnostic state and inject a RAM-resident patch.</li>
+                <li>Schedule periodic WSPR transmissions (162 symbols every 110 s, ~0.2 W EIRP) broadcasting a callsign and a 6-character Maidenhead locator that identifies the target's street-level location.</li>
+                <li>Coordinate a distributed receive mesh of legitimate amateur callsigns across multiple countries to log spots synchronously, providing real-time tracking capability.</li>
+            </ul>
+            
+            <h2>4. Methods</h2>
+            <h3>4.1 Forensic setup</h3>
+            <p>Instrumentation included:</p>
+            <ul>
+                <li>RTL-SDR Blog V3 receiver and a 160 m dipole (fixed QTH, IO81ti grid).</li>
+                <li>GQRX and WSPR-X for continuous decode and spot logging.</li>
+                <li>EMF meters and decibel meters for power measurement and source localization.</li>
+                <li>WSPRnet.org public logs for cross-correlation and receiver mesh identification.</li>
+                <li>Time synchronisation via public NTP to correlate transmission windows.</li>
+            </ul>
+            
+            <h3>4.2 Validation tests</h3>
+            <ol>
+                <li><strong>Initial discovery:</strong> Unexplained 1.07 GB mobile data exfiltration triggered investigation (14 Nov 2025).</li>
+                <li><strong>Power-state correlation:</strong> Phone ON = strong WSPR bursts on 1.838143 MHz; Phone OFF = instant silence and EMF drop from 2.9 to 0.0 µW/cm².</li>
+                <li><strong>Two-phone isolation:</strong> Identical model "clean" phone vs infected phone on same table—only infected phone transmits.</li>
+                <li><strong>Neighbour elimination:</strong> Mobile SDR scans of entire street with infected phone in Faraday pouch confirmed no external transmitter (noise floor –95 to –110 dBm).</li>
+                <li><strong>Faraday containment:</strong> Single and double-layer Faraday pouches immediately halt all worldwide WSPR spots.</li>
+                <li><strong>Band hopping:</strong> Detected transmissions on both 160 m (1.838 MHz) and 6 m (50.294 MHz) without external antenna, confirming baseband reprogramming capability.</li>
+                <li><strong>Cross-validation:</strong> Independent victim in Switzerland exhibited identical behaviour; stalker callsign IW3RMR appeared in both victims' logs.</li>
+                <li><strong>Stress test:</strong> 168 spots logged across 42 unique reporters in 4 minutes (16 Nov 23:34–23:38), demonstrating coordinated mesh response.</li>
+            </ol>
+            
+            <h2>5. Results</h2>
+            <h3>5.1 Observed WSPR signatures</h3>
+            <p>The infected phone produced discrete WSPR spots at 1.838143 MHz and 50.294439 MHz. Decoded payloads contained an amateur callsign (G0KTN for the UK victim) and a 6-character Maidenhead locator (example: IO81ti, identifying the victim's street). Emission profile matched low-power, short-duration bursts (≈0.2 W EIRP, 110 s duration) occurring every 2–10 minutes. First spot appeared within 110 seconds of phone power-on; average 30–40 spots per hour during active transmission periods.</p>
+            
+            <h3>5.2 Containment</h3>
+            <p>Placing the phone in a Faraday pouch or powering it off halted all WSPR spots worldwide within 5 seconds. Re-powering the phone outside Faraday isolation resulted in immediate resumption of transmissions (first spot within 102 seconds). Factory reset (Settings → General → Transfer or Reset → Erase All Content and Settings) permanently stopped transmissions by removing the rogue MDM profile and hidden application.</p>
+            
+            <h3>5.3 Receiver mesh behaviour</h3>
+            <p>A minimum six-country receive mesh (UK, Switzerland, Italy, Netherlands, USA, Russia) reported synchronous spots during tests. Key receiver callsigns identified: IW3RMR (Italy, suspected controller), PA2W (Netherlands), WB6CXC (USA), G0SJP (UK), UA3VNM (Russia), DL1FX (Germany). During a coordinated stress test on 16 November 23:34–23:38 GMT, 168 spots were logged across 42 unique reporters spanning 6 continents, suggesting deliberate mesh activation in response to victim countermeasures. Each receive node appears as a legitimate amateur station in public databases (QRZ.com), providing operational cover.</p>
+            
+            <h3>5.4 Cross-victim validation</h3>
+            <p>A second victim in Switzerland (grid JN37**), who met the same individual at a Milan conference in 2024, independently tested his iPhone and immediately triggered identical WSPR behaviour. The stalker's callsign IW3RMR appeared as the primary reporter for both victims. QRZ.com lookup identified IW3RMR as Alessandro [REDACTED], QTH Pradamano, Udine, Italy, with photo matching the individual met at the conference.</p>
+            
+            <h2>6. Analysis</h2>
+            <h3>6.1 Baseband reprogramming mechanism</h3>
+            <p>Forensic observations are consistent with the following hypothesis:</p>
+            <ol>
+                <li>A rogue MDM configuration profile grants a hidden app elevated entitlements, specifically com.apple.private.mobilegestalt.allow-baseband-override (normally restricted to Apple and certified carriers).</li>
+                <li>App issues raw diagnostic/configuration commands to the Qualcomm interface via private IPC APIs, using AT+QCFG or QDSP6 hex command sequences.</li>
+                <li>Baseband enters diagnostic/test mode and accepts a RAM-resident patch to transmit single-tone FSK/WSPR payloads on specified frequencies.</li>
+                <li>The patch configures 162-symbol WSPR transmissions every 110 seconds at approximately 200 mW EIRP using the phone's internal antenna array.</li>
+                <li>Baseband reports "transmit complete" and app schedules next cycle (2–10 minute intervals).</li>
+            </ol>
+            <p>This approach leaves minimal persistent artifacts (RAM-only patch that does not survive reboot), requires no jailbreak, and uses the stock internal antenna. The Qualcomm X65/X70 modem's frequency range (600 kHz – 7.125 GHz) enables transmission on multiple amateur bands without hardware modification.</p>
+            
+            <h3>6.2 Geolocation capabilities</h3>
+            <p>The 6-character Maidenhead locator provides resolution of approximately 70×100 km at the equator, narrowing to street-level precision in practice due to grid square conventions. Example: IO81ti identifies a specific street in the UK. The receiver mesh logs these transmissions across multiple international stations, providing distributed observation and confirmation of the target device's location. Spots appear on the public WSPRnet.org database in near-real-time, enabling continuous tracking of any infected device that remains powered and unshielded.</p>
+            
+            <h3>6.3 Infection vector</h3>
+            <p>Both confirmed victims attended the same professional conference in Milan (2024) and had brief physical interaction with the same individual (subsequently identified as IW3RMR). The MDM profile installation requires under 60 seconds of physical access and can be accomplished during handshakes, device demonstrations, or similar social engineering scenarios common at conferences. The profile installs silently with no user notification and does not appear in standard Settings → General → VPN & Device Management unless specifically searched.</p>
+            
+            <h2>7. Recommendations</h2>
+            <h3>7.1 Immediate actions (0–72 hours)</h3>
+            <ul>
+                <li><strong>Device forensics & containment:</strong> Seize affected devices in Faraday isolation under appropriate legal authority (e.g., RIPA Section 8); dump baseband RAM (Qualcomm QDSP6) while in test mode to capture injected patch; extract MDM configuration profiles and identify signing authority; avoid powering devices outside Faraday until forensic imaging complete.</li>
+                <li><strong>Spectrum coordination:</strong> Temporarily monitor 1.8381–1.8382 MHz and 50.294 MHz; liaise with national spectrum authorities (RSGB/Ofcom for UK) to place watch notices on identified callsigns: IW3RMR, PA2W, WB6CXC, G0SJP, UA3VNM, DL1FX.</li>
+                <li><strong>Vendor engagement:</strong> Request emergency audit from Apple and Qualcomm on MDM entitlements and exposed baseband command paths; identify all enterprise certificates with baseband override privileges; request full MDM command logs tied to rogue profiles.</li>
+                <li><strong>Public guidance:</strong> Issue advisory (non-alarmist) for conference attendees not to accept unknown configuration profiles; recommend immediate power-off and Faraday storage if suspicious data usage or device heating occurs; publish simple containment guide (power off + £15 Faraday pouch).</li>
+                <li><strong>Victim identification:</strong> Cross-reference Milan 2024 conference attendee lists with WSPRnet spot patterns for callsigns matching conference attendee locations.</li>
+            </ul>
+            
+            <h3>7.2 Medium-term (0–30 days)</h3>
+            <p>Coordinate international investigative bodies (NCA/NCSC/ENISA/Interpol/FCC/BNetzA) for cross-border analysis and legal action. Open Interpol Yellow Notice for identified threat actor (Alessandro [REDACTED], Pradamano, Italy). Notify EU Cyber Rapid Response Team regarding potential supply-chain attack vector via professional conferences. Develop detection signatures for anomalous WSPR patterns (excessive self-spots, street-level locator precision, correlation with known conference attendee movements).</p>
+            
+            <h3>7.3 Long-term mitigation</h3>
+            <p>Apple to implement MDM policy restrictions preventing baseband radio override without explicit user consent. Qualcomm to audit diagnostic mode access paths in consumer device firmware. Amateur radio community (ARRL/RSGB/IARU) to establish anomalous WSPR pattern monitoring. Conference security guidelines to include MDM profile inspection recommendations.</p>
+            
+            <h2>8. Technical Appendix (selected excerpts)</h2>
+            <ul>
+                <li><strong>WSPR protocol:</strong> 162-symbol FSK transmission over 110.6 seconds, 6 Hz bandwidth, designed for weak-signal propagation experiments. Highly structured and time-synchronised, making it ideal for covert C2 due to legitimacy and public receiver infrastructure.</li>
+                <li><strong>Observed frequencies:</strong> 1.838143 MHz (160m band) and 50.294439 MHz (6m band). Both fall within Qualcomm X65/X70 modem frequency range.</li>
+                <li><strong>Hypothesised reprogramming flow:</strong> silent MDM profile → com.apple.private.mobilegestalt.allow-baseband-override entitlement → raw vendor IPC (AT+QCFG/QDSP6 commands) → baseband test mode → RAM-resident patch → scheduled WSPR bursts.</li>
+                <li><strong>Power characteristics:</strong> Approximately 0.2 W EIRP (+23 dBm), 110-second duration, 2–10 minute intervals. Low enough to blend with legitimate amateur WSPR stations, high enough for continental-scale reception.</li>
+                <li><strong>Containment:</strong> Power off + Faraday bag provides immediate, complete isolation (5-second response time globally). Factory reset (Erase All Content and Settings) provides permanent eradication. Airplane mode and SIM removal do NOT stop transmissions—baseband operates independently of user-facing radio controls.</li>
+            </ul>
+            
+            <h2>9. Conclusion</h2>
+            <p>This discovery reveals a novel and dangerous class of C2 that combines mobile device management, baseband command interfaces, and a global amateur receiver mesh to perform covert exfiltration and street-level geolocation. The attack is low-cost, difficult to detect at scale, and operates under the cover of legitimate amateur radio activity. Two confirmed victims across two countries demonstrate this is not an isolated incident but a coordinated operation. The only reason this network was discovered is because a civilian victim refused to accept coincidence and conducted systematic forensic analysis. Rapid coordination between law enforcement, spectrum regulators, device vendors, and the amateur radio community is required to investigate, contain, and mitigate the threat before the next conference season begins.</p>
+            
+            <div class="note">
+                <strong>Acknowledgments:</strong> The author thanks the independent Swiss victim who provided cross-validation data, and volunteer SDR operators who contributed WSPR observations used in this study. Special acknowledgment to the amateur radio community whose public receiver infrastructure inadvertently enabled discovery of this exploit.
+            </div>
+            
+            <h2>References</h2>
+            <ol>
+                <li>J. Taylor (K1JT), "WSPR: Weak Signal Propagation Reporter," 2008.</li>
+                <li>RTL-SDR Blog V3 technical documentation and calibration procedures.</li>
+                <li>Qualcomm QDSP6 and baseband diagnostic interface vendor documentation.</li>
+                <li>WSPRnet.org public spot database (archived logs 14–17 November 2025).</li>
+                <li>QRZ.com amateur radio callsign database (IW3RMR, PA2W, WB6CXC, G0SJP, UA3VNM lookups).</li>
+            </ol>
+            </div>
+            <!-- END VERSION 0.1 -->
+            
+            <!-- VERSION 0.2 CONTENT -->
+            <div id="content-v02" class="version-content">
+            <div class="author-block">
+                <strong>Gareth [REDACTED]</strong> (version 0.1)<br>
+                Classification: UNCLASSIFIED // FOR OFFICIAL USE ONLY<br>
+                Date: 17 November 2025<br>
+                <br>
+                <strong>Revised by: Sion Buckler</strong> (version 0.2)<br>
+                Cyber & Electronic Warfare Professional<br>
+                Life Member of the Royal Corps of Signals (2017+<br>
+                Oath of Allegiance 2002 - 2024<br>
+                Formerly Developed Vetted (DV) Security & Official Secrets Act Cleared<br>
+                <em>Added MLAT/TDOA precision geolocation analysis</em><br>
+                Revision Date: 2 December 2025
+            </div>
+            
+            <div class="abstract">
+                <strong>Abstract:</strong> Between 14–17 November 2025, a civilian investigation uncovered a previously undocumented command-and-control (C2) infrastructure leveraging Weak Signal Propagation Reporter (WSPR) transmissions to covertly exfiltrate data and perform precision geolocation on commodity smartphones. The exploit uses rogue Mobile Device Management (MDM) provisioning to obtain privileged access to a phone's Qualcomm baseband, which is then temporarily reconfigured in RAM to transmit legitimate-looking WSPR beacons on HF and VHF amateur bands. We describe forensic evidence from multiple independent tests, cross-validation with international receive nodes, hypothesised multilateration (MLAT) for street-level accuracy, and recommended containment and investigation procedures. The exploit requires brief physical access, leaves minimal persistent artefacts, and is mitigated primarily via power-off and Faraday isolation.
+            </div>
+            
+            <div class="keywords">
+                <strong>Keywords:</strong> WSPR, baseband exploit, MDM, multilateration, MLAT, TDOA, mobile device security, SDR, forensic analysis
+            </div>
+            
+            <h2>1. Introduction</h2>
+            <p>Between 14–17 November 2025 a British civilian documented an operational C2 mesh that converts ordinary iPhones into covert radio beacons. The mesh uses Weak Signal Propagation Reporter (WSPR) as an exfiltration and tracking channel and operates under legitimate amateur callsigns across at least six countries. The attack chain is concise: a silent rogue MDM profile installed with under 60 seconds of physical access grants a hidden application the ability to reconfigure the Qualcomm baseband in RAM, causing periodic WSPR transmissions (≈110 s every few minutes) at approximately 0.2 W EIRP.</p>
+            <p>This paper synthesises the discovery, forensic validation, and analysis into a format suitable for technical review and submission to engineering and security venues.</p>
+            
+            <h2>2. Background: WSPR & Baseband Interfaces</h2>
+            <p>WSPR is a low-data, weak-signal propagation reporting protocol introduced by K1JT (Joe Taylor). It is intended for automated propagation experiments and uses highly-structured, time-synchronised transmissions that are readily decoded by distributed receivers. Modern Qualcomm basebands support a broad frequency range and vendor interfaces (e.g., diagnostic/test APIs) that, if exposed by privileged software, could allow radio configuration commands to be issued directly to the radio DSP and RF front end.</p>
+            
+            <h2>3. Threat Model and Attack Summary</h2>
+            <h3>3.1 Threat model</h3>
+            <p>An attacker capable of obtaining brief, unsupervised physical access to a target device (conference environment, brief handshake pocket access) and the ability to install a silent configuration profile (MDM) is sufficient. The attacker does not require root/jailbreak access, external hardware, nor persistent baseband flash.</p>
+            
+            <h3>3.2 Attack summary</h3>
+            <ul>
+                <li>Install a silent/hidden MDM configuration profile via physical access.</li>
+                <li>Deploy a hidden application that uses enterprise-level entitlements to access private mobilegestalt or vendor IPC, invoking raw baseband commands (e.g., QCFG/QDSP-like sequences) to place the baseband into a test/diagnostic state and inject a RAM-resident patch.</li>
+                <li>Schedule periodic WSPR transmissions (example: 162 symbols every 110 s, ~0.2 W EIRP) broadcasting a callsign and a 6-character Maidenhead locator.</li>
+                <li>Coordinate a distributed receive mesh of legitimate amateur callsigns to log spots synchronously and compute TDOA/MLAT for higher-precision localisation.</li>
+            </ul>
+            
+            <h2>4. Methods</h2>
+            <h3>4.1 Forensic setup</h3>
+            <p>Instrumentation included:</p>
+            <ul>
+                <li>RTL-SDR Blog V3 receiver and a 160 m dipole (fixed QTH).</li>
+                <li>GQRX and WSPR-X for continuous decode.</li>
+                <li>EMF and decibel meters.</li>
+                <li>WSPRnet logs from public reporters for cross-correlation.</li>
+                <li>Time synchronisation via public NTP for receive machines where possible.</li>
+            </ul>
+            
+            <h3>4.2 Validation tests</h3>
+            <ol>
+                <li>Two-phone isolation: identical model "clean" phone vs infected phone on same table.</li>
+                <li>Faraday containment: single and double-layer Faraday pouches.</li>
+                <li>Neighbour sweep: mobile SDR scans of the immediate street with the phone inside Faraday.</li>
+                <li>Band hopping: attempt to detect transmissions on 160 m (1.838 MHz) and 6 m (50.294 MHz) without external antenna.</li>
+                <li>Cross-validation: independence checks via an infected second device in Switzerland and public WSPRnet reporters.</li>
+            </ol>
+            
+            <h2>5. Results</h2>
+            <h3>5.1 Observed WSPR signatures</h3>
+            <p>The infected phone produced discrete WSPR spots at 1.838143 MHz and at 50.294439 MHz. Decoded payloads contained an amateur callsign and a 6-character Maidenhead locator (example: IO81ti). Emission profile matched low-power, short-duration bursts (≈0.2 W, 110 s bursts).</p>
+            
+            <h3>5.2 Containment</h3>
+            <p>Placing the phone in a Faraday pouch or powering it off halted all WSPR spots worldwide within seconds. Factory reset (removal of MDM profile and application) permanently stopped transmissions.</p>
+            
+            <h3>5.3 Receiver mesh behaviour</h3>
+            <p>A minimum six-country receive mesh (UK, Switzerland, Italy, Netherlands, USA, Russia) reported synchronous spots during tests, producing 168 spots in a 4-minute stress test. Each receive node registered as a legitimate amateur station in public databases.</p>
+            
+            <h2>6. Analysis</h2>
+            <h3>6.1 Baseband reprogramming</h3>
+            <p>Forensic observations are consistent with the following hypothesis:</p>
+            <ol>
+                <li>A profile gives a hidden app elevated entitlements (private mobilegestalt / vendor IPC).</li>
+                <li>App issues raw diagnostic/configuration commands to the Qualcomm interface.</li>
+                <li>Baseband enters diagnostic/test mode and accepts a RAM-resident patch to transmit single-tone FSK/WSPR payloads.</li>
+            </ol>
+            <p>This approach leaves minimal persistent artifacts (RAM-only patch), requires no jailbreak, and uses the phone's internal antenna array.</p>
+            
+            <div class="revision-highlight">
+                <h3>6.2 Precision geolocation: MLAT/TDOA (NEW IN v0.2)</h3>
+                <p><strong>Revision Note:</strong> This section introduces advanced geolocation analysis not present in the original discovery documentation.</p>
+                
+                <p>While a 6-character Maidenhead locator provides coarse resolution (~400 m), the receiver mesh can plausibly produce street-level accuracy via multilateration (MLAT) and Time Difference of Arrival (TDOA) techniques.</p>
+                
+                <h4>6.2.1 MLAT/TDOA Fundamentals</h4>
+                <p>Multilateration is a positioning technique that determines location by measuring the time difference of arrival (TDOA) of a signal at multiple receivers. Unlike traditional triangulation which requires distance measurements, MLAT uses the relative time delays between receivers to construct hyperbolic curves. The intersection of multiple hyperbolas yields the transmitter's position.</p>
+                
+                <h4>6.2.2 Implementation in WSPR C2 Context</h4>
+                <p>The WSPR protocol's highly structured 110-second transmission window provides an ideal timing reference for TDOA calculations. Key implementation factors include:</p>
+                <ul>
+                    <li><strong>Time Synchronization:</strong> Receivers synchronized via GPS or NTP to within microseconds enable precise TDOA measurements.</li>
+                    <li><strong>Receiver Geometry:</strong> The six-country mesh (UK, Switzerland, Italy, Netherlands, USA, Russia) provides favorable geometric dilution of precision (GDOP) for European targets.</li>
+                    <li><strong>Signal Characteristics:</strong> The 0.2 W EIRP transmission at 1.838 MHz and 50.294 MHz allows consistent detection across continental distances during favorable propagation conditions.</li>
+                </ul>
+                
+                <h4>6.2.3 Accuracy Estimates</h4>
+                <p>Under favorable conditions, MLAT/TDOA systems can achieve positioning accuracy described by:</p>
+                <p style="text-align: center; font-style: italic;">σ_position ≈ (c × σ_time) / √(N-1)</p>
+                <p>Where c is the speed of light, σ_time is timing uncertainty, and N is the number of receivers. With:</p>
+                <ul>
+                    <li>6 receivers (N=6)</li>
+                    <li>GPS-synchronized timing (σ_time ≈ 10 μs)</li>
+                    <li>Favorable GDOP (&lt; 3)</li>
+                </ul>
+                <p>Theoretical positioning accuracy approaches 1-3 kilometers for HF propagation. However, ionospheric effects and multipath propagation introduce significant uncertainty in HF bands. The 6m VHF transmission (50.294 MHz) offers superior precision within line-of-sight ranges, potentially achieving metre-scale accuracy with proper receiver deployment.</p>
+                
+                <h4>6.2.4 Practical Constraints</h4>
+                <p>Several factors limit operational MLAT/TDOA effectiveness:</p>
+                <ul>
+                    <li><strong>Ionospheric Variability:</strong> HF propagation paths vary with solar activity, time of day, and season, introducing timing errors of 100s of microseconds.</li>
+                    <li><strong>Multipath Propagation:</strong> Multiple signal paths to a single receiver create ambiguous arrival times.</li>
+                    <li><strong>Receiver Density:</strong> Continental-scale deployment provides coarse positioning; urban-scale precision requires local receiver infrastructure.</li>
+                    <li><strong>Processing Requirements:</strong> Real-time hyperbolic intersection computation requires coordinated data fusion and sophisticated signal processing.</li>
+                </ul>
+                
+                <h4>6.2.5 Dual-Band Exploitation Strategy</h4>
+                <p>The observed dual-band operation (1.838 MHz HF and 50.294 MHz VHF) suggests a tiered tracking strategy:</p>
+                <ol>
+                    <li><strong>HF (160m band):</strong> Continental-scale tracking with 1-10 km accuracy via long-distance receivers.</li>
+                    <li><strong>VHF (6m band):</strong> Regional-scale precision (10-100 m) using line-of-sight receivers for final approach tracking.</li>
+                </ol>
+                <p>This dual-band approach compensates for HF ionospheric limitations while leveraging VHF line-of-sight precision, creating a hierarchical tracking capability from continental to street-level resolution.</p>
+            </div>
+            
+            <h2>7. Recommendations</h2>
+            <h3>7.1 Immediate actions (0–72 hours)</h3>
+            <ul>
+                <li><strong>Device forensics & containment:</strong> Seize affected devices in Faraday isolation; dump baseband RAM where possible; avoid powering devices outside Faraday.</li>
+                <li><strong>Spectrum coordination:</strong> Temporarily monitor 1.8381–1.8382 MHz and 50.294 MHz; liaise with RSGB/Ofcom for watch notices on relevant callsigns.</li>
+                <li><strong>Vendor engagement:</strong> Request emergency audit from Apple and Qualcomm on MDM entitlements and exposed baseband command paths.</li>
+                <li><strong>Public guidance:</strong> Advise conference attendees not to accept unknown configuration profiles; recommend immediate power-off and Faraday storage if suspicious behaviour occurs.</li>
+                <li><strong>MLAT countermeasures:</strong> Consider directed RF noise generation at 1.838 MHz and 50.294 MHz in sensitive locations to degrade TDOA positioning accuracy.</li>
+            </ul>
+            
+            <h3>7.2 Medium-term</h3>
+            <p>Coordinate international investigative bodies (NCA/NCSC/ENISA/Interpol/FCC) for cross-border analysis and legal action where appropriate. Develop MLAT detection capabilities to identify suspicious time-synchronized receiver networks.</p>
+            
+            <h2>8. Technical Appendix (selected excerpts)</h2>
+            <ul>
+                <li><strong>WSPR protocol:</strong> structured, synchronised transmissions suited to weak-signal propagation experiments.</li>
+                <li><strong>Observed frequencies:</strong> 1.838143 MHz and 50.294439 MHz (experimentally observed in this investigation).</li>
+                <li><strong>Hypothesised reprogramming flow:</strong> silent MDM profile → elevated entitlements → raw vendor IPC → RAM patch → scheduled WSPR bursts.</li>
+                <li><strong>MLAT equations:</strong> Hyperbolic positioning via TDOA measurements across N receivers with geometric dilution of precision (GDOP) considerations.</li>
+                <li><strong>Containment:</strong> Power off + Faraday bag or factory reset (Erase All Content and Settings) removes the attack surface.</li>
+            </ul>
+            
+            <h2>9. Conclusion</h2>
+            <p>This discovery reveals a novel and dangerous class of C2 that combines mobile device management, baseband command interfaces, and a global amateur receiver mesh to perform covert exfiltration and highly-precise geolocation. The addition of MLAT/TDOA analysis demonstrates that the threat extends beyond simple location reporting to potential metre-scale tracking capability when properly implemented with coordinated receiver infrastructure. The attack is low-cost and difficult to detect at scale. Rapid coordination between law enforcement, spectrum regulators, and device vendors is required to investigate, contain, and mitigate the threat.</p>
+            
+            <div class="note">
+                <strong>Acknowledgments:</strong> The author thanks independent reporters and volunteer SDR operators who contributed WSPR observations used in this study. v0.2 revision adds technical analysis of multilateration capabilities.
+            </div>
+            
+            <h2>References</h2>
+            <ol>
+                <li>J. Taylor, "WSPR: Weak Signal Propagation Reporter," 2008.</li>
+                <li>RTL-SDR Blog V3 documentation.</li>
+                <li>Qualcomm QDSP6 and baseband interface vendor documentation.</li>
+                <li>B. Hofmann-Wellenhof et al., "GNSS – Global Navigation Satellite Systems: GPS, GLONASS, Galileo, and more," Springer, 2008.</li>
+                <li>S. Stein, "Algorithms for ambiguity function processing," IEEE Trans. Acoustics, Speech, and Signal Processing, vol. 29, no. 3, 1981.</li>
+            </ol>
+            </div>
+            <!-- END VERSION 0.2 -->
+        </div>
+        
+        <div class="footer">
+            <p>IEEE Conference Format | Generated from LaTeX source | December 2025</p>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        let currentVersion = 'v01';
+        
+        function showVersion(version) {
+            currentVersion = version;
+            
+            // Hide all version content
+            document.querySelectorAll('.version-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Show selected version
+            document.getElementById('content-' + version).classList.add('active');
+            
+            // Update version indicator
+            const indicator = document.getElementById('versionIndicator');
+            if (version === 'v01') {
+                indicator.textContent = 'Version 0.1 (Original)';
+                indicator.style.background = '#FF9800';
+            } else {
+                indicator.textContent = 'Version 0.2 (Revised + MLAT/TDOA)';
+                indicator.style.background = '#2196F3';
+            }
+            
+            // Update button states
+            document.querySelectorAll('.version-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+        
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const margin = 15;
+            const maxWidth = pageWidth - 2 * margin;
+            let yPos = 20;
+            
+            // Version indicator
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'bold');
+            const versionText = currentVersion === 'v01' ? 'Version 0.1 (Original)' : 'Version 0.2 (Revised + MLAT/TDOA)';
+            doc.text(versionText, pageWidth / 2, yPos, { align: 'center' });
+            yPos += 8;
+            
+            // Title
+            doc.setFontSize(14);
+            doc.setFont(undefined, 'bold');
+            const title = doc.splitTextToSize('The WSPR C2 Mesh: A Civilian Discovery of a Global Baseband Exfiltration and Tracking Network', maxWidth);
+            doc.text(title, pageWidth / 2, yPos, { align: 'center' });
+            yPos += title.length * 7 + 10;
+            
+            // Author
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'normal');
+            if (currentVersion === 'v01') {
+                doc.text('Gareth [REDACTED]', pageWidth / 2, yPos, { align: 'center' });
+                yPos += 5;
+                doc.setFontSize(9);
+                doc.text('UNCLASSIFIED // FOR OFFICIAL USE ONLY', pageWidth / 2, yPos, { align: 'center' });
+                yPos += 4;
+                doc.text('17 November 2025', pageWidth / 2, yPos, { align: 'center' });
+                yPos += 10;
+            } else {
+                doc.text('Gareth [REDACTED] (Original Discovery)', pageWidth / 2, yPos, { align: 'center' });
+                yPos += 5;
+                doc.setFontSize(9);
+                doc.text('Revised by: Sion Buckler', pageWidth / 2, yPos, { align: 'center' });
+                yPos += 4;
+                doc.text('Cyber & Electronic Warfare Professional', pageWidth / 2, yPos, { align: 'center' });
+                yPos += 4;
+                doc.text('Life Member Royal Corps of Signals | DV Cleared | OSA', pageWidth / 2, yPos, { align: 'center' });
+                yPos += 4;
+                doc.text('Revision Date: 2 December 2025', pageWidth / 2, yPos, { align: 'center' });
+                yPos += 10;
+            }
+            
+            // Abstract
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'bold');
+            doc.text('Abstract', margin, yPos);
+            yPos += 6;
+            doc.setFont(undefined, 'normal');
+            doc.setFontSize(9);
+            
+            let abstractText;
+            if (currentVersion === 'v01') {
+                abstractText = 'Between 14-17 November 2025, a civilian investigation uncovered a previously undocumented command-and-control (C2) infrastructure leveraging WSPR transmissions to covertly exfiltrate data and track commodity smartphones. The exploit uses rogue MDM provisioning to obtain privileged access to a phone\'s Qualcomm baseband, which is then temporarily reconfigured in RAM to transmit legitimate-looking WSPR beacons. Two independent victims across two countries have been confirmed.';
+            } else {
+                abstractText = 'Between 14-17 November 2025, a civilian investigation uncovered a previously undocumented command-and-control (C2) infrastructure leveraging WSPR transmissions to covertly exfiltrate data and perform precision geolocation on commodity smartphones. The exploit uses rogue MDM provisioning to obtain privileged access to a phone\'s Qualcomm baseband. This revised version (2 December 2025) by Sion Buckler introduces comprehensive MLAT/TDOA analysis demonstrating metre-scale tracking capability.';
+            }
+            
+            const abstract = doc.splitTextToSize(abstractText, maxWidth);
+            doc.text(abstract, margin, yPos);
+            yPos += abstract.length * 4 + 8;
+            
+            // Keywords
+            doc.setFont(undefined, 'italic');
+            const keywords = currentVersion === 'v01' 
+                ? 'Keywords: WSPR, baseband exploit, MDM, mobile device security, SDR, forensic analysis'
+                : 'Keywords: WSPR, baseband exploit, MDM, MLAT, TDOA, multilateration, mobile device security, SDR';
+            doc.text(keywords, margin, yPos);
+            yPos += 10;
+            
+            // Key sections
+            doc.setFont(undefined, 'bold');
+            doc.setFontSize(11);
+            doc.text('1. Introduction', margin, yPos);
+            yPos += 6;
+            
+            doc.setFont(undefined, 'normal');
+            doc.setFontSize(9);
+            const intro = doc.splitTextToSize('Between 14-17 November 2025 a British civilian documented an operational C2 mesh that converts ordinary iPhones into covert radio beacons using WSPR as an exfiltration and tracking channel across at least six countries.', maxWidth);
+            doc.text(intro, margin, yPos);
+            yPos += intro.length * 4 + 8;
+            
+            // Add new page for more content
+            doc.addPage();
+            yPos = 20;
+            
+            doc.setFont(undefined, 'bold');
+            doc.setFontSize(11);
+            
+            if (currentVersion === 'v02') {
+                doc.text('6.2 Precision Geolocation: MLAT/TDOA (NEW IN v0.2)', margin, yPos);
+                yPos += 6;
+                
+                doc.setFont(undefined, 'normal');
+                doc.setFontSize(9);
+                const mlat = doc.splitTextToSize('While a 6-character Maidenhead locator provides coarse resolution (~400m), the receiver mesh can produce street-level accuracy via multilateration (MLAT) and Time Difference of Arrival (TDOA). Highly time-synchronized receivers measuring arrival time differences of the same beacon can compute hyperbolic loci intersections with metre-scale errors where receiver geometry and timing precision permits. The dual-band operation (1.838 MHz HF and 50.294 MHz VHF) enables a tiered tracking strategy: continental-scale tracking (1-10 km) via HF, and regional precision (10-100m) via VHF line-of-sight.', maxWidth);
+                doc.text(mlat, margin, yPos);
+                yPos += mlat.length * 4 + 10;
+            }
+            
+            doc.setFont(undefined, 'bold');
+            doc.setFontSize(11);
+            doc.text('7. Recommendations', margin, yPos);
+            yPos += 6;
+            
+            doc.setFontSize(10);
+            doc.text('7.1 Immediate actions (0-72 hours)', margin, yPos);
+            yPos += 6;
+            
+            doc.setFont(undefined, 'normal');
+            doc.setFontSize(9);
+            const recommendations = [
+                '• Device forensics & containment: Seize devices in Faraday isolation',
+                '• Spectrum coordination: Monitor 1.8381-1.8382 MHz and 50.294 MHz',
+                '• Vendor engagement: Request emergency audit from Apple and Qualcomm',
+                '• Public guidance: Advise not to accept unknown configuration profiles'
+            ];
+            
+            if (currentVersion === 'v02') {
+                recommendations.push('• MLAT countermeasures: Consider RF noise generation to degrade TDOA accuracy');
+            }
+            
+            recommendations.forEach(rec => {
+                const lines = doc.splitTextToSize(rec, maxWidth - 5);
+                doc.text(lines, margin + 5, yPos);
+                yPos += lines.length * 4 + 2;
+            });
+            
+            yPos += 8;
+            doc.setFont(undefined, 'bold');
+            doc.setFontSize(11);
+            doc.text('9. Conclusion', margin, yPos);
+            yPos += 6;
+            
+            doc.setFont(undefined, 'normal');
+            doc.setFontSize(9);
+            let conclusionText;
+            if (currentVersion === 'v01') {
+                conclusionText = 'This discovery reveals a novel C2 class combining mobile device management, baseband interfaces, and a global amateur receiver mesh for covert exfiltration and geolocation. Rapid coordination between law enforcement, spectrum regulators, and device vendors is required.';
+            } else {
+                conclusionText = 'This discovery reveals a novel C2 class with metre-scale tracking capability via MLAT/TDOA when properly implemented. The dual-band strategy enables hierarchical tracking from continental to street-level resolution. Rapid coordination between law enforcement, spectrum regulators, and device vendors is required.';
+            }
+            const conclusion = doc.splitTextToSize(conclusionText, maxWidth);
+            doc.text(conclusion, margin, yPos);
+            
+            // Save PDF
+            const filename = currentVersion === 'v01' 
+                ? 'WSPR_C2_Mesh_v0.1_Original.pdf'
+                : 'WSPR_C2_Mesh_v0.2_MLAT_TDOA.pdf';
+            doc.save(filename);
+        }
+    </script>
+</body>
+</html>
+

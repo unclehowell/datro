@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ## [0.0.1-rtw.17] - Q4/2025
+Dec-02 - Added static/ew  
 Nov-13 - TEST 24/7
 Nov-13 - Trying something/ Trying something else / Trying something else else   
 Nov-12 - Added `cloudflare-conditional-deploy.yml` to new top level directory .github/workflow `so preview links can be generated on pull requests'  
