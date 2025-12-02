@@ -61,13 +61,10 @@ do
     esac
 done
 
-# 4. Push the changes to the remote repository
-echo "🚀 Pushing changes to remote branch 'origin/$BRANCH_TO_USE'..."
-# The redirection to /dev/null has been removed to allow the SSH passphrase prompt to be visible.
-if ! git push -u origin "$BRANCH_TO_USE"; then
+# 4. Push the changes to the remote repository (Silent, but allows errors/passphrase prompt)
+if ! git push -u origin "$BRANCH_TO_USE" > /dev/null 2>&1; then
     echo "----------------------------------------------"
-    echo "❌ **FATAL ERROR: Git push failed.**"
-    echo "Please ensure your SSH key is loaded (try 'ssh-add' if prompted for a passphrase)."
+    echo "❌ **FATAL ERROR: Git push failed.** Please fix your SSH/access rights (use ssh-add)."
     echo "----------------------------------------------"
     exit 1
 fi
@@ -98,4 +95,3 @@ else
     echo "❌ **Action Failed.** Could not determine or create the Pull Request URL."
 fi
 echo "----------------------------------------------"
-

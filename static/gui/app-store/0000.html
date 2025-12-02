@@ -26,80 +26,31 @@
                 <div class="box">
                         <div class="box-row">
                                 <div class="box-cell box1">
-                                        <!-- Dynamic Breadcrumb Placeholder -->
-                                        <ul class="breadcrumb"></ul>
-                                        <!-- End Dynamic Breadcrumb Placeholder -->
-
-                                        <!-- Include the dynamic breadcrumb script -->
-                                        <script src="js/dynamic-breadcrumb.js"></script>
+                                        <ul class="breadcrumb" id="btn noHover">
+                                                <li class='btn noHover'>
+                                                        <a href="#" style="width:auto!Important;"><span class="icon icon-home"></span> <span class="text2">Categories</span></a>
+                                                </li>
+                                                <li>
+                                                        <a href='000.html' style='width:auto!Important;filter: brightness(1);background:rgba(0,0,0,0.55);border: 1px solid rgba(255,255,255,0.4);position: initial; padding-left: 48px!Important; margin-top: 0px;'><span class="text2" style="margin-left:1vw;">Hotspotβnβ</span></a>
+                                                </li>
+                                                <li class="btn noHover">
+                                                        <a class='backtodash' href='000.html'><span class="text2">App Store</span></a>
+                                                </li>
+                                                <li class="btn">
+                                                        <a href='../dashboard/001-a.html'><span class="icon icon-search"></span> <span class="text"></span></a>
+                                                </li>
+                                        </ul>
                                 </div>
                         </div>
                 </div>
         </div>
+<p style="margin-top:20vh;text-align:center;line-height:2em;"><strong>App Store locked for the Woodhaven Release !! </strong></br>Our next Over-the-Air Update will auto-unlock access to the App Store - stay tuned, visit <u> <a style="font-size:100%;text-decoration:underline;" href="https://datro.world" target="_popup"> datro.world</a></u> !! </p>
+</div>
 
-        <div id="apps-container" class="apps-container"></div>
 
-        <script>
-function toggleAppInstallation(appId) {
-    if (appId === '999-999') return;
-    const appInstalled = localStorage.getItem(appId) === 'added';
-    localStorage.setItem(appId, appInstalled ? '' : 'added' );
-    // Removed updateHomeScreen() call here, as window.addEventListener('storage') will handle it
-}
 
-function getAppLink(appId) {
-    switch (appId) {
-        case '002-001':
-            return '#'; // Placeholder link
-        default:
-            return '#';
-    }
-}
-
-function handleDragStart(event) {
-    event.dataTransfer.setData('text/plain', event.target.id);
-}
-
-function updateHomeScreen() {
-    const appsContainer = document.getElementById('apps-container');
-    appsContainer.innerHTML = ''; // Clear existing apps
-
-    const appIds = ['002-001']; // Using class-based IDs
-    appIds.forEach(appId => {
-        const appInstalled = localStorage.getItem(appId) === 'added';
-        const appElement = document.createElement('a');
-        appElement.href = getAppLink(appId); // Set the hyperlink
-        appElement.style.cursor = 'pointer';
-        appElement.innerHTML = `
-            <div class="square-${appId}">
-                <div class="content-${appId}">
-                    <div class="table-${appId}">
-                        <div class="table-cell-${appId}">
-                            <img class="app-icon-image" src="apps/${appId}/logo.png">
-                            <div class="toggle">
-                                <input class="app-checkbox" id="${appId}" type="checkbox" ${appInstalled ? 'checked' : ''}>
-                                <label class="app-label install" for="${appId}"><span class="thumb"></span></label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-        appElement.addEventListener('dragstart', handleDragStart);
-        appsContainer.appendChild(appElement);
-    });
-
-    // Re-attach click listeners to newly created checkboxes
-    const checkboxes = document.querySelectorAll('.app-checkbox');
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('click', function() {
-            toggleAppInstallation(this.id);
-        });
-    });
-}
-
-document.addEventListener("DOMContentLoaded", updateHomeScreen);
-window.addEventListener('storage', updateHomeScreen); // Listen for changes in localStorage
-        </script>
-  </body>
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/breadcrumb.js"></script>
+<script src="js/main.js"></script>
+</body>
 </html>

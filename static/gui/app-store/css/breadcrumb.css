@@ -43,22 +43,25 @@ ul.breadcrumb li {
 }
 
 ul.breadcrumb li a {
-  overflow: visible;
+  overflow: hidden;
   -moz-border-radius: 50px;
   -webkit-border-radius: 50px;
   border-radius: 50px;
   text-decoration: none;
-  height: auto;
+  height: 50px;
   color: white;
   text-align: center;
-  width: auto;
-  display: inline-block;
+  width: 50px;
+  display: block;
   line-height: 50px;
-  padding: 0 1.5vw;
+  padding-left: 52px;
+  padding-right: 33.33333px;
+  width: 50px;
   border: 1px solid grey;
+  --breadcrumb-link-size: 3.8vw;
+  font-size: 3.8vw;
   font-size: var(--breadcrumb-link-size, 3.8vw);
   word-spacing:0.4vw;
-  white-space: nowrap;
 }
 @media screen and (min-width: 900px) {
 ul.breadcrumb li a {
@@ -91,8 +94,8 @@ ul.breadcrumb li a .icon {
   line-height: unset; /* stops a conflict with fontawesomecss */
 }
 ul.breadcrumb li a .text {
-  display: inline-block;
-  opacity: 1;
+  display: none;
+  opacity: 0;
 }
 
 ul.breadcrumb li a:hover,
@@ -100,14 +103,16 @@ ul.breadcrumb li a:focus,
 ul.breadcrumb li a:active {
   background-color: inherit;
   color: inherit!important;
-  padding: 0 1.5vw;
+  padding-left: 52px;
+  padding-right: 33.33333px;
   border-color: grey;
+  font-size: 3.8vw;
   font-size: var(--breadcrumb-link-size, 3.8vw);
   line-height: 50px;
 }
 ul.breadcrumb li a:hover .text {
-  display: inline-block;
-  opacity: 1;
+  display: none;
+  opacity: 0;
 }
 
 ul.breadcrumb li:last-child a {
@@ -122,7 +127,7 @@ ul.breadcrumb li:last-child:hover a {
   color: inherit;
   line-height: 50px;
   float: right;
-  padding: 0 1.5vw;
+  padding: 0 1.2px;
   background-color: rgb(44, 12, 33);
   border-radius: 50px;
   margin-left: -25px;

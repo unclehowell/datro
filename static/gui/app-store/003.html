@@ -4,18 +4,9 @@
      <title>Hβnβ Controller Apps</title>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../dashboard/media/css/breadcrumb.css">
-  <link rel="stylesheet" href="../dashboard/media/css/appstore.css">
+  <link rel="stylesheet" href="css/breadcrumb.css">
+  <link rel="stylesheet" href="css/appstore.css">
   <link rel="stylesheet" href="css/font-awesome.css">
-  <style>
-    /* Additional styles specific to app-store pages if needed */
-    body {
-        background: rgb(44,12,33)!important;
-    }
-    .square {
-        border:solid rgba(255,255,255,0.3) 1.5px;
-    }
-  </style>
 <!-- google tracking code start -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6BTNPTMXBF"></script>
 <script>
@@ -28,25 +19,34 @@
 <!-- google tracking code end -->
 </head>
 
-<body onload="document.body.classList.add('loaded')">
+<body class="app-store-page" style="margin-top: -10%; padding-top: 24vh;" onload="document.body.classList.add('loaded')">
 
   <div class="container">
                 <div class="box">
                         <div class="box-row">
                                 <div class="box-cell box1">
-                                        <!-- Dynamic Breadcrumb Placeholder -->
-                                        <ul class="breadcrumb"></ul>
-                                        <!-- End Dynamic Breadcrumb Placeholder -->
+                                        <ul class="breadcrumb" id="btn noHover">
+                                                <li class='btn noHover'>
+                                                        <a href="#" style="width:auto!Important;"><span class="icon icon-gamepad"></span> <span class="text2">Controllers</span></a>
+                                                </li>
 
-                                        <!-- Include the dynamic breadcrumb script -->
-                                        <script src="js/dynamic-breadcrumb.js"></script>
+                                                <li>
+                                                        <a href="000.html" style="width:auto!Important;filter: brightness(1);background:rgba(0,0,0,0.55);border: 1px solid rgba(255,255,255,0.4);position: initial; padding-left: 48px!Important; margin-top: 0px;"><span class="text2" style="margin-left:1vw;">Categories</span></a>
+                                                </li>
+                                                <li class="btn noHover">
+                                                        <a class="backtodash" href="000.html"><span class="text2">App Store</span></a>
+                                                </li>
+                                                <li class="btn">
+                                                        <a href="../dashboard/001-a.html"><span class="icon icon-search"></span> <span class="text"></span></a>
+                                                </li>
+                                        </ul>
                                 </div>
                         </div>
                 </div>
         </div>
 
         <main class="app-store-grid">
-                <a class="app-card-link" href="app-description-003-001.html">
+                <a class="app-card-link" href="apps/003-001/fetch.html">
                         <article class="app-card" data-app-id="003-001">
                                 <div class="app-card__icon-wrapper">
                                         <img class="app-card__icon" src="apps/003-001/logo.png" alt="JeHervy controller app icon">
@@ -76,34 +76,5 @@
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/jquery.modallink-1.0.0.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const squares = document.querySelectorAll('.square');
-    squares.forEach(square => {
-      const imgElement = square.querySelector('img.rs');
-      if (imgElement) {
-        const src = imgElement.getAttribute('src');
-        const match = src.match(/icons\/([^.]+)\.svg$/);
-        if (match && match[1]) {
-          const appId = match[1];
-          if (appId === '000') {
-            if (localStorage.getItem(appId) !== 'added') {
-              square.style.display = 'none';
-            } else {
-              square.style.display = '';
-            }
-            return;
-          }
-
-          if (localStorage.getItem(appId) === 'added') {
-            square.style.display = '';
-          } else {
-            square.style.display = 'none';
-          }
-        }
-      }
-    });
-  });
-</script>
   </body>
 </html>

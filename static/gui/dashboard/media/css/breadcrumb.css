@@ -46,7 +46,7 @@ ul.breadcrumb li {
 }
 
 ul.breadcrumb li a {
-  overflow: visible;
+  overflow: hidden;
   -moz-border-radius: 50px;
   -webkit-border-radius: 50px;
   border-radius: 50px;
@@ -55,17 +55,18 @@ ul.breadcrumb li a {
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
   text-decoration: none;
-  height: auto;
+  height: 50px;
   color: white;
   text-align: center;
-  width: auto;
-  display: inline-block;
+  width: 50px;
+  display: block;
   line-height: 50px;
-  padding: 0 1.5vw;
+  padding-left: 52px;
+  padding-right: 33.33333px;
+  width: 50px;
   border: 1px solid grey;
   font-size:3.8vw;
   word-spacing:0.4vw;
-  white-space: nowrap;
 }
 @media screen and (min-width: 900px) {
 ul.breadcrumb li a {
@@ -96,14 +97,14 @@ ul.breadcrumb li a .icon {
   line-height: unset; /* stops a conflict with fontawesomecss */
 }
 ul.breadcrumb li a .text {
-  display: inline-block;
-  opacity: 1;
+  display: none;
+  opacity: 0;
 }
 
 ul.breadcrumb li a:hover {
     background-color:#303030;
     color: white!important;
-    padding: 0 1.5vw;
+    padding-left: 0.4em!important;
 }
 ul.breadcrumb li a:hover .text {
   display: inline-block;
@@ -129,20 +130,4 @@ ul.breadcrumb li:last-child:hover a {
   display: block;
   padding-left: 6px;
   padding-right: -1px;
-}
-.static-breadcrumb li a {
-    pointer-events: auto !important; /* Ensure links are clickable */
-    transition: none !important;
-    background-color: #454545 !important; /* Maintain background color */
-    color: white !important; /* Maintain text color */
-}
-
-.static-breadcrumb li a:hover {
-    background-color: #454545 !important; /* Keep the same background on hover */
-    color: white !important; /* Keep the same text color on hover */
-}
-
-.static-breadcrumb li a .text {
-    display: inline-block !important; /* Ensure text is always visible */
-    opacity: 1 !important;
 }

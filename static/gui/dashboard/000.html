@@ -4,90 +4,120 @@
   <title>Site Selector Categories</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="media/css/breadcrumb.css">
-  <link rel="stylesheet" href="media/css/appstore.css">
-  <link rel="stylesheet" href="media/css/font-awesome.css">
-  <link rel="preload" href="media/fonts/fontawesome-webfont.eot" as="font" type="font/eot" crossorigin>
-  <style>
-    html {
-        overflow-x: hidden!important;
-        height: -webkit-fill-available;
-        background: #454545;
-        background-color: #454545;
-        width: 100%;
-        min-width: 100vw;
-    }
-    body {
-        margin: 0;
-        min-height: 100vh;
-        width: 100%;
-        min-width: 100vw;
-        background: #454545;
-        background-color: #454545;
-        overflow-x: hidden;
-    }
-    /* Sets the dimensions of the entire scrollbar */
-    body::-webkit-scrollbar {
-        width: 30px;
-        height: 30px;
-    }
-    /* The grabbable scrollbar button  */
-    html::-webkit-scrollbar-thumb {
-        background: -webkit-gradient(linear,left top,left bottom,from(#ff8a00),to(#e52e71));
-        background: linear-gradient(180deg,#ff8a00,#e52e71);
-        border-radius: 30px;
-        box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
-    }
-    /* The vertical scrollbar background */
-    html::-webkit-scrollbar-track {
-        background: linear-gradient(90deg,#201c29,#201c29 1px,#100e17 0,#100e17);
-    }
-    .content .rs {
-        max-height: 19%!important;
-        height: 89px;
-        min-height: calc(3.3em)!important;
-        min-width: 8vw;
-        padding: 0px;
-        margin: 0px;
-        filter: invert(66%)grayscale(100%)brightness(152%)contrast(111%)!important;
-        opacity: 0.5;
-        overflow:hidden;
-        max-width: 53%!important;
-    }
-    a:link, a, a:hover {color: rgba(255,255,255,0.8); font-size: 1.6rem;}
-    .container .box {
-        width: 82vw;
-        margin-left: 0.5vw;
-        display: table;
-        border-radius: 20px;
-        min-height:98px;
-    }
-    .container .box .box-row {
-        display:table-row;
-        color:rgba(255,255,255,0.6);
-    }
-    .container .box .box-cell {
-        display:table-cell;
-        width:28vw;
-        padding:20px 45px 13px 20px;
-    }
-    .container .box .box-cell.box1 {
-        background:transparent;
-        text-align:left;
-        position:fixed;
-        min-height:10vh;
-    }
-    .noHover{
-        pointer-events: none;
-    }
-    .breadcrumb {opacity:0.4;}
-    .square {
-        border:solid rgba(255,255,255,0.3) 1.5px;
-    }
-  </style>
-  <script src="js/jquery-2.1.4.min.js"></script>
-  <script src="js/breadcrumb.js"></script>
-  <script src="js/main.js"></script>
+<link rel="stylesheet" href="media/css/breadcrumb.css">
+<link rel="stylesheet" href="media/css/appstore.css">
+<link rel="stylesheet" href="media/css/font-awesome.css">
+<link rel="preload" href="media/fonts/fontawesome-webfont.eot" as="font" type="font/eot" crossorigin>
+<style>
+
+html {overflow-x: hidden!important;height: -webkit-fill-available;}
+#body { background-color:red;}
+/* Sets the dimensions of the entire scrollbar */
+
+body::-webkit-scrollbar {
+    width: 30px;
+    height: 30px;
+}
+
+/* The grabbable scrollbar button  */
+html::-webkit-scrollbar-thumb {
+    background: -webkit-gradient(linear,left top,left bottom,from(#ff8a00),to(#e52e71));
+    background: linear-gradient(180deg,#ff8a00,#e52e71);
+    border-radius: 30px;
+    box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+}
+v
+/* The vertical scrollbar background */
+html::-webkit-scrollbar-track {
+    background: linear-gradient(90deg,#201c29,#201c29 1px,#100e17 0,#100e17);
+}
+.content .rs {
+    max-height: 19%!important;
+    height: 89px;
+    min-height: calc(3.3em)!important;
+    min-width: 8vw;
+    padding: 0px;
+    margin: 0px;
+    filter: invert(66%)grayscale(100%)brightness(152%)contrast(111%)!important;
+    opacity: 0.5;
+    overflow:hidden;
+    max-width: 53%!important;
+}
+
+
+a:link, a, a:hover {color: rgba(255,255,255,0.8); font-size: 1.6rem;}
+
+.container .box {
+    width: 82vw;
+    margin-left: 0.5vw;
+    display: table;
+    border-radius: 20px;
+    min-height:98px;
+}
+
+.container .box .box-row {
+    display:table-row;
+    color:rgba(255,255,255,0.6);
+}
+
+.container .box .box-cell {
+    display:table-cell;
+    width:28vw;
+    padding:20px 45px 13px 20px;
+}
+
+.container .box .box-cell.box1 {
+    background:transparent;
+    text-align:left;
+    position:fixed;
+    min-height:10vh;
+}
+
+.container .box .box-cell.box2 {
+    background: transparent;
+    font-size: 2rem;
+    text-align: center;
+    padding-left: 100px;
+    font-weight: bold;
+}
+
+.container .box .box-cell.box3 {
+    background:transparent;
+    text-align:right;
+    position: relative;
+}
+
+.noHover{
+    pointer-events: none;
+}
+.breadcrumb {opacity:0.4;}
+
+body:not(.loaded) #slider img {
+  display:none;
+}
+
+</style>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        // Set trigger and container variables
+        var trigger = $('#nav ul li a'),
+            container = $('#content');
+
+        // Fire on click
+        trigger.on('click', function(){
+          // Set $this for re-use. Set target from data attribute
+          var $this = $(this),
+            target = $this.data('target');
+
+          // Load target page into container
+          container.load(target + '.html');
+
+          // Stop normal link behavior
+          return false;
+        });
+      });
+  </script>
 
 <!-- google tracking code start --> 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6BTNPTMXBF"></script>
@@ -95,12 +125,13 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+
   gtag('config', 'G-6BTNPTMXBF');
 </script>
 <!-- google tracking code end -->
 </head>
 
-<body onload="document.body.classList.add('loaded')">
+<body style="overflow: inherit!important;height: inherit!important;display:visible;" onload="document.body.classList.add('loaded')">
 
 <!--- <div class="container">
 
@@ -215,50 +246,5 @@
 <script src="media/js/jquery-2.1.1.js"></script>
 <script src="media/js/breadcrumb.js"></script>
 <script src="media/js/main.js"></script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const squares = document.querySelectorAll('.square');
-    squares.forEach(square => {
-      let appId = null;
-      let imgElement = square.querySelector('img.rs');
-
-      if (imgElement) {
-        const src = imgElement.getAttribute('src');
-        const match = src.match(/icons\/([^.]+)\.svg$/);
-        if (match && match[1]) {
-          appId = match[1];
-        }
-      } else {
-        // Check for the '+ Add App' icon which doesn't have an img.rs with appId
-        const appCard = square.querySelector('.app-card');
-        if (appCard && appCard.dataset.appId === '999-999') {
-          appId = '999-999';
-        }
-      }
-
-      if (appId) {
-        // Special case for '000' which might be 'Search' and not a toggleable app
-        if (appId === '000') {
-          // If not explicitly set to 'removed', show it. Otherwise, hide it.
-          if (localStorage.getItem(appId) !== 'removed') {
-            square.style.display = ''; // Ensure it's visible by default
-          } else {
-            square.style.display = 'none';
-          }
-          return;
-        }
-
-        // For other app IDs, check localStorage
-        if (localStorage.getItem(appId) === 'added') {
-          square.style.display = ''; // Show the square
-        } else {
-          square.style.display = 'none'; // Hide the square
-        }
-      }
-    });
-  });
-</script>
-
 </body>
 </html>
