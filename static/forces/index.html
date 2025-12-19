@@ -20,6 +20,7 @@
             --accent-hover: #4f46e5;
             --alert: #fbbf24; /* Amber */
             --nav-bg: rgba(15, 23, 42, 0.95);
+            --success: #10b981;
         }
         * {
             box-sizing: border-box;
@@ -153,6 +154,51 @@
             color: #818cf8;
             text-decoration: underline;
         }
+        /* --- Progress Bar --- */
+        .progress-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .progress-bar {
+            background: #334155;
+            border-radius: 8px;
+            height: 20px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-fill {
+            background: var(--success);
+            height: 100%;
+            transition: width 1s ease;
+        }
+        .progress-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        /* --- Payment Columns --- */
+        .payment-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .payment-column {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .payment-column h4 {
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        .raised-amount {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--success);
+            margin: 1rem 0;
+        }
         /* --- Video --- */
         .video-wrapper {
             position: relative;
@@ -171,13 +217,12 @@
             width: 100%;
             height: 100%;
         }
-        /* --- Register / Crypto Section --- */
+        /* --- Crypto Box --- */
         .crypto-box {
             background: rgba(0, 0, 0, 0.2);
             padding: 20px;
             border-radius: 8px;
             border-left: 4px solid var(--alert);
-            margin-top: 2rem;
         }
         .wallet-address-container {
             display: flex;
@@ -208,20 +253,12 @@
         .copy-btn:hover {
             background-color: var(--accent-hover);
         }
-        .btn-main {
-            display: inline-block;
-            background-color: var(--accent);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-weight: 600;
-            text-align: center;
-            margin-top: 1rem;
-        }
-        .btn-main:hover {
-            background-color: var(--accent-hover);
-            text-decoration: none;
-            color: white;
+        /* --- Contact Details --- */
+        .contact-details {
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
         /* --- Footer --- */
         footer {
@@ -261,6 +298,9 @@
             .nav-links { display: none; }
             .nav-container { justify-content: center; }
             .card { padding: 1.5rem; }
+            .payment-columns {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
     <!-- Stripe Script -->
@@ -326,22 +366,41 @@
     <section id="register">
         <div class="card">
             <h2>Get Involved</h2>
-            <p style="font-size: 1.2rem; color: #fff;"><strong>Co-fund this project (Goal = £10,000 GBP)</strong></p>
-            <p>By contributing, you help bring this zero-knowledge application to life and become part of a groundbreaking decentralized ownership model.</p>
-           
-            <!-- Stripe Component -->
-            <div style="margin: 30px 0; text-align: center;">
-                <stripe-buy-button
-                    buy-button-id="buy_btn_1RuDNARibisCfpBQBMKwrMVc"
-                    publishable-key="pk_live_51OqlLnRibisCfpBQQsDU3l2hhMLoKwTcdiokINqNA4wWaLeBM5qkMyJDV3B6TIToBOKCh4WhEzff7isJCLYIJaUB0088uetffQ">
-                </stripe-buy-button>
+            <p style="font-size: 1.2rem; color: #fff; text-align: center;"><strong>Co-fund this project (Goal = £10,000 GBP)</strong></p>
+
+            <div class="progress-container">
+                <div class="progress-text" id="progress-text">Raised: £0.00 / £10,000 (0.0%)</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
+                </div>
             </div>
 
-            <div class="crypto-box">
-                <h4 style="margin: 0; color: #fff;">Bitcoin (BTC) accepted</h4>
-                <div class="wallet-address-container">
-                    <span id="btc-address" class="wallet-address">bc1qddlu48vwmq0zrey0pgc8h02q9edq3jd8pwe3am</span>
-                    <button class="copy-btn" onclick="copyToClipboard()">Copy</button>
+            <p style="text-align: center;">By contributing, you help bring this zero-knowledge application to life and become part of a groundbreaking decentralized ownership model.</p>
+           
+            <div class="payment-columns">
+                <!-- Stripe Column -->
+                <div class="payment-column">
+                    <h4>Co-Fund with Credit/Debit Card</h4>
+                    <div class="raised-amount">-</div>
+                    <div style="margin: 20px 0;">
+                        <stripe-buy-button
+                            buy-button-id="buy_btn_1RuDNARibisCfpBQBMKwrMVc"
+                            publishable-key="pk_live_51OqlLnRibisCfpBQQsDU3l2hhMLoKwTcdiokINqNA4wWaLeBM5qkMyJDV3B6TIToBOKCh4WhEzff7isJCLYIJaUB0088uetffQ">
+                        </stripe-buy-button>
+                    </div>
+                </div>
+
+                <!-- Bitcoin Column -->
+                <div class="payment-column">
+                    <h4>Pay with Bitcoin (BTC)</h4>
+                    <div class="raised-amount" id="btc-raised">£0.00 equivalent raised</div>
+                    <div class="crypto-box">
+                        <div class="wallet-address-container">
+                            <span id="btc-address" class="wallet-address">bc1qddlu48vwmq0zrey0pgc8h02q9edq3jd8pwe3am</span>
+                            <button class="copy-btn" onclick="copyToClipboard()">Copy</button>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.9rem; margin-top: 1rem; color: var(--text-muted);">View transactions on <a href="https://mempool.space/address/bc1qddlu48vwmq0zrey0pgc8h02q9edq3jd8pwe3am" target="_blank">mempool.space</a></p>
                 </div>
             </div>
         </div>
@@ -391,6 +450,16 @@
                 <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Phone Icon">
                 +44 20 313 77 118
             </a>
+
+            <div class="contact-details">
+                <p>Unit 29 Highcroft Industrial Estate<br>
+                Enterprise Road<br>
+                Waterlooville<br>
+                England<br>
+                PO8 0BT</p>
+                <p>Company number 13775817</p>
+            </div>
+
             <h3 style="margin-top: 2rem; color: #fff;">Thank You</h3>
         </div>
     </section>
@@ -440,6 +509,37 @@
                 console.error('Failed to copy: ', err);
             });
         }
+
+        // --- Fundraising Progress (BTC only) ---
+        const GOAL_GBP = 10000;
+        async function updateProgress() {
+            try {
+                // Fetch BTC received
+                const response = await fetch('https://blockchain.info/rawaddr/bc1qddlu48vwmq0zrey0pgc8h02q9edq3jd8pwe3am');
+                const data = await response.json();
+                const totalReceivedBTC = data.total_received / 100000000; // satoshis to BTC
+
+                // Fetch current BTC price in GBP
+                const priceResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=gbp');
+                const priceData = await priceResponse.json();
+                const btcPriceGBP = priceData.bitcoin.gbp;
+
+                const raisedBTC_GBP = totalReceivedBTC * btcPriceGBP;
+
+                // Update UI (only BTC contributes to total for now)
+                document.getElementById('progress-text').textContent = `Raised: £${raisedBTC_GBP.toFixed(2)} / £${GOAL_GBP} (${((raisedBTC_GBP / GOAL_GBP) * 100).toFixed(1)}%)`;
+                document.getElementById('progress-fill').style.width = `${Math.min((raisedBTC_GBP / GOAL_GBP) * 100, 100)}%`;
+
+                document.getElementById('btc-raised').textContent = `£${raisedBTC_GBP.toFixed(2)} equivalent raised`;
+            } catch (err) {
+                console.error('Error updating progress:', err);
+                document.getElementById('progress-text').textContent = 'Progress update failed – check BTC manually';
+            }
+        }
+
+        // Update on load and every 5 minutes
+        updateProgress();
+        setInterval(updateProgress, 300000);
     </script>
 </body>
 </html>
