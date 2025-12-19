@@ -3,194 +3,461 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casualty Escort Officer Application</title>
+    <meta name="description" content="Casualty Escort Officer Application - Zero-knowledge mobile application tender.">
+    <title>Casualty Escort Officer Application | DATRO Consortium</title>
+    
+    <!-- Google Fonts for High-Tech/Security Look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
     <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent: #6366f1; /* Indigo */
+            --accent-hover: #4f46e5;
+            --alert: #fbbf24; /* Amber */
+            --nav-bg: rgba(15, 23, 42, 0.95);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
-            color: #fff;
-            background-color: black;
+            line-height: 1.8;
+            color: var(--text-main);
+            background-color: var(--bg-color);
             overflow-x: hidden;
         }
-        a {
-            color: white;
+
+        /* --- Navigation --- */
+        nav {
+            background-color: var(--nav-bg);
+            border-bottom: 1px solid #334155;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            backdrop-filter: blur(10px);
         }
-        header {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        h1 {
-            margin: 0;
-            font-size: 2rem;
-        }
-        h2, h3, h4, h5, h6 {
-            color: #fff;
-            margin-top: 2rem;
-        }
-        section {
+
+        .nav-container {
             max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 20px;
-            box-sizing: border-box;
-            width: 100%;
-        }
-        video {
-            width: 100%;
-            max-width: 600px;
-            margin: 20px auto;
-            display: block;
-        }
-        .register-button {
-            background-color: #6772e5;
-            color: white;
-            padding: 15px 30px;
-            font-size: 18px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            display: inline-block;
-            text-decoration: none;
-        }
-        .register-button:hover {
-            background-color: #5469d4;
-        }
-        .contact-icon {
-            color: white;
-            margin: 10px;
-            display: inline-block;
-            white-space: nowrap;
-        }
-        .contact-icon img {
-            filter: invert(100%);
-            width: 30px;
-            height: 30px;
-            margin-right: 24px;
-            vertical-align: middle;
-        }
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        stripe-buy-button {
-            display: block;
-            max-width: 100%;
-            overflow: hidden;
-        }
-        section p {
-            word-wrap: break-word;
-            text-align: justify;
-        }
-        .timer-container {
+            margin: 0 auto;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 1rem;
+            padding: 0 20px;
         }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- Header & Timer --- */
+        header {
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+            text-align: center;
+            padding: 4rem 20px 2rem;
+            border-bottom: 1px solid #334155;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            margin: 0 0 1.5rem 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .timer-container {
+            background: rgba(0, 0, 0, 0.3);
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 25px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+
+        .timer-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         #timer {
-            font-size: 1.5rem;
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            color: var(--accent);
             font-weight: bold;
         }
+
+        /* --- Layout & Typography --- */
+        section {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+            margin-bottom: 2rem;
+            border: 1px solid #334155;
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-top: 0;
+            font-size: 1.1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #818cf8;
+            text-decoration: underline;
+        }
+
+        /* --- Video --- */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #000;
+            border: 1px solid #334155;
+            margin-bottom: 2rem;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- Register / Crypto Section --- */
+        .crypto-box {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--alert);
+            margin-top: 2rem;
+        }
+
+        .wallet-address-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #0f172a;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .wallet-address {
+            font-family: monospace;
+            color: var(--alert);
+            word-break: break-all;
+            flex-grow: 1;
+        }
+
+        .copy-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-main {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        .btn-main:hover {
+            background-color: var(--accent-hover);
+            text-decoration: none;
+            color: white;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--nav-bg);
+            border-top: 1px solid #334155;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            background: #334155;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-top: 1rem;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .contact-btn:hover {
+            background: #475569;
+            text-decoration: none;
+            color: white;
+        }
+
+        .contact-btn img {
+            filter: invert(100%);
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        /* --- Mobile --- */
         @media (max-width: 768px) {
-            section {
-                padding: 0 10px;
-            }
-            video {
-                max-width: 100%;
-            }
-            .contact-icon {
-                font-size: 0.9rem;
-            }
+            h1 { font-size: 1.8rem; }
+            .nav-links { display: none; } /* Could add hamburger menu later */
+            .nav-container { justify-content: center; }
+            .card { padding: 1.5rem; }
         }
     </style>
-    <script src="https://js.stripe.com/v3/"></script>
+    <!-- Stripe Script -->
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 </head>
 <body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">DATRO CONSORTIUM</a>
+            <div class="nav-links">
+                <a href="#about">Mission</a>
+                <a href="#video">Intelligence</a>
+                <a href="#register">Co-Fund</a>
+                <a href="#zero-knowledge">Tech</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header with Timer -->
     <header>
         <h1>Casualty Escort Officer App</h1>
         <div class="timer-container">
-            <span>Time remaining for the general public to co-own this WebApp:</span>
+            <span class="timer-label">Public Co-ownership Deadline</span>
             <div id="timer">Calculating...</div>
-            <script>
-                // Target date and time: October 09, 2026, 12:00 PM ART (UTC-3)
-                const targetDate = new Date('2025-10-09T12:00:00-03:00');
-                function updateTimer() {
-                    const now = new Date();
-                    const timeDiff = Math.floor((targetDate - now) / 1000); // Time difference in seconds
-                    if (timeDiff <= 0) {
-                        document.getElementById('timer').textContent = "00:00:00";
-                        clearInterval(timerInterval);
-                        return;
-                    }
-                    const hours = Math.floor(timeDiff / 3600);
-                    const minutes = Math.floor((timeDiff % 3600) / 60);
-                    const seconds = timeDiff % 60;
-                    // Format time with leading zeros
-                    const formattedTime = 
-                        `${hours.toString().padStart(2, '0')}:` +
-                        `${minutes.toString().padStart(2, '0')}:` +
-                        `${seconds.toString().padStart(2, '0')}`;
-                    document.getElementById('timer').textContent = formattedTime;
-                }
-                // Update timer every second
-                const timerInterval = setInterval(updateTimer, 1000);
-                updateTimer(); // Initial call to avoid 1-second delay
-            </script>
         </div>
     </header>
+
+    <!-- About Section -->
     <section id="about">
-        <h2>Statement by Sion Buckler</h2>
-        <h3>Director of Private Security Group: DATRO Consortium Ltd</h3>
-        <p>This is a tender to the public for my <a href="https://find-and-update.company-information.service.gov.uk/company/13775817">Private Security Group</a> to build you a <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof">zero-knowledge</a> mobile application that (upon mutually-agreed, consensual invitation from your bereaved families) empowers willing off-duty and former military personnel to attend your funerals and salute you: The Welsh, Scottish, Irish and English nationals, who's lives are being taken prematurely in unexplained circumstances. Ways which may later be identified as hybrid war crimes perpetrated by UK state bad actors.</p>
-        <p>This project's mission is to assert a firm line of integrity and honour by ensuring a respectful presence of those who have served and continue to serve Wales, England, Scotland and Ireland with honour and distinction. Once this line is established, it can advance forward in unison, united, through hospitals, elderly care facilities, and our entire civil society—until we identify, suppress and stop this harm, loss and injury at the source. This initiative aims to ensure families see justice, closure, and dignity, starting at the graves.</p>
-         <h4 style="text-align:center;color:yellow;"> View the <a href="https://wayback.datro.xyz/2025-09-10_taking_chance_web_app_v0.0.1_en.pdf" target="_blank" rel="noopener noreferrer"> WebApp Project Summary </a></h4>
-    </section>
-    <section id="video">
-        <video controls>
-            <source src="https://wayback.datro.xyz/2025-08-09_service-v0.0.1.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <p>Credible intelligence indicates that the UK regime seeks to ruthlessly exploit human potential and resources, orchestrating unchecked manipulation and control of populations without any regulatory oversight, prioritizing this agenda above all ethical or humanitarian costs. Child abuse, murder, and other serious crimes may be deliberately maintained at consistent levels and left unresolved, in order to fabricate an optimal environment for maximizing this ever increasing extraction and subsequent theft of human potential and energy.</p>
-        <p>Historical and real-time aggregation of the validation of this data (without the data itself needing to be made accessible), combined with fungible and permanent record-keeping, on a decentralized blockchain and decentralized, sovereign, physical network - will enable a proper determination and monitoring of the state's engagement in persecution, unlawful and unconstitutional reduction of population and other known war crimes.</p>
-    </section>
-    <section id="register">
-        <h2>Get Involved</h2>
-        <p>Co-fund this project (Goal = £10,000 GBP)</p>
-        <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-        <stripe-buy-button buy-button-id="buy_btn_1RuDNARibisCfpBQBMKwrMVc" publishable-key="pk_live_51OqlLnRibisCfpBQQsDU3l2hhMLoKwTcdiokINqNA4wWaLeBM5qkMyJDV3B6TIToBOKCh4WhEzff7isJCLYIJaUB0088uetffQ">
-        </stripe-buy-button>
-        <h4 style="margin-top:0;">Enter any amount you can afford</h4>
-        <h5>This technologies source code, will distribute among 10,000 base64 encoded strings, protected by security keys</br> Each keys RRP is £1. </br>Payments will stop being accepted once the target is reached</br> or the countdown timer reaches 0, whichever is soonest. </br> 
-you hold your co-ownership key in allodium i.e. defend it with your life. </br>Sale or transfer of each key to a bad actor, risks entry to 1 of the 10,000 seperate lines of code. IPFS (content-addressed, chunked storage) for the 10,000 encrypted chunks, ENS/Handshake as the decentralized name pointer, and a threshold-signature (BLS t-of-n) scheme + on-chain or off-chain threshold verification to control manifest updates. Implementing zero-knowledge constraints with a ZK framework (Circom / Plonky2 / Halo2 depending on proof tradeoffs) so updates and actions can be verified without revealing private data </br>
-<br></br>Bitcoin (BTC) accepted here too - Here's our wallet address: <h5 style="margin-top:-1px;color:yellow;">bc1qddlu48vwmq0zrey0pgc8h02q9edq3jd8pwe3am</h5></h5>
-    </section>
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>For inquiries please phone:</p>
-        <div class="contact-icon">
-            <a href="#" target="_blank">
-                <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Contact Phone">+44 20 313 77 118
-            </a>
+        <div class="card">
+            <h2>Mission Statement</h2>
+            <h3>By Sion Buckler, Director of DATRO Consortium Ltd</h3>
+            <p>This is a tender to the public for my <a href="https://find-and-update.company-information.service.gov.uk/company/13775817" target="_blank">Private Security Group</a> to build you a <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof" target="_blank">zero-knowledge</a> mobile application. Upon mutually-agreed, consensual invitation from bereaved families, this app empowers willing off-duty and former military personnel to attend funerals and salute the fallen.</p>
+            <p>We honor the Welsh, Scottish, Irish, and English nationals whose lives are being taken prematurely in unexplained circumstances—ways which may later be identified as hybrid war crimes perpetrated by UK state bad actors.</p>
+            <p>This project's mission is to assert a firm line of integrity and honour by ensuring a respectful presence of those who have served. Once this line is established, it can advance forward in unison through our civil society until we identify, suppress, and stop this harm at the source. This initiative aims to ensure families see justice, closure, and dignity, starting at the graves.</p>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://wayback.datro.xyz/2025-09-10_taking_chance_web_app_v0.0.1_en.pdf" target="_blank" class="btn-main">
+                    View Project Summary PDF
+                </a>
+            </div>
         </div>
-        <h2>Thank You</h2>
     </section>
+
+    <!-- Video Section -->
+    <section id="video">
+        <div class="card">
+            <h2>Intelligence Briefing</h2>
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="https://wayback.datro.xyz/2025-08-09_service-v0.0.1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <p>Credible intelligence indicates that the UK regime seeks to ruthlessly exploit human potential and resources, orchestrating unchecked manipulation and control of populations without regulatory oversight. Crimes may be deliberately maintained to fabricate an environment for maximizing the extraction of human potential.</p>
+            <p>Historical aggregation of data validation, combined with permanent record-keeping on a decentralized blockchain and physical network, will enable proper determination and monitoring of state engagement in persecution and unlawful population reduction.</p>
+        </div>
+    </section>
+
+    <!-- Register/Fund Section -->
+    <section id="register">
+        <div class="card">
+            <h2>Get Involved</h2>
+            <p style="font-size: 1.2rem; color: #fff;"><strong>Co-fund this project (Goal = £10,000 GBP)</strong></p>
+            
+            <!-- Stripe Component -->
+            <div style="margin: 20px 0;">
+                <stripe-buy-button 
+                    buy-button-id="buy_btn_1RuDNARibisCfpBQBMKwrMVc" 
+                    publishable-key="pk_live_51OqlLnRibisCfpBQQsDU3l2hhMLoKwTcdiokINqNA4wWaLeBM5qkMyJDV3B6TIToBOKCh4WhEzff7isJCLYIJaUB0088uetffQ">
+                </stripe-buy-button>
+            </div>
+
+            <h3>About Your Co-Ownership Key</h3>
+            <p>The source code will be distributed among 10,000 base64 encoded strings, protected by security keys (RRP £1). Payments cease once the target is reached or the timer expires.</p>
+            <p><strong>Security Warning:</strong> You hold your co-ownership key in allodium—defend it with your life. Sale or transfer to a bad actor risks entry to the code. We utilize IPFS for storage, ENS/Handshake for naming, and a BLS t-of-n threshold signature scheme to control updates.</p>
+
+            <div class="crypto-box">
+                <h4 style="margin: 0; color: #fff;">Bitcoin (BTC) accepted</h4>
+                <div class="wallet-address-container">
+                    <span id="btc-address" class="wallet-address">bc1qddlu48vwmq0zrey0pgc8h02q9edq3jd8pwe3am</span>
+                    <button class="copy-btn" onclick="copyToClipboard()">Copy</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
     <section id="zero-knowledge">
-        <h2>Technology</h2>
-        <p>Zero-knowledge smart contracts embody a powerful ideological framework that prioritizes privacy, autonomy, and trustless accountability in digital systems. Emphasize privacy: They enable individuals and communities to engage in transactions or share proofs without exposing sensitive information, challenging centralized control over data and fostering personal sovereignty. Highlight decentralization: By operating on decentralized blockchains, they reject reliance on intermediaries, aligning with ideologies of self-governance and resistance to authoritarian oversight. Stress verifiability: Their ability to prove the validity of actions without revealing underlying data promotes transparency in outcomes while protecting individual rights, supporting ideals of fairness and justice. Underscore immutability: Permanent, tamper-proof records align with principles of truth preservation, ensuring historical accountability, as in documenting state actions like war crimes without manipulation. Acknowledge empowerment: By combining privacy with programmability, they empower marginalized groups—such as bereaved families in your context—to seek justice and closure while safeguarding their dignity against oppressive systems. Recognize scalability and accessibility: Their potential for scalable, standardized solutions reflects an ideology of inclusivity, enabling broad participation in secure, equitable systems without gatekeeping. Ultimately, zero-knowledge smart contracts champion a future where technology upholds individual freedom, collective integrity, and resistance to overreach, aligning with libertarian and justice-oriented ideologies.</p>
+        <div class="card">
+            <h2>Technology Stack</h2>
+            <p><strong>Zero-Knowledge (ZK) Smart Contracts:</strong> These embody a framework prioritizing privacy, autonomy, and trustless accountability. They enable proofs without exposing sensitive information, challenging centralized control.</p>
+            <ul style="color: var(--text-muted); padding-left: 20px;">
+                <li><strong>Privacy:</strong> Engaging in transactions without exposing data.</li>
+                <li><strong>Decentralization:</strong> Rejecting intermediaries and authoritarian oversight.</li>
+                <li><strong>Immutability:</strong> Permanent records ensuring historical accountability for state actions.</li>
+                <li><strong>Empowerment:</strong> Utilizing ZK frameworks (Circom / Plonky2 / Halo2) to allow bereaved families to seek justice while safeguarding dignity.</li>
+            </ul>
+        </div>
     </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="card" style="text-align: center;">
+            <h2>Contact Us</h2>
+            <p>For inquiries, please contact the private security group:</p>
+            <a href="tel:+442031377118" class="contact-btn">
+                <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Phone Icon">
+                +44 20 313 77 118
+            </a>
+            <h3 style="margin-top: 2rem; color: #fff;">Thank You</h3>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2025 DATRO Consortium Ltd. All rights reserved.</p>
     </footer>
+
+    <!-- Logic Scripts -->
+    <script>
+        // --- Timer Logic ---
+        const targetDate = new Date('2026-10-09T12:00:00-03:00'); // Note: Updated year based on context or kept as original user intent. Assuming user meant 2026 based on "2025" current year context in prompts usually implies future date. *Reverted to original code's logic if year was 2025, but kept your logic.*
+        // *Correction*: Your code said "2025-10-09" but the text said "2026". I have set it to 2026 to match your text description.
+
+        function updateTimer() {
+            const now = new Date();
+            const timeDiff = Math.floor((targetDate - now) / 1000); 
+
+            const timerElement = document.getElementById('timer');
+
+            if (timeDiff <= 0) {
+                timerElement.textContent = "00:00:00:00";
+                clearInterval(timerInterval);
+                return;
+            }
+
+            const days = Math.floor(timeDiff / (3600 * 24));
+            const hours = Math.floor((timeDiff % (3600 * 24)) / 3600);
+            const minutes = Math.floor((timeDiff % 3600) / 60);
+            const seconds = timeDiff % 60;
+
+            timerElement.textContent = 
+                `${days}d ${hours.toString().padStart(2, '0')}h ` +
+                `${minutes.toString().padStart(2, '0')}m ` +
+                `${seconds.toString().padStart(2, '0')}s`;
+        }
+
+        const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // --- Copy to Clipboard Logic ---
+        function copyToClipboard() {
+            const addressText = document.getElementById('btc-address').innerText;
+            navigator.clipboard.writeText(addressText).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                const originalText = btn.innerText;
+                btn.innerText = "Copied!";
+                btn.style.backgroundColor = "#10b981"; // Green
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.backgroundColor = ""; // Revert
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
 </body>
 </html>
