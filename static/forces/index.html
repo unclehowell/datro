@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Casualty Escort Officer Application - Zero-knowledge mobile application tender.">
     <title>Casualty Escort Officer Application | DATRO Consortium</title>
-    
+   
     <!-- Google Fonts for High-Tech/Security Look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-
     <style>
         :root {
             --bg-color: #0f172a;
@@ -22,11 +21,9 @@
             --alert: #fbbf24; /* Amber */
             --nav-bg: rgba(15, 23, 42, 0.95);
         }
-
         * {
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
@@ -36,7 +33,6 @@
             background-color: var(--bg-color);
             overflow-x: hidden;
         }
-
         /* --- Navigation --- */
         nav {
             background-color: var(--nav-bg);
@@ -47,7 +43,6 @@
             padding: 1rem 0;
             backdrop-filter: blur(10px);
         }
-
         .nav-container {
             max-width: 900px;
             margin: 0 auto;
@@ -56,7 +51,6 @@
             align-items: center;
             padding: 0 20px;
         }
-
         .nav-logo {
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
@@ -65,7 +59,6 @@
             text-decoration: none;
             letter-spacing: 1px;
         }
-
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
@@ -73,11 +66,9 @@
             font-size: 0.9rem;
             transition: color 0.3s;
         }
-
         .nav-links a:hover {
             color: var(--accent);
         }
-
         /* --- Header & Timer --- */
         header {
             background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
@@ -85,7 +76,6 @@
             padding: 4rem 20px 2rem;
             border-bottom: 1px solid #334155;
         }
-
         h1 {
             font-family: 'Orbitron', sans-serif;
             margin: 0 0 1.5rem 0;
@@ -94,7 +84,6 @@
             color: #fff;
             text-transform: uppercase;
         }
-
         .timer-container {
             background: rgba(0, 0, 0, 0.3);
             display: inline-flex;
@@ -104,7 +93,6 @@
             border-radius: 8px;
             border: 1px solid #334155;
         }
-
         .timer-label {
             font-size: 0.85rem;
             color: var(--text-muted);
@@ -112,21 +100,18 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
         #timer {
             font-family: 'Orbitron', monospace;
             font-size: 2rem;
             color: var(--accent);
             font-weight: bold;
         }
-
         /* --- Layout & Typography --- */
         section {
             max-width: 900px;
             margin: 3rem auto;
             padding: 0 20px;
         }
-
         .card {
             background-color: var(--card-bg);
             padding: 2.5rem;
@@ -135,7 +120,6 @@
             margin-bottom: 2rem;
             border: 1px solid #334155;
         }
-
         h2 {
             font-family: 'Orbitron', sans-serif;
             color: #fff;
@@ -144,30 +128,31 @@
             padding-bottom: 5px;
             margin-top: 0;
         }
-
         h3 {
             color: var(--text-muted);
             font-weight: 400;
-            margin-top: 0;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
             font-size: 1.1rem;
         }
-
         p {
             margin-bottom: 1.5rem;
             text-align: justify;
         }
-
+        ul {
+            color: var(--text-main);
+            padding-left: 20px;
+            margin-bottom: 1.5rem;
+        }
         a {
             color: var(--accent);
             text-decoration: none;
             transition: color 0.2s;
         }
-
         a:hover {
             color: #818cf8;
             text-decoration: underline;
         }
-
         /* --- Video --- */
         .video-wrapper {
             position: relative;
@@ -179,7 +164,6 @@
             border: 1px solid #334155;
             margin-bottom: 2rem;
         }
-
         .video-wrapper video {
             position: absolute;
             top: 0;
@@ -187,7 +171,6 @@
             width: 100%;
             height: 100%;
         }
-
         /* --- Register / Crypto Section --- */
         .crypto-box {
             background: rgba(0, 0, 0, 0.2);
@@ -196,7 +179,6 @@
             border-left: 4px solid var(--alert);
             margin-top: 2rem;
         }
-
         .wallet-address-container {
             display: flex;
             align-items: center;
@@ -207,14 +189,12 @@
             margin-top: 10px;
             flex-wrap: wrap;
         }
-
         .wallet-address {
             font-family: monospace;
             color: var(--alert);
             word-break: break-all;
             flex-grow: 1;
         }
-
         .copy-btn {
             background-color: var(--accent);
             color: white;
@@ -225,11 +205,9 @@
             font-size: 0.9rem;
             transition: background 0.3s;
         }
-
         .copy-btn:hover {
             background-color: var(--accent-hover);
         }
-
         .btn-main {
             display: inline-block;
             background-color: var(--accent);
@@ -240,13 +218,11 @@
             text-align: center;
             margin-top: 1rem;
         }
-        
         .btn-main:hover {
             background-color: var(--accent-hover);
             text-decoration: none;
             color: white;
         }
-
         /* --- Footer --- */
         footer {
             background-color: var(--nav-bg);
@@ -257,7 +233,6 @@
             font-size: 0.9rem;
             color: var(--text-muted);
         }
-
         .contact-btn {
             display: inline-flex;
             align-items: center;
@@ -269,24 +244,21 @@
             text-decoration: none;
             transition: background 0.3s;
         }
-
         .contact-btn:hover {
             background: #475569;
             text-decoration: none;
             color: white;
         }
-
         .contact-btn img {
             filter: invert(100%);
             width: 20px;
             height: 20px;
             margin-right: 10px;
         }
-
         /* --- Mobile --- */
         @media (max-width: 768px) {
             h1 { font-size: 1.8rem; }
-            .nav-links { display: none; } /* Could add hamburger menu later */
+            .nav-links { display: none; }
             .nav-container { justify-content: center; }
             .card { padding: 1.5rem; }
         }
@@ -295,7 +267,6 @@
     <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 </head>
 <body>
-
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
@@ -327,7 +298,7 @@
             <p>This is a tender to the public for my <a href="https://find-and-update.company-information.service.gov.uk/company/13775817" target="_blank">Private Security Group</a> to build you a <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof" target="_blank">zero-knowledge</a> mobile application. Upon mutually-agreed, consensual invitation from bereaved families, this app empowers willing off-duty and former military personnel to attend funerals and salute the fallen.</p>
             <p>We honor the Welsh, Scottish, Irish, and English nationals whose lives are being taken prematurely in unexplained circumstances—ways which may later be identified as hybrid war crimes perpetrated by UK state bad actors.</p>
             <p>This project's mission is to assert a firm line of integrity and honour by ensuring a respectful presence of those who have served. Once this line is established, it can advance forward in unison through our civil society until we identify, suppress, and stop this harm at the source. This initiative aims to ensure families see justice, closure, and dignity, starting at the graves.</p>
-            
+           
             <div style="text-align: center; margin-top: 2rem;">
                 <a href="https://wayback.datro.xyz/2025-09-10_taking_chance_web_app_v0.0.1_en.pdf" target="_blank" class="btn-main">
                     View Project Summary PDF
@@ -356,18 +327,15 @@
         <div class="card">
             <h2>Get Involved</h2>
             <p style="font-size: 1.2rem; color: #fff;"><strong>Co-fund this project (Goal = £10,000 GBP)</strong></p>
-            
+            <p>By contributing, you help bring this zero-knowledge application to life and become part of a groundbreaking decentralized ownership model.</p>
+           
             <!-- Stripe Component -->
-            <div style="margin: 20px 0;">
-                <stripe-buy-button 
-                    buy-button-id="buy_btn_1RuDNARibisCfpBQBMKwrMVc" 
+            <div style="margin: 30px 0; text-align: center;">
+                <stripe-buy-button
+                    buy-button-id="buy_btn_1RuDNARibisCfpBQBMKwrMVc"
                     publishable-key="pk_live_51OqlLnRibisCfpBQQsDU3l2hhMLoKwTcdiokINqNA4wWaLeBM5qkMyJDV3B6TIToBOKCh4WhEzff7isJCLYIJaUB0088uetffQ">
                 </stripe-buy-button>
             </div>
-
-            <h3>About Your Co-Ownership Key</h3>
-            <p>The source code will be distributed among 10,000 base64 encoded strings, protected by security keys (RRP £1). Payments cease once the target is reached or the timer expires.</p>
-            <p><strong>Security Warning:</strong> You hold your co-ownership key in allodium—defend it with your life. Sale or transfer to a bad actor risks entry to the code. We utilize IPFS for storage, ENS/Handshake for naming, and a BLS t-of-n threshold signature scheme to control updates.</p>
 
             <div class="crypto-box">
                 <h4 style="margin: 0; color: #fff;">Bitcoin (BTC) accepted</h4>
@@ -383,8 +351,29 @@
     <section id="zero-knowledge">
         <div class="card">
             <h2>Technology Stack</h2>
-            <p><strong>Zero-Knowledge (ZK) Smart Contracts:</strong> These embody a framework prioritizing privacy, autonomy, and trustless accountability. They enable proofs without exposing sensitive information, challenging centralized control.</p>
-            <ul style="color: var(--text-muted); padding-left: 20px;">
+            
+            <h3>Decentralized Co-Ownership Model</h3>
+            <p>This project introduces a novel DAO structure for truly decentralized ownership and control of the source code for a zero-knowledge-enabled smart contract application.</p>
+            
+            <p>The complete source code is divided into 10,000 independent blocks (shards), each stored as a base64-encoded string on IPFS for immutable, decentralized storage. Naming and resolution are handled via ENS (Ethereum Name Service) or Handshake for user-friendly access.</p>
+            
+            <p>Each block is associated with a unique co-ownership key, represented as an ERC-721 NFT (or equivalent token). Holders of these keys have direct control over their specific block:</p>
+            <ul>
+                <li>They can propose alterations to the code in their block.</li>
+                <li>They can vote to delete or replace their block if needed.</li>
+            </ul>
+            
+            <p>To prevent unilateral changes from compromising the overall codebase, updates to the assembled application (e.g., merging changes or publishing new versions) are secured by a BLS-based t-of-n threshold signature scheme. A minimum threshold (t) of key holders must collectively sign off on any global update, ensuring community consensus while distributing power across all 10,000 owners.</p>
+            
+            <p>This model achieves unprecedented decentralization: no single entity or small group can alter or delete parts of the code without broader agreement, while individual owners retain meaningful control over their shard.</p>
+            
+            <p>The full codebase can be reassembled and verified by anyone using the public IPFS references and threshold-verified updates.</p>
+            
+            <p><strong>Security Note:</strong> Your co-ownership key grants real control over a portion of the source code. Treat it as a valuable asset—store it securely and be cautious when transferring, as it could impact the project's integrity if acquired by malicious actors.</p>
+
+            <h3>Zero-Knowledge (ZK) Smart Contracts</h3>
+            <p>These embody a framework prioritizing privacy, autonomy, and trustless accountability. They enable proofs without exposing sensitive information, challenging centralized control.</p>
+            <ul>
                 <li><strong>Privacy:</strong> Engaging in transactions without exposing data.</li>
                 <li><strong>Decentralization:</strong> Rejecting intermediaries and authoritarian oversight.</li>
                 <li><strong>Immutability:</strong> Permanent records ensuring historical accountability for state actions.</li>
@@ -413,32 +402,25 @@
     <!-- Logic Scripts -->
     <script>
         // --- Timer Logic ---
-        const targetDate = new Date('2026-10-09T12:00:00-03:00'); // Note: Updated year based on context or kept as original user intent. Assuming user meant 2026 based on "2025" current year context in prompts usually implies future date. *Reverted to original code's logic if year was 2025, but kept your logic.*
-        // *Correction*: Your code said "2025-10-09" but the text said "2026". I have set it to 2026 to match your text description.
-
+        const targetDate = new Date('2026-10-09T12:00:00Z');
         function updateTimer() {
             const now = new Date();
-            const timeDiff = Math.floor((targetDate - now) / 1000); 
-
+            const timeDiff = Math.floor((targetDate - now) / 1000);
             const timerElement = document.getElementById('timer');
-
             if (timeDiff <= 0) {
-                timerElement.textContent = "00:00:00:00";
+                timerElement.textContent = "Deadline Passed";
                 clearInterval(timerInterval);
                 return;
             }
-
             const days = Math.floor(timeDiff / (3600 * 24));
             const hours = Math.floor((timeDiff % (3600 * 24)) / 3600);
             const minutes = Math.floor((timeDiff % 3600) / 60);
             const seconds = timeDiff % 60;
-
-            timerElement.textContent = 
+            timerElement.textContent =
                 `${days}d ${hours.toString().padStart(2, '0')}h ` +
                 `${minutes.toString().padStart(2, '0')}m ` +
                 `${seconds.toString().padStart(2, '0')}s`;
         }
-
         const timerInterval = setInterval(updateTimer, 1000);
         updateTimer();
 
@@ -449,10 +431,10 @@
                 const btn = document.querySelector('.copy-btn');
                 const originalText = btn.innerText;
                 btn.innerText = "Copied!";
-                btn.style.backgroundColor = "#10b981"; // Green
+                btn.style.backgroundColor = "#10b981";
                 setTimeout(() => {
                     btn.innerText = originalText;
-                    btn.style.backgroundColor = ""; // Revert
+                    btn.style.backgroundColor = "";
                 }, 2000);
             }).catch(err => {
                 console.error('Failed to copy: ', err);
