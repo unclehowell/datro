@@ -1,0 +1,55 @@
+name: Update Stripe Revenue
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - gh-pages
+
+jobs:
+  update-revenue:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: gh-pages
+          
+      - name: Fetch Stripe Revenue
+        env:
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+        run: |
+          RESPONSE=$(curl -s "https://api.stripe.com/v1/charges?limit=100" \
+            -u ${STRIPE_SECRET_KEY}:)
+          
+          if [ $? -ne 0 ]; then
+            echo "Failed to fetch charges from Stripe"
+            exit 1
+          fi
+          
+          TOTAL_PENCE=$(echo "$RESPONSE" | jq '[.data[] | select(.paid == true and .currency == "gbp")] | map(.amount) | add // 0')
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          
+          echo "{
+            \"totalRevenue\": ${TOTAL_PENCE},
+            \"currency\": \"gbp\",
+            \"lastUpdated\": \"${TIMESTAMP}\"
+          }" > static/forces/stripe-revenue.json
+          
+          cat static/forces/stripe-revenue.json
+          
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add static/forces/stripe-revenue.json
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update Stripe revenue [automated]"
+            git push
+          fi
