@@ -18,11 +18,16 @@ jobs:
         with:
           ref: gh-pages
           
-      - name: Fetch Stripe Revenue
+      - name: Fetch Stripe Revenue for Product
         env:
           STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          PRODUCT_ID: prod_Spt0LQW9iQp6XX
         run: |
-          RESPONSE=$(curl -s "https://api.stripe.com/v1/charges?limit=100" \
+          echo "Fetching charges for product: $PRODUCT_ID"
+          
+          # Fetch charges since product creation (Aug 9, 2024)
+          # Unix timestamp for 2024-08-09: 1723161600
+          RESPONSE=$(curl -s "https://api.stripe.com/v1/charges?limit=100&created[gte]=1723161600" \
             -u ${STRIPE_SECRET_KEY}:)
           
           if [ $? -ne 0 ]; then
@@ -30,15 +35,35 @@ jobs:
             exit 1
           fi
           
-          TOTAL_PENCE=$(echo "$RESPONSE" | jq '[.data[] | select(.paid == true and .currency == "gbp")] | map(.amount) | add // 0')
+          echo "Response received from Stripe API"
+          
+          # Debug: Show what we got
+          echo "$RESPONSE" | jq '.data | length'
+          echo "charges found"
+          
+          # Sum all successful GBP charges
+          # We're getting all charges since your product was created
+          # Since you only have one product, this should be accurate
+          TOTAL_PENCE=$(echo "$RESPONSE" | jq '
+            [.data[] | 
+              select(.paid == true and .status == "succeeded" and .currency == "gbp")
+            ] | map(.amount) | add // 0
+          ')
+          
+          echo "Total revenue in pence: $TOTAL_PENCE"
+          echo "Total revenue in GBP: $(echo "scale=2; $TOTAL_PENCE / 100" | bc)"
+          
           TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           
+          # Create JSON file
           echo "{
             \"totalRevenue\": ${TOTAL_PENCE},
             \"currency\": \"gbp\",
+            \"productId\": \"${PRODUCT_ID}\",
             \"lastUpdated\": \"${TIMESTAMP}\"
           }" > static/forces/stripe-revenue.json
           
+          echo "Generated stripe-revenue.json:"
           cat static/forces/stripe-revenue.json
           
       - name: Commit and Push Changes
@@ -50,6 +75,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Update Stripe revenue [automated]"
+            git commit -m "Update Stripe revenue: £$(jq -r '.totalRevenue' static/forces/stripe-revenue.json | awk '{printf "%.2f", $1/100}') [automated]"
             git push
           fi
+
