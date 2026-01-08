@@ -1,12 +1,24 @@
 name: Update Stripe Revenue
 
 on:
-  schedule:
-    - cron: '*/15 * * * *'
-  workflow_dispatch:
+  # Run on PR events (for previews)
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - gh-pages
+  
+  # Run on push to gh-pages (production)
   push:
     branches:
       - gh-pages
+      - 'feature/auto-*'
+  
+  # Run on schedule (every 15 minutes)
+  schedule:
+    - cron: '*/15 * * * *'
+  
+  # Allow manual trigger
+  workflow_dispatch:
 
 jobs:
   update-revenue:
@@ -16,7 +28,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          ref: gh-pages
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || 'gh-pages' }}
           
       - name: Fetch Stripe Revenue for Product
         env:
@@ -38,12 +50,14 @@ jobs:
           echo "Response received from Stripe API"
           
           # Debug: Show what we got
-          echo "$RESPONSE" | jq '.data | length'
-          echo "charges found"
+          CHARGE_COUNT=$(echo "$RESPONSE" | jq '.data | length')
+          echo "Found $CHARGE_COUNT charges"
+          
+          # Show first charge for debugging (if exists)
+          echo "Sample charge data:"
+          echo "$RESPONSE" | jq '.data[0] | {amount, currency, paid, status, created}' || echo "No charges found"
           
           # Sum all successful GBP charges
-          # We're getting all charges since your product was created
-          # Since you only have one product, this should be accurate
           TOTAL_PENCE=$(echo "$RESPONSE" | jq '
             [.data[] | 
               select(.paid == true and .status == "succeeded" and .currency == "gbp")
@@ -51,7 +65,8 @@ jobs:
           ')
           
           echo "Total revenue in pence: $TOTAL_PENCE"
-          echo "Total revenue in GBP: $(echo "scale=2; $TOTAL_PENCE / 100" | bc)"
+          TOTAL_GBP=$(echo "scale=2; $TOTAL_PENCE / 100" | bc)
+          echo "Total revenue in GBP: £$TOTAL_GBP"
           
           TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           
@@ -76,6 +91,12 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Update Stripe revenue: £$(jq -r '.totalRevenue' static/forces/stripe-revenue.json | awk '{printf "%.2f", $1/100}') [automated]"
-            git push
+            
+            # Push to the correct branch
+            if [ "${{ github.event_name }}" = "pull_request" ]; then
+              git push origin HEAD:${{ github.head_ref }}
+            else
+              git push
+            fi
           fi
 
