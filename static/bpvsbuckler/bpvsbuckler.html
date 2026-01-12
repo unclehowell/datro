@@ -348,6 +348,8 @@
     @media (max-width: 640px) {
       :root {
         --timeline-anchor: 50%;
+        --horizontal-icon-mobile: 32px; /* New variable for smaller icon */
+        --horizontal-offset-mobile: 20px; /* New variable for closer horizontal menu */
       }
 
       html, body {
@@ -359,11 +361,22 @@
         transform: none;
         width: calc(100% - clamp(40px, 20vw, 64px));
         justify-content: flex-start;
+        top: clamp(40px, 12vh, 100px); /* Increased top offset */
+        bottom: clamp(20px, 10vh, 80px); /* Reduced bottom offset */
       }
 
       .xmb-vertical__viewport {
         width: 100%;
         height: clamp(220px, 44vh, 320px);
+      }
+
+      .xmb-entry__icon {
+        width: var(--horizontal-icon-mobile);
+        height: var(--horizontal-icon-mobile);
+      }
+
+      .xmb-horizontal {
+        bottom: var(--horizontal-offset-mobile);
       }
 
       .xmb-year__title {
