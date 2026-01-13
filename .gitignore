@@ -6,6 +6,8 @@
 /static/11ty-store/node_modules
 /.pnp
 .pnp.js
+node_modules/
+**/node_modules/
 
 # testing
 /coverage

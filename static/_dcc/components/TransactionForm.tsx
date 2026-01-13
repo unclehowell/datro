@@ -1,10 +1,8 @@
-
 import React, { useState } from 'react';
 import { Transaction, TransactionType, TransactionStatus, UserSettings, Payload } from '../types';
 import { generateDccUrl } from '../utils/crypto';
-import { generateEmailDraft } from '../services/geminiService';
-import { 
-  XMarkIcon, 
+import {
+  XMarkIcon,
   ChevronRightIcon,
   EnvelopeIcon,
   CheckCircleIcon
@@ -45,13 +43,13 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ onClose, onSubmit, us
     setStep('provider');
   };
 
-  const selectGmail = async () => {
+  const selectGmail = () => {
     setIsGenerating(true);
-    
+
     const newTx: Transaction = {
       id: crypto.randomUUID(),
       type,
-      amount: parseFloat(amount),
+      amount: parseFloat(amount) || 0,
       currency,
       counterpartyEmail: email,
       status: TransactionStatus.PENDING,
@@ -71,13 +69,34 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ onClose, onSubmit, us
     };
 
     const dccUrl = generateDccUrl(payload);
-    const draft = await generateEmailDraft(newTx, dccUrl, userSettings.email);
-    
-    const subject = `${type}: ${amount} ${currency} - Ref: ${reference}`;
-    const gmailUrl = `https://mail.google.com/mail/u/0/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(draft)}&bcc=dcc@datro.xyz`;
-    
+
+    // Static email template (no AI / Gemini involved)
+    const emailBody = [
+      `${type} Request via Debt Cancellation Circle`,
+      "",
+      `From: ${userSettings.email || 'DCC User'}`,
+      "",
+      `I would like to record the following:`,
+      `${type === TransactionType.UOM ? "You owe me" : "I owe you"} ${newTx.amount} ${newTx.currency}`,
+      `Reference: ${newTx.reference || '(none)'}`,
+      `Date: ${newTx.originDate}`,
+      "",
+      "Please open this link to accept or reject the request:",
+      dccUrl,
+      "",
+      "This is a mutual, peer-to-peer agreement — no funds move until confirmed by both parties.",
+      "",
+      "Best regards,",
+      userSettings.email || 'DCC User'
+    ].join('\n');
+
+    const subject = `${type}: ${newTx.amount} ${newTx.currency} - Ref: ${newTx.reference || 'No ref'}`;
+
+    const gmailUrl = `https://mail.google.com/mail/u/0/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}&bcc=dcc@datro.xyz`;
+
     onSubmit(newTx);
     window.open(gmailUrl, '_blank', 'width=800,height=600');
+
     setIsGenerating(false);
     onClose();
   };
@@ -100,14 +119,14 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ onClose, onSubmit, us
           {step === 'form' ? (
             <div className="p-8 pt-6 space-y-6">
               <div className="flex p-1 bg-slate-100 rounded-xl">
-                <button 
+                <button
                   type="button"
                   onClick={() => setType(TransactionType.UOM)}
                   className={`flex-1 py-2.5 rounded-lg text-xs font-black transition-all ${type === TransactionType.UOM ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500'}`}
                 >
                   UOME (Invoice)
                 </button>
-                <button 
+                <button
                   type="button"
                   onClick={() => setType(TransactionType.IOU)}
                   className={`flex-1 py-2.5 rounded-lg text-xs font-black transition-all ${type === TransactionType.IOU ? 'bg-white text-rose-600 shadow-sm' : 'text-slate-500'}`}
@@ -120,8 +139,8 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ onClose, onSubmit, us
                 <div className="grid grid-cols-1 gap-4">
                   <div>
                     <label className="block text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1 ml-1">Recipient Email</label>
-                    <input 
-                      type="email" 
+                    <input
+                      type="email"
                       required
                       value={email}
                       onChange={e => setEmail(e.target.value)}
@@ -134,8 +153,8 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ onClose, onSubmit, us
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label className="block text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1 ml-1">Amount</label>
-                    <input 
-                      type="number" 
+                    <input
+                      type="number"
                       step="any"
                       required
                       value={amount}
@@ -146,7 +165,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ onClose, onSubmit, us
                   </div>
                   <div>
                     <label className="block text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1 ml-1">Currency</label>
-                    <select 
+                    <select
                       value={currency}
                       onChange={e => setCurrency(e.target.value)}
                       className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none font-black text-xs bg-white"
@@ -163,7 +182,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ onClose, onSubmit, us
                       {24 - reference.length} chars left
                     </span>
                   </div>
-                  <input 
+                  <input
                     type="text"
                     maxLength={24}
                     value={reference}
@@ -173,8 +192,8 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ onClose, onSubmit, us
                   />
                 </div>
 
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   className="w-full bg-slate-900 hover:bg-black text-white py-4 rounded-2xl font-black shadow-lg flex items-center justify-center gap-2 transition-all active:scale-[0.98] mt-2 group"
                 >
                   Generate Bridge Link
@@ -187,7 +206,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ onClose, onSubmit, us
               <p className="text-sm text-slate-500 font-medium text-center">
                 Select your preferred email service to send this <strong>{type}</strong> request.
               </p>
-              
+
               <div className="grid grid-cols-1 gap-3">
                 {PROVIDERS.map((provider) => (
                   <button
@@ -195,9 +214,9 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ onClose, onSubmit, us
                     onClick={() => provider.active && selectGmail()}
                     disabled={!provider.active || isGenerating}
                     className={`flex items-center justify-between p-4 rounded-2xl border transition-all ${
-                      provider.active 
-                      ? 'bg-white border-slate-200 hover:border-indigo-500 hover:shadow-md active:scale-[0.98]' 
-                      : 'bg-slate-50 border-slate-100 opacity-50 grayscale cursor-not-allowed'
+                      provider.active
+                        ? 'bg-white border-slate-200 hover:border-indigo-500 hover:shadow-md active:scale-[0.98]'
+                        : 'bg-slate-50 border-slate-100 opacity-50 grayscale cursor-not-allowed'
                     }`}
                   >
                     <div className="flex items-center gap-4">
@@ -217,7 +236,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ onClose, onSubmit, us
                 ))}
               </div>
 
-              <button 
+              <button
                 onClick={() => setStep('form')}
                 className="w-full py-4 text-xs font-black text-slate-400 hover:text-slate-600 transition-colors uppercase tracking-widest"
               >
