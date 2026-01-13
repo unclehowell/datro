@@ -66,3 +66,13 @@ export const getPayloadFromUrl = (): Payload | null => {
 export const clearUrlHash = () => {
   window.history.replaceState(null, '', window.location.pathname);
 };
+
+export const formatDateToISOString = (date: string | Date): string => {
+  let d: Date;
+  if (typeof date === 'string') {
+    d = new Date(date);
+  } else {
+    d = date;
+  }
+  return d.toISOString().split('T')[0];
+};
