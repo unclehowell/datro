@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# pr_automation.sh — hardened automated PR creation / updating
+# pr_automation.sh — automated PR creation/updating (backwards-compatible GH CLI)
 
 set -euo pipefail
 
@@ -19,7 +19,6 @@ AUTO_FIX_PERMISSIONS="${AUTO_FIX_PERMISSIONS:-no}"
 # ─── Sanity Checks ───────────────────────────────────────────────────────────
 command -v git >/dev/null || err "git not found"
 command -v gh  >/dev/null || err "GitHub CLI (gh) not found"
-
 git rev-parse --git-dir >/dev/null || err "Not inside a git repo"
 CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 
@@ -85,7 +84,7 @@ echo "Last run: $NOW" > "$TRIGGER_FILE"
 git add -A
 COMMIT_MSG="Auto-commit: $NOW"
 
-if ! git commit -m "$COMMIT_MSG"; then
+if ! git commit -m "$COMMIT_MSG" 2>/dev/null; then
   if [ -z "$(git status --porcelain)" ]; then
     warn "Nothing to commit"
     if [ "$ALLOW_EMPTY_COMMIT" = "yes" ]; then
@@ -111,24 +110,22 @@ log "Base branch: origin/$BASE_BRANCH"
 PR_TITLE="[Auto] $COMMIT_MSG"
 PR_BODY="**Automated update**\nTriggered: $NOW"
 
-PR_URL="$(gh pr view "$BRANCH_TO_USE" --json url -q .url 2>/dev/null || true)"
+# Try to detect existing PR
+PR_URL="$(gh pr view "$BRANCH_TO_USE" 2>/dev/null | grep -Eo 'https://github.com/[^ ]+/pull/[0-9]+')"
 
 if [ -z "$PR_URL" ]; then
-  log "Creating pull request"
-  PR_URL="$(gh pr create \
-    --head "$BRANCH_TO_USE" \
-    --base "$BASE_BRANCH" \
-    --title "$PR_TITLE" \
-    --body "$PR_BODY" \
-    --json url -q .url)"
+    log "Creating pull request (may open interactive prompt)"
+    gh pr create --head "$BRANCH_TO_USE" --base "$BASE_BRANCH" --title "$PR_TITLE" --body "$PR_BODY" --fill
+    echo "PR created. Visit:"
+    echo "https://github.com/$(git remote get-url origin | sed -E 's#.*/(.*)\.git#\1#')/pull/new/$BRANCH_TO_USE"
 else
-  success "Existing PR found"
-  gh pr comment "$PR_URL" -b "Automated update: $NOW" >/dev/null
+    success "Existing PR found: $PR_URL"
+    gh pr comment "$PR_URL" -b "Automated update: $NOW" >/dev/null || true
 fi
 
 # ─── Final Output ────────────────────────────────────────────────────────────
 echo "──────────────────────────────────────────────"
-success "Pull Request: $PR_URL"
 echo "Branch : $BRANCH_TO_USE"
 echo "Base   : $BASE_BRANCH"
 echo "Title  : $PR_TITLE"
+[ -n "${PR_URL:-}" ] && echo "PR URL : $PR_URL"
