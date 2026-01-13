@@ -10,6 +10,6 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: 'static/_dcc/build',
+    outDir: 'dist',
   },
 });
