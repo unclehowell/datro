@@ -1,131 +1,151 @@
 #!/usr/bin/env bash
-# pr_automation.sh — automated PR creation/updating (backwards-compatible GH CLI)
+# pr_automation.sh - automated PR creation/updating (GH CLI compatible)
+# Usage: ./pr_automation.sh (interactive)
+# Optional env:
+#   DEFAULT_BASE_BRANCH (default: gh-pages)
+#   ALLOW_EMPTY_COMMIT (default: "no") -> set to "yes" to allow empty commits when nothing changed
 
-set -euo pipefail
+set -o errexit
+set -o pipefail
+set -o nounset
 
-# ─── Colors & Logging ────────────────────────────────────────────────────────
-log()     { printf '\033[1;34m%s\033[0m\n' "$*"; }
-success() { printf '\033[1;32m%s\033[0m\n' "$*"; }
-warn()    { printf '\033[1;33m%s\033[0m\n' "$*"; }
-err()     { printf '\033[1;31m%s\033[0m\n' "$*"; exit 1; }
-
-# ─── Config ──────────────────────────────────────────────────────────────────
+# --- Config ---
 TRIGGER_FILE=".pr_trigger"
 BRANCH_PREFIX="feature/auto-"
 DEFAULT_BASE_BRANCH="${DEFAULT_BASE_BRANCH:-gh-pages}"
 ALLOW_EMPTY_COMMIT="${ALLOW_EMPTY_COMMIT:-no}"
-AUTO_FIX_PERMISSIONS="${AUTO_FIX_PERMISSIONS:-no}"
 
-# ─── Sanity Checks ───────────────────────────────────────────────────────────
-command -v git >/dev/null || err "git not found"
-command -v gh  >/dev/null || err "GitHub CLI (gh) not found"
-git rev-parse --git-dir >/dev/null || err "Not inside a git repo"
-CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+# --- Logging ---
+log()     { printf '\033[1;34m%s\033[0m\n' "$*"; }   # blue
+success() { printf '\033[1;32m%s\033[0m\n' "$*"; } # green
+warn()    { printf '\033[1;33m%s\033[0m\n' "$*"; } # yellow
+err()     { printf '\033[1;31m%s\033[0m\n' "$*"; exit 1; } # red + exit
 
-# ─── Permissions Check ───────────────────────────────────────────────────────
-OBJECTS_DIR="$(git rev-parse --git-path objects)"
-if [ -d "$OBJECTS_DIR" ] && ! [ -w "$OBJECTS_DIR" ]; then
-  warn "No write permission on $OBJECTS_DIR"
-  if [[ "$AUTO_FIX_PERMISSIONS" == "yes" ]]; then
-    sudo chown -R "$USER":"$(id -gn)" "$(git rev-parse --git-dir)"
-    success "Permissions fixed — rerun script"
-    exit 0
-  else
-    err "Fix ownership of .git before continuing"
-  fi
-fi
+# --- Sanity checks ---
+command -v git >/dev/null 2>&1 || err "git not found in PATH"
+command -v gh  >/dev/null 2>&1 || err "GitHub CLI 'gh' not found in PATH"
 
-# ─── Helpers ────────────────────────────────────────────────────────────────
+git rev-parse --git-dir >/dev/null 2>&1 || err "Not inside a git repository"
+
+CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || true)"
+[ -z "$CURRENT_BRANCH" ] && err "Could not detect current branch"
+
+# --- Helpers ---
 generate_branch_name() {
-  echo "${BRANCH_PREFIX}$(printf "%c" $((97 + RANDOM % 26)))-$(date +%Y%m%d-%H%M%S)"
+    TIMESTAMP="$(date +%Y%m%d-%H%M%S)"
+    letter=$(printf "%c" $((97 + RANDOM % 26)))
+    echo "${BRANCH_PREFIX}${letter}-${TIMESTAMP}"
 }
 
 determine_remote_base() {
-  local preferred="$1"
-  if git ls-remote --heads origin "$preferred" | grep -q "$preferred"; then
-    echo "$preferred"; return
-  fi
-  for fb in main master; do
-    if git ls-remote --heads origin "$fb" | grep -q "$fb"; then
-      warn "Fallback base branch used: $fb"
-      echo "$fb"; return
+    local preferred="$1"
+    if git ls-remote --heads origin "refs/heads/${preferred}" | grep -q 'refs/heads/'; then
+        echo "$preferred"
+        return
     fi
-  done
-  echo "$preferred"
+    for fallback in main master; do
+        if git ls-remote --heads origin "refs/heads/${fallback}" | grep -q 'refs/heads/'; then
+            warn "Preferred base branch 'origin/${preferred}' not found; using '${fallback}'"
+            echo "$fallback"
+            return
+        fi
+    done
+    warn "Preferred base branch 'origin/${preferred}' not found; using '${preferred}' (may fail)"
+    echo "$preferred"
 }
 
-# ─── Menu ───────────────────────────────────────────────────────────────────
+# --- Menu ---
 PS3="Select action: "
-select opt in \
-  "Create New Pull Request (new branch)" \
-  "Update Existing Pull Request (current branch)"; do
-  case $REPLY in
-    1) ACTION="CREATE"; break ;;
-    2) ACTION="UPDATE"; break ;;
-    *) echo "Choose 1 or 2" ;;
-  esac
+options=("Create New Pull Request (New Branch)" "Update Existing Pull Request (Current Branch)")
+echo
+select opt in "${options[@]}"; do
+    case $REPLY in
+        1) ACTION="CREATE"; break ;;
+        2) ACTION="UPDATE"; break ;;
+        *) echo "Invalid option. Choose 1 or 2." ;;
+    esac
 done
 
-# ─── Branch Handling ─────────────────────────────────────────────────────────
-if [ "$ACTION" = "CREATE" ]; then
-  BRANCH_TO_USE="$(generate_branch_name)"
-  log "Creating branch: $BRANCH_TO_USE"
-  git checkout -b "$BRANCH_TO_USE"
-else
-  BRANCH_TO_USE="$CURRENT_BRANCH"
-  log "Using current branch: $BRANCH_TO_USE"
+# --- Git user config warning ---
+if ! git config user.name >/dev/null 2>&1 || ! git config user.email >/dev/null 2>&1; then
+    warn "Git user.name or user.email not set. Commits may fail."
 fi
 
-# ─── Trigger Change ──────────────────────────────────────────────────────────
-NOW="$(date '+%Y-%m-%d %H:%M:%S')"
+# --- Branch handling ---
+if [ "$ACTION" = "CREATE" ]; then
+    BRANCH_TO_USE="$(generate_branch_name)"
+    log "Creating and switching to branch: $BRANCH_TO_USE"
+    git checkout -b "$BRANCH_TO_USE"
+else
+    BRANCH_TO_USE="$CURRENT_BRANCH"
+    log "Using current branch: $BRANCH_TO_USE"
+fi
+
+# --- Trigger file ---
+NOW="$(date +'%Y-%m-%d %H:%M:%S')"
 echo "Last run: $NOW" > "$TRIGGER_FILE"
 
-# ─── Commit ──────────────────────────────────────────────────────────────────
+# --- Stage all changes ---
+log "Staging all changes..."
 git add -A
-COMMIT_MSG="Auto-commit: $NOW"
 
-if ! git commit -m "$COMMIT_MSG" 2>/dev/null; then
-  if [ -z "$(git status --porcelain)" ]; then
-    warn "Nothing to commit"
-    if [ "$ALLOW_EMPTY_COMMIT" = "yes" ]; then
-      git commit --allow-empty -m "$COMMIT_MSG (empty)"
-      success "Empty commit created"
+# --- Commit ---
+COMMIT_MSG="Auto-commit: $NOW - Automated PR update."
+if git commit -m "$COMMIT_MSG" 2>/dev/null; then
+    success "Commit created."
+else
+    if [ -z "$(git status --porcelain)" ]; then
+        warn "Nothing to commit."
+        if [ "$ALLOW_EMPTY_COMMIT" = "yes" ]; then
+            log "Creating empty commit..."
+            git commit --allow-empty -m "${COMMIT_MSG} (empty)"
+            success "Empty commit created."
+        else
+            warn "No commit created and ALLOW_EMPTY_COMMIT=no. Continuing."
+        fi
+    else
+        err "git commit failed. Hooks may have rejected it."
     fi
-  else
-    err "Commit failed"
-  fi
-else
-  success "Commit created"
 fi
 
-# ─── Push ────────────────────────────────────────────────────────────────────
-log "Pushing branch to origin"
+# --- Push ---
+log "Pushing branch '$BRANCH_TO_USE' to origin..."
 git push -u origin "$BRANCH_TO_USE"
-success "Push complete"
+success "Branch pushed."
 
-# ─── PR Handling ─────────────────────────────────────────────────────────────
+# --- Pull Request Handling ---
 BASE_BRANCH="$(determine_remote_base "$DEFAULT_BASE_BRANCH")"
-log "Base branch: origin/$BASE_BRANCH"
+PR_TITLE="[Auto-PR] $COMMIT_MSG"
+PR_BODY="**Automated Pull Request**\n\nTriggered: $NOW"
 
-PR_TITLE="[Auto] $COMMIT_MSG"
-PR_BODY="**Automated update**\nTriggered: $NOW"
+PR_URL=""
 
-# Try to detect existing PR
-PR_URL="$(gh pr view "$BRANCH_TO_USE" 2>/dev/null | grep -Eo 'https://github.com/[^ ]+/pull/[0-9]+')"
-
-if [ -z "$PR_URL" ]; then
-    log "Creating pull request (may open interactive prompt)"
-    gh pr create --head "$BRANCH_TO_USE" --base "$BASE_BRANCH" --title "$PR_TITLE" --body "$PR_BODY" --fill
-    echo "PR created. Visit:"
-    echo "https://github.com/$(git remote get-url origin | sed -E 's#.*/(.*)\.git#\1#')/pull/new/$BRANCH_TO_USE"
-else
-    success "Existing PR found: $PR_URL"
-    gh pr comment "$PR_URL" -b "Automated update: $NOW" >/dev/null || true
+if [ "$ACTION" = "CREATE" ]; then
+    log "Creating Pull Request: $BRANCH_TO_USE -> $BASE_BRANCH"
+    PR_URL="$(gh pr create --head "$BRANCH_TO_USE" --base "$BASE_BRANCH" --title "$PR_TITLE" --body "$PR_BODY" 2>&1 | grep -Eo 'https://github.com/[^ ]+/pull/[0-9]+')"
+elif [ "$ACTION" = "UPDATE" ]; then
+    log "Looking for existing PR for branch '$BRANCH_TO_USE'..."
+    PR_URL="$(gh pr view "$BRANCH_TO_USE" 2>&1 | grep -Eo 'https://github.com/[^ ]+/pull/[0-9]+')"
+    if [ -n "$PR_URL" ]; then
+        success "Found PR: $PR_URL"
+        gh pr comment --body "Automated update: $NOW" "$PR_URL" >/dev/null 2>&1 || true
+    else
+        log "No PR found; creating one..."
+        PR_URL="$(gh pr create --head "$BRANCH_TO_USE" --base "$BASE_BRANCH" --title "$PR_TITLE" --body "$PR_BODY" 2>&1 | grep -Eo 'https://github.com/[^ ]+/pull/[0-9]+')"
+    fi
 fi
 
-# ─── Final Output ────────────────────────────────────────────────────────────
-echo "──────────────────────────────────────────────"
-echo "Branch : $BRANCH_TO_USE"
-echo "Base   : $BASE_BRANCH"
-echo "Title  : $PR_TITLE"
-[ -n "${PR_URL:-}" ] && echo "PR URL : $PR_URL"
+# --- Output ---
+echo "----------------------------------------------"
+if [ -n "$PR_URL" ]; then
+    success "🔗 Pull Request URL: $PR_URL"
+    echo "Branch: $BRANCH_TO_USE"
+    echo "Base:   $BASE_BRANCH"
+    echo "Title:  $PR_TITLE"
+else
+    err "❌ Could not determine or create Pull Request URL."
+    warn "Diagnostics:"
+    git status --short || true
+    git log --oneline "origin/$BASE_BRANCH..$BRANCH_TO_USE" || true
+fi
+echo "----------------------------------------------"
