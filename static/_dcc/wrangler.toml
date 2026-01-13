@@ -15,3 +15,6 @@ watch_paths = ["src/**/*.js", "src/**/*.jsx"]
 [build.upload]
 format = "service-worker"
 main = "./dist/index.js"
+
+[pages_build_output]
+dir = "./dist" # This is the crucial line for Pages deployment
