@@ -58,7 +58,7 @@ jobs:
           {
             echo "library=false"; echo "hbnb=false"; echo "forces=false"
             echo "gui=false"; echo "datro=false"; echo "projections=false"
-            echo "bpvsbuckler=false"; echo "bcc=false"  # BCC ADDED HERE
+            echo "bpvsbuckler=false"; echo "dcc=false"  # DCC ADDED HERE
           } >> "$GITHUB_OUTPUT"
 
           if echo "$DIFF" | grep -qE '^static/library/'; then echo "library=true" >> "$GITHUB_OUTPUT"; fi
@@ -68,7 +68,7 @@ jobs:
           if echo "$DIFF" | grep -qE '^static/datro/'; then echo "datro=true" >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/projections/'; then echo "projections=true" >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/bpvsbuckler/'; then echo "bpvsbuckler=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/bcc/'; then echo "bcc=true" >> "$GITHUB_OUTPUT"; fi  # BCC ADDED HERE
+          if echo "$DIFF" | grep -qE '^static/_dcc/'; then echo "dcc=true" >> "$GITHUB_OUTPUT"; fi  # DCC ADDED HERE
 
 
       # --- Setup Node (only run if HBNB needs it) ---
@@ -215,18 +215,18 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-      # --- BCC (Static HTML) ---
-      - name: Deploy bcc (Preview)
-        if: github.event_name == 'pull_request' && steps.changes.outputs.bcc == 'true'
-        id: deploy_bcc
+      # --- DCC (Static HTML) ---
+      - name: Deploy dcc (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.dcc == 'true'
+        id: deploy_dcc
         run: |
-          npx wrangler pages deploy static/bcc \
-            --project-name=bcc \
+          npx wrangler pages deploy static/_dcc \
+            --project-name=dcc \
             --branch="${{ github.head_ref }}" \
             --commit-hash="${{ github.sha }}" \
             > deploy_output.txt 2>&1
           
-          PREVIEW_URL=$(grep -oP 'https://[a-f0-9]+\.bcc[^\s]*' deploy_output.txt | head -1)
+          PREVIEW_URL=$(grep -oP 'https://[a-f0-9]+\.dcc[^\s]*' deploy_output.txt | head -1)
           echo "url=$PREVIEW_URL" >> $GITHUB_OUTPUT
           echo "✅ Deployed to $PREVIEW_URL"
         env:
@@ -247,7 +247,7 @@ jobs:
               { name: 'datro-homepage', changed: '${{ steps.changes.outputs.datro }}', url: '${{ steps.deploy_datro.outputs.url }}' },
               { name: 'projections', changed: '${{ steps.changes.outputs.projections }}', url: '${{ steps.deploy_projections.outputs.url }}' },
               { name: 'bpvsbuckler', changed: '${{ steps.changes.outputs.bpvsbuckler }}', url: '${{ steps.deploy_bpvsbuckler.outputs.url }}' },
-              { name: 'bcc', changed: '${{ steps.changes.outputs.bcc }}', url: '${{ steps.deploy_bcc.outputs.url }}' }  // BCC ADDED HERE
+              { name: 'dcc', changed: '${{ steps.changes.outputs.dcc }}', url: '${{ steps.deploy_dcc.outputs.url }}' }  // DCC ADDED HERE
             ];
 
             let body = '## 🚀 Cloudflare Pages Preview Deployments\n\n';
