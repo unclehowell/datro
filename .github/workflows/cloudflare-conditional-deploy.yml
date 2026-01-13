@@ -4,66 +4,61 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
     branches: [gh-pages]
+
   push:
     branches:
       - gh-pages
       - 'feature/auto-*'
 
 jobs:
-  deploy-and-comment:
+  detect-and-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       deployments: write
       pull-requests: write
 
+    concurrency:
+      group: cf-pages-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+      cancel-in-progress: true
+
     steps:
-      # 1) Checkout repo
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # 2) Detect changed apps
+      # ---------------- Change Detection ----------------
       - name: Detect changed apps
         id: changes
         shell: bash
         run: |
           set -euo pipefail
 
-          # determine diff
           if [ "${{ github.event_name }}" = "pull_request" ]; then
-            BASE_SHA="${{ github.event.pull_request.base.sha }}"
-            MERGE_BASE=$(git merge-base "$BASE_SHA" HEAD)
-            DIFF=$(git diff --name-only "$MERGE_BASE"...HEAD)
+            BASE="${{ github.event.pull_request.base.sha }}"
+            MERGE=$(git merge-base "$BASE" HEAD)
+            DIFF=$(git diff --name-only "$MERGE"...HEAD)
           else
             DIFF=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" || git ls-files)
           fi
 
-          # app folders in static/
-          declare -A APPS=(
-            ["library"]="library"
-            ["hbnb"]="hbnb"
-            ["forces"]="forces"
-            ["gui"]="gui"
-            ["datro"]="datro"
-            ["projections"]="projections"
-            ["bpvsbuckler"]="bpvsbuckler"
-            ["_dcc"]="dcc"
-            ["_etrike"]="etrike"
-            ["ew"]="ew"
-            ["_maps"]="_maps"
-            ["puck"]="puck"
-            ["_trailer"]="trailer"
-          )
-
-          for folder in "${!APPS[@]}"; do
-            echo "${APPS[$folder]}=false" >> $GITHUB_OUTPUT
-            if grep -q "^static/${folder}/" <<< "$DIFF"; then
-              echo "${APPS[$folder]}=true" >> $GITHUB_OUTPUT
-            fi
+          # initialize all to false
+          for app in library hbnb forces gui datro projections bpvsbuckler dcc ew; do
+            echo "$app=false" >> "$GITHUB_OUTPUT"
           done
 
-      # 3) Build apps if needed
+          # mark true if any changes detected
+          grep -q '^static/library/'      <<<"$DIFF" && echo "library=true" >> $GITHUB_OUTPUT
+          grep -q '^static/hbnb/'         <<<"$DIFF" && echo "hbnb=true" >> $GITHUB_OUTPUT
+          grep -q '^static/forces/'       <<<"$DIFF" && echo "forces=true" >> $GITHUB_OUTPUT
+          grep -q '^static/gui/'          <<<"$DIFF" && echo "gui=true" >> $GITHUB_OUTPUT
+          grep -q '^static/datro/'        <<<"$DIFF" && echo "datro=true" >> $GITHUB_OUTPUT
+          grep -q '^static/projections/'  <<<"$DIFF" && echo "projections=true" >> $GITHUB_OUTPUT
+          grep -q '^static/bpvsbuckler/'  <<<"$DIFF" && echo "bpvsbuckler=true" >> $GITHUB_OUTPUT
+          grep -q '^static/_dcc/'         <<<"$DIFF" && echo "dcc=true" >> $GITHUB_OUTPUT
+          grep -q '^static/ew/'           <<<"$DIFF" && echo "ew=true" >> $GITHUB_OUTPUT
+
+      # ---------------- Builds ----------------
       - uses: actions/setup-node@v4
         if: steps.changes.outputs.hbnb == 'true'
         with:
@@ -76,74 +71,64 @@ jobs:
           npm ci
           npm run build
 
-      # 4) Deploy apps
-      - name: Deploy apps
+      # ---------------- Deploy Helper ----------------
+      - name: Deploy helper
         id: deploy
         shell: bash
         env:
           CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          set -euo pipefail
-          declare -A FOLDERS=(
-            ["library"]="library"
-            ["hbnb"]="hbnb"
-            ["forces"]="forces"
-            ["gui"]="gui"
-            ["datro"]="datro-homepage"
-            ["projections"]="projections"
-            ["bpvsbuckler"]="bpvsbuckler"
-            ["_dcc"]="dcc"
-            ["_etrike"]="etrike"
-            ["ew"]="ew"
-            ["_maps"]="_maps"
-            ["puck"]="puck"
-            ["_trailer"]="trailer"
-          )
-
-          for folder in "${!FOLDERS[@]}"; do
-            changed="${{ steps.changes.outputs[${FOLDERS[$folder]}] }}"
-            if [ "$changed" != "true" ]; then
-              echo "${FOLDERS[$folder]}=" >> $GITHUB_OUTPUT
-              continue
-            fi
-
-            local_dir="static/$folder"
-            project="${FOLDERS[$folder]}"
-
-            url=$(npx wrangler pages deploy "$local_dir" \
+          deploy () {
+            local dir=$1 project=$2
+            npx wrangler pages deploy "$dir" \
               --project-name="$project" \
               --branch="${{ github.head_ref || github.ref_name }}" \
               --commit-hash="${{ github.sha }}" \
-              --deploy-preview 2>&1 \
-              | grep -oE 'https://[a-z0-9.-]+\.pages\.dev' | head -1 || true)
+              > out.txt 2>&1
 
-            echo "${project}=$url" >> $GITHUB_OUTPUT
-          done
+            grep -oP 'https://[a-f0-9]+\.pages\.dev[^\s]*' out.txt | head -1 || echo ""
+          }
 
-      # 5) Comment PR with clean table
+          echo "library=$(deploy static/library library)" >> $GITHUB_OUTPUT
+          echo "hbnb=$(deploy static/hbnb/build hbnb)" >> $GITHUB_OUTPUT
+          echo "forces=$(deploy static/forces forces)" >> $GITHUB_OUTPUT
+          echo "gui=$(deploy static/gui gui)" >> $GITHUB_OUTPUT
+          echo "datro=$(deploy static/datro datro-homepage)" >> $GITHUB_OUTPUT
+          echo "projections=$(deploy static/projections projections)" >> $GITHUB_OUTPUT
+          echo "bpvsbuckler=$(deploy static/bpvsbuckler bpvsbuckler)" >> $GITHUB_OUTPUT
+          echo "dcc=$(deploy static/_dcc dcc)" >> $GITHUB_OUTPUT
+          echo "ew=$(deploy static/ew ew)" >> $GITHUB_OUTPUT
+
+      # ---------------- PR Comment ----------------
       - name: Comment preview table
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
         with:
           script: |
             const apps = [
-              "library", "hbnb", "forces", "gui",
-              "datro", "projections", "bpvsbuckler",
-              "dcc", "etrike", "ew", "_maps", "puck", "trailer"
+              ['library','library'],
+              ['hbnb','hbnb'],
+              ['forces','forces'],
+              ['gui','gui'],
+              ['datro','datro-homepage'],
+              ['projections','projections'],
+              ['bpvsbuckler','bpvsbuckler'],
+              ['dcc','dcc'],
+              ['ew','ew']
             ];
 
             let body = "## 🚀 Cloudflare Pages Preview Deployments\n\n";
             body += "| Application | Status | Preview URL |\n|---|---|---|\n";
 
             let total = 0;
-            for (const app of apps) {
-              const url = process.env[`DEPLOY_${app.toUpperCase()}`] || '';
+            for (const [key,name] of apps) {
+              const url = `${{ steps.deploy.outputs[key] }}` || '';
               if (url) {
-                body += `| ${app} | ✅ Deployed | [Preview](${url}) |\n`;
+                body += `| ${name} | ✅ Deployed | [Preview](${url}) |\n`;
                 total++;
               } else {
-                body += `| ${app} | 🚫 Skipped | N/A |\n`;
+                body += `| ${name} | 🚫 Skipped | N/A |\n`;
               }
             }
 
@@ -155,4 +140,3 @@ jobs:
               repo: context.repo.repo,
               body
             });
-
