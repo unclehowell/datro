@@ -1,0 +1,17 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "dcc"
+type = "javascript"
+
+[env.production]
+routes = [
+  { pattern = "dcc.datro.xyz/*", zone_name = "dcc.datro.xyz" }
+]
+
+[build]
+command = "npm run build"
+cwd = "."
+watch_paths = ["src/**/*.js", "src/**/*.jsx"]
+
+[build.upload]
+format = "service-worker"
+main = "./dist/index.js"
