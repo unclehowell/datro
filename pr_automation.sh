@@ -163,4 +163,3 @@ else
   git status --short
   git log --oneline "origin/$BASE_BRANCH..$BRANCH_TO_USE" || true
 fi
-
