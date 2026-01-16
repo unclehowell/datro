@@ -39,24 +39,22 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLaunch }) => {
         <span className="text-2xl font-black tracking-tighter text-slate-900">DCC</span>
       </button>
       <div className="hidden md:flex gap-8 text-xs font-black uppercase tracking-widest text-slate-500">
-                <button onClick={() => setSubView('problem')} className={`hover:text-indigo-600 transition-colors ${subView === 'problem' ? 'text-indigo-600' : ''}`}>The Problem</button>
-                <button onClick={() => setSubView('how-it-works')} className={`hover:text-indigo-600 transition-colors ${subView === 'how-it-works' ? 'text-indigo-600' : ''}`}>How it Works</button>
-                <button onClick={() => setSubView('impact')} className={`hover:text-indigo-600 transition-colors ${subView === 'impact' ? 'text-indigo-600' : ''}`}>Our Impact</button>
-                <a href="/" className="hover:text-indigo-600 transition-colors">Docs</a>
-              </div>
-              <button 
-                onClick={onLaunch}
-                className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-2xl font-bold shadow-xl transition-all active:scale-95"
-              >
-                Open Web Wallet
-              </button>
-            </nav>
-          );
-        
-          const HomeView = () => (
-            <>
-              {
-        /* Hero Section */}
+        <button onClick={() => setSubView('problem')} className={`hover:text-indigo-600 transition-colors ${subView === 'problem' ? 'text-indigo-600' : ''}`}>The Problem</button>
+        <button onClick={() => setSubView('how-it-works')} className={`hover:text-indigo-600 transition-colors ${subView === 'how-it-works' ? 'text-indigo-600' : ''}`}>How it Works</button>
+        <button onClick={() => setSubView('impact')} className={`hover:text-indigo-600 transition-colors ${subView === 'impact' ? 'text-indigo-600' : ''}`}>Our Impact</button>
+      </div>
+      <button 
+        onClick={onLaunch}
+        className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-2xl font-bold shadow-xl transition-all active:scale-95"
+      >
+        Open Web Wallet
+      </button>
+    </nav>
+  );
+
+  const HomeView = () => (
+    <>
+      {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-6 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div className="space-y-8 animate-in fade-in slide-in-from-left-4 duration-700">
           <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest border border-green-100">

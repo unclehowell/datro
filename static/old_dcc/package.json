@@ -8,12 +8,11 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "@heroicons/react": "^2.2.0",
-    "date-fns": "^4.1.0",
-    "html2pdf.js": "^0.14.0",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+"dependencies": {
+  "@heroicons/react": "^2.2.0",
+  "react-dom": "^19.2.3",
+  "react": "^19.2.3",
+  "date-fns": "^4.1.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
