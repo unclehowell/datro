@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Great House Farm Timeline</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h2 { text-align: center; }
+    #timeline { width: 100%; height: 600px; }
+  </style>
+</head>
+<body>
+  <h2>Great House Farm Legal Timeline (1950–1987)</h2>
+  <div id="timeline"></div>
+
+  <script>
+    // Timeline events
+    const events = [
+      { year: 1953, event: "Family stops paying agricultural lease (assertion of ownership)" },
+      { year: 1962, event: "Court possession order issued against the Bucklers" },
+      { year: 1963, event: "Suspended committal order against Mr. Frederick Buckler" },
+      { year: 1965, event: "Death of Frederick Buckler (mid-1960s)" },
+      { year: 1969, event: "Great House Farm sold by Western Ground Rents to BP Pension Trust Ltd" },
+      { year: 1974, event: "Mrs Buckler's 1,700-signature petition to preserve the farm" },
+      { year: 1974.83, event: "BP Pension Trust & BP Properties letters issued 31 Oct 1974 (permission to occupy)" },
+      { year: 1982, event: "BP Properties Ltd registered as proprietors in HM Land Registry" },
+      { year: 1983, event: "Death of Mrs Buckler (March 1983)" },
+      { year: 1987, event: "Court of Appeal case regarding possession & adverse possession" }
+    ];
+
+    const trace = {
+      x: events.map(e => e.year),
+      y: Array(events.length).fill(0), // y = 0 for linear timeline
+      mode: 'markers+text',
+      type: 'scatter',
+      text: events.map(e => e.event),
+      textposition: 'top center',
+      marker: { size: 12, color: 'red' },
+      hovertemplate: "<b>%{text}</b><br>Year: %{x}<extra></extra>"
+    };
+
+    const layout = {
+      title: "Great House Farm Legal & Community Timeline",
+      showlegend: false,
+      yaxis: { visible: false },
+      xaxis: {
+        title: "Year",
+        tickvals: events.map(e => e.year),
+        ticktext: events.map(e => e.year),
+        range: [1950, 1990]
+      },
+      margin: { t: 50, b: 50 }
+    };
+
+    Plotly.newPlot('timeline', [trace], layout, {responsive: true});
+  </script>
+</body>
+</html>
