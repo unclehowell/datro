@@ -1,0 +1,994 @@
+
+:root {
+  --puck-color-rose: #e11d48;
+  --puck-color-rose-alt: #f472b6;
+  --puck-color-rose-darker: #9f1239;
+  --puck-color-azure: #0ea5e9;
+  --puck-color-azure-alt: #7dd3fc;
+  --puck-color-azure-darker: #075985;
+  --puck-color-green: #10b981;
+  --puck-color-green-alt: #4ade80;
+  --puck-color-green-darker: #065f46;
+  --puck-color-yellow: #eab308;
+  --puck-color-yellow-alt: #fcd34d;
+  --puck-color-yellow-darker: #a16207;
+  --puck-color-red: #ef4444;
+  --puck-color-red-alt: #f87171;
+  --puck-color-red-darker: #b91c1c;
+  --puck-color-grey: #64748b;
+  --puck-color-grey-alt: #94a3b8;
+  --puck-color-grey-darker: #334155;
+  --puck-color-black: #0f172a;
+  --puck-color-white: #f8fafc;
+}
+
+/* ActionBar */
+.ActionBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--puck-color-grey-alt);
+}
+
+.ActionBar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: var(--puck-color-grey);
+}
+
+.ActionBar button:hover {
+  color: var(--puck-color-black);
+}
+
+/* AutoField */
+.AutoField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ArrayField */
+.ArrayField {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* IconButton */
+.IconButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.IconButton:hover {
+  background-color: var(--puck-color-grey-alt);
+}
+
+.IconButton.destructive {
+  color: var(--puck-color-red);
+}
+
+.IconButton.destructive:hover {
+  background-color: var(--puck-color-red-alt);
+  color: var(--puck-color-red-darker);
+}
+
+/* Loader */
+.Loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  color: var(--puck-color-grey);
+}
+
+.Loader svg {
+  animation: spin 1s linear infinite;
+  margin-right: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* DragIcon */
+.DragIcon {
+  cursor: grab;
+}
+
+/* ExternalInput */
+.ExternalInput {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ExternalInput label {
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--puck-color-grey);
+}
+
+.ExternalInput input {
+  padding: 0.75rem;
+  border: 1px solid var(--puck-color-grey-alt);
+  border-radius: 0.375rem;
+  background-color: var(--puck-color-white);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.ExternalInput input::placeholder {
+  color: var(--puck-color-grey);
+}
+
+/* Modal */
+.Modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.ModalContent {
+  background-color: var(--puck-color-white);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 32rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ModalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ModalHeader h2 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+.ModalCloseButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--puck-color-grey);
+}
+
+.ModalCloseButton:hover {
+  color: var(--puck-color-black);
+}
+
+.ModalBody {
+  overflow-y: auto;
+  max-height: calc(80vh - 6rem); /* Adjust as needed */
+}
+
+/* Heading */
+.Heading {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  color: var(--puck-color-black);
+}
+
+/* Button */
+.Button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.Button.primary {
+  background-color: var(--puck-color-rose);
+  color: var(--puck-color-white);
+}
+
+.Button.primary:hover {
+  background-color: var(--puck-color-rose-darker);
+}
+
+.Button.secondary {
+  background-color: var(--puck-color-grey-alt);
+  color: var(--puck-color-black);
+}
+
+.Button.secondary:hover {
+  background-color: var(--puck-color-grey);
+}
+
+/* ObjectField */
+.ObjectField {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid var(--puck-color-grey-alt);
+  padding: 1rem;
+  border-radius: 0.375rem;
+}
+
+/* Drawer */
+.Drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 50;
+}
+
+.DrawerContent {
+  background-color: var(--puck-color-white);
+  width: 25rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -4px 0 6px -1px rgba(0, 0, 0, 0.1), -2px 0 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.DrawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid var(--puck-color-grey-alt);
+}
+
+.DrawerHeader h2 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+.DrawerCloseButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--puck-color-grey);
+}
+
+.DrawerCloseButton:hover {
+  color: var(--puck-color-black);
+}
+
+.DrawerBody {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+/* DropZone */
+.DropZone {
+  border: 2px dashed var(--puck-color-grey-alt);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.DropZone:hover {
+  background-color: var(--puck-color-grey-alt);
+}
+
+/* DraggableComponent */
+.DraggableComponent {
+  cursor: grab;
+  position: relative;
+  padding: 0.5rem;
+  border: 1px solid var(--puck-color-grey-alt);
+  border-radius: 0.375rem;
+  background-color: var(--puck-color-white);
+  margin-bottom: 0.5rem;
+}
+
+.DraggableComponent:hover {
+  background-color: var(--puck-color-grey-alt);
+}
+
+/* SidebarSection */
+.SidebarSection {
+  padding: 1rem;
+  border-bottom: 1px solid var(--puck-color-grey-alt);
+}
+
+.SidebarSection h3 {
+  font-size: 1.125rem;
+  line-height: 1.625rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.SidebarSection ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.SidebarSection li {
+  margin-bottom: 0.5rem;
+}
+
+.SidebarSection li button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  color: var(--puck-color-grey);
+  transition: background-color 0.2s;
+}
+
+.SidebarSection li button:hover {
+  background-color: var(--puck-color-grey-alt);
+  color: var(--puck-color-black);
+}
+
+.SidebarSection li button.active {
+  background-color: var(--puck-color-rose);
+  color: var(--puck-color-white);
+}
+
+/* MenuBar */
+.MenuBar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--puck-color-grey-alt);
+}
+
+/* Puck */
+.Puck {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.PuckSidebar {
+  width: 18rem;
+  border-right: 1px solid var(--puck-color-grey-alt);
+  overflow-y: auto;
+}
+
+.PuckCanvas {
+  flex-grow: 1;
+  overflow: auto;
+  background-color: var(--puck-color-white);
+  position: relative;
+}
+
+/* PuckFields */
+.PuckFields {
+  padding: 1rem;
+}
+
+/* PuckPreview */
+.PuckPreview {
+  padding: 1rem;
+}
+
+.PuckPreview > *:first-child {
+  margin-top: 0;
+}
+
+.PuckPreview > *:last-child {
+  margin-bottom: 0;
+}
+
+/* LayerTree */
+.LayerTree {
+  padding: 0.5rem;
+}
+
+.LayerTree ul {
+  list-style: none;
+  padding-left: 1rem;
+  margin: 0;
+}
+
+.LayerTree li {
+  margin-bottom: 0.25rem;
+}
+
+.LayerTree button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--puck-color-grey);
+}
+
+.LayerTree button:hover {
+  background-color: var(--puck-color-grey-alt);
+  color: var(--puck-color-black);
+}
+
+.LayerTree button.active {
+  background-color: var(--puck-color-rose);
+  color: var(--puck-color-white);
+}
+
+.LayerTree button .icon {
+  display: inline-block;
+  margin-right: 0.5rem;
+  color: var(--puck-color-grey);
+}
+
+.LayerTree button.active .icon {
+  color: var(--puck-color-white);
+}
+
+/* ViewportControls */
+.ViewportControls {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.ViewportControls button {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--puck-color-grey-alt);
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.ViewportControls button:hover {
+  background-color: var(--puck-color-white);
+}
+
+/* PuckCanvas */
+.PuckCanvas {
+  position: relative;
+}
+
+.PuckCanvas .dropped {
+  border: 1px dashed var(--puck-color-azure);
+}
+
+.PuckCanvas .hovered {
+  outline: 2px solid var(--puck-color-azure);
+  outline-offset: 2px;
+}
+
+/* ComponentList */
+.ComponentList {
+  padding: 1rem;
+}
+
+.ComponentList ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ComponentList li {
+  margin-bottom: 0.5rem;
+}
+
+.ComponentList li button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  color: var(--puck-color-grey);
+  transition: background-color 0.2s;
+}
+
+.ComponentList li button:hover {
+  background-color: var(--puck-color-grey-alt);
+  color: var(--puck-color-black);
+}
+
+.ComponentList li button.active {
+  background-color: var(--puck-color-rose);
+  color: var(--puck-color-white);
+}
+
+.ComponentList li button .icon {
+  display: inline-block;
+  margin-right: 0.5rem;
+  color: var(--puck-color-grey);
+}
+
+.ComponentList li button.active .icon {
+  color: var(--puck-color-white);
+}
+
+.ComponentList input {
+  padding: 0.5rem;
+  border: 1px solid var(--puck-color-grey-alt);
+  border-radius: 0.375rem;
+  background-color: var(--puck-color-white);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  width: calc(100% - 1rem); /* Adjust for padding */
+}
+
+.ComponentList input::placeholder {
+  color: var(--puck-color-grey);
+}
+
+.ComponentList .add-button {
+  margin-top: 0.75rem;
+  background-color: var(--puck-color-rose);
+  color: var(--puck-color-white);
+  width: 100%;
+}
+
+.ComponentList .add-button:hover {
+  background-color: var(--puck-color-rose-darker);
+}
+
+/* Field */
+.Field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.Field label {
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--puck-color-grey);
+}
+
+.Field input,
+.Field textarea,
+.Field select {
+  padding: 0.75rem;
+  border: 1px solid var(--puck-color-grey-alt);
+  border-radius: 0.375rem;
+  background-color: var(--puck-color-white);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.Field input::placeholder,
+.Field textarea::placeholder {
+  color: var(--puck-color-grey);
+}
+
+.Field textarea {
+  min-height: 5rem;
+}
+
+.Field.disabled label,
+.Field.disabled input,
+.Field.disabled textarea,
+.Field.disabled select {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ButtonGroup */
+.ButtonGroup {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.ButtonGroup button {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--puck-color-grey-alt);
+  border-radius: 0.375rem;
+  background-color: var(--puck-color-white);
+  color: var(--puck-color-grey);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.ButtonGroup button:hover {
+  background-color: var(--puck-color-grey-alt);
+  color: var(--puck-color-black);
+}
+
+.ButtonGroup button.active {
+  background-color: var(--puck-color-rose);
+  color: var(--puck-color-white);
+  border-color: var(--puck-color-rose);
+}
+
+.ButtonGroup button.destructive {
+  border-color: var(--puck-color-red);
+  color: var(--puck-color-red);
+}
+
+.ButtonGroup button.destructive:hover {
+  background-color: var(--puck-color-red-alt);
+  color: var(--puck-color-red-darker);
+  border-color: var(--puck-color-red-darker);
+}
+
+/* Icon */
+.Icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.Icon svg {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Tooltip */
+.TooltipContainer {
+  position: relative;
+}
+
+.Tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--puck-color-black);
+  color: var(--puck-color-white);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  white-space: nowrap;
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.TooltipContainer:hover .Tooltip {
+  opacity: 1;
+}
+
+.TooltipArrow {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0.25rem;
+  border-style: solid;
+  border-color: var(--puck-color-black) transparent transparent transparent;
+}
+
+/* Select */
+.Select {
+  position: relative;
+}
+
+.SelectTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  border: 1px solid var(--puck-color-grey-alt);
+  border-radius: 0.375rem;
+  background-color: var(--puck-color-white);
+  cursor: pointer;
+  width: 100%;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--puck-color-black);
+}
+
+.SelectTrigger:hover {
+  border-color: var(--puck-color-grey);
+}
+
+.SelectTrigger svg {
+  height: 1.25rem;
+  width: 1.25rem;
+  color: var(--puck-color-grey);
+}
+
+.SelectContent {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--puck-color-white);
+  border: 1px solid var(--puck-color-grey-alt);
+  border-radius: 0.375rem;
+  margin-top: 0.25rem;
+  z-index: 20;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.SelectContent ul {
+  list-style: none;
+  padding: 0.5rem;
+  margin: 0;
+}
+
+.SelectContent li {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--puck-color-black);
+  transition: background-color 0.2s;
+}
+
+.SelectContent li:hover {
+  background-color: var(--puck-color-grey-alt);
+}
+
+.SelectContent li.active {
+  background-color: var(--puck-color-rose);
+  color: var(--puck-color-white);
+}
+
+/* AspectRatio */
+.AspectRatio {
+  position: relative;
+  width: 100%;
+}
+
+.AspectRatio::before {
+  content: '';
+  display: block;
+  padding-top: var(--puck-aspect-ratio, 56.25%); /* Default 16:9 */
+}
+
+.AspectRatio > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* AlertDialog */
+.AlertDialogOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+}
+
+.AlertDialogContent {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--puck-color-white);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 30rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 50;
+}
+
+.AlertDialogHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.AlertDialogHeader h2 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+.AlertDialogDescription {
+  color: var(--puck-color-grey);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.AlertDialogFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.AlertDialogCancelButton,
+.AlertDialogActionButon {
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.AlertDialogCancelButton {
+  background-color: var(--puck-color-grey-alt);
+  color: var(--puck-color-black);
+}
+
+.AlertDialogCancelButton:hover {
+  background-color: var(--puck-color-grey);
+}
+
+.AlertDialogActionButon {
+  background-color: var(--puck-color-rose);
+  color: var(--puck-color-white);
+}
+
+.AlertDialogActionButon:hover {
+  background-color: var(--puck-color-rose-darker);
+}
+
+/* Alert */
+.Alert {
+  padding: 1rem;
+  border-radius: 0.375rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.Alert.destructive {
+  background-color: var(--puck-color-red-alt);
+  color: var(--puck-color-red-darker);
+  border: 1px solid var(--puck-color-red);
+}
+
+.Alert.destructive .icon {
+  color: var(--puck-color-red);
+}
+
+.Alert.destructive svg {
+  color: var(--puck-color-red);
+}
+
+.Alert.info {
+  background-color: var(--puck-color-azure-alt);
+  color: var(--puck-color-azure-darker);
+  border: 1px solid var(--puck-color-azure);
+}
+
+.Alert.info .icon {
+  color: var(--puck-color-azure);
+}
+
+.Alert.info svg {
+  color: var(--puck-color-azure);
+}
+
+.Alert.success {
+  background-color: var(--puck-color-green-alt);
+  color: var(--puck-color-green-darker);
+  border: 1px solid var(--puck-color-green);
+}
+
+.Alert.success .icon {
+  color: var(--puck-color-green);
+}
+
+.Alert.success svg {
+  color: var(--puck-color-green);
+}
+
+.Alert.warning {
+  background-color: var(--puck-color-yellow-alt);
+  color: var(--puck-color-yellow-darker);
+  border: 1px solid var(--puck-color-yellow);
+}
+
+.Alert.warning .icon {
+  color: var(--puck-color-yellow);
+}
+
+.Alert.warning svg {
+  color: var(--puck-color-yellow);
+}
+
+.Alert > div {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.Alert > div .icon {
+  flex-shrink: 0;
+}
+
+.Alert > div .icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.Alert > div p {
+  margin: 0;
+}
+
+.Alert > div + div {
+  margin-top: 0.5rem;
+}
+
+/* Avatar */
+.Avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  overflow: hidden;
+  background-color: var(--puck-color-grey-alt);
+  width: 2rem;
+  height: 2rem;
+}
+
+.Avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.Avatar span {
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--puck-color-white);
+}
