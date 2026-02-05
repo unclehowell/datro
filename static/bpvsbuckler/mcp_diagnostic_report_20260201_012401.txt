@@ -1,0 +1,116 @@
+DATRO MCP DIAGNOSTIC REPORT
+Generated: 2026-02-01T01:24:01-03:00
+Host: h-VivoBook-ASUSLaptop-E203NAS-2nd3NA
+
+=== AIDER VERSION ===
+aider 0.86.1
+
+=== PYTHON ===
+Python 3.10.12
+Name: aider-chat
+Version: 0.86.1
+Summary: Aider is AI pair programming in your terminal
+Home-page: https://github.com/Aider-AI/aider
+Author: 
+Author-email: 
+License: 
+Location: /home/unclehowell/.local/lib/python3.10/site-packages
+Requires: aiohappyeyeballs, aiohttp, aiosignal, annotated-types, anyio, attrs, backoff, beautifulsoup4, cachetools, certifi, cffi, charset-normalizer, click, configargparse, diff-match-patch, diskcache, distro, filelock, flake8, frozenlist, fsspec, gitdb, gitpython, google-ai-generativelanguage, google-api-core, google-api-python-client, google-auth, google-auth-httplib2, google-generativeai, googleapis-common-protos, grep-ast, grpcio, grpcio-status, h11, hf-xet, httpcore, httplib2, httpx, huggingface-hub, idna, importlib-metadata, importlib-resources, jinja2, jiter, json5, jsonschema, jsonschema-specifications, litellm, markdown-it-py, markupsafe, mccabe, mdurl, mixpanel, mslex, multidict, networkx, numpy, openai, oslex, packaging, pathspec, pexpect, pillow, posthog, prompt-toolkit, propcache, proto-plus, protobuf, psutil, ptyprocess, pyasn1, pyasn1-modules, pycodestyle, pycparser, pydantic, pydantic-core, pydub, pyflakes, pygments, pypandoc, pyparsing, pyperclip, python-dateutil, python-dotenv, pyyaml, referencing, regex, requests, rich, rpds-py, rsa, scipy, shtab, six, smmap, sniffio, socksio, sounddevice, soundfile, soupsieve, tiktoken, tokenizers, tqdm, tree-sitter, tree-sitter-c-sharp, tree-sitter-embedded-template, tree-sitter-language-pack, tree-sitter-yaml, typing-extensions, typing-inspection, uritemplate, urllib3, watchfiles, wcwidth, yarl, zipp
+Required-by: 
+Name: litellm
+Version: 1.75.0
+Summary: Library to easily interface with LLM API providers
+Home-page: https://litellm.ai
+Author: BerriAI
+Author-email: 
+License: MIT
+Location: /home/unclehowell/.local/lib/python3.10/site-packages
+Requires: aiohttp, click, httpx, importlib-metadata, jinja2, jsonschema, openai, pydantic, python-dotenv, tiktoken, tokenizers
+Required-by: aider-chat
+
+=== GIT CONTEXT ===
+/home/unclehowell/datro
+ D ../../datro/bpvsbuckler
+ D ../../test-stripe.sh
+?? mcp_diagnostic_report.sh
+?? mcp_diagnostic_report_20260201_012401.txt
+
+=== AIDER CONFIG FILES FOUND ===
+/home/unclehowell/datro/.aiderignore
+/home/unclehowell/datro/static/bpvsbuckler/.aider.conf.yml
+/home/unclehowell/.aider.conf.yml
+
+=== ROOT .aider.conf.yml ===
+NOT FOUND
+
+=== ROOT .aiderignore ===
+# Global noise
+.git/**
+node_modules/**
+dist/**
+build/**
+.cache/**
+*.log
+
+# Generated / binary
+**/*.png
+**/*.jpg
+**/*.gif
+**/*.mp4
+**/*.pdf
+
+# Archive & legacy
+static/**/old/**
+static/**/old_*/**
+static/**/snapshot.txt
+
+# Entire sites NOT being edited
+static/ccan/**
+static/datro/**
+static/gui/**
+static/library/**
+static/monoreapo/**
+static/timeline/**
+static/wave/**
+static/forces/**
+static/projections/**
+static/ew/**
+static/hbnb/**
+static/old_dcc/**
+static/_maps/**
+static/_treeview.json
+
+# Docs & meta (unless explicitly editing)
+CHANGELOG.md
+LICENCE.md
+README.md
+COLLABORATE.md
+
+=== FILE SIZES (TARGET FILES) ===
+ 6867 initialData.ts
+17006 puck.config.tsx
+23873 total
+
+=== GREP FOR REMOTE URLS ===
+
+=== ENVIRONMENT VARIABLES (SANITIZED) ===
+OPENROUTER_API_KEY=REDACTED
+
+=== AWS MCP ENDPOINT TEST (HEADERS ONLY) ===
+HTTP/2 403 
+content-type: application/json
+content-length: 0
+date: Sun, 01 Feb 2026 04:24:51 GMT
+x-amz-apigw-id: YFZPLG00oAMEVCg=
+x-amzn-requestid: c813f108-6317-45e8-894f-2a98c5f8932b
+x-amzn-errortype: MissingAuthenticationTokenException
+x-cache: Error from cloudfront
+via: 1.1 cfd1413b816afd1cf638de6b0a8f9dfc.cloudfront.net (CloudFront)
+x-amz-cf-pop: EZE50-P7
+x-amz-cf-id: 6dQYY8ZjQ_-rMG7WYxY6sdC40CyHvmlK93kqpbMfzYXZqAyKEozvsA==
+
+
+=== LAMBDA PAYLOAD SIZE ESTIMATE ===
+Estimated raw JSON payload size: 24.49 KB
+
+=== DONE ===

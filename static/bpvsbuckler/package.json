@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build": "vite build",
+    "preview": "vite preview",
+    "serve:offline": "npm ci && npm run build && npx serve dist -l 8080"
   },
   "dependencies": {
     "@measured/puck": "^0.16.0",

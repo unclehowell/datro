@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Minimal fallback styles for offline hosting */
+html, body, #root { height: 100%; }
+body { margin: 0; padding: 0; font-family: Inter, system-ui, Arial, sans-serif; background: #f8fafc; color: #0f172a; }
+/* Optional utility-like classes for quick tweaks if needed */
+.font-serif { font-family: Merriweather, serif; }
+.font-sans { font-family: Inter, sans-serif; }
