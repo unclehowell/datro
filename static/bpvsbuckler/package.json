@@ -1,5 +1,5 @@
 {
-  "name": "the-buckler-family-case",
+  "name": "puck-cms-with-gemini-ai",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,11 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@measured/puck": "0.16.0",
-    "lucide-react": "0.344.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-router-dom": "^6.30.3"
+    "@measured/puck": "^0.20.2",
+    "@google/genai": "^1.40.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

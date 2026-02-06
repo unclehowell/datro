@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Puck, Data } from "@measured/puck";
 import config from "../puck.config";
 import { initialData, initialDataPress } from "../initialData";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Editor = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
   const page = searchParams.get("page") === "press" ? "press" : "home";
   
@@ -30,8 +31,30 @@ const Editor = () => {
     alert(`Content for ${page.toUpperCase()} page saved!`);
   };
 
+  // Native Puck integration: header actions slot (Back to Frontend)
+  const extraProps: any = {
+    headerActions: (
+      <button
+        aria-label="Back to Frontend"
+        title="Back to Frontend"
+        onClick={() => navigate('/')}
+        style={{
+          padding: '6px 10px',
+          borderRadius: 6,
+          border: '1px solid #ccc',
+          background: '#fff',
+          cursor: 'pointer',
+          fontSize: 12,
+          marginLeft: 'auto'
+        }}
+      >
+        Back to Frontend
+      </button>
+    )
+  };
+
   return (
-    <div className="puck-editor-container office-editor" aria-label="Puck Editor">
+    <div className="puck-editor-container office-editor" aria-label="Puck Editor" style={{ position: 'relative' }}>
       <div className="puck-toolbar" role="toolbar" aria-label="Editor toolbar">
         <button className="tool" aria-label="Bold">B</button>
         <button className="tool" aria-label="Italic"><em>I</em></button>
@@ -50,6 +73,7 @@ const Editor = () => {
         onPublish={handlePublish}
         headerTitle={`Edit ${page === 'press' ? 'Press Archive' : 'Home Page'}`}
         iframe={{ enabled: false }}
+        {...extraProps}
       />
     </div>
   );

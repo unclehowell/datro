@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ## [0.0.1-rtw.17] - Q1/2026
+Feb-06 - Puck CMS working on bpvsbuckler.datro.xyz webpage in /static/bpvsbuckler/  
 Jan-07 - Didn't work, trying again  
 Jan-06 - Modified static/forces i.e. ceo.datro.xyz to show stripe payments received  
 

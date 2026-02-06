@@ -1,130 +1,718 @@
-import { TimelineEvent, NewspaperArticle, LegalConflict, CoreAllegation } from './types';
+import { Database } from "./types";
 
-export const CORE_ALLEGATIONS: CoreAllegation[] = [
-  {
-    title: "Fraudulent Conveyance",
-    description: "In 1974, BP Properties Ltd offered a license for land they did not yet own. The actual owner was BP Pension Trust Ltd. This 'Two Company' maneuver was used to confuse the legal status."
-  },
-  {
-    title: "Violent Displacement",
-    description: "The 1988 eviction involved bailiffs using chainsaws to cut through barricades while the family was inside. The 800-year-old farmhouse was bulldozed the same night to prevent return."
-  },
-  {
-    title: "Heritage Theft",
-    description: "1994 excavations revealed Celtic burials and a potential monastery site. Artifacts were removed without family consent, violating their rights as long-term custodians."
-  },
-  {
-    title: "Procedural Denial",
-    description: "The adverse possession defense raised in July 1974 was never fully adjudicated. The courts allowed a 12-year-old possession order (1962) to be enforced instead."
-  }
+// --- COMMON CONTENT BLOCKS ---
+const STORY_CONTENT = [
+      {
+        "type": "Hero",
+        "props": {
+          "title": "The Untold Story",
+          "subtitle": "A timeline of possession, betrayal, and erasure.",
+          "backgroundImage": "./farm-house.jpg",
+          "align": "left"
+        }
+      },
+      {
+        "type": "FeatureBlock",
+        "props": {
+          "title": "1215 – 1539: Medieval Origins",
+          "summary": "From Monastic Grange to Crown Property.",
+          "details": "1215 – Great House ('Ty Mawr') Farm House was built next to St St Dochdwy's Church, Llandough.\n\n1215-1539 - Owned by Tewkesbury Abbey / Prior of Cardiff (Ecclesiastical Title).\n\n1539-43 - The Crown (Henry VIII) confiscated the property during the Dissolution.",
+          "inverted": false
+        }
+      },
+      {
+        "type": "FeatureBlock",
+        "props": {
+          "title": "1667: The Williams Era Begins",
+          "summary": "Three centuries of indigenous occupation and de facto ownership.",
+          "details": "1667 – Documented Williams Family Occupation\nWhile the 'Paper Title' (the aristocratic deed) sat gathering dust in the hands of the Earls of Pembroke, the Williamses were the 'Living Title'—they paid the taxes, built the walls, and held the land in honor.\n\nThe Williams family occupied Great House Farm continuously from at least 1667. A 1987 newspaper article quotes Mrs Williams saying it was 'acquired' by the Williams then, suggesting purchase not tenancy. There's no formal land registration at this time; occupation equals de facto possession.",
+          "inverted": true
+        }
+      },
+      {
+        "type": "FeatureBlock",
+        "props": {
+          "title": "1888: The Roman Discovery",
+          "summary": "A Roman soldier found under the floorboards—evidence of ancient history.",
+          "details": "1888 – Williams Family Discover Roman Soldier\nThe Roman soldier in full armor was discovered under the living room floor of Tŷ Mawr (Great House Farm) in 1888. This discovery occurred while the Williams family was replacing the old stone flagstones with a timber floor. This private find happened exactly one hundred years before the house was demolished in 1988.",
+          "inverted": false
+        }
+      },
+      {
+        "type": "FeatureBlock",
+        "props": {
+          "title": "1949-1965: Identity Erasure",
+          "summary": "The invention of 'Mrs. Buckler' to strip family rights.",
+          "details": "\"Identity Erasure\" (The Mrs. Buckler Label)\nHereinafter the court and Western Ground Rents consistently referred to Mary Williams as 'Mrs. Buckler.'\n\nThe Tactic: By addressing her by her husband's name, they stripped her of her connection to the Williams lineage—the very lineage that held the 'grandfather rights' and the Bute/Thomas agreement.",
+          "inverted": true
+        }
+      },
+      {
+        "type": "FeatureBlock",
+        "props": {
+          "title": "1988: Demolition",
+          "summary": "The final act of erasure.",
+          "details": "6 December 1988 – Demolition\nGreat House Farm is demolished, ending centuries of occupation and local heritage presence.\n\nDestruction of Evidence: The farmhouse was demolished in 1988. Proceeding with demolition while a land title dispute was active or without disclosing the 1888 archaeological find could be viewed as an intentional act to 'bury' the legal and historical evidence of the Williams family's rights.",
+          "inverted": true
+        }
+      }
 ];
 
-export const TIMELINE_DATA: TimelineEvent[] = [
-  {
-    year: "1916",
-    title: "Tenancy Begins",
-    description: "Marquis of Bute grants tenancy to John Williams (grandfather of Billy Buckler). Family occupies Great House Farm, Llanharan.",
-    category: "historical",
-    verified: true
+// --- ENGLISH DATABASE ---
+export const DB_EN: Database = {
+  "/": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Great House Farm Campaign",
+                  "subtitle": "Fighting for truth, justice, and the recognition of centuries of history.",
+                  "backgroundImage": "./farm-gate.jpg",
+                  "align": "left"
+              }
+          },
+          {
+              "type": "HeadingBlock",
+              "props": {
+                  "title": "Our Mission",
+                  "level": "h2",
+                  "align": "center"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "A Legacy Erased",
+                  "summary": "For over 300 years, the Williams family held Great House Farm. In 1988, it was demolished.",
+                  "details": "We are dedicated to uncovering the truth about the Great House Farm case. For centuries, the Williams family held the land in honor, only to face erasure through legal maneuvering and corporate power. This website serves as a repository of evidence, personal stories, and the ongoing fight for acknowledgment.",
+                  "inverted": true
+              }
+          },
+          {
+              "type": "Quote",
+              "props": {
+                  "text": "Justice delayed is justice denied. We remember Great House Farm.",
+                  "author": "Campaign Team"
+              }
+          }
+      ],
+      "root": { "props": { "title": "Home" } }
   },
-  {
-    year: "1949",
-    title: "Transfer to Bucklers",
-    description: "Tenancy passes to Frederick Buckler. Last rent payment is made in 1953.",
-    category: "historical",
-    verified: true
+  "/about": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "About Us",
+                  "subtitle": "A community united by heritage and the pursuit of truth.",
+                  "align": "left"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "Who We Are",
+                  "summary": "A collective of family members, historians, and activists.",
+                  "details": "The Great House Farm Campaign is a collective of family members, historians, and community activists dedicated to preserving the memory of Tŷ Mawr and correcting the historical record regarding the Williams family's ownership and the subsequent actions of BP Pension Trust.",
+                  "inverted": false
+              }
+          }
+      ],
+      "root": { "props": { "title": "About Us" } }
   },
-  {
-    year: "1955",
-    title: "Adverse Possession Starts",
-    description: "Tenancy expires. Family remains without permission. Under Limitation Act 1939, 12 years of possession would extinguish landlord title.",
-    category: "legal",
-    verified: true
+  "/story": {
+    "content": STORY_CONTENT,
+    "root": {
+      "props": {
+        "title": "Our Story"
+      }
+    }
   },
-  {
-    year: "1962",
-    title: "Possession Order",
-    description: "Cardiff County Court grants possession order for farmhouse but it is NOT enforced due to Mary Buckler's health.",
-    category: "legal",
-    verified: true
+  "/family-history": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Williams & Buckler History",
+                  "subtitle": "The lineage that held the land for centuries.",
+                  "align": "left"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "The Williams Line",
+                  "summary": "Indigenous occupation since 1667.",
+                  "details": "Tracing the family tree back through parish records and estate surveys reveals an unbroken line of occupation. This page details the lives of the key figures who shaped Great House Farm.",
+                  "inverted": false
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "The Buckler Connection",
+                  "summary": "Joining forces in the 20th Century.",
+                  "details": "How Frederick Buckler married into the Williams family and the subsequent legal complications that arose from the tenancy transfer.",
+                  "inverted": true
+              }
+          }
+      ],
+      "root": { "props": { "title": "Family History" } }
   },
-  {
-    year: "1974",
-    title: "The 'Two Company' Letter",
-    description: "BP Pension Trust (Owner) and BP Properties (Not Owner) send letters. BP Properties offers a license. This creates the legal technicality that defeats the family.",
-    category: "legal",
-    verified: true
+  "/marconi": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "The Marconi Connection",
+                  "subtitle": "Radio history on the farm.",
+                  "align": "left"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "Experimental Transmissions",
+                  "summary": "Great House Farm's role in early radio.",
+                  "details": "Historical evidence suggests that the high ground of the farm was used for early radio experiments linked to Marconi's work in South Wales. We are collating evidence to substantiate these claims.",
+                  "inverted": false
+              }
+          }
+      ],
+      "root": { "props": { "title": "Marconi Connection" } }
   },
-  {
-    year: "1987",
-    title: "Appeal Dismissed",
-    description: "Court of Appeal (BP Properties Ltd v Buckler) rules that the unaccepted license stopped adverse possession. Dillon LJ calls the company ownership issue 'rather technical'.",
-    category: "legal",
-    verified: true
+  "/issues": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Key Issues",
+                  "subtitle": "Systemic failures, legal manipulation, and cultural erasure.",
+                  "align": "left"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "Legal Manipulations",
+                  "summary": "The strategic use of naming and lower courts to bypass justice.",
+                  "details": "The use of the 'Mrs. Buckler' label to erase Mary Williams' identity and the strategic use of lower courts to avoid full title hearings.",
+                  "inverted": true
+              }
+          }
+      ],
+      "root": { "props": { "title": "Issues" } }
   },
-  {
-    year: "1988",
-    title: "The Chainsaw Eviction",
-    description: "Dec 6: Bailiffs use chainsaws to breach the home. Billy Buckler defends with a chainsaw. The family is removed, and the house is demolished immediately.",
-    category: "eviction",
-    verified: true
+  "/timeline": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Timeline",
+                  "subtitle": "800 Years of History vs 40 Years of Erasure",
+                  "align": "center"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "Key Dates",
+                  "summary": "From 1215 to the present day.",
+                  "details": "**1215** - Construction of Tŷ Mawr\n\n**1667** - Williams Family Occupation Begins\n\n**1988** - Demolition of Great House Farm",
+                  "inverted": true
+              }
+          }
+      ],
+      "root": { "props": { "title": "Timeline" } }
   },
-  {
-    year: "1994",
-    title: "Archaeological Discovery",
-    description: "Excavations reveal 1,026 burials and early Christian artifacts. Confirms the site's massive historical significance, now lost to the family.",
-    category: "archaeology",
-    verified: true
+  "/evidence": {
+      "content": [
+           {
+              "type": "Hero",
+              "props": {
+                  "title": "Evidence Archive",
+                  "subtitle": "Documents, Maps, and Testimonies that prove our claim.",
+                  "align": "left"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "Legal Documents",
+                  "summary": "Court orders, letters, and the missing deeds.",
+                  "details": "Digitized copies of relevant legal documents.",
+                  "inverted": false
+              }
+          }
+      ],
+      "root": { "props": { "title": "Evidence" } }
+  },
+  "/contact": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Get in Touch",
+                  "subtitle": "Join the campaign or share information.",
+                  "align": "center"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "Contact Us",
+                  "summary": "Reach out to the team.",
+                  "details": "Email: contact@greathousefarm.org",
+                  "inverted": true
+              }
+          }
+      ],
+      "root": { "props": { "title": "Get in Touch" } }
+  },
+  "/latest": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Latest News",
+                  "subtitle": "Recent developments in the campaign.",
+                  "align": "left"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "New Witness Testimony",
+                  "summary": "Breaking developments regarding the 1974 petition.",
+                  "details": "We have received new written testimony regarding the 1974 petition, confirming the public support for the family at the time.",
+                  "inverted": false
+              }
+          }
+      ],
+      "root": { "props": { "title": "Latest" } }
+  },
+  "/writings/newsletter": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Newsletter",
+                  "subtitle": "Updates on our campaign and community action.",
+                  "align": "center"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "March 2024 Update",
+                  "summary": "The Search for Deeds.",
+                  "details": "We have launched a new initiative to locate the missing Bute Estate deeds from the Cardiff Library archives.",
+                  "inverted": true
+              }
+          }
+      ],
+      "root": { "props": { "title": "Newsletter" } }
+  },
+  "/writings/sion": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Sion's Story",
+                  "subtitle": "Reflections on a lost heritage.",
+                  "align": "left"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "Living History",
+                  "summary": "Growing up with the ghosts of the past.",
+                  "details": "Growing up, the stories of the farm were not just history—they were our identity.",
+                  "inverted": false
+              }
+          }
+      ],
+      "root": { "props": { "title": "Sion's Story" } }
+  },
+  "/writings/david": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "David's Story",
+                  "subtitle": "The legal betrayal and the fight for answers.",
+                  "align": "left"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "A Father's Silence",
+                  "summary": "The burden of the legal battle.",
+                  "details": "My father always believed that the legal matters had been settled.",
+                  "inverted": true
+              }
+          }
+      ],
+      "root": { "props": { "title": "David's Story" } }
+  },
+  "/gallery": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Visual Archive",
+                  "subtitle": "Documenting the physical history of Great House Farm.",
+                  "align": "center"
+              }
+          },
+          {
+              "type": "ImageGrid",
+              "props": {
+                  "title": "Featured Images",
+                  "items": [
+                      { "caption": "The Farmhouse c. 1950", "alt": "Old black and white photo", "src": "./farm-house.jpg" },
+                      { "caption": "Mary Williams in the Garden", "alt": "Woman in garden" },
+                      { "caption": "The 1988 Demolition", "alt": "Bulldozers on site" }
+                  ]
+              }
+          }
+      ],
+      "root": { "props": { "title": "Gallery" } }
+  },
+  "/gallery/historical": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Historical Gallery",
+                  "subtitle": "Life at the farm through the centuries.",
+                  "align": "left"
+              }
+          },
+          {
+              "type": "ImageGrid",
+              "props": {
+                  "title": "19th & 20th Century",
+                  "items": [
+                      { "caption": "The Great Hall", "alt": "Interior shot" },
+                      { "caption": "Harvest 1920", "alt": "Workers in field" }
+                  ]
+              }
+          }
+      ],
+      "root": { "props": { "title": "Historical Gallery" } }
+  },
+  "/gallery/excavations": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Excavations",
+                  "subtitle": "The 1978 and 1994 digs that proved us right.",
+                  "align": "left"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "The 1994 Report",
+                  "summary": "Evidence of over 800 burials.",
+                  "details": "The Cotswold Archaeological Trust conducts excavations revealing a monastic cemetery with 800+ burials prior to development.",
+                  "inverted": false
+              }
+          }
+      ],
+      "root": { "props": { "title": "Excavations Gallery" } }
+  },
+  "/gallery/family": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Family Archive",
+                  "subtitle": "The people behind the possession.",
+                  "align": "left"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "The Williams Lineage",
+                  "summary": "Portraits and candid photos.",
+                  "details": "Photos of Mary Williams, Frederick Buckler, and the children who grew up within the walls of Tŷ Mawr.",
+                  "inverted": true
+              }
+          }
+      ],
+      "root": { "props": { "title": "Family Gallery" } }
+  },
+  "/ghf-2-0": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Great House Farm 2.0",
+                  "subtitle": "Rebuilding heritage in the Welsh Settlement, Patagonia.",
+                  "align": "center"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "A Replica in Patagonia",
+                  "summary": "Sion Buckler's visionary project.",
+                  "details": "Great House Farm 2.0 is a full-scale replica of the original Tŷ Mawr, currently being developed at the Welsh Settlement in Patagonia, Argentina.",
+                  "inverted": false
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "Guided Tours",
+                  "summary": "Experience the story firsthand.",
+                  "details": "Once completed, Great House Farm 2.0 will be open to the public. Guided tours will walk visitors through the entire story.",
+                  "inverted": true
+              }
+          }
+      ],
+      "root": { "props": { "title": "GHF 2.0" } }
+  },
+  "/support": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Support Our Cause",
+                  "subtitle": "Help us fund the legal fight and the rebuilding project.",
+                  "align": "center"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "Why We Need You",
+                  "summary": "Fighting corporate power requires resources.",
+                  "details": "Your support funds the ongoing legal research.",
+                  "inverted": false
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "Ways to Give",
+                  "summary": "Donate, Share, Volunteer.",
+                  "details": "We are accepting donations.",
+                  "inverted": true
+              }
+          }
+      ],
+      "root": { "props": { "title": "Support" } }
+  },
+  "/brand": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Brand Guidelines",
+                  "subtitle": "Using the Great House Farm Identity.",
+                  "align": "left"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "Colors & Logos",
+                  "summary": "Grenfell Green (#009A49) and the Welsh Dragon.",
+                  "details": "Our visual identity represents our Welsh heritage and our fight for the land. Please use our official assets when linking to our campaign.",
+                  "inverted": false
+              }
+          }
+      ],
+      "root": { "props": { "title": "Brand Guidelines" } }
+  },
+  "/press": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Press Resources",
+                  "subtitle": "Media kits and contact info for journalists.",
+                  "align": "left"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "Press Contact",
+                  "summary": "For inquiries and interviews.",
+                  "details": "Email press@greathousefarm.org for statements and high-resolution images.",
+                  "inverted": false
+              }
+          }
+      ],
+      "root": { "props": { "title": "Press" } }
+  },
+  "/act": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Take Action",
+                  "subtitle": "Demand a Public Inquiry.",
+                  "align": "center"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "Write to the Senedd",
+                  "summary": "Use our template to email your representative.",
+                  "details": "To: Correspondence.Senedd@gov.wales\n\nSubject: Public Inquiry into Great House Farm Demolition\n\nDear Member of the Senedd,\n\nI am writing to urge you to support a public inquiry into the demolition of Great House Farm (Tŷ Mawr) in 1988 and the treatment of the Williams/Buckler family. The historical and archaeological significance of this site was ignored, and justice has yet to be served.\n\nSincerely,\n[Your Name]",
+                  "inverted": true
+              }
+          }
+      ],
+      "root": { "props": { "title": "Take Action" } }
+  },
+  "/shop": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Campaign Shop",
+                  "subtitle": "Merchandise that supports the cause.",
+                  "align": "center"
+              }
+          },
+          {
+              "type": "ProductGrid",
+              "props": {
+                  "title": "Official Merchandise",
+                  "items": [
+                      { "name": "Justice Mug", "price": "£12.00", "description": "Ceramic mug with GHF Logo.", "buyLink": "#" },
+                      { "name": "T-Shirt (S-XL)", "price": "£25.00", "description": "100% Cotton. Black with Green Print.", "buyLink": "#" },
+                      { "name": "Patagonia Tote", "price": "£15.00", "description": "Supporting the rebuild project.", "buyLink": "#" }
+                  ]
+              }
+          }
+      ],
+      "root": { "props": { "title": "Shop" } }
   }
-];
+};
 
-export const LEGAL_CONFLICTS: LegalConflict[] = [
-  {
-    title: "The 'License' Trap",
-    officialNarrative: "The Court of Appeal ruled that because BP offered a license in 1974, Mrs. Buckler was no longer an adverse possessor, even if she didn't sign it.",
-    familyReality: "Mrs. Buckler repeatedly told them 'It's my land' and rejected their permission. You cannot force a license on someone claiming ownership.",
-    verdict: "Legal Precedent Set. While morally questionable to force a license on an unwilling recipient, *BP v Buckler* became the binding authority that a unilateral license stops the clock on adverse possession.",
-    status: "resolved"
+// --- WELSH DATABASE (DEFAULT) ---
+// Note: In a real scenario, full translation would be applied. 
+// Here we translate Titles and Summaries to demonstrate the feature.
+export const DB_CY: Database = {
+  ...DB_EN,
+  "/": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Ymgyrch Fferm y Tŷ Mawr",
+                  "subtitle": "Yn ymladd dros y gwir, cyfiawnder, a chydnabyddiaeth o ganrifoedd o hanes.",
+                  "backgroundImage": "./farm-gate.jpg",
+                  "align": "left"
+              }
+          },
+          {
+              "type": "HeadingBlock",
+              "props": {
+                  "title": "Ein Cenhadaeth",
+                  "level": "h2",
+                  "align": "center"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "Treftadaeth a Ddilëwyd",
+                  "summary": "Am dros 300 mlynedd, roedd teulu Williams yn dal Fferm y Tŷ Mawr. Ym 1988, cafodd ei dymchwel.",
+                  "details": "Rydym wedi ymrwymo i ddatgelu'r gwir am achos Fferm y Tŷ Mawr. Am ganrifoedd, daliodd teulu Williams y tir mewn anrhydedd, dim ond i wynebu dileu trwy driciau cyfreithiol a phŵer corfforaethol. Mae'r wefan hon yn gweithredu fel storfa o dystiolaeth, straeon personol, a'r frwydr barhaus am gydnabyddiaeth.",
+                  "inverted": true
+              }
+          },
+          {
+              "type": "Quote",
+              "props": {
+                  "text": "Mae cyfiawnder a oediwyd yn gyfiawnder a wadwyd. Rydym yn cofio Fferm y Tŷ Mawr.",
+                  "author": "Tîm yr Ymgyrch"
+              }
+          }
+      ],
+      "root": { "props": { "title": "Hafan" } }
   },
-  {
-    title: "The Two Companies",
-    officialNarrative: "The distinction between BP Pension Trust (owner) and BP Properties (license giver) was a 'technical point' that did not invalidate the proceedings.",
-    familyReality: "It was fraud. BP Properties had no right to grant a license for land they didn't own until 1975. They used the wrong letterhead to trick the legal process.",
-    verdict: "Procedural Irregularity. The facts confirm BP Properties did not own the land when the letter was sent. However, the courts chose to ignore this corporate distinction to facilitate the eviction.",
-    status: "suppressed"
+  "/about": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Amdanom Ni",
+                  "subtitle": "Cymuned wedi'i huno gan dreftadaeth a cheisio'r gwir.",
+                  "align": "left"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "Pwy Ydym Ni",
+                  "summary": "Casgliad o aelodau'r teulu, haneswyr, ac ymgyrchwyr.",
+                  "details": "Mae Ymgyrch Fferm y Tŷ Mawr yn gasgliad o aelodau'r teulu, haneswyr, ac ymgyrchwyr cymunedol sy'n ymroddedig i warchod cof Tŷ Mawr a chywiro'r cofnod hanesyddol ynghylch perchnogaeth teulu Williams a gweithredoedd dilynol Ymddiriedolaeth Pensiwn BP.",
+                  "inverted": false
+              }
+          }
+      ],
+      "root": { "props": { "title": "Amdanom Ni" } }
   },
-  {
-    title: "Human Rights (Article 8)",
-    officialNarrative: "The eviction was a lawful execution of a court order for possession.",
-    familyReality: "Violent displacement using chainsaws against a family with children, followed by immediate demolition to prevent return, violated the Right to Respect for Home.",
-    verdict: "Violation Likely. The immediacy of the demolition (preventing re-entry) and the scale of force used would likely contravene modern interpretations of ECHR Article 8, though the HRA was not yet domestic law in 1988.",
-    status: "unresolved"
+  "/act": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Gweithredwch",
+                  "subtitle": "Mynnwch Ymchwiliad Cyhoeddus.",
+                  "align": "center"
+              }
+          },
+          {
+              "type": "FeatureBlock",
+              "props": {
+                  "title": "Ysgrifennwch at y Senedd",
+                  "summary": "Defnyddiwch ein templed i e-bostio eich cynrychiolydd.",
+                  "details": "At: Correspondence.Senedd@gov.wales\n\nPwnc: Ymchwiliad Cyhoeddus i Ddymchwel Fferm y Tŷ Mawr\n\nAnnwyl Aelod o'r Senedd,\n\nYsgrifennaf i'ch annog i gefnogi ymchwiliad cyhoeddus i ddymchwel Fferm y Tŷ Mawr ym 1988 a thriniaeth teulu Williams/Buckler. Anwybyddwyd arwyddocâd hanesyddol ac archeolegol y safle hwn, ac nid yw cyfiawnder wedi'i wasanaethu eto.\n\nYn gywir,\n[Eich Enw]",
+                  "inverted": true
+              }
+          }
+      ],
+      "root": { "props": { "title": "Gweithredwch" } }
+  },
+  "/shop": {
+      "content": [
+          {
+              "type": "Hero",
+              "props": {
+                  "title": "Siop yr Ymgyrch",
+                  "subtitle": "Nwyddau sy'n cefnogi'r achos.",
+                  "align": "center"
+              }
+          },
+          {
+              "type": "ProductGrid",
+              "props": {
+                  "title": "Nwyddau Swyddogol",
+                  "items": [
+                      { "name": "Mwgn Cyfiawnder", "price": "£12.00", "description": "Mwgn ceramig gyda Logo GHF.", "buyLink": "#" },
+                      { "name": "Crys-T (S-XL)", "price": "£25.00", "description": "Cotwm 100%. Du gyda Phrint Gwyrdd.", "buyLink": "#" },
+                      { "name": "Bag Patagonia", "price": "£15.00", "description": "Cefnogi'r prosiect ailadeiladu.", "buyLink": "#" }
+                  ]
+              }
+          }
+      ],
+      "root": { "props": { "title": "Siop" } }
   }
-];
+};
 
-export const NEWSPAPER_ARTICLES: NewspaperArticle[] = [
-  {
-    id: "1",
-    title: "Chainsaw Farmer Vows to Fight On",
-    source: "South Wales Echo",
-    date: "Dec 1988",
-    content: "A farmer who beat-off bailiffs with a chainsaw last night vowed to continue his defiant fight... 'I am here to stay and I will fight this to the death,' said Mr Bill Buckler.",
-    context: "Confirmed: The use of chainsaws by both bailiffs and the defender highlights the violent nature of the displacement."
-  },
-  {
-    id: "2",
-    title: "Farmer Fails in Final Eviction Hearing",
-    source: "Western Mail",
-    date: "6 Dec 1988",
-    content: "Documents final court hearing, subsequent demolition. Notes European Court did not intervene, farmhouse would be demolished.",
-    context: "The demolition occurred immediately after eviction, a tactic to ensure the 'possession' was irreversible."
-  },
-  {
-    id: "3",
-    title: "Open Day to Save Ancient Welsh House",
-    source: "Archive (Pre-1988)",
-    date: "Pre-Demolition",
-    content: "Describes Great House Farm as potentially 'one of most important missioning centers in early Christianity in Morgannwg'.",
-    context: "This proves the historical value was known BEFORE the demolition, supporting the claim of willful heritage destruction."
-  }
-];
+export const INITIAL_DATA = DB_CY;
