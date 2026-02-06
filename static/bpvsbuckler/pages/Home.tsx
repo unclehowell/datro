@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Render, Data } from "@puckeditor/core";
+import { Render, Data } from "@measured/puck";
 import config from "../puck.config";
 import { initialData } from "../initialData";
 import { Link } from 'react-router-dom';
@@ -10,12 +10,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const saved = localStorage.getItem("puck-data");
     if (saved) {
-      try {
-        setData(JSON.parse(saved));
-      } catch (e) {
-        console.error("Failed to parse puck data for home", e);
-        setData(initialData);
-      }
+      setData(JSON.parse(saved));
     } else {
       setData(initialData);
     }

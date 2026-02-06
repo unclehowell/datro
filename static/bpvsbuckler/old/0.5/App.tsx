@@ -8,7 +8,8 @@ import EvidencePage from './pages/EvidencePage';
 import ActionPage from './pages/ActionPage';
 import PressPage from './pages/PressPage';
 import LawsuitPage from './pages/LawsuitPage';
-import Editor from './pages/Editor';
+import AnalysisPage from './pages/AnalysisPage';
+const Editor = React.lazy(() => import('./pages/Editor'));
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -39,16 +40,19 @@ function App() {
       {!isEditor && <Navbar />}
       
       <main className={isEditor ? "" : "flex-grow"}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/timeline" element={<TimelinePage />} />
-          <Route path="/legal" element={<LegalPage />} />
-          <Route path="/evidence" element={<EvidencePage />} />
-          <Route path="/action" element={<ActionPage />} />
-          <Route path="/press" element={<PressPage />} />
-          <Route path="/lawsuit" element={<LawsuitPage />} />
-          <Route path="/edit" element={<Editor />} />
-        </Routes>
+        <React.Suspense fallback={<div>Loading editor...</div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/timeline" element={<TimelinePage />} />
+            <Route path="/legal" element={<LegalPage />} />
+            <Route path="/evidence" element={<EvidencePage />} />
+            <Route path="/action" element={<ActionPage />} />
+            <Route path="/press" element={<PressPage />} />
+            <Route path="/lawsuit" element={<LawsuitPage />} />
+            <Route path="/analysis" element={<AnalysisPage />} />
+            <Route path="/edit" element={<Editor />} />
+          </Routes>
+        </React.Suspense>
       </main>
       
       {!isEditor && <Footer />}

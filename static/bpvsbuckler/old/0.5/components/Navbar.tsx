@@ -1,23 +1,24 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Warehouse, History, FileText, Newspaper, Gavel, Edit, Scale } from 'lucide-react';
+import { Warehouse, History, Newspaper, Gavel, Edit, Scale, BookOpen } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
   const isActive = (path: string) => location.pathname === path;
 
-  // Determine which page to edit based on current route
+  // Route to in-app editor to enable offline usage with puck CMS
+  // HashRouter will translate this to the client-side /edit view
   const getEditLink = () => {
-    if (location.pathname === '/press') return '/edit?page=press';
-    return '/edit?page=home';
+    return '/edit';
   };
 
   const navItems = [
     { name: 'Investigation', path: '/', icon: Warehouse },
     { name: 'Timeline', path: '/timeline', icon: History },
     { name: 'Lawsuit', path: '/lawsuit', icon: Scale },
+    { name: 'Case Analysis', path: '/analysis', icon: BookOpen },
     { name: 'Press', path: '/press', icon: Newspaper },
-    { name: 'Legal Analysis', path: '/legal', icon: Gavel },
+    { name: 'Legal Malfeasance', path: '/legal', icon: Gavel },
   ];
 
   return (
@@ -38,7 +39,7 @@ const Navbar: React.FC = () => {
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`flex items-center gap-2 px-4 py-2 rounded text-xs font-bold uppercase tracking-wide transition-all ${
+                  className={`flex items-center gap-2 px-3 py-2 rounded text-[11px] lg:text-xs font-bold uppercase tracking-wide transition-all ${
                     isActive(item.path)
                       ? 'bg-slate-800 text-white border-b-2 border-justice-red'
                       : 'text-slate-400 hover:text-white hover:bg-slate-800'

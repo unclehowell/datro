@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Render, Data } from "@puckeditor/core";
+import { Render, Data } from "@measured/puck";
 import config from "../puck.config";
 import { initialDataPress } from "../initialData";
 
@@ -9,12 +9,7 @@ const PressPage: React.FC = () => {
   useEffect(() => {
     const saved = localStorage.getItem("puck-data-press");
     if (saved) {
-      try {
-        setData(JSON.parse(saved));
-      } catch (e) {
-        console.error("Failed to parse puck data for press", e);
-        setData(initialDataPress);
-      }
+      setData(JSON.parse(saved));
     } else {
       setData(initialDataPress);
     }
