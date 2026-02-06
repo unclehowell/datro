@@ -10,7 +10,8 @@
     "serve:offline": "npm ci && npm run build && npx serve dist -l 8080"
   },
   "dependencies": {
-    "@measured/puck": "^0.16.0",
+    "@measured/puck": "^0.20.2",
+    "@puckeditor/core": "^0.21.1",
     "lucide-react": "^0.344.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",

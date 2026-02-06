@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Render, Data } from "@measured/puck";
+import { Render, Data } from "@puckeditor/core";
 import config from "../puck.config";
 import { initialDataPress } from "../initialData";
 
