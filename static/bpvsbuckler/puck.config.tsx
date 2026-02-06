@@ -1,355 +1,312 @@
-import React from "react";
-import { Config, DropZone } from "@measured/puck";
-import { Scale, AlertTriangle, ArrowRight, BookOpen, Search, ShieldAlert, Clapperboard, Gavel, Newspaper } from "lucide-react";
-import { Link } from "react-router-dom";
-import { CORE_ALLEGATIONS, LEGAL_CONFLICTS } from "./constants";
+import React, { useState } from 'react';
+import type { Config } from "@measured/puck";
+import { HeadingBlockProps, TextBlockProps, HeroProps, QuoteProps, FeatureBlockProps, ImageGridProps, ProductGridProps } from './types';
+import { generatePuckContent } from './services/geminiService';
 
-export type Props = {
-  Hero: { title: string; subtitle: string; imageUrl: string; badge: string };
-  Section: { title: string; subtitle: string; background: "white" | "slate" | "dark" };
-  RichText: { content: string };
-  ConflictResolver: {};
-  AllegationsGrid: {};
-  EvidenceShowcase: { title: string; summary: string };
-  Button: { label: string; href: string; variant: "primary" | "outline" };
-  InvestigationBoard: { title: string };
-  AnnouncementBanner: { title: string; type: "book" | "legal" };
-  PressGrid: { 
-    articles: { 
-      title: string; 
-      source: string; 
-      date: string; 
-      summary: string;
-      imageUrl?: string;
-    }[] 
-  };
+// Grenfell Green: #009A49
+
+// Helper component for the FeatureBlock to handle state
+const FeatureBlockRender = ({ title, summary, details, inverted }: FeatureBlockProps) => {
+    const [expanded, setExpanded] = useState(false);
+    
+    const bgColor = inverted ? 'bg-white' : 'bg-stone-900';
+    const textColor = inverted ? 'text-stone-900' : 'text-white';
+    const titleColor = inverted ? 'text-[#009A49]' : 'text-[#009A49]';
+    const summaryColor = inverted ? 'text-stone-600' : 'text-stone-300';
+    const detailsBg = inverted ? 'bg-stone-50' : 'bg-stone-800';
+    const detailsText = inverted ? 'text-stone-800' : 'text-stone-200';
+
+    return (
+        <section className={`py-12 px-6 sm:px-12 border-b border-stone-800 ${bgColor} transition-colors duration-500`}>
+            <div className="max-w-6xl mx-auto">
+                <h2 className={`text-4xl sm:text-6xl font-black mb-6 tracking-tighter uppercase leading-none ${titleColor}`}>
+                    {title}
+                </h2>
+                <p className={`text-xl sm:text-3xl font-bold mb-8 leading-tight max-w-4xl ${textColor}`}>
+                    {summary}
+                </p>
+                
+                {!expanded ? (
+                    <button 
+                        onClick={() => setExpanded(true)}
+                        className="group flex items-center gap-3 text-lg font-bold uppercase tracking-widest text-[#009A49] hover:text-[#00C960] transition-colors"
+                    >
+                        <span>Read More</span>
+                        <div className="bg-[#009A49] h-0.5 w-12 group-hover:w-20 transition-all duration-300"></div>
+                    </button>
+                ) : (
+                     <div className={`mt-8 p-8 rounded-none border-l-4 border-[#009A49] animate-fade-in ${detailsBg}`}>
+                        <div className={`prose prose-xl max-w-none ${detailsText} prose-headings:font-bold prose-headings:text-[#009A49] prose-p:leading-relaxed`}>
+                             {/* Simple markdown-like rendering for line breaks */}
+                             {details.split('\n').map((line, i) => (
+                                 <p key={i} className="mb-4">{line}</p>
+                             ))}
+                        </div>
+                        <button 
+                            onClick={() => setExpanded(false)}
+                            className="mt-8 text-sm font-bold uppercase tracking-widest text-[#009A49] hover:underline"
+                        >
+                            Close Details
+                        </button>
+                    </div>
+                )}
+            </div>
+        </section>
+    );
 };
 
-export const config: Config<Props> = {
-  categories: {
-    layout: { components: ["Section"] },
-    content: { components: ["Hero", "RichText", "ConflictResolver", "AllegationsGrid", "EvidenceShowcase", "Button", "InvestigationBoard", "AnnouncementBanner", "PressGrid"] },
-  },
+export const config: Config<{
+  Hero: HeroProps;
+  HeadingBlock: HeadingBlockProps;
+  TextBlock: TextBlockProps;
+  Quote: QuoteProps;
+  FeatureBlock: FeatureBlockProps;
+  ImageGrid: ImageGridProps;
+  ProductGrid: ProductGridProps;
+}> = {
   components: {
     Hero: {
       fields: {
         title: { type: "text" },
-        subtitle: { type: "text" },
-        imageUrl: { type: "text" },
-        badge: { type: "text" },
+        subtitle: { type: "textarea" },
+        backgroundImage: { type: "text" },
+        align: {
+          type: "radio",
+          options: [
+            { label: "Left", value: "left" },
+            { label: "Center", value: "center" },
+          ],
+        },
       },
       defaultProps: {
-        title: "Great House Farm",
-        subtitle: "The accurate account of how an 800-year-old historic site was seized and destroyed.",
-        badge: "OPEN INVESTIGATION",
-        imageUrl: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=2000",
+        title: "Justice for Great House Farm",
+        subtitle: "Uncovering the truth behind the history.",
+        align: "left",
       },
-      render: ({ title, subtitle, imageUrl, badge }) => (
-        <div className="relative bg-slate-900 text-white min-h-[80vh] flex items-center">
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/40 z-10"></div>
-            <img 
-              src={imageUrl} 
-              alt="Background" 
-              className="w-full h-full object-cover grayscale opacity-40"
-            />
-          </div>
-          <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 w-full pt-20">
-            <span className="inline-block px-3 py-1 border border-red-500 text-red-400 text-xs font-bold tracking-widest mb-6">
-              {badge}
-            </span>
-            <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 tracking-tight leading-none max-w-4xl">
-              {title}
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-300 max-w-2xl font-light leading-relaxed mb-10 border-l-4 border-justice-red pl-6">
-              {subtitle}
-            </p>
-            <div className="flex flex-wrap gap-4">
-               <Link to="/timeline" className="bg-justice-red hover:bg-red-800 text-white px-8 py-3 rounded text-sm font-bold uppercase tracking-wider transition-all">
-                 View Timeline
-               </Link>
-               <Link to="/lawsuit" className="border border-slate-500 hover:border-white text-slate-300 hover:text-white px-8 py-3 rounded text-sm font-bold uppercase tracking-wider transition-all">
-                 The Lawsuit
-               </Link>
-            </div>
-          </div>
-        </div>
+      render: ({ title, subtitle, backgroundImage, align }) => (
+        <section 
+            className={`relative bg-black text-white py-32 px-6 sm:px-12 border-b-8 border-[#009A49] ${align === 'center' ? 'text-center' : 'text-left'}`}
+            style={backgroundImage ? { 
+                backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(${backgroundImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+            } : {}}
+        >
+           <div className="max-w-7xl mx-auto">
+              <h1 className="text-6xl sm:text-8xl font-black tracking-tighter mb-8 leading-none uppercase drop-shadow-lg">
+                {title}
+              </h1>
+              {subtitle && (
+                <p className="text-2xl sm:text-4xl text-[#009A49] font-bold max-w-5xl leading-tight drop-shadow-md">
+                  {subtitle}
+                </p>
+              )}
+           </div>
+        </section>
       ),
     },
-    Section: {
-      fields: {
-        title: { type: "text" },
-        subtitle: { type: "text" },
-        background: { 
-            type: "select", 
-            options: [
-                { label: "White", value: "white" },
-                { label: "Slate", value: "slate" },
-                { label: "Dark", value: "dark" }
-            ] 
-        }
-      },
-      defaultProps: {
-        title: "Section Title",
-        subtitle: "",
-        background: "white"
-      },
-      render: ({ title, subtitle, background }) => {
-        const bgClass = {
-            white: "bg-white text-slate-900",
-            slate: "bg-slate-50 text-slate-800",
-            dark: "bg-slate-900 text-white"
-        }[background];
-
-        return (
-            <section className={`py-16 md:py-24 ${bgClass}`}>
-              <div className="max-w-5xl mx-auto px-4 sm:px-6">
-                {(title || subtitle) && (
-                  <div className="mb-16">
-                    {title && <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4">{title}</h2>}
-                    <div className="h-1 w-20 bg-justice-red mb-6"></div>
-                    {subtitle && <p className="text-lg opacity-80 max-w-3xl leading-relaxed font-serif">{subtitle}</p>}
-                  </div>
-                )}
-                <DropZone zone="content" />
-              </div>
-            </section>
-        );
-      },
-    },
-    AnnouncementBanner: {
-      fields: {
-        title: { type: "text" },
-        type: {
-             type: "radio", 
-             options: [{ label: "Book/Movie", value: "book" }, { label: "Legal", value: "legal" }] 
-        }
-      },
-      defaultProps: {
-        title: "Documentary & Book In Progress",
-        type: "book"
-      },
-      render: ({ title, type }) => (
-        <div className={`p-6 rounded-lg mb-8 flex items-center gap-6 border-l-4 ${type === 'legal' ? 'bg-slate-800 text-white border-justice-red' : 'bg-amber-50 text-amber-900 border-amber-500'}`}>
-            <div className={`p-3 rounded-full ${type === 'legal' ? 'bg-justice-red' : 'bg-amber-200 text-amber-800'}`}>
-                {type === 'legal' ? <Gavel size={24} /> : <Clapperboard size={24} />}
-            </div>
-            <div>
-                <h4 className="font-bold text-xs uppercase tracking-widest opacity-70 mb-1">
-                    {type === 'legal' ? 'Legal Update' : 'Media Announcement'}
-                </h4>
-                <h3 className="text-xl font-bold font-serif">{title}</h3>
-            </div>
-        </div>
-      )
-    },
-    InvestigationBoard: {
+    FeatureBlock: {
         fields: {
-            title: { type: "text" }
+            title: { type: "text" },
+            summary: { type: "textarea" },
+            details: { type: "textarea" },
+            inverted: { type: "radio", options: [{ label: "No (Dark)", value: false }, { label: "Yes (Light)", value: true }] }
         },
         defaultProps: {
-            title: "Institutional Failures"
+            title: "Headline",
+            summary: "A short, punchy summary of the section.",
+            details: "Full details go here...",
+            inverted: false
         },
-        render: ({ title }) => (
-            <div className="bg-slate-100 p-8 rounded-xl border border-slate-200">
-                <h3 className="text-2xl font-serif font-bold mb-6 text-slate-900 flex items-center gap-2">
-                    <AlertTriangle className="text-justice-red" /> {title}
-                </h3>
-                <div className="grid md:grid-cols-3 gap-6">
-                    <div className="bg-white p-6 rounded shadow-sm">
-                        <h4 className="font-bold text-slate-900 mb-2 border-b pb-2">CADW (Heritage)</h4>
-                        <p className="text-sm text-slate-600">Failed to list Great House Farm despite its 800-year history and known archaeological potential. A Grade II listing would have prevented immediate demolition.</p>
-                    </div>
-                    <div className="bg-white p-6 rounded shadow-sm">
-                        <h4 className="font-bold text-slate-900 mb-2 border-b pb-2">UK Government</h4>
-                        <p className="text-sm text-slate-600">Courts dismissed the "Two Company" fraud as a technicality and failed to protect the family under emerging Human Rights principles.</p>
-                    </div>
-                    <div className="bg-white p-6 rounded shadow-sm">
-                        <h4 className="font-bold text-slate-900 mb-2 border-b pb-2">The Press (1970s)</h4>
-                        <p className="text-sm text-slate-600">Contemporary reports were suppressed or nonexistent during the critical 1974 period, despite the judgment later claiming a "press campaign".</p>
+        render: (props) => <FeatureBlockRender {...props} />
+    },
+    ImageGrid: {
+        fields: {
+            title: { type: "text" },
+            items: { 
+                type: "array",
+                getItemSummary: (item) => item.caption || "Image",
+                arrayFields: {
+                    src: { type: "text" },
+                    caption: { type: "text" },
+                    alt: { type: "text" }
+                }
+            }
+        },
+        defaultProps: {
+            title: "Gallery",
+            items: [
+                { caption: "Great House Farm c. 1900", alt: "Historic photo", src: "./farm-house.jpg" },
+                { caption: "The Excavation Site 1994", alt: "Dig site" },
+                { caption: "Family Portrait", alt: "The Williams Family" }
+            ]
+        },
+        render: ({ title, items }) => (
+            <div className="py-12 px-6 bg-stone-900 border-b border-stone-800">
+                <div className="max-w-6xl mx-auto">
+                    <h3 className="text-3xl font-black text-white mb-8 uppercase tracking-tight">{title}</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {items.map((item, i) => (
+                            <div key={i} className="group relative aspect-video bg-stone-800 border border-stone-700 hover:border-[#009A49] transition-all cursor-pointer overflow-hidden">
+                                {item.src ? (
+                                    <img src={item.src} alt={item.alt} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
+                                ) : (
+                                    <div className="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-10 transition-opacity">
+                                        <svg className="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                    </div>
+                                )}
+                                <div className="absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-t from-black via-transparent to-transparent">
+                                    <span className="text-white font-bold uppercase tracking-wider text-sm">{item.caption}</span>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
         )
     },
-    PressGrid: {
+    ProductGrid: {
         fields: {
-            articles: {
+            title: { type: "text" },
+            items: {
                 type: "array",
-                getItemSummary: (item) => item.title || "New Article",
+                getItemSummary: (item) => item.name || "Product",
                 arrayFields: {
-                    title: { type: "text" },
-                    source: { type: "text" },
-                    date: { type: "text" },
-                    summary: { type: "textarea" },
-                    imageUrl: { type: "text" }
+                    name: { type: "text" },
+                    price: { type: "text" },
+                    description: { type: "textarea" },
+                    image: { type: "text" },
+                    buyLink: { type: "text" }
                 }
             }
         },
         defaultProps: {
-            articles: [
-                {
-                    title: "Chainsaw Farmer Vows to Fight On",
-                    source: "South Wales Echo",
-                    date: "Dec 1988",
-                    summary: "A farmer who beat-off bailiffs with a chainsaw last night vowed to continue his defiant fight.",
-                    imageUrl: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80&w=400"
-                }
+            title: "Merchandise",
+            items: [
+                { name: "Support Mug", price: "£12.00", description: "Start your day with justice.", image: "" },
+                { name: "Campaign T-Shirt", price: "£25.00", description: "Wear the cause.", image: "" }
             ]
         },
-        render: ({ articles }) => (
-            <div className="grid md:grid-cols-2 gap-8">
-                {articles.map((article, i) => (
-                    <div key={i} className="bg-white border border-slate-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                        {article.imageUrl && (
-                            <div className="h-48 overflow-hidden bg-slate-100 relative">
-                                <img src={article.imageUrl} alt={article.title} className="w-full h-full object-cover" />
-                                <div className="absolute top-0 right-0 bg-justice-red text-white text-xs font-bold px-3 py-1">
-                                    {article.source}
+        render: ({ title, items }) => (
+            <div className="py-16 px-6 bg-stone-100">
+                <div className="max-w-6xl mx-auto">
+                    <h2 className="text-4xl font-black text-stone-900 mb-12 uppercase tracking-tight text-center">{title}</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {items.map((item, i) => (
+                            <div key={i} className="flex flex-col bg-white border-2 border-stone-200 hover:border-[#009A49] transition-all shadow-lg">
+                                <div className="aspect-square bg-stone-200 flex items-center justify-center overflow-hidden">
+                                     {item.image ? (
+                                        <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                                     ) : (
+                                        <span className="text-stone-400 font-bold text-4xl">PRODUCT</span>
+                                     )}
+                                </div>
+                                <div className="p-6 flex flex-col flex-grow">
+                                    <div className="flex justify-between items-start mb-4">
+                                        <h3 className="text-xl font-black uppercase text-stone-900 leading-tight">{item.name}</h3>
+                                        <span className="text-[#009A49] font-bold text-xl">{item.price}</span>
+                                    </div>
+                                    <p className="text-stone-600 mb-6 flex-grow">{item.description}</p>
+                                    <a href={item.buyLink || "#"} className="block w-full text-center py-3 bg-stone-900 text-white font-bold uppercase tracking-widest hover:bg-[#009A49] transition-colors">
+                                        Buy Now
+                                    </a>
                                 </div>
                             </div>
-                        )}
-                        <div className="p-6">
-                            <span className="text-xs font-bold text-slate-400 uppercase">{article.date}</span>
-                            <h3 className="text-xl font-serif font-bold text-slate-900 mt-2 mb-3">{article.title}</h3>
-                            <p className="text-slate-600 text-sm leading-relaxed">{article.summary}</p>
-                        </div>
+                        ))}
                     </div>
-                ))}
+                </div>
             </div>
         )
     },
-    RichText: {
+    HeadingBlock: {
+      fields: {
+        title: { type: "text" },
+        level: {
+          type: "select",
+          options: [
+            { label: "H1", value: "h1" },
+            { label: "H2", value: "h2" },
+            { label: "H3", value: "h3" },
+          ],
+        },
+        align: {
+            type: "radio",
+            options: [
+                { label: "Left", value: "left" },
+                { label: "Center", value: "center" }
+            ]
+        }
+      },
+      defaultProps: {
+        title: "New Heading",
+        level: "h2",
+        align: "left"
+      },
+      render: ({ title, level, align }) => {
+        const Tag = level || "h2";
+        // Massive typography overrides
+        return (
+          <div className={`py-12 px-6 bg-stone-900 text-white ${align === "center" ? "text-center" : "text-left"}`}>
+             <div className="max-w-6xl mx-auto">
+                <Tag className="text-4xl sm:text-5xl font-black uppercase tracking-tight text-[#009A49]">
+                {title}
+                </Tag>
+            </div>
+          </div>
+        );
+      },
+    },
+    TextBlock: {
       fields: {
         content: { type: "textarea" },
       },
       defaultProps: {
-        content: "Enter text here...",
+        content: "Write your content here...",
       },
       render: ({ content }) => (
-        <div className="prose prose-lg max-w-none text-slate-700 font-sans leading-loose mb-8">
-          {content.split('\n').map((paragraph, i) => (
-             <p key={i} className="mb-4">{paragraph}</p>
-          ))}
+        <div className="py-12 px-6 bg-stone-900 text-stone-300">
+           <div className="max-w-6xl mx-auto">
+              <div className="prose prose-xl prose-invert max-w-none leading-relaxed font-medium">
+                {content}
+              </div>
+          </div>
         </div>
       ),
     },
-    ConflictResolver: {
-        render: () => (
-            <div className="space-y-12 mt-8">
-                {LEGAL_CONFLICTS.map((conflict, index) => (
-                    <div key={index} className="grid md:grid-cols-12 gap-0 shadow-lg border border-slate-200 rounded-lg overflow-hidden">
-                        <div className="md:col-span-4 bg-slate-100 p-8 border-r border-slate-200">
-                            <h4 className="text-xs font-bold uppercase text-slate-400 tracking-widest mb-2">The Issue</h4>
-                            <h3 className="text-2xl font-serif font-bold text-slate-900 mb-4">{conflict.title}</h3>
-                            <div className="space-y-4">
-                                <div>
-                                    <span className="text-xs font-bold text-red-700 bg-red-100 px-2 py-1 rounded inline-block mb-1">OFFICIAL NARRATIVE</span>
-                                    <p className="text-sm text-slate-600 leading-relaxed">{conflict.officialNarrative}</p>
-                                </div>
-                                <div>
-                                    <span className="text-xs font-bold text-blue-700 bg-blue-100 px-2 py-1 rounded inline-block mb-1">FAMILY REALITY</span>
-                                    <p className="text-sm text-slate-600 leading-relaxed">{conflict.familyReality}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="md:col-span-8 bg-white p-8 flex flex-col justify-center relative">
-                            <div className="absolute top-0 right-0 p-4 opacity-10">
-                                <Scale size={100} />
-                            </div>
-                            <h4 className="text-xs font-bold uppercase text-justice-red tracking-widest mb-4 flex items-center gap-2">
-                                <Search size={14} /> Deterministic Summary
-                            </h4>
-                            <p className="text-lg font-serif text-slate-800 leading-relaxed border-l-2 border-justice-red pl-6">
-                                {conflict.verdict}
-                            </p>
-                            <div className="mt-6 flex items-center gap-2 text-sm font-medium text-slate-400">
-                                Status: <span className="uppercase text-slate-900">{conflict.status}</span>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        )
-    },
-    AllegationsGrid: {
-        render: () => (
-            <div className="grid md:grid-cols-2 gap-6 mt-8">
-                {CORE_ALLEGATIONS.map((allegation, index) => (
-                    <div key={index} className="bg-white p-8 rounded border border-slate-200 shadow-sm hover:shadow-md transition-shadow group">
-                        <div className="flex items-start gap-4">
-                            <div className="bg-red-50 text-justice-red p-3 rounded group-hover:bg-justice-red group-hover:text-white transition-colors">
-                                <ShieldAlert size={24} />
-                            </div>
-                            <div>
-                                <h3 className="font-bold text-lg text-slate-900 mb-2">{allegation.title}</h3>
-                                <p className="text-slate-600 leading-relaxed">{allegation.description}</p>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        )
-    },
-    EvidenceShowcase: {
+    Quote: {
         fields: {
-            title: { type: "text" },
-            summary: { type: "textarea" }
+            text: { type: "textarea" },
+            author: { type: "text" }
         },
         defaultProps: {
-            title: "Archaeological Theft",
-            summary: "1994 excavations revealed Celtic burials and treasures."
+            text: "Truth is not just a concept, it's a necessity.",
+            author: "Anonymous"
         },
-        render: ({ title, summary }) => (
-            <div className="bg-slate-900 text-slate-300 p-8 md:p-12 rounded-lg relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-justice-red opacity-10 rounded-full blur-3xl -mr-16 -mt-16"></div>
-                <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
-                    <div className="flex-1">
-                        <h3 className="text-2xl font-serif text-white font-bold mb-4">{title}</h3>
-                        <p className="text-lg leading-relaxed mb-6">{summary}</p>
-                        <Link to="/press" className="text-white border-b border-justice-red pb-1 hover:text-red-400 transition-colors inline-flex items-center gap-2">
-                            View Press Coverage <ArrowRight size={16} />
-                        </Link>
-                    </div>
-                    <div className="flex-1 bg-slate-800 p-6 rounded border border-slate-700">
-                         <div className="flex items-center gap-2 text-sm text-slate-400 mb-4 uppercase tracking-widest">
-                            <BookOpen size={14} /> Source: Annex D
-                         </div>
-                         <p className="font-serif italic text-white text-lg">
-                            "Beneath dining room floor the remains of soldier in armour, his horse, lance and shield."
-                         </p>
-                    </div>
+        render: ({ text, author }) => (
+            <div className="py-24 bg-[#009A49] text-white">
+                <div className="max-w-5xl mx-auto px-6 text-center">
+                    <blockquote className="text-3xl sm:text-5xl font-black leading-tight mb-8 uppercase tracking-tight">
+                        "{text}"
+                    </blockquote>
+                    {author && <cite className="text-xl font-bold not-italic tracking-widest border-b-2 border-white pb-1">{author}</cite>}
                 </div>
             </div>
         )
-    },
-    Button: {
-        fields: {
-            label: { type: "text" },
-            href: { type: "text" },
-            variant: { 
-                type: "radio", 
-                options: [{ label: "Primary", value: "primary" }, { label: "Outline", value: "outline" }] 
-            }
-        },
-        defaultProps: {
-            label: "Read More",
-            href: "#",
-            variant: "primary"
-        },
-        render: ({ label, href, variant }) => {
-            const styles = variant === 'primary' 
-                ? "bg-justice-red hover:bg-red-900 text-white border border-transparent" 
-                : "border border-slate-300 hover:border-slate-900 text-slate-600 hover:text-slate-900";
-            
-            return (
-                <Link to={href} className={`${styles} px-8 py-3 rounded text-sm font-bold uppercase tracking-wider transition-all inline-block mt-4`}>
-                    {label}
-                </Link>
-            );
-        }
     }
   },
-};
+  
+  root: {
+    render: ({ children }) => (
+        <div className="puck-root min-h-screen bg-stone-900">
+             {children}
+        </div>
+    )
+  },
 
-export default config;
+  ai: {
+    resolve: async ({ query, data }) => {
+       const newData = await generatePuckContent(query, data);
+       return newData;
+    }
+  }
+};
