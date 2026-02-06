@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Warehouse, History, FileText, Newspaper, Gavel, Edit, Scale, BookOpen } from 'lucide-react';
+import { Warehouse, History, Newspaper, Gavel, Edit, Scale, BookOpen } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
   const isActive = (path: string) => location.pathname === path;
 
-  // Determine which page to edit based on current route
+  // Route to in-app editor to enable offline usage with puck CMS
+  // HashRouter will translate this to the client-side /edit view
   const getEditLink = () => {
-    if (location.pathname === '/press') return '/edit?page=press';
-    return '/edit?page=home';
+    return '/edit';
   };
 
   const navItems = [

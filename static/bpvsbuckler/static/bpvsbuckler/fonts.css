@@ -1,0 +1,2 @@
+/* Font loading disabled; use system fonts for offline stability */
+html, body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }

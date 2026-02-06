@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Offline CMS Editor</title>
+    <style>
+      :root {
+        --bg: #0b1020;
+        --card: #1a1f2a;
+        --text: #e5e7eb;
+        --accent: #4f46e5;
+      }
+      html, body {
+        margin: 0; padding: 0; height: 100%;
+        background: radial-gradient(circle at 20% -10%, rgba(99,102,241,.15), transparent 40%),
+                    radial-gradient(circle at 90% 10%, rgba(96,165,250,.15), transparent 40%),
+                    #0b1020;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        color: var(--text);
+      }
+      .wrap { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+      h1 { font-size: 1.5rem; margin-bottom: 12px; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+      .card { background: #141b2a; border: 1px solid #2a3240; border-radius: 8px; padding: 16px; }
+      label { display: block; font-size: 0.8rem; margin-bottom: 6px; opacity: 0.9; }
+      textarea { width: 100%; height: 180px; resize: vertical; padding: 8px; border-radius: 6px; border: 1px solid #2a3240; background: #0b1220; color: #e6e6e6; }
+      button { padding: 8px 12px; border-radius: 6px; border: 1px solid #2a3240; background: #1f2a48; color: #e6e6e6; cursor: pointer; }
+      button.primary { background: #4f46e5; border-color: #4f46e5; }
+      .row { display: flex; gap: 12px; align-items: center; margin-top: 8px; }
+      .preview { background: #0a0f1e; padding: 12px; border-radius: 6px; min-height: 120px; }
+      .title { font-weight: 600; margin-bottom: 6px; }
+      @media (max-width: 900px) {
+        .grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Offline CMS Editor</h1>
+      <p style="color:#bbb; margin-top:0; margin-bottom:16px;">Manage basic CMS content stored in localStorage. No network requests required.</p>
+      <div class="grid">
+        <section class="card" aria-label="Home Page Editor">
+          <div class="title">Home Page</div>
+          <label for="homeContent">Content (HTML allowed)</label>
+          <textarea id="homeContent" placeholder="Home page content"></textarea>
+          <div class="row">
+            <button id="saveHome">Save Home</button>
+            <button id="clearHome" style="margin-left:2px;">Reset</button>
+          </div>
+          <div class="preview" id="homePreview" style="margin-top:12px; border:1px solid #2a3240;"></div>
+        </section>
+        <section class="card" aria-label="Press Page Editor">
+          <div class="title">Press Page</div>
+          <label for="pressContent">Content (HTML allowed)</label>
+          <textarea id="pressContent" placeholder="Press page content"></textarea>
+          <div class="row">
+            <button id="savePress">Save Press</button>
+            <button id="clearPress" style="margin-left:2px;">Reset</button>
+          </div>
+          <div class="preview" id="pressPreview" style="margin-top:12px; border:1px solid #2a3240;"></div>
+        </section>
+      </div>
+    </div>
+    <script>
+      // Simple offline CMS using localStorage
+      const HOME_KEY = 'offline_home';
+      const PRESS_KEY = 'offline_press';
+      const homeEl = document.getElementById('homeContent');
+      const pressEl = document.getElementById('pressContent');
+      const homePreview = document.getElementById('homePreview');
+      const pressPreview = document.getElementById('pressPreview');
+      // Initialize from localStorage or defaults
+      const savedHome = localStorage.getItem(HOME_KEY) || '<h2>Welcome</h2><p>This is the offline CMS Home page.</p>';
+      const savedPress = localStorage.getItem(PRESS_KEY) || '<h2>Press</h2><p>Offline CMS content for press releases.</p>';
+      homeEl.value = savedHome;
+      pressEl.value = savedPress;
+      homePreview.innerHTML = savedHome;
+      pressPreview.innerHTML = savedPress;
+      // Save handlers
+      document.getElementById('saveHome').onclick = () => {
+        localStorage.setItem(HOME_KEY, homeEl.value);
+        homePreview.innerHTML = homeEl.value;
+      };
+      document.getElementById('savePress').onclick = () => {
+        localStorage.setItem(PRESS_KEY, pressEl.value);
+        pressPreview.innerHTML = pressEl.value;
+      };
+      // Reset handlers
+      document.getElementById('clearHome').onclick = () => {
+        homeEl.value = '';
+        localStorage.removeItem(HOME_KEY);
+        homePreview.innerHTML = '';
+      };
+      document.getElementById('clearPress').onclick = () => {
+        pressEl.value = '';
+        localStorage.removeItem(PRESS_KEY);
+        pressPreview.innerHTML = '';
+      };
+      // Live preview on input
+      homeEl.addEventListener('input', () => { homePreview.innerHTML = homeEl.value; });
+      pressEl.addEventListener('input', () => { pressPreview.innerHTML = pressEl.value; });
+    </script>
+  </body>
+  </html>
