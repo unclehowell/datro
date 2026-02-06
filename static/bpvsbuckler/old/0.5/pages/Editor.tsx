@@ -15,19 +15,34 @@ const Editor = () => {
   // Load data from localStorage based on the page param
   const [data, setData] = useState<Data>(() => {
     const saved = localStorage.getItem(storageKey);
-    return saved ? JSON.parse(saved) : initial;
+    try {
+      return saved ? JSON.parse(saved) : initial;
+    } catch (e) {
+      console.error("Failed to parse saved data", e);
+      return initial;
+    }
   });
 
   // Reset data when page changes
   useEffect(() => {
      const saved = localStorage.getItem(storageKey);
-     setData(saved ? JSON.parse(saved) : initial);
+     try {
+       setData(saved ? JSON.parse(saved) : initial);
+     } catch (e) {
+       console.error("Failed to parse saved data", e);
+       setData(initial);
+     }
   }, [page, storageKey, initial]);
 
   const handlePublish = async (newData: Data) => {
-    localStorage.setItem(storageKey, JSON.stringify(newData));
-    setData(newData);
-    alert(`Content for ${page.toUpperCase()} page saved!`);
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(newData));
+      setData(newData);
+      alert(`Content for ${page.toUpperCase()} page saved successfully!`);
+    } catch (e) {
+      console.error("Failed to save data", e);
+      alert("Error saving data. Check console for details.");
+    }
   };
 
   return (

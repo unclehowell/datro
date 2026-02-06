@@ -1,0 +1,8 @@
+/* Puck CMS local CSS (offline) */
+/* Lightweight baseline to ensure offline rendering looks consistent */
+.puck-editor-shell { font-family: system-ui, sans-serif; color: #e5e7eb; }
+.puck-editor-container { background: #0b1220; border-radius: 12px; border: 1px solid rgba(255,255,255,.12); overflow: hidden; }
+.puck-toolbar { background: #2b3e6b; color: #fff; display: flex; padding: 6px 8px; gap: 6px; align-items: center; border-bottom: 1px solid rgba(255,255,255,.15); }
+.puck-toolbar .tool { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.25); color: #fff; padding: 4px 8px; border-radius: 6px; font-weight: 600; }
+.puck-toolbar .tool:hover{ background: rgba(255,255,255,.18); }
+.puck-editor-container iframe{ height: 60vh; width: 100%; border:0; }

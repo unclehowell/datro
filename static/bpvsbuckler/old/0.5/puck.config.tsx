@@ -1,5 +1,5 @@
 import React from "react";
-import { Config, DropZone } from "@measured/puck";
+import { Config, DropZone } from "@puckeditor/core";
 import { Scale, AlertTriangle, ArrowRight, BookOpen, Search, ShieldAlert, Clapperboard, Gavel, Newspaper } from "lucide-react";
 import { Link } from "react-router-dom";
 import { CORE_ALLEGATIONS, LEGAL_CONFLICTS } from "./constants";

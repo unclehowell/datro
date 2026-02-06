@@ -15,38 +15,35 @@ const Editor = () => {
   // Load data from localStorage based on the page param
   const [data, setData] = useState<Data>(() => {
     const saved = localStorage.getItem(storageKey);
-    try {
-      return saved ? JSON.parse(saved) : initial;
-    } catch (e) {
-      console.error("Failed to parse saved data", e);
-      return initial;
-    }
+    return saved ? JSON.parse(saved) : initial;
   });
 
   // Reset data when page changes
   useEffect(() => {
      const saved = localStorage.getItem(storageKey);
-     try {
-       setData(saved ? JSON.parse(saved) : initial);
-     } catch (e) {
-       console.error("Failed to parse saved data", e);
-       setData(initial);
-     }
+     setData(saved ? JSON.parse(saved) : initial);
   }, [page, storageKey, initial]);
 
   const handlePublish = async (newData: Data) => {
-    try {
-      localStorage.setItem(storageKey, JSON.stringify(newData));
-      setData(newData);
-      alert(`Content for ${page.toUpperCase()} page saved successfully!`);
-    } catch (e) {
-      console.error("Failed to save data", e);
-      alert("Error saving data. Check console for details.");
-    }
+    localStorage.setItem(storageKey, JSON.stringify(newData));
+    setData(newData);
+    alert(`Content for ${page.toUpperCase()} page saved!`);
   };
 
   return (
-    <div className="puck-editor-container bg-white">
+    <div className="puck-editor-container office-editor" aria-label="Puck Editor">
+      <div className="puck-toolbar" role="toolbar" aria-label="Editor toolbar">
+        <button className="tool" aria-label="Bold">B</button>
+        <button className="tool" aria-label="Italic"><em>I</em></button>
+        <button className="tool" aria-label="Underline"><u>U</u></button>
+        <span className="separator" aria-hidden="true">|</span>
+        <button className="tool" aria-label="Align Left">L</button>
+        <button className="tool" aria-label="Align Center">C</button>
+        <button className="tool" aria-label="Align Right">R</button>
+        <span className="separator" aria-hidden="true">|</span>
+        <button className="tool" aria-label="Bullet List">•</button>
+        <button className="tool" aria-label="Numbered List">1.</button>
+      </div>
       <Puck
         config={config}
         data={data}

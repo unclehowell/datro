@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -8,8 +9,7 @@ import EvidencePage from './pages/EvidencePage';
 import ActionPage from './pages/ActionPage';
 import PressPage from './pages/PressPage';
 import LawsuitPage from './pages/LawsuitPage';
-import AnalysisPage from './pages/AnalysisPage';
-const Editor = React.lazy(() => import('./pages/Editor'));
+import Editor from './pages/Editor';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -33,6 +33,27 @@ const Footer = () => (
 function App() {
   const location = window.location.hash;
   const isEditor = location.includes("/edit");
+  const [theme, setTheme] = React.useState<string>(() => {
+    const t = typeof window !== 'undefined' ? window.localStorage.getItem('theme') : null;
+    return t ?? 'dark';
+  });
+
+  // Bind a global toggle for theme (used by Navbar button)
+  useEffect(() => {
+    (window as any).toggleTheme = () => {
+      setTheme((cur) => {
+        const next = cur === 'dark' ? 'light' : 'dark';
+        window.localStorage.setItem('theme', next);
+        document.documentElement.setAttribute('data-theme', next);
+        return next;
+      });
+    };
+  }, []);
+
+  // Apply initial theme on mount
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   return (
     <Router>
@@ -40,19 +61,16 @@ function App() {
       {!isEditor && <Navbar />}
       
       <main className={isEditor ? "" : "flex-grow"}>
-        <React.Suspense fallback={<div>Loading editor...</div>}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/timeline" element={<TimelinePage />} />
-            <Route path="/legal" element={<LegalPage />} />
-            <Route path="/evidence" element={<EvidencePage />} />
-            <Route path="/action" element={<ActionPage />} />
-            <Route path="/press" element={<PressPage />} />
-            <Route path="/lawsuit" element={<LawsuitPage />} />
-            <Route path="/analysis" element={<AnalysisPage />} />
-            <Route path="/edit" element={<Editor />} />
-          </Routes>
-        </React.Suspense>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/timeline" element={<TimelinePage />} />
+          <Route path="/legal" element={<LegalPage />} />
+          <Route path="/evidence" element={<EvidencePage />} />
+          <Route path="/action" element={<ActionPage />} />
+          <Route path="/press" element={<PressPage />} />
+          <Route path="/lawsuit" element={<LawsuitPage />} />
+          <Route path="/edit" element={<Editor />} />
+        </Routes>
       </main>
       
       {!isEditor && <Footer />}
