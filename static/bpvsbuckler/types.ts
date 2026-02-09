@@ -1,73 +1,45 @@
-import { Data } from "@measured/puck";
 
-// Props for the Heading Block
-export interface HeadingBlockProps {
-  title: string;
-  level?: "h1" | "h2" | "h3";
-  align?: "left" | "center";
-  padding?: string;
+export interface Position {
+  x: number;
+  y: number;
 }
 
-// Props for the Text Block
-export interface TextBlockProps {
-  content: string;
+export type IconType = 'farmer' | 'noble' | 'judge' | 'guard' | 'builder' | 'ghost' | 'lawyer' | 'worker' | 'ruins' | 'narrator' | 'cleric';
+
+export type SourceType = 'court' | 'deed' | 'news' | 'report' | 'archive';
+
+export type LocationCategory = 'farm' | 'court' | 'other';
+
+export interface Source {
+  type: SourceType;
+  label: string;
+  url: string;
 }
 
-// Props for the Hero Block
-export interface HeroProps {
-  title: string;
-  subtitle?: string;
-  backgroundImage?: string;
-  height?: string;
-  align?: "left" | "center";
+export interface CharacterScene {
+  character: string;
+  icon: IconType;
+  side: 'left' | 'right' | 'center';
+  color: string;
+  text: string; // Brief speech bubble text
+  position: Position;
 }
 
-// Props for the Quote Block
-export interface QuoteProps {
-  text: string;
-  author?: string;
+export interface Attachments {
+  gallery?: string[]; // Array of filenames in attachments/gallery/{year}/
+  legal?: string[];   // Array of filenames in attachments/legal/{year}/
+  news?: string[];    // Array of filenames in attachments/news/{year}/
+  notes?: string[];   // Array of filenames in attachments/notes/{year}/
+  report?: string[];  // Array of filenames in attachments/report/{year}/
 }
 
-// Props for the Feature Block (Bold Headline + Read More)
-export interface FeatureBlockProps {
-    title: string;
-    summary: string;
-    details: string; // Markdown supported
-    inverted?: boolean;
-}
-
-// Props for Image Grid
-export interface ImageGridProps {
-    title: string;
-    items: { src?: string; alt: string; caption: string }[];
-}
-
-// Props for Product Grid (Shop)
-export interface ProductGridProps {
-    title: string;
-    items: { 
-        name: string; 
-        price: string; 
-        image?: string; 
-        description: string;
-        buyLink?: string;
-    }[];
-}
-
-// Global Page Data Structure extending Puck's default Data
-export interface PageData extends Data {
-  content: {
-    type: string;
-    props: { [key: string]: any };
-  }[];
-  root: {
-    props: {
-      title?: string;
-    };
-  };
-}
-
-// Defines the structure of the JSON database provided
-export interface Database {
-  [key: string]: PageData;
+export interface TimelineEntry {
+  year: string;
+  location: string;
+  locationType: LocationCategory;
+  description: string; // Background text
+  narration: string; // The text spoken by the narrator
+  scenes: CharacterScene[];
+  sources: Source[];
+  attachments?: Attachments;
 }

@@ -1,5 +1,5 @@
 {
-  "name": "great-house-farm:-a-legal-odyssey",
+  "name": "puck-cms-with-gemini-ai",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,10 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@google/genai": "^1.39.0",
-    "jspdf": "^4.1.0",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "@measured/puck": "^0.20.2",
+    "@google/genai": "^1.40.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
