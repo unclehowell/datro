@@ -68,20 +68,22 @@ const IntroModal: React.FC<{ onEnter: () => void }> = ({ onEnter }) => {
             <div className="bg-slate-900/90 border-2 border-amber-600/50 p-8 md:p-12 rounded-2xl max-w-4xl shadow-2xl flex flex-col items-center text-center relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
                 
-                <h1 className="text-3xl md:text-5xl font-special text-amber-500 mb-8 uppercase tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-special text-amber-500 mb-6 uppercase tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                     Great House Farm Story
                 </h1>
                 
-                <p className="text-lg md:text-xl text-slate-200 leading-relaxed font-light mb-10 max-w-3xl">
-                    "For 60+ years we were called squatters because of fake lawfare persona, "Mrs. Buckler," that was designed to outrank my disabled grandmothers good Williams name and our 300+ year occupancy and lineage. Today, the family reclaims the narrative with a £101.2M demand for theft of our ancestral monastic grange and prime coastal estate. This is the price of trying to bury truth 🏴󠁧󠁢󠁷󠁬󠁳󠁿 Yma O Hyd! 🏛️ We are the land!"
-                </p>
+                <div className="w-full overflow-auto" style={{ maxHeight: '52vh' }}>
+                  <p className="text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed font-light mb-2">
+ Occupied by the Williams family from 1667 • Discoverd and reported a Roman burial in 1870  • No archaeological significants or protections ascribed • Mary Williams marries a Mr. Frederick Buckler in 1900's and he joins her in her 800-year-old farm and MARY RETAINS HER WILLIAMS NAME • 1974 Mary Williams defends her superior claim against BP, but case is only adjourned and appeal interrupted & even quashed • BP asserts title but keeps sidestepping the court ruling of ownership to focus on possession, keeping suppressed the 1870 Roman soldier discovery, which would have suspended housing development plans • All the while cutting off water, electric and poisoning the river and cows to force Mrs Williams off her land, resulting in her having a leg amputated, from a blood clot, from the stress • BP resort to identity fraud • Mrs Williams damned if she did or didn't participate in the fraud. She still chose not too and appealed publically in 1978 • BP Registered Mrs Williams and childrens land as theirs, with land registry as Mary Williams dies • Succession to Mary Williams’ heirs, has been fraudulently interrupted • BP Properties Ltd v Buckler 1987 endorsed the fraud and authorised seizure and demolition BY FORCE & ASAP, while restraining Mary's son with an order and without charges. And dismissing his appeal AND blocking his ECHR request • family forced to live in a bus  • Mary's son abrupty dies in 1991, like his mum before him, at age 41 • Land quietly excavated of Wales largest collection of burials in 1994, before housing development commenses • No public inquiry • As at 2026 £101.2M is the current estimate reperations for the Williams/Buckler family 🏴 Yma o Hyd.
+                  </p>
+                </div>
 
                 <button 
                     onClick={onEnter}
                     className="group relative px-10 py-4 bg-amber-600/20 overflow-hidden rounded-lg border border-amber-500 text-amber-500 font-bold uppercase tracking-widest hover:bg-amber-600 hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(245,158,11,0.2)] hover:shadow-[0_0_40px_rgba(245,158,11,0.6)]"
                 >
                     <span className="flex items-center gap-3">
-                        Enter Experience
+                        Enter
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </span>
                 </button>
