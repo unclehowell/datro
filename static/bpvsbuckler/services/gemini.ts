@@ -2,7 +2,15 @@
 // This service now uses the native Web Speech API (SpeechSynthesis)
 // It replaces the previous Gemini API implementation to avoid quotas and keys.
 
-export async function speakText(text: string, character: string): Promise<() => void> {
+export interface VoiceConfig {
+  volume: number;
+  pitch: number;
+  rate: number;
+  gender?: 'male' | 'female';
+  onBoundary?: (event: SpeechSynthesisEvent) => void;
+}
+
+export async function speakText(text: string, config: VoiceConfig): Promise<() => void> {
   // Guard against server-side rendering or unsupported browsers
   if (typeof window === 'undefined' || !window.speechSynthesis) {
     console.warn("Speech Synthesis not supported in this environment");
@@ -10,9 +18,6 @@ export async function speakText(text: string, character: string): Promise<() => 
   }
 
   const synth = window.speechSynthesis;
-
-  // Cancel any currently playing audio immediately to prevent overlap
-  synth.cancel();
 
   // If no text, just return empty cancel
   if (!text) return () => {};
@@ -24,20 +29,14 @@ export async function speakText(text: string, character: string): Promise<() => 
       if (voices.length > 0) {
         resolve(voices);
       } else {
-        // Wait for voices to load
         const onVoicesChanged = () => {
           voices = synth.getVoices();
           resolve(voices);
-          // Cleanup listener
           synth.removeEventListener('voiceschanged', onVoicesChanged);
         };
         
         synth.addEventListener('voiceschanged', onVoicesChanged);
-        
-        // Timeout fallback in case event doesn't fire
-        setTimeout(() => {
-            resolve(synth.getVoices());
-        }, 1000);
+        setTimeout(() => { resolve(synth.getVoices()); }, 1000);
       }
     });
   };
@@ -46,39 +45,71 @@ export async function speakText(text: string, character: string): Promise<() => 
     const voices = await getVoices();
     const utterance = new SpeechSynthesisUtterance(text);
 
-    // Voice selection logic
-    // We try to find a consistent "Narrator" voice.
-    // Preference: English (GB/US), Male/Deep if possible to match "Narrator" vibe.
-    
-    let selectedVoice = 
-        voices.find(v => v.name === "Google UK English Male") ||
-        voices.find(v => v.name === "Daniel") || // macOS
-        voices.find(v => v.name === "Microsoft David Desktop") || // Windows
-        voices.find(v => v.lang === "en-GB" && v.name.includes("Male")) ||
-        voices.find(v => v.lang === "en-GB") ||
-        voices.find(v => v.lang === "en-US") ||
-        voices[0];
+    // Voice Selection Logic
+    let selectedVoice: SpeechSynthesisVoice | undefined;
+    const englishVoices = voices.filter(v => v.lang.startsWith('en'));
+    const pool = englishVoices.length > 0 ? englishVoices : voices;
 
-    if (selectedVoice) {
-      utterance.voice = selectedVoice;
+    if (config.gender === 'female') {
+      selectedVoice = 
+        pool.find(v => v.name.includes("Female") || v.name.includes("Samantha") || v.name.includes("Victoria") || v.name.includes("Google US English")) ||
+        pool.find(v => v.name.includes("Zira"));
+    } else {
+      // Default / Male preference
+      selectedVoice = 
+        pool.find(v => v.name.includes("Google UK English Male") || v.name.includes("Daniel") || v.name.includes("Microsoft David")) ||
+        pool.find(v => !v.name.includes("Female") && !v.name.includes("Samantha"));
     }
 
-    // Narration styling
-    utterance.rate = 0.9;  // Slowed down by ~20% from previous 1.2
-    utterance.pitch = 1.0; // Normal pitch
-    utterance.volume = 1.0;
+    if (!selectedVoice) selectedVoice = pool[0];
+    if (selectedVoice) utterance.voice = selectedVoice;
+
+    // Apply Config
+    utterance.rate = config.rate;
+    utterance.pitch = config.pitch;
+    utterance.volume = config.volume;
+
+    // Attach Boundary Listener (for highlighting)
+    if (config.onBoundary) {
+      utterance.onboundary = config.onBoundary;
+    }
 
     // Speak
     synth.speak(utterance);
 
+    // Return a promise that resolves when THIS utterance finishes
+    return new Promise((resolve) => {
+      utterance.onend = () => {
+        resolve(() => synth.cancel());
+      };
+      utterance.onerror = () => {
+        resolve(() => synth.cancel());
+      };
+    });
+
   } catch (e) {
     console.error("Speech Synthesis failed:", e);
+    return () => synth.cancel();
   }
+}
 
-  // Return a function that cancels the speech
-  return () => {
-    if (synth.speaking || synth.pending) {
-      synth.cancel();
-    }
-  };
+// Helper to cancel all speech immediately
+export function stopSpeech() {
+  if (typeof window !== 'undefined' && window.speechSynthesis) {
+    window.speechSynthesis.cancel();
+  }
+}
+
+// Helper to pause speech
+export function pauseSpeech() {
+  if (typeof window !== 'undefined' && window.speechSynthesis) {
+    window.speechSynthesis.pause();
+  }
+}
+
+// Helper to resume speech
+export function resumeSpeech() {
+  if (typeof window !== 'undefined' && window.speechSynthesis) {
+    window.speechSynthesis.resume();
+  }
 }

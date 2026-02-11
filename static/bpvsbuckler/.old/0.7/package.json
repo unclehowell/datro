@@ -9,11 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "@google/genai": "^1.39.0",
-    "jspdf": "2.5.1",
-    "@measured/puck": "0.16.0"
+    "jspdf": "^4.1.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
