@@ -1,13 +1,14 @@
+
 export interface Position {
   x: number;
   y: number;
 }
 
-export type IconType = 'farmer' | 'noble' | 'judge' | 'guard' | 'builder' | 'ghost' | 'lawyer' | 'worker' | 'ruins' | 'narrator' | 'cleric' | 'news';
+export type IconType = 'farmer' | 'noble' | 'judge' | 'guard' | 'builder' | 'ghost' | 'lawyer' | 'worker' | 'ruins' | 'narrator' | 'cleric';
 
 export type SourceType = 'court' | 'deed' | 'news' | 'report' | 'archive';
 
-export type LocationCategory = 'farm' | 'court' | 'other' | 'ruins' | 'archive' | 'news';
+export type LocationCategory = 'farm' | 'court' | 'other';
 
 export interface Source {
   type: SourceType;
