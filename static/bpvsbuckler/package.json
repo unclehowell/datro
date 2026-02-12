@@ -6,14 +6,15 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "migrate:timeline": "node ./tools/migrate_full_timeline.cjs"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "@google/genai": "^1.39.0",
-    "jspdf": "2.5.1",
-    "@measured/puck": "0.16.0"
+    "@measured/puck": "0.16.0",
+    "jspdf": "^4.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
