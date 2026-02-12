@@ -964,6 +964,78 @@ export const TIMELINE: TimelineEntry[] = [
     }
   },
   {
+    "year": "1897",
+    "location": "Great House Farm / Lavernock Point",
+    "locationType": "other",
+    "description": "",
+    "narration": "Thomas Williams of Great House daily carts Guglielmo Marconi and his radio equipment to and from Lavernock Point by horse and cart. On 13 May 1897 Marconi transmits the first wireless signal across op",
+    "scenes": [
+      {
+        "character": "THOMAS WILLIAMS",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "I cart Mr Marconi and his equipment to Lavernock Point each day from Great House.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "GUGLIELMO MARCONI",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Without Thomas Williams and his horse and cart, these experiments could not proceed.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "THOMAS WILLIAMS",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "A Williams was at the mast on the day the signal crossed the water. That is recorded.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "REPORTER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "The newspaper notes a Williams present at the mast during the successful transmission.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "THOMAS WILLIAMS",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "They may call me a carter. But I am lord of this manor, not a peasant farmer.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
     "year": "1900",
     "location": "Great House Farm",
     "locationType": "other",
@@ -1347,78 +1419,6 @@ export const TIMELINE: TimelineEntry[] = [
     }
   },
   {
-    "year": "1960",
-    "location": "Marconi Site Planning",
-    "locationType": "other",
-    "description": "",
-    "narration": "Marconi constructs a telecommunications facility adjacent to Great House Farm. Site surveys proceed without investigating the Williams ownership claim or the Roman archaeological significance.",
-    "scenes": [
-      {
-        "character": "MARCONI SURVEYOR",
-        "icon": "builder",
-        "side": "left",
-        "color": "#999",
-        "text": "This site is perfect for our telecommunications base next to the farm.",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "character": "MARY WILLIAMS",
-        "icon": "farmer",
-        "side": "right",
-        "color": "#999",
-        "text": "Will you investigate the Roman remains we found? This is protected land.",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "character": "MARCONI OFFICIAL",
-        "icon": "worker",
-        "side": "left",
-        "color": "#999",
-        "text": "Our planning approval is in order. Family stories are not our concern.",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "character": "MARY WILLIAMS",
-        "icon": "farmer",
-        "side": "right",
-        "color": "#999",
-        "text": "The soldier we found proves this site has archaeological importance!",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "character": "MARCONI SURVEYOR",
-        "icon": "builder",
-        "side": "left",
-        "color": "#999",
-        "text": "We see no official heritage listing. Development proceeds as permitted.",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      }
-    ],
-    "sources": [],
-    "attachments": {
-      "gallery": [],
-      "legal": [],
-      "news": [],
-      "notes": [],
-      "report": []
-    }
-  },
-  {
     "year": "1962",
     "location": "Court — First Possession Order",
     "locationType": "other",
@@ -1475,6 +1475,78 @@ export const TIMELINE: TimelineEntry[] = [
         "side": "left",
         "color": "#999",
         "text": "Our family has been here since 1667. No court order can make us leave.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1963",
+    "location": "GEC-Marconi Telecommunications Site, Llandough",
+    "locationType": "other",
+    "description": "",
+    "narration": "The Marconi Company (by then part of English Electric) constructs a telecommunications facility adjacent to Great House Farm. Surveys proceed without investigating the Williams ownership claim or Roma",
+    "scenes": [
+      {
+        "character": "MARCONI SURVEYOR",
+        "icon": "builder",
+        "side": "left",
+        "color": "#999",
+        "text": "This land adjacent to the farm is suitable for our new telecom base station.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Will you investigate Roman remains here? Our family found a soldier in 1870.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARCONI OFFICIAL",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Our planning approval is in order. Family stories are not our concern.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "The soldier we found proves this site has major archaeological importance!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARCONI SURVEYOR",
+        "icon": "builder",
+        "side": "left",
+        "color": "#999",
+        "text": "We see no heritage listing. Development proceeds as permitted.",
         "position": {
           "x": 0,
           "y": 0
@@ -2705,89 +2777,28 @@ export const TIMELINE: TimelineEntry[] = [
   },
   {
     "year": "1988",
-    "location": "Great House Farm",
+    "location": "Great House Farm — Chainsaw Siege",
     "locationType": "other",
     "description": "",
-    "narration": "BP Properties presses for immediate possession. The family refuses to vacate, asserting ownership was never proven and warning that demolition will destroy irreplaceable heritage and evidence.",
+    "narration": "Five bailiffs and twenty police arrive at dawn. Billy blocks the drive with a car, bars doors and windows. He revs a chainsaw. In a four-hour siege, bailiffs smash the farmhouse doors with pickaxes. C",
     "scenes": [
-      {
-        "character": "BP PROPERTIES AGENT",
-        "icon": "worker",
-        "side": "left",
-        "color": "#999",
-        "text": "You must vacate immediately. The court has granted us possession.",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "character": "BILLY BUCKLER",
-        "icon": "farmer",
-        "side": "right",
-        "color": "#999",
-        "text": "Possession was granted, but ownership was never proven in any court!",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "character": "BP PROPERTIES AGENT",
-        "icon": "worker",
-        "side": "left",
-        "color": "#999",
-        "text": "The Court of Appeal has ruled. Further resistance is contempt of court.",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "character": "MARY WILLIAMS",
-        "icon": "farmer",
-        "side": "right",
-        "color": "#999",
-        "text": "This house is over 800 years old! Demolition destroys our heritage forever!",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
       {
         "character": "BILLY BUCKLER",
         "icon": "farmer",
         "side": "left",
         "color": "#999",
-        "text": "And it destroys the Roman site underneath! This is deliberate evidence destruction!",
+        "text": "I've blocked the drive. You'll not get in. My children are right behind that door!",
         "position": {
           "x": 0,
           "y": 0
         }
-      }
-    ],
-    "sources": [],
-    "attachments": {
-      "gallery": [],
-      "legal": [],
-      "news": [],
-      "notes": [],
-      "report": []
-    }
-  },
-  {
-    "year": "1988",
-    "location": "Enforcement Attempt",
-    "locationType": "other",
-    "description": "",
-    "narration": "Bailiffs arrive to enforce possession, but the family resists, barricading themselves inside Great House Farm and refusing to leave without a ruling on ownership and heritage protection.",
-    "scenes": [
+      },
       {
         "character": "BAILIFF",
         "icon": "worker",
-        "side": "left",
+        "side": "right",
         "color": "#999",
-        "text": "We are here to enforce the court order for possession. Open the door.",
+        "text": "Open up now or we force entry. We have a court order and police authority.",
         "position": {
           "x": 0,
           "y": 0
@@ -2796,9 +2807,20 @@ export const TIMELINE: TimelineEntry[] = [
       {
         "character": "BILLY BUCKLER",
         "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "They're smashing the doors with pickaxes! The children are right behind it!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BRANWEN BUCKLER",
+        "icon": "farmer",
         "side": "right",
         "color": "#999",
-        "text": "Not until ownership is proven and this site's archaeology is protected!",
+        "text": "They bashed the door through with the children on the other side! God help us!",
         "position": {
           "x": 0,
           "y": 0
@@ -2809,29 +2831,7 @@ export const TIMELINE: TimelineEntry[] = [
         "icon": "worker",
         "side": "left",
         "color": "#999",
-        "text": "You are in contempt of court. Police assistance will be requested.",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "character": "MARY WILLIAMS",
-        "icon": "farmer",
-        "side": "right",
-        "color": "#999",
-        "text": "We are the rightful owners! This eviction is based on fraud and deceit!",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "character": "BILLY BUCKLER",
-        "icon": "farmer",
-        "side": "left",
-        "color": "#999",
-        "text": "Demolish this house and you destroy evidence of national importance!",
+        "text": "Hand over the chainsaw. Drop it now.",
         "position": {
           "x": 0,
           "y": 0
@@ -2849,39 +2849,28 @@ export const TIMELINE: TimelineEntry[] = [
   },
   {
     "year": "1988",
-    "location": "Standoff at Great House",
+    "location": "Great House Farm — Forced Entry",
     "locationType": "other",
     "description": "",
-    "narration": "A tense standoff ensues. Bailiffs, police, and media surround Great House Farm. Inside, the Williams-Buckler family vows to resist until ownership is judicially determined and heritage protected.",
+    "narration": "Bailiffs grab the running chainsaw through the broken door and disable it. The four-hour siege ends with police surging in. Branwen leaves with the three young children. Billy and friends hold the int",
     "scenes": [
       {
-        "character": "POLICE COMMANDER",
-        "icon": "worker",
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
         "side": "left",
         "color": "#999",
-        "text": "This situation must be resolved peacefully. Will you exit voluntarily?",
+        "text": "They grabbed the chainsaw through the door and cut it up. This is our home!",
         "position": {
           "x": 0,
           "y": 0
         }
       },
       {
-        "character": "BILLY BUCKLER",
+        "character": "BRANWEN BUCKLER",
         "icon": "farmer",
         "side": "right",
         "color": "#999",
-        "text": "Only if the court determines ownership and Cadw protects this site!",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "character": "MEDIA REPORTER",
-        "icon": "worker",
-        "side": "left",
-        "color": "#999",
-        "text": "Why has ownership never been ruled on in over a decade of litigation?",
+        "text": "I am leaving with the boys. Thomas is only three. I cannot keep them safe here.",
         "position": {
           "x": 0,
           "y": 0
@@ -2890,9 +2879,20 @@ export const TIMELINE: TimelineEntry[] = [
       {
         "character": "POLICE COMMANDER",
         "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "The premises are being cleared under court order. All occupants must vacate.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "ALUN MICHAEL MP",
+        "icon": "worker",
         "side": "right",
         "color": "#999",
-        "text": "Our role is enforcement, not adjudication. The courts have ruled.",
+        "text": "I warned the Lord Chancellor. The way this is being handled—somebody will be killed.",
         "position": {
           "x": 0,
           "y": 0
@@ -2903,7 +2903,7 @@ export const TIMELINE: TimelineEntry[] = [
         "icon": "farmer",
         "side": "left",
         "color": "#999",
-        "text": "The courts ruled on possession, not ownership! That's the entire point!",
+        "text": "I am here to stay. I will fight this to the death. I own this farm.",
         "position": {
           "x": 0,
           "y": 0
@@ -2921,17 +2921,17 @@ export const TIMELINE: TimelineEntry[] = [
   },
   {
     "year": "1988",
-    "location": "Violent Eviction",
+    "location": "Great House Farm — Final Eviction",
     "locationType": "other",
     "description": "",
-    "narration": "Police storm Great House Farm. Billy Buckler is injured and hospitalized during the forcible eviction. The family, including pregnant Branwen and young children, are removed by force.",
+    "narration": "Billy is forcibly removed and taken to Llandough Hospital with injuries sustained during the eviction. Charges follow: assault on two bailiffs, criminal damage, and wanton or furious driving. He refus",
     "scenes": [
       {
         "character": "BILLY BUCKLER",
         "icon": "farmer",
         "side": "left",
         "color": "#999",
-        "text": "You have no right! This is our home! Ownership was never proven!",
+        "text": "You have no right! Get off this land! Ownership was never decided in any court!",
         "position": {
           "x": 0,
           "y": 0
@@ -2942,7 +2942,79 @@ export const TIMELINE: TimelineEntry[] = [
         "icon": "worker",
         "side": "right",
         "color": "#999",
-        "text": "We are enforcing a court order. Resisting will result in arrest.",
+        "text": "You are under arrest. Stop resisting. An ambulance has been called.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "A dozen police on the farm and I won't leave—not until someone rules who owns it.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "POLICE OFFICER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "You face charges of assault on two bailiffs, criminal damage, and furious driving.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "I'll not go to hospital—if I leave they come back and take everything we have left.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1988",
+    "location": "Llandough Hospital",
+    "locationType": "other",
+    "description": "",
+    "narration": "Billy Buckler lies injured in Llandough Hospital, refusing to leave for fear bailiffs will re-enter the farm. Branwen and three young children are in emergency accommodation. All possessions—and Mary'",
+    "scenes": [
+      {
+        "character": "NURSE",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "You have significant injuries and must stay. You are not fit to leave.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "If I leave that hospital they'll take the farm. I won't go—not yet.",
         "position": {
           "x": 0,
           "y": 0
@@ -2953,18 +3025,7 @@ export const TIMELINE: TimelineEntry[] = [
         "icon": "farmer",
         "side": "left",
         "color": "#999",
-        "text": "Please! I am pregnant and we have small children! Where will we go?",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "character": "POLICE OFFICER",
-        "icon": "worker",
-        "side": "right",
-        "color": "#999",
-        "text": "Social services will assist. You must vacate immediately.",
+        "text": "Billy is in Llandough Hospital. I have three boys and another coming. We have nothing.",
         "position": {
           "x": 0,
           "y": 0
@@ -2973,9 +3034,20 @@ export const TIMELINE: TimelineEntry[] = [
       {
         "character": "BILLY BUCKLER",
         "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Within hours of getting in they began demolition. Half the outbuilding roof is already off.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "NURSE",
+        "icon": "worker",
         "side": "left",
         "color": "#999",
-        "text": "This is state-sanctioned theft! Our family has been here for 321 years!",
+        "text": "The police have barred you from the site. You cannot return. Please rest.",
         "position": {
           "x": 0,
           "y": 0
@@ -3641,61 +3713,61 @@ export const TIMELINE: TimelineEntry[] = [
   },
   {
     "year": "1988",
-    "location": "High Court Cardiff",
+    "location": "Great House Farm — Demolition",
     "locationType": "other",
     "description": "",
-    "narration": "A judge refuses to extend the injunction. Cadw declines emergency listing. Demolition is cleared to proceed with registered title upheld and no investigation of fraud or missing deeds.",
+    "narration": "Hours after the final court ruling on 6 December 1988, BP's bulldozers move in overnight. Branwen and the children watch from a caravan nearby as their 800-year-old home is flattened. The site is desc",
     "scenes": [
       {
-        "character": "JUDGE",
-        "icon": "lawyer",
-        "side": "left",
-        "color": "#999",
-        "text": "There is no sufficient legal basis to continue the demolition injunction.",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "character": "FAMILY SOLICITOR",
-        "icon": "lawyer",
-        "side": "right",
-        "color": "#999",
-        "text": "But the archaeology and fraud allegations remain uninvestigated!",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "character": "JUDGE",
-        "icon": "lawyer",
-        "side": "left",
-        "color": "#999",
-        "text": "Those matters do not support further delay of lawful possession and use.",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "character": "FAMILY SOLICITOR",
-        "icon": "lawyer",
-        "side": "right",
-        "color": "#999",
-        "text": "Once the house is demolished, European Court review cannot restore it!",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "character": "JANET HARRIS (BUCKLER)",
+        "character": "BRANWEN BUCKLER",
         "icon": "farmer",
         "side": "left",
         "color": "#999",
-        "text": "Without listing, they're now free to demolish the building immediately.",
+        "text": "We watched from the caravan. They took it down to rubble overnight. Amy is in tears.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "DEMOLITION FOREMAN",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Bulldozed before breakfast. Orders were to flatten everything on the five-acre site.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "All I have left are the clothes I stand up in. They took everything else.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL OBSERVER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "The site looks like a battleground. Rubble everywhere. An 800-year house—overnight.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "£30,000 of possessions still inside when the bulldozers came. Gone. All gone.",
         "position": {
           "x": 0,
           "y": 0
@@ -3713,50 +3785,17 @@ export const TIMELINE: TimelineEntry[] = [
   },
   {
     "year": "1988",
-    "location": "Great House Farm",
+    "location": "Llandough Hospital / Magistrates Court",
     "locationType": "other",
     "description": "",
-    "narration": "On 6 December 1988, Great House Farm is demolished overnight, hours after the final court decision, ending over three centuries of Williams-Buckler occupation and destroying the structure.",
+    "narration": "Police take Billy Buckler from his hospital bed to face charges of assault on two bailiffs. He is aged 40, freed on bail. He faces additional charges of criminal damage and wanton or furious driving f",
     "scenes": [
       {
-        "character": "BILLY BUCKLER",
-        "icon": "farmer",
-        "side": "left",
-        "color": "#999",
-        "text": "The farmhouse has been demolished overnight after the court ruling.",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "character": "BRANWEN BUCKLER",
-        "icon": "farmer",
-        "side": "right",
-        "color": "#999",
-        "text": "We watched from the caravan as the house was taken down to rubble.",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "character": "DEMOLITION FOREMAN",
+        "character": "POLICE OFFICER",
         "icon": "worker",
         "side": "left",
         "color": "#999",
-        "text": "We carried out demolition as instructed once legal clearance was given.",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "character": "LOCAL OBSERVER",
-        "icon": "worker",
-        "side": "right",
-        "color": "#999",
-        "text": "They demolished it immediately—no delay for appeals or heritage review.",
+        "text": "William Buckler, you are taken from hospital to face charges of assault on two bailiffs.",
         "position": {
           "x": 0,
           "y": 0
@@ -3765,9 +3804,42 @@ export const TIMELINE: TimelineEntry[] = [
       {
         "character": "BILLY BUCKLER",
         "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Taken from a hospital bed to answer charges for defending my own home. This is justice?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "POLICE OFFICER",
+        "icon": "worker",
         "side": "left",
         "color": "#999",
-        "text": "They destroyed our home and all the evidence inside before anyone could act!",
+        "text": "You face assault, criminal damage, and wanton or furious driving charges.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "I defended my family. They bashed the door in with my children standing behind it.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "Freed on bail. I will fight this to the death. They have no documents for that farm.",
         "position": {
           "x": 0,
           "y": 0
@@ -3788,58 +3860,58 @@ export const TIMELINE: TimelineEntry[] = [
     "location": "Hospital / Court",
     "locationType": "other",
     "description": "",
-    "narration": "Shortly after demolition and eviction, police take Billy from his hospital bed to face charges of assaulting two bailiffs during the enforcement action at Great House Farm.",
+    "narration": "Lorries move onto the cleared site at 7:30am. The operation takes several days. The council's planning chief describes the area as looking like a battleground and authorises legal action to force BP t",
     "scenes": [
       {
-        "character": "POLICE OFFICER",
+        "character": "PLANNING CHIEF",
         "icon": "worker",
         "side": "left",
         "color": "#999",
-        "text": "You are under arrest for assaults alleged during the eviction process.",
+        "text": "The site looks like a battleground. We authorise legal action to force BP to clear it.",
         "position": {
           "x": 0,
           "y": 0
         }
       },
       {
-        "character": "BILLY BUCKLER",
-        "icon": "farmer",
-        "side": "right",
-        "color": "#999",
-        "text": "I am being brought from hospital to answer charges tied to the eviction.",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "character": "BILLY BUCKLER",
-        "icon": "farmer",
-        "side": "left",
-        "color": "#999",
-        "text": "I was defending my family's home from an unlawful eviction!",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      },
-      {
-        "character": "POLICE OFFICER",
+        "character": "VALE COUNCILLOR",
         "icon": "worker",
         "side": "right",
         "color": "#999",
-        "text": "The eviction was court-ordered. Resistance constitutes assault and contempt.",
+        "text": "BP's decision to flatten everything is disgusting. I am writing to them in protest.",
         "position": {
           "x": 0,
           "y": 0
         }
       },
       {
-        "character": "BILLY BUCKLER",
-        "icon": "farmer",
+        "character": "LOCAL COUNCILLOR",
+        "icon": "worker",
         "side": "left",
         "color": "#999",
-        "text": "How can it be lawful when ownership was never proven in any court?",
+        "text": "Lorries rolled in at 7:30am. An 800-year building demolished in days for luxury homes.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BP PROPERTIES AGENT",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "We demolished our lawfully held property. Cleanup is under way as required.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL COUNCILLOR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Branwen Buckler stood with her children at the rubble. It was just like a wartime sight.",
         "position": {
           "x": 0,
           "y": 0

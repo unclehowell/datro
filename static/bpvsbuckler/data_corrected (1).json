@@ -3,7 +3,7 @@
     "title": "Great House Farm: A Chronicle of Dispossession",
     "subtitle": "Complete Screenplay - Dialogue Only Format",
     "format": "dialogue_only",
-    "totalScenes": 78,
+    "totalScenes": 79,
     "timeSpan": {
       "startYear": 1100,
       "endYear": 2025,
@@ -21,8 +21,8 @@
       "family_dispossession",
       "legal_avoidance"
     ],
-    "lastUpdated": "2025-02-11",
-    "version": "2.0.0",
+    "lastUpdated": "2025-02-12",
+    "version": "2.2.0",
     "notes": "Timeline corrected against verified legal record: BP Properties Ltd v Buckler [1987] EWCA Civ 2 (Court of Appeal, Dillon LJ, 31 Jul 1987). Key corrections: adverse possession from Feb 1955 (last rent ~1953); first possession order 11 Dec 1962; 1974 licence letters by BP Pension Trust; Mary Williams died 1983; QBD judgment Hollis J 24 Jul 1986; CA judgment NOT House of Lords."
   },
   "characters": [
@@ -1481,6 +1481,45 @@
     },
     {
       "sceneNumber": 22,
+      "year": 1897,
+      "periodLabel": null,
+      "location": "Great House Farm / Lavernock Point",
+      "narration": "Thomas Williams of Great House daily carts Guglielmo Marconi and his radio equipment to and from Lavernock Point by horse and cart. On 13 May 1897 Marconi transmits the first wireless signal across op",
+      "dialogue": [
+        {
+          "speaker": "THOMAS WILLIAMS",
+          "line": "I cart Mr Marconi and his equipment to Lavernock Point each day from Great House.",
+          "emphasis": false
+        },
+        {
+          "speaker": "GUGLIELMO MARCONI",
+          "line": "Without Thomas Williams and his horse and cart, these experiments could not proceed.",
+          "emphasis": false
+        },
+        {
+          "speaker": "THOMAS WILLIAMS",
+          "line": "A Williams was at the mast on the day the signal crossed the water. That is recorded.",
+          "emphasis": true
+        },
+        {
+          "speaker": "REPORTER",
+          "line": "The newspaper notes a Williams present at the mast during the successful transmission.",
+          "emphasis": false
+        },
+        {
+          "speaker": "THOMAS WILLIAMS",
+          "line": "They may call me a carter. But I am lord of this manor, not a peasant farmer.",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "williams_family",
+        "heritage_protection",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 23,
       "year": 1900,
       "periodLabel": null,
       "location": "Great House Farm",
@@ -1505,7 +1544,7 @@
       ]
     },
     {
-      "sceneNumber": 23,
+      "sceneNumber": 24,
       "year": 1920,
       "periodLabel": null,
       "location": "Great House Farm",
@@ -1539,7 +1578,7 @@
       ]
     },
     {
-      "sceneNumber": 24,
+      "sceneNumber": 25,
       "year": 1926,
       "periodLabel": null,
       "location": "Estate Sale",
@@ -1580,7 +1619,7 @@
       ]
     },
     {
-      "sceneNumber": 25,
+      "sceneNumber": 26,
       "year": 1926,
       "periodLabel": null,
       "location": "Purchase Agreement",
@@ -1615,7 +1654,7 @@
       ]
     },
     {
-      "sceneNumber": 26,
+      "sceneNumber": 27,
       "year": 1930,
       "periodLabel": "1930-1950",
       "location": "Great House Farm",
@@ -1639,7 +1678,7 @@
       ]
     },
     {
-      "sceneNumber": 27,
+      "sceneNumber": 28,
       "year": 1953,
       "periodLabel": null,
       "location": "Great House Farm",
@@ -1662,7 +1701,7 @@
       ]
     },
     {
-      "sceneNumber": 28,
+      "sceneNumber": 29,
       "year": 1955,
       "periodLabel": null,
       "location": "Title Office / Great House Farm",
@@ -1699,46 +1738,6 @@
         "post_war",
         "williams_family",
         "ownership_dispute"
-      ]
-    },
-    {
-      "sceneNumber": 29,
-      "year": 1960,
-      "periodLabel": null,
-      "location": "Marconi Site Planning",
-      "narration": "Marconi constructs a telecommunications facility adjacent to Great House Farm. Site surveys proceed without investigating the Williams ownership claim or the Roman archaeological significance.",
-      "dialogue": [
-        {
-          "speaker": "MARCONI SURVEYOR",
-          "line": "This site is perfect for our telecommunications base next to the farm.",
-          "emphasis": false
-        },
-        {
-          "speaker": "MARY WILLIAMS",
-          "line": "Will you investigate the Roman remains we found? This is protected land.",
-          "emphasis": false
-        },
-        {
-          "speaker": "MARCONI OFFICIAL",
-          "line": "Our planning approval is in order. Family stories are not our concern.",
-          "emphasis": false
-        },
-        {
-          "speaker": "MARY WILLIAMS",
-          "line": "The soldier we found proves this site has archaeological importance!",
-          "emphasis": true
-        },
-        {
-          "speaker": "MARCONI SURVEYOR",
-          "line": "We see no official heritage listing. Development proceeds as permitted.",
-          "emphasis": false
-        }
-      ],
-      "tags": [
-        "heritage_protection",
-        "archaeology",
-        "post_war",
-        "williams_family"
       ]
     },
     {
@@ -1783,6 +1782,46 @@
     },
     {
       "sceneNumber": 31,
+      "year": 1963,
+      "periodLabel": null,
+      "location": "GEC-Marconi Telecommunications Site, Llandough",
+      "narration": "The Marconi Company (by then part of English Electric) constructs a telecommunications facility adjacent to Great House Farm. Surveys proceed without investigating the Williams ownership claim or Roma",
+      "dialogue": [
+        {
+          "speaker": "MARCONI SURVEYOR",
+          "line": "This land adjacent to the farm is suitable for our new telecom base station.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "Will you investigate Roman remains here? Our family found a soldier in 1870.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARCONI OFFICIAL",
+          "line": "Our planning approval is in order. Family stories are not our concern.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "The soldier we found proves this site has major archaeological importance!",
+          "emphasis": true
+        },
+        {
+          "speaker": "MARCONI SURVEYOR",
+          "line": "We see no heritage listing. Development proceeds as permitted.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "heritage_protection",
+        "archaeology",
+        "post_war",
+        "williams_family"
+      ]
+    },
+    {
+      "sceneNumber": 32,
       "year": 1970,
       "periodLabel": null,
       "location": "Legal Office",
@@ -1822,7 +1861,7 @@
       ]
     },
     {
-      "sceneNumber": 32,
+      "sceneNumber": 33,
       "year": 1974,
       "periodLabel": null,
       "location": "Court / Great House Farm",
@@ -1862,7 +1901,7 @@
       ]
     },
     {
-      "sceneNumber": 33,
+      "sceneNumber": 34,
       "year": 1975,
       "periodLabel": null,
       "location": "Estate Agent's Office",
@@ -1898,7 +1937,7 @@
       ]
     },
     {
-      "sceneNumber": 34,
+      "sceneNumber": 35,
       "year": 1976,
       "periodLabel": null,
       "location": "Great House Farm",
@@ -1938,7 +1977,7 @@
       ]
     },
     {
-      "sceneNumber": 35,
+      "sceneNumber": 36,
       "year": 1978,
       "periodLabel": null,
       "location": "Court",
@@ -1977,7 +2016,7 @@
       ]
     },
     {
-      "sceneNumber": 36,
+      "sceneNumber": 37,
       "year": 1978,
       "periodLabel": null,
       "location": "Archaeological Rescue Dig",
@@ -2018,7 +2057,7 @@
       ]
     },
     {
-      "sceneNumber": 37,
+      "sceneNumber": 38,
       "year": 1980,
       "periodLabel": null,
       "location": "Court",
@@ -2056,7 +2095,7 @@
       ]
     },
     {
-      "sceneNumber": 38,
+      "sceneNumber": 39,
       "year": 1982,
       "periodLabel": null,
       "location": "Property Transfer",
@@ -2095,7 +2134,7 @@
       ]
     },
     {
-      "sceneNumber": 39,
+      "sceneNumber": 40,
       "year": 1983,
       "periodLabel": null,
       "location": "Great House Farm / Legal Office",
@@ -2136,7 +2175,7 @@
       ]
     },
     {
-      "sceneNumber": 40,
+      "sceneNumber": 41,
       "year": 1984,
       "periodLabel": null,
       "location": "BP Properties Offices",
@@ -2176,7 +2215,7 @@
       ]
     },
     {
-      "sceneNumber": 41,
+      "sceneNumber": 42,
       "year": 1985,
       "periodLabel": null,
       "location": "Queen's Bench Division, Cardiff",
@@ -2215,7 +2254,7 @@
       ]
     },
     {
-      "sceneNumber": 42,
+      "sceneNumber": 43,
       "year": 1985,
       "periodLabel": null,
       "location": "Heritage Investigation",
@@ -2255,7 +2294,7 @@
       ]
     },
     {
-      "sceneNumber": 43,
+      "sceneNumber": 44,
       "year": 1986,
       "periodLabel": null,
       "location": "Queen's Bench Division, Cardiff",
@@ -2295,7 +2334,7 @@
       ]
     },
     {
-      "sceneNumber": 44,
+      "sceneNumber": 45,
       "year": 1986,
       "periodLabel": null,
       "location": "Planning Department",
@@ -2337,7 +2376,7 @@
       ]
     },
     {
-      "sceneNumber": 45,
+      "sceneNumber": 46,
       "year": 1987,
       "periodLabel": null,
       "location": "Court of Appeal (Civil Division)",
@@ -2378,7 +2417,7 @@
       ]
     },
     {
-      "sceneNumber": 46,
+      "sceneNumber": 47,
       "year": 1987,
       "periodLabel": null,
       "location": "Family Meeting",
@@ -2418,7 +2457,7 @@
       ]
     },
     {
-      "sceneNumber": 47,
+      "sceneNumber": 48,
       "year": 1987,
       "periodLabel": null,
       "location": "European Court Inquiry",
@@ -2457,78 +2496,76 @@
       ]
     },
     {
-      "sceneNumber": 48,
+      "sceneNumber": 49,
       "year": 1988,
       "periodLabel": null,
-      "location": "Great House Farm",
-      "narration": "BP Properties presses for immediate possession. The family refuses to vacate, asserting ownership was never proven and warning that demolition will destroy irreplaceable heritage and evidence.",
+      "location": "Great House Farm — Chainsaw Siege",
+      "narration": "Five bailiffs and twenty police arrive at dawn. Billy blocks the drive with a car, bars doors and windows. He revs a chainsaw. In a four-hour siege, bailiffs smash the farmhouse doors with pickaxes. C",
       "dialogue": [
         {
-          "speaker": "BP PROPERTIES AGENT",
-          "line": "You must vacate immediately. The court has granted us possession.",
-          "emphasis": true
-        },
-        {
           "speaker": "BILLY BUCKLER",
-          "line": "Possession was granted, but ownership was never proven in any court!",
+          "line": "I've blocked the drive. You'll not get in. My children are right behind that door!",
           "emphasis": true
         },
         {
-          "speaker": "BP PROPERTIES AGENT",
-          "line": "The Court of Appeal has ruled. Further resistance is contempt of court.",
+          "speaker": "BAILIFF",
+          "line": "Open up now or we force entry. We have a court order and police authority.",
           "emphasis": false
         },
         {
-          "speaker": "MARY WILLIAMS",
-          "line": "This house is over 800 years old! Demolition destroys our heritage forever!",
+          "speaker": "BILLY BUCKLER",
+          "line": "They're smashing the doors with pickaxes! The children are right behind it!",
           "emphasis": true
         },
         {
-          "speaker": "BILLY BUCKLER",
-          "line": "And it destroys the Roman site underneath! This is deliberate evidence destruction!",
+          "speaker": "BRANWEN BUCKLER",
+          "line": "They bashed the door through with the children on the other side! God help us!",
           "emphasis": true
+        },
+        {
+          "speaker": "BAILIFF",
+          "line": "Hand over the chainsaw. Drop it now.",
+          "emphasis": false
         }
       ],
       "tags": [
         "legal_proceedings",
         "modern",
-        "archaeology",
+        "williams_family",
         "demolition",
-        "heritage_protection",
-        "estate",
         "ownership_dispute"
       ]
     },
     {
-      "sceneNumber": 49,
+      "sceneNumber": 50,
       "year": 1988,
       "periodLabel": null,
-      "location": "Enforcement Attempt",
-      "narration": "Bailiffs arrive to enforce possession, but the family resists, barricading themselves inside Great House Farm and refusing to leave without a ruling on ownership and heritage protection.",
+      "location": "Great House Farm — Forced Entry",
+      "narration": "Bailiffs grab the running chainsaw through the broken door and disable it. The four-hour siege ends with police surging in. Branwen leaves with the three young children. Billy and friends hold the int",
       "dialogue": [
         {
-          "speaker": "BAILIFF",
-          "line": "We are here to enforce the court order for possession. Open the door.",
-          "emphasis": false
-        },
-        {
           "speaker": "BILLY BUCKLER",
-          "line": "Not until ownership is proven and this site's archaeology is protected!",
+          "line": "They grabbed the chainsaw through the door and cut it up. This is our home!",
           "emphasis": true
         },
         {
-          "speaker": "BAILIFF",
-          "line": "You are in contempt of court. Police assistance will be requested.",
+          "speaker": "BRANWEN BUCKLER",
+          "line": "I am leaving with the boys. Thomas is only three. I cannot keep them safe here.",
+          "emphasis": true
+        },
+        {
+          "speaker": "POLICE COMMANDER",
+          "line": "The premises are being cleared under court order. All occupants must vacate.",
           "emphasis": false
         },
         {
-          "speaker": "MARY WILLIAMS",
-          "line": "We are the rightful owners! This eviction is based on fraud and deceit!",
+          "speaker": "ALUN MICHAEL MP",
+          "line": "I warned the Lord Chancellor. The way this is being handled—somebody will be killed.",
           "emphasis": true
         },
         {
           "speaker": "BILLY BUCKLER",
-          "line": "Demolish this house and you destroy evidence of national importance!",
+          "line": "I am here to stay. I will fight this to the death. I own this farm.",
           "emphasis": true
         }
       ],
@@ -2543,35 +2580,35 @@
       ]
     },
     {
-      "sceneNumber": 50,
+      "sceneNumber": 51,
       "year": 1988,
       "periodLabel": null,
-      "location": "Standoff at Great House",
-      "narration": "A tense standoff ensues. Bailiffs, police, and media surround Great House Farm. Inside, the Williams-Buckler family vows to resist until ownership is judicially determined and heritage protected.",
+      "location": "Great House Farm — Final Eviction",
+      "narration": "Billy is forcibly removed and taken to Llandough Hospital with injuries sustained during the eviction. Charges follow: assault on two bailiffs, criminal damage, and wanton or furious driving. He refus",
       "dialogue": [
         {
-          "speaker": "POLICE COMMANDER",
-          "line": "This situation must be resolved peacefully. Will you exit voluntarily?",
-          "emphasis": true
-        },
-        {
           "speaker": "BILLY BUCKLER",
-          "line": "Only if the court determines ownership and Cadw protects this site!",
+          "line": "You have no right! Get off this land! Ownership was never decided in any court!",
           "emphasis": true
         },
         {
-          "speaker": "MEDIA REPORTER",
-          "line": "Why has ownership never been ruled on in over a decade of litigation?",
-          "emphasis": true
-        },
-        {
-          "speaker": "POLICE COMMANDER",
-          "line": "Our role is enforcement, not adjudication. The courts have ruled.",
+          "speaker": "POLICE OFFICER",
+          "line": "You are under arrest. Stop resisting. An ambulance has been called.",
           "emphasis": false
         },
         {
           "speaker": "BILLY BUCKLER",
-          "line": "The courts ruled on possession, not ownership! That's the entire point!",
+          "line": "A dozen police on the farm and I won't leave—not until someone rules who owns it.",
+          "emphasis": true
+        },
+        {
+          "speaker": "POLICE OFFICER",
+          "line": "You face charges of assault on two bailiffs, criminal damage, and furious driving.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "I'll not go to hospital—if I leave they come back and take everything we have left.",
           "emphasis": true
         }
       ],
@@ -2584,36 +2621,36 @@
       ]
     },
     {
-      "sceneNumber": 51,
+      "sceneNumber": 52,
       "year": 1988,
       "periodLabel": null,
-      "location": "Violent Eviction",
-      "narration": "Police storm Great House Farm. Billy Buckler is injured and hospitalized during the forcible eviction. The family, including pregnant Branwen and young children, are removed by force.",
+      "location": "Llandough Hospital",
+      "narration": "Billy Buckler lies injured in Llandough Hospital, refusing to leave for fear bailiffs will re-enter the farm. Branwen and three young children are in emergency accommodation. All possessions—and Mary'",
       "dialogue": [
         {
-          "speaker": "BILLY BUCKLER",
-          "line": "You have no right! This is our home! Ownership was never proven!",
-          "emphasis": true
-        },
-        {
-          "speaker": "POLICE OFFICER",
-          "line": "We are enforcing a court order. Resisting will result in arrest.",
+          "speaker": "NURSE",
+          "line": "You have significant injuries and must stay. You are not fit to leave.",
           "emphasis": false
         },
         {
-          "speaker": "BRANWEN BUCKLER",
-          "line": "Please! I am pregnant and we have small children! Where will we go?",
+          "speaker": "BILLY BUCKLER",
+          "line": "If I leave that hospital they'll take the farm. I won't go—not yet.",
           "emphasis": true
         },
         {
-          "speaker": "POLICE OFFICER",
-          "line": "Social services will assist. You must vacate immediately.",
+          "speaker": "BRANWEN BUCKLER",
+          "line": "Billy is in Llandough Hospital. I have three boys and another coming. We have nothing.",
           "emphasis": true
         },
         {
           "speaker": "BILLY BUCKLER",
-          "line": "This is state-sanctioned theft! Our family has been here for 321 years!",
+          "line": "Within hours of getting in they began demolition. Half the outbuilding roof is already off.",
           "emphasis": true
+        },
+        {
+          "speaker": "NURSE",
+          "line": "The police have barred you from the site. You cannot return. Please rest.",
+          "emphasis": false
         }
       ],
       "tags": [
@@ -2624,7 +2661,7 @@
       ]
     },
     {
-      "sceneNumber": 52,
+      "sceneNumber": 53,
       "year": 1988,
       "periodLabel": null,
       "location": "Hospital",
@@ -2662,7 +2699,7 @@
       ]
     },
     {
-      "sceneNumber": 53,
+      "sceneNumber": 54,
       "year": 1988,
       "periodLabel": null,
       "location": "Emergency Accommodation",
@@ -2700,7 +2737,7 @@
       ]
     },
     {
-      "sceneNumber": 54,
+      "sceneNumber": 55,
       "year": 1988,
       "periodLabel": null,
       "location": "Legal Office",
@@ -2741,7 +2778,7 @@
       ]
     },
     {
-      "sceneNumber": 55,
+      "sceneNumber": 56,
       "year": 1988,
       "periodLabel": null,
       "location": "Court",
@@ -2782,7 +2819,7 @@
       ]
     },
     {
-      "sceneNumber": 56,
+      "sceneNumber": 57,
       "year": 1988,
       "periodLabel": null,
       "location": "Cadw Offices",
@@ -2822,7 +2859,7 @@
       ]
     },
     {
-      "sceneNumber": 57,
+      "sceneNumber": 58,
       "year": 1988,
       "periodLabel": null,
       "location": "Press Conference",
@@ -2862,7 +2899,7 @@
       ]
     },
     {
-      "sceneNumber": 58,
+      "sceneNumber": 59,
       "year": 1988,
       "periodLabel": null,
       "location": "Community Meeting",
@@ -2904,7 +2941,7 @@
       ]
     },
     {
-      "sceneNumber": 59,
+      "sceneNumber": 60,
       "year": 1988,
       "periodLabel": null,
       "location": "MP's Office",
@@ -2943,7 +2980,7 @@
       ]
     },
     {
-      "sceneNumber": 60,
+      "sceneNumber": 61,
       "year": 1988,
       "periodLabel": null,
       "location": "Heritage Waiting Period",
@@ -2984,36 +3021,36 @@
       ]
     },
     {
-      "sceneNumber": 61,
+      "sceneNumber": 62,
       "year": 1988,
       "periodLabel": null,
-      "location": "High Court Cardiff",
-      "narration": "A judge refuses to extend the injunction. Cadw declines emergency listing. Demolition is cleared to proceed with registered title upheld and no investigation of fraud or missing deeds.",
+      "location": "Great House Farm — Demolition",
+      "narration": "Hours after the final court ruling on 6 December 1988, BP's bulldozers move in overnight. Branwen and the children watch from a caravan nearby as their 800-year-old home is flattened. The site is desc",
       "dialogue": [
         {
-          "speaker": "JUDGE",
-          "line": "There is no sufficient legal basis to continue the demolition injunction.",
-          "emphasis": false
-        },
-        {
-          "speaker": "FAMILY SOLICITOR",
-          "line": "But the archaeology and fraud allegations remain uninvestigated!",
+          "speaker": "BRANWEN BUCKLER",
+          "line": "We watched from the caravan. They took it down to rubble overnight. Amy is in tears.",
           "emphasis": true
         },
         {
-          "speaker": "JUDGE",
-          "line": "Those matters do not support further delay of lawful possession and use.",
+          "speaker": "DEMOLITION FOREMAN",
+          "line": "Bulldozed before breakfast. Orders were to flatten everything on the five-acre site.",
           "emphasis": false
         },
         {
-          "speaker": "FAMILY SOLICITOR",
-          "line": "Once the house is demolished, European Court review cannot restore it!",
+          "speaker": "BILLY BUCKLER",
+          "line": "All I have left are the clothes I stand up in. They took everything else.",
           "emphasis": true
         },
         {
-          "speaker": "JANET HARRIS (BUCKLER)",
-          "line": "Without listing, they're now free to demolish the building immediately.",
+          "speaker": "LOCAL OBSERVER",
+          "line": "The site looks like a battleground. Rubble everywhere. An 800-year house—overnight.",
           "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "£30,000 of possessions still inside when the bulldozers came. Gone. All gone.",
+          "emphasis": true
         }
       ],
       "tags": [
@@ -3027,35 +3064,35 @@
       ]
     },
     {
-      "sceneNumber": 62,
+      "sceneNumber": 63,
       "year": 1988,
       "periodLabel": null,
-      "location": "Great House Farm",
-      "narration": "On 6 December 1988, Great House Farm is demolished overnight, hours after the final court decision, ending over three centuries of Williams-Buckler occupation and destroying the structure.",
+      "location": "Llandough Hospital / Magistrates Court",
+      "narration": "Police take Billy Buckler from his hospital bed to face charges of assault on two bailiffs. He is aged 40, freed on bail. He faces additional charges of criminal damage and wanton or furious driving f",
       "dialogue": [
         {
-          "speaker": "BILLY BUCKLER",
-          "line": "The farmhouse has been demolished overnight after the court ruling.",
-          "emphasis": false
-        },
-        {
-          "speaker": "BRANWEN BUCKLER",
-          "line": "We watched from the caravan as the house was taken down to rubble.",
-          "emphasis": false
-        },
-        {
-          "speaker": "DEMOLITION FOREMAN",
-          "line": "We carried out demolition as instructed once legal clearance was given.",
-          "emphasis": false
-        },
-        {
-          "speaker": "LOCAL OBSERVER",
-          "line": "They demolished it immediately—no delay for appeals or heritage review.",
+          "speaker": "POLICE OFFICER",
+          "line": "William Buckler, you are taken from hospital to face charges of assault on two bailiffs.",
           "emphasis": false
         },
         {
           "speaker": "BILLY BUCKLER",
-          "line": "They destroyed our home and all the evidence inside before anyone could act!",
+          "line": "Taken from a hospital bed to answer charges for defending my own home. This is justice?",
+          "emphasis": true
+        },
+        {
+          "speaker": "POLICE OFFICER",
+          "line": "You face assault, criminal damage, and wanton or furious driving charges.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "I defended my family. They bashed the door in with my children standing behind it.",
+          "emphasis": true
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "Freed on bail. I will fight this to the death. They have no documents for that farm.",
           "emphasis": true
         }
       ],
@@ -3068,35 +3105,35 @@
       ]
     },
     {
-      "sceneNumber": 63,
+      "sceneNumber": 64,
       "year": 1988,
       "periodLabel": null,
       "location": "Hospital / Court",
-      "narration": "Shortly after demolition and eviction, police take Billy from his hospital bed to face charges of assaulting two bailiffs during the enforcement action at Great House Farm.",
+      "narration": "Lorries move onto the cleared site at 7:30am. The operation takes several days. The council's planning chief describes the area as looking like a battleground and authorises legal action to force BP t",
       "dialogue": [
         {
-          "speaker": "POLICE OFFICER",
-          "line": "You are under arrest for assaults alleged during the eviction process.",
+          "speaker": "PLANNING CHIEF",
+          "line": "The site looks like a battleground. We authorise legal action to force BP to clear it.",
           "emphasis": false
         },
         {
-          "speaker": "BILLY BUCKLER",
-          "line": "I am being brought from hospital to answer charges tied to the eviction.",
-          "emphasis": false
-        },
-        {
-          "speaker": "BILLY BUCKLER",
-          "line": "I was defending my family's home from an unlawful eviction!",
+          "speaker": "VALE COUNCILLOR",
+          "line": "BP's decision to flatten everything is disgusting. I am writing to them in protest.",
           "emphasis": true
         },
         {
-          "speaker": "POLICE OFFICER",
-          "line": "The eviction was court-ordered. Resistance constitutes assault and contempt.",
+          "speaker": "LOCAL COUNCILLOR",
+          "line": "Lorries rolled in at 7:30am. An 800-year building demolished in days for luxury homes.",
           "emphasis": false
         },
         {
-          "speaker": "BILLY BUCKLER",
-          "line": "How can it be lawful when ownership was never proven in any court?",
+          "speaker": "BP PROPERTIES AGENT",
+          "line": "We demolished our lawfully held property. Cleanup is under way as required.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LOCAL COUNCILLOR",
+          "line": "Branwen Buckler stood with her children at the rubble. It was just like a wartime sight.",
           "emphasis": true
         }
       ],
@@ -3108,7 +3145,7 @@
       ]
     },
     {
-      "sceneNumber": 64,
+      "sceneNumber": 65,
       "year": 1988,
       "periodLabel": null,
       "location": "Demolished Site",
@@ -3149,7 +3186,7 @@
       ]
     },
     {
-      "sceneNumber": 65,
+      "sceneNumber": 66,
       "year": 1988,
       "periodLabel": null,
       "location": "Temporary Accommodation",
@@ -3182,7 +3219,7 @@
       ]
     },
     {
-      "sceneNumber": 66,
+      "sceneNumber": 67,
       "year": 1989,
       "periodLabel": null,
       "location": "Court",
@@ -3221,7 +3258,7 @@
       ]
     },
     {
-      "sceneNumber": 67,
+      "sceneNumber": 68,
       "year": 1989,
       "periodLabel": null,
       "location": "Court",
@@ -3262,7 +3299,7 @@
       ]
     },
     {
-      "sceneNumber": 68,
+      "sceneNumber": 69,
       "year": 1989,
       "periodLabel": null,
       "location": "Demolition Site",
@@ -3295,7 +3332,7 @@
       ]
     },
     {
-      "sceneNumber": 69,
+      "sceneNumber": 70,
       "year": 1989,
       "periodLabel": null,
       "location": "Community Meeting",
@@ -3337,7 +3374,7 @@
       ]
     },
     {
-      "sceneNumber": 70,
+      "sceneNumber": 71,
       "year": 1990,
       "periodLabel": null,
       "location": "Press Room",
@@ -3378,7 +3415,7 @@
       ]
     },
     {
-      "sceneNumber": 71,
+      "sceneNumber": 72,
       "year": 1994,
       "periodLabel": null,
       "location": "Major Excavation Site",
@@ -3417,7 +3454,7 @@
       ]
     },
     {
-      "sceneNumber": 72,
+      "sceneNumber": 73,
       "year": 2005,
       "periodLabel": null,
       "location": "Heritage Website",
@@ -3458,7 +3495,7 @@
       ]
     },
     {
-      "sceneNumber": 73,
+      "sceneNumber": 74,
       "year": 2024,
       "periodLabel": null,
       "location": "Family Communication",
@@ -3498,7 +3535,7 @@
       ]
     },
     {
-      "sceneNumber": 74,
+      "sceneNumber": 75,
       "year": 2025,
       "periodLabel": null,
       "location": "Legal Research",
@@ -3538,7 +3575,7 @@
       ]
     },
     {
-      "sceneNumber": 75,
+      "sceneNumber": 76,
       "year": "present_day",
       "periodLabel": null,
       "location": "Church View Close",
@@ -3576,7 +3613,7 @@
       ]
     },
     {
-      "sceneNumber": 76,
+      "sceneNumber": 77,
       "year": "present_day",
       "periodLabel": null,
       "location": "Legal Archive",
@@ -3619,7 +3656,7 @@
       ]
     },
     {
-      "sceneNumber": 77,
+      "sceneNumber": 78,
       "year": "present_day",
       "periodLabel": null,
       "location": "Academic Conference",
@@ -3661,7 +3698,7 @@
       ]
     },
     {
-      "sceneNumber": 78,
+      "sceneNumber": 79,
       "year": "present_day",
       "periodLabel": null,
       "location": "Public Inquiry Call",
@@ -3777,6 +3814,13 @@
       ]
     },
     {
+      "year": 1897,
+      "event": "Thomas Williams carts Marconi daily to Lavernock Point; 13 May 1897 first wireless signal over open sea. Newspaper records a Williams at the mast. Counter-narrative demotes Williams as carter/peasant; family assert gentry status as lords of the Manor of Llandough dispossessed by Bute estate.",
+      "sceneRefs": [
+        22
+      ]
+    },
+    {
       "year": 1900,
       "event": "Mary Williams born at Great House Farm",
       "sceneRefs": [
@@ -3813,8 +3857,8 @@
       ]
     },
     {
-      "year": 1960,
-      "event": "Marconi constructs telecommunications facility",
+      "year": 1963,
+      "event": "GEC/Marconi Company constructs telecommunications facility adjacent to Great House Farm",
       "sceneRefs": [
         29
       ]
