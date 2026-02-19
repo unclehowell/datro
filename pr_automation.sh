@@ -15,10 +15,10 @@ BRANCH_PREFIX="feature/auto-"
 DEFAULT_BASE_BRANCH="${DEFAULT_BASE_BRANCH:-gh-pages}"
 ALLOW_EMPTY_COMMIT="${ALLOW_EMPTY_COMMIT:-no}"
 
-log() { printf '\033[1;34m%s\033[0m\n' "$*"; }
+log()     { printf '\033[1;34m%s\033[0m\n' "$*"; }
 success() { printf '\033[1;32m%s\033[0m\n' "$*"; }
-warn() { printf '\033[1;33m%s\033[0m\n' "$*"; }
-err() { printf '\033[1;31m%s\033[0m\n' "$*"; }
+warn()    { printf '\033[1;33m%s\033[0m\n' "$*"; }
+err()     { printf '\033[1;31m%s\033[0m\n' "$*"; }
 
 # --- Sanity checks ---
 command -v git >/dev/null 2>&1 || { err "git not found in PATH"; exit 1; }
@@ -35,17 +35,20 @@ if [ -z "$CURRENT_BRANCH" ]; then
   exit 1
 fi
 
+# --- Fix HTTP/2 issues with git fetch/push ---
+git config http.version HTTP/1.1
+
 # --- Generate branch name ---
 generate_branch_name() {
   TIMESTAMP="$(date +%Y%m%d-%H%M%S)"
-  letter=$(printf "%c" $((97 + (RANDOM % 26))))
-  echo "${BRANCH_PREFIX}${letter}-${TIMESTAMP}"
+  NUM=$((RANDOM % 100))
+  echo "${BRANCH_PREFIX}${NUM}-${TIMESTAMP}"
 }
 
 # --- Determine remote base branch ---
 determine_remote_base() {
   local preferred="$1"
-  if git ls-remote --heads origin "refs/heads/${preferred}" | grep -q 'refs/heads/' ; then
+  if git ls-remote --heads origin "refs/heads/${preferred}" | grep -q 'refs/heads/'; then
     echo "$preferred"
     return 0
   fi
@@ -77,15 +80,25 @@ if ! git config user.email >/dev/null 2>&1 || ! git config user.name >/dev/null 
   warn "Git user.name or user.email not set. Commits may fail."
 fi
 
+# --- Fetch latest remote state ---
+log "Fetching latest remote state..."
+BASE_BRANCH="$(determine_remote_base "$DEFAULT_BASE_BRANCH")"
+git fetch origin "$BASE_BRANCH" || { err "Failed to fetch origin/$BASE_BRANCH. Check your connection."; exit 1; }
+
 # --- Create or use branch ---
 if [ "$ACTION" = "CREATE" ]; then
   NEW_BRANCH_NAME="$(generate_branch_name)"
-  log "Creating and switching to new branch: $NEW_BRANCH_NAME"
-  git checkout -b "$NEW_BRANCH_NAME"
+  log "Creating new branch '$NEW_BRANCH_NAME' rooted at origin/${BASE_BRANCH}..."
+  git checkout -b "$NEW_BRANCH_NAME" "origin/${BASE_BRANCH}"
   BRANCH_TO_USE="$NEW_BRANCH_NAME"
 else
   BRANCH_TO_USE="$CURRENT_BRANCH"
   log "Using current branch: $BRANCH_TO_USE"
+
+  # Warn if current branch has no history in common with base
+  if ! git merge-base --is-ancestor "$(git merge-base HEAD "origin/${BASE_BRANCH}" 2>/dev/null || true)" HEAD 2>/dev/null; then
+    warn "Current branch may not share history with origin/${BASE_BRANCH}. PR creation could fail."
+  fi
 fi
 
 # --- Update trigger file to ensure something to commit ---
@@ -98,18 +111,18 @@ git add -A
 
 # --- Commit changes ---
 COMMIT_MESSAGE="Auto-commit: $CURRENT_TIME - Automated PR update."
-if git commit -m "$COMMIT_MESSAGE"; then
-  success "Commit created."
+if git diff --cached --quiet; then
+  warn "Nothing staged to commit."
+  if [ "$ALLOW_EMPTY_COMMIT" = "yes" ]; then
+    log "Creating empty commit..."
+    git commit --allow-empty -m "${COMMIT_MESSAGE} (empty)"
+    success "Empty commit created."
+  else
+    warn "No commit created. Set ALLOW_EMPTY_COMMIT=yes to force an empty commit."
+  fi
 else
-  if [ -z "$(git status --porcelain)" ]; then
-    warn "Nothing to commit."
-    if [ "$ALLOW_EMPTY_COMMIT" = "yes" ]; then
-      log "Creating empty commit..."
-      git commit --allow-empty -m "${COMMIT_MESSAGE} (empty)"
-      success "Empty commit created."
-    else
-      warn "No commit created and ALLOW_EMPTY_COMMIT not enabled."
-    fi
+  if git commit -m "$COMMIT_MESSAGE"; then
+    success "Commit created."
   else
     err "Commit failed. Check hooks/config."
     git status --short || true
@@ -119,31 +132,46 @@ fi
 
 # --- Push branch ---
 log "Pushing to remote branch 'origin/${BRANCH_TO_USE}'..."
-git push -u origin "$BRANCH_TO_USE"
+git push -u origin "$BRANCH_TO_USE" || { err "Push failed. Check your connection or permissions."; exit 1; }
 success "Pushed branch to origin/${BRANCH_TO_USE}."
 
-# --- Prepare PR ---
-BASE_BRANCH="$(determine_remote_base "$DEFAULT_BASE_BRANCH")"
+# --- Prepare PR metadata ---
 PR_TITLE="[Auto-PR] ${COMMIT_MESSAGE}"
-PR_BODY="**Automated Pull Request**\n\nTriggered: ${CURRENT_TIME}"
+PR_BODY="**Automated Pull Request**
+
+Triggered: ${CURRENT_TIME}
+Branch: ${BRANCH_TO_USE}
+Base: ${BASE_BRANCH}"
 
 PR_URL=""
+
 if [ "$ACTION" = "CREATE" ]; then
   log "Creating Pull Request (head: ${BRANCH_TO_USE} -> base: ${BASE_BRANCH})..."
-  PR_URL="$(gh pr create --head "${BRANCH_TO_USE}" --base "${BASE_BRANCH}" --title "$PR_TITLE" --body "$PR_BODY" 2>/dev/null || true)"
-  if [ -z "$PR_URL" ]; then
-    warn "gh pr create failed, trying to detect existing PR..."
-    PR_URL="$(gh pr view --head "${BRANCH_TO_USE}" --json url -q .url 2>/dev/null || true)"
+  PR_URL="$(gh pr create --head "${BRANCH_TO_USE}" --base "${BASE_BRANCH}" --title "$PR_TITLE" --body "$PR_BODY" 2>&1)" && true
+  # Check if output looks like a URL
+  if echo "$PR_URL" | grep -q 'https://github.com'; then
+    PR_URL="$(echo "$PR_URL" | grep 'https://github.com' | tail -1)"
+  else
+    err "gh pr create output: $PR_URL"
+    warn "Trying to find existing PR..."
+    PR_URL="$(gh pr view "${BRANCH_TO_USE}" --json url -q .url 2>/dev/null || true)"
   fi
+
 elif [ "$ACTION" = "UPDATE" ]; then
   log "Looking for existing PR for branch '${BRANCH_TO_USE}'..."
-  PR_URL="$(gh pr view --head "${BRANCH_TO_USE}" --json url -q .url 2>/dev/null || true)"
+  PR_URL="$(gh pr view "${BRANCH_TO_USE}" --json url -q .url 2>/dev/null || true)"
   if [ -n "$PR_URL" ]; then
     success "Found PR: $PR_URL"
-    gh pr comment --body "Automated update: ${CURRENT_TIME}" "${PR_URL}" >/dev/null 2>&1 || true
+    gh pr comment "${BRANCH_TO_USE}" --body "Automated update: ${CURRENT_TIME}" >/dev/null 2>&1 || true
   else
-    log "No existing PR found; creating..."
-    PR_URL="$(gh pr create --head "${BRANCH_TO_USE}" --base "${BASE_BRANCH}" --title "$PR_TITLE" --body "$PR_BODY" 2>/dev/null || true)"
+    log "No existing PR found; creating new PR..."
+    PR_URL="$(gh pr create --head "${BRANCH_TO_USE}" --base "${BASE_BRANCH}" --title "$PR_TITLE" --body "$PR_BODY" 2>&1)" && true
+    if echo "$PR_URL" | grep -q 'https://github.com'; then
+      PR_URL="$(echo "$PR_URL" | grep 'https://github.com' | tail -1)"
+    else
+      err "gh pr create output: $PR_URL"
+      PR_URL=""
+    fi
   fi
 fi
 
@@ -157,7 +185,8 @@ if [ -n "$PR_URL" ]; then
   echo "Title:  ${PR_TITLE}"
 else
   err "❌ Action Failed. Could not determine or create PR URL."
+  warn "Run manually to see full error:"
+  warn "  gh pr create --head ${BRANCH_TO_USE} --base ${BASE_BRANCH} --title \"test\" --body \"test\""
   git status --short || true
 fi
 echo "----------------------------------------------"
-
