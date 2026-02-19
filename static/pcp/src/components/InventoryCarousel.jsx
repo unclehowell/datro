@@ -8,7 +8,7 @@ export default function InventoryCarousel({ items, onOpen }) {
         <div key={it.id} className="inventory-slide">
           <BannerCard
             item={it}
-            onOpen={() => {}}
+            onOpen={onOpen}
             onDoubleOpen={onOpen}
             footer={<div className="inventory-hint">Double-click to open dedicated ad page</div>}
           />

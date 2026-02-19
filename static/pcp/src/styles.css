@@ -15,7 +15,7 @@ body { margin: 0; background: #0d0f14; color: #f5f5f5; }
 .inventory-hint { font-size: 12px; color: #9fb0cc; }
 
 .container { padding: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px; }
-.banner-card { display: flex; flex-direction: column; gap: 10px; background: #171b25; border: 1px solid #2a3244; border-radius: 14px; padding: 12px; }
+.banner-card { display: flex; flex-direction: column; gap: 10px; background: #171b25; border: 1px solid #2a3244; border-radius: 14px; padding: 12px; cursor: pointer; }
 .svg-wrap { min-height: 240px; display: grid; place-items: center; background: #0c0f15; border-radius: 10px; overflow: hidden; }
 .banner-svg { width: 100%; height: auto; max-height: 100%; }
 .banner-card-footer { padding-top: 4px; }
@@ -25,14 +25,21 @@ body { margin: 0; background: #0d0f14; color: #f5f5f5; }
 .format-item { background: #171b25; border: 1px solid #2a3244; border-radius: 10px; padding: 12px; }
 .format-label { margin-bottom: 8px; font-weight: 700; }
 .format-canvas { overflow: auto; background: #0c0f15; border-radius: 8px; padding: 8px; }
+.banner-svg-actual { width: auto; height: auto; display: block; max-width: none; max-height: none; }
 
 .download-btn, .download-switcher select, .ad-detail-footer button {
-  background: #276ef1; color: #fff; border: none; border-radius: 8px; padding: 10px 12px; cursor: pointer;
+  background: #276ef1;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 12px;
+  cursor: pointer;
 }
 .download-switcher select { background: #f8f9fb; color: #111; border: 1px solid #cad2e3; }
 
 .exploded-view { width: 100%; }
 .exploded-canvas { width: 100%; background: #0c0f15; border: 1px solid #2a3244; border-radius: 10px; padding: 8px; }
+.banner-svg-exploded { width: 100%; height: auto; display: block; }
 .ad-description { background: #171b25; border: 1px solid #2a3244; border-radius: 10px; padding: 12px; }
 .ad-detail-footer { display: flex; gap: 12px; align-items: center; }
 .ad-detail-footer a { color: #8fbeff; }

@@ -61,7 +61,7 @@ export default function App() {
       .then((cms) => {
         if (!mounted || !Array.isArray(cms) || cms.length === 0) return
         const merged = INVENTORY.map((base) => {
-          const cmsItem = cms.find((c) => Number(c.id) === base.id) || {}
+          const cmsItem = cms.find((entry) => Number(entry.id) === base.id) || {}
           return {
             ...base,
             size: cmsItem.size || base.size,
@@ -79,15 +79,24 @@ export default function App() {
     }
   }, [])
 
-  const detailId = route.startsWith('/ad/') ? Number(route.split('/ad/')[1]) : null
-  const detailItem = detailId ? banners.find((b) => b.id === detailId) : null
-  const filtered = route.startsWith('/catalogue/') ? banners.filter((b) => b.category === route.split('/catalogue/')[1]) : banners
+  const normalizedRoute = route.endsWith('/') && route !== '/' ? route.slice(0, -1) : route
+  const detailId = normalizedRoute.startsWith('/ad/') ? Number(normalizedRoute.split('/ad/')[1]) : null
+  const detailItem = detailId ? banners.find((banner) => banner.id === detailId) : null
+  const selectedCategory = normalizedRoute.startsWith('/catalogue/') ? normalizedRoute.split('/catalogue/')[1] : null
+  const filtered = selectedCategory ? banners.filter((banner) => banner.category === selectedCategory) : banners
+  const detailFormats = detailItem
+    ? SIZES.map((size, idx) => ({
+        ...detailItem,
+        id: idx + 1,
+        size,
+      }))
+    : []
 
-  if (route === '/') {
+  if (normalizedRoute === '/') {
     return (
       <div className="site-shell">
         <header className="site-header"><div className="brand">SVG Display Ads Showcase</div></header>
-        <SplashScreen onSelectCategory={(cat) => navigate(`/catalogue/${cat.toLowerCase()}`)} />
+        <SplashScreen onSelectCategory={(category) => navigate(`/catalogue/${category.toLowerCase()}`)} />
         <InventoryCarousel items={banners} onOpen={(id) => navigate(`/ad/${id}`)} />
       </div>
     )
@@ -97,10 +106,17 @@ export default function App() {
     <div className="site-shell">
       <header className="site-header"><div className="brand">SVG Display Ads Showcase</div></header>
       <main className="container" aria-label="inventory">
-        {route.startsWith('/ad/') ? (
-          detailItem ? <AdDetail item={detailItem} variants={banners} onBack={() => navigate('/')} /> : <div>Banner not found.</div>
+        {normalizedRoute.startsWith('/ad/') ? (
+          detailItem ? <AdDetail item={detailItem} variants={detailFormats} onBack={() => navigate('/')} /> : <div>Banner not found.</div>
         ) : (
-          filtered.map((item) => <BannerCard key={item.id} item={item} onOpen={(id) => navigate(`/ad/${id}`)} onDoubleOpen={(id) => navigate(`/ad/${id}`)} />)
+          filtered.map((item) => (
+            <BannerCard
+              key={item.id}
+              item={item}
+              onOpen={(id) => navigate(`/ad/${id}`)}
+              onDoubleOpen={(id) => navigate(`/ad/${id}`)}
+            />
+          ))
         )}
       </main>
     </div>
