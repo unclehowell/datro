@@ -58,7 +58,7 @@ jobs:
           {
             echo "library=false"; echo "hbnb=false"; echo "forces=false"
             echo "gui=false"; echo "datro=false"; echo "projections=false"
-            echo "bpvsbuckler=false"; echo "dcc=false"
+            echo "bpvsbuckler=false"; echo "dcc=false"; echo "pcp=false"
           } >> "$GITHUB_OUTPUT"
 
           if echo "$DIFF" | grep -qE '^static/library/'; then echo "library=true" >> "$GITHUB_OUTPUT"; fi
@@ -68,8 +68,8 @@ jobs:
           if echo "$DIFF" | grep -qE '^static/datro/'; then echo "datro=true" >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/projections/'; then echo "projections=true" >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/bpvsbuckler/'; then echo "bpvsbuckler=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/_dcc/'; then echo "dcc=true" >> "$GITHUB_OUTPUT"; fi  # NOTE: _dcc
-
+          if echo "$DIFF" | grep -qE '^static/_dcc/'; then echo "dcc=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/pcp/'; then echo "pcp=true" >> "$GITHUB_OUTPUT"; fi
 
       # --- Setup Node (only run if HBNB needs it) ---
       - name: Setup Node (for builds)
@@ -241,6 +241,25 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
+      # --- PCP (Static HTML) ---
+      - name: Deploy pcp (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.pcp == 'true'
+        id: deploy_pcp
+        run: |
+          npx wrangler pages deploy static/pcp \
+            --project-name=pcp \
+            --branch="${{ github.head_ref }}" \
+            --commit-hash="${{ github.sha }}" \
+            --skip-cache \
+            > deploy_output.txt 2>&1
+          
+          PREVIEW_URL=$(grep -oP 'https://[a-f0-9]+\.pcp[^\s]*' deploy_output.txt | head -1)
+          echo "url=$PREVIEW_URL" >> $GITHUB_OUTPUT
+          echo "✅ Deployed to $PREVIEW_URL"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
       # --- FINAL TABLE COMMENT ---
       - name: Post Clean Preview Table
         if: github.event_name == 'pull_request'
@@ -248,14 +267,15 @@ jobs:
         with:
           script: |
             const apps = [
-              { name: 'library', changed: '${{ steps.changes.outputs.library }}', url: '${{ steps.deploy_library.outputs.url }}' },
-              { name: 'hbnb', changed: '${{ steps.changes.outputs.hbnb }}', url: '${{ steps.deploy_hbnb.outputs.url }}' },
-              { name: 'ceo (forces)', changed: '${{ steps.changes.outputs.forces }}', url: '${{ steps.deploy_forces.outputs.url }}' },
-              { name: 'gui', changed: '${{ steps.changes.outputs.gui }}', url: '${{ steps.deploy_gui.outputs.url }}' },
-              { name: 'datro-homepage', changed: '${{ steps.changes.outputs.datro }}', url: '${{ steps.deploy_datro.outputs.url }}' },
-              { name: 'projections', changed: '${{ steps.changes.outputs.projections }}', url: '${{ steps.deploy_projections.outputs.url }}' },
-              { name: 'bpvsbuckler', changed: '${{ steps.changes.outputs.bpvsbuckler }}', url: '${{ steps.deploy_bpvsbuckler.outputs.url }}' },
-              { name: 'dcc', changed: '${{ steps.changes.outputs.dcc }}', url: '${{ steps.deploy_dcc.outputs.url }}' }
+              { name: 'library',       changed: '${{ steps.changes.outputs.library }}',       url: '${{ steps.deploy_library.outputs.url }}' },
+              { name: 'hbnb',          changed: '${{ steps.changes.outputs.hbnb }}',          url: '${{ steps.deploy_hbnb.outputs.url }}' },
+              { name: 'ceo (forces)',  changed: '${{ steps.changes.outputs.forces }}',         url: '${{ steps.deploy_forces.outputs.url }}' },
+              { name: 'gui',           changed: '${{ steps.changes.outputs.gui }}',            url: '${{ steps.deploy_gui.outputs.url }}' },
+              { name: 'datro-homepage',changed: '${{ steps.changes.outputs.datro }}',          url: '${{ steps.deploy_datro.outputs.url }}' },
+              { name: 'projections',   changed: '${{ steps.changes.outputs.projections }}',    url: '${{ steps.deploy_projections.outputs.url }}' },
+              { name: 'bpvsbuckler',   changed: '${{ steps.changes.outputs.bpvsbuckler }}',   url: '${{ steps.deploy_bpvsbuckler.outputs.url }}' },
+              { name: 'dcc',           changed: '${{ steps.changes.outputs.dcc }}',            url: '${{ steps.deploy_dcc.outputs.url }}' },
+              { name: 'pcp',           changed: '${{ steps.changes.outputs.pcp }}',            url: '${{ steps.deploy_pcp.outputs.url }}' },
             ];
 
             let body = '## 🚀 Cloudflare Pages Preview Deployments\n\n';
@@ -310,4 +330,3 @@ jobs:
                 body
               });
             }
-
