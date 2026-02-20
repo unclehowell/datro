@@ -1,0 +1,6 @@
+{
+  "name": "datro",
+  "scripts": {
+    "build": "cd static/pcp && npm run build"
+  }
+}
