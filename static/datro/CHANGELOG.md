@@ -20,7 +20,7 @@ Nov-13 - Test A - TEST B - TEST C - TEST D - CLAUD 1 - CLAUD 2
 
 ### Added
 
-Mar-25 - Added a sitemap generator script in sub-directory `sitemap`  
+Mar-25 - Added a sitemap generator script in sub-directory `sitemap` - TEST  
 
 
 ## [-datro.06] - Q2/2022

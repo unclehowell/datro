@@ -94,6 +94,379 @@ body{color:#202020}
 	}  
        </style>
 
+        <style>
+/* Slider Styles */
+.top-slider-container {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle background */
+    padding: 10px 0;
+    width: 100%;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap;
+    margin-bottom: 20px;
+    position: sticky; /* Make it stick to the top */
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.top-slider-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.top-slider-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.top-slider-container::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+.top-slider-container::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.slider-content {
+    display: flex;
+    align-items: center;
+    padding: 0 20px; /* Horizontal padding */
+}
+
+.slider-dropdown-container {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    margin-right: 20px;
+}
+
+.slider-dropdown-btn-styled {
+    background-color: #333366;
+    color: white;
+    padding: 5px 15px;
+    border: 1px solid white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    min-width: 80px;
+    text-align: center;
+    font-weight: 300;
+}
+
+.slider-dropdown-menu-styled {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #444477;
+    border: 1px solid white;
+    border-radius: 4px;
+    display: none; /* Hidden by default */
+    z-index: 1050; /* Above other elements */
+    min-width: 90px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-top: 2px; /* Add some spacing */
+}
+
+.slider-dropdown-menu-styled a {
+    color: white !important;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.slider-dropdown-menu-styled a:hover {
+    background-color: #555588;
+}
+
+.slider-options-back-btn {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin-right: 10px;
+    padding: 0 5px;
+    display: none; /* Hidden by default */
+}
+.slider-options-back-btn:hover {
+    opacity: 0.7;
+}
+
+.slider-item {
+    display: inline-flex; /* Align label and padlock */
+    align-items: center;
+    margin-right: 25px; /* Spacing between items */
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 300;
+}
+.slider-item:last-child {
+    margin-right: 0;
+}
+
+.slider-label {
+    color: white !important;
+    text-decoration: none;
+    white-space: nowrap;
+    margin-right: 8px;
+}
+.slider-label:hover {
+    text-decoration: underline;
+}
+
+/* Padlock Styles */
+.padlock-icon {
+    display: inline-block;
+    width: 18px; /* Icon size */
+    height: 18px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-left: 4px; /* Space between label and padlock */
+}
+
+.padlock-icon.locked {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"white\" width=\"18px\" height=\"18px\"><path d=\"M18 8h-1V6c0-2.76-2.24-5-5-5s-5 2.24-5 5v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 8.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>");
+}
+
+.padlock-icon.unlocked {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"white\" width=\"18px\" height=\"18px\"><path d=\"M18 10v-2.682c0-3.868-3-6.318-6-6.318s-6 2.45-6 6.318V10c-.552 0-1 .448-1 1v9c0 1.105.895 2 2 2h10c1.105 0 2-.895 2-2v-9c0-.552-.448-1-1-1zm-6-5.318c2.488 0 4 1.878 4 4.318V10h-8v-4.318c0-2.438 1.512-4.318 4-4.318zM12 16.5c.828 0 1.5-.672 1.5-1.5s-.672-1.5-1.5-1.5-1.5.672-1.5 1.5.672 1.5 1.5 1.5zm1-7.2c0-1.307-.945-2.3-2.232-2.3-1.287 0-2.232 1.003-2.232 2.3v1.7H13V9.3z"/></svg>");
+}
+
+/* Ensure the main nav is still visible */
+.navbar {
+    z-index: 1001; /* Ensure navbar is above sticky slider */
+}
+
+</style>
+
+<!-- New Slider Element -->
+<div class="top-slider-container">
+    <div class="slider-content">
+        <!-- Back Button and Dropdown for Options 1,2,3 -->
+        <div class="slider-dropdown-container" id="initial-options-dropdown">
+            <button class="slider-dropdown-btn-styled" id="initial-options-btn">1, 2, 3</button>
+            <div class="slider-dropdown-menu-styled" id="initial-options-menu">
+                <a href="#" class="dropdown-option" data-value="1">1</a>
+                <a href="#" class="dropdown-option" data-value="2">2</a>
+                <a href="#" class="dropdown-option" data-value="3">3</a>
+            </div>
+        </div>
+        <!-- Placeholder for the secondary dropdown and back button -->
+        <button class="slider-options-back-btn" id="options-back-btn" aria-label="Back to options">&#8249;</button>
+         <div id="secondary-options-container" style="display: none; align-items: center;">
+            <!-- Secondary dropdown will be loaded here dynamically -->
+        </div>
+
+        <!-- Slider Items -->
+        <ul class="slider-list">
+            <li class="slider-item" data-step="free">
+                <a href="#" class="slider-label">free</a>
+                <span class="padlock-icon locked padlock-action" data-target-popup="library"></span>
+            </li>
+            <li class="slider-item" data-step="q1-2024">
+                <a href="#" class="slider-label">Q1-2024 release</a>
+                <span class="padlock-icon locked padlock-action" data-target-popup="library"></span>
+            </li>
+            <li class="slider-item" data-step="q2-2024">
+                <a href="#" class="slider-label">Q2-2024 release</a>
+                <span class="padlock-icon locked padlock-action" data-target-popup="library"></span>
+            </li>
+            <li class="slider-item" data-step="q3-2024">
+                <a href="#" class="slider-label">Q3-2024 release</a>
+                <span class="padlock-icon locked padlock-action" data-target-popup="library"></span>
+            </li>
+             <li class="slider-item" data-step="q4-2024">
+                <a href="#" class="slider-label">Q4-2024 release</a>
+                <span class="padlock-icon locked padlock-action" data-target-popup="library"></span>
+            </li>
+            <li class="slider-item" data-step="q1-2025">
+                <a href="#" class="slider-label">Q1-2025 release</a>
+                <span class="padlock-icon locked padlock-action" data-target-popup="library"></span>
+            </li>
+            <li class="slider-item" data-step="q2-2025">
+                <a href="#" class="slider-label">Q2-2025 release</a>
+                <span class="padlock-icon locked padlock-action" data-target-popup="library"></span>
+            </li>
+            <li class="slider-item" data-step="q3-2025">
+                <a href="#" class="slider-label">Q3-2025 release</a>
+                <span class="padlock-icon locked padlock-action" data-target-popup="library"></span>
+            </li>
+            <li class="slider-item" data-step="q4-2025">
+                <a href="#" class="slider-label">Q4-2025 release</a>
+                <span class="padlock-icon locked padlock-action" data-target-popup="library"></span>
+            </li>
+            <li class="slider-item">
+                <a href="#" class="slider-label">restricted access preview</a>
+                <!-- No padlock for this last item -->
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- JavaScript for Slider and Padlock Functionality -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // --- Link Redirection Logic (Enhanced) ---
+    var hostname = window.location.hostname;
+    var isLocalhost = hostname.startsWith('localhost') || hostname.startsWith('127.0.0.');
+
+    function getLibraryUrl(originalHref) {
+        if (hostname === 'datro.xyz') {
+            // Online domain
+            return originalHref.replace('/library/', 'https://library.datro.xyz/').replace('../library/', 'https://library.datro.xyz/');
+        } else if (isLocalhost) {
+            // Localhost, use relative path
+            return originalHref.replace('https://library.datro.xyz/', '../library/').replace('/library/', '../library/');
+        } else {
+            // Default or other domains, use original or a safe fallback
+            return originalHref;
+        }
+    }
+
+    // Update navigation links
+    var navLibraryLink = document.querySelector('nav .navbar-nav a[href*="library"]');
+    if (navLibraryLink) {
+        navLibraryLink.href = getLibraryUrl(navLibraryLink.getAttribute('href'));
+    }
+
+    // Update carousel dropdown links
+    document.querySelectorAll('.carousel-caption .dropdown-menu a[href*="library"]').forEach(function(link) {
+        link.href = getLibraryUrl(link.getAttribute('href'));
+    });
+
+    // Update footer links (if any point to library)
+    document.querySelectorAll('.FooterNew-links a[href*="library"], .FooterNew-link-content a[href*="library"]').forEach(function(link) {
+         link.href = getLibraryUrl(link.getAttribute('href'));
+    });
+
+    // --- Slider and Dropdown Logic ---
+    const initialBtn = document.getElementById('initial-options-btn');
+    const initialMenu = document.getElementById('initial-options-menu');
+    const backBtn = document.getElementById('options-back-btn');
+    const secondaryContainer = document.getElementById('secondary-options-container');
+    let currentDropdownLevel = 0; // 0: initial, 1: secondary
+
+    // Populate secondary dropdown (example, user will specify actual content later)
+    const secondaryOptionsHTML = `
+        <button class="slider-dropdown-btn-styled" id="secondary-options-btn">Select Option</button>
+        <div class="slider-dropdown-menu-styled" id="secondary-options-menu">
+            <a href="#" class="dropdown-option" data-value="sub1">Sub-Option 1</a>
+            <a href="#" class="dropdown-option" data-value="sub2">Sub-Option 2</a>
+            <a href="#" class="dropdown-option" data-value="sub3">Sub-Option 3</a>
+        </div>
+    `;
+
+    initialBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevent click from closing menu immediately
+        initialMenu.style.display = initialMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!initialMenu.contains(e.target) && e.target !== initialBtn) {
+            initialMenu.style.display = 'none';
+        }
+        if (secondaryContainer.style.display === 'flex' && !secondaryContainer.contains(e.target) && e.target !== backBtn) {
+            secondaryContainer.style.display = 'none';
+            backBtn.style.display = 'none';
+            currentDropdownLevel = 0;
+        }
+    });
+
+    initialMenu.querySelectorAll('.dropdown-option').forEach(option => {
+        option.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const selectedValue = this.getAttribute('data-value');
+            console.log('Selected value:', selectedValue);
+
+            // Replace initial dropdown with secondary options and back button
+            initialMenu.style.display = 'none';
+            initialBtn.style.display = 'none';
+
+            // Load secondary options into secondaryContainer
+            secondaryContainer.innerHTML = secondaryOptionsHTML;
+            secondaryContainer.style.display = 'flex';
+            backBtn.style.display = 'inline-block';
+
+            const secondaryBtn = document.getElementById('secondary-options-btn');
+            const secondaryMenu = document.getElementById('secondary-options-menu');
+
+            secondaryBtn.textContent = `Selected: ${selectedValue}`;
+
+            secondaryBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                secondaryMenu.style.display = secondaryMenu.style.display === 'block' ? 'none' : 'block';
+            });
+
+            secondaryMenu.querySelectorAll('.dropdown-option').forEach(subOption => {
+                subOption.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Selected sub-option:', subOption.getAttribute('data-value'));
+                    secondaryMenu.style.display = 'none';
+                    // Potentially navigate or update UI based on sub-option
+                });
+            });
+            currentDropdownLevel = 1;
+        });
+    });
+
+    // Back button functionality
+    backBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        secondaryContainer.style.display = 'none';
+        secondaryContainer.innerHTML = ''; // Clear secondary content
+        initialBtn.style.display = 'inline-block'; // Show initial button again
+        initialMenu.style.display = 'none'; // Ensure menu is closed
+        backBtn.style.display = 'none'; // Hide back button
+        currentDropdownLevel = 0;
+    });
+
+
+    // --- Padlock Functionality ---
+    document.querySelectorAll('.padlock-action').forEach(padlock => {
+        padlock.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const targetPopup = this.getAttribute('data-target-popup');
+            // Construct the correct URL using the getLibraryUrl function
+            const popupUrl = getLibraryUrl(targetPopup === 'library' ? 'https://library.datro.xyz/' : '#');
+
+            if (popupUrl && popupUrl !== '#') {
+                // Programmatically trigger Featherlight
+                // Create a temporary link element to trigger Featherlight
+                const tempLink = document.createElement('a');
+                tempLink.href = popupUrl;
+                tempLink.setAttribute('data-featherlight', 'iframe');
+                tempLink.setAttribute('data-featherlight-iframe-allowfullscreen', 'true');
+                tempLink.style.display = 'none';
+                document.body.appendChild(tempLink);
+                tempLink.click();
+                document.body.removeChild(tempLink); // Clean up the temporary link
+
+                // Change padlock to unlocked state
+                this.classList.remove('locked');
+                this.classList.add('unlocked');
+            }
+        });
+    });
+
+    // Ensure existing Featherlight links are also handled by getLibraryUrl
+    document.querySelectorAll('[data-featherlight="iframe"]').forEach(link => {
+        if (link.href.includes('/library/') || link.href.includes('https://library.datro.xyz/')) {
+            link.href = getLibraryUrl(link.href);
+        }
+    });
+
+});
+</script>
+
 </head>
 <body style="background-color:#333666;background:#333666;" data-role="page">
 	<header id="mainWrapper">
@@ -118,6 +491,71 @@ body{color:#202020}
 			</div>
 		</nav>
 	</header>
+
+<!-- NEW: Top Slider and Dropdown -->
+<div class="top-slider-container">
+    <div class="slider-content">
+        <!-- Back Button and Dropdown for Options 1,2,3 -->
+        <div class="slider-dropdown-container" id="initial-options-dropdown">
+            <button class="slider-dropdown-btn-styled" id="initial-options-btn">1, 2, 3</button>
+            <div class="slider-dropdown-menu-styled" id="initial-options-menu">
+                <a href="#" class="dropdown-option" data-value="1">1</a>
+                <a href="#" class="dropdown-option" data-value="2">2</a>
+                <a href="#" class="dropdown-option" data-value="3">3</a>
+            </div>
+        </div>
+        <!-- Placeholder for the secondary dropdown and back button -->
+        <button class="slider-options-back-btn" id="options-back-btn" aria-label="Back to options">&#8249;</button>
+         <div id="secondary-options-container" style="display: none; align-items: center;">
+            <!-- Secondary dropdown will be loaded here dynamically -->
+        </div>
+
+        <!-- Slider Items -->
+        <ul class="slider-list">
+            <li class="slider-item" data-step="free">
+                <a href="#" class="slider-label">free</a>
+                <span class="padlock-icon locked padlock-action" data-target-popup="library"></span>
+            </li>
+            <li class="slider-item" data-step="q1-2024">
+                <a href="#" class="slider-label">Q1-2024 release</a>
+                <span class="padlock-icon locked padlock-action" data-target-popup="library"></span>
+            </li>
+            <li class="slider-item" data-step="q2-2024">
+                <a href="#" class="slider-label">Q2-2024 release</a>
+                <span class="padlock-icon locked padlock-action" data-target-popup="library"></span>
+            </li>
+            <li class="slider-item" data-step="q3-2024">
+                <a href="#" class="slider-label">Q3-2024 release</a>
+                <span class="padlock-icon locked padlock-action" data-target-popup="library"></span>
+            </li>
+             <li class="slider-item" data-step="q4-2024">
+                <a href="#" class="slider-label">Q4-2024 release</a>
+                <span class="padlock-icon locked padlock-action" data-target-popup="library"></span>
+            </li>
+            <li class="slider-item" data-step="q1-2025">
+                <a href="#" class="slider-label">Q1-2025 release</a>
+                <span class="padlock-icon locked padlock-action" data-target-popup="library"></span>
+            </li>
+            <li class="slider-item" data-step="q2-2025">
+                <a href="#" class="slider-label">Q2-2025 release</a>
+                <span class="padlock-icon locked padlock-action" data-target-popup="library"></span>
+            </li>
+            <li class="slider-item" data-step="q3-2025">
+                <a href="#" class="slider-label">Q3-2025 release</a>
+                <span class="padlock-icon locked padlock-action" data-target-popup="library"></span>
+            </li>
+            <li class="slider-item" data-step="q4-2025">
+                <a href="#" class="slider-label">Q4-2025 release</a>
+                <span class="padlock-icon locked padlock-action" data-target-popup="library"></span>
+            </li>
+            <li class="slider-item">
+                <a href="#" class="slider-label">restricted access preview</a>
+                <!-- No padlock for this last item -->
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- END NEW: Top Slider and Dropdown -->
 	<main style="background-color: #333366;">
 		<div class="carousel" data-ride="carousel" id="myCarousel">
 			<div class="carousel-inner" style="overflow:visible!important;">
@@ -241,7 +679,7 @@ and offline media center, a solar/IoT energy and IPCCTV camera monitor and a sel
 		<div class="segment-bottom"></div>
 	</main>
 	<div class="pinky-template">
-		<div class="sexy_line" style="filter:invert(100%)"></div><a data-content="DATRO" title="DATRO "></a>
+		<div class="sexy_line" style="filter:invert(100%)"></div><a data-content="DATRO" title="DATRO ">
 		<footer class="FooterNew">
 			<div class="FooterNew-content">
 				<div class="FooterNew-content-inner">
@@ -268,15 +706,16 @@ and offline media center, a solar/IoT energy and IPCCTV camera monitor and a sel
 									<path d="M12 8.3a.91.91 0 0 1 .7.3l6 6-1.4 1.4-5.3-5.3L6.7 16l-1.4-1.4 6-6a.91.91 0 0 1 .7-.3z"></path></svg></span></h3>
 									<div class="FooterNew-link-content">
 										<ul class="FooterNew-links">
- <li>
-                                                                                                <a class="FooterNew-link" data-content="" data-qtsb-label="GoToDistributionNetwork" data-qtsb-section="footer" data-qtsb-subsection="Distribution" href="technology.html" title="">MonoREAPo<b style="font-size:40%;color:white; position:relative;vertical-align:text-top!important;opacity:0.8;"><span class="copy-left">&#xa9;</span></b></a>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                                <a class="FooterNew-link" data-content="DATRO Neo Dome" data-qtsb-label="GoToNeoDome" data-qtsb-section="footer" data-qtsb-subsection="Network" href="technology.html" title="DATRO Neo Dome">NΞΩ DΩMΞ<b style="font-size:40%;color:white; position:relative;vertical-align:text-top!important;opacity:0.8;"><span class="copy-left">&#xa9;</span></b></a>
-                                                                                        </li>
+ 
+                                                                                                <li>
+                                                                                                        <a class="FooterNew-link" data-content="" data-qtsb-label="GoToDistributionNetwork" data-qtsb-section="footer" data-qtsb-subsection="Distribution" href="technology.html" title="">MonoREAPo<b style="font-size:40%;color:white; position:relative;vertical-align:text-top!important;opacity:0.8;"><span class="copy-left">&#xa9;</span></b></a>
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                        <a class="FooterNew-link" data-content="DATRO Neo Dome" data-qtsb-label="GoToNeoDome" data-qtsb-section="footer" data-qtsb-subsection="Network" href="technology.html" title="DATRO Neo Dome">NΞΩ DΩMΞ<b style="font-size:40%;color:white; position:relative;vertical-align:text-top!important;opacity:0.8;"><span class="copy-left">&#xa9;</span></b></a>
+                                                                                                </li>
                                                                                 </ul>
                                                                         </div>
-                                                                </div>
+								</div>
                                                                 <div class="Grid-col Grid-col--tablet-3 Grid-col--desktopSmall-2 FooterNew-link-section">
                                                                         <h3 class="FooterNew-link-title" data-footerlink="footer-link">About <span class="Icon Icon--small Icon--light FooterNew-link-icon FooterNew-link-icon--disable"><svg class="Icon-image" height="24" viewbox="0 0 24 24" width="24" xmlns="https://www.w3.org/2000/svg">
                                                                         <path d="M12 16c-.3 0-.5-.1-.7-.3l-6-6 1.4-1.4 5.3 5.3 5.3-5.3 1.4 1.4-6 6c-.2.2-.4.3-.7.3z"></path></svg></span> <span class="Icon Icon--small Icon--light FooterNew-link-icon FooterNew-link-icon--active"><svg class="Icon-image" viewbox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
@@ -284,7 +723,7 @@ and offline media center, a solar/IoT energy and IPCCTV camera monitor and a sel
                                                                         <div class="FooterNew-link-content">
                                                                                 <ul class="FooterNew-links">
                                                                                         <li>
-                                                                                                <a class="FooterNew-link" data-content="DATRO News" data-qtsb-label="GoToNews" data-qtsb-section="footer" data-qtsb-subsection="About" data-uitest-target="GoToNews" href="#" title="DATRO News">DATR<span class="copy-left">&#xa9;</span> News & Press</a>
+                                                                                                <a class="FooterNew-link" data-content="DATRO News" data-qtsb-label="GoToNews" data-qtsb-section="footer" data-qtsb-subsection="About" data-uitest-target="GoToNews" href="#" title="DATRO News">DATR<span class="copy-left">&#xa9;</span> News &amp; Press</a>
                                                                                         </li>
                                                                                         <li>
                                                                                                 <a class="FooterNew-link" data-content="DATRO Documents" data-qtsb-label="GoToDocuments" data-qtsb-section="footer" data-qtsb-subsection="About" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true" data-uitest-target="GoToDocuments" href="https://library.datro.xyz">DATR<span class="copy-left">&#xa9;</span> Documents</a>
@@ -373,7 +812,8 @@ and offline media center, a solar/IoT energy and IPCCTV camera monitor and a sel
 </p>
 
 <p class="FooterNew-siteStat-term" style="white-space: nowrap;text-align:right;font-size:100%;">
-<b style="opacity: 0.4; font-family: sans-serif; text-align: right;  display: block;  font-size: 1.2em; font-weight: bold; margin-bottom: 1em; margin-top: 1.5em;">Free, Decentralized and Democratic Internet</b>
+<b style="opacity: 0.4; font-family: sans-serif; text-align: right;  display: block;  font-size: 1.2em; font-weight: bold; margin-bottom: 1em; margin-top: 1.5em;">
+Free, Decentralized and Democratic Internet</b>
 <img loading="lazy" src="img/favicons/android-chrome-192x192.png" style="height: 1.3em; image-rendering: pixelated; opacity: 0.4;" >
 <b style="opacity:0.6;font-weight:bolder!important;font-size:0.8em;">
 DATRO Consortium Limited,&nbsp; ID: 13775817 (2021+)</b>
@@ -381,11 +821,11 @@ DATRO Consortium Limited,&nbsp; ID: 13775817 (2021+)</b>
 
 <p class="FooterNew-siteStat-term" style="white-space: nowrap;text-align:right;font-size:100%;">
 <img loading="lazy" src="img/rsa-logo.png" style="height: 0.95em; filter: grayscale(1)brightness(5); opacity: 1;">
-<b style="opacity:0.6;font-weight:bolder!important;font-size:0.8em;">Royal Signals Association,&nbsp;
+<b style="opacity:0.6;font-weight:bolder!important;font-size:0.8em;">
+Royal Signals Association,&nbsp;
 Life Member ID: 55983 (2017+) </b>
 </p>
 <p class="FooterNew-siteStat-term" style="white-space: nowrap;text-align:right;font-size:100%;">
-<b style="opacity:0.6;font-weight:bolder!important;font-size:0.8em;">
 <img loading="lazy" src="img/rsigs-coa.png" style="height: 1.62em; filter: grayscale(1)brightness(2); opacity: 1;">
 Royal Signals,&nbsp;
 <img loading="lazy" src="img/army.png" style="height: 1.62em; filter: grayscale(1)brightness(2); opacity: 1;">
@@ -395,7 +835,8 @@ Service ID: 25148537 (2002+)
 </p>
 <p class="FooterNew-siteStat-term" style="white-space: nowrap;text-align:right;font-size:100%;">
 <img loading="lazy" src="img/ogl.png" style="height:1em;filter:invert(0.8);image-rendering:pixelated;opacity: 0.5;" >
-<b style="opacity:0.6;font-weight:bolder!important;font-size:0.8em;">Open Government Licence 3.0, &nbsp;
+<b style="opacity:0.6;font-weight:bolder!important;font-size:0.8em;">
+Open Government Licence 3.0, &nbsp;
 <img loading="lazy" src="img/royal-coa.png" style="height:1.5em;filter:brightness(10)contrast(1.5);image-rendering:pixelated;opacity:0.7;">
 Crown Copyright <script>new Date().getFullYear()>2017&&document.write("© "+new Date().getFullYear());</script></b>
 </p>
@@ -419,5 +860,164 @@ Crown Copyright <script>new Date().getFullYear()>2017&&document.write("© "+new 
         <script defer src="js/smoothloader2.js"></script>
 
 <script defer src="js/footer-accordion.js"></script>
+<!-- Updated JavaScript for enhanced Link Redirection, Slider, Dropdown, and Padlock Functionality -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // --- Link Redirection Logic (Enhanced) ---
+    var hostname = window.location.hostname;
+    var isLocalhost = hostname.startsWith('localhost') || hostname.startsWith('127.0.0.');
+
+    function getLibraryUrl(originalHref) {
+        if (hostname === 'datro.xyz') {
+            // Online domain
+            return originalHref.replace('/library/', 'https://library.datro.xyz/').replace('../library/', 'https://library.datro.xyz/');
+        } else if (isLocalhost) {
+            // Localhost, use relative path
+            return originalHref.replace('https://library.datro.xyz/', '../library/').replace('/library/', '../library/');
+        } else {
+            // Default or other domains, use original or a safe fallback
+            return originalHref;
+        }
+    }
+
+    // Update navigation links
+    var navLibraryLink = document.querySelector('nav .navbar-nav a[href*="library"]');
+    if (navLibraryLink) {
+        navLibraryLink.href = getLibraryUrl(navLibraryLink.getAttribute('href'));
+    }
+
+    // Update carousel dropdown links
+    document.querySelectorAll('.carousel-caption .dropdown-menu a[href*="library"]').forEach(function(link) {
+        link.href = getLibraryUrl(link.getAttribute('href'));
+    });
+
+    // Update footer links (if any point to library)
+    document.querySelectorAll('.FooterNew-links a[href*="library"], .FooterNew-link-content a[href*="library"]').forEach(function(link) {
+         link.href = getLibraryUrl(link.getAttribute('href'));
+    });
+
+    // --- Slider and Dropdown Logic ---
+    const initialBtn = document.getElementById('initial-options-btn');
+    const initialMenu = document.getElementById('initial-options-menu');
+    const backBtn = document.getElementById('options-back-btn');
+    const secondaryContainer = document.getElementById('secondary-options-container');
+    let currentDropdownLevel = 0; // 0: initial, 1: secondary
+
+    // Populate secondary dropdown (this content is a placeholder and can be extended)
+    const secondaryOptionsHTML = `
+        <button class="slider-dropdown-btn-styled" id="secondary-options-btn">Select Option</button>
+        <div class="slider-dropdown-menu-styled" id="secondary-options-menu">
+            <a href="#" class="dropdown-option" data-value="sub1">Sub-Option 1</a>
+            <a href="#" class="dropdown-option" data-value="sub2">Sub-Option 2</a>
+            <a href="#" class="dropdown-option" data-value="sub3">Sub-Option 3</a>
+        </div>
+    `;
+
+    initialBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevent click from closing menu immediately
+        initialMenu.style.display = initialMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!initialMenu.contains(e.target) && e.target !== initialBtn) {
+            initialMenu.style.display = 'none';
+        }
+        if (secondaryContainer.style.display === 'flex' && !secondaryContainer.contains(e.target) && e.target !== backBtn) {
+            secondaryContainer.style.display = 'none';
+            backBtn.style.display = 'none';
+            currentDropdownLevel = 0;
+        }
+    });
+
+    initialMenu.querySelectorAll('.dropdown-option').forEach(option => {
+        option.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const selectedValue = this.getAttribute('data-value');
+            console.log('Selected value:', selectedValue);
+
+            // Replace initial dropdown with secondary options and back button
+            initialMenu.style.display = 'none';
+            initialBtn.style.display = 'none';
+
+            // Load secondary options into secondaryContainer
+            secondaryContainer.innerHTML = secondaryOptionsHTML;
+            secondaryContainer.style.display = 'flex';
+            backBtn.style.display = 'inline-block';
+
+            const secondaryBtn = document.getElementById('secondary-options-btn');
+            const secondaryMenu = document.getElementById('secondary-options-menu');
+
+            secondaryBtn.textContent = `Selected: ${selectedValue}`;
+
+            secondaryBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                secondaryMenu.style.display = secondaryMenu.style.display === 'block' ? 'none' : 'block';
+            });
+
+            secondaryMenu.querySelectorAll('.dropdown-option').forEach(subOption => {
+                subOption.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Selected sub-option:', subOption.getAttribute('data-value'));
+                    secondaryMenu.style.display = 'none';
+                    // Potentially navigate or update UI based on sub-option
+                });
+            });
+            currentDropdownLevel = 1;
+        });
+    });
+
+    // Back button functionality
+    backBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        secondaryContainer.style.display = 'none';
+        secondaryContainer.innerHTML = ''; // Clear secondary content
+        initialBtn.style.display = 'inline-block'; // Show initial button again
+        initialMenu.style.display = 'none'; // Ensure menu is closed
+        backBtn.style.display = 'none'; // Hide back button
+        currentDropdownLevel = 0;
+    });
+
+
+    // --- Padlock Functionality ---
+    document.querySelectorAll('.padlock-action').forEach(padlock => {
+        padlock.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const targetPopup = this.getAttribute('data-target-popup');
+            // Construct the correct URL using the getLibraryUrl function
+            const popupUrl = getLibraryUrl(targetPopup === 'library' ? 'https://library.datro.xyz/' : '#');
+
+            if (popupUrl && popupUrl !== '#') {
+                // Programmatically trigger Featherlight
+                // Create a temporary link element to trigger Featherlight
+                const tempLink = document.createElement('a');
+                tempLink.href = popupUrl;
+                tempLink.setAttribute('data-featherlight', 'iframe');
+                tempLink.setAttribute('data-featherlight-iframe-allowfullscreen', 'true');
+                tempLink.style.display = 'none';
+                document.body.appendChild(tempLink);
+                tempLink.click();
+                document.body.removeChild(tempLink); // Clean up the temporary link
+
+                // Change padlock to unlocked state
+                this.classList.remove('locked');
+                this.classList.add('unlocked');
+            }
+        });
+    });
+
+    // Ensure existing Featherlight links are also handled by getLibraryUrl
+    document.querySelectorAll('[data-featherlight="iframe"]').forEach(link => {
+        if (link.href.includes('/library/') || link.href.includes('https://library.datro.xyz/')) {
+            link.href = getLibraryUrl(link.href);
+        }
+    });
+
+});
+</script>
 </body>
 </html>

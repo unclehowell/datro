@@ -17,7 +17,7 @@ Nov-13 - Test A - TEST B - TEST C - TEST D - CLAUD YML 1 - CLAUD 2
 ## [gui-0.8] - Q3/2024
 
 ### Fixed
-Jun-07 - Few stylesheet tweaks before we migrate to tailwind css  
+Jun-07 -  Few stylesheet tweaks before we migrate to tailwind css - TEST  
 
 ## [gui-0.7] - Q2/2024
 
