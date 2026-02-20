@@ -65,6 +65,11 @@
   <!--end::Head-->
   <!--begin::Body-->
   <body class="lockscreen bg-body-secondary">
+    <script>
+      if (localStorage.getItem("authenticated") !== "true") {
+        window.location.href = "/login.html";
+      }
+    </script>
     <div class="lockscreen-wrapper">
       <div class="lockscreen-logo">
         <a href="../index2.html"><b>Admin</b>LTE</a>

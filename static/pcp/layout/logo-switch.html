@@ -65,6 +65,11 @@
   <!--end::Head-->
   <!--begin::Body-->
   <body class="layout-fixed sidebar-expand-lg sidebar-mini bg-body-tertiary">
+    <script>
+      if (localStorage.getItem("authenticated") !== "true") {
+        window.location.href = "/login.html";
+      }
+    </script>
     <!--begin::App Wrapper-->
     <div class="app-wrapper">
       <!--begin::Header-->

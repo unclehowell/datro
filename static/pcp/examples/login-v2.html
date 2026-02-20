@@ -65,6 +65,11 @@
   <!--end::Head-->
   <!--begin::Body-->
   <body class="login-page bg-body-secondary">
+    <script>
+      if (localStorage.getItem("authenticated") !== "true") {
+        window.location.href = "/login.html";
+      }
+    </script>
     <div class="login-box">
       <div class="card card-outline card-primary">
         <div class="card-header">

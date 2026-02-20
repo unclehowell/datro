@@ -65,6 +65,11 @@
   <!--end::Head-->
   <!--begin::Body-->
   <body class="register-page bg-body-secondary">
+    <script>
+      if (localStorage.getItem("authenticated") !== "true") {
+        window.location.href = "/login.html";
+      }
+    </script>
     <div class="register-box">
       <!-- /.register-logo -->
       <div class="card card-outline card-primary">

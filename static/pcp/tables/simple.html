@@ -65,6 +65,11 @@
   <!--end::Head-->
   <!--begin::Body-->
   <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+    <script>
+      if (localStorage.getItem("authenticated") !== "true") {
+        window.location.href = "/login.html";
+      }
+    </script>
     <!--begin::App Wrapper-->
     <div class="app-wrapper">
       <!--begin::Header-->
@@ -1187,6 +1192,86 @@
     </script>
     <!--end::OverlayScrollbars Configure-->
     <!--end::Script-->
-  </body>
+      <script>
+      (async function () {
+        const navigation = document.getElementById('navigation');
+        if (!navigation) return;
+
+        const candidates = ['menu.json', '../menu.json', '../../menu.json', '/menu.json'];
+        let menuData = null;
+
+        for (const url of candidates) {
+          try {
+            const response = await fetch(url, { cache: 'no-store' });
+            if (response.ok) {
+              menuData = await response.json();
+              break;
+            }
+          } catch (error) {
+            // ignore and continue with next candidate
+          }
+        }
+
+        if (!menuData) {
+          navigation.innerHTML = '<li class="nav-item"><a href="#" class="nav-link text-danger"><i class="nav-icon bi bi-exclamation-triangle"></i><p>Unable to load menu.json</p></a></li>';
+          return;
+        }
+
+        const currentPath = window.location.pathname.replace(/\/+/g, '/');
+
+        const isActivePath = (href) => {
+          if (!href || href === '#') return false;
+          try {
+            const absolute = new URL(href, window.location.href);
+            return absolute.pathname.replace(/\/+/g, '/') === currentPath;
+          } catch {
+            return false;
+          }
+        };
+
+        const buildMenuHTML = (items = []) =>
+          items
+            .map((item) => {
+              if (item.type === 'header') {
+                return `<li class="nav-header">${item.label}</li>`;
+              }
+
+              const hasChildren = Array.isArray(item.children) && item.children.length > 0;
+              const iconClass = item.icon || 'bi-circle';
+
+              if (hasChildren) {
+                const childHtml = buildMenuHTML(item.children);
+                const isOpen = Boolean(item.open);
+                return `
+                  <li class="nav-item ${isOpen ? 'menu-open' : ''}">
+                    <a href="${item.href || '#'}" class="nav-link ${item.active ? 'active' : ''}">
+                      <i class="nav-icon bi ${iconClass}"></i>
+                      <p>
+                        ${item.label}
+                        ${item.badge ? `<span class="nav-badge badge ${item.badge.class || ''} me-3">${item.badge.text}</span>` : ''}
+                        <i class="nav-arrow bi bi-chevron-right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">${childHtml}</ul>
+                  </li>
+                `;
+              }
+
+              const active = item.active || isActivePath(item.href);
+              return `
+                <li class="nav-item">
+                  <a href="${item.href || '#'}" class="nav-link ${active ? 'active' : ''}">
+                    <i class="nav-icon bi ${iconClass}"></i>
+                    <p>${item.label}</p>
+                  </a>
+                </li>
+              `;
+            })
+            .join('');
+
+        navigation.innerHTML = buildMenuHTML(menuData);
+      })();
+    </script>
+</body>
   <!--end::Body-->
 </html>
