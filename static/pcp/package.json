@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
 "dev": "esbuild admin/puck-editor.jsx --bundle --outfile=admin/puck.js --format=iife --jsx=automatic --servedir=. --serve=3000",
-  "build": "esbuild admin/puck-editor.jsx --bundle --outfile=admin/puck.js --format=iife --jsx=automatic --minify"
+  "build": "node ./tools/prepare-dist.js && esbuild admin/puck-editor.jsx --bundle --outfile=dist/puck.js --format=iife --jsx=automatic --minify"
   },
   "keywords": [],
   "author": "",
