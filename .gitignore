@@ -2,9 +2,12 @@
 
 # dependencies
 /static/hbnb/node_modules
+/static/ew/site.html
 /static/11ty-store/node_modules
 /.pnp
 .pnp.js
+node_modules/
+**/node_modules/
 
 # testing
 /coverage
@@ -27,3 +30,4 @@ yarn-error.log*
 # Local Netlify folder
 .netlify
 /static/library/**/*.log
+.aider*

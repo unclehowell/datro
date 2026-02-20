@@ -4,36 +4,37 @@
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <title>App Store</title>
-        <link href="css/breadcrumb.css" rel="stylesheet">
-        <link href="css/appstore.css" rel="stylesheet">
+        <link href="../dashboard/media/css/breadcrumb.css" rel="stylesheet">
+        <link href="../dashboard/media/css/appstore.css" rel="stylesheet">
         <link href="css/font-awesome.css" rel="stylesheet">
+        <style>
+            /* Additional styles specific to app-store pages if needed */
+            body {
+                background: rgb(44,12,33)!important;
+            }
+            .square {
+                border:solid rgba(255,255,255,0.3) 1.5px;
+            }
+        </style>
 </head>
-<body class="app-store-page" style="margin-top: -10%; padding-top: 24vh;" onload="document.body.classList.add('loaded');">
+<body onload="document.body.classList.add('loaded');">
         <div class="container">
                 <div class="box">
                         <div class="box-row">
                                 <div class="box-cell box1">
-                                        <ul class="breadcrumb" id="btn noHover">
-                                                <li class='btn noHover'>
-                                                        <a href="#" style="width:auto!Important;"><span class="icon icon-play"></span> <span class="text2">Entertainment</span></a>
-                                                </li>
-                                                <li>
-                                                        <a href='000.html' style='width:auto!Important;filter: brightness(1);background:rgba(0,0,0,0.55);border: 1px solid rgba(255,255,255,0.4);position: initial; padding-left: 48px!Important; margin-top: 0px;'><span class="text2" style="margin-left:1vw;">Categories</span></a>
-                                                </li>
-                                                <li class="btn noHover">
-                                                        <a class='backtodash' href='000.html'><span class="text2">App Store</span></a>
-                                                </li>
-                                                <li class="btn">
-                                                        <a href='../dashboard/001-a.html'><span class="icon icon-search"></span> <span class="text"></span></a>
-                                                </li>
-                                        </ul>
+                                        <!-- Dynamic Breadcrumb Placeholder -->
+					<ul class="breadcrumb"></ul>
+					<!-- End Dynamic Breadcrumb Placeholder -->
+
+					<!-- Include the dynamic breadcrumb script -->
+					<script src="js/dynamic-breadcrumb.js"></script>
                                 </div>
                         </div>
                 </div>
         </div>
 
         <main class="app-store-grid">
-                <a class="app-card-link" href="apps/002-001/fetch.html">
+                <a class="app-card-link" href="app-description-002-001.html">
                         <article class="app-card" data-app-id="002-001">
                                 <div class="app-card__icon-wrapper">
                                         <img class="app-card__icon" src="apps/002-001/logo.png" alt="Hβnβ entertainment app icon 002-001">
@@ -45,7 +46,7 @@
                         </article>
                 </a>
 
-                <a class="app-card-link" href="apps/002-002/fetch.html">
+                <a class="app-card-link" href="app-description-002-002.html">
                         <article class="app-card" data-app-id="002-002">
                                 <div class="app-card__icon-wrapper">
                                         <img class="app-card__icon" src="apps/002-002/logo.png" alt="Hβnβ entertainment app icon 002-002">
@@ -71,5 +72,34 @@
         </main>
 
         <script src="js/app-toggle.js"></script>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            const squares = document.querySelectorAll('.square');
+            squares.forEach(square => {
+              const imgElement = square.querySelector('img.rs');
+              if (imgElement) {
+                const src = imgElement.getAttribute('src');
+                const match = src.match(/icons\/([^.]+)\.svg$/);
+                if (match && match[1]) {
+                  const appId = match[1];
+                  if (appId === '000') {
+                    if (localStorage.getItem(appId) !== 'added') {
+                      square.style.display = 'none';
+                    } else {
+                      square.style.display = '';
+                    }
+                    return;
+                  }
+
+                  if (localStorage.getItem(appId) === 'added') {
+                    square.style.display = '';
+                  } else {
+                    square.style.display = 'none';
+                  }
+                }
+              }
+            });
+          });
+        </script>
 </body>
 </html>

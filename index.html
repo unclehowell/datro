@@ -118,15 +118,58 @@ body{color:#202020}
 	    background: transparent; /* make scrollbar transparent */
 	}  
        </style>
-<!-- google tracking code start --> 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BTNPTMXBF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-6BTNPTMXBF');
-</script>
-<!-- google tracking code end -->
+\
+\t<script>
+\t    function checkOnlineStatus() {
+\t        let status = localStorage.getItem('appStatus');
+\t        if (status === null) {
+\t            // First load, determine status
+\t            if (navigator.onLine) {
+\t                // Try a fetch to a known reliable resource to confirm
+\t                fetch('/static/datro/img/datro_logo.webp', { mode: 'same-origin' })
+\t                    .then(response => {
+\t                        if (response.ok) {
+\t                            localStorage.setItem('appStatus', 'online');
+\t                            console.log('App status: Online');
+\t                        } else {
+\t                            localStorage.setItem('appStatus', 'offline');
+\t                            console.log('App status: Offline (fetch failed)');
+\t                        }
+\t                    })
+\t                    .catch(() => {
+\t                        localStorage.setItem('appStatus', 'offline');
+\t                        console.log('App status: Offline (fetch error)');
+\t                    });
+\t            } else {
+\t                localStorage.setItem('appStatus', 'offline');
+\t                console.log('App status: Offline (navigator.onLine is false)');
+\t            }
+\t        } else {
+\t            console.log('App status from cache: ' + status);
+\t        }
+\t    }
+\n\t    // Run the check when the DOM is ready or page loads
+\t    // Using DOMContentLoaded for earlier execution if possible
+\t    document.addEventListener('DOMContentLoaded', checkOnlineStatus);
+\n\t    // Optionally, re-check if the connection status changes dynamically
+\t    window.addEventListener('online', () => {
+\t        // Attempt to re-verify if truly online
+\t        fetch('/static/datro/img/datro_logo.webp', { mode: 'same-origin' })
+\t            .then(response => {
+\t                if (response.ok) {
+\t                    localStorage.setItem('appStatus', 'online');
+\t                    console.log('Network status changed to Online');
+\t                }
+\t            });
+\t    });
+\n\t    window.addEventListener('offline', () => {
+\t        localStorage.setItem('appStatus', 'offline');
+\t        console.log('Network status changed to Offline');
+\t    });
+\n\t    // Make the status globally accessible
+\t    window.isAppOnline = () => localStorage.getItem('appStatus') === 'online';
+\t</script>
+\t<!-- google tracking code start --> \n<script async src=\"https://www.googletagmanager.com/gtag/js?id=G-6BTNPTMXBF\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag(\'js\', new Date());\n  gtag(\'config\', \'G-6BTNPTMXBF\');\n</script>\n<!-- google tracking code end -->
 </head>
 <body style="background-color:#333666;background:#333666;" data-role="page" onload="pageLoad()">
 	<video autoplay muted loop playsinline id="bg-video">
