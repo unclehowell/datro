@@ -2,6 +2,14 @@
 * { box-sizing: border-box; }
 body { margin: 0; background: #0d0f14; color: #f5f5f5; }
 
+/* Hide scrollbars globally (no visible scrollbars, but scrolling still works) */
+html, body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+* { scrollbar-width: none; }
+*::-webkit-scrollbar { display: none; }
+
 .site-shell { min-height: 100vh; }
 .site-header { padding: 16px 20px; border-bottom: 1px solid #2a2d38; background: #12151d; position: sticky; top: 0; z-index: 10; }
 .brand { font-size: 1.1rem; font-weight: 700; letter-spacing: .02em; }
@@ -43,3 +51,10 @@ body { margin: 0; background: #0d0f14; color: #f5f5f5; }
 .ad-description { background: #171b25; border: 1px solid #2a3244; border-radius: 10px; padding: 12px; }
 .ad-detail-footer { display: flex; gap: 12px; align-items: center; }
 .ad-detail-footer a { color: #8fbeff; }
+
+/* Social media dropdown in header */
+.social-dropdown { position: relative; display: inline-block; margin-left: 12px; }
+.social-dropdown .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: #111; border: 1px solid #333; border-radius: 6px; min-width: 180px; padding: 6px; z-index: 100; }
+.social-dropdown:hover .dropdown-menu { display: block; }
+.social-dropdown .dropdown-menu a { display: block; padding: 8px 12px; color: #fff; text-decoration: none; }
+.social-dropdown .dropdown-menu a:hover { background: #333; }
