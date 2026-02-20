@@ -1,0 +1,69 @@
+[
+  {"type": "header", "label": "Dashboard"},
+  {
+    "type": "item",
+    "label": "Campaign:1",
+    "icon": "bi-speedometer",
+    "open": true,
+    "children": [
+      {
+        "type": "item",
+        "label": "Outlets",
+        "icon": "bi-circle",
+        "children": [
+          {"type": "item", "label": "Google", "icon": "bi-circle", "href": "#"},
+          {"type": "item", "label": "TickTock", "icon": "bi-circle", "href": "#"},
+          {"type": "item", "label": "Microsoft", "icon": "bi-circle", "href": "#"},
+          {"type": "item", "label": "Facebook", "icon": "bi-circle", "href": "#"},
+          {"type": "item", "label": "Email", "icon": "bi-circle", "href": "#"},
+          {"type": "item", "label": "ChatGPT(New)", "icon": "bi-circle", "href": "#"}
+        ]
+      },
+      {
+        "type": "item",
+        "label": "Creatives",
+        "icon": "bi-circle",
+        "open": true,
+        "children": [
+          {"type": "item", "label": "Display", "icon": "bi-circle", "href": "#"},
+          {"type": "item", "label": "Video", "icon": "bi-circle", "href": "#"},
+          {"type": "item", "label": "Animated", "icon": "bi-circle", "href": "#"},
+          {"type": "item", "label": "Text", "icon": "bi-circle", "href": "#"},
+          {"type": "item", "label": "LLM", "icon": "bi-circle", "href": "#"},
+          {"type": "item", "label": "HTML (Email)", "icon": "bi-circle", "href": "#"},
+          {"type": "item", "label": "WebApp", "icon": "bi-circle", "href": "#"}
+        ]
+      }
+    ]
+  },
+  {"type": "header", "label": "Tools"},
+  {"type": "item", "label": "generator", "icon": "bi-palette", "href": "#"},
+  {"type": "header", "label": "Docs"},
+  {"type": "item", "label": "API", "icon": "bi-download", "href": "#"},
+  {"type": "item", "label": "SOP", "icon": "bi-download", "href": "#"},
+  {"type": "header", "label": "Release Notes"},
+  {"type": "item", "label": "v0.2", "open": true, "children": [
+    {"type": "item", "label": "mandate", "href": "#"},
+    {"type": "item", "label": "brief", "href": "#"},
+    {"type": "item", "label": "plan", "href": "#"},
+    {"type": "item", "label": "highlight reports", "href": "#"}
+  ]},
+  {"type": "item", "label": "v0.1", "open": true, "children": [
+    {"type": "item", "label": "mandate", "href": "#"},
+    {"type": "item", "label": "brief", "href": "#"},
+    {"type": "item", "label": "plan", "href": "#"},
+    {"type": "item", "label": "highlight reports", "href": "#"}
+  ]},
+  {"type": "header", "label": "Links"},
+  {"type": "item", "label": "Index", "href": "index.html"},
+  {"type": "item", "label": "Index 2", "href": "index2.html"},
+  {"type": "item", "label": "Index 3", "href": "index3.html"}
+  , {"type": "header", "label": "Links"},
+  {"type": "item", "label": "Index", "href": "index.html"},
+  {"type": "item", "label": "Index 2", "href": "index2.html"},
+  {"type": "item", "label": "Index 3", "href": "index3.html"}
+  , {"type": "header", "label": "Links"},
+  {"type": "item", "label": "Index", "href": "index.html"},
+  {"type": "item", "label": "Index 2", "href": "index2.html"},
+  {"type": "item", "label": "Index 3", "href": "index3.html"}
+]
