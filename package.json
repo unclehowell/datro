@@ -1,6 +1,6 @@
 {
   "name": "datro",
   "scripts": {
-    "build": "cd static/pcp && npm install && npm run build"
+    "build": "cd static/pcp && npm ci && npm run build"
   }
 }
