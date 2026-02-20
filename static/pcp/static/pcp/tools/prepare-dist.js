@@ -1,34 +1,21 @@
+// Minimal dist prep for remote builds
 const fs = require('fs')
 const path = require('path')
+const distDir = path.resolve(__dirname, 'dist')
+if (!fs.existsSync(distDir)) fs.mkdirSync(distDir, { recursive: true })
 
-// Simple dist preparer for remote builds.
-// Ensures dist/ exists and copies essential assets if present.
-(function prepare() {
-  const base = __dirname
-  const distDir = path.resolve(base, 'dist')
-  if (!fs.existsSync(distDir)) fs.mkdirSync(distDir, { recursive: true })
-
-  // Copy main entry if present
-  const indexSrc = path.resolve(base, 'index.html')
+try {
+  const indexSrc = path.resolve(__dirname, 'index.html')
   const indexDst = path.resolve(distDir, 'index.html')
-  try {
-    if (fs.existsSync(indexSrc)) {
-      fs.copyFileSync(indexSrc, indexDst)
-    }
-  } catch (e) {
-    // ignore copy errors on remote
-  }
+  if (fs.existsSync(indexSrc)) fs.copyFileSync(indexSrc, indexDst)
+} catch (e) { /* ignore */ }
 
-  // Copy puck.js if present in admin build dir
-  const puckSrc = path.resolve(base, 'admin', 'puck.js')
+try {
+  const puckSrc = path.resolve(__dirname, 'admin', 'puck.js')
   const puckDst = path.resolve(distDir, 'puck.js')
-  try {
-    if (fs.existsSync(puckSrc)) {
-      const dstDir = path.dirname(puckDst)
-      if (!fs.existsSync(dstDir)) fs.mkdirSync(dstDir, { recursive: true })
-      fs.copyFileSync(puckSrc, puckDst)
-    }
-  } catch (e) {
-    // ignore
+  if (fs.existsSync(puckSrc)) {
+    const dstDir = path.dirname(puckDst)
+    if (!fs.existsSync(dstDir)) fs.mkdirSync(dstDir, { recursive: true })
+    fs.copyFileSync(puckSrc, puckDst)
   }
-})();
+} catch (e) { /* ignore */ }
