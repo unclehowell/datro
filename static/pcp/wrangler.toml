@@ -1,9 +1,0 @@
-name = "pcp"
-type = "webpack"
-
-build = { command = "npm run build --silent", cwd = "./static/pcp" }
-pages_build_output_dir = "dist"
-
-[site]
-bucket = "./static/pcp/dist"
-entry = "index.html"
