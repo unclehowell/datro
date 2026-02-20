@@ -1,127 +1,91 @@
 [
   {
+    "type": "header",
+    "label": "Dashboard"
+  },
+  {
     "type": "item",
-    "label": "Creatives",
-    "icon": "bi-speedometer",
+    "label": "Campaign:1",
+    "icon": "bi-megaphone",
     "open": true,
     "children": [
-      { "label": "Display Ads", "icon": "bi-circle", "href": "#", "active": true },
-      { "label": "Video Ads", "icon": "bi-circle", "href": "#" },
-      { "label": "Animated Ads", "icon": "bi-circle", "href": "#" }
-    ]
-  },
-  {
-    "type": "item",
-    "label": "Ads CLI/ API",
-    "icon": "bi-palette",
-    "href": "dist/indexc.html"
-  },
-  {
-    "type": "item",
-    "label": "Widgets",
-    "icon": "bi-box-seam-fill",
-    "children": [
-      { "label": "Small Box", "icon": "bi-circle", "href": "#" },
-      { "label": "Info Box", "icon": "bi-circle", "href": "#" },
-      { "label": "Cards", "icon": "bi-circle", "href": "#" }
-    ]
-  },
-  {
-    "type": "item",
-    "label": "Layout Options",
-    "icon": "bi-clipboard-fill",
-    "badge": { "text": "6", "class": "text-bg-secondary" },
-    "children": [
-      { "label": "Beta GUI", "icon": "bi-circle", "href": "#", "action": "loadBetaGui" },
-      { "label": "Fixed Sidebar", "icon": "bi-circle", "href": "#" },
-      { "label": "Fixed Header", "icon": "bi-circle", "href": "#" },
-      { "label": "Fixed Footer", "icon": "bi-circle", "href": "#" },
-      { "label": "Fixed Complete", "icon": "bi-circle", "href": "#" },
-      { "label": "Layout + Custom Area", "icon": "bi-circle", "href": "#" },
-      { "label": "Sidebar Mini", "icon": "bi-circle", "href": "#" },
-      { "label": "Sidebar Mini + Collapsed", "icon": "bi-circle", "href": "#" },
-      { "label": "Sidebar Mini + Logo Switch", "icon": "bi-circle", "href": "#" },
-      { "label": "Layout RTL", "icon": "bi-circle", "href": "#" }
-    ]
-  },
-  {
-    "type": "item",
-    "label": "UI Elements",
-    "icon": "bi-tree-fill",
-    "children": [
-      { "label": "General", "icon": "bi-circle", "href": "#" },
-      { "label": "Icons", "icon": "bi-circle", "href": "#" },
-      { "label": "Timeline", "icon": "bi-circle", "href": "#" }
-    ]
-  },
-  {
-    "type": "item",
-    "label": "Forms",
-    "icon": "bi-pencil-square",
-    "children": [
-      { "label": "General Elements", "icon": "bi-circle", "href": "#" }
-    ]
-  },
-  {
-    "type": "item",
-    "label": "Tables",
-    "icon": "bi-table",
-    "children": [
-      { "label": "Simple Tables", "icon": "bi-circle", "href": "#" }
-    ]
-  },
-  { "type": "header", "label": "EXAMPLES" },
-  {
-    "type": "item",
-    "label": "Auth",
-    "icon": "bi-box-arrow-in-right",
-    "children": [
       {
-        "label": "Version 1",
-        "icon": "bi-box-arrow-in-right",
+        "label": "Outlets",
+        "icon": "bi-broadcast",
         "children": [
-          { "label": "Login", "icon": "bi-circle", "href": "#" },
-          { "label": "Register", "icon": "bi-circle", "href": "#" }
+          { "label": "Google", "icon": "bi-circle", "href": "#" },
+          { "label": "TickTock", "icon": "bi-circle", "href": "#" },
+          { "label": "Microsoft", "icon": "bi-circle", "href": "#" },
+          { "label": "Facebook", "icon": "bi-circle", "href": "#" },
+          { "label": "Email", "icon": "bi-circle", "href": "#" },
+          { "label": "ChatGPT(New)", "icon": "bi-circle", "href": "#" }
         ]
       },
       {
-        "label": "Version 2",
-        "icon": "bi-box-arrow-in-right",
+        "label": "Creatives",
+        "icon": "bi-palette",
         "children": [
-          { "label": "Login", "icon": "bi-circle", "href": "#" },
-          { "label": "Register", "icon": "bi-circle", "href": "#" }
+          { "label": "Display", "icon": "bi-circle", "href": "#" },
+          { "label": "Video", "icon": "bi-circle", "href": "#" },
+          { "label": "Animated", "icon": "bi-circle", "href": "#" },
+          { "label": "Text", "icon": "bi-circle", "href": "#" },
+          { "label": "LLM", "icon": "bi-circle", "href": "#" },
+          { "label": "HTML (Email)", "icon": "bi-circle", "href": "#" },
+          { "label": "WebApp", "icon": "bi-circle", "href": "#" }
         ]
-      },
-      { "label": "Lockscreen", "icon": "bi-circle", "href": "#" }
-    ]
-  },
-  { "type": "header", "label": "DOCUMENTATIONS" },
-  { "type": "item", "label": "Installation", "icon": "bi-download", "href": "#" },
-  { "type": "item", "label": "Layout", "icon": "bi-grip-horizontal", "href": "#" },
-  { "type": "item", "label": "Color Mode", "icon": "bi-star-half", "href": "#" },
-  {
-    "type": "item",
-    "label": "Components",
-    "icon": "bi-ui-checks-grid",
-    "children": [
-      { "label": "Main Header", "icon": "bi-circle", "href": "#" },
-      { "label": "Main Sidebar", "icon": "bi-circle", "href": "#" }
+      }
     ]
   },
   {
+    "type": "header",
+    "label": "Tools"
+  },
+  {
     "type": "item",
-    "label": "Javascript",
-    "icon": "bi-filetype-js",
+    "label": "generator",
+    "icon": "bi-wrench-adjustable-circle",
+    "href": "generate/theme.html"
+  },
+  {
+    "type": "header",
+    "label": "Docs"
+  },
+  {
+    "type": "item",
+    "label": "API",
+    "icon": "bi-filetype-json",
+    "href": "docs/introduction.html"
+  },
+  {
+    "type": "item",
+    "label": "SOP",
+    "icon": "bi-journal-check",
+    "href": "docs/layout.html"
+  },
+  {
+    "type": "header",
+    "label": "Release Notes"
+  },
+  {
+    "type": "item",
+    "label": "v0.2",
+    "icon": "bi-tag",
     "children": [
-      { "label": "Treeview", "icon": "bi-circle", "href": "#" }
+      { "label": "mandate", "icon": "bi-circle", "href": "#" },
+      { "label": "brief", "icon": "bi-circle", "href": "#" },
+      { "label": "plan", "icon": "bi-circle", "href": "#" },
+      { "label": "highlight reports", "icon": "bi-circle", "href": "#" }
     ]
   },
-  { "type": "item", "label": "Browser Support", "icon": "bi-browser-edge", "href": "#" },
-  { "type": "item", "label": "How To Contribute", "icon": "bi-hand-thumbs-up-fill", "href": "#" },
-  { "type": "item", "label": "FAQ", "icon": "bi-question-circle-fill", "href": "#" },
-  { "type": "item", "label": "License", "icon": "bi-patch-check-fill", "href": "#" },
-  { "type": "header", "label": "LABELS" },
-  { "type": "item", "label": "Important", "icon": "bi-circle text-danger", "href": "#" },
-  { "type": "item", "label": "Warning", "icon": "bi-circle text-warning", "href": "#" },
-  { "type": "item", "label": "Informational", "icon": "bi-circle text-info", "href": "#" }
+  {
+    "type": "item",
+    "label": "v0.1",
+    "icon": "bi-tag",
+    "children": [
+      { "label": "mandate", "icon": "bi-circle", "href": "#" },
+      { "label": "brief", "icon": "bi-circle", "href": "#" },
+      { "label": "plan", "icon": "bi-circle", "href": "#" },
+      { "label": "highlight reports", "icon": "bi-circle", "href": "#" }
+    ]
+  }
 ]

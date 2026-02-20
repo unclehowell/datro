@@ -65,6 +65,11 @@
   <!--end::Head-->
   <!--begin::Body-->
   <body class="register-page bg-body-secondary">
+    <script>
+      if (localStorage.getItem("authenticated") !== "true") {
+        window.location.href = "/login.html";
+      }
+    </script>
     <div class="register-box">
       <div class="register-logo">
         <a href="../index2.html"><b>Admin</b>LTE</a>
