@@ -1,75 +1,73 @@
 (function(){
-  async function load() {
-    let menuData = null;
-    try {
-      const res = await fetch('menu.json', { cache: 'no-store' });
-      if (res.ok) {
-        const ct = res.headers.get('content-type') || '';
-        if (ct.includes('application/json')) {
-          menuData = await res.json();
-        }
+  async function readJsonWithFallback(urls){
+    for (const url of urls) {
+      try {
+        const response = await fetch(url, { cache: 'no-store' });
+        if (!response.ok) continue;
+
+        const body = await response.text();
+        const parsed = JSON.parse(body);
+        if (Array.isArray(parsed)) return parsed;
+      } catch (error) {
+        // try the next candidate
       }
-    } catch (e) {
-      // ignore
     }
-    if (!menuData) {
-      // Fallback minimal menu
-      menuData = [
-        { type: 'item', label: 'Dashboard', href: 'index.html' },
-        { type: 'item', label: 'Dashboard 2', href: 'index2.html' },
-        { type: 'item', label: 'Dashboard 3', href: 'index3.html' }
-      ];
-    }
+    return null;
+  }
+
+  function renderItems(list, currentPath){
+    return list.map((item) => {
+      if (item.type === 'header') {
+        return `<li class="nav-header">${item.label}</li>`;
+      }
+
+      const hasChildren = Array.isArray(item.children) && item.children.length > 0;
+      const href = item.href || '#';
+      const icon = item.icon ? `<i class="nav-icon ${item.icon}"></i>` : '<i class="nav-icon bi bi-circle"></i>';
+
+      if (hasChildren) {
+        const childHtml = renderItems(item.children, currentPath).join('');
+        const isOpen = Boolean(item.open);
+        return `
+          <li class="nav-item ${isOpen ? 'menu-open' : ''}">
+            <a href="${href}" class="nav-link ${href === currentPath ? 'active' : ''}" data-lte-toggle="treeview">
+              ${icon}
+              <p>${item.label}<i class="nav-arrow bi bi-chevron-right"></i></p>
+            </a>
+            <ul class="nav nav-treeview">${childHtml}</ul>
+          </li>
+        `;
+      }
+
+      const active = href === currentPath;
+      return `<li class="nav-item"><a href="${href}" class="nav-link ${active ? 'active' : ''}">${icon}<p>${item.label}</p></a></li>`;
+    });
+  }
+
+  async function load() {
+    const menuData = await readJsonWithFallback([
+      'menu.json',
+      '/static/pcp/menu.json'
+    ]) || [
+      { type: 'item', label: 'Dashboard', href: 'index.html' },
+      { type: 'item', label: 'Dashboard 2', href: 'index2.html' },
+      { type: 'item', label: 'Dashboard 3', href: 'index3.html' }
+    ];
 
     const currentPath = location.pathname.split('/').pop() || 'index.html';
-    function renderItems(list){
-      return list.map(item => {
-        if (item.type === 'header') {
-          return `<li class="nav-header">${item.label}</li>`;
-        }
-        const hasChildren = Array.isArray(item.children) && item.children.length > 0;
-        const href = item.href || '#';
-        if (hasChildren) {
-          const childHtml = renderItems(item.children).join('');
-          const isOpen = Boolean(item.open);
-          return `
-            <li class="nav-item ${isOpen ? 'menu-open' : ''}">
-              <a href="${href}" class="nav-link ${href === currentPath ? 'active' : ''}">
-                <p>${item.label}<i class="nav-arrow bi bi-chevron-right"></i></p>
-              </a>
-              <ul class="nav nav-treeview">${childHtml}</ul>
-            </li>
-          `;
-        } else {
-          const active = href === currentPath;
-          return `<li class="nav-item"><a href="${href}" class="nav-link ${active ? 'active' : ''}"><p>${item.label}</p></a></li>`;
-        }
-      });
-    }
-    const html = renderItems(menuData).join('');
+    const html = renderItems(menuData, currentPath).join('');
     const nav = document.getElementById('navigation');
+
     if (nav) {
-      // Use a temporary container to minimize reflows
-      const tmp = document.createElement('div');
-      tmp.innerHTML = html;
-      while (nav.firstChild) nav.removeChild(nav.firstChild);
-      while (tmp.firstChild) nav.appendChild(tmp.firstChild);
+      nav.innerHTML = html;
     }
-    if (typeof $ !== 'undefined' && $.fn && $.fn.Treeview) {
-      $('[data-lte-toggle="treeview"]').Treeview('init');
-    }
+
+    window.dispatchEvent(new CustomEvent('menuLoaded', { detail: { loader: 'menu-loader' } }));
   }
+
   if (document.readyState === 'loading') {
     window.addEventListener('DOMContentLoaded', load);
   } else {
     load();
   }
 })();
- 
-// Notify that the menu has finished loading so other UI pieces can react
-try {
-  const _evt = new CustomEvent('menuLoaded', { detail: { loader: 'menu-loader' } });
-  window.dispatchEvent(_evt);
-} catch (e) {
-  // ignore if CustomEvent not supported
-}
