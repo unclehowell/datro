@@ -62,16 +62,27 @@
     <link rel="stylesheet" href="../css/adminlte.css" />
     <!--end::Required Plugin(AdminLTE)-->
   </head>
+  <style>
+    /* Global dark-mode styling for generator page */
+    body.dark-mode { background-color: #0e0f12; color: #e8e8e8; }
+    body.dark-mode .app-header { background-color: #1a1a1a; color: #e8e8e8; }
+    body.dark-mode .app-sidebar { background-color: #1a1a1a; color: #e8e8e8; }
+    body.dark-mode .app-content-header, body.dark-mode .app-main { background-color: #141414; }
+  body.dark-mode .breadcrumb, body.dark-mode .card { color: #e6e6e6; }
+  #header-menu { min-height: 32px; }
+  </style>
   <!--end::Head-->
   <!--begin::Body-->
-  <body class="sidebar-expand-lg bg-body-tertiary">
+  <body class="sidebar-expand-lg bg-body-tertiary dark-mode">
     <script>
       if (localStorage.getItem("authenticated") !== "true") {
         window.location.href = "/login.html";
       }
     </script>
+    <script src="../js/header-loader.js"></script>
     <!--begin::App Wrapper-->
     <div class="app-wrapper">
+      <div id="header-menu" class="header-menu" style="display:flex; gap:16px; align-items:center; margin:0 16px 8px 16px;"></div>
       <!--begin::Header-->
       <nav class="app-header navbar navbar-expand bg-body">
         <!--begin::Container-->
@@ -677,7 +688,9 @@
         All rights reserved.
         <!--end::Copyright-->
       </footer>
-      <!--end::Footer-->
+    <!--end::Footer-->
+    <script src="../js/menu-loader.js"></script>
+    <script src="../js/theme-toggle.js"></script>
     </div>
     <!--end::App Wrapper-->
     <!--begin::Script-->

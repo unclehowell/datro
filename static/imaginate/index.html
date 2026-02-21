@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Dashboard | Creatives</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#007bff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)" />
+    <meta name="title" content="AdminLTE v4 | Creatives" />
+    <meta name="author" content="ColorlibHQ" />
+    <meta name="description" content="AdminLTE is a Free Bootstrap 5 Admin Dashboard, 30 example pages using Vanilla JS." />
+    <meta name="keywords" content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard" />
+    <meta name="supported-color-schemes" content="light dark" />
+    <link rel="preload" href="css/adminlte.css" as="style" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous" media="print" onload="this.media = 'all'" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/styles/overlayscrollbars.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/adminlte.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css" integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css" integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4=" crossorigin="anonymous" />
+  </head>
+  <style>
+    /* Global dark-mode styling to ensure consistency across pages */
+    body.dark-mode { background-color: #0e0f12; color: #e8e8e8; }
+    body.dark-mode .app-header { background-color: #1a1a1a; color: #e8e8e8; }
+    body.dark-mode .app-sidebar { background-color: #1a1a1a; color: #e8e8e8; }
+    body.dark-mode .app-content-header, body.dark-mode .app-main { background-color: #141414; }
+    body.dark-mode .breadcrumb, body.dark-mode .card { color: #e6e6e6; }
+  </style>
+  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary dark-mode">
+    <script>
+      if (localStorage.getItem("authenticated") !== "true") {
+        window.location.href = "/login.html";
+      }
+    </script>
+    
+    <div class="app-wrapper">
+      <nav class="app-header navbar navbar-expand bg-body">
+        <div class="container-fluid">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">
+                <i class="bi bi-list"></i>
+              </a>
+            </li>
+            <li class="nav-item d-none d-md-block">
+              <button onclick="logout()" class="btn btn-danger">Logout</button>
+              <script>
+                function logout() {
+                  localStorage.removeItem("authenticated");
+                  window.location.href = "login.html";
+                }
+              </script>
+            </li>
+            <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Home</a></li>
+            <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Contact</a></li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" data-widget="navbar-search" href="#" role="button"><i class="bi bi-search"></i></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" data-bs-toggle="dropdown" href="#"><i class="bi bi-chat-text"></i><span class="navbar-badge badge text-bg-danger">3</span></a>
+              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+                <a href="#" class="dropdown-item">
+                  <div class="d-flex">
+                    <div class="flex-shrink-0"><img src="assets/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 rounded-circle me-3" /></div>
+                    <div class="flex-grow-1">
+                      <h3 class="dropdown-item-title">Brad Diesel<span class="float-end fs-7 text-danger"><i class="bi bi-star-fill"></i></span></h3>
+                      <p class="fs-7">Call me whenever you can...</p>
+                      <p class="fs-7 text-secondary"><i class="bi bi-clock-fill me-1"></i> 4 Hours Ago</p>
+                    </div>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item">
+                  <div class="d-flex">
+                    <div class="flex-shrink-0"><img src="assets/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 rounded-circle me-3" /></div>
+                    <div class="flex-grow-1">
+                      <h3 class="dropdown-item-title">John Pierce<span class="float-end fs-7 text-secondary"><i class="bi bi-star-fill"></i></span></h3>
+                      <p class="fs-7">I got your message bro</p>
+                      <p class="fs-7 text-secondary"><i class="bi bi-clock-fill me-1"></i> 4 Hours Ago</p>
+                    </div>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item">
+                  <div class="d-flex">
+                    <div class="flex-shrink-0"><img src="assets/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 rounded-circle me-3" /></div>
+                    <div class="flex-grow-1">
+                      <h3 class="dropdown-item-title">Nora Silvester<span class="float-end fs-7 text-warning"><i class="bi bi-star-fill"></i></span></h3>
+                      <p class="fs-7">The subject goes here</p>
+                      <p class="fs-7 text-secondary"><i class="bi bi-clock-fill me-1"></i> 4 Hours Ago</p>
+                    </div>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" data-bs-toggle="dropdown" href="#"><i class="bi bi-bell-fill"></i><span class="navbar-badge badge text-bg-warning">15</span></a>
+              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+                <span class="dropdown-item dropdown-header">15 Notifications</span>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item"><i class="bi bi-envelope me-2"></i> 4 new messages<span class="float-end text-secondary fs-7">3 mins</span></a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item"><i class="bi bi-people-fill me-2"></i> 8 friend requests<span class="float-end text-secondary fs-7">12 hours</span></a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item"><i class="bi bi-file-earmark-fill me-2"></i> 3 new reports<span class="float-end text-secondary fs-7">2 days</span></a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-lte-toggle="fullscreen">
+                <i data-lte-icon="maximize" class="bi bi-arrows-fullscreen"></i>
+                <i data-lte-icon="minimize" class="bi bi-fullscreen-exit" style="display: none"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="theme-toggle" title="Toggle theme">
+                <i class="bi bi-moon-fill"></i>
+              </a>
+            </li>
+            <li class="nav-item dropdown user-menu">
+              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                <img src="assets/img/user2-160x160.jpg" class="user-image rounded-circle shadow" alt="User Image" />
+                <span class="d-none d-md-inline">Alexander Pierce</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+                <li class="user-header text-bg-primary">
+                  <img src="assets/img/user2-160x160.jpg" class="rounded-circle shadow" alt="User Image" />
+                  <p>Alexander Pierce - Web Developer<small>Member since Nov. 2023</small></p>
+                </li>
+                <li class="user-body">
+                  <div class="row">
+                    <div class="col-4 text-center"><a href="#">Followers</a></div>
+                    <div class="col-4 text-center"><a href="#">Sales</a></div>
+                    <div class="col-4 text-center"><a href="#">Friends</a></div>
+                  </div>
+                </li>
+                <li class="user-footer">
+                  <a href="#" class="btn btn-outline-secondary">Profile</a>
+                  <a href="#" class="btn btn-outline-danger float-end">Sign out</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      
+  <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+  <div class="sidebar-brand">
+    <a href="index.html" class="brand-link">
+      <img src="assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow" />
+      <span class="brand-text fw-light">CFC Dashboard</span>
+    </a>
+  </div>
+        <div class="sidebar-wrapper">
+          <nav class="mt-2">
+            <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="navigation" aria-label="Main navigation" data-accordion="false" id="navigation">
+              <!-- Menu loaded dynamically -->
+            </ul>
+          </nav>
+        </div>
+      </aside>
+      
+      <main class="app-main">
+        <div class="app-content-header">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-6">
+                <h3 class="mb-0">CFC Dashboard</h3>
+                <div class="commit-line" style="font-size:12px; margin-top:6px;">
+                  Recent commit: <a href="https://github.com/unclehowell/datro/commits/gh-pages/static/pcp/" target="_blank" rel="noopener">07533b1</a>
+                </div>
+              </div>
+              <div class="col-sm-6"><img src="300x250.png" style="max-width:340px!important;heigh:auto;">
+                <ol class="breadcrumb float-sm-end">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Creatives</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="app-content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-3 col-6">
+                <div class="card mb-4">
+                  <div class="card-body">
+                    <img src="300x250.png" class="img-fluid" alt="Promotional Ad">
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-6">
+                <div class="small-box text-bg-success">
+                  <div class="inner"><h3>53<sup class="fs-5">%</sup></h3><p>Bounce Rate</p></div>
+                  <svg class="small-box-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75zM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 01-1.875-1.875V8.625zM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 013 19.875v-6.75z"></path></svg>
+                  <a href="#" class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">More info <i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+              <div class="col-lg-3 col-6">
+                <div class="small-box text-bg-warning">
+                  <div class="inner"><h3>44</h3><p>User Registrations</p></div>
+                  <svg class="small-box-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z"></path></svg>
+                  <a href="#" class="small-box-footer link-dark link-underline-opacity-0 link-underline-opacity-50-hover">More info <i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+              <div class="col-lg-3 col-6">
+                <div class="small-box text-bg-danger">
+                  <div class="inner"><h3>65</h3><p>Unique Visitors</p></div>
+                  <svg class="small-box-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path clip-rule="evenodd" fill-rule="evenodd" d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z"></path><path clip-rule="evenodd" fill-rule="evenodd" d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z"></path></svg>
+                  <a href="#" class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">More info <i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-7 connectedSortable">
+                <div class="card mb-4">
+                  <div class="card-header"><h3 class="card-title">Sales Value</h3></div>
+                  <div class="card-body"><div id="revenue-chart"></div></div>
+                </div>
+                <div class="card direct-chat direct-chat-primary mb-4">
+                  <div class="card-header">
+                    <h3 class="card-title">Direct Chat</h3>
+                    <div class="card-tools">
+                      <span title="3 New Messages" class="badge text-bg-primary">3</span>
+                      <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse"><i data-lte-icon="expand" class="bi bi-plus-lg"></i><i data-lte-icon="collapse" class="bi bi-dash-lg"></i></button>
+                      <button type="button" class="btn btn-tool" title="Contacts" data-lte-toggle="chat-pane"><i class="bi bi-chat-text-fill"></i></button>
+                      <button type="button" class="btn btn-tool" data-lte-toggle="card-remove"><i class="bi bi-x-lg"></i></button>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="direct-chat-messages">
+                      <div class="direct-chat-msg">
+                        <div class="direct-chat-infos clearfix"><span class="direct-chat-name float-start">Alexander Pierce</span><span class="direct-chat-timestamp float-end">23 Jan 2:00 pm</span></div>
+                        <img class="direct-chat-img" src="assets/img/user1-128x128.jpg" alt="message user image" />
+                        <div class="direct-chat-text">Is this template really for free? That's unbelievable!</div>
+                      </div>
+                      <div class="direct-chat-msg end">
+                        <div class="direct-chat-infos clearfix"><span class="direct-chat-name float-end">Sarah Bullock</span><span class="direct-chat-timestamp float-start">23 Jan 2:05 pm</span></div>
+                        <img class="direct-chat-img" src="assets/img/user3-128x128.jpg" alt="message user image" />
+                        <div class="direct-chat-text">You better believe it!</div>
+                      </div>
+                      <div class="direct-chat-msg">
+                        <div class="direct-chat-infos clearfix"><span class="direct-chat-name float-start">Alexander Pierce</span><span class="direct-chat-timestamp float-end">23 Jan 5:37 pm</span></div>
+                        <img class="direct-chat-img" src="assets/img/user1-128x128.jpg" alt="message user image" />
+                        <div class="direct-chat-text">Working with AdminLTE on a great new app! Wanna join?</div>
+                      </div>
+                      <div class="direct-chat-msg end">
+                        <div class="direct-chat-infos clearfix"><span class="direct-chat-name float-end">Sarah Bullock</span><span class="direct-chat-timestamp float-start">23 Jan 6:10 pm</span></div>
+                        <img class="direct-chat-img" src="assets/img/user3-128x128.jpg" alt="message user image" />
+                        <div class="direct-chat-text">I would love to.</div>
+                      </div>
+                    </div>
+                    <div class="direct-chat-contacts">
+                      <ul class="contacts-list">
+                        <li><a href="#"><img class="contacts-list-img" src="assets/img/user1-128x128.jpg" alt="User Avatar" /><div class="contacts-list-info"><span class="contacts-list-name">Count Dracula<small class="contacts-list-date float-end">2/28/2023</small></span><span class="contacts-list-msg">How have you been? I was...</span></div></a></li>
+                        <li><a href="#"><img class="contacts-list-img" src="assets/img/user7-128x128.jpg" alt="User Avatar" /><div class="contacts-list-info"><span class="contacts-list-name">Sarah Doe<small class="contacts-list-date float-end">2/23/2023</small></span><span class="contacts-list-msg">I will be waiting for...</span></div></a></li>
+                        <li><a href="#"><img class="contacts-list-img" src="assets/img/user3-128x128.jpg" alt="User Avatar" /><div class="contacts-list-info"><span class="contacts-list-name">Nadia Jolie<small class="contacts-list-date float-end">2/20/2023</small></span><span class="contacts-list-msg">I'll call you back at...</span></div></a></li>
+                        <li><a href="#"><img class="contacts-list-img" src="assets/img/user5-128x128.jpg" alt="User Avatar" /><div class="contacts-list-info"><span class="contacts-list-name">Nora S. Vans<small class="contacts-list-date float-end">2/10/2023</small></span><span class="contacts-list-msg">Where is your new...</span></div></a></li>
+                        <li><a href="#"><img class="contacts-list-img" src="assets/img/user6-128x128.jpg" alt="User Avatar" /><div class="contacts-list-info"><span class="contacts-list-name">John K.<small class="contacts-list-date float-end">1/27/2023</small></span><span class="contacts-list-msg">Can I take a look at...</span></div></a></li>
+                        <li><a href="#"><img class="contacts-list-img" src="assets/img/user8-128x128.jpg" alt="User Avatar" /><div class="contacts-list-info"><span class="contacts-list-name">Kenneth M.<small class="contacts-list-date float-end">1/4/2023</small></span><span class="contacts-list-msg">Never mind I found...</span></div></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <form action="#" method="post">
+                      <div class="input-group">
+                        <input type="text" name="message" placeholder="Type Message ..." class="form-control" />
+                        <span class="input-group-append"><button type="button" class="btn btn-primary">Send</button></span>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-5 connectedSortable">
+                <div class="card text-white bg-primary bg-gradient border-primary mb-4">
+                  <div class="card-header border-0">
+                    <h3 class="card-title">Sales Value</h3>
+                    <div class="card-tools"><button type="button" class="btn btn-primary btn-sm" data-lte-toggle="card-collapse"><i data-lte-icon="expand" class="bi bi-plus-lg"></i><i data-lte-icon="collapse" class="bi bi-dash-lg"></i></button></div>
+                  </div>
+                  <div class="card-body"><div id="world-map" style="height: 220px"></div></div>
+                  <div class="card-footer border-0">
+                    <div class="row">
+                      <div class="col-4 text-center"><div id="sparkline-1" class="text-dark"></div><div class="text-white">Visitors</div></div>
+                      <div class="col-4 text-center"><div id="sparkline-2" class="text-dark"></div><div class="text-white">Online</div></div>
+                      <div class="col-4 text-center"><div id="sparkline-3" class="text-dark"></div><div class="text-white">Sales</div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="app-footer">
+        <div class="float-end d-none d-sm-inline">Anything you want</div>
+        <strong>Copyright &copy; 2014-2025 <a href="https://adminlte.io" class="text-decoration-none">AdminLTE.io</a>.</strong> All rights reserved.
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="js/adminlte.js"></script>
+    <script src="js/theme-toggle.js"></script>
+    <script src="js/menu-loader.js"></script>
+
+    <!-- EMBEDDED MENU DATA - Used as fallback if menu.json not found -->
+    <script id="menu-data" type="application/json">
+    [
+      {
+        "type": "item",
+        "label": "Creatives",
+        "icon": "bi-speedometer",
+        "open": true,
+        "children": [
+          { "label": "Display Ads", "icon": "bi-circle", "href": "index.html", "active": true },
+          { "label": "Video Ads", "icon": "bi-circle", "href": "index2.html" },
+          { "label": "Animated Ads", "icon": "bi-circle", "href": "index3.html" }
+        ]
+      },
+      {
+        "type": "item",
+        "label": "Ad Generator",
+        "icon": "bi-palette",
+        "href": "generate/theme.html"
+      },
+      {
+        "type": "item",
+        "label": "Widgets",
+        "icon": "bi-box-seam-fill",
+        "children": [
+          { "label": "Small Box", "icon": "bi-circle", "href": "widgets/small-box.html" },
+          { "label": "Info Box", "icon": "bi-circle", "href": "widgets/info-box.html" },
+          { "label": "Cards", "icon": "bi-circle", "href": "widgets/cards.html" }
+        ]
+      },
+      {
+        "type": "item",
+        "label": "Layout Options",
+        "icon": "bi-clipboard-fill",
+        "badge": { "text": "6", "class": "text-bg-secondary" },
+        "children": [
+          { "label": "Beta GUI", "icon": "bi-circle", "href": "#", "action": "loadBetaGui" },
+          { "label": "Fixed Sidebar", "icon": "bi-circle", "href": "layout/fixed-sidebar.html" },
+          { "label": "Fixed Header", "icon": "bi-circle", "href": "layout/fixed-header.html" },
+          { "label": "Fixed Footer", "icon": "bi-circle", "href": "layout/fixed-footer.html" },
+          { "label": "Fixed Complete", "icon": "bi-circle", "href": "layout/fixed-complete.html" },
+          { "label": "Layout + Custom Area", "icon": "bi-circle", "href": "layout/layout-custom-area.html" },
+          { "label": "Sidebar Mini", "icon": "bi-circle", "href": "layout/sidebar-mini.html" },
+          { "label": "Sidebar Mini + Collapsed", "icon": "bi-circle", "href": "layout/collapsed-sidebar.html" },
+          { "label": "Sidebar Mini + Logo Switch", "icon": "bi-circle", "href": "layout/logo-switch.html" },
+          { "label": "Layout RTL", "icon": "bi-circle", "href": "layout/layout-rtl.html" }
+        ]
+      },
+      {
+        "type": "item",
+        "label": "UI Elements",
+        "icon": "bi-tree-fill",
+        "children": [
+          { "label": "General", "icon": "bi-circle", "href": "UI/general.html" },
+          { "label": "Icons", "icon": "bi-circle", "href": "UI/icons.html" },
+          { "label": "Timeline", "icon": "bi-circle", "href": "UI/timeline.html" }
+        ]
+      },
+      {
+        "type": "item",
+        "label": "Forms",
+        "icon": "bi-pencil-square",
+        "children": [
+          { "label": "General Elements", "icon": "bi-circle", "href": "forms/general.html" }
+        ]
+      },
+      {
+        "type": "item",
+        "label": "Tables",
+        "icon": "bi-table",
+        "children": [
+          { "label": "Simple Tables", "icon": "bi-circle", "href": "tables/simple.html" }
+        ]
+      },
+      { "type": "header", "label": "EXAMPLES" },
+      {
+        "type": "item",
+        "label": "Auth",
+        "icon": "bi-box-arrow-in-right",
+        "children": [
+          {
+            "label": "Version 1",
+            "icon": "bi-box-arrow-in-right",
+            "children": [
+              { "label": "Login", "icon": "bi-circle", "href": "examples/login.html" },
+              { "label": "Register", "icon": "bi-circle", "href": "examples/register.html" }
+            ]
+          },
+          {
+            "label": "Version 2",
+            "icon": "bi-box-arrow-in-right",
+            "children": [
+              { "label": "Login", "icon": "bi-circle", "href": "examples/login-v2.html" },
+              { "label": "Register", "icon": "bi-circle", "href": "examples/register-v2.html" }
+            ]
+          },
+          { "label": "Lockscreen", "icon": "bi-circle", "href": "examples/lockscreen.html" }
+        ]
+      },
+      { "type": "header", "label": "DOCUMENTATIONS" },
+      { "type": "item", "label": "Installation", "icon": "bi-download", "href": "docs/introduction.html" },
+      { "type": "item", "label": "Layout", "icon": "bi-grip-horizontal", "href": "docs/layout.html" },
+      { "type": "item", "label": "Color Mode", "icon": "bi-star-half", "href": "docs/color-mode.html" },
+      {
+        "type": "item",
+        "label": "Components",
+        "icon": "bi-ui-checks-grid",
+        "children": [
+          { "label": "Main Header", "icon": "bi-circle", "href": "docs/components/main-header.html" },
+          { "label": "Main Sidebar", "icon": "bi-circle", "href": "docs/components/main-sidebar.html" }
+        ]
+      },
+      {
+        "type": "item",
+        "label": "Javascript",
+        "icon": "bi-filetype-js",
+        "children": [
+          { "label": "Treeview", "icon": "bi-circle", "href": "docs/javascript/treeview.html" }
+        ]
+      },
+      { "type": "item", "label": "Browser Support", "icon": "bi-browser-edge", "href": "docs/browser-support.html" },
+      { "type": "item", "label": "How To Contribute", "icon": "bi-hand-thumbs-up-fill", "href": "docs/how-to-contribute.html" },
+      { "type": "item", "label": "FAQ", "icon": "bi-question-circle-fill", "href": "docs/faq.html" },
+      { "type": "item", "label": "License", "icon": "bi-patch-check-fill", "href": "docs/license.html" },
+      { "type": "header", "label": "LABELS" },
+      { "type": "item", "label": "Important", "icon": "bi-circle text-danger", "href": "#" },
+      { "type": "item", "label": "Warning", "icon": "bi-circle text-warning", "href": "#" },
+      { "type": "item", "label": "Informational", "icon": "bi-circle text-info", "href": "#" }
+    ]
+    </script>
+
+    <!-- Menu loader will populate the navigation from menu.json -->
+
+    <script>
+      const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
+      const Default = {
+        scrollbarTheme: 'os-theme-light',
+        scrollbarAutoHide: 'leave',
+        scrollbarClickScroll: true,
+      };
+      document.addEventListener('DOMContentLoaded', function () {
+        const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
+        const isMobile = window.innerWidth <= 992;
+        if (sidebarWrapper && OverlayScrollbarsGlobal?.OverlayScrollbars !== undefined && !isMobile) {
+          OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
+            scrollbars: {
+              theme: Default.scrollbarTheme,
+              autoHide: Default.scrollbarAutoHide,
+              clickScroll: Default.scrollbarClickScroll,
+            },
+          });
+        }
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js" crossorigin="anonymous"></script>
+    <script>
+      new Sortable(document.querySelector('.connectedSortable'), {
+        group: 'shared',
+        handle: '.card-header',
+      });
+      document.querySelectorAll('.connectedSortable .card-header').forEach((cardHeader) => {
+        cardHeader.style.cursor = 'move';
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js" integrity="sha256-+vh8GkaU7C9/wbSLIcwq82tQ2wTf44aOHA8HlBMwRI8=" crossorigin="anonymous"></script>
+    <script>
+      const sales_chart_options = {
+        series: [
+          { name: 'Digital Goods', data: [28, 48, 40, 19, 86, 27, 90] },
+          { name: 'Electronics', data: [65, 59, 80, 81, 56, 55, 40] },
+        ],
+        chart: {
+          height: 300,
+          type: 'area',
+          toolbar: { show: false },
+        },
+        legend: { show: false },
+        colors: ['#0d6efd', '#20c997'],
+        dataLabels: { enabled: false },
+        stroke: { curve: 'smooth' },
+        xaxis: {
+          type: 'datetime',
+          categories: [
+            '2023-01-01',
+            '2023-02-01',
+            '2023-03-01',
+            '2023-04-01',
+            '2023-05-01',
+            '2023-06-01',
+            '2023-07-01',
+          ],
+        },
+        tooltip: {
+          x: { format: 'MMMM yyyy' },
+        },
+      };
+      new ApexCharts(document.querySelector('#revenue-chart'), sales_chart_options).render();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/js/jsvectormap.min.js" integrity="sha256-/t1nN2956BT869E6H4V1dnt0X5pAQHPytli+1nTZm2Y=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/maps/world.js" integrity="sha256-XPpPaZlU8S/HWf7FZLAncLg2SAkP8ScUTII89x9D3lY=" crossorigin="anonymous"></script>
+    <script>
+      new jsVectorMap({
+        selector: '#world-map',
+        map: 'world',
+      });
+
+      const sparklineOptions = {
+        chart: { type: 'area', height: 50, sparkline: { enabled: true } },
+        stroke: { curve: 'straight' },
+        fill: { opacity: 0.3 },
+        yaxis: { min: 0 },
+        colors: ['#DCE6EC'],
+      };
+
+      new ApexCharts(document.querySelector('#sparkline-1'), {
+        ...sparklineOptions,
+        series: [{ data: [1000, 1200, 920, 927, 931, 1027, 819, 930, 1021] }],
+      }).render();
+
+      new ApexCharts(document.querySelector('#sparkline-2'), {
+        ...sparklineOptions,
+        series: [{ data: [515, 519, 520, 522, 652, 810, 370, 627, 319, 630, 921] }],
+      }).render();
+
+      new ApexCharts(document.querySelector('#sparkline-3'), {
+        ...sparklineOptions,
+        series: [{ data: [15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21] }],
+      }).render();
+    </script>
+      <script>
+      (async function () {
+        const navigation = document.getElementById('navigation');
+        if (!navigation) return;
+
+        const candidates = ['menu.json', '../menu.json', '../../menu.json', '/menu.json'];
+        let menuData = null;
+
+        for (const url of candidates) {
+          try {
+            const response = await fetch(url, { cache: 'no-store' });
+            if (response.ok) {
+              menuData = await response.json();
+              break;
+            }
+          } catch (error) {
+            // ignore and continue with next candidate
+          }
+        }
+
+        if (!menuData) {
+          navigation.innerHTML = '<li class="nav-item"><a href="#" class="nav-link text-danger"><i class="nav-icon bi bi-exclamation-triangle"></i><p>Unable to load menu.json</p></a></li>';
+          return;
+        }
+
+        const currentPath = window.location.pathname.replace(/\/+/g, '/');
+
+        const isActivePath = (href) => {
+          if (!href || href === '#') return false;
+          try {
+            const absolute = new URL(href, window.location.href);
+            return absolute.pathname.replace(/\/+/g, '/') === currentPath;
+          } catch {
+            return false;
+          }
+        };
+
+        const buildMenuHTML = (items = []) =>
+          items
+            .map((item) => {
+              if (item.type === 'header') {
+                return `<li class="nav-header">${item.label}</li>`;
+              }
+
+              const hasChildren = Array.isArray(item.children) && item.children.length > 0;
+              const iconClass = item.icon || 'bi-circle';
+
+              if (hasChildren) {
+                const childHtml = buildMenuHTML(item.children);
+                const isOpen = Boolean(item.open);
+                return `
+                  <li class="nav-item ${isOpen ? 'menu-open' : ''}">
+                    <a href="${item.href || '#'}" class="nav-link ${item.active ? 'active' : ''}">
+                      <i class="nav-icon bi ${iconClass}"></i>
+                      <p>
+                        ${item.label}
+                        ${item.badge ? `<span class="nav-badge badge ${item.badge.class || ''} me-3">${item.badge.text}</span>` : ''}
+                        <i class="nav-arrow bi bi-chevron-right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">${childHtml}</ul>
+                  </li>
+                `;
+              }
+
+              const active = item.active || isActivePath(item.href);
+              return `
+                <li class="nav-item">
+                  <a href="${item.href || '#'}" class="nav-link ${active ? 'active' : ''}">
+                    <i class="nav-icon bi ${iconClass}"></i>
+                    <p>${item.label}</p>
+                  </a>
+                </li>
+              `;
+            })
+            .join('');
+
+        navigation.innerHTML = buildMenuHTML(menuData);
+      })();
+    </script>
+</body>
+</html>

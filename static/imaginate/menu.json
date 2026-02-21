@@ -1,0 +1,91 @@
+[
+  {
+    "type": "header",
+    "label": "Dashboard"
+  },
+  {
+    "type": "item",
+    "label": "Campaign:1",
+    "icon": "bi-megaphone",
+    "open": true,
+    "children": [
+      {
+        "label": "Outlets",
+        "icon": "bi-broadcast",
+        "children": [
+          { "label": "Google", "icon": "bi-circle", "href": "#" },
+          { "label": "TickTock", "icon": "bi-circle", "href": "#" },
+          { "label": "Microsoft", "icon": "bi-circle", "href": "#" },
+          { "label": "Facebook", "icon": "bi-circle", "href": "#" },
+          { "label": "Email", "icon": "bi-circle", "href": "#" },
+          { "label": "ChatGPT(New)", "icon": "bi-circle", "href": "#" }
+        ]
+      },
+      {
+        "label": "Creatives",
+        "icon": "bi-palette",
+        "children": [
+          { "label": "Display", "icon": "bi-circle", "href": "#" },
+          { "label": "Video", "icon": "bi-circle", "href": "#" },
+          { "label": "Animated", "icon": "bi-circle", "href": "#" },
+          { "label": "Text", "icon": "bi-circle", "href": "#" },
+          { "label": "LLM", "icon": "bi-circle", "href": "#" },
+          { "label": "HTML (Email)", "icon": "bi-circle", "href": "#" },
+          { "label": "WebApp", "icon": "bi-circle", "href": "#" }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "header",
+    "label": "Tools"
+  },
+  {
+    "type": "item",
+    "label": "generator",
+    "icon": "bi-wrench-adjustable-circle",
+    "href": "generate/theme.html"
+  },
+  {
+    "type": "header",
+    "label": "Docs"
+  },
+  {
+    "type": "item",
+    "label": "API",
+    "icon": "bi-filetype-json",
+    "href": "docs/introduction.html"
+  },
+  {
+    "type": "item",
+    "label": "SOP",
+    "icon": "bi-journal-check",
+    "href": "docs/layout.html"
+  },
+  {
+    "type": "header",
+    "label": "Release Notes"
+  },
+  {
+    "type": "item",
+    "label": "v0.2",
+    "icon": "bi-tag",
+    "children": [
+      { "label": "mandate", "icon": "bi-circle", "href": "#" },
+      { "label": "brief", "icon": "bi-circle", "href": "#" },
+      { "label": "plan", "icon": "bi-circle", "href": "#" },
+      { "label": "highlight reports", "icon": "bi-circle", "href": "#" }
+    ]
+  },
+  {
+    "type": "item",
+    "label": "v0.1",
+    "icon": "bi-tag",
+    "children": [
+      { "label": "mandate", "icon": "bi-circle", "href": "#" },
+      { "label": "brief", "icon": "bi-circle", "href": "#" },
+      { "label": "plan", "icon": "bi-circle", "href": "#" },
+      { "label": "highlight reports", "icon": "bi-circle", "href": "#" }
+    ]
+  }
+]
