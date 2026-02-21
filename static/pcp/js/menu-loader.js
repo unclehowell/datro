@@ -42,16 +42,24 @@
         return `<li class="nav-header">${item.label}</li>`;
       }
 
+      if (item.type === 'action' || item.action) {
+        const icon = item.icon ? `<i class="nav-icon ${item.icon}"></i>` : '<i class="nav-icon bi bi-circle"></i>';
+        const extraClass = item.class ? ` ${item.class}` : '';
+        const action = item.action || '';
+        return `<li class="nav-item"><a href="#" class="nav-link${extraClass}" data-action="${action}">${icon}<p>${item.label}</p></a></li>`;
+      }
+
       const hasChildren = Array.isArray(item.children) && item.children.length > 0;
       const href = item.href || '#';
       const icon = item.icon ? `<i class="nav-icon ${item.icon}"></i>` : '<i class="nav-icon bi bi-circle"></i>';
+      const extraClass = item.class ? ` ${item.class}` : '';
 
       if (hasChildren) {
         const childHtml = renderItems(item.children, currentPath).join('');
         const isOpen = Boolean(item.open);
         return `
           <li class="nav-item ${isOpen ? 'menu-open' : ''}">
-            <a href="${href}" class="nav-link ${href === currentPath ? 'active' : ''}" data-lte-toggle="treeview">
+            <a href="${href}" class="nav-link${extraClass} ${href === currentPath ? 'active' : ''}" data-lte-toggle="treeview">
               ${icon}
               <p>${item.label}<i class="nav-arrow bi bi-chevron-right"></i></p>
             </a>
@@ -61,8 +69,23 @@
       }
 
       const active = href === currentPath;
-      return `<li class="nav-item"><a href="${href}" class="nav-link ${active ? 'active' : ''}">${icon}<p>${item.label}</p></a></li>`;
+      return `<li class="nav-item"><a href="${href}" class="nav-link${extraClass} ${active ? 'active' : ''}">${icon}<p>${item.label}</p></a></li>`;
     });
+  }
+
+  function clearClientCache() {
+    let auth = null;
+    try { auth = localStorage.getItem('authenticated'); } catch (error) {}
+    try { localStorage.clear(); } catch (error) {}
+    try { sessionStorage.clear(); } catch (error) {}
+    try { if (auth !== null) localStorage.setItem('authenticated', auth); } catch (error) {}
+    if (window.caches && caches.keys) {
+      caches.keys().then(keys => Promise.all(keys.map(k => caches.delete(k)))).finally(() => {
+        location.reload();
+      });
+      return;
+    }
+    location.reload();
   }
 
   function renderMenu(menuData) {
@@ -70,6 +93,9 @@
     const nav = document.getElementById('navigation');
     if (!nav) return;
     nav.innerHTML = renderItems(menuData, currentPath).join('');
+    nav.querySelectorAll('[data-action="clear-client-cache"]').forEach((el) => {
+      el.addEventListener('click', (e) => { e.preventDefault(); clearClientCache(); });
+    });
     window.dispatchEvent(new CustomEvent('menuLoaded', { detail: { loader: 'menu-loader' } }));
   }
 

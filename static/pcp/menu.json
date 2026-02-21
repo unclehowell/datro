@@ -13,25 +13,77 @@
         "label": "Outlets",
         "icon": "bi-broadcast",
         "children": [
-          { "label": "Google", "icon": "bi-circle", "href": "#" },
-          { "label": "TickTock", "icon": "bi-circle", "href": "#" },
-          { "label": "Microsoft", "icon": "bi-circle", "href": "#" },
-          { "label": "Facebook", "icon": "bi-circle", "href": "#" },
-          { "label": "Email", "icon": "bi-circle", "href": "#" },
-          { "label": "ChatGPT(New)", "icon": "bi-circle", "href": "#" }
+          {
+            "label": "Google",
+            "icon": "bi-circle",
+            "href": "#"
+          },
+          {
+            "label": "TickTock",
+            "icon": "bi-circle",
+            "href": "#"
+          },
+          {
+            "label": "Microsoft",
+            "icon": "bi-circle",
+            "href": "#"
+          },
+          {
+            "label": "Facebook",
+            "icon": "bi-circle",
+            "href": "#"
+          },
+          {
+            "label": "Email",
+            "icon": "bi-circle",
+            "href": "#"
+          },
+          {
+            "label": "ChatGPT(New)",
+            "icon": "bi-circle",
+            "href": "#"
+          }
         ]
       },
       {
         "label": "Creatives",
         "icon": "bi-palette",
         "children": [
-          { "label": "Display", "icon": "bi-circle", "href": "#" },
-          { "label": "Video", "icon": "bi-circle", "href": "#" },
-          { "label": "Animated", "icon": "bi-circle", "href": "#" },
-          { "label": "Text", "icon": "bi-circle", "href": "#" },
-          { "label": "LLM", "icon": "bi-circle", "href": "#" },
-          { "label": "HTML (Email)", "icon": "bi-circle", "href": "#" },
-          { "label": "WebApp", "icon": "bi-circle", "href": "#" }
+          {
+            "label": "Display",
+            "icon": "bi-circle",
+            "href": "#"
+          },
+          {
+            "label": "Video",
+            "icon": "bi-circle",
+            "href": "#"
+          },
+          {
+            "label": "Animated",
+            "icon": "bi-circle",
+            "href": "#"
+          },
+          {
+            "label": "Text",
+            "icon": "bi-circle",
+            "href": "#"
+          },
+          {
+            "label": "LLM",
+            "icon": "bi-circle",
+            "href": "#"
+          },
+          {
+            "label": "HTML (Email)",
+            "icon": "bi-circle",
+            "href": "#"
+          },
+          {
+            "label": "WebApp",
+            "icon": "bi-circle",
+            "href": "#"
+          }
         ]
       }
     ]
@@ -42,7 +94,7 @@
   },
   {
     "type": "item",
-    "label": "generator",
+    "label": "Generate Ads",
     "icon": "bi-wrench-adjustable-circle",
     "href": "banner-generator2.html"
   },
@@ -71,10 +123,26 @@
     "label": "v0.2",
     "icon": "bi-tag",
     "children": [
-      { "label": "mandate", "icon": "bi-circle", "href": "#" },
-      { "label": "brief", "icon": "bi-circle", "href": "#" },
-      { "label": "plan", "icon": "bi-circle", "href": "#" },
-      { "label": "highlight reports", "icon": "bi-circle", "href": "#" }
+      {
+        "label": "mandate",
+        "icon": "bi-circle",
+        "href": "#"
+      },
+      {
+        "label": "brief",
+        "icon": "bi-circle",
+        "href": "#"
+      },
+      {
+        "label": "plan",
+        "icon": "bi-circle",
+        "href": "#"
+      },
+      {
+        "label": "highlight reports",
+        "icon": "bi-circle",
+        "href": "#"
+      }
     ]
   },
   {
@@ -82,10 +150,33 @@
     "label": "v0.1",
     "icon": "bi-tag",
     "children": [
-      { "label": "mandate", "icon": "bi-circle", "href": "#" },
-      { "label": "brief", "icon": "bi-circle", "href": "#" },
-      { "label": "plan", "icon": "bi-circle", "href": "#" },
-      { "label": "highlight reports", "icon": "bi-circle", "href": "#" }
+      {
+        "label": "mandate",
+        "icon": "bi-circle",
+        "href": "#"
+      },
+      {
+        "label": "brief",
+        "icon": "bi-circle",
+        "href": "#"
+      },
+      {
+        "label": "plan",
+        "icon": "bi-circle",
+        "href": "#"
+      },
+      {
+        "label": "highlight reports",
+        "icon": "bi-circle",
+        "href": "#"
+      }
     ]
+  },
+  {
+    "type": "item",
+    "label": "Clear Client Side Cache",
+    "icon": "bi-trash",
+    "action": "clear-client-cache",
+    "class": "text-danger"
   }
 ]

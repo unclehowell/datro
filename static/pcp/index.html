@@ -436,6 +436,21 @@
 
     <!-- Menu Loading Script -->
     <script>
+      function clearClientCache() {
+    let auth = null;
+    try { auth = localStorage.getItem('authenticated'); } catch (error) {}
+    try { localStorage.clear(); } catch (error) {}
+    try { sessionStorage.clear(); } catch (error) {}
+    try { if (auth !== null) localStorage.setItem('authenticated', auth); } catch (error) {}
+    if (window.caches && caches.keys) {
+      caches.keys().then(keys => Promise.all(keys.map(k => caches.delete(k)))).finally(() => {
+        location.reload();
+      });
+      return;
+    }
+    location.reload();
+  }
+
       // Build menu HTML recursively
       function buildMenuHTML(items) {
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -447,6 +462,7 @@
           } else if (item.type === 'item') {
             const hasChildren = item.children && item.children.length > 0;
             const isActive = item.href && (item.href === currentPage || item.href.endsWith(currentPage));
+            const extraClass = item.class ? ` ${item.class}` : '';
             
             if (hasChildren) {
               const isOpen = item.open || item.children.some(child => 
@@ -454,7 +470,7 @@
                 (child.children && child.children.some(sub => sub.href === currentPage))
               );
               html += `<li class="nav-item ${isOpen ? 'menu-open' : ''}">`;
-              html += `<a href="#" class="nav-link ${isActive ? 'active' : ''}">`;
+              html += `<a href="#" class="nav-link${extraClass} ${isActive ? 'active' : ''}">`;
               if (item.icon) html += `<i class="nav-icon bi ${item.icon}"></i>`;
               html += `<p>${item.label}`;
               if (item.badge) html += `<span class="nav-badge badge ${item.badge.class} me-3">${item.badge.text}</span>`;
@@ -464,9 +480,9 @@
               html += `</ul></li>`;
             } else {
               const href = item.href || '#';
-              const action = item.action ? ` onclick="${item.action}(); return false;"` : '';
+              const actionAttr = item.action ? ` data-action="${item.action}"` : '';
               html += `<li class="nav-item">`;
-              html += `<a href="${href}" class="nav-link ${isActive ? 'active' : ''}"${action}>`;
+              html += `<a href="${href}" class="nav-link${extraClass} ${isActive ? 'active' : ''}"${actionAttr}>`;
               if (item.icon) html += `<i class="nav-icon bi ${item.icon}"></i>`;
               html += `<p>${item.label}</p></a></li>`;
             }
@@ -517,6 +533,11 @@
 
         // Build and insert menu HTML
         let htmlString = buildMenuHTML(menuData);
+        setTimeout(() => {
+          document.querySelectorAll('[data-action=\"clear-client-cache\"]').forEach((el) => {
+            el.addEventListener('click', (e) => { e.preventDefault(); clearClientCache(); });
+          });
+        }, 0);
         
         // Add static multi-level example
         htmlString += `
