@@ -2,21 +2,12 @@
 <html lang="en">
   <head>
   <style>
-      /* Global dark-mode baseline to avoid FOUC and ensure consistent dark UI */
-      html, body { background-color: #0e0f12; color: #e6e6e6; }
-      body.dark-mode { background-color: #0e0f12; color: #e6e6e6; }
-      .app-header, .app-sidebar { background-color: #1a1a1a; color: #e6e6e6; }
-      .app-content-header, .app-main { background-color: #141414; color: #e6e6e6; }
-      a { color: #cfe0f8; }
-    /* Reserve space for the navigation to prevent layout shifts when menu loads */
-    #navigation { min-height: 320px; }
-    /* Ensure header menu placeholder spacing is stable */
-    #header-menu { min-height: 32px; }
-    .header-menu { display:flex; gap:12px; align-items:center; }
-    .header-menu .header-link { color: #e6e6e6; text-decoration: none; }
-    .header-menu .header-link:hover { text-decoration: underline; }
-    /* Ensure header height remains stable to avoid overlap when menu expands */
-    .app-header { min-height: 64px; }
+      /* Keep layout stable while dynamic menus are hydrated */
+      html, body { min-height: 100%; }
+      #navigation { min-height: 320px; }
+      #header-menu { min-height: 32px; }
+      .header-menu { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+      .app-header { min-height: 64px; }
   </style>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Dashboard | Creatives</title>
@@ -37,22 +28,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css" integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css" integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4=" crossorigin="anonymous" />
   </head>
-  <style>
-    /* Global dark-mode styling to ensure consistency across pages */
-    body.dark-mode { background-color: #0e0f12; color: #e8e8e8; }
-    body.dark-mode .app-header { background-color: #1a1a1a; color: #e8e8e8; }
-    body.dark-mode .app-sidebar { background-color: #1a1a1a; color: #e8e8e8; }
-    body.dark-mode .app-content-header, body.dark-mode .app-main { background-color: #141414; }
-    body.dark-mode .breadcrumb, body.dark-mode .card { color: #e6e6e6; }
-  </style>
-  <style>
-    /* Robust dark-mode overrides to prevent FOUC/header break when menu loads */
-    body.dark-mode, body.dark-mode .app-header, body.dark-mode .app-sidebar, body.dark-mode .app-content-header, body.dark-mode .app-main {
-      background-color: #0e0f12 !important;
-      color: #e6e6e6 !important;
-    }
-    body.dark-mode a { color: #e6e6e6 !important; }
-  </style>
+
+
   <body class="layout-fixed sidebar-expand-lg bg-body-tertiary dark-mode">
     <script>
       if (localStorage.getItem("authenticated") !== "true") {
