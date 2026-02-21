@@ -1,23 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <style>
-      /* Global dark-mode baseline to avoid FOUC and ensure consistent dark UI */
-      html, body { background-color: #0e0f12; color: #e6e6e6; }
-      body.dark-mode { background-color: #0e0f12; color: #e6e6e6; }
-      .app-header, .app-sidebar { background-color: #1a1a1a; color: #e6e6e6; }
-      .app-content-header, .app-main { background-color: #141414; color: #e6e6e6; }
-      a { color: #cfe0f8; }
-    /* Reserve space for the navigation to prevent layout shifts when menu loads */
-    #navigation { min-height: 320px; }
-    /* Ensure header menu placeholder spacing is stable */
-    #header-menu { min-height: 32px; }
-    .header-menu { display:flex; gap:12px; align-items:center; }
-    .header-menu .header-link { color: #e6e6e6; text-decoration: none; }
-    .header-menu .header-link:hover { text-decoration: underline; }
-    /* Ensure header height remains stable to avoid overlap when menu expands */
-    .app-header { min-height: 64px; }
-  </style>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Dashboard | Creatives</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
@@ -36,24 +19,21 @@
     <link rel="stylesheet" href="css/adminlte.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css" integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css" integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4=" crossorigin="anonymous" />
+    <style>
+      body[data-bs-theme="dark"] .app-header,
+      body[data-bs-theme="dark"] .app-main,
+      body[data-bs-theme="dark"] .app-content-header,
+      body[data-bs-theme="dark"] .app-footer { background-color: #000 !important; color: #d7d7d7; }
+      body[data-bs-theme="dark"] .text-white { color: #000 !important; }
+      body[data-bs-theme="dark"] .bg-white,
+      body[data-bs-theme="dark"] .bg-body,
+      body[data-bs-theme="dark"] .bg-body-tertiary,
+      body[data-bs-theme="dark"] .bg-body-secondary { background-color: #000 !important; }
+      .banner-tile { display:flex; align-items:center; justify-content:center; min-height:180px; background:#111; border-radius:.5rem; }
+      .banner-tile img { max-height:150px; width:auto; max-width:100%; object-fit:contain; }
+    </style>
   </head>
-  <style>
-    /* Global dark-mode styling to ensure consistency across pages */
-    body.dark-mode { background-color: #0e0f12; color: #e8e8e8; }
-    body.dark-mode .app-header { background-color: #1a1a1a; color: #e8e8e8; }
-    body.dark-mode .app-sidebar { background-color: #1a1a1a; color: #e8e8e8; }
-    body.dark-mode .app-content-header, body.dark-mode .app-main { background-color: #141414; }
-    body.dark-mode .breadcrumb, body.dark-mode .card { color: #e6e6e6; }
-  </style>
-  <style>
-    /* Robust dark-mode overrides to prevent FOUC/header break when menu loads */
-    body.dark-mode, body.dark-mode .app-header, body.dark-mode .app-sidebar, body.dark-mode .app-content-header, body.dark-mode .app-main {
-      background-color: #0e0f12 !important;
-      color: #e6e6e6 !important;
-    }
-    body.dark-mode a { color: #e6e6e6 !important; }
-  </style>
-  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary dark-mode">
+  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary dark-mode" data-bs-theme="dark">
     <script>
       if (localStorage.getItem("authenticated") !== "true") {
         window.location.href = "/login.html";
@@ -144,11 +124,6 @@
                 <i data-lte-icon="minimize" class="bi bi-fullscreen-exit" style="display: none"></i>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" id="theme-toggle" title="Toggle theme">
-                <i class="bi bi-moon-fill"></i>
-              </a>
-            </li>
             <li class="nav-item dropdown user-menu">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img src="assets/img/user2-160x160.jpg" class="user-image rounded-circle shadow" alt="User Image" />
@@ -176,13 +151,13 @@
         </div>
       </nav>
       
-  <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
-  <div class="sidebar-brand">
-    <a href="index.html" class="brand-link">
-      <img src="assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow" />
-      <span class="brand-text fw-light">CFC Dashboard</span>
-    </a>
-  </div>
+      <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+        <div class="sidebar-brand">
+          <a href="index.html" class="brand-link">
+            <img src="assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow" />
+            <span class="brand-text fw-light">CFC Dashboard</span>
+          </a>
+        </div>
         <div class="sidebar-wrapper">
           <nav class="mt-2">
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="navigation" aria-label="Main navigation" data-accordion="false" id="navigation">
@@ -194,25 +169,25 @@
       
       <main class="app-main">
         <div class="app-content-header">
-        <div class="container-fluid">
-          <!-- Permanent top navigation placeholder filled from header-menu.json -->
-          <div id="header-menu" class="header-menu" style="display:flex; gap:16px; align-items:center; margin:0 16px 8px 16px;"></div>
-          <div class="row">
-              <div class="col-sm-6">
-                <h3 class="mb-0" style="font-weight:700;">CFC Dashboard</h3>
-                <div class="commit-line" style="font-size:12px; margin-top:6px;">
-                  Recent commit: <a href="https://github.com/unclehowell/datro/commits/gh-pages/static/pcp/" target="_blank" rel="noopener">07533b1</a>
-                </div>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-6"><h3 class="mb-0">Creative 00441</h3></div>
+              <div class="col-sm-6"><img src="300x250.png" style="max-width:340px!important;heigh:auto;">
+                <ol class="breadcrumb float-sm-end">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Creatives</li>
+                </ol>
               </div>
-              <!-- Top-right ad removed for clean dark theme by default -->
             </div>
           </div>
         </div>
         <div class="app-content">
           <div class="container-fluid">
             <div class="row">
-              <div class="col-lg-3 col-6" style="height:180px; display:flex; align-items:center; justify-content:center;">
-                <img src="300x250.png" class="img-fluid" alt="Promotional Ad" style="max-height:100%; max-width:100%; object-fit:contain;">
+              <div class="col-lg-3 col-6">
+                <div class="banner-tile mb-4">
+                  <img src="300x250.png" class="img-fluid" alt="Promotional Banner" />
+                </div>
               </div>
               <div class="col-lg-3 col-6">
                 <div class="small-box text-bg-success">
@@ -297,7 +272,7 @@
                 </div>
               </div>
               <div class="col-lg-5 connectedSortable">
-                <div class="card text-white bg-primary bg-gradient border-primary mb-4">
+                <div class="card text-black bg-primary bg-gradient border-primary mb-4">
                   <div class="card-header border-0">
                     <h3 class="card-title">Sales Value</h3>
                     <div class="card-tools"><button type="button" class="btn btn-primary btn-sm" data-lte-toggle="card-collapse"><i data-lte-icon="expand" class="bi bi-plus-lg"></i><i data-lte-icon="collapse" class="bi bi-dash-lg"></i></button></div>
@@ -305,9 +280,9 @@
                   <div class="card-body"><div id="world-map" style="height: 220px"></div></div>
                   <div class="card-footer border-0">
                     <div class="row">
-                      <div class="col-4 text-center"><div id="sparkline-1" class="text-dark"></div><div class="text-white">Visitors</div></div>
-                      <div class="col-4 text-center"><div id="sparkline-2" class="text-dark"></div><div class="text-white">Online</div></div>
-                      <div class="col-4 text-center"><div id="sparkline-3" class="text-dark"></div><div class="text-white">Sales</div></div>
+                      <div class="col-4 text-center"><div id="sparkline-1" class="text-dark"></div><div class="text-black">Visitors</div></div>
+                      <div class="col-4 text-center"><div id="sparkline-2" class="text-dark"></div><div class="text-black">Online</div></div>
+                      <div class="col-4 text-center"><div id="sparkline-3" class="text-dark"></div><div class="text-black">Sales</div></div>
                     </div>
                   </div>
                 </div>
@@ -326,11 +301,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <script src="js/adminlte.js"></script>
-    <script src="js/theme-toggle.js"></script>
-    <script src="js/menu-loader.js"></script>
-    <script src="js/header-loader.js"></script>
-
- 
 
     <!-- EMBEDDED MENU DATA - Used as fallback if menu.json not found -->
     <script id="menu-data" type="application/json">
@@ -463,7 +433,148 @@
     ]
     </script>
 
-    <!-- Menu loader will populate the navigation from menu.json -->
+    <!-- Menu Loading Script -->
+    <script>
+      // Build menu HTML recursively
+      function buildMenuHTML(items) {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        let html = '';
+        
+        for (let item of items) {
+          if (item.type === 'header') {
+            html += `<li class="nav-header">${item.label}</li>`;
+          } else if (item.type === 'item') {
+            const hasChildren = item.children && item.children.length > 0;
+            const isActive = item.href && (item.href === currentPage || item.href.endsWith(currentPage));
+            
+            if (hasChildren) {
+              const isOpen = item.open || item.children.some(child => 
+                child.href === currentPage || 
+                (child.children && child.children.some(sub => sub.href === currentPage))
+              );
+              html += `<li class="nav-item ${isOpen ? 'menu-open' : ''}">`;
+              html += `<a href="#" class="nav-link ${isActive ? 'active' : ''}">`;
+              if (item.icon) html += `<i class="nav-icon bi ${item.icon}"></i>`;
+              html += `<p>${item.label}`;
+              if (item.badge) html += `<span class="nav-badge badge ${item.badge.class} me-3">${item.badge.text}</span>`;
+              html += `<i class="nav-arrow bi bi-chevron-right"></i></p></a>`;
+              html += `<ul class="nav nav-treeview">`;
+              html += buildMenuHTML(item.children);
+              html += `</ul></li>`;
+            } else {
+              const href = item.href || '#';
+              const action = item.action ? ` onclick="${item.action}(); return false;"` : '';
+              html += `<li class="nav-item">`;
+              html += `<a href="${href}" class="nav-link ${isActive ? 'active' : ''}"${action}>`;
+              if (item.icon) html += `<i class="nav-icon bi ${item.icon}"></i>`;
+              html += `<p>${item.label}</p></a></li>`;
+            }
+          }
+        }
+        return html;
+      }
+
+      // Load menu from JSON or embedded fallback
+      (async () => {
+        let menuData = null;
+        let source = 'embedded';
+
+        // Try to fetch from server first
+        try {
+          console.log('Attempting to load menu.json from server...');
+          const response = await fetch('menu.json');
+          
+          if (response.ok) {
+            const contentType = response.headers.get('content-type');
+            if (contentType && contentType.includes('application/json')) {
+              menuData = await response.json();
+              source = 'server';
+              console.log('Successfully loaded menu from server');
+            } else {
+              console.log('Server returned non-JSON, using embedded data');
+            }
+          } else {
+            console.log('menu.json not found on server (status:', response.status, '), using embedded data');
+          }
+        } catch (error) {
+          console.log('Fetch failed:', error.message, '- using embedded data');
+        }
+
+        // Use embedded data if fetch failed
+        if (!menuData) {
+          try {
+            const embedded = document.getElementById('menu-data').textContent;
+            menuData = JSON.parse(embedded);
+            console.log('Using embedded menu data');
+          } catch (error) {
+            console.error('Failed to parse embedded menu:', error);
+            document.getElementById('navigation').innerHTML = 
+              `<li class="nav-item"><a href="#" class="nav-link text-danger"><i class="nav-icon bi bi-exclamation-triangle"></i><p>Critical: No menu data available</p></a></li>`;
+            return;
+          }
+        }
+
+        // Build and insert menu HTML
+        let htmlString = buildMenuHTML(menuData);
+        
+        // Add static multi-level example
+        htmlString += `
+          <li class="nav-header">MULTI LEVEL EXAMPLE</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon bi bi-circle-fill"></i>
+              <p>Level 1</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon bi bi-circle-fill"></i>
+              <p>Level 1<i class="nav-arrow bi bi-chevron-right"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon bi bi-circle"></i>
+                  <p>Level 2</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon bi bi-circle"></i>
+                  <p>Level 2<i class="nav-arrow bi bi-chevron-right"></i></p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-record-circle-fill"></i><p>Level 3</p></a></li>
+                  <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-record-circle-fill"></i><p>Level 3</p></a></li>
+                  <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-record-circle-fill"></i><p>Level 3</p></a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon bi bi-circle"></i>
+                  <p>Level 2</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon bi bi-circle-fill"></i>
+              <p>Level 1</p>
+            </a>
+          </li>
+        `;
+        
+        document.getElementById('navigation').innerHTML = htmlString;
+        
+        // Re-initialize AdminLTE treeview
+        if (typeof $ !== 'undefined' && $.fn && $.fn.Treeview) {
+          $('[data-lte-toggle="treeview"]').Treeview('init');
+        }
+        
+        console.log('Menu rendered successfully from', source);
+      })()
+    </script>
 
     <script>
       const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
@@ -564,6 +675,85 @@
         series: [{ data: [15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21] }],
       }).render();
     </script>
-    
+      <script>
+      (async function () {
+        const navigation = document.getElementById('navigation');
+        if (!navigation) return;
+
+        const candidates = ['menu.json', '../menu.json', '../../menu.json', '/menu.json'];
+        let menuData = null;
+
+        for (const url of candidates) {
+          try {
+            const response = await fetch(url, { cache: 'no-store' });
+            if (response.ok) {
+              menuData = await response.json();
+              break;
+            }
+          } catch (error) {
+            // ignore and continue with next candidate
+          }
+        }
+
+        if (!menuData) {
+          navigation.innerHTML = '<li class="nav-item"><a href="#" class="nav-link text-danger"><i class="nav-icon bi bi-exclamation-triangle"></i><p>Unable to load menu.json</p></a></li>';
+          return;
+        }
+
+        const currentPath = window.location.pathname.replace(/\/+/g, '/');
+
+        const isActivePath = (href) => {
+          if (!href || href === '#') return false;
+          try {
+            const absolute = new URL(href, window.location.href);
+            return absolute.pathname.replace(/\/+/g, '/') === currentPath;
+          } catch {
+            return false;
+          }
+        };
+
+        const buildMenuHTML = (items = []) =>
+          items
+            .map((item) => {
+              if (item.type === 'header') {
+                return `<li class="nav-header">${item.label}</li>`;
+              }
+
+              const hasChildren = Array.isArray(item.children) && item.children.length > 0;
+              const iconClass = item.icon || 'bi-circle';
+
+              if (hasChildren) {
+                const childHtml = buildMenuHTML(item.children);
+                const isOpen = Boolean(item.open);
+                return `
+                  <li class="nav-item ${isOpen ? 'menu-open' : ''}">
+                    <a href="${item.href || '#'}" class="nav-link ${item.active ? 'active' : ''}">
+                      <i class="nav-icon bi ${iconClass}"></i>
+                      <p>
+                        ${item.label}
+                        ${item.badge ? `<span class="nav-badge badge ${item.badge.class || ''} me-3">${item.badge.text}</span>` : ''}
+                        <i class="nav-arrow bi bi-chevron-right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">${childHtml}</ul>
+                  </li>
+                `;
+              }
+
+              const active = item.active || isActivePath(item.href);
+              return `
+                <li class="nav-item">
+                  <a href="${item.href || '#'}" class="nav-link ${active ? 'active' : ''}">
+                    <i class="nav-icon bi ${iconClass}"></i>
+                    <p>${item.label}</p>
+                  </a>
+                </li>
+              `;
+            })
+            .join('');
+
+        navigation.innerHTML = buildMenuHTML(menuData);
+      })();
+    </script>
 </body>
 </html>
