@@ -53,7 +53,7 @@ const STORED_HASH = "9d82225c1e68e80baf5f248a40b5fe8d1462f9cf259c64016740aa595ef
 
 // Redirect if already authenticated
 if (localStorage.getItem("authenticated") === "true") {
-  window.location.href = "/static/pcp/index.html";
+  window.location.href = "index.html";
 }
 
 async function sha256(str) {
@@ -77,7 +77,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
   if (hashed === STORED_HASH) {
     localStorage.setItem("authenticated", "true");
-    window.location.href = "/static/pcp/index.html";
+    window.location.href = "index.html";
   } else {
     error.innerText = "Invalid passphrase";
     error.style.display = "block";
