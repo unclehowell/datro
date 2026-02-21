@@ -1,60 +1,81 @@
 (function(){
-  async function loadHeader(){
-    let headerData = null;
-    const candidates = [
-      '/static/pcp/header-menu.json',
-      '/static/pcp/menu-header.json',
-      'header-menu.json',
-      'menu-header.json',
-      '../header-menu.json'?0:0
-    ];
-    // Normalize candidates (remove the stray ternary)
-    const urls = [
-      '/static/pcp/header-menu.json',
-      '/static/pcp/menu-header.json',
-      'header-menu.json',
-      'menu-header.json'
-    ];
-    for (const u of urls){
+  const CACHE_KEY = 'pcp:header-menu:v1';
+  const CACHE_TTL_MS = 5 * 60 * 1000;
+
+  function readCache() {
+    try {
+      const raw = localStorage.getItem(CACHE_KEY);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      if (!Array.isArray(parsed.data)) return null;
+      return parsed;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function writeCache(data) {
+    try {
+      localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data }));
+    } catch (error) {
+      // storage may be unavailable; ignore
+    }
+  }
+
+  async function fetchJson(urls) {
+    for (const url of urls) {
       try {
-        const res = await fetch(u, { cache: 'no-store' });
-        if (res.ok){
-          const ct = res.headers.get('content-type') || '';
-          if (ct.includes('application/json')){ headerData = await res.json(); break; }
-        }
-      } catch(e) { /* ignore and try next */ }
+        const response = await fetch(url, { cache: 'default' });
+        if (!response.ok) continue;
+        const parsed = JSON.parse(await response.text());
+        if (Array.isArray(parsed)) return parsed;
+      } catch (error) {
+        // try next candidate
+      }
     }
-    if (!headerData){
-      headerData = [
-        { label: 'Dashboard', href: 'index.html' },
-        { label: 'Theme Generate', href: 'generate/theme.html' }
-      ];
-    }
-    // Render into header area
+    return null;
+  }
+
+  function renderHeader(headerData) {
     const container = document.getElementById('header-menu');
-    if(!container) return;
-    const html = headerData.map(it => {
-      const href = it.href || '#';
-      const label = it.label || '';
-      const icon = it.icon ? `<i class="nav-icon ${it.icon}"></i> ` : '';
-      // Use the same styling as main nav links for visual consistency
+    if (!container) return;
+
+    container.innerHTML = headerData.map((item) => {
+      const href = item.href || '#';
+      const label = item.label || '';
+      const icon = item.icon ? `<i class="nav-icon ${item.icon}"></i> ` : '';
       return `<a class="nav-link" href="${href}">${icon}${label}</a>`;
     }).join('');
-    container.innerHTML = html;
   }
+
+  async function loadHeader(){
+    const fallbackHeader = [
+      { label: 'Dashboard', href: 'index.html' },
+      { label: 'Theme Generate', href: 'generate/theme.html' }
+    ];
+
+    const cached = readCache();
+    if (cached) {
+      renderHeader(cached.data);
+    }
+
+    const useNetwork = !cached || (Date.now() - cached.ts > CACHE_TTL_MS);
+    if (!useNetwork) return;
+
+    const headerData = await fetchJson([
+      'header-menu.json',
+      '/static/pcp/header-menu.json',
+      'menu-header.json',
+      '/static/pcp/menu-header.json'
+    ]) || cached?.data || fallbackHeader;
+
+    renderHeader(headerData);
+    writeCache(headerData);
+  }
+
   if (document.readyState === 'loading') {
     window.addEventListener('DOMContentLoaded', loadHeader);
   } else {
     loadHeader();
   }
 })();
-
-// React to menu load to stabilize header design after dynamic nav population
-window.addEventListener('menuLoaded', function (e) {
-  const header = document.querySelector('.app-header');
-  if (header) {
-    // Force a quick repaint to prevent layout shifts from the side navigation
-    header.style.display = 'none';
-    requestAnimationFrame(() => { header.style.display = ''; });
-  }
-});
