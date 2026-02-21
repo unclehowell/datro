@@ -3,7 +3,7 @@
   <!--begin::Head-->
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>AdminLTE | Dashboard v3</title>
+    <title>CarFinanceCheque.uk | Dashboard v3</title>
 
     <!--begin::Accessibility Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
@@ -70,8 +70,25 @@
       crossorigin="anonymous"
     />
   </head>
+  <style>
+    /* Robust dark-mode overrides to prevent header/footer flashes */
+    body.dark-mode, body.dark-mode .app-header, body.dark-mode .app-sidebar, body.dark-mode .app-content-header, body.dark-mode .app-main {
+      background-color: #0e0f12 !important;
+      color: #e6e6e6 !important;
+    }
+    body.dark-mode a { color: #e6e6e6 !important; }
+  </style>
+  <style>
+    /* Global dark-mode styling to ensure consistency across pages */
+    body.dark-mode { background-color: #0e0f12; color: #e8e8e8; }
+    body.dark-mode .app-header { background-color: #1a1a1a; color: #e8e8e8; }
+    body.dark-mode .app-sidebar { background-color: #1a1a1a; color: #e8e8e8; }
+    body.dark-mode .app-content-header, body.dark-mode .app-main { background-color: #141414; }
+  body.dark-mode .breadcrumb, body.dark-mode .card { color: #e6e6e6; }
+  #header-menu { min-height: 32px; }
+  </style>
 
-  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary dark-mode">
     <script>
       if (localStorage.getItem("authenticated") !== "true") {
         window.location.href = "/login.html";
@@ -83,6 +100,7 @@
       <nav class="app-header navbar navbar-expand bg-body">
         <!--begin::Container-->
         <div class="container-fluid">
+          <div id="header-menu" class="header-menu" style="display:flex; gap:16px; align-items:center; margin:0 16px 8px 16px;"></div>
           <!--begin::Start Navbar Links-->
           <ul class="navbar-nav">
             <li class="nav-item">
@@ -236,7 +254,11 @@
               </a>
             </li>
             <!--end::Fullscreen Toggle-->
-
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="theme-toggle" title="Toggle theme">
+                <i class="bi bi-moon-fill"></i>
+              </a>
+            </li>
             <!--begin::User Menu Dropdown-->
             <li class="nav-item dropdown user-menu">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -307,10 +329,14 @@
             />
             <!--end::Brand Image-->
             <!--begin::Brand Text-->
-            <span class="brand-text fw-light">AdminLTE 4</span>
+            <span class="brand-text fw-light">CFC Dashboard</span>
             <!--end::Brand Text-->
           </a>
           <!--end::Brand Link-->
+        </div>
+        <div class="commit-info" style="font-size:12px; padding:4px 8px;">
+          Recent commit: <a href="https://github.com/unclehowell/datro/commits/gh-pages/static/pcp/" target="_blank" rel="noopener">07533b1</a>
+        </div>
         </div>
         <!--end::Sidebar Brand-->
         <!--begin::Sidebar Wrapper-->
@@ -1138,6 +1164,10 @@
     ></script>
     <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
     <script src="./js/adminlte.js"></script>
+    <script src="./js/menu-loader.js"></script>
+    <script src="./js/theme-toggle.js"></script>
+    <script src="./js/header-loader.js"></script>
+    <script src="./js/menu-loader.js"></script>
     <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script>
       const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';

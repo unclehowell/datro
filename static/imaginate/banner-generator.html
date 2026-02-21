@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BannerForge — Ad Generator</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #1a1a24;
+    --border: #2a2a3a;
+    --accent: #e8ff47;
+    --accent2: #47c8ff;
+    --text: #f0f0f0;
+    --muted: #666680;
+    --danger: #ff4757;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  header {
+    padding: 2rem 3rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, #12121e 0%, transparent 100%);
+  }
+
+  header h1 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2.8rem;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  header span {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .app {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    min-height: calc(100vh - 80px);
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 2rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Sizes */
+  .sizes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+  }
+
+  .size-check {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-size: 0.78rem;
+  }
+
+  .size-check:hover { border-color: var(--accent); background: rgba(232,255,71,0.04); }
+  .size-check.selected { border-color: var(--accent); background: rgba(232,255,71,0.08); }
+
+  .size-check input { display: none; }
+
+  .size-check .dot {
+    width: 14px; height: 14px;
+    border: 1.5px solid var(--muted);
+    border-radius: 3px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+
+  .size-check.selected .dot {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .size-check.selected .dot::after {
+    content: '✓';
+    font-size: 9px;
+    color: #000;
+    font-weight: 700;
+  }
+
+  .size-name { font-weight: 500; color: var(--text); }
+  .size-dims { color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.7rem; }
+
+  .select-all-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.1em;
+    transition: all 0.15s;
+    margin-bottom: 0.75rem;
+  }
+  .select-all-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Color/Background */
+  .bg-tabs {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .bg-tab {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    background: none;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.15s;
+  }
+  .bg-tab.active { border-color: var(--accent2); color: var(--accent2); background: rgba(71,200,255,0.06); }
+
+  .color-slots, .image-slot { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .color-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .color-row label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    width: 60px;
+  }
+
+  .color-row input[type="color"] {
+    width: 36px; height: 28px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    background: none;
+    padding: 2px;
+  }
+
+  .color-row .hex-display {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+
+  /* Upload areas */
+  .upload-area {
+    border: 1.5px dashed var(--border);
+    border-radius: 6px;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .upload-area:hover { border-color: var(--accent2); }
+  .upload-area input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+  .upload-area .upload-icon { font-size: 1.5rem; margin-bottom: 0.3rem; }
+  .upload-area p { font-size: 0.75rem; color: var(--muted); }
+  .upload-area.has-file { border-color: var(--accent); border-style: solid; }
+  .upload-area .preview-thumb {
+    max-height: 60px;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 3px;
+    margin-bottom: 0.3rem;
+  }
+
+  /* Text inputs */
+  .headline-slots { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .headline-input {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .headline-input label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    width: 20px;
+    text-align: center;
+  }
+
+  .headline-input input, textarea.smallprint {
+    flex: 1;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.5rem 0.7rem;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    outline: none;
+    transition: border-color 0.15s;
+    width: 100%;
+  }
+
+  .headline-input input:focus, textarea.smallprint:focus {
+    border-color: var(--accent);
+  }
+
+  textarea.smallprint {
+    resize: vertical;
+    min-height: 60px;
+    flex: none;
+  }
+
+  /* Generate button */
+  .generate-btn {
+    background: var(--accent);
+    color: #000;
+    border: none;
+    padding: 1rem;
+    border-radius: 6px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .generate-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.4s;
+  }
+
+  .generate-btn:hover::before { transform: translateX(100%); }
+  .generate-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(232,255,71,0.3); }
+  .generate-btn:active { transform: translateY(0); }
+
+  .generate-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* MAIN CONTENT */
+  .main {
+    padding: 2rem;
+    overflow-y: auto;
+    background: var(--bg);
+  }
+
+  .stats-bar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.68rem;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .export-all-btn {
+    margin-left: auto;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.15s;
+  }
+
+  .export-all-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+
+  /* Ad grid */
+  .ads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .ad-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+    animation: fadeIn 0.3s ease both;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .ad-card:hover { border-color: var(--accent2); }
+
+  .ad-canvas-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: repeating-conic-gradient(#1a1a24 0% 25%, #111118 0% 50%) 0 0 / 16px 16px;
+    min-height: 120px;
+  }
+
+  .ad-canvas-wrap canvas {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  }
+
+  .ad-meta {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .ad-info { display: flex; flex-direction: column; gap: 0.1rem; }
+  .ad-size-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); }
+  .ad-headline-label { font-size: 0.78rem; color: var(--text); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px; }
+
+  .export-btns { display: flex; gap: 0.3rem; }
+
+  .exp-btn {
+    padding: 0.3rem 0.6rem;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-family: 'DM Mono', monospace;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: none;
+    transition: all 0.15s;
+    letter-spacing: 0.05em;
+  }
+
+  .exp-btn.png { color: #ff9f43; border-color: rgba(255,159,67,0.3); }
+  .exp-btn.png:hover { background: rgba(255,159,67,0.1); border-color: #ff9f43; }
+  .exp-btn.svg { color: var(--accent2); border-color: rgba(71,200,255,0.3); }
+  .exp-btn.svg:hover { background: rgba(71,200,255,0.1); border-color: var(--accent2); }
+
+  .empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 5rem 2rem;
+  }
+
+  .empty-state .big-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.3;
+  }
+
+  .empty-state p {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .progress-bar {
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    display: none;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 2px;
+    transition: width 0.2s;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--surface); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .info-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(71,200,255,0.08);
+    border: 1px solid rgba(71,200,255,0.2);
+    color: var(--accent2);
+    border-radius: 20px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.68rem;
+    font-family: 'DM Mono', monospace;
+    margin-bottom: 0.75rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>BannerForge</h1>
+  <span>// Display Ad Generator</span>
+</header>
+
+<div class="app">
+  <aside class="sidebar">
+
+    <!-- SIZES -->
+    <section>
+      <div class="section-label">01 — Ad Sizes</div>
+      <button class="select-all-btn" id="selectAllBtn" onclick="toggleSelectAll()">SELECT ALL</button>
+      <div class="sizes-grid" id="sizesGrid"></div>
+    </section>
+
+    <!-- BACKGROUND -->
+    <section>
+      <div class="section-label">02 — Backgrounds</div>
+      <div class="info-pill">⚡ Up to 5 variations</div>
+      <div class="bg-tabs">
+        <button class="bg-tab active" onclick="switchBgTab('color', this)">Colors</button>
+        <button class="bg-tab" onclick="switchBgTab('image', this)">Image</button>
+      </div>
+
+      <div class="tab-content active" id="tab-color">
+        <div class="color-slots" id="colorSlots"></div>
+      </div>
+
+      <div class="tab-content" id="tab-image">
+        <div class="upload-area" id="bgImageArea">
+          <input type="file" accept="image/*" id="bgImageInput" onchange="handleBgImage(event)">
+          <div class="upload-icon">🖼️</div>
+          <p>Click or drop a background image<br><small>Will auto-generate 5 tinted variations</small></p>
+        </div>
+        <div class="color-slots" style="margin-top:0.75rem">
+          <div class="section-label" style="font-size:0.6rem;margin-bottom:0.4rem">Tint overlays (optional)</div>
+          <div id="tintSlots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOGO -->
+    <section>
+      <div class="section-label">03 — Logo</div>
+      <div class="upload-area" id="logoArea">
+        <input type="file" accept="image/*" id="logoInput" onchange="handleLogo(event)">
+        <div class="upload-icon">🏷️</div>
+        <p>Upload logo (PNG with transparency recommended)</p>
+      </div>
+    </section>
+
+    <!-- HEADLINES -->
+    <section>
+      <div class="section-label">04 — Headlines</div>
+      <div class="headline-slots" id="headlineSlots"></div>
+    </section>
+
+    <!-- SMALL PRINT -->
+    <section>
+      <div class="section-label">05 — Small Print</div>
+      <textarea class="smallprint" id="smallPrint" placeholder="Terms & conditions, disclaimer text..."></textarea>
+    </section>
+
+    <!-- GENERATE -->
+    <button class="generate-btn" id="generateBtn" onclick="generate()">⚡ GENERATE ADS</button>
+
+  </aside>
+
+  <main class="main">
+    <div class="stats-bar">
+      <div class="stat">
+        <div class="stat-num" id="statCount">0</div>
+        <div class="stat-label">Variations</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="statSizes">0</div>
+        <div class="stat-label">Sizes</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="statBgs">0</div>
+        <div class="stat-label">Backgrounds</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="statHeads">0</div>
+        <div class="stat-label">Headlines</div>
+      </div>
+      <button class="export-all-btn" onclick="exportAll('png')">⬇ Export All PNG</button>
+    </div>
+
+    <div class="progress-bar" id="progressBar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <div class="ads-grid" id="adsGrid">
+      <div class="empty-state">
+        <div class="big-icon">📐</div>
+        <p>Configure your ad settings on the left,<br>then hit Generate to create all combinations.</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────────────
+const AD_SIZES = [
+  { name: 'Leaderboard',    w: 728, h: 90 },
+  { name: 'Banner',         w: 468, h: 60 },
+  { name: 'Half Banner',    w: 234, h: 60 },
+  { name: 'Large Rect',     w: 336, h: 280 },
+  { name: 'Medium Rect',    w: 300, h: 250 },
+  { name: 'Small Rect',     w: 300, h: 100 },
+  { name: 'Square',         w: 250, h: 250 },
+  { name: 'Small Square',   w: 200, h: 200 },
+  { name: 'Wide Skyscraper',w: 160, h: 600 },
+  { name: 'Skyscraper',     w: 120, h: 600 },
+  { name: 'Half Page',      w: 300, h: 600 },
+  { name: 'Billboard',      w: 970, h: 250 },
+  { name: 'Large Mobile',   w: 320, h: 100 },
+  { name: 'Mobile Banner',  w: 320, h: 50 },
+  { name: 'Interstitial',   w: 320, h: 480 },
+  { name: 'Story (9:16)',   w: 1080, h: 1920 },
+];
+
+const DEFAULT_COLORS = ['#1a1a2e','#16213e','#0f3460','#e94560','#f5a623'];
+const DEFAULT_TINTS = ['rgba(0,0,0,0)', 'rgba(0,0,0,0.3)', 'rgba(255,80,80,0.3)', 'rgba(80,80,255,0.3)', 'rgba(255,200,0,0.2)'];
+
+let state = {
+  selectedSizes: new Set(),
+  colors: [...DEFAULT_COLORS],
+  bgMode: 'color',
+  bgImage: null,
+  tints: [...DEFAULT_TINTS],
+  logo: null,
+  headlines: ['','','','',''],
+  smallPrint: '',
+  ads: [],
+};
+
+// ─── INIT ───────────────────────────────────────────────────────────────────
+async function init() {
+  // Try loading defaults.json first (silently skip if not found)
+  await loadDefaults();
+
+  // Build sizes
+  const grid = document.getElementById('sizesGrid');
+  AD_SIZES.forEach((size, i) => {
+    const div = document.createElement('div');
+    div.className = 'size-check';
+    div.dataset.index = i;
+    div.onclick = () => toggleSize(i, div);
+    div.innerHTML = `
+      <input type="checkbox">
+      <div class="dot"></div>
+      <div>
+        <div class="size-name">${size.name}</div>
+        <div class="size-dims">${size.w}×${size.h}</div>
+      </div>
+    `;
+    grid.appendChild(div);
+  });
+
+  // Build color slots (use state.colors which may already be set from defaults)
+  const colorSlots = document.getElementById('colorSlots');
+  state.colors.forEach((c, i) => {
+    colorSlots.appendChild(makeColorRow(i, c, 'colors'));
+  });
+
+  // Build tint slots
+  const tintSlots = document.getElementById('tintSlots');
+  ['Clear','Dark','Red tint','Blue tint','Gold tint'].forEach((label, i) => {
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;';
+    row.innerHTML = `<span style="font-family:DM Mono,monospace;font-size:0.7rem;color:#666680;width:70px">${label}</span>
+      <div style="width:28px;height:20px;border-radius:3px;border:1px solid #2a2a3a;background:${DEFAULT_TINTS[i]};opacity:0.8"></div>`;
+    tintSlots.appendChild(row);
+  });
+
+  // Build headline slots (pre-filled if defaults loaded)
+  const headlineSlots = document.getElementById('headlineSlots');
+  for (let i = 0; i < 5; i++) {
+    const row = document.createElement('div');
+    row.className = 'headline-input';
+    row.innerHTML = `
+      <label>${i+1}</label>
+      <input type="text" placeholder="Headline ${i+1}..." value="${escapeAttr(state.headlines[i])}" oninput="state.headlines[${i}]=this.value;updateStats()">
+    `;
+    headlineSlots.appendChild(row);
+  }
+
+  // Pre-fill small print
+  if (state.smallPrint) {
+    document.getElementById('smallPrint').value = state.smallPrint;
+  }
+
+  // Show logo preview if loaded from defaults
+  if (state.logo) {
+    const area = document.getElementById('logoArea');
+    area.classList.add('has-file');
+    area.innerHTML = `<img src="${state.logo}" class="preview-thumb"><p>defaults.json logo</p>`;
+  }
+
+  // Show bg image preview if loaded from defaults
+  if (state.bgImage) {
+    const area = document.getElementById('bgImageArea');
+    area.classList.add('has-file');
+    area.innerHTML = `<img src="${state.bgImage}" class="preview-thumb"><p>defaults.json background</p>`;
+    // Switch to image tab
+    state.bgMode = 'image';
+    document.querySelectorAll('.bg-tab').forEach((b,i) => b.classList.toggle('active', i===1));
+    document.getElementById('tab-color').classList.remove('active');
+    document.getElementById('tab-image').classList.add('active');
+  }
+
+  // Load session cache last (overrides defaults if user has made changes this session)
+  loadFromCache();
+  updateStats();
+}
+
+function escapeAttr(str) {
+  return (str || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+// ─── LOAD DEFAULTS.JSON ──────────────────────────────────────────────────────
+async function loadDefaults() {
+  try {
+    const res = await fetch('./defaults.json');
+    if (!res.ok) return; // file not found, skip silently
+    const d = await res.json();
+
+    if (Array.isArray(d.headlines)) {
+      d.headlines.slice(0, 5).forEach((h, i) => { state.headlines[i] = h || ''; });
+    }
+    if (typeof d.smallPrint === 'string') {
+      state.smallPrint = d.smallPrint;
+    }
+    if (Array.isArray(d.colors) && d.colors.length) {
+      state.colors = d.colors.slice(0, 5);
+      // Pad to 5 if fewer provided
+      while (state.colors.length < 5) state.colors.push(DEFAULT_COLORS[state.colors.length]);
+    }
+    if (typeof d.logo === 'string' && d.logo.startsWith('data:')) {
+      state.logo = d.logo;
+    }
+    if (typeof d.background === 'string' && d.background.startsWith('data:')) {
+      state.bgImage = d.background;
+    }
+
+    console.log('✔ BannerForge: defaults.json loaded');
+  } catch(e) {
+    // No defaults.json or parse error — start blank, that's fine
+    console.log('ℹ BannerForge: no defaults.json found, starting blank');
+  }
+}
+
+function makeColorRow(index, defaultColor, stateKey) {
+  const row = document.createElement('div');
+  row.className = 'color-row';
+  const id = `${stateKey}-${index}`;
+  row.innerHTML = `
+    <label>Color ${index+1}</label>
+    <input type="color" id="${id}" value="${defaultColor}" oninput="state.${stateKey}[${index}]=this.value;document.getElementById('hex-${id}').textContent=this.value;updateStats()">
+    <span class="hex-display" id="hex-${id}">${defaultColor}</span>
+  `;
+  return row;
+}
+
+// ─── UI INTERACTIONS ──────────────────────────────────────────────────────
+function toggleSize(i, el) {
+  if (state.selectedSizes.has(i)) {
+    state.selectedSizes.delete(i);
+    el.classList.remove('selected');
+  } else {
+    state.selectedSizes.add(i);
+    el.classList.add('selected');
+  }
+  updateStats();
+}
+
+let allSelected = false;
+function toggleSelectAll() {
+  allSelected = !allSelected;
+  document.querySelectorAll('.size-check').forEach((el, i) => {
+    if (allSelected) { state.selectedSizes.add(i); el.classList.add('selected'); }
+    else { state.selectedSizes.delete(i); el.classList.remove('selected'); }
+  });
+  document.getElementById('selectAllBtn').textContent = allSelected ? 'DESELECT ALL' : 'SELECT ALL';
+  updateStats();
+}
+
+function switchBgTab(mode, btn) {
+  state.bgMode = mode;
+  document.querySelectorAll('.bg-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.getElementById(`tab-${mode}`).classList.add('active');
+  updateStats();
+}
+
+function handleBgImage(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    state.bgImage = ev.target.result;
+    const area = document.getElementById('bgImageArea');
+    area.classList.add('has-file');
+    area.innerHTML = `<img src="${ev.target.result}" class="preview-thumb"><p>${file.name}</p>`;
+    saveToCache();
+    updateStats();
+  };
+  reader.readAsDataURL(file);
+}
+
+function handleLogo(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    state.logo = ev.target.result;
+    const area = document.getElementById('logoArea');
+    area.classList.add('has-file');
+    area.innerHTML = `<img src="${ev.target.result}" class="preview-thumb"><p>${file.name}</p>`;
+    saveToCache();
+  };
+  reader.readAsDataURL(file);
+}
+
+// ─── STATS ────────────────────────────────────────────────────────────────
+function updateStats() {
+  const sizes = state.selectedSizes.size;
+  const bgs = state.bgMode === 'color'
+    ? state.colors.filter(Boolean).length
+    : (state.bgImage ? 5 : 0);
+  const heads = state.headlines.filter(h => h.trim()).length;
+  const total = sizes * bgs * heads;
+
+  document.getElementById('statCount').textContent = total;
+  document.getElementById('statSizes').textContent = sizes;
+  document.getElementById('statBgs').textContent = bgs;
+  document.getElementById('statHeads').textContent = heads;
+  document.getElementById('generateBtn').disabled = total === 0;
+  saveToCache();
+}
+
+// ─── GENERATE ────────────────────────────────────────────────────────────
+async function generate() {
+  const btn = document.getElementById('generateBtn');
+  btn.disabled = true;
+  btn.textContent = 'GENERATING...';
+
+  const grid = document.getElementById('adsGrid');
+  grid.innerHTML = '';
+
+  const progressBar = document.getElementById('progressBar');
+  const progressFill = document.getElementById('progressFill');
+  progressBar.style.display = 'block';
+
+  const sizes = [...state.selectedSizes].map(i => AD_SIZES[i]);
+  const headlines = state.headlines.filter(h => h.trim());
+
+  let backgrounds = [];
+  if (state.bgMode === 'color') {
+    backgrounds = state.colors.filter(Boolean);
+  } else if (state.bgImage) {
+    backgrounds = state.tints.map(t => ({ image: state.bgImage, tint: t }));
+  }
+
+  const total = sizes.length * backgrounds.length * headlines.length;
+  let done = 0;
+
+  state.ads = [];
+
+  for (const size of sizes) {
+    for (const bg of backgrounds) {
+      for (const headline of headlines) {
+        const adData = { size, bg, headline, logo: state.logo, smallPrint: state.smallPrint };
+        const canvas = await renderAd(adData);
+        state.ads.push({ canvas, adData });
+
+        const card = createAdCard(canvas, adData, state.ads.length - 1);
+        grid.appendChild(card);
+
+        done++;
+        progressFill.style.width = `${(done / total) * 100}%`;
+        await sleep(5);
+      }
+    }
+  }
+
+  progressBar.style.display = 'none';
+  btn.disabled = false;
+  btn.textContent = '⚡ REGENERATE';
+}
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+// ─── RENDER CANVAS ────────────────────────────────────────────────────────
+async function renderAd({ size, bg, headline, logo, smallPrint }) {
+  const canvas = document.createElement('canvas');
+  canvas.width = size.w;
+  canvas.height = size.h;
+  const ctx = canvas.getContext('2d');
+
+  // Background
+  if (typeof bg === 'string') {
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, size.w, size.h);
+  } else if (bg.image) {
+    await drawImage(ctx, bg.image, 0, 0, size.w, size.h);
+    if (bg.tint && bg.tint !== 'rgba(0,0,0,0)') {
+      ctx.fillStyle = bg.tint;
+      ctx.fillRect(0, 0, size.w, size.h);
+    }
+  }
+
+  const isNarrow = size.h < size.w * 0.3; // horizontal banner
+  const isTall = size.h > size.w * 1.5;  // skyscraper / vertical
+
+  const pad = Math.max(size.w, size.h) * 0.06;
+  const textColor = getContrastColor(bg);
+
+  // Logo
+  if (logo) {
+    const logoSize = Math.min(size.w, size.h) * (isNarrow ? 0.5 : 0.2);
+    await drawImageFit(ctx, logo, pad, pad, logoSize, logoSize * 0.5);
+  }
+
+  // Headline
+  const headlineFontSize = clamp(size.w * 0.08, 10, isNarrow ? size.h * 0.45 : 48);
+  ctx.fillStyle = textColor;
+  ctx.font = `bold ${headlineFontSize}px 'Arial Black', Impact, sans-serif`;
+  ctx.textBaseline = 'top';
+
+  const maxTextWidth = size.w - pad * 2;
+  if (isNarrow) {
+    // Single line centered vertically
+    ctx.textAlign = 'center';
+    const fs = clamp(size.h * 0.4, 8, 28);
+    ctx.font = `bold ${fs}px 'Arial Black', Impact, sans-serif`;
+    ctx.fillText(truncate(ctx, headline, size.w * 0.6), size.w * 0.55, (size.h - fs) / 2);
+  } else {
+    ctx.textAlign = 'left';
+    wrapText(ctx, headline, pad, size.h * 0.35, maxTextWidth, headlineFontSize * 1.2, 2);
+  }
+
+  // Small print
+  if (smallPrint && !isNarrow) {
+    const spSize = clamp(size.w * 0.025, 7, 11);
+    ctx.font = `${spSize}px Arial, sans-serif`;
+    ctx.fillStyle = textColor;
+    ctx.globalAlpha = 0.6;
+    ctx.textAlign = 'left';
+    ctx.fillText(truncate(ctx, smallPrint, maxTextWidth), pad, size.h - spSize - pad * 0.5);
+    ctx.globalAlpha = 1;
+  }
+
+  // Decorative accent line
+  ctx.fillStyle = '#e8ff47';
+  ctx.fillRect(0, size.h - 3, size.w, 3);
+
+  return canvas;
+}
+
+function clamp(val, min, max) { return Math.max(min, Math.min(max, val)); }
+
+function truncate(ctx, text, maxWidth) {
+  if (ctx.measureText(text).width <= maxWidth) return text;
+  while (text.length > 0 && ctx.measureText(text + '…').width > maxWidth) {
+    text = text.slice(0, -1);
+  }
+  return text + '…';
+}
+
+function wrapText(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
+  const words = text.split(' ');
+  let line = '';
+  let lines = [];
+  for (const word of words) {
+    const test = line ? line + ' ' + word : word;
+    if (ctx.measureText(test).width > maxWidth && line) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = test;
+    }
+  }
+  if (line) lines.push(line);
+  lines.slice(0, maxLines).forEach((l, i) => ctx.fillText(l, x, y + i * lineHeight));
+}
+
+function getContrastColor(bg) {
+  try {
+    let hex = typeof bg === 'string' ? bg : '#222222';
+    hex = hex.replace('#', '');
+    const r = parseInt(hex.slice(0,2),16), g = parseInt(hex.slice(2,4),16), b = parseInt(hex.slice(4,6),16);
+    const luminance = (0.299*r + 0.587*g + 0.114*b) / 255;
+    return luminance > 0.5 ? '#111111' : '#ffffff';
+  } catch { return '#ffffff'; }
+}
+
+function drawImage(ctx, src, x, y, w, h) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => {
+      const scale = Math.max(w/img.width, h/img.height);
+      const sw = img.width * scale, sh = img.height * scale;
+      ctx.drawImage(img, x - (sw-w)/2, y - (sh-h)/2, sw, sh);
+      resolve();
+    };
+    img.onerror = resolve;
+    img.src = src;
+  });
+}
+
+function drawImageFit(ctx, src, x, y, maxW, maxH) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => {
+      const scale = Math.min(maxW/img.width, maxH/img.height);
+      ctx.drawImage(img, x, y, img.width*scale, img.height*scale);
+      resolve();
+    };
+    img.onerror = resolve;
+    img.src = src;
+  });
+}
+
+// ─── AD CARD ────────────────────────────────────────────────────────────
+function createAdCard(canvas, adData, index) {
+  const card = document.createElement('div');
+  card.className = 'ad-card';
+  card.style.animationDelay = `${Math.min(index * 0.03, 0.5)}s`;
+
+  const bgLabel = typeof adData.bg === 'string' ? adData.bg : 'Image';
+
+  card.innerHTML = `
+    <div class="ad-canvas-wrap"></div>
+    <div class="ad-meta">
+      <div class="ad-info">
+        <div class="ad-size-label">${adData.size.w}×${adData.size.h} · ${bgLabel}</div>
+        <div class="ad-headline-label">${adData.headline}</div>
+      </div>
+      <div class="export-btns">
+        <button class="exp-btn png" onclick="exportPng(${index})">PNG</button>
+        <button class="exp-btn svg" onclick="exportSvg(${index})">SVG</button>
+      </div>
+    </div>
+  `;
+
+  card.querySelector('.ad-canvas-wrap').appendChild(canvas);
+  return card;
+}
+
+// ─── EXPORT ──────────────────────────────────────────────────────────────
+function exportPng(index) {
+  const { canvas, adData } = state.ads[index];
+  const a = document.createElement('a');
+  a.download = `ad-${adData.size.w}x${adData.size.h}-${adData.headline.slice(0,20).replace(/\s+/g,'-')}.png`;
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+}
+
+function exportSvg(index) {
+  const { canvas, adData } = state.ads[index];
+  const dataUrl = canvas.toDataURL('image/png');
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${adData.size.w}" height="${adData.size.h}">
+  <image href="${dataUrl}" width="${adData.size.w}" height="${adData.size.h}"/>
+</svg>`;
+  const blob = new Blob([svg], { type: 'image/svg+xml' });
+  const a = document.createElement('a');
+  a.download = `ad-${adData.size.w}x${adData.size.h}-${adData.headline.slice(0,20).replace(/\s+/g,'-')}.svg`;
+  a.href = URL.createObjectURL(blob);
+  a.click();
+}
+
+async function exportAll(format) {
+  for (let i = 0; i < state.ads.length; i++) {
+    if (format === 'png') exportPng(i);
+    await sleep(80);
+  }
+}
+
+// ─── CACHE ────────────────────────────────────────────────────────────────
+function saveToCache() {
+  try {
+    const data = {
+      colors: state.colors,
+      headlines: state.headlines,
+      smallPrint: document.getElementById('smallPrint')?.value || '',
+      selectedSizes: [...state.selectedSizes],
+    };
+    sessionStorage.setItem('bannerforge', JSON.stringify(data));
+  } catch(e) {}
+}
+
+function loadFromCache() {
+  try {
+    const raw = sessionStorage.getItem('bannerforge');
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    if (data.colors) state.colors = data.colors;
+    if (data.headlines) {
+      state.headlines = data.headlines;
+      document.querySelectorAll('#headlineSlots input').forEach((el, i) => {
+        el.value = data.headlines[i] || '';
+      });
+    }
+    if (data.smallPrint) document.getElementById('smallPrint').value = data.smallPrint;
+    if (data.selectedSizes) {
+      data.selectedSizes.forEach(i => {
+        state.selectedSizes.add(i);
+        const el = document.querySelector(`[data-index="${i}"]`);
+        if (el) el.classList.add('selected');
+      });
+    }
+    // Restore color pickers
+    if (data.colors) {
+      data.colors.forEach((c, i) => {
+        const el = document.getElementById(`colors-${i}`);
+        if (el) {
+          el.value = c;
+          const hex = document.getElementById(`hex-colors-${i}`);
+          if (hex) hex.textContent = c;
+        }
+      });
+    }
+  } catch(e) {}
+}
+
+document.getElementById('smallPrint').addEventListener('input', function() {
+  state.smallPrint = this.value;
+  saveToCache();
+});
+
+init();
+</script>
+</body>
+</html>

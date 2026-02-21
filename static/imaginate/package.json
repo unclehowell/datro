@@ -1,0 +1,24 @@
+{
+  "name": "pcp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "esbuild admin/puck-editor.jsx --bundle --outfile=admin/puck.js --format=iife --jsx=automatic --servedir=. --serve=3000",
+    "build": "node ./tools/prepare-dist.js && esbuild admin/puck-editor.jsx --bundle --outfile=dist/puck.js --format=iife --jsx=automatic --minify",
+    "build-client": "esbuild client-renderer.jsx --bundle --outfile=dist/client-renderer.js --format=iife --jsx=automatic --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.2.0",
+    "@measured/puck": "^0.20.2",
+    "admin-lte": "^4.0.0-rc6",
+    "bootstrap": "^5.3.8",
+    "esbuild": "^0.27.3",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  }
+}

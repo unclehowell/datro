@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Puck Editor</title>
+</head>
+<body>
+    <script>
+      if (localStorage.getItem("authenticated") !== "true") {
+        window.location.href = "/login.html";
+      }
+    </script>
+  <div id="puck-root"></div>
+  <script src="./puck.js"></script>
+</body>
+</html>
