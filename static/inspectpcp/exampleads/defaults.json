@@ -1,0 +1,42 @@
+{
+  "_comment": "BannerForge defaults — this is the CONTENT file. It sets what appears in the ad (copy, colours, images). Design rules (font sizes, padding, constraints) live in rules.json. Edit this file to change brand defaults without touching code.",
+
+  "_comment_selectedSizes": "Array of IAB standard size names to pre-select on load. Choose your most-used formats. Full list in the HTML.",
+  "selectedSizes": [
+    "Medium Rect",
+    "Large Rect",
+    "Leaderboard",
+    "Half Page",
+    "Wide Skyscraper",
+    "Story (9:16)"
+  ],
+
+  "_comment_headlines": "Up to 5 headline variants. These generate one ad variation each. Write short, punchy copy — rules.json enforces the size cap so long lines will wrap or truncate automatically.",
+  "headlines": [
+    "Built for the bold.",
+    "Results that speak.",
+    "Start your free trial."
+  ],
+
+  "_comment_smallPrint": "Legal disclaimer / T&C text. Rendered in the bottom zone per rules.json. Keep under ~200 characters for best fit across all sizes.",
+  "smallPrint": "Terms and conditions apply. Offer valid for new customers only. See website for full details.",
+
+  "_comment_colors": "Up to 5 background colours — one ad variation per colour. Hex only. These are your brand palette starting point.",
+  "colors": [
+    "#0d0d1a",
+    "#1a1a2e",
+    "#16213e",
+    "#e94560",
+    "#f5a623"
+  ],
+
+  "_comment_tint": "Optional tint applied over the background image (if one is set). tintColor is hex, tintOpacity is 0–1.",
+  "tintColor": "#000000",
+  "tintOpacity": 0.3,
+
+  "_comment_logo": "Base64 data URI of logo PNG, or omit/null this key if no logo. Generate with: fetch('logo.png').then(r=>r.blob()).then(b=>new Promise(r=>{const fr=new FileReader();fr.onload=e=>r(e.target.result);fr.readAsDataURL(b)}))",
+  "logo": null,
+
+  "_comment_background": "Base64 data URI of background image, or null. Same encoding method as logo above.",
+  "background": null
+}

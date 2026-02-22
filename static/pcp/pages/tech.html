@@ -1,0 +1,72 @@
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>OpenClaw Remote Console</title>
+      <style>
+          body { margin: 0; display: flex; flex-direction: column; height: 100vh; background: #000; font-family: sans-serif; }
+          #guac-container { flex: 1; border: none; background: #222; }
+          #chat-bar { height: 60px; background: #1a1a1a; display: flex; padding: 10px; gap: 10px; border-top: 1px solid #444; }
+          input[type="text"] { flex: 1; padding: 10px; border-radius: 4px; border: 1px solid #333; background: #2a2a2a; color: #fff; }
+          button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+          button:hover { background: #0056b3; }
+      </style>
+  </head>
+  <body>
+
+      <!-- 1. GUACAMOLE REMOTE SCREEN -->
+      <iframe id="guac-container" src="http://52.90.153.108"></iframe>
+
+      <!-- 2. OPENCLAW MESSAGING INTERFACE -->
+      <div id="chat-bar">
+          <input type="text" id="user-query" placeholder="Ask OpenClaw to do something on this machine..." onkeypress="handleKey(event)">
+          <button onclick="sendMessage()">Send to Agent</button>
+      </div>
+
+      <script>
+          // CONFIGURATION - Replace with your actual values
+          const GATEWAY_URL = "http://52.90.153.108:18789"; // Default OpenClaw Gateway Port
+          const GATEWAY_TOKEN = "YOUR_OPENCLAW_GATEWAY_TOKEN";
+
+          async function sendMessage() {
+              const input = document.getElementById('user-query');
+              const message = input.value.trim();
+              if (!message) return;
+
+              // Update UI status
+              input.disabled = true;
+              input.placeholder = "Sending...";
+
+              try {
+                  // Send message to OpenClaw via their API/REST endpoint
+                  const response = await fetch(`${GATEWAY_URL}/api/message/send`, {
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/json',
+                          'Authorization': `Bearer ${GATEWAY_TOKEN}`
+                      },
+                          channel: "web_ui" // Telling the agent to respond on-screen
+                      })
+                  });
+
+                  if (response.ok) {
+                      input.value = "";
+                      input.placeholder = "Message sent. Check screen for subtitles...";
+                  } else {
+                      alert("Failed to reach OpenClaw Gateway. Check logs.");
+                  }
+              } catch (err) {
+                  console.error("Error:", err);
+                  alert("Connection Error. Ensure Port 18789 is open.");
+              } finally {
+                  input.disabled = false;
+                  input.focus();
+              }
+          }
+
+          function handleKey(e) {
+              if (e.key === 'Enter') sendMessage();
+          }
+      </script>
+  </body>
+  </html>
