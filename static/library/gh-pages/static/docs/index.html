@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>DATRO Library Editor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: Arial, sans-serif; padding: 1rem; }
+    h1 { font-size: 1.25rem; }
+    .card { border: 1px solid #ddd; padding: 1rem; margin: .5rem 0; border-radius: 6px; }
+    .btn { padding: .5rem 1rem; background:#2d7; color:white; border:none; border-radius:4px; cursor:pointer; }
+    .btn.secondary { background:#555; }
+  </style>
+</head>
+<body>
+  <h1>DATRO Library Editor (PuckCMS-inspired)</h1>
+  <p>Edit interface is preview; connects to serverless endpoints for inventory, exceptions, and archiving.</p>
+<button id="editBtn" style="display:none; margin: 0.5rem 0;" onclick="window.location='/library/cms/index.html'">Edit Library</button>
+  <div class="card">
+    <h3>New / Update Documents</h3>
+    <p>Use the dedicated UI to add or update document metadata. The real UI is mounted at</p>
+    <code>https://library.datro.xyz/edit</code>
+  </div>
+  <div class="card">
+    <h3>Outtray</h3>
+    <p>Items flagged for archiving will appear in the Outtray for transfer to the Wayback archive.</p>
+  </div>
+  <p>This page is a landing point. Detailed UI lives in the web app under /edit.</p>
+  <script>
+    if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+      document.getElementById('editBtn').style.display = 'inline-block'
+    }
+  </script>
+</body>
+</html>

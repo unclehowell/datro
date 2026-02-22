@@ -61,7 +61,8 @@
     <!--begin::Required Plugin(AdminLTE)-->
     <link rel="stylesheet" href="../css/adminlte.css" />
     <!--end::Required Plugin(AdminLTE)-->
-  </head>
+    <link rel="stylesheet" href="/static/pcp/css/global-shell.css" />
+</head>
   <!--end::Head-->
   <!--begin::Body-->
   <body class="sidebar-expand-lg bg-body-tertiary">
@@ -585,19 +586,19 @@
 
               <li class="nav-header">DOCUMENTATIONS</li>
               <li class="nav-item">
-                <a href="../docs/introduction.html" class="nav-link">
+                <a href="/pages/introduction.html" class="nav-link">
                   <i class="nav-icon bi bi-download"></i>
                   <p>Installation</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../docs/layout.html" class="nav-link">
+                <a href="/pages/layout.html" class="nav-link">
                   <i class="nav-icon bi bi-grip-horizontal"></i>
                   <p>Layout</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../docs/color-mode.html" class="nav-link">
+                <a href="/pages/color-mode.html" class="nav-link">
                   <i class="nav-icon bi bi-star-half"></i>
                   <p>Color Mode</p>
                 </a>
@@ -612,13 +613,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="../docs/components/main-header.html" class="nav-link">
+                    <a href="/pages/components/main-header.html" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Main Header</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../docs/components/main-sidebar.html" class="nav-link">
+                    <a href="/pages/components/main-sidebar.html" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Main Sidebar</p>
                     </a>
@@ -635,7 +636,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="../docs/javascript/treeview.html" class="nav-link">
+                    <a href="/pages/javascript/treeview.html" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Treeview</p>
                     </a>
@@ -643,25 +644,25 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="../docs/browser-support.html" class="nav-link">
+                <a href="/pages/browser-support.html" class="nav-link">
                   <i class="nav-icon bi bi-browser-edge"></i>
                   <p>Browser Support</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../docs/how-to-contribute.html" class="nav-link">
+                <a href="/pages/how-to-contribute.html" class="nav-link">
                   <i class="nav-icon bi bi-hand-thumbs-up-fill"></i>
                   <p>How To Contribute</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../docs/faq.html" class="nav-link">
+                <a href="/pages/faq.html" class="nav-link">
                   <i class="nav-icon bi bi-question-circle-fill"></i>
                   <p>FAQ</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../docs/license.html" class="nav-link">
+                <a href="/pages/license.html" class="nav-link">
                   <i class="nav-icon bi bi-patch-check-fill"></i>
                   <p>License</p>
                 </a>
@@ -973,6 +974,7 @@
         navigation.innerHTML = buildMenuHTML(menuData);
       })();
     </script>
+  <script src="/static/pcp/js/global-shell.js"></script>
 </body>
   <!--end::Body-->
 </html>

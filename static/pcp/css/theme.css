@@ -1,0 +1,45 @@
+/* Global theme overrides */
+:root { --pcp-accent: #ffd400; --pcp-accent2: #45ff8f; }
+body[data-theme="combat"] { background:#0b0f0b; color:#e7fbe7; }
+body[data-theme="combat"] .app-header,
+body[data-theme="combat"] .app-main,
+body[data-theme="combat"] .app-content-header,
+body[data-theme="combat"] .app-footer { background:#0b0f0b !important; color:#e7fbe7; }
+body[data-theme="combat"] .app-sidebar { background:#0b0f0b !important; }
+body[data-theme="combat"] .sidebar-wrapper { background:#0b0f0b !important; }
+body[data-theme="combat"] .nav-link { color:#b6e9b6; }
+body[data-theme="combat"] .nav-link.active { color:#ffd400; }
+
+body[data-theme="dark"] { background:#0a0a0f; color:#d7d7d7; }
+body[data-theme="dark"] .app-header,
+body[data-theme="dark"] .app-main,
+body[data-theme="dark"] .app-content-header,
+body[data-theme="dark"] .app-footer { background:#0a0a0f !important; color:#d7d7d7; }
+body[data-theme="dark"] .app-sidebar { background:#0a0a0f !important; }
+body[data-theme="dark"] .sidebar-wrapper { background:#0a0a0f !important; }
+body[data-theme="dark"] .nav-link { color:#c7c7c7; }
+body[data-theme="dark"] .nav-link.active { color:#47c8ff; }
+
+body[data-theme="light"] { background:#f7f7f7; color:#111; }
+body[data-theme="light"] .app-header,
+body[data-theme="light"] .app-main,
+body[data-theme="light"] .app-content-header,
+body[data-theme="light"] .app-footer { background:#f7f7f7 !important; color:#111; }
+body[data-theme="light"] .app-sidebar { background:#f7f7f7 !important; }
+body[data-theme="light"] .sidebar-wrapper { background:#f7f7f7 !important; }
+body[data-theme="light"] .nav-link { color:#222; }
+body[data-theme="light"] .nav-link.active { color:#0d6efd; }
+body[data-theme="light"] .text-muted { color:#444 !important; }
+body[data-theme="light"] .app-content-header .breadcrumb,
+body[data-theme="light"] .app-content-header a { color:#222 !important; }
+
+/* BannerForge variable mappings */
+body[data-theme="combat"] .bf-wrap {
+  --bg:#0b0f0b; --surface:#121a14; --surface2:#18231a; --border:#2b3b2f; --accent:#ffd400; --accent2:#45ff8f; --text:#e7fbe7; --muted:#6e8b6e;
+}
+body[data-theme="dark"] .bf-wrap {
+  --bg:#0a0a0f; --surface:#111118; --surface2:#1a1a24; --border:#2a2a3a; --accent:#e8ff47; --accent2:#47c8ff; --text:#f0f0f0; --muted:#666680;
+}
+body[data-theme="light"] .bf-wrap {
+  --bg:#f7f7f7; --surface:#ffffff; --surface2:#f0f0f4; --border:#d0d0d8; --accent:#ffd400; --accent2:#1e8f5a; --text:#111; --muted:#666;
+}

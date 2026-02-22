@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>DATRO Library Editor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: Arial, sans-serif; padding: 1rem; }
+    h1 { font-size: 1.1rem; }
+    .panel { border: 1px solid #ddd; padding: 1rem; border-radius: 6px; margin: .5rem 0; }
+    label { display:block; margin-top:.5rem }
+    input, select { width: 100%; padding: .4rem; margin-top:.25rem }
+    button { padding: .5rem 1rem; margin-top:.5rem }
+    #editModal { display: none; position: fixed; top: 5%; left: 50%; transform: translateX(-50%); width: 90%; max-width: 900px; background:white; border:1px solid #ccc; padding:1rem; z-index: 1000; }
+    #overlay { display:none; position: fixed; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,.5); z-index: 900; }
+  </style>
+</head>
+<body>
+  <h1>DATRO Library Editor</h1>
+  <div class="panel" id="panel">
+    <button id="btnNew">New Document</button>
+    <button id="btnUpdate">Update Latest</button>
+    <button id="btnVersion">Create Version</button>
+    <button id="btnArchive">Mark Version for Archive</button>
+    <button id="btnExport">Export Version</button>
+  </div>
+  <div class="panel" id="registryPanel"></div>
+  <div id="editModal">
+    <h3>Editor</h3>
+    <div>
+      <h4>New Document</h4>
+      <label>Path (relative under docs):</label>
+      <input id="newPath" placeholder="consortium_agreements/google_patents"/>
+      <label>Language:</label>
+      <select id="newLang"></select>
+      <label>Version:</label>
+      <input id="newVersion" placeholder="latest"/>
+      <label>Type:</label>
+      <select id="newType"><option value="source">source</option><option value="artifact">artifact</option></select>
+      <button id="btnCreate">Create</button>
+    </div>
+    <hr/>
+    <div>
+      <h4>Create New Version</h4>
+      <label>Version (e.g. v1.2.3):</label>
+      <input id="versionNew" placeholder="v1.2.3"/>
+      <button id="btnCreateVersion">Create Version</button>
+    </div>
+    <hr/>
+    <div>
+      <h4>Export</h4>
+      <label>Version:</label>
+      <input id="exportVersion" placeholder="latest"/>
+      <label>Format:</label>
+      <select id="exportFormat"><option value="zip">ZIP</option><option value="rst">RST</option></select>
+      <button id="btnExport2">Export</button>
+    </div>
+    <hr/>
+    <button id="btnClose">Close</button>
+  </div>
+  <div id="overlay" onclick="hideModal()"></div>
+  <script>
+    const isLocalhost = location.hostname === 'localhost' || location.hostname === '127.0.0.1'
+    function ensureEditButton() {
+      if (!isLocalhost) return
+      const panel = document.getElementById('panel')
+      // already present
+    }
+    function showModal() {
+      document.getElementById('editModal').style.display = 'block'
+      document.getElementById('overlay').style.display = 'block'
+    }
+    function hideModal() {
+      document.getElementById('editModal').style.display = 'none'
+      document.getElementById('overlay').style.display = 'none'
+    }
+    async function fetchLangs() {
+      try {
+        const r = await fetch('/api/langs')
+        const langs = await r.json()
+        const sel = document.getElementById('newLang')
+        langs.forEach(l => {
+          const opt = document.createElement('option')
+          opt.value = l.code
+          opt.textContent = l.name + ''
+          sel.appendChild(opt)
+        })
+      } catch {}
+    }
+    document.getElementById('btnNew').onclick = () => showModal()
+    document.getElementById('btnClose').onclick = () => hideModal()
+    document.getElementById('btnCreate').onclick = async () => {
+      const path = document.getElementById('newPath').value
+      const lang = document.getElementById('newLang').value
+      const version = document.getElementById('newVersion').value || 'latest'
+      const type = document.getElementById('newType').value
+      const payload = { id: path + '_' + version, path, language: lang, version, type }
+      await fetch('/api/inventory', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) })
+      hideModal()
+      location.reload()
+    }
+    document.getElementById('btnCreateVersion').onclick = async () => {
+      const v = document.getElementById('versionNew').value
+      if (!v) return
+      await fetch('/api/version/new', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({version: v}) })
+      location.reload()
+    }
+    document.getElementById('btnExport2').onclick = async () => {
+      const v = document.getElementById('exportVersion').value || 'latest'
+      const f = document.getElementById('exportFormat').value
+      const resp = await fetch('/api/export', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({version: v, format: f}) })
+      const data = await resp.json()
+      if (data.file) alert('Export created: ' + data.file)
+    }
+    fetchLangs()
+  </script>
+</body>
+</html>

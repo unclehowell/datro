@@ -1,5 +1,5 @@
 (function(){
-  const CACHE_KEY = 'pcp:menu:v1';
+  const CACHE_KEY = 'pcp:menu:v2';
   const CACHE_TTL_MS = 5 * 60 * 1000;
 
   function readCache() {

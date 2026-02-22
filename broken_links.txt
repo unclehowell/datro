@@ -1,0 +1,17 @@
+Spider mode enabled. Check if remote file exists.
+--2026-02-22 01:09:10--  http://yourwebsite.com/
+Resolving yourwebsite.com (yourwebsite.com)... 104.143.9.110, 104.143.9.111
+Connecting to yourwebsite.com (yourwebsite.com)|104.143.9.110|:80... connected.
+HTTP request sent, awaiting response... 301 Found
+Location: https://www.mywebsite.com [following]
+Spider mode enabled. Check if remote file exists.
+--2026-02-22 01:09:11--  https://www.mywebsite.com/
+Resolving www.mywebsite.com (www.mywebsite.com)... 64.190.63.222
+Connecting to www.mywebsite.com (www.mywebsite.com)|64.190.63.222|:443... connected.
+HTTP request sent, awaiting response... 405 Method Not Allowed
+Remote file does not exist -- broken link!!!
+
+Found 1 broken link.
+
+https://www.mywebsite.com/
+

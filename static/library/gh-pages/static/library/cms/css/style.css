@@ -1,0 +1,8 @@
+body { font-family: Arial, sans-serif; background:#f6f7f9; color:#333; }
+.cm-header { background:#1e1e1e; color:#fff; padding:1rem; }
+.cm-grid { display:grid; grid-template-columns: 1fr 1fr; gap:1rem; padding:1rem; }
+.cm-panel { background:white; padding:1rem; border-radius:6px; border:1px solid #ddd; }
+label { display:block; margin-top:.5rem; font-size:.9em; }
+input, select { width:100%; padding:.4rem; margin-top:.25rem; }
+button { margin-top:.5rem; padding:.5rem 1rem; }
+@media (max-width: 800px) { .cm-grid { grid-template-columns: 1fr; } }

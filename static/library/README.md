@@ -4,6 +4,7 @@
 * Files are hosted in our MonoREAPo at this url:  https://github.com/unclehowell/datro/static/library/  
 * Key documents are presented here:  https://datro.xyz/static/datro/documents.html  
 * Browse entire library with `Version 0.0.1-rtw.11-library.03`: https://datro.xyz/static/library/index.html   
+* New: serverless, JSON-based housekeeping UI under gh-pages/static/docs/index.html with a puckCMS-inspired interface. See http://localhost:8000 or your host for testing. 
 
 ## Notes
 a) on the public website some of the categories may have slightly different names for easier navigation  
@@ -179,5 +180,4 @@ The next phase is to make the library more progressive e.g. webelements, manifes
 
 View the COLLABORATE.md file to learn more  
 Any questions, queries and concerns on this area of the DATRO monoreapo, please email hywelapbuckler@gmail.com  
-
 

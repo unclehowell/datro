@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DATRO Library CMS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <header class="cm-header">
+    <h1>DATRO Library CMS</h1>
+    <p>Hybrid PuckCMS + PHP File Manager for the document library</p>
+  </header>
+  <main class="cm-grid">
+    <section class="cm-panel" id="inventoryPanel">
+      <h2>Inventory</h2>
+      <div id="inventoryList">Loading…</div>
+      <button id="btnRefresh">Refresh</button>
+    </section>
+    <section class="cm-panel" id="toolsPanel">
+      <h2>New Document</h2>
+      <form id="formNew">
+        <label>Path</label><input id="inPath" required />
+        <label>Language</label><input id="inLang" value="cy" />
+        <label>Version</label><input id="inVersion" value="latest" />
+        <label>Type</label><select id="inType"><option value="artifact">artifact</option><option value="source">source</option></select>
+        <button type="submit">Create</button>
+      </form>
+      <hr/>
+      <h2>Create Version</h2>
+      <form id="formVersion">
+        <label>Version</label><input id="verNew" placeholder="v1.2.3" />
+        <button type="submit">Create Version</button>
+      </form>
+      <hr/>
+      <h2>Archive</h2>
+      <form id="formArchive">
+        <label>Item ID</label><input id="arcId" />
+        <button type="submit">Queue Archive</button>
+      </form>
+      <hr/>
+      <h2>Export</h2>
+      <form id="formExport">
+        <label>Version</label><input id="expVer" value="latest" />
+        <label>Format</label><select id="expFmt"><option value="zip">ZIP</option><option value="rst">RST</option></select>
+        <button type="submit">Export</button>
+      </form>
+    </section>
+  </main>
+  <script src="./js/app.js"></script>
+</body>
+</html>
