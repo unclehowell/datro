@@ -1,0 +1,20 @@
+About 
+
+This repository includes acessory scripts for mining data from Discourse based Forums
+
+topic_links.py
+	extracts the links for topics created within the forum. You will need to access the page of the forum which performs 
+	example: 'https://discourse.xxxxxxxx.com/c/xxxxxxxx.json?no_definitions=true&order=default&page={}'
+	
+topic_spider.py
+	extracts the data from comments within each topic extracted previously
+	
+user_spider.py
+	extracts data from users (to get the usernames you can use the previous data from topic_spider)
+
+user_json.py
+	extracts different data from users (to get the usernames you can use the previous data from topic_spider)
+	
+	
+
+Instructions are provided in each python file.

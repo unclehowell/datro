@@ -1,0 +1,102 @@
+name: Update Stripe Revenue
+
+on:
+  # Run on PR events (for previews)
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - gh-pages
+  
+  # Run on push to gh-pages (production)
+  push:
+    branches:
+      - gh-pages
+      - 'feature/auto-*'
+  
+  # Run on schedule (every 15 minutes)
+  schedule:
+    - cron: '*/15 * * * *'
+  
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  update-revenue:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || 'gh-pages' }}
+          
+      - name: Fetch Stripe Revenue for Product
+        env:
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          PRODUCT_ID: prod_Spt0LQW9iQp6XX
+        run: |
+          echo "Fetching charges for product: $PRODUCT_ID"
+          
+          # Fetch charges since product creation (Aug 9, 2024)
+          # Unix timestamp for 2024-08-09: 1723161600
+          RESPONSE=$(curl -s "https://api.stripe.com/v1/charges?limit=100&created[gte]=1723161600" \
+            -u ${STRIPE_SECRET_KEY}:)
+          
+          if [ $? -ne 0 ]; then
+            echo "Failed to fetch charges from Stripe"
+            exit 1
+          fi
+          
+          echo "Response received from Stripe API"
+          
+          # Debug: Show what we got
+          CHARGE_COUNT=$(echo "$RESPONSE" | jq '.data | length')
+          echo "Found $CHARGE_COUNT charges"
+          
+          # Show first charge for debugging (if exists)
+          echo "Sample charge data:"
+          echo "$RESPONSE" | jq '.data[0] | {amount, currency, paid, status, created}' || echo "No charges found"
+          
+          # Sum all successful GBP charges
+          TOTAL_PENCE=$(echo "$RESPONSE" | jq '
+            [.data[] | 
+              select(.paid == true and .status == "succeeded" and .currency == "gbp")
+            ] | map(.amount) | add // 0
+          ')
+          
+          echo "Total revenue in pence: $TOTAL_PENCE"
+          TOTAL_GBP=$(echo "scale=2; $TOTAL_PENCE / 100" | bc)
+          echo "Total revenue in GBP: £$TOTAL_GBP"
+          
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          
+          # Create JSON file
+          echo "{
+            \"totalRevenue\": ${TOTAL_PENCE},
+            \"currency\": \"gbp\",
+            \"productId\": \"${PRODUCT_ID}\",
+            \"lastUpdated\": \"${TIMESTAMP}\"
+          }" > static/forces/stripe-revenue.json
+          
+          echo "Generated stripe-revenue.json:"
+          cat static/forces/stripe-revenue.json
+          
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add static/forces/stripe-revenue.json
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update Stripe revenue: £$(jq -r '.totalRevenue' static/forces/stripe-revenue.json | awk '{printf "%.2f", $1/100}') [automated]"
+            
+            # Push to the correct branch
+            if [ "${{ github.event_name }}" = "pull_request" ]; then
+              git push origin HEAD:${{ github.head_ref }}
+            else
+              git push
+            fi
+          fi
+

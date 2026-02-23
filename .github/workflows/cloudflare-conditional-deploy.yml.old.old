@@ -1,0 +1,67 @@
+- name: Post Clean Preview Table
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const apps = [
+              { name: 'library', changed: '${{ steps.changes.outputs.library }}', url: '${{ steps.deploy.outputs.library }}' },
+              { name: 'hbnb', changed: '${{ steps.changes.outputs.hbnb }}', url: '${{ steps.deploy.outputs.hbnb }}' },
+              { name: 'ceo (forces)', changed: '${{ steps.changes.outputs.forces }}', url: '${{ steps.deploy.outputs.forces }}' },
+              { name: 'gui', changed: '${{ steps.changes.outputs.gui }}', url: '${{ steps.deploy.outputs.gui }}' },
+              { name: 'datro-homepage', changed: '${{ steps.changes.outputs.datro }}', url: '${{ steps.deploy.outputs.datro }}' },
+              { name: 'projections', changed: '${{ steps.changes.outputs.projections }}', url: '${{ steps.deploy.outputs.projections }}' },
+              { name: 'bpvsbuckler', changed: '${{ steps.changes.outputs.bpvsbuckler }}', url: '${{ steps.deploy.outputs.bpvsbuckler }}' },
+              { name: 'dcc', changed: '${{ steps.changes.outputs.dcc }}', url: '${{ steps.deploy.outputs.dcc }}' },
+              { name: 'ew', changed: '${{ steps.changes.outputs.ew }}', url: '${{ steps.deploy.outputs.ew }}' },
+            ];
+
+            let body = '🚀 **Cloudflare Pages Preview Deployments**\n\n';
+            body += '| Application | Status | Preview URL |\n';
+            body += '| --- | --- | --- |\n';
+
+            let deployed = 0;
+
+            for (const app of apps) {
+              let status, link;
+              if (app.url && app.url !== '' && app.url !== 'null') {
+                status = '✅ Deployed';
+                link = `[Preview](${app.url})`;
+                deployed++;
+              } else if (app.changed === 'true') {
+                status = '⚠️ Deploy attempted';
+                link = 'Check logs';
+              } else {
+                status = '🚫 Skipped';
+                link = 'N/A';
+              }
+              body += `| ${app.name} | ${status} | ${link} |\n`;
+            }
+
+            body += `\n**Total Deployed:** ${deployed} application(s)`;
+
+            const { data: comments } = await github.rest.issues.listComments({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            });
+
+            const botComment = comments.find(c => 
+              c.user.type === 'Bot' && 
+              c.body.includes('🚀 Cloudflare Pages Preview Deployments')
+            );
+
+            if (botComment) {
+              await github.rest.issues.updateComment({
+                comment_id: botComment.id,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body
+              });
+            } else {
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body
+              });
+            }

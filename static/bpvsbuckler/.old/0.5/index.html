@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Great House Farm Investigation</title>
+    <!-- Local CSS assets for offline hosting -->
+    <link rel="stylesheet" href="./puck-local.css">
+    <link rel="stylesheet" href="./styles.css">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'justice-red': '#991b1b', /* Darker, more modern red */
+              'legal-blue': '#1e293b', /* Slate 800 */
+              'paper': '#f8fafc', /* Slate 50 - Cleaner than parchment */
+              'ink': '#0f172a', /* Slate 900 */
+              'muted': '#64748b', /* Slate 500 */
+            },
+            fontFamily: {
+              serif: ['Merriweather', 'serif'],
+              sans: ['Inter', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #f8fafc;
+        color: #0f172a;
+      }
+      .font-serif { font-family: 'Merriweather', serif; }
+      .font-sans { font-family: 'Inter', sans-serif; }
+    </style>
+<!-- Removed remote importmap for offline hosting; bundler will load modules from local assets in dist -->
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
