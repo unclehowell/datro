@@ -10,6 +10,11 @@
 </head>
 
 <body data-theme="dark" class="hold-transition login-page dark-mode">
+    <script>
+      if (localStorage.getItem("authenticated") !== "true") {
+        window.location.href = "/index.html";
+      }
+    </script>
 
 <div class="login-box">
   <div class="card card-outline card-primary shadow">

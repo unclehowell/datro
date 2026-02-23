@@ -6,6 +6,11 @@
     <title>Redirecting to Login</title>
   </head>
   <body>
+    <script>
+      if (localStorage.getItem("authenticated") !== "true") {
+        window.location.href = "/index.html";
+      }
+    </script>
     Redirecting to login...
   </body>
 </html>

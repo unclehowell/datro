@@ -145,6 +145,11 @@
       window.location.href = '/index.html';
     }
   </script>
+    <script>
+    if (localStorage.getItem('authenticated') !== 'true') {
+      window.location.href = '/index.html';
+    }
+  </script>
 
   <div class="app-wrapper">
 
