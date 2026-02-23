@@ -1,0 +1,41 @@
+{
+  "version": "1.0.0",
+  "scope": "banner-generator2.html",
+  "rules": [
+    {
+      "id": "law-text-contrast-min",
+      "severity": "illegal",
+      "summary": "Text must be sufficiently legible against the background.",
+      "details": "Minimum contrast ratio 4.5:1 for headline text.",
+      "minContrastRatio": 4.5
+    },
+    {
+      "id": "law-smallprint-contrast-min",
+      "severity": "illegal",
+      "summary": "Small print must be clearly legible.",
+      "details": "Minimum contrast ratio 4.5:1 for small print text.",
+      "minContrastRatio": 4.5
+    },
+    {
+      "id": "law-smallprint-layout",
+      "severity": "illegal",
+      "summary": "Small print must span the full width and sit at the bottom.",
+      "details": "Small print must span the full width with minimal padding (4px), sit on the bottom edge within the bottom 15% band, and be at least 8px. If it drops below 8px to fit or exceeds the 15% band, flag as illegal.",
+      "insetVw": 0.4,
+      "bottomVh": 0,
+      "minFontPx": 8
+    },
+    {
+      "id": "law-no-same-color",
+      "severity": "illegal",
+      "summary": "Text color cannot match the background color.",
+      "details": "If text color equals background color, the ad is unreadable.",
+      "disallowSameColor": true
+    }
+  ],
+  "sources": [
+    "UK: ASA/CAP guidance on qualifications (clear and prominent).",
+    "UK: CMA price transparency guidance (avoid misleading presentation).",
+    "US: FTC clear and conspicuous disclosures guidance."
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "version": "1.0.0",
+  "scope": "banner-generator2.html",
+  "fixes": [
+    {
+      "id": "fix-set-white-text",
+      "label": "Set text to white",
+      "appliesToRules": [
+        "law-text-contrast-min",
+        "law-no-same-color",
+        "hint-default-white-text"
+      ],
+      "action": {
+        "type": "setTextColor",
+        "value": "#ffffff"
+      }
+    },
+    {
+      "id": "fix-set-dark-text",
+      "label": "Set text to dark grey",
+      "appliesToRules": [
+        "law-text-contrast-min",
+        "law-no-same-color",
+        "hint-light-grey-use-dark-text",
+        "hint-no-green-on-yellow"
+      ],
+      "action": {
+        "type": "setTextColor",
+        "value": "#1f1f1f"
+      }
+    },
+    {
+      "id": "fix-auto-contrast",
+      "label": "Auto-pick high-contrast text",
+      "appliesToRules": [
+        "law-text-contrast-min",
+        "law-no-same-color",
+        "hint-default-white-text",
+        "hint-light-grey-use-dark-text",
+        "hint-no-green-on-yellow"
+      ],
+      "action": {
+        "type": "autoContrast"
+      }
+    },
+    {
+      "id": "fix-boost-contrast",
+      "label": "Boost contrast with overlay",
+      "appliesToRules": [
+        "law-text-contrast-min",
+        "law-no-same-color",
+        "law-smallprint-contrast-min"
+      ],
+      "action": {
+        "type": "autoBgOverlay"
+      }
+    }
+  ]
+}

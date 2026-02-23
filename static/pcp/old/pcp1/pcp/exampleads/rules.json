@@ -1,0 +1,118 @@
+{
+  "_comment": "BannerForge design rules — based on IAB Display Advertising Guidelines, Google Display Ads best practices, and industry typography standards. Edit values here; the HTML reads these at runtime. Do not change key names without updating the HTML.",
+
+  "layout": {
+    "_comment": "Safe-area padding as a fraction of the longest canvas dimension. IAB recommends at least 5% safe margin so content never bleeds to edge. 0.06 = 6%.",
+    "paddingFraction": 0.06,
+
+    "_comment_min": "Absolute minimum padding in pixels regardless of ad size. Ensures tiny banners still have some breathing room.",
+    "paddingMin": 4
+  },
+
+  "headline": {
+    "_comment": "All values control how the main headline is sized and placed.",
+
+    "font": "Arial Black, Impact, sans-serif",
+    "weight": "bold",
+
+    "_comment_scaleFactor": "Headline font size = canvas width × scaleFactor. Google recommends text occupies no more than 30% of ad area. 0.07 gives readable but non-dominating text.",
+    "scaleFactor": 0.07,
+
+    "_comment_minPx": "Absolute minimum font size in pixels. Below ~10px text is unreadable at standard screen DPI.",
+    "minPx": 10,
+
+    "_comment_maxPx": "Hard cap in pixels. IAB and Google both flag ads where headline text is excessively large relative to the ad — 44px is large enough for a 300×250 without overwhelming it.",
+    "maxPx": 44,
+
+    "_comment_maxLines": "Maximum lines of headline text to render. More than 2 lines in a standard display ad creates clutter and reduces click intent.",
+    "maxLines": 2,
+
+    "_comment_lineHeightMultiplier": "Line height = fontSize × this. 1.2 is tight but readable for bold display type.",
+    "lineHeightMultiplier": 1.2,
+
+    "_comment_yPositionFraction": "Vertical position of headline as a fraction of canvas height. 0.28 places it in the upper-middle third — the primary viewing zone per F-pattern reading research.",
+    "yPositionFraction": 0.28,
+
+    "align": "left",
+
+    "narrow": {
+      "_comment": "Rules for horizontal banners where height < width × narrowThreshold. These get single-line centred treatment.",
+      "narrowThreshold": 0.3,
+      "scaleFactor": 0.42,
+      "minPx": 8,
+      "maxPx": 26,
+      "align": "center",
+      "_comment_xFraction": "Horizontal centre point as fraction of width — offset from left to leave room for logo.",
+      "xFraction": 0.55,
+      "_comment_logoWidthFraction": "Text max-width as fraction of canvas width in narrow mode, to avoid overlapping logo.",
+      "textWidthFraction": 0.58
+    }
+  },
+
+  "logo": {
+    "_comment": "Logo sizing rules. IAB recommends logo is clearly visible but never the dominant element.",
+
+    "_comment_scaleFactor": "Logo max-dimension = min(canvasW, canvasH) × scaleFactor. 0.22 gives a logo roughly 1/5 of the shortest side.",
+    "scaleFactor": 0.22,
+
+    "_comment_aspectRatio": "Logo render height = logoSize × aspectRatio. Assumes typical horizontal logo proportions. User's actual image is always fitted inside this box.",
+    "aspectRatio": 0.5,
+
+    "narrow": {
+      "_comment": "In narrow banners the logo is the primary brand element, so it gets more space.",
+      "scaleFactor": 0.48
+    }
+  },
+
+  "smallPrint": {
+    "_comment": "Legal / disclaimer text rules. Regulatory bodies (FCA, ASA, FTC) require small print to be legible — not invisible.",
+
+    "_comment_zoneHeightFraction": "Small print zone = canvas height × this. 0.15 = bottom 15% of the ad, which is standard for disclaimer placement.",
+    "zoneHeightFraction": 0.15,
+
+    "_comment_font": "Small print uses a regular weight sans-serif. Bold would compete with headline.",
+    "font": "Arial, sans-serif",
+    "weight": "normal",
+
+    "_comment_scaleFactorStart": "Starting font size = canvasW × this before auto-shrink loop. 0.028 is a reasonable starting estimate.",
+    "scaleFactorStart": 0.028,
+
+    "_comment_minPx": "7px is the regulatory floor — the ASA (UK) and FCA guidance both cite 6–7pt as minimum legible print in ads. Below this the text is considered unreadable and may breach advertising standards.",
+    "minPx": 7,
+
+    "_comment_maxPx": "11px prevents small print from becoming so large it competes with the headline.",
+    "maxPx": 11,
+
+    "_comment_lineHeight": "Small print line height multiplier. Slightly looser than headline to aid readability of dense legal text.",
+    "lineHeightMultiplier": 1.3,
+
+    "_comment_bgAlpha": "Opacity of dark background strip behind small print. Ensures contrast compliance (WCAG AA requires 4.5:1 ratio for normal text).",
+    "backgroundAlpha": 0.55,
+
+    "_comment_textAlpha": "Opacity of the small print text itself. 0.88 gives near-white on dark strip.",
+    "textAlpha": 0.88,
+
+    "_comment_textColor": "Small print text colour. White on the dark strip satisfies contrast requirements.",
+    "textColor": "#ffffff",
+
+    "_comment_zonePaddingFraction": "Vertical padding inside the zone as a fraction of zone height.",
+    "zonePaddingFraction": 0.08,
+
+    "_comment_zonePaddingMin": "Minimum vertical padding in pixels.",
+    "zonePaddingMin": 2
+  },
+
+  "accentBar": {
+    "_comment": "The coloured bar at the bottom of every ad — a brand/style element. Keep thin so it doesn't eat into small print zone.",
+    "_comment_heightPx": "Height in pixels. 3px is a standard 'rule line' weight used in print and digital design.",
+    "heightPx": 3,
+    "color": "#e8ff47"
+  },
+
+  "contrastText": {
+    "_comment": "Luminance threshold for choosing black vs white headline text over a solid background. 0.5 means: if background luminance > 50%, use dark text. Based on WCAG relative luminance formula.",
+    "luminanceThreshold": 0.5,
+    "darkText": "#111111",
+    "lightText": "#ffffff"
+  }
+}

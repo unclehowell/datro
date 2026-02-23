@@ -1,0 +1,100 @@
+{
+  "version": "1.0.0",
+  "scope": "banner-generator2.html",
+  "defaults": {
+    "backgroundColors": ["#4285f4", "#ea4335", "#fbbc05", "#34a853", "#9aa0a6"],
+    "textColors": ["#ea4335", "#fbbc05", "#34a853", "#9aa0a6", "#4285f4"],
+    "textSafePadPct": 0.1,
+    "smallPrintMinFontPx": 11
+  },
+  "layout": {
+    "zones": {
+      "top": 0.15,
+      "headline": 0.35,
+      "bottom": 0.15
+    },
+    "logo": {
+      "verticalOnly": true,
+      "topZone": true,
+      "minOccupyTopZonePct": 0.66,
+      "centeredHorizontally": true
+    },
+    "headline": {
+      "verticalOnly": true,
+      "zone": "headline",
+      "maxLines": 3,
+      "centered": true
+    },
+    "smallPrint": {
+      "zone": "bottom",
+      "bottomAligned": true,
+      "expandToFillZone": true
+    }
+  },
+  "constraints": {
+    "textWithinBannerBounds": true,
+    "textSafePaddingPct": 0.1,
+    "textClippedToSafePadding": true,
+    "bgTextCannotMatchSameIndex": true,
+    "textColorMustDifferFromBackground": true,
+    "minContrastRatio": 4.5,
+    "minContrastRatioSmallPrint": 7.0
+  },
+  "notes": [
+    "There is no single fixed legal font size; disclosures must be clear and conspicuous based on context and device size.",
+    "Small print must be legible and prominent enough to qualify claims; avoid tiny type or low-contrast presentation.",
+    "Use high contrast and avoid burying or minimizing qualifying information."
+  ],
+  "commonPrinciples": [
+    "Disclosures and qualifications must be clear and conspicuous.",
+    "Qualifying information should be close to the claim it qualifies and near the ad's focal point.",
+    "Avoid small type or styling that makes disclosures hard to read.",
+    "Use strong contrast and legible fonts.",
+    "Avoid misleading overall impressions; disclosures must not contradict headline claims."
+  ],
+  "customOverrides": {
+    "description": "Developer preferences that override default styling choices.",
+    "textColorPolicy": {
+      "default": "#ffffff",
+      "useDarkTextOnLightGreyBg": true,
+      "lightGreyThreshold": {
+        "hexes": ["#9aa0a6", "#c0c0c0", "#cccccc", "#d0d0d0", "#e0e0e0"]
+      }
+    },
+    "forbiddenCombinations": [
+      {
+        "backgroundHex": "#fbbc05",
+        "textHex": "#34a853",
+        "fallbackTextHex": "#1f1f1f",
+        "reason": "Green on yellow reduces legibility."
+      }
+    ]
+  },
+  "ukPriorityProhibitions": [
+    "Avoid drip pricing; include mandatory fees in the total price shown.",
+    "Qualifications must be sufficiently prominent and cannot contradict headline claims."
+  ],
+  "regulatorySources": {
+    "us": [
+      "https://www.ftc.gov/business-guidance/resources/advertising-faqs-guide-small-business",
+      "https://www.ftc.gov/business-guidance/resources/native-advertising-guide-businesses"
+    ],
+    "uk": [
+      "https://www.asa.org.uk/advice-online/claims-that-require-qualification.html",
+      "https://www.gov.uk/government/publications/price-transparency-cma209/providing-clear-and-accurate-information-about-prices-summary"
+    ]
+  },
+  "validation": {
+    "onMatch": {
+      "behavior": "modal",
+      "autoDismissMs": 1600,
+      "message": "Background and text colors cannot be the same for the same variation."
+    }
+  },
+  "exceptions": [
+    {
+      "when": "noTextColorsProvided",
+      "action": "useShiftedDefaults"
+    }
+  ]
+}

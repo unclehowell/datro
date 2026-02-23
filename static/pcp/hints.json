@@ -1,0 +1,53 @@
+{
+  "version": "1.0.0",
+  "scope": "banner-generator2.html",
+  "rules": [
+    {
+      "id": "hint-default-white-text",
+      "severity": "hint",
+      "summary": "Use white text by default.",
+      "details": "Unless the background is light grey, prefer white for better consistency."
+    },
+    {
+      "id": "hint-light-grey-use-dark-text",
+      "severity": "hint",
+      "summary": "Use dark text on light grey backgrounds.",
+      "details": "Light grey backgrounds should use dark text for readability.",
+      "lightGreyHexes": [
+        "#9aa0a6",
+        "#c0c0c0",
+        "#cccccc",
+        "#d0d0d0",
+        "#e0e0e0"
+      ],
+      "preferredTextHex": "#1f1f1f"
+    },
+    {
+      "id": "hint-no-green-on-yellow",
+      "severity": "hint",
+      "summary": "Avoid green text on yellow background.",
+      "details": "Green on yellow reduces legibility; prefer dark grey.",
+      "backgroundHex": "#fbbc05",
+      "textHex": "#34a853",
+      "fallbackTextHex": "#1f1f1f"
+    },
+    {
+      "id": "hint-wcag-contrast-deterministic",
+      "severity": "hint",
+      "summary": "Use WCAG luminance contrast as the primary gatekeeper.",
+      "details": "Compute relative luminance and contrast ratio by size tier; enforce polarity (bg vs text luminance) and block mid-tone pairings to ensure legibility."
+    },
+    {
+      "id": "hint-smallprint-fullwidth",
+      "severity": "hint",
+      "summary": "Footer small print must span the full width.",
+      "details": "Require 1vw inset on each side and 1vh offset from the bottom edge."
+    },
+    {
+      "id": "hint-layout-placement-by-size",
+      "severity": "hint",
+      "summary": "Place logo/headline/small print by size tier.",
+      "details": "Vertical: logo in top 15% (centered), headline in next 35%, small print in bottom 15%. Horizontal: logo left-top quadrant, headline centered in middle band, small print bottom band. Large: allow larger headline zone; Small: tighten headline zone to avoid overflow."
+    }
+  ]
+}

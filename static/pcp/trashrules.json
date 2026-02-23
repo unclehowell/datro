@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "scope": "banner-generator2.html",
+  "rules": [
+    {
+      "id": "trash-contrast-min",
+      "severity": "trash",
+      "summary": "Contrast too low to read.",
+      "minContrastRatio": 4.5
+    },
+    {
+      "id": "trash-text-overflow",
+      "severity": "trash",
+      "summary": "Text overflow or clipping detected.",
+      "overflow": true
+    },
+    {
+      "id": "trash-wordcount",
+      "severity": "trash",
+      "summary": "Excessive text density.",
+      "maxWords": 20
+    },
+    {
+      "id": "trash-smallprint-font",
+      "severity": "trash",
+      "summary": "Small print too small.",
+      "minFontPx": 8
+    },
+    {
+      "id": "trash-illegal",
+      "severity": "trash",
+      "summary": "Illegal by law rules."
+    }
+  ]
+}
