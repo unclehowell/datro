@@ -2014,6 +2014,8 @@
     if (state.bgImage) showUploadPreview('bgImageArea', state.bgImage, '✓ Default background');
 
     if (!forceDefaults) loadFromCache();
+    const unadvisedToggle = document.getElementById('filterUnadvised');
+    if (unadvisedToggle) unadvisedToggle.checked = true;
     updateCacheMonitor();
     buildRulesChecklist();
     if (!forceDefaults) await loadAdsFromCache();
