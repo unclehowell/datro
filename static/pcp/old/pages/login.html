@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Control Panel Login</title>
-  <link rel="stylesheet" href="css/adminlte.min.css">
+  <link rel="stylesheet" href="../css/adminlte.min.css">
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="css/global-shell.css" />
 </head>
 
-<body class="hold-transition login-page dark-mode">
+<body data-theme="dark" class="hold-transition login-page dark-mode">
 
 <div class="login-box">
   <div class="card card-outline card-primary shadow">
@@ -77,6 +79,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
   if (hashed === STORED_HASH) {
     localStorage.setItem("authenticated", "true");
+    sessionStorage.setItem("bf_force_default_generate", "1");
     window.location.href = "/pages/index.html";
   } else {
     error.innerText = "Invalid passphrase";
@@ -85,5 +88,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 });
 </script>
 
+  <script src="../js/theme.js"></script>
+  <script src="js/global-shell.js"></script>
 </body>
 </html>
