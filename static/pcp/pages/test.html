@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Slider Test</title>
+  <link href="../vendor/google-fonts-orbitron.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0a0a0f;
+    }
+    /* OpenClaw drawer */
+    .oc-tab {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 12000;
+      padding: 0.25rem 0.7rem;
+      background: #111418;
+      border: 1px solid #1e2428;
+      border-top: none;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      color: #7a9aaa;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: transform 0.3s ease-out;
+    }
+    .oc-tab.hidden {
+      transform: translateY(-100%);
+    }
+    .oc-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80vh;
+      background: #0a0a0a;
+      color: #7a9aaa;
+      border-bottom: 1px solid #1e2428;
+      transform: translateY(-100%);
+      transition: transform 0.5s ease-in-out;
+      z-index: 11000;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Share Tech Mono', monospace;
+    }
+    .oc-drawer.open {
+      transform: translateY(0);
+    }
+    .oc-drawer.closing {
+      transform: translateY(-100%);
+    }
+    .oc-handle {
+      height: 34px;
+      background: #111418;
+      border-bottom: 1px solid #1e2428;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: #7a9aaa;
+    }
+    .oc-toggle {
+      border: 1px solid #1e2428;
+      background: #0d1014;
+      color: #7a9aaa;
+      width: 28px;
+      height: 22px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 12px;
+      line-height: 1;
+    }
+    .oc-root {
+      display: flex;
+      flex-direction: column;
+      height: calc(100% - 34px);
+      background: #0a0a0a;
+    }
+    .oc-header {
+      height: 52px;
+      background: #111418;
+      border-bottom: 1px solid #1e2428;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+    .oc-header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #00ff88;
+      text-transform: uppercase;
+    }
+    .oc-header .sep { flex: 1; }
+    #timer-display {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: #334;
+      transition: color 0.3s;
+    }
+    #timer-display.active   { color: #00ff88; }
+    #timer-display.warning  { color: #ffaa00; }
+    #timer-display.critical { color: #ff3333; }
+    #led-strip { display: flex; align-items: center; gap: 9px; }
+    .led {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      border: 1px solid #222;
+      transition: background 0.4s, box-shadow 0.4s, border-color 0.4s;
+    }
+    .led.on-green { background: #00ff88; box-shadow: 0 0 6px #00ff88, 0 0 14px rgba(0,255,136,0.35); border-color: #00ff88; }
+    .led.on-amber { background: #ffaa00; box-shadow: 0 0 6px #ffaa00, 0 0 14px rgba(255,170,0,0.35); border-color: #ffaa00; }
+    .led.on-red { background: #ff3333; box-shadow: 0 0 6px #ff3333, 0 0 14px rgba(255,51,51,0.35); border-color: #ff3333; }
+    .led.flash { animation: ledFlash 0.5s ease-in-out infinite; }
+    @keyframes ledFlash {
+      0%,100% { background: #ff3333; box-shadow: 0 0 8px #ff3333, 0 0 16px rgba(255,51,51,0.5); border-color: #ff3333; }
+      50% { background: #1a1a1a; box-shadow: none; border-color: #222; }
+    }
+    .oc-screen {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      background: #050608;
+    }
+    .oc-screen::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px);
+      pointer-events: none;
+      z-index: 10;
+    }
+    #guac-frame {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      overflow: hidden; /* Ensure no scrollbars */
+    }
+    #dynamic-content-area img,
+    #dynamic-content-area video {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain; /* Ensure image/video fits without cropping */
+      border: none;
+      display: block;
+    }
+    #guac-frame.visible { display: block; opacity: 1; }
+    #standby-screen {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      transition: opacity 0.5s ease;
+    }
+    #standby-screen.hidden { opacity: 0; pointer-events: none; }
+    #standby-screen .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 11px;
+      letter-spacing: 8px;
+      color: #151d22;
+      text-transform: uppercase;
+    }
+    #standby-screen .hint {
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: #151d22;
+      animation: blink 2.5s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100% { opacity: 0.3; } 50% { opacity: 0.9; } }
+    #offline-screen {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+    }
+    #offline-screen.visible { display: flex; }
+    #offline-screen img { max-width: 100%; max-height: 100%; object-fit: contain; filter: grayscale(30%) brightness(0.8); }
+    #offline-screen .offline-label {
+      position: absolute;
+      bottom: 24px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 11px;
+      letter-spacing: 5px;
+      color: #ff3333;
+      opacity: 0.6;
+    }
+    .oc-bottom {
+      height: 68px;
+      background: #111418;
+      border-top: 1px solid #1e2428;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    #power-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #0d1014;
+      border: 2px solid #1e2428;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s;
+      outline: none;
+      flex-shrink: 0;
+    }
+    #power-btn:hover { border-color: #00ff88; box-shadow: 0 0 10px rgba(0,255,136,0.2); }
+    #power-btn.on { border-color: #00ff88; box-shadow: 0 0 10px rgba(0,255,136,0.4), inset 0 0 8px rgba(0,255,136,0.08); }
+    #power-btn svg { width: 18px; height: 18px; stroke: #334; transition: stroke 0.25s; }
+    #power-btn.on svg { stroke: #00ff88; }
+    #power-btn:hover svg { stroke: #00ff88; }
+    #mute-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #0d1014;
+      border: 2px solid #1e2428;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s;
+      outline: none;
+      flex-shrink: 0;
+    }
+    #mute-btn.on { border-color: #00ff88; box-shadow: 0 0 10px rgba(0,255,136,0.4), inset 0 0 8px rgba(0,255,136,0.08); }
+    #mute-btn svg { width: 18px; height: 18px; stroke: #334; transition: stroke 0.25s; }
+    #mute-btn.on svg { stroke: #00ff88; }
+    #mute-btn:hover svg { stroke: #00ff88; }
+    #user-query {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: 3px;
+      border: 1px solid #1e2428;
+      background: #0d1014;
+      color: #8ab;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    #user-query::placeholder { color: #1e2d35; }
+    #user-query:focus { border-color: #233a48; }
+    #user-query:disabled { opacity: 0.3; }
+    #send-btn, #mic-btn {
+      padding: 12px 22px;
+      background: #0d1a14;
+      color: #00ff88;
+      border: 1px solid #1a3028;
+      border-radius: 3px;
+      cursor: pointer;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 16px;
+      letter-spacing: 1px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    #send-btn:hover, #mic-btn:hover { background: #122218; border-color: #00ff88; }
+    #send-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    #feedback { font-size: 13px; color: #2a4a3a; min-width: 80px; text-align: right; letter-spacing: 1px; }
+
+    .fullscreen-video {
+        width: 100%;
+        height: auto;
+    }
+
+    .scanlines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3) 1px,
+            transparent 1px,
+            transparent 2px
+        );
+        pointer-events: none;
+        z-index: 11;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="oc-tab" id="ocTab">∨</div>
+  <div class="oc-drawer" id="ocDrawer">
+    <div class="oc-handle">
+      <button class="oc-toggle" id="ocToggleUp">∧</button>
+    </div>
+    <div class="oc-root">
+      <div class="oc-header">
+        <h1>CFC Agent</h1>
+        <span class="sep"></span>
+        <span id="timer-display">--:--</span>
+        <div id="led-strip">
+          <div class="led" id="led3"></div>
+          <div class="led" id="led2"></div>
+          <div class="led" id="led1"></div>
+        </div>
+      </div>
+      <div class="oc-screen">
+        <div id="standby-screen">
+          <div class="logo">Remote Console</div>
+          <div class="hint">PRESS POWER TO CONNECT</div>
+        </div>
+
+        <div id="dynamic-content-area" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: #000; overflow: hidden;">
+          <!-- Content will be dynamically loaded here: img, video, or iframe -->
+        </div>
+        <div class="scanlines"></div>
+
+        <div id="offline-screen">
+          <img src="../assets/img/session-terminated.jpg" alt="Session ended">
+          <div class="offline-label">SESSION TERMINATED</div>
+        </div>
+      </div>
+      <div class="oc-bottom">
+        <button id="power-btn" title="Connect / Disconnect">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v6"/>
+            <path d="M6.3 6.3a8 8 0 1 0 11.4 0"/>
+          </svg>
+        </button>
+        <button id="mute-btn" class="oc-control-btn" style="display:none;" title="Mute / Unmute Radio">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path class="volume-icon" d="M11 5L6 9H2v6h4l5 4V5z"/>
+            <path class="mute-slash" d="M21 9l-6 6M15 9l6 6" style="display:none;"/>
+          </svg>
+        </button>
+        <input type="text" id="user-query" placeholder="Ask CFC Agent to do something..." disabled style="opacity:0.5;" />
+        <button id="send-btn" disabled style="opacity:0.5;">Send</button>
+        <button id="mic-btn" type="button" disabled style="opacity:0.5;">🎤</button>
+        <span id="feedback"></span>
+      </div>
+    </div>
+  </div>
+
+  <audio id="radio-stream" src="https://stream.rcs.revma.com/fxp289cp81uvv" preload="none"></audio>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>

@@ -8,16 +8,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const sendBtn = document.getElementById('send-btn');
     const dynamicContentArea = document.getElementById('dynamic-content-area');
     const radioStream = document.getElementById('radio-stream');
+    const timerDisplay = document.getElementById('timer-display');
 
     let drawerState = 'CLOSED'; // CLOSED, OPEN, CLOSING
     let firstSend = true;
     let isMuted = false;
-    let countdownTimer = null;
+    let countdownInterval = null;
+    let countdownTimeout = null;
 
     const ASSET_TESTCARD = '../assets/img/testcard.png';
     const ASSET_WELCOME_VIDEO = '../assets/videos/welcometotechsupport.mp4';
     const ASSET_BYE_VIDEO = '../assets/videos/byhaveanicelife.mp4';
-    const GUAC_URL = 'https://ai.carfinancecheque.uk/guacamole/';
+    const GUAC_URL = 'https://ai.carfinancecheque.uk/';
 
     function clearDynamicContent() {
         while (dynamicContentArea.firstChild) {
@@ -32,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const img = document.createElement('img');
             img.src = url;
             dynamicContentArea.appendChild(img);
-            return Promise.resolve();
+            return Promise.resolve(img);
         } else if (type === 'video') {
             const video = document.createElement('video');
             video.src = url;
@@ -40,31 +42,63 @@ document.addEventListener('DOMContentLoaded', () => {
             video.controls = controls;
             video.muted = false;
             video.volume = 1.0;
+            video.classList.add('fullscreen-video');
             dynamicContentArea.appendChild(video);
-            return new Promise(resolve => {
+            
+            const promise = new Promise((resolve, reject) => {
                 video.onended = resolve;
+                video.onerror = reject;
             });
-        } else if (type === 'iframe') {
-            const iframe = document.createElement('iframe');
-            iframe.id = 'guac-frame';
-            iframe.src = url;
-            iframe.sandbox = 'allow-scripts allow-same-origin allow-forms';
-            iframe.style.width = '100%';
-            iframe.style.height = '100%';
-            iframe.style.border = 'none';
-            iframe.style.overflow = 'hidden';
-            dynamicContentArea.appendChild(iframe);
-            return Promise.resolve();
-        }
+            promise.video = video;
+            return promise;
+
+} else if (type === 'iframe') {
+    const iframe = document.createElement('iframe');
+    iframe.id = 'guac-frame';
+    iframe.src = url;
+    // ADDED: allow-popups and allow-pointer-lock for Guacamole stability
+    iframe.sandbox = 'allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock';
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.style.border = 'none';
+    iframe.style.overflow = 'hidden';
+    dynamicContentArea.appendChild(iframe);
+    return Promise.resolve(iframe);
+}
+    }
+
+    function updateTimerDisplay(remainingTime) {
+        const minutes = Math.floor(remainingTime / 60);
+        const seconds = remainingTime % 60;
+        timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     }
 
     function startCountdown() {
-        clearTimeout(countdownTimer);
-        countdownTimer = setTimeout(() => {
+        clearInterval(countdownInterval);
+        clearTimeout(countdownTimeout);
+
+        let remainingTime = 3 * 60;
+        updateTimerDisplay(remainingTime);
+
+        countdownInterval = setInterval(() => {
+            remainingTime--;
+            updateTimerDisplay(remainingTime);
+            if (remainingTime <= 0) {
+                clearInterval(countdownInterval);
+            }
+        }, 1000);
+
+        countdownTimeout = setTimeout(() => {
             if (drawerState === 'OPEN') {
                 setDrawerState('CLOSING');
             }
-        }, 3 * 60 * 1000); // 3 minutes
+        }, 3 * 60 * 1000);
+    }
+    
+    function stopCountdown() {
+        clearInterval(countdownInterval);
+        clearTimeout(countdownTimeout);
+        timerDisplay.textContent = '--:--';
     }
 
     function setDrawerState(newState) {
@@ -85,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isMuted = false;
             updateMuteButton();
             firstSend = true;
-            clearTimeout(countdownTimer);
+            stopCountdown();
             loadContent(ASSET_TESTCARD, 'image');
         } else if (newState === 'OPEN') {
             ocDrawer.classList.add('open');
@@ -110,14 +144,11 @@ document.addEventListener('DOMContentLoaded', () => {
             radioStream.currentTime = 0;
             isMuted = false;
             updateMuteButton();
-            clearTimeout(countdownTimer);
+            stopCountdown();
 
             loadContent(ASSET_BYE_VIDEO, 'video', true, false).then(() => {
                 loadContent(ASSET_TESTCARD, 'image');
-                setTimeout(() => {
-                    setDrawerState('CLOSED');
-                    ocDrawer.classList.remove('closing');
-                }, 1000);
+                setDrawerState('CLOSED');
             });
         }
     }
@@ -136,21 +167,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (firstSend) {
             firstSend = false;
-            loadContent(ASSET_WELCOME_VIDEO, 'video', true, false).then(() => {
-                loadContent(GUAC_URL, 'iframe');
-            });
-            muteBtn.style.display = 'flex';
-            radioStream.volume = 0.1;
+            const videoPromise = loadContent(ASSET_WELCOME_VIDEO, 'video', true, false);
+            const videoElement = videoPromise.video;
+
+            radioStream.volume = 0;
             radioStream.play();
+
+            let fadeInterval = null;
+
+            const timeUpdateHandler = () => {
+                if (videoElement.duration - videoElement.currentTime <= 2) {
+                    videoElement.removeEventListener('timeupdate', timeUpdateHandler);
+                    
+                    let currentVolume = 0;
+                    fadeInterval = setInterval(() => {
+                        currentVolume += 0.005;
+                        if (currentVolume >= 0.05) {
+                            currentVolume = 0.05;
+                            clearInterval(fadeInterval);
+                        }
+                        radioStream.volume = isMuted ? 0 : currentVolume;
+                    }, 100);
+                }
+            };
+
+            videoElement.addEventListener('timeupdate', timeUpdateHandler);
+
+            videoPromise.then(() => {
+                clearInterval(fadeInterval);
+                loadContent(GUAC_URL, 'iframe');
+                muteBtn.style.display = 'flex';
+            });
         } else {
             console.log('Sending message:', message);
         }
-        // Do not clear the input field: userQuery.value = '';
     }
 
     function toggleMute() {
         isMuted = !isMuted;
-        radioStream.volume = isMuted ? 0 : 0.1;
+        radioStream.volume = isMuted ? 0 : 0.05;
         updateMuteButton();
     }
 
@@ -179,3 +234,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial state
     setDrawerState('CLOSED');
 });
+
