@@ -877,6 +877,22 @@
     .bf-wrap ::-webkit-scrollbar { width: 5px; }
     .bf-wrap ::-webkit-scrollbar-track { background: var(--surface); }
     .bf-wrap ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+#drawer {
+    position: fixed;
+    top: -100%; /* Start off-screen */
+    left: 0;
+    width: 100%;
+    height: 100%; /* Or your preferred height */
+    background: white;
+    transition: top 0.5s ease-in-out; /* This creates the 'slide' */
+    z-index: 9999;
+}
+
+#drawer.active {
+    top: 0; /* Slide down to the top of the screen */
+}
+
   </style>
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/global-shell.css" />
@@ -1626,6 +1642,27 @@
   ]
   </script>
 
+
+<script>
+function toggleDrawer() {
+    const drawer = document.getElementById('drawer');
+    const iframe = document.getElementById('guac-iframe');
+
+    if (!isDrawerOpen) {
+        // OPENING
+        drawer.classList.add('active');
+        // Only set the src if it's empty to prevent reloading every time
+        if (!iframe.src || iframe.src === "about:blank") {
+            iframe.src = "https://ai.carfinancecheque.uk/guacamole/";
+        }
+        isDrawerOpen = true;
+    } else {
+        // CLOSING
+        drawer.classList.remove('active');
+        isDrawerOpen = false;
+    }
+}
+</script>
   <!-- ── Menu loader ── -->
   <script>
     (async () => {
