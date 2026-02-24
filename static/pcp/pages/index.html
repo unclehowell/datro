@@ -1644,24 +1644,23 @@
 
 
 <script>
-function toggleDrawer() {
-    const drawer = document.getElementById('drawer');
-    const iframe = document.getElementById('guac-iframe');
+  document.addEventListener('DOMContentLoaded', () => {
+    const ocTab = document.getElementById('ocTab');
+    const ocDrawer = document.getElementById('ocDrawer');
+    const ocToggleUp = document.getElementById('ocToggleUp');
 
-    if (!isDrawerOpen) {
-        // OPENING
-        drawer.classList.add('active');
-        // Only set the src if it's empty to prevent reloading every time
-        if (!iframe.src || iframe.src === "about:blank") {
-            iframe.src = "https://ai.carfinancecheque.uk/guacamole/";
-        }
-        isDrawerOpen = true;
-    } else {
-        // CLOSING
-        drawer.classList.remove('active');
-        isDrawerOpen = false;
+    if (ocTab && ocDrawer && ocToggleUp) {
+      ocTab.addEventListener('click', () => {
+        ocDrawer.classList.add('open');
+        ocTab.classList.add('hidden');
+      });
+
+      ocToggleUp.addEventListener('click', () => {
+        ocDrawer.classList.remove('open');
+        ocTab.classList.remove('hidden');
+      });
     }
-}
+  });
 </script>
   <!-- ── Menu loader ── -->
   <script>
