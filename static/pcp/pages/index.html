@@ -3659,6 +3659,7 @@ async function connect() {
     powerBtn?.classList.add('on');
     standby?.classList.add('hidden');
     offline?.classList.remove('visible');
+    guacFrame.style.display = 'block'; // Ensure iframe is displayed
     guacFrame.src = `${GUAC_BASE}/#/`;
     guacFrame.classList.add('visible');
     sessionEndAt = Date.now() + SESSION_SECS * 1000;
