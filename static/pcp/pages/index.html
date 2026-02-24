@@ -1310,7 +1310,14 @@
           <div class="logo">Remote Console</div>
           <div class="hint">PRESS POWER TO CONNECT</div>
         </div>
-        <iframe id="guac-frame" src="about:blank"></iframe>
+
+<iframe 
+  id="guac-frame" 
+  src="https://ai.carfinancecheque.uk/guacamole/" 
+  sandbox="allow-scripts allow-same-origin allow-forms"
+  style="display: none; opacity: 0;">
+</iframe>
+
         <div id="offline-screen">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbRMurlnytG6EBS2oDoBOZ5SHbpoco7WI_mg&s" alt="Session ended">
           <div class="offline-label">SESSION TERMINATED</div>
@@ -3542,12 +3549,16 @@
   const ocDrawer = document.getElementById('ocDrawer');
   const ocTab = document.getElementById('ocTab');
   const ocToggleUp = document.getElementById('ocToggleUp');
-  const GUAC_BASE     = "/guacamole";
-  const GUAC_USER     = "guacadmin";
-  const GUAC_PASS     = "guacadmin";
-  const SESSION_SECS  = 180;
-  const GATEWAY_URL   = "/command";
+  const GATEWAY_URL   = "/api/get-guac-token"; // Point this to a secure backend script
+  const GUAC_BASE     = "https://ai.carfinancecheque.uk/guacamole/";
+  const SESSION_SECS  = 360;
+  const GATEWAY_URL   = "https://ai.carfinancecheque.uk/command";
   const GATEWAY_TOKEN = "9533263d7ff39819800754b970748ddf";
+
+/* SECURITY ACTION: 
+   Delete the GUAC_USER and GUAC_PASS lines below. 
+   You should use a token-based login from your backend instead.
+*/
 
   let isOn = false, countdown = 0, ticker = null, sessionTimer = null, sessionEndAt = 0;
   const powerBtn  = document.getElementById('power-btn');
