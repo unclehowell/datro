@@ -1688,6 +1688,11 @@
     const ASSET_WELCOME_VIDEO = '../assets/videos/welcometotechsupport.mp4';
     const ASSET_BYE_VIDEO = '../assets/videos/byhaveanicelife.mp4';
     const GUAC_URL = 'https://ai.carfinancecheque.uk/guacamole/';
+    // Note: Loading HTTPS content (GUAC_URL) within an HTTP page (e.g., localhost)
+    // is often blocked by browsers due to mixed content security policies.
+    // To resolve this for local development, ensure your local server uses HTTPS.
+    // This can be achieved with tools like mkcert or a self-signed certificate.
+    // Attempting to bypass this client-side would compromise security.
 
     function clearDynamicContent() {
       while (dynamicContentArea.firstChild) {
@@ -1709,7 +1714,8 @@
         video.src = url;
         video.autoplay = autoplay;
         video.controls = controls;
-        video.muted = true; // Mute video to prevent interference with radio stream
+        video.muted = false; // Unmute video audio
+        video.volume = 1.0; // Set video volume to 100%
         dynamicContentArea.appendChild(video);
         currentMediaElement = video;
         return new Promise(resolve => {
@@ -1800,7 +1806,7 @@
           firstSend = false;
         });
         muteBtn.style.display = 'flex'; // Show mute button
-        radioStream.volume = 0.1;
+        radioStream.volume = 0.05;
         radioStream.play();
       } else {
         // Assuming "send the message normally" means sending it to the iframe
@@ -1820,7 +1826,7 @@
       if (isMuted) {
         radioStream.volume = 0;
       } else {
-        radioStream.volume = 0.1;
+        radioStream.volume = 0.05;
       }
       updateMuteButton();
     }
