@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>Slider Test</title>
-  <link href="../vendor/google-fonts-orbitron.css" rel="stylesheet">
+  <link href="../vendor/google-fonts-orbitron.css?v=1700000000" rel="stylesheet">
+  <link href="https://primary.jwwb.nl/public/x/o/f/temp-wsxrnoswjwurulcytugx/style.css?bust=1768565966" rel="stylesheet">
   <style>
     body {
       background-color: #0a0a0f;
@@ -27,17 +28,22 @@
       font-size: 12px;
       letter-spacing: 2px;
       cursor: pointer;
-      transition: transform 0.3s ease-out;
+      transition: transform 0.3s ease-out, top 0.5s ease-in-out; /* Added top for pine.png movement */
     }
     .oc-tab.hidden {
       transform: translateY(-100%);
+    }
+    .oc-tab img {
+      width: 30px; /* Adjust size as needed */
+      height: 30px;
+      display: block;
     }
     .oc-drawer {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      height: 80vh;
+      height: 100vh; /* Changed to full screen height */
       background: #0a0a0a;
       color: #7a9aaa;
       border-bottom: 1px solid #1e2428;
@@ -75,6 +81,11 @@
       font-family: 'Orbitron', sans-serif;
       font-size: 12px;
       line-height: 1;
+    }
+    .oc-toggle img {
+      width: 30px; /* Adjust size as needed */
+      height: 30px;
+      display: block;
     }
     .oc-root {
       display: flex;
@@ -203,6 +214,16 @@
       color: #ff3333;
       opacity: 0.6;
     }
+    #john-video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; /* Will be clipped by overflow:hidden on parent */
+      display: none; /* Hidden by default */
+      object-fit: cover; /* Cover the area, potentially cropping */
+      z-index: 9; /* Below scanlines, above iframe */
+    }
     .oc-bottom {
       height: 68px;
       background: #111418;
@@ -307,10 +328,10 @@
 </head>
 <body>
 
-  <div class="oc-tab" id="ocTab">∨</div>
+  <div class="oc-tab" id="ocTab"><img src="../assets/img/pine.png" alt="Open Drawer"></div>
   <div class="oc-drawer" id="ocDrawer">
     <div class="oc-handle">
-      <button class="oc-toggle" id="ocToggleUp">∧</button>
+      <button class="oc-toggle" id="ocToggleUp"><img src="../assets/img/pine.png" alt="Close Drawer"></button>
     </div>
     <div class="oc-root">
       <div class="oc-header">
@@ -332,6 +353,7 @@
         <div id="dynamic-content-area" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: #000; overflow: hidden;">
           <!-- Content will be dynamically loaded here: img, video, or iframe -->
         </div>
+        <video id="john-video-overlay" src="../assets/videos/john.webm" loop muted></video>
         <div class="scanlines"></div>
 
         <div id="offline-screen">
@@ -362,6 +384,6 @@
 
   <audio id="radio-stream" src="https://stream.rcs.revma.com/fxp289cp81uvv" preload="none"></audio>
 
-  <script src="../js/app.js"></script>
+  <script src="../js/app.js?v=1700000000"></script>
 </body>
 </html>
