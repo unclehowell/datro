@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateMuteButton();
             firstSend = true;
             stopCountdown();
-            loadContent(ASSET_TESTCARD, 'image');
+            loadContent(ASSET_WELCOME_VIDEO, 'video');
         } else if (newState === 'OPEN') {
             ocDrawer.classList.add('open');
             ocDrawer.classList.remove('closing');
