@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ASSET_WELCOME_VIDEO = '../assets/videos/welcometotechsupport.mp4';
     const ASSET_BYE_VIDEO = '../assets/videos/byhaveanicelife.mp4';
     const ASSET_JOHN_VIDEO = '../assets/videos/john.webm';
-    const YOUTUBE_VIDEO_URL = 'https://www.youtube.com/embed/plnkjKbXZaE?si=okRZ0o0r0Ix8Q-FV&autoplay=1&mute=1';
+    const YOUTUBE_VIDEO_URL = 'https://www.youtube.com/embed/plnkjKbXZaE?si=okRZ0o0r0Ix8Q-FV&autoplay=1&mute=1&controls=0&loop=1&playlist=plnkjKbXZaE';
     const GUAC_URL = 'https://ai.carfinancecheque.uk/';
 
     function getAssetUrl(path) {
@@ -198,8 +198,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (powerBtn) powerBtn.classList.add('on');
                 if (userQuery) { userQuery.disabled = false; userQuery.style.opacity = '1'; }
                 if (sendBtn) {
-                    sendBtn.disabled = userQuery.value.trim() === '';
-                    sendBtn.style.opacity = (sendBtn.disabled) ? '0.5' : '1';
+                    sendBtn.disabled = false; // Always enabled when drawer is open
+                    sendBtn.style.opacity = '1';
                 }
                 if (muteBtn) muteBtn.style.display = 'flex';
                 startCountdown();
