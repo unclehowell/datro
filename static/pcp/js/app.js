@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ASSET_WELCOME_VIDEO = '../assets/videos/welcometotechsupport.mp4';
     const ASSET_BYE_VIDEO = '../assets/videos/byhaveanicelife.mp4';
     const ASSET_JOHN_VIDEO = '../assets/videos/john.webm';
+    const YOUTUBE_VIDEO_URL = 'https://www.youtube.com/embed/plnkjKbXZaE?si=okRZ0o0r0Ix8Q-FV';
     const GUAC_URL = 'https://ai.carfinancecheque.uk/';
 
     function getAssetUrl(path) {
@@ -206,15 +207,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     const welcomeVideoPromise = loadContent(ASSET_WELCOME_VIDEO, 'video', true, false);
                     welcomeVideoPromise.video.muted = false; // Unmute the welcome video
-                    welcomeVideoPromise.then(() => {
-                        setTimeout(() => {
-                            if (radioStream && !isMuted) {
-                                radioStream.play().catch(() => {});
-                                fadeRadioVolume(0.05, 1000);
-                            }
-                        }, 1000);
+                    welcomeVideoPromise.then((welcomeVideoElement) => {
+                        // Remove the welcome video after it finishes
+                        if (welcomeVideoElement && dynamicContentArea.contains(welcomeVideoElement)) {
+                            dynamicContentArea.removeChild(welcomeVideoElement);
+                        }
 
-                        loadContent(GUAC_URL, 'iframe').then(() => {
+                        // Load the YouTube iframe
+                        loadContent(YOUTUBE_VIDEO_URL, 'iframe').then(() => {
+                            // Then handle the johnVideoOverlay
+                            setTimeout(() => {
+                                if (radioStream && !isMuted) {
+                                    radioStream.play().catch(() => {});
+                                    fadeRadioVolume(0.05, 1000);
+                                }
+                            }, 1000);
+
+                            // Now display the johnVideoOverlay
                             if (johnVideoOverlay) {
                                 johnVideoOverlay.src = getAssetUrl(ASSET_JOHN_VIDEO);
                                 johnVideoOverlay.style.display = 'block';
