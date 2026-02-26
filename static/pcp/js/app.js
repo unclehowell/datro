@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const muteBtn = document.getElementById('mute-btn');
     const userQuery = document.getElementById('user-query');
     const sendBtn = document.getElementById('send-btn');
+    const toggleWebmBtn = document.getElementById('toggle-webm-btn');
     const dynamicContentArea = document.getElementById('dynamic-content-area');
     const radioStream = document.getElementById('radio-stream');
     const timerDisplay = document.getElementById('timer-display');
@@ -178,6 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (userQuery) { userQuery.disabled = true; userQuery.style.opacity = '0.5'; }
             if (sendBtn) { sendBtn.disabled = true; sendBtn.style.opacity = '0.5'; }
             if (muteBtn) muteBtn.style.display = 'none';
+            if (toggleWebmBtn) toggleWebmBtn.style.display = 'none';
             if (johnVideoOverlay) { johnVideoOverlay.style.display = 'none'; johnVideoOverlay.pause(); }
             if (radioStream) { radioStream.pause(); radioStream.currentTime = 0; radioStream.volume = 0; }
             isMuted = false;
@@ -198,10 +200,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (powerBtn) powerBtn.classList.add('on');
                 if (userQuery) { userQuery.disabled = false; userQuery.style.opacity = '1'; }
                 if (sendBtn) {
-                    sendBtn.disabled = false; // Always enabled when drawer is open
+                    sendBtn.disabled = false;
                     sendBtn.style.opacity = '1';
                 }
                 if (muteBtn) muteBtn.style.display = 'flex';
+                if (toggleWebmBtn) toggleWebmBtn.style.display = 'flex';
                 startCountdown();
 
                 setTimeout(() => {
@@ -264,7 +267,20 @@ document.addEventListener('DOMContentLoaded', () => {
             if (userQuery) { userQuery.disabled = true; userQuery.style.opacity = '0.5'; }
             if (sendBtn) { sendBtn.disabled = true; sendBtn.style.opacity = '0.5'; }
             if (muteBtn) muteBtn.style.display = 'none';
+            if (toggleWebmBtn) toggleWebmBtn.style.display = 'none';
             stopCountdown();
+        }
+    }
+
+    function toggleWebmOverlay() {
+        if (johnVideoOverlay) {
+            if (johnVideoOverlay.style.display === 'none') {
+                johnVideoOverlay.style.display = 'block';
+                johnVideoOverlay.play().catch(() => {});
+            } else {
+                johnVideoOverlay.style.display = 'none';
+                johnVideoOverlay.pause();
+            }
         }
     }
 
@@ -353,6 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (powerBtn) powerBtn.addEventListener('click', togglePower);
     if (muteBtn) muteBtn.addEventListener('click', toggleMute);
     if (sendBtn) sendBtn.addEventListener('click', sendMessage);
+    if (toggleWebmBtn) toggleWebmBtn.addEventListener('click', toggleWebmOverlay);
     if (userQuery) {
         userQuery.addEventListener('input', () => {
             if (drawerState === 'OPEN' && sendBtn) {

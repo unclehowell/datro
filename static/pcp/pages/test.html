@@ -230,10 +230,10 @@
       bottom: 0;
       left: 0;
       width: 97%;
-      height: 110%;
+      height: 127%; /* Changed from 110% to 127% */
       object-fit: none;
       z-index: 10;
-      margin-bottom: -209px;
+      margin-bottom: -209px; /* Changed from -209px to -209px (confirming) */
     }
     .oc-bottom {
       height: 68px;
@@ -334,7 +334,7 @@
             transparent 2px
         );
         pointer-events: none;
-        z-index: 11;
+        z-index: 2; /* Changed from 11 to 2 */
     }
   </style>
 </head>
@@ -361,9 +361,9 @@
 
         <div id="dynamic-content-area" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: #000; overflow: hidden; z-index: 1;">
           <img src="../assets/img/testcard.png" alt="Test Card" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+          <div class="scanlines"></div>
         </div>
         <video id="john-video-overlay" src="../assets/videos/john.webm" loop muted style="display: none;"></video>
-        <div class="scanlines"></div>
 
         <div id="offline-screen">
           <img id="offline-img" src="../assets/img/session-terminated.jpg" alt="Session ended">
@@ -385,6 +385,7 @@
         </button>
         <input type="text" id="user-query" placeholder="Ask CFC Agent to do something..." disabled style="opacity:0.5;" />
         <button id="send-btn" disabled style="opacity:0.5;">Send</button>
+        <button id="toggle-webm-btn" class="oc-control-btn" style="display:none;" title="Toggle WebM Overlay">WebM</button>
         <button id="mic-btn" type="button" disabled style="opacity:0.5;">🎤</button>
         <span id="feedback"></span>
       </div>
