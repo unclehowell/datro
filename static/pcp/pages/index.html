@@ -1044,7 +1044,7 @@
                           <button class="bf-filter-btn" id="filterBtn" type="button" aria-expanded="false" aria-haspopup="true">⛭ Filter <span id="filterCounts" style="margin-left:0.35rem; color:var(--muted); font-weight:600;">0/0/0</span></button>
                           <div class="bf-filter-dropdown" id="filterDropdown">
                             <label class="bf-filter-item"><input type="checkbox" id="filterTrash"> trash</label>
-                            <label class="bf-filter-item"><input type="checkbox" id="filterIllegal"> illegal</label>
+                            <label class="bf-filter-item"><input type="checkbox" id="filterIllegal" checked> illegal</label>
                             <label class="bf-filter-item"><input type="checkbox" id="filterUnadvised" checked> unadvised</label>
                           </div>
                         </div>
@@ -1347,6 +1347,7 @@
         <div id="dynamic-content-area" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: #000;">
           <!-- Content will be dynamically loaded here: img, video, or iframe -->
         </div>
+        <video id="john-video-overlay" src="../assets/videos/john.webm" loop muted style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:9;"></video>
 
         <div id="offline-screen">
           <img src="../assets/img/session-terminated.jpg" alt="Session ended">
@@ -3591,34 +3592,26 @@
   const ocDrawer = document.getElementById('ocDrawer');
   const ocTab = document.getElementById('ocTab');
   const ocToggleUp = document.getElementById('ocToggleUp');
-  const GATEWAY_URL   = "/api/get-guac-token"; // Point this to a secure backend script
-  const GUAC_BASE     = "https://ai.carfinancecheque.uk/guacamole/";
-  const SESSION_SECS  = 360;
   const GATEWAY_URL   = "https://ai.carfinancecheque.uk/command";
   const GATEWAY_TOKEN = "9533263d7ff39819800754b970748ddf";
+  const GUAC_URL      = "https://ai.carfinancecheque.uk/";
 
-/* SECURITY ACTION: 
-   Delete the GUAC_USER and GUAC_PASS lines below. 
-   You should use a token-based login from your backend instead.
-*/
-
-  let isOn = false, countdown = 0, ticker = null, sessionTimer = null, sessionEndAt = 0;
-  const powerBtn  = document.getElementById('power-btn');
-  const guacFrame = document.getElementById('guac-frame');
-  const standby   = document.getElementById('standby-screen');
-  const offline   = document.getElementById('offline-screen');
-  const timerEl   = document.getElementById('timer-display');
-  const led1      = document.getElementById('led1');
-  const led2      = document.getElementById('led2');
-  const led3      = document.getElementById('led3');
+  let isOn = false, countdown = 0, ticker = null;
+  const powerBtn = document.getElementById('power-btn');
+  const timerEl  = document.getElementById('timer-display');
+  const led1 = document.getElementById('led1');
+  const led2 = document.getElementById('led2');
+  const led3 = document.getElementById('led3');
 
   ocTab?.addEventListener('click', () => openDrawer());
   ocToggleUp?.addEventListener('click', () => closeDrawer());
+  powerBtn?.addEventListener('click', () => isOn ? disconnect() : connect());
 
   function openDrawer() {
     if (!ocDrawer) return;
     ocDrawer.classList.add('open');
     ocTab?.classList.add('hidden');
+    document.getElementById('standby-screen')?.classList.remove('hidden');
     if (!isOn) connect();
   }
   function closeDrawer() {
@@ -3627,77 +3620,56 @@
     ocTab?.classList.remove('hidden');
   }
 
-async function getGuacToken() {
-    try {
-      const res = await fetch(`${GUAC_BASE}/api/tokens`, {
-        method: 'POST',
-        mode: 'cors',
-        credentials: 'omit',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `username=${encodeURIComponent(GUAC_USER)}&password=${encodeURIComponent(GUAC_PASS)}`
-      });
-      if (!res.ok) throw new Error(res.status);
-      return (await res.json()).authToken;
-    } catch(e) {
-      console.warn("Token fetch failed:", e);
-      return null;
-    }
-  }
-
-  function setLed(el, cls) { el.className = cls ? `led ${cls}` : 'led'; }
+  function setLed(el, cls) { if (el) el.className = cls ? `led ${cls}` : 'led'; }
   function updateLeds(s) {
     if      (s > 120) { setLed(led3,'on-green'); setLed(led2,'on-green'); setLed(led1,'on-green'); }
     else if (s > 60)  { setLed(led3,null);       setLed(led2,'on-amber'); setLed(led1,'on-amber'); }
     else if (s > 20)  { setLed(led3,null);       setLed(led2,null);       setLed(led1,'on-red'); }
     else if (s > 0)   { setLed(led3,null);       setLed(led2,null);       setLed(led1,'on-red flash'); }
-    else              { setLed(led3,null);       setLed(led2,null);       setLed(led1,null); }
+    else              { setLed(led3,null);        setLed(led2,null);       setLed(led1,null); }
   }
-  function updateTimer(s) {
-    const mm = String(Math.floor(s/60)).padStart(2,'0');
-    const ss = String(s%60).padStart(2,'0');
-    timerEl.textContent = `${mm}:${ss}`;
+  function updateTimerEl(s) {
+    if (!timerEl) return;
+    timerEl.textContent = `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
     timerEl.className = s > 120 ? 'active' : s > 20 ? 'warning' : 'critical';
   }
-  async function togglePower() { isOn ? disconnect() : await connect(); }
-async function connect() {
+  function connect() {
     if (isOn) return;
     isOn = true;
     powerBtn?.classList.add('on');
-    standby?.classList.add('hidden');
-    offline?.classList.remove('visible');
-    guacFrame.src = `${GUAC_BASE}/#/`;
-    sessionEndAt = Date.now() + SESSION_SECS * 1000;
-    countdown = SESSION_SECS;
-    updateLeds(countdown);
-    updateTimer(countdown);
+    document.getElementById('standby-screen')?.classList.add('hidden');
+    document.getElementById('offline-screen')?.classList.remove('visible');
+    const dynArea = document.getElementById('dynamic-content-area');
+    if (dynArea) {
+      dynArea.innerHTML = `<iframe src="${GUAC_URL}" style="width:100%;height:100%;border:none;" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock"></iframe>`;
+    }
+    countdown = 360;
+    updateLeds(countdown); updateTimerEl(countdown);
     if (ticker) clearInterval(ticker);
     ticker = setInterval(() => {
-      countdown = Math.max(0, Math.ceil((sessionEndAt - Date.now()) / 1000));
-      updateLeds(countdown);
-      updateTimer(countdown);
-      if (countdown <= 0) { clearInterval(ticker); ticker = null; timeout(); }
+      countdown = Math.max(0, countdown - 1);
+      updateLeds(countdown); updateTimerEl(countdown);
+      if (countdown <= 0) { clearInterval(ticker); ticker = null; sessionTimeout(); }
     }, 1000);
   }
   function disconnect() {
     isOn = false;
-    clearInterval(ticker); ticker = null;
+    if (ticker) { clearInterval(ticker); ticker = null; }
     powerBtn?.classList.remove('on');
-    guacFrame.classList.remove('visible');
-    guacFrame.src = 'about:blank';
     setLed(led1,null); setLed(led2,null); setLed(led3,null);
-    timerEl.textContent = '--:--'; timerEl.className = '';
-    standby?.classList.remove('hidden');
-    offline?.classList.remove('visible');
+    if (timerEl) { timerEl.textContent = '--:--'; timerEl.className = ''; }
+    const dynArea = document.getElementById('dynamic-content-area');
+    if (dynArea) dynArea.innerHTML = '';
+    document.getElementById('standby-screen')?.classList.remove('hidden');
+    document.getElementById('offline-screen')?.classList.remove('visible');
   }
-  function timeout() {
+  function sessionTimeout() {
     isOn = false;
     powerBtn?.classList.remove('on');
-    guacFrame.classList.remove('visible');
-    guacFrame.src = 'about:blank';
     setLed(led1,null); setLed(led2,null); setLed(led3,null);
-    timerEl.textContent = '00:00'; timerEl.className = 'critical';
-    standby?.classList.add('hidden');
-    offline?.classList.add('visible');
+    if (timerEl) { timerEl.textContent = '00:00'; timerEl.className = 'critical'; }
+    document.getElementById('standby-screen')?.classList.add('hidden');
+    document.getElementById('offline-screen')?.classList.add('visible');
   }
   async function sendMessage() {
     const input    = document.getElementById('user-query');
@@ -3845,10 +3817,11 @@ async function connect() {
     const showUnadvised = unadvisedToggle ? unadvisedToggle.checked : true;
     const hasLaws = adData.violations?.laws?.length > 0;
     const hasHints = adData.violations?.hints?.length > 0;
-    const hasTrash = adData.violations?.trash?.length > 0;
-    const acceptable = !(hasTrash || hasLaws || hasHints);
+    const realTrash = (adData.violations?.trash || []).filter(v => v.id !== 'trash-illegal');
+    const hasRealTrash = realTrash.length > 0;
+    const acceptable = !(hasRealTrash || hasLaws || hasHints);
     if (acceptable) return true;
-    return (hasTrash && showTrash) || (hasLaws && showIllegal) || (hasHints && showUnadvised);
+    return (hasRealTrash && showTrash) || (hasLaws && showIllegal) || (hasHints && showUnadvised);
   }
 
   let renderQueued = false;

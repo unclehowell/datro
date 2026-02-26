@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>Slider Test</title>
-  <link href="../vendor/google-fonts-orbitron.css?v=1700000000" rel="stylesheet">
-  <link href="https://primary.jwwb.nl/public/x/o/f/temp-wsxrnoswjwurulcytugx/style.css?bust=1768565966" rel="stylesheet">
+  <link id="google-fonts-orbitron" href="../vendor/google-fonts-orbitron.css" rel="stylesheet">
+  <link id="primary-style" href="https://primary.jwwb.nl/public/x/o/f/temp-wsxrnoswjwurulcytugx/style.css" rel="stylesheet">
   <style>
     body {
       background-color: #0a0a0f;
@@ -28,13 +28,13 @@
       font-size: 12px;
       letter-spacing: 2px;
       cursor: pointer;
-      transition: transform 0.3s ease-out, top 0.5s ease-in-out; /* Added top for pine.png movement */
+      transition: transform 0.3s ease-out, top 0.5s ease-in-out;
     }
     .oc-tab.hidden {
       transform: translateY(-100%);
     }
     .oc-tab img {
-      width: 30px; /* Adjust size as needed */
+      width: 30px;
       height: 30px;
       display: block;
     }
@@ -43,7 +43,7 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 100vh; /* Changed to full screen height */
+      height: 100vh;
       background: #0a0a0a;
       color: #7a9aaa;
       border-bottom: 1px solid #1e2428;
@@ -61,14 +61,25 @@
       transform: translateY(-100%);
     }
     .oc-handle {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 12001;
       height: 34px;
       background: #111418;
-      border-bottom: 1px solid #1e2428;
+      border-top: 1px solid #1e2428;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
       color: #7a9aaa;
+      transition: opacity 0.3s;
+    }
+    .oc-drawer:not(.open) .oc-handle {
+        display: none;
     }
     .oc-toggle {
       border: 1px solid #1e2428;
@@ -83,14 +94,14 @@
       line-height: 1;
     }
     .oc-toggle img {
-      width: 30px; /* Adjust size as needed */
+      width: 30px;
       height: 30px;
       display: block;
     }
     .oc-root {
       display: flex;
       flex-direction: column;
-      height: calc(100% - 34px);
+      height: 100%;
       background: #0a0a0a;
     }
     .oc-header {
@@ -159,13 +170,13 @@
       width: 100%;
       height: 100%;
       border: none;
-      overflow: hidden; /* Ensure no scrollbars */
+      overflow: hidden;
     }
     #dynamic-content-area img,
     #dynamic-content-area video {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain; /* Ensure image/video fits without cropping */
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
       border: none;
       display: block;
     }
@@ -216,13 +227,13 @@
     }
     #john-video-overlay {
       position: absolute;
-      top: 0;
+      bottom: 0;
       left: 0;
-      width: 100%;
-      height: 100%; /* Will be clipped by overflow:hidden on parent */
-      display: none; /* Hidden by default */
-      object-fit: cover; /* Cover the area, potentially cropping */
-      z-index: 9; /* Below scanlines, above iframe */
+      width: 97%;
+      height: 110%;
+      object-fit: none;
+      z-index: 9;
+      margin-bottom: -209px;
     }
     .oc-bottom {
       height: 68px;
@@ -285,7 +296,7 @@
     }
     #user-query::placeholder { color: #1e2d35; }
     #user-query:focus { border-color: #233a48; }
-    #user-query:disabled { opacity: 0.3; }
+    #user-query:disabled { opacity: 0.5; }
     #send-btn, #mic-btn {
       padding: 12px 22px;
       background: #0d1a14;
@@ -300,12 +311,13 @@
       white-space: nowrap;
     }
     #send-btn:hover, #mic-btn:hover { background: #122218; border-color: #00ff88; }
-    #send-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    #send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
     #feedback { font-size: 13px; color: #2a4a3a; min-width: 80px; text-align: right; letter-spacing: 1px; }
 
     .fullscreen-video {
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: cover;
     }
 
     .scanlines {
@@ -328,11 +340,8 @@
 </head>
 <body>
 
-  <div class="oc-tab" id="ocTab"><img src="../assets/img/pine.png" alt="Open Drawer"></div>
+  <div class="oc-tab" id="ocTab"><img id="ocTabImg" src="../assets/img/pine.png" alt="Open Drawer"></div>
   <div class="oc-drawer" id="ocDrawer">
-    <div class="oc-handle">
-      <button class="oc-toggle" id="ocToggleUp"><img src="../assets/img/pine.png" alt="Close Drawer"></button>
-    </div>
     <div class="oc-root">
       <div class="oc-header">
         <h1>CFC Agent</h1>
@@ -357,7 +366,7 @@
         <div class="scanlines"></div>
 
         <div id="offline-screen">
-          <img src="../assets/img/session-terminated.jpg" alt="Session ended">
+          <img id="offline-img" src="../assets/img/session-terminated.jpg" alt="Session ended">
           <div class="offline-label">SESSION TERMINATED</div>
         </div>
       </div>
@@ -380,10 +389,40 @@
         <span id="feedback"></span>
       </div>
     </div>
+    <div class="oc-handle">
+        <button class="oc-toggle" id="ocToggleUp"><img id="ocToggleUpImg" src="../assets/img/pine.png" alt="Close Drawer"></button>
+    </div>
   </div>
 
   <audio id="radio-stream" src="https://stream.rcs.revma.com/fxp289cp81uvv" preload="none"></audio>
 
-  <script src="../js/app.js?v=1700000000"></script>
+  <script>
+    // Cache-busting
+    const bustCache = () => {
+        const timestamp = new Date().getTime();
+        const bustable = [
+            { id: 'google-fonts-orbitron', attr: 'href' },
+            { id: 'primary-style', attr: 'href' },
+            { id: 'ocTabImg', attr: 'src' },
+            { id: 'ocToggleUpImg', attr: 'src' },
+            { id: 'offline-img', attr: 'src' },
+            { id: 'john-video-overlay', attr: 'src' },
+            { id: 'radio-stream', attr: 'src' },
+            { id: 'app-script', attr: 'src' }
+        ];
+        bustable.forEach(item => {
+            const el = document.getElementById(item.id);
+            if (el) {
+                let url = el.getAttribute(item.attr);
+                if (url) {
+                    url = url.split('?')[0];
+                    el.setAttribute(item.attr, `${url}?v=${timestamp}`);
+                }
+            }
+        });
+    };
+    bustCache();
+  </script>
+  <script id="app-script" src="../js/app.js"></script>
 </body>
 </html>

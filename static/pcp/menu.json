@@ -1,11 +1,11 @@
 [
   {
     "type": "header",
-    "label": "Dashboard"
+    "label": "Campaign"
   },
   {
     "type": "item",
-    "label": "Campaign:1",
+    "label": "Campaign: CFC",
     "icon": "bi-megaphone",
     "open": true,
     "children": [
@@ -13,90 +13,26 @@
         "label": "Outlets",
         "icon": "bi-broadcast",
         "children": [
-          {
-            "label": "Google",
-            "icon": "bi-circle",
-            "href": "#"
-          },
-          {
-            "label": "TickTock",
-            "icon": "bi-circle",
-            "href": "#"
-          },
-          {
-            "label": "Microsoft",
-            "icon": "bi-circle",
-            "href": "#"
-          },
-          {
-            "label": "Facebook",
-            "icon": "bi-circle",
-            "href": "../facebook/"
-          },
-          {
-            "label": "Email",
-            "icon": "bi-circle",
-            "href": "#"
-          },
-          {
-            "label": "ChatGPT(New)",
-            "icon": "bi-circle",
-            "href": "#"
-          }
+          { "label": "Google", "icon": "bi-google", "href": "#" },
+          { "label": "TikTok", "icon": "bi-tiktok", "href": "#" },
+          { "label": "Microsoft", "icon": "bi-microsoft", "href": "#" },
+          { "label": "Facebook", "icon": "bi-facebook", "href": "/facebook/" },
+          { "label": "Email", "icon": "bi-envelope", "href": "#" },
+          { "label": "ChatGPT (New)", "icon": "bi-robot", "href": "#" }
         ]
       },
       {
         "label": "Creatives",
         "icon": "bi-palette",
+        "open": true,
         "children": [
-          { "label": "Display", "icon": "bi-circle", "href": "#" },
-          { "label": "Video", "icon": "bi-circle", "href": "#" },
-          { "label": "Animated", "icon": "bi-circle", "href": "#" },
-          { "label": "Text", "icon": "bi-circle", "href": "#" },
-          { "label": "LLM", "icon": "bi-circle", "href": "#" },
-          { "label": "HTML (Email)", "icon": "bi-circle", "href": "#" },
-          { "label": "WebApp", "icon": "bi-circle", "href": "#" },
-          {
-            "label": "Display",
-            "icon": "bi-circle",
-            "children": [
-              {
-                "label": "Generate",
-                "icon": "bi-circle",
-                "href": "/pages/index.html"
-              }
-            ]
-          },
-          {
-            "label": "Video",
-            "icon": "bi-circle",
-            "href": "#"
-          },
-          {
-            "label": "Animated",
-            "icon": "bi-circle",
-            "href": "#"
-          },
-          {
-            "label": "Text",
-            "icon": "bi-circle",
-            "href": "#"
-          },
-          {
-            "label": "LLM",
-            "icon": "bi-circle",
-            "href": "#"
-          },
-          {
-            "label": "HTML (Email)",
-            "icon": "bi-circle",
-            "href": "#"
-          },
-          {
-            "label": "WebApp",
-            "icon": "bi-circle",
-            "href": "#"
-          }
+          { "label": "Display Ads", "icon": "bi-image", "href": "/pages/index.html" },
+          { "label": "Video", "icon": "bi-play-circle", "href": "#" },
+          { "label": "Animated", "icon": "bi-film", "href": "#" },
+          { "label": "Text", "icon": "bi-type", "href": "#" },
+          { "label": "LLM Copy", "icon": "bi-chat-text", "href": "#" },
+          { "label": "HTML (Email)", "icon": "bi-envelope-paper", "href": "#" },
+          { "label": "WebApp", "icon": "bi-globe", "href": "#" }
         ]
       }
     ]
@@ -107,110 +43,59 @@
   },
   {
     "type": "item",
-    "label": "generator",
-    "icon": "bi-wrench-adjustable-circle",
-    "href": "banner-generator2.html"
-  },
-  {
-    "type": "header",
-    "label": "Docs"
+    "label": "Banner Generator",
+    "icon": "bi-images",
+    "href": "/pages/banner-generator.html"
   },
   {
     "type": "item",
-    "label": "API",
-    "icon": "bi-filetype-json",
-    "href": "docs/introduction.html"
+    "label": "Tech Support",
+    "icon": "bi-headset",
+    "href": "/pages/test.html"
+  },
+  {
+    "type": "item",
     "label": "Settings",
-    "icon": "bi-sliders",
+    "icon": "bi-gear",
     "action": "settings-modal"
   },
   {
     "type": "header",
-    "label": "Release Notes"
+    "label": "All Pages"
   },
   {
     "type": "item",
-    "label": "SOP",
-    "icon": "bi-journal-check",
-    "href": "docs/layout.html"
+    "label": "App Pages",
+    "icon": "bi-folder2-open",
+    "open": false,
+    "children": [
+      { "label": "Ad Generator (Main)", "icon": "bi-file-earmark-image", "href": "/pages/index.html" },
+      { "label": "Login", "icon": "bi-file-earmark-lock", "href": "/index.html" },
+      { "label": "Banner Generator", "icon": "bi-file-earmark-image", "href": "/pages/banner-generator.html" },
+      { "label": "Tech Support Test", "icon": "bi-file-earmark-code", "href": "/pages/test.html" },
+      { "label": "Facebook Ads", "icon": "bi-file-earmark-code", "href": "/facebook/" }
+    ]
+  },
+  {
+    "type": "item",
+    "label": "AdminLTE Docs",
+    "icon": "bi-book",
+    "open": false,
+    "children": [
+      { "label": "Layout", "icon": "bi-file-earmark-text", "href": "/pages/layout.html" },
+      { "label": "Browser Support", "icon": "bi-file-earmark-text", "href": "/pages/browser-support.html" },
+      { "label": "Color Mode", "icon": "bi-file-earmark-text", "href": "/pages/color-mode.html" }
+    ]
   },
   {
     "type": "header",
-    "label": "Release Notes"
+    "label": "System"
   },
   {
     "type": "item",
-    "label": "v0.2",
-    "icon": "bi-tag",
-    "children": [
-      { "label": "mandate", "icon": "bi-circle", "href": "#" },
-      { "label": "brief", "icon": "bi-circle", "href": "#" },
-      { "label": "plan", "icon": "bi-circle", "href": "#" },
-      { "label": "highlight reports", "icon": "bi-circle", "href": "#" }
-    ]
-  },
-  {
-    "type": "item",
-    "label": "v0.1",
-    "icon": "bi-tag",
-    "children": [
-      { "label": "mandate", "icon": "bi-circle", "href": "#" },
-      { "label": "brief", "icon": "bi-circle", "href": "#" },
-      { "label": "plan", "icon": "bi-circle", "href": "#" },
-      { "label": "highlight reports", "icon": "bi-circle", "href": "#" }
-    ]
-=======
-    "label": "v0.2",
-    "icon": "bi-tag",
-    "children": [
-      {
-        "label": "mandate",
-        "icon": "bi-circle",
-        "href": "#"
-      },
-      {
-        "label": "brief",
-        "icon": "bi-circle",
-        "href": "#"
-      },
-      {
-        "label": "plan",
-        "icon": "bi-circle",
-        "href": "#"
-      },
-      {
-        "label": "highlight reports",
-        "icon": "bi-circle",
-        "href": "#"
-      }
-    ]
-  },
-  {
-    "type": "item",
-    "label": "v0.1",
-    "icon": "bi-tag",
-    "children": [
-      {
-        "label": "mandate",
-        "icon": "bi-circle",
-        "href": "#"
-      },
-      {
-        "label": "brief",
-        "icon": "bi-circle",
-        "href": "#"
-      },
-      {
-        "label": "plan",
-        "icon": "bi-circle",
-        "href": "#"
-      },
-      {
-        "label": "highlight reports",
-        "icon": "bi-circle",
-        "href": "#"
-      }
-    ]
+    "label": "Support",
+    "icon": "bi-wrench",
+    "action": "support-modal"
   },
   {
     "type": "item",
@@ -220,115 +105,29 @@
     "class": "text-danger"
   },
   {
-    "type": "item",
-    "label": "Support",
-    "icon": "bi-wrench-adjustable-circle",
-    "children": [],
-    "open": false,
-    "class": "text-danger"
-  },
-  {
     "type": "header",
-    "label": "Docs"
+    "label": "Release Notes"
   },
   {
     "type": "item",
-    "label": "Docs",
-    "icon": "bi-folder2-open",
+    "label": "v0.2",
+    "icon": "bi-tag",
     "children": [
-      {
-        "label": "Docs: Browser Support",
-        "icon": "bi-file-earmark-text",
-        "href": "/pages/browser-support.html"
-      },
-      {
-        "label": "Docs: Color Mode",
-        "icon": "bi-file-earmark-text",
-        "href": "/pages/color-mode.html"
-      },
-      {
-        "label": "Docs: Faq",
-        "icon": "bi-file-earmark-text",
-        "href": "/pages/faq.html"
-      },
-      {
-        "label": "Docs: How To Contribute",
-        "icon": "bi-file-earmark-text",
-        "href": "/pages/how-to-contribute.html"
-      },
-      {
-        "label": "Docs: Introduction",
-        "icon": "bi-file-earmark-text",
-        "href": "/pages/introduction.html"
-      },
-      {
-        "label": "Docs: Pushmenu",
-        "icon": "bi-file-earmark-text",
-        "href": "/pages/javascript/pushmenu.html"
-      },
-      {
-        "label": "Docs: Treeview",
-        "icon": "bi-file-earmark-text",
-        "href": "/pages/javascript/treeview.html"
-      },
-      {
-        "label": "Docs: Layout",
-        "icon": "bi-file-earmark-text",
-        "href": "/pages/layout.html"
-      },
-      {
-        "label": "Docs: License",
-        "icon": "bi-file-earmark-text",
-        "href": "/pages/license.html"
-      },
-      {
-        "label": "Page: Banner Generator",
-        "icon": "bi-file-earmark",
-        "href": "/pages/banner-generator.html"
-      },
-      {
-        "label": "Page: Banner Generator2",
-        "icon": "bi-file-earmark",
-        "href": "/pages/banner-generator2.html"
-      },
-      {
-        "label": "Page: Generate",
-        "icon": "bi-file-earmark",
-        "href": "/pages/generate.html"
-      },
-      {
-        "label": "Page: Home",
-        "icon": "bi-file-earmark",
-        "href": "/pages/index.html"
-      },
-      {
-        "label": "Page: Index2",
-        "icon": "bi-file-earmark",
-        "href": "/pages/index2.html"
-      },
-      {
-        "label": "Page: Index3",
-        "icon": "bi-file-earmark",
-        "href": "/pages/index3.html"
-      },
-      {
-        "label": "Page: Login",
-        "icon": "bi-file-earmark",
-        "href": "/pages/index.html"
-      },
-      {
-        "label": "Archieved",
-        "icon": "bi-archive",
-        "children": [
-          {
-            "label": "Index",
-            "icon": "bi-circle",
-            "href": "/pages/banner-generator2.html"
-          }
-        ]
-      }
-    ],
-    "open": false
->>>>>>> Stashed changes
+      { "label": "Mandate", "icon": "bi-circle", "href": "#" },
+      { "label": "Brief", "icon": "bi-circle", "href": "#" },
+      { "label": "Plan", "icon": "bi-circle", "href": "#" },
+      { "label": "Highlight Reports", "icon": "bi-circle", "href": "#" }
+    ]
+  },
+  {
+    "type": "item",
+    "label": "v0.1",
+    "icon": "bi-tag",
+    "children": [
+      { "label": "Mandate", "icon": "bi-circle", "href": "#" },
+      { "label": "Brief", "icon": "bi-circle", "href": "#" },
+      { "label": "Plan", "icon": "bi-circle", "href": "#" },
+      { "label": "Highlight Reports", "icon": "bi-circle", "href": "#" }
+    ]
   }
 ]

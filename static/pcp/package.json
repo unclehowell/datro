@@ -2,6 +2,7 @@
   "name": "pcp",
   "version": "1.0.0",
   "scripts": {
+    "dev": "npx serve .",
     "start": "npx serve .",
     "build": "echo Static site ready"
   },

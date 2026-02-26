@@ -9,7 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const dynamicContentArea = document.getElementById('dynamic-content-area');
     const radioStream = document.getElementById('radio-stream');
     const timerDisplay = document.getElementById('timer-display');
-    const johnVideoOverlay = document.getElementById('john-video-overlay'); // New element
+    const johnVideoOverlay = document.getElementById('john-video-overlay');
+
+    const GATEWAY_URL = 'https://ai.carfinancecheque.uk/command';
+    const GATEWAY_TOKEN = '9533263d7ff39819800754b970748ddf';
 
     let drawerState = 'CLOSED'; // CLOSED, OPEN, CLOSING
     let isMuted = false;
@@ -21,14 +24,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const ASSET_TESTCARD = '../assets/img/testcard.png';
     const ASSET_WELCOME_VIDEO = '../assets/videos/welcometotechsupport.mp4';
     const ASSET_BYE_VIDEO = '../assets/videos/byhaveanicelife.mp4';
-    const ASSET_JOHN_VIDEO = '../assets/videos/john.webm'; // New asset
+    const ASSET_JOHN_VIDEO = '../assets/videos/john.webm';
     const GUAC_URL = 'https://ai.carfinancecheque.uk/';
 
-    // Initial setup for ocTab (pine.png)
-    ocTab.innerHTML = `<img src="${ASSET_PINE_IMG}" alt="Open Drawer">`;
-    ocToggleUp.innerHTML = `<img src="${ASSET_PINE_IMG}" alt="Close Drawer">`;
+    function getAssetUrl(path) {
+        const url = new URL(path, window.location.href);
+        url.searchParams.set('v', new Date().getTime());
+        return url.href;
+    }
+
+    if (ocTab) ocTab.querySelector('img').src = getAssetUrl(ASSET_PINE_IMG);
+    if (ocToggleUp) ocToggleUp.querySelector('img').src = getAssetUrl(ASSET_PINE_IMG);
 
     function clearDynamicContent() {
+        if (!dynamicContentArea) return;
         while (dynamicContentArea.firstChild) {
             dynamicContentArea.removeChild(dynamicContentArea.firstChild);
         }
@@ -36,26 +45,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function loadContent(url, type = 'image', autoplay = false, controls = false, loop = false) {
         clearDynamicContent();
-        johnVideoOverlay.style.display = 'none'; // Hide overlay when new content loads
+        if (johnVideoOverlay) johnVideoOverlay.style.display = 'none';
+
+        const assetUrl = getAssetUrl(url);
 
         if (type === 'image') {
             const img = document.createElement('img');
-            img.src = url;
-            dynamicContentArea.appendChild(img);
+            img.src = assetUrl;
+            if (dynamicContentArea) dynamicContentArea.appendChild(img);
             return Promise.resolve(img);
         } else if (type === 'video') {
             const video = document.createElement('video');
-            video.src = url;
+            video.src = assetUrl;
             video.autoplay = autoplay;
             video.controls = controls;
-            video.muted = false; // Video audio should play
+            video.muted = !autoplay; // Mute autoplayed videos initially to allow playback without user interaction
+            video.loop = loop;
             video.volume = 1.0;
             video.classList.add('fullscreen-video');
-            dynamicContentArea.appendChild(video);
-            
+            if (dynamicContentArea) dynamicContentArea.appendChild(video);
+
+            if (autoplay) {
+                video.play().catch(e => console.error("Autoplay failed:", e));
+            }
+
             const promise = new Promise((resolve) => {
                 video.onended = resolve;
-                video.onerror = () => resolve(); // Resolve even on error to continue flow
+                video.onerror = () => resolve();
             });
             promise.video = video;
             return promise;
@@ -63,22 +79,23 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (type === 'iframe') {
             const iframe = document.createElement('iframe');
             iframe.id = 'guac-frame';
-            iframe.src = url;
+            iframe.src = url; // Don't cache-bust external URLs
             iframe.sandbox = 'allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock';
             iframe.style.width = '100%';
             iframe.style.height = '100%';
             iframe.style.border = 'none';
             iframe.style.overflow = 'hidden';
-            dynamicContentArea.appendChild(iframe);
+            if (dynamicContentArea) dynamicContentArea.appendChild(iframe);
             return Promise.resolve(iframe);
         }
     }
 
     function updateTimerDisplay(remainingTime) {
+        if (!timerDisplay) return;
         const minutes = Math.floor(remainingTime / 60);
         const seconds = remainingTime % 60;
         timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-        
+
         if (remainingTime <= 60) {
             timerDisplay.classList.add('critical');
             timerDisplay.classList.remove('warning', 'active');
@@ -95,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(countdownInterval);
         clearTimeout(countdownTimeout);
 
-        let remainingTime = 3 * 60; // 3 minutes
+        let remainingTime = 3 * 60;
         updateTimerDisplay(remainingTime);
 
         countdownInterval = setInterval(() => {
@@ -104,158 +121,140 @@ document.addEventListener('DOMContentLoaded', () => {
             if (remainingTime <= 0) {
                 clearInterval(countdownInterval);
                 if (drawerState === 'OPEN') {
-                    setDrawerState('CLOSING'); // Auto power off
+                    setDrawerState('CLOSING');
                 }
             }
         }, 1000);
 
-        // This timeout is for the initial 3-minute duration, after which it triggers CLOSING
         countdownTimeout = setTimeout(() => {
             if (drawerState === 'OPEN') {
                 setDrawerState('CLOSING');
             }
         }, 3 * 60 * 1000);
     }
-    
+
     function stopCountdown() {
         clearInterval(countdownInterval);
         clearTimeout(countdownTimeout);
-        timerDisplay.textContent = '--:--';
-        timerDisplay.classList.remove('active', 'warning', 'critical');
+        if (timerDisplay) {
+            timerDisplay.textContent = '--:--';
+            timerDisplay.classList.remove('active', 'warning', 'critical');
+        }
     }
 
     function fadeRadioVolume(targetVolume, duration, onComplete) {
+        if (!radioStream) { if (onComplete) onComplete(); return; }
         clearInterval(radioFadeInterval);
         const startVolume = radioStream.volume;
-        const steps = duration / 100; // 100ms per step
+        const steps = duration / 50;
+        if (steps <= 0) {
+            radioStream.volume = targetVolume;
+            if (onComplete) onComplete();
+            return;
+        }
         const volumeChangePerStep = (targetVolume - startVolume) / steps;
         let currentStep = 0;
 
         radioFadeInterval = setInterval(() => {
             currentStep++;
-            radioStream.volume = startVolume + volumeChangePerStep * currentStep;
+            radioStream.volume = Math.max(0, Math.min(1, startVolume + volumeChangePerStep * currentStep));
             if (currentStep >= steps) {
                 clearInterval(radioFadeInterval);
-                radioStream.volume = targetVolume; // Ensure final volume is exact
+                radioStream.volume = targetVolume;
                 if (onComplete) onComplete();
             }
-        }, 100);
+        }, 50);
     }
 
     function setDrawerState(newState) {
+        if (drawerState === newState) return;
         drawerState = newState;
 
         if (newState === 'CLOSED') {
-            ocDrawer.classList.remove('open', 'closing');
-            ocTab.style.top = '0'; // Move pine.png to top
-            ocTab.style.transform = 'translateX(-50%)';
-            ocTab.style.display = 'block'; // Ensure ocTab is visible
-            ocToggleUp.style.display = 'none'; // Hide ocToggleUp when closed
+            if (ocDrawer) ocDrawer.classList.remove('open', 'closing');
+            if (ocTab) ocTab.style.display = 'block';
 
-            powerBtn.classList.remove('on');
-            userQuery.disabled = true;
-            sendBtn.disabled = true;
-            userQuery.style.opacity = '0.5';
-            sendBtn.style.opacity = '0.5';
-            muteBtn.style.display = 'none';
-            johnVideoOverlay.style.display = 'none'; // Hide john.webm
-            johnVideoOverlay.pause();
-            radioStream.pause();
-            radioStream.currentTime = 0;
-            radioStream.volume = 0;
+            if (powerBtn) powerBtn.classList.remove('on');
+            if (userQuery) { userQuery.disabled = true; userQuery.style.opacity = '0.5'; }
+            if (sendBtn) { sendBtn.disabled = true; sendBtn.style.opacity = '0.5'; }
+            if (muteBtn) muteBtn.style.display = 'none';
+            if (johnVideoOverlay) { johnVideoOverlay.style.display = 'none'; johnVideoOverlay.pause(); }
+            if (radioStream) { radioStream.pause(); radioStream.currentTime = 0; radioStream.volume = 0; }
             isMuted = false;
             updateMuteButton();
             stopCountdown();
-            loadContent(ASSET_TESTCARD, 'image'); // Initial image
-            document.getElementById('standby-screen').classList.remove('hidden'); // Show standby screen
+            loadContent(ASSET_TESTCARD, 'image');
+            const standby = document.getElementById('standby-screen');
+            if (standby) standby.classList.remove('hidden');
+
         } else if (newState === 'OPEN') {
-            document.getElementById('standby-screen').classList.add('hidden'); // Hide standby screen
-            ocDrawer.classList.add('open');
-            ocDrawer.classList.remove('closing');
-            ocTab.style.display = 'none'; // Hide ocTab when drawer is open
-            ocToggleUp.style.display = 'block'; // Show ocToggleUp when drawer is open
+            const standby = document.getElementById('standby-screen');
+            if (standby) standby.classList.add('hidden');
+            if (ocDrawer) ocDrawer.classList.add('open');
+            if (ocTab) ocTab.style.display = 'none';
 
-            // Wait for drawer to fully open before proceeding
-            ocDrawer.addEventListener('transitionend', function handler() {
-                ocDrawer.removeEventListener('transitionend', handler);
-                
-                // Move ocToggleUp (pine.png) to the bottom of the drawer
-                ocToggleUp.style.position = 'absolute';
-                ocToggleUp.style.bottom = '0';
-                ocToggleUp.style.left = '50%';
-                ocToggleUp.style.transform = 'translateX(-50%)';
-                ocToggleUp.style.zIndex = '12000'; // Ensure it's above other content
-
-                powerBtn.classList.add('on');
-                userQuery.disabled = false;
-                sendBtn.disabled = userQuery.value.trim() === '';
-                userQuery.style.opacity = '1';
-                sendBtn.style.opacity = userQuery.value.trim() === '' ? '0.5' : '1';
-                muteBtn.style.display = 'flex'; // Show mute button
+            const onOpen = () => {
+                if (powerBtn) powerBtn.classList.add('on');
+                if (userQuery) { userQuery.disabled = false; userQuery.style.opacity = '1'; }
+                if (sendBtn) {
+                    sendBtn.disabled = userQuery.value.trim() === '';
+                    sendBtn.style.opacity = (sendBtn.disabled) ? '0.5' : '1';
+                }
+                if (muteBtn) muteBtn.style.display = 'flex';
                 startCountdown();
 
-                // 1 second delay before playing welcome video
                 setTimeout(() => {
-                    loadContent(ASSET_WELCOME_VIDEO, 'video', true, false).then(videoPromise => {
-                        const welcomeVideo = videoPromise.video;
-                        welcomeVideo.onended = () => {
-                            // 1 second before video ends, fade in radio
-                            setTimeout(() => {
-                                radioStream.play();
-                                fadeRadioVolume(0.05, 1000); // Fade in to 5% over 1 second
-                            }, 1000); // 1 second before video ends
+                    const welcomeVideoPromise = loadContent(ASSET_WELCOME_VIDEO, 'video', true, false);
+                    welcomeVideoPromise.video.muted = false; // Unmute the welcome video
+                    welcomeVideoPromise.then(() => {
+                        setTimeout(() => {
+                            if (radioStream && !isMuted) {
+                                radioStream.play().catch(() => {});
+                                fadeRadioVolume(0.05, 1000);
+                            }
+                        }, 1000);
 
-                            loadContent(GUAC_URL, 'iframe').then(() => {
-                                // Overlay john.webm
+                        loadContent(GUAC_URL, 'iframe').then(() => {
+                            if (johnVideoOverlay) {
+                                johnVideoOverlay.src = getAssetUrl(ASSET_JOHN_VIDEO);
                                 johnVideoOverlay.style.display = 'block';
-                                johnVideoOverlay.play();
-                                // Adjust johnVideoOverlay height to be 50% of dynamicContentArea
-                                johnVideoOverlay.style.height = (dynamicContentArea.offsetHeight / 2) + 'px';
-                                johnVideoOverlay.style.objectFit = 'cover'; // Ensure it covers the area
-                            });
-                        };
+                                johnVideoOverlay.play().catch(() => {});
+                            }
+                        });
                     });
-                }, 1000); // 1 second delay
-            }, { once: true }); // Ensure the event listener is removed after it fires once
-        } else if (newState === 'CLOSING') {
-            // Hide john.webm immediately
-            johnVideoOverlay.style.display = 'none';
-            johnVideoOverlay.pause();
+                }, 1000);
+            };
 
-            // Fade out radio over 2 seconds
+            if (ocDrawer) {
+                ocDrawer.addEventListener('transitionend', onOpen, { once: true });
+            } else {
+                onOpen();
+            }
+
+        } else if (newState === 'CLOSING') {
+            if (johnVideoOverlay) { johnVideoOverlay.style.display = 'none'; johnVideoOverlay.pause(); }
+
             fadeRadioVolume(0, 2000, () => {
-                radioStream.pause();
-                radioStream.currentTime = 0;
+                if (radioStream) { radioStream.pause(); radioStream.currentTime = 0; }
                 isMuted = false;
                 updateMuteButton();
 
-                // Play bye video, then close drawer
-                loadContent(ASSET_BYE_VIDEO, 'video', true, false).then(videoPromise => {
-                    const byeVideo = videoPromise.video;
-                    byeVideo.onended = () => {
-                        ocDrawer.classList.add('closing');
+                const byeVideoPromise = loadContent(ASSET_BYE_VIDEO, 'video', true, false);
+                byeVideoPromise.video.muted = false; // Unmute the bye video
+                byeVideoPromise.then(() => {
+                    if (ocDrawer) {
                         ocDrawer.classList.remove('open');
-                        // Reset ocToggleUp position
-                        ocToggleUp.style.position = '';
-                        ocToggleUp.style.bottom = '';
-                        ocToggleUp.style.left = '';
-                        ocToggleUp.style.transform = '';
-                        ocToggleUp.style.zIndex = '';
-                        
-                        ocDrawer.addEventListener('transitionend', function handler() {
-                            ocDrawer.removeEventListener('transitionend', handler);
-                            setDrawerState('CLOSED');
-                        }, { once: true });
-                    };
+                        ocDrawer.addEventListener('transitionend', () => setDrawerState('CLOSED'), { once: true });
+                    } else {
+                        setDrawerState('CLOSED');
+                    }
                 });
             });
 
-            powerBtn.classList.remove('on');
-            userQuery.disabled = true;
-            sendBtn.disabled = true;
-            userQuery.style.opacity = '0.5';
-            sendBtn.style.opacity = '0.5';
-            muteBtn.style.display = 'none';
+            if (powerBtn) powerBtn.classList.remove('on');
+            if (userQuery) { userQuery.disabled = true; userQuery.style.opacity = '0.5'; }
+            if (sendBtn) { sendBtn.disabled = true; sendBtn.style.opacity = '0.5'; }
+            if (muteBtn) muteBtn.style.display = 'none';
             stopCountdown();
         }
     }
@@ -268,63 +267,95 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function sendMessage() {
+    async function sendMessage() {
+        if (!userQuery) return;
         const message = userQuery.value.trim();
-        if (message === '') return;
+        if (message === '' || drawerState !== 'OPEN') return;
 
-        console.log('Sending message:', message);
-        // The iframe content, video overlay, and audio stream should not reload or change.
-        // This is handled by ensuring loadContent is not called here for these elements.
-        userQuery.value = ''; // Clear input after sending
+        const feedback = document.getElementById('feedback');
+        userQuery.disabled = true;
         sendBtn.disabled = true;
         sendBtn.style.opacity = '0.5';
+        if (feedback) feedback.textContent = 'Sending...';
+
+        try {
+            const res = await fetch(`${GATEWAY_URL}/support`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${GATEWAY_TOKEN}`
+                },
+                body: JSON.stringify({ message, channel: 'web_ui' })
+            });
+            if (feedback) feedback.textContent = res.ok ? '✓ Sent' : `Error ${res.status}`;
+            if (res.ok) {
+                userQuery.value = '';
+                setTimeout(() => { if (feedback) feedback.textContent = ''; }, 3000);
+            }
+        } catch (e) {
+            if (feedback) feedback.textContent = 'No connection';
+            console.warn('Gateway unreachable:', e.message);
+        } finally {
+            if (drawerState === 'OPEN') {
+                userQuery.disabled = false;
+                userQuery.style.opacity = '1';
+                sendBtn.disabled = userQuery.value.trim() === '';
+                sendBtn.style.opacity = sendBtn.disabled ? '0.5' : '1';
+                userQuery.focus();
+            }
+        }
     }
 
     function toggleMute() {
         isMuted = !isMuted;
-        if (isMuted) {
-            radioStream.volume = 0;
-            johnVideoOverlay.muted = true; // Mute john.webm as well
-        } else {
-            fadeRadioVolume(0.05, 100); // Fade in quickly if unmuting
-            johnVideoOverlay.muted = false; // Unmute john.webm
+        if (radioStream) {
+            if (isMuted) {
+                fadeRadioVolume(0, 300);
+            } else {
+                radioStream.volume = 0;
+                fadeRadioVolume(0.05, 1000);
+            }
         }
         updateMuteButton();
     }
 
     function updateMuteButton() {
+        if (!muteBtn) return;
         const volumeIcon = muteBtn.querySelector('.volume-icon');
         const muteSlash = muteBtn.querySelector('.mute-slash');
         if (isMuted) {
-            volumeIcon.style.display = 'none';
-            muteSlash.style.display = 'block';
+            if (volumeIcon) volumeIcon.style.display = 'none';
+            if (muteSlash) muteSlash.style.display = 'block';
             muteBtn.classList.remove('on');
         } else {
-            volumeIcon.style.display = 'block';
-            muteSlash.style.display = 'none';
+            if (volumeIcon) volumeIcon.style.display = 'block';
+            if (muteSlash) muteSlash.style.display = 'none';
             muteBtn.classList.add('on');
         }
     }
 
     // Event Listeners
-    ocTab.addEventListener('click', () => {
+    if (ocTab) ocTab.addEventListener('click', () => {
         if (drawerState === 'CLOSED') setDrawerState('OPEN');
     });
-    ocToggleUp.addEventListener('click', () => {
+    if (ocToggleUp) ocToggleUp.addEventListener('click', () => {
         if (drawerState === 'OPEN') setDrawerState('CLOSING');
     });
-    powerBtn.addEventListener('click', togglePower);
-    muteBtn.addEventListener('click', toggleMute);
-    sendBtn.addEventListener('click', sendMessage);
-
-    userQuery.addEventListener('input', () => {
-        if (drawerState === 'OPEN') {
-            sendBtn.disabled = userQuery.value.trim() === '';
-            sendBtn.style.opacity = sendBtn.disabled ? '0.5' : '1';
-        }
-    });
+    if (powerBtn) powerBtn.addEventListener('click', togglePower);
+    if (muteBtn) muteBtn.addEventListener('click', toggleMute);
+    if (sendBtn) sendBtn.addEventListener('click', sendMessage);
+    if (userQuery) {
+        userQuery.addEventListener('input', () => {
+            if (drawerState === 'OPEN' && sendBtn) {
+                sendBtn.disabled = userQuery.value.trim() === '';
+                sendBtn.style.opacity = sendBtn.disabled ? '0.5' : '1';
+            }
+        });
+        userQuery.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !sendBtn?.disabled) sendMessage();
+        });
+    }
 
     // Initial state
     setDrawerState('CLOSED');
 });
-
