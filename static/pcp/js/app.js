@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function loadContent(url, type = 'image', autoplay = false, controls = false, loop = false) {
         clearDynamicContent();
-        if (johnVideoOverlay) johnVideoOverlay.style.display = 'none';
 
         const assetUrl = getAssetUrl(url);
 
@@ -195,6 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (ocTab) ocTab.style.display = 'none';
 
             const onOpen = () => {
+                if (johnVideoOverlay) johnVideoOverlay.style.display = 'none'; // Ensure it's hidden before welcome video
                 if (powerBtn) powerBtn.classList.add('on');
                 if (userQuery) { userQuery.disabled = false; userQuery.style.opacity = '1'; }
                 if (sendBtn) {
