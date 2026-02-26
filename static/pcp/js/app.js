@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ASSET_WELCOME_VIDEO = '../assets/videos/welcometotechsupport.mp4';
     const ASSET_BYE_VIDEO = '../assets/videos/byhaveanicelife.mp4';
     const ASSET_JOHN_VIDEO = '../assets/videos/john.webm';
-    const YOUTUBE_VIDEO_URL = 'https://www.youtube.com/embed/plnkjKbXZaE?si=okRZ0o0r0Ix8Q-FV';
+    const YOUTUBE_VIDEO_URL = 'https://www.youtube.com/embed/plnkjKbXZaE?si=okRZ0o0r0Ix8Q-FV&autoplay=1&mute=1';
     const GUAC_URL = 'https://ai.carfinancecheque.uk/';
 
     function getAssetUrl(path) {
@@ -207,10 +207,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     const welcomeVideoPromise = loadContent(ASSET_WELCOME_VIDEO, 'video', true, false);
                     welcomeVideoPromise.video.muted = false; // Unmute the welcome video
-                    welcomeVideoPromise.then((welcomeVideoElement) => {
+                    welcomeVideoPromise.then(() => {
                         // Remove the welcome video after it finishes
-                        if (welcomeVideoElement && dynamicContentArea.contains(welcomeVideoElement)) {
-                            dynamicContentArea.removeChild(welcomeVideoElement);
+                        if (welcomeVideoPromise.video && dynamicContentArea.contains(welcomeVideoPromise.video)) {
+                            dynamicContentArea.removeChild(welcomeVideoPromise.video);
                         }
 
                         // Load the YouTube iframe
