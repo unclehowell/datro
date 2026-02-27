@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="color-scheme" content="light dark" />
-  <title>Control Panel Login</title>
+  <title>Finance Cheques | Control Panel Login</title>
 
   <!-- AdminLTE dependencies -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" crossorigin="anonymous" media="print" onload="this.media='all'" />
@@ -1218,6 +1218,51 @@
         pointer-events: none;
         z-index: 2;
     }
+
+    /* Unified drawer overrides */
+    .oc-tab {
+      padding: 0;
+      background: transparent;
+      border: none;
+    }
+    .oc-tab.hidden {
+      transform: translate(-50%, -100%);
+    }
+    .oc-tab img {
+      width: 60px;
+      height: 60px;
+      display: block;
+    }
+    .oc-handle {
+      bottom: -60px;
+      width: 60px;
+      height: 60px;
+      background: transparent;
+      border-top: none;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .oc-toggle {
+      width: 60px;
+      height: 60px;
+      border: none;
+      background: transparent;
+      border-radius: 0;
+      padding: 0;
+    }
+    .oc-toggle img {
+      width: 60px;
+      height: 60px;
+      display: block;
+    }
+    #toggle-webm-btn {
+      font-size: 18px;
+      padding: 12px 14px;
+      min-width: 50px;
+    }
   </style>
   <link rel="stylesheet" href="css/theme.css" />
   <link rel="stylesheet" href="css/global-shell.css" />
@@ -1228,7 +1273,8 @@
 <div class="login-box">
   <div class="card card-outline card-primary shadow">
     <div class="card-header text-center">
-      <h3 class="card-title mb-0">Control Panel</h3>
+      <img src="assets/img/logo.png" alt="Finance Cheques Logo" style="height:42px; width:auto; margin-bottom:8px;">
+      <h3 class="card-title mb-0">Finance Cheques Control Panel</h3>
       <small class="text-muted">carfinancecheque.uk</small>
     </div>
 
@@ -1372,7 +1418,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
   <div class="oc-drawer" id="ocDrawer">
     <div class="oc-root">
       <div class="oc-header">
-        <h1>CFC Agent</h1>
+        <h1>Finance Cheques Agent</h1>
         <span class="sep"></span>
         <span id="timer-display">--:--</span>
         <div id="led-strip">
@@ -1411,9 +1457,9 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
             <path class="mute-slash" d="M21 9l-6 6M15 9l6 6" style="display:none;"/>
           </svg>
         </button>
-        <input type="text" id="user-query" placeholder="Ask CFC Agent to do something..." disabled style="opacity:0.5;" />
+        <input type="text" id="user-query" placeholder="Ask Finance Cheques Agent to do something..." disabled style="opacity:0.5;" />
         <button id="send-btn" disabled style="opacity:0.5;">Send</button>
-        <button id="toggle-webm-btn" class="oc-control-btn" style="display:none;" title="Toggle WebM Overlay">WebM</button>
+        <button id="toggle-webm-btn" class="oc-control-btn" style="display:none;" title="Show / Hide Overlay">👁</button>
         <button id="mic-btn" type="button" disabled style="opacity:0.5;">🎤</button>
         <span id="feedback"></span>
       </div>
@@ -1457,8 +1503,12 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
     <div style="text-align: center; margin-top: 20px; padding: 10px; color: #666; font-size: 0.8em;">
       <a href="tos.html" style="color: #666; text-decoration: none; margin-right: 10px;">Terms of Service</a>
       <a href="privacy.html" style="color: #666; text-decoration: none;">Privacy Policy</a>
-      <p style="margin-top: 10px;">&copy; Copyright DATRO consortium ltd. under carfinancecheque.uk</p>
+      <p style="margin-top: 10px;">
+        <img src="assets/img/logo.png" alt="Finance Cheques Logo" style="height:16px; width:auto; vertical-align:middle; margin-right:6px;">
+        &copy; <span id="fc-year-root"></span> Finance Cheques. All rights reserved.
+      </p>
     </div>
   </footer>
+  <script>document.getElementById('fc-year-root')?.textContent = new Date().getFullYear();</script>
 </body>
 </html>

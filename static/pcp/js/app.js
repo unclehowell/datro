@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const radioStream = document.getElementById('radio-stream');
     const timerDisplay = document.getElementById('timer-display');
     const johnVideoOverlay = document.getElementById('john-video-overlay');
+    const scanlinesLayer = dynamicContentArea ? dynamicContentArea.querySelector('.scanlines') : null;
 
     const GATEWAY_URL = 'https://ai.carfinancecheque.uk/command';
     const GATEWAY_TOKEN = '9533263d7ff39819800754b970748ddf';
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ASSET_PINE_IMG = '../assets/img/pine.png';
     const ASSET_TESTCARD = '../assets/img/testcard.png';
     const ASSET_WELCOME_VIDEO = '../assets/videos/welcometotechsupport.mp4';
-    const ASSET_BYE_VIDEO = '../assets/videos/byhaveanicelife.mp4';
+    const ASSET_BYE_VIDEO = '../assets/videos/byehaveanicelife.mp4';
     const ASSET_JOHN_VIDEO = '../assets/videos/john.webm';
     const GUAC_BASE_URL = 'https://ai.carfinancecheque.uk/guacamole/';
     const GUAC_USERNAME = 'user25148535';
@@ -45,9 +46,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function clearDynamicContent() {
         if (!dynamicContentArea) return;
-        while (dynamicContentArea.firstChild) {
-            dynamicContentArea.removeChild(dynamicContentArea.firstChild);
+        Array.from(dynamicContentArea.children).forEach((child) => {
+            if (scanlinesLayer && child === scanlinesLayer) return;
+            dynamicContentArea.removeChild(child);
+        });
+    }
+
+    function appendDynamicNode(node) {
+        if (!dynamicContentArea) return;
+        if (scanlinesLayer && dynamicContentArea.contains(scanlinesLayer)) {
+            dynamicContentArea.insertBefore(node, scanlinesLayer);
+            return;
         }
+        dynamicContentArea.appendChild(node);
     }
 
     function loadContent(url, type = 'image', autoplay = false, controls = false, loop = false) {
@@ -58,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (type === 'image') {
             const img = document.createElement('img');
             img.src = assetUrl;
-            if (dynamicContentArea) dynamicContentArea.appendChild(img);
+            appendDynamicNode(img);
             return Promise.resolve(img);
         } else if (type === 'video') {
             const video = document.createElement('video');
@@ -69,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
             video.loop = loop;
             video.volume = 1.0;
             video.classList.add('fullscreen-video');
-            if (dynamicContentArea) dynamicContentArea.appendChild(video);
+            appendDynamicNode(video);
 
             if (autoplay) {
                 video.play().catch(e => console.error("Autoplay failed:", e));
@@ -91,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
             iframe.style.height = '100%';
             iframe.style.border = 'none';
             iframe.style.overflow = 'hidden';
-            if (dynamicContentArea) dynamicContentArea.appendChild(iframe);
+            appendDynamicNode(iframe);
             return Promise.resolve(iframe);
         }
     }
@@ -146,6 +157,11 @@ document.addEventListener('DOMContentLoaded', () => {
             timerDisplay.textContent = '--:--';
             timerDisplay.classList.remove('active', 'warning', 'critical');
         }
+    }
+
+    function resetCountdownOnActivity() {
+        if (drawerState !== 'OPEN') return;
+        startCountdown();
     }
 
     function fadeRadioVolume(targetVolume, duration, onComplete) {
@@ -212,34 +228,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (toggleWebmBtn) toggleWebmBtn.style.display = 'flex';
                 startCountdown();
 
-                setTimeout(() => {
-                    const welcomeVideoPromise = loadContent(ASSET_WELCOME_VIDEO, 'video', true, false);
-                    welcomeVideoPromise.video.muted = false; // Unmute the welcome video
-                    welcomeVideoPromise.then(() => {
-                        // Remove the welcome video after it finishes
-                        if (welcomeVideoPromise.video && dynamicContentArea.contains(welcomeVideoPromise.video)) {
-                            dynamicContentArea.removeChild(welcomeVideoPromise.video);
+                const welcomeVideoPromise = loadContent(ASSET_WELCOME_VIDEO, 'video', true, false);
+                welcomeVideoPromise.video.muted = false; // Unmute the welcome video
+                welcomeVideoPromise.then(() => {
+                    // Remove the welcome video after it finishes
+                    if (welcomeVideoPromise.video && dynamicContentArea.contains(welcomeVideoPromise.video)) {
+                        dynamicContentArea.removeChild(welcomeVideoPromise.video);
+                    }
+
+                    // Load the Guacamole iframe (autologin via hash query params)
+                    loadContent(GUAC_AUTOLOGIN_URL, 'iframe').then(() => {
+                        // Then handle the johnVideoOverlay
+                        if (radioStream && !isMuted) {
+                            radioStream.play().catch(() => {});
+                            fadeRadioVolume(0.05, 1000);
                         }
 
-                        // Load the Guacamole iframe (autologin via hash query params)
-                        loadContent(GUAC_AUTOLOGIN_URL, 'iframe').then(() => {
-                            // Then handle the johnVideoOverlay
-                            setTimeout(() => {
-                                if (radioStream && !isMuted) {
-                                    radioStream.play().catch(() => {});
-                                    fadeRadioVolume(0.05, 1000);
-                                }
-                            }, 1000);
-
-                            // Now display the johnVideoOverlay
-                            if (johnVideoOverlay) {
-                                johnVideoOverlay.src = getAssetUrl(ASSET_JOHN_VIDEO);
-                                johnVideoOverlay.style.display = 'block';
-                                johnVideoOverlay.play().catch(() => {});
-                            }
-                        });
+                        // Now display the johnVideoOverlay
+                        if (johnVideoOverlay) {
+                            johnVideoOverlay.src = getAssetUrl(ASSET_JOHN_VIDEO);
+                            johnVideoOverlay.style.display = 'block';
+                            johnVideoOverlay.play().catch(() => {});
+                        }
                     });
-                }, 1000);
+                });
             };
 
             if (ocDrawer) {
@@ -259,12 +271,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const byeVideoPromise = loadContent(ASSET_BYE_VIDEO, 'video', true, false);
                 byeVideoPromise.video.muted = false; // Unmute the bye video
                 byeVideoPromise.then(() => {
-                    if (ocDrawer) {
-                        ocDrawer.classList.remove('open');
-                        ocDrawer.addEventListener('transitionend', () => setDrawerState('CLOSED'), { once: true });
-                    } else {
-                        setDrawerState('CLOSED');
-                    }
+                    loadContent(ASSET_TESTCARD, 'image').then(() => {
+                        if (ocDrawer) {
+                            ocDrawer.classList.remove('open');
+                            ocDrawer.addEventListener('transitionend', () => setDrawerState('CLOSED'), { once: true });
+                        } else {
+                            setDrawerState('CLOSED');
+                        }
+                    });
                 });
             });
 
@@ -375,8 +389,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (muteBtn) muteBtn.addEventListener('click', toggleMute);
     if (sendBtn) sendBtn.addEventListener('click', sendMessage);
     if (toggleWebmBtn) toggleWebmBtn.addEventListener('click', toggleWebmOverlay);
+    if (ocDrawer) {
+        ['pointerdown', 'touchstart', 'keydown'].forEach((eventName) => {
+            ocDrawer.addEventListener(eventName, resetCountdownOnActivity, true);
+        });
+    }
     if (userQuery) {
         userQuery.addEventListener('input', () => {
+            resetCountdownOnActivity();
             if (drawerState === 'OPEN' && sendBtn) {
                 sendBtn.disabled = userQuery.value.trim() === '';
                 sendBtn.style.opacity = sendBtn.disabled ? '0.5' : '1';

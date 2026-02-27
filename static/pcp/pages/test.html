@@ -17,12 +17,9 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 12000;
-      padding: 0.25rem 0.7rem;
-      background: #111418;
-      border: 1px solid #1e2428;
-      border-top: none;
-      border-bottom-left-radius: 8px;
-      border-bottom-right-radius: 8px;
+      padding: 0;
+      background: transparent;
+      border: none;
       color: #7a9aaa;
       font-family: 'Orbitron', sans-serif;
       font-size: 12px;
@@ -31,11 +28,11 @@
       transition: transform 0.3s ease-out, top 0.5s ease-in-out;
     }
     .oc-tab.hidden {
-      transform: translateY(-100%);
+      transform: translate(-50%, -100%);
     }
     .oc-tab img {
-      width: 30px;
-      height: 30px;
+      width: 60px;
+      height: 60px;
       display: block;
     }
     .oc-drawer {
@@ -62,17 +59,16 @@
     }
     .oc-handle {
       position: absolute;
-      bottom: 0;
+      bottom: -60px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 12001;
-      height: 34px;
-      background: #111418;
-      border-top: 1px solid #1e2428;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
+      width: 60px;
+      height: 60px;
+      background: transparent;
+      border-top: none;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       gap: 12px;
       color: #7a9aaa;
@@ -82,20 +78,21 @@
         display: none;
     }
     .oc-toggle {
-      border: 1px solid #1e2428;
-      background: #0d1014;
+      border: none;
+      background: transparent;
       color: #7a9aaa;
-      width: 28px;
-      height: 22px;
-      border-radius: 4px;
+      width: 60px;
+      height: 60px;
+      border-radius: 0;
+      padding: 0;
       cursor: pointer;
       font-family: 'Orbitron', sans-serif;
       font-size: 12px;
       line-height: 1;
     }
     .oc-toggle img {
-      width: 30px;
-      height: 30px;
+      width: 60px;
+      height: 60px;
       display: block;
     }
     .oc-root {
@@ -232,7 +229,7 @@
       width: 97%;
       height: 127%; /* Changed from 110% to 127% */
       object-fit: none;
-      z-index: 10;
+      z-index: 20;
       margin-bottom: -209px; /* Changed from -209px to -209px (confirming) */
     }
     .oc-bottom {
@@ -344,7 +341,7 @@
   <div class="oc-drawer" id="ocDrawer">
     <div class="oc-root">
       <div class="oc-header">
-        <h1>CFC Agent</h1>
+        <h1>Finance Cheques Agent</h1>
         <span class="sep"></span>
         <span id="timer-display">--:--</span>
         <div id="led-strip">
@@ -383,9 +380,9 @@
             <path class="mute-slash" d="M21 9l-6 6M15 9l6 6" style="display:none;"/>
           </svg>
         </button>
-        <input type="text" id="user-query" placeholder="Ask CFC Agent to do something..." disabled style="opacity:0.5;" />
+        <input type="text" id="user-query" placeholder="Ask Finance Cheques Agent to do something..." disabled style="opacity:0.5;" />
         <button id="send-btn" disabled style="opacity:0.5;">Send</button>
-        <button id="toggle-webm-btn" class="oc-control-btn" style="display:none;" title="Toggle WebM Overlay">WebM</button>
+        <button id="toggle-webm-btn" class="oc-control-btn" style="display:none;" title="Show / Hide Overlay">👁</button>
         <button id="mic-btn" type="button" disabled style="opacity:0.5;">🎤</button>
         <span id="feedback"></span>
       </div>

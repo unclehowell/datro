@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="color-scheme" content="light dark" />
-  <title>Ad Generator | CFC</title>
+  <title>Finance Cheques | Ad Generator</title>
 
   <!-- AdminLTE dependencies -->
   <link rel="stylesheet" href="../vendor/index.css" media="print" onload="this.media='all'" />
@@ -909,6 +909,111 @@
     .bf-wrap ::-webkit-scrollbar { width: 5px; }
     .bf-wrap ::-webkit-scrollbar-track { background: var(--surface); }
     .bf-wrap ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* Finance Cheques UX overrides */
+    .oc-tab {
+      padding: 0;
+      background: transparent;
+      border: none;
+    }
+    .oc-tab.hidden {
+      transform: translate(-50%, -100%);
+    }
+    .oc-tab img {
+      width: 60px;
+      height: 60px;
+      display: block;
+    }
+    .oc-handle {
+      position: absolute;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 60px;
+      background: transparent;
+      border: none;
+      padding: 0;
+      z-index: 12001;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .oc-toggle {
+      width: 60px;
+      height: 60px;
+      border: none;
+      background: transparent;
+      border-radius: 0;
+      padding: 0;
+    }
+    .oc-toggle img {
+      width: 60px;
+      height: 60px;
+    }
+    .oc-root { height: 100%; }
+    #john-video-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 97%;
+      height: 127%;
+      object-fit: none;
+      z-index: 20;
+      margin-bottom: -209px;
+    }
+    #toggle-webm-btn {
+      font-size: 18px;
+      padding: 12px 14px;
+      min-width: 50px;
+    }
+
+    .cp-menu {
+      top: 50%;
+      left: 50%;
+      right: auto;
+      width: min(980px, 96vw);
+      height: auto;
+      max-height: 88vh;
+      padding: 1rem;
+      transform: translate(-50%, -50%);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 0 0 100vmax rgba(0,0,0,0.55), 0 18px 50px rgba(0,0,0,0.45);
+      align-items: stretch;
+    }
+    .cp-menu .bf-tabs {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    .cp-menu .bf-tab-btn {
+      width: auto;
+      text-align: center;
+    }
+    .cp-menu > * {
+      max-width: none;
+      width: 100%;
+      margin: 0;
+    }
+
+    .bf-modal {
+      align-items: center;
+      padding: 1rem;
+      z-index: 12020;
+    }
+    #settingsModal { padding: 1rem; }
+    #settingsModal .bf-modal-card,
+    #supportModal .bf-modal-card,
+    #resetModal .bf-modal-card {
+      width: min(900px, 94vw);
+      max-width: 94vw;
+      max-height: 88vh;
+      height: auto;
+      border-radius: 12px;
+      text-align: left;
+      overflow: auto;
+    }
   </style>
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/global-shell.css" />
@@ -933,7 +1038,8 @@
     <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
       <div class="sidebar-brand">
         <a href="../index.html" class="brand-link">
-          <img src="../assets/img/AdminLTELogo.png" alt="Logo" class="brand-image opacity-75 shadow" />
+          <img src="../assets/img/logo.png" alt="Finance Cheques Logo" class="brand-image opacity-75 shadow" />
+          <span class="brand-text fw-light">Finance Cheques</span>
         </a>
       </div>
       <div class="sidebar-wrapper">
@@ -951,7 +1057,7 @@
         <div class="container-fluid">
           <div class="d-flex align-items-center justify-content-between gap-2 pcp-page-header">
             <div class="d-flex align-items-center gap-2">
-              <strong class="fs-6">Ad Generator</strong>
+              <strong class="fs-6">Finance Cheques Ad Generator</strong>
             </div>
             <div class="d-flex align-items-center gap-2">
               <button class="btn btn-sm btn-primary" type="button" id="headerTryFreeBtn">Try Now</button>
@@ -1154,6 +1260,13 @@
       </div>
     </main>
 
+    <footer class="app-footer px-3 py-2">
+      <div class="small text-center">
+        <img src="../assets/img/logo.png" alt="Finance Cheques Logo" style="height:20px; width:auto; vertical-align:middle; margin-right:8px;">
+        &copy; <span id="fc-year"></span> Finance Cheques. All rights reserved.
+      </div>
+    </footer>
+  <script>document.getElementById("fc-year")?.textContent = new Date().getFullYear();</script>
   </div><!-- /.app-wrapper -->
 
   <!-- ── AdminLTE JS ── -->
@@ -1321,14 +1434,11 @@
     </div>
   </div>
 
-  <div class="oc-tab" id="ocTab">∨</div>
+  <div class="oc-tab" id="ocTab"><img id="ocTabImg" src="../assets/img/pine.png" alt="Open Drawer"></div>
   <div class="oc-drawer" id="ocDrawer">
-    <div class="oc-handle">
-      <button class="oc-toggle" id="ocToggleUp">∧</button>
-    </div>
     <div class="oc-root">
       <div class="oc-header">
-        <h1>CFC Agent</h1>
+        <h1>Finance Cheques Agent</h1>
         <span class="sep"></span>
         <span id="timer-display">--:--</span>
         <div id="led-strip">
@@ -1342,11 +1452,15 @@
           <div class="logo">Remote Console</div>
           <div class="hint">PRESS POWER TO CONNECT</div>
         </div>
-        <div id="dynamic-content-area" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: #000;">
-          <!-- Content will be dynamically loaded here: img, video, or iframe -->
+
+        <div id="dynamic-content-area" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: #000; overflow: hidden; z-index: 1;">
+          <img src="../assets/img/testcard.png" alt="Test Card" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+          <div class="scanlines"></div>
         </div>
+        <video id="john-video-overlay" src="../assets/videos/john.webm" loop muted style="display: none;"></video>
+
         <div id="offline-screen">
-          <img src="../assets/img/session-terminated.jpg" alt="Session ended">
+          <img id="offline-img" src="../assets/img/session-terminated.jpg" alt="Session ended">
           <div class="offline-label">SESSION TERMINATED</div>
         </div>
       </div>
@@ -1363,11 +1477,15 @@
             <path class="mute-slash" d="M21 9l-6 6M15 9l6 6" style="display:none;"/>
           </svg>
         </button>
-        <input type="text" id="user-query" placeholder="Ask CFC Agent to do something..." onkeypress="handleKey(event)" disabled style="opacity:0.5;" />
-        <button id="send-btn" onclick="sendMessage()" disabled style="opacity:0.5;">Send</button>
+        <input type="text" id="user-query" placeholder="Ask Finance Cheques Agent to do something..." disabled style="opacity:0.5;" />
+        <button id="send-btn" disabled style="opacity:0.5;">Send</button>
+        <button id="toggle-webm-btn" class="oc-control-btn" style="display:none;" title="Show / Hide Overlay">👁</button>
         <button id="mic-btn" type="button" disabled style="opacity:0.5;">🎤</button>
         <span id="feedback"></span>
       </div>
+    </div>
+    <div class="oc-handle">
+        <button class="oc-toggle" id="ocToggleUp"><img id="ocToggleUpImg" src="../assets/img/pine.png" alt="Close Drawer"></button>
     </div>
   </div>
 
@@ -1663,6 +1781,131 @@
 
   <!-- ── Menu loader ── -->
   <script src="../js/app.js"></script>
+  <script>
+    (async () => {
+      const nav = document.getElementById('navigation');
+      if (!nav) return;
+
+      function performMasterReset() {
+        let auth = null;
+        try { auth = localStorage.getItem('authenticated'); } catch (error) {}
+        try { localStorage.clear(); } catch (error) {}
+        try { sessionStorage.clear(); } catch (error) {}
+        try { if (auth !== null) localStorage.setItem('authenticated', auth); } catch (error) {}
+        if (window.caches && caches.keys) {
+          caches.keys().then(keys => Promise.all(keys.map(k => caches.delete(k)))).finally(() => {
+            location.reload();
+          });
+          return;
+        }
+        location.reload();
+      }
+
+      function closeControlsMenu() {
+        document.getElementById('cpMenu')?.classList.remove('show');
+      }
+
+      function showMasterResetModal() {
+        const modal = document.getElementById('resetModal');
+        if (!modal) { performMasterReset(); return; }
+        closeControlsMenu();
+        modal.classList.add('show');
+        const confirmBtn = document.getElementById('resetConfirm');
+        const cancelBtn = document.getElementById('resetCancel');
+        if (confirmBtn && !confirmBtn.dataset.bound) {
+          confirmBtn.dataset.bound = '1';
+          confirmBtn.addEventListener('click', () => {
+            modal.classList.remove('show');
+            performMasterReset();
+          });
+        }
+        if (cancelBtn && !cancelBtn.dataset.bound) {
+          cancelBtn.dataset.bound = '1';
+          cancelBtn.addEventListener('click', () => {
+            modal.classList.remove('show');
+          });
+        }
+        if (!modal.dataset.bound) {
+          modal.dataset.bound = '1';
+          modal.addEventListener('click', (e) => {
+            if (e.target && e.target.id === 'resetModal') modal.classList.remove('show');
+          });
+        }
+      }
+
+      function showSupportModal() {
+        const modal = document.getElementById('supportModal');
+        if (!modal) return;
+        closeControlsMenu();
+        modal.classList.add('show');
+      }
+      function showSettingsModal() {
+        const modal = document.getElementById('settingsModal');
+        if (!modal) return;
+        closeControlsMenu();
+        modal.classList.add('show');
+      }
+
+      function buildMenuHTML(items = []) {
+        const cur = window.location.pathname.replace(/\/+/g, '/');
+        const isActive = href => {
+          if (!href || href === '#') return false;
+          try { return new URL(href, location.href).pathname.replace(/\/+/g,'/') === cur; } catch { return false; }
+        };
+        return items.map(item => {
+          if (item.type === 'header') return `<li class="nav-header">${item.label}</li>`;
+          if (item.type === 'action' || item.action) {
+            const icon = item.icon || 'bi-circle';
+            const extraClass = item.class ? ` ${item.class}` : '';
+            const action = item.action || '';
+            return `<li class="nav-item"><a href="#" class="nav-link${extraClass}" data-action="${action}"><i class="nav-icon bi ${icon}"></i><p>${item.label}</p></a></li>`;
+          }
+          const hasChildren = Array.isArray(item.children) && item.children.length > 0;
+          const icon = item.icon || 'bi-circle';
+          const extraClass = item.class ? ` ${item.class}` : '';
+          if (hasChildren) {
+            const isOpen = item.open || item.children.some(c => isActive(c.href));
+            return `<li class="nav-item ${isOpen ? 'menu-open' : ''}">
+              <a href="${item.href||'#'}" class="nav-link${extraClass} ${item.active ? 'active' : ''}">
+                <i class="nav-icon bi ${icon}"></i>
+                <p>${item.label}${item.badge ? `<span class="nav-badge badge ${item.badge.class||''} me-3">${item.badge.text}</span>` : ''}<i class="nav-arrow bi bi-chevron-right"></i></p>
+              </a>
+              <ul class="nav nav-treeview">${buildMenuHTML(item.children)}</ul>
+            </li>`;
+          }
+          const active = item.active || isActive(item.href);
+          return `<li class="nav-item"><a href="${item.href||'#'}" class="nav-link${extraClass} ${active ? 'active' : ''}"><i class="nav-icon bi ${icon}"></i><p>${item.label}</p></a></li>`;
+        }).join('');
+      }
+
+      let menuData = null;
+      for (const url of ['../menu.json', 'menu.json', '/menu.json']) {
+        try {
+          const r = await fetch(url, { cache: 'no-store' });
+          if (r.ok) { menuData = await r.json(); break; }
+        } catch {}
+      }
+
+      if (!menuData) {
+        try { menuData = JSON.parse(document.getElementById('menu-data').textContent); } catch {}
+      }
+
+      if (menuData) {
+        nav.innerHTML = buildMenuHTML(menuData);
+        nav.querySelectorAll('[data-action="clear-client-cache"]').forEach((el) => {
+          el.addEventListener('click', (e) => { e.preventDefault(); showMasterResetModal(); });
+        });
+        nav.querySelectorAll('[data-action="support-modal"], [data-action="support-tools"]').forEach((el) => {
+          el.addEventListener('click', (e) => { e.preventDefault(); showSupportModal(); });
+        });
+        nav.querySelectorAll('[data-action="settings-modal"], [data-action="settings-tools"]').forEach((el) => {
+          el.addEventListener('click', (e) => { e.preventDefault(); showSettingsModal(); });
+        });
+      } else {
+        nav.innerHTML = `<li class="nav-item"><a href="#" class="nav-link text-danger"><i class="nav-icon bi bi-exclamation-triangle"></i><p>Menu unavailable</p></a></li>`;
+      }
+    })();
+  </script>
 
   <!-- ══════════════════════════════════════
        BANNER FORGE APPLICATION LOGIC
@@ -3461,141 +3704,7 @@
     const file = e.target.files?.[0];
     applyBgFile(file);
   });
-
-  // OpenClaw drawer
-  const ocDrawer = document.getElementById('ocDrawer');
-  const ocTab = document.getElementById('ocTab');
-  const ocToggleUp = document.getElementById('ocToggleUp');
-  const GUAC_URL = 'https://ai.carfinancecheque.uk/guacamole/';
-  const GUAC_USER     = "guacadmin";
-  const GUAC_PASS     = "guacadmin";
-  const SESSION_SECS  = 180;
-  
-  const GATEWAY_TOKEN = "9533263d7ff39819800754b970748ddf";
-
-  let isOn = false, countdown = 0, ticker = null, sessionTimer = null, sessionEndAt = 0;
-  const powerBtn  = document.getElementById('power-btn');
-  const guacFrame = document.getElementById('guac-frame');
-  const standby   = document.getElementById('standby-screen');
-  const offline   = document.getElementById('offline-screen');
-  const timerEl   = document.getElementById('timer-display');
-  const led1      = document.getElementById('led1');
-  const led2      = document.getElementById('led2');
-  const led3      = document.getElementById('led3');
-
-  ocTab?.addEventListener('click', () => openDrawer());
-  ocToggleUp?.addEventListener('click', () => closeDrawer());
-
-  function openDrawer() {
-    if (!ocDrawer) return;
-    ocDrawer.classList.add('open');
-    ocTab?.classList.add('hidden');
-    if (!isOn) connect();
-  }
-  function closeDrawer() {
-    if (!ocDrawer) return;
-    ocDrawer.classList.remove('open');
-    ocTab?.classList.remove('hidden');
-  }
-
-async function getGuacToken() {
-    try {
-      const res = await fetch(`${GUAC_BASE}/api/tokens`, {
-        method: 'POST',
-        mode: 'cors',
-        credentials: 'omit',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `username=${encodeURIComponent(GUAC_USER)}&password=${encodeURIComponent(GUAC_PASS)}`
-      });
-      if (!res.ok) throw new Error(res.status);
-      return (await res.json()).authToken;
-    } catch(e) {
-      console.warn("Token fetch failed:", e);
-      return null;
-    }
-  }
-
-  function setLed(el, cls) { el.className = cls ? `led ${cls}` : 'led'; }
-  function updateLeds(s) {
-    if      (s > 120) { setLed(led3,'on-green'); setLed(led2,'on-green'); setLed(led1,'on-green'); }
-    else if (s > 60)  { setLed(led3,null);       setLed(led2,'on-amber'); setLed(led1,'on-amber'); }
-    else if (s > 20)  { setLed(led3,null);       setLed(led2,null);       setLed(led1,'on-red'); }
-    else if (s > 0)   { setLed(led3,null);       setLed(led2,null);       setLed(led1,'on-red flash'); }
-    else              { setLed(led3,null);       setLed(led2,null);       setLed(led1,null); }
-  }
-  function updateTimer(s) {
-    const mm = String(Math.floor(s/60)).padStart(2,'0');
-    const ss = String(s%60).padStart(2,'0');
-    timerEl.textContent = `${mm}:${ss}`;
-    timerEl.className = s > 120 ? 'active' : s > 20 ? 'warning' : 'critical';
-  }
-  async function togglePower() { isOn ? disconnect() : await connect(); }
-async function connect() {
-    if (isOn) return;
-    isOn = true;
-    powerBtn?.classList.add('on');
-    standby?.classList.add('hidden');
-    offline?.classList.remove('visible');
-    guacFrame.src = `${GUAC_BASE}/#/`;
-    guacFrame.classList.add('visible');
-    sessionEndAt = Date.now() + SESSION_SECS * 1000;
-    countdown = SESSION_SECS;
-    updateLeds(countdown);
-    updateTimer(countdown);
-    if (ticker) clearInterval(ticker);
-    ticker = setInterval(() => {
-      countdown = Math.max(0, Math.ceil((sessionEndAt - Date.now()) / 1000));
-      updateLeds(countdown);
-      updateTimer(countdown);
-      if (countdown <= 0) { clearInterval(ticker); ticker = null; timeout(); }
-    }, 1000);
-  }
-  function disconnect() {
-    isOn = false;
-    clearInterval(ticker); ticker = null;
-    powerBtn?.classList.remove('on');
-    guacFrame.classList.remove('visible');
-    guacFrame.src = 'about:blank';
-    setLed(led1,null); setLed(led2,null); setLed(led3,null);
-    timerEl.textContent = '--:--'; timerEl.className = '';
-    standby?.classList.remove('hidden');
-    offline?.classList.remove('visible');
-  }
-  function timeout() {
-    isOn = false;
-    powerBtn?.classList.remove('on');
-    guacFrame.classList.remove('visible');
-    guacFrame.src = 'about:blank';
-    setLed(led1,null); setLed(led2,null); setLed(led3,null);
-    timerEl.textContent = '00:00'; timerEl.className = 'critical';
-    standby?.classList.add('hidden');
-    offline?.classList.add('visible');
-  }
-  async function sendMessage() {
-    const input    = document.getElementById('user-query');
-    const btn      = document.getElementById('send-btn');
-    const feedback = document.getElementById('feedback');
-    const message  = input.value.trim();
-    if (!message) return;
-    input.disabled = btn.disabled = true;
-    feedback.textContent = 'Sending...';
-    try {
-      const res = await fetch(`${GATEWAY_URL}/support`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${GATEWAY_TOKEN}` },
-        body: JSON.stringify({ message, channel: 'web_ui' })
-      });
-      feedback.textContent = res.ok ? '✓ Sent' : `Error ${res.status}`;
-      if (res.ok) { input.value = ''; setTimeout(()=>{ feedback.textContent=''; }, 3000); }
-    } catch(e) {
-      feedback.textContent = 'No connection';
-      console.error(e);
-    } finally {
-      input.disabled = btn.disabled = false;
-      input.focus();
-    }
-  }
-  function handleKey(e) { if (e.key==='Enter') sendMessage(); }
+  // OpenClaw drawer logic is handled by ../js/app.js
   (function initSettingsControls(){
     const themeSel = document.getElementById('settingsThemeSelect');
     const vol = document.getElementById('settingsVolume');

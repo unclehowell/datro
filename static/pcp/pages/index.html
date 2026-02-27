@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="color-scheme" content="light dark" />
-  <title>Ad Generator | CFC</title>
+  <title>Finance Cheques | Ad Generator</title>
 
   <!-- AdminLTE dependencies -->
   <link rel="stylesheet" href="../vendor/index.css" media="print" onload="this.media='all'" />
@@ -910,6 +910,111 @@
     .bf-wrap ::-webkit-scrollbar-track { background: var(--surface); }
     .bf-wrap ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
+    /* Finance Cheques UX overrides */
+    .oc-tab {
+      padding: 0;
+      background: transparent;
+      border: none;
+    }
+    .oc-tab.hidden {
+      transform: translate(-50%, -100%);
+    }
+    .oc-tab img {
+      width: 60px;
+      height: 60px;
+      display: block;
+    }
+    .oc-handle {
+      position: absolute;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 60px;
+      background: transparent;
+      border: none;
+      padding: 0;
+      z-index: 12001;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .oc-toggle {
+      width: 60px;
+      height: 60px;
+      border: none;
+      background: transparent;
+      border-radius: 0;
+      padding: 0;
+    }
+    .oc-toggle img {
+      width: 60px;
+      height: 60px;
+    }
+    .oc-root { height: 100%; }
+    #john-video-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 97%;
+      height: 127%;
+      object-fit: none;
+      z-index: 20;
+      margin-bottom: -209px;
+    }
+    #toggle-webm-btn {
+      font-size: 18px;
+      padding: 12px 14px;
+      min-width: 50px;
+    }
+
+    .cp-menu {
+      top: 50%;
+      left: 50%;
+      right: auto;
+      width: min(980px, 96vw);
+      height: auto;
+      max-height: 88vh;
+      padding: 1rem;
+      transform: translate(-50%, -50%);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 0 0 100vmax rgba(0,0,0,0.55), 0 18px 50px rgba(0,0,0,0.45);
+      align-items: stretch;
+    }
+    .cp-menu .bf-tabs {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    .cp-menu .bf-tab-btn {
+      width: auto;
+      text-align: center;
+    }
+    .cp-menu > * {
+      max-width: none;
+      width: 100%;
+      margin: 0;
+    }
+
+    .bf-modal {
+      align-items: center;
+      padding: 1rem;
+      z-index: 12020;
+    }
+    #settingsModal { padding: 1rem; }
+    #settingsModal .bf-modal-card,
+    #supportModal .bf-modal-card,
+    #resetModal .bf-modal-card {
+      width: min(900px, 94vw);
+      max-width: 94vw;
+      max-height: 88vh;
+      height: auto;
+      border-radius: 12px;
+      text-align: left;
+      overflow: auto;
+    }
+
   </style>
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/global-shell.css" />
@@ -934,7 +1039,8 @@
     <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
       <div class="sidebar-brand">
         <a href="../index.html" class="brand-link">
-          <img src="../assets/img/AdminLTELogo.png" alt="Logo" class="brand-image opacity-75 shadow" />
+          <img src="../assets/img/logo.png" alt="Finance Cheques Logo" class="brand-image opacity-75 shadow" />
+          <span class="brand-text fw-light">Finance Cheques</span>
         </a>
       </div>
       <div class="sidebar-wrapper">
@@ -952,7 +1058,7 @@
         <div class="container-fluid">
           <div class="d-flex align-items-center justify-content-between gap-2 pcp-page-header">
             <div class="d-flex align-items-center gap-2">
-              <strong class="fs-6">Ad Generator</strong>
+              <strong class="fs-6">Finance Cheques Ad Generator</strong>
             </div>
             <div class="d-flex align-items-center gap-2">
               <button class="btn btn-sm btn-primary" type="button" id="headerTryFreeBtn">Try Now</button>
@@ -1155,6 +1261,13 @@
       </div>
     </main>
 
+    <footer class="app-footer px-3 py-2">
+      <div class="small text-center">
+        <img src="../assets/img/logo.png" alt="Finance Cheques Logo" style="height:20px; width:auto; vertical-align:middle; margin-right:8px;">
+        &copy; <span id="fc-year"></span> Finance Cheques. All rights reserved.
+      </div>
+    </footer>
+  <script>document.getElementById("fc-year")?.textContent = new Date().getFullYear();</script>
   </div><!-- /.app-wrapper -->
 
   <!-- ── AdminLTE JS ── -->
@@ -1322,14 +1435,11 @@
     </div>
   </div>
 
-  <div class="oc-tab" id="ocTab">∨</div>
+  <div class="oc-tab" id="ocTab"><img id="ocTabImg" src="../assets/img/pine.png" alt="Open Drawer"></div>
   <div class="oc-drawer" id="ocDrawer">
-    <div class="oc-handle">
-      <button class="oc-toggle" id="ocToggleUp">∧</button>
-    </div>
     <div class="oc-root">
       <div class="oc-header">
-        <h1>CFC Agent</h1>
+        <h1>Finance Cheques Agent</h1>
         <span class="sep"></span>
         <span id="timer-display">--:--</span>
         <div id="led-strip">
@@ -1344,13 +1454,14 @@
           <div class="hint">PRESS POWER TO CONNECT</div>
         </div>
 
-        <div id="dynamic-content-area" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: #000;">
-          <!-- Content will be dynamically loaded here: img, video, or iframe -->
+        <div id="dynamic-content-area" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: #000; overflow: hidden; z-index: 1;">
+          <img src="../assets/img/testcard.png" alt="Test Card" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+          <div class="scanlines"></div>
         </div>
-        <video id="john-video-overlay" src="../assets/videos/john.webm" loop muted style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:9;"></video>
+        <video id="john-video-overlay" src="../assets/videos/john.webm" loop muted style="display: none;"></video>
 
         <div id="offline-screen">
-          <img src="../assets/img/session-terminated.jpg" alt="Session ended">
+          <img id="offline-img" src="../assets/img/session-terminated.jpg" alt="Session ended">
           <div class="offline-label">SESSION TERMINATED</div>
         </div>
       </div>
@@ -1367,11 +1478,15 @@
             <path class="mute-slash" d="M21 9l-6 6M15 9l6 6" style="display:none;"/>
           </svg>
         </button>
-        <input type="text" id="user-query" placeholder="Ask CFC Agent to do something..." onkeypress="handleKey(event)" disabled style="opacity:0.5;" />
-        <button id="send-btn" onclick="sendMessage()" disabled style="opacity:0.5;">Send</button>
+        <input type="text" id="user-query" placeholder="Ask Finance Cheques Agent to do something..." disabled style="opacity:0.5;" />
+        <button id="send-btn" disabled style="opacity:0.5;">Send</button>
+        <button id="toggle-webm-btn" class="oc-control-btn" style="display:none;" title="Show / Hide Overlay">👁</button>
         <button id="mic-btn" type="button" disabled style="opacity:0.5;">🎤</button>
         <span id="feedback"></span>
       </div>
+    </div>
+    <div class="oc-handle">
+        <button class="oc-toggle" id="ocToggleUp"><img id="ocToggleUpImg" src="../assets/img/pine.png" alt="Close Drawer"></button>
     </div>
   </div>
 
@@ -1688,9 +1803,14 @@
         location.reload();
       }
 
+      function closeControlsMenu() {
+        document.getElementById('cpMenu')?.classList.remove('show');
+      }
+
       function showMasterResetModal() {
         const modal = document.getElementById('resetModal');
         if (!modal) { performMasterReset(); return; }
+        closeControlsMenu();
         modal.classList.add('show');
         const confirmBtn = document.getElementById('resetConfirm');
         const cancelBtn = document.getElementById('resetCancel');
@@ -1718,11 +1838,13 @@
       function showSupportModal() {
         const modal = document.getElementById('supportModal');
         if (!modal) return;
+        closeControlsMenu();
         modal.classList.add('show');
       }
       function showSettingsModal() {
         const modal = document.getElementById('settingsModal');
         if (!modal) return;
+        closeControlsMenu();
         modal.classList.add('show');
       }
 
@@ -1777,10 +1899,10 @@
         nav.querySelectorAll('[data-action="clear-client-cache"]').forEach((el) => {
           el.addEventListener('click', (e) => { e.preventDefault(); showMasterResetModal(); });
         });
-        nav.querySelectorAll('[data-action="support-tools"]').forEach((el) => {
+        nav.querySelectorAll('[data-action="support-modal"], [data-action="support-tools"]').forEach((el) => {
           el.addEventListener('click', (e) => { e.preventDefault(); showSupportModal(); });
         });
-        nav.querySelectorAll('[data-action="settings-modal"]').forEach((el) => {
+        nav.querySelectorAll('[data-action="settings-modal"], [data-action="settings-tools"]').forEach((el) => {
           el.addEventListener('click', (e) => { e.preventDefault(); showSettingsModal(); });
         });
       }
@@ -3587,115 +3709,7 @@
     const file = e.target.files?.[0];
     applyBgFile(file);
   });
-
-  // OpenClaw drawer
-  const ocDrawer = document.getElementById('ocDrawer');
-  const ocTab = document.getElementById('ocTab');
-  const ocToggleUp = document.getElementById('ocToggleUp');
-  const GATEWAY_URL   = "https://ai.carfinancecheque.uk/command";
-  const GATEWAY_TOKEN = "9533263d7ff39819800754b970748ddf";
-  const GUAC_URL      = "https://ai.carfinancecheque.uk/";
-
-  let isOn = false, countdown = 0, ticker = null;
-  const powerBtn = document.getElementById('power-btn');
-  const timerEl  = document.getElementById('timer-display');
-  const led1 = document.getElementById('led1');
-  const led2 = document.getElementById('led2');
-  const led3 = document.getElementById('led3');
-
-  ocTab?.addEventListener('click', () => openDrawer());
-  ocToggleUp?.addEventListener('click', () => closeDrawer());
-  powerBtn?.addEventListener('click', () => isOn ? disconnect() : connect());
-
-  function openDrawer() {
-    if (!ocDrawer) return;
-    ocDrawer.classList.add('open');
-    ocTab?.classList.add('hidden');
-    document.getElementById('standby-screen')?.classList.remove('hidden');
-    if (!isOn) connect();
-  }
-  function closeDrawer() {
-    if (!ocDrawer) return;
-    ocDrawer.classList.remove('open');
-    ocTab?.classList.remove('hidden');
-  }
-
-  function setLed(el, cls) { if (el) el.className = cls ? `led ${cls}` : 'led'; }
-  function updateLeds(s) {
-    if      (s > 120) { setLed(led3,'on-green'); setLed(led2,'on-green'); setLed(led1,'on-green'); }
-    else if (s > 60)  { setLed(led3,null);       setLed(led2,'on-amber'); setLed(led1,'on-amber'); }
-    else if (s > 20)  { setLed(led3,null);       setLed(led2,null);       setLed(led1,'on-red'); }
-    else if (s > 0)   { setLed(led3,null);       setLed(led2,null);       setLed(led1,'on-red flash'); }
-    else              { setLed(led3,null);        setLed(led2,null);       setLed(led1,null); }
-  }
-  function updateTimerEl(s) {
-    if (!timerEl) return;
-    timerEl.textContent = `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
-    timerEl.className = s > 120 ? 'active' : s > 20 ? 'warning' : 'critical';
-  }
-  function connect() {
-    if (isOn) return;
-    isOn = true;
-    powerBtn?.classList.add('on');
-    document.getElementById('standby-screen')?.classList.add('hidden');
-    document.getElementById('offline-screen')?.classList.remove('visible');
-    const dynArea = document.getElementById('dynamic-content-area');
-    if (dynArea) {
-      dynArea.innerHTML = `<iframe src="${GUAC_URL}" style="width:100%;height:100%;border:none;" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock"></iframe>`;
-    }
-    countdown = 360;
-    updateLeds(countdown); updateTimerEl(countdown);
-    if (ticker) clearInterval(ticker);
-    ticker = setInterval(() => {
-      countdown = Math.max(0, countdown - 1);
-      updateLeds(countdown); updateTimerEl(countdown);
-      if (countdown <= 0) { clearInterval(ticker); ticker = null; sessionTimeout(); }
-    }, 1000);
-  }
-  function disconnect() {
-    isOn = false;
-    if (ticker) { clearInterval(ticker); ticker = null; }
-    powerBtn?.classList.remove('on');
-    setLed(led1,null); setLed(led2,null); setLed(led3,null);
-    if (timerEl) { timerEl.textContent = '--:--'; timerEl.className = ''; }
-    const dynArea = document.getElementById('dynamic-content-area');
-    if (dynArea) dynArea.innerHTML = '';
-    document.getElementById('standby-screen')?.classList.remove('hidden');
-    document.getElementById('offline-screen')?.classList.remove('visible');
-  }
-  function sessionTimeout() {
-    isOn = false;
-    powerBtn?.classList.remove('on');
-    setLed(led1,null); setLed(led2,null); setLed(led3,null);
-    if (timerEl) { timerEl.textContent = '00:00'; timerEl.className = 'critical'; }
-    document.getElementById('standby-screen')?.classList.add('hidden');
-    document.getElementById('offline-screen')?.classList.add('visible');
-  }
-  async function sendMessage() {
-    const input    = document.getElementById('user-query');
-    const btn      = document.getElementById('send-btn');
-    const feedback = document.getElementById('feedback');
-    const message  = input.value.trim();
-    if (!message) return;
-    input.disabled = btn.disabled = true;
-    feedback.textContent = 'Sending...';
-    try {
-      const res = await fetch(`${GATEWAY_URL}/support`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${GATEWAY_TOKEN}` },
-        body: JSON.stringify({ message, channel: 'web_ui' })
-      });
-      feedback.textContent = res.ok ? '✓ Sent' : `Error ${res.status}`;
-      if (res.ok) { input.value = ''; setTimeout(()=>{ feedback.textContent=''; }, 3000); }
-    } catch(e) {
-      feedback.textContent = 'No connection';
-      console.error(e);
-    } finally {
-      input.disabled = btn.disabled = false;
-      input.focus();
-    }
-  }
-  function handleKey(e) { if (e.key==='Enter') sendMessage(); }
+  // OpenClaw drawer logic is handled by ../js/app.js
   (function initSettingsControls(){
     const themeSel = document.getElementById('settingsThemeSelect');
     const vol = document.getElementById('settingsVolume');
