@@ -21,7 +21,7 @@
       background-color: #0a0a0f; /* Ensure background color for consistency */
     }
     .login-box {
-      margin: auto; /* Center the login box */
+      margin: 0 auto;
       width: min(92vw, 440px);
       z-index: 10;
     }
@@ -50,16 +50,18 @@
       position: fixed;
       left: 0;
       right: 0;
-      bottom: 8px;
+      bottom: 0;
       z-index: 10;
       display: flex;
       justify-content: center;
       pointer-events: auto;
+      background: rgba(10, 10, 15, 0.92);
+      border-top: 1px solid #1a2230;
     }
     .root-footer {
       text-align: center;
       margin-top: 0;
-      padding: 10px 16px;
+      padding: 8px 16px;
       color: #8893a3;
       font-size: 0.8em;
     }
@@ -1313,12 +1315,7 @@
       <form id="loginForm">
 
         <div class="form-group mb-3">
-          <label>Domain</label>
-          <input type="text" class="form-control" value="carfinancecheque.uk" readonly>
-        </div>
-
-        <div class="form-group mb-3">
-          <label for="user-select">Portal User</label>
+          <label for="user-select">Username</label>
           <select id="user-select" class="form-control">
             <option value="1">User 25148531</option>
             <option value="2">User 25148532</option>
@@ -1328,7 +1325,7 @@
         </div>
 
         <div class="form-group mb-3">
-          <label for="password-input">Access Key</label>
+          <label for="password-input">Password</label>
           <input 
             id="password-input"
             type="password"
@@ -1343,7 +1340,7 @@
         <div id="error" class="text-danger mb-3" style="display:none;"></div>
 
         <button type="submit" class="btn btn-primary btn-block w-100">
-          Enter Portal
+          Login
         </button>
 
       </form>
@@ -1398,7 +1395,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
   <div class="oc-drawer" id="ocDrawer">
     <div class="oc-root">
       <div class="oc-header">
-        <h1>Finance Cheques Agent</h1>
+        <h1>Oaksey A.I</h1>
         <span class="sep"></span>
         <span id="timer-display">--:--</span>
         <div id="led-strip">
@@ -1490,6 +1487,35 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
   <script>
     const yearEl = document.getElementById('fc-year-root');
     if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+    // Keep the login card vertically centered between pine handle and footer.
+    (() => {
+      const box = document.querySelector('.login-box');
+      const tab = document.getElementById('ocTab');
+      const footer = document.querySelector('footer');
+      if (!box || !tab || !footer) return;
+
+      const positionLoginBox = () => {
+        const tabRect = tab.getBoundingClientRect();
+        const footerRect = footer.getBoundingClientRect();
+        const topBoundary = tabRect.bottom;
+        const bottomBoundary = footerRect.top;
+        const midpoint = topBoundary + ((bottomBoundary - topBoundary) / 2);
+        const halfHeight = box.offsetHeight / 2;
+        const minTop = topBoundary + halfHeight + 8;
+        const maxTop = bottomBoundary - halfHeight - 8;
+        const safeTop = Math.min(Math.max(midpoint, minTop), maxTop);
+
+        box.style.position = 'fixed';
+        box.style.left = '50%';
+        box.style.top = `${safeTop}px`;
+        box.style.transform = 'translate(-50%, -50%)';
+        box.style.margin = '0';
+      };
+
+      positionLoginBox();
+      window.addEventListener('resize', positionLoginBox);
+    })();
   </script>
 </body>
 </html>

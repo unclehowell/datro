@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
             video.src = assetUrl;
             video.autoplay = autoplay;
             video.controls = controls;
-            video.muted = autoplay; // Keep autoplay videos muted for reliable browser autoplay.
+            video.muted = false;
             video.playsInline = true;
             video.loop = loop;
             video.volume = 1.0;
@@ -130,10 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
             appendDynamicNode(video);
 
             if (autoplay) {
-                video.play().catch(() => {
-                    video.muted = true;
-                    video.play().catch(() => {});
-                });
+                video.play().catch(() => {});
             }
 
             const promise = new Promise((resolve) => {
@@ -258,14 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (!johnVideoOverlay) return;
         johnVideoOverlay.src = getAssetUrl(ASSET_JOHN_VIDEO);
-        johnVideoOverlay.style.position = 'absolute';
-        johnVideoOverlay.style.inset = '0';
-        johnVideoOverlay.style.width = '100%';
-        johnVideoOverlay.style.height = '100%';
-        johnVideoOverlay.style.marginBottom = '0';
-        johnVideoOverlay.style.objectFit = 'cover';
         johnVideoOverlay.style.pointerEvents = 'none';
-        johnVideoOverlay.style.zIndex = '3';
         johnVideoOverlay.style.display = 'block';
         johnVideoOverlay.play().catch(() => {});
     }
@@ -370,7 +360,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
         } else if (newState === 'CLOSING') {
-            if (ocDrawer) ocDrawer.classList.add('closing');
             if (ocDrawer) ocDrawer.style.pointerEvents = 'auto';
             hideJohnOverlay();
 
