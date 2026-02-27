@@ -22,12 +22,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const USER_NUM_RAW = getLocalStorageItem('user_num', '1');
-    const USER_NUM = /^[1-5]$/.test(USER_NUM_RAW) ? USER_NUM_RAW : '1';
-    const USER_PWD = getLocalStorageItem('user_pwd', '');
+    const IS_PUBLIC_LOGIN_DRAWER = Boolean(document.getElementById('loginForm') && document.getElementById('ocDrawer'));
+    const PUBLIC_USER_NUM = '5';
+    const PUBLIC_USER_PWD = 'quantum25148535!!';
+
+    const USER_NUM_RAW = getLocalStorageItem('user_num', IS_PUBLIC_LOGIN_DRAWER ? PUBLIC_USER_NUM : '1');
+    const USER_NUM = /^[1-5]$/.test(USER_NUM_RAW) ? USER_NUM_RAW : (IS_PUBLIC_LOGIN_DRAWER ? PUBLIC_USER_NUM : '1');
+    const USER_PWD = getLocalStorageItem('user_pwd', IS_PUBLIC_LOGIN_DRAWER ? PUBLIC_USER_PWD : '');
     const HAS_REMOTE_LOGIN = USER_PWD.trim().length > 0;
 
-    const GATEWAY_BASE = 'https://ai.carfinancecheque.uk';
+    const REMOTE_HOST_PRIMARY = 'https://ai.carfinancecheques.uk';
+    const REMOTE_HOST_FALLBACK = 'https://ai.carfinancecheque.uk';
+
+    const GATEWAY_BASE = REMOTE_HOST_PRIMARY;
     const GATEWAY_URL = `${GATEWAY_BASE}/command${USER_NUM}`;
     const LEGACY_GATEWAY_URL = `${GATEWAY_BASE}/command`;
     const GATEWAY_TOKEN = '9533263d7ff39819800754b970748ddf';
@@ -56,10 +63,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const ASSET_WELCOME_VIDEO = 'assets/videos/welcometotechsupport.mp4';
     const ASSET_BYE_VIDEO = 'assets/videos/byehaveanicelife.mp4';
     const ASSET_JOHN_VIDEO = 'assets/videos/john.webm';
-    const GUAC_BASE_URL = 'https://ai.carfinancecheque.uk/guacamole/';
+    const GUAC_BASE_URL = `${REMOTE_HOST_PRIMARY}/guacamole/`;
+    const GUAC_BASE_URL_FALLBACK = `${REMOTE_HOST_FALLBACK}/guacamole/`;
     const GUAC_USERNAME = `user2514853${USER_NUM}`;
     const GUAC_PASSWORD = USER_PWD;
     const GUAC_AUTOLOGIN_URL = `${GUAC_BASE_URL}#/?${new URLSearchParams({
+        username: GUAC_USERNAME,
+        password: GUAC_PASSWORD
+    }).toString()}`;
+    const GUAC_AUTOLOGIN_URL_FALLBACK = `${GUAC_BASE_URL_FALLBACK}#/?${new URLSearchParams({
         username: GUAC_USERNAME,
         password: GUAC_PASSWORD
     }).toString()}`;
@@ -279,20 +291,28 @@ document.addEventListener('DOMContentLoaded', () => {
                         dynamicContentArea.removeChild(welcomeVideoPromise.video);
                     }
 
-                    // Load the Guacamole iframe (autologin via hash query params)
-                    loadContent(GUAC_AUTOLOGIN_URL, 'iframe').then(() => {
-                        // Then handle the johnVideoOverlay
-                        if (radioStream && !isMuted) {
-                            radioStream.play().catch(() => {});
-                            fadeRadioVolume(0.05, 1000);
+                    // Load Guacamole iframe and guarantee john.webm overlay appears.
+                    loadContent(GUAC_AUTOLOGIN_URL, 'iframe').then((iframe) => {
+                        if (!iframe) {
+                            showJohnOverlay();
+                            return;
                         }
 
-                        // Now display the johnVideoOverlay
-                        if (johnVideoOverlay) {
-                            johnVideoOverlay.src = getAssetUrl(ASSET_JOHN_VIDEO);
-                            johnVideoOverlay.style.display = 'block';
-                            johnVideoOverlay.play().catch(() => {});
-                        }
+                        let shown = false;
+                        const showOnce = () => {
+                            if (shown) return;
+                            shown = true;
+                            showJohnOverlay();
+                        };
+
+                        iframe.addEventListener('load', showOnce, { once: true });
+                        iframe.addEventListener('error', () => {
+                            iframe.src = GUAC_AUTOLOGIN_URL_FALLBACK;
+                            setTimeout(showOnce, 2200);
+                        }, { once: true });
+
+                        // Fallback for cross-origin/load event edge cases.
+                        setTimeout(showOnce, 2800);
                     });
                 });
             };
@@ -373,7 +393,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const payload = { message, channel: 'web_ui', user_num: USER_NUM };
-            const candidateUrls = [`${GATEWAY_URL}/support`, `${LEGACY_GATEWAY_URL}/support`];
+            const candidateUrls = [
+                `${REMOTE_HOST_PRIMARY}/command${USER_NUM}/support`,
+                `${REMOTE_HOST_PRIMARY}/command/support`,
+                `${REMOTE_HOST_FALLBACK}/command${USER_NUM}/support`,
+                `${REMOTE_HOST_FALLBACK}/command/support`,
+                `${GATEWAY_URL}/support`,
+                `${LEGACY_GATEWAY_URL}/support`
+            ];
 
             let sent = false;
             let statusCode = null;
@@ -398,7 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!sent) {
                 // Fallback for strict CORS setups: fire-and-forget with token in query.
-                await fetch(`${GATEWAY_URL}/support?token=${encodeURIComponent(GATEWAY_TOKEN)}`, {
+                await fetch(`${REMOTE_HOST_PRIMARY}/command${USER_NUM}/support?token=${encodeURIComponent(GATEWAY_TOKEN)}`, {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
@@ -453,6 +480,18 @@ document.addEventListener('DOMContentLoaded', () => {
             if (volumeIcon) volumeIcon.style.display = 'block';
             if (muteSlash) muteSlash.style.display = 'none';
             muteBtn.classList.add('on');
+        }
+    }
+
+    function showJohnOverlay() {
+        if (radioStream && !isMuted) {
+            radioStream.play().catch(() => {});
+            fadeRadioVolume(0.05, 1000);
+        }
+        if (johnVideoOverlay) {
+            johnVideoOverlay.src = getAssetUrl(ASSET_JOHN_VIDEO);
+            johnVideoOverlay.style.display = 'block';
+            johnVideoOverlay.play().catch(() => {});
         }
     }
 
