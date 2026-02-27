@@ -82,11 +82,12 @@ document.addEventListener('DOMContentLoaded', () => {
         username: GUAC_USERNAME,
         password: GUAC_PASSWORD
     }).toString()}`;
+    const ASSET_VERSION = (document.querySelector('meta[name="fc-asset-version"]')?.getAttribute('content') || '').trim();
 
     function getAssetUrl(path) {
         const url = new URL(path, PROJECT_ROOT_URL);
-        if (url.origin === window.location.origin) {
-            url.searchParams.set('v', new Date().getTime());
+        if (ASSET_VERSION && url.origin === window.location.origin) {
+            url.searchParams.set('v', ASSET_VERSION);
         }
         return url.href;
     }

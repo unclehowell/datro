@@ -4,9 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="color-scheme" content="light dark" />
+  <meta name="fc-asset-version" content="20260227e" />
   <title>Finance Cheques | Control Panel Login</title>
 
   <link rel="stylesheet" href="css/adminlte.css?v=20260227b" />
+  <link rel="preload" as="video" href="assets/videos/welcometotechsupport.mp4?v=20260227e" type="video/mp4" />
+  <link rel="preload" as="video" href="assets/videos/byehaveanicelife.mp4?v=20260227e" type="video/mp4" />
+  <link rel="preload" as="video" href="assets/videos/john.webm?v=20260227e" type="video/webm" />
+  <link rel="preconnect" href="https://stream.rcs.revma.com" crossorigin />
 
   <style>
     body {
@@ -19,6 +24,64 @@
       padding: 24px 16px 84px;
       box-sizing: border-box;
       background-color: #0a0a0f; /* Ensure background color for consistency */
+    }
+    #boot-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 13000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(7, 10, 14, 0.98);
+      color: #e7edf5;
+      transition: opacity 0.3s ease;
+    }
+    #boot-loader.is-done {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #boot-loader .boot-panel {
+      width: min(90vw, 440px);
+      border: 1px solid #2a3341;
+      border-radius: 10px;
+      background: rgba(13, 20, 27, 0.92);
+      padding: 14px 14px 12px;
+    }
+    #boot-loader .boot-label {
+      font-family: 'Share Tech Mono', monospace;
+      letter-spacing: 0.1em;
+      font-size: 12px;
+      color: #9ab3c7;
+      margin-bottom: 10px;
+    }
+    #boot-loader .boot-bar {
+      height: 8px;
+      border-radius: 999px;
+      background: #111826;
+      border: 1px solid #27354a;
+      overflow: hidden;
+    }
+    #boot-loader .boot-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #2dd4bf, #45ff8f);
+      transition: width 0.18s ease;
+    }
+    #boot-loader .boot-status {
+      margin-top: 8px;
+      font-size: 11px;
+      color: #8aa2b6;
+      text-align: right;
+      font-family: 'Share Tech Mono', monospace;
+      letter-spacing: 0.08em;
+    }
+    #media-preload-bin {
+      position: fixed;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      pointer-events: none;
+      opacity: 0;
     }
     .login-box {
       margin: 0 auto;
@@ -1304,6 +1367,100 @@
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary dark-mode" data-bs-theme="dark">
 
+<div id="boot-loader" aria-live="polite">
+  <div class="boot-panel">
+    <div class="boot-label">WARMING UP MEDIA</div>
+    <div class="boot-bar"><div class="boot-fill" id="boot-loader-fill"></div></div>
+    <div class="boot-status" id="boot-loader-status">0%</div>
+  </div>
+</div>
+<div id="media-preload-bin" aria-hidden="true"></div>
+<script>
+(() => {
+  const loader = document.getElementById('boot-loader');
+  const fill = document.getElementById('boot-loader-fill');
+  const status = document.getElementById('boot-loader-status');
+  const preloadBin = document.getElementById('media-preload-bin');
+  if (!loader || !fill || !status || !preloadBin) return;
+
+  const version = document.querySelector('meta[name="fc-asset-version"]')?.getAttribute('content') || '';
+  const withVersion = (src) => {
+    if (!version || /^https?:\/\//i.test(src)) return src;
+    return `${src}${src.includes('?') ? '&' : '?'}v=${encodeURIComponent(version)}`;
+  };
+
+  const tasks = [
+    { type: 'video', src: withVersion('assets/videos/welcometotechsupport.mp4') },
+    { type: 'video', src: withVersion('assets/videos/byehaveanicelife.mp4') },
+    { type: 'video', src: withVersion('assets/videos/john.webm') },
+    { type: 'audio', src: 'https://stream.rcs.revma.com/fxp289cp81uvv' }
+  ];
+
+  let completed = 0;
+  const total = tasks.length;
+  const warmCache = {};
+  let finalized = false;
+
+  const update = () => {
+    const pct = Math.round((completed / total) * 100);
+    fill.style.width = `${pct}%`;
+    status.textContent = `${pct}%`;
+  };
+
+  const finalize = () => {
+    if (finalized) return;
+    finalized = true;
+    fill.style.width = '100%';
+    status.textContent = '100%';
+    window.__fcWarmMedia = warmCache;
+    loader.classList.add('is-done');
+    setTimeout(() => loader.remove(), 320);
+  };
+
+  const completeOne = () => {
+    completed += 1;
+    update();
+    if (completed >= total) finalize();
+  };
+
+  const preloadOne = (task, index) => {
+    const element = document.createElement(task.type);
+    let done = false;
+    const markDone = () => {
+      if (done) return;
+      done = true;
+      completeOne();
+    };
+
+    element.preload = 'auto';
+    element.src = task.src;
+    if (task.type === 'video') {
+      element.muted = true;
+      element.playsInline = true;
+      element.setAttribute('playsinline', '');
+      element.addEventListener('loadeddata', markDone, { once: true });
+      element.addEventListener('canplaythrough', markDone, { once: true });
+    } else {
+      element.volume = 0;
+      element.addEventListener('loadedmetadata', markDone, { once: true });
+      element.addEventListener('canplay', markDone, { once: true });
+    }
+    element.addEventListener('error', markDone, { once: true });
+    element.addEventListener('stalled', markDone, { once: true });
+    element.addEventListener('abort', markDone, { once: true });
+
+    preloadBin.appendChild(element);
+    try { element.load(); } catch (error) {}
+    warmCache[index] = element;
+    setTimeout(markDone, 2800);
+  };
+
+  update();
+  tasks.forEach(preloadOne);
+  setTimeout(finalize, 6500);
+})();
+</script>
+
 <div class="login-box">
   <div class="card card-outline card-primary shadow">
     <div class="card-header text-center">
@@ -1446,12 +1603,12 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
     </div>
   </div>
 
-  <audio id="radio-stream" src="https://stream.rcs.revma.com/fxp289cp81uvv" preload="none"></audio>
+  <audio id="radio-stream" src="https://stream.rcs.revma.com/fxp289cp81uvv" preload="auto"></audio>
 
   <script>
     // Cache-busting
     const bustCache = () => {
-        const timestamp = new Date().getTime();
+        const version = document.querySelector('meta[name="fc-asset-version"]')?.getAttribute('content') || '20260227e';
         const bustable = [
             { id: 'ocTabImg', attr: 'src' },
             { id: 'ocToggleUpImg', attr: 'src' },
@@ -1466,14 +1623,14 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
                 let url = el.getAttribute(item.attr);
                 if (url) {
                     url = url.split('?')[0];
-                    el.setAttribute(item.attr, `${url}?v=${timestamp}`);
+                    el.setAttribute(item.attr, `${url}?v=${encodeURIComponent(version)}`);
                 }
             }
         });
     };
     bustCache();
   </script>
-  <script id="app-script" src="js/app.js?v=20260227c"></script>
+  <script id="app-script" src="js/app.js?v=20260227e"></script>
   <footer>
     <div class="root-footer">
       <a href="tos.html" style="color: #8893a3; text-decoration: none; margin-right: 10px;">Terms of Service</a>
