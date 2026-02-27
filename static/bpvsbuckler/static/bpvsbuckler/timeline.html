@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline | Great House Farm, Llandough</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .timeline-line { position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background: #4b5563; }
+    .event-card:hover { transform: translateX(8px); }
+    .highlight { background-color: #fefce8; border-left: 6px solid #b91c1c; }
+  </style>
+</head>
+<body class="bg-gray-950 text-gray-100 font-sans">
+  <div class="max-w-4xl mx-auto px-6 py-12">
+    <div class="text-center mb-12">
+      <h1 class="text-5xl font-bold mb-2">Great House Farm Timeline</h1>
+      <p class="text-amber-400 text-xl">Williams–Buckler Family Claim vs BP Properties (1667–1994)</p>
+    </div>
+
+    <div id="timeline" class="relative">
+      <!-- JS will populate here -->
+    </div>
+  </div>
+
+  <script>
+    fetch('timeline.json')
+      .then(r => r.json())
+      .then(data => {
+        const container = document.getElementById('timeline');
+        data.events.forEach((event, i) => {
+          const div = document.createElement('div');
+          div.className = `relative flex items-center gap-8 mb-16 event-card ${event.highlight ? 'highlight' : ''}`;
+          div.innerHTML = `
+            <div class="w-1/2 text-right pr-8">
+              <div class="inline-block bg-gray-900 px-6 py-2 rounded-full text-2xl font-bold text-amber-400">${event.date}</div>
+            </div>
+            <div class="w-1/2 pl-8">
+              <div class="bg-gray-900 p-8 rounded-2xl border-l-8 ${event.highlight ? 'border-red-600' : 'border-amber-500'}">
+                <h3 class="text-2xl font-semibold mb-3">${event.title}</h3>
+                <p class="text-gray-300 leading-relaxed">${event.desc}</p>
+              </div>
+            </div>
+          `;
+          container.appendChild(div);
+        });
+      });
+  </script>
+</body>
+</html>
