@@ -26,8 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const ASSET_WELCOME_VIDEO = '../assets/videos/welcometotechsupport.mp4';
     const ASSET_BYE_VIDEO = '../assets/videos/byhaveanicelife.mp4';
     const ASSET_JOHN_VIDEO = '../assets/videos/john.webm';
-    const YOUTUBE_VIDEO_URL = 'https://www.youtube.com/embed/plnkjKbXZaE?si=okRZ0o0r0Ix8Q-FV&autoplay=1&mute=1&controls=0&loop=1&playlist=plnkjKbXZaE';
-    const GUAC_URL = 'https://ai.carfinancecheque.uk/';
+    const GUAC_BASE_URL = 'https://ai.carfinancecheque.uk/guacamole/';
+    const GUAC_USERNAME = 'user25148535';
+    const GUAC_PASSWORD = 'quantum25148535!!';
+    const GUAC_AUTOLOGIN_URL = `${GUAC_BASE_URL}#/?${new URLSearchParams({
+        username: GUAC_USERNAME,
+        password: GUAC_PASSWORD
+    }).toString()}`;
 
     function getAssetUrl(path) {
         const url = new URL(path, window.location.href);
@@ -216,8 +221,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             dynamicContentArea.removeChild(welcomeVideoPromise.video);
                         }
 
-                        // Load the YouTube iframe
-                        loadContent(YOUTUBE_VIDEO_URL, 'iframe').then(() => {
+                        // Load the Guacamole iframe (autologin via hash query params)
+                        loadContent(GUAC_AUTOLOGIN_URL, 'iframe').then(() => {
                             // Then handle the johnVideoOverlay
                             setTimeout(() => {
                                 if (radioStream && !isMuted) {

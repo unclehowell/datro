@@ -1,4 +1,37 @@
-<!DOCTYPE html>
+#!/usr/bin/env node
+// encrypt-site.js
+// Usage: PASSPHRASE='your-pass' node encrypt-site.js path/to/site.html path/to/output/index.html
+
+const fs = require('fs');
+const path = require('path');
+const CryptoJS = require('crypto-js');
+
+function usageAndExit() {
+  console.error('Usage: PASSPHRASE="your-pass" node encrypt-site.js path/to/site.html path/to/output/index.html');
+  process.exit(2);
+}
+
+const [,, inPath, outPath, passArg] = process.argv;
+if (!inPath || !outPath) usageAndExit();
+
+const pass = process.env.PASSPHRASE || passArg;
+if (!pass) {
+  console.error('Error: passphrase not provided. Set PASSPHRASE env or pass as 3rd arg.');
+  usageAndExit();
+}
+
+if (!fs.existsSync(inPath)) {
+  console.error('Error: input file not found:', inPath);
+  process.exit(3);
+}
+
+const siteHtml = fs.readFileSync(inPath, 'utf8');
+
+// Encrypt using CryptoJS AES (compat across Node/browser)
+const encrypted = CryptoJS.AES.encrypt(siteHtml, pass).toString();
+
+// Build loader HTML. Use JSON.stringify to safely embed the ciphertext string.
+const loaderHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -135,7 +168,64 @@
 
   <script>
     // embedded ciphertext
-    const ciphertext = "U2FsdGVkX1/Q/nz8wud/80eqHzPwp7ZVj5GOWGTyycGhIQ2r+GiqHLqYGorCeHNSvHt4n4HVeP1oF3hZ4K3Cp8GzP0z/Rloyrr1+cTCu9p5MwM89oRa80z9rlXVvX7VDQkGq7bXthkhgQWHc/CV8yd8BYezEH7omFlOQ+DvtIG4Xewp10ALUGZh/mbru1rSQQkQKngyViPaK6mkykx8zJaCb2CFHTKRHwfji2T32Ldh3RLxek31kJhemT7D0IK+S4yg1/Zs+gnemVraaJ1t/eeCLIFgA6xHurbdjcqz3qZLJl57Yvd89STzvZZchST9t+xDfs24dXttaus1vOLEInc6f/TD+PYp40vKEOaf+x1owK1OF0Q+f7WnvyXQDHdBjOvQFQwu8ujzVWwH08lidz4G2CDu39yR+w97Lij/OqWe7CfPXJ5ps2GcN2Wck85YMD0PAU4imz/jsT3CR6W6KPhpdtohaWTS9xkZhfCKeO1ls5rDISYzmIoIP5pB8/NLDEDMD+ETdL4HKFIWrw9IWzwI71PnYLgfq9j3DFwnTL6+mW+sy0HvWqr74YJxV08c+DvVg71bt5ePBjipp4wLLLUO0kvaYrC8lisazrY1AVE1FjZFAP/sKSy9p6Xu1uWeKN+HNP5ZlMdhOf8kl1YriwHGANkzGd1aGItIDMHwZPbSXJKWKBDc15Q58Nn0KzZX3d5jvg47PqOrhhoodFzYIBA5ECeVh9Ew7WGaXTwzmUGUCPj/VFNUFil4tohxCkU8YyQLcMM9GRq+zSDiv2jeimSewx4Njp2jHnjplbiP8D0oV/xI6VCYsUjldO4th6I/7R318k63Wm61nJrpkRVF+BjtEFVm3e+1XtZ5ljaYbP8WP+Ma2QaY5HHLKxNeUEYDB6zvSkBgEShSQL1dmUWxCLJrdsfFO+bct5aJ8mgh6LeJ7HFgJvCCMd6yVq/9pJU+X/eRnrCBKQB3TW93GAabPKl4HT9LgSSpQljDFfnrNWWGcblntHYffnOpEeWtMsm5HIgcWpyZvqPzYsslBTNN3sEqzjmyr0qwxv7XWFUIjzU+D3ORignXvhcORfogVf21TBLezdKUOwm55uxSi2h8i5AUFQI/OBxVYUpL1sB1NnQVzFFSFsMOqj/0PDz1XHWtDgMeDljuIjLrnQZdayz62hV6wnDb2ssK+98Q7ZMUrm8adLDWDML1Z9dlW+lV5iqSZJMAk4Wplz3uTMLT76oHtP/Pr2iibRh1X3zPx8tvaHWVpP86mnCYxfUjIdk4w1y5uEq3kOfvSSoYO1EomBdwdgicHr4N3WJFDlflxULpRjuNuG1I/Lik9dRfuwaF8RMDkWOLdeNdWzURI+1mKT9j58YGCn4KlmAD9DyoBwgjkOAL5U1+6g6bfAY0CYx3ip2FrlBf/sL6fWOZv0gn5ohWPSMj9Oo/3QgoXAthIV9M+Zr2Sdx2pbBf2/TVCeTQoeaf+i/VcKAEYLdxm5bbo0Iv9HaszpH54Y5lXtu4rZJqRjdlMVT/4RrcU/DpqFa4ZQ6jqzkif9vYwOb8EeTL08beXs/Xkw1f4A9QywwzY2imPQcCzdoT/Hd1Q6ix6xUScG0ULKkDKimGh1YessbAnmU8AWyQh2ey0gXwf0bjFUucW2j1OklMAPbq18r9kviC0obNsKjVLZSLmoYfrRMJz5diMb0lsZ15RRAHHHsSmTidLRLMdj4zufNKunvjyNtbxh2jWdPORFYlYGJVD6Ehbl60Z8R6DJpyyckVNk4kf71H6ozZBher3hIX7aCab9aHVHRjCq776aQU635eiLvsXpVchC9uS1oflff6ATdclmOdku0xQGpLhANFlqVSN6XFm1YiXDtPWjoJj7dbsO6qSuL5LYB1WSVBPYQ2YeTVdg/H2Ti5u64+YCfMjZo8xYhq7n02OevmEserdJXod93UPaofnYWwYcdpeADr9tvy12mZemRuysR6jafEAEcs7..." # truncated
+    const ciphertext = ${JSON.stringify(encrypted)};
+
+    const passInput = document.getElementById('passkey');
+    const errBox = document.getElementById('error-msg');
+    const msg = document.getElementById('msg');
+    const decryptBtn = document.getElementById('decrypt');
+    const clearBtn = document.getElementById('clear');
+    const helpBtn = document.getElementById('help');
+
+    function showError(text) {
+      errBox.textContent = text;
+      errBox.style.display = 'block';
+      setTimeout(() => { errBox.style.display = 'none'; }, 3000);
+    }
+
+    function showMsg(text) {
+      msg.textContent = text;
+    }
+
+    decryptBtn.addEventListener('click', () => {
+      const pw = passInput.value;
+      if (!pw) { showMsg('Enter passphrase'); return; }
+      try {
+        const bytes = CryptoJS.AES.decrypt(ciphertext, pw);
+        const decrypted = bytes.toString(CryptoJS.enc.Utf8);
+        if (!decrypted) {
+          throw new Error('bad key or corrupted ciphertext');
+        }
+        // Replace document with decrypted HTML
+        document.open();
+        document.write(decrypted);
+        document.close();
+      } catch (e) {
+        console.error(e);
+        showError('✗ ACCESS DENIED - INVALID DECRYPTION KEY');
+        showMsg(''); // clear other messages
+      }
+    });
+
+    clearBtn.addEventListener('click', () => {
+      passInput.value = '';
+      showMsg('');
+    });
+
+    helpBtn.addEventListener('click', () => {
+      showMsg('This site is encrypted. Enter the passphrase used when encrypting the original site.');
+    });
+
+    passInput.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter') decryptBtn.click();
+    });
   </script>
 </body>
 </html>
+`;
+
+const outDir = path.dirname(outPath);
+if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
+
+fs.writeFileSync(outPath, loaderHtml, 'utf8');
+console.log('✅ Created', outPath);
