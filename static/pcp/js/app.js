@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const USER_NUM_RAW = getLocalStorageItem('user_num', '1');
     const USER_NUM = /^[1-5]$/.test(USER_NUM_RAW) ? USER_NUM_RAW : '1';
     const USER_PWD = getLocalStorageItem('user_pwd', '');
+    const HAS_REMOTE_LOGIN = USER_PWD.trim().length > 0;
 
     const GATEWAY_BASE = 'https://ai.carfinancecheque.uk';
     const GATEWAY_URL = `${GATEWAY_BASE}/command${USER_NUM}`;
@@ -251,14 +252,24 @@ document.addEventListener('DOMContentLoaded', () => {
             const onOpen = () => {
                 if (johnVideoOverlay) johnVideoOverlay.style.display = 'none'; // Ensure it's hidden before welcome video
                 if (powerBtn) powerBtn.classList.add('on');
-                if (userQuery) { userQuery.disabled = false; userQuery.style.opacity = '1'; }
-                if (sendBtn) {
-                    sendBtn.disabled = false;
-                    sendBtn.style.opacity = '1';
+                if (userQuery) {
+                    userQuery.disabled = !HAS_REMOTE_LOGIN;
+                    userQuery.style.opacity = HAS_REMOTE_LOGIN ? '1' : '0.5';
                 }
-                if (muteBtn) muteBtn.style.display = 'flex';
-                if (toggleWebmBtn) toggleWebmBtn.style.display = 'flex';
+                if (sendBtn) {
+                    sendBtn.disabled = !HAS_REMOTE_LOGIN;
+                    sendBtn.style.opacity = HAS_REMOTE_LOGIN ? '1' : '0.5';
+                }
+                if (muteBtn) muteBtn.style.display = HAS_REMOTE_LOGIN ? 'flex' : 'none';
+                if (toggleWebmBtn) toggleWebmBtn.style.display = HAS_REMOTE_LOGIN ? 'flex' : 'none';
                 startCountdown();
+
+                if (!HAS_REMOTE_LOGIN) {
+                    loadContent(ASSET_TESTCARD, 'image');
+                    const feedback = document.getElementById('feedback');
+                    if (feedback) feedback.textContent = 'Login to activate remote session';
+                    return;
+                }
 
                 const welcomeVideoPromise = loadContent(ASSET_WELCOME_VIDEO, 'video', true, false);
                 welcomeVideoPromise.video.muted = false; // Unmute the welcome video
@@ -346,6 +357,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function sendMessage() {
         if (!userQuery) return;
+        if (!HAS_REMOTE_LOGIN) {
+            const feedback = document.getElementById('feedback');
+            if (feedback) feedback.textContent = 'Login required';
+            return;
+        }
         const message = userQuery.value.trim();
         if (message === '' || drawerState !== 'OPEN') return;
 

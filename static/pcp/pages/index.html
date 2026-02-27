@@ -1267,7 +1267,10 @@
         &copy; <span id="fc-year"></span> Finance Cheques. All rights reserved.
       </div>
     </footer>
-  <script>document.getElementById("fc-year")?.textContent = new Date().getFullYear();</script>
+  <script>
+    const fcYearEl = document.getElementById("fc-year");
+    if (fcYearEl) fcYearEl.textContent = String(new Date().getFullYear());
+  </script>
   </div><!-- /.app-wrapper -->
 
   <!-- ── AdminLTE JS ── -->
