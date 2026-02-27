@@ -1287,79 +1287,23 @@
         </div>
 
         <div class="form-group mb-3">
-          <label for="userType">User Type</label>
-          <select id="userType" class="form-control">
-            <option value="marketer">Marketer</option>
-            <option value="sales">Sales</option>
-            <option value="developer">Developer</option>
-            <option value="advertiser">Advertiser</option>
-            <option value="graphic_designer">Graphic Designer</option>
-            <option value="project_manager">Project Manager</option>
-            <option value="data_analyst">Data Analyst</option>
-            <option value="business_analyst">Business Analyst</option>
-            <option value="product_manager">Product Manager</option>
-            <option value="qa_engineer">QA Engineer</option>
-            <option value="devops_engineer">DevOps Engineer</option>
-            <option value="ux_designer">UX Designer</option>
-            <option value="content_writer">Content Writer</option>
-            <option value="seo_specialist">SEO Specialist</option>
-            <option value="social_media_manager">Social Media Manager</option>
-            <option value="customer_support">Customer Support</option>
-            <option value="account_manager">Account Manager</option>
-            <option value="financial_analyst">Financial Analyst</option>
-            <option value="hr_specialist">HR Specialist</option>
-            <option value="legal_counsel">Legal Counsel</option>
-            <option value="operations_manager">Operations Manager</option>
-            <option value="supply_chain_manager">Supply Chain Manager</option>
-            <option value="logistics_coordinator">Logistics Coordinator</option>
-            <option value="research_scientist">Research Scientist</option>
-            <option value="technical_writer">Technical Writer</option>
-            <option value="network_engineer">Network Engineer</option>
-            <option value="security_analyst">Security Analyst</option>
-            <option value="database_administrator">Database Administrator</option>
-            <option value="system_administrator">System Administrator</option>
-            <option value="cloud_engineer">Cloud Engineer</option>
-            <option value="machine_learning_engineer">Machine Learning Engineer</option>
-            <option value="ai_engineer">AI Engineer</option>
-            <option value="firmware_engineer">Firmware Engineer</option>
-            <option value="embedded_engineer">Embedded Engineer</option>
-            <option value="electrical_engineer">Electrical Engineer</option>
-            <option value="mechanical_engineer">Mechanical Engineer</option>
-            <option value="civil_engineer">Civil Engineer</option>
-            <option value="architect">Architect</option>
-            <option value="urban_planner">Urban Planner</option>
-            <option value="environmental_scientist">Environmental Scientist</option>
-            <option value="geologist">Geologist</option>
-            <option value="biologist">Biologist</option>
-            <option value="chemist">Chemist</option>
-            <option value="physicist">Physicist</option>
-            <option value="mathematician">Mathematician</option>
-            <option value="statistician">Statistician</option>
-            <option value="economist">Economist</option>
-            <option value="sociologist">Sociologist</option>
-            <option value="psychologist">Psychologist</option>
-            <option value="librarian">Librarian</option>
-            <option value="teacher">Teacher</option>
-            <option value="professor">Professor</option>
-            <option value="doctor">Doctor</option>
-            <option value="nurse">Nurse</option>
-            <option value="pharmacist">Pharmacist</option>
-            <option value="dentist">Dentist</option>
-            <option value="veterinarian">Veterinarian</option>
-            <option value="chef">Chef</option>
-            <option value="baker">Baker</option>
-            <option value="barista">Barista</option>
-            <option value="bartender">Bartender</option>
+          <label for="user-select">Portal User</label>
+          <select id="user-select" class="form-control">
+            <option value="1">User 25148531</option>
+            <option value="2">User 25148532</option>
+            <option value="3">User 25148533</option>
+            <option value="4">User 25148534</option>
+            <option value="5">User 25148535</option>
           </select>
         </div>
 
         <div class="form-group mb-3">
-          <label>Passphrase</label>
+          <label for="password-input">Access Key</label>
           <input 
-            id="passphrase"
+            id="password-input"
             type="password"
             class="form-control"
-            placeholder="Enter passphrase"
+            placeholder="Enter password"
             required
             autofocus
           >
@@ -1368,7 +1312,7 @@
         <div id="error" class="text-danger mb-3" style="display:none;"></div>
 
         <button type="submit" class="btn btn-primary btn-block w-100">
-          Login
+          Enter Portal
         </button>
 
       </form>
@@ -1378,37 +1322,43 @@
 
 <script>
 
-const STORED_HASH = "9d82225c1e68e80baf5f248a40b5fe8d1462f9cf259c64016740aa595ef557f8";
-
 // Redirect if already authenticated
-if (localStorage.getItem("authenticated") === "true") {
+if (localStorage.getItem("authenticated") === "true" || localStorage.getItem("session_active") === "true") {
   window.location.href = "/pages/index.html";
 }
 
-async function sha256(str) {
-  const buffer = await crypto.subtle.digest(
-    "SHA-256",
-    new TextEncoder().encode(str)
-  );
-
-  return Array.from(new Uint8Array(buffer))
+async function hashPassword(str) {
+  const utf8 = new TextEncoder().encode(str);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", utf8);
+  return Array.from(new Uint8Array(hashBuffer))
     .map(b => b.toString(16).padStart(2, "0"))
     .join("");
 }
 
+const VALID_HASHES = {
+  "1": "d015e3bb592d887241d26d27e15cdbff24e57f13e7336c636aa8ceb12b38ad99",
+  "2": "89c139ff45b6e9aa55e98302bbc8c070758e54f3d5e960a0101a4d3c5916bb98",
+  "3": "ff9d65f48991f6463211580e9e6df2faf9427ac2a7e0137ffca99005733a976c",
+  "4": "8c86f7bb66e5c389966fe80d28f74b0b062ddc4f9ca3a85de146eed72dd23311",
+  "5": "6ceaf31684989fc61be1efaad663bb76ba22bdd307c2178c21f5add4af3b982b"
+};
+
 document.getElementById("loginForm").addEventListener("submit", async function(e) {
   e.preventDefault();
 
-  const input = document.getElementById("passphrase").value;
+  const userNum = document.getElementById("user-select").value;
+  const input = document.getElementById("password-input").value;
   const error = document.getElementById("error");
+  const inputHash = await hashPassword(input);
 
-  const hashed = await sha256(input);
-
-  if (hashed === STORED_HASH) {
+  if (inputHash === VALID_HASHES[userNum]) {
+    localStorage.setItem("session_active", "true");
     localStorage.setItem("authenticated", "true");
+    localStorage.setItem("user_num", userNum);
+    localStorage.setItem("user_pwd", input);
     window.location.href = "/pages/index.html";
   } else {
-    error.innerText = "Invalid passphrase";
+    error.innerText = "Invalid Access Key";
     error.style.display = "block";
   }
 });

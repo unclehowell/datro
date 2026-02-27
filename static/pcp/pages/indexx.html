@@ -1283,7 +1283,12 @@
         OverlayScrollbarsGlobal.OverlayScrollbars(sw, { scrollbars: { theme:'os-theme-light', autoHide:'leave', clickScroll:true } });
       }
     });
-    function logout() { localStorage.removeItem('authenticated'); window.location.href = '../index.html'; }
+    function logout() {
+      ['authenticated', 'session_active', 'user_num', 'user_pwd'].forEach((k) => {
+        try { localStorage.removeItem(k); } catch (error) {}
+      });
+      window.location.href = '../index.html';
+    }
   </script>
 
   <div class="bf-modal" id="bfModal">
@@ -1787,11 +1792,18 @@
       if (!nav) return;
 
       function performMasterReset() {
-        let auth = null;
-        try { auth = localStorage.getItem('authenticated'); } catch (error) {}
+        const preserved = {};
+        ['authenticated', 'session_active', 'user_num', 'user_pwd'].forEach((key) => {
+          try {
+            const value = localStorage.getItem(key);
+            if (value !== null) preserved[key] = value;
+          } catch (error) {}
+        });
         try { localStorage.clear(); } catch (error) {}
         try { sessionStorage.clear(); } catch (error) {}
-        try { if (auth !== null) localStorage.setItem('authenticated', auth); } catch (error) {}
+        Object.entries(preserved).forEach(([key, value]) => {
+          try { localStorage.setItem(key, value); } catch (error) {}
+        });
         if (window.caches && caches.keys) {
           caches.keys().then(keys => Promise.all(keys.map(k => caches.delete(k)))).finally(() => {
             location.reload();

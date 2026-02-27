@@ -13,7 +13,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const johnVideoOverlay = document.getElementById('john-video-overlay');
     const scanlinesLayer = dynamicContentArea ? dynamicContentArea.querySelector('.scanlines') : null;
 
-    const GATEWAY_URL = 'https://ai.carfinancecheque.uk/command';
+    function getLocalStorageItem(key, fallback = '') {
+        try {
+            const value = localStorage.getItem(key);
+            return value === null ? fallback : value;
+        } catch (error) {
+            return fallback;
+        }
+    }
+
+    const USER_NUM_RAW = getLocalStorageItem('user_num', '1');
+    const USER_NUM = /^[1-5]$/.test(USER_NUM_RAW) ? USER_NUM_RAW : '1';
+    const USER_PWD = getLocalStorageItem('user_pwd', '');
+
+    const GATEWAY_URL = `https://ai.carfinancecheque.uk/command${USER_NUM}`;
     const GATEWAY_TOKEN = '9533263d7ff39819800754b970748ddf';
 
     let drawerState = 'CLOSED'; // CLOSED, OPEN, CLOSING
@@ -28,8 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const ASSET_BYE_VIDEO = '../assets/videos/byehaveanicelife.mp4';
     const ASSET_JOHN_VIDEO = '../assets/videos/john.webm';
     const GUAC_BASE_URL = 'https://ai.carfinancecheque.uk/guacamole/';
-    const GUAC_USERNAME = 'user25148535';
-    const GUAC_PASSWORD = 'quantum25148535!!';
+    const GUAC_USERNAME = `user2514853${USER_NUM}`;
+    const GUAC_PASSWORD = USER_PWD;
     const GUAC_AUTOLOGIN_URL = `${GUAC_BASE_URL}#/?${new URLSearchParams({
         username: GUAC_USERNAME,
         password: GUAC_PASSWORD
