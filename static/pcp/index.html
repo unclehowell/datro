@@ -7,16 +7,13 @@
   <title>Finance Cheques | Control Panel Login</title>
 
   <!-- AdminLTE dependencies -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" crossorigin="anonymous" media="print" onload="this.media='all'" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/styles/overlayscrollbars.min.css" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="vendor/index.css" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="vendor/overlayscrollbars.min.css" />
+  <link rel="stylesheet" href="vendor/bootstrap-icons.min.css" />
   <link rel="stylesheet" href="css/adminlte.css" />
 
   <!-- Google Fonts for BannerForge UI -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link id="google-fonts-orbitron" href="vendor/google-fonts-orbitron.css" rel="stylesheet">
-  <link id="primary-style" href="https://primary.jwwb.nl/public/x/o/f/temp-wsxrnoswjwurulcytugx/style.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="vendor/google-fonts-dm-sans.css" rel="stylesheet" />
 
   <style>
     body {
@@ -29,6 +26,29 @@
     }
     .login-box {
       margin: auto; /* Center the login box */
+      width: min(92vw, 440px);
+      z-index: 10;
+    }
+    .login-box .card {
+      background: rgba(16, 21, 29, 0.94);
+      border: 1px solid #2a3341;
+      border-radius: 14px;
+      color: #e7edf5;
+      backdrop-filter: blur(6px);
+    }
+    .login-box .card-header {
+      border-bottom: 1px solid #2a3341;
+    }
+    .login-box .form-control,
+    .login-box .form-select {
+      background: #0f141b;
+      border: 1px solid #2a3341;
+      color: #e7edf5;
+    }
+    .login-box .form-control:focus,
+    .login-box .form-select:focus {
+      border-color: #45ff8f;
+      box-shadow: 0 0 0 0.15rem rgba(69, 255, 143, 0.2);
     }
     /* ── AdminLTE dark mode overrides ── */
     body[data-bs-theme="dark"] .app-header,
@@ -199,6 +219,7 @@
       background: rgba(6,6,8,0.55);
       backdrop-filter: blur(2px);
       z-index: 20;
+      pointer-events: none;
     }
     .bf-control-bar { display:flex; flex-direction:column; gap:0.35rem; padding-bottom:0.4rem; border-bottom:1px solid var(--border); margin-bottom:0.4rem; }
     .bf-control-bar.fixed-bottom {
@@ -1426,8 +1447,6 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
     const bustCache = () => {
         const timestamp = new Date().getTime();
         const bustable = [
-            { id: 'google-fonts-orbitron', attr: 'href' },
-            { id: 'primary-style', attr: 'href' },
             { id: 'ocTabImg', attr: 'src' },
             { id: 'ocToggleUpImg', attr: 'src' },
             { id: 'offline-img', attr: 'src' },

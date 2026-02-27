@@ -185,6 +185,7 @@
       background: rgba(6,6,8,0.55);
       backdrop-filter: blur(2px);
       z-index: 20;
+      pointer-events: none;
     }
     .bf-control-bar { display:flex; flex-direction:column; gap:0.35rem; padding-bottom:0.4rem; border-bottom:1px solid var(--border); margin-bottom:0.4rem; }
     .bf-control-bar.fixed-bottom {
@@ -1017,12 +1018,11 @@
   </style>
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/global-shell.css" />
-  <link href="../vendor/google-fonts-orbitron.css" rel="stylesheet">
 </head>
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary dark-mode" data-bs-theme="dark">
   <script>
-    if (localStorage.getItem('authenticated') !== 'true') {
+    if (localStorage.getItem('authenticated') !== 'true' && localStorage.getItem('session_active') !== 'true') {
       window.location.href = '/index.html';
     }
   </script>
@@ -1960,7 +1960,7 @@
   const MAX_TEXT_BOXES = 3;
   const DEFAULT_COLORS = ['#4285f4','#ea4335','#fbbc05'];
   const DEFAULT_TEXT_COLORS = ['#ea4335','#fbbc05','#4285f4'];
-  const DEFAULT_SIZE_NAMES = ['Medium Rect', 'Leaderboard', 'Half Page'];
+  const DEFAULT_SIZE_NAMES = ['Medium Rect'];
   const DEFAULT_TEXT_BOXES = [
     { color: '#000000', opacity: 0, enabled: false },
     { color: '#ffffff', opacity: 0.2, enabled: false },

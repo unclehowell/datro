@@ -26,8 +26,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const USER_NUM = /^[1-5]$/.test(USER_NUM_RAW) ? USER_NUM_RAW : '1';
     const USER_PWD = getLocalStorageItem('user_pwd', '');
 
-    const GATEWAY_URL = `https://ai.carfinancecheque.uk/command${USER_NUM}`;
+    const GATEWAY_BASE = 'https://ai.carfinancecheque.uk';
+    const GATEWAY_URL = `${GATEWAY_BASE}/command${USER_NUM}`;
+    const LEGACY_GATEWAY_URL = `${GATEWAY_BASE}/command`;
     const GATEWAY_TOKEN = '9533263d7ff39819800754b970748ddf';
+
+    function resolveProjectRootUrl() {
+        const scriptEl = document.getElementById('app-script')
+            || Array.from(document.scripts).find((s) => /\/js\/app\.js(\?|$)/.test(s.src || ''));
+        if (scriptEl && scriptEl.src) {
+            try {
+                return new URL('../', new URL(scriptEl.src, window.location.href));
+            } catch (error) {}
+        }
+        return new URL('./', window.location.href);
+    }
+
+    const PROJECT_ROOT_URL = resolveProjectRootUrl();
 
     let drawerState = 'CLOSED'; // CLOSED, OPEN, CLOSING
     let isMuted = false;
@@ -35,11 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let countdownTimeout = null;
     let radioFadeInterval = null;
 
-    const ASSET_PINE_IMG = '../assets/img/pine.png';
-    const ASSET_TESTCARD = '../assets/img/testcard.png';
-    const ASSET_WELCOME_VIDEO = '../assets/videos/welcometotechsupport.mp4';
-    const ASSET_BYE_VIDEO = '../assets/videos/byehaveanicelife.mp4';
-    const ASSET_JOHN_VIDEO = '../assets/videos/john.webm';
+    const ASSET_PINE_IMG = 'assets/img/pine.png';
+    const ASSET_TESTCARD = 'assets/img/testcard.png';
+    const ASSET_WELCOME_VIDEO = 'assets/videos/welcometotechsupport.mp4';
+    const ASSET_BYE_VIDEO = 'assets/videos/byehaveanicelife.mp4';
+    const ASSET_JOHN_VIDEO = 'assets/videos/john.webm';
     const GUAC_BASE_URL = 'https://ai.carfinancecheque.uk/guacamole/';
     const GUAC_USERNAME = `user2514853${USER_NUM}`;
     const GUAC_PASSWORD = USER_PWD;
@@ -49,8 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }).toString()}`;
 
     function getAssetUrl(path) {
-        const url = new URL(path, window.location.href);
-        url.searchParams.set('v', new Date().getTime());
+        const url = new URL(path, PROJECT_ROOT_URL);
+        if (url.origin === window.location.origin) {
+            url.searchParams.set('v', new Date().getTime());
+        }
         return url.href;
     }
 
@@ -96,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             appendDynamicNode(video);
 
             if (autoplay) {
-                video.play().catch(e => console.error("Autoplay failed:", e));
+                video.play().catch(() => {});
             }
 
             const promise = new Promise((resolve) => {
@@ -207,6 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (newState === 'CLOSED') {
             if (ocDrawer) ocDrawer.classList.remove('open', 'closing');
+            if (ocDrawer) ocDrawer.style.pointerEvents = 'none';
             if (ocTab) ocTab.style.display = 'block';
 
             if (powerBtn) powerBtn.classList.remove('on');
@@ -227,6 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const standby = document.getElementById('standby-screen');
             if (standby) standby.classList.add('hidden');
             if (ocDrawer) ocDrawer.classList.add('open');
+            if (ocDrawer) ocDrawer.style.pointerEvents = 'auto';
             if (ocTab) ocTab.style.display = 'none';
 
             const onOpen = () => {
@@ -274,6 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
         } else if (newState === 'CLOSING') {
+            if (ocDrawer) ocDrawer.style.pointerEvents = 'auto';
             if (johnVideoOverlay) { johnVideoOverlay.style.display = 'none'; johnVideoOverlay.pause(); }
 
             fadeRadioVolume(0, 2000, () => {
@@ -336,18 +356,47 @@ document.addEventListener('DOMContentLoaded', () => {
         if (feedback) feedback.textContent = 'Sending...';
 
         try {
-            const res = await fetch(`${GATEWAY_URL}/support`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${GATEWAY_TOKEN}`
-                },
-                body: JSON.stringify({ message, channel: 'web_ui' })
-            });
-            if (feedback) feedback.textContent = res.ok ? '✓ Sent' : `Error ${res.status}`;
-            if (res.ok) {
+            const payload = { message, channel: 'web_ui', user_num: USER_NUM };
+            const candidateUrls = [`${GATEWAY_URL}/support`, `${LEGACY_GATEWAY_URL}/support`];
+
+            let sent = false;
+            let statusCode = null;
+
+            for (const url of candidateUrls) {
+                try {
+                    const res = await fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${GATEWAY_TOKEN}`
+                        },
+                        body: JSON.stringify(payload)
+                    });
+                    statusCode = res.status;
+                    if (res.ok) {
+                        sent = true;
+                        break;
+                    }
+                } catch (error) {}
+            }
+
+            if (!sent) {
+                // Fallback for strict CORS setups: fire-and-forget with token in query.
+                await fetch(`${GATEWAY_URL}/support?token=${encodeURIComponent(GATEWAY_TOKEN)}`, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+                    body: JSON.stringify(payload)
+                });
+                sent = true;
+            }
+
+            if (sent) {
+                if (feedback) feedback.textContent = '✓ Sent';
                 userQuery.value = '';
                 setTimeout(() => { if (feedback) feedback.textContent = ''; }, 3000);
+            } else if (feedback) {
+                feedback.textContent = statusCode ? `Error ${statusCode}` : 'No connection';
             }
         } catch (e) {
             if (feedback) feedback.textContent = 'No connection';
