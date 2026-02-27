@@ -28,6 +28,10 @@ yarn-error.log*
 *.zip
 *.mp4
 *.webm
+# Keep published support media available on Cloudflare/GitHub deploys.
+!static/pcp/assets/videos/
+!static/pcp/assets/videos/*.mp4
+!static/pcp/assets/videos/*.webm
 static/pcp.old/
 wayback/
 
