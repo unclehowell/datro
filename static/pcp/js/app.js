@@ -57,12 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let countdownInterval = null;
     let countdownTimeout = null;
     let radioFadeInterval = null;
+    let transitionToken = 0;
 
     const ASSET_PINE_IMG = 'assets/img/pine.png';
     const ASSET_TESTCARD = 'assets/img/testcard.png';
     const ASSET_WELCOME_VIDEO = 'assets/videos/welcometotechsupport.mp4';
     const ASSET_BYE_VIDEO = 'assets/videos/byehaveanicelife.mp4';
     const ASSET_JOHN_VIDEO = 'assets/videos/john.webm';
+    const VIDEO_FAILSAFE_MS = 30000;
+    const TESTCARD_HOLD_MS = 250;
     const GUAC_BASE_URL = `${REMOTE_HOST_PRIMARY}/guacamole/`;
     const GUAC_BASE_URL_FALLBACK = `${REMOTE_HOST_FALLBACK}/guacamole/`;
     const GUAC_USERNAME = `user2514853${USER_NUM}`;
@@ -119,14 +122,18 @@ document.addEventListener('DOMContentLoaded', () => {
             video.src = assetUrl;
             video.autoplay = autoplay;
             video.controls = controls;
-            video.muted = !autoplay; // Mute autoplayed videos initially to allow playback without user interaction
+            video.muted = autoplay; // Keep autoplay videos muted for reliable browser autoplay.
+            video.playsInline = true;
             video.loop = loop;
             video.volume = 1.0;
             video.classList.add('fullscreen-video');
             appendDynamicNode(video);
 
             if (autoplay) {
-                video.play().catch(() => {});
+                video.play().catch(() => {
+                    video.muted = true;
+                    video.play().catch(() => {});
+                });
             }
 
             const promise = new Promise((resolve) => {
@@ -148,6 +155,13 @@ document.addEventListener('DOMContentLoaded', () => {
             appendDynamicNode(iframe);
             return Promise.resolve(iframe);
         }
+    }
+
+    function waitForVideoEndOrTimeout(videoPromise, timeoutMs = VIDEO_FAILSAFE_MS) {
+        return Promise.race([
+            videoPromise,
+            new Promise((resolve) => setTimeout(resolve, timeoutMs))
+        ]);
     }
 
     function updateTimerDisplay(remainingTime) {
@@ -231,9 +245,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 50);
     }
 
+    function hideJohnOverlay() {
+        if (!johnVideoOverlay) return;
+        johnVideoOverlay.style.display = 'none';
+        johnVideoOverlay.pause();
+    }
+
+    function showJohnOverlay() {
+        if (radioStream && !isMuted) {
+            radioStream.play().catch(() => {});
+            fadeRadioVolume(0.05, 1000);
+        }
+        if (!johnVideoOverlay) return;
+        johnVideoOverlay.src = getAssetUrl(ASSET_JOHN_VIDEO);
+        johnVideoOverlay.style.position = 'absolute';
+        johnVideoOverlay.style.inset = '0';
+        johnVideoOverlay.style.width = '100%';
+        johnVideoOverlay.style.height = '100%';
+        johnVideoOverlay.style.marginBottom = '0';
+        johnVideoOverlay.style.objectFit = 'cover';
+        johnVideoOverlay.style.pointerEvents = 'none';
+        johnVideoOverlay.style.zIndex = '3';
+        johnVideoOverlay.style.display = 'block';
+        johnVideoOverlay.play().catch(() => {});
+    }
+
     function setDrawerState(newState) {
         if (drawerState === newState) return;
         drawerState = newState;
+        transitionToken += 1;
+        const currentToken = transitionToken;
 
         if (newState === 'CLOSED') {
             if (ocDrawer) ocDrawer.classList.remove('open', 'closing');
@@ -245,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (sendBtn) { sendBtn.disabled = true; sendBtn.style.opacity = '0.5'; }
             if (muteBtn) muteBtn.style.display = 'none';
             if (toggleWebmBtn) toggleWebmBtn.style.display = 'none';
-            if (johnVideoOverlay) { johnVideoOverlay.style.display = 'none'; johnVideoOverlay.pause(); }
+            hideJohnOverlay();
             if (radioStream) { radioStream.pause(); radioStream.currentTime = 0; radioStream.volume = 0; }
             isMuted = false;
             updateMuteButton();
@@ -258,11 +299,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const standby = document.getElementById('standby-screen');
             if (standby) standby.classList.add('hidden');
             if (ocDrawer) ocDrawer.classList.add('open');
+            if (ocDrawer) ocDrawer.classList.remove('closing');
             if (ocDrawer) ocDrawer.style.pointerEvents = 'auto';
             if (ocTab) ocTab.style.display = 'none';
 
             const onOpen = () => {
-                if (johnVideoOverlay) johnVideoOverlay.style.display = 'none'; // Ensure it's hidden before welcome video
+                if (drawerState !== 'OPEN' || currentToken !== transitionToken) return;
+                hideJohnOverlay();
                 if (powerBtn) powerBtn.classList.add('on');
                 if (userQuery) {
                     userQuery.disabled = !HAS_REMOTE_LOGIN;
@@ -284,17 +327,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 const welcomeVideoPromise = loadContent(ASSET_WELCOME_VIDEO, 'video', true, false);
-                welcomeVideoPromise.video.muted = false; // Unmute the welcome video
-                welcomeVideoPromise.then(() => {
-                    if (drawerState !== 'OPEN') return;
-                    // Remove the welcome video after it finishes
-                    if (welcomeVideoPromise.video && dynamicContentArea.contains(welcomeVideoPromise.video)) {
-                        dynamicContentArea.removeChild(welcomeVideoPromise.video);
-                    }
+                waitForVideoEndOrTimeout(welcomeVideoPromise).then(() => {
+                    if (drawerState !== 'OPEN' || currentToken !== transitionToken) return;
 
                     // Load Guacamole iframe and guarantee john.webm overlay appears.
                     loadContent(GUAC_AUTOLOGIN_URL, 'iframe').then((iframe) => {
-                        if (drawerState !== 'OPEN') return;
+                        if (drawerState !== 'OPEN' || currentToken !== transitionToken) return;
                         if (!iframe) {
                             showJohnOverlay();
                             return;
@@ -302,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         let shown = false;
                         const showOnce = () => {
-                            if (drawerState !== 'OPEN') return;
+                            if (drawerState !== 'OPEN' || currentToken !== transitionToken) return;
                             if (shown) return;
                             shown = true;
                             showJohnOverlay();
@@ -321,29 +359,45 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             if (ocDrawer) {
-                ocDrawer.addEventListener('transitionend', onOpen, { once: true });
+                const onDrawerOpenTransition = (event) => {
+                    if (event.target !== ocDrawer || event.propertyName !== 'transform') return;
+                    ocDrawer.removeEventListener('transitionend', onDrawerOpenTransition);
+                    onOpen();
+                };
+                ocDrawer.addEventListener('transitionend', onDrawerOpenTransition);
             } else {
                 onOpen();
             }
 
         } else if (newState === 'CLOSING') {
+            if (ocDrawer) ocDrawer.classList.add('closing');
             if (ocDrawer) ocDrawer.style.pointerEvents = 'auto';
-            if (johnVideoOverlay) { johnVideoOverlay.style.display = 'none'; johnVideoOverlay.pause(); }
+            hideJohnOverlay();
 
             // Fade radio while the closing video plays.
             fadeRadioVolume(0, 2000, () => {
+                if (currentToken !== transitionToken) return;
                 if (radioStream) { radioStream.pause(); radioStream.currentTime = 0; }
                 isMuted = false;
                 updateMuteButton();
             });
 
             const byeVideoPromise = loadContent(ASSET_BYE_VIDEO, 'video', true, false);
-            byeVideoPromise.video.muted = false; // keep audio during close sequence
-            byeVideoPromise.then(() => {
+            waitForVideoEndOrTimeout(byeVideoPromise).then(() => {
+                if (drawerState !== 'CLOSING' || currentToken !== transitionToken) return;
                 loadContent(ASSET_TESTCARD, 'image').then(() => {
+                    if (drawerState !== 'CLOSING' || currentToken !== transitionToken) return;
                     if (ocDrawer) {
-                        ocDrawer.classList.remove('open');
-                        ocDrawer.addEventListener('transitionend', () => setDrawerState('CLOSED'), { once: true });
+                        setTimeout(() => {
+                            if (drawerState !== 'CLOSING' || currentToken !== transitionToken) return;
+                            ocDrawer.classList.remove('open');
+                            const onDrawerCloseTransition = (event) => {
+                                if (event.target !== ocDrawer || event.propertyName !== 'transform') return;
+                                ocDrawer.removeEventListener('transitionend', onDrawerCloseTransition);
+                                setDrawerState('CLOSED');
+                            };
+                            ocDrawer.addEventListener('transitionend', onDrawerCloseTransition);
+                        }, TESTCARD_HOLD_MS);
                     } else {
                         setDrawerState('CLOSED');
                     }
@@ -484,18 +538,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (volumeIcon) volumeIcon.style.display = 'block';
             if (muteSlash) muteSlash.style.display = 'none';
             muteBtn.classList.add('on');
-        }
-    }
-
-    function showJohnOverlay() {
-        if (radioStream && !isMuted) {
-            radioStream.play().catch(() => {});
-            fadeRadioVolume(0.05, 1000);
-        }
-        if (johnVideoOverlay) {
-            johnVideoOverlay.src = getAssetUrl(ASSET_JOHN_VIDEO);
-            johnVideoOverlay.style.display = 'block';
-            johnVideoOverlay.play().catch(() => {});
         }
     }
 
