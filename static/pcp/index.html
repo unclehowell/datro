@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="light dark" />
   <title>Finance Cheques | Control Panel Login</title>
 
-  <link rel="stylesheet" href="css/adminlte.css" />
+  <link rel="stylesheet" href="css/adminlte.css?v=20260227b" />
 
   <style>
     body {
@@ -1308,7 +1308,7 @@
   <div class="card card-outline card-primary shadow">
     <div class="card-header text-center">
       <img src="assets/img/logo.png" alt="Finance Cheques" style="height:96px; width:auto; margin-bottom:10px;">
-      <div style="font-size:1.05rem; letter-spacing:0.12em; text-transform:uppercase; color:#e7edf5;">Financial Cheques</div>
+      <div style="font-size:1.05rem; letter-spacing:0.12em; text-transform:uppercase; color:#e7edf5;">Finance Cheques</div>
     </div>
 
     <div class="card-body">
@@ -1352,7 +1352,7 @@
 
 // Redirect if already authenticated
 if (localStorage.getItem("authenticated") === "true" || localStorage.getItem("session_active") === "true") {
-  window.location.href = "/pages/index.html";
+  window.location.href = "pages/index.html";
 }
 
 async function hashPassword(str) {
@@ -1383,7 +1383,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
     localStorage.setItem("authenticated", "true");
     localStorage.setItem("user_num", userNum);
     localStorage.setItem("user_pwd", input);
-    window.location.href = "/pages/index.html";
+    window.location.href = "pages/index.html";
   } else {
     error.innerText = "Invalid Access Key";
     error.style.display = "block";
@@ -1473,7 +1473,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
     };
     bustCache();
   </script>
-  <script id="app-script" src="js/app.js"></script>
+  <script id="app-script" src="js/app.js?v=20260227b"></script>
   <footer>
     <div class="root-footer">
       <a href="tos.html" style="color: #8893a3; text-decoration: none; margin-right: 10px;">Terms of Service</a>
