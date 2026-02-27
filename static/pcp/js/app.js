@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const USER_PWD = getLocalStorageItem('user_pwd', IS_PUBLIC_LOGIN_DRAWER ? PUBLIC_USER_PWD : '');
     const HAS_REMOTE_LOGIN = USER_PWD.trim().length > 0;
 
-    const REMOTE_HOST_PRIMARY = 'https://ai.carfinancecheques.uk';
+    const REMOTE_HOST_PRIMARY = 'https://ai.carfinancecheque.uk';
     const REMOTE_HOST_FALLBACK = 'https://ai.carfinancecheque.uk';
 
     const GATEWAY_BASE = REMOTE_HOST_PRIMARY;
@@ -286,6 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const welcomeVideoPromise = loadContent(ASSET_WELCOME_VIDEO, 'video', true, false);
                 welcomeVideoPromise.video.muted = false; // Unmute the welcome video
                 welcomeVideoPromise.then(() => {
+                    if (drawerState !== 'OPEN') return;
                     // Remove the welcome video after it finishes
                     if (welcomeVideoPromise.video && dynamicContentArea.contains(welcomeVideoPromise.video)) {
                         dynamicContentArea.removeChild(welcomeVideoPromise.video);
@@ -293,6 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Load Guacamole iframe and guarantee john.webm overlay appears.
                     loadContent(GUAC_AUTOLOGIN_URL, 'iframe').then((iframe) => {
+                        if (drawerState !== 'OPEN') return;
                         if (!iframe) {
                             showJohnOverlay();
                             return;
@@ -300,6 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         let shown = false;
                         const showOnce = () => {
+                            if (drawerState !== 'OPEN') return;
                             if (shown) return;
                             shown = true;
                             showJohnOverlay();
@@ -327,22 +330,23 @@ document.addEventListener('DOMContentLoaded', () => {
             if (ocDrawer) ocDrawer.style.pointerEvents = 'auto';
             if (johnVideoOverlay) { johnVideoOverlay.style.display = 'none'; johnVideoOverlay.pause(); }
 
+            // Fade radio while the closing video plays.
             fadeRadioVolume(0, 2000, () => {
                 if (radioStream) { radioStream.pause(); radioStream.currentTime = 0; }
                 isMuted = false;
                 updateMuteButton();
+            });
 
-                const byeVideoPromise = loadContent(ASSET_BYE_VIDEO, 'video', true, false);
-                byeVideoPromise.video.muted = false; // Unmute the bye video
-                byeVideoPromise.then(() => {
-                    loadContent(ASSET_TESTCARD, 'image').then(() => {
-                        if (ocDrawer) {
-                            ocDrawer.classList.remove('open');
-                            ocDrawer.addEventListener('transitionend', () => setDrawerState('CLOSED'), { once: true });
-                        } else {
-                            setDrawerState('CLOSED');
-                        }
-                    });
+            const byeVideoPromise = loadContent(ASSET_BYE_VIDEO, 'video', true, false);
+            byeVideoPromise.video.muted = false; // keep audio during close sequence
+            byeVideoPromise.then(() => {
+                loadContent(ASSET_TESTCARD, 'image').then(() => {
+                    if (ocDrawer) {
+                        ocDrawer.classList.remove('open');
+                        ocDrawer.addEventListener('transitionend', () => setDrawerState('CLOSED'), { once: true });
+                    } else {
+                        setDrawerState('CLOSED');
+                    }
                 });
             });
 
