@@ -26,9 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const PUBLIC_USER_NUM = '5';
     const PUBLIC_USER_PWD = 'quantum25148535!!';
 
-    const USER_NUM_RAW = getLocalStorageItem('user_num', IS_PUBLIC_LOGIN_DRAWER ? PUBLIC_USER_NUM : '1');
-    const USER_NUM = /^[1-5]$/.test(USER_NUM_RAW) ? USER_NUM_RAW : (IS_PUBLIC_LOGIN_DRAWER ? PUBLIC_USER_NUM : '1');
-    const USER_PWD = getLocalStorageItem('user_pwd', IS_PUBLIC_LOGIN_DRAWER ? PUBLIC_USER_PWD : '');
+    const USER_NUM_RAW = getLocalStorageItem('user_num', PUBLIC_USER_NUM);
+    const USER_NUM = /^[1-5]$/.test(USER_NUM_RAW) ? USER_NUM_RAW : PUBLIC_USER_NUM;
+    const USER_PWD = getLocalStorageItem('user_pwd', PUBLIC_USER_PWD);
     const HAS_REMOTE_LOGIN = USER_PWD.trim().length > 0;
 
     const REMOTE_HOST_PRIMARY = 'https://ai.carfinancecheque.uk';
@@ -46,6 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 return new URL('../', new URL(scriptEl.src, window.location.href));
             } catch (error) {}
+        }
+        // Fallback that still works when CDN script rewriting hides app.js src.
+        if (/\/pages\//.test(window.location.pathname)) {
+            return new URL('../', window.location.href);
         }
         return new URL('./', window.location.href);
     }
