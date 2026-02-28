@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="color-scheme" content="light dark" />
   <meta name="fc-asset-version" content="20260228a" />
-  <title>Finance Cheuqe | Control Panel Login</title>
+  <title>Finance Cheque. | Control Panel Login</title>
 
-  <link rel="stylesheet" href="css/adminlte.css?v=20260227b" />
+  <link rel="stylesheet" href="assets/css/adminlte.css?v=20260227b" />
   <link rel="preload" as="video" href="assets/videos/welcometotechsupport.mp4?v=20260228a" type="video/mp4" />
   <link rel="preload" as="video" href="assets/videos/byehaveanicelife.mp4?v=20260228a" type="video/mp4" />
   <link rel="preload" as="video" href="assets/videos/john.webm?v=20260228a" type="video/webm" />
@@ -1299,6 +1299,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: 50% 45%;
     }
 
     .scanlines {
@@ -1363,6 +1364,8 @@
       min-width: 50px;
     }
   </style>
+  <link rel="stylesheet" href="vendor/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="vendor/bootstrap-icons.min.css" />
 </head>
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary dark-mode" data-bs-theme="dark">
@@ -1464,8 +1467,8 @@
 <div class="login-box">
   <div class="card card-outline card-primary shadow">
     <div class="card-header text-center">
-      <img src="assets/img/logo.png" alt="Finance Cheuqe" style="height:96px; width:auto; margin-bottom:10px;">
-      <div style="font-size:1.05rem; letter-spacing:0.12em; text-transform:uppercase; color:#e7edf5;">Finance Cheuqe</div>
+      <img src="assets/img/logo.png" alt="Finance Cheque." style="height:96px; width:auto; margin-bottom:10px;">
+      <div style="font-size:1.05rem; letter-spacing:0.12em; text-transform:uppercase; color:#e7edf5;">Finance Cheque.</div>
     </div>
 
     <div class="card-body">
@@ -1476,27 +1479,38 @@
           <select id="user-select" class="form-control">
             <option value="1">Marketing</option>
             <option value="2">Sales</option>
-            <option value="3">Director</option>
+            <option value="3">Management</option>
             <option value="4">Projects</option>
           </select>
         </div>
 
         <div class="form-group mb-3">
           <label for="password-input">Password</label>
-          <input 
-            id="password-input"
-            type="password"
-            class="form-control"
-            placeholder="Enter password"
-            autocomplete="current-password"
-            required
-            autofocus
-          >
+          <div class="input-group">
+            <input 
+              id="password-input"
+              type="password"
+              class="form-control"
+              placeholder="Enter password"
+              autocomplete="current-password"
+              required
+              autofocus
+            >
+          </div>
+        </div>
+        
+        <div class="form-group mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="show-password">
+                <label class="form-check-label" for="show-password">
+                    Show Password
+                </label>
+            </div>
         </div>
 
         <div id="error" class="text-danger mb-3" style="display:none;"></div>
 
-        <button type="submit" class="btn btn-primary btn-block w-100">
+        <button type="submit" class="btn btn-primary btn-block w-100" style="background-color: #45ff8f; border-color: #45ff8f; color: #000;">
           Login
         </button>
 
@@ -1506,6 +1520,14 @@
 </div>
 
 <script>
+document.getElementById('show-password').addEventListener('change', function(e) {
+    const passwordInput = document.getElementById('password-input');
+    if (e.target.checked) {
+        passwordInput.type = 'text';
+    } else {
+        passwordInput.type = 'password';
+    }
+});
 
 // Redirect if already authenticated
 if (localStorage.getItem("authenticated") === "true" || localStorage.getItem("session_active") === "true") {
@@ -1548,11 +1570,16 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 });
 </script>
 
-  <div class="oc-tab" id="ocTab"><img id="ocTabImg" src="assets/img/pine.png" alt="Open Drawer"></div>
+  <div class="oc-tab" id="ocTab">
+    <div style="position: relative; text-align: center;">
+      <img id="ocTabImg" src="assets/img/pine.png" alt="Open Drawer" style="width: 120px; height: 120px;">
+      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-family: 'Orbitron', sans-serif; font-size: 18px; font-weight: bold; text-shadow: 0 0 5px #000;">Try it</div>
+    </div>
+  </div>
   <div class="oc-drawer" id="ocDrawer">
     <div class="oc-root">
       <div class="oc-header">
-        <h1 id="oc-agent-title" style="visibility:hidden; opacity:0;">Oaksey A.I</h1>
+        <h1 id="oc-agent-title" style="visibility:hidden; opacity:0; margin-top: 5px;">Oaksey A.I</h1>
         <span class="sep"></span>
         <span id="timer-display">--:--</span>
         <div id="led-strip">
@@ -1585,17 +1612,21 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
             <path d="M6.3 6.3a8 8 0 1 0 11.4 0"/>
           </svg>
         </button>
+        <input type="text" id="user-query" placeholder="Ask Oaksey A.I to do something..." disabled style="opacity:0.5;" />
+        <button id="send-btn" disabled style="opacity:0.5;">Send</button>
+        <div id="toggle-webm-btn" class="oc-control-btn" style="display:none; cursor: pointer;" title="Show / Hide Overlay"><i class="bi bi-eye"></i></div>
+        <div id="mic-btn" class="oc-control-btn" style="opacity:0.5; cursor: not-allowed;"><i class="bi bi-mic"></i></div>
+        <div id="account-balance" style="cursor: pointer; display: none; font-family: 'Share Tech Mono', monospace; background: #e8e8e8; color: #333; padding: 5px 10px; border-radius: 5px; border: 1px solid #ccc;">
+          <span class="balance-label">Balance:</span>
+          <span class="balance-amount">£271.26</span>
+        </div>
+        <span id="feedback"></span>
         <button id="mute-btn" class="oc-control-btn" style="display:none;" title="Mute / Unmute Radio">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path class="volume-icon" d="M11 5L6 9H2v6h4l5 4V5z"/>
             <path class="mute-slash" d="M21 9l-6 6M15 9l6 6" style="display:none;"/>
           </svg>
         </button>
-        <input type="text" id="user-query" placeholder="Ask Oaksey A.I to do something..." disabled style="opacity:0.5;" />
-        <button id="send-btn" disabled style="opacity:0.5;">Send</button>
-        <button id="toggle-webm-btn" class="oc-control-btn" style="display:none;" title="Show / Hide Overlay">👁</button>
-        <button id="mic-btn" type="button" disabled style="opacity:0.5;">🎤</button>
-        <span id="feedback"></span>
       </div>
     </div>
     <div class="oc-handle">
@@ -1630,14 +1661,14 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
     };
     bustCache();
   </script>
-  <script id="app-script" src="js/app.js?v=20260228a"></script>
+  <script id="app-script" src="assets/js/app.js?v=20260228a"></script>
   <footer>
     <div class="root-footer">
       <a href="tos.html" style="color: #8893a3; text-decoration: none; margin-right: 10px;">Terms of Service</a>
       <a href="privacy.html" style="color: #8893a3; text-decoration: none;">Privacy Policy</a>
       <p style="margin-top: 10px;">
-        <img src="assets/img/logo.png" alt="Finance Cheuqe Logo" style="height:16px; width:auto; vertical-align:middle; margin-right:6px;">
-        &copy; <span id="fc-year-root"></span> Finance Cheuqe. All rights reserved.
+        &copy; <span id="fc-year-root"></span> Finance Cheque.. All rights reserved.<br>
+        Email: <a href="mailto:info@datro.xyz" style="color: #8893a3; text-decoration: none;">info@datro.xyz</a> | Phone: 02031377118
       </p>
     </div>
   </footer>
@@ -1674,5 +1705,45 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
       window.addEventListener('resize', positionLoginBox);
     })();
   </script>
+<div id="banking-modal" class="bf-modal" style="display: none; background-color: rgba(0,0,0,0.5);">
+  <div class="bf-modal-card" style="background: #f0f2f5; color: #333; border-color: #ccc; text-align: left; max-width: 500px;">
+    <div class="bf-floating-header">
+      <h5 style="font-family: 'Orbitron', sans-serif;">Finance Cheque. Bank App</h5>
+      <button id="banking-modal-close" class="bf-floating-close" style="color: #333;">&times;</button>
+    </div>
+    <div style="padding: 1rem;">
+      <p>Current Balance: <span id="modal-balance" class="balance-amount">£271.26</span></p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px;">
+        <button class="btn btn-primary">Transfer (Local)</button>
+        <button class="btn btn-primary">Transfer (International)</button>
+        <button class="btn btn-secondary">Withdraw</button>
+        <button class="btn btn-secondary">Add Card to Google Wallet</button>
+        <button class="btn btn-warning">Request Overdraft</button>
+        <button id="banking-modal-close-btn" class="btn btn-danger">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="banking-modal" class="bf-modal" style="display: none; background-color: rgba(0,0,0,0.5);">
+  <div class="bf-modal-card" style="background: #f0f2f5; color: #333; border-color: #ccc; text-align: left; max-width: 500px;">
+    <div class="bf-floating-header">
+      <h5 style="font-family: 'Orbitron', sans-serif;">Finance Cheque. Bank App</h5>
+      <button id="banking-modal-close" class="bf-floating-close" style="color: #333;">&times;</button>
+    </div>
+    <div style="padding: 1rem;">
+      <p>Current Balance: <span id="modal-balance" class="balance-amount">£271.26</span></p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px;">
+        <button class="btn btn-primary">Transfer (Local)</button>
+        <button class="btn btn-primary">Transfer (International)</button>
+        <button class="btn btn-secondary">Withdraw</button>
+        <button class="btn btn-secondary">Add Card to Google Wallet</button>
+        <button class="btn btn-warning">Request Overdraft</button>
+        <button id="banking-modal-close-btn" class="btn btn-danger">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

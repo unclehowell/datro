@@ -28,7 +28,7 @@
     <!--begin::Accessibility Features-->
     <!-- Skip links will be dynamically added by accessibility.js -->
     <meta name="supported-color-schemes" content="light dark" />
-    <link rel="preload" href="../css/adminlte.css" as="style" />
+    <link rel="preload" href="../assets/css/adminlte.css" as="style" />
     <!--end::Accessibility Features-->
 
     <!--begin::Fonts-->
@@ -59,10 +59,10 @@
     <!--end::Third Party Plugin(Bootstrap Icons)-->
 
     <!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="../css/adminlte.css" />
+    <link rel="stylesheet" href="../assets/css/adminlte.css" />
     <!--end::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="../css/theme.css" />
-  <link rel="stylesheet" href="css/global-shell.css" />
+    <link rel="stylesheet" href="../assets/css/theme.css" />
+  <link rel="stylesheet" href="../assets/css/global-shell.css" />
 </head>
   <!--end::Head-->
   <!--begin::Body-->
@@ -502,7 +502,7 @@
       crossorigin="anonymous"
     ></script>
     <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-    <script src="../js/adminlte.js"></script>
+    <script src="../assets/js/adminlte.js"></script>
     <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script>
       const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
@@ -688,8 +688,8 @@
         navigation.innerHTML = buildMenuHTML(menuData);
       })();
     </script>
-  <script src="js/theme.js"></script>
-  <script src="js/global-shell.js"></script>
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/global-shell.js"></script>
 
   <script>
     function logout() { localStorage.removeItem('authenticated'); window.location.href = '../index.html'; }
