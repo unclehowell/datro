@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const radioStream = document.getElementById('radio-stream');
     const timerDisplay = document.getElementById('timer-display');
     const johnVideoOverlay = document.getElementById('john-video-overlay');
+    const agentTitle = document.getElementById('oc-agent-title');
     const scanlinesLayer = dynamicContentArea ? dynamicContentArea.querySelector('.scanlines') : null;
 
     function getLocalStorageItem(key, fallback = '') {
@@ -26,9 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const PUBLIC_USER_NUM = '5';
     const PUBLIC_USER_PWD = 'quantum25148535!!';
 
-    const USER_NUM_RAW = getLocalStorageItem('user_num', PUBLIC_USER_NUM);
-    const USER_NUM = /^[1-5]$/.test(USER_NUM_RAW) ? USER_NUM_RAW : PUBLIC_USER_NUM;
-    const USER_PWD = getLocalStorageItem('user_pwd', PUBLIC_USER_PWD);
+    const USER_NUM_RAW = getLocalStorageItem('user_num', '').trim();
+    const USER_PWD_RAW = getLocalStorageItem('user_pwd', '').trim();
+    const USER_NUM = IS_PUBLIC_LOGIN_DRAWER
+        ? PUBLIC_USER_NUM
+        : (/^[1-5]$/.test(USER_NUM_RAW) ? USER_NUM_RAW : PUBLIC_USER_NUM);
+    const USER_PWD = IS_PUBLIC_LOGIN_DRAWER
+        ? PUBLIC_USER_PWD
+        : (USER_PWD_RAW || PUBLIC_USER_PWD);
     const HAS_REMOTE_LOGIN = USER_PWD.trim().length > 0;
 
     const REMOTE_HOST_PRIMARY = 'https://ai.carfinancecheque.uk';
@@ -82,7 +88,22 @@ document.addEventListener('DOMContentLoaded', () => {
         username: GUAC_USERNAME,
         password: GUAC_PASSWORD
     }).toString()}`;
+    const RADIO_MAX_VOLUME = 0.05;
     const ASSET_VERSION = (document.querySelector('meta[name="fc-asset-version"]')?.getAttribute('content') || '').trim();
+    let guacToken = null;
+
+    // Optional external hook if Guacamole token is available via server integration.
+    window.setGuacToken = (token) => { guacToken = token || null; };
+
+    function setAgentTitleVisible(visible) {
+        if (!agentTitle) return;
+        agentTitle.style.visibility = visible ? 'visible' : 'hidden';
+        agentTitle.style.opacity = visible ? '1' : '0';
+    }
+
+    function clampRadioVolume(value) {
+        return Math.max(0, Math.min(RADIO_MAX_VOLUME, Number(value) || 0));
+    }
 
     function getAssetUrl(path) {
         const url = new URL(path, PROJECT_ROOT_URL);
@@ -94,11 +115,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (ocTab) ocTab.querySelector('img').src = getAssetUrl(ASSET_PINE_IMG);
     if (ocToggleUp) ocToggleUp.querySelector('img').src = getAssetUrl(ASSET_PINE_IMG);
+    if (radioStream) {
+        radioStream.volume = 0;
+        radioStream.addEventListener('volumechange', () => {
+            const capped = clampRadioVolume(radioStream.volume);
+            if (radioStream.volume !== capped) {
+                radioStream.volume = capped;
+            }
+        });
+    }
+    setAgentTitleVisible(false);
+
+    async function releaseGuacConnection() {
+        const iframe = document.getElementById('guac-frame');
+        if (iframe) {
+            try { iframe.src = 'about:blank'; } catch (error) {}
+        }
+
+        // Best effort token-based teardown when host integration provides a token.
+        if (guacToken) {
+            try {
+                await fetch(`${GUAC_BASE_URL}api/session/tunnels`, {
+                    method: 'DELETE',
+                    headers: { 'Guacamole-Token': guacToken }
+                });
+            } catch (error) {}
+            guacToken = null;
+        }
+    }
 
     function clearDynamicContent() {
         if (!dynamicContentArea) return;
         Array.from(dynamicContentArea.children).forEach((child) => {
             if (scanlinesLayer && child === scanlinesLayer) return;
+            if (child && child.tagName === 'IFRAME' && child.id === 'guac-frame') {
+                try { child.src = 'about:blank'; } catch (error) {}
+            }
             dynamicContentArea.removeChild(child);
         });
     }
@@ -120,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (type === 'image') {
             const img = document.createElement('img');
             img.src = assetUrl;
+            img.classList.add('fullscreen-video');
             appendDynamicNode(img);
             return Promise.resolve(img);
         } else if (type === 'video') {
@@ -225,8 +278,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function fadeRadioVolume(targetVolume, duration, onComplete) {
         if (!radioStream) { if (onComplete) onComplete(); return; }
+        targetVolume = clampRadioVolume(targetVolume);
         clearInterval(radioFadeInterval);
-        const startVolume = radioStream.volume;
+        const startVolume = clampRadioVolume(radioStream.volume);
+        radioStream.volume = startVolume;
         const steps = duration / 50;
         if (steps <= 0) {
             radioStream.volume = targetVolume;
@@ -238,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         radioFadeInterval = setInterval(() => {
             currentStep++;
-            radioStream.volume = Math.max(0, Math.min(1, startVolume + volumeChangePerStep * currentStep));
+            radioStream.volume = clampRadioVolume(startVolume + volumeChangePerStep * currentStep);
             if (currentStep >= steps) {
                 clearInterval(radioFadeInterval);
                 radioStream.volume = targetVolume;
@@ -249,19 +304,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function hideJohnOverlay() {
         if (!johnVideoOverlay) return;
+        setAgentTitleVisible(false);
         johnVideoOverlay.style.display = 'none';
         johnVideoOverlay.pause();
     }
 
     function showJohnOverlay() {
         if (radioStream && !isMuted) {
+            radioStream.volume = clampRadioVolume(radioStream.volume);
             radioStream.play().catch(() => {});
-            fadeRadioVolume(0.05, 1000);
+            fadeRadioVolume(RADIO_MAX_VOLUME, 1000);
         }
         if (!johnVideoOverlay) return;
         johnVideoOverlay.src = getAssetUrl(ASSET_JOHN_VIDEO);
         johnVideoOverlay.style.pointerEvents = 'none';
         johnVideoOverlay.style.display = 'block';
+        setAgentTitleVisible(true);
         johnVideoOverlay.play().catch(() => {});
     }
 
@@ -282,6 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (muteBtn) muteBtn.style.display = 'none';
             if (toggleWebmBtn) toggleWebmBtn.style.display = 'none';
             hideJohnOverlay();
+            releaseGuacConnection();
             if (radioStream) { radioStream.pause(); radioStream.currentTime = 0; radioStream.volume = 0; }
             isMuted = false;
             updateMuteButton();
@@ -367,6 +426,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (newState === 'CLOSING') {
             if (ocDrawer) ocDrawer.style.pointerEvents = 'auto';
             hideJohnOverlay();
+            releaseGuacConnection();
 
             // Fade radio while the closing video plays.
             fadeRadioVolume(0, 2000, () => {
@@ -411,9 +471,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (johnVideoOverlay) {
             if (johnVideoOverlay.style.display === 'none') {
                 johnVideoOverlay.style.display = 'block';
+                setAgentTitleVisible(true);
                 johnVideoOverlay.play().catch(() => {});
             } else {
                 johnVideoOverlay.style.display = 'none';
+                setAgentTitleVisible(false);
                 johnVideoOverlay.pause();
             }
         }
@@ -514,7 +576,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 fadeRadioVolume(0, 300);
             } else {
                 radioStream.volume = 0;
-                fadeRadioVolume(0.05, 1000);
+                fadeRadioVolume(RADIO_MAX_VOLUME, 1000);
             }
         }
         updateMuteButton();
