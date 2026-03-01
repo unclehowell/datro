@@ -251,8 +251,13 @@ document.addEventListener('DOMContentLoaded', () => {
             iframe.style.border = 'none';
             iframe.style.overflow = 'hidden';
             iframe.style.backgroundColor = 'transparent';
+            iframe.style.opacity = '0';
+            iframe.style.transition = 'opacity 0.5s ease-in-out';
             
-            iframe.onload = () => console.log('Iframe loaded:', url);
+            iframe.onload = () => {
+                console.log('Iframe loaded:', url);
+                iframe.style.opacity = '1';
+            };
             iframe.onerror = (e) => console.error('Iframe error:', e);
             
             appendDynamicNode(iframe);
