@@ -21,6 +21,7 @@ This project is a static web application for **PCP (Personal Campaign Portal)** 
 ## Core Workflows
 - **Research:** Always check `menu.json` before creating new pages.
 - **Strategy:** Map UI changes to AdminLTE's existing utility classes before writing custom CSS.
+- **Archiving:** When preparing a release, zip the webapp files and store them in the `archive/` directory. The filename must follow semantic versioning (e.g., `v1.0.0.zip`).
 - **Execution:** 
   - Use `replace` for surgical updates to existing HTML/JS.
   - Update `menu.json` immediately when adding or removing pages.
@@ -30,4 +31,5 @@ This project is a static web application for **PCP (Personal Campaign Portal)** 
 - `/pages/`: Main application content.
 - `/assets/`: Project-specific CSS, JS, and images.
 - `/vendor/`: External dependencies.
+- `/archive/`: Zipped webapp releases named by semantic version.
 - `/miscellaneous/`: Backup files and development templates.
