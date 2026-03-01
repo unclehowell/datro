@@ -18,35 +18,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const bankingModal = document.getElementById('banking-modal');
     const bankingModalClose = document.getElementById('banking-modal-close');
     const bankingModalCloseBtn = document.getElementById('banking-modal-close-btn');
+    const fadeOverlay = document.getElementById('fade-overlay');
 
-    let balance = 271.26;
+    let balance = 700.00;
     let balanceInterval = null;
+    const TARGET_BALANCE = 1846.23;
+    const DURATION_SECONDS = 3 * 60 + 16; // 196 seconds
 
-    function animateBalance(start, end, duration) {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            const currentBalance = progress * (end - start) + start;
-            balance = currentBalance;
-            balanceAmountSpans.forEach(span => {
-                span.textContent = `£${currentBalance.toFixed(2)}`;
-            });
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            }
-        };
-        window.requestAnimationFrame(step);
-    }
-
-    function startBalanceIncrements() {
+    function startBalanceClimb() {
         clearInterval(balanceInterval);
+        const startTime = Date.now();
+        const startVal = balance;
+        const totalIncrease = TARGET_BALANCE - startVal;
+        
         balanceInterval = setInterval(() => {
-            balance += 5.00;
+            const elapsed = (Date.now() - startTime) / 1000;
+            const progress = Math.min(elapsed / DURATION_SECONDS, 1);
+            balance = startVal + (totalIncrease * progress);
+            
             balanceAmountSpans.forEach(span => {
                 span.textContent = `£${balance.toFixed(2)}`;
             });
-        }, 10000);
+
+            if (progress >= 1) clearInterval(balanceInterval);
+        }, 100);
     }
 
 
@@ -100,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return new URL('../../', new URL(scriptEl.src, window.location.href));
             } catch (error) {}
         }
-        // Fallback that still works when CDN script rewriting hides app.js src.
         if (/\/pages\//.test(window.location.pathname)) {
             return new URL('../', window.location.href);
         }
@@ -116,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let radioFadeInterval = null;
     let transitionToken = 0;
 
-    const ASSET_PINE_IMG = 'assets/img/pine.png';
+    const ASSET_OAK_IMG = 'assets/img/oak.jpg';
     const ASSET_TESTCARD = 'assets/img/testcard.png';
     const ASSET_WELCOME_VIDEO = 'assets/videos/welcometotechsupport.mp4';
     const ASSET_BYE_VIDEO = 'assets/videos/byehaveanicelife.mp4';
@@ -139,7 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const ASSET_VERSION = (document.querySelector('meta[name="fc-asset-version"]')?.getAttribute('content') || '').trim();
     let guacToken = null;
 
-    // Optional external hook if Guacamole token is available via server integration.
     window.setGuacToken = (token) => { guacToken = token || null; };
 
     function setAgentTitleVisible(visible) {
@@ -160,8 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return url.href;
     }
 
-    if (ocTab) ocTab.querySelector('img').src = getAssetUrl(ASSET_PINE_IMG);
-    if (ocToggleUp) ocToggleUp.querySelector('img').src = getAssetUrl(ASSET_PINE_IMG);
+    if (ocTab) ocTab.querySelector('img').src = getAssetUrl(ASSET_OAK_IMG);
+    if (ocToggleUp) ocToggleUp.querySelector('img').src = getAssetUrl(ASSET_OAK_IMG);
     if (radioStream) {
         radioStream.volume = 0;
         radioStream.addEventListener('volumechange', () => {
@@ -178,8 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (iframe) {
             try { iframe.src = 'about:blank'; } catch (error) {}
         }
-
-        // Best effort token-based teardown when host integration provides a token.
         if (guacToken) {
             try {
                 await fetch(`${GUAC_BASE_URL}api/session/tunnels`, {
@@ -195,6 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!dynamicContentArea) return;
         Array.from(dynamicContentArea.children).forEach((child) => {
             if (scanlinesLayer && child === scanlinesLayer) return;
+            if (fadeOverlay && child === fadeOverlay) return;
             if (child && child.tagName === 'IFRAME' && child.id === 'guac-frame') {
                 try { child.src = 'about:blank'; } catch (error) {}
             }
@@ -204,6 +196,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function appendDynamicNode(node) {
         if (!dynamicContentArea) return;
+        if (fadeOverlay && dynamicContentArea.contains(fadeOverlay)) {
+            dynamicContentArea.insertBefore(node, fadeOverlay);
+            return;
+        }
         if (scanlinesLayer && dynamicContentArea.contains(scanlinesLayer)) {
             dynamicContentArea.insertBefore(node, scanlinesLayer);
             return;
@@ -213,9 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function loadContent(url, type = 'image', autoplay = false, controls = false, loop = false) {
         clearDynamicContent();
-
         const assetUrl = getAssetUrl(url);
-
         if (type === 'image') {
             const img = document.createElement('img');
             img.src = assetUrl;
@@ -233,23 +227,17 @@ document.addEventListener('DOMContentLoaded', () => {
             video.volume = 1.0;
             video.classList.add('fullscreen-video');
             appendDynamicNode(video);
-
-            if (autoplay) {
-                video.play().catch(() => {});
-            }
-
+            if (autoplay) video.play().catch(() => {});
             const endPromise = new Promise((resolve) => {
                 video.onended = resolve;
                 video.onerror = () => resolve();
             });
-
             return Promise.resolve({element: video, endPromise});
-
         } else if (type === 'iframe') {
             const iframe = document.createElement('iframe');
             iframe.id = 'guac-frame';
             iframe.title = 'Remote Console Connection';
-            iframe.src = url; // Don't cache-bust external URLs
+            iframe.src = url;
             iframe.sandbox = 'allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock';
             iframe.allow = 'clipboard-read; clipboard-write; microphone; camera; display-capture';
             iframe.loading = 'eager';
@@ -261,13 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
             iframe.style.backgroundColor = 'transparent';
             iframe.style.opacity = '0';
             iframe.style.transition = 'opacity 0.5s ease-in-out';
-            
-            iframe.onload = () => {
-                console.log('Iframe loaded:', url);
-                iframe.style.opacity = '1';
-            };
-            iframe.onerror = (e) => console.error('Iframe error:', e);
-            
+            iframe.onload = () => { iframe.style.opacity = '1'; };
             appendDynamicNode(iframe);
             return Promise.resolve({element: iframe});
         }
@@ -285,7 +267,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const minutes = Math.floor(remainingTime / 60);
         const seconds = remainingTime % 60;
         timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-
         if (remainingTime <= 60) {
             timerDisplay.classList.add('critical');
             timerDisplay.classList.remove('warning', 'active');
@@ -301,26 +282,19 @@ document.addEventListener('DOMContentLoaded', () => {
     function startCountdown() {
         clearInterval(countdownInterval);
         clearTimeout(countdownTimeout);
-
-        let remainingTime = 3 * 60;
+        let remainingTime = DURATION_SECONDS;
         updateTimerDisplay(remainingTime);
-
         countdownInterval = setInterval(() => {
             remainingTime--;
             updateTimerDisplay(remainingTime);
             if (remainingTime <= 0) {
                 clearInterval(countdownInterval);
-                if (drawerState === 'OPEN') {
-                    setDrawerState('CLOSING');
-                }
+                if (drawerState === 'OPEN') setDrawerState('CLOSING');
             }
         }, 1000);
-
         countdownTimeout = setTimeout(() => {
-            if (drawerState === 'OPEN') {
-                setDrawerState('CLOSING');
-            }
-        }, 3 * 60 * 1000);
+            if (drawerState === 'OPEN') setDrawerState('CLOSING');
+        }, DURATION_SECONDS * 1000);
     }
 
     function stopCountdown() {
@@ -351,7 +325,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const volumeChangePerStep = (targetVolume - startVolume) / steps;
         let currentStep = 0;
-
         radioFadeInterval = setInterval(() => {
             currentStep++;
             radioStream.volume = clampRadioVolume(startVolume + volumeChangePerStep * currentStep);
@@ -366,44 +339,64 @@ document.addEventListener('DOMContentLoaded', () => {
     function hideJohnOverlay() {
         if (!johnVideoOverlay) return;
         setAgentTitleVisible(false);
-        johnVideoOverlay.style.display = 'none';
-        johnVideoOverlay.pause();
-    }
-
-    function fadeOutVideo(video, duration) {
-        let currentVolume = video.volume;
-        const fadeOutInterval = setInterval(() => {
-            currentVolume -= 0.1;
-            if (currentVolume < 0) {
-                currentVolume = 0;
-                clearInterval(fadeOutInterval);
-                video.pause();
+        johnVideoOverlay.style.opacity = 0;
+        setTimeout(() => {
+            if (johnVideoOverlay.style.opacity === "0") {
+                johnVideoOverlay.style.display = 'none';
+                johnVideoOverlay.pause();
             }
-            video.volume = currentVolume;
-        }, duration / 10);
-        video.style.transition = `opacity ${duration / 1000}s ease-out`;
-        video.style.opacity = 0;
+        }, 1500);
     }
 
-    function showJohnOverlay() {
+    function fadeToColor(duration, colors = ['#ffffff', '#ffff00']) {
+        if (!fadeOverlay) return Promise.resolve();
+        fadeOverlay.style.transition = 'none';
+        fadeOverlay.style.opacity = 0;
+        fadeOverlay.style.background = `linear-gradient(135deg, ${colors.join(', ')})`;
+        return new Promise(resolve => {
+            setTimeout(() => {
+                fadeOverlay.style.transition = `opacity ${duration/1000}s ease`;
+                fadeOverlay.style.opacity = 1;
+                setTimeout(resolve, duration);
+            }, 50);
+        });
+    }
+
+    function startMusic() {
         if (radioStream && !isMuted) {
-            radioStream.volume = clampRadioVolume(radioStream.volume);
+            if (!radioStream.src || radioStream.src === window.location.href) {
+                radioStream.src = 'https://stream.rcs.revma.com/fxp289cp81uvv';
+                radioStream.load();
+            }
+            radioStream.volume = 0;
             radioStream.play().catch(() => {});
             fadeRadioVolume(RADIO_MAX_VOLUME, 1000);
         }
+    }
+
+    function showJohnOverlay(playMusic = true) {
+        if (playMusic) startMusic();
         if (!johnVideoOverlay) return;
         johnVideoOverlay.src = getAssetUrl(ASSET_JOHN_VIDEO);
         johnVideoOverlay.style.pointerEvents = 'none';
         johnVideoOverlay.style.display = 'block';
-        johnVideoOverlay.style.opacity = 0;
         setAgentTitleVisible(true);
         johnVideoOverlay.play().catch(() => {});
         setTimeout(() => {
-            johnVideoOverlay.style.transition = 'opacity 1s ease-in';
             johnVideoOverlay.style.opacity = 1;
-        }, 100); // small delay to ensure transition is applied
-        if (accountBalanceDisplay) accountBalanceDisplay.style.display = 'block';
-        animateBalance(271.26, 603.26, 2000);
+            // Set input placeholder text
+            if (userQuery) userQuery.placeholder = "How can I answer your prayers today?";
+            setTimeout(() => {
+                if (accountBalanceDisplay && drawerState === 'OPEN') {
+                    accountBalanceDisplay.style.display = 'flex';
+                    // Trigger 10s fade in via CSS transition
+                    setTimeout(() => {
+                        accountBalanceDisplay.style.opacity = 1;
+                        startBalanceClimb();
+                    }, 50);
+                }
+            }, 1000);
+        }, 50); 
     }
 
     function setDrawerState(newState) {
@@ -416,13 +409,19 @@ document.addEventListener('DOMContentLoaded', () => {
             if (ocDrawer) ocDrawer.classList.remove('open', 'closing');
             if (ocDrawer) ocDrawer.style.pointerEvents = 'none';
             if (ocTab) ocTab.style.display = 'block';
-
             if (powerBtn) powerBtn.classList.remove('on');
-            if (userQuery) { userQuery.disabled = true; userQuery.style.opacity = '0.5'; }
+            if (userQuery) { 
+                userQuery.disabled = true; 
+                userQuery.style.opacity = '0.5'; 
+                userQuery.placeholder = ""; // Remove text
+            }
             if (sendBtn) { sendBtn.disabled = true; sendBtn.style.opacity = '0.5'; }
             if (muteBtn) muteBtn.style.display = 'none';
             if (toggleWebmBtn) toggleWebmBtn.style.display = 'none';
-            if (accountBalanceDisplay) accountBalanceDisplay.style.display = 'none';
+            if (accountBalanceDisplay) {
+                accountBalanceDisplay.style.display = 'none';
+                accountBalanceDisplay.style.opacity = 0;
+            }
             hideJohnOverlay();
             releaseGuacConnection();
             if (radioStream) { radioStream.pause(); radioStream.currentTime = 0; radioStream.volume = 0; }
@@ -448,6 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (userQuery) {
                     userQuery.disabled = !HAS_REMOTE_LOGIN;
                     userQuery.style.opacity = HAS_REMOTE_LOGIN ? '1' : '0.5';
+                    userQuery.placeholder = ""; // Hidden initially
                 }
                 if (sendBtn) {
                     sendBtn.disabled = !HAS_REMOTE_LOGIN;
@@ -455,7 +455,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 if (muteBtn) muteBtn.style.display = HAS_REMOTE_LOGIN ? 'flex' : 'none';
                 if (toggleWebmBtn) toggleWebmBtn.style.display = HAS_REMOTE_LOGIN ? 'flex' : 'none';
-                if (accountBalanceDisplay) accountBalanceDisplay.style.display = HAS_REMOTE_LOGIN ? 'block' : 'none';
                 startCountdown();
 
                 if (!HAS_REMOTE_LOGIN) {
@@ -466,39 +465,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 loadContent(ASSET_WELCOME_VIDEO, 'video', true, false).then(({element: video, endPromise}) => {
-                    const fadeOutTime = video.duration ? (video.duration - 2) * 1000 : 5000;
-
-                    setTimeout(() => {
-                        fadeOutVideo(video, 1000);
-
+                    const checkDuration = () => {
+                        const durationMs = video.duration * 1000 || 8000;
                         setTimeout(() => {
-                             // Load Guacamole iframe and guarantee john.webm overlay appears.
-                            loadContent(GUAC_AUTOLOGIN_URL, 'iframe').then(({element: iframe}) => {
-                                if (drawerState !== 'OPEN' || currentToken !== transitionToken) return;
-                                if (!iframe) {
-                                    showJohnOverlay();
-                                    return;
-                                }
-
-                                let shown = false;
-                                const showOnce = () => {
-                                    if (drawerState !== 'OPEN' || currentToken !== transitionToken) return;
-                                    if (shown) return;
-                                    shown = true;
-                                    showJohnOverlay();
-                                };
-
-                                iframe.addEventListener('load', showOnce, { once: true });
-                                iframe.addEventListener('error', () => {
-                                    iframe.src = GUAC_AUTOLOGIN_URL_FALLBACK;
-                                    setTimeout(showOnce, 2200);
-                                }, { once: true });
-
-                                // Fallback for cross-origin/load event edge cases.
-                                setTimeout(showOnce, 2800);
-                            });
-                        }, 1000); // wait for fade out to complete
-                    }, fadeOutTime);
+                            if (drawerState === 'OPEN' && currentToken === transitionToken) {
+                                showJohnOverlay(true); 
+                            }
+                        }, Math.max(0, durationMs - 2000));
+                        setTimeout(() => {
+                            if (drawerState === 'OPEN' && currentToken === transitionToken) {
+                                fadeToColor(800).then(() => {
+                                    if (fadeOverlay) fadeOverlay.style.opacity = 0;
+                                });
+                            }
+                        }, Math.max(0, durationMs - 800));
+                        setTimeout(() => {
+                            loadContent(GUAC_AUTOLOGIN_URL, 'iframe').then(() => {});
+                        }, Math.max(0, durationMs - 500));
+                    };
+                    if (video.readyState >= 1) checkDuration();
+                    else video.addEventListener('loadedmetadata', checkDuration, { once: true });
                 });
             };
 
@@ -517,142 +503,103 @@ document.addEventListener('DOMContentLoaded', () => {
             if (ocDrawer) ocDrawer.style.pointerEvents = 'auto';
             hideJohnOverlay();
             releaseGuacConnection();
-
-            // Fade radio while the closing video plays.
             fadeRadioVolume(0, 2000, () => {
                 if (currentToken !== transitionToken) return;
                 if (radioStream) { radioStream.pause(); radioStream.currentTime = 0; }
                 isMuted = false;
                 updateMuteButton();
             });
-
-            const byeVideoPromise = loadContent(ASSET_BYE_VIDEO, 'video', true, false);
-            waitForVideoEndOrTimeout(byeVideoPromise.endPromise).then(() => {
-                if (drawerState !== 'CLOSING' || currentToken !== transitionToken) return;
-                loadContent(ASSET_TESTCARD, 'image').then(() => {
-                    if (drawerState !== 'CLOSING' || currentToken !== transitionToken) return;
-                    if (ocDrawer) {
-                        setTimeout(() => {
-                            if (drawerState !== 'CLOSING' || currentToken !== transitionToken) return;
-                            ocDrawer.classList.remove('open');
-                            const onDrawerCloseTransition = (event) => {
-                                if (event.target !== ocDrawer || event.propertyName !== 'transform') return;
-                                ocDrawer.removeEventListener('transitionend', onDrawerCloseTransition);
-                                setDrawerState('CLOSED');
-                            };
-                            ocDrawer.addEventListener('transitionend', onDrawerCloseTransition);
-                        }, TESTCARD_HOLD_MS);
-                    } else {
+            const performRetraction = async () => {
+                await fadeToColor(1000, ['#000', '#000']);
+                loadContent(ASSET_TESTCARD, 'image');
+                if (fadeOverlay) fadeOverlay.style.opacity = 0;
+                const { endPromise } = await loadContent(ASSET_BYE_VIDEO, 'video', true, false);
+                await endPromise;
+                await fadeToColor(500, ['#000', '#000']);
+                loadContent(ASSET_TESTCARD, 'image');
+                if (fadeOverlay) fadeOverlay.style.opacity = 0;
+                if (drawerState === 'CLOSING' && currentToken === transitionToken) {
+                    ocDrawer.classList.remove('open');
+                    const onDrawerCloseTransition = (event) => {
+                        if (event.target !== ocDrawer || event.propertyName !== 'transform') return;
+                        ocDrawer.removeEventListener('transitionend', onDrawerCloseTransition);
                         setDrawerState('CLOSED');
-                    }
-                });
-            });
-
+                    };
+                    ocDrawer.addEventListener('transitionend', onDrawerCloseTransition);
+                }
+            };
+            performRetraction();
             if (powerBtn) powerBtn.classList.remove('on');
-            if (userQuery) { userQuery.disabled = true; userQuery.style.opacity = '0.5'; }
+            if (userQuery) { 
+                userQuery.disabled = true; 
+                userQuery.style.opacity = '0.5'; 
+                userQuery.placeholder = ""; // Remove text
+            }
             if (sendBtn) { sendBtn.disabled = true; sendBtn.style.opacity = '0.5'; }
             if (muteBtn) muteBtn.style.display = 'none';
             if (toggleWebmBtn) toggleWebmBtn.style.display = 'none';
-            if (accountBalanceDisplay) accountBalanceDisplay.style.display = 'none';
+            if (accountBalanceDisplay) {
+                accountBalanceDisplay.style.display = 'none';
+                accountBalanceDisplay.style.opacity = 0;
+            }
             stopCountdown();
         }
     }
 
     function toggleWebmOverlay() {
         if (johnVideoOverlay) {
-            if (johnVideoOverlay.style.display === 'none') {
+            if (johnVideoOverlay.style.display === 'none' || johnVideoOverlay.style.opacity === "0") {
                 johnVideoOverlay.style.display = 'block';
                 setAgentTitleVisible(true);
                 johnVideoOverlay.play().catch(() => {});
+                setTimeout(() => { johnVideoOverlay.style.opacity = 1; }, 50);
             } else {
-                johnVideoOverlay.style.display = 'none';
+                johnVideoOverlay.style.opacity = 0;
                 setAgentTitleVisible(false);
-                johnVideoOverlay.pause();
+                setTimeout(() => { 
+                    if (johnVideoOverlay.style.opacity === "0") {
+                        johnVideoOverlay.style.display = 'none';
+                        johnVideoOverlay.pause();
+                    }
+                }, 1500);
             }
         }
     }
 
     function togglePower() {
-        if (drawerState === 'CLOSED') {
-            setDrawerState('OPEN');
-        } else if (drawerState === 'OPEN') {
-            setDrawerState('CLOSING');
-        }
+        if (drawerState === 'CLOSED') setDrawerState('OPEN');
+        else if (drawerState === 'OPEN') setDrawerState('CLOSING');
     }
 
     async function sendMessage() {
-        if (!userQuery) return;
-        if (!HAS_REMOTE_LOGIN) {
-            const feedback = document.getElementById('feedback');
-            if (feedback) feedback.textContent = 'Login required';
-            return;
-        }
+        if (!userQuery || !HAS_REMOTE_LOGIN) return;
         const message = userQuery.value.trim();
         if (message === '' || drawerState !== 'OPEN') return;
-
         const feedback = document.getElementById('feedback');
         userQuery.disabled = true;
         sendBtn.disabled = true;
         sendBtn.style.opacity = '0.5';
         if (feedback) feedback.textContent = 'Sending...';
-
         try {
             const payload = { message, channel: 'web_ui', user_num: USER_NUM };
-            const candidateUrls = [
-                `${REMOTE_HOST_PRIMARY}/command${USER_NUM}/support`,
-                `${REMOTE_HOST_PRIMARY}/command/support`,
-                `${REMOTE_HOST_FALLBACK}/command${USER_NUM}/support`,
-                `${REMOTE_HOST_FALLBACK}/command/support`,
-                `${GATEWAY_URL}/support`,
-                `${LEGACY_GATEWAY_URL}/support`
-            ];
-
+            const candidateUrls = [`${REMOTE_HOST_PRIMARY}/command${USER_NUM}/support`];
             let sent = false;
-            let statusCode = null;
-
             for (const url of candidateUrls) {
                 try {
                     const res = await fetch(url, {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${GATEWAY_TOKEN}`
-                        },
+                        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${GATEWAY_TOKEN}` },
                         body: JSON.stringify(payload)
                     });
-                    statusCode = res.status;
-                    if (res.ok) {
-                        sent = true;
-                        break;
-                    }
+                    if (res.ok) { sent = true; break; }
                 } catch (error) {}
             }
-
-            if (!sent) {
-                // Fallback for strict CORS setups: fire-and-forget with token in query.
-                await fetch(`${REMOTE_HOST_PRIMARY}/command${USER_NUM}/support?token=${encodeURIComponent(GATEWAY_TOKEN)}`, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
-                    body: JSON.stringify(payload)
-                });
-                sent = true;
-            }
-
             if (sent) {
                 if (feedback) feedback.textContent = '✓ Sent';
                 userQuery.value = '';
                 setTimeout(() => { if (feedback) feedback.textContent = ''; }, 3000);
-                setTimeout(() => {
-                    startBalanceIncrements();
-                }, 10000);
-            } else if (feedback) {
-                feedback.textContent = statusCode ? `Error ${statusCode}` : 'No connection';
             }
-        } catch (e) {
-            if (feedback) feedback.textContent = 'No connection';
-            console.warn('Gateway unreachable:', e.message);
-        } finally {
+        } catch (e) {} finally {
             if (drawerState === 'OPEN') {
                 userQuery.disabled = false;
                 userQuery.style.opacity = '1';
@@ -666,12 +613,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function toggleMute() {
         isMuted = !isMuted;
         if (radioStream) {
-            if (isMuted) {
-                fadeRadioVolume(0, 300);
-            } else {
-                radioStream.volume = 0;
-                fadeRadioVolume(RADIO_MAX_VOLUME, 1000);
-            }
+            if (isMuted) fadeRadioVolume(0, 300);
+            else { radioStream.volume = 0; fadeRadioVolume(RADIO_MAX_VOLUME, 1000); }
         }
         updateMuteButton();
     }
@@ -691,13 +634,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Event Listeners
-    if (ocTab) ocTab.addEventListener('click', () => {
-        if (drawerState === 'CLOSED') setDrawerState('OPEN');
-    });
-    if (ocToggleUp) ocToggleUp.addEventListener('click', () => {
-        if (drawerState === 'OPEN') setDrawerState('CLOSING');
-    });
+    if (ocTab) ocTab.addEventListener('click', () => { if (drawerState === 'CLOSED') setDrawerState('OPEN'); });
+    if (ocToggleUp) ocToggleUp.addEventListener('click', () => { if (drawerState === 'OPEN') setDrawerState('CLOSING'); });
     if (powerBtn) powerBtn.addEventListener('click', togglePower);
     if (muteBtn) muteBtn.addEventListener('click', toggleMute);
     if (sendBtn) sendBtn.addEventListener('click', sendMessage);
@@ -719,28 +657,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'Enter' && !sendBtn?.disabled) sendMessage();
         });
     }
-
     if (accountBalanceDisplay) {
-        accountBalanceDisplay.addEventListener('click', () => {
-            if (bankingModal) {
-                bankingModal.style.display = 'flex';
-            }
-        });
+        accountBalanceDisplay.addEventListener('click', () => { if (bankingModal) bankingModal.style.display = 'flex'; });
     }
-
-    function closeModal() {
-        if (bankingModal) {
-            bankingModal.style.display = 'none';
-        }
-    }
-
-    if (bankingModalClose) {
-        bankingModalClose.addEventListener('click', closeModal);
-    }
-    if (bankingModalCloseBtn) {
-        bankingModalCloseBtn.addEventListener('click', closeModal);
-    }
-
-    // Initial state
+    function closeModal() { if (bankingModal) bankingModal.style.display = 'none'; }
+    if (bankingModalClose) bankingModalClose.addEventListener('click', closeModal);
+    if (bankingModalCloseBtn) bankingModalCloseBtn.addEventListener('click', closeModal);
     setDrawerState('CLOSED');
 });
