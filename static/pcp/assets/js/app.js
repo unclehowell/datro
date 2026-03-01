@@ -59,7 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const IS_PUBLIC_LOGIN_DRAWER = Boolean(document.getElementById('loginForm') && document.getElementById('ocDrawer'));
+    const IS_PUBLIC_LOGIN_DRAWER = Boolean(
+        (document.getElementById('loginForm') && document.getElementById('ocDrawer')) ||
+        (!/\/pages\//.test(window.location.pathname) && document.getElementById('ocDrawer'))
+    );
     const PUBLIC_USER_NUM = '5';
     const PUBLIC_USER_PWD = 'quantum25148535!!';
 

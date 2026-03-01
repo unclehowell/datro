@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="color-scheme" content="light dark" />
-  <meta name="fc-asset-version" content="20260228a" />
+  <meta name="fc-asset-version" content="v1.0.1" />
   <meta http-equiv="Access-Control-Allow-Origin" content="https://ai.carfinancecheque.uk,https://ai.financecheque.uk,https://carfinancecheque.uk">
   <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin-allow-popups">
   <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
@@ -12,9 +12,12 @@
   <title>Finance Cheque</title>
 
   <link rel="stylesheet" href="assets/css/adminlte.css?v=20260227b" />
-  <link rel="preload" as="video" href="assets/videos/welcometotechsupport.mp4?v=20260228a" type="video/mp4" />
-  <link rel="preload" as="video" href="assets/videos/byehaveanicelife.mp4?v=20260228a" type="video/mp4" />
-  <link rel="preload" as="video" href="assets/videos/john.webm?v=20260228a" type="video/webm" />
+  <link rel="stylesheet" href="https://primary.jwwb.nl/public/x/o/f/temp-wsxrnoswjwurulcytugx/style.css?bust=1768565966" />
+  <link rel="stylesheet" href="vendor/google-fonts-orbitron.css?v=20260227b" />
+  <link rel="stylesheet" href="vendor/google-fonts-dm-sans.css?v=20260227b" />
+  <link rel="preload" as="video" href="assets/videos/welcometotechsupport.mp4?v=v1.0.1" type="video/mp4" />
+  <link rel="preload" as="video" href="assets/videos/byehaveanicelife.mp4?v=v1.0.1" type="video/mp4" />
+  <link rel="preload" as="video" href="assets/videos/john.webm?v=v1.0.1" type="video/webm" />
   <link rel="preconnect" href="https://stream.rcs.revma.com" crossorigin />
 
   <style>
@@ -1616,21 +1619,21 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
             <path d="M6.3 6.3a8 8 0 1 0 11.4 0"/>
           </svg>
         </button>
-        <input type="text" id="user-query" placeholder="Ask Oaksey A.I to do something..." disabled style="opacity:0.5;" />
-        <button id="send-btn" disabled style="opacity:0.5;">Send</button>
-        <div id="toggle-webm-btn" class="oc-control-btn" style="display:none; cursor: pointer;" title="Show / Hide Overlay"><i class="bi bi-eye"></i></div>
-        <div id="mic-btn" class="oc-control-btn" style="opacity:0.5; cursor: not-allowed;"><i class="bi bi-mic"></i></div>
-        <div id="account-balance" style="cursor: pointer; display: none; font-family: 'Share Tech Mono', monospace; background: #e8e8e8; color: #333; padding: 5px 10px; border-radius: 5px; border: 1px solid #ccc;">
-          <span class="balance-label">Balance:</span>
-          <span class="balance-amount">£271.26</span>
-        </div>
-        <span id="feedback"></span>
         <button id="mute-btn" class="oc-control-btn" style="display:none;" title="Mute / Unmute Radio">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path class="volume-icon" d="M11 5L6 9H2v6h4l5 4V5z"/>
             <path class="mute-slash" d="M21 9l-6 6M15 9l6 6" style="display:none;"/>
           </svg>
         </button>
+        <input type="text" id="user-query" placeholder="Ask Oaksey A.I to do something..." disabled style="opacity:0.5;" />
+        <button id="send-btn" disabled style="opacity:0.5;">Send</button>
+        <button id="toggle-webm-btn" class="oc-control-btn" style="display:none;" title="Show / Hide Overlay">👁</button>
+        <button id="mic-btn" type="button" disabled style="opacity:0.5;">🎤</button>
+        <div id="account-balance" style="cursor: pointer; display: none; font-family: 'Share Tech Mono', monospace; background: #e8e8e8; color: #333; padding: 5px 10px; border-radius: 5px; border: 1px solid #ccc;">
+          <span class="balance-label">Balance:</span>
+          <span class="balance-amount">£271.26</span>
+        </div>
+        <span id="feedback"></span>
       </div>
     </div>
     <div class="oc-handle">
@@ -1643,7 +1646,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
   <script>
     // Cache-busting
     const bustCache = () => {
-        const version = document.querySelector('meta[name="fc-asset-version"]')?.getAttribute('content') || '20260228a';
+        const version = document.querySelector('meta[name="fc-asset-version"]')?.getAttribute('content') || 'v1.0.1';
         const bustable = [
             { id: 'ocTabImg', attr: 'src' },
             { id: 'ocToggleUpImg', attr: 'src' },
@@ -1665,7 +1668,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
     };
     bustCache();
   </script>
-  <script id="app-script" src="assets/js/app-iframesafe.js?v=20260228a"></script>
+  <script id="app-script" src="assets/js/app.js?v=v1.0.1"></script>
   <footer>
     <div class="root-footer">
       <a href="tos.html" style="color: #8893a3; text-decoration: none; margin-right: 10px;">Terms of Service</a>
