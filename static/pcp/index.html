@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="color-scheme" content="light dark" />
   <meta name="fc-asset-version" content="20260228a" />
+  <meta http-equiv="Access-Control-Allow-Origin" content="https://ai.carfinancecheque.uk,https://ai.financecheque.uk,https://carfinancecheque.uk">
+  <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin-allow-popups">
+  <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
+  <meta http-equiv="Cross-Origin-Resource-Policy" content="cross-origin">
   <title>Finance Cheque</title>
 
   <link rel="stylesheet" href="assets/css/adminlte.css?v=20260227b" />
@@ -1661,7 +1665,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
     };
     bustCache();
   </script>
-  <script id="app-script" src="assets/js/app.js?v=20260228a"></script>
+  <script id="app-script" src="assets/js/app-iframesafe.js?v=20260228a"></script>
   <footer>
     <div class="root-footer">
       <a href="tos.html" style="color: #8893a3; text-decoration: none; margin-right: 10px;">Terms of Service</a>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="fc-asset-version" content="20260228a" />
+  <title>Finance Cheque</title>
+
+  <!-- Cross-origin compatibility headers -->
+  <meta http-equiv="Access-Control-Allow-Origin" content="https://ai.carfinancecheque.uk,https://ai.financecheque.uk,https://carfinancecheque.uk">
+  <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin-allow-popups">
+  <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
+  <meta http-equiv="Cross-Origin-Resource-Policy" content="cross-origin">
+
+  <link rel="stylesheet" href="assets/css/adminlte.css?v=20260227b" />
+  <link rel="preload" as="video" href="assets/videos/welcometotechsupport.mp4?v=20260228a" type="video/mp4" />
+  <link rel="preload" as="video" href="assets/videos/byehaveanicelife.mp4?v=20260228a" type="video/mp4" />
+  <link rel="preload" as="video" href="assets/videos/john.webm?v=20260228a" type="video/webm" />
+  <link rel="preconnect" href="https://stream.rcs.revma.com" crossorigin />
+
+  <style>
+    /* Enhanced iframe-friendly styles */
+    body { overflow-x: visible; }
+    
+    /* Cross-origin iframe safety */
+    #guac-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      overflow: hidden;
+      background: transparent;
+      z-index: 1000;
+    }
+    
+    /* Enhanced error states */
+    .error-state {
+      color: #ff6b6b;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+    }
+    
+    .success-state {
+  color: #00ff88;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+    }
+  </style>
+  <link rel="stylesheet" href="vendor/bootstrap-icons.min.css" />
+</head>
+
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary dark-mode" data-bs-theme="dark">
+
+<div id="boot-loader" aria-live="polite">
+  <div class="boot-panel">
+    <div class="boot-label">This is going to be like a Chapter in the Bible</div>
+    <div class="boot-bar"><div class="boot-fill" id="boot-loader-fill"></div></div>
+    <div class="boot-status" id="boot-loader-status">0%</div>
+  </div>
+</div>
+
+<div id="media-preload-bin" aria-hidden="true"></div>
+
+<script>
+// Enhanced boot loader with cross-origin support
+(() => {
+  const loader = document.getElementById('boot-loader');
+  const fill = document.getElementById('boot-loader-fill');
+  const status = document.getElementById('boot-loader-status');
+  const preloadBin = document.getElementById('media-preload-bin');
+  if (!loader || !fill || !status || !preloadBin) return;
+
+  const version = document.querySelector('meta[name="fc-asset-version"]')?.getAttribute('content') || '';
+  const withVersion = (src) => {
+    if (!version || /^https?:\/\//i.test(src)) return src;
+    return `${src}${src.includes('?') ? '&' : '?'}v=${encodeURIComponent(version)}`;
+  };
+
+  const tasks = [
+    { type: 'video', src: withVersion('assets/videos/welcometotechsupport.mp4') },
+    { type: 'video', src: withVersion('assets/videos/byehaveanicelife.mp4') },
+    { type: 'video', src: withVersion('assets/videos/john.webm') },
+    { type: 'audio', src: 'https://stream.rcs.revma.com/fxp289cp81uvv' }
+  ];
+
+  let completed = 0;
+  const total = tasks.length;
+  let finalized = false;
+
+  const update = () => {
+    const pct = Math.round((completed / total) * 100);
+    fill.style.width = `${pct}%`;
+    status.textContent = `${pct}%`;
+  };
+
+  const finalize = () => {
+    if (finalized) return;
+    finalized = true;
+    load.status = 'loaded';
+    loader.classList.add('is-done');
+    setTimeout(() => loader.remove(), 320);
+  };
+
+  const completeOne = () => {
+    completed += 1;
+    update();
+    if (completed >= total) finalize();
+  };
+
+  const preloadOne = (task, index) => {
+    const element = document.createElement(task.type);
+    let done = false;
+    const markDone = () => {
+      if (done) return;
+      done = true;
+      completeOne();
+    };
+
+    element.preload = 'auto';
+    element.src = task.src;
+    if (task.type === 'video') {
+      element.muted = true;
+      element.playsInline = true;
+      element.addEventListener('loadeddata', markDone, { once: true });
+      element.addEventListener('canplaythrough', markDone, { once: true });
+    } else {
+      element.volume = 0;
+      element.addEventListener('loadedmetadata', markDone, { once: true });
+    }
+    element.addEventListener('error', markDone, { once: true });
+    element.addEventListener('stalled', markDone, { once: true });
+
+    preloadBin.appendChild(element);
+    try { element.load(); } catch (error) {}
+    setTimeout(markDone, 2800);
+  };
+
+  update();
+  tasks.forEach(preloadOne);
+  setTimeout(finalize, 6500);
+})();
+</script>
+
+<div class="login-box">
+  <div class="card card-outline card-primary shadow">
+    <div class="card-header text-center">
+      <img src="assets/img/logo.png" alt="Finance Cheque." style="height:96px; width:auto; margin-bottom:10px;">
+      <div style="font-size:1.05rem; letter-spacing:0.12em; text-transform:uppercase; color:#e7edf5;">Finance Cheque</div>
+    </div>
+
+    <div class="card-body">
+      <form id="loginForm">
+        <div class="form-group mb-3">
+          <label for="user-select">Nation</label>
+          <select id="user-select" class="form-control">
+            <option value="1">Wales</option>
+            <option value="2">Ireland</option>
+            <option value="3">Scotland</option>
+            <option value="4">England</option>
+          </select>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="password-input">Early Access ID</label>
+          <div class="input-group">
+            <input 
+              id="password-input"
+     type="password"
+       class="form-control"
+    placeholder="Enter password"
+              autocomplete="current-password"
+ required
+              autofocus
+            >
+          </div>
+        </div>
+        
+   <div class="form-group mb-3">
+    <div class="form-check">
+       <input class="form-check-input" type="checkbox" id="show-password">
+        <label class="form-check-label" for="show-password">
+                    Show Password
+                </label>
+            </div>
+        </div>
+
+  <div id="error" class="text-danger mb-3" style="display:none;"></div>
+  <div id="feedback" class="text-success mb-3" style="display:none;"></div>
+
+        <button type="submit" class="btn btn-primary btn-block w-100" style="background-color: #45ff8f; border-color: #45ff8f; color: #000;">
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+// Cross-origin compatible login system
+document.getElementById('show-password').addEventListener('change', function(e) {
+    const passwordInput = document.getElementById('password-input');
+    if (e.target.checked) {
+        passwordInput.type = 'text';
+    } else {
+        passwordInput.type = 'password';
+    }
+});
+
+// Enhanced authentication with cross-origin support
+async function hashPassword(str) {
+  const utf8 = new TextEncoder().encode(str);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", utf8);
+  return Array.from(new Uint8Array(hashBuffer))
+    .map(b => b.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+const VALID_HASHES = {
+  "1": "d015e3bb592d887241d26d27e15cdbff24e57f13e7336c636aa8ceb12b38ad99",
+  "2": "89c139ff45b6e9aa55e98302bbc8c070758e54f3d5e960a0101a4d3c5916bb98",
+  "3": "ff9d65f48991f6463211580e9e6df2faf9427ac2a7e0137ffca99005733a976c",
+  "4": "8c86f7bb66e5c389966fe80d28f74b0b062ddc4f9ca3a85de146eed72dd23311"
+};
+
+document.getElementById("loginForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const userNum = document.getElementById("user-select").value;
+  const input = document.getElementById("password-input").value;
+  const error = document.getElementById("error");
+  const feedback = document.getElementById("feedback");
+  const inputHash = await hashPassword(input);
+
+  if (inputHash === VALID_HASHES[userNum]) {
+    localStorage.setItem("session_active", "true");
+    localStorage.setItem("authenticated", "true");
+    localStorage.setItem("user_num", userNum);
+  localStorage.setItem("user_pwd", input);
+    
+    // Cross-origin redirect
+    const targetPage = new URL('./pages/index.html', window.location.href).href;
+    window.location.href = targetPage;
+    
+  } else {
+    error.innerText = "Invalid Access Key";
+    error.style.display = "block";
+    feedback.style.display = "none";
+  }
+});
+</script>
+
+<div class="oc-tab" id="ocTab">
+    <div style="position: relative; text-align: center;">
+      <img id="ocTabImg" src="assets/img/pine.png" alt="Open Drawer" style="width: 120px; height: 120px;">
+      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-family: 'Orbitron', sans-serif; font-size: 18px; font-weight: bold; text-shadow: 0 0 5px #000;">Try it</div>
+    </div>
+</div>
+
+<div class="oc-drawer" id="ocDrawer">
+    <div class="oc-root">
+      <div class="oc-header">
+        <h1 id="oc-agent-title" style="visibility:hidden; opacity:0; margin-top: 5px;">Oaksey A.I</h1>
+    <span class="sep"></span>
+        <span id="timer-display">--:--</span>
+        <div id="led-strip">
+    <div class="led" id="led3"></div>
+          <div class="led" id="led2"></div>
+          <div class="led" id="led1"></div>
+     </div>
+ </div>
+      <div class="oc-screen">
+    <div id="standby-screen">
+          <div class="logo">Remote Console</div>
+          <div class="hint">PRESS POWER TO CONNECT</div>
+        </div>
+
+        <div id="dynamic-content-area" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: #000; overflow: hidden; z-index: 1;">
+    <img src="assets/img/testcard.png" alt="Test Card" style="width: 100%; height: 100%; object-fit: cover;">
+      <div class="scanlines"></div>
+        </div>
+        <video id="john-video-overlay" src="assets/videos/john.webm" loop muted style="display: none;"></video>
+
+        <div id="offline-screen">
+    <img id="offline-img" src="assets/img/session-terminated.jpg" alt="Session ended">
+          <div class="offline-label">SESSION TERMINATED</div>
+        </div>
+      </div>
+      <div class="oc-bottom">
+        <button id="power-btn" title="Connect / Disconnect">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+       <path d="M12 2v6"/>
+            <path d="M6.3 6.3a8 8 0 1 0 11.4 0"/>
+          </svg>
+        </button>
+    <input type="text" id="user-query" placeholder="Ask Oaksey A.I to do something..." disabled style="opacity:0.5;" />
+        <button id="send-btn" disabled style="opacity:0.5;">Send</button>
+        <div id="toggle-webm-btn" class="oc-control-btn" style="display:none; cursor: pointer;" title="Show / Hide Overlay"><i class="bi bi-eye"></i></div>
+        <div id="mic-btn" class="oc-control-btn" style="opacity:0.5; cursor: not-allowed;"><i class="bi bi-mic"></i></div>
+        <div id="feedback" class="error-state"></div>
+      </div>
+    </div>
+  <div class="oc-handle">
+        <button class="oc-toggle" id="ocToggleUp"><img id="ocToggleUpImg" src="assets/img/pine.png" alt="Close Drawer"></button>
+    </div>
+</div>
+
+<audio id="radio-stream" src="https://stream.rcs.revma.com/fxp289cp81uvv" preload="auto" crossorigin="anonymous"></audio>
+
+<!-- Enhanced script with cross-origin support -->
+<script src="assets/js/app-iframesafe.js?v=20260228a"></script>
+
+<footer>
+    <div class="root-footer">
+      <a href="tos.html" style="color: #8893a3; text-decoration: none; margin-right: 10px;">Terms of Service</a>
+ <a href="privacy.html" style="color: #8893a3; text-decoration: none;">Privacy Policy</a>
+      <p style="margin-top: 10px;">
+      &copy; <span id="fc-year-root"></span> Finance Cheque.. All rights reserved.<br>
+   Email: <a href="mailto:info@datro.xyz" style="color: #8893a3; text-decoration: none;">info@datro.xyz</a> | Phone: 02031377118
+      </p>
+    </div>
+</footer>
+
+<script>
+const yearEl = document.getElementById('fc-year-root');
+if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+// Enhanced positioning for cross-origin compatibility
+(() => {
+const box = document.querySelector('.login-box');
+const tab = document.getElementById('ocTab');
+const footer = document.querySelector('footer');
+  if (!box || !tab || !footer) return;
+
+  const positionLoginBox = () => {
+    const tabRect = tab.getBoundingClientRect();
+const footerRect = footer.getBoundingClientRect();
+    const topBoundary = tabRect.bottom;
+    const bottomBoundary = footerRect.top;
+    const midpoint = topBoundary + ((bottomBoundary - topBoundary) / 2);
+    const halfHeight = box.offsetHeight / 2;
+    const minTop = topBoundary + halfHeight + 8;
+    const maxTop = bottomBoundary - halfHeight - 8;
+    const safeTop = Math.min(Math.max(midpoint, minTop), maxTop);
+
+    box.style.position = 'fixed';
+    box.style.left = '50%';
+    box.style.top = `${safeTop}px`;
+    box.style.transform = 'translate(-50%, -50%)';
+    box.style.margin = '0';
+  };
+
+  positionLoginBox();
+  window.addEventListener('resize', positionLoginBox);
+})();
+</script>
+
+</body>
+</html>

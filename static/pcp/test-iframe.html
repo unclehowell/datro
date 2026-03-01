@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Finance Cheque iframe Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+  margin: 20px;
+            background: #1a1a1a;
+     color: #f0f0f0;
+        }
+        .test-container {
+  border: 2px solid #45ff8f;
+border-radius: 10px;
+            padding: 20px;
+   margin: 20px 0;
+            background: #0a0a0f;
+        }
+        iframe {
+            width: 100%;
+    height: 600px;
+            border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(69, 255, 143, 0.3);
+        }
+        .status {
+            padding: 10px;
+   margin: 10px 0;
+   border-radius: 5px;
+            font-family: 'Orbitron', monospace;
+        }
+.status.success { background: rgba(0, 255, 136, 0.1); color: #00ff88; border: 1px solid #00ff88; }
+        .status.error { background: rgba(255, 51, 51, 0.1); color: #ff3333; border: 1px solid #ff3333; }
+    </style>
+</head>
+<body>
+    <h1>Finance Cheque iframe Test</h1>
+    
+  <div class="test-container">
+        <h2>iframe Embedding Test</h2>
+  <p>This page tests embedding Finance Cheque in an iframe from the main domain.</p>
+    
+        <div id="status" class="status">Testing iframe loading...</div>
+    
+        <iframe 
+     id="test-iframe" 
+     src="https://ai.carfinancecheque.uk/guacamole/"
+ allow="display-capture,geolocation *"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock"
+        ></iframe>
+    </div>
+
+    <div class="test-container">
+        <h3>Command API Test</h3>
+  <button onclick="testCommandAPI()">Test Command API</button>
+        <div id="command-status" class="status">Ready to test command API</div>
+    </div>
+
+    <script>
+        // Test iframe embedding
+        const iframe = document.getElementById('test-iframe');
+        const statusDiv = document.getElementById('status');
+        const commandStatusDiv = document.getElementById('command-status');
+        
+        iframe.onload = () => {
+      statusDiv.textContent = '✅ iframe loaded successfully! Cross-origin embedding working.';
+       statusDiv.className = 'status success';
+        };
+        
+        iframe.onerror = () => {
+     statusDiv.textContent = '❌ iframe failed to load. Check server configuration.';
+      statusDiv.className = 'status error';
+        };
+        
+        // Test command API
+        async function testCommandAPI() {
+      commandStatusDiv.textContent = 'Testing command API...';
+            
+            try {
+    const response = await fetch('https://ai.carfinancecheque.uk/command1/support', {
+        method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+     'Authorization': 'Bearer 9533263d7ff39819800754b970748ddf'
+                },
+   body: JSON.stringify({
+             command: 'echo "Chrome browser test"',
+                    origin: window.location.origin
+     })
+  });
+    
+    if (response.ok) {
+     const result = await response.json();
+commandStatusDiv.textContent = '✅ Command API test successful!';
+         commandStatusDiv.className = 'status success';
+    console.log('Command API response:', result);
+                } else {
+            commandStatusDiv.textContent = `❌ Command API failed: ${response.status}`;
+commandStatusDiv.className = 'status error';
+    }
+} catch (error) {
+           commandStatusDiv.textContent = `❌ Connection error: ${error.message}`;
+  commandStatusDiv.className = 'status error';
+            }
+        }
+    </script>
+</body>
+</html>
