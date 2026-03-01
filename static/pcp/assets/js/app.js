@@ -244,6 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
             iframe.sandbox = 'allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock';
             iframe.allow = 'clipboard-read; clipboard-write; microphone; camera; display-capture';
             iframe.loading = 'eager';
+            iframe.referrerPolicy = 'no-referrer-when-downgrade';
             iframe.style.width = '100%';
             iframe.style.height = '100%';
             iframe.style.border = 'none';
