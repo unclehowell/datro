@@ -240,6 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (type === 'iframe') {
             const iframe = document.createElement('iframe');
             iframe.id = 'guac-frame';
+            iframe.title = 'Remote Console Connection';
             iframe.src = url; // Don't cache-bust external URLs
             iframe.sandbox = 'allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock';
             iframe.allow = 'clipboard-read; clipboard-write; microphone; camera; display-capture';
@@ -249,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
             iframe.style.height = '100%';
             iframe.style.border = 'none';
             iframe.style.overflow = 'hidden';
+            iframe.style.backgroundColor = 'transparent';
             
             iframe.onload = () => console.log('Iframe loaded:', url);
             iframe.onerror = (e) => console.error('Iframe error:', e);
