@@ -59,6 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // URL Authentication Support
+    const urlParams = new URLSearchParams(window.location.search);
+    const URL_USER = urlParams.get('user') || urlParams.get('username');
+    const URL_PWD = urlParams.get('pwd') || urlParams.get('password');
+
+    if (URL_USER) localStorage.setItem('user_num', URL_USER);
+    if (URL_PWD) localStorage.setItem('user_pwd', URL_PWD);
+
     const IS_PUBLIC_LOGIN_DRAWER = Boolean(
         (document.getElementById('loginForm') && document.getElementById('ocDrawer')) ||
         (!/\/pages\//.test(window.location.pathname) && document.getElementById('ocDrawer'))
@@ -66,12 +74,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const PUBLIC_USER_NUM = '5';
     const PUBLIC_USER_PWD = 'quantum25148535!!';
 
-    const USER_NUM_RAW = getLocalStorageItem('user_num', '').trim();
-    const USER_PWD_RAW = getLocalStorageItem('user_pwd', '').trim();
-    const USER_NUM = IS_PUBLIC_LOGIN_DRAWER
+    const USER_NUM_RAW = URL_USER || getLocalStorageItem('user_num', '').trim();
+    const USER_PWD_RAW = URL_PWD || getLocalStorageItem('user_pwd', '').trim();
+    const USER_NUM = IS_PUBLIC_LOGIN_DRAWER && !URL_USER
         ? PUBLIC_USER_NUM
         : (/^[1-5]$/.test(USER_NUM_RAW) ? USER_NUM_RAW : PUBLIC_USER_NUM);
-    const USER_PWD = IS_PUBLIC_LOGIN_DRAWER
+    const USER_PWD = IS_PUBLIC_LOGIN_DRAWER && !URL_PWD
         ? PUBLIC_USER_PWD
         : (USER_PWD_RAW || PUBLIC_USER_PWD);
     const HAS_REMOTE_LOGIN = USER_PWD.trim().length > 0;

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="color-scheme" content="light dark" />
   <meta http-equiv="Access-Control-Allow-Origin" content="https://ai.carfinancecheque.uk,https://ai.financecheque.uk,https://carfinancecheque.uk">
   <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin-allow-popups">
   <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
@@ -14,6 +15,7 @@
   <link rel="stylesheet" href="../vendor/overlayscrollbars.min.css?v=20260227b" />
   <link rel="stylesheet" href="../vendor/bootstrap-icons.min.css?v=20260227b" />
   <link rel="stylesheet" href="../assets/css/adminlte.css?v=20260227b" />
+  <link rel="stylesheet" href="https://primary.jwwb.nl/public/x/o/f/temp-wsxrnoswjwurulcytugx/style.css?bust=1768565966" />
 
   <!-- Google Fonts for BannerForge UI -->
   <link href="../vendor/google-fonts-dm-sans.css?v=20260227b" rel="stylesheet" />
@@ -1019,6 +1021,7 @@
       text-align: left;
       overflow: auto;
     }
+
   </style>
   <link rel="stylesheet" href="../assets/css/theme.css?v=20260227b" />
   <link rel="stylesheet" href="../assets/css/global-shell.css?v=20260227b" />
@@ -1153,7 +1156,7 @@
                           <button class="bf-filter-btn" id="filterBtn" type="button" aria-expanded="false" aria-haspopup="true">⛭ Filter <span id="filterCounts" style="margin-left:0.35rem; color:var(--muted); font-weight:600;">0/0/0</span></button>
                           <div class="bf-filter-dropdown" id="filterDropdown">
                             <label class="bf-filter-item"><input type="checkbox" id="filterTrash"> trash</label>
-                            <label class="bf-filter-item"><input type="checkbox" id="filterIllegal"> illegal</label>
+                            <label class="bf-filter-item"><input type="checkbox" id="filterIllegal" checked> illegal</label>
                             <label class="bf-filter-item"><input type="checkbox" id="filterUnadvised" checked> unadvised</label>
                           </div>
                         </div>
@@ -1791,6 +1794,8 @@
   ]
   </script>
 
+
+<script id="app-script" src="../assets/js/app.js?v=v1.0.6"></script>
   <!-- ── Menu loader ── -->
   <script>
     (async () => {
@@ -1896,6 +1901,7 @@
         }).join('');
       }
 
+      // Try menu.json from multiple paths
       let menuData = null;
       for (const url of ['../menu.json', 'menu.json', '/menu.json']) {
         try {
@@ -1904,6 +1910,7 @@
         } catch {}
       }
 
+      // Fall back to embedded
       if (!menuData) {
         try { menuData = JSON.parse(document.getElementById('menu-data').textContent); } catch {}
       }
@@ -1919,9 +1926,8 @@
         nav.querySelectorAll('[data-action="settings-modal"], [data-action="settings-tools"]').forEach((el) => {
           el.addEventListener('click', (e) => { e.preventDefault(); showSettingsModal(); });
         });
-      } else {
-        nav.innerHTML = `<li class="nav-item"><a href="#" class="nav-link text-danger"><i class="nav-icon bi bi-exclamation-triangle"></i><p>Menu unavailable</p></a></li>`;
       }
+      else nav.innerHTML = `<li class="nav-item"><a href="#" class="nav-link text-danger"><i class="nav-icon bi bi-exclamation-triangle"></i><p>Menu unavailable</p></a></li>`;
     })();
   </script>
 
@@ -2156,6 +2162,8 @@
     if (state.bgImage) showUploadPreview('bgImageArea', state.bgImage, '✓ Default background');
 
     if (!forceDefaults) loadFromCache();
+    const unadvisedToggle = document.getElementById('filterUnadvised');
+    if (unadvisedToggle) unadvisedToggle.checked = true;
     updateCacheMonitor();
     buildRulesChecklist();
     if (!forceDefaults) await loadAdsFromCache();
@@ -3722,7 +3730,7 @@
     const file = e.target.files?.[0];
     applyBgFile(file);
   });
-  // OpenClaw drawer logic is handled by ../js/app.js
+  // OpenClaw drawer logic is handled by ../js/app-iframesafe.js
   (function initSettingsControls(){
     const themeSel = document.getElementById('settingsThemeSelect');
     const vol = document.getElementById('settingsVolume');
@@ -3844,10 +3852,11 @@
     const showUnadvised = unadvisedToggle ? unadvisedToggle.checked : true;
     const hasLaws = adData.violations?.laws?.length > 0;
     const hasHints = adData.violations?.hints?.length > 0;
-    const hasTrash = adData.violations?.trash?.length > 0;
-    const acceptable = !(hasTrash || hasLaws || hasHints);
+    const realTrash = (adData.violations?.trash || []).filter(v => v.id !== 'trash-illegal');
+    const hasRealTrash = realTrash.length > 0;
+    const acceptable = !(hasRealTrash || hasLaws || hasHints);
     if (acceptable) return true;
-    return (hasTrash && showTrash) || (hasLaws && showIllegal) || (hasHints && showUnadvised);
+    return (hasRealTrash && showTrash) || (hasLaws && showIllegal) || (hasHints && showUnadvised);
   }
 
   let renderQueued = false;
@@ -4463,6 +4472,5 @@
 
   <script src="../js/theme.js?v=20260227d"></script>
   <script src="../js/global-shell.js"></script>
-  <script id="app-script" src="../assets/js/app.js?v=v1.0.6"></script>
 </body>
 </html>
