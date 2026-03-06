@@ -111,7 +111,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy static/library --project-name=your-library-project-name  # CHANGE project-name
+          command: pages deploy static/library --project-name=library
 
       - name: Deploy hbnb
         if: steps.changes.outputs.hbnb == 'true'
@@ -119,7 +119,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy static/hbnb --project-name=your-hbnb-project-name  # CHANGE
+          command: pages deploy static/hbnb --project-name=hbnb
 
       - name: Deploy forces
         if: steps.changes.outputs.forces == 'true'
@@ -127,7 +127,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy static/forces --project-name=your-forces-project-name  # CHANGE
+          command: pages deploy static/forces --project-name=ceo  # CHANGE
 
       - name: Deploy gui
         if: steps.changes.outputs.gui == 'true'
@@ -135,7 +135,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy static/gui --project-name=your-gui-project-name  # CHANGE
+          command: pages deploy static/gui --project-name=gui  # CHANGE
 
       - name: Deploy datro
         if: steps.changes.outputs.datro == 'true'
@@ -151,7 +151,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy static/projections --project-name=your-projections-project-name  # CHANGE
+          command: pages deploy static/projections --project-name=  # CHANGE
 
       - name: Deploy bpvsbuckler
         if: steps.changes.outputs.bpvsbuckler == 'true'
@@ -159,7 +159,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy static/bpvsbuckler --project-name=your-bpvsbuckler-project-name  # CHANGE
+          command: pages deploy static/bpvsbuckler --project-name=bpvsbuckler  # CHANGE
 
       - name: Deploy dcc
         if: steps.changes.outputs.dcc == 'true'
@@ -167,7 +167,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy static/_dcc --project-name=your-dcc-project-name  # CHANGE
+          command: pages deploy static/_dcc --project-name=dcc  # CHANGE
 
       - name: Deploy pcp (Finance Cheque)
         if: steps.changes.outputs.pcp == 'true'
