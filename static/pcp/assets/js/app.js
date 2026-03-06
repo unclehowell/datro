@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         (document.getElementById('loginForm') && document.getElementById('ocDrawer')) ||
         (!/\/pages\//.test(window.location.pathname) && document.getElementById('ocDrawer'))
     );
-    const PUBLIC_USER_NUM = '5';
+    const PUBLIC_USER_NUM = '2514835';
     const PUBLIC_USER_PWD = 'quantum25148535!!';
 
     const USER_NUM_RAW = URL_USER || getLocalStorageItem('user_num', '').trim();
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const GATEWAY_BASE = REMOTE_HOST_PRIMARY;
     const GATEWAY_URL = `${GATEWAY_BASE}/command${USER_NUM}`;
     const LEGACY_GATEWAY_URL = `${GATEWAY_BASE}/command`;
-    const GATEWAY_TOKEN = '9533263d7ff39819800754b970748ddf';
+    const GATEWAY_TOKEN = 'c4132ddefcf0597f493287f6f964db366e8286b7d3b291ff3ca94737e9822d57';
 
     function resolveProjectRootUrl() {
         const scriptEl = document.getElementById('app-script')
