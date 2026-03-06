@@ -14,9 +14,9 @@
   <link rel="stylesheet" href="vendor/google-fonts-orbitron.css?v=20260227b" />
   <link rel="stylesheet" href="vendor/google-fonts-dm-sans.css?v=20260227b" />
   <link rel="stylesheet" href="vendor/bootstrap-icons.min.css" />
-  <link rel="preload" as="video" href="assets/videos/welcometotechsupport.mp4?v=v1.0.6" type="video/mp4" />
-  <link rel="preload" as="video" href="assets/videos/byehaveanicelife.mp4?v=v1.0.6" type="video/mp4" />
-  <link rel="preload" as="video" href="assets/videos/john.webm?v=v1.0.6" type="video/webm" />
+  <link rel="preload" as="fetch" href="assets/videos/welcometotechsupport.mp4?v=v1.0.6" type="video/mp4" />
+  <link rel="preload" as="fetch" href="assets/videos/byehaveanicelife.mp4?v=v1.0.6" type="video/mp4" />
+  <link rel="preload" as="fetch" href="assets/videos/john.webm?v=v1.0.6" type="video/webm" />
 
   <style>
     /* Global font size enforcement and softer colors */
@@ -871,7 +871,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
   <div class="oc-tab" id="ocTab">
     <div style="position: relative; text-align: center;">
-      <img id="ocTabImg" src="assets/img/oak.png" alt="">
+      <img id="ocTabImg" src="assets/img/oaks.png" alt="">
       <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-family: 'Orbitron', sans-serif; font-size: 18px; font-weight: bold; text-shadow: 0 0 5px #000;"></div>
     </div>
   </div>
@@ -1020,25 +1020,40 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
       window.addEventListener('resize', positionLoginBox);
     })();
 
-    // Early Access Modal Logic
-    document.getElementById('earlyAccessBtn').addEventListener('click', () => {
-      document.getElementById('mailchimp-modal').style.display = 'flex';
-    });
+    document.addEventListener('DOMContentLoaded', () => {
+      // Early Access Modal Logic
+      const earlyAccessBtn = document.getElementById('earlyAccessBtn');
+      if (earlyAccessBtn) {
+        earlyAccessBtn.addEventListener('click', () => {
+          document.getElementById('mailchimp-modal').style.display = 'flex';
+        });
+      }
 
-    document.getElementById('mailchimp-close').addEventListener('click', (e) => {
-      e.stopPropagation();
-      document.getElementById('mailchimp-modal').style.display = 'none';
-    });
+      const mailchimpClose = document.getElementById('mailchimp-close');
+      if (mailchimpClose) {
+        mailchimpClose.addEventListener('click', (e) => {
+          e.stopPropagation();
+          document.getElementById('mailchimp-modal').style.display = 'none';
+        });
+      }
 
-    document.getElementById('mailchimpForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const form = e.target;
-      const originalContent = form.innerHTML;
-      form.innerHTML = '<div style="text-align:center; padding: 20px;"><h4 style="color:#45ff8f">Thank you!</h4></div>';
-      setTimeout(() => {
-        document.getElementById('mailchimp-modal').style.display = 'none';
-        form.innerHTML = originalContent; // Reset for next time
-      }, 2000);
+      const mailchimpForm = document.getElementById('mailchimpForm');
+      if (mailchimpForm) {
+        mailchimpForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const form = e.target;
+          const originalContent = form.innerHTML;
+          form.innerHTML = '<div style="text-align:center; padding: 20px;"><h4 style="color:#45ff8f">Thank you!</h4></div>';
+          setTimeout(() => {
+            document.getElementById('mailchimp-modal').style.display = 'none';
+            form.innerHTML = originalContent; // Reset for next time
+          }, 2000);
+        });
+      }
+
+      // Debugging ocTab and ocDrawer visibility
+      console.log('DOMContentLoaded: ocTab initial visibility:', document.getElementById('ocTab')?.style.display, document.getElementById('ocTab')?.classList.value);
+      console.log('DOMContentLoaded: ocDrawer initial visibility:', document.getElementById('ocDrawer')?.style.display, document.getElementById('ocDrawer')?.classList.value);
     });
   </script>
 

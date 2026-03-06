@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let radioFadeInterval = null;
     let transitionToken = 0;
 
-    const ASSET_OAK_IMG = 'assets/img/oak.jpg';
+    const ASSET_OAK_IMG = 'assets/img/oaks.png';
     const ASSET_TESTCARD = 'assets/img/testcard.png';
     const ASSET_WELCOME_VIDEO = 'assets/videos/welcometotechsupport.mp4';
     const ASSET_BYE_VIDEO = 'assets/videos/byehaveanicelife.mp4';
