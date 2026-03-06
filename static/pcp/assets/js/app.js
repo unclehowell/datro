@@ -79,8 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
         : (USER_PWD_RAW || PUBLIC_USER_PWD);
     const HAS_REMOTE_LOGIN = USER_PWD.trim().length > 0;
 
-    const REMOTE_HOST_PRIMARY = 'https://ai.carfinancecheque.uk';
-    const REMOTE_HOST_FALLBACK = 'https://ai.carfinancecheque.uk';
+    const REMOTE_HOST_PRIMARY = 'https://ai.financecheque.uk';
+    const REMOTE_HOST_FALLBACK = 'https://ai.financecheque.uk';
 
     const GATEWAY_BASE = REMOTE_HOST_PRIMARY;
     const GATEWAY_URL = `${GATEWAY_BASE}/command${USER_NUM}`;

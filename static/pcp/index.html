@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta http-equiv="Access-Control-Allow-Origin" content="https://ai.carfinancecheque.uk,https://ai.financecheque.uk,https://carfinancecheque.uk">
+  <meta http-equiv="Access-Control-Allow-Origin" content="https://ai.financecheque.uk,https://ai.financecheque.uk,https://carfinancecheque.uk">
   <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin-allow-popups">
   <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
   <meta http-equiv="Cross-Origin-Resource-Policy" content="cross-origin">
@@ -552,6 +552,129 @@
       cursor: pointer;
       border-radius: 4px;
     }
+
+    /* ── Mobile Responsive ── */
+    @media (max-width: 600px) {
+      body {
+        padding: 12px 8px 120px;
+      }
+
+      /* Footer stacks vertically */
+      footer {
+        padding: 10px 14px;
+      }
+      .root-footer-row {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+        font-size: 12px !important;
+      }
+      .root-footer-row a {
+        font-size: 12px !important;
+      }
+      .footer-left,
+      .footer-middle,
+      .footer-right {
+        flex: none;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+      .footer-right {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .social-icons {
+        margin-left: 0;
+        justify-content: center;
+        width: 100%;
+        gap: 18px;
+      }
+
+      /* Login box */
+      .login-box {
+        width: min(96vw, 480px) !important;
+      }
+      .login-box .card-header {
+        padding: 14px 8px;
+      }
+      .login-box .card-header img {
+        height: 80px !important;
+      }
+      .login-box .card-header div {
+        font-size: 18px !important;
+      }
+      .login-box label {
+        font-size: 14px !important;
+      }
+      .login-box .form-control,
+      .login-box .form-select {
+        font-size: 16px !important;
+        padding: 10px 12px !important;
+      }
+      .login-box .btn {
+        font-size: 18px !important;
+        padding: 10px !important;
+      }
+
+      /* OpenClaw drawer header */
+      .oc-header {
+        padding: 0 10px;
+        gap: 8px;
+        height: 44px;
+      }
+      .oc-header h1 {
+        font-size: 11px;
+        letter-spacing: 2px;
+      }
+      #timer-display {
+        font-size: 10px;
+        letter-spacing: 1px;
+      }
+      #led-strip {
+        gap: 5px;
+      }
+      .led {
+        width: 8px;
+        height: 8px;
+      }
+
+      /* OpenClaw bottom bar */
+      .oc-bottom {
+        height: auto;
+        min-height: 52px;
+        padding: 8px 8px;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      #power-btn, #mute-btn, #toggle-webm-btn {
+        width: 36px;
+        height: 36px;
+      }
+      #user-query {
+        font-size: 14px;
+        padding: 8px 10px;
+        min-width: 0;
+        flex: 1 1 40%;
+      }
+      #send-btn, #mic-btn {
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+      #account-balance {
+        font-size: 12px;
+        padding: 6px 10px;
+      }
+      #feedback {
+        font-size: 11px;
+        min-width: 40px;
+      }
+
+      /* Banking modal grid */
+      #banking-modal .bf-modal-card div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+      }
+    }
   </style>
 </head>
 
@@ -755,7 +878,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
   <div class="oc-drawer" id="ocDrawer">
     <div class="oc-root">
       <div class="oc-header">
-        <h1 id="oc-agent-title" style="visibility:hidden; opacity:0; margin-top: 5px;">Oaksey A.I</h1>
+        <h1 id="oc-agent-title" style="visibility:hidden; opacity:0; margin-top: 5px;">Oakesy A.I</h1>
         <span class="sep"></span>
         <span id="timer-display">--:--</span>
         <div id="led-strip">
@@ -803,7 +926,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
       </div>
     </div>
     <div class="oc-handle">
-        <button class="oc-toggle" id="ocToggleUp"><img id="ocToggleUpImg" src="assets/img/oak.jpg" alt=""></button>
+    <button class="oc-toggle" id="ocToggleUp"><img id="ocToggleUpImg" src="assets/img/oaks.png" alt=""></button>
     </div>
   </div>
 
@@ -864,19 +987,33 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
       if (!box || !tab || !footer) return;
 
       const positionLoginBox = () => {
+        const isMobile = window.innerWidth <= 600;
         const tabRect = tab.getBoundingClientRect();
         const footerRect = footer.getBoundingClientRect();
         const topBoundary = tabRect.bottom;
         const bottomBoundary = footerRect.top;
-        const midpoint = topBoundary + ((bottomBoundary - topBoundary) / 2);
-        const halfHeight = box.offsetHeight / 2;
-        const safeTop = Math.min(Math.max(midpoint, topBoundary + halfHeight + 8), bottomBoundary - halfHeight - 8);
+        const availableHeight = bottomBoundary - topBoundary;
+        const boxHeight = box.offsetHeight;
 
-        box.style.position = 'fixed';
-        box.style.left = '50%';
-        box.style.top = `${safeTop}px`;
-        box.style.transform = 'translate(-50%, -50%)';
-        box.style.margin = '0';
+        if (isMobile && boxHeight > availableHeight - 16) {
+          // On mobile if box doesn't fit between tab and footer, use scrollable layout
+          box.style.position = 'relative';
+          box.style.left = 'auto';
+          box.style.top = 'auto';
+          box.style.transform = 'none';
+          box.style.margin = '0 auto';
+          box.style.marginTop = `${Math.max(topBoundary + 8, 70)}px`;
+        } else {
+          const midpoint = topBoundary + (availableHeight / 2);
+          const halfHeight = boxHeight / 2;
+          const safeTop = Math.min(Math.max(midpoint, topBoundary + halfHeight + 8), bottomBoundary - halfHeight - 8);
+
+          box.style.position = 'fixed';
+          box.style.left = '50%';
+          box.style.top = `${safeTop}px`;
+          box.style.transform = 'translate(-50%, -50%)';
+          box.style.margin = '0';
+        }
       };
 
       positionLoginBox();
