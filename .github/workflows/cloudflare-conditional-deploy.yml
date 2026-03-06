@@ -33,7 +33,6 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-
           echo "==[Debug Info]=="
           echo "github.event_name=${{ github.event_name }}"
           echo "github.sha=${{ github.sha }}"
@@ -42,7 +41,6 @@ jobs:
           echo "github.event.pull_request.base.ref=${{ github.event.pull_request.base.ref }}"
           echo "github.event.before=${{ github.event.before }}"
 
-          # Defensive: Ensure variables are never unset when used!
           DIFF=""
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             if [ -z "${{ github.event.pull_request.base.sha }}" ] || [ -z "${{ github.event.pull_request.base.ref }}" ]; then
@@ -71,35 +69,117 @@ jobs:
           echo "$DIFF"
 
           {
-            echo "library=false"; echo "hbnb=false"; echo "forces=false"
-            echo "gui=false"; echo "datro=false"; echo "projections=false"
-            echo "bpvsbuckler=false"; echo "dcc=false"; echo "pcp=false"
+            echo "library=false"
+            echo "hbnb=false"
+            echo "forces=false"
+            echo "gui=false"
+            echo "datro=false"
+            echo "projections=false"
+            echo "bpvsbuckler=false"
+            echo "dcc=false"
+            echo "pcp=false"
           } >> "$GITHUB_OUTPUT"
 
-          if echo "$DIFF" | grep -qE '^static/library/'; then echo "library=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/hbnb/'; then echo "hbnb=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/forces/'; then echo "forces=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/gui/'; then echo "gui=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/datro/'; then echo "datro=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/library/';    then echo "library=true"    >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/hbnb/';       then echo "hbnb=true"       >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/forces/';     then echo "forces=true"     >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/gui/';        then echo "gui=true"        >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/datro/';      then echo "datro=true"      >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/projections/'; then echo "projections=true" >> "$GITHUB_OUTPUT"; fi
           if echo "$DIFF" | grep -qE '^static/bpvsbuckler/'; then echo "bpvsbuckler=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/_dcc/'; then echo "dcc=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/pcp/'; then echo "pcp=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/_dcc/';       then echo "dcc=true"        >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/pcp/';        then echo "pcp=true"        >> "$GITHUB_OUTPUT"; fi
 
-      # --- Setup Node (only run if HBNB needs it) ---
-      - name: Setup Node (for builds)
-        if: steps.changes.outputs.hbnb == 'true'
+      - name: Setup Node (for builds if needed)
+        if: steps.changes.outputs.hbnb == 'true'  # Add more conditions if other apps need Node/npm
         uses: actions/setup-node@v4
         with:
           node-version: '22'
 
-      - name: Deploy pcp
+      # Example build step (uncomment/adapt per app if they require build)
+      # - name: Build HBNB (if changed)
+      #   if: steps.changes.outputs.hbnb == 'true'
+      #   working-directory: static/hbnb
+      #   run: |
+      #     npm ci
+      #     npm run build
+
+      # Deploy steps ? one per app, conditional
+      - name: Deploy library
+        if: steps.changes.outputs.library == 'true'
+        uses: cloudflare/wrangler-action@v3.14.1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy static/library --project-name=your-library-project-name  # CHANGE project-name
+
+      - name: Deploy hbnb
+        if: steps.changes.outputs.hbnb == 'true'
+        uses: cloudflare/wrangler-action@v3.14.1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy static/hbnb --project-name=your-hbnb-project-name  # CHANGE
+
+      - name: Deploy forces
+        if: steps.changes.outputs.forces == 'true'
+        uses: cloudflare/wrangler-action@v3.14.1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy static/forces --project-name=your-forces-project-name  # CHANGE
+
+      - name: Deploy gui
+        if: steps.changes.outputs.gui == 'true'
+        uses: cloudflare/wrangler-action@v3.14.1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy static/gui --project-name=your-gui-project-name  # CHANGE
+
+      - name: Deploy datro
+        if: steps.changes.outputs.datro == 'true'
+        uses: cloudflare/wrangler-action@v3.14.1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy static/datro --project-name=datro  # CHANGE if different
+
+      - name: Deploy projections
+        if: steps.changes.outputs.projections == 'true'
+        uses: cloudflare/wrangler-action@v3.14.1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy static/projections --project-name=your-projections-project-name  # CHANGE
+
+      - name: Deploy bpvsbuckler
+        if: steps.changes.outputs.bpvsbuckler == 'true'
+        uses: cloudflare/wrangler-action@v3.14.1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy static/bpvsbuckler --project-name=your-bpvsbuckler-project-name  # CHANGE
+
+      - name: Deploy dcc
+        if: steps.changes.outputs.dcc == 'true'
+        uses: cloudflare/wrangler-action@v3.14.1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy static/_dcc --project-name=your-dcc-project-name  # CHANGE
+
+      - name: Deploy pcp (Finance Cheque)
         if: steps.changes.outputs.pcp == 'true'
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v3.14.1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy static/pcp --project-name=financecheque
 
-      # --- Deploy steps remain unchanged ---
-      # (Refer to your original workflow for these steps)
+      # Optional: Summary / notification step (e.g., comment on PR)
+      - name: Deploy Summary
+        if: always() && github.event_name == 'pull_request'
+        run: |
+          echo "Deployment complete for changed apps."
+          # Add gh pr comment if you want: gh pr comment ${{ github.event.pull_request.number }} --body "Pages previews updated for changed sub-apps."
