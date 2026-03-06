@@ -93,9 +93,13 @@ jobs:
         with:
           node-version: '22'
 
-      # Preview deploy steps for each application (all remain unchanged)
-      # You can keep all deploy steps and 'Post Clean Preview Table' step as in your original workflow
-      # No change is needed for those steps unless you want additional debugging
+      - name: Deploy pcp
+        if: steps.changes.outputs.pcp == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy static/pcp --project-name=financecheque
 
       # --- Deploy steps remain unchanged ---
       # (Refer to your original workflow for these steps)
