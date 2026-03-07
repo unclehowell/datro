@@ -153,13 +153,15 @@
 
     /* Superscript Link */
     .early-access-link {
-      color: #3498db;
+      color: #cccccc; /* Light grey */
       text-decoration: none;
       cursor: pointer;
       margin-left: 2px;
+      font-size: 1.4em;
     }
     .early-access-link:hover {
       text-decoration: underline;
+      color: #ffffff;
     }
 
     /* One-row Footer */
@@ -682,7 +684,7 @@
 
 <div id="boot-loader" aria-live="polite">
   <div class="boot-panel">
-    <div class="boot-label">Like a Chapter in the Bible</div>
+    <div class="boot-label">Grand Rising ...</div>
     <div class="boot-bar"><div class="boot-fill" id="boot-loader-fill"></div></div>
     <div class="boot-status" id="boot-loader-status">0%</div>
   </div>
@@ -793,7 +795,7 @@
         </div>
 
         <div class="form-group mb-4">
-          <label for="password-input">Early access UID<a class="early-access-link" id="earlyAccessBtn" title="request early access"><sup>?</sup></a></label>
+          <label for="password-input"><a class="early-access-link" id="earlyAccessBtn" title="request early access">ⓘ</a> Early access UID</label>
           <input 
             id="password-input"
             type="password"
@@ -961,17 +963,11 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         &copy; <span id="fc-year-root"></span> Finance Cheque. All rights reserved.
       </div>
       <div class="footer-middle">
-         <a href="mailto:info@datro.xyz">support@financecheque.uk</a> | +442031377118
+         <a href="mailto:info@datro.xyz">oakesy@financecheque.uk</a> | +442031377118
       </div>
       <div class="footer-right">
         <a href="pages/tos.html">Terms of Service</a>
         <a href="pages/privacy.html">Privacy Policy</a>
-        <div class="social-icons">
-          <a href="#"><i class="bi bi-facebook"></i></a>
-          <a href="#"><i class="bi bi-twitter-x"></i></a>
-          <a href="#"><i class="bi bi-instagram"></i></a>
-          <a href="#"><i class="bi bi-linkedin"></i></a>
-        </div>
       </div>
     </div>
   </footer>
@@ -1065,14 +1061,13 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
 <div id="mailchimp-modal" class="bf-modal" style="display: none;">
   <div class="bf-modal-card">
-    <div class="bf-floating-header">
-      <h5 style="font-family: 'Orbitron', sans-serif;">Early Access to Oaksey AI</h5>
-      <button id="mailchimp-close" class="bf-floating-close">&times;</button>
+    <div class="bf-floating-header" style="flex-direction: column; align-items: center; text-align: center;">
+      <button id="mailchimp-close" class="bf-floating-close" style="position: absolute; top: 10px; right: 15px;">&times;</button>
+      <h5 style="font-family: 'Orbitron', sans-serif; font-size: 1.8rem; margin-top: 20px; padding: 0 20px;">Submit your vehicle finance claim before Resurrection Sunday to access Oaksey AI and all the other money claim opportunities he discovers.</h5>
     </div>
     <div style="padding: 1.5rem; text-align: center;">
-      <p style="margin-bottom: 20px; font-size: 1.1rem; color: #fff;">To get early access, please submit your claim.</p>
-      <a href="https://n29.r2r-online.co.uk/" target="_blank" class="btn btn-primary" style="padding: 12px 24px; font-size: 1rem; text-decoration: none; display: inline-block;">
-        Submit your PCP Claim for early access to Oaksey AI
+      <a href="https://n29.r2r-online.co.uk/" target="_blank" class="btn btn-primary" style="padding: 12px 24px; font-size: 2rem; text-decoration: none; display: inline-block;">
+        Submit claim
       </a>
     </div>
   </div>

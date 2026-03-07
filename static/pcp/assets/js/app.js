@@ -379,24 +379,27 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!johnVideoOverlay) return;
         johnVideoOverlay.src = getAssetUrl(ASSET_JOHN_VIDEO);
         johnVideoOverlay.style.pointerEvents = 'none';
-        johnVideoOverlay.style.display = 'block';
-        setAgentTitleVisible(true);
-        johnVideoOverlay.play().catch(() => {});
+        
         setTimeout(() => {
-            johnVideoOverlay.style.opacity = 1;
-            // Set input placeholder text
-            if (userQuery) userQuery.placeholder = "How can I answer your prayers today?";
+            johnVideoOverlay.style.display = 'block';
+            setAgentTitleVisible(true);
+            johnVideoOverlay.play().catch(() => {});
             setTimeout(() => {
-                if (accountBalanceDisplay && drawerState === 'OPEN') {
-                    accountBalanceDisplay.style.display = 'flex';
-                    // Trigger 10s fade in via CSS transition
-                    setTimeout(() => {
-                        accountBalanceDisplay.style.opacity = 1;
-                        startBalanceClimb();
-                    }, 50);
-                }
-            }, 1000);
-        }, 50); 
+                johnVideoOverlay.style.opacity = 1;
+                // Set input placeholder text
+                if (userQuery) userQuery.placeholder = "How can I answer your prayers today?";
+                setTimeout(() => {
+                    if (accountBalanceDisplay && drawerState === 'OPEN') {
+                        accountBalanceDisplay.style.display = 'flex';
+                        // Trigger 10s fade in via CSS transition
+                        setTimeout(() => {
+                            accountBalanceDisplay.style.opacity = 1;
+                            startBalanceClimb();
+                        }, 50);
+                    }
+                }, 1000);
+            }, 50);
+        }, 1000);
     }
 
     function setDrawerState(newState) {
