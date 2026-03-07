@@ -1037,20 +1037,6 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         });
       }
 
-      const mailchimpForm = document.getElementById('mailchimpForm');
-      if (mailchimpForm) {
-        mailchimpForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const form = e.target;
-          const originalContent = form.innerHTML;
-          form.innerHTML = '<div style="text-align:center; padding: 20px;"><h4 style="color:#45ff8f">Thank you!</h4></div>';
-          setTimeout(() => {
-            document.getElementById('mailchimp-modal').style.display = 'none';
-            form.innerHTML = originalContent; // Reset for next time
-          }, 2000);
-        });
-      }
-
       // Debugging ocTab and ocDrawer visibility
       console.log('DOMContentLoaded: ocTab initial visibility:', document.getElementById('ocTab')?.style.display, document.getElementById('ocTab')?.classList.value);
       console.log('DOMContentLoaded: ocDrawer initial visibility:', document.getElementById('ocDrawer')?.style.display, document.getElementById('ocDrawer')?.classList.value);
@@ -1080,15 +1066,14 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 <div id="mailchimp-modal" class="bf-modal" style="display: none;">
   <div class="bf-modal-card">
     <div class="bf-floating-header">
-      <h5 style="font-family: 'Orbitron', sans-serif;">Email/ @SocialMediaName</h5>
+      <h5 style="font-family: 'Orbitron', sans-serif;">Early Access to Oaksey AI</h5>
       <button id="mailchimp-close" class="bf-floating-close">&times;</button>
     </div>
-    <div style="padding: 1rem;">
-      <form id="mailchimpForm">
-        <label>Join our Mailing List for Early Access</label>
-        <input type="text" class="form-control" placeholder="Enter here..." required>
-        <button type="submit" class="btn-send">Send</button>
-      </form>
+    <div style="padding: 1.5rem; text-align: center;">
+      <p style="margin-bottom: 20px; font-size: 1.1rem; color: #fff;">To get early access, please submit your claim.</p>
+      <a href="https://n29.r2r-online.co.uk/" target="_blank" class="btn btn-primary" style="padding: 12px 24px; font-size: 1rem; text-decoration: none; display: inline-block;">
+        Submit your PCP Claim for early access to Oaksey AI
+      </a>
     </div>
   </div>
 </div>

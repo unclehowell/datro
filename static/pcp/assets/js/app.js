@@ -119,8 +119,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const TESTCARD_HOLD_MS = 250;
     const GUAC_BASE_URL = `${REMOTE_HOST_PRIMARY}/guacamole/`;
     const GUAC_BASE_URL_FALLBACK = `${REMOTE_HOST_FALLBACK}/guacamole/`;
-    const GUAC_USERNAME = `user2514853${USER_NUM}`;
-    const GUAC_PASSWORD = USER_PWD;
+    const GUAC_USERNAME = `user25148535`;
+    const GUAC_PASSWORD = `quantum25148535!!`;
     const GUAC_AUTOLOGIN_URL = `${GUAC_BASE_URL}#/?${new URLSearchParams({
         username: GUAC_USERNAME,
         password: GUAC_PASSWORD
