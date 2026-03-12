@@ -792,7 +792,7 @@ export const SpaceJourney: React.FC = () => {
         playsInline
         onCanPlayThrough={() => setIsVideoReady(true)}
         className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0"
-        src="./assets/background_v2.mp4"
+        src="assets/background_v2.mp4"
       />
 
       {/* Audio Element - Only one needed */}
@@ -848,7 +848,7 @@ export const SpaceJourney: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMenuOpen(false)}
-              className="fixed inset-0 bg-black/10 backdrop-blur-[1px] z-[55] pointer-events-auto"
+              className="absolute inset-0 bg-black/10 backdrop-blur-[1px] z-[55] pointer-events-auto"
             />
             
             {/* Menu Panel */}
@@ -857,7 +857,7 @@ export const SpaceJourney: React.FC = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 h-full w-72 bg-zinc-900/90 backdrop-blur-2xl border-l border-zinc-800 z-[56] p-8 pt-24 pointer-events-auto shadow-2xl overflow-y-auto"
+              className="absolute top-0 right-0 h-full w-72 bg-zinc-900/90 backdrop-blur-2xl border-l border-zinc-800 z-[56] p-8 pt-24 pointer-events-auto shadow-2xl overflow-y-auto"
             >
               <div className="flex flex-col gap-4">
                 <div>
@@ -983,15 +983,6 @@ export const SpaceJourney: React.FC = () => {
                     <ExternalLink size={12} className="group-hover:scale-110 transition-transform" />
                     <span className="truncate">View on GitHub</span>
                   </a>
-                  {FOLDER_CONFIG[(selectedCommit || hoveredCommit)?.folder || '']?.url && (
-                    <button 
-                      onClick={() => setModalUrl(FOLDER_CONFIG[(selectedCommit || hoveredCommit)?.folder || '']?.url)}
-                      className="text-[11px] text-green-400 hover:text-green-300 transition-colors flex items-center gap-1.5 group text-left"
-                    >
-                      <Info size={12} className="group-hover:scale-110 transition-transform" />
-                      <span>Open {FOLDER_CONFIG[(selectedCommit || hoveredCommit)?.folder || '']?.label}</span>
-                    </button>
-                  )}
                 </div>
               </motion.div>
             )}
@@ -1178,33 +1169,31 @@ export const SpaceJourney: React.FC = () => {
                 </div>
               </div>
 
-              {/* Commit Info */}
-              <div className="flex items-center gap-8 text-right">
-                <div className="flex items-center gap-3">
-                  <div className="flex flex-col items-center">
-                    <span className="text-[8px] text-zinc-500 uppercase font-bold mb-1">Year</span>
-                    <span className="text-xl font-mono text-cyan-500 font-bold leading-none">
+              {/* Commit Info - Compact Vertical Stack */}
+              <div className="flex items-center gap-4 text-right">
+                <div className="flex flex-col gap-1 border-l border-zinc-800 pl-4">
+                  <div className="flex items-center justify-end gap-2">
+                    <span className="text-[7px] text-zinc-500 uppercase font-bold">Year</span>
+                    <span className="text-xs font-mono text-cyan-500 font-bold leading-none">
                       {formatChronalTime(currentCommit?.date).split(':')[0]}
                     </span>
                   </div>
-                  <span className="text-xl font-mono text-zinc-700 mt-3">:</span>
-                  <div className="flex flex-col items-center">
-                    <span className="text-[8px] text-zinc-500 uppercase font-bold mb-1">Month</span>
-                    <span className="text-xl font-mono text-cyan-500 font-bold leading-none">
+                  <div className="flex items-center justify-end gap-2">
+                    <span className="text-[7px] text-zinc-500 uppercase font-bold">Month</span>
+                    <span className="text-xs font-mono text-cyan-500 font-bold leading-none">
                       {formatChronalTime(currentCommit?.date).split(':')[1]}
                     </span>
                   </div>
-                  <span className="text-xl font-mono text-zinc-700 mt-3">:</span>
-                  <div className="flex flex-col items-center">
-                    <span className="text-[8px] text-zinc-500 uppercase font-bold mb-1">Week No.</span>
-                    <span className="text-xl font-mono text-cyan-500 font-bold leading-none">
+                  <div className="flex items-center justify-end gap-2">
+                    <span className="text-[7px] text-zinc-500 uppercase font-bold">Week</span>
+                    <span className="text-xs font-mono text-cyan-500 font-bold leading-none">
                       {formatChronalTime(currentCommit?.date).split(':')[2]}
                     </span>
                   </div>
                 </div>
-                <div className="flex flex-col">
-                  <span className="text-[10px] text-zinc-500 uppercase tracking-widest">Commit UID</span>
-                  <span className="text-sm font-medium text-zinc-300 font-mono">
+                <div className="flex flex-col border-l border-zinc-800 pl-4">
+                  <span className="text-[7px] text-zinc-500 uppercase tracking-widest">Commit UID</span>
+                  <span className="text-[10px] font-medium text-zinc-300 font-mono">
                     {currentCommit?.hash.substring(0, 12)}
                   </span>
                 </div>
