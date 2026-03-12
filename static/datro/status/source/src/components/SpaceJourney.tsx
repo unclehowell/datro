@@ -779,7 +779,7 @@ export const SpaceJourney: React.FC = () => {
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0"
-        src="./assets/background.mp4"
+        src="./assets/background_v2.mp4"
       />
 
       {/* Audio Element - Only one needed */}
