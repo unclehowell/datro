@@ -63,8 +63,9 @@ interface CommitStar extends Star {
 }
 
 const STAR_COUNT = 400;
-const SPEED_BASE = 0.05;
 const Z_MAX = 1000;
+const JOURNEY_DURATION = 5; // seconds
+const SPEED_BASE = Z_MAX / (JOURNEY_DURATION * 60); // 3.33 units per frame at 60fps
 const AUDIO_URL = 'https://stream.rcs.revma.com/fxp289cp81uvv';
 
 export const SpaceJourney: React.FC = () => {
@@ -117,6 +118,7 @@ export const SpaceJourney: React.FC = () => {
   });
   const currentCommitIndexRef = useRef(0);
   const sliderValueRef = useRef(0);
+  const lastSpawnedDayRef = useRef<number | null>(null);
   const lastSpawnTimeRef = useRef(0);
   const animationFrameRef = useRef<number>(0);
   const pauseTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -508,16 +510,13 @@ export const SpaceJourney: React.FC = () => {
         const delay = (commitsOnThisDay.length > 0 ? 1000 : 100) / playbackSpeed;
 
         if (currentTime - lastSpawnTimeRef.current > delay) {
-          // If we have commits, spawn them one by one or all at once? User said 1s per day per commit.
-          // Let's simplify: 1s for the day if it has commits.
-          if (commitsOnThisDay.length > 0) {
+          if (commitsOnThisDay.length > 0 && lastSpawnedDayRef.current !== sliderValue) {
             commitsOnThisDay.forEach(c => {
-              // Only spawn if not already spawned for this day to avoid too many stars
-              // Actually, user said "too many commits showing", so let's just spawn once per commit
               spawnCommitStar(c);
               const branches = commits.filter(b => b.branchOf === c.hash);
               branches.forEach(b => spawnCommitStar(b, Z_MAX + Math.random() * 200));
             });
+            lastSpawnedDayRef.current = sliderValue;
           }
 
           const nextDay = (sliderValueRef.current + 1) % (getSliderMax() + 1);
@@ -566,7 +565,7 @@ export const SpaceJourney: React.FC = () => {
           return true;
         }
 
-        star.z -= currentSpeed * 50;
+        star.z -= currentSpeed;
         
         const x = (star.x / star.z) * centerX + centerX;
         const y = (star.y / star.z) * centerY + centerY;
@@ -1167,35 +1166,35 @@ export const SpaceJourney: React.FC = () => {
                     className="w-20 h-1 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-white"
                   />
                 </div>
-              </div>
 
-              {/* Commit Info - Compact Vertical Stack */}
-              <div className="flex items-center gap-4 text-right">
-                <div className="flex flex-col gap-1 border-l border-zinc-800 pl-4">
-                  <div className="flex items-center justify-end gap-2">
-                    <span className="text-[7px] text-zinc-500 uppercase font-bold">Year</span>
-                    <span className="text-xs font-mono text-cyan-500 font-bold leading-none">
-                      {formatChronalTime(currentCommit?.date).split(':')[0]}
+                {/* Nested Time Units */}
+                <div className="flex items-center gap-3 ml-auto border-l border-zinc-800 pl-4">
+                  <div className="flex flex-col">
+                    <div className="flex items-center justify-end gap-1.5">
+                      <span className="text-[6px] text-zinc-500 uppercase font-bold">YR</span>
+                      <span className="text-[10px] font-mono text-cyan-500 font-bold leading-none">
+                        {formatChronalTime(currentCommit?.date).split(':')[0]}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-end gap-1.5">
+                      <span className="text-[6px] text-zinc-500 uppercase font-bold">MO</span>
+                      <span className="text-[10px] font-mono text-cyan-500 font-bold leading-none">
+                        {formatChronalTime(currentCommit?.date).split(':')[1]}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-end gap-1.5">
+                      <span className="text-[6px] text-zinc-500 uppercase font-bold">WK</span>
+                      <span className="text-[10px] font-mono text-cyan-500 font-bold leading-none">
+                        {formatChronalTime(currentCommit?.date).split(':')[2]}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex flex-col border-l border-zinc-800 pl-3">
+                    <span className="text-[6px] text-zinc-500 uppercase tracking-widest">UID</span>
+                    <span className="text-[9px] font-medium text-zinc-300 font-mono">
+                      {currentCommit?.hash.substring(0, 8)}
                     </span>
                   </div>
-                  <div className="flex items-center justify-end gap-2">
-                    <span className="text-[7px] text-zinc-500 uppercase font-bold">Month</span>
-                    <span className="text-xs font-mono text-cyan-500 font-bold leading-none">
-                      {formatChronalTime(currentCommit?.date).split(':')[1]}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-end gap-2">
-                    <span className="text-[7px] text-zinc-500 uppercase font-bold">Week</span>
-                    <span className="text-xs font-mono text-cyan-500 font-bold leading-none">
-                      {formatChronalTime(currentCommit?.date).split(':')[2]}
-                    </span>
-                  </div>
-                </div>
-                <div className="flex flex-col border-l border-zinc-800 pl-4">
-                  <span className="text-[7px] text-zinc-500 uppercase tracking-widest">Commit UID</span>
-                  <span className="text-[10px] font-medium text-zinc-300 font-mono">
-                    {currentCommit?.hash.substring(0, 12)}
-                  </span>
                 </div>
               </div>
             </div>
