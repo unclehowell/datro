@@ -791,7 +791,7 @@ export const SpaceJourney: React.FC = () => {
         playsInline
         onCanPlayThrough={() => setIsVideoReady(true)}
         className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0"
-        src="assets/background_v2.mp4"
+        src="./assets/background_v2.mp4"
       />
 
       {/* Audio Element - Only one needed */}
