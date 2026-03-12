@@ -76,6 +76,14 @@ export const SpaceJourney: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isVideoReady, setIsVideoReady] = useState(false);
   const [isAudioReady, setIsAudioReady] = useState(false);
+  
+  // Safety timeout for loading screen
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVideoReady(true); // Force ready after 5 seconds
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, []);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isManuallyPaused, setIsManuallyPaused] = useState(false);
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
@@ -759,7 +767,7 @@ export const SpaceJourney: React.FC = () => {
   const currentYear = currentCommit ? new Date(currentCommit.date).getFullYear() : null;
   const currentBranches = Array.from(new Set(commits.filter(c => c.date === currentCommit.date).map(c => c.branch))).filter(Boolean);
 
-  const isActuallyLoading = isLoading || !isVideoReady || !isAudioReady;
+  const isActuallyLoading = isLoading || !isVideoReady;
 
   if (isActuallyLoading) {
     return (
