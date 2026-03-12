@@ -74,6 +74,8 @@ export const SpaceJourney: React.FC = () => {
   
   const [commits, setCommits] = useState<Commit[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isVideoReady, setIsVideoReady] = useState(false);
+  const [isAudioReady, setIsAudioReady] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isManuallyPaused, setIsManuallyPaused] = useState(false);
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
@@ -757,10 +759,12 @@ export const SpaceJourney: React.FC = () => {
   const currentYear = currentCommit ? new Date(currentCommit.date).getFullYear() : null;
   const currentBranches = Array.from(new Set(commits.filter(c => c.date === currentCommit.date).map(c => c.branch))).filter(Boolean);
 
-  if (isLoading) {
+  const isActuallyLoading = isLoading || !isVideoReady || !isAudioReady;
+
+  if (isActuallyLoading) {
     return (
       <div className="w-full h-screen bg-black flex items-center justify-center font-mono text-cyan-500">
-        <div className="text-xl animate-pulse tracking-widest uppercase">Initializing Chronal Sync...</div>
+        <div className="text-xl animate-pulse tracking-widest uppercase">loading ...</div>
       </div>
     );
   }
@@ -778,6 +782,7 @@ export const SpaceJourney: React.FC = () => {
         loop
         muted
         playsInline
+        onCanPlayThrough={() => setIsVideoReady(true)}
         className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0"
         src="./assets/background_v2.mp4"
       />
@@ -787,8 +792,10 @@ export const SpaceJourney: React.FC = () => {
         autoPlay
         loop
         muted={isMuted}
+        onCanPlayThrough={() => setIsAudioReady(true)}
         ref={(el) => {
           if (el) {
+            audioRef.current = el;
             el.volume = 0.05;
             if (isPlaying && !isMuted) el.play().catch(() => {});
             else el.pause();
