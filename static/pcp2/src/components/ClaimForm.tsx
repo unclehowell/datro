@@ -114,15 +114,13 @@ export const ClaimForm: React.FC = () => {
         client_ip: clientIp,
         user_agent: userAgent,
         session_id: sessionId,
-        addresses: [{
-          buildingNumber: formData.buildingNumber,
-          thoroughfare: formData.thoroughfare,
-          townOrCity: formData.townOrCity,
-          postcode: formData.postcode
-        }]
+        buildingNumber: formData.buildingNumber,
+        thoroughfare: formData.thoroughfare,
+        townOrCity: formData.townOrCity,
+        postcode: formData.postcode
       };
       
-      console.log("--- BROWSER: SENDING PAYLOAD (addresses as array) ---", payload);
+      console.log("--- BROWSER: SENDING PAYLOAD ---", payload);
       console.log("URL:", `/api/submit-claim`);
       
       const headers = {
