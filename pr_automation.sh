@@ -23,13 +23,16 @@ err()     { printf '\033[1;31m%s\033[0m\n' "$*"; }
 
 # --- Preview table helpers ---
 build_preview_table() {
-  local base_branch="$1"
   local changed_projects=""
 
-  if git rev-parse "origin/${base_branch}" >/dev/null 2>&1; then
-    changed_projects="$(git diff --name-only "origin/${base_branch}...HEAD" | sed -n 's#^static/\\([^/][^/]*\\)/.*#\\1#p' | sort -u)"
+  # Always compare against origin/gh-pages (main) for preview eligibility
+  if git ls-remote --heads origin "refs/heads/gh-pages" >/dev/null 2>&1; then
+    git fetch origin gh-pages --depth=1 >/dev/null 2>&1 || true
+    if git rev-parse "origin/gh-pages" >/dev/null 2>&1; then
+      changed_projects="$(git diff --name-only "origin/gh-pages...HEAD" 2>/dev/null | sed -n 's#^static/\\([^/][^/]*\\)/.*#\\1#p' | sort -u)" || true
+    fi
   else
-    changed_projects="$(git diff --name-only | sed -n 's#^static/\\([^/][^/]*\\)/.*#\\1#p' | sort -u)"
+    warn "origin/gh-pages not available; preview links will be omitted."
   fi
 
   if [ ! -f "$PROJECTS_TSV" ]; then
@@ -51,7 +54,7 @@ build_preview_table() {
     [ -z "$project" ] && continue
     preview_cell="—"
     if echo "$changed_projects" | grep -qx "$project"; then
-      preview_cell="[$preview]($preview)"
+      preview_cell="$preview"
     fi
     printf "| %s | %s |\n" "$project" "$preview_cell"
   done
@@ -174,7 +177,7 @@ success "Pushed branch to origin/${BRANCH_TO_USE}."
 
 # --- Prepare PR metadata ---
 PR_TITLE="[Auto-PR] ${COMMIT_MESSAGE}"
-PREVIEW_TABLE="$(build_preview_table "$BASE_BRANCH")"
+PREVIEW_TABLE="$(build_preview_table)"
 PR_BODY="**Automated Pull Request**
 
 Triggered: ${CURRENT_TIME}
