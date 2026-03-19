@@ -13,19 +13,33 @@ export async function onRequestPost(context) {
       });
     }
     const body = JSON.parse(text);
+    body.affiliate_id = affiliateId;
     
+    // Use Cloudflare's connecting IP if available to ensure accuracy
+    const cfIp = request.headers.get('CF-Connecting-IP');
+    if (cfIp) {
+      console.log("Using CF-Connecting-IP:", cfIp);
+      body.client_ip = cfIp;
+    }
+
     console.log("--- OUTGOING REQUEST TO UPSTREAM ---");
-    console.log("URL:", `https://r2r.theclaimsystem.co.uk/api/v1/affiliate/${affiliateId}`);
+    const upstreamUrl = `https://r2r.theclaimsystem.co.uk/api/v1/affiliate/${affiliateId}`;
+    console.log("URL:", upstreamUrl);
     console.log("Affiliate ID:", affiliateId);
+    console.log("API Key (masked):", apiKey.slice(0, 4) + "..." + apiKey.slice(-4));
     console.log("Payload:", JSON.stringify(body, null, 2));
 
-    const response = await fetch(`https://r2r.theclaimsystem.co.uk/api/v1/affiliate/${affiliateId}`, {
+    const upstreamHeaders = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'API-KEY': apiKey,
+      'User-Agent': request.headers.get('user-agent') || 'Cloudflare-Worker'
+    };
+    console.log("Upstream Headers (masked key):", { ...upstreamHeaders, 'API-KEY': '***' });
+
+    const response = await fetch(upstreamUrl, {
       method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'API-KEY': apiKey
-      },
+      headers: upstreamHeaders,
       body: JSON.stringify(body)
     });
 

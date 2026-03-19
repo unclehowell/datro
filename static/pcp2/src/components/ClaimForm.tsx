@@ -86,8 +86,9 @@ export const ClaimForm: React.FC = () => {
     setIsSubmitting(true);
     setError(null);
 
+    let clientIp = '0.0.0.0';
     try {
-      const clientIp = await getClientIp();
+      clientIp = await getClientIp();
       console.log("Client IP:", clientIp);
     } catch (e) {
       console.error("--- BROWSER: IP FETCH ERROR ---", e);
@@ -112,15 +113,15 @@ export const ClaimForm: React.FC = () => {
         client_ip: clientIp,
         user_agent: userAgent,
         session_id: sessionId,
-        addresses: {
+        addresses: [{
           buildingNumber: formData.buildingNumber,
           thoroughfare: formData.thoroughfare,
           townOrCity: formData.townOrCity,
           postcode: formData.postcode
-        }
+        }]
       };
       
-      console.log("--- BROWSER: SENDING PAYLOAD ---", payload);
+      console.log("--- BROWSER: SENDING PAYLOAD (addresses as array) ---", payload);
       console.log("URL:", `/api/submit-claim`);
       
       const headers = {
@@ -129,19 +130,13 @@ export const ClaimForm: React.FC = () => {
       };
       console.log("Headers:", headers);
       
-      console.log("Method:", 'POST');
-      
-      const body = JSON.stringify(payload);
-      console.log("Body:", body);
-      
       const response = await fetch(`/api/submit-claim`, {
         method: 'POST',
         headers: headers,
-        body: body
+        body: JSON.stringify(payload)
       });
 
       console.log("--- BROWSER: RESPONSE RECEIVED ---");
-      console.log("Response:", response);
       console.log("Status:", response.status);
       const contentType = response.headers.get("content-type");
       console.log("Content-Type:", contentType);
@@ -150,9 +145,6 @@ export const ClaimForm: React.FC = () => {
       if (contentType && contentType.includes("application/json")) {
         const resText = await response.text();
         console.log("--- BROWSER: RAW RESPONSE ---", resText);
-        if (!resText) {
-          throw new Error("Server returned an empty JSON response.");
-        }
         try {
           result = JSON.parse(resText);
           console.log("--- BROWSER: RESULT ---", result);
@@ -167,15 +159,20 @@ export const ClaimForm: React.FC = () => {
       }
 
       if (response.ok) {
+        // Check for logical errors in 200 OK response
+        if (result.success === false || result.status === 'error') {
+          throw new Error(result.message || 'The API returned an error. Please check your data.');
+        }
+
         if (result.status === 'authentication-required') {
-          // Handle OTP flow if needed
-          // For now, redirect to thank you as per simple requirement
-          navigate('/thank-you');
+          console.log('--- BROWSER: AUTH REQUIRED, REDIRECTING ---');
+          window.location.href = result.url;
         } else {
+          console.log('--- BROWSER: SUCCESS, NAVIGATING TO THANK YOU ---');
           navigate('/thank-you');
         }
       } else {
-        throw new Error(result.message || 'Submission failed. Please try again.');
+        throw new Error(result.message || `Submission failed (Status: ${response.status}). Please try again.`);
       }
     } catch (err: any) {
       console.error("--- BROWSER: SUBMISSION ERROR ---", err);
