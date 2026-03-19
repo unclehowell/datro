@@ -11,6 +11,18 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+Mar-12 - Added `background_v2.mp4` to the status page assets and wired it into the build output
+
+### Changed
+Mar-12 - Standardized status build layout: moved legacy site content into `status/source/public/details/` and aligned assets under `status/source/public/assets/` for dist output
+Mar-12 - Synced `static/datro/index.html` and bundled assets with the latest status build, including updated video paths
+Mar-12 - Refined status UI: title copy, dashboard layout, menu positioning, and spawning logic
+
+### Fixed
+Mar-12 - Prevented the status page from stalling on load by removing the audio requirement and adding a video timeout
+Mar-12 - Corrected background video pathing so the splash video loads reliably
+
 ## [-datro.08] - Q4/2025
 
 ### Changed

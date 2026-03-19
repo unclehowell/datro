@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 3. Before commiting a change update the sitemap.xml (automated script to perform this task is in the `static/monoreapo/sitemap/` directory  
 
 ## [Unreleased]
+Mar-19 - Changelog update for PR automation test  
 
 ## [0.0.1-rtw.17] - Q1/2026
 Feb-06 - Puck CMS working on bpvsbuckler.datro.xyz webpage in /static/bpvsbuckler/  

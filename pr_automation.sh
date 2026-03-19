@@ -14,11 +14,48 @@ TRIGGER_FILE=".pr_trigger"
 BRANCH_PREFIX="feature/auto-"
 DEFAULT_BASE_BRANCH="${DEFAULT_BASE_BRANCH:-gh-pages}"
 ALLOW_EMPTY_COMMIT="${ALLOW_EMPTY_COMMIT:-no}"
+PROJECTS_TSV="static/projects.tsv"
 
 log()     { printf '\033[1;34m%s\033[0m\n' "$*"; }
 success() { printf '\033[1;32m%s\033[0m\n' "$*"; }
 warn()    { printf '\033[1;33m%s\033[0m\n' "$*"; }
 err()     { printf '\033[1;31m%s\033[0m\n' "$*"; }
+
+# --- Preview table helpers ---
+build_preview_table() {
+  local base_branch="$1"
+  local changed_projects=""
+
+  if git rev-parse "origin/${base_branch}" >/dev/null 2>&1; then
+    changed_projects="$(git diff --name-only "origin/${base_branch}...HEAD" | sed -n 's#^static/\\([^/][^/]*\\)/.*#\\1#p' | sort -u)"
+  else
+    changed_projects="$(git diff --name-only | sed -n 's#^static/\\([^/][^/]*\\)/.*#\\1#p' | sort -u)"
+  fi
+
+  if [ ! -f "$PROJECTS_TSV" ]; then
+    warn "Missing ${PROJECTS_TSV}; preview table will list changed static projects only."
+    if [ -n "$changed_projects" ]; then
+      printf "| Project | Preview |\n|:--|:--|\n"
+      while IFS= read -r project; do
+        [ -z "$project" ] && continue
+        printf "| %s | %s |\n" "$project" "https://datro.xyz/static/${project}/"
+      done <<< "$changed_projects"
+    else
+      printf "| Project | Preview |\n|:--|:--|\n| (none) | — |\n"
+    fi
+    return 0
+  fi
+
+  printf "| Project | Preview |\n|:--|:--|\n"
+  tail -n +2 "$PROJECTS_TSV" | while IFS=$'\t' read -r project preview repo cf_project cname; do
+    [ -z "$project" ] && continue
+    preview_cell="—"
+    if echo "$changed_projects" | grep -qx "$project"; then
+      preview_cell="[$preview]($preview)"
+    fi
+    printf "| %s | %s |\n" "$project" "$preview_cell"
+  done
+}
 
 # --- Sanity checks ---
 command -v git >/dev/null 2>&1 || { err "git not found in PATH"; exit 1; }
@@ -137,11 +174,16 @@ success "Pushed branch to origin/${BRANCH_TO_USE}."
 
 # --- Prepare PR metadata ---
 PR_TITLE="[Auto-PR] ${COMMIT_MESSAGE}"
+PREVIEW_TABLE="$(build_preview_table "$BASE_BRANCH")"
 PR_BODY="**Automated Pull Request**
 
 Triggered: ${CURRENT_TIME}
 Branch: ${BRANCH_TO_USE}
-Base: ${BASE_BRANCH}"
+Base: ${BASE_BRANCH}
+
+**Project Previews (static/ changes)**
+
+${PREVIEW_TABLE}"
 
 PR_URL=""
 
@@ -162,6 +204,7 @@ elif [ "$ACTION" = "UPDATE" ]; then
   PR_URL="$(gh pr view "${BRANCH_TO_USE}" --json url -q .url 2>/dev/null || true)"
   if [ -n "$PR_URL" ]; then
     success "Found PR: $PR_URL"
+    gh pr edit "${BRANCH_TO_USE}" --title "$PR_TITLE" --body "$PR_BODY" >/dev/null 2>&1 || true
     gh pr comment "${BRANCH_TO_USE}" --body "Automated update: ${CURRENT_TIME}" >/dev/null 2>&1 || true
   else
     log "No existing PR found; creating new PR..."
