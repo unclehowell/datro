@@ -58,7 +58,9 @@ build_preview_table() {
   if git ls-remote --heads origin "refs/heads/gh-pages" >/dev/null 2>&1; then
     git fetch origin gh-pages --depth=1 >/dev/null 2>&1 || true
     if git rev-parse "origin/gh-pages" >/dev/null 2>&1; then
-      changed_projects="$(git diff --name-only "origin/gh-pages...HEAD" 2>/dev/null | sed -n 's#^static/\\([^/][^/]*\\)/.*#\\1#p' | sort -u)" || true
+      local diff_names=""
+      diff_names="$(git diff --name-only "origin/gh-pages...HEAD" 2>/dev/null || true)"
+      changed_projects="$(printf '%s\n' "$diff_names" | sed -n 's#^static/\\([^/][^/]*\\)/.*#\\1#p' | sort -u)"
     fi
   else
     warn "origin/gh-pages not available; preview links will be omitted."
