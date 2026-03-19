@@ -52,15 +52,13 @@ update_pr_metadata() {
 
 # --- Preview table helpers ---
 build_preview_table() {
-  local changed_projects=""
+  local diff_names=""
 
   # Always compare against origin/gh-pages (main) for preview eligibility
   if git ls-remote --heads origin "refs/heads/gh-pages" >/dev/null 2>&1; then
     git fetch origin gh-pages --depth=1 >/dev/null 2>&1 || true
     if git rev-parse "origin/gh-pages" >/dev/null 2>&1; then
-      local diff_names=""
-    diff_names="$(git diff --name-only "origin/gh-pages" "HEAD" 2>/dev/null || true)"
-      changed_projects="$(printf '%s\n' "$diff_names" | sed -n 's#^static/\\([^/][^/]*\\)/.*#\\1#p' | sort -u)"
+      diff_names="$(git diff --name-only "origin/gh-pages" "HEAD" 2>/dev/null || true)"
     fi
   else
     warn "origin/gh-pages not available; preview links will be omitted."
@@ -68,6 +66,8 @@ build_preview_table() {
 
   if [ ! -f "$PROJECTS_TSV" ]; then
     warn "Missing ${PROJECTS_TSV}; preview table will list changed static projects only."
+    local changed_projects=""
+    changed_projects="$(printf '%s\n' "$diff_names" | sed -n 's#^static/\\([^/][^/]*\\)/.*#\\1#p' | sort -u)"
     if [ -n "$changed_projects" ]; then
       printf "| Project | Preview |\n|:--|:--|\n"
       while IFS= read -r project; do
@@ -84,7 +84,7 @@ build_preview_table() {
   tail -n +2 "$PROJECTS_TSV" | while IFS=$'\t' read -r project preview repo cf_project cname; do
     [ -z "$project" ] && continue
     preview_cell="—"
-    if echo "$changed_projects" | grep -qx "$project"; then
+    if printf '%s\n' "$diff_names" | grep -q "^static/${project}/"; then
       preview_cell="$preview"
     fi
     printf "| %s | %s |\n" "$project" "$preview_cell"
