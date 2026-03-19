@@ -86,14 +86,15 @@ export const ClaimForm: React.FC = () => {
     setIsSubmitting(true);
     setError(null);
 
-    let clientIp = '0.0.0.0';
     try {
-      clientIp = await getClientIp();
-      console.log("Client IP:", clientIp);
-    } catch (e) {
-      console.error("--- BROWSER: IP FETCH ERROR ---", e);
-    }
-    const userAgent = navigator.userAgent;
+      let clientIp = '0.0.0.0';
+      try {
+        clientIp = await getClientIp();
+        console.log("Client IP:", clientIp);
+      } catch (e) {
+        console.error("--- BROWSER: IP FETCH ERROR ---", e);
+      }
+      const userAgent = navigator.userAgent;
       console.log("User Agent:", userAgent);
       const affiliateId = import.meta.env.VITE_AFFILIATE_ID || 'default';
       const apiKey = import.meta.env.VITE_API_KEY || 'demo-key';

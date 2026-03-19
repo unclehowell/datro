@@ -106,12 +106,35 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup Node (pcp2 build)
+        if: matrix.project == 'pcp2'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Build pcp2
+        if: matrix.project == 'pcp2'
+        working-directory: static/pcp2
+        run: |
+          npm ci
+          npm run build
+
+      - name: Set deploy directory
+        id: deploydir
+        shell: bash
+        run: |
+          if [ "${{ matrix.project }}" = "pcp2" ]; then
+            echo "dir=static/pcp2/dist" >> "$GITHUB_OUTPUT"
+          else
+            echo "dir=${{ matrix.dir }}" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Deploy ${{ matrix.project }}
         uses: cloudflare/wrangler-action@v3.14.1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy ${{ matrix.dir }} --project-name=${{ matrix.cf_project }}
+          command: pages deploy ${{ steps.deploydir.outputs.dir }} --project-name=${{ matrix.cf_project }}
 
   deploy-summary:
     name: Deployment Summary
