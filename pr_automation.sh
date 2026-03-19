@@ -204,6 +204,7 @@ elif [ "$ACTION" = "UPDATE" ]; then
   PR_URL="$(gh pr view "${BRANCH_TO_USE}" --json url -q .url 2>/dev/null || true)"
   if [ -n "$PR_URL" ]; then
     success "Found PR: $PR_URL"
+    gh pr edit "${BRANCH_TO_USE}" --title "$PR_TITLE" --body "$PR_BODY" >/dev/null 2>&1 || true
     gh pr comment "${BRANCH_TO_USE}" --body "Automated update: ${CURRENT_TIME}" >/dev/null 2>&1 || true
   else
     log "No existing PR found; creating new PR..."
