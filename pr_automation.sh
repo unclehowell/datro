@@ -21,6 +21,35 @@ success() { printf '\033[1;32m%s\033[0m\n' "$*"; }
 warn()    { printf '\033[1;33m%s\033[0m\n' "$*"; }
 err()     { printf '\033[1;31m%s\033[0m\n' "$*"; }
 
+# --- PR update helper ---
+update_pr_metadata() {
+  local pr_selector="$1"
+  local pr_title="$2"
+  local pr_body="$3"
+
+  if gh pr edit "${pr_selector}" --title "$pr_title" --body "$pr_body" >/dev/null 2>&1; then
+    return 0
+  fi
+
+  local pr_number=""
+  pr_number="$(gh pr view "${pr_selector}" --json number -q .number 2>/dev/null || true)"
+  if [ -z "$pr_number" ]; then
+    warn "Unable to resolve PR number for '${pr_selector}'."
+    return 1
+  fi
+
+  local repo_slug=""
+  repo_slug="$(gh repo view --json owner,name -q '.owner.login + "/" + .name' 2>/dev/null || true)"
+  if [ -z "$repo_slug" ]; then
+    warn "Unable to resolve repo slug for API update."
+    return 1
+  fi
+
+  gh api -X PATCH "repos/${repo_slug}/pulls/${pr_number}" \
+    -f title="$pr_title" \
+    -f body="$pr_body" >/dev/null 2>&1
+}
+
 # --- Preview table helpers ---
 build_preview_table() {
   local changed_projects=""
@@ -207,7 +236,7 @@ elif [ "$ACTION" = "UPDATE" ]; then
   PR_URL="$(gh pr view "${BRANCH_TO_USE}" --json url -q .url 2>/dev/null || true)"
   if [ -n "$PR_URL" ]; then
     success "Found PR: $PR_URL"
-    gh pr edit "${BRANCH_TO_USE}" --title "$PR_TITLE" --body "$PR_BODY" >/dev/null 2>&1 || true
+    update_pr_metadata "${BRANCH_TO_USE}" "$PR_TITLE" "$PR_BODY" || warn "PR body update failed."
     gh pr comment "${BRANCH_TO_USE}" --body "Automated update: ${CURRENT_TIME}" >/dev/null 2>&1 || true
   else
     log "No existing PR found; creating new PR..."
