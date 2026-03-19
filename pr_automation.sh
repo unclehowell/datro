@@ -59,7 +59,7 @@ build_preview_table() {
     git fetch origin gh-pages --depth=1 >/dev/null 2>&1 || true
     if git rev-parse "origin/gh-pages" >/dev/null 2>&1; then
       local diff_names=""
-      diff_names="$(git diff --name-only "origin/gh-pages...HEAD" 2>/dev/null || true)"
+    diff_names="$(git diff --name-only "origin/gh-pages" "HEAD" 2>/dev/null || true)"
       changed_projects="$(printf '%s\n' "$diff_names" | sed -n 's#^static/\\([^/][^/]*\\)/.*#\\1#p' | sort -u)"
     fi
   else
