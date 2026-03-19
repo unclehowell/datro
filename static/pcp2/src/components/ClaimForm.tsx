@@ -18,13 +18,6 @@ export const ClaimForm: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [sessionId, setSessionId] = useState('');
   
-  console.log("--- BROWSER: RENDERING STEP ---", currentStep);
-  console.log("--- BROWSER: SUBMITTING STATE ---", isSubmitting);
-  console.log("--- BROWSER: ERROR STATE ---", error);
-  console.log("--- BROWSER: SESSION ID STATE ---", sessionId);
-  console.log("--- BROWSER: FORM DATA STATE ---", formData);
-  console.log("--- BROWSER: STEPS ---", STEPS);
-
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -36,6 +29,13 @@ export const ClaimForm: React.FC = () => {
     townOrCity: '',
     postcode: ''
   });
+
+  console.log("--- BROWSER: RENDERING STEP ---", currentStep);
+  console.log("--- BROWSER: SUBMITTING STATE ---", isSubmitting);
+  console.log("--- BROWSER: ERROR STATE ---", error);
+  console.log("--- BROWSER: SESSION ID STATE ---", sessionId);
+  console.log("--- BROWSER: FORM DATA STATE ---", formData);
+  console.log("--- BROWSER: STEPS ---", STEPS);
 
   useEffect(() => {
     console.log("--- BROWSER: FORM MOUNTED ---");
