@@ -2,7 +2,7 @@
 
 This is a web app/website project inside the DATRO monorepo.
 
-Preview: https://datro.xyz/static/togo/
+Preview: https://togo.datro.xyz/
 Repository: https://github.com/unclehowell/togo
 Path: /root/datro/static/togo
 

@@ -2,7 +2,7 @@
 
 This is a web app/website project inside the DATRO monorepo.
 
-Preview: https://datro.xyz/static/forces/
+Preview: https://ceo.datro.xyz/
 Repository: https://github.com/unclehowell/forces
 Path: /root/datro/static/forces
 

@@ -2,7 +2,7 @@
 
 This is a web app/website project inside the DATRO monorepo.
 
-Preview: https://datro.xyz/static/ccan/
+Preview: https://ccan.datro.xyz/
 Repository: https://github.com/unclehowell/ccan
 Path: /root/datro/static/ccan
 

@@ -2,7 +2,7 @@
 
 This is a web app/website project inside the DATRO monorepo.
 
-Preview: https://datro.xyz/static/pcp/
+Preview: https://pcp.datro.xyz/
 Repository: https://github.com/unclehowell/pcp
 Path: /root/datro/static/pcp
 

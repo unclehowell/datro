@@ -47,7 +47,7 @@ build_preview_table() {
   fi
 
   printf "| Project | Preview |\n|:--|:--|\n"
-  tail -n +2 "$PROJECTS_TSV" | while IFS=$'\t' read -r project preview repo; do
+  tail -n +2 "$PROJECTS_TSV" | while IFS=$'\t' read -r project preview repo cf_project cname; do
     [ -z "$project" ] && continue
     preview_cell="—"
     if echo "$changed_projects" | grep -qx "$project"; then

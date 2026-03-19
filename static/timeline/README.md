@@ -2,7 +2,7 @@
 
 This is a web app/website project inside the DATRO monorepo.
 
-Preview: https://datro.xyz/static/timeline/
+Preview: https://timeline.datro.xyz/
 Repository: https://github.com/unclehowell/timeline
 Path: /root/datro/static/timeline
 

@@ -2,7 +2,7 @@
 
 This is a web app/website project inside the DATRO monorepo.
 
-Preview: https://datro.xyz/static/ew/
+Preview: https://ew.datro.xyz/
 Repository: https://github.com/unclehowell/ew
 Path: /root/datro/static/ew
 

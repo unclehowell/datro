@@ -2,7 +2,7 @@
 
 This is a web app/website project inside the DATRO monorepo.
 
-Preview: https://datro.xyz/static/projections/
+Preview: https://projections.datro.xyz/
 Repository: https://github.com/unclehowell/projections
 Path: /root/datro/static/projections
 
