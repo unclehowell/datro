@@ -27,9 +27,9 @@ build_preview_table() {
   local changed_projects=""
 
   if git rev-parse "origin/${base_branch}" >/dev/null 2>&1; then
-    changed_projects="$(git diff --name-only "origin/${base_branch}...HEAD" | awk -F/ '/^static\\/[^/]+\\//{print $2}' | sort -u)"
+    changed_projects="$(git diff --name-only "origin/${base_branch}...HEAD" | awk -F/ '/^static\\/[^/][^/]*\\//{print $2}' | sort -u)"
   else
-    changed_projects="$(git diff --name-only | awk -F/ '/^static\\/[^/]+\\//{print $2}' | sort -u)"
+    changed_projects="$(git diff --name-only | awk -F/ '/^static\\/[^/][^/]*\\//{print $2}' | sort -u)"
   fi
 
   if [ ! -f "$PROJECTS_TSV" ]; then
