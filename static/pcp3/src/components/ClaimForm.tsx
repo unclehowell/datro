@@ -17,7 +17,6 @@ export const ClaimForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [sessionId, setSessionId] = useState('');
-  const [kountReady, setKountReady] = useState(false);
   
   const [formData, setFormData] = useState({
     first_name: '',
@@ -50,16 +49,13 @@ export const ClaimForm: React.FC = () => {
     setSessionId(sid);
 
     const kountConfig = {
-      clientID: import.meta.env.VITE_KOUNT_CLIENT_ID || '341408861572516',
-      environment: 'PROD', // or 'TEST' while testing
+      clientID: import.meta.env.VITE_KOUNT_CLIENT_ID || '341408861572516', // Updated with user provided KountID
+      environment: 'TEST',
       isSinglePageApp: true,
       callbacks: {
-        'collect-begin': (params: any) => console.log('Kount started', params),
-        'collect-end': (params: any) => {
-          console.log('Kount fingerprint complete', params);
-          setKountReady(true);
-        },
-      },
+        'collect-begin': () => console.log('Kount collection started'),
+        'collect-end': () => console.log('Kount collection completed')
+      }
     };
     console.log("--- BROWSER: KOUNT CONFIG ---", kountConfig);
     
@@ -71,33 +67,11 @@ export const ClaimForm: React.FC = () => {
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let value = e.target.value;
-    
-    if (e.target.name === 'date_of_birth') {
-      // Simple mask for DD/MM/YYYY
-      const digits = value.replace(/\D/g, '');
-      if (digits.length <= 2) {
-        value = digits;
-      } else if (digits.length <= 4) {
-        value = `${digits.slice(0, 2)}/${digits.slice(2)}`;
-      } else {
-        value = `${digits.slice(0, 2)}/${digits.slice(2, 4)}/${digits.slice(4, 8)}`;
-      }
-    }
-
-    console.log(`--- BROWSER: INPUT CHANGE [${e.target.name}] ---`, value);
-    setFormData({ ...formData, [e.target.name]: value });
+    console.log(`--- BROWSER: INPUT CHANGE [${e.target.name}] ---`, e.target.value);
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const nextStep = () => {
-    if (currentStep === 0) {
-      // Basic validation for DOB format
-      const dobRegex = /^\d{2}\/\d{2}\/\d{4}$/;
-      if (!dobRegex.test(formData.date_of_birth)) {
-        alert('Please enter a valid Date of Birth in DD/MM/YYYY format');
-        return;
-      }
-    }
     console.log("--- BROWSER: NEXT STEP ---", currentStep + 1);
     setCurrentStep((prev) => Math.min(prev + 1, STEPS.length - 1));
   };
@@ -106,67 +80,59 @@ export const ClaimForm: React.FC = () => {
     setCurrentStep((prev) => Math.max(prev - 1, 0));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!kountReady) {
-      alert('Please wait for device verification to complete');
-      return;
-    }
-
     console.log("--- BROWSER: SUBMITTING FORM ---", formData);
     setIsSubmitting(true);
     setError(null);
 
     try {
+      let clientIp = '0.0.0.0';
+      try {
+        clientIp = await getClientIp();
+        console.log("Client IP:", clientIp);
+      } catch (e) {
+        console.error("--- BROWSER: IP FETCH ERROR ---", e);
+      }
       const userAgent = navigator.userAgent;
       console.log("User Agent:", userAgent);
+      const affiliateId = import.meta.env.VITE_AFFILIATE_ID || 'default';
+      const apiKey = import.meta.env.VITE_API_KEY || 'demo-key';
+      
       console.log("--- BROWSER: ENV CHECK ---");
-      console.log("Kount Client ID present:", !!import.meta.env.VITE_KOUNT_CLIENT_ID);
+      console.log("Affiliate ID present:", !!import.meta.env.VITE_AFFILIATE_ID);
+      console.log("API Key present:", !!import.meta.env.VITE_API_KEY);
       
       console.log("Session ID:", sessionId);
       
-      const dobFormatted = formData.date_of_birth 
-        ? formData.date_of_birth.split('/').reverse().join('-')
-        : '';
-
-      const signatureData = {
+      const payload = {
         first_name: formData.first_name,
         last_name: formData.last_name,
-        date_of_birth: dobFormatted,
+        date_of_birth: formData.date_of_birth,
         phone: formData.phone,
         email: formData.email,
-        addresses: [{
-          buildingNumber: formData.buildingNumber || '',
-          thoroughfare: formData.thoroughfare || '',
-          townOrCity: formData.townOrCity || '',
-          postcode: formData.postcode || ''
-        }]
+        client_ip: clientIp,
+        user_agent: userAgent,
+        session_id: sessionId,
+        buildingNumber: formData.buildingNumber,
+        thoroughfare: formData.thoroughfare,
+        townOrCity: formData.townOrCity,
+        postcode: formData.postcode
       };
-
-      const signature = btoa(JSON.stringify(signatureData));
       
-      // Use FormData as requested by user
-      const submissionData = new FormData();
-      submissionData.append('first_name', formData.first_name);
-      submissionData.append('last_name', formData.last_name);
-      submissionData.append('date_of_birth', dobFormatted);
-      submissionData.append('phone', formData.phone);
-      submissionData.append('email', formData.email);
-      submissionData.append('buildingNumber', formData.buildingNumber);
-      submissionData.append('thoroughfare', formData.thoroughfare);
-      submissionData.append('townOrCity', formData.townOrCity);
-      submissionData.append('postcode', formData.postcode);
-      submissionData.append('signature', signature);
-      submissionData.append('user_agent', navigator.userAgent);
-      submissionData.append('session_id', sessionId);
-      submissionData.append('device_session_id', sessionId); // REQUIRED by ViewThru
-      
-      console.log("--- BROWSER: SENDING PAYLOAD (FormData) ---");
+      console.log("--- BROWSER: SENDING PAYLOAD ---", payload);
       console.log("URL:", `/api/submit-claim`);
+      
+      const headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      };
+      console.log("Headers:", headers);
       
       const response = await fetch(`/api/submit-claim`, {
         method: 'POST',
-        body: submissionData
+        headers: headers,
+        body: JSON.stringify(payload)
       });
 
       console.log("--- BROWSER: RESPONSE RECEIVED ---");
@@ -191,25 +157,21 @@ export const ClaimForm: React.FC = () => {
         throw new Error(`Server returned non-JSON response (${response.status}): ${text.slice(0, 100)}`);
       }
 
-      // Catch ViewThru validation errors that return HTTP 200
-      if (
-        result.message === "Validation failed." ||
-        result.error ||
-        (result.errors && Object.keys(result.errors).length > 0) ||
-        result.success === false ||
-        result.status === 'error'
-      ) {
-        const errorMsg = result.message || 
-          (result.errors ? JSON.stringify(result.errors) : 'Submission rejected by server');
-        throw new Error(errorMsg);
-      }
+      if (response.ok) {
+        // Check for logical errors in 200 OK response
+        if (result.success === false || result.status === 'error') {
+          throw new Error(result.message || 'The API returned an error. Please check your data.');
+        }
 
-      if (result.status === 'authentication-required') {
-        console.log('--- BROWSER: AUTH REQUIRED, REDIRECTING ---');
-        window.location.href = result.url;
+        if (result.status === 'authentication-required') {
+          console.log('--- BROWSER: AUTH REQUIRED, REDIRECTING ---');
+          window.location.href = result.url;
+        } else {
+          console.log('--- BROWSER: SUCCESS, NAVIGATING TO THANK YOU ---');
+          navigate('/thank-you');
+        }
       } else {
-        console.log('--- BROWSER: SUCCESS, NAVIGATING TO THANK YOU ---');
-        navigate('/thank-you');
+        throw new Error(result.message || `Submission failed (Status: ${response.status}). Please try again.`);
       }
     } catch (err: any) {
       console.error("--- BROWSER: SUBMISSION ERROR ---", err);
@@ -256,10 +218,9 @@ export const ClaimForm: React.FC = () => {
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label htmlFor="first_name" className="text-xs font-black uppercase tracking-wider text-brand-primary">First Name</label>
+                  <label className="text-xs font-black uppercase tracking-wider text-brand-primary">First Name</label>
                   <input
                     required
-                    id="first_name"
                     name="first_name"
                     value={formData.first_name}
                     onChange={handleChange}
@@ -267,10 +228,9 @@ export const ClaimForm: React.FC = () => {
                   />
                 </div>
                 <div className="space-y-1">
-                  <label htmlFor="last_name" className="text-xs font-black uppercase tracking-wider text-brand-primary">Last Name</label>
+                  <label className="text-xs font-black uppercase tracking-wider text-brand-primary">Last Name</label>
                   <input
                     required
-                    id="last_name"
                     name="last_name"
                     value={formData.last_name}
                     onChange={handleChange}
@@ -279,23 +239,20 @@ export const ClaimForm: React.FC = () => {
                 </div>
               </div>
               <div className="space-y-1">
-                <label htmlFor="date_of_birth" className="text-xs font-black uppercase tracking-wider text-brand-primary">Date of Birth (DD/MM/YYYY)</label>
+                <label className="text-xs font-black uppercase tracking-wider text-brand-primary">Date of Birth</label>
                 <input
                   required
-                  id="date_of_birth"
-                  type="text"
+                  type="date"
                   name="date_of_birth"
-                  placeholder="DD/MM/YYYY"
                   value={formData.date_of_birth}
                   onChange={handleChange}
                   className="w-full p-4 border-4 border-brand-primary focus:bg-brand-accent outline-none font-bold uppercase transition-colors"
                 />
               </div>
               <div className="space-y-1">
-                <label htmlFor="phone" className="text-xs font-black uppercase tracking-wider text-brand-primary">Phone Number</label>
+                <label className="text-xs font-black uppercase tracking-wider text-brand-primary">Phone Number</label>
                 <input
                   required
-                  id="phone"
                   type="tel"
                   name="phone"
                   value={formData.phone}
@@ -304,10 +261,9 @@ export const ClaimForm: React.FC = () => {
                 />
               </div>
               <div className="space-y-1">
-                <label htmlFor="email" className="text-xs font-black uppercase tracking-wider text-brand-primary">Email Address</label>
+                <label className="text-xs font-black uppercase tracking-wider text-brand-primary">Email Address</label>
                 <input
                   required
-                  id="email"
                   type="email"
                   name="email"
                   value={formData.email}
@@ -327,10 +283,9 @@ export const ClaimForm: React.FC = () => {
               className="space-y-4"
             >
               <div className="space-y-1">
-                <label htmlFor="buildingNumber" className="text-xs font-black uppercase tracking-wider text-brand-primary">Building Number / Name</label>
+                <label className="text-xs font-black uppercase tracking-wider text-brand-primary">Building Number / Name</label>
                 <input
                   required
-                  id="buildingNumber"
                   name="buildingNumber"
                   value={formData.buildingNumber}
                   onChange={handleChange}
@@ -338,10 +293,9 @@ export const ClaimForm: React.FC = () => {
                 />
               </div>
               <div className="space-y-1">
-                <label htmlFor="thoroughfare" className="text-xs font-black uppercase tracking-wider text-brand-primary">Street Name</label>
+                <label className="text-xs font-black uppercase tracking-wider text-brand-primary">Street Name</label>
                 <input
                   required
-                  id="thoroughfare"
                   name="thoroughfare"
                   value={formData.thoroughfare}
                   onChange={handleChange}
@@ -349,10 +303,9 @@ export const ClaimForm: React.FC = () => {
                 />
               </div>
               <div className="space-y-1">
-                <label htmlFor="townOrCity" className="text-xs font-black uppercase tracking-wider text-brand-primary">City / Town</label>
+                <label className="text-xs font-black uppercase tracking-wider text-brand-primary">City / Town</label>
                 <input
                   required
-                  id="townOrCity"
                   name="townOrCity"
                   value={formData.townOrCity}
                   onChange={handleChange}
@@ -360,10 +313,9 @@ export const ClaimForm: React.FC = () => {
                 />
               </div>
               <div className="space-y-1">
-                <label htmlFor="postcode" className="text-xs font-black uppercase tracking-wider text-brand-primary">Postcode</label>
+                <label className="text-xs font-black uppercase tracking-wider text-brand-primary">Postcode</label>
                 <input
                   required
-                  id="postcode"
                   name="postcode"
                   value={formData.postcode}
                   onChange={handleChange}
@@ -447,15 +399,13 @@ export const ClaimForm: React.FC = () => {
           ) : (
             <button
               type="submit"
-              disabled={isSubmitting || !kountReady}
+              disabled={isSubmitting}
               className="brutal-btn-secondary flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin" /> Submitting...
                 </>
-              ) : !kountReady ? (
-                <>Verifying device...</>
               ) : (
                 <>Check Eligibility <CheckCircle2 className="w-4 h-4" /></>
               )}
