@@ -10,7 +10,8 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changes
 
-Mar-22 - 0833 Typo error in submit-claim.ts in last push. Fixed  
+Mar-22 - 0939 Argentina: fix to submit-claim.ts didn't push. Trying again.   
+Mar-22 - 0833 Argentina: Typo error in submit-claim.ts in last push. Fixed  
 Mar-22 - 0137 Argentina: The = padding in base64 may be getting corrupted in the journey. 
               In functions/api/submit-claim.ts I now generate the signature in the Worker instead of using whatever comes from the frontend. Right before the fetch call
 Mar-22 - 0057 Argentina: removed title: data.title || 'Mr' from functions/api/submit-claim.ts   
