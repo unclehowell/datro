@@ -417,17 +417,17 @@
             }
 
             updateStats(data) {
-                const totalUsers = data.models.length;
-                const totalRequests = data.models.reduce((sum, model) => sum + (model.used || 0), 0);
-                const totalWarnings = data.models.filter(model => {
+                const providers = data.providers || [];
+                const models = providers.flatMap(p => p.models || []);
+                const totalRequests = models.reduce((sum, model) => sum + (model.used || 0), 0);
+                const totalWarnings = models.filter(model => {
                     const usage = (model.used / model.limit) * 100;
                     return usage > 80;
                 }).length;
-                const activeServices = data.models.length;
 
-                this.updateValue('total-users', totalUsers);
+                this.updateValue('total-users', providers.length);
                 this.updateValue('total-requests', totalRequests.toLocaleString());
-                this.updateValue('active-services', activeServices);
+                this.updateValue('active-services', providers.length);
                 this.updateValue('total-warnings', totalWarnings);
             }
 
@@ -480,7 +480,9 @@
 
             updateAlerts(data) {
                 const alertsList = document.getElementById('alerts-list');
-                const alerts = data.models.filter(model => {
+                const providers = data.providers || [];
+                const models = providers.flatMap(p => p.models || []);
+                const alerts = models.filter(model => {
                     const usage = (model.used / model.limit) * 100;
                     return usage > 75;
                 });

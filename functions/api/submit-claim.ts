@@ -23,8 +23,8 @@ export async function onRequestPost(context: any) {
     const last_name = String(body.last_name || "").trim();
     const email = String(body.email || "").trim();
     const phone = String(body.phone || "").trim();
-    const date_of_birth = String(body.date_of_birth || "").trim();
-
+    const raw_dob = String(body.date_of_birth || "").trim();
+    const date_of_birth = formatDOB(raw_dob);    
     const buildingNumber = String(body.buildingNumber || "").trim();
     const thoroughfare = String(body.thoroughfare || "").trim();
     const townOrCity = String(body.townOrCity || "").trim();
@@ -33,19 +33,18 @@ export async function onRequestPost(context: any) {
     // -------------------------
     // ✅ ADDRESS = ARRAY OF OBJECTS
     // -------------------------
-    const addresses = [
-      {
+    const addresses = {
         buildingNumber,
         thoroughfare,
         townOrCity,
         postcode,
-      },
-    ];
+      };
 
     // -------------------------
     // ✅ SIGNATURE PAYLOAD (MATCH EXACTLY)
     // -------------------------
     const signaturePayloadObj = {
+      title,
       first_name,
       last_name,
       date_of_birth,
