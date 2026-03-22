@@ -137,12 +137,14 @@ export const ClaimForm: React.FC = () => {
         date_of_birth: dobFormatted,
         phone: formData.phone,
         email: formData.email,
-        addresses: {
-          buildingNumber: formData.buildingNumber || '',
-          thoroughfare: formData.thoroughfare || '',
-          townOrCity: formData.townOrCity || '',
-          postcode: formData.postcode || ''
-        }
+        addresses: [
+          {
+            buildingNumber: formData.buildingNumber || '',
+            thoroughfare: formData.thoroughfare || '',
+            townOrCity: formData.townOrCity || '',
+            postcode: formData.postcode || ''
+          }
+        ]
       };
 
       const signature = btoa(JSON.stringify(signatureData));

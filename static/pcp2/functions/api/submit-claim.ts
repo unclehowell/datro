@@ -23,12 +23,14 @@ export async function onRequestPost(context) {
       user_agent: user_agent,
       session_id: session_id,
       signature: data.signature || '',
-      addresses: {
-        buildingNumber: data.buildingNumber || '',
-        thoroughfare: data.thoroughfare || '',
-        townOrCity: data.townOrCity || '',
-        postcode: data.postcode || ''
-      }
+      addresses: [
+        {
+          buildingNumber: data.buildingNumber || '',
+          thoroughfare: data.thoroughfare || '',
+          townOrCity: data.townOrCity || '',
+          postcode: data.postcode || ''
+        }
+      ]
     };
 
     // Only generate signature if missing from frontend
@@ -40,12 +42,14 @@ export async function onRequestPost(context) {
         date_of_birth: payload.date_of_birth,
         phone: payload.phone,
         email: payload.email,
-        addresses: {
-          buildingNumber: data.buildingNumber || '',
-          thoroughfare: data.thoroughfare || '',
-          townOrCity: data.townOrCity || '',
-          postcode: data.postcode || ''
-        }
+        addresses: [
+          {
+            buildingNumber: data.buildingNumber || '',
+            thoroughfare: data.thoroughfare || '',
+            townOrCity: data.townOrCity || '',
+            postcode: data.postcode || ''
+          }
+        ]
       };
       payload.signature = btoa(JSON.stringify(signaturePayload));
     }
