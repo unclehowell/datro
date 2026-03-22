@@ -1,0 +1,16 @@
+Example Request
+{
+"title": "Mr",
+"first_name": "John",
+"last_name": "Doe",
+"date_of_birth": "1985-06-20", "phone": "07503 456789",
+"email": "john.doe@example.com",
+"client_ip": "203.0.113.42",
+"user_agent": "Mozilla/5.0",
+"session_id": "session_001", "signature": "signature base 64", "addresses": {
+"buildingNumber": "12",
+"thoroughfare": "High Street",
+"townOrCity":"London",
+"postcode": "EC1A 1AA"
+}
+}

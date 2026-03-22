@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en" class="dark accessibility-mode">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Bubble Monitor - Complete Overview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary-bg: #000000;
+            --secondary-bg: #111111;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --accent-glow: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            font-size: 24px; /* Large base font for accessibility */
+            line-height: 1.3;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .accessibility-mode {
+            font-size: 24px !important;
+        }
+
+        .bubble-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            height: 100vh;
+            align-items: start;
+            grid-auto-rows: auto;
+            overflow: hidden;
+            align-content: start;
+        }
+
+        .bubble {
+            background: linear-gradient(135deg, var(--secondary-bg), #222);
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-radius: 40px;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .bubble:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .usage-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: currentColor;
+            filter: blur(0px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 40px currentColor;
+            z-index: 1;
+        }
+
+        .usage-dot.critical {
+            animation: pulseCritical 2s infinite;
+        }
+
+        .usage-dot.exceeded {
+            background: #ff0000 !important;
+            animation: pulseExceeded 1s infinite;
+        }
+
+        @keyframes pulseCritical {
+            0%, 100% { 
+                box-shadow: 0 0 40px currentColor;
+                opacity: 1;
+            }
+            50% { 
+                box-shadow: 0 0 80px currentColor, 0 0 120px currentColor;
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes pulseExceeded {
+            0%, 100% { 
+                box-shadow: 0 0 60px rgba(255, 0, 0, 0.8);
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 120px rgba(255, 0, 0, 1), 0 0 180px rgba(255, 0, 0, 0.6);
+                opacity: 0.9;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        .provider-name {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .model-name {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .company-name {
+            font-size: 20px;
+            color: #999;
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+        }
+
+        .user-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 6px 12px;
+            border-radius: 16px;
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+        }
+
+        .usage-info {
+            font-size: 22px;
+            margin-top: 10px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+
+        .time-info {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            background: var(--secondary-bg);
+            padding: 12px 24px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .title {
+            position: fixed;
+            top: 20px;
+            left: 30px;
+            font-size: 56px;
+            font-weight: 900;
+            color: var(--text-primary);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            position: fixed;
+            top: 85px;
+            left: 30px;
+            font-size: 28px;
+            color: #ccc;
+            font-weight: 500;
+        }
+
+        /* Keys display */
+        .keys-container {
+            position: fixed;
+            bottom: 20px;
+            left: 30px;
+            right: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            z-index: 10;
+        }
+
+        .company-key, .user-key {
+            background: var(--secondary-bg);
+            padding: 15px 20px;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .company-key {
+            max-width: 300px;
+        }
+
+        .user-key {
+            max-width: 400px;
+            margin-left: auto;
+        }
+
+        .key-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .key-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .key-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 8px;
+            min-width: 16px;
+        }
+
+        .radio-player {
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            width: 0;
+            height: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--text-secondary);
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            font-size: 24px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .exceeded-banner {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff0000;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 20px;
+            font-weight: 700;
+            z-index: 3;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @media (max-width: 1920px) {
+            .bubble-container {
+                gap: 20px;
+            }
+            
+            .bubble {
+                padding: 20px;
+                min-height: 180px;
+            }
+        }
+
+        @media (max-width: 1366px) {
+            .bubble-container {
+                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+                padding: 30px 20px;
+            }
+            
+            .provider-name { font-size: 28px; }
+            .model-name { font-size: 24px; }
+            .user-name { font-size: 20px; }
+            .title { font-size: 48px; }
+            .subtitle { font-size: 24px; }
+        }
+
+        .connection-indicator {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 18px;
+            color: #999;
+            background: var(--secondary-bg);
+            padding: 8px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 10;
+        }
+
+        .connection-indicator.connected {
+            color: #00ff80;
+            border-color: #00ff80;
+        }
+
+        .connection-indicator.disconnected {
+            color: #ff6b6b;
+            border-color: #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">LLM USAGE MONITOR</h1>
+    <p class="subtitle">All Models • Real-Time Bubbles • User Tracking</p>
+    
+    <div class="time-info" id="clock">--:--:--</div>
+    <div class="connection-indicator" id="connection">CONNECTING...</div>
+    
+    <!-- Company Color Key -->
+    <div class="keys-container">
+        <div class="company-key">
+            <div class="key-title">🏢 Company Colors</div>
+            <div id="company-key-items"></div>
+        </div>
+        
+        <!-- User Color Key -->
+        <div class="user-key">
+            <div class="key-title">👤 User Colors</div>
+            <div id="user-key-items"></div>
+        </div>
+    </div>
+
+    <audio autoplay loop class="radio-player" id="radioPlayer" preload="auto">
+        <source src="https://streaming.shoutcast.com/RadioMonteCarlo?lang=en" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="bubble-container" id="bubble-container">
+        <div class="loading">Loading All LLM Models...</div>
+    </div>
+
+    <script>
+        class LLMBubbleMonitor {
+            constructor() {
+                this.container = document.getElementById('bubble-container');
+                this.clock = document.getElementById('clock');
+                this.connection = document.getElementById('connection');
+                this.radioPlayer = document.getElementById('radioPlayer');
+                this.companyKeyContainer = document.getElementById('company-key-items');
+                this.userKeyContainer = document.getElementById('user-key-items');
+                this.models = [];
+                this.users = [];
+                this.companies = [];
+                this.lastUpdate = null;
+                this.updateInterval = 2000; // 2 seconds for real-time updates
+                
+                // Color schemes
+                this.companyColors = {
+                    'OpenAI': '#00a67e',
+                    'Google': '#4285f4', 
+                    'Anthropic': '#d84271',
+                    'Groq': '#f7931a',
+                    'Local': '#00ff00',
+                    'Azure': '#0078d4',
+                    'AWS': '#ff9900',
+                    'Meta': '#1877f2',
+                    'Mistral': '#ff6c00',
+                    'Cohere': '#8b5cf6'
+                };
+
+                this.userColors = {
+                    'picoclaw': '#00ff00',      // Bright green
+                    'researcher': '#ff6b6b',    // Red
+                    'developer': '#4ecdc4',   // Teal
+                    'backend': '#45b7d1',       // Blue
+                    'data-scientist': '#9b59b6', // Purple
+                    'devops': '#e67e22',        // Orange
+                    'analyst': '#1abc9c'         // Turquoise
+                };
+
+                this.init();
+            }
+
+            init() {
+                this.updateClock();
+                this.setupColorKeys();
+                this.startRadioPlayer();
+                this.fetchData();
+                this.startAutoUpdate();
+            }
+
+            setupColorKeys() {
+                // Set up company key
+                const companyHTML = Object.entries(this.companyColors).map(([company, color]) => `
+                    <div class="key-item">
+                        <div class="key-color" style="background-color: ${color};"></div>
+                        <span>${company}</span>
+                    </div>
+                `).join('');
+                this.companyKeyContainer.innerHTML = companyHTML;
+
+                // Set up user key
+                const userHTML = Object.entries(this.userColors).map(([user, color]) => `
+                    <div class="key-item">
+                        <div class="key-color" style="background-color: ${color};"></div>
+                        <span>${user}</span>
+                    </div>
+                `).join('');
+                this.userKeyContainer.innerHTML = userHTML;
+            }
+
+            startRadioPlayer() {
+                const radioUrls = [
+                    'https://streaming.shoutcast.com/RadioMonteCarlo?lang=en',
+                    'https://relay.radioparadise.com/rp_192.ogg',
+                    'https://stream.azuracast.com/radio/8000/radio.mp3'
+                ];
+
+                let currentUrlIndex = 0;
+                
+                const tryNextStream = () => {
+                    if (currentUrlIndex >= radioUrls.length) return;
+                    
+                    const url = radioUrls[currentUrlIndex];
+                    this.radioPlayer.src = url;
+                    
+                    this.radioPlayer.addEventListener('error', () => {
+                        console.log(`Radio stream ${url} failed, trying next...`);
+                        currentUrlIndex++;
+                        tryNextStream();
+                    });
+                };
+
+                tryNextStream();
+                this.radioPlayer.volume = 0.3;
+            }
+
+            updateClock() {
+                const now = new Date();
+                this.clock.textContent = now.toLocaleTimeString('en-GB', {
+                    hour12: false,
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+            }
+
+            async fetchData() {
+                try {
+                    const response = await fetch('/api/llm-usage');
+                    const data = await response.json();
+                    
+                    // Process all models including exceeded capacity ones
+                    this.models = this.processModels(data.models);
+                    this.lastUpdate = new Date();
+                    this.renderBubbles();
+                    this.updateConnectionStatus(true);
+                } catch (error) {
+                    console.error('Failed to fetch data:', error);
+                    this.updateConnectionStatus(false);
+                    
+                    // Fallback data including exceeded models
+                    const fallbackData = [
+                        {
+                            id: 'picoclaw',
+                            model: 'PicoClaw Agent', 
+                            provider: 'Local',
+                            limit: 1000,
+                            used: 450,
+                            unit: 'Requests',
+                            rating: 5,
+                            isActive: true,
+                            user: 'picoclaw',
+                            userFullName: 'PicoClaw AI Agent'
+                        },
+                        {
+                            id: 'gemini-user1',
+                            model: 'Gemini Pro',
+                            provider: 'Google', 
+                            limit: 60,
+                            used: 58, // Nearly exceeded
+                            unit: 'RPM',
+                            rating: 4,
+                            isActive: true,
+                            user: 'researcher',
+                            userFullName: 'Research Team'
+                        },
+                        {
+                            id: 'openai-codex',
+                            model: 'Codex',
+                            provider: 'OpenAI',
+                            limit: 100,
+                            used: 105, // EXCEEDED!
+                            unit: 'Requests',
+                            rating: 5,
+                            isActive: true,
+                            user: 'developer',
+                            userFullName: 'Developer Tools'
+                        },
+                        {
+                            id: 'anthropic-claude',
+                            model: 'Claude 3',
+                            provider: 'Anthropic',
+                            limit: 50,
+                            used: 52, // EXCEEDED!
+                            unit: 'Messages',
+                            rating: 4,
+                            isActive: true,
+                            user: 'data-scientist',
+                            userFullName: 'Data Science'
+                        },
+                        {
+                            id: 'groq-dev1',
+                            model: 'Llama 3 70B',
+                            provider: 'Groq',
+                            limit: 30,
+                            used: 12,
+                            unit: 'RPM',
+                            rating: 5,
+                            isActive: true,
+                            user: 'developer',
+                            userFullName: 'Development Team'
+                        },
+                        {
+                            id: 'openai-backend',
+                            model: 'GPT-4o Mini',
+                            provider: 'OpenAI',
+                            limit: 500,
+                            used: 150,
+                            unit: 'TPM',
+                            rating: 5,
+                            isActive: true,
+                            user: 'backend',
+                            userFullName: 'Backend Services'
+                        },
+                        {
+                            id: 'openai-dall-e',
+                            model: 'DALL-E 3',
+                            provider: 'OpenAI',
+                            limit: 200,
+                            used: 210, // EXCEEDED!
+                            unit: 'Images',
+                            rating: 5,
+                            isActive: true,
+                            user: 'analyst',
+                            userFullName: 'Analytics & Reports'
+                        },
+                        {
+                            id: 'azure-gpt4',
+                            model: 'GPT-4 Turbo',
+                            provider: 'Azure',
+                            limit: 1000,
+                            used: 850, // Approaching limit
+                            unit: 'Tokens',
+                            rating: 5,
+                            isActive: true,
+                            user: 'backend',
+                            userFullName: 'Backend Services'
+                        }
+                    ];
+                    
+                    this.models = this.processModels(fallbackData);
+                    this.renderBubbles();
+                }
+            }
+
+            processModels(rawModels) {
+                // Add proper color coding and user info
+                return rawModels.map(model => {
+                    const companyColor = this.companyColors[model.provider] || '#ffffff';
+                    const userColor = this.userColors[model.user] || '#ffffff';
+                    const usage = (model.used / model.limit) * 100;
+                    const isExceeded = model.used > model.limit;
+                    const isCritical = usage > 85 && !isExceeded;
+                    
+                    return {
+                        ...model,
+                        companyColor,
+                        userColor,
+                        usage,
+                        isExceeded,
+                        isCritical,
+                        isWarning: usage > 50 && !isExceeded && !isCritical
+                    };
+                }).sort((a, b) => {
+                    // Sort by severity: exceeded first, then critical, then warning, then normal
+                    if (a.isExceeded && !b.isExceeded) return -1;
+                    if (!a.isExceeded && b.isExceeded) return 1;
+                    if (a.isCritical && !b.isCritical) return -1;
+                    if (!a.isCritical && b.isCritical) return 1;
+                    if (a.isWarning && !b.isWarning) return -1;
+                    if (!a.isWarning && b.isWarning) return 1;
+                    return b.usage - a.usage; // Higher usage first
+                });
+            }
+
+            updateConnectionStatus(connected) {
+                this.connection.textContent = connected ? 'CONNECTED' : 'DISCONNECTED';
+                this.connection.className = `connection-indicator ${connected ? 'connected' : 'disconnected'}`;
+            }
+
+            renderBubbles() {
+                if (this.models.length === 0) return;
+
+                const html = this.models.map(model => {
+                    const dotSize = Math.max(40, Math.min(200, (model.usage / 100) * 180));
+                    
+                    return `
+                        <div class="bubble">
+                            ${model.isExceeded ? '<div class="exceeded-banner">⚠️ CAPACITY LIMIT EXCEEDED!</div>' : ''}
+                            <div class="usage-dot ${model.isExceeded ? 'exceeded' : (model.isCritical ? 'critical' : '')}" 
+                                 style="width: ${dotSize}px; height: ${dotSize}px; color: ${model.companyColor}; opacity: ${Math.max(0.4, model.usage / 100)}">
+                            </div>
+                            <div style="position: relative; z-index: 2;">
+                                <div class="provider-name" style="color: ${model.companyColor};">${model.provider || 'Unknown'}</div>
+                                <div class="model-name">${model.model}</div>
+                                <div class="company-name">${model.company || model.provider}</div>
+                                <div class="user-name" style="background: ${model.userColor}20; color: ${model.userColor};">
+                                    👤 ${model.userFullName || model.user || 'Unknown User'}
+                                </div>
+                                <div class="usage-info">
+                                    ${model.used.toLocaleString()} / ${model.limit.toLocaleString()} ${model.unit}
+                                </div>
+                                <div style="font-size: 24px; margin-top: 8px; font-weight: bold; ${model.isExceeded ? 'color: #ff0000; text-shadow: 0 0 10px #ff0000;' : (model.isCritical ? 'color: #ff9f40;' : (model.isWarning ? 'color: #ff9f40;' : '#00ff80')))};">
+                                    ${model.isExceeded ? '⚠️ LIMIT EXCEEDED' : `${Math.round(model.usage)}% USED`}
+                                </div>
+                                ${model.isExceeded ? `<div style="font-size: 18px; color: #ff9999; margin-top: 5px;">Reduce usage or upgrade plan</div>` : ''}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                this.container.innerHTML = html;
+            }
+
+            startAutoUpdate() {
+                setInterval(() => {
+                    this.updateClock();
+                    this.fetchData();
+                }, this.updateInterval);
+            }
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new LLMBubbleMonitor();
+        });
+
+        // Handle visibility changes
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                // Optionally pause audio when page is hidden
+            } else {
+                // Optionally resume audio when visible
+            }
+        });
+
+        // Error handling
+        window.addEventListener('error', (e) => {
+            console.error('Page error:', e.error);
+        });
+
+        window.addEventListener('unhandledrejection', (e) => {
+            console.error('Unhandled promise rejection:', e.reason);
+        });
+    </script>
+</body>
+</html>
