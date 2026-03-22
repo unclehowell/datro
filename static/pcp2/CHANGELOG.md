@@ -10,6 +10,13 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changes
 
+Mar-22 - 1015 Argentina: fix(api): correct signature generation and address structure for R2R submission
+       - Implement HMAC SHA256 signature (was incorrectly base64 JSON)
+       - Fix addresses format to array (API requirement)
+       - Normalize input fields (trim, uppercase postcode)
+       - Align payload exactly with API validation expectations
+       - Improve logging for debugging upstream responses
+
 Mar-22 - 0957 Argentina: log form clouflare after submitting the form says signature is an issue. Developer and docs say base64 but 
          i'm going to try HMAC SHA256 i.e. payload.signature = btoa(JSON.stringify(signaturePayload));  
 Mar-22 - 0939 Argentina: fix to submit-claim.ts didn't push. Trying again.   

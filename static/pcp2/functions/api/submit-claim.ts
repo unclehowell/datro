@@ -3,6 +3,7 @@ export async function onRequestPost(context) {
 
   const affiliateId =
     env.VITE_AFFILIATE_ID || "a4429cda-e36a-472a-8291-ae01a49349d8";
+
   const apiKey =
     env.VITE_API_KEY || "8714de54-a64d-441b-8ef9-4a64318380b0";
 
@@ -26,50 +27,59 @@ export async function onRequestPost(context) {
       data.device_session_id ||
       crypto.randomUUID();
 
-    // ✅ Correct payload structure (NO array for addresses)
+    // ✅ NORMALIZE INPUTS
+    const first_name = (data.firstname || data.first_name || "").trim();
+    const last_name = (data.lastname || data.last_name || "").trim();
+    const date_of_birth = (data.dateofbirth || data.date_of_birth || "").trim();
+    const phone = (data.phone || "").trim();
+    const email = (data.email || "").trim();
+
+    const address = {
+      buildingNumber: (data.buildingNumber || "").trim(),
+      thoroughfare: (data.thoroughfare || "").trim(),
+      townOrCity: (data.townOrCity || "").trim(),
+      postcode: (data.postcode || "").toUpperCase().trim(),
+    };
+
+    // ✅ FINAL PAYLOAD (addresses MUST be array)
     const payload: any = {
-      first_name: data.firstname || data.first_name || data.firstName,
-      last_name: data.lastname || data.last_name || data.lastName,
-      date_of_birth: data.dateofbirth || data.date_of_birth,
-      phone: data.phone,
-      email: data.email,
+      first_name,
+      last_name,
+      date_of_birth,
+      phone,
+      email,
       client_ip,
       user_agent,
       session_id,
       device_session_id: session_id,
       account_creation_url: "https://car.financecheque.uk/claim",
-      addresses: {
-        buildingNumber: data.buildingNumber || "",
-        thoroughfare: data.thoroughfare || "",
-        townOrCity: data.townOrCity || "",
-        postcode: data.postcode || "",
-      },
+      addresses: [address],
     };
 
-    // ✅ Build signature payload (ONLY required fields)
+    // ✅ SIGNATURE PAYLOAD (must match exactly)
     const signaturePayload = JSON.stringify({
-      first_name: payload.first_name,
-      last_name: payload.last_name,
-      date_of_birth: payload.date_of_birth,
-      phone: payload.phone,
-      email: payload.email,
-      addresses: payload.addresses,
+      first_name,
+      last_name,
+      date_of_birth,
+      phone,
+      email,
+      addresses: [address],
     });
 
-    // ✅ Generate HMAC SHA256 signature
     payload.signature = await generateSignature(signaturePayload, apiKey);
 
     console.log("--- OUTGOING REQUEST TO UPSTREAM ---");
-    const upstreamUrl = `https://r2r.theclaimsystem.co.uk/api/v1/affiliate/${affiliateId}`;
-    console.log("URL:", upstreamUrl);
+    const url = `https://r2r.theclaimsystem.co.uk/api/v1/affiliate/${affiliateId}`;
+    console.log("URL:", url);
+    console.log("Signature Payload:", signaturePayload);
+    console.log("Signature:", payload.signature);
     console.log("Payload:", JSON.stringify(payload, null, 2));
 
-    // ✅ Clean headers (ONLY what’s needed)
-    const response = await fetch(upstreamUrl, {
+    const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
+        Accept: "application/json",
         "API-KEY": apiKey,
       },
       body: JSON.stringify(payload),
@@ -92,13 +102,13 @@ export async function onRequestPost(context) {
       status: response.status,
       headers: { "Content-Type": "application/json" },
     });
-  } catch (error: any) {
-    console.error("ERROR:", error);
+  } catch (err: any) {
+    console.error("ERROR:", err);
 
     return new Response(
       JSON.stringify({
         message: "Internal Server Error",
-        error: error.message,
+        error: err.message,
       }),
       {
         status: 500,
@@ -108,7 +118,7 @@ export async function onRequestPost(context) {
   }
 }
 
-// 🔐 HMAC SHA256 SIGNATURE FUNCTION
+// 🔐 HMAC SHA256 SIGNATURE
 async function generateSignature(payload: string, secret: string) {
   const encoder = new TextEncoder();
 
@@ -120,13 +130,13 @@ async function generateSignature(payload: string, secret: string) {
     ["sign"]
   );
 
-  const signatureBuffer = await crypto.subtle.sign(
+  const sigBuffer = await crypto.subtle.sign(
     "HMAC",
     key,
     encoder.encode(payload)
   );
 
   return btoa(
-    String.fromCharCode(...new Uint8Array(signatureBuffer))
+    String.fromCharCode(...new Uint8Array(sigBuffer))
   );
 }
