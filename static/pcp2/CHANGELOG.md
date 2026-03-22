@@ -10,6 +10,8 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changes
 
+Mar-22 - 0957 Argentina: log form clouflare after submitting the form says signature is an issue. Developer and docs say base64 but 
+         i'm going to try HMAC SHA256 i.e. payload.signature = btoa(JSON.stringify(signaturePayload));  
 Mar-22 - 0939 Argentina: fix to submit-claim.ts didn't push. Trying again.   
 Mar-22 - 0833 Argentina: Typo error in submit-claim.ts in last push. Fixed  
 Mar-22 - 0137 Argentina: The = padding in base64 may be getting corrupted in the journey. 
