@@ -59,7 +59,7 @@ export async function onRequestPost(context) {
 
     console.log("--- OUTGOING REQUEST TO UPSTREAM ---");
     // Using the real endpoint we had before, but with the new fields
-    const upstreamUrl = `https://r2r.theclaimsystem.co.uk/api/v1/affiliate/${affiliateId}`;
+    const upstreamUrl = `https://r2r.theclaimsystem.co.uk/api/v2/affiliate/${affiliateId}`;
     console.log("URL:", upstreamUrl);
     console.log("Payload:", JSON.stringify(payload, null, 2));
 

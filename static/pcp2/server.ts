@@ -72,7 +72,7 @@ async function startServer() {
       payload.account_creation_url = 'https://car.financecheque.uk/claim';
 
       console.log("--- PROXY: PREPARING UPSTREAM REQUEST ---");
-      const upstreamUrl = `https://r2r.theclaimsystem.co.uk/api/v1/affiliate/${affiliateId}`;
+      const upstreamUrl = `https://r2r.theclaimsystem.co.uk/api/v2/affiliate/${affiliateId}`;
       console.log("Target URL:", upstreamUrl);
       console.log("Affiliate ID used:", affiliateId);
       console.log("API Key present:", !!apiKey);
