@@ -46,7 +46,6 @@ export async function onRequestPost(context: any) {
     // ✅ SIGNATURE PAYLOAD (MATCH EXACTLY)
     // -------------------------
     const signaturePayloadObj = {
-      title,
       first_name,
       last_name,
       date_of_birth,
