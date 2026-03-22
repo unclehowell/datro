@@ -131,7 +131,6 @@ export const ClaimForm: React.FC = () => {
         : '';
 
       const signatureData = {
-        title: formData.title,
         first_name: formData.first_name,
         last_name: formData.last_name,
         date_of_birth: dobFormatted,

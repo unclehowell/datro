@@ -36,7 +36,6 @@ export async function onRequestPost(context) {
     // Only generate signature if missing from frontend
     if (!payload.signature) {
       const signaturePayload = {
-        title: payload.title,
         first_name: payload.first_name,
         last_name: payload.last_name,
         date_of_birth: payload.date_of_birth,
