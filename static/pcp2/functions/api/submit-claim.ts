@@ -2,7 +2,7 @@ export async function onRequestPost(context: any) {
   try {
     const req = context.request;
 
-    // ✅ Parse incoming form-data or JSON
+    // ✅ Parse request (supports form-data + JSON)
     let body: any = {};
     const contentType = req.headers.get("content-type") || "";
 
@@ -27,50 +27,36 @@ export async function onRequestPost(context: any) {
       .replace(/\s+/g, "")
       .toUpperCase();
 
-    // ✅ Build addresses array (REQUIRED FORMAT)
+    // ✅ Addresses MUST be an array
     const addresses = [
       {
-        buildingNumber,
+        buildingNumber: buildingNumber || null,
+        buildingName: null,
         thoroughfare,
         townOrCity,
         postcode,
+        line1: null,
+        line2: null,
+        line3: null,
+        line4: null,
+        district: null,
       },
     ];
 
-    // ✅ Signature payload (ONLY these fields, EXACT order)
-    const signaturePayloadObj = {
+    // ✅ Signature payload (ONLY these fields)
+    const signaturePayload = JSON.stringify({
       first_name,
       last_name,
       date_of_birth,
       phone,
       email,
       addresses,
-    };
+    });
 
-    const signaturePayload = JSON.stringify(signaturePayloadObj);
+    // ✅ Signature = BASE64(JSON STRING)  ← THIS IS THE KEY FIX
+    const signature = btoa(signaturePayload);
 
-    // ✅ Generate HMAC SHA256 (HEX — NOT base64)
-    const secret = context.env.R2R_SECRET;
-
-    const key = await crypto.subtle.importKey(
-      "raw",
-      new TextEncoder().encode(secret),
-      { name: "HMAC", hash: "SHA-256" },
-      false,
-      ["sign"]
-    );
-
-    const sigBuffer = await crypto.subtle.sign(
-      "HMAC",
-      key,
-      new TextEncoder().encode(signaturePayload)
-    );
-
-    const signature = Array.from(new Uint8Array(sigBuffer))
-      .map((b) => b.toString(16).padStart(2, "0"))
-      .join("");
-
-    // ✅ Build final payload
+    // ✅ Final payload
     const payload = {
       first_name,
       last_name,
@@ -86,19 +72,21 @@ export async function onRequestPost(context: any) {
       signature,
     };
 
-    // 🔍 Debug logs (keep these for now)
+    // 🔍 Debug logs
     console.log("--- OUTGOING REQUEST ---");
     console.log("Signature Payload:", signaturePayload);
     console.log("Signature:", signature);
     console.log("Payload:", JSON.stringify(payload, null, 2));
 
-    // ✅ Send to R2R
+    // ✅ Send request to R2R
     const res = await fetch(
       "https://r2r.theclaimsystem.co.uk/api/v1/affiliate/a4429cda-e36a-472a-8291-ae01a49349d8",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json",
+          "API-KEY": context.env.VITE_API_KEY, // ✅ REQUIRED
         },
         body: JSON.stringify(payload),
       }
@@ -117,8 +105,8 @@ export async function onRequestPost(context: any) {
         body: safeJsonParse(text),
       }),
       {
-        headers: { "Content-Type": "application/json" },
         status: res.status,
+        headers: { "Content-Type": "application/json" },
       }
     );
   } catch (err: any) {
@@ -136,7 +124,7 @@ export async function onRequestPost(context: any) {
   }
 }
 
-// ✅ Safe JSON parse helper
+// ✅ Safe JSON parser
 function safeJsonParse(text: string) {
   try {
     return JSON.parse(text);

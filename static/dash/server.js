@@ -3,7 +3,7 @@ const path = require('path');
 const EventEmitter = require('events');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // Token usage tracker with simplified logic
 class TokenTracker extends EventEmitter {
@@ -165,7 +165,7 @@ app.get('/dashboard', (req, res) => {
 });
 
 // Start server
-const server = app.listen(PORT, () => {
+const server = app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Token Visualization Dashboard`);
     console.log(`🌐 Running on: http://localhost:${PORT}`);
     console.log(`📊 Try these URLs:`);
