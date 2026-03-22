@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug - Test API</title>
+</head>
+<body>
+    <h1>Debug Page</h1>
+    <div id="results"></div>
+    <script>
+        async function testAPI() {
+            const results = document.getElementById('results');
+            try {
+                results.innerHTML += '📡 Testing API...<br>';
+                const response = await fetch('/api/llm-usage');
+                const data = await response.json();
+                results.innerHTML += '✅ API Response: ' + JSON.stringify(data, null, 2).substring(0, 200) + '...<br>';
+                results.innerHTML += '✅ Models found: ' + data.models.length + '<br>';
+            } catch (error) {
+                results.innerHTML += '❌ Error: ' + error.message + '<br>';
+                console.error('API Error:', error);
+            }
+        }
+        testAPI();
+    </script>
+</body>
+</html>

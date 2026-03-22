@@ -1,147 +1,174 @@
 const express = require('express');
 const path = require('path');
-const fs = require('fs');
-const { spawn } = require('child_process');
+const EventEmitter = require('events');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Token usage tracker with simplified logic
+class TokenTracker extends EventEmitter {
+    constructor() {
+        super();
+        this.isMonitoring = true;
+        this.activeUsers = new Map();
+        
+        // Setup defaults
+        this.setupDefaultUsers();
+        
+        console.log('🎯 Token tracking initialized');
+    }
+    
+    setupDefaultUsers() {
+        // Set up some example users
+        this.activeUsers.set('picoclaw', {
+            id: 'picoclaw',
+            name: 'PicoClaw Agent',
+            color: '#00ff80',
+            emoji: '⚡',
+            requests: 245,
+            lastSeen: Date.now(),
+            status: 'online',
+            type: 'agent'
+        });
+        
+        this.activeUsers.set('gemini-cli', {
+            id: 'gemini-cli',
+            name: 'Gemini CLI',
+            color: '#4285F4',
+            emoji: '📝',
+            requests: 23,
+            lastSeen: Date.now(),
+            status: 'online',
+            type: 'cli'
+        });
+    }
+    
+    createUsageSnapshot() {
+        // Simulate realistic usage patterns
+        const now = Date.now();
+        const usage = (Math.sin(now / 5000000) + 1) / 2; // Time-based oscillation
+        
+        return {
+            providers: [
+                {
+                    name: 'OpenAI',
+                    color: '#00A86B',
+                    models: [
+                        { name: 'GPT-4o', used: Math.floor(usage * 150 + 30), limit: 200, usage: Math.round(usage * 80 + 20), description: 'Powerful language model', stars: 5 },
+                        { name: 'GPT-4o Mini', used: Math.floor(usage * 180 + 150), limit: 500, usage: Math.round(usage * 50 + 40), description: 'Efficient model', stars: 4 }
+                    ]
+                },
+                {
+                    name: 'Anthropic',
+                    color: '#FF6B35',
+                    models: [
+                        { name: 'Claude 3.5', used: Math.floor(usage * 80 + 40), limit: 120, usage: Math.round(usage * 75 + 25), description: 'Advanced reasoning', stars: 5 },
+                        { name: 'Claude Haiku', used: Math.floor(usage * 200 + 50), limit: 250, usage: Math.round(usage * 80 + 20), description: 'Fast and efficient', stars: 4 }
+                    ]
+                },
+                {
+                    name: 'Google',
+                    color: '#4285F4',
+                    models: [
+                        { name: 'Gemini Pro', used: Math.floor(usage * 70 + 10), limit: 100, usage: Math.round(usage * 65 + 10), description: 'Gemini chat model', stars: 4 },
+                        { name: 'Gemini Flash', used: Math.floor(usage * 60 + 20), limit: 90, usage: Math.round(usage * 70 + 15), description: 'Gemini vision model', stars: 3 }
+                    ]
+                },
+                {
+                    name: 'Groq',
+                    color: '#1DA1F2',
+                    models: [
+                        { name: 'Llama 70B', used: Math.floor(usage * 45 + 5), limit: 50, usage: Math.round(usage * 90 + 5), description: 'Large language model', stars: 4 },
+                        { name: 'Llama 8B', used: Math.floor(usage * 80 + 20), limit: 100, usage: Math.round(usage * 75 + 25), description: 'Efficient model', stars: 3 }
+                    ]
+                }
+            ],
+            users: this.getUsers(),
+            devices: [],
+            timestamp: new Date().toISOString()
+        };
+    }
+    
+    getUsers() {
+        return Array.from(this.activeUsers.values());
+    }
+}
+
+const tracker = new TokenTracker();
 
 // Middleware
 app.use(express.json());
 app.use(express.static(__dirname));
 
-// API endpoint to get LLM usage data
+// CORS headers for all origins
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    next();
+});
+
+// API Routes
 app.get('/api/llm-usage', (req, res) => {
-  const usageData = getLLMUsageData();
-  res.json(usageData);
+    const data = tracker.createUsageSnapshot();
+    res.json(data);
 });
 
-// API endpoint to get active users and their colors
+app.get('/api/current-usage', (req, res) => {
+    res.json(tracker.createUsageSnapshot());
+});
+
+// Same as /api/active for backwards compatibility
 app.get('/api/users', (req, res) => {
-  const users = getActiveUsers();
-  res.json(users);
-});
-
-// Get LLM usage data from various sources
-function getLLMUsageData() {
-  const data = {
-    models: [],
-    lastUpdated: new Date().toISOString()
-  };
-
-  // Check if picoclaw is running
-  const picoclawStatus = checkPicoclawStatus();
-  
-  // Add picoclaw data if available
-  if (picoclawStatus.isRunning) {
-    data.models.push({
-      id: 'picoclaw',
-      model: 'PicoClaw Agent',
-      provider: 'Local',
-      limit: 1000,
-      used: picoclawStatus.usage || 0,
-      unit: 'Requests',
-      rating: 5,
-      isActive: true,
-      user: picoclawStatus.user || 'picoclaw'
+    res.json({
+        users: tracker.getUsers(),
+        devices: [],
+        timestamp: new Date().toISOString()
     });
-  }
+});
 
-  // Add other LLM API usage (this would be fetched from your monitoring system)
-  data.models.push(
-    {
-      id: 'gemini-user1',
-      model: 'Gemini Pro',
-      provider: 'Google',
-      limit: 60,
-      used: 45,
-      unit: 'Requests/min',
-      rating: 4,
-      isActive: true,
-      user: 'researcher'
-    },
-    {
-      id: 'groq-dev1',
-      model: 'Llama 3 70B',
-      provider: 'Groq',
-      limit: 30,
-      used: 12,
-      unit: 'RPM',
-      rating: 5,
-      isActive: true,
-      user: 'developer'
-    },
-    {
-      id: 'openai-backend',
-      model: 'GPT-4o Mini',
-      provider: 'OpenAI',
-      limit: 500,
-      used: 150,
-      unit: 'TPM',
-      rating: 5,
-      isActive: true,
-      user: 'backend'
+app.get('/api/active', (req, res) => {
+    res.json({
+        users: tracker.getUsers(),
+        devices: [],
+        timestamp: new Date().toISOString()
+    });
+});
+
+// Track usage events
+app.post('/api/track', (req, res) => {
+    const { deviceId } = req.body;
+    if (!deviceId) {
+        return res.status(400).json({ error: 'deviceId is required' });
     }
-  );
+    // For demo purposes, just return success
+    return res.json({ success: true, deviceId, timestamp: Date.now() });
+});
 
-  return data;
-}
+// Health check
+app.get('/api/health', (req, res) => {
+    res.json({
+        status: 'healthy',
+        uptime: process.uptime(),
+        timestamp: new Date().toISOString(),
+        version: '2.0'
+    });
+});
 
-function checkPicoclawStatus() {
-  try {
-    // Check if picoclaw is running
-    // This would be customized based on how picoclaw is actually running
-    const isRunning = fs.existsSync('/tmp/picoclaw.pid') || 
-                     (process.env.PICOCLAW_PID && fs.existsSync(`/proc/${process.env.PICOCLAW_PID}`));
-    
-    return {
-      isRunning: isRunning,
-      usage: 450, // Simulated usage
-      user: 'picoclaw'
-    };
-  } catch (error) {
-    return {
-      isRunning: false,
-      usage: 0,
-      user: 'picoclaw'
-    };
-  }
-}
-
-function getActiveUsers() {
-  return {
-    users: [
-      { id: 'picoclaw', name: 'PicoClaw Agent', color: '#00ff00', isActive: true },
-      { id: 'researcher', name: 'Research Bot', color: '#ff6b6b', isActive: true },
-      { id: 'developer', name: 'Dev Assistant', color: '#4ecdc4', isActive: true },
-      { id: 'backend', name: 'Backend Service', color: '#45b7d1', isActive: true }
-    ],
-    colorKey: [
-      { name: 'PicoClaw', color: '#00ff00', description: 'Local AI Agent' },
-      { name: 'Research', color: '#ff6b6b', description: 'General Research' },
-      { name: 'Development', color: '#4ecdc4', description: 'Code Generation & Dev' },
-      { name: 'Backend', color: '#45b7d1', description: 'Production Services' }
-    ]
-  };
-}
-
-// Serve the dashboard
+// Main dashboard routes
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'index-bubble.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 LLM Dashboard running on http://localhost:${PORT}`);
-  console.log(`📊 API endpoints available at /api/llm-usage and /api/users`);
+app.get('/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Graceful shutdown
-process.on('SIGTERM', () => {
-  console.log('SIGTERM received, shutting down gracefully');
-  process.exit(0);
-});
-
-process.on('SIGINT', () => {
-  console.log('SIGINT received, shutting down gracefully');
-  process.exit(0);
+// Start server
+const server = app.listen(PORT, () => {
+    console.log(`🚀 Token Visualization Dashboard`);
+    console.log(`🌐 Running on: http://localhost:${PORT}`);
+    console.log(`📊 Try these URLs:`);
+    console.log('   • / for bubble visualization');
+    console.log('   • /dashboard for user grid');
 });

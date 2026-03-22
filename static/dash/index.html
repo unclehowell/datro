@@ -1,702 +1,746 @@
 <!DOCTYPE html>
-<html lang="en" class="dark accessibility-mode">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LLM Bubble Monitor - Complete Overview</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Token Usage Dashboard</title>
     <style>
         :root {
-            --primary-bg: #000000;
-            --secondary-bg: #111111;
-            --text-primary: #ffffff;
-            --text-secondary: #cccccc;
-            --accent-glow: rgba(255, 255, 255, 0.1);
+            --primary-bg: #0f0f0f;
+            --secondary-bg: #1a1a1a;
+            --success: #00ff80;
+            --warning: #ff9f40;
+            --danger: #ff6b6b;
+            --info: #45b7d1;
+            --user-picoclaw: #00ff00;
+            --user-research: #ff6b6b;
+            --user-developer: #4ecdc4;
+            --user-backend: #45b7d1;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
             background: var(--primary-bg);
-            color: var(--text-primary);
-            overflow: hidden;
-            height: 100vh;
-            width: 100vw;
-            font-size: 24px; /* Large base font for accessibility */
-            line-height: 1.3;
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        .accessibility-mode {
-            font-size: 24px !important;
-        }
-
-        .bubble-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            padding: 40px;
-            height: 100vh;
-            align-items: start;
-            grid-auto-rows: auto;
-            overflow: hidden;
-            align-content: start;
-        }
-
-        .bubble {
-            background: linear-gradient(135deg, var(--secondary-bg), #222);
-            border: 3px solid rgba(255, 255, 255, 0.1);
-            border-radius: 40px;
-            padding: 25px;
+        .header {
+            padding: 2rem 3rem;
+            background: linear-gradient(135deg, var(--secondary-bg), #2a2a2a);
+            border-bottom: 2px solid #333;
             position: relative;
             overflow: hidden;
-            transition: all 0.3s ease;
-            min-height: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
 
-        .bubble:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
-        }
-
-        .usage-dot {
+        .header::before {
+            content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: currentColor;
-            filter: blur(0px);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 0 40px currentColor;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(0, 255, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 30%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(69, 183, 209, 0.1) 0%, transparent 50%);
             z-index: 1;
         }
 
-        .usage-dot.critical {
-            animation: pulseCritical 2s infinite;
-        }
-
-        .usage-dot.exceeded {
-            background: #ff0000 !important;
-            animation: pulseExceeded 1s infinite;
-        }
-
-        @keyframes pulseCritical {
-            0%, 100% { 
-                box-shadow: 0 0 40px currentColor;
-                opacity: 1;
-            }
-            50% { 
-                box-shadow: 0 0 80px currentColor, 0 0 120px currentColor;
-                opacity: 0.8;
-            }
-        }
-
-        @keyframes pulseExceeded {
-            0%, 100% { 
-                box-shadow: 0 0 60px rgba(255, 0, 0, 0.8);
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(1);
-            }
-            50% { 
-                box-shadow: 0 0 120px rgba(255, 0, 0, 1), 0 0 180px rgba(255, 0, 0, 0.6);
-                opacity: 0.9;
-                transform: translate(-50%, -50%) scale(1.2);
-            }
-        }
-
-        .provider-name {
-            font-size: 32px;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 5px;
+        .header-content {
             position: relative;
             z-index: 2;
-        }
-
-        .model-name {
-            font-size: 28px;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            color: var(--text-secondary);
-            margin-bottom: 5px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .company-name {
-            font-size: 20px;
-            color: #999;
-            font-weight: 500;
-            position: relative;
-            z-index: 2;
-        }
-
-        .user-name {
-            font-size: 24px;
-            font-weight: 700;
-            margin-top: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 6px 12px;
-            border-radius: 16px;
-            display: inline-block;
-            position: relative;
-            z-index: 2;
-        }
-
-        .usage-info {
-            font-size: 22px;
-            margin-top: 10px;
-            font-weight: 600;
-            position: relative;
-            z-index: 2;
-        }
-
-        .time-info {
-            position: fixed;
-            top: 20px;
-            right: 30px;
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--text-secondary);
-            background: var(--secondary-bg);
-            padding: 12px 24px;
-            border-radius: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
         }
 
         .title {
-            position: fixed;
-            top: 20px;
-            left: 30px;
-            font-size: 56px;
+            font-size: 2.5rem;
             font-weight: 900;
-            color: var(--text-primary);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .subtitle {
-            position: fixed;
-            top: 85px;
-            left: 30px;
-            font-size: 28px;
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 0 3rem;
+        }
+
+        .stat-card {
+            background: var(--secondary-bg);
+            border: 1px solid #333;
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-color: #555;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .users-section {
+            padding: 2rem 3rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
             color: #ccc;
-            font-weight: 500;
         }
 
-        /* Keys display */
-        .keys-container {
-            position: fixed;
-            bottom: 20px;
-            left: 30px;
-            right: 30px;
+        .users-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .user-card {
+            background: var(--secondary-bg);
+            border: 1px solid #333;
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .user-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .user-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
-            z-index: 10;
+            align-items: center;
+            margin-bottom: 1rem;
         }
 
-        .company-key, .user-key {
-            background: var(--secondary-bg);
-            padding: 15px 20px;
-            border-radius: 15px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .company-key {
-            max-width: 300px;
-        }
-
-        .user-key {
-            max-width: 400px;
-            margin-left: auto;
-        }
-
-        .key-title {
-            font-size: 20px;
+        .user-name {
+            font-size: 1.25rem;
             font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 10px;
-        }
-
-        .key-item {
             display: flex;
             align-items: center;
-            margin: 5px 0;
-            font-size: 16px;
+            gap: 0.5rem;
         }
 
-        .key-color {
-            width: 16px;
-            height: 16px;
+        .user-status {
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            margin-right: 8px;
-            min-width: 16px;
+            display: inline-block;
         }
 
-        .radio-player {
-            position: fixed;
-            bottom: 20px;
-            right: 30px;
-            width: 0;
-            height: 0;
-            opacity: 0;
-            pointer-events: none;
+        .status-online { background: var(--success); box-shadow: 0 0 8px var(--success); }
+        .status-offline { background: var(--danger); }
+        .status-idle { background: var(--warning); }
+
+        .usage-bar {
+            width: 100%;
+            height: 8px;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1rem 0;
         }
 
-        .loading {
+        .usage-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .usage-fill.low { background: var(--success); }
+        .usage-fill.medium { background: var(--warning); }
+        .usage-fill.high { background: var(--danger); }
+
+        .user-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-text {
+            color: #999;
+            font-size: 0.75rem;
+        }
+
+        .alerts-section {
+            background: linear-gradient(135deg, #2a1818, #1a1a1a);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 3rem;
+            border: 1px solid #444;
+        }
+
+        .alert-item {
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid var(--danger);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-            font-size: 40px;
-            font-weight: 700;
-            color: var(--text-secondary);
+            gap: 1rem;
         }
 
-        .error-message {
-            color: #ff6b6b;
-            font-size: 24px;
-            text-align: center;
-            margin-top: 20px;
+        .alert-icon {
+            font-size: 1.5rem;
+            color: var(--danger);
         }
 
-        .exceeded-banner {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #ff0000;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 20px;
-            font-weight: 700;
-            z-index: 3;
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        @media (max-width: 1920px) {
-            .bubble-container {
-                gap: 20px;
-            }
-            
-            .bubble {
-                padding: 20px;
-                min-height: 180px;
-            }
-        }
-
-        @media (max-width: 1366px) {
-            .bubble-container {
-                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-                padding: 30px 20px;
-            }
-            
-            .provider-name { font-size: 28px; }
-            .model-name { font-size: 24px; }
-            .user-name { font-size: 20px; }
-            .title { font-size: 48px; }
-            .subtitle { font-size: 24px; }
-        }
-
-        .connection-indicator {
+        .connection-status {
             position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 18px;
-            color: #999;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             background: var(--secondary-bg);
-            padding: 8px 16px;
+            padding: 0.75rem 1.5rem;
             border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            z-index: 10;
+            border: 1px solid #333;
+            z-index: 100;
         }
 
-        .connection-indicator.connected {
-            color: #00ff80;
-            border-color: #00ff80;
+        .connection-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
         }
 
-        .connection-indicator.disconnected {
-            color: #ff6b6b;
-            border-color: #ff6b6b;
+        .connected .connection-dot { background: var(--success); }
+        .disconnected .connection-dot { background: var(--danger); }
+
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; align-items: flex-start; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .users-grid { grid-template-columns: 1fr; }
+            .alerts-section { margin: 1rem; }
+            .connection-status { position: relative; top: auto; right: auto; margin: 1rem; }
+        }
+
+        .hidden { display: none !important; }
+        .pulse { animation: pulse 2s infinite; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
     </style>
 </head>
 <body>
-    <h1 class="title">LLM USAGE MONITOR</h1>
-    <p class="subtitle">All Models • Real-Time Bubbles • User Tracking</p>
-    
-    <div class="time-info" id="clock">--:--:--</div>
-    <div class="connection-indicator" id="connection">CONNECTING...</div>
-    
-    <!-- Company Color Key -->
-    <div class="keys-container">
-        <div class="company-key">
-            <div class="key-title">🏢 Company Colors</div>
-            <div id="company-key-items"></div>
+    <div id="connection-status" class="connection-status disconnected">
+        <div class="connection-dot"></div>
+        <span class="connection-text">Connecting...</span>
+    </div>
+
+    <header class="header">
+        <div class="header-content">
+            <div>
+                <h1 class="title">🚀 Token Usage Dashboard</h1>
+                <p>Real-time monitoring of your API usage across all services</p>
+            </div>
+            <div class="header-stats">
+                <div style="text-align: right;">
+                    <div id="last-update" style="font-size: 0.875rem; color: #999;">Last synced: --:--:--</div>
+                    <div id="next-update" style="font-size: 0.875rem; color: #666;">Next update: --:--:--</div>
+                </div>
+            </div>
         </div>
-        
-        <!-- User Color Key -->
-        <div class="user-key">
-            <div class="key-title">👤 User Colors</div>
-            <div id="user-key-items"></div>
+    </header>
+
+    <div class="stats-grid">
+        <div class="stat-card" data-type="total-users">
+            <div class="stat-value" id="total-users">0</div>
+            <div class="stat-label">Active Users</div>
+        </div>
+        <div class="stat-card" data-type="total-request">
+            <div class="stat-value" id="total-requests">0</div>
+            <div class="stat-label">Requests Today</div>
+        </div>
+        <div class="stat-card" data-type="active-services">
+            <div class="stat-value" id="active-services">0</div>
+            <div class="stat-label">Services</div>
+        </div>
+        <div class="stat-card" data-type="warnings">
+            <div class="stat-value" id="total-warnings" style="color: var(--danger);">0</div>
+            <div class="stat-label">Rate Warnings</div>
         </div>
     </div>
 
-    <audio autoplay loop class="radio-player" id="radioPlayer" preload="auto">
-        <source src="https://streaming.shoutcast.com/RadioMonteCarlo?lang=en" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+    <section class="users-section">
+        <h2 class="section-title">🎯 Users & Devices</h2>
+        <div class="users-grid" id="users-grid">
+            <div style="text-align: center; color: #999; padding: 4rem;">
+                <div class="pulse">🔄</div>
+                <p>Loading user data...</p>
+            </div>
+        </div>
 
-    <div class="bubble-container" id="bubble-container">
-        <div class="loading">Loading All LLM Models...</div>
-    </div>
+        <div id="alerts-container">
+            <div class="alerts-section">
+                <h3 class="section-title">⚠️ Rate Limit Alerts</h3>
+                <div id="alerts-list">
+                    <p style="color: #999; text-align: center;">No active alerts</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script>
-        class LLMBubbleMonitor {
+        class TokenDashboard {
             constructor() {
-                this.container = document.getElementById('bubble-container');
-                this.clock = document.getElementById('clock');
-                this.connection = document.getElementById('connection');
-                this.radioPlayer = document.getElementById('radioPlayer');
-                this.companyKeyContainer = document.getElementById('company-key-items');
-                this.userKeyContainer = document.getElementById('user-key-items');
-                this.models = [];
-                this.users = [];
-                this.companies = [];
-                this.lastUpdate = null;
-                this.updateInterval = 2000; // 2 seconds for real-time updates
+                this.apiUrl = '/api/llm-usage';
+                this.usersUrl = '/api/users';
+                this.updateInterval = 2000; // 2 seconds
+                this.lastUpdateTime = null;
+                this.updateTimer = null;
+                this.connectionStatus = document.getElementById('connection-status');
+                this.lastUpdateElement = document.getElementById('last-update');
+                this.nextUpdateElement = document.getElementById('next-update');
                 
-                // Color schemes
-                this.companyColors = {
-                    'OpenAI': '#00a67e',
-                    'Google': '#4285f4', 
-                    'Anthropic': '#d84271',
-                    'Groq': '#f7931a',
-                    'Local': '#00ff00',
-                    'Azure': '#0078d4',
-                    'AWS': '#ff9900',
-                    'Meta': '#1877f2',
-                    'Mistral': '#ff6c00',
-                    'Cohere': '#8b5cf6'
-                };
-
-                this.userColors = {
-                    'picoclaw': '#00ff00',      // Bright green
-                    'researcher': '#ff6b6b',    // Red
-                    'developer': '#4ecdc4',   // Teal
-                    'backend': '#45b7d1',       // Blue
-                    'data-scientist': '#9b59b6', // Purple
-                    'devops': '#e67e22',        // Orange
-                    'analyst': '#1abc9c'         // Turquoise
-                };
-
                 this.init();
             }
 
             init() {
-                this.updateClock();
-                this.setupColorKeys();
-                this.startRadioPlayer();
-                this.fetchData();
-                this.startAutoUpdate();
+                this.updateConnection(false);
+                this.startAutoRefresh();
+                this.bindEventListeners();
+                this.refreshData();
             }
 
-            setupColorKeys() {
-                // Set up company key
-                const companyHTML = Object.entries(this.companyColors).map(([company, color]) => `
-                    <div class="key-item">
-                        <div class="key-color" style="background-color: ${color};"></div>
-                        <span>${company}</span>
-                    </div>
-                `).join('');
-                this.companyKeyContainer.innerHTML = companyHTML;
-
-                // Set up user key
-                const userHTML = Object.entries(this.userColors).map(([user, color]) => `
-                    <div class="key-item">
-                        <div class="key-color" style="background-color: ${color};"></div>
-                        <span>${user}</span>
-                    </div>
-                `).join('');
-                this.userKeyContainer.innerHTML = userHTML;
-            }
-
-            startRadioPlayer() {
-                const radioUrls = [
-                    'https://streaming.shoutcast.com/RadioMonteCarlo?lang=en',
-                    'https://relay.radioparadise.com/rp_192.ogg',
-                    'https://stream.azuracast.com/radio/8000/radio.mp3'
-                ];
-
-                let currentUrlIndex = 0;
-                
-                const tryNextStream = () => {
-                    if (currentUrlIndex >= radioUrls.length) return;
-                    
-                    const url = radioUrls[currentUrlIndex];
-                    this.radioPlayer.src = url;
-                    
-                    this.radioPlayer.addEventListener('error', () => {
-                        console.log(`Radio stream ${url} failed, trying next...`);
-                        currentUrlIndex++;
-                        tryNextStream();
+            bindEventListeners() {
+                // Add click handlers for stat cards
+                document.querySelectorAll('.stat-card').forEach(card => {
+                    card.addEventListener('click', (e) => {
+                        this.handleStatCardClick(e.currentTarget);
                     });
-                };
-
-                tryNextStream();
-                this.radioPlayer.volume = 0.3;
-            }
-
-            updateClock() {
-                const now = new Date();
-                this.clock.textContent = now.toLocaleTimeString('en-GB', {
-                    hour12: false,
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit'
                 });
             }
 
-            async fetchData() {
-                try {
-                    const response = await fetch('/api/llm-usage');
-                    const data = await response.json();
-                    
-                    // Process all models including exceeded capacity ones
-                    this.models = this.processModels(data.models);
-                    this.lastUpdate = new Date();
-                    this.renderBubbles();
-                    this.updateConnectionStatus(true);
-                } catch (error) {
-                    console.error('Failed to fetch data:', error);
-                    this.updateConnectionStatus(false);
-                    
-                    // Fallback data including exceeded models
-                    const fallbackData = [
-                        {
-                            id: 'picoclaw',
-                            model: 'PicoClaw Agent', 
-                            provider: 'Local',
-                            limit: 1000,
-                            used: 450,
-                            unit: 'Requests',
-                            rating: 5,
-                            isActive: true,
-                            user: 'picoclaw',
-                            userFullName: 'PicoClaw AI Agent'
-                        },
-                        {
-                            id: 'gemini-user1',
-                            model: 'Gemini Pro',
-                            provider: 'Google', 
-                            limit: 60,
-                            used: 58, // Nearly exceeded
-                            unit: 'RPM',
-                            rating: 4,
-                            isActive: true,
-                            user: 'researcher',
-                            userFullName: 'Research Team'
-                        },
-                        {
-                            id: 'openai-codex',
-                            model: 'Codex',
-                            provider: 'OpenAI',
-                            limit: 100,
-                            used: 105, // EXCEEDED!
-                            unit: 'Requests',
-                            rating: 5,
-                            isActive: true,
-                            user: 'developer',
-                            userFullName: 'Developer Tools'
-                        },
-                        {
-                            id: 'anthropic-claude',
-                            model: 'Claude 3',
-                            provider: 'Anthropic',
-                            limit: 50,
-                            used: 52, // EXCEEDED!
-                            unit: 'Messages',
-                            rating: 4,
-                            isActive: true,
-                            user: 'data-scientist',
-                            userFullName: 'Data Science'
-                        },
-                        {
-                            id: 'groq-dev1',
-                            model: 'Llama 3 70B',
-                            provider: 'Groq',
-                            limit: 30,
-                            used: 12,
-                            unit: 'RPM',
-                            rating: 5,
-                            isActive: true,
-                            user: 'developer',
-                            userFullName: 'Development Team'
-                        },
-                        {
-                            id: 'openai-backend',
-                            model: 'GPT-4o Mini',
-                            provider: 'OpenAI',
-                            limit: 500,
-                            used: 150,
-                            unit: 'TPM',
-                            rating: 5,
-                            isActive: true,
-                            user: 'backend',
-                            userFullName: 'Backend Services'
-                        },
-                        {
-                            id: 'openai-dall-e',
-                            model: 'DALL-E 3',
-                            provider: 'OpenAI',
-                            limit: 200,
-                            used: 210, // EXCEEDED!
-                            unit: 'Images',
-                            rating: 5,
-                            isActive: true,
-                            user: 'analyst',
-                            userFullName: 'Analytics & Reports'
-                        },
-                        {
-                            id: 'azure-gpt4',
-                            model: 'GPT-4 Turbo',
-                            provider: 'Azure',
-                            limit: 1000,
-                            used: 850, // Approaching limit
-                            unit: 'Tokens',
-                            rating: 5,
-                            isActive: true,
-                            user: 'backend',
-                            userFullName: 'Backend Services'
-                        }
-                    ];
-                    
-                    this.models = this.processModels(fallbackData);
-                    this.renderBubbles();
+            handleStatCardClick(card) {
+                const type = card.dataset.type;
+                console.log(`Stat card clicked: ${type}`);
+                // Add specific actions for different card types
+                
+                switch(type) {
+                    case 'total-users':
+                        this.showUserDetails();
+                        break;
+                    case 'warnings':
+                        this.showAlerts();
+                        break;
+                    case 'active-services':
+                        this.showServiceStatus();
+                        break;
                 }
             }
 
-            processModels(rawModels) {
-                // Add proper color coding and user info
-                return rawModels.map(model => {
-                    const companyColor = this.companyColors[model.provider] || '#ffffff';
-                    const userColor = this.userColors[model.user] || '#ffffff';
-                    const usage = (model.used / model.limit) * 100;
-                    const isExceeded = model.used > model.limit;
-                    const isCritical = usage > 85 && !isExceeded;
+            async refreshData() {
+                try {
+                    this.updateConnection(false);
                     
-                    return {
-                        ...model,
-                        companyColor,
-                        userColor,
-                        usage,
-                        isExceeded,
-                        isCritical,
-                        isWarning: usage > 50 && !isExceeded && !isCritical
-                    };
-                }).sort((a, b) => {
-                    // Sort by severity: exceeded first, then critical, then warning, then normal
-                    if (a.isExceeded && !b.isExceeded) return -1;
-                    if (!a.isExceeded && b.isExceeded) return 1;
-                    if (a.isCritical && !b.isCritical) return -1;
-                    if (!a.isCritical && b.isCritical) return 1;
-                    if (a.isWarning && !b.isWarning) return -1;
-                    if (!a.isWarning && b.isWarning) return 1;
-                    return b.usage - a.usage; // Higher usage first
-                });
+                    const [usageResponse, usersResponse] = await Promise.all([
+                        fetch(this.apiUrl),
+                        fetch(this.usersUrl)
+                    ]);
+
+                    const usageData = await usageResponse.json();
+                    const usersData = await usersResponse.json();
+
+                    this.updateDashboard(usageData, usersData);
+                    this.lastUpdateTime = new Date();
+                    this.updateUpdateTime();
+                    this.updateConnection(true);
+                    
+                } catch (error) {
+                    console.error('Dashboard refresh failed:', error);
+                    this.updateConnection(false);
+                    this.showError('Failed to load data');
+                }
             }
 
-            updateConnectionStatus(connected) {
-                this.connection.textContent = connected ? 'CONNECTED' : 'DISCONNECTED';
-                this.connection.className = `connection-indicator ${connected ? 'connected' : 'disconnected'}`;
+            updateDashboard(usageData, usersData) {
+                this.updateStats(usageData);
+                this.updateUsersGrid(usersData);
+                this.updateAlerts(usageData);
             }
 
-            renderBubbles() {
-                if (this.models.length === 0) return;
+            updateStats(data) {
+                const totalUsers = data.models.length;
+                const totalRequests = data.models.reduce((sum, model) => sum + (model.used || 0), 0);
+                const totalWarnings = data.models.filter(model => {
+                    const usage = (model.used / model.limit) * 100;
+                    return usage > 80;
+                }).length;
+                const activeServices = data.models.length;
 
-                const html = this.models.map(model => {
-                    const dotSize = Math.max(40, Math.min(200, (model.usage / 100) * 180));
+                this.updateValue('total-users', totalUsers);
+                this.updateValue('total-requests', totalRequests.toLocaleString());
+                this.updateValue('active-services', activeServices);
+                this.updateValue('total-warnings', totalWarnings);
+            }
+
+            updateUsersGrid(usersData) {
+                const grid = document.getElementById('users-grid');
+                const users = usersData.users || [];
+
+                if (users.length === 0) {
+                    grid.innerHTML = '<div style="text-align: center; color: #999; padding: 4rem;">No active users</div>';
+                    return;
+                }
+
+                grid.innerHTML = users.map(user => {
+                    const usage = 65 + Math.random() * 30; // Mock usage
+                    const usageCategory = usage > 85 ? 'high' : usage > 50 ? 'medium' : 'low';
+                    const isOnline = Math.random() > 0.3;
                     
                     return `
-                        <div class="bubble">
-                            ${model.isExceeded ? '<div class="exceeded-banner">⚠️ CAPACITY LIMIT EXCEEDED!</div>' : ''}
-                            <div class="usage-dot ${model.isExceeded ? 'exceeded' : (model.isCritical ? 'critical' : '')}" 
-                                 style="width: ${dotSize}px; height: ${dotSize}px; color: ${model.companyColor}; opacity: ${Math.max(0.4, model.usage / 100)}">
+                        <div class="user-card">
+                            <div class="user-header">
+                                <div class="user-name">
+                                    ${user.name}
+                                    <span class="user-status status-${isOnline ? 'online' : 'offline'}"></span>
+                                </div>
+                                <div style="color: ${user.color}">${user.emoji || '🚀'}</div>
                             </div>
-                            <div style="position: relative; z-index: 2;">
-                                <div class="provider-name" style="color: ${model.companyColor};">${model.provider || 'Unknown'}</div>
-                                <div class="model-name">${model.model}</div>
-                                <div class="company-name">${model.company || model.provider}</div>
-                                <div class="user-name" style="background: ${model.userColor}20; color: ${model.userColor};">
-                                    👤 ${model.userFullName || model.user || 'Unknown User'}
+                            
+                            <div class="usage-bar">
+                                <div class="usage-fill ${usageCategory}" style="width: ${usage}%"></div>
+                            </div>
+                            
+                            <div class="user-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">${usage.toFixed(0)}%</span>
+                                    <div class="stat-text">Usage</div>
                                 </div>
-                                <div class="usage-info">
-                                    ${model.used.toLocaleString()} / ${model.limit.toLocaleString()} ${model.unit}
+                                <div class="stat-item">
+                                    <span class="stat-number">${Math.floor(Math.random() * 100)}</span>
+                                    <div class="stat-text">Req/min</div>
                                 </div>
-                                <div style="font-size: 24px; margin-top: 8px; font-weight: bold; ${model.isExceeded ? 'color: #ff0000; text-shadow: 0 0 10px #ff0000;' : (model.isCritical ? 'color: #ff9f40;' : (model.isWarning ? 'color: #ff9f40;' : '#00ff80')))};">
-                                    ${model.isExceeded ? '⚠️ LIMIT EXCEEDED' : `${Math.round(model.usage)}% USED`}
-                                </div>
-                                ${model.isExceeded ? `<div style="font-size: 18px; color: #ff9999; margin-top: 5px;">Reduce usage or upgrade plan</div>` : ''}
+                            </div>
+                            
+                            <div style="font-size: 0.75rem; color: #999; margin-top: 1rem;">
+                                Last active: <span title="${new Date().toISOString()}">Now</span>
                             </div>
                         </div>
                     `;
                 }).join('');
-
-                this.container.innerHTML = html;
             }
 
-            startAutoUpdate() {
-                setInterval(() => {
-                    this.updateClock();
-                    this.fetchData();
+            updateAlerts(data) {
+                const alertsList = document.getElementById('alerts-list');
+                const alerts = data.models.filter(model => {
+                    const usage = (model.used / model.limit) * 100;
+                    return usage > 75;
+                });
+
+                if (alerts.length === 0) {
+                    alertsList.innerHTML = '<p style="color: #999; text-align: center;">No active alerts</p>';
+                    return;
+                }
+
+                alertsList.innerHTML = alerts.map(alert => {
+                    const usage = (alert.used / alert.limit) * 100;
+                    return `
+                        <div class="alert-item">
+                            <div class="alert-icon">🚨</div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: 600;">${alert.provider} - ${alert.model}</div>
+                                <div style="font-size: 0.875rem; color: #ccc;">
+                                    ${Math.round(usage)}% used • ${alert.used}/${alert.limit} requests
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            updateValue(elementId, value, animate = true) {
+                const element = document.getElementById(elementId);
+                if (!element) return;
+
+                const currentValue = element.textContent;
+                const newValue = String(value);
+
+                if (animate && currentValue !== newValue) {
+                    element.classList.add('pulse');
+                    setTimeout(() => element.classList.remove('pulse'), 1000);
+                }
+
+                element.textContent = newValue;
+            }
+
+            updateConnection(connected) {
+                const status = this.connectionStatus;
+                status.className = `connection-status ${connected ? 'connected' : 'disconnected'}`;
+                status.querySelector('.connection-text').textContent = connected ? 'Connected' : 'Disconnected';
+            }
+
+            updateUpdateTime() {
+                if (!this.lastUpdateTime) return;
+                
+                const now = new Date();
+                const lastUpdate = this.lastUpdateTime.toLocaleTimeString('en-US', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+
+                const nextUpdate = new Date(this.lastUpdateTime.getTime() + this.updateInterval);
+                const nextUpdateTime = nextUpdate.toLocaleTimeString('en-US', {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+
+                this.lastUpdateElement.textContent = `Last synced: ${lastUpdate}`;
+                this.nextUpdateElement.textContent = `Next: ${nextUpdateTime}`;
+            }
+
+            startAutoRefresh() {
+                this.updateTimer = setInterval(() => {
+                    this.refreshData();
                 }, this.updateInterval);
+                
+                // Update time display every second
+                setInterval(() => {
+                    if (this.lastUpdateTime) {
+                        this.updateUpdateTime();
+                    }
+                }, 1000);
+            }
+
+            stopAutoRefresh() {
+                if (this.updateTimer) {
+                    clearInterval(this.updateTimer);
+                    this.updateTimer = null;
+                }
+            }
+
+            showError(message) {
+                const usersGrid = document.getElementById('users-grid');
+                if (usersGrid) {
+                    usersGrid.innerHTML = `<div style="text-align: center; color: var(--danger); padding: 4rem;">${message}</div>`;
+                }
+            }
+
+            // Enhanced functionality placeholders
+            showUserDetails() {
+                console.log('Show user details modal');
+                // Implement detailed user modal
+            }
+
+            showAlerts() {
+                this.scrollToElement('alerts-list');
+            }
+
+            showServiceStatus() {
+                console.log('Show service status details');
+                // Implement service status modal
+            }
+
+            scrollToElement(elementId) {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+
+            destroy() {
+                this.stopAutoRefresh();
+                // Remove event listeners, clean up...
             }
         }
 
-        // Initialize when DOM is ready
-        document.addEventListener('DOMContentLoaded', () => {
-            new LLMBubbleMonitor();
-        });
-
-        // Handle visibility changes
+        // Initialize dashboard when page loads
+        const dashboard = new TokenDashboard();
+        
+        // Handle page visibility to pause/resume updates
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) {
-                // Optionally pause audio when page is hidden
+                dashboard.stopAutoRefresh();
             } else {
-                // Optionally resume audio when visible
+                dashboard.refreshData();
+                dashboard.startAutoRefresh();
             }
         });
 
-        // Error handling
-        window.addEventListener('error', (e) => {
-            console.error('Page error:', e.error);
+        // Handle cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            dashboard.destroy();
         });
+    </script>
+</body>
+</html>
+                    });
+                });
 
-        window.addEventListener('unhandledrejection', (e) => {
-            console.error('Unhandled promise rejection:', e.reason);
-        });
+                this.lastUpdate = new Date();
+            }
+
+            startRealTimeRefresh() {
+                // Try WebSocket connection for real-time updates
+                this.connectWebSocket();
+                
+                // Fallback to regular refresh
+                this.refreshInterval = setInterval(() => {
+                    this.refresh();
+                }, 3000); // Refresh every 3 seconds
+            }
+
+            connectWebSocket() {
+                try {
+                    this.ws = new WebSocket(`ws://${window.location.host}/ws`);
+                    
+                    this.ws.onopen = () => {
+                        console.log('WebSocket connected for real-time updates');
+                        document.getElementById('status').textContent = 'Real-time';
+                    };
+
+                    this.ws.onmessage = (event) => {
+                        try {
+                            const data = JSON.parse(event.data);
+                            console.log('WebSocket update:', data);
+                            
+                            // Process real-time updates
+                            if (data.type === 'tokenUsageUpdate') {
+                                this.updateLiveUsage(data);
+                            }
+                        } catch (e) {
+                            console.error('WebSocket message error:', e);
+                        }
+                    };
+
+                    this.ws.onclose = () => {
+                        console.log('WebSocket disconnected');
+                        document.getElementById('status').textContent = 'Polling';
+                        // Attempt reconnection after 5 seconds
+                        setTimeout(() => this.connectWebSocket(), 5000);
+                    };
+
+                    this.ws.onerror = (error) => {
+                        console.error('WebSocket error:', error);
+                        document.getElementById('status').textContent = 'Error';
+                    };
+                } catch (error) {
+                    console.warn('WebSocket not available, falling back to polling:', error);
+                    document.getElementById('status').textContent = 'Polling';
+                }
+            }
+
+            updateLiveUsage(data) {
+                // Apply real-time updates to the visualization
+                const { company, model, currentUsage, limit } = data;
+                
+                if (company && model && currentUsage !== undefined && limit) {
+                    // Find the relevant company container
+                    const companyElement = document.querySelector(`[data-company="${company}"]`);
+                    if (companyElement) {
+                        const modelSquare = companyElement.querySelector(`.model-square:nth-child(${data.modelIndex + 1})`);
+                        if (modelSquare) {
+                            const usage = (currentUsage / limit) * 100;
+                            const scale = 0.3 + (Math.min(100, Math.max(0, usage)) / 100) * 0.7;
+                            
+                            // Animate the update
+                            modelSquare.style.transition = 'all 0.8s cubic-bezier(0.22, 1, 0.36, 1)';
+                            modelSquare.style.transform = `scale(${scale})`;
+                            modelSquare.style.opacity = Math.max(0.6, usage / 100);
+                            
+                            // Update the fill and usage text
+                            const fill = modelSquare.querySelector('.model-fill');
+                            if (fill) {
+                                fill.style.transition = 'height 0.8s cubic-bezier(0.22, 1, 0.36, 1)';
+                                fill.style.height = `${Math.round(usage)}%`;
+                            }
+                            
+                            const usageText = modelSquare.querySelector('.usage-text');
+                            if (usageText) {
+                                usageText.textContent = `${Math.round(usage)}%`;
+                            }
+                           
+                            // Apply styling based on usage
+                            if (usage >= 90) {
+                                modelSquare.classList.add('filled');
+                                modelSquare.style.borderColor = 'rgba(255, 100, 100, 0.7)';
+                            } else if (usage >= 75) {
+                                modelSquare.classList.remove('filled');
+                                modelSquare.style.borderColor = 'rgba(255, 200, 0, 0.7)';
+                            } else {
+                                modelSquare.classList.remove('filled');
+                                modelSquare.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                            }
+                        }
+                    }
+                }
+            }
+
+            hideLoading() {
+                const loading = document.getElementById('loading');
+                if (loading) {
+                    loading.style.opacity = '0';
+                    setTimeout(() => loading.remove(), 500);
+                }
+            }
+
+            stop() {
+                if (this.refreshInterval) {
+                    clearInterval(this.refreshInterval);
+                }
+            }
+        }
+
+        // Initialize the dashboard
+        const dashboard = new TokenDashboard();
     </script>
 </body>
 </html>

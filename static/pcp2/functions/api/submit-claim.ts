@@ -1,4 +1,3 @@
-unclehowell@na:~/datro/static/pcp2/functions/api$ cat submit-claim.ts 
 export async function onRequestPost(context) {
   const { request, env } = context;
   
