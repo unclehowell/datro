@@ -20,6 +20,7 @@ export const ClaimForm: React.FC = () => {
   const [kountReady, setKountReady] = useState(false);
   
   const [formData, setFormData] = useState({
+    title: 'Mr',
     first_name: '',
     last_name: '',
     date_of_birth: '',
@@ -70,7 +71,7 @@ export const ClaimForm: React.FC = () => {
     }
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     let value = e.target.value;
     
     if (e.target.name === 'date_of_birth') {
@@ -130,23 +131,25 @@ export const ClaimForm: React.FC = () => {
         : '';
 
       const signatureData = {
+        title: formData.title,
         first_name: formData.first_name,
         last_name: formData.last_name,
         date_of_birth: dobFormatted,
         phone: formData.phone,
         email: formData.email,
-        addresses: [{
+        addresses: {
           buildingNumber: formData.buildingNumber || '',
           thoroughfare: formData.thoroughfare || '',
           townOrCity: formData.townOrCity || '',
           postcode: formData.postcode || ''
-        }]
+        }
       };
 
       const signature = btoa(JSON.stringify(signatureData));
       
       // Use FormData as requested by user
       const submissionData = new FormData();
+      submissionData.append('title', formData.title);
       submissionData.append('first_name', formData.first_name);
       submissionData.append('last_name', formData.last_name);
       submissionData.append('date_of_birth', dobFormatted);
@@ -254,6 +257,22 @@ export const ClaimForm: React.FC = () => {
               exit={{ opacity: 0, x: -20 }}
               className="space-y-4"
             >
+              <div className="space-y-1">
+                <label htmlFor="title" className="text-xs font-black uppercase tracking-wider text-brand-primary">Title</label>
+                <select
+                  id="title"
+                  name="title"
+                  value={formData.title}
+                  onChange={handleChange}
+                  className="w-full p-4 border-4 border-brand-primary focus:bg-brand-accent outline-none font-bold uppercase transition-colors bg-white"
+                >
+                  <option value="Mr">Mr</option>
+                  <option value="Mrs">Mrs</option>
+                  <option value="Miss">Miss</option>
+                  <option value="Ms">Ms</option>
+                  <option value="Dr">Dr</option>
+                </select>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <label htmlFor="first_name" className="text-xs font-black uppercase tracking-wider text-brand-primary">First Name</label>

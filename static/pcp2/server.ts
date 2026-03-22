@@ -27,6 +27,7 @@ async function startServer() {
       const session_id = data.session_id || data.sessionid || data.device_session_id || crypto.randomUUID();
 
       const payload: any = {
+        title: data.title || 'Mr',
         first_name: data.firstname || data.first_name || data.firstName,
         last_name: data.lastname || data.last_name || data.lastName,
         date_of_birth: data.dateofbirth || data.date_of_birth,
@@ -36,43 +37,36 @@ async function startServer() {
         user_agent: user_agent,
         session_id: session_id,
         signature: data.signature || '',
-        addresses: [
-          {
-            line1: null,
-            line2: null,
-            line3: null,
-            line4: null,
-            buildingName: null,
-            buildingNumber: data.buildingNumber || '',
-            thoroughfare: data.thoroughfare || '',
-            townOrCity: data.townOrCity || '',
-            district: null,
-            postcode: data.postcode || ''
-          }
-        ]
+        addresses: {
+          buildingNumber: data.buildingNumber || '',
+          thoroughfare: data.thoroughfare || '',
+          townOrCity: data.townOrCity || '',
+          postcode: data.postcode || ''
+        }
       };
 
       // Only generate signature if missing from frontend
       if (!payload.signature) {
         const signaturePayload = {
+          title: payload.title,
           first_name: payload.first_name,
           last_name: payload.last_name,
           date_of_birth: payload.date_of_birth,
           phone: payload.phone,
           email: payload.email,
-          addresses: [{
+          addresses: {
             buildingNumber: data.buildingNumber || '',
             thoroughfare: data.thoroughfare || '',
             townOrCity: data.townOrCity || '',
             postcode: data.postcode || ''
-          }]
+          }
         };
         payload.signature = btoa(JSON.stringify(signaturePayload));
       }
       
       // Add ViewThru specific fields
       payload.device_session_id = session_id;
-      payload.account_creation_url = 'https://pcp2.pages.dev/claim';
+      payload.account_creation_url = 'https://car.financecheque.uk/claim';
 
       console.log("--- PROXY: PREPARING UPSTREAM REQUEST ---");
       const upstreamUrl = `https://r2r.theclaimsystem.co.uk/api/v1/affiliate/${affiliateId}`;
@@ -88,8 +82,8 @@ async function startServer() {
         'Authorization': `Bearer ${apiKey}`,
         'X-Affiliate-ID': affiliateId,
         'User-Agent': req.headers['user-agent'] || 'Express-Server',
-        'Origin': 'https://pcp2.pages.dev',
-        'Referer': 'https://pcp2.pages.dev/claim'
+        'Origin': 'https://car.financecheque.uk',
+        'Referer': 'https://car.financecheque.uk/claim'
       };
 
       const response = await fetch(upstreamUrl, {
