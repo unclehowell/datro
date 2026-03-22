@@ -9,8 +9,8 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [pcp.01] - Q1/2026
 
 ### Changes
-Mar-22 - 1630 Argentina: fix(api+form): addresses reverted to array (R2R treats object keys as array elements), fix error detection in ClaimForm to check result.body not result (was silently navigating to thank-you on validation failure)
-Mar-22 - 1530 Argentina: fix(api): title field now forwarded to R2R, addresses changed from array to object, no field mutation/normalisation - raw input only, title included in signature payload, device_session_id falls back to session_id before UUID
+Mar-22 - 1258 Argentina: fix(api+form): addresses reverted to array (R2R treats object keys as array elements), fix error detection in ClaimForm to check result.body not result (was silently navigating to thank-you on validation failure)
+Mar-22 - 1242 Argentina: fix(api): title field now forwarded to R2R, addresses changed from array to object, no field mutation/normalisation - raw input only, title included in signature payload, device_session_id falls back to session_id before UUID
 Mar      1221
 Mar      1143 Argentina: Scrapped HMAC, Proper base64 signature, Correct headers (API-KEY), Correct addresses array, Proper error handling  
 Mar      1120 Argentina: export was missing, put it back. some other changes , see diff in commit  
