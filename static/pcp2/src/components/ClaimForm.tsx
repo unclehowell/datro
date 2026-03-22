@@ -196,21 +196,22 @@ export const ClaimForm: React.FC = () => {
       }
 
       // Catch ViewThru validation errors that return HTTP 200
+      const body = result.body || result;
       if (
-        result.message === "Validation failed." ||
-        result.error ||
-        (result.errors && Object.keys(result.errors).length > 0) ||
-        result.success === false ||
-        result.status === 'error'
+        body.message === "Validation failed." ||
+        body.error ||
+        (body.errors && Object.keys(body.errors).length > 0) ||
+        body.success === false ||
+        body.status === 'error'
       ) {
-        const errorMsg = result.message || 
-          (result.errors ? JSON.stringify(result.errors) : 'Submission rejected by server');
+        const errorMsg = body.message ||
+          (body.errors ? JSON.stringify(body.errors) : 'Submission rejected by server');
         throw new Error(errorMsg);
       }
 
-      if (result.status === 'authentication-required') {
+      if (body.status === 'authentication-required') {
         console.log('--- BROWSER: AUTH REQUIRED, REDIRECTING ---');
-        window.location.href = result.url;
+        window.location.href = body.url;
       } else {
         console.log('--- BROWSER: SUCCESS, NAVIGATING TO THANK YOU ---');
         navigate('/thank-you');

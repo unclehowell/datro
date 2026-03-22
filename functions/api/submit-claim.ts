@@ -31,14 +31,16 @@ export async function onRequestPost(context: any) {
     const postcode = String(body.postcode || "").trim();
 
     // -------------------------
-    // ✅ ADDRESS = OBJECT (NOT ARRAY)
+    // ✅ ADDRESS = ARRAY OF OBJECTS
     // -------------------------
-    const addresses = {
-      buildingNumber,
-      thoroughfare,
-      townOrCity,
-      postcode,
-    };
+    const addresses = [
+      {
+        buildingNumber,
+        thoroughfare,
+        townOrCity,
+        postcode,
+      },
+    ];
 
     // -------------------------
     // ✅ SIGNATURE PAYLOAD (MATCH EXACTLY)
