@@ -13,7 +13,6 @@ export async function onRequestPost(context) {
     const session_id = data.session_id || data.sessionid || data.device_session_id || crypto.randomUUID();
 
     const payload: any = {
-      title: data.title || 'Mr',
       first_name: data.firstname || data.first_name || data.firstName,
       last_name: data.lastname || data.last_name || data.lastName,
       date_of_birth: data.dateofbirth || data.date_of_birth,

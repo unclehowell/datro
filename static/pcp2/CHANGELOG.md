@@ -10,5 +10,6 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changes
 
-Mar-22 - 0043 Argentina: Tried api v2, better to go back to v1 hence this change.  
+Mar-22 - 0057 Argentina: removed title: data.title || 'Mr' from functions/api/submit-claim.ts   
+Mar-22 - 0044 Argentina: Tried api v2, better to go back to v1 hence this change.  
 
