@@ -9,8 +9,10 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [pcp.01] - Q1/2026
 
 ### Changes
-Mar      1143 Scrapped HMAC, Proper base64 signature, Correct headers (API-KEY), Correct addresses array, Proper error handling  
-Mar      1120 export was missing, put it back. some other changes , see diff in commit  
+Mar-22 - 1530 Argentina: fix(api): title field now forwarded to R2R, addresses changed from array to object, no field mutation/normalisation - raw input only, title included in signature payload, device_session_id falls back to session_id before UUID
+Mar      1221
+Mar      1143 Argentina: Scrapped HMAC, Proper base64 signature, Correct headers (API-KEY), Correct addresses array, Proper error handling  
+Mar      1120 Argentina: export was missing, put it back. some other changes , see diff in commit  
 Mar-22 - 1027 Argentina: Encoding base64 might be wrong. Trying hex despite what API Docs and Developer said    
 Mar-22 - 1015 Argentina: fix(api): correct signature generation and address structure for R2R submission
        - Implement HMAC SHA256 signature (was incorrectly base64 JSON)

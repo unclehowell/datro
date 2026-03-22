@@ -2,7 +2,9 @@ export async function onRequestPost(context: any) {
   try {
     const req = context.request;
 
-    // ✅ Parse request (supports form-data + JSON)
+    // -------------------------
+    // ✅ Parse request
+    // -------------------------
     let body: any = {};
     const contentType = req.headers.get("content-type") || "";
 
@@ -13,7 +15,10 @@ export async function onRequestPost(context: any) {
       body = Object.fromEntries(formData.entries());
     }
 
-    // ✅ Normalize fields
+    // -------------------------
+    // ✅ RAW INPUT (NO MUTATION)
+    // -------------------------
+    const title = String(body.title || "").trim();
     const first_name = String(body.first_name || "").trim();
     const last_name = String(body.last_name || "").trim();
     const email = String(body.email || "").trim();
@@ -23,41 +28,46 @@ export async function onRequestPost(context: any) {
     const buildingNumber = String(body.buildingNumber || "").trim();
     const thoroughfare = String(body.thoroughfare || "").trim();
     const townOrCity = String(body.townOrCity || "").trim();
-    const postcode = String(body.postcode || "")
-      .replace(/\s+/g, "")
-      .toUpperCase();
+    const postcode = String(body.postcode || "").trim();
 
-    // ✅ Addresses MUST be an array
-    const addresses = [
-      {
-        buildingNumber: buildingNumber || null,
-        buildingName: null,
-        thoroughfare,
-        townOrCity,
-        postcode,
-        line1: null,
-        line2: null,
-        line3: null,
-        line4: null,
-        district: null,
-      },
-    ];
+    // -------------------------
+    // ✅ ADDRESS = OBJECT (NOT ARRAY)
+    // -------------------------
+    const addresses = {
+      buildingNumber,
+      thoroughfare,
+      townOrCity,
+      postcode,
+    };
 
-    // ✅ Signature payload (ONLY these fields)
-    const signaturePayload = JSON.stringify({
+    // -------------------------
+    // ✅ SIGNATURE PAYLOAD (MATCH EXACTLY)
+    // -------------------------
+    const signaturePayloadObj = {
+      title,
       first_name,
       last_name,
       date_of_birth,
       phone,
       email,
       addresses,
-    });
+    };
 
-    // ✅ Signature = BASE64(JSON STRING)  ← THIS IS THE KEY FIX
-    const signature = btoa(signaturePayload);
+    const signaturePayload = JSON.stringify(signaturePayloadObj);
 
-    // ✅ Final payload
+    // -------------------------
+    // ✅ UTF-8 SAFE BASE64
+    // -------------------------
+    const utf8 = new TextEncoder().encode(signaturePayload);
+    let binary = "";
+    utf8.forEach((b) => (binary += String.fromCharCode(b)));
+    const signature = btoa(binary);
+
+    // -------------------------
+    // ✅ FINAL PAYLOAD
+    // -------------------------
     const payload = {
+      title,
       first_name,
       last_name,
       date_of_birth,
@@ -66,19 +76,24 @@ export async function onRequestPost(context: any) {
       client_ip: req.headers.get("cf-connecting-ip") || "",
       user_agent: req.headers.get("user-agent") || "",
       session_id: body.session_id || crypto.randomUUID(),
-      device_session_id: body.device_session_id || crypto.randomUUID(),
+      device_session_id:
+        body.device_session_id || body.session_id || crypto.randomUUID(),
       account_creation_url: "https://car.financecheque.uk/claim",
       addresses,
       signature,
     };
 
-    // 🔍 Debug logs
+    // -------------------------
+    // 🔍 DEBUG LOGS
+    // -------------------------
     console.log("--- OUTGOING REQUEST ---");
     console.log("Signature Payload:", signaturePayload);
     console.log("Signature:", signature);
     console.log("Payload:", JSON.stringify(payload, null, 2));
 
-    // ✅ Send request to R2R
+    // -------------------------
+    // ✅ SEND TO R2R
+    // -------------------------
     const res = await fetch(
       "https://r2r.theclaimsystem.co.uk/api/v1/affiliate/a4429cda-e36a-472a-8291-ae01a49349d8",
       {
@@ -86,7 +101,7 @@ export async function onRequestPost(context: any) {
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
-          "API-KEY": context.env.VITE_API_KEY, // ✅ REQUIRED
+          "API-KEY": context.env.VITE_API_KEY,
         },
         body: JSON.stringify(payload),
       }
@@ -98,7 +113,6 @@ export async function onRequestPost(context: any) {
     console.log("Status:", res.status);
     console.log("Body:", text);
 
-    // ✅ Always return JSON to browser
     return new Response(
       JSON.stringify({
         status: res.status,
@@ -124,7 +138,6 @@ export async function onRequestPost(context: any) {
   }
 }
 
-// ✅ Safe JSON parser
 function safeJsonParse(text: string) {
   try {
     return JSON.parse(text);
