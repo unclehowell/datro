@@ -9,7 +9,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [pcp.01] - Q1/2026
 
 ### Changes
-
+Mar      1120 export was missing, put it back. some other changes , see diff in commit  
 Mar-22 - 1027 Argentina: Encoding base64 might be wrong. Trying hex despite what API Docs and Developer said    
 Mar-22 - 1015 Argentina: fix(api): correct signature generation and address structure for R2R submission
        - Implement HMAC SHA256 signature (was incorrectly base64 JSON)
