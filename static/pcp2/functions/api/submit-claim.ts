@@ -1,4 +1,4 @@
-export async function onRequestPost(context) {
+async function onRequestPost(context) {
   const { request, env } = context;
 
   const affiliateId =
@@ -136,7 +136,7 @@ async function generateSignature(payload: string, secret: string) {
     encoder.encode(payload)
   );
 
-  return btoa(
-    String.fromCharCode(...new Uint8Array(sigBuffer))
-  );
+return Array.from(new Uint8Array(sigBuffer))
+  .map(b => b.toString(16).padStart(2, "0"))
+  .join("");
 }
