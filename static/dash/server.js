@@ -125,11 +125,11 @@ class APIQuotaMonitor {
     async checkGemini() {
         try {
             const response = await axios.post(
-                `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+                `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.GEMINI_API_KEY}`,
                 { contents: [{ parts: [{ text: "hi" }] }] },
                 { timeout: 5000 }
             );
-            this.setQuota('GOOGLE', 'GEMINI PRO', 15, 100, 85, '#4285f4'); 
+            this.setQuota('GOOGLE', 'GEMINI PRO', 10, 100, 90, '#4285f4'); 
         } catch (error) {
              console.error(`Gemini error: ${error.response?.status || error.message}`);
              if (error.response && error.response.status === 429) {
@@ -157,7 +157,7 @@ class APIQuotaMonitor {
 
             this.setQuota('GROQ', 'LLAMA 3.1', usage, limit, remaining, '#f55036');
         } catch (error) {
-             console.error(`Groq error: ${error.response?.status || error.message}`);
+             console.error(`Groq error: ${error.response?.status || error.message} - ${JSON.stringify(error.response?.data)}`);
              this.setQuota('GROQ', 'LLAMA 3.1', 100, 100, 0, '#f55036', 'ERROR');
         }
     }

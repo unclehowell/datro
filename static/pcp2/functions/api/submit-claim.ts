@@ -95,7 +95,10 @@ export async function onRequestPost(context: any) {
         },
       ],
     });
-    const signature = toBase64(signaturePayload);
+    // Prefer a client-provided signature if present (helps testing different canonicalisations)
+    const providedSignature = String(body.signature || "").trim();
+    const signature = providedSignature && providedSignature.length > 0 ? providedSignature : toBase64(signaturePayload);
+    if (providedSignature && providedSignature.length > 0) console.log("USING PROVIDED SIGNATURE");
 
     // ── Addresses as ARRAY with all documented fields for payload ─
     const addresses = [
