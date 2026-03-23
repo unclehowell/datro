@@ -72,16 +72,14 @@ export async function onRequestPost(context: any) {
     const postcode = formatPostcode(String(body.postcode || "").trim());
 
     // -------------------------
-    // ✅ Address (single format ONLY)
+    // ✅ Address (OBJECT - CRITICAL)
     // -------------------------
-    const addresses = [
-      {
-        buildingNumber,
-        thoroughfare,
-        townOrCity,
-        postcode,
-      },
-    ];
+    const address = {
+      buildingNumber,
+      thoroughfare,
+      townOrCity,
+      postcode,
+    };
 
     // -------------------------
     // ✅ Session IDs
@@ -91,7 +89,7 @@ export async function onRequestPost(context: any) {
       body.device_session_id || crypto.randomUUID();
 
     // -------------------------
-    // ✅ Signature (MUST match payload EXACTLY)
+    // ✅ Signature (EXACT MATCH)
     // -------------------------
     const signatureObject = {
       title,
@@ -100,14 +98,14 @@ export async function onRequestPost(context: any) {
       date_of_birth,
       phone,
       email,
-      addresses,
+      addresses: address,
     };
 
     const signaturePayload = JSON.stringify(signatureObject);
     const signature = toBase64(signaturePayload);
 
     // -------------------------
-    // ✅ Final payload
+    // ✅ Final payload (MUST MATCH SIGNATURE)
     // -------------------------
     const payload = {
       title,
@@ -121,20 +119,20 @@ export async function onRequestPost(context: any) {
       session_id,
       device_session_id,
       account_creation_url: "https://car.financecheque.uk/claim",
-      addresses,
+      addresses: address,
       opt_in: true,
       signature,
     };
 
     // -------------------------
-    // 🔍 Debug logs
+    // 🔍 Debug
     // -------------------------
     console.log("SIGNATURE STRING:", signaturePayload);
     console.log("SIGNATURE:", signature);
     console.log("FINAL PAYLOAD:", JSON.stringify(payload, null, 2));
 
     // -------------------------
-    // ✅ Send request
+    // ✅ Send to R2R
     // -------------------------
     const res = await fetch(
       "https://r2r.theclaimsystem.co.uk/api/v1/affiliate/a4429cda-e36a-472a-8291-ae01a49349d8",
