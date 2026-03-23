@@ -85,15 +85,13 @@ export async function onRequestPost(context: any) {
       date_of_birth: String(body.date_of_birth || "").trim(),
       phone: String(body.phone || "").trim(),
       email: String(body.email || "").trim(),
-      addresses: [
-        {
-          buildingNumber: String(body.buildingNumber || "").trim() || null,
-          thoroughfare: String(body.thoroughfare || "").trim(),
-          townOrCity: String(body.townOrCity || "").trim(),
-          // signature postcode uses compact uppercase (no space)
-          postcode: String(body.postcode || "").replace(/\s+/g, "").toUpperCase(),
-        },
-      ],
+      addresses: {
+        buildingNumber: String(body.buildingNumber || "").trim() || null,
+        thoroughfare: String(body.thoroughfare || "").trim(),
+        townOrCity: String(body.townOrCity || "").trim(),
+        // signature postcode uses compact uppercase (no space)
+        postcode: String(body.postcode || "").replace(/\s+/g, "").toUpperCase(),
+      },
     });
     // Prefer a client-provided signature if present (helps testing different canonicalisations)
     const providedSignature = String(body.signature || "").trim();
