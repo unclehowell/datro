@@ -79,7 +79,7 @@ class TokenTracker extends EventEmitter {
             id: 'groq',
             name: 'Groq CLI',
             version: 'v1.0',
-            device: 'aws-cloud',
+            device: 'dev-laptop',
             program: 'API Gateway',
             color: '#f55036',
             requests: 567,

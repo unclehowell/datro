@@ -2,7 +2,7 @@
 
 # Final systemd service fix - using your actual installation path
 
-echo "🔧 Setting up systemd services for LLM Bubble Dashboard..."
+echo "🔧 Setting up systemd services for LLM Dashboard..."
 
 # Check if running as root or with sudo
 if [[ $EUID -ne 0 ]]; then
@@ -12,80 +12,43 @@ fi
 
 # Current working directory
 DASHBOARD_DIR="/home/unclehowell/datro/static/dash"
+CURRENT_USER="unclehowell"
+CURRENT_GROUP="unclehowell"
 
-cat > /etc/systemd/system/llm-dashboard-bubble.service << 'EOF'
+cat > /etc/systemd/system/llm-dashboard.service << EOF
 [Unit]
-Description=LLM Bubble Dashboard - Accessibility Version
+Description=LLM Supply and Demand Dashboard
 After=network.target
 
 [Service]
 Type=simple
-User=www-data
-Group=www-data
-WorkingDirectory=/home/unclehowell/datro/static/dash
+User=$CURRENT_USER
+Group=$CURRENT_GROUP
+WorkingDirectory=$DASHBOARD_DIR
 Environment=NODE_ENV=production
 Environment=PORT=8080
-ExecStart=/usr/bin/node server-bubble.js
+ExecStart=/usr/bin/node $DASHBOARD_DIR/server.js
 Restart=on-failure
 RestartSec=5
-StandardOutput=append:/var/log/dashboard/bubble.log
-StandardError=append:/var/log/dashboard/bubble-error.log
+StandardOutput=journal
+StandardError=journal
 
 [Install]
 WantedBy=multi-user.target
 EOF
-
-cat > /etc/systemd/system/picoclaw-bubble.service << 'EOF'
-[Unit]
-Description=PicoClaw Bubble Service Monitor
-After=network.target
-
-[Service]
-Type=simple
-User=www-data
-Group=www-data
-WorkingDirectory=/home/unclehowell/datro/static/dash
-ExecStart=/usr/bin/node picoclaw-service.js
-Restart=on-failure
-RestartSec=3
-StandardOutput=append:/var/log/dashboard/picoclaw.log
-StandardError=append:/var/log/dashboard/picoclaw-error.log
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-# Create log directory
-mkdir -p /var/log/dashboard
-chown -R www-data:www-data /var/log/dashboard
-chown -R www-data:www-data /home/unclehowell/datro/static/dash
-
-# Create environment file for port configuration
-cd "$DASHBOARD_DIR"
-echo "PORT=8080" > .env
-chmod 644 .env
 
 # Reload systemd and enable services
 systemctl daemon-reload
+systemctl enable llm-dashboard
 
-echo "✅ Systemd services created for bubble dashboard!"
+echo "✅ Systemd services created for dashboard!"
 echo
 echo "🔗 Dashboard: http://localhost:8080"
-echo "🎯 Features: Large text, bubble visualization, real-time updates"
-echo
-echo "📋 To switch from PM2 to systemd:"
-echo "1. Stop PM2: pm2 stop ecosystem.config.js"
-echo "2. Start systemd: sudo systemctl start llm-dashboard-bubble"
-echo "3. Check status: sudo systemctl status llm-dashboard-bubble"
 echo
 echo "📋 Management commands:"
-echo "Start:     sudo systemctl start llm-dashboard-bubble"
-echo "Stop:      sudo systemctl stop llm-dashboard-bubble"
-echo "Status:    sudo systemctl status llm-dashboard-bubble"
-echo "Logs:      sudo journalctl -u llm-dashboard-bubble -f"
+echo "Start:     sudo systemctl start llm-dashboard"
+echo "Stop:      sudo systemctl stop llm-dashboard"
+echo "Status:    sudo systemctl status llm-dashboard"
+echo "Logs:      sudo journalctl -u llm-dashboard -f"
 
-echo
-echo "🎉 Your accessible LLM Bubble Dashboard is ready!"
-echo "💡 Use TV remote to control volume (Radio Monte Carlo will auto-play)"
-
-echo "Current status: $(systemctl is-enabled llm-dashboard-bubble 2>/dev/null || echo 'not enabled')"
+echo "Current status: $(systemctl is-enabled llm-dashboard 2>/dev/null || echo 'not enabled')"

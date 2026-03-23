@@ -9,6 +9,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [pcp.01] - Q1/2026
 
 ### Changes
+Mar-22 - 2310 Argentina: Resolved R2R validation by implementing required nested addresses schema and aligning signature payload
 Mar-22 - 2310 Argentina: Resolved R2R signature validation by aligning payload and signature structure (addresses as object) with proper UTF-8 base64 encoding 
 Mar-22 - 2256 Argentina: fix: fully align R2R payload and signature with Cloudflare-safe encoding and consistent schema  
 Mar-22 - 2237 Argentina: Last commit was malformed. Retry (see last commit note for the update)  

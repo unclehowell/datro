@@ -3,7 +3,7 @@ export async function onRequestPost(context: any) {
     const req = context.request;
 
     // -------------------------
-    // ✅ Parse request
+    // Parse request
     // -------------------------
     let body: any = {};
     const contentType = req.headers.get("content-type") || "";
@@ -16,37 +16,8 @@ export async function onRequestPost(context: any) {
     }
 
     // -------------------------
-    // ✅ Helpers
+    // Helpers
     // -------------------------
-    const formatDOB = (input: string) => {
-      if (!input) return "";
-
-      if (/^\d{4}-\d{2}-\d{2}$/.test(input)) return input;
-
-      if (input.includes("/")) {
-        const [day, month, year] = input.split("/");
-        if (!day || !month || !year) return input;
-
-        return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
-      }
-
-      return input;
-    };
-
-    const formatPhone = (phone: string) => {
-      const clean = phone.replace(/\s+/g, "");
-      if (clean.startsWith("0")) return "+44" + clean.slice(1);
-      return clean;
-    };
-
-    const formatPostcode = (pc: string) => {
-      const clean = pc.replace(/\s+/g, "").toUpperCase();
-      if (clean.length >= 5) {
-        return clean.slice(0, -3) + " " + clean.slice(-3);
-      }
-      return pc.toUpperCase();
-    };
-
     const toBase64 = (str: string) => {
       const bytes = new TextEncoder().encode(str);
       let binary = "";
@@ -56,8 +27,19 @@ export async function onRequestPost(context: any) {
       return btoa(binary);
     };
 
+    const formatDOB = (d: string) =>
+      d.includes("/") ? d.split("/").reverse().join("-") : d;
+
+    const formatPhone = (p: string) =>
+      p.startsWith("0") ? "+44" + p.slice(1) : p;
+
+    const formatPostcode = (p: string) => {
+      const c = p.replace(/\s+/g, "").toUpperCase();
+      return c.length >= 5 ? c.slice(0, -3) + " " + c.slice(-3) : c;
+    };
+
     // -------------------------
-    // ✅ Clean input
+    // Clean input
     // -------------------------
     const title = String(body.title || "").trim();
     const first_name = String(body.first_name || "").trim();
@@ -72,24 +54,30 @@ export async function onRequestPost(context: any) {
     const postcode = formatPostcode(String(body.postcode || "").trim());
 
     // -------------------------
-    // ✅ Address (OBJECT - CRITICAL)
+    // 🚨 REQUIRED WEIRD STRUCTURE
     // -------------------------
-    const address = {
-      buildingNumber,
+    const addressBlock = {
       thoroughfare,
       townOrCity,
       postcode,
     };
 
+    const addresses = {
+      buildingNumber: addressBlock,
+      thoroughfare: addressBlock,
+      townOrCity: addressBlock,
+      postcode: addressBlock,
+    };
+
     // -------------------------
-    // ✅ Session IDs
+    // Session IDs
     // -------------------------
     const session_id = body.session_id || crypto.randomUUID();
     const device_session_id =
       body.device_session_id || crypto.randomUUID();
 
     // -------------------------
-    // ✅ Signature (EXACT MATCH)
+    // Signature (EXACT MATCH)
     // -------------------------
     const signatureObject = {
       title,
@@ -98,49 +86,33 @@ export async function onRequestPost(context: any) {
       date_of_birth,
       phone,
       email,
-      addresses: address,
+      addresses,
     };
 
-    const signaturePayload = JSON.stringify(signatureObject);
-    const signature = toBase64(signaturePayload);
+    const signature = toBase64(JSON.stringify(signatureObject));
 
     // -------------------------
-    // ✅ Final payload (MUST MATCH SIGNATURE)
+    // Final payload
     // -------------------------
     const payload = {
-      title,
-      first_name,
-      last_name,
-      date_of_birth,
-      phone,
-      email,
+      ...signatureObject,
       client_ip: req.headers.get("cf-connecting-ip") || "",
       user_agent: req.headers.get("user-agent") || "",
       session_id,
       device_session_id,
       account_creation_url: "https://car.financecheque.uk/claim",
-      addresses: address,
       opt_in: true,
       signature,
     };
 
-    // -------------------------
-    // 🔍 Debug
-    // -------------------------
-    console.log("SIGNATURE STRING:", signaturePayload);
-    console.log("SIGNATURE:", signature);
-    console.log("FINAL PAYLOAD:", JSON.stringify(payload, null, 2));
+    console.log("PAYLOAD:", JSON.stringify(payload, null, 2));
 
-    // -------------------------
-    // ✅ Send to R2R
-    // -------------------------
     const res = await fetch(
       "https://r2r.theclaimsystem.co.uk/api/v1/affiliate/a4429cda-e36a-472a-8291-ae01a49349d8",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
           "API-KEY": context.env.VITE_API_KEY,
         },
         body: JSON.stringify(payload),
@@ -152,22 +124,13 @@ export async function onRequestPost(context: any) {
     console.log("R2R STATUS:", res.status);
     console.log("R2R BODY:", text);
 
-    return new Response(text, {
-      status: res.status,
-      headers: { "Content-Type": "application/json" },
-    });
+    return new Response(text, { status: res.status });
 
   } catch (err: any) {
     console.error("SERVER ERROR:", err);
 
-    return new Response(
-      JSON.stringify({
-        error: err.message || "Unknown error",
-      }),
-      {
-        status: 500,
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    return new Response(JSON.stringify({ error: err.message }), {
+      status: 500,
+    });
   }
 }
