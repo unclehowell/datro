@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "predev": "if [ ! -f .env ]; then ./setup-keys.sh; fi",
     "dev": "nodemon server.js",
     "test": "node server.js"
   },

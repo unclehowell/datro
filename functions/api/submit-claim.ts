@@ -16,25 +16,26 @@ export async function submitClaim(formData) {
     const postcode = formData.postcode?.trim();
 
     // -----------------------------
-    // 2. Basic validation (prevents API rejection)
+    // 2. Validation (strict + explicit)
     // -----------------------------
-    if (
-      !title ||
-      !first_name ||
-      !last_name ||
-      !date_of_birth ||
-      !phone ||
-      !email ||
-      !buildingNumber ||
-      !thoroughfare ||
-      !townOrCity ||
-      !postcode
-    ) {
-      throw new Error("Missing required fields");
+    const missingFields = [];
+    if (!title) missingFields.push("title");
+    if (!first_name) missingFields.push("first_name");
+    if (!last_name) missingFields.push("last_name");
+    if (!date_of_birth) missingFields.push("date_of_birth");
+    if (!phone) missingFields.push("phone");
+    if (!email) missingFields.push("email");
+    if (!buildingNumber) missingFields.push("buildingNumber");
+    if (!thoroughfare) missingFields.push("thoroughfare");
+    if (!townOrCity) missingFields.push("townOrCity");
+    if (!postcode) missingFields.push("postcode");
+
+    if (missingFields.length) {
+      throw new Error(`Missing required fields: ${missingFields.join(", ")}`);
     }
 
     // -----------------------------
-    // 3. Build address (FLAT - required)
+    // 3. Build address (STRICT FLAT OBJECT)
     // -----------------------------
     const addressForPayload = {
       buildingNumber,
@@ -61,7 +62,7 @@ export async function submitClaim(formData) {
     console.log("SIGNATURE STRING:", signatureString);
 
     // -----------------------------
-    // 5. Browser-safe base64 encoding
+    // 5. Stable base64 encoding (browser-safe, no corruption)
     // -----------------------------
     const signature = btoa(
       new TextEncoder()
@@ -72,7 +73,7 @@ export async function submitClaim(formData) {
     console.log("SIGNATURE:", signature);
 
     // -----------------------------
-    // 6. Build final payload
+    // 6. Build final payload (IDENTICAL STRUCTURE)
     // -----------------------------
     const payload = {
       title,
@@ -81,7 +82,7 @@ export async function submitClaim(formData) {
       date_of_birth,
       phone,
       email,
-      client_ip: "", // backend can populate
+      client_ip: "", // allow backend to populate
       user_agent: navigator.userAgent,
       session_id: crypto.randomUUID(),
       device_session_id: crypto.randomUUID(),
@@ -94,16 +95,37 @@ export async function submitClaim(formData) {
     console.log("FINAL PAYLOAD:", JSON.stringify(payload, null, 2));
 
     // -----------------------------
-    // 7. Send request
+    // 7. Send request (with timeout + better failure handling)
     // -----------------------------
-    const response = await fetch("/api/submit-claim", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000); // 15s timeout
 
+    let response;
+
+    try {
+      response = await fetch("/api/submit-claim", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+        signal: controller.signal,
+      });
+    } catch (networkError) {
+      clearTimeout(timeout);
+
+      if (networkError.name === "AbortError") {
+        throw new Error("Request timed out");
+      }
+
+      throw new Error("Network error while submitting claim");
+    }
+
+    clearTimeout(timeout);
+
+    // -----------------------------
+    // 8. Read response safely
+    // -----------------------------
     const contentType = response.headers.get("content-type") || "";
     const raw = await response.text();
 
@@ -111,22 +133,45 @@ export async function submitClaim(formData) {
     console.log("RAW RESPONSE:", raw);
 
     // -----------------------------
-    // 8. Handle non-JSON responses (fixes your 405 crash)
+    // 9. Handle 405 explicitly (your current issue)
+    // -----------------------------
+    if (response.status === 405) {
+      throw new Error(
+        "Endpoint does not accept POST (405). Cloudflare function likely missing onRequestPost."
+      );
+    }
+
+    // -----------------------------
+    // 10. Handle non-JSON responses safely
     // -----------------------------
     if (!contentType.includes("application/json")) {
       throw new Error(
-        `Server returned non-JSON response (${response.status}): ${raw}`
+        `Server returned non-JSON response (${response.status}): ${raw || "empty response"}`
       );
     }
 
-    const data = JSON.parse(raw);
+    let data;
+    try {
+      data = JSON.parse(raw);
+    } catch {
+      throw new Error("Invalid JSON response from server");
+    }
 
+    // -----------------------------
+    // 11. Handle API errors properly
+    // -----------------------------
     if (!response.ok) {
       throw new Error(
-        data?.error || data?.message || "Submission rejected by server"
+        data?.error ||
+        data?.message ||
+        JSON.stringify(data) ||
+        "Submission rejected by server"
       );
     }
 
+    // -----------------------------
+    // 12. Success
+    // -----------------------------
     return data;
 
   } catch (error) {
