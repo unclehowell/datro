@@ -69,6 +69,13 @@
             letter-spacing: 0.5vw;
         }
 
+        .provider-tile.exceeded {
+            transform: translateY(2vh) scale(0.95);
+            opacity: 0.5;
+            filter: grayscale(100%);
+            border-color: #333;
+        }
+
         .usage-fill {
             position: absolute;
             bottom: 0;
@@ -178,6 +185,11 @@
                 tile.className = 'provider-tile';
                 tile.id = `tile-${p.name.toLowerCase()}`;
                 
+                // Descend away if usage is 100% or error
+                if (p.usage >= 100 || (p.status && p.status !== 'ACTIVE')) {
+                    tile.classList.add('exceeded');
+                }
+
                 const name = document.createElement('div');
                 name.className = 'provider-name';
                 name.textContent = p.name;
@@ -186,11 +198,19 @@
                 const model = document.createElement('div');
                 model.className = 'model-name';
                 model.textContent = p.model;
+                if (p.status && p.status !== 'ACTIVE') {
+                     model.textContent += ` (${p.status})`;
+                     model.style.color = '#ff4444';
+                }
                 
                 const fill = document.createElement('div');
                 fill.className = 'usage-fill';
-                fill.style.height = `${p.usage}%`;
+                fill.style.height = `${p.usage}%`; // Height represents usage
                 fill.style.backgroundColor = p.color;
+                
+                // If usage is high, make fill more opaque
+                if (p.usage > 80) fill.style.opacity = 0.4;
+                if (p.usage >= 100) fill.style.opacity = 0.8;
 
                 tile.appendChild(name);
                 tile.appendChild(model);

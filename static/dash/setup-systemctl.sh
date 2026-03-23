@@ -11,9 +11,9 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 # Current working directory
-DASHBOARD_DIR="/home/unclehowell/datro/static/dash"
-CURRENT_USER="unclehowell"
-CURRENT_GROUP="unclehowell"
+DASHBOARD_DIR=$(pwd)
+CURRENT_USER=$(whoami)
+CURRENT_GROUP=$(id -gn)
 
 cat > /etc/systemd/system/llm-dashboard.service << EOF
 [Unit]
@@ -27,7 +27,7 @@ Group=$CURRENT_GROUP
 WorkingDirectory=$DASHBOARD_DIR
 Environment=NODE_ENV=production
 Environment=PORT=8080
-ExecStart=/usr/bin/node $DASHBOARD_DIR/server.js
+ExecStart=$(which node) $DASHBOARD_DIR/server.js
 Restart=on-failure
 RestartSec=5
 StandardOutput=journal

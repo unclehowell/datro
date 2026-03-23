@@ -1,33 +1,50 @@
 export async function submitClaim(formData) {
   try {
     // -----------------------------
-    // 1. Extract fields
+    // 1. Extract + sanitize fields
     // -----------------------------
-    const {
-      title,
-      first_name,
-      last_name,
-      date_of_birth,
-      phone,
-      email,
+    const title = formData.title?.trim();
+    const first_name = formData.first_name?.trim();
+    const last_name = formData.last_name?.trim();
+    const date_of_birth = formData.date_of_birth;
+    const phone = formData.phone?.trim();
+    const email = formData.email?.trim();
+
+    const buildingNumber = formData.buildingNumber?.trim();
+    const thoroughfare = formData.thoroughfare?.trim();
+    const townOrCity = formData.townOrCity?.trim();
+    const postcode = formData.postcode?.trim();
+
+    // -----------------------------
+    // 2. Basic validation (prevents API rejection)
+    // -----------------------------
+    if (
+      !title ||
+      !first_name ||
+      !last_name ||
+      !date_of_birth ||
+      !phone ||
+      !email ||
+      !buildingNumber ||
+      !thoroughfare ||
+      !townOrCity ||
+      !postcode
+    ) {
+      throw new Error("Missing required fields");
+    }
+
+    // -----------------------------
+    // 3. Build address (FLAT - required)
+    // -----------------------------
+    const addressForPayload = {
       buildingNumber,
       thoroughfare,
       townOrCity,
       postcode,
-    } = formData;
-
-    // -----------------------------
-    // 2. Build address (FLAT - critical)
-    // -----------------------------
-    const addressForPayload = {
-      buildingNumber: buildingNumber?.trim(),
-      thoroughfare: thoroughfare?.trim(),
-      townOrCity: townOrCity?.trim(),
-      postcode: postcode?.trim(),
     };
 
     // -----------------------------
-    // 3. Build signature object (MUST MATCH API EXACTLY)
+    // 4. Build signature object (MUST MATCH EXACTLY)
     // -----------------------------
     const signatureObject = {
       title,
@@ -44,7 +61,7 @@ export async function submitClaim(formData) {
     console.log("SIGNATURE STRING:", signatureString);
 
     // -----------------------------
-    // 4. Proper browser-safe base64
+    // 5. Browser-safe base64 encoding
     // -----------------------------
     const signature = btoa(
       new TextEncoder()
@@ -55,7 +72,7 @@ export async function submitClaim(formData) {
     console.log("SIGNATURE:", signature);
 
     // -----------------------------
-    // 5. Build final payload
+    // 6. Build final payload
     // -----------------------------
     const payload = {
       title,
@@ -64,7 +81,7 @@ export async function submitClaim(formData) {
       date_of_birth,
       phone,
       email,
-      client_ip: "", // let backend fill if needed
+      client_ip: "", // backend can populate
       user_agent: navigator.userAgent,
       session_id: crypto.randomUUID(),
       device_session_id: crypto.randomUUID(),
@@ -77,7 +94,7 @@ export async function submitClaim(formData) {
     console.log("FINAL PAYLOAD:", JSON.stringify(payload, null, 2));
 
     // -----------------------------
-    // 6. Send request
+    // 7. Send request
     // -----------------------------
     const response = await fetch("/api/submit-claim", {
       method: "POST",
@@ -87,16 +104,30 @@ export async function submitClaim(formData) {
       body: JSON.stringify(payload),
     });
 
-    const text = await response.text();
+    const contentType = response.headers.get("content-type") || "";
+    const raw = await response.text();
 
     console.log("STATUS:", response.status);
-    console.log("RESPONSE:", text);
+    console.log("RAW RESPONSE:", raw);
 
-    if (!response.ok) {
-      throw new Error("Submission rejected by server");
+    // -----------------------------
+    // 8. Handle non-JSON responses (fixes your 405 crash)
+    // -----------------------------
+    if (!contentType.includes("application/json")) {
+      throw new Error(
+        `Server returned non-JSON response (${response.status}): ${raw}`
+      );
     }
 
-    return JSON.parse(text);
+    const data = JSON.parse(raw);
+
+    if (!response.ok) {
+      throw new Error(
+        data?.error || data?.message || "Submission rejected by server"
+      );
+    }
+
+    return data;
 
   } catch (error) {
     console.error("--- SUBMISSION ERROR ---", error);

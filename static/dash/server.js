@@ -1,9 +1,215 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
+const axios = require('axios');
 const EventEmitter = require('events');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+
+// Real-time API Quota Monitor
+class APIQuotaMonitor {
+    constructor() {
+        this.quotas = new Map();
+        this.checkInterval = 60000; // Check every minute
+        this.init();
+    }
+
+    init() {
+        this.checkQuotas();
+        setInterval(() => this.checkQuotas(), this.checkInterval);
+    }
+
+    async checkQuotas() {
+        console.log('🔍 Checking API quotas...');
+        
+        // OpenAI
+        if (process.env.OPENAI_API_KEY) {
+            await this.checkOpenAI();
+        } else {
+            this.setQuota('OPENAI', 'GPT-4O', 0, 100, 0, '#74aa9c', 'MISSING KEY');
+        }
+
+        // Anthropic
+        if (process.env.ANTHROPIC_API_KEY) {
+            await this.checkAnthropic();
+        } else {
+            this.setQuota('ANTHROPIC', 'CLAUDE 3.5', 0, 100, 0, '#d97757', 'MISSING KEY');
+        }
+
+        // Gemini
+        if (process.env.GEMINI_API_KEY) {
+            await this.checkGemini();
+        } else {
+            this.setQuota('GOOGLE', 'GEMINI PRO', 0, 100, 0, '#4285f4', 'MISSING KEY');
+        }
+
+        // Groq
+        if (process.env.GROQ_API_KEY) {
+            await this.checkGroq();
+        } else {
+            this.setQuota('GROQ', 'LLAMA 3.1', 0, 100, 0, '#f55036', 'MISSING KEY');
+        }
+
+        // Mistral (using placeholder if no key)
+        if (process.env.MISTRAL_API_KEY) {
+            await this.checkMistral();
+        } else {
+            this.setQuota('MISTRAL', 'LARGE 2', 0, 100, 0, '#fdff00', 'MISSING KEY');
+        }
+        
+        // Meta (via NVAPI or similar)
+        if (process.env.NVAPI_KEY) {
+             await this.checkNVAPI(); // Using NVAPI as proxy for Meta/Llama
+        } else {
+             this.setQuota('META', 'LLAMA 3.2', 0, 100, 0, '#0668E1', 'MISSING KEY');
+        }
+    }
+
+    async checkOpenAI() {
+        try {
+            // OpenAI doesn't expose a simple "quota remaining" endpoint for standard keys.
+            // We'll use a very cheap model request to get rate limit headers.
+            const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+                model: "gpt-3.5-turbo",
+                messages: [{ role: "user", content: "hi" }],
+                max_tokens: 1
+            }, {
+                headers: { 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` }
+            });
+            
+            const remaining = parseInt(response.headers['x-ratelimit-remaining-requests'] || 0);
+            const limit = parseInt(response.headers['x-ratelimit-limit-requests'] || 100);
+            const usage = ((limit - remaining) / limit) * 100;
+            
+            this.setQuota('OPENAI', 'GPT-4O', usage, limit, remaining, '#74aa9c');
+        } catch (error) {
+            console.error('OpenAI check failed:', error.message);
+            this.setQuota('OPENAI', 'GPT-4O', 100, 100, 0, '#74aa9c', 'ERROR');
+        }
+    }
+
+    async checkAnthropic() {
+        try {
+            const response = await axios.post('https://api.anthropic.com/v1/messages', {
+                model: "claude-3-haiku-20240307",
+                max_tokens: 1,
+                messages: [{ role: "user", content: "hi" }]
+            }, {
+                headers: {
+                    'x-api-key': process.env.ANTHROPIC_API_KEY,
+                    'anthropic-version': '2023-06-01',
+                    'content-type': 'application/json'
+                }
+            });
+
+            const remaining = parseInt(response.headers['anthropic-ratelimit-requests-remaining'] || 0);
+            const limit = parseInt(response.headers['anthropic-ratelimit-requests-limit'] || 100);
+            const usage = ((limit - remaining) / limit) * 100;
+
+            this.setQuota('ANTHROPIC', 'CLAUDE 3.5', usage, limit, remaining, '#d97757');
+        } catch (error) {
+            console.error('Anthropic check failed:', error.message);
+            this.setQuota('ANTHROPIC', 'CLAUDE 3.5', 100, 100, 0, '#d97757', 'ERROR');
+        }
+    }
+
+    async checkGemini() {
+        // Google Gemini doesn't return standard rate limit headers in the same way.
+        // We'll assume if the call works, we're good. If 429, we're 100%.
+        try {
+            const response = await axios.post(
+                `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.GEMINI_API_KEY}`,
+                { contents: [{ parts: [{ text: "hi" }] }] }
+            );
+            // No standard headers, so we set low usage if successful
+            this.setQuota('GOOGLE', 'GEMINI PRO', 10, 100, 90, '#4285f4'); 
+        } catch (error) {
+             if (error.response && error.response.status === 429) {
+                this.setQuota('GOOGLE', 'GEMINI PRO', 100, 100, 0, '#4285f4', 'EXCEEDED');
+             } else {
+                this.setQuota('GOOGLE', 'GEMINI PRO', 0, 100, 0, '#4285f4', 'ERROR');
+             }
+        }
+    }
+
+    async checkGroq() {
+        try {
+            const response = await axios.post('https://api.groq.com/openai/v1/chat/completions', {
+                model: "llama3-8b-8192",
+                messages: [{ role: "user", content: "hi" }],
+                max_tokens: 1
+            }, {
+                headers: { 'Authorization': `Bearer ${process.env.GROQ_API_KEY}` }
+            });
+
+            const remaining = parseInt(response.headers['x-ratelimit-remaining-requests'] || 0);
+            const limit = parseInt(response.headers['x-ratelimit-limit-requests'] || 100);
+            const usage = ((limit - remaining) / limit) * 100;
+
+            this.setQuota('GROQ', 'LLAMA 3.1', usage, limit, remaining, '#f55036');
+        } catch (error) {
+             console.error('Groq check failed:', error.message);
+             this.setQuota('GROQ', 'LLAMA 3.1', 100, 100, 0, '#f55036', 'ERROR');
+        }
+    }
+    
+    async checkMistral() {
+         // Similar to OpenAI structure
+        try {
+             const response = await axios.post('https://api.mistral.ai/v1/chat/completions', {
+                model: "mistral-tiny",
+                messages: [{ role: "user", content: "hi" }],
+                max_tokens: 1
+            }, {
+                headers: { 'Authorization': `Bearer ${process.env.MISTRAL_API_KEY}` }
+            });
+            
+            const remaining = parseInt(response.headers['x-ratelimit-remaining-requests'] || 0);
+            const limit = parseInt(response.headers['x-ratelimit-limit-requests'] || 100);
+            const usage = ((limit - remaining) / limit) * 100;
+
+            this.setQuota('MISTRAL', 'LARGE 2', usage, limit, remaining, '#fdff00');
+        } catch (error) {
+             this.setQuota('MISTRAL', 'LARGE 2', 100, 100, 0, '#fdff00', 'ERROR');
+        }
+    }
+
+    async checkNVAPI() {
+        // NVAPI often mirrors OpenAI
+         try {
+             const response = await axios.post('https://integrate.api.nvidia.com/v1/chat/completions', {
+                model: "meta/llama3-70b-instruct",
+                messages: [{ role: "user", content: "hi" }],
+                max_tokens: 1
+            }, {
+                headers: { 'Authorization': `Bearer ${process.env.NVAPI_KEY}` }
+            });
+            // If success, assume OK. NVAPI headers vary.
+            this.setQuota('META', 'LLAMA 3.2', 20, 100, 80, '#0668E1'); 
+        } catch (error) {
+             this.setQuota('META', 'LLAMA 3.2', 100, 100, 0, '#0668E1', 'ERROR');
+        }
+    }
+
+    setQuota(name, model, usage, limit, remaining, color, status = 'ACTIVE') {
+        this.quotas.set(name, {
+            name,
+            model,
+            usage: Math.min(Math.max(usage, 0), 100), // Clamp 0-100
+            limit,
+            remaining,
+            color,
+            status
+        });
+    }
+
+    getSnapshot() {
+        return Array.from(this.quotas.values());
+    }
+}
+
+const apiMonitor = new APIQuotaMonitor();
 
 // Token usage tracker with simplified logic
 class TokenTracker extends EventEmitter {
@@ -61,16 +267,8 @@ class TokenTracker extends EventEmitter {
     }
 
     createUsageSnapshot() {
-        const now = Date.now();
-        // One model per "Provider Box" for the TV layout
-        const providers = [
-            { name: 'OPENAI', model: 'GPT-4O', usage: Math.round(40 + Math.sin(now/5000)*30), color: '#74aa9c' },
-            { name: 'ANTHROPIC', model: 'CLAUDE 3.5', usage: Math.round(50 + Math.cos(now/4000)*20), color: '#d97757' },
-            { name: 'GOOGLE', model: 'GEMINI PRO', usage: Math.round(30 + Math.sin(now/6000)*40), color: '#4285f4' },
-            { name: 'GROQ', model: 'LLAMA 3.1', usage: Math.round(70 + Math.sin(now/3000)*25), color: '#f55036' },
-            { name: 'MISTRAL', model: 'LARGE 2', usage: Math.round(20 + Math.cos(now/7000)*15), color: '#fdff00' },
-            { name: 'META', model: 'LLAMA 3.2', usage: Math.round(45 + Math.sin(now/5500)*35), color: '#0668E1' }
-        ];
+        // Use real data from API monitor
+        const providers = apiMonitor.getSnapshot();
         
         return {
             providers,
@@ -126,4 +324,5 @@ app.use(express.static(__dirname));
 const server = app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 TV Dashboard Server Running`);
     console.log(`🌐 URL: http://localhost:${PORT}`);
+    console.log(`🔑 API Keys loaded: ${Object.keys(process.env).filter(k => k.endsWith('API_KEY')).length}`);
 });

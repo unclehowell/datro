@@ -1,0 +1,28 @@
+{
+  "apis": [
+    {
+      "id": "openai",
+      "name": "OPENAI",
+      "model": "GPT-4O",
+      "color": "#74aa9c"
+    },
+    {
+      "id": "anthropic",
+      "name": "ANTHROPIC",
+      "model": "CLAUDE 3.5",
+      "color": "#d97757"
+    },
+    {
+      "id": "google",
+      "name": "GOOGLE",
+      "model": "GEMINI PRO",
+      "color": "#4285f4"
+    },
+    {
+      "id": "groq",
+      "name": "GROQ",
+      "model": "LLAMA 3.1",
+      "color": "#f55036"
+    }
+  ]
+}
