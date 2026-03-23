@@ -9,6 +9,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [pcp.01] - Q1/2026
 
 ### Changes
+Mar-22 - 2229 Argentina: fix: resolve R2R invalid signature by aligning payload structure and using proper UTF-8 base64 encoding 
 Mar-22 - 2208 Argentina: Resolved R2R signature validation by using JSON.stringify, normalizing input (DOB, postcode, phone), restoring title field, and correcting address + session formats
 Mar-22 - 2150 Argentina: Now supports BOTH formats: DD/MM/YYYY (user input) YYYY-MM-DD (already formatted)
 Mar-22 - 2131 Argentina: Used DIFFERENT structures: signature > object payload > array. Added `opt_in`. LOCK field order manually.
