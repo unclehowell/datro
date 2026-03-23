@@ -63,9 +63,33 @@ export async function onRequestPost(context: any) {
     const session_id    = body.session_id    || crypto.randomUUID();
     const device_session_id = body.device_session_id || crypto.randomUUID();
 
+    // ── Format postcode with space (e.g. CF644TF → CF64 4TF) ─────
+    const formatPostcode = (pc: string): string => {
+      const clean = pc.replace(/\s+/g, "").toUpperCase();
+      if (clean.length >= 5) return clean.slice(0, -3) + " " + clean.slice(-3);
+      return clean;
+    };
+    const formattedPostcode = formatPostcode(postcode);
+
+    // ── Signature includes addresses as plain object ───────────────
+    // The API example shows addresses as an object. The two times a 200
+    // was received in testing, addresses was included in the signature.
+    const signaturePayload = JSON.stringify({
+      first_name,
+      last_name,
+      date_of_birth,
+      phone,
+      email,
+      addresses: {
+        buildingNumber: buildingNumber || null,
+        thoroughfare,
+        townOrCity,
+        postcode: formattedPostcode,
+      },
+    });
+    const signature = toBase64(signaturePayload);
+
     // ── Build addresses as ARRAY with all documented fields ───────
-    // The R2R API spec says "array of objects" with all these fields.
-    // All optional fields must be present (as null) to pass Laravel validation.
     const addresses = [
       {
         line1:          null,
@@ -77,22 +101,9 @@ export async function onRequestPost(context: any) {
         thoroughfare,
         townOrCity,
         district:       null,
-        postcode,
+        postcode:       formattedPostcode,
       },
     ];
-
-    // ── Signature ─────────────────────────────────────────────────
-    // Evidence from logs: two different 200 responses were received with
-    // different addresses formats — meaning addresses is NOT part of the
-    // verified signature payload. Sign only the personal identity fields.
-    const signaturePayload = JSON.stringify({
-      first_name,
-      last_name,
-      date_of_birth,
-      phone,
-      email,
-    });
-    const signature = toBase64(signaturePayload);
 
     // ── Final payload ─────────────────────────────────────────────
     const payload = {
