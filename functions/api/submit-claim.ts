@@ -19,16 +19,13 @@ export async function onRequestPost(context: any) {
     // ✅ Helpers
     // -------------------------
 
-    // Robust DOB formatter (handles DD/MM/YYYY and YYYY-MM-DD)
     const formatDOB = (input: string) => {
       if (!input) return "";
 
       // Already correct
-      if (/^\d{4}-\d{2}-\d{2}$/.test(input)) {
-        return input;
-      }
+      if (/^\d{4}-\d{2}-\d{2}$/.test(input)) return input;
 
-      // Convert DD/MM/YYYY
+      // Convert DD/MM/YYYY → YYYY-MM-DD
       if (input.includes("/")) {
         const [day, month, year] = input.split("/");
         if (!day || !month || !year) return input;
@@ -39,7 +36,6 @@ export async function onRequestPost(context: any) {
       return input;
     };
 
-    // UK phone normalization
     const formatPhone = (phone: string) => {
       const clean = phone.replace(/\s+/g, "");
       if (clean.startsWith("0")) {
@@ -48,8 +44,16 @@ export async function onRequestPost(context: any) {
       return clean;
     };
 
+    const formatPostcode = (pc: string) => {
+      const clean = pc.replace(/\s+/g, "").toUpperCase();
+      if (clean.length >= 5) {
+        return clean.slice(0, -3) + " " + clean.slice(-3);
+      }
+      return pc.toUpperCase();
+    };
+
     // -------------------------
-    // ✅ Raw input (NO mutation beyond formatting)
+    // ✅ Clean input
     // -------------------------
     const title = String(body.title || "").trim();
     const first_name = String(body.first_name || "").trim();
@@ -61,13 +65,13 @@ export async function onRequestPost(context: any) {
     const buildingNumber = String(body.buildingNumber || "").trim();
     const thoroughfare = String(body.thoroughfare || "").trim();
     const townOrCity = String(body.townOrCity || "").trim();
-    const postcode = String(body.postcode || "").trim();
+    const postcode = formatPostcode(String(body.postcode || "").trim());
 
     // -------------------------
     // ✅ Address handling
     // -------------------------
 
-    // Signature expects OBJECT
+    // For signature (OBJECT)
     const addressForSignature = {
       buildingNumber,
       thoroughfare,
@@ -75,7 +79,7 @@ export async function onRequestPost(context: any) {
       postcode,
     };
 
-    // Payload expects ARRAY
+    // For payload (ARRAY)
     const addressForPayload = [
       {
         buildingNumber,
@@ -86,10 +90,19 @@ export async function onRequestPost(context: any) {
     ];
 
     // -------------------------
-    // ✅ Signature (STRICT ORDER)
+    // ✅ CORRECT SIGNATURE (CRITICAL FIX)
     // -------------------------
-    const signaturePayload =
-      `{"title":"${title}","first_name":"${first_name}","last_name":"${last_name}","date_of_birth":"${date_of_birth}","phone":"${phone}","email":"${email}","addresses":${JSON.stringify(addressForSignature)}}`;
+    const signatureObject = {
+      title,
+      first_name,
+      last_name,
+      date_of_birth,
+      phone,
+      email,
+      addresses: addressForSignature,
+    };
+
+    const signaturePayload = JSON.stringify(signatureObject);
 
     const signature = btoa(
       new TextEncoder()
@@ -98,7 +111,7 @@ export async function onRequestPost(context: any) {
     );
 
     // -------------------------
-    // ✅ Session IDs
+    // ✅ Session IDs (must be different)
     // -------------------------
     const session_id = body.session_id || crypto.randomUUID();
     const device_session_id =
@@ -120,10 +133,7 @@ export async function onRequestPost(context: any) {
       device_session_id,
       account_creation_url: "https://car.financecheque.uk/claim",
       addresses: addressForPayload,
-
-      // Required (often undocumented)
       opt_in: true,
-
       signature,
     };
 
@@ -131,6 +141,7 @@ export async function onRequestPost(context: any) {
     // 🔍 Debug logs
     // -------------------------
     console.log("SIGNATURE STRING:", signaturePayload);
+    console.log("SIGNATURE:", signature);
     console.log("FINAL PAYLOAD:", JSON.stringify(payload, null, 2));
 
     // -------------------------

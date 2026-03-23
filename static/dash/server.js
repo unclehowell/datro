@@ -142,7 +142,6 @@ const tracker = new TokenTracker();
 
 // Middleware
 app.use(express.json());
-app.use(express.static(__dirname));
 
 // CORS headers for all origins
 app.use((req, res, next) => {
@@ -162,11 +161,10 @@ app.get('/api/current-usage', (req, res) => {
     res.json(tracker.createUsageSnapshot());
 });
 
-// Same as /api/active for backwards compatibility
 app.get('/api/users', (req, res) => {
     res.json({
         users: tracker.getUsers(),
-        devices: [],
+        devices: tracker.devices,
         timestamp: new Date().toISOString()
     });
 });
@@ -174,7 +172,7 @@ app.get('/api/users', (req, res) => {
 app.get('/api/active', (req, res) => {
     res.json({
         users: tracker.getUsers(),
-        devices: [],
+        devices: tracker.devices,
         timestamp: new Date().toISOString()
     });
 });
@@ -185,7 +183,6 @@ app.post('/api/track', (req, res) => {
     if (!deviceId) {
         return res.status(400).json({ error: 'deviceId is required' });
     }
-    // For demo purposes, just return success
     return res.json({ success: true, deviceId, timestamp: Date.now() });
 });
 
@@ -208,11 +205,14 @@ app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+// Static files (moved after specific routes)
+app.use(express.static(__dirname));
+
 // Start server
 const server = app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Token Visualization Dashboard`);
     console.log(`🌐 Running on: http://localhost:${PORT}`);
     console.log(`📊 Try these URLs:`);
-    console.log('   • / for bubble visualization');
+    console.log('   • / for grid visualization');
     console.log('   • /dashboard for user grid');
 });
