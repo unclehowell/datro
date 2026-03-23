@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supply & Demand Dashboard</title>
+    <title>TV Dashboard - Supply & Demand</title>
     <style>
         :root {
-            --bg-color: #050505;
-            --card-bg: #111;
-            --border-color: #222;
-            --text-main: #eee;
-            --text-dim: #666;
+            --bg-color: #000;
+            --tile-bg: #0a0a0a;
+            --border-color: #1a1a1a;
+            --text-main: #fff;
+            --text-dim: #444;
             --accent: #00ff80;
         }
 
@@ -18,255 +18,260 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            overflow: hidden;
         }
 
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            padding: 3rem;
-            min-height: 100vh;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 2vw;
+        }
+
+        /* Top 2/3: Supply (Providers) */
+        .supply-container {
+            height: 65vh;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 1.5vw;
+            margin-bottom: 2vh;
+        }
+
+        .provider-tile {
+            background: var(--tile-bg);
+            border: 2px solid var(--border-color);
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.5s ease;
         }
 
-        h1 {
-            font-size: 0.8rem;
+        .provider-name {
+            font-size: 3vw;
+            font-weight: 900;
+            letter-spacing: -0.1vw;
+            z-index: 2;
+            text-align: center;
+            line-height: 1;
+        }
+
+        .model-name {
+            font-size: 1.2vw;
+            color: var(--text-dim);
             font-weight: 400;
-            margin-bottom: 3rem;
-            color: var(--text-dim);
-            letter-spacing: 0.3rem;
-            text-transform: uppercase;
+            margin-top: 1vh;
+            letter-spacing: 0.5vw;
         }
 
-        .dashboard-container {
+        .usage-fill {
+            position: absolute;
+            bottom: 0;
+            left: 0;
             width: 100%;
-            max-width: 1200px;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 4rem;
+            background: var(--accent);
+            opacity: 0.15;
+            transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
         }
 
-        /* Supply Side (Companies & Models) */
-        .section-label {
-            font-size: 0.7rem;
-            color: var(--text-dim);
-            margin-bottom: 2rem;
-            letter-spacing: 0.1rem;
-            text-transform: uppercase;
-        }
-
-        .supply-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        .company-box {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 1.5rem;
-            aspect-ratio: 1.2;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .company-name {
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 0.05rem;
-        }
-
-        .models-container {
-            flex-grow: 1;
+        /* Bottom 1/3: Demand (Devices/Users) */
+        .demand-container {
+            height: 30vh;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            align-content: start;
+            gap: 2vw;
         }
 
-        .model-square {
-            aspect-ratio: 1;
-            background: var(--accent);
-            opacity: 0.3;
-            transition: all 0.5s ease;
-            position: relative;
+        .device-col {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1vh;
         }
 
-        .model-square:hover {
-            opacity: 1;
-        }
-
-        .model-tooltip {
-            position: absolute;
-            bottom: -1.5rem;
-            left: 0;
-            font-size: 0.6rem;
+        .device-header {
+            font-size: 1.5vw;
+            font-weight: 800;
             color: var(--text-dim);
-            white-space: nowrap;
-            opacity: 0;
-        }
-
-        .model-square:hover .model-tooltip {
-            opacity: 1;
-        }
-
-        /* Demand Side (Devices & Users) */
-        .demand-section {
-            border-left: 1px solid var(--border-color);
-            padding-left: 3rem;
-        }
-
-        .device-item {
-            margin-bottom: 3rem;
-        }
-
-        .device-name {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            margin-bottom: 1rem;
+            margin-bottom: 2vh;
             text-transform: uppercase;
+            letter-spacing: 0.2vw;
         }
 
         .user-list {
             display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
+            flex-wrap: wrap;
+            gap: 0.8vw;
         }
 
-        .user-pill {
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        .user-tag {
+            font-size: 1.2vw;
+            font-weight: 700;
+            padding: 0.5vh 1vw;
+            background: #111;
+            border: 1px solid #222;
+            color: #666;
+            transition: all 0.3s ease;
         }
 
-        .status-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--accent);
+        .user-tag.active {
+            color: var(--text-main);
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(0, 255, 128, 0.2);
         }
 
-        @media (max-width: 900px) {
-            .dashboard-container { grid-template-columns: 1fr; }
-            .demand-section { border-left: none; padding-left: 0; }
+        /* Overlay Canvas for lines */
+        #line-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
         }
     </style>
 </head>
 <body>
-    <h1>Supply & Demand</h1>
+    <canvas id="line-canvas"></canvas>
 
-    <div class="dashboard-container">
-        <!-- SUPPLY -->
-        <div class="supply-section">
-            <div class="section-label">Supply: LLM Providers</div>
-            <div id="supply-grid" class="supply-grid">
-                <!-- Populated by JS -->
-            </div>
-        </div>
+    <div id="supply-grid" class="supply-container">
+        <!-- 6 Provider Tiles -->
+    </div>
 
-        <!-- DEMAND -->
-        <div class="demand-section">
-            <div class="section-label">Demand: Active Devices</div>
-            <div id="demand-list">
-                <!-- Populated by JS -->
-            </div>
-        </div>
+    <div id="demand-grid" class="demand-container">
+        <!-- 3 Device Columns -->
     </div>
 
     <script>
+        const canvas = document.getElementById('line-canvas');
+        const ctx = canvas.getContext('2d');
+        let dashboardData = null;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.onresize = resizeCanvas;
+        resizeCanvas();
+
         async function fetchData() {
             try {
                 const response = await fetch('/api/llm-usage');
-                const data = await response.json();
-                renderSupply(data.providers);
-                renderDemand(data.devices, data.users);
-            } catch (error) {
-                console.error('Error:', error);
-            }
+                dashboardData = await response.json();
+                renderSupply(dashboardData.providers);
+                renderDemand(dashboardData.devices, dashboardData.users);
+            } catch (err) { console.error(err); }
         }
 
         function renderSupply(providers) {
             const container = document.getElementById('supply-grid');
             container.innerHTML = '';
-
-            providers.forEach(provider => {
-                const box = document.createElement('div');
-                box.className = 'company-box';
+            providers.forEach(p => {
+                const tile = document.createElement('div');
+                tile.className = 'provider-tile';
+                tile.id = `tile-${p.name.toLowerCase()}`;
                 
                 const name = document.createElement('div');
-                name.className = 'company-name';
-                name.textContent = provider.name;
+                name.className = 'provider-name';
+                name.textContent = p.name;
+                name.style.color = p.color;
                 
-                const modelsContainer = document.createElement('div');
-                modelsContainer.className = 'models-container';
+                const model = document.createElement('div');
+                model.className = 'model-name';
+                model.textContent = p.model;
                 
-                provider.models.forEach(model => {
-                    const modelSq = document.createElement('div');
-                    modelSq.className = 'model-square';
-                    
-                    // Usage determines opacity and scale
-                    const usage = model.usage || 0;
-                    modelSq.style.opacity = (usage / 100) * 0.8 + 0.2;
-                    modelSq.style.transform = `scale(${0.7 + (usage / 100) * 0.3})`;
-                    
-                    if (usage > 80) modelSq.style.background = '#ff4444';
-                    else if (usage > 50) modelSq.style.background = '#ffbb33';
-                    
-                    const tooltip = document.createElement('div');
-                    tooltip.className = 'model-tooltip';
-                    tooltip.textContent = `${model.name} (${usage}%)`;
-                    
-                    modelSq.appendChild(tooltip);
-                    modelsContainer.appendChild(modelSq);
-                });
+                const fill = document.createElement('div');
+                fill.className = 'usage-fill';
+                fill.style.height = `${p.usage}%`;
+                fill.style.backgroundColor = p.color;
 
-                box.appendChild(name);
-                box.appendChild(modelsContainer);
-                container.appendChild(box);
+                tile.appendChild(name);
+                tile.appendChild(model);
+                tile.appendChild(fill);
+                container.appendChild(tile);
             });
         }
 
         function renderDemand(devices, users) {
-            const container = document.getElementById('demand-list');
+            const container = document.getElementById('demand-grid');
             container.innerHTML = '';
-
+            
             devices.forEach(device => {
-                const item = document.createElement('div');
-                item.className = 'device-item';
+                const col = document.createElement('div');
+                col.className = 'device-col';
                 
-                const name = document.createElement('div');
-                name.className = 'device-name';
-                name.textContent = device.name;
+                const header = document.createElement('div');
+                header.className = 'device-header';
+                header.textContent = device.name;
                 
-                const userList = document.createElement('div');
-                userList.className = 'user-list';
+                const list = document.createElement('div');
+                list.className = 'user-list';
                 
                 const deviceUsers = users.filter(u => u.device === device.id);
-                
-                if (deviceUsers.length === 0) {
-                    userList.innerHTML = '<div style="color: #333; font-size: 0.7rem;">IDLE</div>';
-                } else {
-                    deviceUsers.forEach(user => {
-                        const pill = document.createElement('div');
-                        pill.className = 'user-pill';
-                        pill.innerHTML = `<span class="status-dot" style="background: ${user.color || 'var(--accent)'}"></span> ${user.name}`;
-                        userList.appendChild(pill);
-                    });
-                }
+                deviceUsers.forEach(u => {
+                    const tag = document.createElement('div');
+                    tag.className = 'user-tag';
+                    tag.id = `user-${u.id}`;
+                    tag.textContent = u.name;
+                    list.appendChild(tag);
+                });
 
-                item.appendChild(name);
-                item.appendChild(userList);
-                container.appendChild(item);
+                col.appendChild(header);
+                col.appendChild(list);
+                container.appendChild(col);
+            });
+        }
+
+        // Draw connections
+        function drawConnections() {
+            if (!dashboardData) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const users = dashboardData.users;
+            const providers = dashboardData.providers;
+            
+            users.forEach(user => {
+                // Randomly connect to a provider to simulate activity
+                if (Math.random() > 0.7) {
+                    const provider = providers[Math.floor(Math.random() * providers.length)];
+                    const userEl = document.getElementById(`user-${user.id}`);
+                    const providerEl = document.getElementById(`tile-${provider.name.toLowerCase()}`);
+                    
+                    if (userEl && providerEl) {
+                        userEl.classList.add('active');
+                        setTimeout(() => userEl.classList.remove('active'), 1000);
+                        
+                        const uRect = userEl.getBoundingClientRect();
+                        const pRect = providerEl.getBoundingClientRect();
+                        
+                        const startX = uRect.left + uRect.width / 2;
+                        const startY = uRect.top;
+                        const endX = pRect.left + pRect.width / 2;
+                        const endY = pRect.top + pRect.height;
+                        
+                        ctx.beginPath();
+                        ctx.setLineDash([5, 5]);
+                        ctx.strokeStyle = provider.color;
+                        ctx.globalAlpha = 0.3;
+                        ctx.lineWidth = 2;
+                        ctx.moveTo(startX, startY);
+                        ctx.bezierCurveTo(startX, startY - 50, endX, endY + 50, endX, endY);
+                        ctx.stroke();
+                    }
+                }
             });
         }
 
         fetchData();
-        setInterval(fetchData, 2000);
+        setInterval(fetchData, 3000);
+        setInterval(drawConnections, 1000);
     </script>
 </body>
 </html>
