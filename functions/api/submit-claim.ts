@@ -18,7 +18,6 @@ export async function onRequestPost(context: any) {
     // -------------------------
     // ✅ Helpers
     // -------------------------
-
     const formatDOB = (input: string) => {
       if (!input) return "";
 
@@ -36,9 +35,7 @@ export async function onRequestPost(context: any) {
 
     const formatPhone = (phone: string) => {
       const clean = phone.replace(/\s+/g, "");
-      if (clean.startsWith("0")) {
-        return "+44" + clean.slice(1);
-      }
+      if (clean.startsWith("0")) return "+44" + clean.slice(1);
       return clean;
     };
 
@@ -48,6 +45,15 @@ export async function onRequestPost(context: any) {
         return clean.slice(0, -3) + " " + clean.slice(-3);
       }
       return pc.toUpperCase();
+    };
+
+    const toBase64 = (str: string) => {
+      const bytes = new TextEncoder().encode(str);
+      let binary = "";
+      for (let i = 0; i < bytes.length; i++) {
+        binary += String.fromCharCode(bytes[i]);
+      }
+      return btoa(binary);
     };
 
     // -------------------------
@@ -66,9 +72,9 @@ export async function onRequestPost(context: any) {
     const postcode = formatPostcode(String(body.postcode || "").trim());
 
     // -------------------------
-    // ✅ Address (ARRAY — used everywhere)
+    // ✅ Address (single format ONLY)
     // -------------------------
-    const addressForPayload = [
+    const addresses = [
       {
         buildingNumber,
         thoroughfare,
@@ -78,7 +84,14 @@ export async function onRequestPost(context: any) {
     ];
 
     // -------------------------
-    // ✅ SIGNATURE (FINAL + CORRECT)
+    // ✅ Session IDs
+    // -------------------------
+    const session_id = body.session_id || crypto.randomUUID();
+    const device_session_id =
+      body.device_session_id || crypto.randomUUID();
+
+    // -------------------------
+    // ✅ Signature (MUST match payload EXACTLY)
     // -------------------------
     const signatureObject = {
       title,
@@ -87,20 +100,11 @@ export async function onRequestPost(context: any) {
       date_of_birth,
       phone,
       email,
-      addresses: addressForPayload, // MUST match payload exactly
+      addresses,
     };
 
     const signaturePayload = JSON.stringify(signatureObject);
-
-    const signature = Buffer.from(signaturePayload, "utf-8").toString("base64");
-
-    // -------------------------
-    // ✅ Session IDs (must be different)
-    // -------------------------
-    const session_id = body.session_id || crypto.randomUUID();
-
-    const device_session_id =
-      body.device_session_id || crypto.randomUUID();
+    const signature = toBase64(signaturePayload);
 
     // -------------------------
     // ✅ Final payload
@@ -117,7 +121,7 @@ export async function onRequestPost(context: any) {
       session_id,
       device_session_id,
       account_creation_url: "https://car.financecheque.uk/claim",
-      addresses: addressForPayload,
+      addresses,
       opt_in: true,
       signature,
     };

@@ -19,67 +19,72 @@ class TokenTracker extends EventEmitter {
     }
     
     setupDefaultUsers() {
-        // Set up some example users and devices
+        // Set up the 3 key devices as requested
         this.devices = [
-            { id: 'aws-01', type: 'aws', name: 'AWS Instance' },
-            { id: 'mobile-01', type: 'mobile', name: 'iPhone 15 Pro' },
-            { id: 'laptop-01', type: 'laptop', name: 'MacBook Pro' }
+            { id: 'aws-cloud', type: 'aws', name: 'AWS Cloud Instance' },
+            { id: 'mobile-phone', type: 'phone', name: 'Mobile Phone' },
+            { id: 'dev-laptop', type: 'laptop', name: 'Development Laptop' }
         ];
 
+        // Coding agents primarily on the laptop
         this.activeUsers.set('picoclaw', {
             id: 'picoclaw',
             name: 'PicoClaw',
-            version: 'picoclaw v2.1',
-            device: 'laptop-01',
-            program: 'VSCode',
+            version: 'v2.1',
+            device: 'dev-laptop',
+            program: 'System Service',
             color: '#00ff80',
-            emoji: '⚡',
             requests: 245,
             lastSeen: Date.now(),
-            status: 'online',
-            type: 'agent'
+            status: 'online'
         });
         
-        this.activeUsers.set('gemini-cli', {
-            id: 'gemini-cli',
+        this.activeUsers.set('gemini', {
+            id: 'gemini',
             name: 'Gemini CLI',
-            version: 'gemini-cli v1.5',
-            device: 'aws-01',
+            version: 'v1.5',
+            device: 'dev-laptop',
             program: 'Terminal',
             color: '#4285F4',
-            emoji: '📝',
-            requests: 23,
+            requests: 156,
             lastSeen: Date.now(),
-            status: 'online',
-            type: 'cli'
+            status: 'online'
         });
 
-        this.activeUsers.set('claude-agent', {
-            id: 'claude-agent',
-            name: 'Claude',
-            version: 'nemoclaw v0.8',
-            device: 'mobile-01',
-            program: 'Mobile App',
+        this.activeUsers.set('claude', {
+            id: 'claude',
+            name: 'Claude Code',
+            version: 'v0.8',
+            device: 'dev-laptop',
+            program: 'VS Code',
             color: '#FF6B35',
-            emoji: '🤖',
             requests: 89,
             lastSeen: Date.now(),
-            status: 'online',
-            type: 'agent'
+            status: 'online'
         });
 
-        this.activeUsers.set('groq-speed', {
-            id: 'groq-speed',
-            name: 'Groq',
-            version: 'openclaw v1.0',
-            device: 'aws-01',
-            program: 'API',
-            color: '#1DA1F2',
-            emoji: '🚀',
+        this.activeUsers.set('aider', {
+            id: 'aider',
+            name: 'Aider',
+            version: 'v0.35',
+            device: 'dev-laptop',
+            program: 'Terminal',
+            color: '#bb86fc',
+            requests: 124,
+            lastSeen: Date.now(),
+            status: 'online'
+        });
+
+        this.activeUsers.set('groq', {
+            id: 'groq',
+            name: 'Groq CLI',
+            version: 'v1.0',
+            device: 'aws-cloud',
+            program: 'API Gateway',
+            color: '#f55036',
             requests: 567,
             lastSeen: Date.now(),
-            status: 'online',
-            type: 'agent'
+            status: 'online'
         });
     }
     

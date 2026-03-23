@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LLM Quota Dashboard</title>
+    <title>Supply & Demand Dashboard</title>
     <style>
         :root {
             --bg-color: #050505;
             --card-bg: #111;
             --border-color: #222;
             --text-main: #eee;
-            --text-dim: #888;
+            --text-dim: #666;
             --accent: #00ff80;
         }
 
@@ -21,200 +21,161 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            padding: 2rem;
+            padding: 3rem;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         h1 {
-            font-size: 1.5rem;
+            font-size: 0.8rem;
             font-weight: 400;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             color: var(--text-dim);
-            letter-spacing: 0.1rem;
+            letter-spacing: 0.3rem;
             text-transform: uppercase;
         }
 
         .dashboard-container {
-            display: flex;
-            flex-direction: column;
+            width: 100%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
             gap: 4rem;
         }
 
-        /* LLM Grid */
-        .section-header {
-            font-size: 1rem;
-            color: var(--text-dim);
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .company-outer-square {
-            aspect-ratio: 1;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .company-outer-square:hover {
-            border-color: #444;
-        }
-
-        .company-label {
-            position: absolute;
-            top: 0.5rem;
-            left: 0.5rem;
+        /* Supply Side (Companies & Models) */
+        .section-label {
             font-size: 0.7rem;
             color: var(--text-dim);
+            margin-bottom: 2rem;
+            letter-spacing: 0.1rem;
             text-transform: uppercase;
-            letter-spacing: 0.05rem;
-            z-index: 10;
         }
 
-        .model-inner-square {
-            background: var(--accent);
-            width: 20%;
-            height: 20%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            box-shadow: 0 0 20px rgba(0, 255, 128, 0.2);
-        }
-
-        .model-name {
-            font-size: 0.75rem;
-            color: #000;
-            font-weight: 700;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            padding: 0 0.5rem;
-        }
-
-        .company-outer-square:hover .model-name {
-            opacity: 1;
-        }
-
-        .usage-value {
-            position: absolute;
-            bottom: -1.5rem;
-            font-size: 0.7rem;
-            color: var(--text-dim);
-        }
-
-        /* Devices Section */
-        .device-grid {
+        .supply-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
         }
 
-        .device-card {
+        .company-box {
             background: var(--card-bg);
-            border-left: 3px solid var(--accent);
+            border: 1px solid var(--border-color);
             padding: 1.5rem;
+            aspect-ratio: 1.2;
+            display: flex;
+            flex-direction: column;
         }
 
-        .device-type {
-            font-size: 0.8rem;
-            color: var(--accent);
+        .company-name {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dim);
             text-transform: uppercase;
-            margin-bottom: 0.5rem;
+            letter-spacing: 0.05rem;
+        }
+
+        .models-container {
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            align-content: start;
+        }
+
+        .model-square {
+            aspect-ratio: 1;
+            background: var(--accent);
+            opacity: 0.3;
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        .model-square:hover {
+            opacity: 1;
+        }
+
+        .model-tooltip {
+            position: absolute;
+            bottom: -1.5rem;
+            left: 0;
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            white-space: nowrap;
+            opacity: 0;
+        }
+
+        .model-square:hover .model-tooltip {
+            opacity: 1;
+        }
+
+        /* Demand Side (Devices & Users) */
+        .demand-section {
+            border-left: 1px solid var(--border-color);
+            padding-left: 3rem;
+        }
+
+        .device-item {
+            margin-bottom: 3rem;
         }
 
         .device-name {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .user-item {
-            background: #1a1a1a;
-            padding: 1rem;
-            margin-bottom: 0.75rem;
-            border-radius: 4px;
-        }
-
-        .user-main-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-
-        .user-name {
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
-        .user-version {
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             color: var(--text-dim);
-            background: #222;
-            padding: 2px 6px;
-            border-radius: 3px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
         }
 
-        .user-sub-info {
-            font-size: 0.75rem;
-            color: var(--text-dim);
+        .user-list {
             display: flex;
-            gap: 1rem;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .user-pill {
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .status-dot {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background: var(--accent);
-            display: inline-block;
-            margin-right: 0.5rem;
         }
 
-        @media (max-width: 600px) {
-            body { padding: 1rem; }
-            .grid-container { grid-template-columns: 1fr 1fr; }
+        @media (max-width: 900px) {
+            .dashboard-container { grid-template-columns: 1fr; }
+            .demand-section { border-left: none; padding-left: 0; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>System Monitor</h1>
-    </header>
+    <h1>Supply & Demand</h1>
 
     <div class="dashboard-container">
-        <!-- LLM Models Section -->
-        <section>
-            <div class="section-header">LLM PROVIDERS & QUOTA</div>
-            <div id="llm-grid" class="grid-container">
-                <!-- Will be populated by JS -->
+        <!-- SUPPLY -->
+        <div class="supply-section">
+            <div class="section-label">Supply: LLM Providers</div>
+            <div id="supply-grid" class="supply-grid">
+                <!-- Populated by JS -->
             </div>
-        </section>
+        </div>
 
-        <!-- Devices Section -->
-        <section>
-            <div class="section-header">DEVICES & USERS</div>
-            <div id="device-grid" class="device-grid">
-                <!-- Will be populated by JS -->
+        <!-- DEMAND -->
+        <div class="demand-section">
+            <div class="section-label">Demand: Active Devices</div>
+            <div id="demand-list">
+                <!-- Populated by JS -->
             </div>
-        </section>
+        </div>
     </div>
 
     <script>
@@ -222,110 +183,90 @@
             try {
                 const response = await fetch('/api/llm-usage');
                 const data = await response.json();
-                renderDashboard(data);
+                renderSupply(data.providers);
+                renderDemand(data.devices, data.users);
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error('Error:', error);
             }
         }
 
-        function renderDashboard(data) {
-            renderLLMs(data.providers);
-            renderDevices(data.devices, data.users);
-        }
-
-        function renderLLMs(providers) {
-            const container = document.getElementById('llm-grid');
+        function renderSupply(providers) {
+            const container = document.getElementById('supply-grid');
             container.innerHTML = '';
 
             providers.forEach(provider => {
+                const box = document.createElement('div');
+                box.className = 'company-box';
+                
+                const name = document.createElement('div');
+                name.className = 'company-name';
+                name.textContent = provider.name;
+                
+                const modelsContainer = document.createElement('div');
+                modelsContainer.className = 'models-container';
+                
                 provider.models.forEach(model => {
-                    const outer = document.createElement('div');
-                    outer.className = 'company-outer-square';
+                    const modelSq = document.createElement('div');
+                    modelSq.className = 'model-square';
                     
-                    const label = document.createElement('div');
-                    label.className = 'company-label';
-                    label.textContent = provider.name;
-                    
-                    const inner = document.createElement('div');
-                    inner.className = 'model-inner-square';
-                    
-                    // Scale inner square based on usage percentage
+                    // Usage determines opacity and scale
                     const usage = model.usage || 0;
-                    inner.style.width = `${usage}%`;
-                    inner.style.height = `${usage}%`;
+                    modelSq.style.opacity = (usage / 100) * 0.8 + 0.2;
+                    modelSq.style.transform = `scale(${0.7 + (usage / 100) * 0.3})`;
                     
-                    // Color based on usage
-                    if (usage > 90) inner.style.background = '#ff4444';
-                    else if (usage > 70) inner.style.background = '#ffbb33';
-                    else inner.style.background = '#00ff80';
-
-                    const modelName = document.createElement('div');
-                    modelName.className = 'model-name';
-                    modelName.textContent = model.name;
+                    if (usage > 80) modelSq.style.background = '#ff4444';
+                    else if (usage > 50) modelSq.style.background = '#ffbb33';
                     
-                    const usageText = document.createElement('div');
-                    usageText.className = 'usage-value';
-                    usageText.textContent = `${usage}%`;
-
-                    inner.appendChild(modelName);
-                    outer.appendChild(label);
-                    outer.appendChild(inner);
-                    outer.appendChild(usageText);
-                    container.appendChild(outer);
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'model-tooltip';
+                    tooltip.textContent = `${model.name} (${usage}%)`;
+                    
+                    modelSq.appendChild(tooltip);
+                    modelsContainer.appendChild(modelSq);
                 });
+
+                box.appendChild(name);
+                box.appendChild(modelsContainer);
+                container.appendChild(box);
             });
         }
 
-        function renderDevices(devices, users) {
-            const container = document.getElementById('device-grid');
+        function renderDemand(devices, users) {
+            const container = document.getElementById('demand-list');
             container.innerHTML = '';
 
             devices.forEach(device => {
-                const card = document.createElement('div');
-                card.className = 'device-card';
-                
-                const type = document.createElement('div');
-                type.className = 'device-type';
-                type.textContent = device.type;
+                const item = document.createElement('div');
+                item.className = 'device-item';
                 
                 const name = document.createElement('div');
                 name.className = 'device-name';
                 name.textContent = device.name;
                 
                 const userList = document.createElement('div');
+                userList.className = 'user-list';
                 
                 const deviceUsers = users.filter(u => u.device === device.id);
                 
                 if (deviceUsers.length === 0) {
-                    userList.innerHTML = '<div style="color: #444; font-size: 0.8rem;">No active users</div>';
+                    userList.innerHTML = '<div style="color: #333; font-size: 0.7rem;">IDLE</div>';
                 } else {
                     deviceUsers.forEach(user => {
-                        const item = document.createElement('div');
-                        item.className = 'user-item';
-                        item.innerHTML = `
-                            <div class="user-main-info">
-                                <span class="user-name"><span class="status-dot"></span>${user.name}</span>
-                                <span class="user-version">${user.version}</span>
-                            </div>
-                            <div class="user-sub-info">
-                                <span>Program: ${user.program}</span>
-                                <span>Req: ${user.requests}</span>
-                            </div>
-                        `;
-                        userList.appendChild(item);
+                        const pill = document.createElement('div');
+                        pill.className = 'user-pill';
+                        pill.innerHTML = `<span class="status-dot" style="background: ${user.color || 'var(--accent)'}"></span> ${user.name}`;
+                        userList.appendChild(pill);
                     });
                 }
 
-                card.appendChild(type);
-                card.appendChild(name);
-                card.appendChild(userList);
-                container.appendChild(card);
+                item.appendChild(name);
+                item.appendChild(userList);
+                container.appendChild(item);
             });
         }
 
-        // Initial fetch and set interval
         fetchData();
-        setInterval(fetchData, 3000);
+        setInterval(fetchData, 2000);
     </script>
 </body>
 </html>
