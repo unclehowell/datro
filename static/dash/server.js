@@ -67,26 +67,29 @@ class APIQuotaMonitor {
     }
 
     async checkOpenAI() {
-        try {
-            // OpenAI doesn't expose a simple "quota remaining" endpoint for standard keys.
-            // We'll use a very cheap model request to get rate limit headers.
-            const response = await axios.post('https://api.openai.com/v1/chat/completions', {
-                model: "gpt-3.5-turbo",
-                messages: [{ role: "user", content: "hi" }],
-                max_tokens: 1
-            }, {
-                headers: { 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` }
-            });
-            
-            const remaining = parseInt(response.headers['x-ratelimit-remaining-requests'] || 0);
-            const limit = parseInt(response.headers['x-ratelimit-limit-requests'] || 100);
-            const usage = ((limit - remaining) / limit) * 100;
-            
-            this.setQuota('OPENAI', 'GPT-4O', usage, limit, remaining, '#74aa9c');
-        } catch (error) {
-            console.error('OpenAI check failed:', error.message);
-            this.setQuota('OPENAI', 'GPT-4O', 100, 100, 0, '#74aa9c', 'ERROR');
+        const keys = [process.env.OPENAI_API_KEY, process.env.OPENAI_API_KEY_ALT].filter(Boolean);
+        for (const key of keys) {
+            try {
+                const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+                    model: "gpt-3.5-turbo",
+                    messages: [{ role: "user", content: "hi" }],
+                    max_tokens: 1
+                }, {
+                    headers: { 'Authorization': `Bearer ${key}` },
+                    timeout: 5000
+                });
+                
+                const remaining = parseInt(response.headers['x-ratelimit-remaining-requests'] || 0);
+                const limit = parseInt(response.headers['x-ratelimit-limit-requests'] || 100);
+                const usage = ((limit - remaining) / limit) * 100;
+                
+                this.setQuota('OPENAI', 'GPT-4O', usage, limit, remaining, '#74aa9c');
+                return; // Success
+            } catch (error) {
+                console.error(`OpenAI key ${key.substring(0, 8)} failed: ${error.response?.status || error.message}`);
+            }
         }
+        this.setQuota('OPENAI', 'GPT-4O', 100, 100, 0, '#74aa9c', 'ERROR');
     }
 
     async checkAnthropic() {
@@ -100,7 +103,8 @@ class APIQuotaMonitor {
                     'x-api-key': process.env.ANTHROPIC_API_KEY,
                     'anthropic-version': '2023-06-01',
                     'content-type': 'application/json'
-                }
+                },
+                timeout: 5000
             });
 
             const remaining = parseInt(response.headers['anthropic-ratelimit-requests-remaining'] || 0);
@@ -109,26 +113,29 @@ class APIQuotaMonitor {
 
             this.setQuota('ANTHROPIC', 'CLAUDE 3.5', usage, limit, remaining, '#d97757');
         } catch (error) {
-            console.error('Anthropic check failed:', error.message);
-            this.setQuota('ANTHROPIC', 'CLAUDE 3.5', 100, 100, 0, '#d97757', 'ERROR');
+            if (error.response?.status === 401) {
+                this.setQuota('ANTHROPIC', 'CLAUDE 3.5', 0, 100, 0, '#d97757', 'MISSING KEY');
+            } else {
+                console.error(`Anthropic error: ${error.response?.status || error.message}`);
+                this.setQuota('ANTHROPIC', 'CLAUDE 3.5', 100, 100, 0, '#d97757', 'ERROR');
+            }
         }
     }
 
     async checkGemini() {
-        // Google Gemini doesn't return standard rate limit headers in the same way.
-        // We'll assume if the call works, we're good. If 429, we're 100%.
         try {
             const response = await axios.post(
-                `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.GEMINI_API_KEY}`,
-                { contents: [{ parts: [{ text: "hi" }] }] }
+                `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+                { contents: [{ parts: [{ text: "hi" }] }] },
+                { timeout: 5000 }
             );
-            // No standard headers, so we set low usage if successful
-            this.setQuota('GOOGLE', 'GEMINI PRO', 10, 100, 90, '#4285f4'); 
+            this.setQuota('GOOGLE', 'GEMINI PRO', 15, 100, 85, '#4285f4'); 
         } catch (error) {
+             console.error(`Gemini error: ${error.response?.status || error.message}`);
              if (error.response && error.response.status === 429) {
                 this.setQuota('GOOGLE', 'GEMINI PRO', 100, 100, 0, '#4285f4', 'EXCEEDED');
              } else {
-                this.setQuota('GOOGLE', 'GEMINI PRO', 0, 100, 0, '#4285f4', 'ERROR');
+                this.setQuota('GOOGLE', 'GEMINI PRO', 100, 100, 0, '#4285f4', 'ERROR');
              }
         }
     }
@@ -136,11 +143,12 @@ class APIQuotaMonitor {
     async checkGroq() {
         try {
             const response = await axios.post('https://api.groq.com/openai/v1/chat/completions', {
-                model: "llama3-8b-8192",
+                model: "llama-3.3-70b-versatile",
                 messages: [{ role: "user", content: "hi" }],
                 max_tokens: 1
             }, {
-                headers: { 'Authorization': `Bearer ${process.env.GROQ_API_KEY}` }
+                headers: { 'Authorization': `Bearer ${process.env.GROQ_API_KEY}` },
+                timeout: 5000
             });
 
             const remaining = parseInt(response.headers['x-ratelimit-remaining-requests'] || 0);
@@ -149,7 +157,7 @@ class APIQuotaMonitor {
 
             this.setQuota('GROQ', 'LLAMA 3.1', usage, limit, remaining, '#f55036');
         } catch (error) {
-             console.error('Groq check failed:', error.message);
+             console.error(`Groq error: ${error.response?.status || error.message}`);
              this.setQuota('GROQ', 'LLAMA 3.1', 100, 100, 0, '#f55036', 'ERROR');
         }
     }

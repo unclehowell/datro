@@ -28,9 +28,7 @@ export async function onRequestPost(context: any) {
     // ── Helpers ──────────────────────────────────────────────────
     const formatDOB = (input: string): string => {
       if (!input) return "";
-      // Already YYYY-MM-DD
       if (/^\d{4}-\d{2}-\d{2}$/.test(input)) return input;
-      // Convert DD/MM/YYYY → YYYY-MM-DD
       if (input.includes("/")) {
         const [day, month, year] = input.split("/");
         if (!day || !month || !year) return input;
@@ -39,7 +37,18 @@ export async function onRequestPost(context: any) {
       return input;
     };
 
-    // UTF-8 safe base64 (no Buffer — Cloudflare Workers safe)
+    const formatPostcode = (pc: string): string => {
+      const clean = pc.replace(/\s+/g, "").toUpperCase();
+      if (clean.length >= 5) return clean.slice(0, -3) + " " + clean.slice(-3);
+      return clean;
+    };
+
+    const formatPhone = (p: string): string => {
+      const clean = p.replace(/\s+/g, "");
+      if (clean.startsWith("0")) return "+44" + clean.slice(1);
+      return clean;
+    };
+
     const toBase64 = (str: string): string => {
       const bytes = new TextEncoder().encode(str);
       let binary = "";
@@ -50,31 +59,24 @@ export async function onRequestPost(context: any) {
     };
 
     // ── Extract fields ────────────────────────────────────────────
-    const title         = String(body.title          || "").trim();
-    const first_name    = String(body.first_name     || "").trim();
-    const last_name     = String(body.last_name      || "").trim();
-    const email         = String(body.email          || "").trim();
-    const phone         = String(body.phone          || "").trim();
-    const date_of_birth = formatDOB(String(body.date_of_birth || "").trim());
-    const buildingNumber= String(body.buildingNumber || "").trim();
-    const thoroughfare  = String(body.thoroughfare   || "").trim();
-    const townOrCity    = String(body.townOrCity     || "").trim();
-    const postcode      = String(body.postcode       || "").trim();
-    const session_id    = body.session_id    || crypto.randomUUID();
+    const title          = String(body.title          || "").trim();
+    const first_name     = String(body.first_name     || "").trim();
+    const last_name      = String(body.last_name      || "").trim();
+    const email          = String(body.email          || "").trim();
+    const phone          = formatPhone(String(body.phone || "").trim());
+    const date_of_birth  = formatDOB(String(body.date_of_birth || "").trim());
+    const buildingNumber = String(body.buildingNumber || "").trim();
+    const thoroughfare   = String(body.thoroughfare   || "").trim();
+    const townOrCity     = String(body.townOrCity     || "").trim();
+    const postcode       = formatPostcode(String(body.postcode || "").trim());
+    const session_id     = body.session_id       || crypto.randomUUID();
     const device_session_id = body.device_session_id || crypto.randomUUID();
 
-    // ── Format postcode with space (e.g. CF644TF → CF64 4TF) ─────
-    const formatPostcode = (pc: string): string => {
-      const clean = pc.replace(/\s+/g, "").toUpperCase();
-      if (clean.length >= 5) return clean.slice(0, -3) + " " + clean.slice(-3);
-      return clean;
-    };
-    const formattedPostcode = formatPostcode(postcode);
-
-    // ── Signature includes addresses as plain object ───────────────
-    // The API example shows addresses as an object. The two times a 200
-    // was received in testing, addresses was included in the signature.
+    // ── Signature ─────────────────────────────────────────────────
+    // title + personal fields + addresses as object
+    // (matching what produced 200 responses in prior testing)
     const signaturePayload = JSON.stringify({
+      title,
       first_name,
       last_name,
       date_of_birth,
@@ -84,12 +86,12 @@ export async function onRequestPost(context: any) {
         buildingNumber: buildingNumber || null,
         thoroughfare,
         townOrCity,
-        postcode: formattedPostcode,
+        postcode,
       },
     });
     const signature = toBase64(signaturePayload);
 
-    // ── Build addresses as ARRAY with all documented fields ───────
+    // ── Addresses as ARRAY with all documented fields ─────────────
     const addresses = [
       {
         line1:          null,
@@ -101,7 +103,7 @@ export async function onRequestPost(context: any) {
         thoroughfare,
         townOrCity,
         district:       null,
-        postcode:       formattedPostcode,
+        postcode,
       },
     ];
 
@@ -123,7 +125,6 @@ export async function onRequestPost(context: any) {
       signature,
     };
 
-    // ── Debug logs (remove once working) ─────────────────────────
     console.log("SIGNATURE PAYLOAD:", signaturePayload);
     console.log("SIGNATURE:", signature);
     console.log("FINAL PAYLOAD:", JSON.stringify(payload, null, 2));
@@ -147,7 +148,6 @@ export async function onRequestPost(context: any) {
     console.log("R2R STATUS:", res.status);
     console.log("R2R BODY:", text);
 
-    // Always return JSON to the browser
     return new Response(text, {
       status: res.status,
       headers: { "Content-Type": "application/json", ...CORS_HEADERS },

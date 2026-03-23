@@ -9,6 +9,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [pcp.01] - Q1/2026
 
 ### Changes
+Mar-23 - 0548 Argentina: add title to signature payload and format phone to +44
 Mar-23 - 0520 Argentina: include addresses object in signature payload and format postcode with space
 Mar-23 - 0502 Argentina: restored onRequestPost CF function, add CORS OPTIONS handler, sign personal fields only, include all null address fields per R2R schema
 Mar-23 - 0416 Argentina: added CORS OPTIONS handler to resolve 405 preflight rejection  
