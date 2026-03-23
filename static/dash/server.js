@@ -201,7 +201,7 @@ app.get('/api/health', (req, res) => {
 
 // Main dashboard routes
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index-bubble.html'));
+    res.sendFile(path.join(__dirname, 'index-grid.html'));
 });
 
 app.get('/dashboard', (req, res) => {

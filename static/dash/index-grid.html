@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Quota Dashboard</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --card-bg: #111;
+            --border-color: #222;
+            --text-main: #eee;
+            --text-dim: #888;
+            --accent: #00ff80;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: var(--text-dim);
+            letter-spacing: 0.1rem;
+            text-transform: uppercase;
+        }
+
+        .dashboard-container {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        /* LLM Grid */
+        .section-header {
+            font-size: 1rem;
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .company-outer-square {
+            aspect-ratio: 1;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .company-outer-square:hover {
+            border-color: #444;
+        }
+
+        .company-label {
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.05rem;
+            z-index: 10;
+        }
+
+        .model-inner-square {
+            background: var(--accent);
+            width: 20%;
+            height: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 255, 128, 0.2);
+        }
+
+        .model-name {
+            font-size: 0.75rem;
+            color: #000;
+            font-weight: 700;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 0 0.5rem;
+        }
+
+        .company-outer-square:hover .model-name {
+            opacity: 1;
+        }
+
+        .usage-value {
+            position: absolute;
+            bottom: -1.5rem;
+            font-size: 0.7rem;
+            color: var(--text-dim);
+        }
+
+        /* Devices Section */
+        .device-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .device-card {
+            background: var(--card-bg);
+            border-left: 3px solid var(--accent);
+            padding: 1.5rem;
+        }
+
+        .device-type {
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .device-name {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .user-item {
+            background: #1a1a1a;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            border-radius: 4px;
+        }
+
+        .user-main-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .user-version {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            background: #222;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .user-sub-info {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            .grid-container { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>System Monitor</h1>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- LLM Models Section -->
+        <section>
+            <div class="section-header">LLM PROVIDERS & QUOTA</div>
+            <div id="llm-grid" class="grid-container">
+                <!-- Will be populated by JS -->
+            </div>
+        </section>
+
+        <!-- Devices Section -->
+        <section>
+            <div class="section-header">DEVICES & USERS</div>
+            <div id="device-grid" class="device-grid">
+                <!-- Will be populated by JS -->
+            </div>
+        </section>
+    </div>
+
+    <script>
+        async function fetchData() {
+            try {
+                const response = await fetch('/api/llm-usage');
+                const data = await response.json();
+                renderDashboard(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        function renderDashboard(data) {
+            renderLLMs(data.providers);
+            renderDevices(data.devices, data.users);
+        }
+
+        function renderLLMs(providers) {
+            const container = document.getElementById('llm-grid');
+            container.innerHTML = '';
+
+            providers.forEach(provider => {
+                provider.models.forEach(model => {
+                    const outer = document.createElement('div');
+                    outer.className = 'company-outer-square';
+                    
+                    const label = document.createElement('div');
+                    label.className = 'company-label';
+                    label.textContent = provider.name;
+                    
+                    const inner = document.createElement('div');
+                    inner.className = 'model-inner-square';
+                    
+                    // Scale inner square based on usage percentage
+                    const usage = model.usage || 0;
+                    inner.style.width = `${usage}%`;
+                    inner.style.height = `${usage}%`;
+                    
+                    // Color based on usage
+                    if (usage > 90) inner.style.background = '#ff4444';
+                    else if (usage > 70) inner.style.background = '#ffbb33';
+                    else inner.style.background = '#00ff80';
+
+                    const modelName = document.createElement('div');
+                    modelName.className = 'model-name';
+                    modelName.textContent = model.name;
+                    
+                    const usageText = document.createElement('div');
+                    usageText.className = 'usage-value';
+                    usageText.textContent = `${usage}%`;
+
+                    inner.appendChild(modelName);
+                    outer.appendChild(label);
+                    outer.appendChild(inner);
+                    outer.appendChild(usageText);
+                    container.appendChild(outer);
+                });
+            });
+        }
+
+        function renderDevices(devices, users) {
+            const container = document.getElementById('device-grid');
+            container.innerHTML = '';
+
+            devices.forEach(device => {
+                const card = document.createElement('div');
+                card.className = 'device-card';
+                
+                const type = document.createElement('div');
+                type.className = 'device-type';
+                type.textContent = device.type;
+                
+                const name = document.createElement('div');
+                name.className = 'device-name';
+                name.textContent = device.name;
+                
+                const userList = document.createElement('div');
+                
+                const deviceUsers = users.filter(u => u.device === device.id);
+                
+                if (deviceUsers.length === 0) {
+                    userList.innerHTML = '<div style="color: #444; font-size: 0.8rem;">No active users</div>';
+                } else {
+                    deviceUsers.forEach(user => {
+                        const item = document.createElement('div');
+                        item.className = 'user-item';
+                        item.innerHTML = `
+                            <div class="user-main-info">
+                                <span class="user-name"><span class="status-dot"></span>${user.name}</span>
+                                <span class="user-version">${user.version}</span>
+                            </div>
+                            <div class="user-sub-info">
+                                <span>Program: ${user.program}</span>
+                                <span>Req: ${user.requests}</span>
+                            </div>
+                        `;
+                        userList.appendChild(item);
+                    });
+                }
+
+                card.appendChild(type);
+                card.appendChild(name);
+                card.appendChild(userList);
+                container.appendChild(card);
+            });
+        }
+
+        // Initial fetch and set interval
+        fetchData();
+        setInterval(fetchData, 3000);
+    </script>
+</body>
+</html>

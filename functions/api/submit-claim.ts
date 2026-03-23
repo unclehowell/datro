@@ -2,9 +2,6 @@ export async function onRequestPost(context: any) {
   try {
     const req = context.request;
 
-    // -------------------------
-    // ✅ Parse request
-    // -------------------------
     let body: any = {};
     const contentType = req.headers.get("content-type") || "";
 
@@ -16,55 +13,69 @@ export async function onRequestPost(context: any) {
     }
 
     // -------------------------
-    // ✅ RAW INPUT (NO MUTATION)
+    // Helpers
+    // -------------------------
+    const formatDOB = (input: string) => {
+      const [day, month, year] = input.split("/");
+      return `${year}-${month}-${day}`;
+    };
+
+    const formatPhone = (phone: string) => {
+      const clean = phone.replace(/\s+/g, "");
+      return clean.startsWith("0") ? "+44" + clean.slice(1) : clean;
+    };
+
+    // -------------------------
+    // Raw values
     // -------------------------
     const title = String(body.title || "").trim();
     const first_name = String(body.first_name || "").trim();
     const last_name = String(body.last_name || "").trim();
     const email = String(body.email || "").trim();
-    const phone = String(body.phone || "").trim();
-    const raw_dob = String(body.date_of_birth || "").trim();
-    const date_of_birth = formatDOB(raw_dob);    
+    const phone = formatPhone(String(body.phone || "").trim());
+    const date_of_birth = formatDOB(String(body.date_of_birth || "").trim());
+
     const buildingNumber = String(body.buildingNumber || "").trim();
     const thoroughfare = String(body.thoroughfare || "").trim();
     const townOrCity = String(body.townOrCity || "").trim();
     const postcode = String(body.postcode || "").trim();
 
     // -------------------------
-    // ✅ ADDRESS = ARRAY OF OBJECTS
+    // ADDRESS SPLIT STRATEGY
     // -------------------------
-    const addresses = {
+
+    // 🔹 For SIGNATURE (object)
+    const addressForSignature = {
+      buildingNumber,
+      thoroughfare,
+      townOrCity,
+      postcode,
+    };
+
+    // 🔹 For PAYLOAD (array)
+    const addressForPayload = [
+      {
         buildingNumber,
         thoroughfare,
         townOrCity,
         postcode,
-      };
+      },
+    ];
 
     // -------------------------
-    // ✅ SIGNATURE PAYLOAD (MATCH EXACTLY)
+    // 🔒 LOCKED SIGNATURE ORDER
     // -------------------------
-    const signaturePayloadObj = {
-      title,
-      first_name,
-      last_name,
-      date_of_birth,
-      phone,
-      email,
-      addresses,
-    };
+    const signaturePayload =
+      `{"title":"${title}","first_name":"${first_name}","last_name":"${last_name}","date_of_birth":"${date_of_birth}","phone":"${phone}","email":"${email}","addresses":${JSON.stringify(addressForSignature)}}`;
 
-    const signaturePayload = JSON.stringify(signaturePayloadObj);
+    const signature = btoa(
+      new TextEncoder()
+        .encode(signaturePayload)
+        .reduce((data, byte) => data + String.fromCharCode(byte), "")
+    );
 
     // -------------------------
-    // ✅ UTF-8 SAFE BASE64
-    // -------------------------
-    const utf8 = new TextEncoder().encode(signaturePayload);
-    let binary = "";
-    utf8.forEach((b) => (binary += String.fromCharCode(b)));
-    const signature = btoa(binary);
-
-    // -------------------------
-    // ✅ FINAL PAYLOAD
+    // FINAL PAYLOAD
     // -------------------------
     const payload = {
       title,
@@ -75,32 +86,28 @@ export async function onRequestPost(context: any) {
       email,
       client_ip: req.headers.get("cf-connecting-ip") || "",
       user_agent: req.headers.get("user-agent") || "",
-      session_id: body.session_id || crypto.randomUUID(),
-      device_session_id:
-        body.device_session_id || body.session_id || crypto.randomUUID(),
+      session_id: crypto.randomUUID(),
+      device_session_id: body.device_session_id || crypto.randomUUID(),
       account_creation_url: "https://car.financecheque.uk/claim",
-      addresses,
+
+      addresses: addressForPayload,
+
+      // 🔴 VERY IMPORTANT
+      opt_in: true,
+
       signature,
     };
 
-    // -------------------------
-    // 🔍 DEBUG LOGS
-    // -------------------------
-    console.log("--- OUTGOING REQUEST ---");
-    console.log("Signature Payload:", signaturePayload);
-    console.log("Signature:", signature);
-    console.log("Payload:", JSON.stringify(payload, null, 2));
+    console.log("SIGNATURE STRING:", signaturePayload);
+    console.log("FINAL PAYLOAD:", JSON.stringify(payload, null, 2));
 
-    // -------------------------
-    // ✅ SEND TO R2R
-    // -------------------------
     const res = await fetch(
       "https://r2r.theclaimsystem.co.uk/api/v1/affiliate/a4429cda-e36a-472a-8291-ae01a49349d8",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json",
+          Accept: "application/json",
           "API-KEY": context.env.VITE_API_KEY,
         },
         body: JSON.stringify(payload),
@@ -109,39 +116,16 @@ export async function onRequestPost(context: any) {
 
     const text = await res.text();
 
-    console.log("--- UPSTREAM RESPONSE ---");
-    console.log("Status:", res.status);
-    console.log("Body:", text);
+    console.log("R2R STATUS:", res.status);
+    console.log("R2R BODY:", text);
 
-    return new Response(
-      JSON.stringify({
-        status: res.status,
-        body: safeJsonParse(text),
-      }),
-      {
-        status: res.status,
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    return new Response(text, { status: res.status });
+
   } catch (err: any) {
     console.error("SERVER ERROR:", err);
-
     return new Response(
-      JSON.stringify({
-        error: err.message || "Unknown error",
-      }),
-      {
-        status: 500,
-        headers: { "Content-Type": "application/json" },
-      }
+      JSON.stringify({ error: err.message }),
+      { status: 500 }
     );
-  }
-}
-
-function safeJsonParse(text: string) {
-  try {
-    return JSON.parse(text);
-  } catch {
-    return text;
   }
 }
