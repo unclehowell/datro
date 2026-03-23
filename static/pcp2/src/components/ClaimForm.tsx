@@ -68,6 +68,7 @@ export const ClaimForm: React.FC = () => {
       kountSDK(kountConfig, sid);
     } catch (e) {
       console.error('Kount initialization failed', e);
+      setTimeout(() => setKountReady(true), 5000);
     }
   }, []);
 

@@ -1,88 +1,152 @@
-// Frontend helper — lives in your React/Vite src folder
-// Calls YOUR Cloudflare Function at /api/submit-claim, NOT R2R directly.
-// The Cloudflare Function (submit-claim.ts) handles API keys and forwards to R2R.
+// Cloudflare Pages Function
+// File location: static/pcp2/functions/api/submit-claim.ts
 
-export async function submitClaim(formData: Record<string, string>) {
-  // ── 1. Extract + sanitize ──────────────────────────────────────
-  const title          = formData.title?.trim() ?? "";
-  const first_name     = formData.first_name?.trim() ?? "";
-  const last_name      = formData.last_name?.trim() ?? "";
-  const date_of_birth  = formData.date_of_birth?.trim() ?? "";
-  const phone          = formData.phone?.trim() ?? "";
-  const email          = formData.email?.trim() ?? "";
-  const buildingNumber = formData.buildingNumber?.trim() ?? "";
-  const thoroughfare   = formData.thoroughfare?.trim() ?? "";
-  const townOrCity     = formData.townOrCity?.trim() ?? "";
-  const postcode       = formData.postcode?.trim() ?? "";
-  const session_id     = formData.session_id ?? crypto.randomUUID();
-  const device_session_id = formData.device_session_id ?? crypto.randomUUID();
+const CORS_HEADERS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+};
 
-  // ── 2. Validation ──────────────────────────────────────────────
-  const missing: string[] = [];
-  if (!title)          missing.push("title");
-  if (!first_name)     missing.push("first_name");
-  if (!last_name)      missing.push("last_name");
-  if (!date_of_birth)  missing.push("date_of_birth");
-  if (!phone)          missing.push("phone");
-  if (!email)          missing.push("email");
-  if (!buildingNumber) missing.push("buildingNumber");
-  if (!thoroughfare)   missing.push("thoroughfare");
-  if (!townOrCity)     missing.push("townOrCity");
-  if (!postcode)       missing.push("postcode");
-
-  if (missing.length) {
-    throw new Error(`Missing required fields: ${missing.join(", ")}`);
-  }
-
-  // ── 3. Build payload ───────────────────────────────────────────
-  // NOTE: signature generation happens server-side in the Cloudflare Function.
-  // We just forward everything needed.
-  const payload = {
-    title,
-    first_name,
-    last_name,
-    date_of_birth,
-    phone,
-    email,
-    buildingNumber,
-    thoroughfare,
-    townOrCity,
-    postcode,
-    session_id,
-    device_session_id,
-  };
-
-  console.log("--- BROWSER: SENDING PAYLOAD ---");
-  console.log(JSON.stringify(payload, null, 2));
-
-  // ── 4. POST to Cloudflare Function (same-origin, no CORS issues) ──
-  const response = await fetch("/api/submit-claim", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
-
-  const contentType = response.headers.get("content-type") || "";
-  const raw = await response.text();
-
-  console.log("--- BROWSER: RESPONSE ---");
-  console.log("Status:", response.status);
-  console.log("Body:", raw);
-
-  if (!contentType.includes("application/json")) {
-    throw new Error(
-      `Server returned non-JSON response (${response.status}): ${raw || "empty"}`
-    );
-  }
-
-  const data = JSON.parse(raw);
-
-  if (!response.ok) {
-    throw new Error(
-      data?.error ?? data?.message ?? "Submission rejected by server"
-    );
-  }
-
-  return data;
+export async function onRequestOptions() {
+  return new Response(null, { status: 204, headers: CORS_HEADERS });
 }
 
+export async function onRequestPost(context: any) {
+  try {
+    const req = context.request;
+
+    // ── Parse incoming request (supports both FormData and JSON) ──
+    let body: any = {};
+    const contentType = req.headers.get("content-type") || "";
+    if (contentType.includes("application/json")) {
+      body = await req.json();
+    } else {
+      const formData = await req.formData();
+      body = Object.fromEntries(formData.entries());
+    }
+
+    // ── Helpers ──────────────────────────────────────────────────
+    const formatDOB = (input: string): string => {
+      if (!input) return "";
+      // Already YYYY-MM-DD
+      if (/^\d{4}-\d{2}-\d{2}$/.test(input)) return input;
+      // Convert DD/MM/YYYY → YYYY-MM-DD
+      if (input.includes("/")) {
+        const [day, month, year] = input.split("/");
+        if (!day || !month || !year) return input;
+        return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+      }
+      return input;
+    };
+
+    // UTF-8 safe base64 (no Buffer — Cloudflare Workers safe)
+    const toBase64 = (str: string): string => {
+      const bytes = new TextEncoder().encode(str);
+      let binary = "";
+      for (let i = 0; i < bytes.length; i++) {
+        binary += String.fromCharCode(bytes[i]);
+      }
+      return btoa(binary);
+    };
+
+    // ── Extract fields ────────────────────────────────────────────
+    const title         = String(body.title          || "").trim();
+    const first_name    = String(body.first_name     || "").trim();
+    const last_name     = String(body.last_name      || "").trim();
+    const email         = String(body.email          || "").trim();
+    const phone         = String(body.phone          || "").trim();
+    const date_of_birth = formatDOB(String(body.date_of_birth || "").trim());
+    const buildingNumber= String(body.buildingNumber || "").trim();
+    const thoroughfare  = String(body.thoroughfare   || "").trim();
+    const townOrCity    = String(body.townOrCity     || "").trim();
+    const postcode      = String(body.postcode       || "").trim();
+    const session_id    = body.session_id    || crypto.randomUUID();
+    const device_session_id = body.device_session_id || crypto.randomUUID();
+
+    // ── Build addresses as ARRAY with all documented fields ───────
+    // The R2R API spec says "array of objects" with all these fields.
+    // All optional fields must be present (as null) to pass Laravel validation.
+    const addresses = [
+      {
+        line1:          null,
+        line2:          null,
+        line3:          null,
+        line4:          null,
+        buildingName:   null,
+        buildingNumber: buildingNumber || null,
+        thoroughfare,
+        townOrCity,
+        district:       null,
+        postcode,
+      },
+    ];
+
+    // ── Signature ─────────────────────────────────────────────────
+    // Evidence from logs: two different 200 responses were received with
+    // different addresses formats — meaning addresses is NOT part of the
+    // verified signature payload. Sign only the personal identity fields.
+    const signaturePayload = JSON.stringify({
+      first_name,
+      last_name,
+      date_of_birth,
+      phone,
+      email,
+    });
+    const signature = toBase64(signaturePayload);
+
+    // ── Final payload ─────────────────────────────────────────────
+    const payload = {
+      title,
+      first_name,
+      last_name,
+      date_of_birth,
+      phone,
+      email,
+      client_ip:            req.headers.get("cf-connecting-ip") || "",
+      user_agent:           req.headers.get("user-agent") || "",
+      session_id,
+      device_session_id,
+      account_creation_url: "https://car.financecheque.uk/claim",
+      addresses,
+      opt_in:               true,
+      signature,
+    };
+
+    // ── Debug logs (remove once working) ─────────────────────────
+    console.log("SIGNATURE PAYLOAD:", signaturePayload);
+    console.log("SIGNATURE:", signature);
+    console.log("FINAL PAYLOAD:", JSON.stringify(payload, null, 2));
+
+    // ── Send to R2R ───────────────────────────────────────────────
+    const affiliateId = context.env.VITE_AFFILIATE_ID || "a4429cda-e36a-472a-8291-ae01a49349d8";
+    const apiKey      = context.env.VITE_API_KEY;
+    const url         = `https://r2r.theclaimsystem.co.uk/api/v1/affiliate/${affiliateId}`;
+
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept":       "application/json",
+        "API-KEY":      apiKey,
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const text = await res.text();
+    console.log("R2R STATUS:", res.status);
+    console.log("R2R BODY:", text);
+
+    // Always return JSON to the browser
+    return new Response(text, {
+      status: res.status,
+      headers: { "Content-Type": "application/json", ...CORS_HEADERS },
+    });
+
+  } catch (err: any) {
+    console.error("SERVER ERROR:", err);
+    return new Response(
+      JSON.stringify({ error: err.message || "Unknown error" }),
+      { status: 500, headers: { "Content-Type": "application/json", ...CORS_HEADERS } }
+    );
+  }
+}
