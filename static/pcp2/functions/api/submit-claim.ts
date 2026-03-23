@@ -77,19 +77,21 @@ export async function onRequestPost(context: any) {
     const device_session_id = body.device_session_id || crypto.randomUUID();
 
     // ── Signature: base64(JSON) matching format that passed R2R ───
-    // Must use: title-cased names, +44 phone, postcode with space, and addresses as an ARRAY.
+    // Use raw submitted values (no title-casing or +44 conversion) to
+    // match the signature format the upstream expects.
     const signaturePayload = JSON.stringify({
-      first_name,
-      last_name,
-      date_of_birth,
-      phone,
-      email,
+      first_name: String(body.first_name || "").trim(),
+      last_name:  String(body.last_name  || "").trim(),
+      date_of_birth: String(body.date_of_birth || "").trim(),
+      phone: String(body.phone || "").trim(),
+      email: String(body.email || "").trim(),
       addresses: [
         {
-          buildingNumber: buildingNumber || null,
-          thoroughfare,
-          townOrCity,
-          postcode,
+          buildingNumber: String(body.buildingNumber || "").trim() || null,
+          thoroughfare: String(body.thoroughfare || "").trim(),
+          townOrCity: String(body.townOrCity || "").trim(),
+          // signature postcode uses compact uppercase (no space)
+          postcode: String(body.postcode || "").replace(/\s+/g, "").toUpperCase(),
         },
       ],
     });
