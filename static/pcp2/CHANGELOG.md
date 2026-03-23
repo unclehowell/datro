@@ -9,6 +9,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [pcp.01] - Q1/2026
 
 ### Changes
+Mar-23 - 0416 Argentina: added CORS OPTIONS handler to resolve 405 preflight rejection  
 Mar-23 - 0359 Argentina: Putting functions/api/ back in root of pcp2 for cloudflare  
 Mar-23 - 0302 Argentina: restored CF function structure (remove browser APIs), sign only personal fields, include all null address fields per R2R schema
 Mar-23 - 0048 Argentina: bypass broken api route and post directly to upstream R2R endpoint to resolve persistent 405 submission failure  

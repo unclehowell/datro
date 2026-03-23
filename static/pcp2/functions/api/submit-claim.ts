@@ -85,3 +85,4 @@ export async function submitClaim(formData: Record<string, string>) {
 
   return data;
 }
+
