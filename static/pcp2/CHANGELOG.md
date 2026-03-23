@@ -9,6 +9,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [pcp.01] - Q1/2026
 
 ### Changes
+Mar-23 - 0048 Argentina: bypass broken api route and post directly to upstream R2R endpoint to resolve persistent 405 submission failure  
 Mar-23 - 0026 Argentina: fix: harden submit flow with strict validation, stable signature encoding and explicit 405 handling for missing POST endpoint
 Mar-23 - 0006 Argentina: harden submit handler with validation, stable signature generation and safe response parsing while aligning payload with API schema 
 Mar-22 - 2340 Argentina: Rebuild submit handler with correct address schema and consistent base64 signature generation to resolve API validation errors  

@@ -16,26 +16,26 @@ export async function submitClaim(formData) {
     const postcode = formData.postcode?.trim();
 
     // -----------------------------
-    // 2. Validation (strict + explicit)
+    // 2. Validation
     // -----------------------------
-    const missingFields = [];
-    if (!title) missingFields.push("title");
-    if (!first_name) missingFields.push("first_name");
-    if (!last_name) missingFields.push("last_name");
-    if (!date_of_birth) missingFields.push("date_of_birth");
-    if (!phone) missingFields.push("phone");
-    if (!email) missingFields.push("email");
-    if (!buildingNumber) missingFields.push("buildingNumber");
-    if (!thoroughfare) missingFields.push("thoroughfare");
-    if (!townOrCity) missingFields.push("townOrCity");
-    if (!postcode) missingFields.push("postcode");
+    const missing = [];
+    if (!title) missing.push("title");
+    if (!first_name) missing.push("first_name");
+    if (!last_name) missing.push("last_name");
+    if (!date_of_birth) missing.push("date_of_birth");
+    if (!phone) missing.push("phone");
+    if (!email) missing.push("email");
+    if (!buildingNumber) missing.push("buildingNumber");
+    if (!thoroughfare) missing.push("thoroughfare");
+    if (!townOrCity) missing.push("townOrCity");
+    if (!postcode) missing.push("postcode");
 
-    if (missingFields.length) {
-      throw new Error(`Missing required fields: ${missingFields.join(", ")}`);
+    if (missing.length) {
+      throw new Error(`Missing fields: ${missing.join(", ")}`);
     }
 
     // -----------------------------
-    // 3. Build address (STRICT FLAT OBJECT)
+    // 3. Address (correct structure)
     // -----------------------------
     const addressForPayload = {
       buildingNumber,
@@ -45,7 +45,7 @@ export async function submitClaim(formData) {
     };
 
     // -----------------------------
-    // 4. Build signature object (MUST MATCH EXACTLY)
+    // 4. Signature (EXACT MATCH)
     // -----------------------------
     const signatureObject = {
       title,
@@ -59,21 +59,17 @@ export async function submitClaim(formData) {
 
     const signatureString = JSON.stringify(signatureObject);
 
-    console.log("SIGNATURE STRING:", signatureString);
-
-    // -----------------------------
-    // 5. Stable base64 encoding (browser-safe, no corruption)
-    // -----------------------------
     const signature = btoa(
       new TextEncoder()
         .encode(signatureString)
         .reduce((acc, byte) => acc + String.fromCharCode(byte), "")
     );
 
+    console.log("SIGNATURE STRING:", signatureString);
     console.log("SIGNATURE:", signature);
 
     // -----------------------------
-    // 6. Build final payload (IDENTICAL STRUCTURE)
+    // 5. Final payload
     // -----------------------------
     const payload = {
       title,
@@ -82,7 +78,7 @@ export async function submitClaim(formData) {
       date_of_birth,
       phone,
       email,
-      client_ip: "", // allow backend to populate
+      client_ip: "",
       user_agent: navigator.userAgent,
       session_id: crypto.randomUUID(),
       device_session_id: crypto.randomUUID(),
@@ -95,83 +91,42 @@ export async function submitClaim(formData) {
     console.log("FINAL PAYLOAD:", JSON.stringify(payload, null, 2));
 
     // -----------------------------
-    // 7. Send request (with timeout + better failure handling)
+    // 6. SEND DIRECTLY TO R2R API
     // -----------------------------
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 15000); // 15s timeout
+    const response = await fetch(import.meta.env.VITE_R2R_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": import.meta.env.VITE_API_KEY,
+      },
+      body: JSON.stringify(payload),
+    });
 
-    let response;
-
-    try {
-      response = await fetch("/api/submit-claim", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-        signal: controller.signal,
-      });
-    } catch (networkError) {
-      clearTimeout(timeout);
-
-      if (networkError.name === "AbortError") {
-        throw new Error("Request timed out");
-      }
-
-      throw new Error("Network error while submitting claim");
-    }
-
-    clearTimeout(timeout);
-
-    // -----------------------------
-    // 8. Read response safely
-    // -----------------------------
-    const contentType = response.headers.get("content-type") || "";
     const raw = await response.text();
+    const contentType = response.headers.get("content-type") || "";
 
     console.log("STATUS:", response.status);
     console.log("RAW RESPONSE:", raw);
 
     // -----------------------------
-    // 9. Handle 405 explicitly (your current issue)
-    // -----------------------------
-    if (response.status === 405) {
-      throw new Error(
-        "Endpoint does not accept POST (405). Cloudflare function likely missing onRequestPost."
-      );
-    }
-
-    // -----------------------------
-    // 10. Handle non-JSON responses safely
+    // 7. Handle response
     // -----------------------------
     if (!contentType.includes("application/json")) {
       throw new Error(
-        `Server returned non-JSON response (${response.status}): ${raw || "empty response"}`
+        `Non-JSON response (${response.status}): ${raw || "empty"}`
       );
     }
 
-    let data;
-    try {
-      data = JSON.parse(raw);
-    } catch {
-      throw new Error("Invalid JSON response from server");
-    }
+    const data = JSON.parse(raw);
 
-    // -----------------------------
-    // 11. Handle API errors properly
-    // -----------------------------
     if (!response.ok) {
       throw new Error(
         data?.error ||
         data?.message ||
-        JSON.stringify(data) ||
-        "Submission rejected by server"
+        "Submission rejected by upstream API"
       );
     }
 
-    // -----------------------------
-    // 12. Success
-    // -----------------------------
     return data;
 
   } catch (error) {
