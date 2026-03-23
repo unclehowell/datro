@@ -77,21 +77,21 @@ export async function onRequestPost(context: any) {
     const device_session_id = body.device_session_id || crypto.randomUUID();
 
     // ── Signature: base64(JSON) matching format that passed R2R ───
-    // Must use: title, title-cased names, +44 phone, postcode with
-    // space, and addresses as a plain OBJECT (not array).
+    // Must use: title-cased names, +44 phone, postcode with space, and addresses as an ARRAY.
     const signaturePayload = JSON.stringify({
-      title,
       first_name,
       last_name,
       date_of_birth,
       phone,
       email,
-      addresses: {
-        buildingNumber: buildingNumber || null,
-        thoroughfare,
-        townOrCity,
-        postcode,
-      },
+      addresses: [
+        {
+          buildingNumber: buildingNumber || null,
+          thoroughfare,
+          townOrCity,
+          postcode,
+        },
+      ],
     });
     const signature = toBase64(signaturePayload);
 
