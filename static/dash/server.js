@@ -19,10 +19,19 @@ class TokenTracker extends EventEmitter {
     }
     
     setupDefaultUsers() {
-        // Set up some example users
+        // Set up some example users and devices
+        this.devices = [
+            { id: 'aws-01', type: 'aws', name: 'AWS Instance' },
+            { id: 'mobile-01', type: 'mobile', name: 'iPhone 15 Pro' },
+            { id: 'laptop-01', type: 'laptop', name: 'MacBook Pro' }
+        ];
+
         this.activeUsers.set('picoclaw', {
             id: 'picoclaw',
-            name: 'PicoClaw Agent',
+            name: 'PicoClaw',
+            version: 'picoclaw v2.1',
+            device: 'laptop-01',
+            program: 'VSCode',
             color: '#00ff80',
             emoji: '⚡',
             requests: 245,
@@ -34,6 +43,9 @@ class TokenTracker extends EventEmitter {
         this.activeUsers.set('gemini-cli', {
             id: 'gemini-cli',
             name: 'Gemini CLI',
+            version: 'gemini-cli v1.5',
+            device: 'aws-01',
+            program: 'Terminal',
             color: '#4285F4',
             emoji: '📝',
             requests: 23,
@@ -41,12 +53,40 @@ class TokenTracker extends EventEmitter {
             status: 'online',
             type: 'cli'
         });
+
+        this.activeUsers.set('claude-agent', {
+            id: 'claude-agent',
+            name: 'Claude',
+            version: 'nemoclaw v0.8',
+            device: 'mobile-01',
+            program: 'Mobile App',
+            color: '#FF6B35',
+            emoji: '🤖',
+            requests: 89,
+            lastSeen: Date.now(),
+            status: 'online',
+            type: 'agent'
+        });
+
+        this.activeUsers.set('groq-speed', {
+            id: 'groq-speed',
+            name: 'Groq',
+            version: 'openclaw v1.0',
+            device: 'aws-01',
+            program: 'API',
+            color: '#1DA1F2',
+            emoji: '🚀',
+            requests: 567,
+            lastSeen: Date.now(),
+            status: 'online',
+            type: 'agent'
+        });
     }
     
     createUsageSnapshot() {
         // Simulate realistic usage patterns
         const now = Date.now();
-        const usage = (Math.sin(now / 5000000) + 1) / 2; // Time-based oscillation
+        const usage = (Math.sin(now / 500000) + 1) / 2; // Faster oscillation for demo
         
         return {
             providers: [
@@ -54,37 +94,41 @@ class TokenTracker extends EventEmitter {
                     name: 'OpenAI',
                     color: '#00A86B',
                     models: [
-                        { name: 'GPT-4o', used: Math.floor(usage * 150 + 30), limit: 200, usage: Math.round(usage * 80 + 20), description: 'Powerful language model', stars: 5 },
-                        { name: 'GPT-4o Mini', used: Math.floor(usage * 180 + 150), limit: 500, usage: Math.round(usage * 50 + 40), description: 'Efficient model', stars: 4 }
+                        { name: 'GPT-4o', used: Math.floor(usage * 150 + 30), limit: 200, usage: Math.round(usage * 60 + 20), description: 'Powerful language model', stars: 5 },
+                        { name: 'GPT-4o Mini', used: Math.floor(usage * 180 + 150), limit: 500, usage: Math.round(usage * 40 + 10), description: 'Efficient model', stars: 4 },
+                        { name: 'GPT-3.5 Turbo', used: Math.floor(usage * 250 + 700), limit: 1000, usage: Math.round(usage * 20 + 70), description: 'Legacy fast model', stars: 3 }
                     ]
                 },
                 {
                     name: 'Anthropic',
                     color: '#FF6B35',
                     models: [
-                        { name: 'Claude 3.5', used: Math.floor(usage * 80 + 40), limit: 120, usage: Math.round(usage * 75 + 25), description: 'Advanced reasoning', stars: 5 },
-                        { name: 'Claude Haiku', used: Math.floor(usage * 200 + 50), limit: 250, usage: Math.round(usage * 80 + 20), description: 'Fast and efficient', stars: 4 }
+                        { name: 'Claude 3.5 Sonnet', used: Math.floor(usage * 80 + 40), limit: 150, usage: Math.round(usage * 55 + 35), description: 'Advanced reasoning', stars: 5 },
+                        { name: 'Claude 3 Opus', used: Math.floor(usage * 30 + 10), limit: 50, usage: Math.round(usage * 70 + 20), description: 'Highest intelligence', stars: 5 },
+                        { name: 'Claude Haiku', used: Math.floor(usage * 200 + 50), limit: 300, usage: Math.round(usage * 40 + 10), description: 'Fast and efficient', stars: 4 }
                     ]
                 },
                 {
                     name: 'Google',
                     color: '#4285F4',
                     models: [
-                        { name: 'Gemini Pro', used: Math.floor(usage * 70 + 10), limit: 100, usage: Math.round(usage * 65 + 10), description: 'Gemini chat model', stars: 4 },
-                        { name: 'Gemini Flash', used: Math.floor(usage * 60 + 20), limit: 90, usage: Math.round(usage * 70 + 15), description: 'Gemini vision model', stars: 3 }
+                        { name: 'Gemini 1.5 Pro', used: Math.floor(usage * 70 + 10), limit: 100, usage: Math.round(usage * 85 + 5), description: 'Gemini chat model', stars: 5 },
+                        { name: 'Gemini 1.5 Flash', used: Math.floor(usage * 160 + 20), limit: 200, usage: Math.round(usage * 60 + 15), description: 'Gemini fast model', stars: 4 },
+                        { name: 'Gemini 1.0 Pro', used: Math.floor(usage * 30 + 10), limit: 50, usage: Math.round(usage * 40 + 10), description: 'Legacy Gemini', stars: 3 }
                     ]
                 },
                 {
                     name: 'Groq',
-                    color: '#1DA1F2',
+                    color: '#f55036',
                     models: [
-                        { name: 'Llama 70B', used: Math.floor(usage * 45 + 5), limit: 50, usage: Math.round(usage * 90 + 5), description: 'Large language model', stars: 4 },
-                        { name: 'Llama 8B', used: Math.floor(usage * 80 + 20), limit: 100, usage: Math.round(usage * 75 + 25), description: 'Efficient model', stars: 3 }
+                        { name: 'Llama 3 70B', used: Math.floor(usage * 45 + 5), limit: 60, usage: Math.round(usage * 90 + 5), description: 'Large language model', stars: 5 },
+                        { name: 'Llama 3 8B', used: Math.floor(usage * 120 + 20), limit: 200, usage: Math.round(usage * 75 + 10), description: 'Efficient model', stars: 4 },
+                        { name: 'Mixtral 8x7B', used: Math.floor(usage * 60 + 10), limit: 100, usage: Math.round(usage * 50 + 20), description: 'MoE model', stars: 4 }
                     ]
                 }
             ],
             users: this.getUsers(),
-            devices: [],
+            devices: this.devices,
             timestamp: new Date().toISOString()
         };
     }

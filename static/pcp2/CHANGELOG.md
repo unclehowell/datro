@@ -9,6 +9,9 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [pcp.01] - Q1/2026
 
 ### Changes
+Mar-22 - 2110 Argentina: Signature issues Exact field match Correct encoding Correct DOB format 
+                         Data validation issues UK phone format Address includes line1 Proper object structure 
+                         Stability No mutation after signing Clean session handling Safe parsing
 Mar-22 - 2040 Argentina: Fix DOB format, Included title in signature and Switched addresses to object   
 Mar-22 - 1315 Argentina: fix(api): remove title from signature payload - R2R computes signature from fixed fields, adding title caused "Invalid signature format" (title still forwarded in payload)
 Mar-22 - 1258 Argentina: fix(api+form): addresses reverted to array (R2R treats object keys as array elements), fix error detection in ClaimForm to check result.body not result (was silently navigating to thank-you on validation failure)
