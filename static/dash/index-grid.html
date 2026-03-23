@@ -257,34 +257,38 @@
             const users = dashboardData.users;
             const providers = dashboardData.providers;
             
-            users.forEach(user => {
-                // Randomly connect to a provider to simulate activity
-                if (Math.random() > 0.7) {
-                    const provider = providers[Math.floor(Math.random() * providers.length)];
-                    const userEl = document.getElementById(`user-${user.id}`);
-                    const providerEl = document.getElementById(`tile-${provider.name.toLowerCase()}`);
+            // Only draw lines if we have data and provider is ACTIVE
+            providers.forEach(provider => {
+                if (provider.status === 'ACTIVE' && provider.usage < 100) {
+                    // Simulate a few users connected to active providers
+                    const activeUsers = users.filter(u => u.device === 'laptop').slice(0, 2); 
                     
-                    if (userEl && providerEl) {
-                        userEl.classList.add('active');
-                        setTimeout(() => userEl.classList.remove('active'), 1000);
+                    activeUsers.forEach(user => {
+                        const userEl = document.getElementById(`user-${user.id}`);
+                        const providerEl = document.getElementById(`tile-${provider.name.toLowerCase()}`);
                         
-                        const uRect = userEl.getBoundingClientRect();
-                        const pRect = providerEl.getBoundingClientRect();
-                        
-                        const startX = uRect.left + uRect.width / 2;
-                        const startY = uRect.top;
-                        const endX = pRect.left + pRect.width / 2;
-                        const endY = pRect.top + pRect.height;
-                        
-                        ctx.beginPath();
-                        ctx.setLineDash([5, 5]);
-                        ctx.strokeStyle = provider.color;
-                        ctx.globalAlpha = 0.3;
-                        ctx.lineWidth = 2;
-                        ctx.moveTo(startX, startY);
-                        ctx.bezierCurveTo(startX, startY - 50, endX, endY + 50, endX, endY);
-                        ctx.stroke();
-                    }
+                        if (userEl && providerEl) {
+                            userEl.classList.add('active');
+                            setTimeout(() => userEl.classList.remove('active'), 1500);
+                            
+                            const uRect = userEl.getBoundingClientRect();
+                            const pRect = providerEl.getBoundingClientRect();
+                            
+                            const startX = uRect.left + uRect.width / 2;
+                            const startY = uRect.top;
+                            const endX = pRect.left + pRect.width / 2;
+                            const endY = pRect.top + pRect.height;
+                            
+                            ctx.beginPath();
+                            ctx.setLineDash([5, 5]);
+                            ctx.strokeStyle = provider.color;
+                            ctx.globalAlpha = 0.4;
+                            ctx.lineWidth = 2;
+                            ctx.moveTo(startX, startY);
+                            ctx.bezierCurveTo(startX, startY - 100, endX, endY + 100, endX, endY);
+                            ctx.stroke();
+                        }
+                    });
                 }
             });
         }
