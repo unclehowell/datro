@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 Mar-19 - Changelog update for PR automation test  
 
+### Fixed
+
+- 2026-03-23 - pcp2: fixed submit-claim signature generation to use addresses as an array (R2R API schema). This aims to resolve "Invalid signature format" responses from the upstream R2R server.
+
 ## [0.0.1-rtw.17] - Q1/2026
 Feb-06 - Puck CMS working on bpvsbuckler.datro.xyz webpage in /static/bpvsbuckler/  
 Jan-07 - Didn't work, trying again  
