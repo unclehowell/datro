@@ -1,0 +1,24 @@
+
+/* GLOBAL STYLES
+-------------------------------------------------- */
+
+/*-- Detects support for the API that provides information about the ambient light levels, as detected by the device's light detector, in terms of lux units. --*/
+
+.no-ambientlight .box { color: red; }
+.ambientlight .box { color: green; }
+
+/*-- Detects support for the Application Cache, for storing data to enable web-based applications run offline. The API has been heavily criticized and discussions are underway to address this. --*/
+
+.no-applicationcache .box { color: red; }
+.applicationcache .box { color: green; }
+
+/*-- Detects the audio element --*/
+
+.no-audio .box { color: red; }
+.audio .box { color: green; }
+
+
+/*--  The rest of this needs filling in - for details visit https://modernizr.com/  --*/
+
+
+
