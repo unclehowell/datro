@@ -41,13 +41,20 @@
       "html": "./consortium_other/index.html"
     }
   },
-  {
+{
     "name": "<div class='subtitle-line enable-link'>Projects</div>",
     "path": "./consortium_projects/index.html",
     "_links": {
       "html": "./consortium_projects/index.html"
     }
-  },
+   },
+  {
+    "name": "<div class='subtitle-line enable-link'>Car Finance Cheque</div>",
+    "path": "./carfinancecheque_signature/index.html",
+    "_links": {
+      "html": "./carfinancecheque_signature/index.html"
+    }
+   },
   {
     "name": "<div class='subtitle-line enable-link'>Plans</div>",
     "path": "./consortium_plans/index.html",

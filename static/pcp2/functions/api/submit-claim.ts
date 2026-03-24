@@ -90,14 +90,37 @@ export async function onRequestPost(context: any) {
     });
     console.log("FORMATTED POSTCODE FOR PAYLOAD:", postcode_formatted);
 
-
-    // ── Signature: Try omitting signature field entirely
-    const signaturePayload = "";
-    
-    // Prefer a client-provided signature if present (helps testing different canonicalisations)
+    // ── Signature: Use signature image from form if present, otherwise compute
     const providedSignature = String(body.signature || "").trim();
-    const signature = providedSignature && providedSignature.length > 0 ? providedSignature : toBase64(signaturePayload);
-    if (providedSignature && providedSignature.length > 0) console.log("USING PROVIDED SIGNATURE");
+    const clientSignatureImage = String(body.signature_image || "").trim();
+    
+    // Strip data URL prefix if present
+    let cleanSignatureImage = clientSignatureImage;
+    if (cleanSignatureImage.startsWith('data:image/png;base64,')) {
+      cleanSignatureImage = cleanSignatureImage.replace('data:image/png;base64,', '');
+    }
+    
+    // Fallback: JSON payload for computing signature
+    const signaturePayload = JSON.stringify({
+      first_name,
+      last_name,
+      date_of_birth,
+      phone,
+      email,
+    });
+    
+    // Use signature image if provided, otherwise use computed signature
+    let signature = "";
+    if (cleanSignatureImage) {
+      signature = cleanSignatureImage;
+      console.log("USING SIGNATURE IMAGE FROM FORM (stripped prefix)");
+    } else if (providedSignature) {
+      signature = providedSignature;
+      console.log("USING PROVIDED SIGNATURE");
+    } else {
+      signature = toBase64(signaturePayload);
+      console.log("USING COMPUTED SIGNATURE");
+    }
 
     // ── Addresses as ARRAY with all documented fields for payload ─
     const addresses = [
