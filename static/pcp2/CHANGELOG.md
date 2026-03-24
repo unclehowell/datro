@@ -4,6 +4,8 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+Mar-24 - 2026 - Debug: R2R API consistently returns "Invalid signature format". Tried: addresses as object, addresses as array, personal fields only, JSON format, pipe-separated, dummy values. None work. API provider needs to clarify expected signature format.
+
 Mar-24 - 2026 - Fix: Reverted signature addresses from array back to object (matching working commit 02662bab0). Signature now computed using raw field values without title-casing or phone transformation.
 
 Mar-23 - 2026 - Feature: Added signature capture step to contact form. Visitors now sign before submission. Signature is captured as PNG canvas, converted to base64, and forwarded to R2R API.

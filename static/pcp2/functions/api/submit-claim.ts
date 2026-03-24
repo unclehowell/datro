@@ -91,20 +91,8 @@ export async function onRequestPost(context: any) {
     console.log("FORMATTED POSTCODE FOR PAYLOAD:", postcode_formatted);
 
 
-    // ── Signature: base64(JSON) matching example exactly
-    const signaturePayload = JSON.stringify({
-      first_name: String(body.first_name || "").trim(),
-      last_name:  String(body.last_name  || "").trim(),
-      date_of_birth: String(body.date_of_birth || "").trim(),
-      phone: String(body.phone || "").trim(),
-      email: String(body.email || "").trim(),
-      addresses: {
-        buildingNumber: String(body.buildingNumber || "").trim(),
-        thoroughfare: String(body.thoroughfare || "").trim(),
-        townOrCity: String(body.townOrCity || "").trim(),
-        postcode: String(body.postcode || "").trim(),
-      },
-    });
+    // ── Signature: Try omitting signature field entirely
+    const signaturePayload = "";
     
     // Prefer a client-provided signature if present (helps testing different canonicalisations)
     const providedSignature = String(body.signature || "").trim();
@@ -141,10 +129,12 @@ export async function onRequestPost(context: any) {
       device_session_id,
       account_creation_url: "https://car.financecheque.uk/claim",
       addresses,
-      opt_in:               true, // Assuming this should always be true or handled if not present
-      signature,
+      opt_in:               true,
     };
 
+    if (signature) {
+      payload.signature = signature;
+    }
     if (signature_image) {
       payload.signature_image = signature_image;
     }
