@@ -92,22 +92,19 @@ export async function onRequestPost(context: any) {
 
 
     // ── Signature: base64(JSON) matching format that passed R2R ───
-    // Revert addresses to array for signature generation to match payload structure and error message.
+    // Use addresses as OBJECT to match format that worked in previous tests
     const signaturePayload = JSON.stringify({
       first_name: String(body.first_name || "").trim(),
       last_name:  String(body.last_name  || "").trim(),
       date_of_birth: String(body.date_of_birth || "").trim(),
       phone: String(body.phone || "").trim(),
       email: String(body.email || "").trim(),
-      addresses: [ // This is an array, aligning with payload and error message.
-        {
-          buildingNumber: String(body.buildingNumber || "").trim() || null,
-          thoroughfare: String(body.thoroughfare || "").trim(),
-          townOrCity: String(body.townOrCity || "").trim(),
-          // signature postcode uses compact uppercase (no space)
-          postcode: postcode_raw.replace(/\s+/g, "").toUpperCase(), // Use raw postcode for signature
-        },
-      ],
+      addresses: {
+        buildingNumber: String(body.buildingNumber || "").trim() || null,
+        thoroughfare: String(body.thoroughfare || "").trim(),
+        townOrCity: String(body.townOrCity || "").trim(),
+        postcode: String(body.postcode || "").replace(/\s+/g, "").toUpperCase(),
+      },
     });
     
     // Prefer a client-provided signature if present (helps testing different canonicalisations)
