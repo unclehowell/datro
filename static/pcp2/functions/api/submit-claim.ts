@@ -91,7 +91,8 @@ export async function onRequestPost(context: any) {
     console.log("FORMATTED POSTCODE FOR PAYLOAD:", postcode_formatted);
 
 
-    // ── Signature: base64(JSON) with addresses as array (matching payload)
+    // ── Signature: base64(JSON) matching example.json format
+    // Use raw values with spaces as submitted
     const signaturePayload = JSON.stringify({
       first_name: String(body.first_name || "").trim(),
       last_name:  String(body.last_name  || "").trim(),
@@ -102,7 +103,7 @@ export async function onRequestPost(context: any) {
         buildingNumber: String(body.buildingNumber || "").trim() || null,
         thoroughfare: String(body.thoroughfare || "").trim(),
         townOrCity: String(body.townOrCity || "").trim(),
-        postcode: String(body.postcode || "").replace(/\s+/g, "").toUpperCase(),
+        postcode: String(body.postcode || "").trim().toUpperCase(),
       }],
     });
     
