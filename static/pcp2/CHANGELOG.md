@@ -4,6 +4,8 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+Mar-23 - 2026 - Feature: Added signature capture step to contact form. Visitors now sign before submission. Signature is captured as PNG canvas, converted to base64, and forwarded to R2R API.
+
 Mar-23 - 2026 - Fix: Reverted signature payload addresses to array, added detailed logging for body and address fields to diagnose validation errors.
 
 

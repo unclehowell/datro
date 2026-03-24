@@ -25,6 +25,9 @@ export async function onRequestPost(context: any) {
       body = Object.fromEntries(formData.entries());
     }
 
+    // Log the entire body object to see its structure
+    console.log("RECEIVED BODY:", JSON.stringify(body, null, 2));
+
     // ── Helpers ──────────────────────────────────────────────────
     const formatDOB = (input: string): string => {
       if (!input) return "";
@@ -72,27 +75,41 @@ export async function onRequestPost(context: any) {
     const buildingNumber = String(body.buildingNumber || "").trim();
     const thoroughfare   = String(body.thoroughfare   || "").trim();
     const townOrCity     = String(body.townOrCity     || "").trim();
-    const postcode       = formatPostcode(String(body.postcode || "").trim());
+    const postcode_raw   = String(body.postcode || "").trim(); // Raw postcode for logging
+    const postcode_formatted = formatPostcode(postcode_raw); // Formatted postcode for payload
     const session_id     = body.session_id       || crypto.randomUUID();
     const device_session_id = body.device_session_id || crypto.randomUUID();
+    const signature_image = String(body.signature_image || "").trim(); // Base64 PNG signature
+
+    // Log individual address fields being extracted
+    console.log("ADDRESS FIELD EXTRACTION FOR PAYLOAD:", {
+        buildingNumber: String(body.buildingNumber || "").trim(),
+        thoroughfare: String(body.thoroughfare || "").trim(),
+        townOrCity: String(body.townOrCity || "").trim(),
+        postcode: postcode_raw // Log raw postcode as received
+    });
+    console.log("FORMATTED POSTCODE FOR PAYLOAD:", postcode_formatted);
+
 
     // ── Signature: base64(JSON) matching format that passed R2R ───
-    // Use raw submitted values (no title-casing or +44 conversion) to
-    // match the signature format the upstream expects.
+    // Revert addresses to array for signature generation to match payload structure and error message.
     const signaturePayload = JSON.stringify({
       first_name: String(body.first_name || "").trim(),
       last_name:  String(body.last_name  || "").trim(),
       date_of_birth: String(body.date_of_birth || "").trim(),
       phone: String(body.phone || "").trim(),
       email: String(body.email || "").trim(),
-      addresses: {
-        buildingNumber: String(body.buildingNumber || "").trim() || null,
-        thoroughfare: String(body.thoroughfare || "").trim(),
-        townOrCity: String(body.townOrCity || "").trim(),
-        // signature postcode uses compact uppercase (no space)
-        postcode: String(body.postcode || "").replace(/\s+/g, "").toUpperCase(),
-      },
+      addresses: [ // This is an array, aligning with payload and error message.
+        {
+          buildingNumber: String(body.buildingNumber || "").trim() || null,
+          thoroughfare: String(body.thoroughfare || "").trim(),
+          townOrCity: String(body.townOrCity || "").trim(),
+          // signature postcode uses compact uppercase (no space)
+          postcode: postcode_raw.replace(/\s+/g, "").toUpperCase(), // Use raw postcode for signature
+        },
+      ],
     });
+    
     // Prefer a client-provided signature if present (helps testing different canonicalisations)
     const providedSignature = String(body.signature || "").trim();
     const signature = providedSignature && providedSignature.length > 0 ? providedSignature : toBase64(signaturePayload);
@@ -106,16 +123,16 @@ export async function onRequestPost(context: any) {
         line3:          null,
         line4:          null,
         buildingName:   null,
-        buildingNumber: buildingNumber || null,
-        thoroughfare,
-        townOrCity,
+        buildingNumber: String(body.buildingNumber || "").trim() || null,
+        thoroughfare:   thoroughfare, // Use extracted variable
+        townOrCity:     townOrCity,   // Use extracted variable
         district:       null,
-        postcode,
+        postcode:       postcode_formatted, // Use formatted postcode for payload
       },
     ];
 
     // ── Final payload ─────────────────────────────────────────────
-    const payload = {
+    const payload: any = {
       title,
       first_name,
       last_name,
@@ -128,13 +145,18 @@ export async function onRequestPost(context: any) {
       device_session_id,
       account_creation_url: "https://car.financecheque.uk/claim",
       addresses,
-      opt_in:               true,
+      opt_in:               true, // Assuming this should always be true or handled if not present
       signature,
     };
 
-    console.log("SIGNATURE PAYLOAD:", signaturePayload);
-    console.log("SIGNATURE:", signature);
-    console.log("FINAL PAYLOAD:", JSON.stringify(payload, null, 2));
+    if (signature_image) {
+      payload.signature_image = signature_image;
+    }
+
+    // Log the final payload before sending
+    console.log("FINAL PAYLOAD STRUCTURE:", JSON.stringify(payload, null, 2));
+    console.log("SIGNATURE PAYLOAD (for signing):", signaturePayload); // Log the one used for signing
+
 
     // ── Send to R2R ───────────────────────────────────────────────
     const affiliateId = context.env.VITE_AFFILIATE_ID || "a4429cda-e36a-472a-8291-ae01a49349d8";

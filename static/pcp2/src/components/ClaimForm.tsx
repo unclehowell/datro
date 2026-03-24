@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, ChevronLeft, CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
+import { ChevronRight, ChevronLeft, CheckCircle2, Loader2, AlertCircle, Eraser } from 'lucide-react';
 import { generateSessionId, getClientIp } from '../lib/utils';
 import kountSDK from '@kount/kount-web-client-sdk';
 import { useNavigate } from 'react-router-dom';
+import SignatureCanvas from 'react-signature-canvas';
 
 const STEPS = [
   { id: 'personal', title: 'Personal Details' },
   { id: 'address', title: 'Address' },
+  { id: 'signature', title: 'Sign' },
   { id: 'review', title: 'Review' }
 ];
 
@@ -31,6 +33,8 @@ export const ClaimForm: React.FC = () => {
     townOrCity: '',
     postcode: ''
   });
+  const [signatureImage, setSignatureImage] = useState<string>('');
+  const signatureRef = useRef<SignatureCanvas>(null);
 
   console.log("--- BROWSER: RENDERING STEP ---", currentStep);
   console.log("--- BROWSER: SUBMITTING STATE ---", isSubmitting);
@@ -108,12 +112,25 @@ export const ClaimForm: React.FC = () => {
     setCurrentStep((prev) => Math.max(prev - 1, 0));
   };
 
+  const clearSignature = () => {
+    signatureRef.current?.clear();
+    setSignatureImage('');
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!kountReady) {
       alert('Please wait for device verification to complete');
       return;
     }
+
+    if (signatureRef.current?.isEmpty()) {
+      alert('Please sign before submitting');
+      return;
+    }
+
+    const sigData = signatureRef.current?.toDataURL('image/png') || '';
+    setSignatureImage(sigData);
 
     console.log("--- BROWSER: SUBMITTING FORM ---", formData);
     setIsSubmitting(true);
@@ -165,6 +182,7 @@ export const ClaimForm: React.FC = () => {
       submissionData.append('user_agent', navigator.userAgent);
       submissionData.append('session_id', sessionId);
       submissionData.append('device_session_id', sessionId); // REQUIRED by ViewThru
+      submissionData.append('signature_image', sigData);
       
       console.log("--- BROWSER: SENDING PAYLOAD (FormData) ---");
       console.log("URL:", `/api/submit-claim`);
@@ -396,6 +414,42 @@ export const ClaimForm: React.FC = () => {
           )}
 
           {currentStep === 2 && (
+            <motion.div
+              key="step3"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              className="space-y-4"
+            >
+              <div className="space-y-1">
+                <label className="text-xs font-black uppercase tracking-wider text-brand-primary">
+                  Your Signature
+                </label>
+                <div className="border-4 border-brand-primary bg-white">
+                  <SignatureCanvas
+                    ref={signatureRef}
+                    penColor="#000000"
+                    canvasProps={{
+                      className: 'w-full h-48 bg-white'
+                    }}
+                    backgroundColor="white"
+                  />
+                </div>
+                <button
+                  type="button"
+                  onClick={clearSignature}
+                  className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-brand-primary hover:text-brand-secondary transition-colors mt-2"
+                >
+                  <Eraser className="w-3 h-3" /> Clear Signature
+                </button>
+              </div>
+              <p className="text-[10px] font-bold uppercase text-brand-primary leading-tight">
+                Please sign in the box above to confirm your agreement.
+              </p>
+            </motion.div>
+          )}
+
+          {currentStep === 3 && (
             <motion.div
               key="step3"
               initial={{ opacity: 0, x: 20 }}
