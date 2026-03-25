@@ -63,6 +63,13 @@
     }
    },
   {
+    "name": "<div class='subtitle-line subtitle-enable'>Finance Cheque</div>",
+    "path": "./finance_cheque/",
+    "_links": {
+      "html": "./finance_cheque/"
+    }
+   },
+  {
     "name": "<div class='subtitle-line subtitle-disable'>DAØ Society (DAS)</div>",
     "path": "javascript:void(0)",
     "_links": {
@@ -139,7 +146,7 @@
       "html": "javascript:void(0)"
     }
    },
-  {
+   {
     "name": "<div class='subtitle-line subtitle-disable'>To-Go USB</div>",
     "path": "javascript:void(0)",
     "_links": {
@@ -147,7 +154,49 @@
     }
    },
   {
-    "name": "<div class='title-line title-disable'><div class='icon f-datro'></div>Highlight Reports</div>",
+    "name": "<div class='title-line title-enable'><div class='icon f-datro'></div>Highlight Reports</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line subtitle-enable'>Finance Cheque W09</div>",
+    "path": "./finance_cheque/latest/build/html/highlight_W09",
+    "_links": {
+      "html": "./finance_cheque/latest/build/html/highlight_W09"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line subtitle-enable'>Finance Cheque W10</div>",
+    "path": "./finance_cheque/latest/build/html/highlight_W10",
+    "_links": {
+      "html": "./finance_cheque/latest/build/html/highlight_W10"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line subtitle-enable'>Finance Cheque W11</div>",
+    "path": "./finance_cheque/latest/build/html/highlight_W11",
+    "_links": {
+      "html": "./finance_cheque/latest/build/html/highlight_W11"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line subtitle-enable'>Finance Cheque W12</div>",
+    "path": "./finance_cheque/latest/build/html/highlight_W12",
+    "_links": {
+      "html": "./finance_cheque/latest/build/html/highlight_W12"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line subtitle-enable'>Finance Cheque W13</div>",
+    "path": "./finance_cheque/latest/build/html/highlight_W13",
+    "_links": {
+      "html": "./finance_cheque/latest/build/html/highlight_W13"
+    }
+   },
+  {
+    "name": "<div class='title-line title-disable'><div class='icon f-datro'></div>Guidelines</div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
@@ -168,17 +217,24 @@
     }
    },
   {
-    "name": "<div class='subtitle-line subtitle-disable'>Brief</div>",
-    "path": "javascript:void(0)",
+    "name": "<div class='subtitle-line subtitle-enable'>Finance Cheque Mandate</div>",
+    "path": "./finance_cheque/latest/build/html/mandate",
     "_links": {
-      "html": "javascript:void(0)"
+      "html": "./finance_cheque/latest/build/html/mandate"
     }
    },
   {
-    "name": "<div class='subtitle-line subtitle-disable'>Plan</div>",
-    "path": "javascript:void(0)",
+    "name": "<div class='subtitle-line subtitle-enable'>Brief</div>",
+    "path": "./finance_cheque/latest/build/html/brief",
     "_links": {
-      "html": "javascript:void(0)"
+      "html": "./finance_cheque/latest/build/html/brief"
+    }
+   },
+  {
+    "name": "<div class='subtitle-line subtitle-enable'>Plan</div>",
+    "path": "./finance_cheque/latest/build/html/plan",
+    "_links": {
+      "html": "./finance_cheque/latest/build/html/plan"
     }
    },
   {
