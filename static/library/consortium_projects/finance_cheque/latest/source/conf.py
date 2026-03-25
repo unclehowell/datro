@@ -1,4 +1,4 @@
-project = "Finance Cheque - Project Mandate"
+project = "finance_cheque"
 copyright = "2026, DATRO Consortium"
 author = "DATRO Consortium"
 
