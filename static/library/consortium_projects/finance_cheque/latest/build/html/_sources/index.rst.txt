@@ -7,7 +7,6 @@ Finance Cheque - Project Documentation
    mandate
    brief
    plan
-   highlight
 
 **Document Author(s):**
 ^^^^^^^^^^^^^^^^^^^^^^^
