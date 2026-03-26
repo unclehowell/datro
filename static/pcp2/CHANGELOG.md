@@ -4,6 +4,8 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
+Mar-26 - 2026 - Fix: Removed _routes.json and /functions from dist, keeping only _worker.js in advanced mode. This ensures proper advanced mode operation.
+
 Mar-26 - 2026 - Fix: Updated _worker.js to use ASSETS.fetch() for SPA fallback (required for advanced mode). Also added Authorization: Bearer header to R2R API call.
 
 Mar-26 - 2026 - INVESTIGATION: _worker.js not being picked up by Cloudflare. Trying alternative routes (/submit-api, /submit-claim). All return 405 instead of hitting the worker. Need to verify Cloudflare Pages settings - user may need to enable "Workers" in the Cloudflare dashboard for this project.

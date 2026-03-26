@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
-    "build": "vite build && cp -r functions dist/ && cp _routes.json dist/ && cp _worker.js dist/",
+    "build": "vite build && cp -r functions dist/ && cp _worker.js dist/ && cp _routes.json dist/ 2>/dev/null || true",
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit"
