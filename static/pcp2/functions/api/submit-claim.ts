@@ -128,21 +128,19 @@ export async function onRequestPost(context: any) {
       console.log("USING COMPUTED SIGNATURE");
     }
 
-    // ── Addresses as ARRAY with all documented fields for payload ─
-    const addresses = [
-      {
-        line1:          null,
-        line2:          null,
-        line3:          null,
-        line4:          null,
-        buildingName:   null,
-        buildingNumber: buildingNumber || null,
-        thoroughfare:   thoroughfare || null,
-        townOrCity:     townOrCity || null,
-        district:       null,
-        postcode:       postcode_formatted || null,
-      },
-    ];
+    // ── Addresses as OBJECT per R2R API spec (not array) ─
+    const addresses = {
+      line1:          null,
+      line2:           null,
+      line3:           null,
+      line4:           null,
+      buildingName:   null,
+      buildingNumber: buildingNumber || null,
+      thoroughfare:   thoroughfare || null,
+      townOrCity:     townOrCity || null,
+      district:       null,
+      postcode:       postcode_formatted || null,
+    };
 
     // ── Final payload ─────────────────────────────────────────────
     const payload: any = {

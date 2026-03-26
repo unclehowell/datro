@@ -4,6 +4,8 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+Mar-26 - 2026 - Fix: Changed addresses from ARRAY back to OBJECT per R2R API docs. R2R API expects single addresses object not array.
+
 Mar-24 - 2026 - Feature: Form forwards signature image as base64. R2R still returns "Invalid signature format" - provider clarification needed.
 
 Mar-24 - 2026 - Fix: Reverted signature addresses from array back to object (matching working commit 02662bab0). Signature now computed using raw field values without title-casing or phone transformation.
