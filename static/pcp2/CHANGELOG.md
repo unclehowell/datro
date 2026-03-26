@@ -4,9 +4,9 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
-Mar-26 - 2026 - SUCCESS: Created new Cloudflare Pages project "pcp2-car-finance" using wrangler CLI. API now works! POST returns "Invalid signature format" - need to fix signature computation per R2R spec.
+Mar-26 - 2026 - SUCCESS: New Cloudflare Pages project "pcp2-car-finance" works! API endpoint responding. Currently troubleshooting R2R "Invalid signature format" error. Tried: base64(json), JSON string, example.png as both fields, only signature_image. Still failing - need to check R2R PDF docs for exact format.
 
-Mar-26 - 2026 - TROUBLESHOOTING: Attempted multiple fixes:
+Mar-26 - 2026 - SUCCESS: Created new Cloudflare Pages project "pcp2-car-finance" using wrangler CLI. API now works! POST returns "Invalid signature format" - need to fix signature computation per R2R spec.:
   1. Added firewall allow rules via API - didn't fix Error 1000
   2. Deleted and re-added DNS in Cloudflare Pages - didn't fix
   3. Tried _worker.js in advanced mode - got Error 1019
