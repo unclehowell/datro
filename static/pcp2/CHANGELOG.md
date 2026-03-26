@@ -4,6 +4,8 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
+Mar-26 - 2026 - INVESTIGATION: Generating Cloudflare WAF rules to skip blocking for POST /api/* paths. User needs to run curl commands to update WAF.
+
 Mar-26 - 2026 - Fix: Removed _routes.json and /functions from dist, keeping only _worker.js in advanced mode. This ensures proper advanced mode operation.
 
 Mar-26 - 2026 - Fix: Updated _worker.js to use ASSETS.fetch() for SPA fallback (required for advanced mode). Also added Authorization: Bearer header to R2R API call.
