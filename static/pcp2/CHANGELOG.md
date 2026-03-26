@@ -6,7 +6,9 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
 Mar-26 - 2026 - SUCCESS: New Cloudflare Pages project "pcp2-car-finance" works! API endpoint responding. Currently troubleshooting R2R "Invalid signature format" error. Tried: base64(json), JSON string, example.png as both fields, only signature_image. Still failing.
 
-Mar-26 - 2026 - Fix: Try using example.png base64 directly as signature field (the actual base64 image, not a JSON string). This is what users would have from signing the form.
+Mar-26 - 2026 - SUCCESS! Using data:image/png;base64 prefix works! Got "Please validate via OTP" - signature format fixed!
+
+Mar-26 - 2026 - Fix: Try using example.png base64 directly as signature field (the actual base64 image, not a JSON string).
 
 Mar-26 - 2026 - SUCCESS: Created new Cloudflare Pages project "pcp2-car-finance" using wrangler CLI. API now works! POST returns "Invalid signature format" - need to fix signature computation per R2R spec.:
   1. Added firewall allow rules via API - didn't fix Error 1000
