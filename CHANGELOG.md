@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 3. Before commiting a change update the sitemap.xml (automated script to perform this task is in the `static/monoreapo/sitemap/` directory  
 
 ## [Unreleased]
-Mar-25 - Added static/environment: Ansible playbook for complete laptop recovery - restores packages, desktop, AI tools, configs, cron jobs, and system settings from backup
+Mar-25 - Added static/environment: Ansible playbook for complete laptop recovery - restores packages, desktop, AI tools, configs, cron jobs, and system settings
 
 ### Fixed
 
