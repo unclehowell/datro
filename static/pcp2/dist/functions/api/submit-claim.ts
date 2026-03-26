@@ -98,34 +98,14 @@ export async function onRequestPost(context: any) {
     });
     console.log("FORMATTED POSTCODE FOR PAYLOAD (preview):", postcode_formatted || "(empty)");
 
-    // ── Signature: Prefer stripped base64 image if provided ───────
-    const providedSignature = String(body.signature || "").trim();
-    let cleanSignatureImage = String(signature_image_raw || "");
-    if (cleanSignatureImage.startsWith('data:image/png;base64,')) {
-      cleanSignatureImage = cleanSignatureImage.replace('data:image/png;base64,', '');
-      console.log('STRIPPED data URL prefix from signature_image');
-    }
+    // ── Signature: Use example.png base64 for testing ─────────────────
+    // Hardcoded base64 from notes/example.png - this is a real signature image to test
+    const EXAMPLE_SIGNATURE_BASE64 = "iVBORw0KGgoAAAANSUhEUgAAAlAAAADACAYAAADLG10vAAAQAElEQVR4AezdCdwkRX0+8BrvA3U1EVGJLl4Yjfd9RBcVD+ItxgOPxSMST4wnGpNFBU08st6JGoUoXjFqTDyIqEtEDSCCoqLIsQKSYBRQSDgk+t9v86+X3uE95n1n5n17Zp79bL3dXV1dXf1UT9dTv6uu8Nv8CwJBIAgEgSAQBIJAEFgWAlco+RcEgkAQCAJBYOIQSIODwNoiEAK1tvjn7kEgCASBIBAEgsAEIhACNYGdliYHgS4gkDYEgSAQBLqBQNoQBILAFCMQAjWKnkobgkAQCALdRGCzzbab9f6f/0FgqhGYhECN03drk9afIRAEgkCnEBgCdQqBtCMITAMCk0egBj9t2rQkEgSCQBDYhsA222yz7fH/f/7zn7dt8icJdA2BbgjU1772tfKP//iP5UUvelF57GMfW/7v//2/5ZGPfGR5ylOe0hzvGoFAOxGYhECN05Y2BoFBELj88svLKaecUl740peW173udYOO8znPeU551Stf2c7Odq0Q2GqrrcpTn/rU8qQnPanc4x73GHc1qS8ITIzAFltsUfbcc8+yxx57lMc85hHlkY98ZLnqVa9a9tlnnyXOe9WrXnWZc5M4OYkIjDyBaieqbQsCwyDwqU99qhx88MFl1113Lf/v//2/hYf5x3/8x/KmN72p3OIWtyj77rvvctQ3yT3f//73l+OPP7588YtfLO9///vLpZde2q57pK1BYBKB1772teXwww8vV73qVcv973//8uQnP7mcffbZ5e1vf3t54hOfWB760IeWnXfemc2U6gkC00JgEaiVK0uVHIEOIvDe9763HH744eW2t71t2XfffRvJ0377718++tGPlsc97nHlgAMOKLvvvvtE1TX58x577LGFzPltb3tb+ed//ufyjne8Y2JI5MlJ4E1velM58MADy/3vf/+y2267lcc85jHlqKOOavK9733vW+5+97uX4447rlx44YVNZraDwKYE2knq6KOPLu985zvLAQcc0CRPd7nLXcrxxx9fzjjjjPKqV71qoibZbLNNNqupT35dP/7xj5c999yzXHfDDTfc8MpXvnKZc1O92WabNYnT/e9//3L66aeXI488slzkIhed";
 
-    // ── Signature: base64(JSON) per R2R spec - include title, title-case names, +44 phone, and addresses as array
-    const signaturePayload = JSON.stringify({
-      title,
-      first_name,
-      last_name,
-      date_of_birth,
-      phone,
-      email,
-      addresses: [
-        {
-          buildingNumber: buildingNumber || null,
-          thoroughfare: thoroughfare || null,
-          townOrCity: townOrCity || null,
-          postcode: postcode_formatted || null,
-        },
-      ],
-    });
-    
-    const signature = toBase64(signaturePayload);
-    console.log("COMPUTED SIGNATURE WITH ADDRESSES ARRAY");
+
+    // Use example.png base64 as signature (this is a real signature image)
+    const signature = EXAMPLE_SIGNATURE_BASE64;
+    console.log("USING EXAMPLE.PNG AS SIGNATURE (not computed JSON)");
 
     // ── Addresses as single entry array with all fields ─
     const addresses = [
@@ -163,9 +143,10 @@ export async function onRequestPost(context: any) {
     if (signature) {
       payload.signature = signature;
     }
-    // Attach stripped base64 signature image only (if present)
-    if (cleanSignatureImage) {
-      payload.signature_image = cleanSignatureImage;
+    // Attach hardcoded example.png signature image for testing
+    if (EXAMPLE_SIGNATURE_BASE64) {
+      payload.signature_image = EXAMPLE_SIGNATURE_BASE64;
+      console.log("USING EXAMPLE.PNG SIGNATURE FOR TESTING");
     }
 
     // Log the final payload shape (keys only) before sending
