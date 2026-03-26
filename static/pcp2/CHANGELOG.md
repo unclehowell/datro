@@ -4,7 +4,14 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
-Mar-26 - 2026 - INVESTIGATION: Generating Cloudflare WAF rules to skip blocking for POST /api/* paths. User needs to run curl commands to update WAF.
+Mar-26 - 2026 - CRITICAL: Error 1000 for POST to car.financecheque.uk - POST requests blocked at DNS level before WAF/firewall. Firewall rules don't help. This is a Cloudflare infrastructure issue - likely need to contact Cloudflare support or the domain has a special flag. GET works fine. The parent domain financecheque.uk works fine with POST (405 for no route - correct).
+
+Mar-26 - 2026 - INVESTIGATION: Error 1000 "DNS points to prohibited IP" is NOT a WAF issue. It happens before WAF runs. Likely causes:
+  1. DNS A record pointing to an origin server IP that Cloudflare has flagged (maybe a previous site was blocked)
+  2. Cloudflare Pages needs to be enabled in the dashboard for this domain
+  3. The domain needs to be set to "Proxied" (orange cloud) not "DNS only"
+
+  Created allow firewall rule via API but it didn't help - need to check Cloudflare dashboard settings.
 
 Mar-26 - 2026 - Fix: Removed _routes.json and /functions from dist, keeping only _worker.js in advanced mode. This ensures proper advanced mode operation.
 

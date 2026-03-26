@@ -27,23 +27,36 @@ async function handleSubmitClaim(context) {
     "Access-Control-Allow-Headers": "Content-Type",
   };
 
-  // Handle OPTIONS preflight
+  // Handle OPTIONS preflight (CORS)
   if (context.request.method === "OPTIONS") {
     return new Response(null, { status: 204, headers: CORS_HEADERS });
+  }
+
+  // Handle GET requests to API paths (health check)
+  if (context.request.method === "GET" && url.pathname.startsWith("/api/")) {
+    return new Response(JSON.stringify({ status: "ok" }), {
+      headers: { "Content-Type": "application/json", ...CORS_HEADERS }
+    });
   }
 
   try {
     const req = context.request;
     console.log("INCOMING REQUEST: method=POST, url=", req.url);
 
-    // Parse request body
+    // Parse request body with better error handling
     let body = {};
     const contentType = req.headers.get("content-type") || "";
-    if (contentType.includes("application/json")) {
-      body = await req.json();
-    } else {
-      const formData = await req.formData();
-      body = Object.fromEntries(formData.entries());
+    try {
+      if (contentType.includes("application/json")) {
+        const text = await req.text();
+        body = text ? JSON.parse(text) : {};
+      } else {
+        const formData = await req.formData();
+        body = Object.fromEntries(formData.entries());
+      }
+    } catch (parseErr) {
+      console.log("Body parse error:", parseErr.message);
+      body = {};
     }
 
     // Helpers
