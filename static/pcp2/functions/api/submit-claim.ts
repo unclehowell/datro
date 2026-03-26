@@ -127,7 +127,7 @@ export async function onRequestPost(context: any) {
     const signature = toBase64(signaturePayload);
     console.log("COMPUTED SIGNATURE WITH ADDRESSES ARRAY");
 
-    // ── Addresses as ARRAY with multiple entries per R2R requirement ─
+    // ── Addresses as single entry array with all fields ─
     const addresses = [
       {
         line1:          thoroughfare || null,
@@ -136,18 +136,6 @@ export async function onRequestPost(context: any) {
         line4:           null,
         buildingName:   null,
         buildingNumber: null,
-        thoroughfare:   null,
-        townOrCity:     null,
-        district:       null,
-        postcode:       null,
-      },
-      {
-        line1:          null,
-        line2:           null,
-        line3:           null,
-        line4:           null,
-        buildingName:   null,
-        buildingNumber: buildingNumber || null,
         thoroughfare:   thoroughfare || null,
         townOrCity:     townOrCity || null,
         district:       null,
