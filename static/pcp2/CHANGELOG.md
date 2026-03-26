@@ -4,7 +4,18 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
-Mar-26 - 2026 - CRITICAL: Error 1000 for POST to car.financecheque.uk - POST requests blocked at DNS level before WAF/firewall. Firewall rules don't help. This is a Cloudflare infrastructure issue - likely need to contact Cloudflare support or the domain has a special flag. GET works fine. The parent domain financecheque.uk works fine with POST (405 for no route - correct).
+Mar-26 - 2026 - TROUBLESHOOTING: Attempted multiple fixes:
+  1. Added firewall allow rules via API - didn't fix Error 1000
+  2. Deleted and re-added DNS in Cloudflare Pages - didn't fix
+  3. Tried _worker.js in advanced mode - got Error 1019
+  4. Tried minimal _worker.js - still Error 1019
+  5. Removed _worker.js entirely - still Error 1019
+  6. Tried direct pages.dev URL - still broken
+  Conclusion: carfinancecheque Pages project is corrupted. Need to delete and recreate but has too many deployments (>100). Using delete-all-deployments script from Cloudflare but failing to list deployments via API.
+
+Mar-26 - 2026 - CRITICAL: carfinancecheque.pages.dev returns Error 1019 for ALL requests (even GET, even with no _worker.js). This is a Cloudflare infrastructure issue, not code.
+
+Mar-26 - 2026 - CRITICAL: car.financecheque.uk - GET works, but ALL POST returns Error 1000 "DNS points to prohibited IP". Firewall rules don't help. This happens before WAF runs.
 
 Mar-26 - 2026 - INVESTIGATION: Error 1000 "DNS points to prohibited IP" is NOT a WAF issue. It happens before WAF runs. Likely causes:
   1. DNS A record pointing to an origin server IP that Cloudflare has flagged (maybe a previous site was blocked)
