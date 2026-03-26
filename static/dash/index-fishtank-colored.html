@@ -81,12 +81,27 @@
             flex-shrink: 0;
         }
 
+        /* Category Heading */
         .users-column h3 {
             font-size: 0.7rem;
             color: #555;
             text-transform: uppercase;
             margin-bottom: 0.6rem;
             letter-spacing: 0.02em;
+        }
+
+        /* Subcategory Heading */
+        .subcategory-group h4 {
+            font-size: 0.65rem;
+            color: #777;
+            text-transform: uppercase;
+            margin-top: 0.8rem;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.02em;
+        }
+
+        .users-list .subcategory-group {
+            margin-bottom: 0.5rem; /* Space between subcategory groups */
         }
 
         .users-list {
@@ -481,11 +496,25 @@
             }
 
             generateMockUsers() {
+                const colors = this.userColors;
                 return [
-                    { id: 'openclaw', name: 'OpenClaw', device: 'Main', status: 'online' },
-                    { id: 'picoclaw', name: 'PicoClaw', device: 'GPU', status: 'online' },
-                    { id: 'researcher', name: 'Researcher', device: 'Laptop', status: 'idle' },
-                    { id: 'dev', name: 'Developer', device: 'Desk', status: 'online' }
+                    // Claw Flavors - Main Users
+                    { id: 'openclaw', name: 'OpenClaw', device: 'Main', status: 'online', category: 'Claw Flavors', subcategory: 'Main Users', color: colors[0] },
+                    { id: 'picoclaw', name: 'PicoClaw', device: 'GPU', status: 'online', category: 'Claw Flavors', subcategory: 'Main Users', color: colors[1] },
+
+                    // Claw Flavors - Subagents
+                    { id: 'gemini', name: 'GEMINI', device: 'Service', status: 'online', category: 'Claw Flavors', subcategory: 'Subagents', color: colors[2] },
+                    { id: 'claude', name: 'CLAUDE', device: 'Service', status: 'online', category: 'Claw Flavors', subcategory: 'Subagents', color: colors[3] },
+                    { id: 'hermes', name: 'HERMES', device: 'Service', status: 'online', category: 'Claw Flavors', subcategory: 'Subagents', color: colors[0] }, // Cycling colors
+
+                    // CLIs - Main Users
+                    { id: 'opcode', name: 'OpenCode', device: 'Main', status: 'online', category: 'CLIs', subcategory: 'Main Users', color: colors[1] },
+                    { id: 'dev', name: 'Developer', device: 'Desk', status: 'online', category: 'CLIs', subcategory: 'Main Users', color: colors[2] },
+
+                    // CLIs - Sub Agents
+                    { id: 'fc_researcher', name: 'FC_RESEARCHER', device: 'Support', status: 'idle', category: 'CLIs', subcategory: 'Sub Agents', color: colors[3] },
+                    { id: 'fc_projectmgr', name: 'FC_PROJECTMGR', device: 'Support', status: 'online', category: 'CLIs', subcategory: 'Sub Agents', color: colors[0] }, // Cycling colors
+                    { id: 'codecld', name: 'CODECLD', device: 'Service', status: 'online', category: 'CLIs', subcategory: 'Sub Agents', color: colors[1] },
                 ];
             }
 
@@ -511,6 +540,7 @@
             }
 
             assignUserProviders() {
+                // Ensure user IDs are consistent for provider assignment
                 this.users.forEach((user, idx) => {
                     const providerIdx = idx % this.providers.length;
                     this.userProviderUsage[user.id] = this.providers[providerIdx].name;
@@ -518,94 +548,66 @@
             }
 
             renderUsers() {
-                this.usersList.innerHTML = this.users.map((user, idx) => {
-                    const color = this.userColors[idx % this.userColors.length];
-                    return `
-                        <div class="user-item ${user.status === 'online' ? 'active' : user.status}" data-user-id="${user.id}" title="${user.device}">
-                            <div class="user-color" style="background-color: ${color};"></div>
-                            <span class="user-status"></span>
-                            <span>${user.name}</span>
-                        </div>
-                    `;
-                }).join('');
-            }
+                const groupedUsers = {};
+                const categoryOrder = ['Claw Flavors', 'CLIs', 'Other']; // Define desired order for categories
+                const subcategoryOrder = {
+                    'Claw Flavors': ['Main Users', 'Subagents'],
+                    'CLIs': ['Main Users', 'Sub Agents'],
+                    'Other': ['General']
+                };
 
-            getFishEmoji(userColor) {
-                // Return different fish based on color theme
-                const fishVariants = ['🐠', '🐟', '🐡', '🦐'];
-                return fishVariants[Math.floor(Math.random() * fishVariants.length)];
-            }
+                // Group users by category and subcategory
+                this.users.forEach(user => {
+                    const category = user.category || 'Other';
+                    const subcategory = user.subcategory || 'General';
 
-            renderTanks() {
-                this.fishtanksGrid.innerHTML = this.providers.map(provider => {
-                    const quota = this.quotaData.find(q => q.apiId && q.apiId.includes(provider.name)) || {};
-                    const isLocked = quota.status === 'quota_exceeded';
-
-                    const waterClass = provider.used > 75 ? 'low' : provider.used > 50 ? 'medium' : '';
-                    const hasWater = provider.remaining > 15; // Define "water" threshold (e.g., > 15% remaining)
-
-                    // Get users using this provider
-                    const usersUsingProvider = Object.entries(this.userProviderUsage)
-                        .filter(([_, prov]) => prov === provider.name)
-                        .map(([userId]) => {
-                            const userIdx = this.users.findIndex(u => u.id === userId);
-                            return { userId, userIdx, color: this.userColors[userIdx % this.userColors.length] };
-                        });
-
-                    // Generate fish with user colors, only if there's water
-                    let fishHtml = '';
-                    if (hasWater) {
-                        fishHtml = usersUsingProvider.map((user, fishIdx) => {
-                            const topPos = 30 + (fishIdx * 15); // Distribute fish vertically
-                            const fish = this.getFishEmoji(user.color);
-                            return `
-                                <div class="fish user-${user.userIdx}" style="top: ${topPos}%; color: ${user.color};">
-                                    ${fish}
-                                </div>
-                            `;
-                        }).join('');
-
-                        // Add extra fish if no users are using this provider
-                        if (usersUsingProvider.length === 0) {
-                            fishHtml += `
-                                <div class="fish user-0" style="top: 30%;">🐠</div>
-                                <div class="fish user-1" style="top: 45%;">🐟</div>
-                            `;
-                        }
+                    if (!groupedUsers[category]) {
+                        groupedUsers[category] = {};
                     }
+                    if (!groupedUsers[category][subcategory]) {
+                        groupedUsers[category][subcategory] = [];
+                    }
+                    groupedUsers[category][subcategory].push(user);
+                });
 
-                    return `
-                        <div class="fishtank-card ${isLocked ? 'locked' : ''}" data-provider="${provider.name}">
-                            <div class="tank-header">
-                                <div class="provider-name">${provider.name}</div>
-                                <div class="model-tabs">
-                                    <div class="model-tab active">Primary</div>
-                                    <div class="model-tab">Sec</div>
-                                    <div class="model-tab">Ter</div>
+                let html = '';
+
+                // Sort categories based on the defined order
+                const sortedCategories = Object.keys(groupedUsers).sort((a, b) =>
+                    categoryOrder.indexOf(a) - categoryOrder.indexOf(b)
+                );
+
+                sortedCategories.forEach(category => {
+                    if (!groupedUsers[category]) return;
+
+                    html += `<h3>${category}</h3>`; // Category heading
+
+                    // Sort subcategories within the category
+                    const sortedSubcategories = Object.keys(groupedUsers[category]).sort((a, b) =>
+                        (subcategoryOrder[category] || []).indexOf(a) - (subcategoryOrder[category] || []).indexOf(b)
+                    );
+
+                    sortedSubcategories.forEach(subcategory => {
+                        if (!groupedUsers[category][subcategory]) return;
+
+                        html += `<div class="subcategory-group">`; // Wrapper for subcategory
+                        html += `<h4>${subcategory}</h4>`; // Subcategory heading
+
+                        // Render users within the subcategory
+                        groupedUsers[category][subcategory].forEach(user => {
+                            html += `
+                                <div class="user-item ${user.status === 'online' ? 'active' : user.status}" data-user-id="${user.id}" title="${user.device}">
+                                    <div class="user-color" style="background-color: ${user.color};"></div>
+                                    <span class="user-status"></span>
+                                    <span>${user.name}</span>
                                 </div>
-                            </div>
+                            `;
+                        });
+                        html += `</div>`; // Close subcategory-group
+                    });
+                });
 
-                            <div class="fishtank">
-                                <div class="water ${waterClass}" style="height: ${provider.remaining}%;"></div>
-
-                                <div class="fishes-container">
-                                    ${fishHtml}
-                                </div>
-
-                                <div class="tank-percentage">${provider.remaining}%</div>
-
-                                <div class="lock-overlay ${isLocked ? 'active' : ''}">
-                                    <div class="lock-icon">🔒</div>
-                                    <div class="reset-date">
-                                        ${quota.nextAccessAt ? new Date(quota.nextAccessAt).toLocaleDateString() : 'N/A'}
-                                    </div>
-                                </div>
-
-                                <div class="tank-glass"></div>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
+                this.usersList.innerHTML = html;
             }
 
             // Commented out the drawConnections function as requested

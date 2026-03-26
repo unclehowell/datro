@@ -4,6 +4,8 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+Mar-26 - 2026 - Build: Trigger rebuild with npm run build to deploy Functions
+
 Mar-26 - 2026 - Fix: R2R requires addresses as ARRAY with multiple entries (not single object). Updated payload and signature to use addresses array format.
 
 Mar-26 - 2026 - Fix: Added _routes.json to ensure /api/* routes use Cloudflare Pages Functions. Also fixed addresses (object) and signature format (include title, addresses object).
