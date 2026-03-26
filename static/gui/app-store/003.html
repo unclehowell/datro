@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-     <title>Hβnβ Controller Apps</title>
+     <title>Hβnβ A.I Agents</title>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../dashboard/media/css/breadcrumb.css">
   <link rel="stylesheet" href="../dashboard/media/css/appstore.css">
   <link rel="stylesheet" href="css/font-awesome.css">
   <style>
-    /* Additional styles specific to app-store pages if needed */
     body {
         background: rgb(44,12,33)!important;
     }
@@ -22,7 +21,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-6BTNPTMXBF');
 </script>
 <!-- google tracking code end -->
@@ -46,10 +44,11 @@
         </div>
 
         <main class="app-store-grid">
+                <!-- JeHervy -->
                 <a class="app-card-link" href="app-description-003-001.html">
                         <article class="app-card" data-app-id="003-001">
                                 <div class="app-card__icon-wrapper">
-                                        <img class="app-card__icon" src="apps/003-001/logo.png" alt="JeHervy controller app icon">
+                                        <img class="app-card__icon" src="apps/003-001/logo.png" alt="JeHervy">
                                 </div>
                                 <div class="app-card__toggle">
                                         <input class="app-checkbox" id="003-001" type="checkbox">
@@ -58,6 +57,72 @@
                         </article>
                 </a>
 
+                <!-- PicoClaw -->
+                <a class="app-card-link" href="app-description-003-002.html">
+                        <article class="app-card" data-app-id="003-002">
+                                <div class="app-card__icon-wrapper">
+                                        <img class="app-card__icon" src="apps/003-002/logo.png" alt="PicoClaw">
+                                </div>
+                                <div class="app-card__toggle">
+                                        <input class="app-checkbox" id="003-002" type="checkbox">
+                                        <label class="app-label install" for="003-002"><span class="thumb"></span></label>
+                                </div>
+                        </article>
+                </a>
+
+                <!-- OpenClaw -->
+                <a class="app-card-link" href="app-description-003-003.html">
+                        <article class="app-card" data-app-id="003-003">
+                                <div class="app-card__icon-wrapper">
+                                        <img class="app-card__icon" src="apps/003-003/logo.png" alt="OpenClaw">
+                                </div>
+                                <div class="app-card__toggle">
+                                        <input class="app-checkbox" id="003-003" type="checkbox">
+                                        <label class="app-label install" for="003-003"><span class="thumb"></span></label>
+                                </div>
+                        </article>
+                </a>
+
+                <!-- Dash -->
+                <a class="app-card-link" href="app-description-003-004.html">
+                        <article class="app-card" data-app-id="003-004">
+                                <div class="app-card__icon-wrapper">
+                                        <img class="app-card__icon" src="apps/003-004/logo.png" alt="Dash">
+                                </div>
+                                <div class="app-card__toggle">
+                                        <input class="app-checkbox" id="003-004" type="checkbox">
+                                        <label class="app-label install" for="003-004"><span class="thumb"></span></label>
+                                </div>
+                        </article>
+                </a>
+
+                <!-- Openclaw WebGUI -->
+                <a class="app-card-link" href="app-description-003-005.html">
+                        <article class="app-card" data-app-id="003-005">
+                                <div class="app-card__icon-wrapper">
+                                        <img class="app-card__icon" src="apps/003-005/logo.png" alt="Openclaw Web">
+                                </div>
+                                <div class="app-card__toggle">
+                                        <input class="app-checkbox" id="003-005" type="checkbox">
+                                        <label class="app-label install" for="003-005"><span class="thumb"></span></label>
+                                </div>
+                        </article>
+                </a>
+
+                <!-- ClawTeam Web -->
+                <a class="app-card-link" href="app-description-003-006.html">
+                        <article class="app-card" data-app-id="003-006">
+                                <div class="app-card__icon-wrapper">
+                                        <img class="app-card__icon" src="apps/003-006/logo.png" alt="ClawTeam">
+                                </div>
+                                <div class="app-card__toggle">
+                                        <input class="app-checkbox" id="003-006" type="checkbox">
+                                        <label class="app-label install" for="003-006"><span class="thumb"></span></label>
+                                </div>
+                        </article>
+                </a>
+
+                <!-- Add New App -->
                 <a class="app-card-link app-card-link--inactive" href="#" aria-disabled="true">
                         <article class="app-card app-card--disabled" data-app-id="999-999">
                                 <div class="app-card__icon-wrapper">
@@ -94,7 +159,6 @@
             }
             return;
           }
-
           if (localStorage.getItem(appId) === 'added') {
             square.style.display = '';
           } else {

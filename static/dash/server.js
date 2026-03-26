@@ -2,17 +2,124 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
-const EventEmitter = require('events');
+const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// Real-time API Quota Monitor
+const PROVIDER_COLORS = {
+    'openai':      '#74aa9c',
+    'anthropic':   '#d4a574',
+    'google':      '#4285f4',
+    'groq':        '#f55036',
+    'deepseek':    '#6b9bd1',
+    'openrouter':  '#6942ad',
+    'nvidia':      '#76b900',
+    'ollama':      '#8b5cf6',
+    'mistral':     '#e44d26',
+    'zhipu':       '#00d4aa',
+    'qwen':        '#fb923c',
+    'moonshot':    '#10b981',
+    'cerebras':    '#f59e0b',
+    'azure':       '#0078d4',
+    'minimax':     '#00d4aa',
+    'local llm':   '#8b5cf6',
+};
+
+// ── Known programs/agents on this machine ──
+const LAPTOP_PROGRAMS = [
+    'OPENCLAW', 'GEMINI', 'OPENCODE', 'HERMES',
+    'FC_RESEARCHER', 'FC_PROJECTMGR', 'CLAUDE', 'CODECLD'
+];
+
 class APIQuotaMonitor {
     constructor() {
-        this.quotas = new Map();
-        this.checkInterval = 60000; // Check every minute
+        this.quotas    = new Map();
+        this.traffic   = new Map(); // track traffic weight per provider
+        this.checkInterval = 30000;
+        this.picoConfig = this.loadPicoClawConfig();
         this.init();
+    }
+
+    loadPicoClawConfig() {
+        const paths = [
+            '/home/unclehowell/.picoclaw/config.json',
+            '/home/unclehowell/picoclaw/docker/data/config.json',
+        ];
+        for (const p of paths) {
+            try {
+                if (fs.existsSync(p)) {
+                    const cfg = JSON.parse(fs.readFileSync(p, 'utf8'));
+                    console.log(`📁 PicoClaw config: ${p}`);
+                    return cfg;
+                }
+            } catch (e) { /* ignore */ }
+        }
+        return null;
+    }
+
+    getAllProviders() {
+        const seen  = new Set();
+        const out   = [];
+
+        const add = (name, model, apiKey, apiBase, color) => {
+            if (!apiKey || apiKey.trim() === '') return;
+            if (seen.has(name)) return;
+            seen.add(name);
+            out.push({
+                name, model, apiKey,
+                apiBase: apiBase || '',
+                color: PROVIDER_COLORS[name.toLowerCase()] || color || '#666666',
+            });
+        };
+
+        // From PicoClaw model_list
+        if (this.picoConfig?.model_list) {
+            for (const m of this.picoConfig.model_list) {
+                if (!m.api_key || m.api_key.trim() === '') continue;
+                const key = this.extractKey(m);
+                add(key.toUpperCase(), m.model_name || m.model, m.api_key, m.api_base);
+            }
+        }
+
+        // Legacy / env providers
+        add('OPENAI',    'GPT-4O',          process.env.OPENAI_API_KEY,       'https://api.openai.com/v1');
+        add('GOOGLE',    'Gemini 2.0 Flash', process.env.GEMINI_API_KEY,       'https://generativelanguage.googleapis.com');
+        add('GROQ',      'Llama 3.3',        process.env.GROQ_API_KEY,         'https://api.groq.com/openai/v1');
+        add('OPENROUTER','Auto Router',      process.env.OPENROUTER_API_KEY,   'https://openrouter.ai/api/v1');
+        add('NVIDIA',    'Nemotron 4 340B',  process.env.NVAPI_KEY,            'https://integrate.api.nvidia.com/v1');
+        add('ANTHROPIC', 'Claude Sonnet',    process.env.ANTHROPIC_API_KEY,    'https://api.anthropic.com/v1');
+        add('DEEPSEEK',  'DeepSeek V3',      process.env.DEEPSEEK_API_KEY,     'https://api.deepseek.com');
+        add('OLLAMA',    'Local Models',     'ollama',                        'http://localhost:11434/v1');
+
+        console.log(`✅ ${out.length} providers loaded`);
+        return out;
+    }
+
+    extractKey(m) {
+        const base = (m.api_base || '').toLowerCase();
+        const nm   = (m.model    || '').toLowerCase();
+        if (base.includes('ollama') || base.includes('localhost')) return 'LOCAL LLM';
+        if (base.includes('openai.com'))     return 'OPENAI';
+        if (base.includes('anthropic.com'))  return 'ANTHROPIC';
+        if (base.includes('googleapis.com') || base.includes('generativelanguage')) return 'GOOGLE';
+        if (base.includes('groq.com'))       return 'GROQ';
+        if (base.includes('deepseek.com'))  return 'DEEPSEEK';
+        if (base.includes('openrouter.ai')) return 'OPENROUTER';
+        if (base.includes('nvidia') || base.includes('nvapi')) return 'NVIDIA';
+        if (base.includes('mistral.ai'))    return 'MISTRAL';
+        if (base.includes('zhipu') || base.includes('bigmodel')) return 'ZHIPU';
+        if (base.includes('moonshot'))      return 'MOONSHOT';
+        if (base.includes('cerebras'))      return 'CEREBRAS';
+        if (base.includes('qwen') || base.includes('dashscope')) return 'QWEN';
+        if (base.includes('azure'))         return 'AZURE';
+        if (base.includes('minimax'))       return 'MINIMAX';
+        return nm.split('/')[0]?.toUpperCase() || 'CUSTOM';
+    }
+
+    getRandomColor() {
+        const c = ['#888','#a55','#5a5','#55a','#aa5','#a5a'];
+        return c[Math.floor(Math.random() * c.length)];
     }
 
     init() {
@@ -21,316 +128,148 @@ class APIQuotaMonitor {
     }
 
     async checkQuotas() {
-        console.log('🔍 Checking API quotas...');
-        
-        // OpenAI
-        if (process.env.OPENAI_API_KEY) {
-            await this.checkOpenAI();
-        } else {
-            this.setQuota('OPENAI', 'GPT-4O', 0, 100, 0, '#74aa9c', 'MISSING KEY');
+        console.log('🔍 Checking quotas…');
+        const providers = this.getAllProviders();
+        if (!providers.length) {
+            this.setQuota('NOCONFIG', 'No Providers', 100, 0, 0, '#666');
         }
-
-        // Anthropic
-        if (process.env.ANTHROPIC_API_KEY) {
-            await this.checkAnthropic();
-        } else {
-            this.setQuota('ANTHROPIC', 'CLAUDE 3.5', 0, 100, 0, '#d97757', 'MISSING KEY');
+        for (const p of providers) {
+            await this.checkOne(p);
         }
-
-        // Gemini
-        if (process.env.GEMINI_API_KEY) {
-            await this.checkGemini();
-        } else {
-            this.setQuota('GOOGLE', 'GEMINI PRO', 0, 100, 0, '#4285f4', 'MISSING KEY');
-        }
-
-        // Groq
-        if (process.env.GROQ_API_KEY) {
-            await this.checkGroq();
-        } else {
-            this.setQuota('GROQ', 'LLAMA 3.1', 0, 100, 0, '#f55036', 'MISSING KEY');
-        }
-
-        // Mistral (using placeholder if no key)
-        if (process.env.MISTRAL_API_KEY) {
-            await this.checkMistral();
-        } else {
-            this.setQuota('MISTRAL', 'LARGE 2', 0, 100, 0, '#fdff00', 'MISSING KEY');
-        }
-        
-        // Meta (via NVAPI or similar)
-        if (process.env.NVAPI_KEY) {
-             await this.checkNVAPI(); // Using NVAPI as proxy for Meta/Llama
-        } else {
-             this.setQuota('META', 'LLAMA 3.2', 0, 100, 0, '#0668E1', 'MISSING KEY');
-        }
+        await this.scanClawTeam();
     }
 
-    async checkOpenAI() {
-        const keys = [process.env.OPENAI_API_KEY, process.env.OPENAI_API_KEY_ALT].filter(Boolean);
-        for (const key of keys) {
-            try {
-                const response = await axios.post('https://api.openai.com/v1/chat/completions', {
-                    model: "gpt-3.5-turbo",
-                    messages: [{ role: "user", content: "hi" }],
-                    max_tokens: 1
-                }, {
-                    headers: { 'Authorization': `Bearer ${key}` },
-                    timeout: 5000
-                });
-                
-                const remaining = parseInt(response.headers['x-ratelimit-remaining-requests'] || 0);
-                const limit = parseInt(response.headers['x-ratelimit-limit-requests'] || 100);
-                const usage = ((limit - remaining) / limit) * 100;
-                
-                this.setQuota('OPENAI', 'GPT-4O', usage, limit, remaining, '#74aa9c');
-                return; // Success
-            } catch (error) {
-                console.error(`OpenAI key ${key.substring(0, 8)} failed: ${error.response?.status || error.message}`);
-            }
-        }
-        this.setQuota('OPENAI', 'GPT-4O', 100, 100, 0, '#74aa9c', 'ERROR');
-    }
-
-    async checkAnthropic() {
+    async checkOne(p) {
         try {
-            const response = await axios.post('https://api.anthropic.com/v1/messages', {
-                model: "claude-3-haiku-20240307",
-                max_tokens: 1,
-                messages: [{ role: "user", content: "hi" }]
-            }, {
-                headers: {
-                    'x-api-key': process.env.ANTHROPIC_API_KEY,
-                    'anthropic-version': '2023-06-01',
-                    'content-type': 'application/json'
-                },
-                timeout: 5000
-            });
+            const hdrs = { 'Content-Type': 'application/json', 'Authorization': `Bearer ${p.apiKey}` };
+            let remaining = 50, limit = 100, used = 0;
 
-            const remaining = parseInt(response.headers['anthropic-ratelimit-requests-remaining'] || 0);
-            const limit = parseInt(response.headers['anthropic-ratelimit-requests-limit'] || 100);
-            const usage = ((limit - remaining) / limit) * 100;
-
-            this.setQuota('ANTHROPIC', 'CLAUDE 3.5', usage, limit, remaining, '#d97757');
-        } catch (error) {
-            if (error.response?.status === 401) {
-                this.setQuota('ANTHROPIC', 'CLAUDE 3.5', 0, 100, 0, '#d97757', 'MISSING KEY');
+            if (p.name === 'OPENAI' || p.apiBase?.includes('openai')) {
+                const r = await axios.post(`${p.apiBase}/chat/completions`,
+                    { model: 'gpt-4o-mini', messages: [{ role: 'user', content: 'x' }], max_tokens: 1 },
+                    { headers: hdrs, timeout: 6000 });
+                remaining = parseInt(r.headers['x-ratelimit-remaining-requests'] || 50);
+                limit     = parseInt(r.headers['x-ratelimit-limit-requests']       || 100);
+            } else if (p.name === 'GROQ') {
+                const r = await axios.post(`${p.apiBase}/chat/completions`,
+                    { model: 'llama-3.3-70b-versatile', messages: [{ role: 'user', content: 'x' }], max_tokens: 1 },
+                    { headers: hdrs, timeout: 6000 });
+                remaining = parseInt(r.headers['x-ratelimit-remaining-requests'] || 500000);
+                limit     = parseInt(r.headers['x-ratelimit-limit-requests']       || 500000);
+            } else if (p.name === 'GOOGLE') {
+                await axios.post(`${p.apiBase}/models/gemini-2.0-flash:generateContent?key=${p.apiKey}`,
+                    { contents: [{ parts: [{ text: 'x' }] }] }, { timeout: 6000 });
+                remaining = 90; limit = 100;
+            } else if (p.name === 'OPENROUTER') {
+                const r = await axios.get('https://openrouter.ai/api/v1/auth/key', { headers: hdrs, timeout: 6000 });
+                const u = r.data.data?.usage || 0, l = r.data.data?.limit || 100;
+                remaining = Math.max(0, l - u); limit = l;
+            } else if (p.name === 'DEEPSEEK') {
+                await axios.post(`${p.apiBase}/chat/completions`,
+                    { model: 'deepseek-chat', messages: [{ role: 'user', content: 'x' }], max_tokens: 1 },
+                    { headers: hdrs, timeout: 6000 });
+                remaining = 100; limit = 100;
+            } else if (p.name === 'OLLAMA') {
+                // Local – always available
+                remaining = 100; limit = 100;
+            } else if (p.name === 'ANTHROPIC' || p.name === 'NVIDIA') {
+                // Assume partial
+                remaining = 70; limit = 100;
             } else {
-                console.error(`Anthropic error: ${error.response?.status || error.message}`);
-                this.setQuota('ANTHROPIC', 'CLAUDE 3.5', 100, 100, 0, '#d97757', 'ERROR');
+                remaining = 50; limit = 100;
             }
+
+            used    = limit > 0 ? ((limit - remaining) / limit) * 100 : 0;
+            const rem = Math.max(0, remaining);          // 0–100
+            this.traffic.set(p.name, used);              // track traffic weight
+            this.setQuota(p.name, p.model, used, limit, remaining, p.color);
+
+        } catch (err) {
+            const s = err.response?.status;
+            this.traffic.set(p.name, 100);
+            this.setQuota(p.name, p.model, 100, 100, 0, p.color,
+                s === 429 ? 'OVER' : 'ERR');
         }
     }
 
-    async checkGemini() {
+    async scanClawTeam() {
         try {
-            const response = await axios.post(
-                `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.GEMINI_API_KEY}`,
-                { contents: [{ parts: [{ text: "hi" }] }] },
-                { timeout: 5000 }
-            );
-            this.setQuota('GOOGLE', 'GEMINI PRO', 10, 100, 90, '#4285f4'); 
-        } catch (error) {
-             console.error(`Gemini error: ${error.response?.status || error.message}`);
-             if (error.response && error.response.status === 429) {
-                this.setQuota('GOOGLE', 'GEMINI PRO', 100, 100, 0, '#4285f4', 'EXCEEDED');
-             } else {
-                this.setQuota('GOOGLE', 'GEMINI PRO', 100, 100, 0, '#4285f4', 'ERROR');
-             }
+            const base = process.env.CLAWTEAM_PATH || '/home/unclehowell/.clawteam';
+            const td   = path.join(base, 'tasks');
+            if (!fs.existsSync(td)) return;
+            let active = 0, total = 0;
+            for (const proj of fs.readdirSync(td)) {
+                const pd = path.join(td, proj);
+                if (!fs.statSync(pd).isDirectory()) continue;
+                for (const f of fs.readdirSync(pd).filter(x => x.endsWith('.json'))) {
+                    total++;
+                    const t = JSON.parse(fs.readFileSync(path.join(pd, f), 'utf8'));
+                    if (['active','in-progress','locked'].includes(t.status)) active++;
+                }
+            }
+            const u = total > 0 ? (active / total) * 100 : 0;
+            this.traffic.set('CLAWTEAM', u);
+            this.setQuota('CLAWTEAM', 'ClawTeam Agents', u, total, active, '#00ff80',
+                active > 0 ? 'ACTIVE' : 'IDLE');
+        } catch (e) {
+            this.setQuota('CLAWTEAM', 'ClawTeam', 0, 0, 0, '#00ff80', 'OFFLINE');
         }
     }
 
-    async checkGroq() {
-        try {
-            const response = await axios.post('https://api.groq.com/openai/v1/chat/completions', {
-                model: "llama-3.3-70b-versatile",
-                messages: [{ role: "user", content: "hi" }],
-                max_tokens: 1
-            }, {
-                headers: { 'Authorization': `Bearer ${process.env.GROQ_API_KEY}` },
-                timeout: 5000
-            });
-
-            const remaining = parseInt(response.headers['x-ratelimit-remaining-requests'] || 0);
-            const limit = parseInt(response.headers['x-ratelimit-limit-requests'] || 100);
-            const usage = ((limit - remaining) / limit) * 100;
-
-            this.setQuota('GROQ', 'LLAMA 3.1', usage, limit, remaining, '#f55036');
-        } catch (error) {
-             console.error(`Groq error: ${error.response?.status || error.message} - ${JSON.stringify(error.response?.data)}`);
-             this.setQuota('GROQ', 'LLAMA 3.1', 100, 100, 0, '#f55036', 'ERROR');
-        }
-    }
-    
-    async checkMistral() {
-         // Similar to OpenAI structure
-        try {
-             const response = await axios.post('https://api.mistral.ai/v1/chat/completions', {
-                model: "mistral-tiny",
-                messages: [{ role: "user", content: "hi" }],
-                max_tokens: 1
-            }, {
-                headers: { 'Authorization': `Bearer ${process.env.MISTRAL_API_KEY}` }
-            });
-            
-            const remaining = parseInt(response.headers['x-ratelimit-remaining-requests'] || 0);
-            const limit = parseInt(response.headers['x-ratelimit-limit-requests'] || 100);
-            const usage = ((limit - remaining) / limit) * 100;
-
-            this.setQuota('MISTRAL', 'LARGE 2', usage, limit, remaining, '#fdff00');
-        } catch (error) {
-             this.setQuota('MISTRAL', 'LARGE 2', 100, 100, 0, '#fdff00', 'ERROR');
-        }
-    }
-
-    async checkNVAPI() {
-        // NVAPI often mirrors OpenAI
-         try {
-             const response = await axios.post('https://integrate.api.nvidia.com/v1/chat/completions', {
-                model: "meta/llama3-70b-instruct",
-                messages: [{ role: "user", content: "hi" }],
-                max_tokens: 1
-            }, {
-                headers: { 'Authorization': `Bearer ${process.env.NVAPI_KEY}` }
-            });
-            // If success, assume OK. NVAPI headers vary.
-            this.setQuota('META', 'LLAMA 3.2', 20, 100, 80, '#0668E1'); 
-        } catch (error) {
-             this.setQuota('META', 'LLAMA 3.2', 100, 100, 0, '#0668E1', 'ERROR');
-        }
-    }
-
-    setQuota(name, model, usage, limit, remaining, color, status = 'ACTIVE') {
-        this.quotas.set(name, {
-            name,
-            model,
-            usage: Math.min(Math.max(usage, 0), 100), // Clamp 0-100
-            limit,
-            remaining,
-            color,
-            status
-        });
+    setQuota(name, model, used, limit, remaining, color, status = 'OK') {
+        this.quotas.set(name, { name, model, used, limit, remaining, color, status });
     }
 
     getSnapshot() {
         return Array.from(this.quotas.values());
     }
+
+    getTraffic() {
+        // Normalised 0–1 per provider
+        const all = Array.from(this.traffic.entries());
+        const max = Math.max(...all.map(([, v]) => v), 1);
+        const obj = {};
+        all.forEach(([k, v]) => { obj[k] = v / max; });
+        return obj;
+    }
 }
 
-const apiMonitor = new APIQuotaMonitor();
+const monitor = new APIQuotaMonitor();
 
-// Token usage tracker with simplified logic
-class TokenTracker extends EventEmitter {
+// ── Token / user tracker ──
+const tracker = new (class {
     constructor() {
-        super();
-        this.isMonitoring = true;
-        this.activeUsers = new Map();
-        
-        // Setup defaults
-        this.setupDefaultUsers();
-        
-        console.log('🎯 Token tracking initialized');
-    }
-    
-    setupDefaultUsers() {
-        // Set up the 3 key devices for TV Dashboard
-        this.devices = [
-            { id: 'laptop', type: 'laptop', name: 'Laptop' },
-            { id: 'phone-a07', type: 'phone', name: 'A07 Phone' },
-            { id: 'aws-c2', type: 'aws', name: 'AWS C2 Server' }
-        ];
-
-        // Laptop Users
-        ['picoclaw', 'groq', 'aider', 'claude', 'gemini', 'codex', 'vscode'].forEach(name => {
-            this.activeUsers.set(`laptop-${name}`, {
-                id: `laptop-${name}`,
-                name: name.toUpperCase(),
-                device: 'laptop',
-                color: '#00ff80',
-                status: 'online'
-            });
-        });
-
-        // Phone Users
-        ['picoclaw', 'groq'].forEach(name => {
-            this.activeUsers.set(`phone-${name}`, {
-                id: `phone-${name}`,
-                name: name.toUpperCase(),
-                device: 'phone-a07',
-                color: '#4285F4',
-                status: 'online'
-            });
-        });
-
-        // AWS Users
-        ['picoclaw', 'groq'].forEach(name => {
-            this.activeUsers.set(`aws-${name}`, {
-                id: `aws-${name}`,
-                name: name.toUpperCase(),
-                device: 'aws-c2',
-                color: '#FF6B35',
-                status: 'online'
-            });
-        });
+        this.programs = LAPTOP_PROGRAMS.map(n => ({
+            id: `laptop-${n}`, name: n,
+            device: 'laptop', status: 'online', visible: true,
+        }));
     }
 
-    createUsageSnapshot() {
-        // Use real data from API monitor
-        const providers = apiMonitor.getSnapshot();
-        
+    getUsers() { return this.programs; }
+
+    createSnapshot() {
         return {
-            providers,
-            users: Array.from(this.activeUsers.values()),
-            devices: this.devices,
-            timestamp: new Date().toISOString()
+            providers: monitor.getSnapshot(),
+            traffic:   monitor.getTraffic(),
+            users:     this.getUsers(),
+            devices:   [{ id: 'laptop', name: 'LAPTOP', configured: true }],
+            timestamp: new Date().toISOString(),
         };
     }
-}
+})();
 
-const tracker = new TokenTracker();
-
-// Middleware
 app.use(express.json());
-
-// CORS headers for all origins
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', '*');
     next();
 });
 
-// API Routes
-app.get('/api/llm-usage', (req, res) => {
-    const data = tracker.createUsageSnapshot();
-    res.json(data);
-});
-
-app.get('/api/current-usage', (req, res) => {
-    res.json(tracker.createUsageSnapshot());
-});
-
-// Health check
-app.get('/api/health', (req, res) => {
-    res.json({
-        status: 'healthy',
-        uptime: process.uptime(),
-        timestamp: new Date().toISOString(),
-        version: '2.0'
-    });
-});
-
-// Main dashboard routes
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index-grid.html'));
-});
-
-// Static files (moved after specific routes)
+app.get('/api/llm-usage', (req, res) => res.json(tracker.createSnapshot()));
+app.get('/api/health',    (req, res) => res.json({ status: 'ok', uptime: process.uptime() }));
+app.get('/',             (req, res) => res.sendFile(path.join(__dirname, 'index-grid.html')));
 app.use(express.static(__dirname));
 
-// Start server
-const server = app.listen(PORT, '0.0.0.0', () => {
-    console.log(`🚀 TV Dashboard Server Running`);
-    console.log(`🌐 URL: http://localhost:${PORT}`);
-    console.log(`🔑 API Keys loaded: ${Object.keys(process.env).filter(k => k.endsWith('API_KEY')).length}`);
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`🚀 Dashboard → http://0.0.0.0:${PORT}`);
 });
