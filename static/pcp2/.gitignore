@@ -1,8 +1,11 @@
 node_modules/
 build/
-dist/
 coverage/
 .DS_Store
 *.log
 .env*
 !.env.example
+# Cloudflare Pages Functions (needed for API routes)
+!dist/_routes.json
+!dist/functions/
+!dist/functions/api/
