@@ -4,6 +4,10 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
+Mar-26 - 2026 - Fix: Updated _worker.js to use ASSETS.fetch() for SPA fallback (required for advanced mode). Also added Authorization: Bearer header to R2R API call.
+
+Mar-26 - 2026 - INVESTIGATION: _worker.js not being picked up by Cloudflare. Trying alternative routes (/submit-api, /submit-claim). All return 405 instead of hitting the worker. Need to verify Cloudflare Pages settings - user may need to enable "Workers" in the Cloudflare dashboard for this project.
+
 Mar-26 - 2026 - ISSUE IDENTIFIED: Cloudflare WAF/security blocking all POST requests to /api/* paths (returns error 1000 "DNS points to prohibited IP"). Direct R2R API test works (returns "Invalid API Key" - correct response). Need to check Cloudflare dashboard Security > WAF or Settings to allow POST to /api/* paths.
 
 Mar-26 - 2026 - Investigating: POST to /api/* returns "DNS points to prohibited IP" (Cloudflare error 1000). GET requests work fine. Direct test to R2R API works (returns "Invalid API Key"). This confirms Cloudflare is blocking POST to /api/* paths - likely WAF or security rule. Need to check Cloudflare dashboard.

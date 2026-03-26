@@ -2,11 +2,21 @@ export async function onRequest(context) {
   const url = new URL(context.request.url);
   
   if (url.pathname === "/submit-api" || url.pathname === "/submit-claim" || url.pathname.startsWith("/api/")) {
-    // Import and forward to the submit-claim handler
+    // Handle API routes
     return handleSubmitClaim(context);
   }
   
-  // Let Cloudflare handle other routes (SPA fallback)
+  // For all other routes, serve static assets (SPA fallback)
+  // This is required for _worker.js advanced mode
+  try {
+    if (context.env.ASSETS) {
+      return await context.env.ASSETS.fetch(context.request);
+    }
+  } catch (e) {
+    console.log("ASSETS binding not available, falling back to SPA");
+  }
+  
+  // Fallback: return 404 for unmatched routes
   return new Response("Not Found", { status: 404 });
 }
 
@@ -149,6 +159,7 @@ async function handleSubmitClaim(context) {
       "API-KEY": apiKey,
       "User-Agent": req.headers.get('user-agent') || 'Cloudflare-Function',
     };
+    upstreamHeaders.Authorization = `Bearer ${apiKey}`;
 
     const res = await fetch(url, {
       method: "POST",
