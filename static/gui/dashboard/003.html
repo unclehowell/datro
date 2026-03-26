@@ -16,6 +16,11 @@
     <link rel="stylesheet" href="../app-store/apps/003-006/style.css">
     <link rel="stylesheet" href="../app-store/apps/003-007/style.css">
     <link rel="stylesheet" href="../app-store/apps/003-008/style.css">
+    <link rel="stylesheet" href="../app-store/apps/005-001/style.css">
+    <link rel="stylesheet" href="../app-store/apps/005-002/style.css">
+    <link rel="stylesheet" href="../app-store/apps/005-003/style.css">
+    <link rel="stylesheet" href="../app-store/apps/005-004/style.css">
+    <link rel="stylesheet" href="../app-store/apps/005-005/style.css">
     <link rel="stylesheet" href="../app-store/apps/999-999/style.css">
     <style>
 
@@ -180,13 +185,34 @@ function isAddIconEnabled() {
 function updateHomeScreen() {
     const appsContainer = document.getElementById('apps-container');
     appsContainer.innerHTML = ''; // Clear existing apps
-    const appIds = ['003-001', '003-002', '003-003', '003-004', '003-005', '003-006', '003-007', '003-008', '999-999']; // Using class-based IDs
+    const appIds = ['003-001', '003-002', '003-003', '003-004', '003-005', '003-006', '003-007', '003-008', '005-001', '005-002', '005-003', '005-004', '005-005', '999-999'];
     appIds.forEach(appId => {
         const appInstalled = localStorage.getItem(appId) === 'added';
         const shouldShowApp = appId === ADD_ICON_ID ? isAddIconEnabled() : appInstalled;
         if (shouldShowApp) {
             const appElement = document.createElement('a');
-            appElement.href = getAppLink(appId); // Set the hyperlink
+            let targetHref = getAppLink(appId); // Get the default link
+
+            // --- FIX: Enforce localhost links when hostname is localhost ---
+            // This ensures that for specific local apps, we always use their direct localhost URL.
+            // This overrides any potential demo page logic that might be triggered on non-localhost domains.
+            if (window.location.hostname === 'localhost') {
+                // Only enforce for the apps that are meant to run locally on specific ports.
+                // These are the ones identified by IDs '005-XXX'.
+                const localAppIds = ['005-001', '005-002', '005-003', '005-004', '005-005'];
+                if (localAppIds.includes(appId)) {
+                    targetHref = getAppLink(appId); // getAppLink already provides the correct localhost URL for these.
+                }
+                // For other apps (like 003-XXX), they might have different default links
+                // or app-description links, which we don't want to override here.
+            } else {
+                // If the hostname is NOT 'localhost', this might be where demo page logic applies.
+                // For now, we let getAppLink handle the default, or it might be handled by other scripts.
+                // The primary goal is to ensure localhost works correctly.
+            }
+            // --- End FIX ---
+
+            appElement.href = targetHref; // Set the hyperlink
             appElement.style.cursor = 'pointer';
             appElement.innerHTML = `
                 <div class="square-${appId}">
@@ -230,24 +256,24 @@ function getAppColor(appId) {
 
 function getAppLink(appId) {
     switch (appId) {
-        case '003-001':
-            return '../app-store/apps/003-001/fetch.html';
-        case '003-002':
-            return '../app-store/apps/003-002/fetch.html';
-        case '003-003':
-            return '../app-store/apps/003-003/fetch.html';
-        case '003-004':
-            return '../app-store/apps/003-004/fetch.html';
-        case '003-005':
-            return '../app-store/apps/003-005/fetch.html';
-        case '003-006':
-            return '../app-store/apps/003-006/fetch.html';
-        case '003-007':
-            return '../app-store/apps/003-007/fetch.html';
-        case '003-008':
-            return '../app-store/apps/003-008/fetch.html';
-        case '999-999':
-            return '../app-store/003.html';
+        case '003-001': return '../app-store/apps/003-001/fetch.html';
+        case '003-002': return '../app-store/apps/003-002/fetch.html';
+        case '003-003': return '../app-store/apps/003-003/fetch.html';
+        case '003-004': return '../app-store/apps/003-004/fetch.html';
+        case '003-005': return '../app-store/apps/003-005/fetch.html';
+        case '003-006': return '../app-store/apps/003-006/fetch.html';
+        case '003-007': return '../app-store/apps/003-007/fetch.html';
+        case '003-008': return '../app-store/apps/003-008/fetch.html';
+        
+        // --- Modified URLs based on provided ports ---
+        case '005-001': return 'http://localhost:11434/'; // Ollama
+        case '005-002': return 'http://localhost:19999/'; // Netdata
+        case '005-003': return 'http://localhost:8000/';  // Jarvis
+        case '005-004': return 'http://localhost:8081/';  // Hotspot
+        case '005-005': return 'http://localhost:4317/';  // Groq
+        // --- End of modified URLs ---
+
+        case '999-999': return '../app-store/003.html';
     }
 }
 
@@ -282,7 +308,7 @@ function handleDrop(event) {
 }
 
 function updateAppStore() {
-    const appIds = ['003-001', '003-002', '003-003', '003-004', '003-005', '003-006', '003-007', '003-008', '999-999'];
+    const appIds = ['003-001', '003-002', '003-003', '003-004', '003-005', '003-006', '003-007', '003-008', '005-001', '005-002', '005-003', '005-004', '005-005', '999-999'];
     appIds.forEach(appId => {
         const installState = localStorage.getItem(appId);
         const installAppCheckbox = document.getElementById(appId);
@@ -298,7 +324,7 @@ function updateAppStore() {
 window.addEventListener('storage', updateHomeScreen);
 
 
-</script> 
+</script>
 
 <script src="media/js/breadcrumb.js"></script>
 <script src="media/js/jquery-2.1.4.min.js"></script>

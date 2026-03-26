@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GG4S9EDH28"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-GG4S9EDH28');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta http-equiv="Access-Control-Allow-Origin" content="https://ai.financecheque.uk,https://ai.financecheque.uk,https://carfinancecheque.uk">
+  <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin-allow-popups">
+  <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
+  <meta http-equiv="Cross-Origin-Resource-Policy" content="cross-origin">
+  <title>Finance Cheque</title>
+
+  <link rel="stylesheet" href="assets/css/adminlte.css?v=20260227b" />
+  <link rel="stylesheet" href="vendor/theme.css?v=20260227b" />
+  <link rel="stylesheet" href="vendor/google-fonts-orbitron.css?v=20260227b" />
+  <link rel="stylesheet" href="vendor/google-fonts-dm-sans.css?v=20260227b" />
+  <link rel="stylesheet" href="vendor/bootstrap-icons.min.css" />
+  <link rel="preload" as="fetch" href="assets/videos/welcometotechsupport.mp4?v=v1.0.6" type="video/mp4" />
+  <link rel="preload" as="fetch" href="assets/videos/byehaveanicelife.mp4?v=v1.0.6" type="video/mp4" />
+  <link rel="preload" as="fetch" href="assets/videos/john.webm?v=v1.0.6" type="video/webm" />
+
+  <style>
+    /* Global font size enforcement and softer colors */
+    * {
+      min-font-size: 10.5px;
+    }
+    html, body {
+      font-size: 10.5px !important;
+      color: #d1d8e0; /* Softer text color */
+    }
+    
+    #sub-frame-error {
+      color: rgba(var(--bs-tertiary-bg-rgb), var(--bs-bg-opacity)) !important;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 24px 16px 84px;
+      box-sizing: border-box;
+      background-color: #0a0a0f;
+    }
+    #boot-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 13000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(7, 10, 14, 0.98);
+      color: #e7edf5;
+      transition: opacity 0.3s ease;
+    }
+    #boot-loader.is-done {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #boot-loader .boot-panel {
+      width: min(90vw, 440px);
+      border: 1px solid #2a3341;
+      border-radius: 10px;
+      background: rgba(13, 20, 27, 0.92);
+      padding: 14px 14px 12px;
+    }
+    #boot-loader .boot-label {
+      font-family: 'Share Tech Mono', monospace;
+      letter-spacing: 0.1em;
+      font-size: 12px;
+      color: #9ab3c7;
+      margin-bottom: 10px;
+    }
+    #boot-loader .boot-bar {
+      height: 8px;
+      border-radius: 999px;
+      background: #111826;
+      border: 1px solid #27354a;
+      overflow: hidden;
+    }
+    #boot-loader .boot-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #2dd4bf, #45ff8f);
+      transition: width 0.18s ease;
+    }
+    #boot-loader .boot-status {
+      margin-top: 8px;
+      font-size: 11px;
+      color: #8aa2b6;
+      text-align: right;
+      font-family: 'Share Tech Mono', monospace;
+      letter-spacing: 0.08em;
+    }
+    #media-preload-bin {
+      position: fixed;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      pointer-events: none;
+      opacity: 0;
+    }
+    
+    /* Enlarged Login Box */
+    .login-box {
+      margin: 0 auto;
+      width: min(95vw, 480px) !important;
+      z-index: 10;
+    }
+    .login-box .card {
+      background: rgba(16, 21, 29, 0.94);
+      border: 1px solid #2a3341;
+      border-radius: 14px;
+      color: #d1d8e0;
+      backdrop-filter: blur(6px);
+    }
+    .login-box .card-header {
+      border-bottom: 1px solid #2a3341;
+      padding: 20px 10px;
+    }
+    .login-box .card-header div {
+      font-size: 24px !important;
+      color: #e7edf5;
+    }
+    .login-box label {
+      font-size: 16px !important;
+      margin-bottom: 8px;
+      color: #a5b1c2; /* Muted label color */
+    }
+    .login-box .form-control,
+    .login-box .form-select {
+      background: #0f141b;
+      border: 1px solid #2a3341;
+      color: #e7edf5;
+      font-size: 18px !important;
+      padding: 12px 16px !important;
+      height: auto !important;
+    }
+    .login-box .form-control:focus,
+    .login-box .form-select:focus {
+      border-color: #45ff8f;
+      box-shadow: 0 0 0 0.15rem rgba(69, 255, 143, 0.2);
+    }
+    .login-box .btn {
+      font-size: 20px !important;
+      padding: 12px !important;
+    }
+    .login-box .form-check-label {
+      font-size: 14px !important;
+      color: #a5b1c2;
+    }
+
+    /* Superscript Link */
+    .early-access-link {
+      color: #cccccc; /* Light grey */
+      text-decoration: none;
+      cursor: pointer;
+      margin-left: 2px;
+      font-size: 1.4em;
+    }
+    .early-access-link:hover {
+      text-decoration: underline;
+      color: #ffffff;
+    }
+
+    /* One-row Footer */
+    footer {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      background: rgba(10, 10, 15, 0.95);
+      border-top: 1px solid #1a2230;
+      padding: 16px 32px;
+    }
+    .root-footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      color: #00ff88; /* Standby green */
+      flex-wrap: nowrap;
+      font-size: 14px !important;
+    }
+    .footer-left {
+      flex: 1;
+      text-align: left;
+    }
+    .footer-middle {
+      flex: 1;
+      text-align: center;
+    }
+    .footer-right {
+      flex: 1;
+      text-align: right;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 20px;
+    }
+    .root-footer-row a {
+      color: #00ff88; /* Standby green */
+      text-decoration: none;
+      font-size: 14px !important;
+      transition: color 0.2s;
+    }
+    .root-footer-row a:hover {
+      color: #45ff8f;
+      text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
+    }
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-left: 15px;
+    }
+    .social-icons i {
+      font-size: 20px;
+    }
+
+    /* OpenClaw drawer */
+    .oc-tab {
+      position: fixed;
+      top: 0;
+      left: 40%; /* Moved left 10% vw (from 50%) */
+      transform: translateX(-50%);
+      z-index: 12000;
+      padding: 0;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s ease-out, top 0.5s ease-in-out;
+    }
+    .oc-tab.hidden {
+      transform: translate(-50%, -100%);
+    }
+    .oc-tab img {
+      width: 60px;
+      height: 60px;
+      display: block;
+    }
+    .oc-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80vh;
+      background: #0a0a0a;
+      color: #7a9aaa;
+      border-bottom: 1px solid #1e2428;
+      transform: translateY(-100%);
+      transition: transform 0.8s ease-in-out; 
+      z-index: 11000;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Share Tech Mono', monospace;
+    }
+    .oc-drawer.open {
+      transform: translateY(0);
+    }
+    .oc-handle {
+      position: absolute;
+      bottom: -60px;
+      left: 40%; /* Moved left to align with oc-tab */
+      transform: translateX(-50%);
+      width: 60px;
+      height: 60px;
+      z-index: 12001;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      transition: opacity 0.3s;
+    }
+    .oc-drawer:not(.open) .oc-handle {
+        display: none;
+    }
+    .oc-toggle {
+      width: 60px;
+      height: 60px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+    .oc-toggle img {
+      width: 60px;
+      height: 60px;
+      display: block;
+    }
+    .oc-root {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background: #0a0a0a;
+    }
+    .oc-header {
+      height: 52px;
+      background: #111418;
+      border-bottom: 1px solid #1e2428;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+    .oc-header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #00ff88;
+      text-transform: uppercase;
+    }
+    .oc-header .sep { flex: 1; }
+    #timer-display {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: #334;
+      transition: color 0.3s;
+    }
+    #timer-display.active   { color: #00ff88; }
+    #timer-display.warning  { color: #ffaa00; }
+    #timer-display.critical { color: #ff3333; }
+    #led-strip { display: flex; align-items: center; gap: 9px; }
+    .led {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      border: 1px solid #222;
+      transition: background 0.4s, box-shadow 0.4s, border-color 0.4s;
+    }
+    .led.on-green { background: #00ff88; box-shadow: 0 0 6px #00ff88, 0 0 14px rgba(0,255,136,0.35); border-color: #00ff88; }
+    .led.on-amber { background: #ffaa00; box-shadow: 0 0 6px #ffaa00, 0 0 14px rgba(255,170,0,0.35); border-color: #ffaa00; }
+    .led.on-red { background: #ff3333; box-shadow: 0 0 6px #ff3333, 0 0 14px rgba(255,51,51,0.35); border-color: #ff3333; }
+    .led.flash { animation: ledFlash 0.5s ease-in-out infinite; }
+    @keyframes ledFlash {
+      0%,100% { background: #ff3333; box-shadow: 0 0 8px #ff3333, 0 0 16px rgba(255,51,51,0.5); border-color: #ff3333; }
+      50% { background: #1a1a1a; box-shadow: none; border-color: #222; }
+    }
+    .oc-screen {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      background: #050608;
+    }
+    .oc-screen::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px);
+      pointer-events: none;
+      z-index: 10;
+    }
+    #dynamic-content-area img,
+    #dynamic-content-area video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: none;
+      display: block;
+    }
+    #fade-overlay {
+      position: absolute;
+      inset: 0;
+      background: white; 
+      opacity: 0;
+      z-index: 5;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+    #standby-screen {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      transition: opacity 0.5s ease;
+    }
+    #standby-screen.hidden { opacity: 0; pointer-events: none; }
+    #standby-screen .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 11px;
+      letter-spacing: 8px;
+      color: #151d22;
+      text-transform: uppercase;
+    }
+    #standby-screen .hint {
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: #151d22;
+      animation: blink 2.5s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100% { opacity: 0.3; } 50% { opacity: 0.9; } }
+    
+    /* Fixed Video Crop - Enlarged 10% and anchored to top */
+    #john-video-overlay {
+      position: absolute;
+      top: 28%; 
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center top;
+      z-index: 10;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .oc-bottom {
+      height: 68px;
+      background: #111418;
+      border-top: 1px solid #1e2428;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    
+    /* Styled Buttons & Display */
+    #power-btn, #mute-btn, #toggle-webm-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 4px; 
+      background: #0d1014;
+      border: 2px solid #1e2428;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s;
+      outline: none;
+      flex-shrink: 0;
+      color: #334;
+    }
+    #power-btn:hover, #mute-btn:hover, #toggle-webm-btn:hover { border-color: #00ff88; box-shadow: 0 0 10px rgba(0,255,136,0.2); color: #00ff88; }
+    #power-btn.on, #mute-btn.on, #toggle-webm-btn.on { border-color: #00ff88; box-shadow: 0 0 10px rgba(0,255,136,0.4), inset 0 0 8px rgba(0,255,136,0.08); color: #00ff88; }
+    #power-btn svg, #mute-btn svg { width: 18px; height: 18px; stroke: #334; transition: stroke 0.25s; }
+    #power-btn.on svg, #mute-btn.on svg { stroke: #00ff88; }
+
+    #account-balance {
+      cursor: pointer;
+      display: none;
+      font-family: 'Share Tech Mono', monospace;
+      background: #0d1014;
+      color: #8893a3;
+      padding: 8px 15px;
+      border-radius: 4px; 
+      border: 2px solid #1e2428;
+      transition: opacity 10s ease-in-out, border-color 0.25s, color 0.25s, box-shadow 0.25s;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0; 
+    }
+    #account-balance:hover { border-color: #00ff88; color: #00ff88; box-shadow: 0 0 10px rgba(0,255,136,0.2); }
+    #account-balance .balance-amount { color: #00ff88; font-weight: bold; }
+    #account-balance img { height: 20px; width: auto; }
+
+    #user-query {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: 3px;
+      border: 1px solid #1e2428;
+      background: #0d1014;
+      color: #8ab;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    #send-btn, #mic-btn {
+      padding: 12px 22px;
+      background: #0d1a14;
+      color: #00ff88;
+      border: 1px solid #1a3028;
+      border-radius: 3px;
+      cursor: pointer;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 16px;
+      letter-spacing: 1px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    #feedback { font-size: 13px; color: #2a4a3a; min-width: 80px; text-align: right; letter-spacing: 1px; }
+
+    .scanlines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3) 1px,
+            transparent 1px,
+            transparent 2px
+        );
+        pointer-events: none;
+        z-index: 2;
+    }
+    
+    .bf-modal { 
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      background: rgba(0,0,0,0.5);
+    }
+    .bf-modal-card {
+      background: #f0f2f5;
+      color: #333;
+      padding: 1.5rem;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    }
+    .bf-floating-header { display:flex; align-items:center; justify-content:space-between; margin-bottom: 1rem; }
+    .bf-floating-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #333; }
+
+    /* Mailchimp Modal Styles */
+    #mailchimp-modal .bf-modal-card {
+      background: #1a1d24;
+      color: #d1d8e0;
+      border: 1px solid #2a3341;
+    }
+    #mailchimp-modal .bf-floating-close {
+      color: #d1d8e0;
+    }
+    #mailchimp-modal .form-control {
+      background: #0f141b;
+      border: 1px solid #2a3341;
+      color: #e7edf5;
+      padding: 12px;
+      margin-bottom: 15px;
+    }
+    #mailchimp-modal .btn-send {
+      background-color: #45ff8f;
+      border: none;
+      color: #000;
+      font-weight: bold;
+      padding: 12px;
+      width: 100%;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    /* ── Mobile Responsive ── */
+    @media (max-width: 600px) {
+      body {
+        padding: 12px 8px 120px;
+      }
+
+      /* Footer stacks vertically */
+      footer {
+        padding: 10px 14px;
+      }
+      .root-footer-row {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+        font-size: 12px !important;
+      }
+      .root-footer-row a {
+        font-size: 12px !important;
+      }
+      .footer-left,
+      .footer-middle,
+      .footer-right {
+        flex: none;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+      .footer-right {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .social-icons {
+        margin-left: 0;
+        justify-content: center;
+        width: 100%;
+        gap: 18px;
+      }
+
+      /* Login box */
+      .login-box {
+        width: min(96vw, 480px) !important;
+      }
+      .login-box .card-header {
+        padding: 14px 8px;
+      }
+      .login-box .card-header img {
+        height: 80px !important;
+      }
+      .login-box .card-header div {
+        font-size: 18px !important;
+      }
+      .login-box label {
+        font-size: 14px !important;
+      }
+      .login-box .form-control,
+      .login-box .form-select {
+        font-size: 16px !important;
+        padding: 10px 12px !important;
+      }
+      .login-box .btn {
+        font-size: 18px !important;
+        padding: 10px !important;
+      }
+
+      /* OpenClaw drawer header */
+      .oc-header {
+        padding: 0 10px;
+        gap: 8px;
+        height: 44px;
+      }
+      .oc-header h1 {
+        font-size: 11px;
+        letter-spacing: 2px;
+      }
+      #timer-display {
+        font-size: 10px;
+        letter-spacing: 1px;
+      }
+      #led-strip {
+        gap: 5px;
+      }
+      .led {
+        width: 8px;
+        height: 8px;
+      }
+
+      /* OpenClaw bottom bar */
+      .oc-bottom {
+        height: auto;
+        min-height: 52px;
+        padding: 8px 8px;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      #power-btn, #mute-btn, #toggle-webm-btn {
+        width: 36px;
+        height: 36px;
+      }
+      #user-query {
+        font-size: 14px;
+        padding: 8px 10px;
+        min-width: 0;
+        flex: 1 1 40%;
+      }
+      #send-btn, #mic-btn {
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+      #account-balance {
+        font-size: 12px;
+        padding: 6px 10px;
+      }
+      #feedback {
+        font-size: 11px;
+        min-width: 40px;
+      }
+
+      /* Banking modal grid */
+      #banking-modal .bf-modal-card div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary dark-mode" data-bs-theme="dark">
+
+<div id="boot-loader" aria-live="polite">
+  <div class="boot-panel">
+    <div class="boot-label">Grand Rising ...</div>
+    <div class="boot-bar"><div class="boot-fill" id="boot-loader-fill"></div></div>
+    <div class="boot-status" id="boot-loader-status">0%</div>
+  </div>
+</div>
+<div id="media-preload-bin" aria-hidden="true"></div>
+<script>
+(() => {
+  const loader = document.getElementById('boot-loader');
+  const fill = document.getElementById('boot-loader-fill');
+  const status = document.getElementById('boot-loader-status');
+  const preloadBin = document.getElementById('media-preload-bin');
+  if (!loader || !fill || !status || !preloadBin) return;
+
+  const version = document.querySelector('meta[name="fc-asset-version"]')?.getAttribute('content') || '';
+  const withVersion = (src) => {
+    if (!version || /^https?:\/\//i.test(src)) return src;
+    return `${src}${src.includes('?') ? '&' : '?'}v=${encodeURIComponent(version)}`;
+  };
+
+  const tasks = [
+    { type: 'video', src: withVersion('assets/videos/welcometotechsupport.mp4') },
+    { type: 'video', src: withVersion('assets/videos/byehaveanicelife.mp4') },
+    { type: 'video', src: withVersion('assets/videos/john.webm') }
+  ];
+
+  let completed = 0;
+  const total = tasks.length;
+  const warmCache = {};
+  let finalized = false;
+
+  const update = () => {
+    const pct = Math.round((completed / total) * 100);
+    fill.style.width = `${pct}%`;
+    status.textContent = `${pct}%`;
+  };
+
+  const finalize = () => {
+    if (finalized) return;
+    finalized = true;
+    fill.style.width = '100%';
+    status.textContent = '100%';
+    window.__fcWarmMedia = warmCache;
+    loader.classList.add('is-done');
+    setTimeout(() => loader.remove(), 320);
+  };
+
+  const completeOne = () => {
+    completed += 1;
+    update();
+    if (completed >= total) finalize();
+  };
+
+  const preloadOne = (task, index) => {
+    const element = document.createElement(task.type);
+    let done = false;
+    const markDone = () => {
+      if (done) return;
+      done = true;
+      completeOne();
+    };
+
+    element.preload = 'auto';
+    element.src = task.src;
+    if (task.type === 'video') {
+      element.muted = true;
+      element.playsInline = true;
+      element.setAttribute('playsinline', '');
+      element.addEventListener('loadeddata', markDone, { once: true });
+      element.addEventListener('canplaythrough', markDone, { once: true });
+    } else {
+      element.volume = 0;
+      element.addEventListener('loadedmetadata', markDone, { once: true });
+      element.addEventListener('canplay', markDone, { once: true });
+    }
+    element.addEventListener('error', markDone, { once: true });
+    element.addEventListener('stalled', markDone, { once: true });
+    element.addEventListener('abort', markDone, { once: true });
+
+    preloadBin.appendChild(element);
+    try { element.load(); } catch (error) {}
+    warmCache[index] = element;
+    setTimeout(markDone, 2800);
+  };
+
+  update();
+  tasks.forEach(preloadOne);
+  setTimeout(finalize, 6500);
+})();
+</script>
+
+<div class="login-box">
+  <div class="card card-outline card-primary shadow">
+    <div class="card-header text-center">
+      <img src="assets/img/logo.png" alt="Finance Cheque." style="height:120px; width:auto; margin-bottom:15px;">
+      <div style="letter-spacing:0.12em; text-transform:uppercase; color:#e7edf5;">Finance Cheque</div>
+    </div>
+
+    <div class="card-body">
+      <form id="loginForm">
+        <div class="form-group mb-4">
+          <label for="user-select">Nation</label>
+          <select id="user-select" class="form-select">
+            <option value="1">England</option>
+            <option value="2">Ireland</option>
+            <option value="3">Scotland</option>
+            <option value="4">Wales</option>
+          </select>
+        </div>
+
+        <div class="form-group mb-4">
+          <label for="password-input"><a class="early-access-link" id="earlyAccessBtn" title="request early access">ⓘ</a> Early access UID</label>
+          <input 
+            id="password-input"
+            type="password"
+            class="form-control"
+            placeholder=""
+            autocomplete="current-password"
+            required
+            autofocus
+          >
+        </div>
+        
+        <div class="form-group mb-4">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="show-password">
+                <label class="form-check-label" for="show-password" style="cursor:pointer;">
+                    Show / Hide
+                </label>
+            </div>
+        </div>
+
+        <div id="error" class="text-danger mb-3" style="display:none;"></div>
+
+        <button type="submit" class="btn btn-primary w-100" style="background-color: #45ff8f; border-color: #45ff8f; color: #000; font-weight: bold;">
+          Enter
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('show-password').addEventListener('change', function(e) {
+    const passwordInput = document.getElementById('password-input');
+    passwordInput.type = e.target.checked ? 'text' : 'password';
+});
+
+if (localStorage.getItem("authenticated") === "true" || localStorage.getItem("session_active") === "true") {
+  window.location.href = "pages/index.html";
+}
+
+async function hashPassword(str) {
+  const utf8 = new TextEncoder().encode(str);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", utf8);
+  return Array.from(new Uint8Array(hashBuffer))
+    .map(b => b.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+const VALID_HASHES = {
+  "1": "d015e3bb592d887241d26d27e15cdbff24e57f13e7336c636aa8ceb12b38ad99",
+  "2": "89c139ff45b6e9aa55e98302bbc8c070758e54f3d5e960a0101a4d3c5916bb98",
+  "3": "ff9d65f48991f6463211580e9e6df2faf9427ac2a7e0137ffca99005733a976c",
+  "4": "8c86f7bb66e5c389966fe80d28f74b0b062ddc4f9ca3a85de146eed72dd23311"
+};
+
+document.getElementById("loginForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const userNum = document.getElementById("user-select").value;
+  const input = document.getElementById("password-input").value;
+  const error = document.getElementById("error");
+  const inputHash = await hashPassword(input);
+
+  if (inputHash === VALID_HASHES[userNum]) {
+    localStorage.setItem("session_active", "true");
+    localStorage.setItem("authenticated", "true");
+    localStorage.setItem("user_num", userNum);
+    localStorage.setItem("user_pwd", input);
+    window.location.href = "pages/index.html";
+  } else {
+    error.innerText = "Invalid Access Key";
+    error.style.display = "block";
+  }
+});
+</script>
+
+  <div class="oc-tab" id="ocTab">
+    <div style="position: relative; text-align: center;">
+      <img id="ocTabImg" src="assets/img/oaks.png" alt="">
+      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-family: 'Orbitron', sans-serif; font-size: 18px; font-weight: bold; text-shadow: 0 0 5px #000;"></div>
+    </div>
+  </div>
+  <div class="oc-drawer" id="ocDrawer">
+    <div class="oc-root">
+      <div class="oc-header">
+        <h1 id="oc-agent-title" style="visibility:hidden; opacity:0; margin-top: 5px;">Oakesy A.I</h1>
+        <span class="sep"></span>
+        <span id="timer-display">--:--</span>
+        <div id="led-strip">
+          <div class="led" id="led3"></div>
+          <div class="led" id="led2"></div>
+          <div class="led" id="led1"></div>
+        </div>
+      </div>
+      <div class="oc-screen">
+        <div id="standby-screen">
+          <div class="logo">Remote Console</div>
+          <div class="hint">PRESS POWER TO CONNECT</div>
+        </div>
+        <div id="dynamic-content-area" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: #000; overflow: hidden; z-index: 1;">
+          <img src="assets/img/testcard.png" alt="Test Card" style="width: 100%; height: 100%; object-fit: cover;">
+          <div id="fade-overlay"></div>
+          <div class="scanlines"></div>
+        </div>
+        <video id="john-video-overlay" src="assets/videos/john.webm" loop muted style="display: none;"></video>
+        <div id="offline-screen">
+          <img id="offline-img" src="assets/img/session-terminated.jpg" alt="">
+          <div class="offline-label">SESSION TERMINATED</div>
+        </div>
+      </div>
+      <div class="oc-bottom">
+        <button id="power-btn" title="Connect / Disconnect">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v6"/><path d="M6.3 6.3a8 8 0 1 0 11.4 0"/>
+          </svg>
+        </button>
+        <button id="mute-btn" class="oc-control-btn" style="display:none;" title="Mute / Unmute Radio">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path class="volume-icon" d="M11 5L6 9H2v6h4l5 4V5z"/>
+            <path class="mute-slash" d="M21 9l-6 6M15 9l6 6" style="display:none;"/>
+          </svg>
+        </button>
+        <input type="text" id="user-query" placeholder="" disabled style="opacity:0.5;" />
+        <button id="send-btn" disabled style="opacity:0.5;">Send</button>
+        <button id="toggle-webm-btn" class="oc-control-btn" style="display:none;" title="Show / Hide Overlay">👁</button>
+        <button id="mic-btn" type="button" disabled style="opacity:0.5;">🎤</button>
+        <div id="account-balance" title="withdraw">
+          <span class="balance-label"><img src="assets/img/withdraw.png" alt=""></span> <span class="balance-amount">£700.00</span>
+        </div>
+        <span id="feedback"></span>
+      </div>
+    </div>
+    <div class="oc-handle">
+    <button class="oc-toggle" id="ocToggleUp"><img id="ocToggleUpImg" src="assets/img/oaks.png" alt=""></button>
+    </div>
+  </div>
+
+  <audio id="radio-stream" src="" preload="auto"></audio>
+
+  <script>
+    const bustCache = () => {
+        const version = document.querySelector('meta[name="fc-asset-version"]')?.getAttribute('content') || 'v1.0.6';
+        const bustable = [
+            { id: 'ocTabImg', attr: 'src' }, { id: 'ocToggleUpImg', attr: 'src' },
+            { id: 'offline-img', attr: 'src' }, { id: 'john-video-overlay', attr: 'src' },
+            { id: 'app-script', attr: 'src' }
+        ];
+        bustable.forEach(item => {
+            const el = document.getElementById(item.id);
+            if (el) {
+                let url = el.getAttribute(item.attr);
+                if (url) {
+                    url = url.split('?')[0];
+                    el.setAttribute(item.attr, `${url}?v=${encodeURIComponent(version)}`);
+                }
+            }
+        });
+    };
+    bustCache();
+  </script>
+  <script id="app-script" src="assets/js/app.js?v=v1.0.6"></script>
+  
+  <footer>
+    <div class="root-footer-row">
+      <div class="footer-left">
+        &copy; <span id="fc-year-root"></span> Finance Cheque. All rights reserved.
+      </div>
+      <div class="footer-middle">
+         <a href="mailto:info@datro.xyz">oakesy@financecheque.uk</a> | +442031377118
+      </div>
+      <div class="footer-right">
+        <a href="pages/tos.html">Terms of Service</a>
+        <a href="pages/privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const yearEl = document.getElementById('fc-year-root');
+    if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+    (() => {
+      const box = document.querySelector('.login-box');
+      const tab = document.getElementById('ocTab');
+      const footer = document.querySelector('footer');
+      if (!box || !tab || !footer) return;
+
+      const positionLoginBox = () => {
+        const isMobile = window.innerWidth <= 600;
+        const tabRect = tab.getBoundingClientRect();
+        const footerRect = footer.getBoundingClientRect();
+        const topBoundary = tabRect.bottom;
+        const bottomBoundary = footerRect.top;
+        const availableHeight = bottomBoundary - topBoundary;
+        const boxHeight = box.offsetHeight;
+
+        if (isMobile && boxHeight > availableHeight - 16) {
+          // On mobile if box doesn't fit between tab and footer, use scrollable layout
+          box.style.position = 'relative';
+          box.style.left = 'auto';
+          box.style.top = 'auto';
+          box.style.transform = 'none';
+          box.style.margin = '0 auto';
+          box.style.marginTop = `${Math.max(topBoundary + 8, 70)}px`;
+        } else {
+          const midpoint = topBoundary + (availableHeight / 2);
+          const halfHeight = boxHeight / 2;
+          const safeTop = Math.min(Math.max(midpoint, topBoundary + halfHeight + 8), bottomBoundary - halfHeight - 8);
+
+          box.style.position = 'fixed';
+          box.style.left = '50%';
+          box.style.top = `${safeTop}px`;
+          box.style.transform = 'translate(-50%, -50%)';
+          box.style.margin = '0';
+        }
+      };
+
+      positionLoginBox();
+      window.addEventListener('resize', positionLoginBox);
+    })();
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Early Access Modal Logic
+      const earlyAccessBtn = document.getElementById('earlyAccessBtn');
+      if (earlyAccessBtn) {
+        earlyAccessBtn.addEventListener('click', () => {
+          document.getElementById('mailchimp-modal').style.display = 'flex';
+        });
+      }
+
+      const mailchimpClose = document.getElementById('mailchimp-close');
+      if (mailchimpClose) {
+        mailchimpClose.addEventListener('click', (e) => {
+          e.stopPropagation();
+          document.getElementById('mailchimp-modal').style.display = 'none';
+        });
+      }
+
+      // Debugging ocTab and ocDrawer visibility
+      console.log('DOMContentLoaded: ocTab initial visibility:', document.getElementById('ocTab')?.style.display, document.getElementById('ocTab')?.classList.value);
+      console.log('DOMContentLoaded: ocDrawer initial visibility:', document.getElementById('ocDrawer')?.style.display, document.getElementById('ocDrawer')?.classList.value);
+    });
+  </script>
+
+<div id="banking-modal" class="bf-modal" style="display: none;">
+  <div class="bf-modal-card">
+    <div class="bf-floating-header">
+      <h5 style="font-family: 'Orbitron', sans-serif;">Finance Cheque. Bank App</h5>
+      <button id="banking-modal-close" class="bf-floating-close">&times;</button>
+    </div>
+    <div style="padding: 1rem;">
+      <p>Current Balance: <span id="modal-balance" class="balance-amount">£700.00</span></p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px;">
+        <button class="btn btn-primary">Transfer (Local)</button>
+        <button class="btn btn-primary">Transfer (International)</button>
+        <button class="btn btn-secondary">Withdraw</button>
+        <button class="btn btn-secondary">Add Card to Google Wallet</button>
+        <button class="btn btn-warning">Request Overdraft</button>
+        <button id="banking-modal-close-btn" class="btn btn-danger">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="mailchimp-modal" class="bf-modal" style="display: none;">
+  <div class="bf-modal-card">
+    <div class="bf-floating-header" style="flex-direction: column; align-items: center; text-align: center;">
+      <button id="mailchimp-close" class="bf-floating-close" style="position: absolute; top: 10px; right: 15px;">&times;</button>
+      <h5 style="font-family: 'Orbitron', sans-serif; font-size: 1.8rem; margin-top: 20px; padding: 0 20px;">Submit your vehicle finance claim before Resurrection Sunday to access Oaksey AI and all the other money claim opportunities he discovers.</h5>
+    </div>
+    <div style="padding: 1.5rem; text-align: center;">
+      <a href="https://n29.r2r-online.co.uk/" target="_blank" class="btn btn-primary" style="padding: 12px 24px; font-size: 2rem; text-decoration: none; display: inline-block;">
+        Submit claim
+      </a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

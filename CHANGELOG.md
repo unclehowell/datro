@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 Mar-25 - Added static/environment: Ansible playbook for complete laptop recovery - restores packages, desktop, AI tools, configs, cron jobs, and system settings
-Mar-25 - Removed static/pcp and static/pcp3 folders - using pcp2 only
+Mar-26 - Restored static/pcp from git history for financecheque.uk (the website with iframe to ai.financecheque.uk)
 
 ### Fixed
 

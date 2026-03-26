@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const axios = require('axios');
 const fs = require('fs');
+const QuotaTracker = require('./lib/quotaTracker');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -63,7 +64,12 @@ class APIQuotaMonitor {
         const out   = [];
 
         const add = (name, model, apiKey, apiBase, color) => {
-            if (!apiKey || apiKey.trim() === '') return;
+            // Basic check for ollama API key to prevent adding it as a custom provider if it's the default
+            if (name === 'OLLAMA' && apiKey === 'ollama') {
+                 // Treat default ollama key as an indicator to use the dedicated ollama logic
+            } else if (!apiKey || apiKey.trim() === '') {
+                return;
+            }
             if (seen.has(name)) return;
             seen.add(name);
             out.push({
@@ -76,7 +82,8 @@ class APIQuotaMonitor {
         // From PicoClaw model_list
         if (this.picoConfig?.model_list) {
             for (const m of this.picoConfig.model_list) {
-                if (!m.api_key || m.api_key.trim() === '') continue;
+                // Skip if no api_key or if it's explicitly 'ollama' and we handle it separately
+                if (!m.api_key || m.api_key.trim() === '' || m.api_key.trim().toLowerCase() === 'ollama') continue;
                 const key = this.extractKey(m);
                 add(key.toUpperCase(), m.model_name || m.model, m.api_key, m.api_base);
             }
@@ -90,7 +97,11 @@ class APIQuotaMonitor {
         add('NVIDIA',    'Nemotron 4 340B',  process.env.NVAPI_KEY,            'https://integrate.api.nvidia.com/v1');
         add('ANTHROPIC', 'Claude Sonnet',    process.env.ANTHROPIC_API_KEY,    'https://api.anthropic.com/v1');
         add('DEEPSEEK',  'DeepSeek V3',      process.env.DEEPSEEK_API_KEY,     'https://api.deepseek.com');
-        add('OLLAMA',    'Local Models',     'ollama',                        'http://localhost:11434/v1');
+        // Explicitly add Ollama if an API key isn't set, or if it's the default placeholder.
+        // The checkOne method will handle querying the local Ollama instance.
+        if (!process.env.OLLAMA_API_KEY) { // Only add default if no specific key is provided
+            add('OLLAMA',    'Local Models',     'ollama',                        'http://localhost:11434');
+        }
 
         console.log(`✅ ${out.length} providers loaded`);
         return out;
@@ -99,7 +110,7 @@ class APIQuotaMonitor {
     extractKey(m) {
         const base = (m.api_base || '').toLowerCase();
         const nm   = (m.model    || '').toLowerCase();
-        if (base.includes('ollama') || base.includes('localhost')) return 'LOCAL LLM';
+        if (base.includes('ollama') || base.includes('localhost') || nm.includes('ollama')) return 'LOCAL LLM';
         if (base.includes('openai.com'))     return 'OPENAI';
         if (base.includes('anthropic.com'))  return 'ANTHROPIC';
         if (base.includes('googleapis.com') || base.includes('generativelanguage')) return 'GOOGLE';
@@ -143,6 +154,7 @@ class APIQuotaMonitor {
         try {
             const hdrs = { 'Content-Type': 'application/json', 'Authorization': `Bearer ${p.apiKey}` };
             let remaining = 50, limit = 100, used = 0;
+            let status = 'OK';
 
             if (p.name === 'OPENAI' || p.apiBase?.includes('openai')) {
                 const r = await axios.post(`${p.apiBase}/chat/completions`,
@@ -169,24 +181,41 @@ class APIQuotaMonitor {
                     { model: 'deepseek-chat', messages: [{ role: 'user', content: 'x' }], max_tokens: 1 },
                     { headers: hdrs, timeout: 6000 });
                 remaining = 100; limit = 100;
-            } else if (p.name === 'OLLAMA') {
-                // Local – always available
-                remaining = 100; limit = 100;
+            } else if (p.name === 'OLLAMA' || p.name === 'LOCAL LLM') {
+                // Attempt to query local Ollama for status
+                try {
+                    await axios.get('http://localhost:11434/api/tags', { timeout: 5000 });
+                    // If successful, assume it's available. Quotas aren't typically exposed this way.
+                    // We'll represent availability as 100% for simplicity.
+                    remaining = 100;
+                    limit = 100;
+                    used = 0; // No direct "used" percentage from /api/tags for general status
+                    status = 'OK';
+                } catch (err) {
+                    console.error(`❌ Ollama check failed: ${err.message}`);
+                    remaining = 0; // Mark as unavailable
+                    limit = 100;
+                    used = 100; // Effectively 100% used/unavailable
+                    status = 'OFFLINE';
+                }
             } else if (p.name === 'ANTHROPIC' || p.name === 'NVIDIA') {
-                // Assume partial
+                // Assume partial availability if no specific headers are found
                 remaining = 70; limit = 100;
             } else {
+                // Default for other providers or custom setups
                 remaining = 50; limit = 100;
             }
 
-            used    = limit > 0 ? ((limit - remaining) / limit) * 100 : 0;
-            const rem = Math.max(0, remaining);          // 0–100
+            // Ensure remaining is not negative and used is calculated correctly
+            const rem = Math.max(0, remaining);
+            used    = limit > 0 ? ((limit - rem) / limit) * 100 : (status === 'OFFLINE' || status === 'ERR' ? 100 : 0);
+
             this.traffic.set(p.name, used);              // track traffic weight
-            this.setQuota(p.name, p.model, used, limit, remaining, p.color);
+            this.setQuota(p.name, p.model, used, limit, rem, p.color, status);
 
         } catch (err) {
             const s = err.response?.status;
-            this.traffic.set(p.name, 100);
+            this.traffic.set(p.name, 100); // Mark as 100% used on error
             this.setQuota(p.name, p.model, 100, 100, 0, p.color,
                 s === 429 ? 'OVER' : 'ERR');
         }
@@ -235,6 +264,7 @@ class APIQuotaMonitor {
 }
 
 const monitor = new APIQuotaMonitor();
+const quotaTracker = new QuotaTracker();
 
 // ── Token / user tracker ──
 const tracker = new (class {
@@ -267,7 +297,22 @@ app.use((req, res, next) => {
 
 app.get('/api/llm-usage', (req, res) => res.json(tracker.createSnapshot()));
 app.get('/api/health',    (req, res) => res.json({ status: 'ok', uptime: process.uptime() }));
-app.get('/',             (req, res) => res.sendFile(path.join(__dirname, 'index-grid.html')));
+app.get('/api/quota-status', (req, res) => {
+    res.json({
+        statuses: quotaTracker.getAllStatuses(),
+        grouped: quotaTracker.getStatusesByGroup(),
+        timestamp: new Date().toISOString()
+    });
+});
+app.get('/api/quota-status/:apiId', (req, res) => {
+    const status = quotaTracker.getDisplayStatus(req.params.apiId);
+    res.json(status);
+});
+app.post('/api/quota-status/:apiId', (req, res) => {
+    const updated = quotaTracker.updateQuotaStatus(req.params.apiId, req.body);
+    res.json(updated);
+});
+app.get('/',             (req, res) => res.sendFile(path.join(__dirname, 'index-fishtank-colored.html')));
 app.use(express.static(__dirname));
 
 app.listen(PORT, '0.0.0.0', () => {

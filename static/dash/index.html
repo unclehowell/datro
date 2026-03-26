@@ -8,9 +8,9 @@
         :root {
             --primary-bg: #0f0f0f;
             --secondary-bg: #1a1a1a;
-            --success: #00ff80;
-            --warning: #ff9f40;
-            --danger: #ff6b6b;
+            --success: #00ff80; /* Green - Low Usage / Normal */
+            --warning: #ff9f40; /* Orange - Medium Usage */
+            --danger: #ff6b6b;  /* Red - High Usage */
             --info: #45b7d1;
             --user-picoclaw: #00ff00;
             --user-research: #ff6b6b;
@@ -173,22 +173,37 @@
 
         .usage-bar {
             width: 100%;
-            height: 8px;
+            height: 8px; /* Default thickness */
             background: #333;
             border-radius: 4px;
             overflow: hidden;
             margin: 1rem 0;
+            /* For the "no line" requirement: will be controlled by JS */
         }
 
         .usage-fill {
             height: 100%;
             border-radius: 4px;
             transition: all 0.3s ease;
+            /* Default to solid, normal thickness, controlled by category classes */
         }
 
-        .usage-fill.low { background: var(--success); }
-        .usage-fill.medium { background: var(--warning); }
-        .usage-fill.high { background: var(--danger); }
+        /* --- Line Styling based on Usage --- */
+        /* Low usage (below 50%) - Green, solid, normal thickness */
+        .usage-fill.low {
+            background: var(--success);
+        }
+
+        /* Medium usage (50%-85%) - Orange, solid, normal thickness */
+        .usage-fill.medium {
+            background: var(--warning);
+        }
+
+        /* High usage (above 85%) - Red, solid, normal thickness */
+        .usage-fill.high {
+            background: var(--danger);
+        }
+        /* --- End Line Styling --- */
 
         .user-stats {
             display: grid;
@@ -211,6 +226,126 @@
         .stat-text {
             color: #999;
             font-size: 0.75rem;
+        }
+
+        .quota-section {
+            padding: 2rem 3rem;
+        }
+
+        .quota-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .quota-card {
+            background: var(--secondary-bg);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 1.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .quota-card.status-active {
+            border-color: #00ff80;
+            background: linear-gradient(135deg, rgba(0,255,128,0.05), var(--secondary-bg));
+        }
+
+        .quota-card.status-exceeded {
+            border-color: #ff6b6b;
+            background: linear-gradient(135deg, rgba(255,107,107,0.05), var(--secondary-bg));
+        }
+
+        .quota-card.status-limited {
+            border-color: #ff9f40;
+            background: linear-gradient(135deg, rgba(255,159,64,0.05), var(--secondary-bg));
+        }
+
+        .quota-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .quota-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .quota-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .quota-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .quota-badge.green {
+            background: rgba(0,255,128,0.2);
+            color: #00ff80;
+        }
+
+        .quota-badge.red {
+            background: rgba(255,107,107,0.2);
+            color: #ff6b6b;
+        }
+
+        .quota-badge.yellow {
+            background: rgba(255,159,64,0.2);
+            color: #ff9f40;
+        }
+
+        .quota-percentage {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .quota-percentage.green { color: #00ff80; }
+        .quota-percentage.red { color: #ff6b6b; }
+        .quota-percentage.yellow { color: #ff9f40; }
+
+        .quota-bar {
+            width: 100%;
+            height: 6px;
+            background: #333;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .quota-bar-fill {
+            height: 100%;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .quota-bar-fill.green { background: #00ff80; }
+        .quota-bar-fill.red { background: #ff6b6b; }
+        .quota-bar-fill.yellow { background: #ff9f40; }
+
+        .quota-info {
+            font-size: 0.85rem;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        .quota-reset-time {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #333;
+            font-size: 0.8rem;
+            color: #ff9f40;
         }
 
         .alerts-section {
@@ -302,7 +437,7 @@
     <div class="stats-grid">
         <div class="stat-card" data-type="total-users">
             <div class="stat-value" id="total-users">0</div>
-            <div class="stat-label">Active Users</div>
+            <div class="stat-label">Active Services</div>
         </div>
         <div class="stat-card" data-type="total-request">
             <div class="stat-value" id="total-requests">0</div>
@@ -310,7 +445,7 @@
         </div>
         <div class="stat-card" data-type="active-services">
             <div class="stat-value" id="active-services">0</div>
-            <div class="stat-label">Services</div>
+            <div class="stat-label">Active Providers</div>
         </div>
         <div class="stat-card" data-type="warnings">
             <div class="stat-value" id="total-warnings" style="color: var(--danger);">0</div>
@@ -337,18 +472,30 @@
         </div>
     </section>
 
+    <section class="quota-section">
+        <h2 class="section-title">🔐 API Quota Status</h2>
+        <div class="quota-grid" id="quota-grid">
+            <div style="text-align: center; color: #999; padding: 4rem; grid-column: 1/-1;">
+                <div class="pulse">🔄</div>
+                <p>Loading quota data...</p>
+            </div>
+        </div>
+    </section>
+
     <script>
         class TokenDashboard {
             constructor() {
                 this.apiUrl = '/api/llm-usage';
-                this.usersUrl = '/api/users';
-                this.updateInterval = 2000; // 2 seconds
+                this.usersUrl = '/api/users'; // Assuming this endpoint exists for user data
+                this.quotaUrl = '/api/quota-status';
+                this.updateInterval = 3000; // 3 seconds
                 this.lastUpdateTime = null;
                 this.updateTimer = null;
                 this.connectionStatus = document.getElementById('connection-status');
                 this.lastUpdateElement = document.getElementById('last-update');
                 this.nextUpdateElement = document.getElementById('next-update');
-                
+                this.quotaGrid = document.getElementById('quota-grid');
+
                 this.init();
             }
 
@@ -360,7 +507,6 @@
             }
 
             bindEventListeners() {
-                // Add click handlers for stat cards
                 document.querySelectorAll('.stat-card').forEach(card => {
                     card.addEventListener('click', (e) => {
                         this.handleStatCardClick(e.currentTarget);
@@ -371,17 +517,16 @@
             handleStatCardClick(card) {
                 const type = card.dataset.type;
                 console.log(`Stat card clicked: ${type}`);
-                // Add specific actions for different card types
                 
                 switch(type) {
                     case 'total-users':
-                        this.showUserDetails();
+                        this.scrollToElement('users-grid');
                         break;
                     case 'warnings':
-                        this.showAlerts();
+                        this.scrollToElement('alerts-list');
                         break;
                     case 'active-services':
-                        this.showServiceStatus();
+                        this.scrollToElement('stats-grid'); // Scroll to the overview stats
                         break;
                 }
             }
@@ -389,20 +534,23 @@
             async refreshData() {
                 try {
                     this.updateConnection(false);
-                    
-                    const [usageResponse, usersResponse] = await Promise.all([
+
+                    // Fetch usage, user, and quota data
+                    const [usageResponse, usersResponse, quotaResponse] = await Promise.all([
                         fetch(this.apiUrl),
-                        fetch(this.usersUrl)
+                        fetch(this.usersUrl).catch(() => ({ json: async () => ({ users: [] }) })),
+                        fetch(this.quotaUrl).catch(() => ({ json: async () => ({ statuses: [] }) }))
                     ]);
 
                     const usageData = await usageResponse.json();
                     const usersData = await usersResponse.json();
+                    const quotaData = await quotaResponse.json();
 
-                    this.updateDashboard(usageData, usersData);
+                    this.updateDashboard(usageData, usersData, quotaData);
                     this.lastUpdateTime = new Date();
                     this.updateUpdateTime();
                     this.updateConnection(true);
-                    
+
                 } catch (error) {
                     console.error('Dashboard refresh failed:', error);
                     this.updateConnection(false);
@@ -410,24 +558,25 @@
                 }
             }
 
-            updateDashboard(usageData, usersData) {
+            updateDashboard(usageData, usersData, quotaData) {
                 this.updateStats(usageData);
                 this.updateUsersGrid(usersData);
                 this.updateAlerts(usageData);
+                this.updateQuotaStatus(quotaData);
             }
 
             updateStats(data) {
                 const providers = data.providers || [];
-                const models = providers.flatMap(p => p.models || []);
-                const totalRequests = models.reduce((sum, model) => sum + (model.used || 0), 0);
-                const totalWarnings = models.filter(model => {
-                    const usage = (model.used / model.limit) * 100;
-                    return usage > 80;
+                // Summing up requests from all providers for "Requests Today"
+                const totalRequests = providers.reduce((sum, provider) => sum + (provider.used || 0), 0);
+                // Calculating warnings based on providers where usage is high
+                const totalWarnings = providers.filter(provider => {
+                    return provider.used > 80 && provider.status !== 'OFFLINE' && provider.status !== 'ERR';
                 }).length;
 
-                this.updateValue('total-users', providers.length);
-                this.updateValue('total-requests', totalRequests.toLocaleString());
-                this.updateValue('active-services', providers.length);
+                this.updateValue('total-users', providers.length); // Displaying # of services/providers
+                this.updateValue('total-requests', totalRequests.toLocaleString()); // Displaying total usage % as requests for simplicity
+                this.updateValue('active-services', providers.length); // Displaying # of active providers
                 this.updateValue('total-warnings', totalWarnings);
             }
 
@@ -435,16 +584,36 @@
                 const grid = document.getElementById('users-grid');
                 const users = usersData.users || [];
 
-                if (users.length === 0) {
-                    grid.innerHTML = '<div style="text-align: center; color: #999; padding: 4rem;">No active users</div>';
+                if (!users || users.length === 0) {
+                    grid.innerHTML = '<div style="text-align: center; color: #999; padding: 4rem;">No active users found</div>';
                     return;
                 }
 
-                grid.innerHTML = users.map(user => {
-                    const usage = 65 + Math.random() * 30; // Mock usage
-                    const usageCategory = usage > 85 ? 'high' : usage > 50 ? 'medium' : 'low';
-                    const isOnline = Math.random() > 0.3;
-                    
+                grid.innerHTML = users.map((user, index) => {
+                    // Mock usage data if not provided. Use 0 for "no tokens per second".
+                    // The `mockUsage` property could be set by the backend for testing purposes.
+                    // Example: [{ name: "User1", mockUsage: 75, status: "online", color: "#FF0000", emoji: "💻" }]
+                    const usagePercentage = user.mockUsage !== undefined 
+                                            ? user.mockUsage 
+                                            : (Math.random() > 0.2 ? 40 + Math.random() * 60 : 0); // Default mock: 0-100% or 0%
+
+                    let usageCategory = 'low';
+                    let isLineVisible = true;
+
+                    if (usagePercentage === 0) {
+                        isLineVisible = false; // No line (usage bar) if usage is 0%
+                    } else if (usagePercentage > 85) { // High usage
+                        usageCategory = 'high';
+                    } else if (usagePercentage > 50) { // Medium/normal usage
+                        usageCategory = 'medium';
+                    } else { // Low usage
+                        usageCategory = 'low';
+                    }
+
+                    const isOnline = user.status === 'online';
+                    const userColor = user.color || '#999'; // Default color if not specified
+                    const userEmoji = user.emoji || '🚀'; // Default emoji
+
                     return `
                         <div class="user-card">
                             <div class="user-header">
@@ -452,16 +621,16 @@
                                     ${user.name}
                                     <span class="user-status status-${isOnline ? 'online' : 'offline'}"></span>
                                 </div>
-                                <div style="color: ${user.color}">${user.emoji || '🚀'}</div>
+                                <div style="color: ${userColor}">${userEmoji}</div>
                             </div>
                             
-                            <div class="usage-bar">
-                                <div class="usage-fill ${usageCategory}" style="width: ${usage}%"></div>
+                            <div class="usage-bar" style="${isLineVisible ? '' : 'display: none;'}">
+                                <div class="usage-fill ${usageCategory}" style="width: ${usagePercentage}%;"></div>
                             </div>
                             
                             <div class="user-stats">
                                 <div class="stat-item">
-                                    <span class="stat-number">${usage.toFixed(0)}%</span>
+                                    <span class="stat-number">${usagePercentage.toFixed(0)}%</span>
                                     <div class="stat-text">Usage</div>
                                 </div>
                                 <div class="stat-item">
@@ -481,10 +650,9 @@
             updateAlerts(data) {
                 const alertsList = document.getElementById('alerts-list');
                 const providers = data.providers || [];
-                const models = providers.flatMap(p => p.models || []);
-                const alerts = models.filter(model => {
-                    const usage = (model.used / model.limit) * 100;
-                    return usage > 75;
+                // Filter for providers with high usage (above 80%) and not offline/error
+                const alerts = providers.filter(provider => {
+                    return provider.used > 80 && provider.status !== 'OFFLINE' && provider.status !== 'ERR';
                 });
 
                 if (alerts.length === 0) {
@@ -493,14 +661,13 @@
                 }
 
                 alertsList.innerHTML = alerts.map(alert => {
-                    const usage = (alert.used / alert.limit) * 100;
                     return `
                         <div class="alert-item">
                             <div class="alert-icon">🚨</div>
                             <div style="flex: 1;">
-                                <div style="font-weight: 600;">${alert.provider} - ${alert.model}</div>
+                                <div style="font-weight: 600;">${alert.name} - ${alert.model}</div>
                                 <div style="font-size: 0.875rem; color: #ccc;">
-                                    ${Math.round(usage)}% used • ${alert.used}/${alert.limit} requests
+                                    ${Math.round(alert.used)}% used • ${alert.remaining}/${alert.limit} requests remaining
                                 </div>
                             </div>
                         </div>
@@ -539,7 +706,8 @@
                     second: '2-digit'
                 });
 
-                const nextUpdate = new Date(this.lastUpdateTime.getTime() + this.updateInterval);
+                const nextUpdateTimestamp = this.lastUpdateTime.getTime() + this.updateInterval;
+                const nextUpdate = new Date(nextUpdateTimestamp);
                 const nextUpdateTime = nextUpdate.toLocaleTimeString('en-US', {
                     hour: '2-digit',
                     minute: '2-digit'
@@ -576,21 +744,6 @@
                 }
             }
 
-            // Enhanced functionality placeholders
-            showUserDetails() {
-                console.log('Show user details modal');
-                // Implement detailed user modal
-            }
-
-            showAlerts() {
-                this.scrollToElement('alerts-list');
-            }
-
-            showServiceStatus() {
-                console.log('Show service status details');
-                // Implement service status modal
-            }
-
             scrollToElement(elementId) {
                 const element = document.getElementById(elementId);
                 if (element) {
@@ -598,16 +751,64 @@
                 }
             }
 
+            updateQuotaStatus(data) {
+                const statuses = data.statuses || [];
+
+                if (statuses.length === 0) {
+                    this.quotaGrid.innerHTML = '<div style="text-align: center; color: #999; padding: 4rem; grid-column: 1/-1;">No quota data available</div>';
+                    return;
+                }
+
+                this.quotaGrid.innerHTML = statuses.map(status => {
+                    const colorClass = status.color || 'green';
+                    const statusClass = status.status === 'quota_exceeded' ? 'exceeded' :
+                                       status.status === 'rate_limited' ? 'limited' : 'active';
+                    const quotaPercentage = status.quotaPercentage || 0;
+                    const displayName = status.apiId.split('/').pop();
+
+                    let resetTimeHtml = '';
+                    if (status.nextAccessAt) {
+                        const accessDate = new Date(status.nextAccessAt);
+                        resetTimeHtml = `<div class="quota-reset-time">Available: ${accessDate.toLocaleString()}</div>`;
+                    }
+
+                    return `
+                        <div class="quota-card status-${statusClass}">
+                            <div class="quota-header">
+                                <div class="quota-name">${displayName}</div>
+                                <div class="quota-badge ${colorClass}">
+                                    ${status.status === 'quota_exceeded' ? 'EXCEEDED' :
+                                      status.status === 'rate_limited' ? 'LIMITED' : 'ACTIVE'}
+                                </div>
+                            </div>
+
+                            <div class="quota-percentage ${colorClass}">
+                                ${quotaPercentage}%
+                            </div>
+
+                            <div class="quota-bar">
+                                <div class="quota-bar-fill ${colorClass}" style="width: ${quotaPercentage}%"></div>
+                            </div>
+
+                            <div class="quota-info">
+                                <div>Used: ${status.quotaUsed || 0} / ${status.quotaTotal || 100}</div>
+                                <div>Remaining: ${status.quotaRemaining || 0}</div>
+                                ${status.errorMessage ? `<div style="color: #ff9f40; margin-top: 0.5rem;">${status.errorMessage}</div>` : ''}
+                            </div>
+
+                            ${resetTimeHtml}
+                        </div>
+                    `;
+                }).join('');
+            }
+
             destroy() {
                 this.stopAutoRefresh();
-                // Remove event listeners, clean up...
             }
         }
 
-        // Initialize dashboard when page loads
         const dashboard = new TokenDashboard();
         
-        // Handle page visibility to pause/resume updates
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) {
                 dashboard.stopAutoRefresh();
@@ -617,132 +818,10 @@
             }
         });
 
-        // Handle cleanup on page unload
         window.addEventListener('beforeunload', () => {
             dashboard.destroy();
         });
     </script>
 </body>
 </html>
-                    });
-                });
-
-                this.lastUpdate = new Date();
-            }
-
-            startRealTimeRefresh() {
-                // Try WebSocket connection for real-time updates
-                this.connectWebSocket();
-                
-                // Fallback to regular refresh
-                this.refreshInterval = setInterval(() => {
-                    this.refresh();
-                }, 3000); // Refresh every 3 seconds
-            }
-
-            connectWebSocket() {
-                try {
-                    this.ws = new WebSocket(`ws://${window.location.host}/ws`);
                     
-                    this.ws.onopen = () => {
-                        console.log('WebSocket connected for real-time updates');
-                        document.getElementById('status').textContent = 'Real-time';
-                    };
-
-                    this.ws.onmessage = (event) => {
-                        try {
-                            const data = JSON.parse(event.data);
-                            console.log('WebSocket update:', data);
-                            
-                            // Process real-time updates
-                            if (data.type === 'tokenUsageUpdate') {
-                                this.updateLiveUsage(data);
-                            }
-                        } catch (e) {
-                            console.error('WebSocket message error:', e);
-                        }
-                    };
-
-                    this.ws.onclose = () => {
-                        console.log('WebSocket disconnected');
-                        document.getElementById('status').textContent = 'Polling';
-                        // Attempt reconnection after 5 seconds
-                        setTimeout(() => this.connectWebSocket(), 5000);
-                    };
-
-                    this.ws.onerror = (error) => {
-                        console.error('WebSocket error:', error);
-                        document.getElementById('status').textContent = 'Error';
-                    };
-                } catch (error) {
-                    console.warn('WebSocket not available, falling back to polling:', error);
-                    document.getElementById('status').textContent = 'Polling';
-                }
-            }
-
-            updateLiveUsage(data) {
-                // Apply real-time updates to the visualization
-                const { company, model, currentUsage, limit } = data;
-                
-                if (company && model && currentUsage !== undefined && limit) {
-                    // Find the relevant company container
-                    const companyElement = document.querySelector(`[data-company="${company}"]`);
-                    if (companyElement) {
-                        const modelSquare = companyElement.querySelector(`.model-square:nth-child(${data.modelIndex + 1})`);
-                        if (modelSquare) {
-                            const usage = (currentUsage / limit) * 100;
-                            const scale = 0.3 + (Math.min(100, Math.max(0, usage)) / 100) * 0.7;
-                            
-                            // Animate the update
-                            modelSquare.style.transition = 'all 0.8s cubic-bezier(0.22, 1, 0.36, 1)';
-                            modelSquare.style.transform = `scale(${scale})`;
-                            modelSquare.style.opacity = Math.max(0.6, usage / 100);
-                            
-                            // Update the fill and usage text
-                            const fill = modelSquare.querySelector('.model-fill');
-                            if (fill) {
-                                fill.style.transition = 'height 0.8s cubic-bezier(0.22, 1, 0.36, 1)';
-                                fill.style.height = `${Math.round(usage)}%`;
-                            }
-                            
-                            const usageText = modelSquare.querySelector('.usage-text');
-                            if (usageText) {
-                                usageText.textContent = `${Math.round(usage)}%`;
-                            }
-                           
-                            // Apply styling based on usage
-                            if (usage >= 90) {
-                                modelSquare.classList.add('filled');
-                                modelSquare.style.borderColor = 'rgba(255, 100, 100, 0.7)';
-                            } else if (usage >= 75) {
-                                modelSquare.classList.remove('filled');
-                                modelSquare.style.borderColor = 'rgba(255, 200, 0, 0.7)';
-                            } else {
-                                modelSquare.classList.remove('filled');
-                                modelSquare.style.borderColor = 'rgba(255, 255, 255, 0.2)';
-                            }
-                        }
-                    }
-                }
-            }
-
-            hideLoading() {
-                const loading = document.getElementById('loading');
-                if (loading) {
-                    loading.style.opacity = '0';
-                    setTimeout(() => loading.remove(), 500);
-                }
-            }
-
-            stop() {
-                if (this.refreshInterval) {
-                    clearInterval(this.refreshInterval);
-                }
-            }
-        }
-
-        // Initialize the dashboard
-        const dashboard = new TokenDashboard();
-    </script>
-</body>
-</html>

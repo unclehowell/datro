@@ -66,9 +66,9 @@
 }
 
 @media screen and (max-width: 900px) {
-.square-005-001,.square-005-001-doc {
+.square-005-001, .square-005-001-doc {
     min-width: 25vw;
     line-height: 8vw;
-   min-height: calc(7vh + 2vw)!important;
+    min-height: calc(7vh + 2vw)!important;
 }
 }

@@ -3,26 +3,16 @@
 <head>
     <meta charset="utf-8">
     <title>PicoClaw Redirect</title>
-    <script src="../../../dashboard/js/jquery-3.3.1.min.js"></script>
-    <script src="../../../dashboard/js/appLauncher.js"></script>
 <script>
-        window.onload = function() {
-            const appId = '003-002';
-            const localBaseUrl = 'http://localhost:18789';
-            const onlineDemoUrl = 'https://picoclaw.com';
-            if (typeof handleAppLaunch === 'function') {
-                handleAppLaunch(appId, localBaseUrl, onlineDemoUrl);
-            } else {
-                var hostname = window.location.hostname;
-                if (hostname.indexOf("datro") !== -1) {
-                    window.location.replace(onlineDemoUrl);
-                } else {
-                    window.location.replace(localBaseUrl);
-                }
-            }
-        };
-    </script>
+    window.onload = function() {
+        var hostname = window.location.hostname;
+        if (hostname.indexOf("datro") !== -1) {
+            window.location.replace('https://picoclaw.com');
+        } else {
+            window.location.replace('http://' + hostname + ':18792');
+        }
+    };
+</script>
 </head>
-<body>
-</body>
+<body></body>
 </html>
