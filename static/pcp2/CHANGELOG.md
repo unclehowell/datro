@@ -4,7 +4,9 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
-Mar-26 - 2026 - Investigating: POST to /api/* returns "DNS points to prohibited IP" (Cloudflare error 1000). GET requests work fine. This appears to be a Cloudflare WAF or security rule blocking POST requests to API paths, not a code issue. Need to check Cloudflare dashboard security settings.
+Mar-26 - 2026 - ISSUE IDENTIFIED: Cloudflare WAF/security blocking all POST requests to /api/* paths (returns error 1000 "DNS points to prohibited IP"). Direct R2R API test works (returns "Invalid API Key" - correct response). Need to check Cloudflare dashboard Security > WAF or Settings to allow POST to /api/* paths.
+
+Mar-26 - 2026 - Investigating: POST to /api/* returns "DNS points to prohibited IP" (Cloudflare error 1000). GET requests work fine. Direct test to R2R API works (returns "Invalid API Key"). This confirms Cloudflare is blocking POST to /api/* paths - likely WAF or security rule. Need to check Cloudflare dashboard.
 
 Mar-26 - 2026 - Fix: Build now copies _worker.js to dist. Testing if _worker.js handles /api/* routes in Cloudflare Pages.
 

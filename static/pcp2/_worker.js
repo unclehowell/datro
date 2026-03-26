@@ -1,7 +1,7 @@
 export async function onRequest(context) {
   const url = new URL(context.request.url);
   
-  if (url.pathname === "/api/submit-claim" || url.pathname.startsWith("/api/")) {
+  if (url.pathname === "/submit-api" || url.pathname === "/submit-claim" || url.pathname.startsWith("/api/")) {
     // Import and forward to the submit-claim handler
     return handleSubmitClaim(context);
   }
