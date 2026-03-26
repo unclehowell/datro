@@ -2,7 +2,11 @@
 It's expected that developers log all changes to this directory, in this CHANGELOG.md file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and [Semantic Versioning](https://semver.org/spec/v2.0.html).
+
+Mar-26 - 2026 - Investigating: POST to /api/* returns "DNS points to prohibited IP" (Cloudflare error 1000). GET requests work fine. This appears to be a Cloudflare WAF or security rule blocking POST requests to API paths, not a code issue. Need to check Cloudflare dashboard security settings.
+
+Mar-26 - 2026 - Fix: Build now copies _worker.js to dist. Testing if _worker.js handles /api/* routes in Cloudflare Pages.
 
 Mar-26 - 2026 - Fix: Using example.png base64 as signature instead of computed JSON signature. This uses a real signature image from notes/example.png to test if signature format was the issue.
 
