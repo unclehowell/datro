@@ -106,8 +106,7 @@ export async function onRequestPost(context: any) {
       console.log('STRIPPED data URL prefix from signature_image');
     }
 
-    // ── Signature: base64(JSON) per R2R spec - include title, title-case names, +44 phone, and addresses object
-    // This format worked before - use raw formatted values in signature
+    // ── Signature: base64(JSON) per R2R spec - include title, title-case names, +44 phone, and addresses as array
     const signaturePayload = JSON.stringify({
       title,
       first_name,
@@ -115,39 +114,46 @@ export async function onRequestPost(context: any) {
       date_of_birth,
       phone,
       email,
-      addresses: {
-        buildingNumber: buildingNumber || null,
-        thoroughfare: thoroughfare || null,
-        townOrCity: townOrCity || null,
-        postcode: postcode_formatted || null,
-      },
+      addresses: [
+        {
+          buildingNumber: buildingNumber || null,
+          thoroughfare: thoroughfare || null,
+          townOrCity: townOrCity || null,
+          postcode: postcode_formatted || null,
+        },
+      ],
     });
     
-    // Use signature image if provided, otherwise use computed signature
-    let signature = "";
-    if (cleanSignatureImage) {
-      // If we have signature image, we need to check if R2R accepts it or needs the JSON signature
-      // For now, include both - the JSON signature and the image
-      signature = toBase64(signaturePayload);
-      console.log("COMPUTED JSON SIGNATURE + HAVE SIGNATURE IMAGE");
-    } else {
-      signature = toBase64(signaturePayload);
-      console.log("USING COMPUTED JSON SIGNATURE");
-    }
+    const signature = toBase64(signaturePayload);
+    console.log("COMPUTED SIGNATURE WITH ADDRESSES ARRAY");
 
-    // ── Addresses as OBJECT per R2R API spec (not array) ─
-    const addresses = {
-      line1:          null,
-      line2:           null,
-      line3:           null,
-      line4:           null,
-      buildingName:   null,
-      buildingNumber: buildingNumber || null,
-      thoroughfare:   thoroughfare || null,
-      townOrCity:     townOrCity || null,
-      district:       null,
-      postcode:       postcode_formatted || null,
-    };
+    // ── Addresses as ARRAY with multiple entries per R2R requirement ─
+    const addresses = [
+      {
+        line1:          thoroughfare || null,
+        line2:          buildingNumber || null,
+        line3:           null,
+        line4:           null,
+        buildingName:   null,
+        buildingNumber: null,
+        thoroughfare:   null,
+        townOrCity:     null,
+        district:       null,
+        postcode:       null,
+      },
+      {
+        line1:          null,
+        line2:           null,
+        line3:           null,
+        line4:           null,
+        buildingName:   null,
+        buildingNumber: buildingNumber || null,
+        thoroughfare:   thoroughfare || null,
+        townOrCity:     townOrCity || null,
+        district:       null,
+        postcode:       postcode_formatted || null,
+      },
+    ];
 
     // ── Final payload ─────────────────────────────────────────────
     const payload: any = {
