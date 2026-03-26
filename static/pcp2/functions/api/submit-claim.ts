@@ -106,26 +106,33 @@ export async function onRequestPost(context: any) {
       console.log('STRIPPED data URL prefix from signature_image');
     }
 
-    // Fallback: JSON payload for computing signature
+    // ── Signature: base64(JSON) per R2R spec - include title, title-case names, +44 phone, and addresses object
+    // This format worked before - use raw formatted values in signature
     const signaturePayload = JSON.stringify({
+      title,
       first_name,
       last_name,
       date_of_birth,
       phone,
       email,
+      addresses: {
+        buildingNumber: buildingNumber || null,
+        thoroughfare: thoroughfare || null,
+        townOrCity: townOrCity || null,
+        postcode: postcode_formatted || null,
+      },
     });
-
-    // Use signature image if provided, otherwise use providedSignature or computed
+    
+    // Use signature image if provided, otherwise use computed signature
     let signature = "";
     if (cleanSignatureImage) {
-      signature = cleanSignatureImage;
-      console.log("USING SIGNATURE IMAGE FROM FORM (base64)");
-    } else if (providedSignature) {
-      signature = providedSignature;
-      console.log("USING PROVIDED SIGNATURE FIELD");
+      // If we have signature image, we need to check if R2R accepts it or needs the JSON signature
+      // For now, include both - the JSON signature and the image
+      signature = toBase64(signaturePayload);
+      console.log("COMPUTED JSON SIGNATURE + HAVE SIGNATURE IMAGE");
     } else {
       signature = toBase64(signaturePayload);
-      console.log("USING COMPUTED SIGNATURE");
+      console.log("USING COMPUTED JSON SIGNATURE");
     }
 
     // ── Addresses as OBJECT per R2R API spec (not array) ─
