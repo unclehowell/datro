@@ -1,0 +1,161 @@
+---
+# Skills for OpenClaw and Hermes AI assistants
+
+- name: Create OpenClaw skills directory
+  file:
+    path: "{{ ansible_user_dir }}/.openclaw/skills"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0755'
+
+- name: Create Hermes skills directory
+  file:
+    path: "{{ ansible_user_dir }}/.hermes/skills"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0755'
+
+- name: Create Hermes cron directory
+  file:
+    path: "{{ ansible_user_dir }}/.hermes/cron"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0755'
+
+- name: Create Hermes cron output directory
+  file:
+    path: "{{ ansible_user_dir }}/.hermes/cron/output"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0755'
+
+- name: Create OpenClaw skills placeholder - ClawTeam
+  copy:
+    content: |
+      # OpenClaw Skill: ClawTeam
+      # This skill handles team coordination tasks
+      {
+        "name": "ClawTeam",
+        "version": "1.0.0",
+        "description": "Team coordination and collaboration"
+      }
+    dest: "{{ ansible_user_dir }}/.openclaw/skills/ClawTeam/skill.json"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0644'
+
+- name: Create OpenClaw skills placeholders
+  copy:
+    content: |
+      # Skill placeholder - restore from backup for full version
+      {
+        "name": "{{ skill_name }}",
+        "version": "1.0.0",
+        "description": "Restore from backup"
+      }
+    dest: "{{ ansible_user_dir }}/.openclaw/skills/{{ skill_name }}/skill.json"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0644'
+  loop:
+    - github
+    - hardware
+    - marketingskills
+    - skill-creator
+    - summarize
+    - tmux
+    - weather
+
+- name: Create Hermes skills directory structure
+  file:
+    path: "{{ ansible_user_dir }}/.hermes/skills/{{ item }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0755'
+  loop:
+    - apple
+    - autonomous-ai-agents
+    - creative
+    - data-science
+    - diagramming
+    - dogfood
+    - domain
+    - email
+    - feeds
+    - gaming
+    - gifs
+    - github
+    - inference-sh
+    - leisure
+    - mcp
+    - media
+    - mlops
+    - music-creation
+    - note-taking
+    - productivity
+    - research
+    - smart-home
+    - social-media
+    - software-development
+
+- name: Create Hermes bundled manifest
+  copy:
+    content: |
+      {
+        "version": "1.0.0",
+        "skills": [
+          "apple",
+          "autonomous-ai-agents",
+          "creative",
+          "data-science",
+          "diagramming",
+          "dogfood",
+          "domain",
+          "email",
+          "feeds",
+          "gaming",
+          "gifs",
+          "github",
+          "inference-sh",
+          "leisure",
+          "mcp",
+          "media",
+          "mlops",
+          "music-creation",
+          "note-taking",
+          "productivity",
+          "research",
+          "smart-home",
+          "social-media",
+          "software-development"
+        ]
+      }
+    dest: "{{ ansible_user_dir }}/.hermes/skills/.bundled_manifest"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0644'
+
+- name: Create skills restoration note
+  copy:
+    content: |
+      # Skills Restoration Required
+      # 
+      # This playbook creates the directory structure for skills.
+      # Full skill content must be restored from backup.
+      #
+      # Run this after restoration to copy skills from backup:
+      # cp -r /path/to/backup/.openclaw/skills/* ~/.openclaw/skills/
+      # cp -r /path/to/backup/.hermes/skills/* ~/.hermes/skills/
+      #
+      # Skills include:
+      # - OpenClaw: ClawTeam, github, hardware, marketingskills, skill-creator, summarize, tmux, weather
+      # - Hermes: 24 skill categories (see .hermes/skills/)
+    dest: "{{ ansible_user_dir }}/.openclaw/SKILLS_RESTORE.txt"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0644'
