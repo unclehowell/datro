@@ -26,6 +26,11 @@ DISCREPANCY: Summary implies more was working than CHANGELOG documents. All futu
 
 ---
 
+Mar-27 - 2026 - SUCCESS! Form submission to vehicle.financecheque.uk working! POST to /api/submit-claim returns OTP challenge:
+  - R2R API: "Please validate via OTP" with challenge_id
+  - Test payload: example.png base64 with data:image/png;base64 prefix
+  - This confirms vehicle.financecheque.uk → carfinance-new Pages project is fully functional
+
 Mar-27 - 2026 - Cloudflare DNS Changes:
   - Created new Pages project "carfinance-new" via wrangler CLI
   - Created new Pages project "pcp2-car-finance" (has working API)
