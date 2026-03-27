@@ -19,25 +19,37 @@ export default {
           const contentType = request.headers.get("content-type") || "";
           let body;
           
+          console.log("Content-Type received:", contentType);
+          
           if (contentType.includes("multipart/form-data")) {
-            const formData = await request.formData();
-            body = {
-              title: formData.get("title")?.toString(),
-              first_name: formData.get("first_name")?.toString(),
-              last_name: formData.get("last_name")?.toString(),
-              date_of_birth: formData.get("date_of_birth")?.toString(),
-              phone: formData.get("phone")?.toString(),
-              email: formData.get("email")?.toString(),
-              buildingNumber: formData.get("buildingNumber")?.toString(),
-              thoroughfare: formData.get("thoroughfare")?.toString(),
-              townOrCity: formData.get("townOrCity")?.toString(),
-              postcode: formData.get("postcode")?.toString(),
-              signature: formData.get("signature")?.toString(),
-              signature_image: formData.get("signature_image")?.toString(),
-              user_agent: formData.get("user_agent")?.toString(),
-              session_id: formData.get("session_id")?.toString(),
-              device_session_id: formData.get("device_session_id")?.toString(),
-            };
+            try {
+              const formData = await request.formData();
+              console.log("FormData parsed successfully");
+              body = {
+                title: formData.get("title")?.toString() || null,
+                first_name: formData.get("first_name")?.toString() || null,
+                last_name: formData.get("last_name")?.toString() || null,
+                date_of_birth: formData.get("date_of_birth")?.toString() || null,
+                phone: formData.get("phone")?.toString() || null,
+                email: formData.get("email")?.toString() || null,
+                buildingNumber: formData.get("buildingNumber")?.toString() || null,
+                thoroughfare: formData.get("thoroughfare")?.toString() || null,
+                townOrCity: formData.get("townOrCity")?.toString() || null,
+                postcode: formData.get("postcode")?.toString() || null,
+                signature: formData.get("signature")?.toString() || null,
+                signature_image: formData.get("signature_image")?.toString() || null,
+                user_agent: formData.get("user_agent")?.toString() || null,
+                session_id: formData.get("session_id")?.toString() || null,
+                device_session_id: formData.get("device_session_id")?.toString() || null,
+              };
+              console.log("FormData body:", JSON.stringify(body));
+            } catch (formDataErr) {
+              console.error("FormData parse error:", formDataErr.message);
+              return new Response(JSON.stringify({ error: "FormData parse failed: " + formDataErr.message }), {
+                status: 500,
+                headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
+              });
+            }
           } else {
             body = await request.json();
           }
