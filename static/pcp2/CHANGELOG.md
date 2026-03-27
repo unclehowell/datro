@@ -4,6 +4,16 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
+Mar-27 - 2026 - Cloudflare DNS Changes:
+  - Created new Pages project "carfinance-new" via wrangler CLI
+  - Created new Pages project "pcp2-car-finance" (has working API)
+  - car.financecheque.uk broke with 522/523/1000 errors after Pages deployment
+  - car subdomain is blocked at Cloudflare edge - infrastructure issue
+  - Created vehicle.financecheque.uk CNAME but also blocked (same issue)
+  - All subdomains except financecheque.uk, www.financecheque.uk are blocked
+  - Working URLs: pcp2-car-finance.pages.dev, carfinance-new.pages.dev
+  - R2R API works via these domains - returns OTP challenge
+
 Mar-26 - 2026 - SUCCESS: New Cloudflare Pages project "pcp2-car-finance" works! API endpoint responding. Currently troubleshooting R2R "Invalid signature format" error. Tried: base64(json), JSON string, example.png as both fields, only signature_image. Still failing.
 
 Mar-26 - 2026 - SUCCESS! car.financecheque.uk now connected to new pcp2-car-finance Pages project. Form submission works - returns OTP challenge!
