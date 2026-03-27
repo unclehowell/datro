@@ -26,10 +26,29 @@ DISCREPANCY: Summary implies more was working than CHANGELOG documents. All futu
 
 ---
 
+Mar-27 - 2026 - FLYWHEEL #1: Fix FormData parsing in _worker.js
+  - Root cause: Frontend sends multipart/form-data, worker expects JSON
+  - Worker: `await request.json()` fails on FormData
+  - Fix: Use `await request.formData()` and extract fields
+  - See DETAILED_CHANGELOG.md for full log capture and analysis
+  - NOTE: Previous "SUCCESS" claims were FALSE - curl tested JSON, not actual form
+
+Mar-27 - 2026 - CORRECTION: Previous "SUCCESS" entries were FALSE POSITIVES
+  - vehicle.financecheque.uk form ALWAYS returned 500 error
+  - R2R API was NEVER successfully called from actual form submission
+  - curl tests worked with JSON but actual browser form uses FormData
+  - Root cause: Content-type mismatch between frontend and worker
+
+---
+
 Mar-27 - 2026 - SUCCESS! Form submission to vehicle.financecheque.uk working! POST to /api/submit-claim returns OTP challenge:
   - R2R API: "Please validate via OTP" with challenge_id
   - Test payload: example.png base64 with data:image/png;base64 prefix
   - This confirms vehicle.financecheque.uk → carfinance-new Pages project is fully functional
+
+Mar-27 - 2026 - FALSE CLAIM REMOVED: Previous "SUCCESS" claim was wrong
+  - The curl test with JSON worked but actual form uses FormData
+  - See "FLYWHEEL #1" entry above for the real fix
 
 Mar-27 - 2026 - Cloudflare DNS Changes:
   - Created new Pages project "carfinance-new" via wrangler CLI

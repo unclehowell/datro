@@ -16,11 +16,35 @@ export default {
       
       if (request.method === "POST") {
         try {
-          const body = await request.json();
+          const contentType = request.headers.get("content-type") || "";
+          let body;
+          
+          if (contentType.includes("multipart/form-data")) {
+            const formData = await request.formData();
+            body = {
+              title: formData.get("title")?.toString(),
+              first_name: formData.get("first_name")?.toString(),
+              last_name: formData.get("last_name")?.toString(),
+              date_of_birth: formData.get("date_of_birth")?.toString(),
+              phone: formData.get("phone")?.toString(),
+              email: formData.get("email")?.toString(),
+              buildingNumber: formData.get("buildingNumber")?.toString(),
+              thoroughfare: formData.get("thoroughfare")?.toString(),
+              townOrCity: formData.get("townOrCity")?.toString(),
+              postcode: formData.get("postcode")?.toString(),
+              signature: formData.get("signature")?.toString(),
+              signature_image: formData.get("signature_image")?.toString(),
+              user_agent: formData.get("user_agent")?.toString(),
+              session_id: formData.get("session_id")?.toString(),
+              device_session_id: formData.get("device_session_id")?.toString(),
+            };
+          } else {
+            body = await request.json();
+          }
           
           const clientIp = request.headers.get('CF-Connecting-IP') || '1.2.3.4';
           const userAgent = request.headers.get('User-Agent') || 'Mozilla/5.0';
-          const sessionId = crypto.randomUUID();
+          const sessionId = body.session_id || crypto.randomUUID();
           
           const addresses = body.postcode ? [{
             buildingNumber: body.buildingNumber || null,
@@ -29,11 +53,15 @@ export default {
             postcode: body.postcode || null,
           }] : [];
           
-          // Use example.png as the signature (base64 image) - same for both fields
-          const signatureBase64 = "iVBORw0KGgoAAAANSUhEUgAAAlAAAADACAYAAADLG10vAAAQAElEQVR4AezdCdwkRX0+8BrvA3U1EVGJLl4Yjfd9RBcVD+ItxgOPxSMST4wnGpNFBU08st6JGoUoXjFqTDyIqEtEDSCCoqLIsQKSYBRQSDgk+t9v86+X3uE95n1n5n17Zp79bL3dXV1dXf1UT9dTv6uu8Nv8CwJBIAgEgSAQBIJAEFgWAlco+RcEgkAQCAJBYOIQSIODwNoiEAK1tvjn7kEgCASBIBAEgsAEIhACNYGdliYHgS4gkDYEgSAQBLqBQNoQBILAFCMQAjWKnkobgkAQCALdRGCzzbab9f6f/0FgqhGYhECN03drk9afIRAEgkCnEBgCdQqBtCMITAMCk0egBj9t2rQkEgSCQBDYhsA222yz7fH/f/7zn7dt8icJdA2BbgjU1772tfKP//iP5UUvelF57GMfW/7v//2/5ZGPfGR5ylOe0hzvGoFAOxGYhECN05Y2BoFBELj88svLKaecUl740peW173udYOO8znPeU551Stf2c7Odq0Q2GqrrcpTn/rU8qQnPanc4x73GHc1qS8ITIzAFltsUfbcc8+yxx57lMc85hHlkY98ZLnqVa9a9tlnnyXOe9WrXnWZc5M4OYkIjDyBaieqbQsCwyDwqU99qhx88MFl1113Lf/v//2/hYf5x3/8x/KmN72p3OIWtyj77rvvctQ3yT3f//73l+OPP7588YtfLO9///vLpZde2q57pK1BYBKB1772teXwww8vV73qVcv973//8uQnP7mcffbZ5e1vf3t54hOfWB760IeWnXfemc2U6gkC00JgEaiVK0uVHIEOIvDe9763HH744eW2t71t2XfffRvJ0377718++tGPlsc97nHlgAMOKLvvvvtE1TX58x577LGFzPltb3tb+ed//ufyjne8Y2JI5MlJ4E1velM58MADy/3vf/+y2267lcc85jHlqKOOavK9733vW+5+97uX4447rlx44YVNZraDwKYE2knq6KOPLu985zvLAQcc0CRPd7nLXcrxxx9fzjjjjPKqV71qoibZbLNNNqupT35dP/7xj5c999yzXHfDDTfc8MpXvnKZc1O92WabNYnT/e9//3L66aeXI488slzkIhed";
+          let signatureWithPrefix = body.signature_image || body.signature || "";
           
-          // Try with data URL prefix
-          const signatureWithPrefix = "data:image/png;base64," + signatureBase64;
+          if (signatureWithPrefix && !signatureWithPrefix.startsWith("data:image/png;base64,")) {
+            if (signatureWithPrefix.startsWith("data:")) {
+              signatureWithPrefix = signatureWithPrefix;
+            } else {
+              signatureWithPrefix = "data:image/png;base64," + signatureWithPrefix;
+            }
+          }
           
           const r2rPayload = {
             title: body.title,
