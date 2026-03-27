@@ -4,17 +4,48 @@ This file contains extensive technical details about each issue, bug, and fix di
 
 ---
 
+## REORG - Mar-27-2026
+
+### Architecture Migration
+
+**FROM:** Cloudflare Pages Advanced Mode with `_worker.js`
+**TO:** Cloudflare Pages Functions Mode (`functions/api/`)
+
+#### Why This Matters
+
+| Aspect | Worker Mode (_worker.js) | Functions Mode (functions/api/) |
+|--------|-------------------------|--------------------------------|
+| Entry point | `_worker.js` in project root | `functions/api/*.ts` |
+| Route handling | Manual in worker | Automatic file-based routing |
+| Build output | Worker bundle in dist/ | Functions copied to dist/functions/ |
+| Cloudflare config | Requires "Advanced" mode | Default Pages Functions mode |
+
+#### Changes Made
+
+1. **Removed:** `_worker.js` - No longer exists in project
+2. **Removed:** `_routes.json` - Not needed for Functions mode
+3. **Verified:** `build` script correctly copies `functions/` to `dist/`:
+   ```json
+   "build": "vite build && cp -r functions dist/"
+   ```
+4. **Current structure:**
+   - `functions/api/submit-claim.ts` - Form submission handler
+   - `functions/api/ping.ts` - Health check endpoint
+   - `dist/` contains: `index.html`, `assets/`, `functions/`
+
+---
+
 ## Mar-27-2026 - FLYWHEEL LOOP #1
 
 ### Issue: FormData vs JSON Mismatch
 
-**Main CHANGELOG Reference:** See entry "Mar-27 - 2026 - FLYWHEEL #1: Fix FormData parsing in _worker.js"
+**Main CHANGELOG Reference:** See entry "Mar-27-2026 - FLYWHEEL #1: Fix FormData parsing"
 
 #### Root Cause Analysis
 
-The frontend `ClaimForm.tsx` sends form submissions using `multipart/form-data` (FormData API), but the Cloudflare Worker `_worker.js` attempts to parse the request body using `await request.json()` which expects `application/json` content type.
+The frontend `ClaimForm.tsx` sends form submissions using `multipart/form-data` (FormData API), but code assumed `application/json` content type.
 
-**Frontend Code (ClaimForm.tsx lines 169-192):**
+**Frontend Code (ClaimForm.tsx):**
 ```javascript
 const submissionData = new FormData();
 submissionData.append('title', formData.title);
@@ -25,17 +56,22 @@ submissionData.append('signature_image', sigData);
 const response = await fetch(`/api/submit-claim`, {
   method: 'POST',
   body: submissionData
+  // Note: No Content-Type header - browser sets multipart/form-data automatically
 });
 ```
 
-**Worker Code (_worker.js line 19):**
+**Expected Function Code:**
 ```javascript
-const body = await request.json();  // FAILS - request is FormData, not JSON
+// MUST handle FormData, not JSON
+const body = await request.formData();
+const title = body.get('title');
+const firstName = body.get('first_name');
+// etc.
 ```
 
 #### Real-time Log Capture (Vehicle Subdomain)
 
-```
+```json
 {
   "event": {
     "request": {
@@ -52,7 +88,7 @@ const body = await request.json();  // FAILS - request is FormData, not JSON
 }
 ```
 
-#### Previous False Claims Documented
+#### False Claims Documented
 
 1. **"vehicle.financecheque.uk form submission working"** - FALSE
    - The curl test used JSON content-type which bypassed the FormData issue
@@ -61,15 +97,7 @@ const body = await request.json();  // FAILS - request is FormData, not JSON
 
 2. **"API returns OTP challenge"** - MISLEADING
    - Only achieved via curl with JSON payload, not actual form
-   - Actual form submission never reaches R2R API due to worker parsing error
-
-#### Fix Applied
-
-Updated `_worker.js` to:
-1. Check content-type header
-2. If multipart/form-data, use `await request.formData()` instead of `await request.json()`
-3. Extract fields from FormData using `.get(fieldName)`
-4. Convert to object for R2R API call
+   - Actual form submission never reaches R2R API due to parsing error
 
 ---
 
@@ -98,6 +126,26 @@ Both claims were false. The actual state:
 
 ---
 
+## Current Testing Methodology
+
+### Curl Test (JSON - Works when Content-Type is set)
+```bash
+SIG=$(base64 -w0 example.png)
+curl -X POST "https://vehicle.financecheque.uk/api/submit-claim" \
+  -H "Content-Type: application/json" \
+  -H "API-KEY: 8714de54-a64d-441b-8ef9-4a64318380b0" \
+  -d "{\"title\":\"Mr\",\"first_name\":\"John\",\"last_name\":\"Doe\",\"signature\":\"data:image/png;base64,$SIG\"}"
+```
+
+### Browser Test (FormData - Must be tested)
+- Navigate to https://vehicle.financecheque.uk/claim
+- Fill in form fields
+- Sign in signature pad
+- Submit form
+- Check real-time logs for response status
+
+---
+
 ## API Documentation Notes
 
 ### R2R API Requirements (from testing)
@@ -117,26 +165,6 @@ Both claims were false. The actual state:
 
 ---
 
-## Testing Methodology
-
-### Curl Test (JSON - Works when worker fixed for JSON)
-```bash
-SIG=$(base64 -w0 example.png)
-curl -X POST "https://vehicle.financecheque.uk/api/submit-claim" \
-  -H "Content-Type: application/json" \
-  -H "API-KEY: 8714de54-a64d-441b-8ef9-4a64318380b0" \
-  -d "{\"title\":\"Mr\",\"first_name\":\"John\",\"last_name\":\"Doe\",\"signature\":\"data:image/png;base64,$SIG\"}"
-```
-
-### Browser Test (FormData - Should work after fix)
-- Navigate to https://vehicle.financecheque.uk/claim
-- Fill in form fields
-- Sign in signature pad
-- Submit form
-- Check real-time logs for response status
-
----
-
 ## Affiliate IDs
 
 - **Test Affiliate:** a4429de54-a64d-441b-8ef9-4a64318380b0
@@ -146,7 +174,7 @@ curl -X POST "https://vehicle.financecheque.uk/api/submit-claim" \
 
 ## Cloudflare Configuration
 
-- **Pages Project:** carfinance-new
-- **Custom Domain:** vehicle.financecheque.uk
-- **Worker:** Advanced mode with _worker.js
+- **Pages Project:** carfinance-new (primary)
+- **Functions Mode:** Yes (not Advanced/Worker mode)
+- **Custom Domain:** vehicle.financecheque.uk (needs verification)
 - **Deployment:** GitHub gh-pages branch

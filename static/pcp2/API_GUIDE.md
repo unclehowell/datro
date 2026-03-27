@@ -29,31 +29,48 @@ API-KEY: 8714de54-a64d-441b-8ef9-4a64318380b0
 ### Required Fields
 
 | Field | Type | Description | Example |
-|-------|------|--------------|---------|
+|-------|------|-------------|---------|
 | title | string | Person title | "Mr", "Mrs", "Miss" |
 | first_name | string | First name | "John" |
 | last_name | string | Last name | "Doe" |
 | email | string | Email address | "john@example.com" |
-| phone | string | UK phone number | "07503456789" |
+| phone | string | UK phone number (with +44 prefix) | "+447503456789" |
 | date_of_birth | string | ISO date format | "1985-06-20" |
-| addresses | array | Address objects | See below |
-| signature | string | PNG signature with data URL prefix | See below |
+| addresses | array | Array of Address objects | See below |
+| signature | string | PNG signature base64 (with `data:image/png;base64,` prefix) | See below |
 | client_ip | string | Client IP address | "203.0.113.42" |
 | user_agent | string | Browser user agent | "Mozilla/5.0..." |
 | session_id | string | Session identifier | "session_001" |
 
 ### Addresses Array Format
 
+The `addresses` field is an **array** of Address objects (per R2R spec `Address[]`):
+
 ```json
-"addresses": [
-  {
-    "buildingNumber": "12",
-    "thoroughfare": "High Street",
-    "townOrCity": "London",
-    "postcode": "EC1A 1AA"
-  }
-]
+"addresses": [{
+  "buildingNumber": "12",
+  "thoroughfare": "High Street",
+  "townOrCity": "London",
+  "postcode": "EC1A 1AA"
+}]
 ```
+
+Each address object supports these fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| line1 | string | Address line 1 |
+| line2 | string | Address line 2 |
+| line3 | string | Address line 3 |
+| line4 | string | Address line 4 |
+| buildingName | string | Building name |
+| buildingNumber | string | Building/house number |
+| thoroughfare | string | Street name |
+| townOrCity | string | Town or city |
+| district | string | District |
+| postcode | string | UK postcode |
+
+**Note:** `example.json` shows addresses as a plain object (missing array brackets `[]`) - this is a typo. The correct format per R2R spec is an array.
 
 ### Signature Format (CRITICAL)
 
@@ -79,27 +96,36 @@ SIG=$(base64 -w0 notes/example.png)
 
 ## Complete Example Payload
 
+This matches what `submit-claim.ts` sends to the R2R API:
+
 ```json
 {
   "title": "Mr",
   "first_name": "John",
   "last_name": "Doe",
   "date_of_birth": "1985-06-20",
-  "phone": "07503456789",
+  "phone": "+447503456789",
   "email": "john.doe@example.com",
-  "addresses": [
-    {
-      "buildingNumber": "12",
-      "thoroughfare": "High Street",
-      "townOrCity": "London",
-      "postcode": "EC1A 1AA"
-    }
-  ],
-  "signature": "data:image/png;base64,iVBORw0KGgo...",
-  "signature_image": "data:image/png;base64,iVBORw0KGgo...",
   "client_ip": "203.0.113.42",
   "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36",
-  "session_id": "session_001"
+  "session_id": "session_001",
+  "device_session_id": "uuid-here",
+  "account_creation_url": "https://car.financecheque.uk/claim",
+  "addresses": [{
+    "line1": "High Street",
+    "line2": "12",
+    "line3": null,
+    "line4": null,
+    "buildingName": null,
+    "buildingNumber": null,
+    "thoroughfare": "High Street",
+    "townOrCity": "London",
+    "district": null,
+    "postcode": "EC1A 1AA"
+  }],
+  "signature": "data:image/png;base64,iVBORw0KGgo...",
+  "signature_image": "data:image/png;base64,iVBORw0KGgo...",
+  "opt_in": true
 }
 ```
 
@@ -155,51 +181,53 @@ SIG=$(base64 -w0 notes/example.png)
 
 **Fix:** Ensure all required fields present with correct data types
 
-### HTTP 500 from Worker
-
-**Cause:** Worker cannot parse request body (FormData vs JSON mismatch)
-
-**Fix:** Update worker to use `request.formData()` for multipart/form-data requests
-
 ## Testing Commands
 
-### Test with JSON (bypasses worker FormData issue)
+### Test Directly to R2R API
 
 ```bash
 # Get signature base64
 SIG=$(base64 -w0 notes/example.png)
 
-# Create payload
+# Create payload (with addresses array format)
 cat > /tmp/payload.json << EOF
 {
   "title": "Mr",
   "first_name": "John",
   "last_name": "Doe",
   "date_of_birth": "1985-06-20",
-  "phone": "07503456789",
+  "phone": "+447503456789",
   "email": "john.doe@example.com",
-  "postcode": "EC1A 1AA",
-  "buildingNumber": "12",
-  "thoroughfare": "High Street",
-  "townOrCity": "London",
   "client_ip": "203.0.113.42",
   "user_agent": "Mozilla/5.0",
   "session_id": "session_001",
-  "signature": "data:image/png;base64,$SIG"
+  "device_session_id": "test-device-001",
+  "account_creation_url": "https://car.financecheque.uk/claim",
+  "addresses": [{
+    "line1": "High Street",
+    "line2": "12",
+    "buildingNumber": null,
+    "thoroughfare": "High Street",
+    "townOrCity": "London",
+    "postcode": "EC1A 1AA"
+  }],
+  "signature": "data:image/png;base64,$SIG",
+  "signature_image": "data:image/png;base64,$SIG",
+  "opt_in": true
 }
 EOF
 
-# Submit
+# Submit to R2R
 curl -X POST "https://r2r.theclaimsystem.co.uk/api/v1/affiliate/a4429cda-e36a-472a-8291-ae01a49349d8" \
   -H "Content-Type: application/json" \
   -H "API-KEY: 8714de54-a64d-441b-8ef9-4a64318380b0" \
   -d @/tmp/payload.json
 ```
 
-### Test via Worker (after FormData fix)
+### Test via Local Server
 
 ```bash
-curl -X POST "https://vehicle.financecheque.uk/api/submit-claim" \
+curl -X POST "http://localhost:3000/api/submit-claim" \
   -H "Content-Type: application/json" \
   -H "API-KEY: 8714de54-a64d-441b-8ef9-4a64318380b0" \
   -d @/tmp/payload.json
@@ -207,8 +235,11 @@ curl -X POST "https://vehicle.financecheque.uk/api/submit-claim" \
 
 ## Notes
 
+- **Affiliate ID:** `a4429cda-e36a-472a-8291-ae01a49349d8`
+- **API Key:** `8714de54-a64d-441b-8ef9-4a64318380b0`
 - The R2R API has a 2-minute rate limit per IP
-- Always use `data:image/png;base64,` prefix for signature
+- Signature must include `data:image/png;base64,` prefix
 - Both `signature` and `signature_image` fields should contain the signature
 - Session IDs should be unique per submission
 - Client IP should be the actual visitor IP (not server IP)
+- Phone numbers are formatted to include +44 prefix

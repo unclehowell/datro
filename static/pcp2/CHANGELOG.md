@@ -6,6 +6,73 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
 ---
 
+## PENDING FIXES - Mar-27-2026 - DO NOT DEPLOY UNTIL FIXED
+
+### Three Critical Mismatches: PDF Spec vs. Current Code
+
+After re-reading the R2R API PDF documentation, the following mismatches were found
+between the spec and `functions/api/submit-claim.ts`. They have NOT been fixed yet.
+
+1. **`addresses` must be an ARRAY** — Change `{buildingNumber:..., thoroughfare:..., ...}` 
+   to `[{buildingNumber:..., thoroughfare:..., ...}]`
+
+2. **`signature` must have the `data:image/png;base64,` prefix** — Add the prefix to the
+   `SIG` variable. API_GUIDE.md shows the correct format.
+
+3. **`addresses` is missing full field schema** — PDF shows line1, line2, line3, line4,
+   buildingName, district, etc. Current code only has 4 fields.
+
+**Files involved:** `functions/api/submit-claim.ts` (lines 90-95, 112)
+
+**Reference payload structure:** `API_GUIDE.md` lines ~114-125
+
+**Do NOT claim form submission is working until these three fixes are applied and tested.**
+
+---
+
+## REORG - Mar-27-2026
+
+### Architecture Changes
+
+- **Removed _worker.js** - Project migrated from Cloudflare Pages "Advanced Mode" (Workers) to "Functions Mode"
+- **Build script verified** - `npm run build` now correctly copies `functions/` to `dist/` (verified: functions/api/submit-claim.ts exists)
+- **Current Architecture**: Cloudflare Pages Functions (`functions/api/submit-claim.ts`) - NOT Worker mode
+
+### Files Removed/Archived
+
+- `_worker.js` - REMOVED (was causing FormData parsing failures)
+- `_routes.json` - REMOVED (not needed for Functions mode)
+
+### False "SUCCESS" Claims Documented
+
+The following entries from this log were FALSE POSITIVES:
+- "vehicle.financecheque.uk form submission working" - Form ALWAYS returned 500
+- "R2R API successfully called" - Only tested via curl with JSON, never via actual form
+- "car.financecheque.uk → pcp2-car-finance working" - Multiple errors (522, 523, 1000, 1019)
+
+**Root Cause of False Claims**: curl tests bypassed the FormData issue. Real browser form submission uses `multipart/form-data`, but the worker code used `request.json()` which only works with `application/json`.
+
+### Current State (Mar-27-2026)
+
+**Working:**
+- Cloudflare Pages Functions mode architecture
+- Build copies functions/ to dist/
+- R2R API endpoint exists at `/api/submit-claim`
+- API tested via curl with JSON payload (OTP challenge returned)
+
+**Needs Testing:**
+- Actual form submission from browser (FormData)
+- Custom domain routing (vehicle.financecheque.uk, car.financecheque.uk)
+- Signature capture and forwarding
+- OTP validation flow
+
+**Infrastructure Issues (Cloudflare):**
+- car.financecheque.uk domain blocked (Error 1000/1019)
+- Multiple 522/523 errors on custom domains
+- Direct pages.dev URLs work; custom domains don't
+
+---
+
 ## AI Hallucination / Deception / Error Log
 
 **Mar-27 - 2026** - Transparency entry:
@@ -26,99 +93,39 @@ DISCREPANCY: Summary implies more was working than CHANGELOG documents. All futu
 
 ---
 
-Mar-27 - 2026 - FLYWHEEL #1: Fix FormData parsing in _worker.js
-  - Root cause: Frontend sends multipart/form-data, worker expects JSON
-  - Worker: `await request.json()` fails on FormData
-  - Fix: Use `await request.formData()` and extract fields
-  - See DETAILED_CHANGELOG.md for full log capture and analysis
-  - NOTE: Previous "SUCCESS" claims were FALSE - curl tested JSON, not actual form
+## FLYWHEEL Methodology
 
-Mar-27 - 2026 - CORRECTION: Previous "SUCCESS" entries were FALSE POSITIVES
-  - vehicle.financecheque.uk form ALWAYS returned 500 error
-  - R2R API was NEVER successfully called from actual form submission
-  - curl tests worked with JSON but actual browser form uses FormData
-  - Root cause: Content-type mismatch between frontend and worker
+**Mar-27-2026 - FLYWHEEL #1: Fix FormData parsing**
+- Root cause: Frontend sends multipart/form-data, function expects JSON
+- Function: `await request.json()` fails on FormData
+- Fix: Use `await request.formData()` and extract fields
+- See DETAILED_CHANGELOG.md for full log capture and analysis
+- NOTE: Previous "SUCCESS" claims were FALSE - curl tested JSON, not actual form
+
+**Mar-27-2026 - CORRECTION: Previous "SUCCESS" entries were FALSE POSITIVES**
+- vehicle.financecheque.uk form ALWAYS returned 500 error
+- R2R API was NEVER successfully called from actual form submission
+- curl tests worked with JSON but actual browser form uses FormData
+- Root cause: Content-type mismatch between frontend and worker
 
 ---
 
-Mar-27 - 2026 - SUCCESS! Form submission to vehicle.financecheque.uk working! POST to /api/submit-claim returns OTP challenge:
-  - R2R API: "Please validate via OTP" with challenge_id
-  - Test payload: example.png base64 with data:image/png;base64 prefix
-  - This confirms vehicle.financecheque.uk → carfinance-new Pages project is fully functional
+## Domain/Deployment History
 
-Mar-27 - 2026 - FALSE CLAIM REMOVED: Previous "SUCCESS" claim was wrong
-  - The curl test with JSON worked but actual form uses FormData
-  - See "FLYWHEEL #1" entry above for the real fix
+**Mar-27-2026 - Cloudflare DNS Changes:**
+- Created new Pages project "carfinance-new" via wrangler CLI
+- Created new Pages project "pcp2-car-finance" (has working API)
+- car.financecheque.uk broke with 522/523/1000 errors after Pages deployment
+- car subdomain is blocked at Cloudflare edge - infrastructure issue
+- Created vehicle.financecheque.uk CNAME - still getting 522
+- Tried: different targets, DNS-only, A records, new subdomains - all blocked
+- Trying: Adding custom domain manually via Cloudflare Dashboard
+- Working direct URLs: pcp2-car-finance.pages.dev, carfinance-new.pages.dev
+- R2R API works via these domains - returns OTP challenge
 
-Mar-27 - 2026 - Cloudflare DNS Changes:
-  - Created new Pages project "carfinance-new" via wrangler CLI
-  - Created new Pages project "pcp2-car-finance" (has working API)
-  - car.financecheque.uk broke with 522/523/1000 errors after Pages deployment
-  - car subdomain is blocked at Cloudflare edge - infrastructure issue
-  - Created vehicle.financecheque.uk CNAME - still getting 522
-  - Tried: different targets, DNS-only, A records, new subdomains - all blocked
-  - Trying: Adding custom domain manually via Cloudflare Dashboard
-  - Working direct URLs: pcp2-car-finance.pages.dev, carfinance-new.pages.dev
-  - R2R API works via these domains - returns OTP challenge
+**Mar-26-2026** - [STALE] Cloudflare Pages project "pcp2-car-finance" created. API endpoint responding. R2R "Invalid signature format" error ongoing. (Note: architecture since changed to Functions mode)
 
-Mar-26 - 2026 - SUCCESS: New Cloudflare Pages project "pcp2-car-finance" works! API endpoint responding. Currently troubleshooting R2R "Invalid signature format" error. Tried: base64(json), JSON string, example.png as both fields, only signature_image. Still failing.
-
-Mar-26 - 2026 - SUCCESS! car.financecheque.uk now connected to new pcp2-car-finance Pages project. Form submission works - returns OTP challenge!
-
-Mar-26 - 2026 - SUCCESS! Signature fixed using data:image/png;base64 prefix. API returns "Please validate via OTP" - form submission working!
-
-Mar-26 - 2026 - Fix: Use data:image/png;base64 prefix on example.png base64 for signature field.
-
-Mar-26 - 2026 - Fix: Try using example.png base64 directly as signature field (the actual base64 image, not a JSON string).
-
-Mar-26 - 2026 - SUCCESS: Created new Cloudflare Pages project "pcp2-car-finance" using wrangler CLI. API now works! POST returns "Invalid signature format" - need to fix signature computation per R2R spec.:
-  1. Added firewall allow rules via API - didn't fix Error 1000
-  2. Deleted and re-added DNS in Cloudflare Pages - didn't fix
-  3. Tried _worker.js in advanced mode - got Error 1019
-  4. Tried minimal _worker.js - still Error 1019
-  5. Removed _worker.js entirely - still Error 1019
-  6. Tried direct pages.dev URL - still broken
-  Conclusion: carfinancecheque Pages project is corrupted. Need to delete and recreate but has too many deployments (>100). Using delete-all-deployments script from Cloudflare but failing to list deployments via API.
-
-Mar-26 - 2026 - CRITICAL: carfinancecheque.pages.dev returns Error 1019 for ALL requests (even GET, even with no _worker.js). This is a Cloudflare infrastructure issue, not code.
-
-Mar-26 - 2026 - CRITICAL: car.financecheque.uk - GET works, but ALL POST returns Error 1000 "DNS points to prohibited IP". Firewall rules don't help. This happens before WAF runs.
-
-Mar-26 - 2026 - INVESTIGATION: Error 1000 "DNS points to prohibited IP" is NOT a WAF issue. It happens before WAF runs. Likely causes:
-  1. DNS A record pointing to an origin server IP that Cloudflare has flagged (maybe a previous site was blocked)
-  2. Cloudflare Pages needs to be enabled in the dashboard for this domain
-  3. The domain needs to be set to "Proxied" (orange cloud) not "DNS only"
-
-  Created allow firewall rule via API but it didn't help - need to check Cloudflare dashboard settings.
-
-Mar-26 - 2026 - Fix: Removed _routes.json and /functions from dist, keeping only _worker.js in advanced mode. This ensures proper advanced mode operation.
-
-Mar-26 - 2026 - Fix: Updated _worker.js to use ASSETS.fetch() for SPA fallback (required for advanced mode). Also added Authorization: Bearer header to R2R API call.
-
-Mar-26 - 2026 - INVESTIGATION: _worker.js not being picked up by Cloudflare. Trying alternative routes (/submit-api, /submit-claim). All return 405 instead of hitting the worker. Need to verify Cloudflare Pages settings - user may need to enable "Workers" in the Cloudflare dashboard for this project.
-
-Mar-26 - 2026 - ISSUE IDENTIFIED: Cloudflare WAF/security blocking all POST requests to /api/* paths (returns error 1000 "DNS points to prohibited IP"). Direct R2R API test works (returns "Invalid API Key" - correct response). Need to check Cloudflare dashboard Security > WAF or Settings to allow POST to /api/* paths.
-
-Mar-26 - 2026 - Investigating: POST to /api/* returns "DNS points to prohibited IP" (Cloudflare error 1000). GET requests work fine. Direct test to R2R API works (returns "Invalid API Key"). This confirms Cloudflare is blocking POST to /api/* paths - likely WAF or security rule. Need to check Cloudflare dashboard.
-
-Mar-26 - 2026 - Fix: Build now copies _worker.js to dist. Testing if _worker.js handles /api/* routes in Cloudflare Pages.
-
-Mar-26 - 2026 - Fix: Using example.png base64 as signature instead of computed JSON signature. This uses a real signature image from notes/example.png to test if signature format was the issue.
-
-Mar-26 - 2026 - Build: Trigger rebuild with npm run build to deploy Functions
-
-Mar-26 - 2026 - Fix: R2R requires addresses as ARRAY with multiple entries (not single object). Updated payload and signature to use addresses array format.
-
-Mar-26 - 2026 - Fix: Added _routes.json to ensure /api/* routes use Cloudflare Pages Functions. Also fixed addresses (object) and signature format (include title, addresses object).
-
-Mar-26 - 2026 - Fix: Changed addresses from ARRAY to OBJECT per R2R API docs. Also updated signature to include title, addresses object (not just personal fields), matching format from working commit c3536e000.
-
-Mar-24 - 2026 - Fix: Reverted signature addresses from array back to object (matching working commit 02662bab0). Signature now computed using raw field values without title-casing or phone transformation.
-
-Mar-23 - 2026 - Feature: Added signature capture step to contact form. Visitors now sign before submission. Signature is captured as PNG canvas, converted to base64, and forwarded to R2R API.
-
-Mar-23 - 2026 - Fix: Reverted signature payload addresses to array, added detailed logging for body and address fields to diagnose validation errors.
-
+---
 
 ## [pcp.01] - Q1/2026
 
@@ -168,4 +175,3 @@ Mar-22 - 0137 Argentina: The = padding in base64 may be getting corrupted in the
               In functions/api/submit-claim.ts I now generate the signature in the Worker instead of using whatever comes from the frontend. Right before the fetch call
 Mar-22 - 0057 Argentina: removed title: data.title || 'Mr' from functions/api/submit-claim.ts   
 Mar-22 - 0044 Argentina: Tried api v2, better to go back to v1 hence this change.  
-

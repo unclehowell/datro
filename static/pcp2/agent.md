@@ -1,12 +1,43 @@
 # Agent Methodology - PCP2 Form Submission Flywheel
 
+## ⚠️ CRITICAL: 3 Pending PDF-vs-Code Mismatches (NOT YET FIXED)
+
+The current `functions/api/submit-claim.ts` does NOT match the R2R API PDF specification.
+**These three issues must be fixed before the form can submit successfully.**
+
+| # | Field | PDF/R2R Spec Says | Current Code Does | File:Line |
+|---|-------|-------------------|-------------------|-----------|
+| 1 | `addresses` | **ARRAY** `[{...}]` | OBJECT `{...}` | submit-claim.ts:90 |
+| 2 | `signature` | `data:image/png;base64,{base64}` | Raw base64 (no prefix) | submit-claim.ts:112 |
+| 3 | `addresses` fields | Full schema (line1-4, buildingName, district, etc.) | Only 4 fields | submit-claim.ts:90-95 |
+
+**Reference:** `/home/unclehowell/datro/static/pcp2/notes/R2R Affiliate Submission API Documentation_V2.21 (1).pdf`
+**Quick fix template:** See `API_GUIDE.md` lines ~114-125 for correct payload structure.
+
+---
+
 ## Overview
 
 This document defines the flywheel methodology for debugging and fixing the PCP2 (car finance) form submission to the R2R upstream API at car.financecheque.uk.
 
+## Architecture
+
+The project uses **Cloudflare Pages Functions** (not a standalone Worker):
+
+| Component | Location |
+|-----------|----------|
+| API Handler | `functions/api/submit-claim.ts` |
+| Frontend Form | `src/components/ClaimForm.tsx` |
+| Build Output | `dist/` (copies `functions/` + static assets) |
+| Pages Config | `cloudflare-pages.toml` |
+
+**Build Process:**
+1. `npm run build` copies `functions/` to `dist/`
+2. Cloudflare Pages serves `dist/` as static + Functions
+
 ## The Problem
 
-- **Domain:** vehicle.financecheque.uk (and car.financecheque.uk)
+- **Domain:** car.financecheque.uk
 - **Goal:** Form submissions must successfully reach R2R API and receive OTP challenge response
 - **Current State:** Form submissions return 500 errors, never reach R2R API
 
@@ -30,9 +61,9 @@ The flywheel is a systematic debugging process that iterates through:
 
 | Step | Action | Duration | Notes |
 |------|--------|----------|-------|
-| PUSH | Git push to gh-pages | 5s | Requires GitHub deployment |
+| PUSH | Git push to main | 5s | Triggers Cloudflare Pages build |
 | WAIT | Cloudflare deployment | 60s | **MINIMUM** - may take longer |
-| TEST | Start log tail | 5s | Use `wrangler tail` |
+| TEST | Start log tail | 5s | Use `wrangler pages project tail` |
 | CAPTURE | Review logs | 30s | Wait for request to complete |
 
 ### Timing Critical Rule
@@ -47,10 +78,10 @@ The flywheel is a systematic debugging process that iterates through:
 
 ```bash
 # 1. Start real-time log tail
-npx wrangler tail --format json --project-name carfinance-new
+npx wrangler pages project tail carfinancecheque
 
 # 2. Navigate to form
-# https://vehicle.financecheque.uk/claim
+# https://car.financecheque.uk
 
 # 3. Fill form and submit
 # - Fill all required fields
@@ -69,7 +100,7 @@ npx wrangler tail --format json --project-name carfinance-new
 SIG=$(base64 -w0 notes/example.png)
 
 # Submit as multipart/form-data (matches browser behavior)
-curl -X POST "https://vehicle.financecheque.uk/api/submit-claim" \
+curl -X POST "https://car.financecheque.uk/api/submit-claim" \
   -F "title=Mr" \
   -F "first_name=John" \
   -F "last_name=Doe" \
@@ -113,27 +144,27 @@ cat > /tmp/payload.json << EOF
 EOF
 
 # Submit as JSON
-curl -X POST "https://vehicle.financecheque.uk/api/submit-claim" \
+curl -X POST "https://car.financecheque.uk/api/submit-claim" \
   -H "Content-Type: application/json" \
   -H "API-KEY: 8714de54-a64d-441b-8ef9-4a64318380b0" \
   -d @/tmp/payload.json
 ```
 
-**Important:** Method C tests the R2R API directly but may bypass issues in the worker. Always verify with Method A (browser) as the source of truth.
+**Important:** Method C tests the R2R API directly but may bypass issues in the Functions handler. Always verify with Method A (browser) as the source of truth.
 
 ## Code Change Protocol
 
 ### Before Making Changes
 
-1. Read current `_worker.js` code
+1. Read current `functions/api/submit-claim.ts` code
 2. Check real-time logs for error details
 3. Identify root cause in DETAILED_CHANGELOG.md
 4. Plan fix based on error type
 
 ### After Making Changes
 
-1. Update `_worker.js` in `/home/unclehowell/datro/static/pcp2/`
-2. Update `dist/_worker.js` (build output)
+1. Update `functions/api/submit-claim.ts`
+2. Run `npm run build` to copy to `dist/`
 3. Commit with descriptive message
 4. Push to GitHub
 5. Wait 60 seconds minimum
@@ -170,15 +201,17 @@ Each issue must include:
 
 | Property | Value |
 |----------|-------|
-| Project Name | carfinance-new |
-| Domain | vehicle.financecheque.uk |
-| Worker Mode | Advanced (_worker.js) |
-| Deployment | GitHub gh-pages branch |
+| Project Name | carfinancecheque |
+| Domain | car.financecheque.uk |
+| Preview URL | carfinancecheque.pages.dev |
+| Mode | Cloudflare Pages Functions |
+| Build Output | `dist/` |
+| Config File | `cloudflare-pages.toml` |
 
 ### Real-time Log Command
 
 ```bash
-npx wrangler tail --format json --project-name carfinance-new
+npx wrangler pages project tail carfinancecheque
 ```
 
 ### Pages Project Commands
@@ -188,16 +221,11 @@ npx wrangler tail --format json --project-name carfinance-new
 npx wrangler pages project list
 
 # List deployments
-npx wrangler pages deployment list --project-name carfinance-new
+npx wrangler pages deployment list --project-name carfinancecheque
+
+# Deploy locally (for testing before push)
+npx wrangler pages deploy dist --project-name carfinancecheque
 ```
-
-## A/B Testing Note
-
-Both subdomains can be tested in parallel:
-- **vehicle.financecheque.uk** → carfinance-new.pages.dev
-- **car.financecheque.uk** → carfinancecheque.pages.dev
-
-Document results from both in DETAILED_CHANGELOG.md for comparison.
 
 ## Success Criteria
 
@@ -215,7 +243,7 @@ Until ALL four criteria are met, the flywheel continues.
 
 ```bash
 # Start log tail
-npx wrangler tail --format json --project-name carfinance-new
+npx wrangler pages project tail carfinancecheque
 
 # Build and deploy (local)
 npm run build
@@ -229,9 +257,11 @@ git add . && git commit -m "pcp2: FLYWHEEL #N - description" && git push
 
 ## Related Files
 
-- `/home/unclehowell/datro/static/pcp2/_worker.js` - Worker code
+- `/home/unclehowell/datro/static/pcp2/functions/api/submit-claim.ts` - API handler
 - `/home/unclehowell/datro/static/pcp2/src/components/ClaimForm.tsx` - Frontend form
 - `/home/unclehowell/datro/static/pcp2/notes/example.png` - Test signature image
 - `/home/unclehowell/datro/static/pcp2/notes/example.json` - Example payload
 - `/home/unclehowell/datro/static/pcp2/CHANGELOG.md` - Main changelog
 - `/home/unclehowell/datro/static/pcp2/DETAILED_CHANGELOG.md` - Detailed technical log
+- `/home/unclehowell/datro/static/pcp2/cloudflare-pages.toml` - Pages configuration
+- `/home/unclehowell/datro/static/pcp2/wrangler.toml` - Wrangler configuration
