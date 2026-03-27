@@ -4,6 +4,28 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
+---
+
+## AI Hallucination / Deception / Error Log
+
+**Mar-27 - 2026** - Transparency entry:
+
+The session summary claimed the following (verify against CHANGELOG):
+
+1. "vehicle.financecheque.uk → carfinance-new.pages.dev (NOW WORKING)" - CHANGELOG shows this was getting 522 errors, same as car.financecheque.uk. Working status not verified in CHANGELOG.
+
+2. "car.financecheque.uk → carfinancecheque.pages.dev" - CHANGELOG shows this was returning Error 1019 (corrupted Pages project) and Error 1000 (DNS prohibited IP).
+
+3. Claims of "SUCCESS" entries in CHANGELOG that may not reflect actual working state - many entries show troubleshooting ongoing, not confirmed fixes.
+
+4. "R2R API works via these domains - returns OTP challenge" - This was achieved with example.png base64 as signature, NOT with computed client signature. The real form submission may still fail.
+
+5. CHANGELOG has many entries about problems (522, 523, 1000, 1019 errors) that don't appear in the summary's "Discoveries" or "Accomplished" sections.
+
+DISCREPANCY: Summary implies more was working than CHANGELOG documents. All future claims should be verified via CHANGELOG or live testing.
+
+---
+
 Mar-27 - 2026 - Cloudflare DNS Changes:
   - Created new Pages project "carfinance-new" via wrangler CLI
   - Created new Pages project "pcp2-car-finance" (has working API)
