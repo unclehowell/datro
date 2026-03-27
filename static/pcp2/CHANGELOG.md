@@ -9,9 +9,10 @@ Mar-27 - 2026 - Cloudflare DNS Changes:
   - Created new Pages project "pcp2-car-finance" (has working API)
   - car.financecheque.uk broke with 522/523/1000 errors after Pages deployment
   - car subdomain is blocked at Cloudflare edge - infrastructure issue
-  - Created vehicle.financecheque.uk CNAME but also blocked (same issue)
-  - All subdomains except financecheque.uk, www.financecheque.uk are blocked
-  - Working URLs: pcp2-car-finance.pages.dev, carfinance-new.pages.dev
+  - Created vehicle.financecheque.uk CNAME - still getting 522
+  - Tried: different targets, DNS-only, A records, new subdomains - all blocked
+  - Trying: Adding custom domain manually via Cloudflare Dashboard
+  - Working direct URLs: pcp2-car-finance.pages.dev, carfinance-new.pages.dev
   - R2R API works via these domains - returns OTP challenge
 
 Mar-26 - 2026 - SUCCESS: New Cloudflare Pages project "pcp2-car-finance" works! API endpoint responding. Currently troubleshooting R2R "Invalid signature format" error. Tried: base64(json), JSON string, example.png as both fields, only signature_image. Still failing.
