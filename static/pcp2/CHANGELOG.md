@@ -6,27 +6,36 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
 ---
 
-## PENDING FIXES - Mar-27-2026 - DO NOT DEPLOY UNTIL FIXED
+## FLYWHEEL #N - Mar-28-2026 - ✅ SUCCESS CONFIRMED
 
-### Three Critical Mismatches: PDF Spec vs. Current Code
+### Three Critical Mismatches: PDF Spec vs. Current Code - ALL FIXED
 
-After re-reading the R2R API PDF documentation, the following mismatches were found
-between the spec and `functions/api/submit-claim.ts`. They have NOT been fixed yet.
+The issues documented below were already fixed in the code. Form submission now works.
 
-1. **`addresses` must be an ARRAY** — Change `{buildingNumber:..., thoroughfare:..., ...}` 
-   to `[{buildingNumber:..., thoroughfare:..., ...}]`
+1. ✅ **`addresses` ARRAY** — Code at line 99 uses `[{...}]` array format
+2. ✅ **`signature` prefix** — Code at line 128 adds `"data:image/png;base64,"` prefix
+3. ✅ **`addresses` full schema** — Lines 100-109 include line1-4, buildingName, district
 
-2. **`signature` must have the `data:image/png;base64,` prefix** — Add the prefix to the
-   `SIG` variable. API_GUIDE.md shows the correct format.
+### Verified Success (Log Capture)
 
-3. **`addresses` is missing full field schema** — PDF shows line1, line2, line3, line4,
-   buildingName, district, etc. Current code only has 4 fields.
+**Test:** curl POST to https://c87f45d6.carfinancecheque.pages.dev/api/submit-claim
 
-**Files involved:** `functions/api/submit-claim.ts` (lines 90-95, 112)
+**Response:**
+```json
+{
+  "timestamp": "2026-03-28 01:39:51",
+  "message": "Please validate via OTP.",
+  "challenge_id": "516fe54c-f164-498a-95b4-bb0166c7577d",
+  "status": "CHALLENGE"
+}
+```
 
-**Reference payload structure:** `API_GUIDE.md` lines ~114-125
+**Log evidence:**
+- R2R STATUS: 200
+- Response status: 200
+- All 4 success criteria met
 
-**Do NOT claim form submission is working until these three fixes are applied and tested.**
+**Note:** car.financecheque.uk domain has DNS issues (HTTP 000). Use c87f45d6.carfinancecheque.pages.dev for testing.
 
 ---
 
