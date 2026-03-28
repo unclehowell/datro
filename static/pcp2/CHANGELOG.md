@@ -40,9 +40,11 @@ The SignatureCanvas canvas element was missing explicit width/height props. With
    - Added explicit canvas dimensions: `width: 600, height: 192`
    - Added validation check: alert if signature length < 50
    - Added debug logging for signature capture
+   - Changed from `toDataURL()` to `getTrimmedCanvas().toDataURL()` for better reliability
 
 ### Commits
 
+- `47878ce21` - FLYWHEEL #2: Use getTrimmedCanvas() instead of toDataURL()
 - `3dd81d7f` - FLYWHEEL #2: Fix SignatureCanvas canvas dimensions
 - `0b2bd58b` - docs: Add NEVER SKIP COMMIT rule to agent.md
 - `f8361b000` - FLYWHEEL #2: Add signature capture debug logging
@@ -50,11 +52,15 @@ The SignatureCanvas canvas element was missing explicit width/height props. With
 ### Testing Status
 
 - [x] API works via curl with proper signature (OTP challenge returned)
+- [x] Monitor worker deployed (tests every 5 minutes)
 - [ ] Browser signature capture - Awaiting user test
 
-### New JS Bundle
+### Deployed URLs
 
-`index-CwewRUJv.js` (deployed to vehicle.financecheque.uk)
+- **Frontend:** https://vehicle.financecheque.uk/claim
+- **Monitor:** https://pcp2-monitor.righteous.workers.dev
+- **Monitor Status:** https://pcp2-monitor.righteous.workers.dev/status
+- **Monitor Test:** https://pcp2-monitor.righteous.workers.dev/test
 
 ---
 
