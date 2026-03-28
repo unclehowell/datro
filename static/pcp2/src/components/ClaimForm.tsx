@@ -104,12 +104,38 @@ export const ClaimForm: React.FC = () => {
         return;
       }
     }
+    // CRITICAL: Capture signature BEFORE leaving step 2 (canvas gets unmounted!)
+    if (currentStep === 2) {
+      const captured = captureSignatureOnStepChange();
+      if (!captured) {
+        alert('Please sign before continuing');
+        return;
+      }
+    }
+    
     console.log("--- BROWSER: NEXT STEP ---", currentStep + 1);
     setCurrentStep((prev) => Math.min(prev + 1, STEPS.length - 1));
   };
   const prevStep = () => {
     console.log("--- BROWSER: PREV STEP ---", currentStep - 1);
     setCurrentStep((prev) => Math.max(prev - 1, 0));
+  };
+
+  // FLYWHEEL #5: Capture signature when leaving step 2 BEFORE canvas unmounts
+  const captureSignatureOnStepChange = () => {
+    if (signatureRef.current && !signatureRef.current.isEmpty()) {
+      try {
+        const sigData = signatureRef.current.toDataURL('image/png');
+        if (sigData && sigData.length > 50) {
+          console.log("--- BROWSER: Captured signature on step change, length:", sigData.length);
+          setSignatureImage(sigData);
+          return true;
+        }
+      } catch (e) {
+        console.error("--- BROWSER: Failed to capture signature:", e);
+      }
+    }
+    return false;
   };
 
   const clearSignature = () => {
@@ -124,78 +150,73 @@ export const ClaimForm: React.FC = () => {
       return;
     }
 
-    if (signatureRef.current?.isEmpty()) {
-      alert('Please sign before submitting');
-      return;
-    }
-
-    // FLYWHEEL #4: Robust signature capture with canvas initialization
-    // Key insight: canvas may need explicit dimensions or onLoad handling
-    let sigData = '';
+    // FLYWHEEL #5: Use pre-captured signature if available
+    // This is critical because canvas gets unmounted when leaving step 2
+    let sigData = signatureImage;
+    console.log("--- BROWSER: Stored signature length:", sigData.length);
     
-    try {
-      const sigCanvas = signatureRef.current;
-      if (!sigCanvas || sigCanvas.isEmpty()) {
-        console.log("--- BROWSER: No signature strokes detected");
-      } else {
-        console.log("--- BROWSER: Signature strokes detected, attempting capture");
-        
-        // Force canvas to have proper dimensions - some browsers need this
-        const canvasEl = sigCanvas.getCanvas();
-        if (canvasEl) {
-          // Ensure canvas has proper dimensions
-          if (!canvasEl.width || canvasEl.width === 0) {
-            canvasEl.width = 600;
-          }
-          if (!canvasEl.height || canvasEl.height === 0) {
-            canvasEl.height = 192;
-          }
-          console.log("--- BROWSER: Canvas dimensions:", canvasEl.width, "x", canvasEl.height);
-        }
-        
-        // Method 1: Direct toDataURL with explicit dimensions
-        let dataUrl = '';
-        try {
-          dataUrl = sigCanvas.toDataURL('image/png');
-        } catch (e) {
-          console.log("--- BROWSER: toDataURL() failed:", e);
-        }
-        
-        // Method 2: Try getTrimmedCanvas
-        if (!dataUrl || dataUrl.length < 50) {
-          try {
-            const trimmed = sigCanvas.getTrimmedCanvas();
-            if (trimmed && trimmed.width > 0 && trimmed.height > 0) {
-              dataUrl = trimmed.toDataURL('image/png');
-              console.log("--- BROWSER: getTrimmedCanvas worked, length:", dataUrl.length);
-            }
-          } catch (e) {
-            console.log("--- BROWSER: getTrimmedCanvas() failed:", e);
-          }
-        }
-        
-        // Method 3: Force redraw and try again (sometimes needed for lazy-loaded canvases)
-        if (!dataUrl || dataUrl.length < 50) {
-          console.log("--- BROWSER: Retrying after forcing canvas update...");
-          // Re-check isEmpty after potential redraw
-          if (!sigCanvas.isEmpty()) {
-            dataUrl = sigCanvas.toDataURL('image/png');
-            console.log("--- BROWSER: Retry toDataURL() length:", dataUrl.length);
-          }
-        }
-        
-        // Use the data URL if valid
-        if (dataUrl && dataUrl.length > 50 && dataUrl.startsWith('data:image')) {
-          sigData = dataUrl;
-          console.log("--- BROWSER: SUCCESS - signature captured, length:", sigData.length);
-        } else {
-          console.log("--- BROWSER: All methods failed - empty or invalid dataURL");
-          console.log("--- BROWSER: dataUrl value:", dataUrl ? dataUrl.substring(0, 50) : "empty");
-        }
+    // Fallback: try to capture if no stored signature
+    if (!sigData || sigData.length < 50) {
+      if (signatureRef.current?.isEmpty()) {
+        alert('Please sign before submitting');
+        return;
       }
-    } catch (err) {
-      console.error("--- BROWSER: Signature capture exception:", err);
-    }
+      // FLYWHEEL #4: Robust signature capture with canvas initialization
+      // Key insight: canvas may need explicit dimensions or onLoad handling
+      try {
+        const sigCanvas = signatureRef.current;
+        if (!sigCanvas || sigCanvas.isEmpty()) {
+          console.log("--- BROWSER: No signature strokes detected");
+        } else {
+          console.log("--- BROWSER: Signature strokes detected, attempting capture");
+          
+          // Force canvas to have proper dimensions - some browsers need this
+          const canvasEl = sigCanvas.getCanvas();
+          if (canvasEl) {
+            // Ensure canvas has proper dimensions
+            if (!canvasEl.width || canvasEl.width === 0) {
+              canvasEl.width = 600;
+            }
+            if (!canvasEl.height || canvasEl.height === 0) {
+              canvasEl.height = 192;
+            }
+            console.log("--- BROWSER: Canvas dimensions:", canvasEl.width, "x", canvasEl.height);
+          }
+          
+          // Method 1: Direct toDataURL with explicit dimensions
+          let dataUrl = '';
+          try {
+            dataUrl = sigCanvas.toDataURL('image/png');
+          } catch (e) {
+            console.log("--- BROWSER: toDataURL() failed:", e);
+          }
+          
+          // Method 2: Try getTrimmedCanvas
+          if (!dataUrl || dataUrl.length < 50) {
+            try {
+              const trimmed = sigCanvas.getTrimmedCanvas();
+              if (trimmed && trimmed.width > 0 && trimmed.height > 0) {
+                dataUrl = trimmed.toDataURL('image/png');
+                console.log("--- BROWSER: getTrimmedCanvas worked, length:", dataUrl.length);
+              }
+            } catch (e) {
+              console.log("--- BROWSER: getTrimmedCanvas() failed:", e);
+            }
+          }
+          
+          // Use the data URL if valid
+          if (dataUrl && dataUrl.length > 50 && dataUrl.startsWith('data:image')) {
+            sigData = dataUrl;
+            console.log("--- BROWSER: SUCCESS - signature captured, length:", sigData.length);
+          } else {
+            console.log("--- BROWSER: All methods failed - empty or invalid dataURL");
+            console.log("--- BROWSER: dataUrl value:", dataUrl ? dataUrl.substring(0, 50) : "empty");
+          }
+        }
+      } catch (err) {
+        console.error("--- BROWSER: Signature capture exception:", err);
+      }
+    } // end of fallback if block
 
     setSignatureImage(sigData);
     
