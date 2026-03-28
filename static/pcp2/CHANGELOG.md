@@ -6,6 +6,41 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
 ---
 
+## FORENSIC ANALYSIS - Mar-28-2026 - THE TRUTH REVEALED
+
+### The R2R API Always Worked
+
+After analyzing commit history, the truth is clear:
+
+| Date | Time | What Happened | Result |
+|------|------|--------------|--------|
+| Mar 26 | 20:12 | `_worker.js` with `data:image/png;base64,` prefix | ✅ API WORKING |
+| Mar 27 | - | Migration to `functions/api/submit-claim.ts` | ❌ BROKE IT |
+| Mar 27-28 | - | 6 flywheel iterations to re-discover fix | ✅ NOW WORKING |
+
+### What Actually Happened
+
+1. **March 26, 20:12** - Commit `2b3f0121b` added signature prefix fix to `_worker.js`
+   - Result: API returned "Please validate via OTP." ✅
+
+2. **March 27** - Project migrated from `_worker.js` (Workers mode) to `functions/api/submit-claim.ts` (Functions mode)
+   - **The signature prefix fix was NOT carried over**
+   - Result: API returned "Invalid signature format" ❌
+
+3. **March 27-28** - 6 flywheel iterations to re-implement what was already done
+
+### The Real Lesson
+
+**When migrating architectures, copy ALL code from the old implementation.**
+
+### Reference
+
+- Original working commit: `2b3f0121b` (Mar 26, 20:12)
+- Migration that broke it: `8bc6eee98` (Mar 27)
+- Re-implemented fix: `00702d3c1` (Mar 27)
+
+---
+
 ## FLYWHEEL #6 - Mar-28-2026 - ✅ VERIFIED: API End-to-End Test
 
 ### Test Performed

@@ -243,3 +243,119 @@ curl -X POST "http://localhost:3000/api/submit-claim" \
 - Session IDs should be unique per submission
 - Client IP should be the actual visitor IP (not server IP)
 - Phone numbers are formatted to include +44 prefix
+
+---
+
+# APPENDIX: Pre/Post-Fix Documentation
+
+## FORENSIC ANALYSIS: Why It Took Days (Mar 26-28, 2026)
+
+### The Truth
+
+**The R2R API always worked.** The delay was caused by implementation bugs during architecture migration.
+
+### Timeline
+
+| Date | Time | Event | Result |
+|------|------|-------|--------|
+| Mar 26 | 20:12 | `_worker.js` with `data:image/png;base64,` prefix | ✅ API WORKING |
+| Mar 27 | - | Migration to `functions/api/submit-claim.ts` | ❌ BROKE IT |
+| Mar 27-28 | - | 6 flywheel iterations to re-discover fix | ✅ NOW WORKING |
+
+### Pre-Fix (Broken Implementation)
+
+```javascript
+// WRONG: Missing data:image prefix
+const signature = base64Data;  // Would fail with "Invalid signature format"
+
+// WRONG: addresses as object instead of array
+const addresses = { buildingNumber: "...", thoroughfare: "..." };  // Would fail
+
+// WRONG: addresses as object in array
+const addresses = [{ buildingNumber: "...", thoroughfare: "..." }];  // Still broken if array wrapping wrong
+```
+
+### Post-Fix (Working Implementation)
+
+```javascript
+// CORRECT: Signature WITH data:image prefix
+const signatureWithPrefix = "data:image/png;base64," + base64Data;
+
+// CORRECT: addresses as array of objects
+const addresses = [{
+  line1: null,
+  line2: null,
+  line3: null,
+  line4: null,
+  buildingName: null,
+  buildingNumber: buildingNumber || null,
+  thoroughfare: thoroughfare || null,
+  townOrCity: townOrCity || null,
+  district: null,
+  postcode: formattedPostcode || null,
+}];
+```
+
+### Root Cause
+
+On March 27, the project migrated from `_worker.js` (Cloudflare Workers "Advanced Mode") to `functions/api/submit-claim.ts` (Cloudflare Pages "Functions Mode").
+
+The signature prefix fix that was working in `_worker.js` was **NOT carried over** to the new Functions file.
+
+### PDF Documentation Analysis
+
+| Requirement | PDF Clearly Shows | Implementation Bug |
+|------------|-------------------|-------------------|
+| `addresses` as array `[]` | ✅ Yes | ❌ Was object |
+| `signature` format | ⚠️ Ambiguous | ❌ Missing prefix |
+| `date_of_birth` format | ⚠️ Ambiguous (DD-MM-YYYY) | ✅ Used ISO (worked anyway) |
+
+The PDF was correct about `addresses` format. The signature format was shown as `"[base64 encoded image data]"` which was ambiguous.
+
+### Key Lesson
+
+**When migrating architectures, copy ALL code from the old implementation, not just the "important" parts.**
+
+### Reference Commits
+
+| Commit | Description |
+|--------|-------------|
+| `2b3f0121b` | First working signature prefix fix (Mar 26) |
+| `8bc6eee98` | Migrated to Functions mode, forgot prefix |
+| `00702d3c1` | FLYWHEEL #1 - Re-discovered fix |
+
+---
+
+# TESTED WORKING: Complete Form Submission Test
+
+## curl Test (Verified Working)
+
+```bash
+SIG=$(base64 -w0 notes/example.png)
+
+curl -X POST "https://car.financecheque.uk/api/submit-claim" \
+  --form-string "title=Mr" \
+  --form-string "first_name=John" \
+  --form-string "last_name=Doe" \
+  --form-string "date_of_birth=1985-06-20" \
+  --form-string "phone=07503456789" \
+  --form-string "email=john.doe@example.com" \
+  --form-string "buildingNumber=12" \
+  --form-string "thoroughfare=High Street" \
+  --form-string "townOrCity=London" \
+  --form-string "postcode=EC1A1AA" \
+  --form-string "signature_image=data:image/png;base64,$SIG"
+```
+
+### Expected Response
+
+```json
+{
+  "timestamp": "2026-03-28 07:50:05",
+  "message": "Please validate via OTP.",
+  "challenge_id": "3fac68d4-b98a-4349-b5b0-c499628e605c",
+  "status": "CHALLENGE"
+}
+```
+
+**"Please validate via OTP." is SUCCESS** - the form was accepted and requires OTP verification.

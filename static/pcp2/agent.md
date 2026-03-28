@@ -32,6 +32,56 @@ Before claiming success, verify:
 
 ---
 
+## ⚠️ CRITICAL: ARCHITECTURE MIGRATION CHECKLIST ⚠️
+
+### The Golden Rule
+
+**When migrating between architectures (Workers ↔ Functions ↔ Pages), copy ALL code from the old implementation.**
+
+### What Happened (Mar 26-28, 2026)
+
+1. `_worker.js` (Workers mode) had working signature prefix fix
+2. Migrated to `functions/api/submit-claim.ts` (Functions mode)
+3. **Forgot to copy the signature prefix fix**
+4. 6 flywheel iterations to re-discover what was already done
+
+### Migration Checklist
+
+**Before migrating:**
+- [ ] Read the ENTIRE old implementation
+- [ ] Note ALL working code patterns
+- [ ] Check API_GUIDE.md for required formats
+
+**When migrating:**
+- [ ] Copy signature handling code COMPLETELY
+- [ ] Copy addresses formatting code COMPLETELY  
+- [ ] Copy ALL helper functions
+- [ ] Copy ALL field validations
+
+**After migrating:**
+- [ ] Test with same payload that worked before
+- [ ] Verify OTP challenge returned
+- [ ] Commit BEFORE making any new changes
+
+### Required Patterns (TESTED & WORKING)
+
+```javascript
+// Signature - MUST include prefix
+const signature = "data:image/png;base64," + base64Data;
+
+// Addresses - MUST be array of objects
+const addresses = [{
+  line1: null,
+  line2: null,
+  buildingNumber: value || null,
+  thoroughfare: value || null,
+  townOrCity: value || null,
+  postcode: formattedPostcode || null,
+}];
+```
+
+---
+
 ## ⚠️ CRITICAL: NEVER SKIP THE COMMIT STEP ⚠️
 
 ### The Golden Rule
