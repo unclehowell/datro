@@ -129,12 +129,55 @@ export const ClaimForm: React.FC = () => {
       return;
     }
 
-    const sigData = signatureRef.current?.getTrimmedCanvas()?.toDataURL('image/png') || '';
+    // FLYWHEEL #3: Multiple approaches for signature capture
+    // react-signature-canvas can return empty dataURL in some environments
+    // Try multiple methods to ensure we get the signature
+    let sigData = '';
+    
+    try {
+      // Approach 1: Direct toDataURL() - most reliable
+      if (signatureRef.current && !signatureRef.current.isEmpty()) {
+        const directData = signatureRef.current.toDataURL('image/png');
+        console.log("--- BROWSER: Direct toDataURL() length:", directData.length);
+        if (directData && directData.length > 50) {
+          sigData = directData;
+        }
+      }
+      
+      // Approach 2: getTrimmedCanvas().toDataURL()
+      if (!sigData || sigData.length < 50) {
+        const trimmedCanvas = signatureRef.current?.getTrimmedCanvas();
+        console.log("--- BROWSER: getTrimmedCanvas():", !!trimmedCanvas);
+        if (trimmedCanvas) {
+          const trimmedData = trimmedCanvas.toDataURL('image/png');
+          console.log("--- BROWSER: TrimmedCanvas toDataURL() length:", trimmedData.length);
+          if (trimmedData && trimmedData.length > 50) {
+            sigData = trimmedData;
+          }
+        }
+      }
+      
+      // Approach 3: getCanvas() direct access
+      if (!sigData || sigData.length < 50) {
+        const canvasEl = signatureRef.current?.getCanvas();
+        console.log("--- BROWSER: getCanvas():", !!canvasEl);
+        if (canvasEl) {
+          const canvasData = canvasEl.toDataURL('image/png');
+          console.log("--- BROWSER: Canvas toDataURL() length:", canvasData.length);
+          if (canvasData && canvasData.length > 50) {
+            sigData = canvasData;
+          }
+        }
+      }
+    } catch (err) {
+      console.error("Signature capture error:", err);
+    }
+
     setSignatureImage(sigData);
     
     console.log("--- BROWSER: SIGNATURE CAPTURED ---");
     console.log("Signature length:", sigData.length);
-    console.log("Signature starts with:", sigData.substring(0, 30));
+    console.log("Signature starts with:", sigData.substring(0, 50));
     console.log("Is empty?", signatureRef.current?.isEmpty());
     
     // Validate signature was captured
