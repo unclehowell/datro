@@ -12,6 +12,77 @@
 
 The user has explicitly stated: "never lie to me again" and "be sure you have it working before telling me."
 
+### How To Tail Real-Time Logs
+
+```bash
+# For carfinance-new project (vehicle.financecheque.uk)
+npx wrangler pages deployment tail c3c75590 --project-name=carfinance-new
+
+# OR for the latest deployment
+npx wrangler pages deployment tail --project-name=carfinance-new --deployment-id=LATEST
+```
+
+### Log Verification Checklist
+
+Before claiming success, verify:
+- [ ] `R2R STATUS: 200` in logs
+- [ ] `R2R BODY` contains `challenge_id`
+- [ ] Response is `Please validate via OTP.`
+- [ ] Browser redirected to thank-you page
+
+---
+
+## ⚠️ CRITICAL: NEVER SKIP THE COMMIT STEP ⚠️
+
+### The Golden Rule
+
+**EVERY code change MUST follow this sequence:**
+
+1. Write/Edit code
+2. **COMMIT** with descriptive message
+3. Push to GitHub (or use `wrangler pages deploy`)
+4. Wait 60+ seconds for deployment
+5. Test
+6. If success → report to user
+7. If failure → document in CHANGELOG, then start new cycle
+
+### Why This Matters
+
+- Without commits, there's no version history
+- Without version history, we can't roll back broken changes
+- Without rollbacks, debugging becomes impossible
+- The user CANNOT see what changed without a commit
+
+### What "Commit and Push" Means
+
+```bash
+# 1. Add files
+git add -A
+
+# 2. Commit with descriptive message
+git commit -m "FLYWHEEL #N: Brief description of change"
+
+# 3. Push to trigger Cloudflare deployment
+git push
+
+# 4. Wait 60+ seconds for deployment
+```
+
+### What NOT To Do
+
+- ❌ Deploy with wrangler WITHOUT committing first
+- ❌ Skip commit "because it's a small change"
+- ❌ Test before waiting for deployment
+- ❌ Claim success without log verification
+
+### The Test Loop (Correct)
+
+```
+Code Change → Commit → Push → WAIT 60s → Deploy & Test → Log Tail → Document
+                    ↑                                              ↓
+                    └──────── Loop if failure ────────────────────┘
+```
+
 ---
 
 ## ⚠️ CRITICAL: Code Was Corrupted - FIXED
