@@ -6,29 +6,44 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
 ---
 
-## FLYWHEEL #N - Mar-28-2026 - ✅ SUCCESS CONFIRMED
+## FLYWHEEL #1 - Mar-28-2026 - ✅ SUCCESS CONFIRMED (FormData)
 
-### Three Critical Mismatches: PDF Spec vs. Current Code - ALL FIXED
+### Issues Fixed
 
-The issues documented below were already fixed in the code. Form submission now works.
+1. ✅ **FormData File handling** — SignatureCanvas File objects now properly read as text
+2. ✅ **SIG variable corrupted** — Previous code had corrupted SIG variable (non-base64 text)
+3. ✅ **signature_image extraction** — Properly extracts PNG data URL from FormData File objects
 
-1. ✅ **`addresses` ARRAY** — Code at line 99 uses `[{...}]` array format
-2. ✅ **`signature` prefix** — Code at line 128 adds `"data:image/png;base64,"` prefix
-3. ✅ **`addresses` full schema** — Lines 100-109 include line1-4, buildingName, district
+### Root Cause
+
+- The original `submit-claim.ts` had a corrupted `SIG` variable that was NOT valid base64
+- FormData sends File objects which were not being properly converted to text
+- The backend was using a hardcoded (corrupted) example signature instead of browser's signature
 
 ### Verified Success (Log Capture)
 
-**Test:** curl POST to https://c87f45d6.carfinancecheque.pages.dev/api/submit-claim
+**Test:** FormData POST to https://00f0c7aa.pcp2-test.pages.dev/api/submit-claim
 
 **Response:**
 ```json
 {
-  "timestamp": "2026-03-28 01:39:51",
+  "timestamp": "2026-03-28 02:20:37",
   "message": "Please validate via OTP.",
-  "challenge_id": "516fe54c-f164-498a-95b4-bb0166c7577d",
+  "challenge_id": "aeee60e4-750b-45b9-80b9-5735fa3e5ed5",
   "status": "CHALLENGE"
 }
 ```
+
+**Log Evidence:**
+- R2R STATUS: 200
+- Response status: 200
+- All 4 success criteria met
+
+### Note on car.financecheque.uk
+
+The custom domain has DNS issues (HTTP 000). Working URLs:
+- https://00f0c7aa.pcp2-test.pages.dev
+- https://bcadbbd1.carfinancecheque.pages.dev (older deployment)
 
 **Log evidence:**
 - R2R STATUS: 200
