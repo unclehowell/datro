@@ -6,6 +6,42 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
 ---
 
+## ROOT CAUSE: car.financecheque.uk DNS Configuration Issue
+
+### The Problem (Explains Multiple Failures)
+
+During the debugging process, multiple issues occurred due to DNS configuration confusion:
+
+1. **car.financecheque.uk was "stuck"** - Already associated with `carfinancecheque` project but CNAME was not set properly, leaving it in "pending" status
+
+2. **Wrong project was being used** - We were trying to add DNS to `carfinancecheque.pages.dev` which was already bound to the domain, but couldn't deploy properly
+
+3. **Confusion between projects:**
+   - `carfinancecheque` - Original project (has GitHub integration, but functions weren't deploying)
+   - `carfinance-uk` - New project created to host the form
+   - `carfinance-new` - Used for vehicle.financecheque.uk
+   - `pcp2-test` - Test project
+
+### Solution Applied
+
+1. Removed car.financecheque.uk from carfinancecheque project bindings
+2. Created new `carfinance-uk` Pages project
+3. Added CNAME record in Cloudflare DNS: `car.financecheque.uk` → `carfinance-uk.pages.dev`
+4. Deployments now work correctly to car.financecheque.uk
+
+### Projects to Clean Up
+
+- `carfinancecheque.pages.dev` - Should be deleted after removing car.financecheque.uk binding
+- The old `carfinancecheque` project can be deleted or repurposed
+
+### Key Lesson
+
+Cloudflare Pages custom domains require BOTH:
+1. DNS CNAME record pointing to the *.pages.dev URL
+2. The Pages project must have the custom domain configured
+
+If either is missing or misconfigured, the domain won't work.
+
 ---
 
 ## FLYWHEEL #5 - Mar-28-2026 - CRITICAL: Canvas Unmount Fix
