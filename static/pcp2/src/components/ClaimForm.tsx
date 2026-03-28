@@ -136,6 +136,12 @@ export const ClaimForm: React.FC = () => {
     console.log("Signature length:", sigData.length);
     console.log("Signature starts with:", sigData.substring(0, 30));
     console.log("Is empty?", signatureRef.current?.isEmpty());
+    
+    // Validate signature was captured
+    if (!sigData || sigData.length < 50) {
+      alert('Signature capture failed. Please try again or refresh the page.');
+      return;
+    }
 
     console.log("--- BROWSER: SUBMITTING FORM ---", formData);
     setIsSubmitting(true);
@@ -435,7 +441,9 @@ export const ClaimForm: React.FC = () => {
                     ref={signatureRef}
                     penColor="#000000"
                     canvasProps={{
-                      className: 'w-full h-48 bg-white'
+                      className: 'w-full h-48 bg-white',
+                      width: 600,
+                      height: 192
                     }}
                     backgroundColor="white"
                   />
