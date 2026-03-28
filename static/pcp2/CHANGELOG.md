@@ -6,6 +6,51 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
 ---
 
+---
+
+## FLYWHEEL #5 - Mar-28-2026 - CRITICAL: Canvas Unmount Fix
+
+### Issue
+
+Browser form submission still fails with "Signature capture failed" - `signature_image` is sent as EMPTY (length 0).
+
+### Root Cause Analysis
+
+**KEY INSIGHT**: The SignatureCanvas component is only rendered when `currentStep === 2` (signature step). When user clicks "Next" to go to step 3 (review), the canvas gets **unmounted** from the DOM by React's AnimatePresence. 
+
+By the time user clicks "Submit" at step 3, the canvas element no longer exists in the DOM, so:
+- `signatureRef.current.isEmpty()` returns true (or false if strokes still in memory)
+- `signatureRef.current.toDataURL()` returns empty string
+- `getTrimmedCanvas()` returns null
+
+This explains why ALL capture methods were returning empty - the canvas was gone!
+
+### Fix Applied
+
+1. **Added `captureSignatureOnStepChange()` function** - Captures signature as dataURL when user clicks 'Next' from step 2 (while canvas is still mounted)
+
+2. **Modified `nextStep()` function** - Calls capture function BEFORE leaving step 2
+
+3. **Modified `handleSubmit()` function** - Uses pre-captured signature from state first, falls back to direct capture if needed
+
+### Files Changed
+
+- `src/components/ClaimForm.tsx`:
+  - Added `captureSignatureOnStepChange()` function
+  - Modified `nextStep()` to capture signature before step change
+  - Modified `handleSubmit()` to use stored signature
+
+### Testing
+
+- [x] API test via curl returns OTP challenge
+- [ ] Browser test - Awaiting user verification at https://vehicle.financecheque.uk/claim
+
+### Key Insight
+
+The form flow is: Personal -> Address -> Signature (step 2) -> Review (step 3) -> Submit
+
+The SignatureCanvas is conditionally rendered only at step 2. When navigating to step 3, it gets unmounted. Now we capture the signature during the step 2 -> step 3 transition.
+
 ## FLYWHEEL #2 - Mar-28-2026 - Browser Signature Capture Issue
 
 ### Issue
