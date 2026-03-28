@@ -129,7 +129,7 @@ export const ClaimForm: React.FC = () => {
       return;
     }
 
-    const sigData = signatureRef.current?.toDataURL('image/png') || '';
+    const sigData = signatureRef.current?.getTrimmedCanvas()?.toDataURL('image/png') || '';
     setSignatureImage(sigData);
     
     console.log("--- BROWSER: SIGNATURE CAPTURED ---");
