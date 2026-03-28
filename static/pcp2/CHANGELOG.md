@@ -25,6 +25,10 @@ Browser form submission fails with "Validation failed" - signature field empty.
 
 The browser's `SignatureCanvas.toDataURL()` returns empty string. The `signature_image` field is sent as empty, but `signature` contains JSON base64 (not PNG). R2R expects PNG signature.
 
+### Root Cause Analysis
+
+The SignatureCanvas canvas element was missing explicit width/height props. Without explicit dimensions, the canvas may render at 0x0 in some environments, causing `toDataURL()` to return empty string.
+
 ### Changes Made
 
 1. **Backend (`functions/api/submit-claim.ts`):**
@@ -33,21 +37,24 @@ The browser's `SignatureCanvas.toDataURL()` returns empty string. The `signature
    - Better error handling for empty/missing signatures
 
 2. **Frontend (`src/components/ClaimForm.tsx`):**
-   - Added debug logging for signature capture:
-     - `Signature length:`
-     - `Signature starts with:`
-     - `Is empty?`
+   - Added explicit canvas dimensions: `width: 600, height: 192`
+   - Added validation check: alert if signature length < 50
+   - Added debug logging for signature capture
+
+### Commits
+
+- `3dd81d7f` - FLYWHEEL #2: Fix SignatureCanvas canvas dimensions
+- `0b2bd58b` - docs: Add NEVER SKIP COMMIT rule to agent.md
+- `f8361b000` - FLYWHEEL #2: Add signature capture debug logging
 
 ### Testing Status
 
-- [x] API works via curl with proper signature
-- [ ] Browser signature capture - UNDER INVESTIGATION
+- [x] API works via curl with proper signature (OTP challenge returned)
+- [ ] Browser signature capture - Awaiting user test
 
-### Next Steps
+### New JS Bundle
 
-1. Deploy and test in browser
-2. Check browser console for `--- BROWSER: SIGNATURE CAPTURED ---` logs
-3. If signature still empty, investigate SignatureCanvas initialization
+`index-CwewRUJv.js` (deployed to vehicle.financecheque.uk)
 
 ---
 
