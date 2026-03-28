@@ -131,6 +131,11 @@ export const ClaimForm: React.FC = () => {
 
     const sigData = signatureRef.current?.toDataURL('image/png') || '';
     setSignatureImage(sigData);
+    
+    console.log("--- BROWSER: SIGNATURE CAPTURED ---");
+    console.log("Signature length:", sigData.length);
+    console.log("Signature starts with:", sigData.substring(0, 30));
+    console.log("Is empty?", signatureRef.current?.isEmpty());
 
     console.log("--- BROWSER: SUBMITTING FORM ---", formData);
     setIsSubmitting(true);

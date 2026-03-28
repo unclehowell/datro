@@ -103,11 +103,20 @@ export async function onRequestPost(context: any) {
       sigFieldStartsWith: sigField.substring(0, 50),
       sigFieldLength: sigField.length
     });
-    if (!sigImage.startsWith("data:image")) {
+    
+    // Check if signature_image is valid (starts with data:image and has actual base64 data)
+    // An empty PNG canvas returns "data:image/png;base64," (just the prefix, no data)
+    const isValidSignature = (s: string) => 
+      s.startsWith("data:image") && s.length > 50;
+    
+    if (!isValidSignature(sigImage)) {
       // Try the signature field instead
-      if (sigField.startsWith("data:image")) {
+      if (isValidSignature(sigField)) {
         sigImage = sigField;
       } else {
+        // Both signatures are empty/invalid - this shouldn't happen if user signed
+        // Log warning but continue (R2R will reject if truly empty)
+        console.warn("WARNING: No valid signature detected!");
         sigImage = "";
       }
     }

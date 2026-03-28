@@ -6,6 +6,51 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
 ---
 
+## FLYWHEEL #2 - Mar-28-2026 - Browser Signature Capture Issue
+
+### Issue
+
+Browser form submission fails with "Validation failed" - signature field empty.
+
+### Root Cause (from Cloudflare Real-Time Logs)
+
+```
+"SIGNATURE DEBUG:",
+{
+  "sigImageStartsWith": "",      <-- EMPTY
+  "sigImageLength": 0,           <-- ZERO
+  "sigFieldStartsWith": "eyJh...",  <-- JSON (not PNG)
+}
+```
+
+The browser's `SignatureCanvas.toDataURL()` returns empty string. The `signature_image` field is sent as empty, but `signature` contains JSON base64 (not PNG). R2R expects PNG signature.
+
+### Changes Made
+
+1. **Backend (`functions/api/submit-claim.ts`):**
+   - Added `isValidSignature()` helper to check for valid PNG data URL (length > 50)
+   - Improved signature validation logging
+   - Better error handling for empty/missing signatures
+
+2. **Frontend (`src/components/ClaimForm.tsx`):**
+   - Added debug logging for signature capture:
+     - `Signature length:`
+     - `Signature starts with:`
+     - `Is empty?`
+
+### Testing Status
+
+- [x] API works via curl with proper signature
+- [ ] Browser signature capture - UNDER INVESTIGATION
+
+### Next Steps
+
+1. Deploy and test in browser
+2. Check browser console for `--- BROWSER: SIGNATURE CAPTURED ---` logs
+3. If signature still empty, investigate SignatureCanvas initialization
+
+---
+
 ## FLYWHEEL #1 - Mar-28-2026 - ✅ SUCCESS CONFIRMED (FormData)
 
 ### Issues Fixed
