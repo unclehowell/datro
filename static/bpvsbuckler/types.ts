@@ -42,3 +42,11 @@ export interface TimelineEntry {
   sources: Source[];
   attachments?: Attachments;
 }
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'stripe-buy-button': any;
+    }
+  }
+}
