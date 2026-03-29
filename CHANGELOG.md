@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 3. Before commiting a change update the sitemap.xml (automated script to perform this task is in the `static/monoreapo/sitemap/` directory  
 
 ## [Unreleased]
+Mar-29 - Removed background music and volume slider from static/bpvsbuckler, replaced with Stripe and BTC donate buttons
+Mar-29 - Added stripe-revenue.json to static/bpvsbuckler and updated GitHub workflow to update both forces and bpvsbuckler
 Mar-25 - Added static/environment: Ansible playbook for complete laptop recovery - restores packages, desktop, AI tools, configs, cron jobs, and system settings
 Mar-26 - Restored static/pcp from git history for financecheque.uk (the website with iframe to ai.financecheque.uk)
 

@@ -81,8 +81,16 @@ jobs:
             \"lastUpdated\": \"$TIMESTAMP\"
           }" > static/forces/stripe-revenue.json
 
+          echo "{
+            \"totalRevenue\": $TOTAL_PENCE,
+            \"currency\": \"gbp\",
+            \"productId\": \"$PRODUCT_ID\",
+            \"lastUpdated\": \"$TIMESTAMP\"
+          }" > static/bpvsbuckler/stripe-revenue.json
+
           echo "Generated stripe-revenue.json:"
           cat static/forces/stripe-revenue.json
+          cat static/bpvsbuckler/stripe-revenue.json
 
       - name: Commit and Push Changes
         if: steps.check_secret.outputs.has_secret == 'true'
@@ -90,11 +98,12 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
           git add static/forces/stripe-revenue.json
+          git add static/bpvsbuckler/stripe-revenue.json
 
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Update Stripe revenue: £$(jq -r '.totalRevenue' static/forces/stripe-revenue.json | awk '{printf \"%.2f\", $1/100}') [automated]"
+            git commit -m "Update Stripe revenue: £$(jq -r '.totalRevenue' static/forces/stripe-revenue.json | awk '{printf "%.2f", $1/100}') [automated]"
 
             # Push to appropriate branch
             if [ "${{ github.event_name }}" = "pull_request" ]; then
@@ -102,6 +111,7 @@ jobs:
             else
               git push
             fi
+          fi
           fi
 
       - name: Handle Missing Stripe Secret (PRs from fork, etc.)
