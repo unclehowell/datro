@@ -66,18 +66,21 @@ Before claiming success, verify:
 ### Required Patterns (TESTED & WORKING)
 
 ```javascript
-// Signature - MUST include prefix
-const signature = "data:image/png;base64," + base64Data;
+// Signature - MUST be object with payload array and base64 signature (NO data: prefix)
+const signature = {
+  payload: ["first_name", "last_name", "date_of_birth", "phone", "email", "address", "postcode"],
+  signature: base64Data  // Raw base64, NO "data:image/png;base64," prefix
+};
 
-// Addresses - MUST be array of objects
-const addresses = [{
+// Address - MUST be single object (not array)
+const address = {
   line1: null,
   line2: null,
   buildingNumber: value || null,
   thoroughfare: value || null,
   townOrCity: value || null,
   postcode: formattedPostcode || null,
-}];
+};
 ```
 
 ---
@@ -135,19 +138,17 @@ Code Change → Commit → Push → WAIT 60s → Deploy & Test → Log Tail → 
 
 ---
 
-## ⚠️ CRITICAL: Code Was Corrupted - FIXED
+## ⚠️ CRITICAL: API Update - API-update.pdf Specification
 
-The current `functions/api/submit-claim.ts` does NOT match the R2R API PDF specification.
-**These three issues must be fixed before the form can submit successfully.**
+The R2R API expects the following exact payload structure:
 
-| # | Field | PDF/R2R Spec Says | Current Code Does | File:Line |
-|---|-------|-------------------|-------------------|-----------|
-| 1 | `addresses` | **ARRAY** `[{...}]` | OBJECT `{...}` | submit-claim.ts:90 |
-| 2 | `signature` | `data:image/png;base64,{base64}` | Raw base64 (no prefix) | submit-claim.ts:112 |
-| 3 | `addresses` fields | Full schema (line1-4, buildingName, district, etc.) | Only 4 fields | submit-claim.ts:90-95 |
+| # | Field | Expected Format |
+|---|-------|-----------------|
+| 1 | `ip_address` | IP from cf-connecting-ip header (NOT client_ip) |
+| 2 | `address` | Single object (NOT array) with line1-4, buildingName, buildingNumber, thoroughfare, townOrCity, district, postcode |
+| 3 | `signature` | Object with `payload` (array of field names) and `signature` (base64 WITHOUT data: prefix) |
 
-**Reference:** `/home/unclehowell/datro/static/pcp2/notes/R2R Affiliate Submission API Documentation_V2.21 (1).pdf`
-**Quick fix template:** See `API_GUIDE.md` lines ~114-125 for correct payload structure.
+**Reference:** `/home/unclehowell/datro/static/pcp2/notes/API-update.pdf`
 
 ---
 
@@ -255,7 +256,7 @@ curl -X POST "https://car.financecheque.uk/api/submit-claim" \
 ### Method C: Curl with JSON (Tertiary - for API testing only)
 
 ```bash
-# Get signature base64
+# Get signature base64 (RAW, NO data: prefix)
 SIG=$(base64 -w0 notes/example.png)
 
 # Create JSON payload
@@ -271,10 +272,26 @@ cat > /tmp/payload.json << EOF
   "buildingNumber": "12",
   "thoroughfare": "High Street",
   "townOrCity": "London",
-  "client_ip": "203.0.113.42",
+  "ip_address": "203.0.113.42",
   "user_agent": "Mozilla/5.0",
   "session_id": "session_001",
-  "signature": "data:image/png;base64,$SIG"
+  "device_session_id": "uuid-here",
+  "address": {
+    "line1": null,
+    "line2": null,
+    "line3": null,
+    "line4": null,
+    "buildingName": null,
+    "buildingNumber": "12",
+    "thoroughfare": "High Street",
+    "townOrCity": "London",
+    "district": null,
+    "postcode": "EC1A 1AA"
+  },
+  "signature": {
+    "payload": ["first_name", "last_name", "date_of_birth", "phone", "email", "address", "postcode"],
+    "signature": "$SIG"
+  }
 }
 EOF
 

@@ -121,8 +121,8 @@ export async function onRequestPost(context: any) {
       }
     }
 
-    // Addresses - R2R API expects array of Address objects
-    const addresses = [{
+    // Address - R2R API expects single address object (not array)
+    const address = {
       line1:          null,
       line2:          null,
       line3:          null,
@@ -133,7 +133,23 @@ export async function onRequestPost(context: any) {
       townOrCity:     townOrCity || null,
       district:       null,
       postcode:       postcode_formatted || null,
-    }];
+    };
+
+    // Build signature object as per API spec
+    // Extract base64 data from data:image/png;base64,... prefix
+    const extractBase64 = (dataUrl: string): string => {
+      if (!dataUrl || !dataUrl.startsWith("data:")) return dataUrl || "";
+      const commaIndex = dataUrl.indexOf(",");
+      return commaIndex >= 0 ? dataUrl.slice(commaIndex + 1) : dataUrl;
+    };
+
+    const signatureBase64 = extractBase64(sigImage || body.signature || "");
+    const signaturePayload = ["first_name", "last_name", "date_of_birth", "phone", "email", "address", "postcode"];
+    
+    const signatureObj = signatureBase64 ? {
+      payload: signaturePayload,
+      signature: signatureBase64
+    } : null;
 
     // Build payload
     const payload: any = {
@@ -143,23 +159,18 @@ export async function onRequestPost(context: any) {
       date_of_birth,
       phone,
       email,
-      client_ip:            req.headers.get("cf-connecting-ip") || "",
+      ip_address:           req.headers.get("cf-connecting-ip") || "",
       user_agent:           req.headers.get("user-agent") || "",
       session_id,
       device_session_id,
       account_creation_url: "https://car.financecheque.uk/claim",
-      addresses,
+      address,
       opt_in:               true,
     };
 
-    // Add signature - use what browser sends or require it in payload
-    if (sigImage && sigImage.startsWith("data:image")) {
-      payload.signature = sigImage;
-      payload.signature_image = sigImage;
-    } else if (body.signature && body.signature.startsWith("data:image")) {
-      // Alternative: signature field already has prefix
-      payload.signature = body.signature;
-      payload.signature_image = body.signature;
+    // Add signature object as per API spec
+    if (signatureObj) {
+      payload.signature = signatureObj;
     }
     // If no valid signature available, don't add it - will fail validation
 

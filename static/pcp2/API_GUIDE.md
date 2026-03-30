@@ -36,23 +36,40 @@ API-KEY: 8714de54-a64d-441b-8ef9-4a64318380b0
 | email | string | Email address | "john@example.com" |
 | phone | string | UK phone number (with +44 prefix) | "+447503456789" |
 | date_of_birth | string | ISO date format | "1985-06-20" |
-| addresses | array | Array of Address objects | See below |
-| signature | string | PNG signature base64 (with `data:image/png;base64,` prefix) | See below |
-| client_ip | string | Client IP address | "203.0.113.42" |
+| address | object | Single Address object | See below |
+| signature | object | Signature object with payload array and base64 signature | See below |
+| ip_address | string | Client IP address (from cf-connecting-ip) | "203.0.113.42" |
 | user_agent | string | Browser user agent | "Mozilla/5.0..." |
 | session_id | string | Session identifier | "session_001" |
 
-### Addresses Array Format
+### Address Object Format
 
-The `addresses` field is an **array** of Address objects (per R2R spec `Address[]`):
+The `address` field is a **single object** (per API-update.pdf):
 
 ```json
-"addresses": [{
+"address": {
+  "line1": null,
+  "line2": null,
+  "line3": null,
+  "line4": null,
+  "buildingName": null,
   "buildingNumber": "12",
   "thoroughfare": "High Street",
   "townOrCity": "London",
+  "district": null,
   "postcode": "EC1A 1AA"
-}]
+}
+```
+
+### Signature Object Format
+
+The `signature` field is an **object** with payload array and raw base64 (NO data: prefix):
+
+```json
+"signature": {
+  "payload": ["first_name", "last_name", "date_of_birth", "phone", "email", "address", "postcode"],
+  "signature": "iVBORw0KGgo..."  // Raw base64, no data:image prefix
+}
 ```
 
 Each address object supports these fields:
@@ -111,20 +128,23 @@ This matches what `submit-claim.ts` sends to the R2R API:
   "session_id": "session_001",
   "device_session_id": "uuid-here",
   "account_creation_url": "https://car.financecheque.uk/claim",
-  "addresses": [{
-    "line1": "High Street",
-    "line2": "12",
+  "ip_address": "203.0.113.42",
+  "address": {
+    "line1": null,
+    "line2": null,
     "line3": null,
     "line4": null,
     "buildingName": null,
-    "buildingNumber": null,
+    "buildingNumber": "12",
     "thoroughfare": "High Street",
     "townOrCity": "London",
     "district": null,
     "postcode": "EC1A 1AA"
-  }],
-  "signature": "data:image/png;base64,iVBORw0KGgo...",
-  "signature_image": "data:image/png;base64,iVBORw0KGgo...",
+  },
+  "signature": {
+    "payload": ["first_name", "last_name", "date_of_birth", "phone", "email", "address", "postcode"],
+    "signature": "iVBORw0KGgo..."  // Raw base64, NO data: prefix
+  },
   "opt_in": true
 }
 ```
@@ -189,7 +209,7 @@ This matches what `submit-claim.ts` sends to the R2R API:
 # Get signature base64
 SIG=$(base64 -w0 notes/example.png)
 
-# Create payload (with addresses array format)
+# Create payload (with address object and signature object format)
 cat > /tmp/payload.json << EOF
 {
   "title": "Mr",
@@ -198,21 +218,27 @@ cat > /tmp/payload.json << EOF
   "date_of_birth": "1985-06-20",
   "phone": "+447503456789",
   "email": "john.doe@example.com",
-  "client_ip": "203.0.113.42",
+  "ip_address": "203.0.113.42",
   "user_agent": "Mozilla/5.0",
   "session_id": "session_001",
   "device_session_id": "test-device-001",
   "account_creation_url": "https://car.financecheque.uk/claim",
-  "addresses": [{
-    "line1": "High Street",
-    "line2": "12",
-    "buildingNumber": null,
+  "address": {
+    "line1": null,
+    "line2": null,
+    "line3": null,
+    "line4": null,
+    "buildingName": null,
+    "buildingNumber": "12",
     "thoroughfare": "High Street",
     "townOrCity": "London",
+    "district": null,
     "postcode": "EC1A 1AA"
-  }],
-  "signature": "data:image/png;base64,$SIG",
-  "signature_image": "data:image/png;base64,$SIG",
+  },
+  "signature": {
+    "payload": ["first_name", "last_name", "date_of_birth", "phone", "email", "address", "postcode"],
+    "signature": "$SIG"
+  },
   "opt_in": true
 }
 EOF

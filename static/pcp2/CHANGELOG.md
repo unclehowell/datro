@@ -6,6 +6,19 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
 ---
 
+## Mar-30-2026 - Align payload with API-update.pdf specification
+
+### Changes Made
+
+Updated `functions/api/submit-claim.ts` and documentation to match the exact payload format specified in `notes/API-update.pdf`:
+
+- Changed `client_ip` → `ip_address`
+- Changed `addresses` (array) → `address` (single object)
+- Changed `signature` from data URL string → object with `payload` (array) and `signature` (raw base64)
+- Updated `agent.md`, `API_GUIDE.md`, and `notes/example.json` to reflect correct format
+
+---
+
 ## FORENSIC ANALYSIS - Mar-28-2026 - THE TRUTH REVEALED
 
 ### The R2R API Always Worked
