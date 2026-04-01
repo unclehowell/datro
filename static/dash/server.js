@@ -27,36 +27,54 @@ const PROVIDER_COLORS = {
     'local llm':   '#8b5cf6',
 };
 
-// ── Known programs/agents on this machine ──
-const LAPTOP_PROGRAMS = [
-    'OPENCLAW', 'GEMINI', 'OPENCODE', 'HERMES',
-    'FC_RESEARCHER', 'FC_PROJECTMGR', 'CLAUDE', 'CODECLD'
-];
+class PaperclipAgentMonitor {
+    constructor() {
+        this.agents = [];
+        this.checkInterval = 30000;
+        this.apiBase = process.env.PAPERCLIP_API_URL || 'http://127.0.0.1:3100/api';
+        this.companyId = process.env.PAPERCLIP_COMPANY_ID || 'b2f6358e-c1a7-40fb-8aa0-a2791d6c14bd';
+        this.init();
+    }
+    
+    async fetchAgents() {
+        try {
+            const apiKey = require('fs').readFileSync('/home/unclehowell/.paperclip/api-key', 'utf8').trim();
+            const response = await axios.get(
+                `${this.apiBase}/companies/${this.companyId}/agents`,
+                { headers: { Authorization: `Bearer ${apiKey}` }, timeout: 5000 }
+            );
+            return response.data.map(a => ({
+                id: a.id,
+                name: a.name,
+                profile: a.adapterConfig?.profile || 'default',
+                model: a.adapterConfig?.model || 'unknown',
+                status: a.status || 'unknown',
+                lastHeartbeatAt: a.lastHeartbeatAt,
+                adapterType: a.adapterType
+            }));
+        } catch (e) {
+            console.error('Failed to fetch Paperclip agents:', e.message);
+            return [];
+        }
+    }
+    
+    init() {
+        this.refresh();
+        setInterval(() => this.refresh(), this.checkInterval);
+    }
+    
+    async refresh() {
+        this.agents = await this.fetchAgents();
+    }
+}
 
+// ── Known programs/agents on this machine ──
 class APIQuotaMonitor {
     constructor() {
         this.quotas    = new Map();
         this.traffic   = new Map(); // track traffic weight per provider
         this.checkInterval = 30000;
-        this.picoConfig = this.loadPicoClawConfig();
         this.init();
-    }
-
-    loadPicoClawConfig() {
-        const paths = [
-            '/home/unclehowell/.picoclaw/config.json',
-            '/home/unclehowell/picoclaw/docker/data/config.json',
-        ];
-        for (const p of paths) {
-            try {
-                if (fs.existsSync(p)) {
-                    const cfg = JSON.parse(fs.readFileSync(p, 'utf8'));
-                    console.log(`📁 PicoClaw config: ${p}`);
-                    return cfg;
-                }
-            } catch (e) { /* ignore */ }
-        }
-        return null;
     }
 
     getAllProviders() {
@@ -79,22 +97,13 @@ class APIQuotaMonitor {
             });
         };
 
-        // From PicoClaw model_list
-        if (this.picoConfig?.model_list) {
-            for (const m of this.picoConfig.model_list) {
-                // Skip if no api_key or if it's explicitly 'ollama' and we handle it separately
-                if (!m.api_key || m.api_key.trim() === '' || m.api_key.trim().toLowerCase() === 'ollama') continue;
-                const key = this.extractKey(m);
-                add(key.toUpperCase(), m.model_name || m.model, m.api_key, m.api_base);
-            }
-        }
-
         // Legacy / env providers
         add('OPENAI',    'GPT-4O',          process.env.OPENAI_API_KEY,       'https://api.openai.com/v1');
         add('GOOGLE',    'Gemini 2.0 Flash', process.env.GEMINI_API_KEY,       'https://generativelanguage.googleapis.com');
         add('GROQ',      'Llama 3.3',        process.env.GROQ_API_KEY,         'https://api.groq.com/openai/v1');
         add('OPENROUTER','Auto Router',      process.env.OPENROUTER_API_KEY,   'https://openrouter.ai/api/v1');
-        add('NVIDIA',    'Nemotron 4 340B',  process.env.NVAPI_KEY,            'https://integrate.api.nvidia.com/v1');
+        add('NVIDIA',    'MoonshotAI Kimi K2.5',  process.env.NVAPI_KEY,            'https://integrate.api.nvidia.com/v1');
+        add('MISTRAL',   'Mistral Large 2603', process.env.MISTRAL_API_KEY,     'https://api.mistral.ai/v1');
         add('ANTHROPIC', 'Claude Sonnet',    process.env.ANTHROPIC_API_KEY,    'https://api.anthropic.com/v1');
         add('DEEPSEEK',  'DeepSeek V3',      process.env.DEEPSEEK_API_KEY,     'https://api.deepseek.com');
         // Explicitly add Ollama if an API key isn't set, or if it's the default placeholder.
@@ -147,7 +156,6 @@ class APIQuotaMonitor {
         for (const p of providers) {
             await this.checkOne(p);
         }
-        await this.scanClawTeam();
     }
 
     async checkOne(p) {
@@ -198,9 +206,21 @@ class APIQuotaMonitor {
                     used = 100; // Effectively 100% used/unavailable
                     status = 'OFFLINE';
                 }
-            } else if (p.name === 'ANTHROPIC' || p.name === 'NVIDIA') {
+            } else if (p.name === 'ANTHROPIC') {
                 // Assume partial availability if no specific headers are found
                 remaining = 70; limit = 100;
+            } else if (p.name === 'MISTRAL') {
+                remaining = 50; limit = 100;
+            } else if (p.name === 'NVIDIA') {
+                // Check NVIDIA NIM quota
+                try {
+                    const r = await axios.post(`${p.apiBase}/chat/completions`,
+                        { model: 'moonshotai/kimi-k2.5', messages: [{ role: 'user', content: 'hi' }], max_tokens: 5 },
+                        { headers: hdrs, timeout: 6000 });
+                    remaining = 90; limit = 100;
+                } catch (e) {
+                    remaining = 50; limit = 100;
+                }
             } else {
                 // Default for other providers or custom setups
                 remaining = 50; limit = 100;
@@ -218,30 +238,6 @@ class APIQuotaMonitor {
             this.traffic.set(p.name, 100); // Mark as 100% used on error
             this.setQuota(p.name, p.model, 100, 100, 0, p.color,
                 s === 429 ? 'OVER' : 'ERR');
-        }
-    }
-
-    async scanClawTeam() {
-        try {
-            const base = process.env.CLAWTEAM_PATH || '/home/unclehowell/.clawteam';
-            const td   = path.join(base, 'tasks');
-            if (!fs.existsSync(td)) return;
-            let active = 0, total = 0;
-            for (const proj of fs.readdirSync(td)) {
-                const pd = path.join(td, proj);
-                if (!fs.statSync(pd).isDirectory()) continue;
-                for (const f of fs.readdirSync(pd).filter(x => x.endsWith('.json'))) {
-                    total++;
-                    const t = JSON.parse(fs.readFileSync(path.join(pd, f), 'utf8'));
-                    if (['active','in-progress','locked'].includes(t.status)) active++;
-                }
-            }
-            const u = total > 0 ? (active / total) * 100 : 0;
-            this.traffic.set('CLAWTEAM', u);
-            this.setQuota('CLAWTEAM', 'ClawTeam Agents', u, total, active, '#00ff80',
-                active > 0 ? 'ACTIVE' : 'IDLE');
-        } catch (e) {
-            this.setQuota('CLAWTEAM', 'ClawTeam', 0, 0, 0, '#00ff80', 'OFFLINE');
         }
     }
 
@@ -265,13 +261,14 @@ class APIQuotaMonitor {
 
 const monitor = new APIQuotaMonitor();
 const quotaTracker = new QuotaTracker();
+const paperclip = new PaperclipAgentMonitor();
 
 // ── Token / user tracker ──
 const tracker = new (class {
     constructor() {
-        this.programs = LAPTOP_PROGRAMS.map(n => ({
-            id: `laptop-${n}`, name: n,
-            device: 'laptop', status: 'online', visible: true,
+        this.programs = paperclip.agents.map(a => ({
+            id: a.id, name: a.name,
+            device: 'laptop', status: a.status, visible: true,
         }));
     }
 
@@ -312,6 +309,15 @@ app.post('/api/quota-status/:apiId', (req, res) => {
     const updated = quotaTracker.updateQuotaStatus(req.params.apiId, req.body);
     res.json(updated);
 });
+
+app.get('/api/hermes-agents', async (req, res) => {
+    await paperclip.refresh();
+    res.json({
+        agents: paperclip.agents,
+        timestamp: new Date().toISOString()
+    });
+});
+
 app.get('/',             (req, res) => res.sendFile(path.join(__dirname, 'index-fishtank-colored.html')));
 app.use(express.static(__dirname));
 
