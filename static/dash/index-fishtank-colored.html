@@ -411,6 +411,25 @@
         </div>
 
         <div class="main-content">
+            <div id="agents-section" style="background: linear-gradient(180deg, #1a1a1a, #0f0f0f); padding: 0.8rem; border-radius: 8px; overflow: hidden; margin-bottom: 0.8rem;">
+                <h3 style="font-size: 0.8rem; color: #4CAF50; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                    Hermes Agents (Paperclip)
+                </h3>
+                <div id="agents-loading" style="color: #666; font-size: 0.8rem;">Loading agents...</div>
+                <table id="agents-table" style="width: 100%; font-size: 0.75rem; display: none;">
+                    <thead>
+                        <tr style="color: #666; text-transform: uppercase; font-size: 0.65rem;">
+                            <th style="text-align: left; padding: 0.4rem;">Agent</th>
+                            <th style="text-align: left; padding: 0.4rem;">Profile</th>
+                            <th style="text-align: left; padding: 0.4rem;">Model</th>
+                            <th style="text-align: left; padding: 0.4rem;">Status</th>
+                            <th style="text-align: left; padding: 0.4rem;">Last Heartbeat</th>
+                        </tr>
+                    </thead>
+                    <tbody id="agents-tbody">
+                    </tbody>
+                </table>
+            </div>
             <div class="fishtanks-grid" id="fishtanks-grid">
                 <div class="loading">Loading...</div>
             </div>
@@ -677,5 +696,55 @@
 
         new ColoredFishTankDashboard();
     </script>
+    <script>
+async function fetchAgents() {
+    try {
+        const resp = await fetch('/api/hermes-agents');
+        const data = await resp.json();
+        const agents = data.agents || [];
+        
+        const loading = document.getElementById('agents-loading');
+        const table = document.getElementById('agents-table');
+        const tbody = document.getElementById('agents-tbody');
+        
+        loading.style.display = 'none';
+        table.style.display = 'table';
+        
+        if (agents.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="5" style="color: #666; padding: 1rem;">No agents found</td></tr>';
+            return;
+        }
+        
+        tbody.innerHTML = agents.map(agent => {
+            const statusClass = agent.status === 'running' ? '#4CAF50' : 
+                               agent.status === 'error' ? '#f44336' : '#FFC107';
+            const heartbeat = formatTime(agent.lastHeartbeatAt);
+            
+            return `<tr style="border-bottom: 1px solid #333;">
+                <td style="padding: 0.4rem; color: #fff;">${agent.name || 'Unknown'}</td>
+                <td style="padding: 0.4rem; color: #888;">${agent.profile || 'default'}</td>
+                <td style="padding: 0.4rem; color: #aaa; font-family: monospace; font-size: 0.7rem;">${agent.model || 'unknown'}</td>
+                <td style="padding: 0.4rem; color: ${statusClass}; font-weight: bold;">${agent.status || 'unknown'}</td>
+                <td style="padding: 0.4rem; color: #666;">${heartbeat}</td>
+            </tr>`;
+        }).join('');
+    } catch (e) {
+        document.getElementById('agents-loading').textContent = 'Failed to load agents: ' + e.message;
+    }
+}
+
+function formatTime(isoString) {
+    if (!isoString) return 'Never';
+    const date = new Date(isoString);
+    const diff = Date.now() - date.getTime();
+    if (diff < 60000) return 'Just now';
+    if (diff < 3600000) return Math.floor(diff/60000) + 'm ago';
+    if (diff < 86400000) return Math.floor(diff/3600000) + 'h ago';
+    return date.toLocaleDateString();
+}
+
+setInterval(fetchAgents, 30000);
+fetchAgents();
+</script>
 </body>
 </html>
