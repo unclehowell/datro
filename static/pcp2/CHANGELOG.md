@@ -6,6 +6,14 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
 ---
 
+## Apr-02-2026 - Fix deadline notification text
+
+### Changes Made
+
+- Updated `src/components/Layout.tsx` to start deadline notification with "the final deadline..." instead of "We would also ask you to notify the customer of the final deadline..."
+
+---
+
 ## Mar-30-2026 - Align payload with API-update.pdf specification
 
 ### Changes Made

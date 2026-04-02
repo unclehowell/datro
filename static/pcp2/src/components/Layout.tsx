@@ -138,7 +138,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 *On 30/03/2026, the FCA, in their Statement of a confirmed redress scheme, expect eligible consumers to receive an average of £829 per agreement.
               </p>
               <p className="text-xs text-slate-400 mt-2 leading-relaxed">
-                We would also ask you to notify the customer of the final deadline to complain as the 31st of August 2027.
+                the final deadline to complain is the 31st of August 2027.
               </p>
             </div>
             <p className="text-[11px] leading-relaxed text-slate-600 text-justify md:text-left font-medium">
