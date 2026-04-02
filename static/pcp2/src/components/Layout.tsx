@@ -130,6 +130,17 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             </div>
           </div>
           <div className="pt-12 border-t border-slate-900">
+            <div className="mb-8 p-6 bg-slate-900/50 rounded-lg border border-slate-800">
+              <p className="text-sm font-bold text-white leading-relaxed">
+                <span className="text-brand-accent">Claim Figure: £829*</span>
+              </p>
+              <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                *On 30/03/2026, the FCA, in their Statement of a confirmed redress scheme, expect eligible consumers to receive an average of £829 per agreement.
+              </p>
+              <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                We would also ask you to notify the customer of the final deadline to complain as the 31st of August 2027.
+              </p>
+            </div>
             <p className="text-[11px] leading-relaxed text-slate-600 text-justify md:text-left font-medium">
               PCP Refund is a trading name of Jigsaw Claims Ltd, authorised and regulated by the Financial Conduct Authority (FCA) for claims management activities (FRN: 912323). Registered Address: 66 Seymour Grove, Manchester, M16 0LN. Contact: info@jigsawclaims.co.uk. We will receive referral fees from third parties for successful claims at no cost to you. Using our service does not guarantee a faster or better outcome. You can also claim for free through your lender, the Financial Ombudsman Service, or the FCA compensation scheme launching in 2026.
             </p>

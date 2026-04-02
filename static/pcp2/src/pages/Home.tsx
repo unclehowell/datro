@@ -110,6 +110,8 @@ export const Home: React.FC = () => {
             <div className="absolute -bottom-10 -right-10 bg-white p-10 rounded-2xl shadow-2xl border border-slate-100 hidden md:block">
               <p className="text-6xl font-display font-black leading-none text-brand-secondary">£1,100</p>
               <p className="text-sm uppercase font-bold tracking-widest text-slate-500">Average Refund Value</p>
+              <p className="text-xl font-display font-black leading-none text-brand-secondary mt-4">Claim Figure: £829*</p>
+              <p className="text-[10px] uppercase font-bold tracking-widest text-slate-500">FCA Confirmed Average</p>
             </div>
           </div>
         </div>
