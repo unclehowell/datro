@@ -6,10 +6,12 @@
 <script>
     window.onload = function() {
         var hostname = window.location.hostname;
-        if (hostname.indexOf("datro") !== -1) {
+        // Only redirect to demo on datro.xyz, otherwise use local services
+        if (hostname.indexOf('datro.xyz') !== -1) {
             window.location.replace('https://datro.xyz');
         } else {
-            window.location.replace('http://' + hostname + ':8081');
+            // For all other domains, use localhost ports
+            window.location.replace('/links/');
         }
     };
 </script>

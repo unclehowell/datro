@@ -7,9 +7,9 @@
     window.onload = function() {
         var hostname = window.location.hostname;
         if (hostname.indexOf("datro") !== -1) {
-            window.location.replace('https://picoclaw.com');
+            window.location.replace('http://localhost:18800');
         } else {
-            window.location.replace('http://' + hostname + ':18792');
+            window.location.replace('http://' + hostname + ':18800');
         }
     };
 </script>
