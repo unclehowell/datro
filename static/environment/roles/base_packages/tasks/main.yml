@@ -1,0 +1,130 @@
+---
+# Base system packages
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install base development tools
+  apt:
+    name:
+      - build-essential
+      - cmake
+      - git
+      - curl
+      - wget
+      - python3
+      - python3-pip
+      - python3-dev
+      - python3-venv
+      - nodejs
+      - npm
+      - golang
+      - cargo
+      - rustc
+      - docker.io
+      - docker-compose
+      - git-lfs
+      - vim
+      - tmux
+      - htop
+      - neofetch
+      - unzip
+      - zip
+      - tar
+      - gzip
+      - bzip2
+      - xz-utils
+      - rsync
+      - wget
+      - curl
+      - gnupg
+      - software-properties-common
+      - apt-transport-https
+      - ca-certificates
+      - lsb-release
+      - net-tools
+      - openssh-client
+      - openssh-server
+      - fuse
+      - libssl-dev
+      - libffi-dev
+      - libxml2-dev
+      - libxslt1-dev
+      - zlib1g-dev
+      - libjpeg-dev
+      - libpng-dev
+      - libavcodec-dev
+      - libavformat-dev
+      - libswscale-dev
+      - libv4l-dev
+      - libatlas-base-dev
+      - gfortran
+      - libreadline-dev
+      - libncurses5-dev
+      - libdbus-1-dev
+      - libglib2.0-dev
+      - libpulse-dev
+      - libx11-dev
+      - libxfixes-dev
+      - libxrandr-dev
+      - libgbm-dev
+      - libasound2-dev
+    state: present
+
+- name: Install system utilities
+  apt:
+    name:
+      - chrony
+      - ntp
+      - udisks2
+      - policykit-1
+      - fuse
+      - gvfs
+      - gvfs-backends
+      - gvfs-fuse
+      - libsecret-1-0
+      - gnome-keyring
+      - libappindicator3-1
+      - fonts-noto
+      - fonts-noto-cjk
+      - fonts-noto-color-emoji
+    state: present
+
+- name: Install desktop dependencies
+  apt:
+    name:
+      - x11-apps
+      - x11-utils
+      - x11-xserver-utils
+      - xorg
+      - xserver-xorg
+      - xserver-xorg-video-all
+      - xserver-xorg-input-all
+      - lightdm
+      - slick-greeter
+      - muffin
+      - cinnamon
+      - cinnamon-common
+      - cinnamon-control-center
+      - cinnamon-desktop-data
+      - cinnamon-l10n
+      - cinnamon-screensaver
+      - cinnamon-session
+      - cinnamon-settings-daemon
+      - nemo
+      - nemo-python
+      - nemo-emblems
+      - nemo-fileroller
+      - xed
+      - xviewer
+      - xplayer
+      - xfburn
+      - pix
+      - file-roller
+      - gedit
+      - gnome-terminal
+      - firefox
+      - chrome-gnome-shell
+    state: present

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great House Farm Dispute</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/@measured/puck@0.16.0/dist/index.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Courier Prime', monospace;
+            background-color: #0f172a;
+        }
+        .font-special {
+            font-family: 'Special Elite', cursive;
+        }
+        /* Puck Editor Overrides to match theme */
+        .puck-root {
+            --puck-color-grey-10: #1e293b;
+            --puck-color-grey-1: #0f172a;
+        }
+        
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+        .animate-slide-in-right {
+            animation: slideInRight 0.3s ease-out forwards;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^18.2.0/",
+    "react": "https://esm.sh/react@^18.2.0",
+    "react-dom/": "https://esm.sh/react-dom@^18.2.0/",
+    "react-dom": "https://esm.sh/react-dom@^18.2.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.39.0",
+    "jspdf": "https://esm.sh/jspdf@2.5.1",
+    "@measured/puck": "https://esm.sh/@measured/puck@0.16.0?external=react,react-dom"
+  }
+}
+</script>
+    <link rel="stylesheet" href="/index.css">
+    <!-- Stripe Script -->
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+</head>
+<body class="text-slate-200 antialiased overflow-hidden h-screen w-screen">
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

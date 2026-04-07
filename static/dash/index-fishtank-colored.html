@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Dashboard</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #121212 100%);
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .header h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #4CAF50, #66BB6A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .connection-status {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+        }
+
+        .connection-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .connected .connection-dot { background: #4CAF50; }
+        .disconnected .connection-dot { background: #f44336; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+            gap: 0.8rem;
+            padding: 0.8rem;
+        }
+
+        .users-column {
+            width: 140px;
+            background: linear-gradient(180deg, #1a1a1a, #0f0f0f);
+            padding: 0.8rem 0.6rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        /* Category Heading */
+        .users-column h3 {
+            font-size: 0.7rem;
+            color: #555;
+            text-transform: uppercase;
+            margin-bottom: 0.6rem;
+            letter-spacing: 0.02em;
+        }
+
+        /* Subcategory Heading */
+        .subcategory-group h4 {
+            font-size: 0.65rem;
+            color: #777;
+            text-transform: uppercase;
+            margin-top: 0.8rem;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.02em;
+        }
+
+        .users-list .subcategory-group {
+            margin-bottom: 0.5rem; /* Space between subcategory groups */
+        }
+
+        .users-list {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .user-item {
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: all 0.2s;
+            position: relative;
+            z-index: 10;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .user-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .user-item.active {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .user-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 0 4px currentColor;
+        }
+
+        .user-status {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #4CAF50;
+            flex-shrink: 0;
+        }
+
+        .user-item.idle .user-status { background: #FF9800; }
+        .user-item.offline .user-status { background: #f44336; }
+
+        #connection-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .fishtanks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            align-items: stretch;
+            auto-rows: max-content;
+        }
+
+        /* Fish Tank Card */
+        .fishtank-card {
+            background: linear-gradient(145deg, #1a1a1a, #1f1f1f);
+            padding: 0.8rem;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .fishtank-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .fishtank-card.locked {
+            opacity: 0.7;
+        }
+
+        .tank-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            margin-bottom: 0.6rem;
+            min-height: 0;
+        }
+
+        .provider-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .model-tabs {
+            display: flex;
+            gap: 0.2rem;
+            flex-wrap: wrap;
+        }
+
+        .model-tab {
+            padding: 0.25rem 0.45rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.6rem;
+            white-space: nowrap;
+            transition: all 0.15s;
+            color: #777;
+            flex-shrink: 0;
+        }
+
+        .model-tab:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .model-tab.active {
+            background: rgba(76, 175, 80, 0.4);
+            color: #66BB6A;
+        }
+
+        /* FISH TANK */
+        .fishtank {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1.05; /* Adjusted aspect ratio for reduced height */
+            background: linear-gradient(135deg, #0d2818, #1a3a2a);
+            border: 3px solid #2a4a3a;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
+            margin-bottom: 0.4rem;
+            flex-grow: 1; /* Allow tank to grow within the card */
+        }
+
+        .tank-glass {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 20% 20%, rgba(255,255,255,0.1), transparent 50%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Water */
+        .water {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, rgba(100,200,255,0.3) 0%, rgba(70,150,220,0.5) 100%);
+            transition: height 0.4s ease;
+            z-index: 1;
+        }
+
+        .water.medium {
+            background: linear-gradient(180deg, rgba(255,180,0,0.3) 0%, rgba(220,140,0,0.5) 100%);
+        }
+
+        .water.low {
+            background: linear-gradient(180deg, rgba(255,80,80,0.3) 0%, rgba(200,50,50,0.5) 100%);
+        }
+
+        /* Fish Container */
+        .fishes-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Fish - with color coordination */
+        .fish {
+            position: absolute;
+            font-size: 1.2rem;
+            animation: swim 6s linear infinite;
+            filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
+        }
+
+        .fish.user-0 { animation: swim 6s linear infinite; }
+        .fish.user-1 { animation: swim 7s linear infinite reverse; }
+        .fish.user-2 { animation: swim 8s linear infinite; }
+        .fish.user-3 { animation: swim 9s linear infinite reverse; }
+
+        @keyframes swim {
+            0% { left: -20px; }
+            100% { left: 100%; }
+        }
+
+        /* Percentage */
+        .tank-percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.95);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        /* Lock Overlay */
+        .lock-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            border-radius: 6px;
+            gap: 0.3rem;
+        }
+
+        .lock-overlay.active {
+            display: flex;
+        }
+
+        .lock-icon {
+            font-size: 2rem;
+        }
+
+        .reset-date {
+            text-align: center;
+            font-size: 0.6rem;
+            color: #FF9800;
+            font-weight: 600;
+        }
+
+        .loading {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #666;
+            padding: 3rem;
+        }
+
+        .loading::after {
+            content: '';
+            width: 16px;
+            height: 16px;
+            border: 2px solid #333;
+            border-top: 2px solid #4CAF50;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 0.5rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        ::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🐠 LLM Provider Status</h1>
+        <div class="connection-status" id="connection-status">
+            <div class="connection-dot"></div>
+            <span>Connecting...</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <canvas id="connection-canvas"></canvas>
+
+        <div class="users-column">
+            <h3>👥 Users</h3>
+            <div class="users-list" id="users-list"></div>
+        </div>
+
+        <div class="main-content">
+            <div id="agents-section" style="background: linear-gradient(180deg, #1a1a1a, #0f0f0f); padding: 0.8rem; border-radius: 8px; overflow: hidden; margin-bottom: 0.8rem;">
+                <h3 style="font-size: 0.8rem; color: #4CAF50; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                    Hermes Agents (Paperclip)
+                </h3>
+                <div id="agents-loading" style="color: #666; font-size: 0.8rem;">Loading agents...</div>
+                <table id="agents-table" style="width: 100%; font-size: 0.75rem; display: none;">
+                    <thead>
+                        <tr style="color: #666; text-transform: uppercase; font-size: 0.65rem;">
+                            <th style="text-align: left; padding: 0.4rem;">Agent</th>
+                            <th style="text-align: left; padding: 0.4rem;">Profile</th>
+                            <th style="text-align: left; padding: 0.4rem;">Model</th>
+                            <th style="text-align: left; padding: 0.4rem;">Status</th>
+                            <th style="text-align: left; padding: 0.4rem;">Last Heartbeat</th>
+                        </tr>
+                    </thead>
+                    <tbody id="agents-tbody">
+                    </tbody>
+                </table>
+            </div>
+            <div class="fishtanks-grid" id="fishtanks-grid">
+                <div class="loading">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class ColoredFishTankDashboard {
+            constructor() {
+                this.connectionStatus = document.getElementById('connection-status');
+                this.usersList = document.getElementById('users-list');
+                this.fishtanksGrid = document.getElementById('fishtanks-grid');
+                this.canvas = document.getElementById('connection-canvas');
+                this.ctx = this.canvas.getContext('2d');
+
+                // User colors - unique colors for each user
+                this.userColors = [
+                    '#FF6B9D', // Pink
+                    '#4ECDC4', // Teal
+                    '#FFE66D', // Yellow
+                    '#95E1D3'  // Mint
+                ];
+
+                this.apiEndpoint = '/api/llm-usage';
+                this.quotaEndpoint = '/api/quota-status';
+                this.updateInterval = 3000;
+                this.users = [];
+                this.providers = [];
+                this.quotaData = {};
+                this.userProviderUsage = {};
+
+                this.init();
+            }
+
+            init() {
+                this.resizeCanvas();
+                window.addEventListener('resize', () => this.resizeCanvas());
+                this.loadData();
+                setInterval(() => this.loadData(), this.updateInterval);
+            }
+
+            resizeCanvas() {
+                const container = document.querySelector('.container');
+                this.canvas.width = container.offsetWidth;
+                this.canvas.height = container.offsetHeight;
+            }
+
+            async loadData() {
+                try {
+                    const [usageRes, quotaRes] = await Promise.all([
+                        fetch(this.apiEndpoint),
+                        fetch(this.quotaEndpoint)
+                    ]);
+
+                    const usageData = await usageRes.json();
+                    const quotaData = await quotaRes.json();
+
+                    this.providers = usageData.providers || [];
+                    this.users = usageData.users || this.generateMockUsers();
+                    this.quotaData = quotaData.statuses || [];
+
+                    this.assignUserProviders();
+                    this.renderUsers();
+                    this.renderTanks();
+                    // Commenting out the connection drawing as requested
+                    // this.drawConnections();
+                    this.updateConnection(true);
+                } catch (error) {
+                    this.loadMockData();
+                }
+            }
+
+            loadMockData() {
+                this.users = this.generateMockUsers();
+                this.providers = this.generateMockProviders();
+                this.quotaData = this.generateMockQuota();
+                this.assignUserProviders();
+                this.renderUsers();
+                this.renderTanks();
+                // Commenting out the connection drawing as requested
+                // this.drawConnections();
+                this.updateConnection(true);
+            }
+
+            generateMockUsers() {
+                const colors = this.userColors;
+                return [
+                    // Claw Flavors - Main Users
+                    { id: 'openclaw', name: 'OpenClaw', device: 'Main', status: 'online', category: 'Claw Flavors', subcategory: 'Main Users', color: colors[0] },
+                    { id: 'picoclaw', name: 'PicoClaw', device: 'GPU', status: 'online', category: 'Claw Flavors', subcategory: 'Main Users', color: colors[1] },
+
+                    // Claw Flavors - Subagents
+                    { id: 'gemini', name: 'GEMINI', device: 'Service', status: 'online', category: 'Claw Flavors', subcategory: 'Subagents', color: colors[2] },
+                    { id: 'claude', name: 'CLAUDE', device: 'Service', status: 'online', category: 'Claw Flavors', subcategory: 'Subagents', color: colors[3] },
+                    { id: 'hermes', name: 'HERMES', device: 'Service', status: 'online', category: 'Claw Flavors', subcategory: 'Subagents', color: colors[0] }, // Cycling colors
+
+                    // CLIs - Main Users
+                    { id: 'opcode', name: 'OpenCode', device: 'Main', status: 'online', category: 'CLIs', subcategory: 'Main Users', color: colors[1] },
+                    { id: 'dev', name: 'Developer', device: 'Desk', status: 'online', category: 'CLIs', subcategory: 'Main Users', color: colors[2] },
+
+                    // CLIs - Sub Agents
+                    { id: 'fc_researcher', name: 'FC_RESEARCHER', device: 'Support', status: 'idle', category: 'CLIs', subcategory: 'Sub Agents', color: colors[3] },
+                    { id: 'fc_projectmgr', name: 'FC_PROJECTMGR', device: 'Support', status: 'online', category: 'CLIs', subcategory: 'Sub Agents', color: colors[0] }, // Cycling colors
+                    { id: 'codecld', name: 'CODECLD', device: 'Service', status: 'online', category: 'CLIs', subcategory: 'Sub Agents', color: colors[1] },
+                ];
+            }
+
+            generateMockProviders() {
+                return [
+                    { name: 'OpenAI', used: 75, remaining: 25, status: 'OK' },
+                    { name: 'Anthropic', used: 45, remaining: 55, status: 'OK' },
+                    { name: 'Google', used: 88, remaining: 12, status: 'OK' },
+                    { name: 'Groq', used: 30, remaining: 70, status: 'OK' },
+                    { name: 'Mistral', used: 60, remaining: 40, status: 'OK' },
+                    { name: 'Ollama', used: 15, remaining: 85, status: 'OK' }
+                ];
+            }
+
+            generateMockQuota() {
+                const providers = ['OpenAI', 'Anthropic', 'Google', 'Groq', 'Mistral', 'Ollama'];
+                return providers.map(p => ({
+                    apiId: `provider/${p}`,
+                    status: Math.random() > 0.85 ? 'quota_exceeded' : 'active',
+                    quotaRemaining: Math.floor(Math.random() * 100),
+                    nextAccessAt: new Date(Date.now() + 86400000)
+                }));
+            }
+
+            assignUserProviders() {
+                // Ensure user IDs are consistent for provider assignment
+                this.users.forEach((user, idx) => {
+                    const providerIdx = idx % this.providers.length;
+                    this.userProviderUsage[user.id] = this.providers[providerIdx].name;
+                });
+            }
+
+            renderUsers() {
+                const groupedUsers = {};
+                const categoryOrder = ['Claw Flavors', 'CLIs', 'Other']; // Define desired order for categories
+                const subcategoryOrder = {
+                    'Claw Flavors': ['Main Users', 'Subagents'],
+                    'CLIs': ['Main Users', 'Sub Agents'],
+                    'Other': ['General']
+                };
+
+                // Group users by category and subcategory
+                this.users.forEach(user => {
+                    const category = user.category || 'Other';
+                    const subcategory = user.subcategory || 'General';
+
+                    if (!groupedUsers[category]) {
+                        groupedUsers[category] = {};
+                    }
+                    if (!groupedUsers[category][subcategory]) {
+                        groupedUsers[category][subcategory] = [];
+                    }
+                    groupedUsers[category][subcategory].push(user);
+                });
+
+                let html = '';
+
+                // Sort categories based on the defined order
+                const sortedCategories = Object.keys(groupedUsers).sort((a, b) =>
+                    categoryOrder.indexOf(a) - categoryOrder.indexOf(b)
+                );
+
+                sortedCategories.forEach(category => {
+                    if (!groupedUsers[category]) return;
+
+                    html += `<h3>${category}</h3>`; // Category heading
+
+                    // Sort subcategories within the category
+                    const sortedSubcategories = Object.keys(groupedUsers[category]).sort((a, b) =>
+                        (subcategoryOrder[category] || []).indexOf(a) - (subcategoryOrder[category] || []).indexOf(b)
+                    );
+
+                    sortedSubcategories.forEach(subcategory => {
+                        if (!groupedUsers[category][subcategory]) return;
+
+                        html += `<div class="subcategory-group">`; // Wrapper for subcategory
+                        html += `<h4>${subcategory}</h4>`; // Subcategory heading
+
+                        // Render users within the subcategory
+                        groupedUsers[category][subcategory].forEach(user => {
+                            html += `
+                                <div class="user-item ${user.status === 'online' ? 'active' : user.status}" data-user-id="${user.id}" title="${user.device}">
+                                    <div class="user-color" style="background-color: ${user.color};"></div>
+                                    <span class="user-status"></span>
+                                    <span>${user.name}</span>
+                                </div>
+                            `;
+                        });
+                        html += `</div>`; // Close subcategory-group
+                    });
+                });
+
+                this.usersList.innerHTML = html;
+            }
+
+            // Commented out the drawConnections function as requested
+            /*
+            drawConnections() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                Object.entries(this.userProviderUsage).forEach(([userId, providerName]) => {
+                    const userEl = document.querySelector(`[data-user-id="${userId}"]`);
+                    const tankEl = document.querySelector(`[data-provider="${providerName}"]`);
+
+                    if (userEl && tankEl) {
+                        const userIndex = this.users.findIndex(u => u.id === userId);
+                        const userColor = this.userColors[userIndex % this.userColors.length];
+                        const provider = this.providers.find(p => p.name === providerName);
+
+                        if (provider) {
+                            const userRect = userEl.getBoundingClientRect();
+                            const tankRect = tankEl.getBoundingClientRect();
+                            const containerRect = this.canvas.parentElement.getBoundingClientRect();
+
+                            const x1 = userRect.left - containerRect.left + userRect.width / 2;
+                            const y1 = userRect.top - containerRect.top + userRect.height / 2;
+                            const x2 = tankRect.left - containerRect.left + tankRect.width / 2;
+                            const y2 = tankRect.top - containerRect.top + tankRect.height / 2;
+
+                            let lineStyle = 'dotted';
+                            let intensity = 0.3;
+                            if (provider.used > 70) {
+                                lineStyle = 'solid';
+                                intensity = 0.8;
+                            } else if (provider.used > 40) {
+                                lineStyle = 'dotted';
+                                intensity = 0.5;
+                            }
+
+                            this.drawLine(x1, y1, x2, y2, userColor, lineStyle, intensity);
+                        }
+                    }
+                });
+            }
+            */
+
+            // The drawLine function is no longer called, but kept for completeness if needed later.
+            drawLine(x1, y1, x2, y2, color, style, opacity) {
+                this.ctx.strokeStyle = `${color}${Math.round(opacity * 255).toString(16).padStart(2, '0')}`;
+                this.ctx.lineWidth = 2;
+
+                if (style === 'solid') {
+                    this.ctx.setLineDash([]);
+                } else {
+                    this.ctx.setLineDash([4, 4]);
+                }
+
+                this.ctx.beginPath();
+                this.ctx.moveTo(x1, y1);
+                this.ctx.lineTo(x2, y2);
+                this.ctx.stroke();
+                this.ctx.setLineDash([]);
+            }
+
+            updateConnection(connected) {
+                this.connectionStatus.className = `connection-status ${connected ? 'connected' : 'disconnected'}`;
+                this.connectionStatus.querySelector('span').textContent = connected ? 'Connected' : 'Disconnected';
+            }
+        }
+
+        new ColoredFishTankDashboard();
+    </script>
+    <script>
+async function fetchAgents() {
+    try {
+        const resp = await fetch('/api/hermes-agents');
+        const data = await resp.json();
+        const agents = data.agents || [];
+        
+        const loading = document.getElementById('agents-loading');
+        const table = document.getElementById('agents-table');
+        const tbody = document.getElementById('agents-tbody');
+        
+        loading.style.display = 'none';
+        table.style.display = 'table';
+        
+        if (agents.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="5" style="color: #666; padding: 1rem;">No agents found</td></tr>';
+            return;
+        }
+        
+        tbody.innerHTML = agents.map(agent => {
+            const statusClass = agent.status === 'running' ? '#4CAF50' : 
+                               agent.status === 'error' ? '#f44336' : '#FFC107';
+            const heartbeat = formatTime(agent.lastHeartbeatAt);
+            
+            return `<tr style="border-bottom: 1px solid #333;">
+                <td style="padding: 0.4rem; color: #fff;">${agent.name || 'Unknown'}</td>
+                <td style="padding: 0.4rem; color: #888;">${agent.profile || 'default'}</td>
+                <td style="padding: 0.4rem; color: #aaa; font-family: monospace; font-size: 0.7rem;">${agent.model || 'unknown'}</td>
+                <td style="padding: 0.4rem; color: ${statusClass}; font-weight: bold;">${agent.status || 'unknown'}</td>
+                <td style="padding: 0.4rem; color: #666;">${heartbeat}</td>
+            </tr>`;
+        }).join('');
+    } catch (e) {
+        document.getElementById('agents-loading').textContent = 'Failed to load agents: ' + e.message;
+    }
+}
+
+function formatTime(isoString) {
+    if (!isoString) return 'Never';
+    const date = new Date(isoString);
+    const diff = Date.now() - date.getTime();
+    if (diff < 60000) return 'Just now';
+    if (diff < 3600000) return Math.floor(diff/60000) + 'm ago';
+    if (diff < 86400000) return Math.floor(diff/3600000) + 'h ago';
+    return date.toLocaleDateString();
+}
+
+setInterval(fetchAgents, 30000);
+fetchAgents();
+</script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+name: Cloudflare Conditional Deploy
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - gh-pages
+  
+  push:
+    branches:
+      - gh-pages
+      - 'feature/auto-*'
+
+jobs:
+  detect-and-deploy:
+    name: Detect changes and deploy only touched apps
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+      pull-requests: write
+    concurrency:
+      group: cf-pages-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+      cancel-in-progress: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # --- Change Detection Step ---
+      - name: Determine changed files
+        id: changes
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          echo "Determining changed files..."
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE_SHA="${{ github.event.pull_request.base.sha }}"
+            git fetch origin "${{ github.event.pull_request.base.ref }}" --depth=1 || true
+            MERGE_BASE=$(git merge-base "$BASE_SHA" HEAD)
+            DIFF=$(git diff --name-only "$MERGE_BASE"...HEAD) || true
+          else
+            BEFORE="${{ github.event.before }}"
+            AFTER="${{ github.sha }}"
+            if [[ "$BEFORE" =~ ^0+$ ]]; then
+              DIFF=$(git ls-files) || true
+            else
+              DIFF=$(git diff --name-only "$BEFORE" "$AFTER") || true
+            fi
+          fi
+
+          echo "Changed files:"
+          echo "$DIFF"
+
+          {
+            echo "library=false"; echo "hbnb=false"; echo "forces=false"
+            echo "gui=false"; echo "datro=false"; echo "projections=false"
+            echo "bpvsbuckler=false"; echo "dcc=false"
+          } >> "$GITHUB_OUTPUT"
+
+          if echo "$DIFF" | grep -qE '^static/library/'; then echo "library=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/hbnb/'; then echo "hbnb=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/forces/'; then echo "forces=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/gui/'; then echo "gui=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/datro/'; then echo "datro=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/projections/'; then echo "projections=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/bpvsbuckler/'; then echo "bpvsbuckler=true" >> "$GITHUB_OUTPUT"; fi
+          if echo "$DIFF" | grep -qE '^static/_dcc/'; then echo "dcc=true" >> "$GITHUB_OUTPUT"; fi  # NOTE: _dcc
+
+
+      # --- Setup Node (only run if HBNB needs it) ---
+      - name: Setup Node (for builds)
+        if: steps.changes.outputs.hbnb == 'true'
+        uses: actions/setup-node@v4
+        with:
+            node-version: '22'
+            
+      ######################################################################
+      # PREVIEW DEPLOYS FOR PRS 
+      ######################################################################
+      
+      # --- Library (Static HTML) ---
+      - name: Deploy library (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.library == 'true'
+        id: deploy_library
+        run: |
+          npx wrangler pages deploy static/library \
+            --project-name=library \
+            --branch="${{ github.head_ref }}" \
+            --commit-hash="${{ github.sha }}" \
+            --skip-cache \
+            > deploy_output.txt 2>&1
+          
+          PREVIEW_URL=$(grep -oP 'https://[a-f0-9]+\.library[^\s]*' deploy_output.txt | head -1)
+          echo "url=$PREVIEW_URL" >> $GITHUB_OUTPUT
+          echo "✅ Deployed to $PREVIEW_URL"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          
+      # --- HBNB (Built App - React) ---
+      - name: Build hbnb
+        if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
+        run: |
+          cd static/hbnb
+          npm ci
+          npm run build
+          
+      - name: Deploy hbnb (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.hbnb == 'true'
+        id: deploy_hbnb
+        run: |
+          npx wrangler pages deploy static/hbnb/build \
+            --project-name=hbnb \
+            --branch="${{ github.head_ref }}" \
+            --commit-hash="${{ github.sha }}" \
+            --skip-cache \
+            > deploy_output.txt 2>&1
+          
+          PREVIEW_URL=$(grep -oP 'https://[a-f0-9]+\.hbnb[^\s]*' deploy_output.txt | head -1)
+          echo "url=$PREVIEW_URL" >> $GITHUB_OUTPUT
+          echo "✅ Deployed to $PREVIEW_URL"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      # --- Forces/CEO (Static HTML) ---
+      - name: Deploy forces/ceo (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.forces == 'true'
+        id: deploy_forces
+        run: |
+          npx wrangler pages deploy static/forces \
+            --project-name=ceo \
+            --branch="${{ github.head_ref }}" \
+            --commit-hash="${{ github.sha }}" \
+            --skip-cache \
+            > deploy_output.txt 2>&1
+          
+          PREVIEW_URL=$(grep -oP 'https://[a-f0-9]+\.ceo[^\s]*' deploy_output.txt | head -1)
+          echo "url=$PREVIEW_URL" >> $GITHUB_OUTPUT
+          echo "✅ Deployed to $PREVIEW_URL"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      # --- GUI (Static HTML) ---
+      - name: Deploy gui (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.gui == 'true'
+        id: deploy_gui
+        run: |
+          npx wrangler pages deploy static/gui \
+            --project-name=gui \
+            --branch="${{ github.head_ref }}" \
+            --commit-hash="${{ github.sha }}" \
+            --skip-cache \
+            > deploy_output.txt 2>&1
+          
+          PREVIEW_URL=$(grep -oP 'https://[a-f0-9]+\.gui[^\s]*' deploy_output.txt | head -1)
+          echo "url=$PREVIEW_URL" >> $GITHUB_OUTPUT
+          echo "✅ Deployed to $PREVIEW_URL"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      # --- DATRO-HOMEPAGE (Static HTML) ---
+      - name: Deploy datro-homepage (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.datro == 'true'
+        id: deploy_datro
+        run: |
+          npx wrangler pages deploy static/datro \
+            --project-name=datro-homepage \
+            --branch="${{ github.head_ref }}" \
+            --commit-hash="${{ github.sha }}" \
+            --skip-cache \
+            > deploy_output.txt 2>&1
+          
+          PREVIEW_URL=$(grep -oP 'https://[a-f0-9]+\.datro-homepage[^\s]*' deploy_output.txt | head -1)
+          echo "url=$PREVIEW_URL" >> $GITHUB_OUTPUT
+          echo "✅ Deployed to $PREVIEW_URL"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      # --- Projections (Static HTML) ---
+      - name: Deploy projections (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.projections == 'true'
+        id: deploy_projections
+        run: |
+          npx wrangler pages deploy static/projections \
+            --project-name=projections \
+            --branch="${{ github.head_ref }}" \
+            --commit-hash="${{ github.sha }}" \
+            --skip-cache \
+            > deploy_output.txt 2>&1
+          
+          PREVIEW_URL=$(grep -oP 'https://[a-f0-9]+\.projections[^\s]*' deploy_output.txt | head -1)
+          echo "url=$PREVIEW_URL" >> $GITHUB_OUTPUT
+          echo "✅ Deployed to $PREVIEW_URL"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      # --- BPVSBuckler (Static HTML) ---
+      - name: Deploy bpvsbuckler (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.bpvsbuckler == 'true'
+        id: deploy_bpvsbuckler
+        run: |
+          npx wrangler pages deploy static/bpvsbuckler \
+            --project-name=bpvsbuckler \
+            --branch="${{ github.head_ref }}" \
+            --commit-hash="${{ github.sha }}" \
+            --skip-cache \
+            > deploy_output.txt 2>&1
+          
+          PREVIEW_URL=$(grep -oP 'https://[a-f0-9]+\.bpvsbuckler[^\s]*' deploy_output.txt | head -1)
+          echo "url=$PREVIEW_URL" >> $GITHUB_OUTPUT
+          echo "✅ Deployed to $PREVIEW_URL"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      # --- DCC (Static HTML) ---
+      - name: Deploy dcc (Preview)
+        if: github.event_name == 'pull_request' && steps.changes.outputs.dcc == 'true'
+        id: deploy_dcc
+        run: |
+          npx wrangler pages deploy static/_dcc \
+            --project-name=dcc \
+            --branch="${{ github.head_ref }}" \
+            --commit-hash="${{ github.sha }}" \
+            --skip-cache \
+            > deploy_output.txt 2>&1
+          
+          PREVIEW_URL=$(grep -oP 'https://[a-f0-9]+\.dcc[^\s]*' deploy_output.txt | head -1)
+          echo "url=$PREVIEW_URL" >> $GITHUB_OUTPUT
+          echo "✅ Deployed to $PREVIEW_URL"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      # --- FINAL TABLE COMMENT ---
+      - name: Post Clean Preview Table
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const apps = [
+              { name: 'library', changed: '${{ steps.changes.outputs.library }}', url: '${{ steps.deploy_library.outputs.url }}' },
+              { name: 'hbnb', changed: '${{ steps.changes.outputs.hbnb }}', url: '${{ steps.deploy_hbnb.outputs.url }}' },
+              { name: 'ceo (forces)', changed: '${{ steps.changes.outputs.forces }}', url: '${{ steps.deploy_forces.outputs.url }}' },
+              { name: 'gui', changed: '${{ steps.changes.outputs.gui }}', url: '${{ steps.deploy_gui.outputs.url }}' },
+              { name: 'datro-homepage', changed: '${{ steps.changes.outputs.datro }}', url: '${{ steps.deploy_datro.outputs.url }}' },
+              { name: 'projections', changed: '${{ steps.changes.outputs.projections }}', url: '${{ steps.deploy_projections.outputs.url }}' },
+              { name: 'bpvsbuckler', changed: '${{ steps.changes.outputs.bpvsbuckler }}', url: '${{ steps.deploy_bpvsbuckler.outputs.url }}' },
+              { name: 'dcc', changed: '${{ steps.changes.outputs.dcc }}', url: '${{ steps.deploy_dcc.outputs.url }}' }
+            ];
+
+            let body = '## 🚀 Cloudflare Pages Preview Deployments\n\n';
+            body += '| Application | Status | Preview URL |\n';
+            body += '| :--- | :--- | :--- |\n';
+            
+            let deployed = 0;
+
+            for (const app of apps) {
+              let status, link;
+              
+              if (app.url && app.url !== '' && app.url !== 'null') {
+                status = '✅ Deployed';
+                link = `[Preview](${app.url})`;
+                deployed++;
+              } else if (app.changed === 'true') {
+                status = '⚠️ Deploy attempted';
+                link = 'Check logs';
+              } else {
+                status = '🚫 Skipped';
+                link = 'N/A';
+              }
+              
+              body += `| ${app.name} | ${status} | ${link} |\n`;
+            }
+            
+            body += `\n**Total Deployed:** ${deployed} application(s)`;
+
+            const { data: comments } = await github.rest.issues.listComments({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            });
+
+            const botComment = comments.find(c => 
+              c.user.type === 'Bot' && 
+              c.body.includes('🚀 Cloudflare Pages Preview Deployments')
+            );
+
+            if (botComment) {
+              await github.rest.issues.updateComment({
+                comment_id: botComment.id,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body
+              });
+            } else {
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body
+              });
+            }

@@ -1,0 +1,40 @@
+---
+# Ansible Playbook for Machine Recovery
+# Run with: ansible-playbook -i inventory.ini playbook.yml --ask-become-pass
+
+- name: Restore Laptop Environment
+  hosts: localhost
+  connection: local
+  become: yes
+  gather_facts: yes
+
+  roles:
+    - role: base_packages
+      tags: ['base', 'packages']
+
+    - role: desktop
+      tags: ['desktop', 'cinnamon']
+
+    - role: npm_packages
+      tags: ['npm', 'ai']
+
+    - role: python_packages
+      tags: ['python', 'pip']
+
+    - role: go_tools
+      tags: ['go', 'tools']
+
+    - role: system_config
+      tags: ['system', 'config']
+
+    - role: cron_jobs
+      tags: ['cron', 'scheduled']
+
+    - role: custom_scripts
+      tags: ['scripts', 'custom']
+
+    - role: configs
+      tags: ['configs', 'ai']
+
+    - role: skills
+      tags: ['skills', 'ai']

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet/Ledger</title>
+    <style>
+        body { font-family: 'Courier New', Courier, monospace; background-color: #000000; color: #00FF00; margin: 20px; }
+        a { color: #00FFFF; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .container { max-width: 800px; margin: auto; padding: 20px; border: 1px solid #00FF00; }
+        .form-section, .output-section { margin-bottom: 30px; }
+        label { display: block; margin-bottom: 5px; }
+        input[type="text"], input[type="email"], textarea { width: calc(100% - 20px); padding: 10px; margin-bottom: 15px; background-color: #333333; color: #00FF00; border: 1px solid #00FF00; }
+        button { background-color: #00FFFF; color: #000000; padding: 10px 15px; border: none; cursor: pointer; margin-top: 10px; }
+        .generate-button { display: block; width: 100%; text-align: center; padding: 12px; }
+        #iouOutput, #uomeOutput { margin-top: 15px; background-color: #111111; padding: 15px; border: 1px dashed #00FF00; white-space: pre-wrap; }
+        .back-link { display: block; text-align: center; margin-top: 40px; }
+        .email-popup-trigger { cursor: pointer; color: #00FFFF; text-decoration: underline; display: inline-block; margin-top: 5px; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Wallet & Ledger</h1>
+
+        <div class="form-section">
+            <h2>Generate IoU (I Owe You)</h2>
+            <label for="iou_to">To:</label>
+            <input type="text" id="iou_to" placeholder="Recipient's Name/ID">
+
+            <label for="iou_email">Recipient Email:</label>
+            <input type="email" id="iou_email" placeholder="recipient@example.com">
+            
+            <label for="iou_amount">Amount:</label>
+            <input type="text" id="iou_amount" placeholder="e.g., 100 USD">
+            
+            <label for="iou_description">Description:</label>
+            <textarea id="iou_description" rows="4" placeholder="Reason for the debt"></textarea>
+            
+            <button class="generate-button" onclick="prepareIoUMailto()">Generate IoU</button>
+            <div id="iouOutput"></div>
+        </div>
+
+        <div class="form-section">
+            <h2>Generate UoMe (You Owe Me)</h2>
+            <label for="uome_from">From:</label>
+            <input type="text" id="uome_from" placeholder="Sender's Name/ID">
+
+            <label for="uome_email">Recipient Email (for confirmation):</label>
+            <input type="email" id="uome_email" placeholder="recipient@example.com">
+            
+            <label for="uome_amount">Amount:</label>
+            <input type="text" id="uome_amount" placeholder="e.g., 50 EUR">
+            
+            <label for="uome_description">Description:</label>
+            <textarea id="uome_description" rows="4" placeholder="Reason for the credit"></textarea>
+            
+            <button class="generate-button" onclick="prepareUoMeMailto()">Generate UoMe</button>
+            <div id="uomeOutput"></div>
+        </div>
+        
+        <!-- Placeholder for client-side cache message -->
+        <div class="output-section">
+            <p><em>(This application uses client-side caching for ledger data.)</em></p>
+        </div>
+    </div>
+
+    <a href="./index.html" class="back-link">Back to Main Menu</a>
+
+    <script>
+        const MY_EMAIL = "my-email@example.com"; // <<< IMPORTANT: Replace with your actual email address for replies >>>
+
+        function base64Encode(str) {
+            try {
+                return btoa(str);
+            } catch (e) {
+                console.error("Base64 encoding failed:", e);
+                return ""; // Return empty string or handle error appropriately
+            }
+        }
+
+        function prepareIoUMailto() {
+            const to = document.getElementById('iou_to').value;
+            const email = document.getElementById('iou_email').value;
+            const amount = document.getElementById('iou_amount').value;
+            const description = document.getElementById('iou_description').value;
+            const outputDiv = document.getElementById('iouOutput');
+
+            if (!to || !email || !amount || !description) {
+                outputDiv.textContent = "Please fill in all IoU fields, including recipient email.";
+                return;
+            }
+
+            const iouData = {
+                type: "iou",
+                to: to,
+                amount: amount,
+                description: description,
+                date: new Date().toISOString(),
+                sender_reply_email: MY_EMAIL // Email to reply to for confirmation
+            };
+
+            const encodedData = base64Encode(JSON.stringify(iouData));
+            if (!encodedData) { // Handle encoding failure
+                outputDiv.textContent = "Error generating IoU data. Please try again.";
+                return;
+            }
+            
+            const subject = `IoU Request - ${amount}`;
+            const body = `Hello ${to},
+
+You have received an IoU request.
+
+Details:
+${JSON.stringify(iouData, null, 2)}
+
+Please select the details below to open your app and confirm or reject this IoU.
+
+Accept/Reject Data:
+${encodedData}
+
+Respond to: ${MY_EMAIL}`;
+
+            const mailtoLink = `mailto:${email}?bcc=dcc@datro.xyz&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            outputDiv.innerHTML = `
+                <p>IoU generated. Click below to send email:</p>
+                <a href="${mailtoLink}" target="_blank" class="email-popup-trigger">Send IoU Request via Gmail</a>
+                <p><em>(This will open your default email client or Gmail in a new tab/window)</em></p>
+            `;
+             // Clear form after generation (optional)
+            document.getElementById('iou_to').value = '';
+            document.getElementById('iou_amount').value = '';
+            document.getElementById('iou_description').value = '';
+            document.getElementById('iou_email').value = '';
+        }
+
+        function prepareUoMeMailto() {
+            const from = document.getElementById('uome_from').value;
+            const email = document.getElementById('uome_email').value; // This is who WE are sending the UoMe TO. This person OWES ME.
+            const amount = document.getElementById('uome_amount').value;
+            const description = document.getElementById('uome_description').value;
+            const outputDiv = document.getElementById('uomeOutput');
+
+            if (!from || !email || !amount || !description) {
+                outputDiv.textContent = "Please fill in all UoMe fields, including recipient email.";
+                return;
+            }
+
+            const uomeData = {
+                type: "uome",
+                from: from, // The person who owes me
+                amount: amount,
+                description: description,
+                date: new Date().toISOString(),
+                recipient_reply_email: MY_EMAIL // Email to reply to for confirmation
+            };
+
+            const encodedData = base64Encode(JSON.stringify(uomeData));
+            if (!encodedData) { // Handle encoding failure
+                outputDiv.textContent = "Error generating UoMe data. Please try again.";
+                return;
+            }
+            
+            const subject = `UoMe Request - ${amount}`;
+            // The recipient will receive this email. They need to click on it, which will prompt them to accept/reject.
+            // Their action should then send a confirmation back to MY_EMAIL.
+            const body = `Hello ${from},
+
+You have received a UoMe request.
+
+Details:
+${JSON.stringify(uomeData, null, 2)}
+
+Please select the details below to open your app and confirm or reject this UoMe.
+
+Accept/Reject Data:
+${encodedData}
+
+This confirmation will be sent to: ${MY_EMAIL}`;
+
+            const mailtoLink = `mailto:${email}?bcc=dcc@datro.xyz&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            outputDiv.innerHTML = `
+                <p>UoMe generated. Click below to send email:</p>
+                <a href="${mailtoLink}" target="_blank" class="email-popup-trigger">Send UoMe Request via Gmail</a>
+                <p><em>(This will open your default email client or Gmail in a new tab/window)</em></p>
+            `;
+             // Clear form after generation (optional)
+            document.getElementById('uome_from').value = '';
+            document.getElementById('uome_amount').value = '';
+            document.getElementById('uome_description').value = '';
+            document.getElementById('uome_email').value = '';
+        }
+
+        // NOTE: The actual recipient interaction (accept/reject, and emailing back confirmation)
+        // would require a more complex system involving server-side processing or a service worker
+        // to intercept the callback email or handle the data from the recipient's app.
+        // This implementation focuses on generating the initial email with the necessary data.
+        // You will need to replace 'my-email@example.com' with your actual email address.
+    </script>
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Great House Farm Timeline</title>
+  <link rel="stylesheet" href="tailwind.css">
+  <style>
+    :root {
+      color-scheme: dark;
+      --page-background: transparent;
+      --surface-overlay: transparent;
+      --text-primary: #f8fafc;
+      --text-muted: rgba(226, 232, 240, 0.6);
+      --accent: #38bdf8;
+      --horizontal-band-height: clamp(230px, 36vh, 320px);
+      --horizontal-offset: clamp(110px, 22vh, 200px);
+      --horizontal-gap: clamp(28px, 6vw, 60px);
+      --horizontal-icon: clamp(40px, 8vw, 64px);
+      --vertical-gap: clamp(22px, 6vh, 36px);
+      --vertical-icon: clamp(48px, 10vw, 80px);
+      --fade-width: 20%;
+      --icon-size-small: clamp(40px, 8vw, 64px);
+      --vertical-offset: clamp(32px, 7vw, 84px);
+      --timeline-anchor: 45%;
+    }
+
+    html {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      color: var(--text-primary);
+      font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow: hidden;
+    }
+
+    body {
+      position: relative;
+    }
+
+    .background-media {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    #background-video {
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background-size: cover;
+      filter: saturate(1.05) contrast(1.05) brightness(0.95);
+      opacity: 0;
+      transition: opacity 10s;
+      pointer-events: none;
+    }
+
+    .background-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: radial-gradient(circle at 30% 20%, rgba(15, 118, 226, 0.22), rgba(2, 6, 23, 0.65) 55%),
+        linear-gradient(180deg, rgba(2, 6, 23, 0.55) 0%, rgba(2, 6, 23, 0.88) 75%);
+      pointer-events: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .is-hidden {
+      display: none !important;
+    }
+
+    .xmb-shell {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: transparent;
+      isolation: isolate;
+    }
+
+    .xmb-stage {
+      position: relative;
+      flex: 1;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .xmb-vertical {
+      position: absolute;
+      top: clamp(32px, 10vh, 84px);
+      bottom: clamp(32px, 18vh, 140px);
+      left: 50%;
+      transform: translateX(calc(-50% - var(--vertical-offset)));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: min(380px, 34vw);
+      z-index: 2;
+    }
+
+    .xmb-vertical__viewport {
+      width: 100%;
+      max-width: 420px;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      pointer-events: auto;
+    }
+
+    .xmb-vertical__list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--vertical-gap);
+      transform: translateY(0);
+      transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+      padding-left: clamp(2px, 1vw, 12px);
+      padding-right: clamp(6px, 2vw, 16px);
+    }
+
+    .xmb-entry {
+      position: relative;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: clamp(10px, 2.5vh, 18px);
+      min-width: clamp(150px, 22vw, 210px);
+      padding: clamp(6px, 1.8vh, 10px) 0;
+      color: var(--text-primary);
+      text-align: center;
+      opacity: 0.7;
+      transform: translateY(0) scale(1);
+      transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
+        opacity 0.35s ease;
+      pointer-events: auto;
+    }
+
+    .xmb-entry__icon {
+      width: var(--horizontal-icon);
+      height: var(--horizontal-icon);
+      border-radius: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: calc(var(--horizontal-icon) * 0.64);
+      line-height: 1;
+      background: radial-gradient(circle at 35% 35%, rgba(56, 189, 248, 0.65), rgba(56, 189, 248, 0.08) 70%, rgba(15, 23, 42, 0));
+      box-shadow: 0 26px 52px rgba(2, 6, 23, 0.6);
+    }
+
+    .xmb-entry__copy {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(2px, 0.8vh, 8px);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .xmb-entry__title {
+      font-weight: 700;
+      font-size: clamp(0.85rem, 2.4vw, 1.15rem);
+      color: var(--text-primary);
+    }
+
+    .xmb-entry__subtitle {
+      font-size: clamp(0.62rem, 1.8vw, 0.85rem);
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .xmb-entry.is-active {
+      opacity: 1;
+      transform: translateY(-8px) scale(1.04);
+    }
+
+    .xmb-entry:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .xmb-horizontal {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: var(--horizontal-offset);
+      height: var(--horizontal-band-height);
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: clamp(114px, 6vh, 40px);
+      background: transparent;
+      z-index: 3;
+    }
+
+    .xmb-horizontal__viewport {
+      flex: 1;
+      overflow: hidden;
+      padding-left: clamp(16px, 3vw, 28px);
+      padding-right: clamp(24px, 5vw, 48px);
+      position: relative;
+      mask-image: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) calc(100% - var(--fade-width)),
+        rgba(0, 0, 0, 0) 100%
+      );
+      -webkit-mask-image: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) calc(100% - var(--fade-width)),
+        rgba(0, 0, 0, 0) 100%
+      );
+      mask-size: 100% 100%;
+      -webkit-mask-size: 100% 100%;
+      mask-repeat: no-repeat;
+      -webkit-mask-repeat: no-repeat;
+    }
+
+    .xmb-horizontal__track {
+      display: flex;
+      align-items: flex-end;
+      gap: var(--horizontal-gap);
+      margin-left: clamp(6vw, 16vw, 14vw);
+      transform: translateX(0);
+      transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+      will-change: transform;
+      padding-left: clamp(140px, 32vw, 320px);
+      padding-right: clamp(200px, 34vw, 360px);
+    }
+
+    .xmb-year {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: clamp(12px, 3vh, 20px);
+      width: clamp(200px, 24vw, 280px);
+      padding: clamp(12px, 2.2vh, 18px) clamp(12px, 2vw, 20px);
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      cursor: pointer;
+      opacity: 0.55;
+      transform: translateY(0) scale(0.94);
+      transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
+        opacity 0.35s ease;
+      text-align: left;
+    }
+
+    .xmb-year__icon {
+      width: var(--vertical-icon);
+      height: var(--vertical-icon);
+      border-radius: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: calc(var(--vertical-icon) * 0.66);
+      background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.55), rgba(56, 189, 248, 0.1) 65%, rgba(15, 23, 42, 0));
+      box-shadow: 0 18px 46px rgba(2, 6, 23, 0.55);
+    }
+
+    .xmb-year__copy {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(4px, 1vh, 8px);
+      text-transform: uppercase;
+      font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+      letter-spacing: 0.08em;
+    }
+
+    .xmb-year__title {
+      font-weight: 700;
+      color: var(--text-primary);
+      font-size: clamp(0.85rem, 2vw, 1rem);
+    }
+
+    .xmb-year__subtitle {
+      color: var(--text-muted);
+      font-size: clamp(0.65rem, 1.6vw, 0.85rem);
+      letter-spacing: 0.06em;
+    }
+
+    .xmb-year.is-active {
+      opacity: 1;
+      transform: translateY(-6px) scale(1.04);
+    }
+
+    .xmb-year:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 5px;
+    }
+
+    .xmb-loading {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      padding: 0.65rem 1.2rem;
+      background: rgba(15, 23, 42, 0.85);
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      box-shadow: 0 18px 48px rgba(2, 6, 23, 0.6);
+      z-index: 6;
+    }
+
+    .xmb-loading.is-hidden {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      :root {
+        --horizontal-band-height: clamp(220px, 42vh, 320px);
+        --horizontal-gap: clamp(24px, 9vw, 44px);
+        --horizontal-icon: clamp(40px, 11vw, 64px);
+        --vertical-gap: clamp(14px, 4vh, 24px);
+        --vertical-icon: clamp(40px, 11vw, 64px);
+        --vertical-offset: clamp(28px, 8vw, 72px);
+        --timeline-anchor: 47%;
+      }
+
+      .xmb-vertical__viewport {
+        max-width: 360px;
+      }
+
+      .xmb-year {
+        width: min(100%, 300px);
+        padding: clamp(10px, 2.4vh, 16px) clamp(10px, 5vw, 18px);
+      }
+    }
+
+    @media (max-width: 640px) {
+      :root {
+        --timeline-anchor: 50%;
+        --horizontal-icon-mobile: 32px; /* New variable for smaller icon */
+        --horizontal-offset-mobile: 20px; /* New variable for closer horizontal menu */
+      }
+
+      html, body {
+        overflow: hidden;
+      }
+
+      .xmb-vertical {
+        left: clamp(20px, 8vw, 32px);
+        transform: none;
+        width: calc(100% - clamp(40px, 20vw, 64px));
+        justify-content: flex-start;
+        top: clamp(40px, 12vh, 100px); /* Increased top offset */
+        bottom: clamp(20px, 10vh, 80px); /* Reduced bottom offset */
+      }
+
+      .xmb-vertical__viewport {
+        width: 100%;
+        height: clamp(220px, 44vh, 320px);
+      }
+
+      .xmb-entry__icon {
+        width: var(--horizontal-icon-mobile);
+        height: var(--horizontal-icon-mobile);
+      }
+
+      .xmb-horizontal {
+        bottom: var(--horizontal-offset-mobile);
+      }
+
+      .xmb-year__title {
+        font-size: clamp(0.95rem, 4vw, 1.2rem);
+      }
+    }
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  .xmb-year,
+  .xmb-entry {
+    -webkit-tap-highlight-color: rgba(56, 189, 248, 0.2);
+    touch-action: manipulation;
+  }
+  
+  .xmb-vertical__viewport,
+  .xmb-horizontal__viewport {
+    touch-action: pan-y pan-x;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Increase tap targets on mobile */
+@media (max-width: 640px) {
+  .xmb-year {
+    min-height: 60px;
+  }
+  
+  .xmb-entry {
+    min-height: 80px;
+  }
+}
+/* Active state feedback for touch */
+.xmb-year:active,
+.xmb-entry:active,
+.round-button:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+  </style>
+  <noscript>
+    <style>
+      #background-video {
+        opacity: 1 !important;
+      }
+    </style>
+  </noscript>
+</head>
+  <body>
+  <!-- CMS edits reverted to respect current requirements -->
+  <div class="background-media" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="auto" id="background-video" src="./vid.mp4" type="video/mp4"></video>
+    <div class="background-overlay"></div>
+  </div>
+
+  <div class="xmb-shell">
+    <main class="xmb-stage">
+      <section class="xmb-vertical" aria-label="Timeline years">
+        <div class="xmb-vertical__viewport" id="year-list-viewport">
+          <div class="xmb-vertical__list" id="timeline-year-list" role="listbox" aria-label="Timeline years"></div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="xmb-horizontal" aria-label="Timeline entries">
+      <div class="xmb-horizontal__viewport" id="entry-bar-viewport">
+        <div class="xmb-horizontal__track" id="timeline-entry-track" role="listbox" aria-label="Timeline entries"></div>
+      </div>
+    </nav>
+
+    <div id="timeline-loading" class="xmb-loading">Loading timeline…</div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
