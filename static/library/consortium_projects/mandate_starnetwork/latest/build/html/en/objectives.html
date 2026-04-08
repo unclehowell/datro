@@ -1,0 +1,140 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Objectives &mdash; StarSync Network Mandate 0.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=7026087e"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Constraints" href="constraints.html" />
+    <link rel="prev" title="Background" href="background.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            StarSync Network Mandate
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="purpose.html">Purpose</a></li>
+<li class="toctree-l1"><a class="reference internal" href="purpose.html#standardised-task-documentation-protocol">Standardised Task Documentation Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Objectives</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#primary-objectives">Primary Objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#secondary-objectives">Secondary Objectives</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="constraints.html">Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scope.html">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quality.html">Quality Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="approval.html">Approval</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">StarSync Network Mandate</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Objectives</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/objectives.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="objectives">
+<h1>Objectives<a class="headerlink" href="#objectives" title="Link to this heading"></a></h1>
+<section id="primary-objectives">
+<h2>Primary Objectives<a class="headerlink" href="#primary-objectives" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Automated Change Detection</strong> – Each endpoint runs a cron job every 5 minutes to check tracked repositories for uncommitted changes.</p></li>
+<li><p><strong>Auto-Commit and Push</strong> – Repositories with 500 or fewer changed files are automatically committed and pushed to a branch named <code class="docutils literal notranslate"><span class="pre">autosync/{hostname}/{timestamp}</span></code> on GitHub.</p></li>
+<li><p><strong>Automatic PR Creation</strong> – Pushing to an autosync branch triggers creation of a pull request targeting the default branch (<code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> or <code class="docutils literal notranslate"><span class="pre">main</span></code>).</p></li>
+<li><p><strong>Telegram Delivery</strong> – The PR URL is sent to the client’s Telegram chat for review and approval before merging.</p></li>
+<li><p><strong>Remote Change Pulling</strong> – Each endpoint monitors its tracked branch on GitHub for new commits and pulls them automatically via <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--rebase</span></code>.</p></li>
+<li><p><strong>Agent Fallback</strong> – When sync fails (merge conflicts, push rejection, network errors), a Hermes agent is spawned in YOLO mode to diagnose and resolve the issue without human intervention.</p></li>
+<li><p><strong>static/ui Propagation</strong> – Push the 432-file <code class="docutils literal notranslate"><span class="pre">static/ui</span></code> folder from aws-command to GitHub, creating a PR for client review.</p></li>
+</ol>
+</section>
+<section id="secondary-objectives">
+<h2>Secondary Objectives<a class="headerlink" href="#secondary-objectives" title="Link to this heading"></a></h2>
+<ol class="arabic simple" start="8">
+<li><p><strong>Documentation Protocol</strong> – Establish the Mandate/Brief/Plan workflow as the standing order for all future agent tasks across all three machines.</p></li>
+<li><p><strong>Semantic Versioning</strong> – All project documents follow semantic versioning with proper backup of superseded versions.</p></li>
+<li><p><strong>Library Standards</strong> – Follow established Datro Consortium documentation formatting, build with Sphinx, produce HTML and PDF.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="background.html" class="btn btn-neutral float-left" title="Background" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="constraints.html" class="btn btn-neutral float-right" title="Constraints" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, DATRO Consortium.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proposed Solution &mdash; StarSync Network Brief 0.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=7026087e"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Work Packages" href="work_packages.html" />
+    <link rel="prev" title="Executive Summary" href="executive_summary.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            StarSync Network Brief
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="releasenotes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="executive_summary.html">Executive Summary</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Proposed Solution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#architecture">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#component-design">Component Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sync-script-repo-sync-sh">1. Sync Script (repo-sync.sh)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#telegram-notification">2. Telegram Notification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agent-fallback-repo-sync-agent-sh">3. Agent Fallback (repo-sync-agent.sh)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cron-orchestration">4. Cron Orchestration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#repository-tracking">5. Repository Tracking</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#data-flow">Data Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="work_packages.html">Work Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timeline.html">Timeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deliverables.html">Deliverables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="risks.html">Risks and Mitigations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="approval.html">Approval</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">StarSync Network Brief</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Proposed Solution</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/proposed_solution.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="proposed-solution">
+<h1>Proposed Solution<a class="headerlink" href="#proposed-solution" title="Link to this heading"></a></h1>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading"></a></h2>
+<p>The synchronization system uses a star network topology with GitHub at the center.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+----------+</span>     <span class="n">push</span><span class="o">/</span><span class="n">PULL</span>      <span class="o">+-----------+</span>     <span class="n">pull</span><span class="o">/</span><span class="n">PUSH</span>      <span class="o">+-----------+</span>
+<span class="o">|</span>  <span class="n">Laptop</span>  <span class="o">|</span> <span class="o">&lt;----------------&gt;</span> <span class="o">|</span>   <span class="n">GitHub</span>  <span class="o">|</span> <span class="o">&lt;----------------&gt;</span> <span class="o">|</span>  <span class="n">AWS</span> <span class="n">Cmd</span>  <span class="o">|</span>
+<span class="o">|</span> <span class="mi">16</span> <span class="n">repos</span> <span class="o">|</span>                    <span class="o">|</span>  <span class="p">(</span><span class="n">hub</span><span class="p">)</span>    <span class="o">|</span>                    <span class="o">|</span>  <span class="mi">2</span> <span class="n">repos</span>  <span class="o">|</span>
+<span class="o">+----------+</span>                    <span class="o">+-----------+</span>                    <span class="o">+-----------+</span>
+     <span class="o">^</span>                               <span class="o">^</span>
+     <span class="o">|</span>                               <span class="o">|</span>
+     <span class="n">v</span>                               <span class="n">v</span>
+<span class="o">+-----------+</span>
+<span class="o">|</span>  <span class="n">AWS</span> <span class="n">AI</span>   <span class="o">|</span>   <span class="p">(</span><span class="ow">not</span> <span class="n">yet</span> <span class="n">reachable</span><span class="p">)</span>
+<span class="o">|</span>   <span class="n">TBD</span>     <span class="o">|</span>
+<span class="o">+-----------+</span>
+</pre></div>
+</div>
+</section>
+<section id="component-design">
+<h2>Component Design<a class="headerlink" href="#component-design" title="Link to this heading"></a></h2>
+<section id="sync-script-repo-sync-sh">
+<h3>1. Sync Script (repo-sync.sh)<a class="headerlink" href="#sync-script-repo-sync-sh" title="Link to this heading"></a></h3>
+<p>A bash script deployed on each endpoint that:</p>
+<ul class="simple">
+<li><p>Reads a list of tracked repositories from a config file</p></li>
+<li><p>For each repo:
+- Counts uncommitted changes (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span> <span class="pre">--porcelain</span></code>)
+- Fetches from origin to check for remote updates
+- If behind origin: stashes local changes, pulls with rebase, restores stash
+- If changes exist and count &lt;= 500: commits, pushes to an autosync branch
+- Creates a PR via <code class="docutils literal notranslate"><span class="pre">gh</span> <span class="pre">pr</span> <span class="pre">create</span></code>
+- Sends a Telegram notification with the PR URL</p></li>
+<li><p>Returns exit code 0 (ok), 1 (failures), or 2 (nothing to do)</p></li>
+</ul>
+</section>
+<section id="telegram-notification">
+<h3>2. Telegram Notification<a class="headerlink" href="#telegram-notification" title="Link to this heading"></a></h3>
+<p>Upon PR creation, the script uses the Telegram Bot API to send an HTML-formatted
+message containing:</p>
+<ul class="simple">
+<li><p>The origin hostname</p></li>
+<li><p>Repository name</p></li>
+<li><p>Number of files changed</p></li>
+<li><p>A clickable link to the PR on GitHub</p></li>
+</ul>
+</section>
+<section id="agent-fallback-repo-sync-agent-sh">
+<h3>3. Agent Fallback (repo-sync-agent.sh)<a class="headerlink" href="#agent-fallback-repo-sync-agent-sh" title="Link to this heading"></a></h3>
+<p>When the cron detects a non-zero exit code from the sync script, it invokes
+a Hermes agent using the <code class="docutils literal notranslate"><span class="pre">reposync</span></code> profile in YOLO mode with the instruction
+to diagnose and resolve the failure. The agent:</p>
+<ul class="simple">
+<li><p>Reads the latest sync log from <code class="docutils literal notranslate"><span class="pre">/tmp/repo-sync/</span></code></p></li>
+<li><p>Attempts automated resolution (abort, reset, conflict handling)</p></li>
+<li><p>Reports results via Telegram</p></li>
+<li><p>This enables self-healing sync operations without human intervention</p></li>
+</ul>
+</section>
+<section id="cron-orchestration">
+<h3>4. Cron Orchestration<a class="headerlink" href="#cron-orchestration" title="Link to this heading"></a></h3>
+<p>Each endpoint has a cron entry running every 5 minutes:</p>
+<p><code class="docutils literal notranslate"><span class="pre">*/5</span> <span class="pre">*</span> <span class="pre">*</span> <span class="pre">*</span> <span class="pre">*</span> <span class="pre">/path/to/repo-sync-cron.sh</span> <span class="pre">&gt;&gt;</span> <span class="pre">/tmp/repo-sync/cron.log</span> <span class="pre">2&gt;&amp;1</span> <span class="pre">||</span> <span class="pre">/path/to/repo-sync-agent.sh</span> <span class="pre">&gt;&gt;</span> <span class="pre">/tmp/repo-sync/cron.log</span> <span class="pre">2&gt;&amp;1</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">||</span></code> operator ensures the agent fallback runs only when the sync script
+exits with a non-zero code (failures).</p>
+</section>
+<section id="repository-tracking">
+<h3>5. Repository Tracking<a class="headerlink" href="#repository-tracking" title="Link to this heading"></a></h3>
+<p>A simple text file (<code class="docutils literal notranslate"><span class="pre">reposync_repos.txt</span></code>) lists full paths to all tracked
+repositories on each endpoint. Lines starting with <code class="docutils literal notranslate"><span class="pre">#</span></code> are comments, empty
+lines are ignored. This file is machine-specific.</p>
+</section>
+</section>
+<section id="data-flow">
+<h2>Data Flow<a class="headerlink" href="#data-flow" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>User makes changes in a repo on <strong>laptop</strong></p></li>
+<li><p>Cron runs (within 5 min): detects changes, commits, pushes</p></li>
+<li><p>Push creates <code class="docutils literal notranslate"><span class="pre">autosync/laptop/20260407-XXXXXX</span></code> branch on GitHub</p></li>
+<li><p>PR is created targeting <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code></p></li>
+<li><p>Telegram message sent to client with PR URL</p></li>
+<li><p>Client reviews at the GitHub PR page and merges</p></li>
+<li><p>Next cron cycle on <strong>aws-command</strong> pulls the merged changes</p></li>
+<li><p>All endpoints are now in sync</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="executive_summary.html" class="btn btn-neutral float-left" title="Executive Summary" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="work_packages.html" class="btn btn-neutral float-right" title="Work Packages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, DATRO Consortium.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
