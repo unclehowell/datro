@@ -4,6 +4,11 @@
     <title>Hβnβ Smart Home Screen</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        if (window.location.hostname.indexOf('datro.xyz') > -1) {
+            location.href = '004-demo.html';
+        }
+    </script>
     <link rel="stylesheet" href="media/css/breadcrumb.css">
     <link rel="stylesheet" href="media/css/appstore.css">
     <link rel="stylesheet" href="media/css/font-awesome.css">
@@ -15,6 +20,10 @@
     <link rel="stylesheet" href="../app-store/apps/999-999/style.css">
     <style>
 
+
+html {overflow-x: hidden!important;height: -webkit-fill-available;}
+html::-webkit-scrollbar { width: 0; height: 0; }
+body { overflow-x: hidden; }
 
 .title-span, object {
     cursor: pointer;

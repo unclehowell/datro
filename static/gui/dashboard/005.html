@@ -1,9 +1,14 @@
 <DOCTYPE html>
 <html>
-  <head>
- <title>AppStore - Entertainment</title>
+<head>
+  <title>AppStore - Entertainment</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+      if (window.location.hostname.indexOf('datro.xyz') > -1) {
+          location.href = '005-demo.html';
+      }
+  </script>
   <link rel="stylesheet" href="media/css/breadcrumb.css">
   <link rel="stylesheet" href="media/css/appstore.css">
   <link rel="stylesheet" href="media/css/font-awesome.css">
@@ -19,6 +24,7 @@
   <link rel="stylesheet" href="../app-store/apps/999-999/style.css">
 
     <style>
+      html::-webkit-scrollbar { width: 0; height: 0; }
       html {overflow-x: hidden!important;height: -webkit-fill-available;}
 #body {}
 
