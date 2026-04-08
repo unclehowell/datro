@@ -124,3 +124,5 @@ fi
 
 echo "[datro-auto-sync] $(date -Is) done"
 exit 0
+-Is) done"
+exit 0
