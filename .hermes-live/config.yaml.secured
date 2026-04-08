@@ -1,0 +1,335 @@
+model:
+  api_mode: chat_completions
+  base_url: https://openrouter.ai/api/v1
+  default: qwen/qwen3.6-plus:free
+  provider: openrouter
+providers: {}
+fallback_providers:
+- provider: nous
+  model: nous-hermes-3
+- provider: huggingface
+  model: qwen2.5-7b-instruct
+- provider: deepseek
+  model: deepseek-chat
+- provider: zai
+  model: GLM-4.6
+- provider: openai-codex
+  model: gpt5.2
+- provider: custom
+  model: moonshotai/kimi-k2-thinking
+  base_url: https://integrate.api.nvidia.com/v1
+  api_key_env: HERMES_CUSTOM_KIMI-K2-THINKING_KEY
+- provider: custom
+  model: qwen/qwen3-32b
+  base_url: https://api.groq.com/openai/v1/chat/completions
+  api_key_env: HERMES_CUSTOM_QWEN3-32B_KEY
+- provider: custom
+  model: glm-4.7-flash
+  base_url: https://ollama.com/api
+  api_key_env: HERMES_CUSTOM_GLM-4.7-FLASH_KEY
+- provider: custom
+  model: gemini-2.0-flash
+  base_url: https://generativelanguage.googleapis.com/v1beta/openai/
+  api_key_env: HERMES_CUSTOM_GEMINI-2.0-FLASH_KEY
+- provider: opencode-zen
+  model: minimax/m2.5-free
+- provider: openrouter
+  model: qwen/qwen3.6-plus:free
+credential_pool_strategies:
+  opencode-zen: round_robin
+  openrouter: random
+toolsets:
+- hermes-cli
+agent:
+  max_turns: 90
+  gateway_timeout: 1800
+  tool_use_enforcement: auto
+terminal:
+  backend: local
+  modal_mode: auto
+  cwd: .
+  timeout: 180
+  env_passthrough: []
+  docker_image: nikolaik/python-nodejs:python3.11-nodejs20
+  docker_forward_env: []
+  docker_env: {}
+  singularity_image: docker://nikolaik/python-nodejs:python3.11-nodejs20
+  modal_image: nikolaik/python-nodejs:python3.11-nodejs20
+  daytona_image: nikolaik/python-nodejs:python3.11-nodejs20
+  container_cpu: 1
+  container_memory: 5120
+  container_disk: 51200
+  container_persistent: true
+  docker_volumes: []
+  docker_mount_cwd_to_workspace: false
+  persistent_shell: true
+browser:
+  inactivity_timeout: 120
+  command_timeout: 30
+  record_sessions: false
+  allow_private_urls: false
+  camofox:
+    managed_persistence: false
+checkpoints:
+  enabled: true
+  max_snapshots: 50
+file_read_max_chars: 100000
+compression:
+  enabled: true
+  threshold: 0.5
+  target_ratio: 0.2
+  protect_last_n: 20
+  summary_model: ''
+  summary_provider: auto
+  summary_base_url: null
+smart_model_routing:
+  enabled: false
+  max_simple_chars: 160
+  max_simple_words: 28
+  cheap_model: {}
+auxiliary:
+  vision:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 30
+    download_timeout: 30
+  web_extract:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 30
+  compression:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 120
+  session_search:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 30
+  skills_hub:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 30
+  approval:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 30
+  mcp:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 30
+  flush_memories:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 30
+display:
+  compact: true
+  personality: kawaii
+  resume_display: minimal
+  busy_input_mode: interrupt
+  bell_on_complete: false
+  show_reasoning: false
+  streaming: false
+  inline_diffs: false
+  show_cost: false
+  skin: default
+  tool_progress_command: false
+  tool_preview_length: 0
+  tool_progress: minimal
+privacy:
+  redact_pii: false
+tts:
+  provider: edge
+  edge:
+    voice: en-US-AriaNeural
+  elevenlabs:
+    voice_id: pNInz6obpgDQGcFmaJgB
+    model_id: eleven_multilingual_v2
+  openai:
+    model: gpt-4o-mini-tts
+    voice: alloy
+  neutts:
+    ref_audio: ''
+    ref_text: ''
+    model: neuphonic/neutts-air-q4-gguf
+    device: cpu
+stt:
+  enabled: true
+  provider: local
+  local:
+    model: base
+  openai:
+    model: whisper-1
+voice:
+  record_key: ctrl+b
+  max_recording_seconds: 120
+  auto_tts: false
+  silence_threshold: 200
+  silence_duration: 3.0
+human_delay:
+  mode: 'off'
+  min_ms: 800
+  max_ms: 2500
+memory:
+  memory_enabled: true
+  user_profile_enabled: true
+  memory_char_limit: 2200
+  user_char_limit: 1375
+  provider: honcho
+  providers:
+  - type: mem0
+    user_id: hermes_user
+    api_key_env: MEM0_API_KEY
+    enabled: true
+  - type: honcho
+    api_key_env: HONCHO_API_KEY
+    app_id: hermes
+    user_id: unclehowell
+    enabled: true
+delegation:
+  model: ''
+  provider: ''
+  base_url: ''
+  api_key: ''
+  max_iterations: 50
+prefill_messages_file: ''
+skills:
+  external_dirs: []
+honcho:
+  api_key_env: HONCHO_API_KEY
+timezone: ''
+discord:
+  require_mention: true
+  free_response_channels: ''
+  auto_thread: true
+  reactions: true
+whatsapp: {}
+approvals:
+  mode: manual
+  timeout: 60
+command_allowlist: []
+quick_commands: {}
+personalities: {}
+security:
+  redact_secrets: true
+  tirith_enabled: true
+  tirith_path: tirith
+  tirith_timeout: 5
+  tirith_fail_open: true
+  website_blocklist:
+    enabled: false
+    domains: []
+    shared_files: []
+cron:
+  wrap_response: true
+logging:
+  level: INFO
+  max_size_mb: 5
+  backup_count: 3
+_config_version: 11
+mcp_servers:
+  everything-disabled:
+    command: /home/unclehowell/.npm-global/bin/mcp-server-everything
+    enabled: false
+  filesystem:
+    args:
+    - /home/unclehowell
+    command: /home/unclehowell/.npm-global/bin/mcp-server-filesystem
+    enabled: true
+  memory:
+    command: /home/unclehowell/.npm-global/bin/mcp-server-memory
+    enabled: true
+  sequential-thinking:
+    command: /home/unclehowell/.npm-global/bin/mcp-server-sequential-thinking
+    enabled: true
+platforms:
+  webhook:
+    enabled: true
+    extra:
+      host: 0.0.0.0
+      port: 8644
+      secret: inter-agent-secret-2026
+profiles:
+  primary:
+    base_url: https://openrouter.ai/api/v1
+    model: qwen/qwen3.6-plus-preview:free
+    provider: openrouter
+  fallback:
+    base_url: https://openrouter.ai/api/v1
+    model: moonshotai/kimi-k2.5
+    provider: openrouter
+  maintainlaptop:
+    base_url: https://openrouter.ai/api/v1
+    model: qwen/qwen3.6-plus-preview:free
+    provider: openrouter
+  microwave:
+    base_url: https://openrouter.ai/api/v1
+    model: qwen/qwen3.6-plus-preview:free
+    provider: openrouter
+  nvidia:
+    api_key_env: NVIDIA_API_KEY
+    base_url: https://integrate.api.nvidia.com/v1/
+    model: moonshotai/kimi-k2.5
+    provider: custom
+  reposync:
+    base_url: https://openrouter.ai/api/v1
+    model: qwen/qwen3.6-plus-preview:free
+    provider: openrouter
+  unclehowell:
+    base_url: https://openrouter.ai/api/v1
+    model: qwen/qwen3.6-plus-preview:free
+    provider: openrouter
+session_reset:
+  at_hour: 4
+  idle_minutes: 1440
+  mode: both
+platform_toolsets:
+  cli:
+  - browser
+  - clarify
+  - code_execution
+  - cronjob
+  - delegation
+  - file
+  - image_gen
+  - memory
+  - moa
+  - session_search
+  - skills
+  - terminal
+  - todo
+  - tts
+  - vision
+  - web
+  telegram:
+  - browser
+  - clarify
+  - code_execution
+  - cronjob
+  - delegation
+  - file
+  - image_gen
+  - memory
+  - moa
+  - session_search
+  - skills
+  - terminal
+  - todo
+  - tts
+  - vision
+  - web

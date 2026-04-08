@@ -1,0 +1,77 @@
+# Hermes Agent runtime files (DO NOT TRACK)
+# Track only config.yaml, ignore everything else in .hermes-live
+.hermes-live/*
+!.hermes-live/config.yaml
+!.hermes-live/config.yaml.secured
+!.hermes-live/config.yaml.tracked
+!.hermes-live/MIGRATION_SUMMARY.md
+
+# Specific Hermes runtime files to ignore (if outside .hermes-live)
+models_dev_cache.json
+context_length_cache.yaml
+.memory.txt
+.memory.lock
+honcho.json
+interrupt_debug.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Pipenv
+Pipfile.lock
+
+# Environment variables
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# mkdocs documentation
+/site

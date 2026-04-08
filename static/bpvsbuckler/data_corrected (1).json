@@ -1,0 +1,3968 @@
+{
+  "metadata": {
+    "title": "Great House Farm: A Chronicle of Dispossession",
+    "subtitle": "Complete Screenplay - Dialogue Only Format",
+    "format": "dialogue_only",
+    "totalScenes": 79,
+    "timeSpan": {
+      "startYear": 1100,
+      "endYear": 2025,
+      "displayRange": "1100–2025"
+    },
+    "themes": [
+      "adverse_possession",
+      "manorial_law",
+      "dissolution_of_monasteries",
+      "heritage_destruction",
+      "procedural_injustice",
+      "document_suppression",
+      "archaeological_significance",
+      "corporate_property_power",
+      "family_dispossession",
+      "legal_avoidance"
+    ],
+    "lastUpdated": "2025-02-12",
+    "version": "2.2.0",
+    "notes": "Timeline corrected against verified legal record: BP Properties Ltd v Buckler [1987] EWCA Civ 2 (Court of Appeal, Dillon LJ, 31 Jul 1987). Key corrections: adverse possession from Feb 1955 (last rent ~1953); first possession order 11 Dec 1962; 1974 licence letters by BP Pension Trust; Mary Williams died 1983; QBD judgment Hollis J 24 Jul 1986; CA judgment NOT House of Lords."
+  },
+  "characters": [
+    {
+      "id": "robert_fitzhamon",
+      "name": "ROBERT FITZHAMON",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 1,
+      "lineCount": 1
+    },
+    {
+      "id": "lord_walsche",
+      "name": "LORD WALSCHE",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 1,
+      "lineCount": 1
+    },
+    {
+      "id": "master_mason",
+      "name": "MASTER MASON",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 2,
+      "lineCount": 1
+    },
+    {
+      "id": "local_farmer",
+      "name": "LOCAL FARMER",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 2,
+      "lineCount": 1
+    },
+    {
+      "id": "abbot's_steward",
+      "name": "ABBOT'S STEWARD",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 3,
+      "lineCount": 1
+    },
+    {
+      "id": "village_woman",
+      "name": "VILLAGE WOMAN",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 3,
+      "lineCount": 1
+    },
+    {
+      "id": "sir_william_thomas",
+      "name": "SIR WILLIAM THOMAS",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 4,
+      "lineCount": 1
+    },
+    {
+      "id": "local_priest",
+      "name": "LOCAL PRIEST",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 4,
+      "lineCount": 2
+    },
+    {
+      "id": "sir_edward_carne",
+      "name": "SIR EDWARD CARNE",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 5,
+      "lineCount": 1
+    },
+    {
+      "id": "llandough_tenant",
+      "name": "LLANDOUGH TENANT",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 5,
+      "lineCount": 1
+    },
+    {
+      "id": "royal_commissioner",
+      "name": "ROYAL COMMISSIONER",
+      "type": "official",
+      "affiliation": "Government/State",
+      "firstAppearance": 6,
+      "lineCount": 1
+    },
+    {
+      "id": "older_villager",
+      "name": "OLDER VILLAGER",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 6,
+      "lineCount": 1
+    },
+    {
+      "id": "herbert_estate_lawyer",
+      "name": "HERBERT ESTATE LAWYER",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 7,
+      "lineCount": 1
+    },
+    {
+      "id": "smallholder",
+      "name": "SMALLHOLDER",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 7,
+      "lineCount": 1
+    },
+    {
+      "id": "manor_steward",
+      "name": "MANOR STEWARD",
+      "type": "estate",
+      "affiliation": "Bute/Penarth/BP Estate",
+      "firstAppearance": 8,
+      "lineCount": 1
+    },
+    {
+      "id": "tenant_farmer",
+      "name": "TENANT FARMER",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 8,
+      "lineCount": 1
+    },
+    {
+      "id": "williams_ancestor",
+      "name": "WILLIAMS ANCESTOR",
+      "type": "williams_family",
+      "affiliation": "Williams-Buckler Family",
+      "firstAppearance": 9,
+      "lineCount": 3
+    },
+    {
+      "id": "herbert_steward",
+      "name": "HERBERT STEWARD",
+      "type": "estate",
+      "affiliation": "Bute/Penarth/BP Estate",
+      "firstAppearance": 9,
+      "lineCount": 2
+    },
+    {
+      "id": "talbot_heir",
+      "name": "TALBOT HEIR",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 10,
+      "lineCount": 1
+    },
+    {
+      "id": "williams_family_member",
+      "name": "WILLIAMS FAMILY MEMBER",
+      "type": "williams_family",
+      "affiliation": "Williams-Buckler Family",
+      "firstAppearance": 10,
+      "lineCount": 1
+    },
+    {
+      "id": "valentine_morris",
+      "name": "VALENTINE MORRIS",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 11,
+      "lineCount": 1
+    },
+    {
+      "id": "local_labourer",
+      "name": "LOCAL LABOURER",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 11,
+      "lineCount": 1
+    },
+    {
+      "id": "sir_mark_wood",
+      "name": "SIR MARK WOOD",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 12,
+      "lineCount": 1
+    },
+    {
+      "id": "williams_farmer",
+      "name": "WILLIAMS FARMER",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 12,
+      "lineCount": 4
+    },
+    {
+      "id": "lambert_williams",
+      "name": "LAMBERT WILLIAMS",
+      "type": "williams_family",
+      "affiliation": "Williams-Buckler Family",
+      "firstAppearance": 13,
+      "lineCount": 2
+    },
+    {
+      "id": "bute_estate_agent",
+      "name": "BUTE ESTATE AGENT",
+      "type": "estate",
+      "affiliation": "Bute/Penarth/BP Estate",
+      "firstAppearance": 13,
+      "lineCount": 3
+    },
+    {
+      "id": "estate_accountant",
+      "name": "ESTATE ACCOUNTANT",
+      "type": "estate",
+      "affiliation": "Bute/Penarth/BP Estate",
+      "firstAppearance": 14,
+      "lineCount": 1
+    },
+    {
+      "id": "cottager",
+      "name": "COTTAGER",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 14,
+      "lineCount": 1
+    },
+    {
+      "id": "bute_representative",
+      "name": "BUTE REPRESENTATIVE",
+      "type": "estate",
+      "affiliation": "Bute/Penarth/BP Estate",
+      "firstAppearance": 15,
+      "lineCount": 1
+    },
+    {
+      "id": "local_observer",
+      "name": "LOCAL OBSERVER",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 15,
+      "lineCount": 2
+    },
+    {
+      "id": "rent_collector",
+      "name": "RENT COLLECTOR",
+      "type": "estate",
+      "affiliation": "Bute/Penarth/BP Estate",
+      "firstAppearance": 16,
+      "lineCount": 1
+    },
+    {
+      "id": "surveyor_stewart",
+      "name": "SURVEYOR STEWART",
+      "type": "estate",
+      "affiliation": "Bute/Penarth/BP Estate",
+      "firstAppearance": 17,
+      "lineCount": 2
+    },
+    {
+      "id": "williams_occupant",
+      "name": "WILLIAMS OCCUPANT",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 17,
+      "lineCount": 1
+    },
+    {
+      "id": "census_clerk",
+      "name": "CENSUS CLERK",
+      "type": "official",
+      "affiliation": "Government/State",
+      "firstAppearance": 18,
+      "lineCount": 1
+    },
+    {
+      "id": "williams_elder",
+      "name": "WILLIAMS ELDER",
+      "type": "williams_family",
+      "affiliation": "Williams-Buckler Family",
+      "firstAppearance": 18,
+      "lineCount": 2
+    },
+    {
+      "id": "estate_lawyer",
+      "name": "ESTATE LAWYER",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 18,
+      "lineCount": 1
+    },
+    {
+      "id": "williams_family_head",
+      "name": "WILLIAMS FAMILY HEAD",
+      "type": "williams_family",
+      "affiliation": "Williams-Buckler Family",
+      "firstAppearance": 19,
+      "lineCount": 3
+    },
+    {
+      "id": "family_member",
+      "name": "FAMILY MEMBER",
+      "type": "williams_family",
+      "affiliation": "Williams-Buckler Family",
+      "firstAppearance": 19,
+      "lineCount": 2
+    },
+    {
+      "id": "local_antiquarian",
+      "name": "LOCAL ANTIQUARIAN",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 19,
+      "lineCount": 1
+    },
+    {
+      "id": "bute_agent",
+      "name": "BUTE AGENT",
+      "type": "estate",
+      "affiliation": "Bute/Penarth/BP Estate",
+      "firstAppearance": 20,
+      "lineCount": 3
+    },
+    {
+      "id": "estate_clerk",
+      "name": "ESTATE CLERK",
+      "type": "estate",
+      "affiliation": "Bute/Penarth/BP Estate",
+      "firstAppearance": 21,
+      "lineCount": 1
+    },
+    {
+      "id": "williams_descendant",
+      "name": "WILLIAMS DESCENDANT",
+      "type": "williams_family",
+      "affiliation": "Williams-Buckler Family",
+      "firstAppearance": 21,
+      "lineCount": 3
+    },
+    {
+      "id": "midwife",
+      "name": "MIDWIFE",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 22,
+      "lineCount": 1
+    },
+    {
+      "id": "williams_matriarch",
+      "name": "WILLIAMS MATRIARCH",
+      "type": "williams_family",
+      "affiliation": "Williams-Buckler Family",
+      "firstAppearance": 22,
+      "lineCount": 1
+    },
+    {
+      "id": "mary_williams",
+      "name": "MARY WILLIAMS",
+      "type": "williams_family",
+      "affiliation": "Williams-Buckler Family",
+      "firstAppearance": 23,
+      "lineCount": 31
+    },
+    {
+      "id": "frederick_buckler",
+      "name": "FREDERICK BUCKLER",
+      "type": "williams_family",
+      "affiliation": "Williams-Buckler Family",
+      "firstAppearance": 23,
+      "lineCount": 2
+    },
+    {
+      "id": "auctioneer",
+      "name": "AUCTIONEER",
+      "type": "estate",
+      "affiliation": "Bute/Penarth/BP Estate",
+      "firstAppearance": 24,
+      "lineCount": 1
+    },
+    {
+      "id": "penarth_company_director",
+      "name": "PENARTH COMPANY DIRECTOR",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 25,
+      "lineCount": 1
+    },
+    {
+      "id": "penarth_company_lawyer",
+      "name": "PENARTH COMPANY LAWYER",
+      "type": "legal",
+      "affiliation": "Legal System",
+      "firstAppearance": 25,
+      "lineCount": 3
+    },
+    {
+      "id": "billy_buckler_young",
+      "name": "BILLY BUCKLER (YOUNG)",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 27,
+      "lineCount": 1
+    },
+    {
+      "id": "registrar",
+      "name": "REGISTRAR",
+      "type": "legal",
+      "affiliation": "Legal System",
+      "firstAppearance": 28,
+      "lineCount": 3
+    },
+    {
+      "id": "marconi_surveyor",
+      "name": "MARCONI SURVEYOR",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 29,
+      "lineCount": 2
+    },
+    {
+      "id": "marconi_official",
+      "name": "MARCONI OFFICIAL",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 29,
+      "lineCount": 1
+    },
+    {
+      "id": "records_clerk",
+      "name": "RECORDS CLERK",
+      "type": "official",
+      "affiliation": "Government/State",
+      "firstAppearance": 30,
+      "lineCount": 1
+    },
+    {
+      "id": "solicitor",
+      "name": "SOLICITOR",
+      "type": "legal",
+      "affiliation": "Legal System",
+      "firstAppearance": 31,
+      "lineCount": 3
+    },
+    {
+      "id": "court_clerk",
+      "name": "COURT CLERK",
+      "type": "legal",
+      "affiliation": "Legal System",
+      "firstAppearance": 32,
+      "lineCount": 3
+    },
+    {
+      "id": "mary_williams'_solicitor",
+      "name": "MARY WILLIAMS' SOLICITOR",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 32,
+      "lineCount": 1
+    },
+    {
+      "id": "judge",
+      "name": "JUDGE",
+      "type": "legal",
+      "affiliation": "Legal System",
+      "firstAppearance": 32,
+      "lineCount": 12
+    },
+    {
+      "id": "estate_agent",
+      "name": "ESTATE AGENT",
+      "type": "estate",
+      "affiliation": "Bute/Penarth/BP Estate",
+      "firstAppearance": 33,
+      "lineCount": 2
+    },
+    {
+      "id": "new_owner's_agent",
+      "name": "NEW OWNER'S AGENT",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 34,
+      "lineCount": 2
+    },
+    {
+      "id": "billy_buckler",
+      "name": "BILLY BUCKLER",
+      "type": "williams_family",
+      "affiliation": "Williams-Buckler Family",
+      "firstAppearance": 34,
+      "lineCount": 41
+    },
+    {
+      "id": "opposing_counsel",
+      "name": "OPPOSING COUNSEL",
+      "type": "legal",
+      "affiliation": "Legal System",
+      "firstAppearance": 35,
+      "lineCount": 5
+    },
+    {
+      "id": "family_solicitor",
+      "name": "FAMILY SOLICITOR",
+      "type": "legal",
+      "affiliation": "Legal System",
+      "firstAppearance": 35,
+      "lineCount": 18
+    },
+    {
+      "id": "archaeologist",
+      "name": "ARCHAEOLOGIST",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 36,
+      "lineCount": 3
+    },
+    {
+      "id": "planning_officer",
+      "name": "PLANNING OFFICER",
+      "type": "official",
+      "affiliation": "Government/State",
+      "firstAppearance": 36,
+      "lineCount": 6
+    },
+    {
+      "id": "bp_properties_lawyer",
+      "name": "BP PROPERTIES LAWYER",
+      "type": "legal",
+      "affiliation": "Legal System",
+      "firstAppearance": 38,
+      "lineCount": 7
+    },
+    {
+      "id": "archive_clerk",
+      "name": "ARCHIVE CLERK",
+      "type": "official",
+      "affiliation": "Government/State",
+      "firstAppearance": 39,
+      "lineCount": 1
+    },
+    {
+      "id": "bp_properties_agent",
+      "name": "BP PROPERTIES AGENT",
+      "type": "estate",
+      "affiliation": "Bute/Penarth/BP Estate",
+      "firstAppearance": 40,
+      "lineCount": 6
+    },
+    {
+      "id": "cadw_officer",
+      "name": "CADW OFFICER",
+      "type": "official",
+      "affiliation": "Government/State",
+      "firstAppearance": 42,
+      "lineCount": 2
+    },
+    {
+      "id": "local_councillor",
+      "name": "LOCAL COUNCILLOR",
+      "type": "official",
+      "affiliation": "Government/State",
+      "firstAppearance": 44,
+      "lineCount": 5
+    },
+    {
+      "id": "law_lord",
+      "name": "LAW LORD",
+      "type": "legal",
+      "affiliation": "Legal System",
+      "firstAppearance": 45,
+      "lineCount": 3
+    },
+    {
+      "id": "family_barrister",
+      "name": "FAMILY BARRISTER",
+      "type": "legal",
+      "affiliation": "Legal System",
+      "firstAppearance": 45,
+      "lineCount": 2
+    },
+    {
+      "id": "david_buckler",
+      "name": "DAVID BUCKLER",
+      "type": "williams_family",
+      "affiliation": "Williams-Buckler Family",
+      "firstAppearance": 46,
+      "lineCount": 6
+    },
+    {
+      "id": "european_rights_lawyer",
+      "name": "EUROPEAN RIGHTS LAWYER",
+      "type": "legal",
+      "affiliation": "Legal System",
+      "firstAppearance": 47,
+      "lineCount": 2
+    },
+    {
+      "id": "government_solicitor",
+      "name": "GOVERNMENT SOLICITOR",
+      "type": "legal",
+      "affiliation": "Legal System",
+      "firstAppearance": 47,
+      "lineCount": 2
+    },
+    {
+      "id": "bailiff",
+      "name": "BAILIFF",
+      "type": "official",
+      "affiliation": "Government/State",
+      "firstAppearance": 49,
+      "lineCount": 2
+    },
+    {
+      "id": "police_commander",
+      "name": "POLICE COMMANDER",
+      "type": "official",
+      "affiliation": "Government/State",
+      "firstAppearance": 50,
+      "lineCount": 2
+    },
+    {
+      "id": "media_reporter",
+      "name": "MEDIA REPORTER",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 50,
+      "lineCount": 1
+    },
+    {
+      "id": "police_officer",
+      "name": "POLICE OFFICER",
+      "type": "official",
+      "affiliation": "Government/State",
+      "firstAppearance": 51,
+      "lineCount": 4
+    },
+    {
+      "id": "branwen_buckler",
+      "name": "BRANWEN BUCKLER",
+      "type": "williams_family",
+      "affiliation": "Williams-Buckler Family",
+      "firstAppearance": 51,
+      "lineCount": 7
+    },
+    {
+      "id": "nurse",
+      "name": "NURSE",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 52,
+      "lineCount": 1
+    },
+    {
+      "id": "doctor",
+      "name": "DOCTOR",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 52,
+      "lineCount": 1
+    },
+    {
+      "id": "relative",
+      "name": "RELATIVE",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 53,
+      "lineCount": 1
+    },
+    {
+      "id": "cadw_inspector",
+      "name": "CADW INSPECTOR",
+      "type": "official",
+      "affiliation": "Government/State",
+      "firstAppearance": 56,
+      "lineCount": 3
+    },
+    {
+      "id": "journalist",
+      "name": "JOURNALIST",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 57,
+      "lineCount": 2
+    },
+    {
+      "id": "community_member",
+      "name": "COMMUNITY MEMBER",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 58,
+      "lineCount": 2
+    },
+    {
+      "id": "alun_michael_mp",
+      "name": "ALUN MICHAEL MP",
+      "type": "official",
+      "affiliation": "Government/State",
+      "firstAppearance": 59,
+      "lineCount": 3
+    },
+    {
+      "id": "lord_chancellor's_aide",
+      "name": "LORD CHANCELLOR'S AIDE",
+      "type": "official",
+      "affiliation": "Government/State",
+      "firstAppearance": 59,
+      "lineCount": 2
+    },
+    {
+      "id": "cadw_spokesperson",
+      "name": "CADW SPOKESPERSON",
+      "type": "official",
+      "affiliation": "Government/State",
+      "firstAppearance": 60,
+      "lineCount": 1
+    },
+    {
+      "id": "janet_harris_buckler",
+      "name": "JANET HARRIS (BUCKLER)",
+      "type": "williams_family",
+      "affiliation": "Williams-Buckler Family",
+      "firstAppearance": 60,
+      "lineCount": 2
+    },
+    {
+      "id": "demolition_foreman",
+      "name": "DEMOLITION FOREMAN",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 62,
+      "lineCount": 1
+    },
+    {
+      "id": "planning_chief",
+      "name": "PLANNING CHIEF",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 64,
+      "lineCount": 1
+    },
+    {
+      "id": "vale_councillor",
+      "name": "VALE COUNCILLOR",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 64,
+      "lineCount": 1
+    },
+    {
+      "id": "prosecutor_clarke",
+      "name": "PROSECUTOR CLARKE",
+      "type": "legal",
+      "affiliation": "Legal System",
+      "firstAppearance": 66,
+      "lineCount": 2
+    },
+    {
+      "id": "site_manager",
+      "name": "SITE MANAGER",
+      "type": "estate",
+      "affiliation": "Bute/Penarth/BP Estate",
+      "firstAppearance": 68,
+      "lineCount": 2
+    },
+    {
+      "id": "local_historian",
+      "name": "LOCAL HISTORIAN",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 68,
+      "lineCount": 4
+    },
+    {
+      "id": "local_activist",
+      "name": "LOCAL ACTIVIST",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 69,
+      "lineCount": 3
+    },
+    {
+      "id": "councillor",
+      "name": "COUNCILLOR",
+      "type": "official",
+      "affiliation": "Government/State",
+      "firstAppearance": 69,
+      "lineCount": 2
+    },
+    {
+      "id": "newspaper_editor",
+      "name": "NEWSPAPER EDITOR",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 70,
+      "lineCount": 3
+    },
+    {
+      "id": "lead_archaeologist",
+      "name": "LEAD ARCHAEOLOGIST",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 71,
+      "lineCount": 2
+    },
+    {
+      "id": "heritage_editor",
+      "name": "HERITAGE EDITOR",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 72,
+      "lineCount": 3
+    },
+    {
+      "id": "modern_resident",
+      "name": "MODERN RESIDENT",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 72,
+      "lineCount": 2
+    },
+    {
+      "id": "family_advocate",
+      "name": "FAMILY ADVOCATE",
+      "type": "williams_family",
+      "affiliation": "Williams-Buckler Family",
+      "firstAppearance": 74,
+      "lineCount": 3
+    },
+    {
+      "id": "contemporary_lawyer",
+      "name": "CONTEMPORARY LAWYER",
+      "type": "legal",
+      "affiliation": "Legal System",
+      "firstAppearance": 74,
+      "lineCount": 2
+    },
+    {
+      "id": "resident's_child",
+      "name": "RESIDENT'S CHILD",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 75,
+      "lineCount": 3
+    },
+    {
+      "id": "father",
+      "name": "FATHER",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 75,
+      "lineCount": 2
+    },
+    {
+      "id": "legal_researcher",
+      "name": "LEGAL RESEARCHER",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 76,
+      "lineCount": 3
+    },
+    {
+      "id": "historian",
+      "name": "HISTORIAN",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 76,
+      "lineCount": 2
+    },
+    {
+      "id": "law_professor",
+      "name": "LAW PROFESSOR",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 77,
+      "lineCount": 3
+    },
+    {
+      "id": "heritage_expert",
+      "name": "HERITAGE EXPERT",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 77,
+      "lineCount": 2
+    },
+    {
+      "id": "advocate",
+      "name": "ADVOCATE",
+      "type": "historical",
+      "affiliation": "Historical Figure",
+      "firstAppearance": 78,
+      "lineCount": 3
+    },
+    {
+      "id": "parliamentarian",
+      "name": "PARLIAMENTARIAN",
+      "type": "official",
+      "affiliation": "Government/State",
+      "firstAppearance": 78,
+      "lineCount": 2
+    }
+  ],
+  "scenes": [
+    {
+      "sceneNumber": 1,
+      "year": 1100,
+      "periodLabel": null,
+      "location": "Llandough, Glamorgan",
+      "narration": "Robert Fitzhamon grants the lordship of Llandough to the Walsche family, establishing feudal control of the area that includes the future Great House Farm.",
+      "dialogue": [
+        {
+          "speaker": "ROBERT FITZHAMON",
+          "line": "I grant Walsche the Llandough lordship to manage, tax and defend.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LORD WALSCHE",
+          "line": "We now hold Llandough and its revenues under Fitzhamon's grant.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "medieval"
+      ]
+    },
+    {
+      "sceneNumber": 2,
+      "year": 1215,
+      "periodLabel": null,
+      "location": "Llandough Church",
+      "narration": "A substantial stone residence, Tŷ Mawr ('Great House'), is constructed beside St Dochdwy's church at Llandough as a manorial house, later known as Great House Farm.",
+      "dialogue": [
+        {
+          "speaker": "MASTER MASON",
+          "line": "We're building a new stone manorial house beside St Dochdwy's.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LOCAL FARMER",
+          "line": "Local lord's new stone house next to the parish church. Right ho!",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "medieval"
+      ]
+    },
+    {
+      "sceneNumber": 3,
+      "year": 1215,
+      "periodLabel": "1215-1539",
+      "location": "Monastic Estate",
+      "narration": "Tewkesbury Abbey and the Prior of Cardiff hold Great House and its lands, taking tithes and agricultural income from Llandough for over three centuries.",
+      "dialogue": [
+        {
+          "speaker": "ABBOT'S STEWARD",
+          "line": "Llandough's produce and tithes are entered as revenue for the abbey.",
+          "emphasis": false
+        },
+        {
+          "speaker": "VILLAGE WOMAN",
+          "line": "Our harvest and church payments go into the abbey's accounts.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "medieval"
+      ]
+    },
+    {
+      "sceneNumber": 4,
+      "year": 1444,
+      "periodLabel": null,
+      "location": "Raglan",
+      "narration": "Sir William Thomas Herbert of Raglan purchases the manor and lordship of Llandough and St Mary Church, bringing them into the Herbert family's territorial network.",
+      "dialogue": [
+        {
+          "speaker": "SIR WILLIAM THOMAS",
+          "line": "We have bought Llandough manor and added it to the Herbert estates.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LOCAL PRIEST",
+          "line": "Llandough's manorial control passes to the Herbert family of Raglan.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "medieval",
+        "estate"
+      ]
+    },
+    {
+      "sceneNumber": 5,
+      "year": 1536,
+      "periodLabel": null,
+      "location": "Legal Chambers",
+      "narration": "Sir Edward Carne, a lawyer and diplomat, purchases the Llandough lordship from the 2nd Earl of Worcester, continuing high‑status lay ownership of the manor.",
+      "dialogue": [
+        {
+          "speaker": "SIR EDWARD CARNE",
+          "line": "I have acquired the Llandough lordship from the Earl of Worcester.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LLANDOUGH TENANT",
+          "line": "The legal lord of Llandough changes from Worcester's line to Carne.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "early_modern",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 6,
+      "year": 1539,
+      "periodLabel": null,
+      "location": "Great House",
+      "narration": "Henry VIII's Dissolution of the Monasteries transfers Tewkesbury's ecclesiastical holdings, including Llandough lands, to the Crown as secular property.",
+      "dialogue": [
+        {
+          "speaker": "ROYAL COMMISSIONER",
+          "line": "These former Tewkesbury lands now vest in the Crown by statute.",
+          "emphasis": false
+        },
+        {
+          "speaker": "OLDER VILLAGER",
+          "line": "Control of local church lands moves from abbey to Crown authority.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "early_modern"
+      ]
+    },
+    {
+      "sceneNumber": 7,
+      "year": 1543,
+      "periodLabel": null,
+      "location": "Estate Office",
+      "narration": "Post‑Dissolution grants move Llandough through lay owners and into the wider Herbert–Pembroke orbit, later feeding into what becomes the Bute estate.",
+      "dialogue": [
+        {
+          "speaker": "HERBERT ESTATE LAWYER",
+          "line": "Llandough is one of several manors consolidated into our estate.",
+          "emphasis": false
+        },
+        {
+          "speaker": "SMALLHOLDER",
+          "line": "The superior owner changes again on paper; our tenure is recorded under them.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "early_modern",
+        "estate"
+      ]
+    },
+    {
+      "sceneNumber": 8,
+      "year": 1552,
+      "periodLabel": "1552-1829",
+      "location": "Manorial Court",
+      "narration": "The Bute–Pembroke estate treats itself as manorial lord, issuing leases for Llandough Farm (about 166 acres) and recording long‑standing occupiers as tenants.",
+      "dialogue": [
+        {
+          "speaker": "MANOR STEWARD",
+          "line": "We register Llandough occupiers as tenants in the Bute–Pembroke books.",
+          "emphasis": false
+        },
+        {
+          "speaker": "TENANT FARMER",
+          "line": "Our occupation is recorded as a tenancy under the Bute–Pembroke estate.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "early_modern",
+        "estate"
+      ]
+    },
+    {
+      "sceneNumber": 9,
+      "year": 1667,
+      "periodLabel": null,
+      "location": "Great House Farm",
+      "narration": "A Williams ancestor is admitted to Great House via the manorial court, paying a substantial entry fine remembered in family tradition as a purchase, while estate records treat it as leasehold.",
+      "dialogue": [
+        {
+          "speaker": "WILLIAMS ANCESTOR",
+          "line": "I paid a large court fine to enter Great House as our family's holding.",
+          "emphasis": false
+        },
+        {
+          "speaker": "HERBERT STEWARD",
+          "line": "Our roll shows the Williams entry as a manorial lease, not freehold.",
+          "emphasis": false
+        },
+        {
+          "speaker": "WILLIAMS ANCESTOR",
+          "line": "But this is our home now, purchased with honest coin for our heirs.",
+          "emphasis": false
+        },
+        {
+          "speaker": "HERBERT STEWARD",
+          "line": "The Court Baron record will show this as leasehold under our lordship.",
+          "emphasis": false
+        },
+        {
+          "speaker": "WILLIAMS ANCESTOR",
+          "line": "We have the receipt. Our children will know we bought this land.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "early_modern",
+        "estate",
+        "williams_family"
+      ]
+    },
+    {
+      "sceneNumber": 10,
+      "year": 1677,
+      "periodLabel": null,
+      "location": "Estate Records",
+      "narration": "Through marriage, the Llandough lordship passes into the Talbot estate at Penrice and Margam, while the Williams family continues in occupation at Great House.",
+      "dialogue": [
+        {
+          "speaker": "TALBOT HEIR",
+          "line": "By marriage we acquire Llandough among our Glamorgan holdings.",
+          "emphasis": false
+        },
+        {
+          "speaker": "WILLIAMS FAMILY MEMBER",
+          "line": "The superior lord's name changes; our occupation at Great House continues.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "early_modern",
+        "estate",
+        "williams_family"
+      ]
+    },
+    {
+      "sceneNumber": 11,
+      "year": 1770,
+      "periodLabel": "1770-1820",
+      "location": "Estate Transfer",
+      "narration": "Great House passes through elite owners, including Valentine Morris and Sir Mark Wood, before later consolidation into the Bute estate.",
+      "dialogue": [
+        {
+          "speaker": "VALENTINE MORRIS",
+          "line": "I treat Great House as one of several Glamorgan assets for income.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LOCAL LABOURER",
+          "line": "Estate owners change; our local work under their control continues.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "early_modern",
+        "estate"
+      ]
+    },
+    {
+      "sceneNumber": 12,
+      "year": 1794,
+      "periodLabel": "1794-1824",
+      "location": "Title Office",
+      "narration": "Sir Mark Wood acquires title and treats Great House as a revenue asset within his wider property portfolio, before it is surveyed and later taken into Bute hands.",
+      "dialogue": [
+        {
+          "speaker": "SIR MARK WOOD",
+          "line": "I hold Great House as an income‑producing property in my portfolio.",
+          "emphasis": false
+        },
+        {
+          "speaker": "WILLIAMS FARMER",
+          "line": "Our long‑term home appears in someone else's accounts as an asset.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "early_modern",
+        "estate",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 13,
+      "year": 1818,
+      "periodLabel": "1818-1835",
+      "location": "Estate Records",
+      "narration": "Lambert Williams of Cardiff enters formal written agreements with the Bute estate between 1818 and 1835, evidencing the Williams family as a recognised legal entity in local property dealings.",
+      "dialogue": [
+        {
+          "speaker": "LAMBERT WILLIAMS",
+          "line": "These written agreements show I deal with the Bute estate directly.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BUTE ESTATE AGENT",
+          "line": "We sign deeds with Lambert Williams over Llandough premises, 1818–1835.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LAMBERT WILLIAMS",
+          "line": "These documents record our position for future generations to cite.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "estate",
+        "williams_family",
+        "victorian"
+      ]
+    },
+    {
+      "sceneNumber": 14,
+      "year": 1818,
+      "periodLabel": null,
+      "location": "Estate Accounts",
+      "narration": "Chief rents of Llandough are transferred into the manorial rental accounts, simplifying estate bookkeeping and packaging obligations for future buyers.",
+      "dialogue": [
+        {
+          "speaker": "ESTATE ACCOUNTANT",
+          "line": "We combine Llandough chief rents into the manorial rental column.",
+          "emphasis": false
+        },
+        {
+          "speaker": "COTTAGER",
+          "line": "Our payments are re‑labelled on paper, but the amounts still fall on us.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "estate",
+        "victorian"
+      ]
+    },
+    {
+      "sceneNumber": 15,
+      "year": 1820,
+      "periodLabel": null,
+      "location": "Estate Offices",
+      "narration": "A land exchange between the Marquess of Bute and Lord Plymouth in Llandough consolidates Great House within Bute's controlled block of estates.",
+      "dialogue": [
+        {
+          "speaker": "BUTE REPRESENTATIVE",
+          "line": "This exchange secures Llandough parcels firmly within the Bute estate.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LOCAL OBSERVER",
+          "line": "New memoranda and surveys mark Bute as main landowner here.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "estate",
+        "victorian"
+      ]
+    },
+    {
+      "sceneNumber": 16,
+      "year": 1821,
+      "periodLabel": null,
+      "location": "Rent Collection",
+      "narration": "Llandough and Cogan appear in Bute rentals from 1821 onward, consolidating manorial rents under a single administrative ledger controlled by the estate.",
+      "dialogue": [
+        {
+          "speaker": "RENT COLLECTOR",
+          "line": "The Bute estate now logs Llandough and Cogan in the master rental.",
+          "emphasis": false
+        },
+        {
+          "speaker": "WILLIAMS FARMER",
+          "line": "We pay to them, though this land has been ours for generations past.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "estate",
+        "victorian"
+      ]
+    },
+    {
+      "sceneNumber": 17,
+      "year": 1824,
+      "periodLabel": null,
+      "location": "Survey Office",
+      "narration": "Following Sir Mark Wood's property auction, surveyor David Stewart records Great House Farm under the alias 'Cedfin' in the Bute estate survey of Glamorgan holdings.",
+      "dialogue": [
+        {
+          "speaker": "SURVEYOR STEWART",
+          "line": "I record this property as Great House Farm, alias Cedfin, in Bute accounts.",
+          "emphasis": false
+        },
+        {
+          "speaker": "WILLIAMS OCCUPANT",
+          "line": "The name on their maps matters little; we know who lives and works here.",
+          "emphasis": false
+        },
+        {
+          "speaker": "SURVEYOR STEWART",
+          "line": "Tithes of Llandough purchased in 1824 are now under Bute ownership.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "estate",
+        "ownership_dispute",
+        "victorian"
+      ]
+    },
+    {
+      "sceneNumber": 18,
+      "year": 1840,
+      "periodLabel": "1840-1880",
+      "location": "Estate Registry",
+      "narration": "Census and tithe records shift terminology from 'Great House' to 'Great House Farm,' downgrading the property from a seat of governance to a commercial agricultural unit.",
+      "dialogue": [
+        {
+          "speaker": "CENSUS CLERK",
+          "line": "I enter this as Great House Farm, removing the designation of Court House.",
+          "emphasis": false
+        },
+        {
+          "speaker": "WILLIAMS ELDER",
+          "line": "They rename our ancestral seat to erase our status and heritage claim.",
+          "emphasis": false
+        },
+        {
+          "speaker": "ESTATE LAWYER",
+          "line": "A farm designation supports our treatment of occupants as tenant farmers.",
+          "emphasis": false
+        },
+        {
+          "speaker": "WILLIAMS ELDER",
+          "line": "This administrative sleight-of-hand obscures three centuries of our standing.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "heritage_protection",
+        "victorian"
+      ]
+    },
+    {
+      "sceneNumber": 19,
+      "year": 1870,
+      "periodLabel": null,
+      "location": "Great House Living Room",
+      "narration": "The Williams family discovers a Roman soldier in full armor beneath the living room floor while replacing flagstones. This critical archaeological evidence is not formally recorded or disclosed.",
+      "dialogue": [
+        {
+          "speaker": "WILLIAMS FAMILY HEAD",
+          "line": "We've found a Roman soldier in a stone-lined grave under our floor!",
+          "emphasis": true
+        },
+        {
+          "speaker": "FAMILY MEMBER",
+          "line": "This proves the site is ancient and of great historical importance.",
+          "emphasis": false
+        },
+        {
+          "speaker": "WILLIAMS FAMILY HEAD",
+          "line": "We must tell someone—this could protect our home under the law.",
+          "emphasis": true
+        },
+        {
+          "speaker": "LOCAL ANTIQUARIAN",
+          "line": "Fascinating find, but I doubt authorities will act on family testimony.",
+          "emphasis": false
+        },
+        {
+          "speaker": "WILLIAMS FAMILY HEAD",
+          "line": "One day this discovery will prove the true significance of this place.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "archaeology",
+        "williams_family",
+        "victorian"
+      ]
+    },
+    {
+      "sceneNumber": 20,
+      "year": 1876,
+      "periodLabel": null,
+      "location": "Estate Offices",
+      "narration": "The Bute Estate carves out 33 acres from Great House Farm for Llandough Limeworks, treating the land as their own property to lease to industry, ignoring the Williams claim.",
+      "dialogue": [
+        {
+          "speaker": "BUTE AGENT",
+          "line": "We sever this land for the Limeworks. It's ours to lease commercially.",
+          "emphasis": false
+        },
+        {
+          "speaker": "WILLIAMS FARMER",
+          "line": "But we live here! You cannot carve up land we've held for two centuries.",
+          "emphasis": true
+        },
+        {
+          "speaker": "BUTE AGENT",
+          "line": "Estate records show no Williams ownership—only occupation under our lease.",
+          "emphasis": false
+        },
+        {
+          "speaker": "WILLIAMS FARMER",
+          "line": "Our 1667 receipt and occupation prove our right to this property.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BUTE AGENT",
+          "line": "Manorial records prevail. You are tenants, not owners, under our title.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "estate",
+        "williams_family",
+        "ownership_dispute",
+        "victorian"
+      ]
+    },
+    {
+      "sceneNumber": 21,
+      "year": 1880,
+      "periodLabel": "1880-1900",
+      "location": "Estate Records",
+      "narration": "The property is systematically rebranded from 'Court House' to 'Grange' to 'Farm' in successive records, demoting occupants from gentry with tenure to mere tenant farmers.",
+      "dialogue": [
+        {
+          "speaker": "ESTATE CLERK",
+          "line": "We now list it simply as a farm, eliminating all reference to Court House.",
+          "emphasis": false
+        },
+        {
+          "speaker": "WILLIAMS DESCENDANT",
+          "line": "This linguistic erasure strips our family of its historic manorial standing.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "victorian"
+      ]
+    },
+    {
+      "sceneNumber": 22,
+      "year": 1897,
+      "periodLabel": null,
+      "location": "Great House Farm / Lavernock Point",
+      "narration": "Thomas Williams of Great House daily carts Guglielmo Marconi and his radio equipment to and from Lavernock Point by horse and cart. On 13 May 1897 Marconi transmits the first wireless signal across op",
+      "dialogue": [
+        {
+          "speaker": "THOMAS WILLIAMS",
+          "line": "I cart Mr Marconi and his equipment to Lavernock Point each day from Great House.",
+          "emphasis": false
+        },
+        {
+          "speaker": "GUGLIELMO MARCONI",
+          "line": "Without Thomas Williams and his horse and cart, these experiments could not proceed.",
+          "emphasis": false
+        },
+        {
+          "speaker": "THOMAS WILLIAMS",
+          "line": "A Williams was at the mast on the day the signal crossed the water. That is recorded.",
+          "emphasis": true
+        },
+        {
+          "speaker": "REPORTER",
+          "line": "The newspaper notes a Williams present at the mast during the successful transmission.",
+          "emphasis": false
+        },
+        {
+          "speaker": "THOMAS WILLIAMS",
+          "line": "They may call me a carter. But I am lord of this manor, not a peasant farmer.",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "williams_family",
+        "heritage_protection",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 23,
+      "year": 1900,
+      "periodLabel": null,
+      "location": "Great House Farm",
+      "narration": "Mary Williams is born into the family at Great House Farm, inheriting the Williams claim and continuing three centuries of unbroken occupation and assertion of ownership.",
+      "dialogue": [
+        {
+          "speaker": "MIDWIFE",
+          "line": "A healthy daughter! The Williams line at Great House continues.",
+          "emphasis": true
+        },
+        {
+          "speaker": "WILLIAMS MATRIARCH",
+          "line": "She will know her heritage and defend this land when her time comes.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "heritage_protection",
+        "early_20th_century",
+        "ownership_dispute",
+        "williams_family"
+      ]
+    },
+    {
+      "sceneNumber": 24,
+      "year": 1920,
+      "periodLabel": null,
+      "location": "Great House Farm",
+      "narration": "Mary Williams marries Frederick Buckler but retains her maiden name, consistent with local custom and the family's understanding that the Williams lineage embodies the historic basis of title.",
+      "dialogue": [
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "I marry Frederick Buckler but keep the Williams name for our claim.",
+          "emphasis": false
+        },
+        {
+          "speaker": "FREDERICK BUCKLER",
+          "line": "The land belongs to your family line; the Williams name must continue.",
+          "emphasis": true
+        },
+        {
+          "speaker": "LOCAL PRIEST",
+          "line": "Mary Williams of Great House Farm weds Frederick Buckler this day.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "Our children will know they are Williams heirs to this ancestral home.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "early_20th_century",
+        "ownership_dispute",
+        "williams_family"
+      ]
+    },
+    {
+      "sceneNumber": 25,
+      "year": 1926,
+      "periodLabel": null,
+      "location": "Estate Sale",
+      "narration": "The Marquess of Bute sells Great House Farm. Sale documents list it under Bute ownership, with no mention of the Williams family's three-century occupation or claim.",
+      "dialogue": [
+        {
+          "speaker": "BUTE ESTATE AGENT",
+          "line": "Great House Farm sells as Bute property. Occupants are sitting tenants.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "They sell our home as if we don't exist! Our family has been here since 1667.",
+          "emphasis": true
+        },
+        {
+          "speaker": "AUCTIONEER",
+          "line": "Estate records show clear Bute title. Occupancy doesn't equal ownership.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "Where is our 1667 deed? Our family has the receipt of purchase!",
+          "emphasis": true
+        },
+        {
+          "speaker": "BUTE ESTATE AGENT",
+          "line": "Manorial court records supersede any claimed private family documents.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "williams_family",
+        "estate",
+        "early_20th_century",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 26,
+      "year": 1926,
+      "periodLabel": null,
+      "location": "Purchase Agreement",
+      "narration": "The Penarth Estate Company purchases Great House Farm at auction, acquiring whatever title the Bute estate held, subject to the unresolved Williams possession and claim.",
+      "dialogue": [
+        {
+          "speaker": "PENARTH COMPANY DIRECTOR",
+          "line": "We purchase Great House Farm as an investment from the Bute auction.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "But you cannot buy what the Bute estate does not own! We hold this land.",
+          "emphasis": true
+        },
+        {
+          "speaker": "PENARTH COMPANY LAWYER",
+          "line": "Our purchase includes registered title. Your occupation will be addressed.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "Three hundred years of Williams possession is not mere occupation!",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "estate",
+        "early_20th_century",
+        "ownership_dispute",
+        "williams_family"
+      ]
+    },
+    {
+      "sceneNumber": 27,
+      "year": 1930,
+      "periodLabel": "1930-1950",
+      "location": "Great House Farm",
+      "narration": "Despite the 1926 sale, the Williams-Buckler family remains in continuous occupation, maintaining the property and asserting their ownership against external claims.",
+      "dialogue": [
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "We stay on our land. No sale can extinguish our family's rightful claim.",
+          "emphasis": false
+        },
+        {
+          "speaker": "FREDERICK BUCKLER",
+          "line": "Our children work this farm and will inherit it as Williams heirs.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "early_20th_century",
+        "ownership_dispute",
+        "williams_family"
+      ]
+    },
+    {
+      "sceneNumber": 28,
+      "year": 1953,
+      "periodLabel": null,
+      "location": "Great House Farm",
+      "narration": "Frederick Buckler makes the last known rent payment around 1953. From this point, the family pay nothing to any claimant, and their occupation becomes wholly adverse under limitation law.",
+      "dialogue": [
+        {
+          "speaker": "BILLY BUCKLER (YOUNG)",
+          "line": "This has been our family home for as long as anyone can remember.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "We owe rent to no one. Your grandfather secured this place for our family.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "post_war",
+        "williams_family"
+      ]
+    },
+    {
+      "sceneNumber": 29,
+      "year": 1955,
+      "periodLabel": null,
+      "location": "Title Office / Great House Farm",
+      "narration": "Frederick Buckler's tenancy expires on 2 February 1955. Adverse possession begins unambiguously. The family attempts to register their possessory claim but lack the formal deeds the registry requires.",
+      "dialogue": [
+        {
+          "speaker": "REGISTRAR",
+          "line": "We invite owners to register titles under the land registration system.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "I wish to register our ownership; we have occupied since 1667 and pay no rent.",
+          "emphasis": false
+        },
+        {
+          "speaker": "REGISTRAR",
+          "line": "Do you have a deed, conveyance, or grant? Without documentary title we cannot register.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "We have family history, occupation since 1667, and our ancestor's entry receipt.",
+          "emphasis": false
+        },
+        {
+          "speaker": "REGISTRAR",
+          "line": "Without formal documentation we cannot register your claimed ownership.",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "estate",
+        "post_war",
+        "williams_family",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 30,
+      "year": 1962,
+      "periodLabel": null,
+      "location": "Court — First Possession Order",
+      "narration": "Western Ground Rents, predecessor to BP Pension Trust, obtains the first possession order against the Bucklers on 11 December 1962 (Judge Temple Morris QC). It is never enforced due to the family's re",
+      "dialogue": [
+        {
+          "speaker": "COURT CLERK",
+          "line": "Possession order granted, 11 December 1962. Registered against the farmhouse and garden.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "We will not leave. This is our home. We will appeal any order they obtain.",
+          "emphasis": true
+        },
+        {
+          "speaker": "RECORDS CLERK",
+          "line": "The landlord holds the order but has not yet moved to enforce it.",
+          "emphasis": false
+        },
+        {
+          "speaker": "FAMILY SOLICITOR",
+          "line": "We file a defence based on adverse possession under the Limitation Act 1939.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "Our family has been here since 1667. No court order can make us leave.",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "post_war",
+        "ownership_dispute",
+        "williams_family"
+      ]
+    },
+    {
+      "sceneNumber": 31,
+      "year": 1963,
+      "periodLabel": null,
+      "location": "GEC-Marconi Telecommunications Site, Llandough",
+      "narration": "The Marconi Company (by then part of English Electric) constructs a telecommunications facility adjacent to Great House Farm. Surveys proceed without investigating the Williams ownership claim or Roma",
+      "dialogue": [
+        {
+          "speaker": "MARCONI SURVEYOR",
+          "line": "This land adjacent to the farm is suitable for our new telecom base station.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "Will you investigate Roman remains here? Our family found a soldier in 1870.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARCONI OFFICIAL",
+          "line": "Our planning approval is in order. Family stories are not our concern.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "The soldier we found proves this site has major archaeological importance!",
+          "emphasis": true
+        },
+        {
+          "speaker": "MARCONI SURVEYOR",
+          "line": "We see no heritage listing. Development proceeds as permitted.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "heritage_protection",
+        "archaeology",
+        "post_war",
+        "williams_family"
+      ]
+    },
+    {
+      "sceneNumber": 32,
+      "year": 1970,
+      "periodLabel": null,
+      "location": "Legal Office",
+      "narration": "Mary Williams consults solicitors. Legal advice confirms the 1962 possession order was never enforced, the Limitation Act may have run in the family's favour, but court proceedings are essential to es",
+      "dialogue": [
+        {
+          "speaker": "SOLICITOR",
+          "line": "Your family's continuous possession since 1667 supports adverse possession.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "Then we can prove ownership and settle this once and for all?",
+          "emphasis": false
+        },
+        {
+          "speaker": "SOLICITOR",
+          "line": "The 1962 order exists but was not enforced. A court must rule on adverse possession.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "What if they refuse to rule on ownership and only address possession?",
+          "emphasis": false
+        },
+        {
+          "speaker": "SOLICITOR",
+          "line": "Ownership is the only issue that can conclusively settle this dispute.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "post_war",
+        "williams_family",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 33,
+      "year": 1974,
+      "periodLabel": null,
+      "location": "Court / Great House Farm",
+      "narration": "BP Pension Trust Ltd applies to enforce the 1962 possession order. Mary files a defence asserting adverse possession. On 31 October 1974, BP Pension Trust issues unilateral licence letters to Mrs Buck",
+      "dialogue": [
+        {
+          "speaker": "COURT CLERK",
+          "line": "BP Pension Trust applies to enforce the 1962 possession order forthwith.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS' SOLICITOR",
+          "line": "We file a defence: the landlord's title has been extinguished by adverse possession since 1955.",
+          "emphasis": true
+        },
+        {
+          "speaker": "JUDGE",
+          "line": "Warrant to issue but not be enforced until 31 October 1974 pending appeal.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "We received a letter offering us a licence to stay rent-free. We never agreed to that.",
+          "emphasis": true
+        },
+        {
+          "speaker": "COURT CLERK",
+          "line": "BP Pension Trust's October 1974 licence letter is now on the court record.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "post_war",
+        "ownership_dispute",
+        "williams_family"
+      ]
+    },
+    {
+      "sceneNumber": 34,
+      "year": 1975,
+      "periodLabel": null,
+      "location": "Estate Agent's Office",
+      "narration": "The estate interest is transferred by the head of the title chain. Mary Williams argues the sale cannot extinguish her adverse possession claim, which was asserted on record the previous year.",
+      "dialogue": [
+        {
+          "speaker": "ESTATE AGENT",
+          "line": "The superior title passes to new holders. Sitting occupants are noted in the file.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "You cannot sell what you do not own! My court case is still pending!",
+          "emphasis": true
+        },
+        {
+          "speaker": "ESTATE AGENT",
+          "line": "Our registered title permits this transaction despite the pending occupants' claim.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "Adjourned means unresolved—not dismissed! Our adverse possession defence stands!",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "williams_family",
+        "post_war",
+        "estate",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 35,
+      "year": 1976,
+      "periodLabel": null,
+      "location": "Great House Farm",
+      "narration": "New claimants demand rent. The Williams-Buckler family refuses, asserting continuous adverse possession since at least 1955, while owners rely on the unenforced 1962 order and the 1974 licence letter.",
+      "dialogue": [
+        {
+          "speaker": "NEW OWNER'S AGENT",
+          "line": "You must pay rent or vacate. We hold title to this property.",
+          "emphasis": true
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "We own this farm! Our family has been here for over three centuries!",
+          "emphasis": true
+        },
+        {
+          "speaker": "NEW OWNER'S AGENT",
+          "line": "Registered title is conclusive. Your occupation is without legal right.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "Our continuous possession creates title! You've never proven you own it!",
+          "emphasis": true
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "The court has not ruled. Until ownership is determined, we stay.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "post_war",
+        "williams_family",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 36,
+      "year": 1978,
+      "periodLabel": null,
+      "location": "Court",
+      "narration": "Legal proceedings commence to determine possession, but again ownership is not adjudicated. The court focuses on narrow possession questions without resolving the fundamental ownership dispute.",
+      "dialogue": [
+        {
+          "speaker": "OPPOSING COUNSEL",
+          "line": "We seek possession based on our client's registered title to the property.",
+          "emphasis": false
+        },
+        {
+          "speaker": "FAMILY SOLICITOR",
+          "line": "Respectfully, ownership must be determined first before possession can be ruled.",
+          "emphasis": true
+        },
+        {
+          "speaker": "JUDGE",
+          "line": "This court will determine possession. Ownership is a separate matter.",
+          "emphasis": false
+        },
+        {
+          "speaker": "FAMILY SOLICITOR",
+          "line": "But possession flows from ownership! How can you rule on one without the other?",
+          "emphasis": true
+        },
+        {
+          "speaker": "JUDGE",
+          "line": "We proceed on the possession claim. The ownership issue is not before us.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "post_war",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 37,
+      "year": 1978,
+      "periodLabel": null,
+      "location": "Archaeological Rescue Dig",
+      "narration": "A small rescue excavation near Great House uncovers Roman remains, confirming archaeological significance, but the full extent is not disclosed and development pressures continue.",
+      "dialogue": [
+        {
+          "speaker": "ARCHAEOLOGIST",
+          "line": "We've found Roman artifacts confirming the Williams family's 1870 discovery.",
+          "emphasis": false
+        },
+        {
+          "speaker": "PLANNING OFFICER",
+          "line": "This is a limited dig. We've no basis for full site protection at this time.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "This proves our home sits on a major historical site! It must be protected!",
+          "emphasis": true
+        },
+        {
+          "speaker": "PLANNING OFFICER",
+          "line": "Unless Cadw formally lists it, development can proceed subject to conditions.",
+          "emphasis": false
+        },
+        {
+          "speaker": "ARCHAEOLOGIST",
+          "line": "The full extent of remains likely won't be known until after demolition.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "archaeology",
+        "williams_family",
+        "demolition",
+        "heritage_protection",
+        "post_war"
+      ]
+    },
+    {
+      "sceneNumber": 38,
+      "year": 1980,
+      "periodLabel": null,
+      "location": "Court",
+      "narration": "Possession proceedings drag on. The family argues that without determining ownership, any possession order is premature and procedurally unsafe, but their objection is not addressed.",
+      "dialogue": [
+        {
+          "speaker": "FAMILY SOLICITOR",
+          "line": "You cannot lawfully determine possession without first establishing ownership!",
+          "emphasis": true
+        },
+        {
+          "speaker": "JUDGE",
+          "line": "The claim before us is for possession, not a declaration of ownership.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "But if they don't own it, they can't claim possession from us!",
+          "emphasis": true
+        },
+        {
+          "speaker": "OPPOSING COUNSEL",
+          "line": "Our client has registered title. That is sufficient for this possession claim.",
+          "emphasis": false
+        },
+        {
+          "speaker": "FAMILY SOLICITOR",
+          "line": "Registered title is not proof of ownership if obtained through defective process!",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "modern",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 39,
+      "year": 1982,
+      "periodLabel": null,
+      "location": "Property Transfer",
+      "narration": "BP Properties Ltd is registered as proprietor of Great House Farm in November 1982, taking whatever title the chain provided. Mary Williams (Mrs Buckler) is still alive and in residence at the time of",
+      "dialogue": [
+        {
+          "speaker": "BP PROPERTIES LAWYER",
+          "line": "We are registered as proprietor of Great House Farm from November 1982.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "Another transfer! They keep selling our home while our adverse possession claim stands!",
+          "emphasis": true
+        },
+        {
+          "speaker": "BP PROPERTIES LAWYER",
+          "line": "Our title is registered. The 1974 licence letter means your claim is not adverse.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "How can you be bona fide when our possession and claim are fully on record?",
+          "emphasis": false
+        },
+        {
+          "speaker": "BP PROPERTIES LAWYER",
+          "line": "We acquired from the registered proprietor. Your claim is against the prior vendor.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "modern",
+        "estate",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 40,
+      "year": 1983,
+      "periodLabel": null,
+      "location": "Great House Farm / Legal Office",
+      "narration": "Mary Williams (Mrs Buckler) dies in 1983. Billy Buckler junior must now claim through her estate. The 1667 deed and later conveyances remain missing, preventing documentary proof of the family's posse",
+      "dialogue": [
+        {
+          "speaker": "FAMILY SOLICITOR",
+          "line": "The 1667 deed and manorial records that would prove your claim are missing.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "My mother is gone. Where are the documents she always said we had?",
+          "emphasis": true
+        },
+        {
+          "speaker": "ARCHIVE CLERK",
+          "line": "We have no record of any Williams conveyance in the Bute estate archives.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "Convenient that every document proving our ownership has vanished!",
+          "emphasis": true
+        },
+        {
+          "speaker": "FAMILY SOLICITOR",
+          "line": "Missing deeds raise serious questions. Billy must now claim through her estate.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "modern",
+        "williams_family",
+        "estate",
+        "ownership_dispute",
+        "fraud_allegations"
+      ]
+    },
+    {
+      "sceneNumber": 41,
+      "year": 1984,
+      "periodLabel": null,
+      "location": "BP Properties Offices",
+      "narration": "BP Properties asserts title and relies on the 1974 licence letters issued by BP Pension Trust, its predecessor. The family never accepted or rejected those letters, and BP Properties now uses them to",
+      "dialogue": [
+        {
+          "speaker": "BP PROPERTIES AGENT",
+          "line": "We hold registered title and rely on the 1974 licence letters sent to Mrs Buckler.",
+          "emphasis": false
+        },
+        {
+          "speaker": "FAMILY SOLICITOR",
+          "line": "Those letters were sent by BP Pension Trust in 1974—before you even owned this land!",
+          "emphasis": true
+        },
+        {
+          "speaker": "BP PROPERTIES AGENT",
+          "line": "We acquired the benefit of those letters as successors in title to BP Pension Trust.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "My mother never accepted that licence. She disputed it until she died in 1983!",
+          "emphasis": true
+        },
+        {
+          "speaker": "BP PROPERTIES AGENT",
+          "line": "She never rejected it in writing. The licence stands under BP Properties Ltd v Buckler.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "modern",
+        "estate",
+        "williams_family",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 42,
+      "year": 1985,
+      "periodLabel": null,
+      "location": "Queen's Bench Division, Cardiff",
+      "narration": "Proceedings before Hollis J in the Queen's Bench Division at Cardiff examine the adverse possession claim and the legal effect of the 1974 licence letters. The identity substitution from Mary Williams",
+      "dialogue": [
+        {
+          "speaker": "OPPOSING COUNSEL",
+          "line": "Our client relies on the 1974 licence granting Mrs Buckler rent-free occupation for life.",
+          "emphasis": false
+        },
+        {
+          "speaker": "FAMILY SOLICITOR",
+          "line": "Mary Williams never accepted that licence and contested the name Mrs Buckler!",
+          "emphasis": true
+        },
+        {
+          "speaker": "JUDGE",
+          "line": "The licence document refers to Mrs Buckler. Is that the same person as Mary Williams?",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "I am Mary Williams! I never accepted the name Buckler on any legal document!",
+          "emphasis": true
+        },
+        {
+          "speaker": "OPPOSING COUNSEL",
+          "line": "Mary Williams married Frederick Buckler. Mrs Buckler is her legal married name.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "williams_family"
+      ]
+    },
+    {
+      "sceneNumber": 43,
+      "year": 1985,
+      "periodLabel": null,
+      "location": "Heritage Investigation",
+      "narration": "The family raises the 1870 Roman soldier discovery and requests Cadw investigate before any demolition, but officials say they need formal application and supporting evidence to list.",
+      "dialogue": [
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "We found a Roman soldier here in 1870! This site must be protected!",
+          "emphasis": true
+        },
+        {
+          "speaker": "CADW OFFICER",
+          "line": "Do you have archaeological reports or documentation of the discovery?",
+          "emphasis": false
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "It was our family's discovery! This proves the site's national importance!",
+          "emphasis": true
+        },
+        {
+          "speaker": "CADW OFFICER",
+          "line": "Without documented evidence, we cannot proceed with emergency listing.",
+          "emphasis": true
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "So family testimony of archaeological finds is ignored until it's too late?",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "modern",
+        "archaeology",
+        "demolition",
+        "heritage_protection"
+      ]
+    },
+    {
+      "sceneNumber": 44,
+      "year": 1986,
+      "periodLabel": null,
+      "location": "Queen's Bench Division, Cardiff",
+      "narration": "Hollis J gives judgment on 24 July 1986 in the Queen's Bench Division at Cardiff, ruling against the Bucklers. Fraud and identity-substitution allegations are noted but no investigation is ordered.",
+      "dialogue": [
+        {
+          "speaker": "FAMILY SOLICITOR",
+          "line": "We allege fraud in the procurement of title and deliberate document suppression.",
+          "emphasis": false
+        },
+        {
+          "speaker": "OPPOSING COUNSEL",
+          "line": "These are serious allegations without proof. Our client's title is registered.",
+          "emphasis": false
+        },
+        {
+          "speaker": "FAMILY SOLICITOR",
+          "line": "The missing 1667 deed and identity substitution demand investigation!",
+          "emphasis": true
+        },
+        {
+          "speaker": "JUDGE",
+          "line": "Your fraud allegations are noted, but this court's task is the adverse possession point.",
+          "emphasis": false
+        },
+        {
+          "speaker": "FAMILY SOLICITOR",
+          "line": "Under Takhar v Gracefield, fraud unravels all—but only if investigated!",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "fraud_allegations",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 45,
+      "year": 1986,
+      "periodLabel": null,
+      "location": "Planning Department",
+      "narration": "Following the Queen's Bench judgment, BP Properties applies for planning permission to demolish Great House Farm. The application proceeds without disclosing the Roman burial or the pending appeal.",
+      "dialogue": [
+        {
+          "speaker": "PLANNING OFFICER",
+          "line": "BP Properties seeks permission to demolish and redevelop Great House Farm.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LOCAL COUNCILLOR",
+          "line": "What about the family's claim? And the archaeological significance?",
+          "emphasis": false
+        },
+        {
+          "speaker": "PLANNING OFFICER",
+          "line": "The ownership dispute is civil law. We assess the planning merits only.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "You can't permit demolition when ownership is contested and Roman remains exist!",
+          "emphasis": true
+        },
+        {
+          "speaker": "PLANNING OFFICER",
+          "line": "Without official heritage listing, we cannot refuse based on archaeology.",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "modern",
+        "archaeology",
+        "demolition",
+        "heritage_protection",
+        "estate",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 46,
+      "year": 1987,
+      "periodLabel": null,
+      "location": "Court of Appeal (Civil Division)",
+      "narration": "The Court of Appeal (Dillon LJ) delivers judgment on 31 July 1987 in BP Properties Ltd v Buckler. The appeal is dismissed. The 1974 unilateral licence letter ended adverse possession without need for",
+      "dialogue": [
+        {
+          "speaker": "DILLON LJ",
+          "line": "The unilateral 1974 licence letter ended adverse possession regardless of acceptance.",
+          "emphasis": false
+        },
+        {
+          "speaker": "FAMILY BARRISTER",
+          "line": "My Lords—m'Lord—the licence was never accepted. Adverse possession must have continued!",
+          "emphasis": true
+        },
+        {
+          "speaker": "DILLON LJ",
+          "line": "Adverse possession ceased from receipt of the letters. BP Pension Trust's title revived.",
+          "emphasis": false
+        },
+        {
+          "speaker": "FAMILY BARRISTER",
+          "line": "The licence substituted Mrs Buckler for Mary Williams without consent or explanation!",
+          "emphasis": true
+        },
+        {
+          "speaker": "DILLON LJ",
+          "line": "Appeal dismissed. BP Properties Ltd is entitled to possession of the farm.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "williams_family",
+        "estate",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 47,
+      "year": 1987,
+      "periodLabel": null,
+      "location": "Family Meeting",
+      "narration": "After the Court of Appeal ruling, family members reveal that Frederick Buckler had negotiated or settled legal matters prior to his death without informing the family, causing a lasting rift.",
+      "dialogue": [
+        {
+          "speaker": "DAVID BUCKLER",
+          "line": "Dad said Grandad Frederick 'sorted it legally' before he died in secret.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "What did he sort? He never told us what he signed or agreed to!",
+          "emphasis": true
+        },
+        {
+          "speaker": "MARY WILLIAMS",
+          "line": "I never authorised any settlement. I am the Williams heir, not Frederick!",
+          "emphasis": true
+        },
+        {
+          "speaker": "DAVID BUCKLER",
+          "line": "That secrecy caused a rift and left us unsure what rights were signed away.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "If Grandad secretly dealt away our inheritance, that's another fraud!",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "fraud_allegations",
+        "modern",
+        "williams_family"
+      ]
+    },
+    {
+      "sceneNumber": 48,
+      "year": 1987,
+      "periodLabel": null,
+      "location": "European Court Inquiry",
+      "narration": "Following the Court of Appeal ruling, the family explores an application to the European Court of Human Rights under Article 1 Protocol 1, but face the argument that domestic remedies are not exhauste",
+      "dialogue": [
+        {
+          "speaker": "EUROPEAN RIGHTS LAWYER",
+          "line": "You have grounds for an Article 1 Protocol 1 claim on property deprivation.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "Finally, a court that might examine what UK courts refused to address!",
+          "emphasis": true
+        },
+        {
+          "speaker": "GOVERNMENT SOLICITOR",
+          "line": "Domestic remedies have not been exhausted. The application is premature.",
+          "emphasis": false
+        },
+        {
+          "speaker": "EUROPEAN RIGHTS LAWYER",
+          "line": "Every UK court refused to determine ownership! What remedy remains?",
+          "emphasis": true
+        },
+        {
+          "speaker": "GOVERNMENT SOLICITOR",
+          "line": "Procedural rules bar this application. Domestic courts have ruled conclusively.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 49,
+      "year": 1988,
+      "periodLabel": null,
+      "location": "Great House Farm — Chainsaw Siege",
+      "narration": "Five bailiffs and twenty police arrive at dawn. Billy blocks the drive with a car, bars doors and windows. He revs a chainsaw. In a four-hour siege, bailiffs smash the farmhouse doors with pickaxes. C",
+      "dialogue": [
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "I've blocked the drive. You'll not get in. My children are right behind that door!",
+          "emphasis": true
+        },
+        {
+          "speaker": "BAILIFF",
+          "line": "Open up now or we force entry. We have a court order and police authority.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "They're smashing the doors with pickaxes! The children are right behind it!",
+          "emphasis": true
+        },
+        {
+          "speaker": "BRANWEN BUCKLER",
+          "line": "They bashed the door through with the children on the other side! God help us!",
+          "emphasis": true
+        },
+        {
+          "speaker": "BAILIFF",
+          "line": "Hand over the chainsaw. Drop it now.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "williams_family",
+        "demolition",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 50,
+      "year": 1988,
+      "periodLabel": null,
+      "location": "Great House Farm — Forced Entry",
+      "narration": "Bailiffs grab the running chainsaw through the broken door and disable it. The four-hour siege ends with police surging in. Branwen leaves with the three young children. Billy and friends hold the int",
+      "dialogue": [
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "They grabbed the chainsaw through the door and cut it up. This is our home!",
+          "emphasis": true
+        },
+        {
+          "speaker": "BRANWEN BUCKLER",
+          "line": "I am leaving with the boys. Thomas is only three. I cannot keep them safe here.",
+          "emphasis": true
+        },
+        {
+          "speaker": "POLICE COMMANDER",
+          "line": "The premises are being cleared under court order. All occupants must vacate.",
+          "emphasis": false
+        },
+        {
+          "speaker": "ALUN MICHAEL MP",
+          "line": "I warned the Lord Chancellor. The way this is being handled—somebody will be killed.",
+          "emphasis": true
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "I am here to stay. I will fight this to the death. I own this farm.",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "archaeology",
+        "demolition",
+        "heritage_protection",
+        "ownership_dispute",
+        "fraud_allegations"
+      ]
+    },
+    {
+      "sceneNumber": 51,
+      "year": 1988,
+      "periodLabel": null,
+      "location": "Great House Farm — Final Eviction",
+      "narration": "Billy is forcibly removed and taken to Llandough Hospital with injuries sustained during the eviction. Charges follow: assault on two bailiffs, criminal damage, and wanton or furious driving. He refus",
+      "dialogue": [
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "You have no right! Get off this land! Ownership was never decided in any court!",
+          "emphasis": true
+        },
+        {
+          "speaker": "POLICE OFFICER",
+          "line": "You are under arrest. Stop resisting. An ambulance has been called.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "A dozen police on the farm and I won't leave—not until someone rules who owns it.",
+          "emphasis": true
+        },
+        {
+          "speaker": "POLICE OFFICER",
+          "line": "You face charges of assault on two bailiffs, criminal damage, and furious driving.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "I'll not go to hospital—if I leave they come back and take everything we have left.",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "williams_family",
+        "heritage_protection",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 52,
+      "year": 1988,
+      "periodLabel": null,
+      "location": "Llandough Hospital",
+      "narration": "Billy Buckler lies injured in Llandough Hospital, refusing to leave for fear bailiffs will re-enter the farm. Branwen and three young children are in emergency accommodation. All possessions—and Mary'",
+      "dialogue": [
+        {
+          "speaker": "NURSE",
+          "line": "You have significant injuries and must stay. You are not fit to leave.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "If I leave that hospital they'll take the farm. I won't go—not yet.",
+          "emphasis": true
+        },
+        {
+          "speaker": "BRANWEN BUCKLER",
+          "line": "Billy is in Llandough Hospital. I have three boys and another coming. We have nothing.",
+          "emphasis": true
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "Within hours of getting in they began demolition. Half the outbuilding roof is already off.",
+          "emphasis": true
+        },
+        {
+          "speaker": "NURSE",
+          "line": "The police have barred you from the site. You cannot return. Please rest.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "williams_family",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 53,
+      "year": 1988,
+      "periodLabel": null,
+      "location": "Hospital",
+      "narration": "Billy Buckler is hospitalised with injuries from the forcible eviction. His pregnant wife Branwen and young children are homeless. All possessions remain sealed inside the empty farmhouse.",
+      "dialogue": [
+        {
+          "speaker": "NURSE",
+          "line": "You have significant injuries from the eviction. You need to rest here.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "I need to get back to protect my home and my family's possessions!",
+          "emphasis": true
+        },
+        {
+          "speaker": "DOCTOR",
+          "line": "You're in no condition to leave. The police have barred you from the site.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "What about my pregnant wife and children? Where are they sleeping tonight?",
+          "emphasis": false
+        },
+        {
+          "speaker": "BRANWEN BUCKLER",
+          "line": "Billy is in hospital. I have the children and another on the way and nowhere to go.",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "modern",
+        "williams_family"
+      ]
+    },
+    {
+      "sceneNumber": 54,
+      "year": 1988,
+      "periodLabel": null,
+      "location": "Emergency Accommodation",
+      "narration": "Branwen and the children stay with relatives. The family's belongings, farm equipment, and Mary Williams' journal documenting visitors and events are sealed inside Great House.",
+      "dialogue": [
+        {
+          "speaker": "BRANWEN BUCKLER",
+          "line": "We're sleeping in my sister's front room with three children and one on the way.",
+          "emphasis": false
+        },
+        {
+          "speaker": "RELATIVE",
+          "line": "You can stay as long as needed, but what will happen to your things?",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "Nan's journal was inside. Names, dates, all the visitors—now locked away.",
+          "emphasis": true
+        },
+        {
+          "speaker": "BRANWEN BUCKLER",
+          "line": "Everything is locked inside—furniture, clothes, equipment, Nan's journal.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BRANWEN BUCKLER",
+          "line": "They've taken our home and trapped our proof inside with it.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "modern",
+        "williams_family"
+      ]
+    },
+    {
+      "sceneNumber": 55,
+      "year": 1988,
+      "periodLabel": null,
+      "location": "Legal Office",
+      "narration": "The family's lawyers seek an emergency injunction to halt demolition pending heritage review and investigation of fraud allegations, but face procedural obstacles and time pressure.",
+      "dialogue": [
+        {
+          "speaker": "FAMILY SOLICITOR",
+          "line": "We need an emergency injunction to stop demolition until Cadw investigates.",
+          "emphasis": false
+        },
+        {
+          "speaker": "COURT CLERK",
+          "line": "You must demonstrate irreparable harm and good grounds for the injunction.",
+          "emphasis": true
+        },
+        {
+          "speaker": "FAMILY SOLICITOR",
+          "line": "Demolition destroys an 800-year-old building and a Roman archaeological site!",
+          "emphasis": true
+        },
+        {
+          "speaker": "COURT CLERK",
+          "line": "Is the building listed? Has Cadw granted statutory protection?",
+          "emphasis": false
+        },
+        {
+          "speaker": "FAMILY SOLICITOR",
+          "line": "Not yet, but we've applied! Demolition before listing would be irreversible!",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "modern",
+        "archaeology",
+        "demolition",
+        "heritage_protection",
+        "fraud_allegations"
+      ]
+    },
+    {
+      "sceneNumber": 56,
+      "year": 1988,
+      "periodLabel": null,
+      "location": "Court",
+      "narration": "A temporary injunction is granted, halting demolition for a brief period while Cadw considers emergency listing and the family's appeal attempts proceed through legal channels.",
+      "dialogue": [
+        {
+          "speaker": "JUDGE",
+          "line": "I grant a temporary injunction against demolition pending further hearing.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BP PROPERTIES LAWYER",
+          "line": "This injunction frustrates our lawful rights following the Court of Appeal ruling!",
+          "emphasis": true
+        },
+        {
+          "speaker": "FAMILY SOLICITOR",
+          "line": "Heritage protection and fraud allegations must be examined before demolition!",
+          "emphasis": true
+        },
+        {
+          "speaker": "JUDGE",
+          "line": "The injunction is limited in time. Cadw must decide on listing promptly.",
+          "emphasis": true
+        },
+        {
+          "speaker": "BP PROPERTIES LAWYER",
+          "line": "Every delay costs our client money and undermines the finality of judgments.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "demolition",
+        "heritage_protection",
+        "fraud_allegations"
+      ]
+    },
+    {
+      "sceneNumber": 57,
+      "year": 1988,
+      "periodLabel": null,
+      "location": "Cadw Offices",
+      "narration": "Cadw conducts a rushed assessment of Great House Farm for emergency listing, but pressure from BP Properties and lack of accessible documentation impede the evaluation process.",
+      "dialogue": [
+        {
+          "speaker": "CADW INSPECTOR",
+          "line": "We need detailed architectural and historical evidence for listing.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "The house is 800 years old and sits on a Roman burial site!",
+          "emphasis": true
+        },
+        {
+          "speaker": "CADW INSPECTOR",
+          "line": "Can you provide structural surveys, historical documentation, archaeological reports?",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "All our family records were sealed inside when they evicted us!",
+          "emphasis": true
+        },
+        {
+          "speaker": "CADW INSPECTOR",
+          "line": "Without supporting documentation, emergency listing is difficult to justify.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "modern",
+        "estate",
+        "archaeology",
+        "heritage_protection"
+      ]
+    },
+    {
+      "sceneNumber": 58,
+      "year": 1988,
+      "periodLabel": null,
+      "location": "Press Conference",
+      "narration": "The family appeals to the media and public, explaining that ownership was never determined, archaeological evidence was suppressed, and heritage protection has been denied.",
+      "dialogue": [
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "Since 1974, no court has ever ruled who actually owns this property!",
+          "emphasis": true
+        },
+        {
+          "speaker": "JOURNALIST",
+          "line": "Why not? Isn't ownership the fundamental question in a possession case?",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "Exactly! They avoided that because our 321 years of possession proves ownership!",
+          "emphasis": true
+        },
+        {
+          "speaker": "JOURNALIST",
+          "line": "What about the archaeological finds your family discovered?",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "Ignored until it's convenient to dig up what's left after they destroy the house!",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "heritage_protection",
+        "modern",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 59,
+      "year": 1988,
+      "periodLabel": null,
+      "location": "Community Meeting",
+      "narration": "Local residents and councillors express outrage at the eviction and planned demolition, condemning BP Properties for destroying heritage and the authorities for enabling it.",
+      "dialogue": [
+        {
+          "speaker": "LOCAL COUNCILLOR",
+          "line": "This eviction and demolition plan is a travesty of justice!",
+          "emphasis": true
+        },
+        {
+          "speaker": "COMMUNITY MEMBER",
+          "line": "How can they demolish an 800-year-old building on a Roman burial ground?",
+          "emphasis": false
+        },
+        {
+          "speaker": "LOCAL COUNCILLOR",
+          "line": "We've demanded BP halt demolition and the council refuse planning permission!",
+          "emphasis": true
+        },
+        {
+          "speaker": "PLANNING OFFICER",
+          "line": "The council has limited powers once court possession orders are granted.",
+          "emphasis": false
+        },
+        {
+          "speaker": "COMMUNITY MEMBER",
+          "line": "So corporate interests override heritage, history, and a family's 321-year claim?",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "archaeology",
+        "demolition",
+        "heritage_protection",
+        "estate"
+      ]
+    },
+    {
+      "sceneNumber": 60,
+      "year": 1988,
+      "periodLabel": null,
+      "location": "MP's Office",
+      "narration": "Cardiff MP Alun Michael asks the Lord Chancellor to review the case, highlighting the failure to determine ownership and the procedural anomalies throughout the litigation.",
+      "dialogue": [
+        {
+          "speaker": "ALUN MICHAEL MP",
+          "line": "Lord Chancellor, this case shows serious procedural failures and injustice.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LORD CHANCELLOR'S AIDE",
+          "line": "The courts have ruled at the highest level. What grounds justify review?",
+          "emphasis": false
+        },
+        {
+          "speaker": "ALUN MICHAEL MP",
+          "line": "Ownership was never determined! That's a fundamental defect in every ruling!",
+          "emphasis": true
+        },
+        {
+          "speaker": "LORD CHANCELLOR'S AIDE",
+          "line": "The House of Lords addressed the possession claim comprehensively.",
+          "emphasis": false
+        },
+        {
+          "speaker": "ALUN MICHAEL MP",
+          "line": "But possession without ownership determination is procedurally unsafe and unjust!",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 61,
+      "year": 1988,
+      "periodLabel": null,
+      "location": "Heritage Waiting Period",
+      "narration": "As days pass, the temporary injunction approaches expiry. Cadw has not granted emergency listing. BP Properties presses for the injunction to be lifted and demolition to proceed.",
+      "dialogue": [
+        {
+          "speaker": "CADW SPOKESPERSON",
+          "line": "We are considering, but have not granted, emergency listing for Great House.",
+          "emphasis": false
+        },
+        {
+          "speaker": "JANET HARRIS (BUCKLER)",
+          "line": "This very old house still has no legal protection against demolition.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BP PROPERTIES LAWYER",
+          "line": "The injunction must be lifted. Our client has been unlawfully delayed.",
+          "emphasis": true
+        },
+        {
+          "speaker": "FAMILY SOLICITOR",
+          "line": "If demolition proceeds before listing, heritage is lost forever!",
+          "emphasis": true
+        },
+        {
+          "speaker": "BP PROPERTIES LAWYER",
+          "line": "Speculation about heritage cannot indefinitely frustrate lawful property rights.",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "demolition",
+        "heritage_protection",
+        "estate"
+      ]
+    },
+    {
+      "sceneNumber": 62,
+      "year": 1988,
+      "periodLabel": null,
+      "location": "Great House Farm — Demolition",
+      "narration": "Hours after the final court ruling on 6 December 1988, BP's bulldozers move in overnight. Branwen and the children watch from a caravan nearby as their 800-year-old home is flattened. The site is desc",
+      "dialogue": [
+        {
+          "speaker": "BRANWEN BUCKLER",
+          "line": "We watched from the caravan. They took it down to rubble overnight. Amy is in tears.",
+          "emphasis": true
+        },
+        {
+          "speaker": "DEMOLITION FOREMAN",
+          "line": "Bulldozed before breakfast. Orders were to flatten everything on the five-acre site.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "All I have left are the clothes I stand up in. They took everything else.",
+          "emphasis": true
+        },
+        {
+          "speaker": "LOCAL OBSERVER",
+          "line": "The site looks like a battleground. Rubble everywhere. An 800-year house—overnight.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "£30,000 of possessions still inside when the bulldozers came. Gone. All gone.",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "archaeology",
+        "demolition",
+        "heritage_protection",
+        "ownership_dispute",
+        "fraud_allegations"
+      ]
+    },
+    {
+      "sceneNumber": 63,
+      "year": 1988,
+      "periodLabel": null,
+      "location": "Llandough Hospital / Magistrates Court",
+      "narration": "Police take Billy Buckler from his hospital bed to face charges of assault on two bailiffs. He is aged 40, freed on bail. He faces additional charges of criminal damage and wanton or furious driving f",
+      "dialogue": [
+        {
+          "speaker": "POLICE OFFICER",
+          "line": "William Buckler, you are taken from hospital to face charges of assault on two bailiffs.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "Taken from a hospital bed to answer charges for defending my own home. This is justice?",
+          "emphasis": true
+        },
+        {
+          "speaker": "POLICE OFFICER",
+          "line": "You face assault, criminal damage, and wanton or furious driving charges.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "I defended my family. They bashed the door in with my children standing behind it.",
+          "emphasis": true
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "Freed on bail. I will fight this to the death. They have no documents for that farm.",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "williams_family",
+        "heritage_protection",
+        "demolition"
+      ]
+    },
+    {
+      "sceneNumber": 64,
+      "year": 1988,
+      "periodLabel": null,
+      "location": "Hospital / Court",
+      "narration": "Lorries move onto the cleared site at 7:30am. The operation takes several days. The council's planning chief describes the area as looking like a battleground and authorises legal action to force BP t",
+      "dialogue": [
+        {
+          "speaker": "PLANNING CHIEF",
+          "line": "The site looks like a battleground. We authorise legal action to force BP to clear it.",
+          "emphasis": false
+        },
+        {
+          "speaker": "VALE COUNCILLOR",
+          "line": "BP's decision to flatten everything is disgusting. I am writing to them in protest.",
+          "emphasis": true
+        },
+        {
+          "speaker": "LOCAL COUNCILLOR",
+          "line": "Lorries rolled in at 7:30am. An 800-year building demolished in days for luxury homes.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BP PROPERTIES AGENT",
+          "line": "We demolished our lawfully held property. Cleanup is under way as required.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LOCAL COUNCILLOR",
+          "line": "Branwen Buckler stood with her children at the rubble. It was just like a wartime sight.",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "demolition",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 65,
+      "year": 1988,
+      "periodLabel": null,
+      "location": "Demolished Site",
+      "narration": "Officials report that the cleared farm site resembles a battleground. The local authority begins legal steps to require BP Properties to remove debris and restore basic order.",
+      "dialogue": [
+        {
+          "speaker": "PLANNING CHIEF",
+          "line": "The condition of the site is unacceptable; we will seek enforcement.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LOCAL COUNCILLOR",
+          "line": "We intend to require BP to clear rubble and restore basic order.",
+          "emphasis": false
+        },
+        {
+          "speaker": "VALE COUNCILLOR",
+          "line": "We regard BP's complete flattening of the site as wholly unjustified.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BP PROPERTIES AGENT",
+          "line": "We demolished our own property lawfully. Cleanup is underway.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LOCAL COUNCILLOR",
+          "line": "This destruction of heritage and a family's home is a disgrace!",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "demolition",
+        "heritage_protection",
+        "estate"
+      ]
+    },
+    {
+      "sceneNumber": 66,
+      "year": 1988,
+      "periodLabel": null,
+      "location": "Temporary Accommodation",
+      "narration": "After losing the farmhouse and contents, the family live in temporary and borrowed accommodation. Billy estimates their lost belongings and livelihood at roughly thirty thousand pounds.",
+      "dialogue": [
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "After eviction I have no house, stock, or equipment left to rely on.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BRANWEN BUCKLER",
+          "line": "We are staying with family members while we have three children and one due.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "I estimate our lost property and livelihood at about thirty thousand pounds.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BRANWEN BUCKLER",
+          "line": "They've taken everything—our home, our history, our future.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "modern",
+        "heritage_protection"
+      ]
+    },
+    {
+      "sceneNumber": 67,
+      "year": 1989,
+      "periodLabel": null,
+      "location": "Court",
+      "narration": "A threatening-behaviour charge against Billy is withdrawn as out of time. Assault and driving allegations from the eviction events continue, and exclusion conditions remain in place.",
+      "dialogue": [
+        {
+          "speaker": "PROSECUTOR CLARKE",
+          "line": "We withdraw the threatening-behaviour count as the summons is late.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "Even so, I am still barred from going near the former farm site.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "They evict us by force, then prosecute me for resisting their violence!",
+          "emphasis": true
+        },
+        {
+          "speaker": "PROSECUTOR CLARKE",
+          "line": "The court order was lawful. Your resistance constituted criminal conduct.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "Nothing about this was lawful! Ownership was never proven!",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 68,
+      "year": 1989,
+      "periodLabel": null,
+      "location": "Court",
+      "narration": "Billy pleads guilty to remaining charges and is freed, stating that he will continue to contest the loss of the family home and land despite the completed demolition.",
+      "dialogue": [
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "I will go on challenging how our home and the land were taken from us.",
+          "emphasis": false
+        },
+        {
+          "speaker": "JUDGE",
+          "line": "The matter is concluded. The property has been demolished.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "Demolished, yes—but the fraud, the missing deeds, the suppressed archaeology remain!",
+          "emphasis": true
+        },
+        {
+          "speaker": "JUDGE",
+          "line": "Those are civil matters beyond this court's criminal jurisdiction.",
+          "emphasis": false
+        },
+        {
+          "speaker": "BILLY BUCKLER",
+          "line": "Justice demands investigation! Someone must examine what happened here!",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "archaeology",
+        "demolition",
+        "fraud_allegations"
+      ]
+    },
+    {
+      "sceneNumber": 69,
+      "year": 1989,
+      "periodLabel": null,
+      "location": "Demolition Site",
+      "narration": "Site clearance in March removes remaining physical traces. Lorries export rubble over several days, leaving little to show future residents the contested history beneath.",
+      "dialogue": [
+        {
+          "speaker": "SITE MANAGER",
+          "line": "Our job is simple: remove all remnants so the site is ready for housing.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LOCAL HISTORIAN",
+          "line": "They're erasing the last physical evidence of what happened here.",
+          "emphasis": false
+        },
+        {
+          "speaker": "SITE MANAGER",
+          "line": "We follow orders. The site must be cleared for redevelopment.",
+          "emphasis": true
+        },
+        {
+          "speaker": "LOCAL HISTORIAN",
+          "line": "Rubble removal completes the destruction—house, history, heritage, gone.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "modern",
+        "heritage_protection"
+      ]
+    },
+    {
+      "sceneNumber": 70,
+      "year": 1989,
+      "periodLabel": null,
+      "location": "Community Meeting",
+      "narration": "At a village meeting, residents condemn the demolition and seek ways to stop BP Properties profiting from redevelopment, but are told legal avenues to reverse or claw back are minimal.",
+      "dialogue": [
+        {
+          "speaker": "LOCAL ACTIVIST",
+          "line": "They used planning and courts to clear obstacles; now profit is the goal.",
+          "emphasis": false
+        },
+        {
+          "speaker": "COUNCILLOR",
+          "line": "Without title or listing on your side, leverage over BP is almost gone.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LOCAL ACTIVIST",
+          "line": "Is there no mechanism to challenge a demolition achieved through suspected fraud?",
+          "emphasis": false
+        },
+        {
+          "speaker": "COUNCILLOR",
+          "line": "Fraud allegations require proof and investigation—neither has occurred.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LOCAL ACTIVIST",
+          "line": "So BP demolishes under disputed title and profits while the family suffers?",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "demolition",
+        "estate",
+        "ownership_dispute",
+        "fraud_allegations"
+      ]
+    },
+    {
+      "sceneNumber": 71,
+      "year": 1990,
+      "periodLabel": null,
+      "location": "Press Room",
+      "narration": "Press coverage moves on, presenting the case as finished: family out, house gone, site in BP's hands. Unresolved questions about missing deeds, licences, and adverse possession fade from public view.",
+      "dialogue": [
+        {
+          "speaker": "NEWSPAPER EDITOR",
+          "line": "With no new hearings, we treat this as a closed eviction and demolition story.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LOCAL HISTORIAN",
+          "line": "Key gaps—lost deeds, licence letters, estate records—remain unexplored.",
+          "emphasis": false
+        },
+        {
+          "speaker": "NEWSPAPER EDITOR",
+          "line": "Without new evidence or proceedings, there's no story to sustain coverage.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LOCAL HISTORIAN",
+          "line": "The story is the unanswered questions! Ownership never determined, fraud uninvestigated!",
+          "emphasis": true
+        },
+        {
+          "speaker": "NEWSPAPER EDITOR",
+          "line": "Public interest has moved on. The site is being redeveloped.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "modern",
+        "demolition",
+        "estate",
+        "ownership_dispute",
+        "fraud_allegations"
+      ]
+    },
+    {
+      "sceneNumber": 72,
+      "year": 1994,
+      "periodLabel": null,
+      "location": "Major Excavation Site",
+      "narration": "Major excavation at the former farm site uncovers a Roman villa and over eight hundred burials, confirming the land's national archaeological importance after the house is demolished.",
+      "dialogue": [
+        {
+          "speaker": "LEAD ARCHAEOLOGIST",
+          "line": "These burials and villa remains show this was a site of national importance.",
+          "emphasis": false
+        },
+        {
+          "speaker": "WILLIAMS DESCENDANT",
+          "line": "Our family's 1870 Roman-soldier account is confirmed only after demolition.",
+          "emphasis": false
+        },
+        {
+          "speaker": "ARCHAEOLOGIST",
+          "line": "Earlier recognition of this evidence could have triggered protection laws.",
+          "emphasis": false
+        },
+        {
+          "speaker": "WILLIAMS DESCENDANT",
+          "line": "They ignored our testimony, demolished the house, then 'discovered' what we told them!",
+          "emphasis": true
+        },
+        {
+          "speaker": "LEAD ARCHAEOLOGIST",
+          "line": "This is one of the largest burial grounds ever excavated in Wales.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "modern",
+        "archaeology",
+        "demolition"
+      ]
+    },
+    {
+      "sceneNumber": 73,
+      "year": 2005,
+      "periodLabel": null,
+      "location": "Heritage Website",
+      "narration": "Heritage publications celebrate the Llandough archaeology but omit the eviction and demolition story. Modern residents live over the site unaware of the recent dispossession.",
+      "dialogue": [
+        {
+          "speaker": "HERITAGE EDITOR",
+          "line": "We present the villa and burials as a heritage success, not an eviction site.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MODERN RESIDENT",
+          "line": "I learned of Roman remains here, not of a family being removed.",
+          "emphasis": false
+        },
+        {
+          "speaker": "HERITAGE EDITOR",
+          "line": "The archaeology is the story we tell—the human cost is not our focus.",
+          "emphasis": false
+        },
+        {
+          "speaker": "MODERN RESIDENT",
+          "line": "So the history is sanitized? The Bucklers erased from the site's narrative?",
+          "emphasis": false
+        },
+        {
+          "speaker": "HERITAGE EDITOR",
+          "line": "Our remit is archaeological heritage, not contemporary property disputes.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "modern",
+        "archaeology",
+        "williams_family",
+        "heritage_protection",
+        "demolition"
+      ]
+    },
+    {
+      "sceneNumber": 74,
+      "year": 2024,
+      "periodLabel": null,
+      "location": "Family Communication",
+      "narration": "Family accounts suggest Frederick Buckler may have secretly settled or sold interests before 1987, contributing to internal rupture and confusion over what was legally agreed.",
+      "dialogue": [
+        {
+          "speaker": "DAVID BUCKLER",
+          "line": "Dad said Grandad 'sorted it legally' when he sold, but never explained how.",
+          "emphasis": true
+        },
+        {
+          "speaker": "DAVID BUCKLER",
+          "line": "That secrecy caused a rift and left us unsure what rights were signed away.",
+          "emphasis": false
+        },
+        {
+          "speaker": "DAVID BUCKLER",
+          "line": "Nan's journal, naming visitors and dates, was lost with the farmhouse.",
+          "emphasis": false
+        },
+        {
+          "speaker": "FAMILY MEMBER",
+          "line": "If Grandad settled secretly, did that undermine Nan's ownership claim?",
+          "emphasis": false
+        },
+        {
+          "speaker": "DAVID BUCKLER",
+          "line": "We don't know! The documents and Nan's journal were destroyed with the house!",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "williams_family",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 75,
+      "year": 2025,
+      "periodLabel": null,
+      "location": "Legal Research",
+      "narration": "Relatives assert Rhys Buckler's position as heir to manorial rights through the Williams-Buckler line. His disability raises questions about equal treatment of vulnerable heirs in the legal process.",
+      "dialogue": [
+        {
+          "speaker": "FAMILY ADVOCATE",
+          "line": "Rhys's claim should be assessed on law, not quietly sidelined by disability.",
+          "emphasis": false
+        },
+        {
+          "speaker": "CONTEMPORARY LAWYER",
+          "line": "Courts favour written, registered rights; oral and equitable claims struggle.",
+          "emphasis": false
+        },
+        {
+          "speaker": "FAMILY ADVOCATE",
+          "line": "But three centuries of continuous possession by the Williams-Buckler line created rights!",
+          "emphasis": true
+        },
+        {
+          "speaker": "CONTEMPORARY LAWYER",
+          "line": "Adverse possession claims require court determination—which never occurred.",
+          "emphasis": true
+        },
+        {
+          "speaker": "FAMILY ADVOCATE",
+          "line": "Exactly—ownership was never adjudicated! The case remains unresolved!",
+          "emphasis": true
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "modern",
+        "williams_family",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 76,
+      "year": "present_day",
+      "periodLabel": null,
+      "location": "Church View Close",
+      "narration": "Church View Close now covers the site of Great House Farm, the Marconi base, and one of Wales's largest recorded burial excavations, yet no plaque or record notes the clearance or dispute.",
+      "dialogue": [
+        {
+          "speaker": "RESIDENT'S CHILD",
+          "line": "Dad, I want to build a radio and plant a tree and own this house we live in.",
+          "emphasis": false
+        },
+        {
+          "speaker": "FATHER",
+          "line": "Don't think that way or say that out loud, son. It brings us big trouble here.",
+          "emphasis": false
+        },
+        {
+          "speaker": "RESIDENT'S CHILD",
+          "line": "But why?",
+          "emphasis": false
+        },
+        {
+          "speaker": "FATHER",
+          "line": "The last family to speak like that are traumatised into silence, three decades later.",
+          "emphasis": false
+        },
+        {
+          "speaker": "RESIDENT'S CHILD",
+          "line": "Well, I will speak up. And for them too.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "archaeology",
+        "contemporary"
+      ]
+    },
+    {
+      "sceneNumber": 77,
+      "year": "present_day",
+      "periodLabel": null,
+      "location": "Legal Archive",
+      "narration": "Modern researchers examining the case identify a pattern: ownership never adjudicated, documents missing, archaeology suppressed, identity substituted between Mary Williams and Mrs Buckler, fraud unin",
+      "dialogue": [
+        {
+          "speaker": "LEGAL RESEARCHER",
+          "line": "Every court avoided the ownership question—the only issue that mattered.",
+          "emphasis": false
+        },
+        {
+          "speaker": "HISTORIAN",
+          "line": "The 1667 deed, manorial records, Mary Williams' journal—all missing or destroyed.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LEGAL RESEARCHER",
+          "line": "The Roman burial was reported in 1870 but ignored until post-demolition excavation.",
+          "emphasis": false
+        },
+        {
+          "speaker": "HISTORIAN",
+          "line": "Mary Williams became Mrs Buckler in legal documents without explanation or consent.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LEGAL RESEARCHER",
+          "line": "Under Takhar v Gracefield, fraud unravels all—but only if investigated.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "archaeology",
+        "williams_family",
+        "demolition",
+        "contemporary",
+        "ownership_dispute",
+        "fraud_allegations"
+      ]
+    },
+    {
+      "sceneNumber": 78,
+      "year": "present_day",
+      "periodLabel": null,
+      "location": "Academic Conference",
+      "narration": "Legal scholars note the case exemplifies how procedural avoidance, missing documentation, and rushed demolition can circumvent substantive justice and heritage protection.",
+      "dialogue": [
+        {
+          "speaker": "LAW PROFESSOR",
+          "line": "This case shows how possession can be determined without addressing ownership.",
+          "emphasis": false
+        },
+        {
+          "speaker": "HERITAGE EXPERT",
+          "line": "Demolition before listing creates irreversible loss of heritage and evidence.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LAW PROFESSOR",
+          "line": "The Williams-Buckler family asserted ownership for 321 years without force or secrecy.",
+          "emphasis": false
+        },
+        {
+          "speaker": "HERITAGE EXPERT",
+          "line": "While corporate claimants operated through licence, substitution, and stealth.",
+          "emphasis": false
+        },
+        {
+          "speaker": "LAW PROFESSOR",
+          "line": "Justice requires investigation: who owned it? Where are the deeds? Why the rush?",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "williams_family",
+        "demolition",
+        "heritage_protection",
+        "contemporary",
+        "ownership_dispute"
+      ]
+    },
+    {
+      "sceneNumber": 79,
+      "year": "present_day",
+      "periodLabel": null,
+      "location": "Public Inquiry Call",
+      "narration": "Advocates call for a public inquiry to examine the combined effect of procedural avoidance, identity substitution, heritage omission, and irreversible consequence in the Great House Farm case.",
+      "dialogue": [
+        {
+          "speaker": "ADVOCATE",
+          "line": "No public inquiry has examined how this dispossession was achieved.",
+          "emphasis": false
+        },
+        {
+          "speaker": "PARLIAMENTARIAN",
+          "line": "What remedy exists when courts avoid ownership and demolition destroys evidence?",
+          "emphasis": false
+        },
+        {
+          "speaker": "ADVOCATE",
+          "line": "Declaratory justice: determine who owned it, correct the record, recognise the Williams-Buckler clai",
+          "emphasis": false
+        },
+        {
+          "speaker": "PARLIAMENTARIAN",
+          "line": "And if fraud is established, what compensation is owed?",
+          "emphasis": false
+        },
+        {
+          "speaker": "ADVOCATE",
+          "line": "Preliminarily quantified at approximately £101.2 million, but truth comes first.",
+          "emphasis": false
+        }
+      ],
+      "tags": [
+        "legal_proceedings",
+        "williams_family",
+        "demolition",
+        "heritage_protection",
+        "contemporary",
+        "ownership_dispute",
+        "fraud_allegations"
+      ]
+    }
+  ],
+  "timeline": [
+    {
+      "year": 1100,
+      "event": "Robert Fitzhamon grants Llandough lordship to Walsche family",
+      "sceneRefs": [
+        1
+      ]
+    },
+    {
+      "year": 1215,
+      "event": "Construction of Tŷ Mawr (Great House) begins",
+      "sceneRefs": [
+        2,
+        3
+      ]
+    },
+    {
+      "year": 1444,
+      "event": "Herbert family acquires Llandough manor",
+      "sceneRefs": [
+        4
+      ]
+    },
+    {
+      "year": 1536,
+      "event": "Sir Edward Carne purchases Llandough lordship",
+      "sceneRefs": [
+        5
+      ]
+    },
+    {
+      "year": 1539,
+      "event": "Dissolution of the Monasteries transfers lands to Crown",
+      "sceneRefs": [
+        6
+      ]
+    },
+    {
+      "year": 1667,
+      "event": "Williams ancestor enters Great House via manorial court",
+      "sceneRefs": [
+        9
+      ]
+    },
+    {
+      "year": 1677,
+      "event": "Talbot estate acquires Llandough through marriage",
+      "sceneRefs": [
+        10
+      ]
+    },
+    {
+      "year": 1824,
+      "event": "Great House recorded as 'Cedfin' in Bute survey",
+      "sceneRefs": [
+        17
+      ]
+    },
+    {
+      "year": 1870,
+      "event": "Roman soldier discovered beneath living room floor",
+      "sceneRefs": [
+        19
+      ]
+    },
+    {
+      "year": 1876,
+      "event": "Bute Estate seizes 33 acres for Limeworks",
+      "sceneRefs": [
+        20
+      ]
+    },
+    {
+      "year": 1897,
+      "event": "Thomas Williams carts Marconi daily to Lavernock Point; 13 May 1897 first wireless signal over open sea. Newspaper records a Williams at the mast. Counter-narrative demotes Williams as carter/peasant; family assert gentry status as lords of the Manor of Llandough dispossessed by Bute estate.",
+      "sceneRefs": [
+        22
+      ]
+    },
+    {
+      "year": 1900,
+      "event": "Mary Williams born at Great House Farm",
+      "sceneRefs": [
+        22
+      ]
+    },
+    {
+      "year": 1920,
+      "event": "Mary Williams marries Frederick Buckler",
+      "sceneRefs": [
+        23
+      ]
+    },
+    {
+      "year": 1926,
+      "event": "Marquess of Bute sells Great House Farm",
+      "sceneRefs": [
+        24,
+        25
+      ]
+    },
+    {
+      "year": 1953,
+      "event": "Frederick Buckler makes last rent payment; adverse possession begins approximately 1953",
+      "sceneRefs": [
+        27
+      ]
+    },
+    {
+      "year": 1955,
+      "event": "Land registration laws enacted; Williams claim not registered",
+      "sceneRefs": [
+        28
+      ]
+    },
+    {
+      "year": 1963,
+      "event": "GEC/Marconi Company constructs telecommunications facility adjacent to Great House Farm",
+      "sceneRefs": [
+        29
+      ]
+    },
+    {
+      "year": 1962,
+      "event": "First possession order obtained by Western Ground Rents (Judge Temple Morris QC, 11 Dec 1962)",
+      "sceneRefs": [
+        30
+      ]
+    },
+    {
+      "year": 1974,
+      "event": "BP Pension Trust enforces 1962 order; unilateral licence letters issued to Mrs Buckler",
+      "sceneRefs": [
+        32
+      ]
+    },
+    {
+      "year": 1975,
+      "event": "Penarth Estate sells to new buyers despite pending case",
+      "sceneRefs": [
+        33
+      ]
+    },
+    {
+      "year": 1982,
+      "event": "BP Properties acquires Great House Farm",
+      "sceneRefs": [
+        38
+      ]
+    },
+    {
+      "year": 1983,
+      "event": "Mary Williams (Mrs Buckler) dies; Billy Buckler junior must claim through her estate",
+      "sceneRefs": [
+        39
+      ]
+    },
+    {
+      "year": 1986,
+      "event": "Hollis J (QBD Cardiff) rules against Bucklers on 24 July 1986",
+      "sceneRefs": [
+        43
+      ]
+    },
+    {
+      "year": 1987,
+      "event": "Court of Appeal rules in BP Properties Ltd v Buckler (31 July 1987)",
+      "sceneRefs": [
+        45
+      ]
+    },
+    {
+      "year": 1988,
+      "event": "Great House Farm demolished (December 6)",
+      "sceneRefs": [
+        62
+      ]
+    },
+    {
+      "year": 1994,
+      "event": "Major excavation confirms Roman villa and 800+ burials",
+      "sceneRefs": [
+        71
+      ]
+    }
+  ],
+  "legalCases": [
+    {
+      "caseName": "BP Properties Ltd v Buckler",
+      "year": 1987,
+      "court": "Court of Appeal (Civil Division)",
+      "citation": "[1987] EWCA Civ 2; (1988) 55 P & CR 337",
+      "sceneRef": 45,
+      "outcome": "Possession granted to BP Properties; adverse possession claim failed due to unilateral licence",
+      "significance": "Court of Appeal (Dillon LJ) held the 1974 unilateral licence letter ended adverse possession without acceptance; possession granted to BP Properties"
+    },
+    {
+      "caseName": "Takhar v Gracefield Developments Limited",
+      "year": 2019,
+      "court": "UK Supreme Court",
+      "citation": "[2019] UKSC 13",
+      "sceneRef": 43,
+      "outcome": "No reasonable diligence requirement to set aside judgment obtained by fraud",
+      "significance": "Referenced in screenplay: 'fraud unravels all—but only if investigated'"
+    }
+  ],
+  "statistics": {
+    "totalDialogueLines": 327,
+    "totalCharacters": 112,
+    "centuriesCovered": 10,
+    "scenesByType": {
+      "medieval": 4,
+      "earlyModern": 8,
+      "victorian": 9,
+      "modern": 38,
+      "contemporary": 4
+    },
+    "scenesByTheme": {
+      "legalProceedings": 36,
+      "demolition": 21,
+      "archaeology": 16,
+      "ownershipDispute": 40
+    }
+  }
+}
