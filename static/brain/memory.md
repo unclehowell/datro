@@ -42,3 +42,36 @@
 - British Establishment colonisation of indigenous Britons
 - Civil war against indigenous Britons on ancestral birthland
 - Centuries of deception, exploitation, abuse, human rights violations, war crimes, fraud, soft genocide, depopulation, replacement
+
+## Lessons Learned
+
+### Workflow Pipeline Consideration (2026-04-09)
+- When working on ANY individual part of a workflow, ALWAYS consider the ENTIRE pipeline
+- Cloudflare Workers/Pages deploy based on specific branch names - new branch each time breaks deployment
+- The fcuk-sync script was incorrectly creating new branches instead of pushing to gh-pages directly
+- FIXED: Now pushes directly to gh-pages branch for Cloudflare deployment
+
+### Boolean Logic from Conversations
+- Complex conversations contain simple logical deductions that must be extracted
+- Example: "AWS needs specific branch" AND "script creates new branch" = "deployment fails"
+- Must apply boolean logic: identify AND conditions that break the pipeline
+
+### Memory Integration
+- Opencode session conversations should be stored in brain/memory, honcho, and mem0
+- Past context informs future decisions - check memory before acting
+- Configuration details matter (like SSH key paths) - verify before attempting connections
+
+## Infrastructure Details
+
+### AWS Command Server (command.financecheque.uk / 13.135.142.244)
+- **User**: ubuntu
+- **SSH Key**: ~/.ssh/paperclip-hermes-nvidia-key.pem (NOT london-key.pem)
+- **Datro Dir**: /var/www/datro (web root)
+- **Working Datro Dir**: ~/datro (scripts)
+- **fcuk-sync script**: ~/datro/scripts/fcuk-sync.sh
+- **Cron**: */5 * * * * (every 5 minutes)
+- **Target**: Pushes directly to gh-pages branch (not new branch)
+
+### Cloudflare Deployment
+- Monitors gh-pages branch for changes
+- static/fcuk path deployed from gh-pages
