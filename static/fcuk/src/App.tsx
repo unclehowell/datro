@@ -546,7 +546,7 @@ export default function App() {
         ) : (
           <div className="flex flex-col min-h-[calc(100vh-6rem)] relative">
             {/* Demo Manager UI */}
-            <div className="relative z-[200] py-12 md:py-24">
+            <div className={`relative z-[100] py-12 md:py-24 transition-opacity duration-300 ${activeAgentId && demoAgents.find(a => a.id === activeAgentId)?.isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
               <div className="max-w-[1800px] mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 items-start">
                 {demoAgents.map((agent, index) => (
                   <div 
@@ -796,7 +796,7 @@ export default function App() {
               </AnimatePresence>
             </div>
 
-            <div className="relative z-[100] pb-24 flex items-center justify-center">
+            <div className="relative z-[500] pb-24 flex items-center justify-center">
               {activeAgentId && demoAgents.find(a => a.id === activeAgentId)?.isOpen ? (
                 <div className="w-full h-full min-h-[600px]">
                   <Dashboard 
