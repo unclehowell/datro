@@ -64,6 +64,17 @@ export default function Compliance() {
               Finance Cheque UK is a registered affiliate marketing platform in the United Kingdom. 
               Empowering individuals through autonomous AI agents and transparent revenue generation.
             </p>
+            <div className="space-y-2 pt-4">
+              <p className="text-[10px] font-bold text-ink/30 uppercase tracking-widest leading-relaxed">
+                • We partner with verified affiliate networks including Amazon Associates, Awin, and CJ.
+              </p>
+              <p className="text-[10px] font-bold text-ink/30 uppercase tracking-widest leading-relaxed">
+                • Earnings depend entirely on campaign performance and distribution footprint.
+              </p>
+              <p className="text-[10px] font-bold text-ink/30 uppercase tracking-widest leading-relaxed">
+                • No guaranteed income. Past performance is not indicative of future results.
+              </p>
+            </div>
           </div>
           
           <div>
