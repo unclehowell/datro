@@ -14,19 +14,19 @@
 
 @layer base {
   :root {
-    --paper: #F5F5F4;
-    --ink: #0A0A0A;
-    --border: #D6D6D4;
-    --card: #FFFFFF;
-    --accent: #3B82F6;
-  }
-
-  .dark {
     --paper: #0A0A0A;
     --ink: #F5F5F4;
     --border: #262626;
     --card: #141414;
     --accent: #60A5FA;
+  }
+
+  .light {
+    --paper: #F5F5F4;
+    --ink: #0A0A0A;
+    --border: #D6D6D4;
+    --card: #FFFFFF;
+    --accent: #3B82F6;
   }
 
   body {
