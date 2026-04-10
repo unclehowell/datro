@@ -131,7 +131,7 @@
             <a href="dashboard/screen-lookups/005-lookup.html" onclick="setIframeSrc('framez', this.href); return false" target="framez">Settings</a>
         </li>
         <li>
-            <a href="dashboard/screen-lookups/006-lookup.html" onclick="setIframeSrc('framez', this.href); return false" target="_top">Oakesy</a>
+            <a href="dashboard/screen-lookups/006-lookup.html" onclick="setIframeSrc('framez', this.href); return false" target="framez">Oakesy</a>
         </li>
     </ul>
     <span class="cd-marker color-1"></span>
@@ -161,8 +161,15 @@
       var targetUrl = url;
 
       if (!isLoggedIn) {
-        // Red background
-        targetUrl = 'data:text/html;base64,PGh0bWw+PGJvZHkgc3R5bGU9Im1hcmdpbjowO3BhZGRpbmc6MDtiYWNrZ3JvdW5kLWNvbG9yOnJlZDtoZWlnaHQ6MTAwdmg7d2lkdGg6MTAwdnc7Ij48L2JvZHk+PC9odG1sPg==';
+        // Map URLs to illustration views
+        var view = 'ai-chat'; // default
+        if (url.includes('002')) view = 'media';
+        else if (url.includes('003')) view = 'brain';
+        else if (url.includes('004')) view = 'stats';
+        else if (url.includes('005')) view = 'settings';
+        else if (url.includes('006')) view = 'oakesy';
+        
+        targetUrl = 'dashboard/locked-state.html?view=' + view;
       }
 
       document.getElementById(iframeId).src = targetUrl;
