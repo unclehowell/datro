@@ -1,0 +1,7 @@
+{
+  "name": "datro-ui",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "mkdir -p dist && cp -r *.html *.css *.js manifest.json sitemap.xml CNAME _redirects _headers sw.js tailwind.config.js app-store dashboard links sitemap dist/ 2>/dev/null || true"
+  }
+}

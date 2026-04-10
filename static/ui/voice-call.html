@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Voice Call</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0a0a14;
+    color: #e0e0e0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .call-container {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+  }
+
+  .avatar-ring {
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(circle at 30% 30%, #1a1a2e, #0a0a14);
+    border: 3px solid #333;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .avatar-ring.connected {
+    border-color: #00e676;
+    box-shadow: 0 0 30px rgba(0, 230, 118, 0.2);
+  }
+  .avatar-ring.speaking {
+    border-color: #ff5722;
+    box-shadow: 0 0 40px rgba(255, 87, 34, 0.3);
+    animation: pulse-ring 1s infinite;
+  }
+  .avatar-ring.listening {
+    border-color: #2196f3;
+    box-shadow: 0 0 30px rgba(33, 150, 243, 0.2);
+  }
+
+  @keyframes pulse-ring {
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 87, 34, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(255, 87, 34, 0.5); }
+  }
+
+  .avatar-icon {
+    font-size: 64px;
+  }
+
+  .call-status {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 8px;
+  }
+
+  .call-timer {
+    font-size: 28px;
+    font-weight: 300;
+    color: #fff;
+    margin-bottom: 20px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .transcript {
+    max-height: 120px;
+    overflow-y: auto;
+    padding: 12px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    scroll-behavior: smooth;
+  }
+  .transcript p {
+    margin: 4px 0;
+    display: flex;
+    gap: 6px;
+  }
+  .transcript .you { color: #64b5f6; }
+  .transcript .ai { color: #81c784; }
+  .transcript .label {
+    font-weight: 600;
+    min-width: 24px;
+  }
+
+  #call-btn {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    border: none;
+    background: #4caf50;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(76, 175, 80, 0.3);
+  }
+  #call-btn:hover { transform: scale(1.05); }
+  #call-btn.active {
+    background: #f44336;
+    box-shadow: 0 4px 20px rgba(244, 67, 54, 0.3);
+  }
+
+  .wave-container {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 60px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+  }
+  .wave-container.visible { display: flex; }
+  .wave-bar {
+    width: 3px;
+    background: #2196f3;
+    border-radius: 2px;
+    transition: height 0.1s;
+  }
+
+  .error-msg {
+    margin-top: 16px;
+    padding: 10px 16px;
+    background: rgba(244,67,54,0.1);
+    border-radius: 8px;
+    color: #ef9a9a;
+    font-size: 12px;
+  }
+
+  .settings-row {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .settings-row select {
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #1a1a2e;
+    color: #ccc;
+    font-size: 12px;
+  }
+  .settings-row label {
+    font-size: 11px;
+    color: #888;
+  }
+</style>
+</head>
+<body>
+<div class="call-container">
+  <div class="settings-row">
+    <div>
+      <label>Voice</label>
+      <select id="voice-select"></select>
+    </div>
+  </div>
+
+  <div class="avatar-ring" id="avatar-ring">
+    <span class="avatar-icon">🤖</span>
+  </div>
+
+  <div class="call-status" id="status">Tap to start a voice call</div>
+  <div class="call-timer" id="timer">0:00</div>
+  <div class="transcript" id="transcript"></div>
+
+  <button id="call-btn" aria-label="Start call">📞</button>
+  <div id="error"></div>
+</div>
+
+<div class="wave-container" id="wave-box"></div>
+
+<script>
+const WS_URL = "wss://" + window.location.hostname + ":8765";
+const ELEVENLABS_API_KEY = "sk_6311ca5dd33f8904999c8f7101e8a807b3cc25aa21a97fc1";
+const ELEVENLABS_VOICE_ID = "pNInz6obpgDQGcFmaJgB"; // Adam voice
+
+let ws = null;
+let recognition = null;
+let callActive = false;
+let callSeconds = 0;
+let timerInterval = null;
+let isAISpeaking = false;
+let userStartedSpeaking = false;
+
+const statusEl = document.getElementById("status");
+const timerEl = document.getElementById("timer");
+const transcriptEl = document.getElementById("transcript");
+const callBtn = document.getElementById("call-btn");
+const avatarRing = document.getElementById("avatar-ring");
+const errorEl = document.getElementById("error");
+const voiceSelect = document.getElementById("voice-select");
+
+// Populate voice selector with common ElevenLabs voices
+const voices = [
+  { id: "pNInz6obpgDQGcFmaJgB", name: "Adam (male)" },
+  { id: "EXAVITQu4vr4xnSDxMaL", name: "Bella (female)" },
+  { id: "VR6AewLTigWG4xSOukaG", name: "Arnold (male)" },
+  { id: "21m00Tcm4TlvDq8ikWAM", name: "Rachel (female)" },
+  { id: "AZnzlk1XvdvUeBnXmlld", name: "Domi (female)" },
+];
+voices.forEach(v => {
+  const opt = document.createElement("option");
+  opt.value = v.id;
+  opt.textContent = v.name;
+  voiceSelect.appendChild(opt);
+});
+
+function setStatus(text, state) {
+  statusEl.textContent = text;
+  avatarRing.className = "avatar-ring" + (state ? " " + state : "");
+}
+
+function addTranscript(who, text) {
+  const p = document.createElement("p");
+  const label = document.createElement("span");
+  label.className = "label " + (who === "you" ? "you" : "ai");
+  label.textContent = who === "you" ? "You:" : "AI:";
+  const span = document.createElement("span");
+  span.textContent = text;
+  p.appendChild(label);
+  p.appendChild(span);
+  transcriptEl.appendChild(p);
+  transcriptEl.scrollTop = transcriptEl.scrollHeight;
+}
+
+function formatTime(sec) {
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return m + ":" + String(s).padStart(2, "0");
+}
+
+function updateWaveHeights() {
+  const bars = document.querySelectorAll(".wave-bar");
+  bars.forEach(b => {
+    b.style.height = (5 + Math.random() * 35) + "px";
+  });
+}
+
+// Init wave bars
+const waveBox = document.getElementById("wave-box");
+for (let i = 0; i < 40; i++) {
+  const bar = document.createElement("div");
+  bar.className = "wave-bar";
+  bar.style.height = "5px";
+  waveBox.appendChild(bar);
+}
+
+// Connect to voice websocket server
+function connectWS() {
+  return new Promise((resolve, reject) => {
+    ws = new WebSocket(WS_URL);
+    ws.onopen = () => {
+      console.log("WS connected");
+      resolve();
+    };
+    ws.onclose = () => {
+      console.log("WS closed");
+      if (callActive) {
+        setStatus("Server disconnected", "");
+        endCall();
+      }
+    };
+    ws.onerror = (e) => reject(e);
+    ws.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      if (data.type === "response") {
+        addTranscript("ai", data.text);
+        speakResponse(data.text);
+      } else if (data.type === "error") {
+        addTranscript("ai", data.text);
+      }
+    };
+  });
+}
+
+// Speak text using ElevenLabs Streaming API
+function speakResponse(text) {
+  if (isAISpeaking) return;
+  isAISpeaking = true;
+  userStartedSpeaking = false;
+  setStatus("AI is speaking...", "speaking");
+  waveBox.classList.add("visible");
+
+  // ElevenLabs Text-to-Speech via streaming
+  const url = `https://api.elevenlabs.io/v1/text-to-speech/${ELEVENLABS_VOICE_ID}/stream?output_format=mp3_44100_128&optimize_streaming_latency=3`;
+  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "xi-api-key": ELEVENLABS_API_KEY,
+    },
+    body: JSON.stringify({
+      text: text,
+      model_id: "eleven_turbo_v2_5",
+    }),
+  })
+  .then(resp => {
+    if (!resp.ok) throw new Error("TTS failed: " + resp.status);
+    return resp.arrayBuffer();
+  })
+  .then(buffer => audioContext.decodeAudioData(buffer))
+  .then(audioBuffer => {
+    const source = audioContext.createBufferSource();
+    source.buffer = audioBuffer;
+    source.connect(audioContext.destination);
+
+    source.onended = () => {
+      isAISpeaking = false;
+      waveBox.classList.remove("visible");
+      if (callActive) {
+        setStatus("Listening...", "listening");
+        restartRecognition();
+      }
+    };
+
+    source.start();
+
+    const waveInterval = setInterval(() => {
+      updateWaveHeights();
+    }, 100);
+    source.onended = () => {
+      clearInterval(waveInterval);
+      isAISpeaking = false;
+      waveBox.classList.remove("visible");
+      if (callActive) {
+        setStatus("Listening...", "listening");
+        restartRecognition();
+      }
+    };
+  })
+  .catch(err => {
+    console.error("TTS error:", err);
+    isAISpeaking = false;
+    waveBox.classList.remove("visible");
+    setStatus("Voice error, retry...", "");
+    if (callActive) restartRecognition();
+  });
+}
+
+// Speech Recognition setup
+function setupRecognition() {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRecognition) {
+    setError("Your browser doesn't support speech recognition. Try Chrome.");
+    return false;
+  }
+  recognition = new SpeechRecognition();
+  recognition.continuous = true;
+  recognition.interimResults = true;
+  recognition.lang = "en-GB";
+
+  recognition.onresult = (event) => {
+    let finalTranscript = "";
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+      const result = event.results[i];
+      if (result.isFinal) {
+        finalTranscript += result[0].transcript.trim();
+      }
+    }
+    if (finalTranscript) {
+      // Interrupt AI if it's speaking
+      if (isAISpeaking) {
+        userStartedSpeaking = true;
+        ws.send(JSON.stringify({ type: "interrupt" }));
+      }
+      addTranscript("you", finalTranscript);
+      ws.send(JSON.stringify({ type: "speech", text: finalTranscript }));
+    }
+  };
+
+  recognition.onerror = (event) => {
+    console.log("Speech recognition error:", event.error);
+    if (callActive && event.error !== "no-speech" && event.error !== "aborted") {
+      setStatus("Mic error: " + event.error, "");
+    }
+  };
+
+  recognition.onend = () => {
+    if (callActive && !isAISpeaking) {
+      restartRecognition();
+    }
+  };
+
+  return true;
+}
+
+function restartRecognition() {
+  if (recognition && callActive) {
+    try { recognition.stop(); } catch(e) {}
+    setTimeout(() => {
+      try { recognition.start(); } catch(e) {
+        console.log("Recognition restart failed, will retry", e);
+      }
+    }, 100);
+  }
+}
+
+function setError(msg) {
+  errorEl.innerHTML = '<div class="error-msg">' + msg + '</div>';
+}
+
+function startCall() {
+  if (!setupRecognition()) return;
+
+  connectWS()
+    .then(() => {
+      callActive = true;
+      callSeconds = 0;
+      callBtn.classList.add("active");
+      callBtn.textContent = "📵";
+      timerInterval = setInterval(() => {
+        callSeconds++;
+        timerEl.textContent = formatTime(callSeconds);
+      }, 1000);
+      setStatus("Listening...", "listening");
+      try { recognition.start(); } catch(e) {}
+    })
+    .catch(err => {
+      setError("Could not connect to voice server. Is it running?");
+      setStatus("Disconnected", "");
+    });
+}
+
+function endCall() {
+  callActive = false;
+  callBtn.classList.remove("active");
+  callBtn.textContent = "📞";
+  clearInterval(timerInterval);
+  if (recognition) { try { recognition.stop(); } catch(e) {} }
+  if (ws) { try { ws.send(JSON.stringify({ type: "hangup" })); ws.close(); } catch(e) {} }
+  ws = null;
+  setStatus("Call ended. Tap to call again.", "");
+  timerEl.textContent = "0:00";
+  waveBox.classList.remove("visible");
+}
+
+callBtn.addEventListener("click", () => {
+  if (callActive) {
+    endCall();
+  } else {
+    startCall();
+  }
+});
+</script>
+</body>
+</html>

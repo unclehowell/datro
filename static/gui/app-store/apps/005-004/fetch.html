@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hotspot Dashboard Redirect</title>
+<script>
+    window.onload = function() {
+        var hostname = window.location.hostname;
+        // Only redirect to demo on datro.xyz, otherwise use local services
+        if (hostname.indexOf('datro.xyz') !== -1) {
+            window.location.replace('https://datro.xyz');
+        } else {
+            // For all other domains, use localhost ports
+            window.location.replace('/links/');
+        }
+    };
+</script>
+</head>
+<body></body>
+</html>

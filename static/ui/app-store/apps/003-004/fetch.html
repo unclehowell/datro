@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Dash Redirect</title>
+    <script src="../../../dashboard/js/jquery-3.3.1.min.js"></script>
+    <script src="../../../dashboard/js/appLauncher.js"></script>
+<script>
+        window.onload = function() {
+            const appId = '003-004';
+            const localBaseUrl = 'http://localhost:8080';
+            const onlineDemoUrl = 'http://localhost:8080';
+            if (typeof handleAppLaunch === 'function') {
+                handleAppLaunch(appId, localBaseUrl, onlineDemoUrl);
+            } else {
+                var hostname = window.location.hostname;
+                if (hostname.indexOf("datro") !== -1) {
+                    window.location.replace(onlineDemoUrl);
+                } else {
+                    window.location.replace(localBaseUrl);
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+</body>
+</html>

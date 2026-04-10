@@ -14,11 +14,82 @@ TRIGGER_FILE=".pr_trigger"
 BRANCH_PREFIX="feature/auto-"
 DEFAULT_BASE_BRANCH="${DEFAULT_BASE_BRANCH:-gh-pages}"
 ALLOW_EMPTY_COMMIT="${ALLOW_EMPTY_COMMIT:-no}"
+PROJECTS_TSV="static/projects.tsv"
 
 log()     { printf '\033[1;34m%s\033[0m\n' "$*"; }
 success() { printf '\033[1;32m%s\033[0m\n' "$*"; }
 warn()    { printf '\033[1;33m%s\033[0m\n' "$*"; }
 err()     { printf '\033[1;31m%s\033[0m\n' "$*"; }
+
+# --- PR update helper ---
+update_pr_metadata() {
+  local pr_selector="$1"
+  local pr_title="$2"
+  local pr_body="$3"
+
+  if gh pr edit "${pr_selector}" --title "$pr_title" --body "$pr_body" >/dev/null 2>&1; then
+    return 0
+  fi
+
+  local pr_number=""
+  pr_number="$(gh pr view "${pr_selector}" --json number -q .number 2>/dev/null || true)"
+  if [ -z "$pr_number" ]; then
+    warn "Unable to resolve PR number for '${pr_selector}'."
+    return 1
+  fi
+
+  local repo_slug=""
+  repo_slug="$(gh repo view --json owner,name -q '.owner.login + "/" + .name' 2>/dev/null || true)"
+  if [ -z "$repo_slug" ]; then
+    warn "Unable to resolve repo slug for API update."
+    return 1
+  fi
+
+  gh api -X PATCH "repos/${repo_slug}/pulls/${pr_number}" \
+    -f title="$pr_title" \
+    -f body="$pr_body" >/dev/null 2>&1
+}
+
+# --- Preview table helpers ---
+build_preview_table() {
+  local diff_names=""
+
+  # Always compare against origin/gh-pages (main) for preview eligibility
+  if git ls-remote --heads origin "refs/heads/gh-pages" >/dev/null 2>&1; then
+    git fetch origin gh-pages --depth=1 >/dev/null 2>&1 || true
+    if git rev-parse "origin/gh-pages" >/dev/null 2>&1; then
+      diff_names="$(git diff --name-only "origin/gh-pages" "HEAD" 2>/dev/null || true)"
+    fi
+  else
+    warn "origin/gh-pages not available; preview links will be omitted."
+  fi
+
+  if [ ! -f "$PROJECTS_TSV" ]; then
+    warn "Missing ${PROJECTS_TSV}; preview table will list changed static projects only."
+    local changed_projects=""
+    changed_projects="$(printf '%s\n' "$diff_names" | sed -n 's#^static/\\([^/][^/]*\\)/.*#\\1#p' | sort -u)"
+    if [ -n "$changed_projects" ]; then
+      printf "| Project | Preview |\n|:--|:--|\n"
+      while IFS= read -r project; do
+        [ -z "$project" ] && continue
+        printf "| %s | %s |\n" "$project" "https://datro.xyz/static/${project}/"
+      done <<< "$changed_projects"
+    else
+      printf "| Project | Preview |\n|:--|:--|\n| (none) | — |\n"
+    fi
+    return 0
+  fi
+
+  printf "| Project | Preview |\n|:--|:--|\n"
+  tail -n +2 "$PROJECTS_TSV" | while IFS=$'\t' read -r project preview repo cf_project cname; do
+    [ -z "$project" ] && continue
+    preview_cell="—"
+    if printf '%s\n' "$diff_names" | grep -q "^static/${project}/"; then
+      preview_cell="$preview"
+    fi
+    printf "| %s | %s |\n" "$project" "$preview_cell"
+  done
+}
 
 # --- Sanity checks ---
 command -v git >/dev/null 2>&1 || { err "git not found in PATH"; exit 1; }
@@ -137,11 +208,16 @@ success "Pushed branch to origin/${BRANCH_TO_USE}."
 
 # --- Prepare PR metadata ---
 PR_TITLE="[Auto-PR] ${COMMIT_MESSAGE}"
+PREVIEW_TABLE="$(build_preview_table)"
 PR_BODY="**Automated Pull Request**
 
 Triggered: ${CURRENT_TIME}
 Branch: ${BRANCH_TO_USE}
-Base: ${BASE_BRANCH}"
+Base: ${BASE_BRANCH}
+
+**Project Previews (static/ changes)**
+
+${PREVIEW_TABLE}"
 
 PR_URL=""
 
@@ -162,6 +238,7 @@ elif [ "$ACTION" = "UPDATE" ]; then
   PR_URL="$(gh pr view "${BRANCH_TO_USE}" --json url -q .url 2>/dev/null || true)"
   if [ -n "$PR_URL" ]; then
     success "Found PR: $PR_URL"
+    update_pr_metadata "${BRANCH_TO_USE}" "$PR_TITLE" "$PR_BODY" || warn "PR body update failed."
     gh pr comment "${BRANCH_TO_USE}" --body "Automated update: ${CURRENT_TIME}" >/dev/null 2>&1 || true
   else
     log "No existing PR found; creating new PR..."

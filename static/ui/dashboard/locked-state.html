@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<body style="margin:0;padding:0;background-color:red;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;color:white;font-family:sans-serif;">
+  
+  <!-- AI+Chat Illustration -->
+  <div id="ai-chat" style="display:none;text-align:center;">
+    <svg width="200" height="300" viewBox="0 0 200 300">
+      <circle cx="100" cy="60" r="40" fill="none" stroke="white" stroke-width="4"/>
+      <rect x="20" y="150" width="160" height="120" rx="10" fill="none" stroke="white" stroke-width="4"/>
+      <rect x="40" y="170" width="120" height="80" fill="white" fill-opacity="0.2"/>
+    </svg>
+    <p>AI + Chat Interface</p>
+  </div>
+
+  <!-- Media Illustration -->
+  <div id="media" style="display:none;text-align:center;">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <rect x="20" y="20" width="160" height="160" rx="10" fill="none" stroke="white" stroke-width="4"/>
+      <rect x="40" y="40" width="50" height="50" fill="white" fill-opacity="0.3"/>
+      <rect x="110" y="40" width="50" height="50" fill="white" fill-opacity="0.3"/>
+    </svg>
+    <p>Media Center</p>
+  </div>
+
+  <!-- Brain Illustration -->
+  <div id="brain" style="display:none;text-align:center;">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <path d="M50,150 Q100,50 150,150" fill="none" stroke="white" stroke-width="4"/>
+      <circle cx="100" cy="100" r="30" fill="none" stroke="white" stroke-width="4"/>
+    </svg>
+    <p>Brain Dashboard</p>
+  </div>
+
+  <!-- Stats Illustration -->
+  <div id="stats" style="display:none;text-align:center;">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <rect x="20" y="100" width="40" height="80" fill="white" fill-opacity="0.5"/>
+      <rect x="80" y="50" width="40" height="130" fill="white" fill-opacity="0.5"/>
+      <rect x="140" y="80" width="40" height="100" fill="white" fill-opacity="0.5"/>
+    </svg>
+    <p>System Stats</p>
+  </div>
+
+  <!-- Settings Illustration -->
+  <div id="settings" style="display:none;text-align:center;">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="40" fill="none" stroke="white" stroke-width="4"/>
+      <path d="M100,20 L100,60 M100,140 L100,180 M20,100 L60,100 M140,100 L180,100" stroke="white" stroke-width="4"/>
+    </svg>
+    <p>Settings</p>
+  </div>
+
+  <!-- Oakesy Illustration -->
+  <div id="oakesy" style="display:none;text-align:center;">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <rect x="50" y="50" width="100" height="100" rx="20" fill="none" stroke="white" stroke-width="4"/>
+      <text x="100" y="115" font-size="40" fill="white" text-anchor="middle">O</text>
+    </svg>
+    <p>Oakesy</p>
+  </div>
+
+  <script>
+    // Logic to show the right illustration based on the URL parameter
+    const params = new URLSearchParams(window.location.search);
+    const view = params.get('view');
+    if (view) document.getElementById(view).style.display = 'block';
+  </script>
+</body>
+</html>

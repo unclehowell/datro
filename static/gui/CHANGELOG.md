@@ -8,6 +8,19 @@ and a combination of [Prince2 Project Management](https://prince2.com).
 
 ## [Unreleased] 
 
+## [gui-1.1] - Q2/2026
+
+### Changes
+Apr-05 - Removed datro.world references (deprecated domain)
+Apr-05 - Updated environment detection: shows demo pages only on datro.xyz, actual pages on all other domains
+Apr-05 - Removed app icons from app-store/003.html (A.I Agents category), kept only last two (003-008, 003-009) and +add icon
+Apr-05 - Removed canonical URL from index.html to support multiple domains
+
+## [gui-1.0]- Q1/2026
+
+### Changes
+Mar-27 - Added A.I Agents instead of 'controls'   
+
 ## [gui-0.9] - Q4/2025
 
 ### Changes

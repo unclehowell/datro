@@ -3,7 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta content="1" http-equiv="Expires">
-	<link href="//datro.xyz/" rel="canonical">
+	<script>
+        if (window.location.hostname.indexOf('datro.xyz') > -1) {
+            location.href = '001-a-demo.html';
+        }
+    </script>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport">
 	<script type="type/javascript">
         function redirectUser() {
@@ -36,6 +40,8 @@
 	<link href="css/search/dropdownboxes.css" rel="stylesheet"> 
 	<link href="search-box/doc-library.css" rel="stylesheet"> 
 <style>
+    html::-webkit-scrollbar { width: 0; height: 0; }
+    html { overflow-x: hidden; }
     a {
   text-decoration: none;
 }

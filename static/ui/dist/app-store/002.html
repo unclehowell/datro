@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>App Store</title>
+        <link href="../dashboard/media/css/breadcrumb.css" rel="stylesheet">
+        <link href="../dashboard/media/css/appstore.css" rel="stylesheet">
+        <link href="css/font-awesome.css" rel="stylesheet">
+        <style>
+            /* Additional styles specific to app-store pages if needed */
+            body {
+                background: rgb(44,12,33)!important;
+            }
+            .square {
+                border:solid rgba(255,255,255,0.3) 1.5px;
+            }
+        </style>
+</head>
+<body onload="document.body.classList.add('loaded');">
+        <div class="container">
+                <div class="box">
+                        <div class="box-row">
+                                <div class="box-cell box1">
+                                        <!-- Dynamic Breadcrumb Placeholder -->
+					<ul class="breadcrumb"></ul>
+					<!-- End Dynamic Breadcrumb Placeholder -->
+
+					<!-- Include the dynamic breadcrumb script -->
+					<script src="js/dynamic-breadcrumb.js"></script>
+                                </div>
+                        </div>
+                </div>
+        </div>
+
+        <main class="app-store-grid">
+                <a class="app-card-link" href="app-description-002-001.html">
+                        <article class="app-card" data-app-id="002-001">
+                                <div class="app-card__icon-wrapper">
+                                        <img class="app-card__icon" src="apps/002-001/logo.png" alt="Hβnβ entertainment app icon 002-001">
+                                </div>
+                                <div class="app-card__toggle">
+                                        <input class="app-checkbox" id="002-001" type="checkbox">
+                                        <label class="app-label install" for="002-001"><span class="thumb"></span></label>
+                                </div>
+                        </article>
+                </a>
+
+                <a class="app-card-link" href="app-description-002-002.html">
+                        <article class="app-card" data-app-id="002-002">
+                                <div class="app-card__icon-wrapper">
+                                        <img class="app-card__icon" src="apps/002-002/logo.png" alt="Hβnβ entertainment app icon 002-002">
+                                </div>
+                                <div class="app-card__toggle">
+                                        <input class="app-checkbox" id="002-002" type="checkbox">
+                                        <label class="app-label install" for="002-002"><span class="thumb"></span></label>
+                                </div>
+                        </article>
+                </a>
+
+                <a class="app-card-link app-card-link--inactive" href="#" aria-disabled="true">
+                        <article class="app-card app-card--disabled" data-app-id="999-999">
+                                <div class="app-card__icon-wrapper">
+                                        <img class="app-card__icon" src="apps/999-999/logo.png" alt="Add new app" style="opacity: 0.4; filter: drop-shadow(2px 4px 1px black) invert(0.5);">
+                                </div>
+                                <div class="app-card__toggle">
+                                        <input class="app-checkbox" id="999-999" type="checkbox" checked>
+                                        <label class="app-label install" for="999-999"><span class="thumb"></span></label>
+                                </div>
+                        </article>
+                </a>
+        </main>
+
+        <script src="js/app-toggle.js"></script>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            const squares = document.querySelectorAll('.square');
+            squares.forEach(square => {
+              const imgElement = square.querySelector('img.rs');
+              if (imgElement) {
+                const src = imgElement.getAttribute('src');
+                const match = src.match(/icons\/([^.]+)\.svg$/);
+                if (match && match[1]) {
+                  const appId = match[1];
+                  if (appId === '000') {
+                    if (localStorage.getItem(appId) !== 'added') {
+                      square.style.display = 'none';
+                    } else {
+                      square.style.display = '';
+                    }
+                    return;
+                  }
+
+                  if (localStorage.getItem(appId) === 'added') {
+                    square.style.display = '';
+                  } else {
+                    square.style.display = 'none';
+                  }
+                }
+              }
+            });
+          });
+        </script>
+</body>
+</html>

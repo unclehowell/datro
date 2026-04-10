@@ -11,17 +11,14 @@ on:
       - 'feature/auto-*'
 
 jobs:
-  detect-and-deploy:
-    name: Detect changes and deploy only touched apps
+  detect-changes:
+    name: Detect changed static projects
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      deployments: write
-      pull-requests: write
-    concurrency:
-      group: cf-pages-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-      cancel-in-progress: true
-
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+      changed_any: ${{ steps.matrix.outputs.changed_any }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,28 +26,19 @@ jobs:
           fetch-depth: 0
 
       - name: Determine changed files
-        id: changes
+        id: diff
         shell: bash
         run: |
           set -euo pipefail
-
-          echo "==[Debug Info]=="
-          echo "github.event_name=${{ github.event_name }}"
-          echo "github.sha=${{ github.sha }}"
-          echo "github.head_ref=${{ github.head_ref }}"
-          echo "github.event.pull_request.base.sha=${{ github.event.pull_request.base.sha }}"
-          echo "github.event.pull_request.base.ref=${{ github.event.pull_request.base.ref }}"
-          echo "github.event.before=${{ github.event.before }}"
-
-          # Defensive: Ensure variables are never unset when used!
           DIFF=""
           if [ "${{ github.event_name }}" = "pull_request" ]; then
-            if [ -z "${{ github.event.pull_request.base.sha }}" ] || [ -z "${{ github.event.pull_request.base.ref }}" ]; then
+            BASE_SHA="${{ github.event.pull_request.base.sha }}"
+            BASE_REF="${{ github.event.pull_request.base.ref }}"
+            if [ -z "$BASE_SHA" ] || [ -z "$BASE_REF" ]; then
               echo "ERROR: Pull request base sha/ref not set"
               exit 1
             fi
-            BASE_SHA="${{ github.event.pull_request.base.sha }}"
-            git fetch origin "${{ github.event.pull_request.base.ref }}" --depth=1 || true
+            git fetch origin "$BASE_REF" --depth=1 || true
             MERGE_BASE=$(git merge-base "$BASE_SHA" HEAD)
             DIFF=$(git diff --name-only "$MERGE_BASE"...HEAD) || true
           else
@@ -67,35 +55,95 @@ jobs:
             fi
           fi
 
-          echo "Changed files:"
-          echo "$DIFF"
+          echo "$DIFF" > /tmp/changed_files.txt
 
-          {
-            echo "library=false"; echo "hbnb=false"; echo "forces=false"
-            echo "gui=false"; echo "datro=false"; echo "projections=false"
-            echo "bpvsbuckler=false"; echo "dcc=false"; echo "pcp=false"
-          } >> "$GITHUB_OUTPUT"
+      - name: Build project matrix
+        id: matrix
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f static/projects.tsv ]; then
+            echo "ERROR: static/projects.tsv not found"
+            exit 1
+          fi
 
-          if echo "$DIFF" | grep -qE '^static/library/'; then echo "library=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/hbnb/'; then echo "hbnb=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/forces/'; then echo "forces=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/gui/'; then echo "gui=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/datro/'; then echo "datro=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/projections/'; then echo "projections=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/bpvsbuckler/'; then echo "bpvsbuckler=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/_dcc/'; then echo "dcc=true" >> "$GITHUB_OUTPUT"; fi
-          if echo "$DIFF" | grep -qE '^static/pcp/'; then echo "pcp=true" >> "$GITHUB_OUTPUT"; fi
+          sed -n 's#^static/\([^/][^/]*\)/.*#\1#p' /tmp/changed_files.txt | sort -u > /tmp/changed_projects.txt
 
-      # --- Setup Node (only run if HBNB needs it) ---
-      - name: Setup Node (for builds)
-        if: steps.changes.outputs.hbnb == 'true'
+          items=""
+          while IFS=$'\t' read -r project preview repo cf_project cname; do
+            [ -z "$project" ] && continue
+            if grep -Fxq "$project" /tmp/changed_projects.txt; then
+              if [ -z "$cf_project" ]; then cf_project="$project"; fi
+              items="$items{\"project\":\"$project\",\"dir\":\"static/$project\",\"cf_project\":\"$cf_project\",\"preview_url\":\"$preview\",\"cname\":\"$cname\"},"
+            fi
+          done < <(tail -n +2 static/projects.tsv)
+
+          if [ -z "$items" ]; then
+            echo "changed_any=false" >> "$GITHUB_OUTPUT"
+            echo 'matrix={"include":[]}' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          items="[${items%,}]"
+          echo "changed_any=true" >> "$GITHUB_OUTPUT"
+          echo "matrix={\"include\":$items}" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    name: Deploy changed projects
+    needs: detect-changes
+    if: needs.detect-changes.outputs.changed_any == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+      pull-requests: write
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.detect-changes.outputs.matrix) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node (pcp2 build)
+        if: matrix.project == 'pcp2'
         uses: actions/setup-node@v4
         with:
           node-version: '22'
 
-      # Preview deploy steps for each application (all remain unchanged)
-      # You can keep all deploy steps and 'Post Clean Preview Table' step as in your original workflow
-      # No change is needed for those steps unless you want additional debugging
+      - name: Build pcp2
+        if: matrix.project == 'pcp2'
+        working-directory: static/pcp2
+        run: |
+          npm ci
+          npm run build
 
-      # --- Deploy steps remain unchanged ---
-      # (Refer to your original workflow for these steps)
+      - name: Set deploy directory
+        id: deploydir
+        shell: bash
+        run: |
+          if [ "${{ matrix.project }}" = "pcp2" ]; then
+            echo "dir=static/pcp2/dist" >> "$GITHUB_OUTPUT"
+          else
+            echo "dir=${{ matrix.dir }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Deploy ${{ matrix.project }}
+        uses: cloudflare/wrangler-action@v3.14.1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy ${{ steps.deploydir.outputs.dir }} --project-name=${{ matrix.cf_project }}
+
+  deploy-summary:
+    name: Deployment Summary
+    needs: [detect-changes, deploy]
+    if: always() && github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Summary
+        run: |
+          echo "Deployment complete for changed apps."

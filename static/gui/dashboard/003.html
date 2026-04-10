@@ -1,238 +1,103 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html>
-  <head>
-     <title>Hβnβ Gaming Screen - local</title>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="media/css/breadcrumb.css">
-  <link rel="stylesheet" href="media/css/appstore.css">
-  <link rel="stylesheet" href="media/css/font-awesome.css">
-  <link rel="stylesheet" href="../app-store/apps/000-000/style.css">
-  <link rel="stylesheet" href="../app-store/apps/003-001/style.css">
-  <link rel="stylesheet" href="../app-store/apps/003-002/style.css">
-  <link rel="stylesheet" href="../app-store/apps/003-003/style.css">
-  <link rel="stylesheet" href="../app-store/apps/003-004/style.css">
-  <link rel="stylesheet" href="../app-store/apps/003-005/style.css">
-  <link rel="stylesheet" href="../app-store/apps/003-006/style.css">
-  <link rel="stylesheet" href="../app-store/apps/003-007/style.css">
-  <link rel="stylesheet" href="../app-store/apps/003-008/style.css">
-  <link rel="stylesheet" href="../app-store/apps/999-999/style.css">
-  <style>
-@font-face {
-      font-family: 'FontAwesome';
-      src: url('../fonts/fontawesome-webfont.eot');
-    }
-
-      html {overflow-x: hidden!important;height: -webkit-fill-available;}
-#body {}
-/* Sets the dimensions of the entire scrollbar */
-body::-webkit-scrollbar {
-    width: 30px;
-    height: 30px;
-}
-/* The grabbable scrollbar button  */
-html::-webkit-scrollbar-thumb {
-    background: -webkit-gradient(linear,left top,left bottom,from(#ff8a00),to(#e52e71));
-    background: linear-gradient(180deg,#ff8a00,#e52e71);
-    border-radius: 30px;
-    box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
-}
-
-/* The vertical scrollbar background */
-html::-webkit-scrollbar-track {
-    background: linear-gradient(90deg,#201c29,#201c29 1px,#100e17 0,#100e17);
-}
-
-.content .rs {
-        max-height: 35%;
-    width: auto;
-    margin-top: 10px;
-    overflow: hidden!important;
-    height: 6%;
-
-}
-a:link, a, a:hover {color: rgba(255,255,255,0.8); font-size: 1.6rem;}
-
-.container .box {
-    width: 82vw;
-    margin-left: 0.5vw;
-    display: table;
-    border-radius: 20px;
-    min-height:98px;
-}
-
-
-.container .box .box-row {
-    display:table-row;
-    color:rgba(255,255,255,0.6);
-}
-
-.container .box .box-cell {
-    display:table-cell;
-    width:28vw;
-    padding:20px 45px 13px 20px;
-}
-
-.container .box .box-cell.box1 {
-    background:transparent;
-    text-align:left;
-    position:fixed;
-    min-heigh:10vh;
-}
-
-.container .box .box-cell.box2 {
-    background: transparent;
-    font-size: 2rem;
-    text-align: center;
-    padding-left: 100px;
-    font-weight: bold;
-}
-
-.container .box .box-cell.box3 {
-    background:transparent;
-    text-align:right;
-    position: relative;
-}
-
-img {
-  image-rendering: auto;
-  image-rendering: crisp-edges;
-  image-rendering: pixelated;
-}
-.breadcrumb {opacity:0.4;}
-.noHover{
-    pointer-events: none;
-}
-
-.noHover a:hover{
-    pointer-events: none;
-}
-
-
-body:not(.loaded) #slider img {
-  display:none;
-}
-
-        .forminput {
-         border: 1px solid transparent !important;
-         margin-top: -1.25em;
-         background: transparent;
-            opacity: 0.6;
-            max-width: 17rem;
-            text-align: center;
-            padding: 0.75em;
-            position: fixed;
-            margin-left: -7.5rem;
-            font-weight: 800 !important;
-            letter-spacing: 0.2em;
-            font-size: 1.7rem;
-            height: 0;
-            margin-bottom: 100%;
-            width: 100%;
+<head>
+    <title>Hβnβ Dashboard</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        if (window.location.hostname.indexOf('datro.xyz') > -1) {
+            location.href = '003-demo.html';
         }
-
-.logo {
-  background:transparent!important;
-  opacity:1;
-  margin-top: 0.8rem;
-  max-width: calc(100vw - 80px)!important;
-  width: 23rem!important;
-  margin-right: calc(-9.5rem + 41.5vw)!important;
-  float: right!important;
-}
-
-</style>
-<!-- if the app folder contains the file 'active', return the url for the details page, otherwise show the submit app page --->
-<script>
-$(function () {
-    var url = "new link";
-
-   if (patternExists("./appstore/003-001/active".$cus_id."*")) {
-      // bad!
-   }
-   document.getElementById('003-001').href= url;
-   return url;
-});
-</script>
-
-
-<!-- google tracking code start --> 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BTNPTMXBF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-6BTNPTMXBF');
-</script>
-<!-- google tracking code end -->
+    </script>
+    <link rel="stylesheet" href="media/css/breadcrumb.css">
+    <link rel="stylesheet" href="media/css/appstore.css">
+    <link rel="stylesheet" href="media/css/font-awesome.css">
+    <link rel="stylesheet" href="../app-store/apps/003-004/style.css">
+    <link rel="stylesheet" href="../app-store/apps/005-004/style.css">
+    <link rel="stylesheet" href="../app-store/apps/999-999/style.css">
+    <style>
+        html {overflow-x: hidden!important;height: -webkit-fill-available;}
+        html::-webkit-scrollbar { width: 0; height: 0; }
+        body { overflow-x: hidden; }
+        .title-span, object { cursor: pointer; user-select: auto; }
+        @font-face { font-family: 'FontAwesome'; src: url('../fonts/fontawesome-webfont.eot'); }
+        html {overflow-x: hidden!important;height: -webkit-fill-available;}
+        body::-webkit-scrollbar { width: 30px; height: 30px; }
+        html::-webkit-scrollbar-thumb { background: linear-gradient(180deg,#ff8a00,#e52e71); border-radius: 30px; box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25); }
+        html::-webkit-scrollbar-track { background: linear-gradient(90deg,#201c29,#201c29 1px,#100e17 0,#100e17); }
+        .content .rs { max-height: 35%; width: auto; margin-top: 10px; overflow: hidden!important; height: 6%; }
+        a:link, a, a:hover {color: rgba(255,255,255,0.8); font-size: 1.6rem;}
+        .container .box { width: 82vw; margin-left: 0.5vw; display: table; border-radius: 20px; min-height:98px; }
+        .container .box .box-row { display:table-row; color:rgba(255,255,255,0.6); }
+        .container .box .box-cell { display:table-cell; width:28vw; padding:20px 45px 13px 20px; }
+        .container .box .box-cell.box1 { background:transparent; text-align:left; position:fixed; min-height:10vh; }
+        .container .box .box-cell.box2 { background: transparent; font-size: 2rem; text-align: center; padding-left: 100px; font-weight: bold; }
+        .container .box .box-cell.box3 { background:transparent; text-align:right; position: relative; }
+        img { image-rendering: auto; image-rendering: crisp-edges; image-rendering: pixelated; }
+        .breadcrumb {opacity:0.4;}
+        .noHover { pointer-events: none; }
+        .noHover a:hover { pointer-events: none; }
+        body:not(.loaded) #slider img { display:none; }
+        .forminput { border: 1px solid transparent !important; margin-top: -1.25em; background: transparent; opacity: 0.6; max-width: 17rem; text-align: center; padding: 0.75em; position: fixed; margin-left: -7.5rem; font-weight: 800 !important; letter-spacing: 0.2em; font-size: 1.7rem; height: 0; margin-bottom: 100%; width: 100%; }
+        .logo { background:transparent!important; opacity:1; margin-top: 0.8rem; max-width: calc(100vw - 80px)!important; width: 23rem!important; margin-right: calc(-9.5rem + 41.5vw)!important; float: right!important; }
+        .app { display: table-cell; vertical-align: middle; text-align: center; min-width: 17vw; min-height: 5vw !important; line-height: 16vw !important; margin: 14px; cursor: pointer; border: 13px solid #454545; border-radius: 40px 40px 40px 40px; }
+        .apps-container { max-width:90vw; }
+    </style>
 </head>
-
-<body style="overflow: inherit!important;height: inherit!important;display:visible;" onload="document.body.classList.add('loaded'); updateHomeScreen();">
-<div id="apps-container" class="apps-container">
-</div>
-
-
- 
-
+<body style="overflow: inherit !important; height: inherit !important; display: visible;" onload="document.body.classList.add('loaded'); updateHomeScreen();">
+<div id="apps-container" class="apps-container"></div>
 <script>
 const ADD_ICON_ID = '999-999';
-const ALWAYS_SHOW_ADD_ICON = window.location.pathname.includes('/dashboard/006');
+const PAPERPENCIL_ID = '003-004';
+const LINKS_ID = '005-004';
 
-function isAddIconEnabled() {
-    const storedValue = localStorage.getItem(ADD_ICON_ID);
-    return ALWAYS_SHOW_ADD_ICON || storedValue !== 'removed';
+function isAddIconEnabled() { 
+    return localStorage.getItem(ADD_ICON_ID) !== 'removed';
+}
+
+function isAppEnabled(appId) {
+    return localStorage.getItem(appId) === 'added';
 }
 
 function updateHomeScreen() {
     const appsContainer = document.getElementById('apps-container');
-    appsContainer.innerHTML = ''; // Clear existing apps
-    const appIds = ['003-001', '999-999']; // Using class-based IDs
-    appIds.forEach(appId => {
-        const appInstalled = localStorage.getItem(appId) === 'added';
-        const shouldShowApp = appId === ADD_ICON_ID ? isAddIconEnabled() : appInstalled;
-        if (shouldShowApp) {
-            const appElement = document.createElement('a');
-            appElement.href = getAppLink(appId); // Set the hyperlink
-            appElement.style.cursor = 'pointer';
-            appElement.innerHTML = `
-                <div class="square-${appId}">
-                    <div class="content-${appId}">
-                        <div class="table-${appId}">
-                            <div class="table-cell-${appId}">
-                                <img class="rs-${appId}" src="../app-store/apps/${appId}/logo.png">
-                                <br>
-                                <img src="../app-store/apps/${appId}/title.svg" style="width:75%; height:5vw; margin-top:-0.25pc;">
-                                <br>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            appElement.addEventListener('dragstart', handleDragStart);
-            appsContainer.appendChild(appElement);
-        }
-    });
-}
-
-function getAppLink(appId) {
-    switch (appId) {
-        case '003-001':
-            return '../app-store/apps/003-001/fetch.html';
-        case '999-999':
-            return '../app-store/003.html';
+    appsContainer.innerHTML = '';
+    
+    if (isAppEnabled(PAPERPENCIL_ID)) {
+        const appElement = document.createElement('a');
+        appElement.href = getAppLink('paperclip');
+        appElement.target = '_top';
+        appElement.style.cursor = 'pointer';
+        appElement.innerHTML = '<div class="square-003-004"><div class="content-003-004"><div class="table-003-004"><div class="table-cell-003-004"><img class="rs-003-004" src="../app-store/apps/003-004/logo.png"><br><img src="../app-store/apps/003-004/title.svg" style="width:75%; height:5vw; margin-top:-1.95pc;"><br></div></div></div></div>';
+        appsContainer.appendChild(appElement);
+    }
+    
+    if (isAppEnabled(LINKS_ID)) {
+        const appElement = document.createElement('a');
+        appElement.href = getAppLink('links');
+        appElement.target = '_top';
+        appElement.style.cursor = 'pointer';
+        appElement.innerHTML = '<div class="square-005-004"><div class="content-005-004"><div class="table-005-004"><div class="table-cell-005-004"><img class="rs-005-004" src="../app-store/apps/005-004/logo.png"><br><img src="../app-store/apps/005-004/title.svg" style="width:75%; height:5vw; margin-top:-1.95pc;"><br></div></div></div></div>';
+        appsContainer.appendChild(appElement);
+    }
+    
+    if (isAddIconEnabled()) {
+        const appElement = document.createElement('a');
+        appElement.href = getAppLink('999-999');
+        appElement.style.cursor = 'pointer';
+        appElement.innerHTML = '<div class="square-999-999"><div class="content-999-999"><div class="table-999-999"><div class="table-cell-999-999"><img class="rs-999-999" src="../app-store/apps/999-999/logo.png" style="opacity: 0.4; filter: drop-shadow(2px 4px 1px black) invert(0.5);"><br><br></div></div></div></div>';
+        appsContainer.appendChild(appElement);
     }
 }
 
-function handleDragStart(event) {
-    event.dataTransfer.setData('text/plain', event.target.id);
+function getAppLink(appId) {
+    if (appId === 'paperclip') return '/paperclip/';
+    if (appId === 'links') return '/links/';
+    if (appId === '999-999') return '/app-store/003.html';
 }
-
-window.addEventListener('storage', updateHomeScreen);
 </script>
 <script src="media/js/breadcrumb.js"></script>
 <script src="media/js/jquery-2.1.4.min.js"></script>
 <script src="media/js/main.js"></script>
-<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-  </body>
+</body>
 </html>

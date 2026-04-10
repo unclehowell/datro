@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            background: rgb(44,12,33);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .login-box {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        input {
+            display: block;
+            margin: 15px 0;
+            padding: 15px;
+            width: 250px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 15px 40px;
+            background: linear-gradient(180deg,#ff8a00,#e52e71);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .error {
+            color: #ff6b6b;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h2 style="color: white;">Sign In</h2>
+        <form id="loginForm">
+            <input type="text" id="username" value="signals" placeholder="Username">
+            <input type="password" id="password" placeholder="Passphrase" required>
+            <button type="submit">Login</button>
+        </form>
+        <p class="error" id="error">Invalid passphrase</p>
+    </div>
+    <script>
+        // Check if already logged in
+        if (localStorage.getItem('auth_token') === 'cirtacito_logged_in') {
+            window.location.href = '/paperclip/';
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === 'signals' && password === 'cirtacito') {
+                localStorage.setItem('auth_token', 'cirtacito_logged_in');
+                window.location.href = '/paperclip/';
+            } else {
+                document.getElementById('error').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

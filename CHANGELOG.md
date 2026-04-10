@@ -10,7 +10,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 3. Before commiting a change update the sitemap.xml (automated script to perform this task is in the `static/monoreapo/sitemap/` directory  
 
 ## [Unreleased]
+<<<<<<< HEAD
 2026-04-10 - Automated flywheel: minor documentation update
+=======
+Mar-29 - Removed background music and volume slider from static/bpvsbuckler, replaced with Stripe and BTC donate buttons
+Mar-29 - Added stripe-revenue.json to static/bpvsbuckler and updated GitHub workflow to update both forces and bpvsbuckler
+Mar-25 - Added static/environment: Ansible playbook for complete laptop recovery - restores packages, desktop, AI tools, configs, cron jobs, and system settings
+Mar-26 - Restored static/pcp from git history for financecheque.uk (the website with iframe to ai.financecheque.uk)
+
+### Fixed
+
+- 2026-03-23 - pcp2: fixed submit-claim signature generation to use addresses as an array (R2R API schema). This aims to resolve "Invalid signature format" responses from the upstream R2R server.
+>>>>>>> origin/gh-pages
 
 ## [0.0.1-rtw.17] - Q1/2026
 Feb-06 - Puck CMS working on bpvsbuckler.datro.xyz webpage in /static/bpvsbuckler/  

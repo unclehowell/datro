@@ -1,0 +1,290 @@
+---
+# Application configurations (Hermes, OpenClaw, Gemini, etc.)
+
+- name: Create OpenClaw config directory
+  file:
+    path: "{{ ansible_user_dir }}/.openclaw"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0755'
+
+- name: Create OpenClaw config
+  copy:
+    content: |
+      {
+        "meta": {
+          "lastTouchedVersion": "2026.3.23-2"
+        },
+        "wizard": {
+          "lastRunCommand": "onboard",
+          "lastRunMode": "local"
+        },
+        "auth": {
+          "profiles": {
+            "anthropic:default": {
+              "provider": "anthropic",
+              "mode": "api_key"
+            },
+            "groq:default": {
+              "provider": "groq",
+              "mode": "api_key"
+            },
+            "nvidia:default": {
+              "provider": "nvidia",
+              "mode": "api_key"
+            },
+            "openai:default": {
+              "provider": "openai",
+              "mode": "api_key"
+            }
+          }
+        },
+        "models": {
+          "mode": "merge",
+          "providers": {
+            "groq": {
+              "baseUrl": "https://api.groq.com/openai/v1",
+              "models": [
+                {"id": "llama-3.3-70b-versatile", "name": "Llama 3.3 70B"}
+              ]
+            },
+            "nvidia": {
+              "baseUrl": "https://integrate.api.nvidia.com/v1",
+              "models": [
+                {"id": "nemotron-4-340b-instruct", "name": "Nemotron 4 340B"}
+              ]
+            },
+            "openai": {
+              "baseUrl": "https://api.openai.com/v1",
+              "models": [
+                {"id": "gpt-5.4", "name": "GPT-5.4"}
+              ]
+            }
+          }
+        },
+        "agents": {
+          "defaults": {
+            "model": {
+              "primary": "groq/llama-3.3-70b-versatile",
+              "fallbacks": [
+                "openai/gpt-5.4",
+                "nvidia/nemotron-4-340b-instruct",
+                "anthropic/claude-sonnet-4-6"
+              ]
+            },
+            "workspace": "{{ ansible_user_dir }}/.openclaw/workspace"
+          }
+        },
+        "tools": {
+          "profile": "coding",
+          "web": {
+            "search": {
+              "enabled": true,
+              "provider": "duckduckgo"
+            }
+          }
+        },
+        "channels": {
+          "telegram": {
+            "enabled": true
+          }
+        },
+        "gateway": {
+          "port": 18789,
+          "mode": "local"
+        }
+      }
+    dest: "{{ ansible_user_dir }}/.openclaw/openclaw.json"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0600'
+
+- name: Create Hermes config directory
+  file:
+    path: "{{ ansible_user_dir }}/.hermes"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0755'
+
+- name: Create Hermes config
+  copy:
+    content: |
+      model:
+        default: anthropic/claude-sonnet-4.5
+        provider: openrouter
+      toolsets:
+      - hermes-cli
+      agent:
+        max_turns: 60
+        verbose: false
+        reasoning_effort: medium
+      terminal:
+        backend: local
+        cwd: .
+        timeout: 180
+        docker_image: nikolaik/python-nodejs:python3.11-nodejs20
+        container_cpu: 1
+        container_memory: 5120
+        container_disk: 51200
+        container_persistent: true
+        persistent_shell: true
+        lifetime_seconds: 300
+      memory:
+        memory_enabled: true
+        user_profile_enabled: true
+        memory_char_limit: 2200
+        user_char_limit: 1375
+        nudge_interval: 10
+        flush_min_turns: 6
+      display:
+        compact: false
+        personality: kawaii
+        streaming: true
+      tts:
+        provider: edge
+        edge:
+          voice: en-US-AriaNeural
+      stt:
+        enabled: true
+        provider: local
+        local:
+          model: base
+      voice:
+        record_key: ctrl+b
+        max_recording_seconds: 120
+        auto_tts: false
+      checkpoints:
+        enabled: true
+        max_snapshots: 50
+      compression:
+        enabled: true
+        threshold: 0.85
+      skills:
+        creation_nudge_interval: 15
+      code_execution:
+        timeout: 300
+        max_tool_calls: 50
+      security:
+        redact_secrets: true
+      _config_version: 10
+    dest: "{{ ansible_user_dir }}/.hermes/config.yaml"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0600'
+
+- name: Create Gemini config directory
+  file:
+    path: "{{ ansible_user_dir }}/.gemini"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0755'
+
+- name: Create Gemini config
+  copy:
+    content: |
+      {
+        "enabled": true,
+        "model": "gemini-pro"
+      }
+    dest: "{{ ansible_user_dir }}/.gemini/settings.json"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0600'
+
+- name: Create workspace directories
+  file:
+    path: "{{ ansible_user_dir }}/.openclaw/workspace"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0755'
+
+- name: Create Claude/OpenCode directory
+  file:
+    path: "{{ ansible_user_dir }}/.local/bin"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0755'
+
+- name: Add PATH exports to bashrc
+  lineinfile:
+    path: "{{ ansible_user_dir }}/.bashrc"
+    line: "{{ item }}"
+    create: yes
+  loop:
+    - 'export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.npm-global/bin:$PATH"'
+    - 'export EDITOR=vim'
+    - 'export VISUAL=vim'
+
+- name: Create .bash_aliases
+  copy:
+    content: |
+      # Aliases
+      alias ll='ls -lah'
+      alias la='ls -A'
+      alias l='ls -CF'
+      alias cls='clear'
+      alias df='df -h'
+      alias du='du -h'
+      alias free='free -h'
+      alias ports='netstat -tulanp'
+      alias meminfo='free -m -l'
+      alias psmem='ps auxf | sort -hr | head -10'
+      alias pscpu='ps auxf | head -10'
+      alias json='python3 -m json.tool'
+      alias untar='tar -zxvf'
+      alias targz='tar -zcvf'
+      alias update='sudo apt update && sudo apt upgrade'
+      alias docker-clean='docker system prune -af'
+    dest: "{{ ansible_user_dir }}/.bash_aliases"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0644'
+
+- name: Create .vimrc
+  copy:
+    content: |
+      syntax on
+      set number
+      set relativenumber
+      set tabstop=4
+      set shiftwidth=4
+      set expandtab
+      set autoindent
+      set smartindent
+      set hlsearch
+      set incsearch
+      set wildmenu
+      set laststatus=2
+      set background=dark
+      colorscheme default
+    dest: "{{ ansible_user_dir }}/.vimrc"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0644'
+
+- name: Create .tmux.conf
+  copy:
+    content: |
+      # tmux configuration
+      set -g default-terminal "screen-256color"
+      set -g mouse on
+      set -g base-index 1
+      set -g pane-base-index 1
+      set -g history-limit 10000
+      set -g status-interval 1
+      set -g status-left-length 30
+      set -g status-right-length 50
+      set -g status-left "#S"
+      set -g status-right "#(date +%H:%M)"
+      bind-key -n C-b send-prefix
+      bind-key | split-window -h -c "#{pane_current_path}"
+      bind-key - split-window -v -c "#{pane_current_path}"
+    dest: "{{ ansible_user_dir }}/.tmux.conf"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0644'

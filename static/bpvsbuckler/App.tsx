@@ -384,11 +384,7 @@ const App: React.FC = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   
   // Audio State
-  const [isPlayingMusic, setIsPlayingMusic] = useState(true); 
-  // Set default music slider volume to 0.1 (10% on slider), which translates to 0.01 (1%) actual volume
-  const [musicVolume, setMusicVolume] = useState(0.1); 
   const [narratorVolume, setNarratorVolume] = useState(0.5); 
-  const [isMusicMuted, setIsMusicMuted] = useState(false);
   const [isNarratorMuted, setIsNarratorMuted] = useState(false);
 
   // AutoPlay State (Serves as general Play/Pause state)
@@ -417,7 +413,6 @@ const App: React.FC = () => {
   const [selectedSource, setSelectedSource] = useState<Source | null>(null);
   const [viewingAttachments, setViewingAttachments] = useState<{ files: string[], category: string } | null>(null);
 
-  const audioRef = useRef<HTMLAudioElement>(null);
   const sceneData = TIMELINE[currentSlide];
 
   // Helper for text reading time (Fallback)
@@ -496,33 +491,14 @@ const App: React.FC = () => {
       setIsDragging(false);
   };
 
-  // Music Volume & Mute Logic
-  useEffect(() => {
-    if (audioRef.current) {
-        // Effective volume calculation: slider value * 0.1
-        // Slider 0.1 (10%) -> Actual 0.01 (1%)
-        // Slider 0.2 (20%) -> Actual 0.02 (2%)
-        audioRef.current.volume = isMusicMuted ? 0 : musicVolume * 0.1;
-    }
-  }, [musicVolume, isMusicMuted]);
-
-  // Effect to handle Play/Pause logic for both Audio and Text Highlighting
+  // Effect to handle Play/Pause logic for Text Highlighting
   useEffect(() => {
     autoPlayRef.current = autoPlay; // Sync ref
 
     if (hasStarted) {
-        const audio = audioRef.current;
         if (autoPlay) {
-            if (audio) {
-                // Catch potential play interruption errors
-                audio.play().catch(e => {
-                   // We ignore AbortError as it is expected during rapid toggling
-                   if (e.name !== 'AbortError') console.error("Audio play error", e);
-                });
-            }
             resumeSpeech();
         } else {
-            if (audio) audio.pause();
             pauseSpeech();
         }
     }
@@ -788,8 +764,6 @@ const App: React.FC = () => {
       {showIntro && <IntroModal onEnter={handleEnterExperience} data={splashData} />}
       {showLoginModal && <LoginModal onClose={() => setShowLoginModal(false)} />}
 
-      <audio ref={audioRef} loop src="https://stream.rcs.revma.com/fxp289cp81uvv" />
-
       {/* TOP BAR */}
       {!isCollapsed && (
         <div className="h-24 w-full bg-slate-900/90 border-b border-slate-700 flex justify-between items-end px-6 pb-4 z-[60] shadow-xl shrink-0 relative pt-8">
@@ -989,24 +963,23 @@ const App: React.FC = () => {
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7"/></svg>
                      </button>
 
-                     {/* CENTER GROUP: EQUILIBRIUM + TV ICON INTEGRATION */}
-                     {/* Layout: Desktop = Horizontal Row, Mobile = Vertical Sliders Flanking Play */}
-                     <div className="flex items-center justify-center gap-6 md:gap-8 relative">
-                          
-                          {/* Music Volume - Vertical on Mobile (Left) */}
-                          <div className="relative flex items-center justify-center w-8 h-24 md:w-auto md:h-auto md:flex-col md:order-1 order-1">
-                               <span className="md:inline text-xs font-bold uppercase text-slate-500 mb-2 md:mb-0 md:static absolute -top-4 whitespace-nowrap hidden md:block">Music</span>
-                               {/* Mobile Label (Rotated) */}
-                               <span className="md:hidden text-[10px] font-bold uppercase text-slate-500 absolute -left-6 rotate-[-90deg]">Music</span>
-                               <input 
-                                    type="range" 
-                                    min="0" 
-                                    max="1" 
-                                    step="0.01" 
-                                    value={musicVolume} 
-                                    onChange={(e) => setMusicVolume(parseFloat(e.target.value))} 
-                                    className="md:static absolute w-24 h-2 bg-slate-700 rounded-lg accent-amber-500 cursor-pointer -rotate-90 md:rotate-0 origin-center" 
-                               />
+                      {/* CENTER GROUP: EQUILIBRIUM + TV ICON INTEGRATION */}
+                      {/* Layout: Desktop = Horizontal Row, Mobile = Vertical Sliders Flanking Play */}
+                      <div className="flex items-center justify-center gap-6 md:gap-8 relative">
+                           
+                          {/* Donate Buttons */}
+                          <div className="flex items-center gap-2 md:flex-col md:order-1 order-1">
+                               <stripe-buy-button
+                                   buy-button-id="buy_btn_1RuDNARibisCfpBQBMKwrMVc"
+                                   publishable-key="pk_live_51OqlLnRibisCfpBQQsDU3l2hhMLoKwTcdiokINqNA4wWaLeBM5qkMyJDV3B6TIToBOKCh4WhEzff7isJCLYIJaUB0088uetffQ"
+                               ></stripe-buy-button>
+                               <button 
+                                   onClick={() => { navigator.clipboard.writeText('bc1qddlu48vwmq0zrey0pgc8h02q9edq3jd8pwe3am'); }}
+                                   className="text-xs font-bold uppercase text-amber-500 hover:text-amber-400 transition-colors"
+                                   title="Copy BTC Address"
+                               >
+                                   BTC
+                               </button>
                           </div>
 
                           {/* Play/Pause Button - Center */}

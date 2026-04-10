@@ -1,0 +1,7 @@
+# Ansible Requirements
+# Install with: pip install -r requirements.txt
+
+ansible>=2.9
+ansible-lint
+community.general
+community.docker

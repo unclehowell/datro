@@ -1,0 +1,39 @@
+---
+# Global npm packages (AI/CLI tools)
+
+- name: Ensure npm global directory exists
+  file:
+    path: "{{ ansible_user_dir }}/.npm-global"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0755'
+
+- name: Configure npm global prefix
+  community.general.npm:
+    name: npm
+    global: yes
+    path: "{{ ansible_user_dir }}/.npm-global"
+
+- name: Install AI CLI tools via npm
+  community.general.npm:
+    name: "{{ item }}"
+    global: yes
+  loop:
+    - "@bonsai-ai/cli@0.4.1"
+    - "@google/gemini-cli@0.35.1"
+    - "@openai/codex@0.116.0"
+    - "openclaw@2026.3.23-2"
+    - "groq-code-cli@1.0.2"
+    - "pm2@6.0.14"
+    - "wrangler@4.75.0"
+    - "live-server@1.2.2"
+    - "@modelcontextprotocol/server-filesystem@2026.1.14"
+    - "@modelcontextprotocol/server-puppeteer@2025.5.12"
+    - "clawhub@0.9.0"
+
+- name: Add npm global bin to PATH in bashrc
+  lineinfile:
+    path: "{{ ansible_user_dir }}/.bashrc"
+    line: 'export PATH="$HOME/.npm-global/bin:$PATH"'
+    create: yes
