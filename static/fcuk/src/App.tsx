@@ -16,6 +16,7 @@ import {
   Bot,
   Coins,
   Globe,
+  Mail,
   ChevronRight,
   CheckCircle2,
   RotateCw,
@@ -68,6 +69,21 @@ export default function App() {
   const [guideStep, setGuideStep] = useState(0);
 
   const [hasSelectedAgent, setHasSelectedAgent] = useState(false);
+  const [showOAuthPlatforms, setShowOAuthPlatforms] = useState<number | null>(null);
+  const [activeOAuthPlatform, setActiveOAuthPlatform] = useState<any | null>(null);
+  const [isOAuthAuthorizing, setIsOAuthAuthorizing] = useState(false);
+
+  const oauthPlatforms = [
+    { name: 'Gmail', icon: <Mail size={18} />, color: 'bg-red-500' },
+    { name: 'Facebook', icon: <Facebook size={18} />, color: 'bg-blue-600' },
+    { name: 'Instagram', icon: <Instagram size={18} />, color: 'bg-pink-600' },
+    { name: 'X', icon: <Twitter size={18} />, color: 'bg-black' },
+    { name: 'LinkedIn', icon: <Globe size={18} />, color: 'bg-blue-700' }
+  ];
+
+  const [platformRewards] = useState(() => 
+    oauthPlatforms.reduce((acc, p) => ({ ...acc, [p.name]: Math.floor(Math.random() * 5) + 1 }), {})
+  );
 
   useEffect(() => {
     if (demoPrompt) {
@@ -131,13 +147,31 @@ export default function App() {
   };
 
   const handleConnectAgent = (id: number) => {
-    if (id !== 1) {
+    if (id !== 1 && demoAgents.find(a => a.id === id)) {
       setDemoPrompt('Sign in with the demo account to see more');
       return;
     }
-    handleOpenAgent(id);
-    setForceConnect(true);
+    setShowOAuthPlatforms(id);
     if (guideStep === 1) setGuideStep(2);
+  };
+
+  const handlePlatformSelect = (platform: any) => {
+    setActiveOAuthPlatform(platform);
+  };
+
+  const handleAuthorize = () => {
+    setIsOAuthAuthorizing(true);
+    const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/1071/1071-preview.mp3');
+    
+    setTimeout(() => {
+      audio.play().catch(() => {});
+      const reward = (platformRewards as any)[activeOAuthPlatform.name];
+      handleAgentAuthorize(showOAuthPlatforms!, reward);
+      setIsOAuthAuthorizing(false);
+      setActiveOAuthPlatform(null);
+      setShowOAuthPlatforms(null);
+      setDemoPrompt(`Successfully connected to ${activeOAuthPlatform.name}! +${reward} FCUK coins added.`);
+    }, 1500);
   };
 
   const handleAgentAuthorize = (id: number, amount: number) => {
@@ -259,26 +293,23 @@ export default function App() {
       <nav className="fixed top-0 w-full z-[500] bg-black/80 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 h-24 flex items-center justify-between">
           <div className="flex items-center gap-16">
-            <button onClick={() => setCurrentPage('home')} className="flex items-center gap-6 group">
-              <div className="w-16 h-16 bg-white flex items-center justify-center rounded-none group-hover:scale-105 transition-transform overflow-hidden p-1 shadow-sm">
+            <button onClick={() => setCurrentPage('home')} className="flex items-center gap-3 md:gap-6 group">
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-white flex items-center justify-center rounded-none group-hover:scale-105 transition-transform overflow-hidden p-1 shadow-sm">
                 <img 
-                  src="https://images.squarespace-cdn.com/content/v1/61713d3d6e5d5e5e5e5e5e5e/1634811111111-XXXXXXXXXXXX/Logo.png" 
+                  src="https://files.catbox.moe/gzq615.png" 
                   alt="Finance Cheque UK Logo" 
                   className="w-full h-full object-contain"
                   referrerPolicy="no-referrer"
-                  onError={(e) => {
-                    e.currentTarget.src = 'https://picsum.photos/seed/finance/100/100';
-                  }}
                 />
               </div>
-              <div className="flex flex-col gap-2">
-                <span className="font-bold text-3xl tracking-tighter text-white leading-none">FINANCE CHEQUE UK</span>
-                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent/80">Free Agentic A.I Employee</span>
+              <div className="flex flex-col gap-1 md:gap-2">
+                <span className="font-bold text-xl md:text-3xl tracking-tighter text-white leading-none">FINANCE CHEQUE UK</span>
+                <span className="text-[7px] md:text-[10px] font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] text-accent/80">Free Agentic A.I Employee</span>
               </div>
             </button>
           </div>
 
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-4 md:gap-8">
             {user ? (
               <button 
                 onClick={() => setCurrentPage('home')}
@@ -292,11 +323,11 @@ export default function App() {
             <div className="relative">
               <button 
                 onClick={() => setIsWalletMenuOpen(!isWalletMenuOpen)}
-                className="flex items-center gap-3 bg-white text-black px-8 py-3 rounded-none font-bold text-xs uppercase tracking-widest hover:bg-accent hover:text-white transition-all"
+                className="flex items-center justify-center w-12 h-12 md:w-auto md:px-8 md:py-3 bg-transparent md:bg-white text-white/70 md:text-black rounded-none font-bold text-xs uppercase tracking-widest hover:bg-accent/10 md:hover:bg-accent hover:text-white transition-all"
               >
-                <Menu size={16} />
-                Menu
-                <ChevronDown size={14} className={`transition-transform ${isWalletMenuOpen ? 'rotate-180' : ''}`} />
+                <Menu size={24} className="md:w-4 md:h-4" />
+                <span className="hidden md:inline ml-3">Menu</span>
+                <ChevronDown size={14} className={`hidden md:block ml-3 transition-transform ${isWalletMenuOpen ? 'rotate-180' : ''}`} />
               </button>
 
               <AnimatePresence>
@@ -492,72 +523,100 @@ export default function App() {
             <Dashboard onSignOut={() => setUser(null)} variant="full" />
           </div>
         ) : (
-          <div className="flex flex-col h-[calc(100vh-6rem)] relative">
+          <div className="flex flex-col min-h-[calc(100vh-6rem)] relative bg-paper/50">
             {/* Demo Manager UI */}
-            <div className="absolute inset-0 z-[200] pointer-events-none">
-              <div className="max-w-[1800px] mx-auto px-8 h-full grid grid-cols-3 gap-16 items-center">
+            <div className="relative z-[200] py-12 md:py-24">
+              <div className="max-w-[1800px] mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 items-start">
                 {demoAgents.map((agent, index) => (
                   <div 
                     key={agent.id} 
-                    className={`flex flex-col gap-6 items-center pointer-events-auto ${
-                      index === 1 ? 'col-start-2' : ''
-                    }`}
+                    className={`flex flex-col gap-6 items-center ${
+                      index === 1 ? 'md:col-start-2' : ''
+                    } ${agent.id !== 1 && !user ? 'hidden md:flex' : 'flex'}`}
                   >
-                    <div className="flex flex-col items-center gap-3">
+                    <div className="flex flex-col items-center gap-3 w-full">
                       <div className="text-[10px] font-bold uppercase tracking-widest text-ink/40">{agent.title}</div>
-                      <div className="relative">
-                        {/* Miniaturized Tablet Icon (Sideways) */}
-                        <motion.button
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          onClick={() => {
-                            if (guideStep === 0 && agent.id === 1) {
-                              handleOpenAgent(agent.id);
-                            } else {
-                              handleOpenAgent(agent.id);
-                            }
-                          }}
-                          className={`w-64 h-40 rounded-[2rem] bg-[#0a0a0a] border-4 border-[#1a1a1a] relative overflow-hidden shadow-2xl transition-all ${
-                            activeAgentId === agent.id && agent.isOpen 
-                              ? 'ring-4 ring-accent/20' 
-                              : 'hover:border-accent/50'
-                          }`}
+                      
+                      {showOAuthPlatforms === agent.id ? (
+                        <motion.div 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          className="w-full max-w-[280px] bg-paper border border-border rounded-2xl p-4 shadow-xl space-y-3 z-[300]"
                         >
-                          {/* Screen Content - Loading Iframe */}
-                          <div className="absolute inset-2 rounded-[1.4rem] bg-paper overflow-hidden flex flex-col">
-                            <div className="h-3 bg-[#0a0a0a] flex items-center justify-center">
-                              <div className="w-12 h-1 bg-white/10 rounded-full" />
-                            </div>
-                            <div className="flex-1 relative bg-black">
-                              <iframe 
-                                src="https://ui.financecheque.uk" 
-                                className="w-full h-full border-none opacity-40 grayscale pointer-events-none scale-[0.25] origin-top-left"
-                                style={{ width: '400%', height: '400%' }}
-                                title={`Mini Agent ${agent.id}`}
-                              />
-                              <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/20">
-                                <Bot size={32} className="text-accent/40" />
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-[8px] font-bold uppercase tracking-widest text-accent">Select Platform</span>
+                            <button onClick={() => setShowOAuthPlatforms(null)} className="text-ink/20 hover:text-ink"><X size={14} /></button>
+                          </div>
+                          <div className="grid grid-cols-1 gap-2">
+                            {oauthPlatforms.map(platform => (
+                              <button
+                                key={platform.name}
+                                onClick={() => handlePlatformSelect(platform)}
+                                className="flex items-center justify-between p-3 bg-card border border-border hover:border-accent transition-all rounded-xl group"
+                              >
+                                <div className="flex items-center gap-3">
+                                  <div className={`w-8 h-8 ${platform.color} text-white flex items-center justify-center rounded-lg shadow-sm`}>
+                                    {platform.icon}
+                                  </div>
+                                  <span className="text-[10px] font-bold text-ink">{platform.name}</span>
+                                </div>
+                                <div className="flex items-center gap-1.5 bg-accent/10 px-2 py-1 rounded-md">
+                                  <Coins size={10} className="text-accent" />
+                                  <span className="text-[9px] font-bold text-accent">{(platformRewards as any)[platform.name]}</span>
+                                </div>
+                              </button>
+                            ))}
+                          </div>
+                        </motion.div>
+                      ) : (
+                        <div className="relative w-full flex justify-center">
+                          {/* Miniaturized Tablet Icon (Sideways) */}
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => handleOpenAgent(agent.id)}
+                            className={`w-full max-w-[280px] aspect-[16/10] rounded-[2rem] bg-[#0a0a0a] border-4 border-[#1a1a1a] relative overflow-hidden shadow-2xl transition-all ${
+                              activeAgentId === agent.id && agent.isOpen 
+                                ? 'ring-4 ring-accent/20' 
+                                : 'hover:border-accent/50'
+                            }`}
+                          >
+                            {/* Screen Content - Loading Iframe */}
+                            <div className="absolute inset-2 rounded-[1.4rem] bg-paper overflow-hidden flex flex-col">
+                              <div className="h-3 bg-[#0a0a0a] flex items-center justify-center">
+                                <div className="w-12 h-1 bg-white/10 rounded-full" />
+                              </div>
+                              <div className="flex-1 relative bg-black">
+                                <iframe 
+                                  src="https://ui.financecheque.uk" 
+                                  className="w-full h-full border-none opacity-40 grayscale pointer-events-none scale-[0.25] origin-top-left"
+                                  style={{ width: '400%', height: '400%' }}
+                                  title={`Mini Agent ${agent.id}`}
+                                />
+                                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/20">
+                                  <Bot size={32} className="text-accent/40" />
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          
-                          {guideStep === 0 && agent.id === 1 && (
-                            <div className="absolute inset-0 z-50 flex items-center justify-center bg-accent/20 backdrop-blur-[2px]">
-                              <div className="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center text-xl font-bold animate-bounce shadow-2xl">Start</div>
-                            </div>
-                          )}
-                        </motion.button>
-                      </div>
+                            
+                            {guideStep === 0 && agent.id === 1 && (
+                              <div className="absolute inset-0 z-50 flex items-center justify-center bg-accent/20 backdrop-blur-[2px]">
+                                <div className="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center text-xl font-bold animate-bounce shadow-2xl">Start</div>
+                              </div>
+                            )}
+                          </motion.button>
+                        </div>
+                      )}
                     </div>
                     
-                    <div className="grid grid-cols-2 gap-4 w-72">
+                    <div className="grid grid-cols-2 gap-4 w-full max-w-[280px]">
                       <div className="flex flex-col gap-2">
                         <div className="relative">
                           <button 
                             onClick={() => handleConnectAgent(agent.id)}
-                            disabled={guideStep !== 1 && agent.id === 1}
+                            disabled={(guideStep !== 1 && agent.id === 1) || showOAuthPlatforms === agent.id}
                             className={`w-full flex items-center justify-center gap-2 px-3 py-2.5 bg-paper/80 backdrop-blur-md border border-border text-[9px] font-bold uppercase tracking-widest hover:bg-accent hover:text-white transition-all rounded-xl ${
-                              guideStep !== 1 && agent.id === 1 ? 'opacity-50 cursor-not-allowed' : ''
+                              (guideStep !== 1 && agent.id === 1) || showOAuthPlatforms === agent.id ? 'opacity-50 cursor-not-allowed' : ''
                             }`}
                           >
                             <Link2 size={12} />
@@ -621,52 +680,134 @@ export default function App() {
                     </div>
                   </div>
                 ))}
+
+      {/* Mock OAuth Modal */}
+      <AnimatePresence>
+        {activeOAuthPlatform && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[600] flex items-center justify-center p-6 bg-black/80 backdrop-blur-md"
+          >
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="w-full max-w-md bg-paper border border-border p-10 space-y-8 shadow-2xl frame"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className={`w-12 h-12 ${activeOAuthPlatform.color} text-white flex items-center justify-center rounded-xl shadow-lg`}>
+                    {activeOAuthPlatform.icon}
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-xl text-ink">Connect {activeOAuthPlatform.name}</h3>
+                    <p className="text-[10px] text-ink/40 uppercase font-bold tracking-widest">Illustration purposes only</p>
+                  </div>
+                </div>
+                <button onClick={() => setActiveOAuthPlatform(null)} className="text-ink/20 hover:text-ink">
+                  <X size={24} />
+                </button>
+              </div>
+
+              <div className="space-y-6">
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-ink/30">Username / Email</label>
+                    <input 
+                      type="text" 
+                      value="••••••••••••••••" 
+                      readOnly 
+                      className="w-full bg-card border border-border px-4 py-3 text-sm font-medium focus:outline-none"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-ink/30">Password</label>
+                    <input 
+                      type="password" 
+                      value="••••••••••••••••" 
+                      readOnly 
+                      className="w-full bg-card border border-border px-4 py-3 text-sm font-medium focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="p-6 bg-accent/5 border border-accent/10 space-y-3 rounded-xl">
+                  <div className="flex items-center gap-2 text-accent">
+                    <Shield size={16} />
+                    <span className="text-[9px] font-bold uppercase tracking-widest">Privacy Disclaimer</span>
+                  </div>
+                  <p className="text-[10px] text-ink/50 leading-relaxed italic">
+                    This is a demonstration of the FCUK agent connection flow. No real data is accessed or stored during this demonstration.
+                  </p>
+                </div>
+
+                <button 
+                  onClick={handleAuthorize}
+                  disabled={isOAuthAuthorizing}
+                  className="w-full bg-ink text-paper font-bold py-5 uppercase tracking-widest text-sm hover:bg-accent transition-all flex items-center justify-center gap-3 disabled:opacity-50"
+                >
+                  {isOAuthAuthorizing ? (
+                    <div className="w-5 h-5 border-2 border-paper/30 border-t-paper rounded-full animate-spin" />
+                  ) : (
+                    <>
+                      Authorise
+                      <ArrowRight size={18} />
+                    </>
+                  )}
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
               </div>
 
               <AnimatePresence>
                 {demoPrompt && (
                   <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    className="mt-4 bg-accent text-white px-6 py-3 rounded-xl text-xs font-bold shadow-2xl relative"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    className="fixed bottom-12 left-1/2 -translate-x-1/2 z-[500] bg-accent text-white px-8 py-4 rounded-full text-sm font-bold shadow-2xl"
                   >
-                    <div className="absolute -left-2 top-1/2 -translate-y-1/2 border-8 border-transparent border-r-accent" />
                     {demoPrompt}
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
 
-            <div className="flex-1 flex items-center justify-center">
+            <div className="relative z-[100] pb-24 flex items-center justify-center">
               {activeAgentId && demoAgents.find(a => a.id === activeAgentId)?.isOpen ? (
-                <Dashboard 
-                  reloadKey={dashboardKey}
-                  onSignOut={() => setUser(null)} 
-                  onClose={() => {
-                    setDemoAgents(prev => prev.map(a => ({ ...a, isOpen: false })));
-                    setForceConnect(false);
-                  }}
-                  variant="mobile" 
-                  forceConnect={forceConnect}
-                  initialBalance={demoAgents.find(a => a.id === activeAgentId)?.balance}
-                  onAuthorize={(amount) => handleAgentAuthorize(activeAgentId, amount)}
-                  guideStep={guideStep}
-                  onGuideStepChange={setGuideStep}
-                  onConnectAttempt={() => {
-                    setDemoPrompt('Sign in with the demo account to see more');
-                    setForceConnect(false);
-                  }}
-                />
+                <div className="w-full h-full min-h-[600px]">
+                  <Dashboard 
+                    reloadKey={dashboardKey}
+                    onSignOut={() => setUser(null)} 
+                    onClose={() => {
+                      setDemoAgents(prev => prev.map(a => ({ ...a, isOpen: false })));
+                      setForceConnect(false);
+                    }}
+                    variant="mobile" 
+                    forceConnect={forceConnect}
+                    initialBalance={demoAgents.find(a => a.id === activeAgentId)?.balance}
+                    onAuthorize={(amount) => handleAgentAuthorize(activeAgentId, amount)}
+                    guideStep={guideStep}
+                    onGuideStepChange={setGuideStep}
+                    onConnectAttempt={() => {
+                      setDemoPrompt('Sign in with the demo account to see more');
+                      setForceConnect(false);
+                    }}
+                  />
+                </div>
               ) : (
                 !forceConnect && !hasSelectedAgent && (
-                  <div className="text-center space-y-6">
-                    <div className="w-24 h-24 bg-accent/10 text-accent flex items-center justify-center rounded-full mx-auto animate-pulse">
-                      <Bot size={48} />
+                  <div className="text-center space-y-8 px-8">
+                    <div className="w-20 h-20 md:w-24 md:h-24 bg-accent/10 text-accent flex items-center justify-center rounded-full mx-auto animate-pulse">
+                      <Bot size={40} className="md:size-[48px]" />
                     </div>
-                    <div className="space-y-2">
-                      <h3 className="text-2xl font-bold tracking-tighter">Select an Agent to Begin</h3>
-                      <p className="text-ink/40 text-sm max-w-xs mx-auto">Use the icons in the top left to spawn, open, and connect your agents.</p>
+                    <div className="space-y-3">
+                      <h3 className="text-xl md:text-2xl font-bold tracking-tighter">Select an Agent to Begin</h3>
+                      <p className="text-ink/40 text-xs md:text-sm max-w-xs mx-auto">Use the icons above to spawn, open, and connect your agents.</p>
                     </div>
                   </div>
                 )
