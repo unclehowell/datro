@@ -3,18 +3,18 @@ import { motion } from 'motion/react';
 import { Terminal, Cpu, Activity, ShieldCheck, Globe, Zap } from 'lucide-react';
 
 const LOG_MESSAGES = [
-  "Initializing neural pathways...",
-  "Connecting to X.com API...",
-  "Analyzing campaign performance...",
-  "Optimizing Meta ad spend...",
-  "Generating content for Gmail outreach...",
-  "Syncing with FCUK blockchain...",
-  "Sub-agent 'Alpha-1' spawned.",
-  "Revenue detected: +14.2 FCUK",
-  "OAuth token refreshed for user_882",
-  "Executing automated response sequence...",
-  "Monitoring market trends in London...",
-  "Scaling affiliate network...",
+  "Analyzing affiliate campaign performance...",
+  "Optimizing Meta ad spend for SaaS outreach...",
+  "Generating high-converting landing page assets...",
+  "Executing automated outreach sequence on X.com...",
+  "Syncing revenue data with verified affiliate networks...",
+  "Sub-agent 'Alpha-1' optimizing email funnels...",
+  "Revenue detected: +£14.20 (Campaign #882)",
+  "OAuth token verified for campaign distribution...",
+  "Monitoring market trends for finance lead gen...",
+  "Scaling outreach footprint across LinkedIn...",
+  "A/B testing ad copy for e-commerce campaign...",
+  "Affiliate commission tracked: +£8.50",
 ];
 
 export default function AgentComputer() {
@@ -25,10 +25,11 @@ export default function AgentComputer() {
   useEffect(() => {
     const interval = setInterval(() => {
       setLogs(prev => {
-        const next = [...prev, LOG_MESSAGES[Math.floor(Math.random() * LOG_MESSAGES.length)]];
+        const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        const next = [...prev, { time, message: LOG_MESSAGES[Math.floor(Math.random() * LOG_MESSAGES.length)] }];
         return next.slice(-15);
       });
-    }, 2000);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
@@ -82,16 +83,16 @@ export default function AgentComputer() {
         <div className="col-span-2 border-r border-border p-8 font-mono text-xs overflow-hidden relative bg-paper/30">
           {activeTab === 'terminal' && (
             <div ref={scrollRef} className="h-full overflow-y-auto space-y-2 custom-scrollbar">
-              {logs.map((log, i) => (
+              {logs.map((log: any, i) => (
                 <motion.div
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   key={i}
                   className="flex gap-4"
                 >
-                  <span className="text-ink/20">[{new Date().toLocaleTimeString()}]</span>
-                  <span className={log.includes('Revenue') ? 'text-accent font-bold' : 'text-ink/70'}>
-                    {log}
+                  <span className="text-ink/20">[{log.time}]</span>
+                  <span className={log.message.includes('Revenue') || log.message.includes('commission') ? 'text-accent font-bold' : 'text-ink/70'}>
+                    {log.message}
                   </span>
                 </motion.div>
               ))}
@@ -127,8 +128,8 @@ export default function AgentComputer() {
             <div className="h-full flex flex-col p-6">
               <div className="flex justify-between items-end mb-12">
                 <div>
-                  <span className="text-[11px] font-bold uppercase text-ink/30 tracking-widest">Total Revenue</span>
-                  <div className="text-5xl font-bold text-ink tracking-tighter">1,452.80 <span className="text-accent italic">FCUK</span></div>
+                  <span className="text-[11px] font-bold uppercase text-ink/30 tracking-widest">Projected Earnings</span>
+                  <div className="text-5xl font-bold text-ink tracking-tighter">£1,452.80</div>
                 </div>
                 <div className="text-right">
                   <span className="text-[11px] font-bold uppercase text-ink/30 tracking-widest">24h Change</span>
