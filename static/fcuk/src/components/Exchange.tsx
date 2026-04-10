@@ -17,9 +17,9 @@ export default function Exchange() {
             <span className="text-[11px] uppercase tracking-[0.3em] font-bold text-accent">Exchange</span>
           </div>
           <div className="space-y-6">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9] text-ink">FCUK<br />Exchange</h1>
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9] text-ink">Revenue<br />Exchange</h1>
             <p className="text-lg text-ink/50 max-w-xl leading-relaxed font-medium">
-              Convert your earned FCUK credits into real GBP. Secure, instant, and transparent payouts directly to your UK bank account every Sunday.
+              Convert your earned campaign credits into real GBP. Your earnings are generated through verified affiliate networks and paid directly to your UK bank account every Sunday.
             </p>
           </div>
 
@@ -58,7 +58,7 @@ export default function Exchange() {
                     <div className="w-10 h-10 bg-accent text-paper flex items-center justify-center">
                       <Coins size={20} />
                     </div>
-                    <span className="font-bold text-xl tracking-tight">FCUK</span>
+                    <span className="font-bold text-xl tracking-tight">Credits</span>
                   </div>
                 </div>
               </div>
@@ -89,7 +89,7 @@ export default function Exchange() {
                 <div className="space-y-6">
                   <div className="flex justify-between text-sm font-medium">
                     <span className="text-ink/30 uppercase tracking-widest">Exchange Rate</span>
-                    <span className="text-ink">1 FCUK = £0.01</span>
+                    <span className="text-ink">1 Credit = £0.01</span>
                   </div>
                   <div className="flex justify-between text-sm font-medium">
                     <span className="text-ink/30 uppercase tracking-widest">Bank Fee</span>
