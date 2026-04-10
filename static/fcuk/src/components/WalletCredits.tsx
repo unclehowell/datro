@@ -24,16 +24,16 @@ export default function WalletCredits() {
       <div className="space-y-12">
         <div className="flex items-center gap-4">
           <div className="w-12 h-[1px] bg-accent" />
-          <span className="text-[11px] uppercase tracking-[0.3em] font-bold text-accent">Exchange System</span>
+          <span className="text-[11px] uppercase tracking-[0.3em] font-bold text-accent">Revenue Tracking System</span>
         </div>
         
         <h2 className="text-6xl font-bold tracking-tighter leading-none text-ink">
           Empower Agents.<br />
-          <span className="text-accent">Exchange Credits.</span>
+          <span className="text-accent">Generate Revenue.</span>
         </h2>
         
         <p className="text-ink/50 text-xl max-w-lg leading-relaxed font-medium">
-          Grant permissions to your agent by doing 'favours for your agent'. Each connection provides FCUK coins, which you can exchange for real GBP every Sunday.
+          Grant access to your digital footprint so your agent can operate campaigns on your behalf. Your earnings come from real-world campaign performance.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -56,7 +56,7 @@ export default function WalletCredits() {
                   </div>
                   <div className="text-left">
                     <div className="text-[10px] font-bold text-ink/30 uppercase tracking-widest">{service.name}</div>
-                    <div className="text-lg font-bold text-ink tracking-tight">+{service.reward} FCUK</div>
+                    <div className="text-lg font-bold text-ink tracking-tight">+{service.reward} Credits</div>
                   </div>
                 </div>
                 {isConnected ? (
@@ -75,27 +75,30 @@ export default function WalletCredits() {
         <div className="relative frame p-12 lg:p-16 shadow-2xl">
           <div className="flex justify-between items-start mb-20">
             <div className="space-y-2">
-              <h3 className="font-bold text-3xl tracking-tighter text-ink">FCUK Wallet</h3>
+              <h3 className="font-bold text-3xl tracking-tighter text-ink">Earnings Wallet</h3>
               <p className="text-[10px] font-bold text-ink/30 uppercase tracking-[0.2em]">Asset ID: 0xFCUK_NETWORK_MAIN</p>
             </div>
             <div className="w-20 h-20 bg-accent text-paper flex items-center justify-center shadow-2xl shadow-accent/20">
-              <Coins size={40} />
+              <div className="font-bold text-3xl">£</div>
             </div>
           </div>
 
           <div className="space-y-4 mb-20">
-            <span className="text-[10px] uppercase font-bold text-accent tracking-[0.3em]">Available Balance</span>
+            <span className="text-[10px] uppercase font-bold text-accent tracking-[0.3em]">Projected Weekly Payout</span>
             <div className="flex items-baseline gap-4">
+              <span className="text-5xl font-bold text-accent tracking-tighter">£</span>
               <motion.span 
                 key={credits}
                 initial={{ scale: 1.1, color: '#3B82F6' }}
                 animate={{ scale: 1, color: '#0A0A0A' }}
                 className="text-[120px] font-bold leading-none tracking-tighter"
               >
-                {credits.toLocaleString()}
+                {(credits * 0.01).toFixed(2)}
               </motion.span>
-              <span className="text-3xl font-bold text-accent tracking-tighter">FCUK</span>
             </div>
+            <p className="text-[10px] font-bold text-ink/30 uppercase tracking-widest">
+              Based on {credits} FCUK Credits (1:1 Tracking Unit)
+            </p>
           </div>
 
           <div className="space-y-8">
