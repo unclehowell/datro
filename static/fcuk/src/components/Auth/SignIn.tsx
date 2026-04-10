@@ -16,6 +16,11 @@ export default function SignIn({ onBack, onSignIn }: SignInProps) {
     e.preventDefault();
     if (!passphrase) return;
 
+    if (passphrase === 'demo') {
+      onSignIn({ name: 'Demo User', email: 'demo@example.com' });
+      return;
+    }
+
     setIsLoading(true);
     setError('');
 
@@ -51,7 +56,7 @@ export default function SignIn({ onBack, onSignIn }: SignInProps) {
             <ShieldCheck size={32} />
           </div>
           <div className="space-y-1">
-            <h2 className="text-2xl font-bold tracking-tight text-ink">Secure Unlock</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-ink">Sign In</h2>
             <p className="text-xs text-ink/40 font-bold uppercase tracking-widest">Enter Passphrase</p>
           </div>
         </div>
@@ -87,7 +92,7 @@ export default function SignIn({ onBack, onSignIn }: SignInProps) {
             disabled={isLoading || !passphrase}
             className="w-full bg-ink text-paper font-bold py-5 uppercase tracking-widest text-sm hover:bg-accent transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isLoading ? 'Unlocking...' : 'Unlock Dashboard'}
+            {isLoading ? 'Signing In...' : 'Sign In'}
             {!isLoading && <ArrowRight size={18} />}
           </button>
         </form>

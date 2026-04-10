@@ -288,7 +288,7 @@ export default function Dashboard({
               onClick={(e) => {
                 if (variant === 'mobile' || hasInteracted) {
                   e.stopPropagation();
-                  alert('Sign in or Register to withdraw funds');
+                  alert('Sign in to withdraw funds');
                 }
               }}
             >
@@ -320,76 +320,65 @@ export default function Dashboard({
             title="Agent Dashboard"
             allow="geolocation"
           />
-          
-          {/* Floating Menu Removed */}
         </div>
       ) : (
-        <div className="fixed inset-0 top-24 bg-black/95 backdrop-blur-md flex items-center justify-center overflow-hidden p-4 md:p-8 z-[300]">
-          <div className="w-full max-w-[66%] h-full relative flex items-center justify-center">
+        <div className="fixed inset-0 top-24 bg-black/80 backdrop-blur-xl flex items-center justify-center overflow-hidden p-4 md:p-8 z-[500]">
+          <div className="w-full h-full relative flex items-center justify-center">
             {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ 
-            backgroundImage: 'radial-gradient(circle at 2px 2px, var(--border) 1px, transparent 0)',
-            backgroundSize: '24px 24px'
-          }} />
+            <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ 
+              backgroundImage: 'radial-gradient(circle at 2px 2px, var(--border) 1px, transparent 0)',
+              backgroundSize: '24px 24px'
+            }} />
 
             <motion.div 
               layout
-              initial={false}
+              initial={{ scale: 0.9, opacity: 0 }}
               animate={{ 
+                scale: 1,
+                opacity: 1,
                 width: orientation === 'portrait' ? '380px' : '800px',
                 height: orientation === 'portrait' ? 'min(780px, 85vh)' : 'min(500px, 85vh)'
               }}
-              className="relative bg-[#1a1a1a] rounded-[2rem] border-[12px] border-[#333] shadow-[0_0_100px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col"
+              className="relative bg-[#1a1a1a] rounded-[2rem] border-[12px] border-[#333] shadow-[0_0_100px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col z-[510]"
             >
               {/* Tablet Camera/Sensor */}
               <div className={`absolute ${orientation === 'portrait' ? 'top-4 left-1/2 -translate-x-1/2 w-16 h-1.5' : 'left-4 top-1/2 -translate-y-1/2 w-1.5 h-16'} bg-[#333] rounded-full z-50`} />
 
-            {/* Browser Header */}
-            <div className="h-14 bg-[#222] border-b border-white/5 flex items-end px-6 pb-2 gap-4">
-              <div className="flex-1 bg-black/40 rounded-lg h-8 flex items-center px-4 gap-2">
-                <Lock size={10} className="text-green-500" />
-                <span className="text-[10px] text-white/40 font-medium truncate">ui.financecheque.uk</span>
+              {/* Browser Header */}
+              <div className="h-14 bg-[#222] border-b border-white/5 flex items-end px-6 pb-2 gap-4">
+                <div className="flex-1 bg-black/40 rounded-lg h-8 flex items-center px-4 gap-2">
+                  <Lock size={10} className="text-green-500" />
+                  <span className="text-[10px] text-white/40 font-medium truncate">ui.financecheque.uk</span>
+                </div>
               </div>
-            </div>
 
-            {/* Iframe Content */}
-            <div className="flex-1 relative bg-black">
-              <iframe 
-                key={reloadKey}
-                src="https://ui.financecheque.uk" 
-                className="w-full h-full border-none"
-                title="Agent Dashboard"
-                allow="geolocation"
-              />
+              {/* Iframe Content */}
+              <div className="flex-1 relative bg-black">
+                <iframe 
+                  key={reloadKey}
+                  src="https://ui.financecheque.uk" 
+                  className="w-full h-full border-none"
+                  title="Agent Dashboard"
+                  allow="geolocation"
+                />
+              </div>
 
-              {/* Floating Menu Removed */}
-            </div>
+              {/* Home Indicator */}
+              <div className="h-8 bg-[#1a1a1a] flex items-center justify-center">
+                <div className="w-32 h-1.5 bg-white/10 rounded-full" />
+              </div>
+            </motion.div>
 
-            {/* Home Indicator */}
-            <div className="h-8 bg-[#1a1a1a] flex items-center justify-center">
-              <div className="w-32 h-1.5 bg-white/10 rounded-full" />
-            </div>
-          </motion.div>
-
-          {/* External Controls */}
-          <div className="fixed top-32 right-8 flex flex-col gap-4 z-[400]">
-            <button 
-              onClick={() => setOrientation(orientation === 'portrait' ? 'landscape' : 'portrait')}
-              className="w-14 h-14 bg-paper border border-border flex items-center justify-center text-ink hover:bg-accent hover:text-paper transition-all shadow-xl rounded-full"
-              title="Rotate Device"
-            >
-              <RotateCw size={24} className={orientation === 'landscape' ? 'rotate-90' : ''} />
-            </button>
-            {variant !== 'mobile' ? (
+            {/* External Controls */}
+            <div className="fixed top-32 right-8 flex flex-col gap-4 z-[520]">
               <button 
-                onClick={onSignOut}
-                className="w-14 h-14 bg-paper border border-border flex items-center justify-center text-red-500 hover:bg-red-500 hover:text-paper transition-all shadow-xl rounded-full"
-                title="Exit Demo"
+                onClick={() => setOrientation(orientation === 'portrait' ? 'landscape' : 'portrait')}
+                className="hidden md:flex w-14 h-14 bg-paper border border-border items-center justify-center text-ink hover:bg-accent hover:text-paper transition-all shadow-xl rounded-full"
+                title="Rotate Device"
               >
-                <X size={24} />
+                <RotateCw size={24} className={orientation === 'landscape' ? 'rotate-90' : ''} />
               </button>
-            ) : (
-              onClose && (
+              {onClose && (
                 <button 
                   onClick={onClose}
                   className="w-14 h-14 bg-paper border border-border flex items-center justify-center text-red-500 hover:bg-red-500 hover:text-paper transition-all shadow-xl rounded-full"
@@ -397,11 +386,10 @@ export default function Dashboard({
                 >
                   <X size={24} />
                 </button>
-              )
-            )}
+              )}
+            </div>
           </div>
         </div>
-      </div>
       )}
 
       {/* Simulated OAuth Modal */}

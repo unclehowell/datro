@@ -86,6 +86,27 @@ export default function App() {
   );
 
   useEffect(() => {
+    // Theme initialization
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const isDark = document.documentElement.classList.contains('dark');
+    if (isDark) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  };
+
+  useEffect(() => {
     if (demoPrompt) {
       const timer = setTimeout(() => setDemoPrompt(null), 5000);
       return () => clearTimeout(timer);
@@ -523,16 +544,14 @@ export default function App() {
             <Dashboard onSignOut={() => setUser(null)} variant="full" />
           </div>
         ) : (
-          <div className="flex flex-col min-h-[calc(100vh-6rem)] relative bg-paper/50">
+          <div className="flex flex-col min-h-[calc(100vh-6rem)] relative">
             {/* Demo Manager UI */}
             <div className="relative z-[200] py-12 md:py-24">
               <div className="max-w-[1800px] mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 items-start">
                 {demoAgents.map((agent, index) => (
                   <div 
                     key={agent.id} 
-                    className={`flex flex-col gap-6 items-center ${
-                      index === 1 ? 'md:col-start-2' : ''
-                    } ${agent.id !== 1 && !user ? 'hidden md:flex' : 'flex'}`}
+                    className="flex flex-col gap-6 items-center"
                   >
                     <div className="flex flex-col items-center gap-3 w-full">
                       <div className="text-[10px] font-bold uppercase tracking-widest text-ink/40">{agent.title}</div>

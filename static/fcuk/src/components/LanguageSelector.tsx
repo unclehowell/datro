@@ -1,17 +1,20 @@
 import { useState } from 'react';
 import { Globe } from 'lucide-react';
 
-export type Language = 'en' | 'cy' | 'gd';
+export type Language = 'en' | 'cy' | 'sco' | 'gd' | 'kw' | 'ga';
 
 interface LanguageSelectorProps {
   currentLang: Language;
   onLangChange: (lang: Language) => void;
 }
 
-const languages = {
+const languages: Record<Language, string> = {
   en: 'English',
-  cy: 'Cymraeg',
-  gd: 'Gàidhlig'
+  cy: 'Cymraeg (Welsh)',
+  sco: 'Scots',
+  gd: 'Gàidhlig (Scottish Gaelic)',
+  kw: 'Kernewek (Cornish)',
+  ga: 'Gaeilge (Irish)'
 };
 
 export default function LanguageSelector({ currentLang, onLangChange }: LanguageSelectorProps) {
