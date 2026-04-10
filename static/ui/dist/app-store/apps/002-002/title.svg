@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="79.68999023437502 13.9893798828125 340.62001953124997 122.021240234375" style="background: rgba(0, 0, 0, 0);" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="editing-hole" x="-100%" y="-100%" width="300%" height="300%">
+      <feFlood flood-color="#000" result="black" id="feFlood152"/>
+      <feMorphology operator="dilate" radius="2" in="SourceGraphic" result="erode" id="feMorphology154"/>
+      <feGaussianBlur in="erode" stdDeviation="4" result="blur" id="feGaussianBlur156"/>
+      <feOffset in="blur" dx="2" dy="2" result="offset" id="feOffset158"/>
+      <feComposite operator="atop" in="offset" in2="black" result="merge" id="feComposite160"/>
+      <feComposite operator="in" in="merge" in2="SourceGraphic" result="inner-shadow" id="feComposite162"/>
+    </filter>
+    <style id="style173">text {
+  font-size: 64px;
+  font-family: Arial Black;
+  dominant-baseline: central;
+  text-anchor: middle;
+}</style>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 137.60874938964844, 104.78218841552736)" id="g169" filter="url(#editing-hole)">
+    <g aria-label="Jellyfin" transform="matrix(2.2914308,0,0,1.8964194,-70.347917,-125.00114)" style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none" id="flowRoot181">
+      <g aria-label="3 Pack" transform="matrix(0.99748971,0,0,0.99715534,12.698383,6.731516)" style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#e9e6e6;fill-opacity:1;stroke:none" id="flowRoot3192">
+        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" transform="matrix(0.659117, 0, 0, 1.168175, 66.187752, 41.33765)">EmulatorJS</text>
+      </g>
+    </g>
+  </g>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" x="179.969" y="59.769" transform="matrix(1, 0, 0, 1, -7.105427357601002e-15, 0)"> </text>
+</svg>

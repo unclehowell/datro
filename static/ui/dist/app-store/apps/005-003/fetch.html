@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Jarvis Redirect</title>
+<script>
+    window.onload = function() {
+        var hostname = window.location.hostname;
+        if (hostname.indexOf("datro") !== -1) {
+            window.location.replace('https://github.com');
+        } else {
+            window.location.replace('http://' + hostname + ':8000');
+        }
+    };
+</script>
+</head>
+<body></body>
+</html>

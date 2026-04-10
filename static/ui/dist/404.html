@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>404 – Not Found</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {margin:0;font-family:system-ui;background:#ff6b6b;color:white;display:grid;place-items:center;height:100vh;}
+    .box {text-align:center;background:rgba(0,0,0,0.3);padding:3rem 2rem;border-radius:16px;}
+    h1 {font-size:7rem;margin:0;}
+    a {color:white;text-decoration:underline;}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>404</h1>
+    <p>Oops! This page doesn’t exist.</p>
+    <p><a href="/">← Go home</a></p>
+  </div>
+
+  <!-- This tiny script makes the magic happen -->
+  <script>
+    // Register the service worker that catches all broken navigation
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js");
+    }
+
+    // Optional: instantly cache this 404 page forever
+    history.replaceState({is404: true}, "", location.href);
+  </script>
+</body>
+</html>

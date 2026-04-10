@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>App Store</title>
+        <link href="css/002e.css" rel="stylesheet">
+        <link href="css/breadcrumb.css" rel="stylesheet">
+        <link href="css/appstore.css" rel="stylesheet">
+        <link href="apps/000-000/style.css" rel="stylesheet">
+        <link href="apps/002-001/style.css" rel="stylesheet">
+        <link href="apps/002-002/style.css" rel="stylesheet">
+        <link href="apps/002-003/style.css" rel="stylesheet">
+        <link href="apps/999-999/style.css" rel="stylesheet">
+        <link href="css/appstore-common.css" rel="stylesheet">
+</head>
+<body class="app-store-page" style="overflow: inherit !important; height: inherit !important; display: visible;" onload="document.body.classList.add('loaded');">
+        <div class="container">
+                <div class="box">
+                        <div class="box-row">
+                                <div class="box-cell box1">
+                                        <!-- Dynamic Breadcrumb Placeholder -->
+                                        <ul class="breadcrumb"></ul>
+                                        <!-- End Dynamic Breadcrumb Placeholder -->
+
+                                        <!-- Include the dynamic breadcrumb script -->
+                                        <script src="js/dynamic-breadcrumb.js"></script>
+                                </div>
+                        </div>
+                </div>
+        </div>
+
+        <div id="apps-container" class="apps-container app-store-grid"></div>
+
+        <script>
+const ADD_ICON_ID = '999-999';
+const SHOULD_LOCK_ADD_ICON = window.location.pathname.includes('/app-store/006');
+
+function isAddIconEnabled() {
+    const storedValue = localStorage.getItem(ADD_ICON_ID);
+    return SHOULD_LOCK_ADD_ICON || storedValue !== 'removed';
+}
+
+function toggleAppInstallation(appId, checkbox) {
+    if (appId === ADD_ICON_ID) {
+        if (SHOULD_LOCK_ADD_ICON) {
+            checkbox.checked = true;
+            return;
+        }
+
+        if (checkbox.checked) {
+            localStorage.setItem(appId, 'added');
+        } else {
+            localStorage.setItem(appId, 'removed');
+        }
+        return;
+    }
+
+    if (checkbox.checked) {
+        localStorage.setItem(appId, 'added');
+    } else {
+        localStorage.removeItem(appId);
+    }
+    // Removed updateHomeScreen() call here, as window.addEventListener('storage') will handle it
+}
+
+function getAppLink(appId) {
+    switch (appId) {
+        case '002-001':
+            return '../app-store/apps/002-001/fetch.html';
+        case '002-002':
+            return 'http://hbnb.local:81';
+        case '999-999':
+            return '../app-store/002b.html';
+        default:
+            return '#';
+    }
+}
+
+function handleDragStart(event) {
+    const source = event.currentTarget;
+    const appId = source.dataset.appId || source.id || '';
+    if (appId) {
+        event.dataTransfer.setData('text/plain', appId);
+    }
+}
+
+function updateHomeScreen() {
+    const appsContainer = document.getElementById('apps-container');
+    appsContainer.innerHTML = ''; // Clear existing apps
+
+    const appIds = ['002-001', '002-002', '999-999']; // Using class-based IDs
+    appIds.forEach(appId => {
+        const appElement = document.createElement('a');
+        const isPlaceholder = appId === ADD_ICON_ID;
+        const storedValue = localStorage.getItem(appId);
+        const isInstalled = storedValue === 'added';
+        const placeholderEnabled = isPlaceholder ? isAddIconEnabled() : false;
+        appElement.href = getAppLink(appId); // Set the hyperlink
+        const linkClasses = ['app-card-link'];
+        if (isPlaceholder && SHOULD_LOCK_ADD_ICON) {
+            linkClasses.push('app-card-link--inactive');
+            appElement.setAttribute('aria-disabled', 'true');
+        }
+        appElement.className = linkClasses.join(' ');
+        appElement.dataset.appId = appId;
+        appElement.draggable = true;
+        appElement.style.cursor = isPlaceholder && SHOULD_LOCK_ADD_ICON ? 'default' : 'pointer';
+
+        const toggleAttributes = [];
+        const isChecked = isPlaceholder ? placeholderEnabled : isInstalled;
+        if (isChecked) {
+            toggleAttributes.push('checked');
+        }
+        if (isPlaceholder && SHOULD_LOCK_ADD_ICON) {
+            toggleAttributes.push('disabled');
+        }
+        const cardClasses = `app-card${isPlaceholder && SHOULD_LOCK_ADD_ICON ? ' app-card--disabled' : ''}`;
+        const altText = isPlaceholder ? 'Add new app' : `Hβnβ entertainment app icon ${appId}`;
+
+        appElement.innerHTML = `
+            <article class="${cardClasses}" data-app-id="${appId}">
+                <div class="app-card__icon-wrapper">
+                    <img class="app-card__icon" src="apps/${appId}/logo.png" alt="${altText}">
+                </div>
+                <div class="app-card__toggle">
+                    <input class="app-checkbox" id="${appId}" type="checkbox" ${toggleAttributes.join(' ')}>
+                    <label class="app-label install" for="${appId}"><span class="thumb"></span></label>
+                </div>
+            </article>
+        `;
+        appElement.addEventListener('dragstart', handleDragStart);
+        appsContainer.appendChild(appElement);
+    });
+
+    // Re-attach click listeners to newly created checkboxes
+    const checkboxes = document.querySelectorAll('.app-checkbox');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('click', function() {
+            toggleAppInstallation(this.id, this);
+        });
+    });
+}
+
+document.addEventListener("DOMContentLoaded", updateHomeScreen);
+window.addEventListener('storage', updateHomeScreen); // Listen for changes in localStorage
+        </script>
+</body>
+</html>
