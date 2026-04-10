@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-accent: #3B82F6;
+  --color-border: var(--border);
+  --color-card: var(--card);
+}
+
+@layer base {
+  :root {
+    --paper: #F5F5F4;
+    --ink: #0A0A0A;
+    --border: #D6D6D4;
+    --card: #FFFFFF;
+    --accent: #3B82F6;
+  }
+
+  .dark {
+    --paper: #0A0A0A;
+    --ink: #F5F5F4;
+    --border: #262626;
+    --card: #141414;
+    --accent: #60A5FA;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased transition-colors duration-300;
+    background-image: 
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(to right, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-repeat: repeat;
+  }
+}
+
+.bento-card {
+  @apply bg-card border border-border rounded-none overflow-hidden transition-all duration-300;
+}
+
+.bento-card:hover {
+  @apply border-ink shadow-2xl shadow-ink/5;
+}
+
+.frame {
+  @apply border border-border bg-card;
+}
+
+.rail-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  @apply text-[10px] uppercase tracking-[0.2em] font-bold text-ink/30;
+}
+
+.marquee-track {
+  display: flex;
+  animation: marquee 60s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
