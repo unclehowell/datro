@@ -90,7 +90,26 @@
 
 <main>
 <div class="demo-iframe-container container-mq">
-<iframe class="demo-iframe iframe-mq" sandbox="allow-popups-to-escape-sandbox allow-same-origin allow-modals allow-scripts allow-popups allow-forms" onload="resizeframez(this);" id="framez" name="framez" src="dashboard/001-a.html" webkitallowfullscreen mozallowfullscreen allowfullscreen="true" ></iframe>
+<script>
+    (function() {
+      function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+          var c = ca[i];
+          while (c.charAt(0)==' ') c = c.substring(1,c.length);
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+      }
+      var initialSrc = "dashboard/001-a.html";
+      if (!getCookie('datro_login')) {
+        // Red background: <html><body style="margin:0;padding:0;background-color:red;height:100vh;width:100vw;"></body></html>
+        initialSrc = 'data:text/html;base64,PGh0bWw+PGJvZHkgc3R5bGU9Im1hcmdpbjowO3BhZGRpbmc6MDtiYWNrZ3JvdW5kLWNvbG9yOnJlZDtoZWlnaHQ6MTAwdmg7d2lkdGg6MTAwdnc7Ij48L2JvZHk+PC9odG1sPg==';
+      }
+      document.write('<iframe class="demo-iframe iframe-mq" sandbox="allow-popups-to-escape-sandbox allow-same-origin allow-modals allow-scripts allow-popups allow-forms" onload="resizeframez(this);" id="framez" name="framez" src="' + initialSrc + '" webkitallowfullscreen mozallowfullscreen allowfullscreen="true" ></iframe>');
+    })();
+</script>
 </div>
 </main>
 
@@ -126,8 +145,27 @@
     iFrameResize({ log: true }, '#framez')
 </script>
 <script>
+    function getCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+    }
+
     function setIframeSrc(iframeId, url) {
-      document.getElementById(iframeId).src = url;
+      var isLoggedIn = getCookie('datro_login');
+      var targetUrl = url;
+
+      if (!isLoggedIn) {
+        // Red background
+        targetUrl = 'data:text/html;base64,PGh0bWw+PGJvZHkgc3R5bGU9Im1hcmdpbjowO3BhZGRpbmc6MDtiYWNrZ3JvdW5kLWNvbG9yOnJlZDtoZWlnaHQ6MTAwdmg7d2lkdGg6MTAwdnc7Ij48L2JvZHk+PC9odG1sPg==';
+      }
+
+      document.getElementById(iframeId).src = targetUrl;
     }
     function resizeframez(obj) {
       obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
