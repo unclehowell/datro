@@ -1,4 +1,5 @@
-// Cloudflare Worker for financecheque.uk and www.financecheque.uk serving fcuk static files
+// Cloudflare Worker for financecheque.uk and www.financecheque.uk
+// Serves fcuk static files directly from root path
 addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request));
 });
@@ -9,19 +10,16 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type",
 };
 
+const STATIC_BASE = "https://raw.githubusercontent.com/unclehowell/datro/gh-pages/static/fcuk";
+
 async function handleRequest(request) {
   try {
     const url = new URL(request.url);
     let path = url.pathname;
 
-    // Root path redirects to /fcuk/
+    // Root -> index.html
     if (path === "/" || path === "") {
-      return Response.redirect("https://financecheque.uk/fcuk/", 302);
-    }
-
-    // Strip /fcuk prefix and get the path
-    if (path.startsWith("/fcuk")) {
-      path = path.replace(/^\/fcuk/, "") || "/";
+      path = "/index.html";
     }
 
     // Add .html if no extension
@@ -30,13 +28,11 @@ async function handleRequest(request) {
     }
 
     // Fetch from GitHub raw content
-    const githubUrl = `https://raw.githubusercontent.com/unclehowell/datro/gh-pages/static/fcuk${path}`;
-
+    const githubUrl = `${STATIC_BASE}${path}`;
     const response = await fetch(githubUrl);
 
     if (response.ok) {
       const content = await response.text();
-
       let contentType = "text/plain";
       if (path.endsWith(".html")) contentType = "text/html";
       else if (path.endsWith(".css")) contentType = "text/css";
@@ -47,23 +43,21 @@ async function handleRequest(request) {
       else if (path.endsWith(".svg")) contentType = "image/svg+xml";
       else if (path.endsWith(".md")) contentType = "text/markdown";
 
-      const headers = {
-        "Content-Type": `${contentType}; charset=utf-8`,
-        "Cache-Control": "public, max-age=300",
-        ...corsHeaders
-      };
-
-      return new Response(content, { status: 200, headers });
+      return new Response(content, {
+        status: 200,
+        headers: {
+          "Content-Type": `${contentType}; charset=utf-8`,
+          "Cache-Control": "public, max-age=300",
+          ...corsHeaders
+        }
+      });
     }
 
-    // Try index.html fallback
-    if (!path.includes("index.html")) {
-      const indexUrl = `https://raw.githubusercontent.com/unclehowell/datro/gh-pages/static/fcuk/index.html`;
-      const idxResp = await fetch(indexUrl);
-
+    // Fallback to index.html
+    if (path !== "/index.html") {
+      const idxResp = await fetch(`${STATIC_BASE}/index.html`);
       if (idxResp.ok) {
-        const content = await idxResp.text();
-        return new Response(content, {
+        return new Response(await idxResp.text(), {
           status: 200,
           headers: {
             "Content-Type": "text/html; charset=utf-8",
