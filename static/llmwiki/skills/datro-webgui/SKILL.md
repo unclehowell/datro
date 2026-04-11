@@ -33,9 +33,9 @@ User → nginx → index.html (passphrase gate) → iframes load inner pages
 
 All visitors see a login wall before the UI appears. The gate is client-side only (sessionStorage).
 
-**Passphrase:** Set via environment variable `DATRO_PASSPHRASE` (not stored in repo)
+**Passphrase:** Set via environment variable `FINANCECHEQUEUK_PASSPHRASE` (not stored in repo)
 
-The passphrase is loaded at runtime from environment variable. Check `.env` or `.env.example` for `DATRO_PASSPHRASE`. Never commit the actual passphrase - it should only exist in the server's environment.
+The passphrase is loaded at runtime from environment variable. Check `.env` or `.env.example` for `FINANCECHEQUEUK_PASSPHRASE`. Never commit the actual passphrase - it should only exist in the server's environment.
 
 **Implementation** (in `/home/ubuntu/datro/static/ui/index.html`):
 - `#login-overlay` div covers the full viewport with password input and "Reply by logging in" subtitle text
@@ -45,7 +45,7 @@ The passphrase is loaded at runtime from environment variable. Check `.env` or `
 
 **PITFALL — CSS Specificity:** Do NOT use `#body:not(.authenticated)` selectors to hide body children. The `#body` ID selector has higher specificity than `.authenticated` class, and `!important` won't reliably override it. Use a full-viewport overlay with higher z-index instead, hide it with direct JS `style.display = "none"` on success.
 
-**To change passphrase:** Update `DATRO_PASSPHRASE` environment variable and restart the web server. The UI reads this from the server-side config, not hardcoded in the HTML.
+**To change passphrase:** Update `FINANCECHEQUEUK_PASSPHRASE` environment variable and restart the web server. The UI reads this from the server-side config, not hardcoded in the HTML.
 
 ## Default Landing Page (After Login)
 
