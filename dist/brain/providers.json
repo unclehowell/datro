@@ -1,0 +1,20 @@
+[
+  {"name": "Groq", "url": "https://api.groq.com/openai/v1", "key_env_var": "GROQ_API_KEY"},
+  {"name": "Cerebras", "url": "https://api.cerebras.ai/v1", "key_env_var": "CEREBRAS_API_KEY"},
+  {"name": "SambaNova", "url": "https://api.sambanova.ai/v1", "key_env_var": "SAMBA_API_KEY"},
+  {"name": "Google AI Studio", "url": "https://generativelanguage.googleapis.com/v1beta/models", "key_env_var": "GOOGLE_API_KEY"},
+  {"name": "DeepSeek", "url": "https://api.deepseek.com/v1", "key_env_var": "DEEPSEEK_API_KEY"},
+  {"name": "Mistral", "url": "https://api.mistral.ai/v1", "key_env_var": "MISTRAL_API_KEY"},
+  {"name": "Chutes", "url": "https://api.chutes.ai/v1", "key_env_var": "CHUTES_API_KEY"},
+  {"name": "BytePlus", "url": "https://api.byteplus.com/v1", "key_env_var": "BYTEPLUS_API_KEY"},
+  {"name": "AI21", "url": "https://api.ai21.com/v1", "key_env_var": "AI21_API_KEY"},
+  {"name": "xAI", "url": "https://api.x.ai/v1", "key_env_var": "XAI_API_KEY"},
+  {"name": "Hugging Face", "url": "https://api.huggingface.co/v1", "key_env_var": "HF_API_KEY"},
+  {"name": "OpenRouter", "url": "https://openrouter.ai/api/v1", "key_env_var": "OPENROUTER_API_KEY"},
+  {"name": "Predibase", "url": "https://api.predibase.com/v1", "key_env_var": "PREDIBASE_API_KEY"},
+  {"name": "Cloudflare", "url": "https://api.cloudflare.com/v1", "key_env_var": "CLOUDFLARE_API_KEY"},
+  {"name": "NVIDIA", "url": "https://api.nv.ai/v1", "key_env_var": "NVIDIA_API_KEY"},
+  {"name": "GitHub", "url": "https://api.github.com/openai/v1", "key_env_var": "GITHUB_TOKEN"},
+  {"name": "laozhang", "url": "https://api.laozhang.dev/v1", "key_env_var": "LAOZHANG_API_KEY"},
+  {"name": "Puter", "url": "https://api.puter.com/v1", "key_env_var": "PUTER_API_KEY"}
+]

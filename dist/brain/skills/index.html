@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <meta content="LLM Wiki - Skills" name="description">
+  <meta content="DATRO Consortium" name="author">
+  <title>LLM Wiki - Skills</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport">
+  <link href="../../library/_theme-explorer/favicons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
+  <link href="../../library/_theme-explorer/favicons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
+  <link href="../../library/_theme-explorer/favicons/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+  <link href="../../library/_theme-explorer/favicons/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+  <link href="../../library/_theme-explorer/favicons/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+  <link href="../../library/_theme-explorer/favicons/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+  <link href="../../library/_theme-explorer/favicons/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+  <link href="../../library/_theme-explorer/favicons/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+  <link href="../../library/_theme-explorer/favicons/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180">
+  <link href="../../library/_theme-explorer/favicons/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png">
+  <link href="../../library/_theme-explorer/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+  <link href="../../library/_theme-explorer/favicons/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
+  <link href="../../library/_theme-explorer/favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+  <meta content="../../library/_theme-explorer/favicons/ms-icon-144x144.png" name="msapplication-TileImage">
+  <link rel="stylesheet" href="../../library/_theme-explorer/style.css">
+  <link rel="stylesheet" href="../../library/_theme-explorer/glyphicon.css">
+  <style>
+    html { overflow-y: scroll; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 0px; background: transparent; }
+    body { background: #f5f5f5; }
+    .wiki-container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .breadcrumb { padding: 10px 0; color: #666; font-size: 14px; }
+    .breadcrumb a { color: #336; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    h1 { color: #336; border-bottom: 2px solid #336; padding-bottom: 10px; }
+    .section { margin: 20px 0; }
+    .section h2 { color: #555; font-size: 18px; margin-bottom: 15px; }
+    .file-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+    .file-card { 
+      background: #fff; border: 1px solid #ddd; border-radius: 8px; 
+      padding: 15px; text-decoration: none; color: #333; transition: all 0.2s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .file-card:hover { background: #f0f4ff; border-color: #336; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    .file-card .filename { font-weight: bold; color: #336; font-size: 14px; }
+    .folder-card { background: #e8f4e8; }
+    .folder-card:hover { background: #d8f0d8; }
+    .folder-card .filename { color: #2a7a2a; }
+  </style>
+  </head>
+  <body>
+    <div class="wiki-container">
+      <div class="breadcrumb">
+        <a href="../../">DATRO</a> &gt; <a href="../">static</a> &gt; <a href="./">llmwiki</a> &gt; <span>skills</span>
+      </div>
+      
+      <h1>🗂️ Skills</h1>
+      <p style="color:#666;">Agent skills and capabilities</p>
+      
+      <div id="skillsGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:15px;">
+        <p>Loading...</p>
+      </div>
+    </div>
+    
+    <script src="../../library/_theme-explorer/jquery.min.js"></script>
+    <script>
+      fetch('_treeview.json')
+        .then(r => r.json())
+        .then(data => {
+          const grid = document.getElementById('skillsGrid');
+          grid.innerHTML = '';
+          data.forEach(item => {
+            if (item._links && item._links.html) {
+              const card = document.createElement('a');
+              card.href = item._links.html;
+              card.className = 'file-card folder-card';
+              card.innerHTML = `<div class="filename">📁 ${item.name.replace(/<[^>]*>/g, '')}</div>`;
+              grid.appendChild(card);
+            }
+          });
+        });
+    </script>
+  </body>
+</html>
