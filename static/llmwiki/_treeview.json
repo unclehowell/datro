@@ -63,10 +63,31 @@
     }
   },
   {
-    "name": "<div class='subtitle-line enable-link'>COLLABORATE.md</div>",
-    "path": "COLLABORATE.md",
+    "name": "<div class='subtitle-line enable-link'>CHANGELOG.md</div>",
+    "path": "CHANGELOG.md",
     "_links": {
-      "md": "COLLABORATE.md"
+      "md": "CHANGELOG.md"
+    }
+  },
+  {
+    "name": "<div class='subtitle-line enable-link'>AWS_INFRASTRUCTURE.md</div>",
+    "path": "AWS_INFRASTRUCTURE.md",
+    "_links": {
+      "md": "AWS_INFRASTRUCTURE.md"
+    }
+  },
+  {
+    "name": "<div class='subtitle-line enable-link'>HEARTBEAT.md</div>",
+    "path": "HEARTBEAT.md",
+    "_links": {
+      "md": "HEARTBEAT.md"
+    }
+  },
+  {
+    "name": "<div class='subtitle-line enable-link'>stripe-key-reference.md</div>",
+    "path": "stripe-key-reference.md",
+    "_links": {
+      "md": "stripe-key-reference.md"
     }
   },
   {
@@ -88,13 +109,6 @@
     "path": "sessions/",
     "_links": {
       "html": "sessions/"
-    }
-  },
-  {
-    "name": "<div class='page-scroll-fix'></div>",
-    "path": "javascript:void(0)",
-    "_links": {
-      "html": "javascript:void(0)"
     }
   }
 ]
