@@ -30,7 +30,7 @@ flywheel.config.json - Configuration
 python3 agent/main.py --once
 
 # Or via cron (twice daily)
-/home/ubuntu/datro-clone/agent/main.py --once
+/home/ubuntu/datro/agent/main.py --once
 ```
 
 ## Configuration
@@ -50,8 +50,8 @@ Edit `flywheel.config.json`:
 
 ## Logs
 
-- `/home/ubuntu/datro-clone/logs/flywheel.log` - Main log
-- `/home/ubuntu/datro-clone/memory/history.json` - Issue history
+- `/home/ubuntu/datro/logs/flywheel.log` - Main log
+- `/home/ubuntu/datro/memory/history.json` - Issue history
 
 ## Test
 

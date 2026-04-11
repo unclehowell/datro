@@ -9,7 +9,7 @@
 ## Directories
 - **Web Root**: /var/www/datro (served by nginx)
 - **Working Dir**: ~/datro (scripts)
-- **Datro Clone**: ~/datro-clone
+- **Flywheel**: ~/datro/agent/main.py (runs every 6 hours via unified sync)
 
 ## fcuk-sync Script
 - **Path**: ~/datro/scripts/fcuk-sync.sh

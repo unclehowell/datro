@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 from typing import Dict, Tuple
 
-REPO_ROOT = Path("/home/ubuntu/datro-clone")
+REPO_ROOT = Path("/home/ubuntu/datro")
 
 
 def run_command(cmd: str, timeout: int = 120) -> Tuple[int, str, str]:

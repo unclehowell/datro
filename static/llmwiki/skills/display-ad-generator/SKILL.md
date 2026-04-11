@@ -16,7 +16,7 @@ The ad generator originates from `github.com/scottishbay/datro` — a large mono
 
 | Role | Path |
 |------|------|
-| Upstream repo | `/home/ubuntu/datro-clone/` (clone of github.com/scottishbay/datro) |
+| Upstream repo | `/home/ubuntu/datro/` (clone of github.com/scottishbay/datro) |
 | Deployed canvas | `/home/ubuntu/datro/static/canvas/` (copied from clone's `static/pcp/`) |
 | Main page | `/home/ubuntu/datro/static/canvas/pages/banner-generator.html` |
 | Assets | `/home/ubuntu/datro/static/canvas/assets/` |
@@ -26,8 +26,8 @@ The ad generator originates from `github.com/scottishbay/datro` — a large mono
 
 ```bash
 cd /home/ubuntu
-git clone https://github.com/scottishbay/datro.git /home/ubuntu/datro-clone
-cp -r /home/ubuntu/datro-clone/static/pcp /home/ubuntu/datro/static/canvas
+git clone https://github.com/scottishbay/datro.git /home/ubuntu/datro
+cp -r /home/ubuntu/datro/static/pcp /home/ubuntu/datro/static/canvas
 ```
 
 ## Nginx Routing
@@ -118,8 +118,8 @@ Or embed directly by modifying `loadDefaults()` to hardcode base64 data URIs, or
 
 When the upstream repo changes:
 ```bash
-cd /home/ubuntu/datro-clone && git pull
-rsync -av --delete /home/ubuntu/datro-clone/static/pcp/ /home/ubuntu/datro/static/canvas/
+cd /home/ubuntu/datro && git pull
+rsync -av --delete /home/ubuntu/datro/static/pcp/ /home/ubuntu/datro/static/canvas/
 # Re-apply patches: remove auth redirects, add mobile fix, add auto-generate
 sudo nginx -t && sudo systemctl reload nginx
 ```

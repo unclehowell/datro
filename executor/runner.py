@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 from typing import Dict, List, Optional
 
-REPO_ROOT = Path("/home/ubuntu/datro-clone")
+REPO_ROOT = Path("/home/ubuntu/datro")
 
 
 def apply_edit(file_path: str, regex_old: str, replacement: str) -> bool:

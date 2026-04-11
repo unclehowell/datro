@@ -11,7 +11,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, Optional
 
-REPO_ROOT = Path("/home/ubuntu/datro-clone")
+REPO_ROOT = Path("/home/ubuntu/datro")
 TARGET_BRANCH = "gh-pages"  # DATRO uses gh-pages branch (not main)
 
 

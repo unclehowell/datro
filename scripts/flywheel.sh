@@ -5,7 +5,7 @@
 
 set -e
 
-REPO_DIR="/home/ubuntu/datro-clone"
+REPO_DIR="/home/ubuntu/datro"
 LOG_FILE="/home/ubuntu/logs/flywheel.log"
 GITHUB_TOKEN_FILE="/home/ubuntu/.github-token"
 CHANGELOG="$REPO_DIR/CHANGELOG.md"

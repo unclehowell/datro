@@ -10,7 +10,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional
 
-MEMORY_DIR = Path("/home/ubuntu/datro-clone/memory")
+MEMORY_DIR = Path("/home/ubuntu/datro/memory")
 MEMORY_FILE = MEMORY_DIR / "history.json"
 MAX_HISTORY = 200
 

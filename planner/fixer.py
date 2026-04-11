@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 from typing import Dict, List
 
-REPO_ROOT = Path("/home/ubuntu/datro-clone")
+REPO_ROOT = Path("/home/ubuntu/datro")
 
 
 def generate_fix_plan(issue: Dict) -> List[Dict]:

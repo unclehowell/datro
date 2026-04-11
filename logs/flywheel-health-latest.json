@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-04-11T03:36:40.389928",
+  "overall": "ok",
+  "checks": {
+    "llm": {
+      "status": "ok",
+      "providers": [
+        "fallback_providers_defined"
+      ],
+      "errors": [
+        "Hermes model list failed: Error: 'hermes model' requires an interactive terminal.\nIt cannot be run through a pipe or non-inter"
+      ]
+    },
+    "system": {
+      "status": "ok",
+      "issues": [],
+      "memory": "417Mi"
+    },
+    "network": {
+      "status": "ok",
+      "errors": []
+    },
+    "git": {
+      "status": "ok",
+      "issues": [],
+      "uncommitted": 15
+    },
+    "packages": {
+      "status": "ok",
+      "updates": []
+    }
+  }
+}

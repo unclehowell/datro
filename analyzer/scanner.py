@@ -12,7 +12,7 @@ import re
 from pathlib import Path
 from typing import List, Dict
 
-REPO_ROOT = Path("/home/ubuntu/datro-clone")
+REPO_ROOT = Path("/home/ubuntu/datro")
 EXCLUSIONS = {".git", "node_modules", "dist", ".github", "logs", "memory", "agent", "analyzer", "planner", "executor", "validator", "gitops"}
 
 

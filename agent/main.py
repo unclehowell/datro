@@ -12,7 +12,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-REPO_ROOT = Path("/home/ubuntu/datro-clone")
+REPO_ROOT = Path("/home/ubuntu/datro")
 CONFIG_FILE = REPO_ROOT / "flywheel.config.json"
 LOG_FILE = REPO_ROOT / "logs" / "flywheel.log"
 
@@ -92,6 +92,13 @@ def main_loop(interval_secs: int = 43200):
     
     # Ensure we're on the right branch first
     log("=== DATRO Flywheel Starting ===")
+    
+    # Pre-flight health check
+    log("Step 0: Running health check...")
+    health_rc, health_out, health_err = run_py_script(REPO_ROOT / "agent" / "health_check.py")
+    if health_rc != 0:
+        log(f"Health check failed: {health_err[:200]}")
+        # Continue anyway - health check is advisory
     
     # Step 1: Sync with remote
     log("Step 1: Syncing with remote...")
