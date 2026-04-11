@@ -56,4 +56,4 @@ When a user says something is "already configured" or "already set up", I previo
 - Finding credentials or setup files
 
 ## Related Files
-- `/home/ubuntu/datro/static/brain/failure_learning.md`
+- `/home/ubuntu/datro/static/llmwiki/failure_learning.md`

@@ -1,13 +1,13 @@
 /**
  * Display Ad Generator - Config Loader
- * Loads variables from /home/ubuntu/datro/static/brain/skills/display-ads/config.json
+ * Loads variables from /home/ubuntu/datro/static/llmwiki/skills/display-ads/config.json
  * Allows separation of agent commands from static UI
  */
 
 class DisplayAdConfig {
     static async load() {
         try {
-            const response = await fetch('/brain/skills/display-ads/config.json');
+            const response = await fetch('/llmwiki/skills/display-ads/config.json');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -56,7 +56,7 @@ class DisplayAdConfig {
         // This would require a backend API endpoint
         // For now, just log the change (agent can modify the file directly)
         console.log(`Config update requested: ${path} = ${value}`);
-        console.log('Have the agent modify /home/ubuntu/datro/static/brain/skills/display-ads/config.json directly');
+        console.log('Have the agent modify /home/ubuntu/datro/static/llmwiki/skills/display-ads/config.json directly');
         return false;
     }
 }

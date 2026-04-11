@@ -18,7 +18,7 @@ notes:
 
 Goal
 - Install @google/gemini-cli
-- Ensure Gemini CLI uses additional context directories (Datro static brain + optional /home/ubuntu/datro/static/brain)
+- Ensure Gemini CLI uses additional context directories (Datro static brain + optional /home/ubuntu/datro/static/llmwiki)
 - Provide a working local MCP server alias `honcho` exposing a few Honcho memory tools
 
 1) Install Gemini CLI
@@ -43,8 +43,8 @@ Write ~/.gemini/settings.json like:
   "context": {
     "fileName": ["CONTEXT.md", "GEMINI.md"],
     "includeDirectories": [
-      "/var/www/datro/static/brain",
-      "/home/ubuntu/datro/static/brain"
+      "/var/www/datro/static/llmwiki",
+      "/home/ubuntu/datro/static/llmwiki"
     ],
     "loadMemoryFromIncludeDirectories": true,
     "fileFiltering": {
@@ -66,11 +66,11 @@ Notes
 4) Ensure Datro brain has a GEMINI.md
 Gemini uses GEMINI.md as a project context file.
 If the target path is under /var/www and you hit permission errors, use sudo:
-- sudo mkdir -p /var/www/datro/static/brain
-- sudo tee /var/www/datro/static/brain/GEMINI.md >/dev/null <<'EOF'
+- sudo mkdir -p /var/www/datro/static/llmwiki
+- sudo tee /var/www/datro/static/llmwiki/GEMINI.md >/dev/null <<'EOF'
   ...content...
   EOF
-- sudo chmod 0644 /var/www/datro/static/brain/GEMINI.md
+- sudo chmod 0644 /var/www/datro/static/llmwiki/GEMINI.md
 
 5) Auth: Gemini API key
 Gemini CLI can use:
@@ -131,7 +131,7 @@ Gemini will display these as tool names prefixed:
 
 7) Verification
 A) Context directory inclusion
-- cd /var/www/datro/static/brain
+- cd /var/www/datro/static/llmwiki
 - gemini -p "summarize what this GEMINI.md says"
 
 B) MCP server discovery

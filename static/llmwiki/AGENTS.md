@@ -29,7 +29,7 @@ After completing any task:
    - Prefer: learnings/ (approved, public)
    - If sensitive/temporary: memory/archive/learned/ (gitignored)
 2) Sync brain:
-   - bash scripts/sync.sh /home/ubuntu/datro/static/brain
+   - bash scripts/sync.sh /home/ubuntu/datro/static/llmwiki
 
 Rules:
 - NO SECRETS: never write API keys, credentials, or private URLs into this repo.
