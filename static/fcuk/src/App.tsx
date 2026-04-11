@@ -30,7 +30,8 @@ import {
   Instagram,
   Mail,
   MessageCircle,
-  Send
+  Send,
+  Trash2
 } from 'lucide-react';
 import LanguageSelector, { Language } from './components/LanguageSelector';
 import AgentComputer from './components/AgentComputer';
@@ -97,15 +98,18 @@ export default function App() {
   const [demoAgents, setDemoAgents] = useState<{id: number, isOpen: boolean, balance: number, hasInteracted: boolean, title: string, isSpawned: boolean}[]>([
     { id: 1, isOpen: false, balance: 0, hasInteracted: false, title: 'CEO', isSpawned: true },
     { id: 2, isOpen: false, balance: 0, hasInteracted: false, title: 'Employee 1', isSpawned: false },
-    { id: 3, isOpen: false, balance: 0, hasInteracted: false, title: 'Employee 2', isSpawned: false }
+    { id: 3, isOpen: false, balance: 0, hasInteracted: false, title: 'Employee 2', isSpawned: false },
+    { id: 4, isOpen: false, balance: 0, hasInteracted: false, title: 'Employee 3', isSpawned: false },
+    { id: 5, isOpen: false, balance: 0, hasInteracted: false, title: 'Employee 4', isSpawned: false }
   ]);
   const [showSpawnModal, setShowSpawnModal] = useState(false);
   const [spawnType, setSpawnType] = useState<'friend' | 'employee' | null>(null);
   const [inviteEmail, setInviteEmail] = useState('');
   const [demoPrompt, setDemoPrompt] = useState<string | null>(null);
   const [activeAgentId, setActiveAgentId] = useState<number | null>(null);
+  const [onboardingStep, setOnboardingStep] = useState(0);
+  const [walletBalance, setWalletBalance] = useState(0.00);
   const [forceConnect, setForceConnect] = useState(false);
-  const [guideStep, setGuideStep] = useState(0);
 
   const [hasSelectedAgent, setHasSelectedAgent] = useState(false);
 
@@ -128,7 +132,6 @@ export default function App() {
       setShowSpawnModal(false);
       setSpawnType(null);
       setInviteEmail('');
-      if (guideStep === 7) setGuideStep(8);
       return;
     }
 
@@ -148,7 +151,6 @@ export default function App() {
     setDemoPrompt(spawnType === 'employee' ? 'New agent spawned' : 'Invitation sent');
     setShowSpawnModal(false);
     setSpawnType(null);
-    if (guideStep === 7) setGuideStep(8);
   };
 
   const handleRemoveAgent = (id: number) => {
@@ -168,7 +170,7 @@ export default function App() {
     setDemoAgents(prev => prev.map(a => ({ ...a, isOpen: a.id === id })));
     setActiveAgentId(id);
     setHasSelectedAgent(true);
-    if (guideStep === 0) setGuideStep(1);
+    if (onboardingStep === 0) setOnboardingStep(1);
   };
 
   const handleConnectAgent = (id: number) => {
@@ -178,18 +180,30 @@ export default function App() {
     }
     handleOpenAgent(id);
     setForceConnect(true);
-    if (guideStep === 1) setGuideStep(2);
+    if (onboardingStep === 1) setOnboardingStep(2);
+  };
+
+  const playDing = () => {
+    const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/1071/1071-preview.mp3');
+    audio.play().catch(() => {});
   };
 
   const handleAgentAuthorize = (id: number, amount: number) => {
     setDemoAgents(prev => prev.map(a => 
       a.id === id ? { ...a, balance: a.balance + amount, hasInteracted: true } : a
     ));
+    setWalletBalance(prev => {
+      const newBalance = prev + amount;
+      playDing();
+      return newBalance;
+    });
     setForceConnect(false);
-    if (guideStep === 5) setGuideStep(6);
+    if (onboardingStep === 3) {
+      setOnboardingStep(4);
+    }
   };
 
-  const isDemoUser = user?.email === 'demo@example.com';
+  const isDemoUser = user?.email === 'demo';
 
   const content = {
     en: {
@@ -301,8 +315,11 @@ export default function App() {
         <div className="max-w-[1800px] mx-auto px-8 h-24 flex items-center justify-between">
           <div className="flex items-center gap-16">
             <button onClick={() => setCurrentPage('home')} className="flex flex-col gap-2 group text-left">
-              <span className="font-bold text-3xl tracking-tighter text-white leading-none group-hover:text-accent transition-colors">FINANCE CHEQUE UK</span>
-              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent/80">Free, Fully Agentic, A.I Sales & Marketing Agent</span>
+              <span className="font-bold text-xl sm:text-3xl tracking-tighter text-white leading-none group-hover:text-accent transition-colors">FINANCE CHEQUE UK</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent/80">
+                <span className="sm:hidden">marketing Agent</span>
+                <span className="hidden sm:inline">Free, Fully Agentic, A.I Sales & Marketing Agent</span>
+              </span>
             </button>
           </div>
 
@@ -345,18 +362,24 @@ export default function App() {
                     
                     {user && (
                       <>
-                        <div className="flex items-center justify-between p-3 bg-accent/5 border border-accent/10 mb-2">
+                        <div className="flex items-center justify-between p-3 bg-accent/5 border border-accent/10 mb-2 relative">
                           <div className="flex items-center gap-2 text-accent">
                             <Coins size={16} />
-                            <span className="text-[10px] font-bold uppercase tracking-widest">£1,240.50</span>
+                            <span className="text-xs font-bold">{walletBalance.toFixed(2)} FCUK</span>
                           </div>
                           <button 
-                            onClick={() => setShowWalletNotice(!showWalletNotice)}
-                            className="relative p-1 text-accent hover:bg-accent/10 rounded-full transition-colors"
+                            onClick={() => { 
+                              setCurrentPage('exchange'); 
+                              setIsWalletMenuOpen(false); 
+                              if (onboardingStep === 4) setOnboardingStep(5);
+                            }}
+                            className="text-[8px] font-bold uppercase tracking-widest bg-accent text-white px-2 py-1 rounded hover:bg-ink transition-colors"
                           >
-                            <Bell size={14} />
-                            <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border border-paper" />
+                            Exchange
                           </button>
+                          {onboardingStep === 4 && user?.email === 'demo' && (
+                            <div className="absolute -left-2 -top-2 w-6 h-6 bg-accent text-white rounded-full flex items-center justify-center text-[10px] font-bold animate-bounce shadow-lg z-50">Step 5</div>
+                          )}
                         </div>
 
                         <AnimatePresence>
@@ -454,7 +477,11 @@ export default function App() {
 
       <main className="pt-24">
         {currentPage === 'exchange' ? (
-          <Exchange />
+          <Exchange 
+            onBack={() => setCurrentPage('home')} 
+            balance={walletBalance}
+            onboardingStep={onboardingStep}
+          />
         ) : currentPage === 'docs' ? (
           <div className="max-w-4xl mx-auto p-12 lg:p-24 space-y-16">
             <section className="space-y-8">
@@ -515,7 +542,7 @@ export default function App() {
               {/* Demo Manager UI */}
               <div className="absolute inset-0 z-[200] pointer-events-none overflow-y-auto">
                 <div className="max-w-[1800px] mx-auto px-8 py-24 min-h-full flex items-center justify-center">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-16 sm:gap-20 lg:gap-24 items-center justify-items-center w-full">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 sm:gap-20 lg:gap-24 items-center justify-items-center w-full">
                     {/* CEO Silhouette */}
                     <div className="flex flex-col items-center gap-6 pointer-events-auto">
                       {/* Silhouette */}
@@ -524,19 +551,19 @@ export default function App() {
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           onClick={() => handleOpenAgent(1)}
-                          className={`w-32 h-32 rounded-full bg-[#0a0a0a] border-4 border-[#1a1a1a] relative overflow-hidden shadow-2xl transition-all flex items-center justify-center hover:border-accent/50`}
+                          className={`w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-[#0a0a0a] border-4 border-[#1a1a1a] relative overflow-hidden shadow-2xl transition-all flex items-center justify-center hover:border-accent/50`}
                         >
-                          <User size={60} className="text-accent/20" />
-                          {guideStep === 0 && (
+                          <User size={40} className="sm:size-[60px] text-accent/20" />
+                          {onboardingStep === 0 && !user && (
                             <div className="absolute inset-0 z-50 flex items-center justify-center bg-accent/20 backdrop-blur-[2px]">
-                              <div className="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center text-[10px] font-bold animate-bounce shadow-2xl">Start</div>
+                              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent text-white rounded-full flex items-center justify-center text-[8px] sm:text-[10px] font-bold animate-bounce shadow-2xl">Step 1</div>
                             </div>
                           )}
                         </motion.button>
                       </div>
 
                       {/* Controls Stack */}
-                      <div className="flex flex-col items-center gap-4 w-[200px]">
+                      <div className="flex flex-col items-center gap-4 w-full max-w-[160px] sm:max-w-[200px]">
                         <div className="flex items-center justify-center gap-3 w-full">
                           <div className="flex items-center gap-1.5">
                             <button 
@@ -572,19 +599,28 @@ export default function App() {
                         </div>
 
                         <div className="grid grid-cols-2 gap-2 w-full">
-                          <button className="flex items-center justify-center gap-2 bg-card border border-border py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/40 hover:text-accent hover:border-accent transition-all">
+                          <button 
+                            onClick={() => handleConnectAgent(1)}
+                            className="flex items-center justify-center gap-2 bg-card border border-border py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/40 hover:text-accent hover:border-accent transition-all"
+                          >
                             <Zap size={12} />
                             Connect
                           </button>
                           <button className="flex items-center justify-center gap-2 bg-card border border-border py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/40 hover:text-accent hover:border-accent transition-all">
                             <Coins size={12} />
-                            Balance
+                            {demoAgents[0].balance.toFixed(2)}
                           </button>
-                          <button className="flex items-center justify-center gap-2 bg-card border border-border py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/40 hover:text-accent hover:border-accent transition-all">
+                          <button 
+                            onClick={handleSpawn}
+                            className="flex items-center justify-center gap-2 bg-card border border-border py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/40 hover:text-accent hover:border-accent transition-all"
+                          >
                             <Plus size={12} />
                             Spawn
                           </button>
-                          <button className="flex items-center justify-center gap-2 bg-card border border-border py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/40 hover:text-accent hover:border-accent transition-all">
+                          <button 
+                            onClick={() => handleRemoveAgent(1)}
+                            className="flex items-center justify-center gap-2 bg-card border border-border py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/40 hover:text-accent hover:border-accent transition-all"
+                          >
                             <X size={12} />
                             Remove
                           </button>
@@ -593,8 +629,8 @@ export default function App() {
                     </div>
 
                     {/* Add Agent Silhouettes */}
-                    {[2, 3, 4].map((id) => (
-                      <div key={id} className={`flex flex-col items-center gap-6 pointer-events-auto opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 ${id === 2 ? 'hidden sm:flex' : id === 3 ? 'hidden lg:flex' : 'hidden xl:flex'}`}>
+                    {[2, 3, 4, 5].map((id) => (
+                      <div key={id} className={`flex flex-col items-center gap-6 pointer-events-auto opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 ${id === 2 ? 'flex' : id === 3 ? 'hidden sm:flex' : id === 4 ? 'hidden lg:flex' : 'hidden xl:flex'}`}>
                         {/* Silhouette */}
                         <div className="relative">
                           <motion.button
@@ -605,26 +641,33 @@ export default function App() {
                                 setAuthModalTab('signup');
                                 setShowAuthModal(true);
                               } else if (user.email === 'demo') {
-                                setShowPaymentModal(true);
+                                if (id === 1 && onboardingStep === 0) {
+                                  setOnboardingStep(1);
+                                }
+                                setActiveAgentId(id);
+                                setDemoAgents(prev => prev.map(a => a.id === id ? { ...a, isOpen: true } : a));
                               }
                             }}
-                            className="w-32 h-32 rounded-full bg-[#0a0a0a]/30 border-4 border-[#1a1a1a] border-dashed relative overflow-hidden shadow-xl transition-all flex items-center justify-center hover:border-accent/50 group"
+                            className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-[#0a0a0a]/30 border-4 border-[#1a1a1a] border-dashed relative overflow-hidden shadow-xl transition-all flex items-center justify-center hover:border-accent/50 group"
                           >
                             <div className="relative">
-                              <User size={60} className="text-accent/5 opacity-20" />
+                              <User size={40} className="sm:size-[60px] text-accent/5 opacity-20" />
                               <div className="absolute inset-0 flex items-center justify-center">
-                                <Plus size={24} className="text-accent/40 group-hover:text-accent transition-colors" />
+                                <Plus size={20} className="sm:size-[24px] text-accent/40 group-hover:text-accent transition-colors" />
                               </div>
                             </div>
                           </motion.button>
                         </div>
 
                         {/* Controls Stack */}
-                        <div className="flex flex-col items-center gap-4 w-[200px]">
+                        <div className="flex flex-col items-center gap-4 w-full max-w-[160px] sm:max-w-[200px]">
                           <div className="flex items-center justify-center gap-3 w-full">
                             <div className="flex items-center gap-1.5">
-                              <button disabled className="opacity-50">
-                                <Mail size={16} className="text-accent" />
+                              <button 
+                                onClick={() => handleConnectAgent(id)}
+                                className="hover:scale-110 transition-transform opacity-90 hover:opacity-100"
+                              >
+                                <Zap size={16} className="text-accent" />
                               </button>
                               <button disabled className="opacity-50">
                                 <img 
@@ -643,23 +686,32 @@ export default function App() {
                                 />
                               </button>
                             </div>
-                            <div className="text-[12px] font-bold uppercase tracking-[0.2em] text-ink/40 truncate whitespace-nowrap">Add Agent</div>
+                            <div className="text-[12px] font-bold uppercase tracking-[0.2em] text-ink/40 truncate whitespace-nowrap">Agent {id}</div>
                           </div>
 
                           <div className="grid grid-cols-2 gap-2 w-full">
-                            <button disabled className="flex items-center justify-center gap-2 bg-card/50 border border-border/50 py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/20">
+                            <button 
+                              onClick={() => handleConnectAgent(id)}
+                              className="flex items-center justify-center gap-2 bg-card/50 border border-border/50 py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/20 hover:text-accent hover:border-accent transition-all"
+                            >
                               <Zap size={12} />
                               Connect
                             </button>
-                            <button disabled className="flex items-center justify-center gap-2 bg-card/50 border border-border/50 py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/20">
+                            <button className="flex items-center justify-center gap-2 bg-card/50 border border-border/50 py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/20">
                               <Coins size={12} />
-                              Balance
+                              {demoAgents.find(a => a.id === id)?.balance.toFixed(2) || '0.00'}
                             </button>
-                            <button disabled className="flex items-center justify-center gap-2 bg-card/50 border border-border/50 py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/20">
+                            <button 
+                              onClick={handleSpawn}
+                              className="flex items-center justify-center gap-2 bg-card/50 border border-border/50 py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/20 hover:text-accent hover:border-accent transition-all"
+                            >
                               <Plus size={12} />
                               Spawn
                             </button>
-                            <button disabled className="flex items-center justify-center gap-2 bg-card/50 border border-border/50 py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/20">
+                            <button 
+                              onClick={() => handleRemoveAgent(id)}
+                              className="flex items-center justify-center gap-2 bg-card/50 border border-border/50 py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/20 hover:text-red-500 hover:border-red-500 transition-all"
+                            >
                               <X size={12} />
                               Remove
                             </button>
@@ -680,19 +732,51 @@ export default function App() {
                   setUser(user);
                   setShowAuthModal(false);
                   setDashboardKey(prev => prev + 1);
+                  if (user.email === 'demo') {
+                    setOnboardingStep(0);
+                  }
                 }}
               />
 
               <AnimatePresence>
-                {demoPrompt && (
+                {!user && onboardingStep < 5 && (
                   <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    className="mt-4 bg-accent text-white px-6 py-3 rounded-xl text-xs font-bold shadow-2xl relative"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    className="fixed bottom-24 left-1/2 -translate-x-1/2 z-[1000] bg-ink text-paper px-6 py-4 rounded-2xl shadow-2xl flex flex-col items-center gap-2 text-center w-[calc(100%-2rem)] max-w-[360px] border border-white/10"
                   >
-                    <div className="absolute -left-2 top-1/2 -translate-y-1/2 border-8 border-transparent border-r-accent" />
-                    {demoPrompt}
+                    <div className="absolute top-2 right-2 flex items-center gap-2">
+                      <button 
+                        onClick={() => setOnboardingStep(onboardingStep + 1)}
+                        className="p-1 hover:text-accent transition-colors"
+                        title="Close step"
+                      >
+                        <X size={14} />
+                      </button>
+                      <button 
+                        onClick={() => setOnboardingStep(5)}
+                        className="p-1 hover:text-red-500 transition-colors"
+                        title="Stop guide"
+                      >
+                        <Trash2 size={14} />
+                      </button>
+                    </div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-accent">Onboarding Guide</p>
+                    <p className="text-xs font-medium leading-tight pr-8">
+                      {onboardingStep === 0 && "Step 1: Click on the Agent 1 profile to begin."}
+                      {onboardingStep === 1 && "Step 2: Click the 'Menu' button in the dashboard."}
+                      {onboardingStep === 2 && "Step 3: Choose 'Gmail' in the Connections menu."}
+                      {onboardingStep === 3 && "Step 4: Authorise the OAuth to earn credits."}
+                      {onboardingStep === 4 && "Step 5: Click your wallet balance in the menu to exchange."}
+                    </p>
+                    <div className="w-full bg-white/10 h-1 rounded-full mt-1 overflow-hidden">
+                      <motion.div 
+                        className="bg-accent h-full"
+                        initial={{ width: "0%" }}
+                        animate={{ width: `${(onboardingStep / 5) * 100}%` }}
+                      />
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -711,8 +795,8 @@ export default function App() {
                   forceConnect={forceConnect}
                   initialBalance={demoAgents.find(a => a.id === activeAgentId)?.balance}
                   onAuthorize={(amount) => handleAgentAuthorize(activeAgentId, amount)}
-                  guideStep={guideStep}
-                  onGuideStepChange={setGuideStep}
+                  guideStep={onboardingStep}
+                  onGuideStepChange={setOnboardingStep}
                   onConnectAttempt={() => {
                     setDemoPrompt('Sign in with the demo account to see more');
                     setForceConnect(false);
@@ -752,12 +836,12 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[1000] flex items-center justify-center p-6 bg-black/80 backdrop-blur-md"
+            className="fixed top-[106px] left-0 right-0 bottom-0 z-[1000] flex items-start justify-center p-6 bg-black/80 backdrop-blur-md overflow-y-auto"
           >
             <motion.div 
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="w-full max-w-sm bg-paper border border-border p-10 space-y-8 shadow-2xl frame text-center"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              className="w-full max-w-sm bg-paper border border-border p-10 space-y-8 shadow-2xl frame text-center my-8"
             >
               <div className="flex flex-col items-center gap-4">
                 <div className="w-16 h-16 bg-accent/10 text-accent flex items-center justify-center rounded-full">
@@ -780,12 +864,12 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[1000] flex items-center justify-center p-6 bg-black/80 backdrop-blur-md"
+            className="fixed top-[106px] left-0 right-0 bottom-0 z-[1000] flex items-start justify-center p-6 bg-black/80 backdrop-blur-md overflow-y-auto"
           >
             <motion.div 
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="w-full max-w-sm bg-paper border border-border p-10 space-y-8 shadow-2xl frame text-center"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              className="w-full max-w-sm bg-paper border border-border p-10 space-y-8 shadow-2xl frame text-center my-8"
             >
               <div className="flex flex-col items-center gap-4">
                 <div className="w-16 h-16 bg-red-500/10 text-red-500 flex items-center justify-center rounded-full">
@@ -809,12 +893,12 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[1000] flex items-center justify-center p-6 bg-black/80 backdrop-blur-md"
+            className="fixed top-[106px] left-0 right-0 bottom-0 z-[1000] flex items-start justify-center p-6 bg-black/80 backdrop-blur-md overflow-y-auto"
           >
             <motion.div 
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="w-full max-w-4xl bg-paper border border-border p-12 space-y-12 shadow-2xl frame"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              className="w-full max-w-4xl bg-paper border border-border p-12 space-y-12 shadow-2xl frame my-8"
             >
               <div className="flex items-center justify-between">
                 <div className="space-y-2">

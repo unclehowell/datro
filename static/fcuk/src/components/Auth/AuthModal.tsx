@@ -15,7 +15,6 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess, onNavigate, 
   const [isDemo, setIsDemo] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -24,11 +23,9 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess, onNavigate, 
     if (checked) {
       setEmail('demo');
       setPassword('demo');
-      setName('Demo User');
     } else {
       setEmail('');
       setPassword('');
-      setName('');
     }
   };
 
@@ -42,7 +39,7 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess, onNavigate, 
       if (isDemo) {
         onAuthSuccess({ name: 'Demo User', email: 'demo' });
       } else if (email && password) {
-        onAuthSuccess({ name: name || 'User', email });
+        onAuthSuccess({ name: email.split('@')[0], email });
       } else {
         setError('Please fill in all fields');
       }
@@ -57,13 +54,13 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess, onNavigate, 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[1000] flex items-center justify-center p-6 bg-black/80 backdrop-blur-md"
+          className="fixed top-[106px] left-0 right-0 bottom-0 z-[1000] flex items-start justify-center p-6 bg-black/80 backdrop-blur-md overflow-y-auto"
         >
           <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            className="w-full max-w-md bg-paper border border-border p-10 space-y-8 shadow-2xl relative"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 20, opacity: 0 }}
+            className="w-full max-w-md bg-paper border border-border p-10 space-y-8 shadow-2xl relative my-8"
           >
             <button 
               onClick={onClose}
@@ -102,26 +99,9 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess, onNavigate, 
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-4">
-                {activeTab === 'signup' && (
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-ink/30">Full Name</label>
-                    <div className="relative">
-                      <User className="absolute left-4 top-1/2 -translate-y-1/2 text-ink/20" size={18} />
-                      <input 
-                        type="text" 
-                        placeholder="John Doe"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className="w-full bg-card border border-border px-12 py-4 focus:outline-none focus:border-accent transition-all font-medium"
-                        required={activeTab === 'signup' && !isDemo}
-                      />
-                    </div>
-                  </div>
-                )}
-
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold uppercase tracking-widest text-ink/30">
-                    {isDemo ? 'Demo Username' : 'Email Address'}
+                    {isDemo ? 'Demo Username' : 'Email Address / Username'}
                   </label>
                   <div className="relative">
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-ink/20" size={18} />

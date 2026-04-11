@@ -58,7 +58,7 @@ export default function Dashboard({
   const [showWalletNotice, setShowWalletNotice] = useState(false);
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   const [orientation, setOrientation] = useState<'portrait' | 'landscape'>('landscape');
-  const [walletBalance, setWalletBalance] = useState(initialBalance ?? 1240.50);
+  const [walletBalance, setWalletBalance] = useState(initialBalance ?? 0.00);
   const [tourStep, setTourStep] = useState(0);
   const [activeOAuth, setActiveOAuth] = useState<{ platform: string, icon: any } | null>(null);
   const [isOAuthLoading, setIsOAuthLoading] = useState(false);
@@ -68,7 +68,8 @@ export default function Dashboard({
 
   useEffect(() => {
     if (forceConnect) {
-      setActiveOAuth({ platform: 'Facebook', icon: <Facebook size={14} /> });
+      setIsMenuOpen(true);
+      setExpandedCategory('social');
       setTourStep(0);
     }
   }, [forceConnect]);
@@ -99,19 +100,20 @@ export default function Dashboard({
     }
     setActiveOAuth({ platform, icon });
     setTourStep(0); // Hide tour during OAuth
-    if (guideStep === 3 && platform === 'Gmail') onGuideStepChange?.(4);
+    if (guideStep === 2 && platform === 'Gmail') onGuideStepChange?.(3);
   };
 
   const completeOAuth = () => {
     setIsOAuthLoading(true);
-    if (guideStep === 5) onGuideStepChange?.(6);
+    // Play chime sound when authorization starts/is selected
+    playSuccessSound();
+    
     setTimeout(() => {
-      const reward = parseFloat((Math.random() * (5 - 1.75) + 1.75).toFixed(2));
+      const reward = 2.33; // Fixed reward per user request
       if (onAuthorize) {
         onAuthorize(reward);
       }
       setWalletBalance(prev => prev + reward);
-      playSuccessSound();
       setIsOAuthLoading(false);
       setActiveOAuth(null);
       setHasInteracted(true);
@@ -126,8 +128,8 @@ export default function Dashboard({
       name: 'Social Media',
       icon: <Share2 size={16} />,
       items: [
-        { name: 'Facebook', icon: <Facebook size={14} /> },
-        { name: 'Twitter', icon: <Twitter size={14} /> },
+        { name: 'Meta', icon: <Facebook size={14} /> },
+        { name: 'X.com', icon: <Twitter size={14} /> },
         { name: 'Instagram', icon: <Instagram size={14} /> }
       ]
     },
@@ -247,8 +249,8 @@ export default function Dashboard({
                         {item.icon}
                         Connect {item.name}
                       </button>
-                      {guideStep === 3 && item.name === 'Gmail' && (
-                        <div className="absolute -left-8 top-1/2 -translate-y-1/2 w-6 h-6 bg-accent text-white rounded-full flex items-center justify-center text-[10px] font-bold animate-bounce">3</div>
+                      {guideStep === 2 && item.name === 'Gmail' && (
+                        <div className="absolute -left-8 top-1/2 -translate-y-1/2 w-6 h-6 bg-accent text-white rounded-full flex items-center justify-center text-[10px] font-bold animate-bounce shadow-lg z-50">Step 3</div>
                       )}
                     </div>
                   ))}
@@ -273,10 +275,13 @@ export default function Dashboard({
         onClick={() => {
           setIsMenuOpen(!isMenuOpen);
           if (tourStep === 1) setTourStep(2);
-          if (guideStep === 2) onGuideStepChange?.(3);
+          if (guideStep === 1) onGuideStepChange?.(2);
         }}
-        className={`${isSmall ? 'px-3 py-1.5' : 'px-6 py-3'} bg-paper/80 backdrop-blur-md border border-border text-xs font-bold uppercase tracking-[0.1em] flex items-center gap-3 rounded-full hover:bg-accent hover:text-paper transition-all ${guideStep === 2 && variant === 'mobile' ? 'animate-glow ring-2 ring-accent' : ''}`}
+        className={`${isSmall ? 'px-3 py-1.5' : 'px-6 py-3'} bg-paper/80 backdrop-blur-md border border-border text-xs font-bold uppercase tracking-[0.1em] flex items-center gap-3 rounded-full hover:bg-accent hover:text-paper transition-all ${guideStep === 1 && variant === 'mobile' ? 'animate-glow ring-2 ring-accent' : ''} relative`}
       >
+        {guideStep === 1 && (
+          <div className="absolute -left-2 -top-2 w-6 h-6 bg-accent text-white rounded-full flex items-center justify-center text-[10px] font-bold animate-bounce shadow-lg z-50">Step 2</div>
+        )}
         {(variant === 'full' || hasInteracted) ? (
           <>
             <div className={`flex items-center gap-2 border-r border-border ${isSmall ? 'pr-3' : 'pr-4'}`}>
@@ -333,8 +338,8 @@ export default function Dashboard({
               layout
               initial={false}
               animate={{ 
-                width: orientation === 'portrait' ? '380px' : '800px',
-                height: orientation === 'portrait' ? 'min(780px, 85vh)' : 'min(500px, 85vh)'
+                width: orientation === 'portrait' ? 'min(380px, 100%)' : 'min(800px, 100%)',
+                height: orientation === 'portrait' ? 'min(780px, 90vh)' : 'min(500px, 90vh)'
               }}
               className="relative bg-[#1a1a1a] rounded-[2rem] border-[12px] border-[#333] shadow-[0_0_100px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col"
             >
@@ -424,8 +429,8 @@ export default function Dashboard({
                     <h3 className="font-bold text-xl text-ink">Connect {activeOAuth.platform}</h3>
                     <p className="text-[10px] text-ink/40 uppercase font-bold tracking-widest">Grant Agent Permissions</p>
                   </div>
-                  {guideStep === 4 && (
-                    <div className="absolute -left-12 top-1/2 -translate-y-1/2 w-6 h-6 bg-accent text-white rounded-full flex items-center justify-center text-[10px] font-bold animate-bounce">4</div>
+                  {guideStep === 3 && (
+                    <div className="absolute -left-12 top-1/2 -translate-y-1/2 w-6 h-6 bg-accent text-white rounded-full flex items-center justify-center text-[10px] font-bold animate-bounce shadow-lg z-50">Step 4</div>
                   )}
                 </div>
                 <button onClick={() => setActiveOAuth(null)} className="text-ink/20 hover:text-ink">
