@@ -68,6 +68,13 @@ def check_hermes_llm() -> dict:
     else:
         result["errors"].append("No hermes config found")
     
+    # Check Cloudflare API access
+    env_path = Path.home() / ".hermes" / ".env"
+    if env_path.exists():
+        env_text = env_path.read_text()
+        if "CLOUDFLARE_API_KEY" in env_text and "CLOUDFLARE_EMAIL" in env_text:
+            result["providers"].append("cloudflare_configured")
+    
     return result
 
 
