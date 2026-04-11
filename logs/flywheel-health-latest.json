@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-11T03:36:40.389928",
+  "timestamp": "2026-04-11T04:42:41.316022",
   "overall": "ok",
   "checks": {
     "llm": {
@@ -14,7 +14,7 @@
     "system": {
       "status": "ok",
       "issues": [],
-      "memory": "417Mi"
+      "memory": "760Mi"
     },
     "network": {
       "status": "ok",
@@ -23,7 +23,7 @@
     "git": {
       "status": "ok",
       "issues": [],
-      "uncommitted": 15
+      "uncommitted": 2
     },
     "packages": {
       "status": "ok",

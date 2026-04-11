@@ -369,7 +369,7 @@ async with async_playwright() as p:
 
 ## WhatsApp Allowed Users
 
-WhatsApp allowed users is configured in `~/.hermes/.env`:
+WhatsApp allowed users is configured in `~/.env`:
 ```
 WHATSAPP_ALLOWED_USERS=+447****3262,+447860272148
 ```

@@ -291,7 +291,7 @@ Type these during an interactive chat session.
 
 ```
 ~/.hermes/config.yaml       Main configuration
-~/.hermes/.env              API keys and secrets
+~/.env              API keys and secrets
 ~/.hermes/skills/           Installed skills
 ~/.hermes/sessions/         Session transcripts
 ~/.hermes/logs/             Gateway and error logs
@@ -636,7 +636,7 @@ hermes-agent/
 └── website/              # Docusaurus docs site
 ```
 
-Config: `~/.hermes/config.yaml` (settings), `~/.hermes/.env` (API keys).
+Config: `~/.hermes/config.yaml` (settings), `~/.env` (API keys).
 
 ### Adding a Tool (3 files)
 

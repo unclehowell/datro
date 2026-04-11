@@ -39,7 +39,7 @@ platforms:
 ```
 
 ### Option 3: Environment variables
-Add to `~/.hermes/.env`:
+Add to `~/.env`:
 ```bash
 WEBHOOK_ENABLED=true
 WEBHOOK_PORT=8644

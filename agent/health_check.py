@@ -5,10 +5,21 @@ Verifies system readiness before each flywheel cycle
 """
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
 from datetime import datetime
+
+# Load central environment
+_env_file = Path.home() / ".env"
+if _env_file.exists():
+    with open(_env_file) as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith("#") and "=" in line:
+                key, val = line.split("=", 1)
+                os.environ[key.strip()] = val.strip()
 
 REPO_ROOT = Path("/home/ubuntu/datro")
 LOG_FILE = REPO_ROOT / "logs" / "flywheel-health.log"

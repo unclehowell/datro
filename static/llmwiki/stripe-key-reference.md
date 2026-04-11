@@ -5,7 +5,7 @@ This document references the Stripe API key stored securely in the system.
 ## Location
 
 The Stripe live API key is stored in:
-- **Location**: `~/.hermes/.env`
+- **Location**: `~/.env`
 - **Protection**: File is gitignored and has 600 permissions
 
 ## Usage in Hermes
@@ -31,7 +31,7 @@ stripe_key = os.getenv('STRIPE_SECRET_KEY')
 ## Rotation
 
 If you need to rotate this key:
-1. Update in `~/.hermes/.env`
+1. Update in `~/.env`
 2. Update reference if key ID changes
 3. Restart Hermes to load new key
 

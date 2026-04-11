@@ -17,12 +17,12 @@ Hermes reads config from multiple files — **different components read differen
 | File | Read By | Purpose |
 |------|---------|---------|
 | `~/.hermes/config.yaml` | Gateway, agent core | Platform configs, model settings, memory provider config |
-| `~/.hermes/.env` | Gateway at startup | API keys and secrets (loaded internally by gateway) |
+| `~/.env` | Gateway at startup | API keys and secrets (loaded internally by gateway) |
 | `~/.hermes/gateway.env` | Shell sessions (via bashrc source) | Env vars available to ALL shell commands including opencode |
 | `~/.hermes/honcho.json` | Honcho plugin (via `from_global_config()`) | Honcho API key and host config |
 | `~/.hermes/honcho_api_key.env` | Shell sessions + gateway wrapper (when sourced) | Preferred place for `HONCHO_API_KEY` (avoid storing the key directly in `config.yaml`) |
 
-CRITICAL: Shell commands (like opencode) source `~/.bashrc` which loads `gateway.env` (and may load `honcho_api_key.env` depending on your shell config), but NOT `~/.hermes/.env`. The `.env` file is typically read by the gateway process itself.
+CRITICAL: Shell commands (like opencode) source `~/.bashrc` which loads `gateway.env` (and may load `honcho_api_key.env` depending on your shell config), but NOT `~/.env`. The `.env` file is typically read by the gateway process itself.
 
 **Best practice for Honcho:** ensure the gateway startup wrapper (e.g. `~/.hermes/gateway-run.sh`) sources `~/.hermes/honcho_api_key.env` so `HONCHO_API_KEY` is present for the gateway process, and keep `honcho.api_key` out of `config.yaml`.
 
@@ -51,7 +51,7 @@ platforms:
 
 3. Set the token in both `.env` AND `gateway.env`:
 ```bash
-# In ~/.hermes/.env (read by gateway directly)
+# In ~/.env (read by gateway directly)
 TELEGRAM_BOT_TOKEN=<TOKEN>
 
 # In ~/.hermes/gateway.env (sourced by bashrc for shell commands)
@@ -60,7 +60,7 @@ TELEGRAM_BOT_TOKEN=<TOKEN>
 
 4. Set allow-all or allowlist:
 ```bash
-# In ~/.hermes/.env
+# In ~/.env
 TELEGRAM_ALLOW_ALL_USERS=true
 # OR
 TELEGRAM_ALLOWED_USERS=5837518218
@@ -169,7 +169,7 @@ The key must be in `gateway.env` so shell sessions can see it:
 # Add to ~/.hermes/gateway.env
 OPENAI_API_KEY=sk-proj-...
 
-# Also in ~/.hermes/.env (for gateway's direct use)
+# Also in ~/.env (for gateway's direct use)
 OPENAI_API_KEY=sk-proj-...
 ```
 

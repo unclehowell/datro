@@ -31,7 +31,7 @@ This is **NOT** an authentication failure. The token is valid. It's a **scoped l
 ### Root Causes
 
 1. **Scoped lock conflict** — Hermes uses file-based locks to prevent multiple gateways from polling the same Telegram bot simultaneously.
-2. **Env var override** — `TELEGRAM_BOT_TOKEN` set in env (systemd `.service` file, `gateway.env`, or `~/.hermes/.env`) **overrides** `enabled: false` in `config.yaml`. The gateway reads the env var and connects regardless of the config setting.
+2. **Env var override** — `TELEGRAM_BOT_TOKEN` set in env (systemd `.service` file, `gateway.env`, or `~/.env`) **overrides** `enabled: false` in `config.yaml`. The gateway reads the env var and connects regardless of the config setting.
 3. **Systemd service file** — The `/etc/systemd/system/hermes-gateway.service` may hardcode `Environment=TELEGRAM_BOT_TOKEN=...`. This takes priority over ALL config.yaml settings. You MUST remove it from the service file if you want to disable Telegram on the default agent.
 4. **Per-session gateway spawning** — Each new CLI session can spawn its own gateway process, which conflicts with systemd-managed gateways.
 
@@ -71,12 +71,12 @@ The gateway reads `TELEGRAM_BOT_TOKEN` from the **environment** first, which ove
 
 1. systemd `Environment=` directives (highest priority)
 2. `~/.hermes/gateway.env` (sourced by `gateway-run.sh`)
-3. `~/.hermes/.env` (not sourced by bashrc — agents must source explicitly)
+3. `~/.env` (not sourced by bashrc — agents must source explicitly)
 
 Check all sources:
 ```bash
 env | grep TELEGRAM_BOT_TOKEN
-grep TELEGRAM_BOT_TOKEN ~/.hermes/gateway.env ~/.hermes/.env
+grep TELEGRAM_BOT_TOKEN ~/.hermes/gateway.env ~/.env
 ```
 
 If an agent shouldn't use Telegram, remove the token from ALL of these.
@@ -198,7 +198,7 @@ If it doesn't work, you may need to restart the gateway process for the config t
 
 ## Problem: OPENAI_API_KEY not found by opencode
 
-Openencode reads from shell environment, not from `~/.hermes/.env`.
+Openencode reads from shell environment, not from `~/.env`.
 
 The `.bashrc` sources `~/.hermes/gateway.env` (NOT `.env`). So API keys must be in `gateway.env`:
 

@@ -63,21 +63,21 @@ hermes profile alias commanddefaut
 
 # 3) Retire the reserved root `default` (disable accidental usage)
 # IMPORTANT: ensure any *running* gateway profile has its own .env BEFORE you retire root .env
-install -m 600 ~/.hermes/.env ~/.hermes/profiles/commandfallback/.env 2>/dev/null || true
+install -m 600 ~/.env ~/.hermes/profiles/commandfallback/.env 2>/dev/null || true
 
 # Backup the root default key files (avoids `hermes profile export` symlink issues)
 TS=$(date -u +%Y%m%dT%H%M%SZ)
 tar -czf ~/default.root-files.pre-retire.$TS.tar.gz \
-  ~/.hermes/config.yaml ~/.hermes/.env ~/.hermes/SOUL.md ~/.hermes/auth.json ~/.hermes/honcho.json \
+  ~/.hermes/config.yaml ~/.env ~/.hermes/SOUL.md ~/.hermes/auth.json ~/.hermes/honcho.json \
   2>/dev/null || true
 
 # Replace root .env with a stub
-mv ~/.hermes/.env ~/.hermes/.env.retired.$TS
-cat > ~/.hermes/.env <<'EOF'
+mv ~/.env ~/.env.retired.$TS
+cat > ~/.env <<'EOF'
 # RETIRED DEFAULT PROFILE
 # Use profile: commanddefaut (sticky) or commandfallback (gateway).
 EOF
-chmod 600 ~/.hermes/.env
+chmod 600 ~/.env
 
 # Disable the root default model + fallbacks
 # (Edit ~/.hermes/config.yaml): set provider/model to a dummy, and set fallback_providers: []
@@ -130,7 +130,7 @@ done
 ```
 
 Fix: Replace `api_key: actual_value` with `api_key_env: VAR_NAME`
-Then put the actual value in the profile's .env file or ~/.hermes/.env
+Then put the actual value in the profile's .env file or ~/.env
 
 ### Step 4: Ensure explicit telegram config in each profile
 ```bash
