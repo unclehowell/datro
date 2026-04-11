@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <meta content="DATRO Library" name="description">
+  <meta content="DATRO Consortium" name="author">
+  <title>LLM Wiki</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport">
+  <link href="_theme-explorer/favicons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
+  <link href="_theme-explorer/favicons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
+  <link href="_theme-explorer/favicons/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+  <link href="_theme-explorer/favicons/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+  <link href="_theme-explorer/favicons/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+  <link href="_theme-explorer/favicons/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+  <link href="_theme-explorer/favicons/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+  <link href="_theme-explorer/favicons/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+  <link href="_theme-explorer/favicons/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180">
+  <link href="_theme-explorer/favicons/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png">
+  <link href="_theme-explorer/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+  <link href="_theme-explorer/favicons/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
+  <link href="_theme-explorer/favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+  <meta content="_theme-explorer/favicons/ms-icon-144x144.png" name="msapplication-TileImage">
+  <link rel="stylesheet" href="_theme-explorer/style.css">
+  <link rel="stylesheet" href="_theme-explorer/glyphicon.css">
+  <style>
+    html { overflow-y: scroll; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 0px; background: transparent; }
+    .md-file { display: inline-block; margin: 10px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; text-decoration: none; color: #333; background: #f9f9f9; }
+    .md-file:hover { background: #e9e9e9; border-color: #999; }
+    .skills-section { margin-top: 20px; }
+    .skills-section h2 { color: #336; }
+    .skill-folder { display: block; margin: 10px 0; padding: 10px; background: #f0f0f0; border-radius: 5px; text-decoration: none; color: #336; font-weight: bold; }
+    .skill-folder:hover { background: #e0e0e0; }
+    .back-link { display: inline-block; margin-bottom: 20px; color: #336; }
+  </style>
+  </head>
+  <body>
+    <script>
+      async function loadContent() {
+        const urlParams = new URLSearchParams(window.location.search);
+        let path = urlParams.get('path');
+        
+        // Determine the base path for _treeview.json
+        let treeviewPath = '_treeview.json';
+        let currentDir = '';
+        
+        if (path) {
+          // Check if it's a directory (ends with /) or a file
+          if (path.endsWith('/')) {
+            currentDir = path;
+            treeviewPath = path + '_treeview.json';
+          } else {
+            // It's a markdown file - load it directly
+            try {
+              const response = await fetch(path);
+              const content = await response.text();
+              let htmlString = '<div style="padding: 20px;">';
+              htmlString += '<a href="javascript:history.back()" class="back-link">← Back</a>';
+              htmlString += '<h1 style="color:#336;">' + path.split('/').pop() + '</h1>';
+              htmlString += '<div style="background:#fff;padding:20px;border-radius:5px;">';
+              htmlString += '<pre style="white-space:pre-wrap;word-wrap:break-word;">' + content.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</pre>';
+              htmlString += '</div>';
+              document.getElementsByTagName('body')[0].innerHTML = htmlString;
+              return;
+            } catch (e) {
+              document.getElementsByTagName('body')[0].innerHTML = '<p>Error loading file: ' + e.message + '</p>';
+              return;
+            }
+          }
+        }
+        
+        try {
+          const response = await fetch(treeviewPath);
+          const data = await response.json();
+          
+          let htmlString = '<div style="padding: 20px;">';
+          htmlString += '<a href="../" class="back-link">← Back to DATRO</a>';
+          htmlString += '<h1 style="color:#336;text-align:center;">LLM Wiki';
+          if (currentDir) {
+            htmlString += ' / ' + currentDir.replace(/\/$/, '').split('/').pop();
+          }
+          htmlString += '</h1>';
+          
+          // Check if this is a skills/docs subfolder with its own treeview
+          for (let file of data) {
+            if (file._links && (file._links.md || file._links.html)) {
+              if (file._links.md) {
+                htmlString += '<a class="md-file" href="?path=' + file._links.md + '">' + file.name.replace(/<[^>]*>/g, '') + '</a>';
+              } else if (file._links.html && file._links.html.endsWith('/')) {
+                htmlString += '<a class="skill-folder" href="?path=' + file._links.html + '">📁 ' + file.name.replace(/<[^>]*>/g, '') + '</a>';
+              }
+            }
+          }
+          
+          htmlString += '</div>';
+          document.getElementsByTagName('body')[0].innerHTML = htmlString;
+        } catch (e) {
+          document.getElementsByTagName('body')[0].innerHTML = '<p>Error: ' + e.message + '</p>';
+        }
+      }
+      loadContent();
+    </script>
+  </body>
+<script src="_theme-explorer/jquery.min.js"></script>
+</html>

@@ -6,11 +6,18 @@
       "html": "./library/index.html"
     }
   },
-  {
-   "name": "<div class='title-line enable-link'><div class='icon i-hbnb'></div>Hotspotβnβ</div>",
+{
+    "name": "<div class='title-line enable-link'><div class='icon i-hbnb'></div>Hotspotβnβ</div>",
     "path": "./gui/index.html",
     "_links": {
       "html": "./gui/index.html"
+    }
+  },
+  {
+    "name": "<div class='title-line enable-link'><div class='icon f-datro'></div>LLM Wiki</div>",
+    "path": "./llmwiki/INDEX.md",
+    "_links": {
+      "md": "./llmwiki/INDEX.md"
     }
   },
   {

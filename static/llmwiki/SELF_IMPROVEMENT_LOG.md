@@ -27,3 +27,15 @@ Fix:
 - Created codex-harness skill + harness script (isolated worktree + verify + PR)
 Verification:
 - Files exist in repo; codex harness script passes bash -n.
+
+---
+
+Date: 2026-04-10
+Signal: Failed to find pre-configured Resend email setup twice before locating it.
+Root cause: Searched complex subsystems first (logs, skills, hermes config) instead of doing simple directory listing. Hidden config files at ~/ level were missed.
+Fix:
+- Added failure_learning.md to brain/
+- Created search strategy: always start with `ls -la ~` for "already configured" services
+- Updated memory to check hidden files (`.env.*`) at user home level first
+Verification:
+- `ls -la /home/ubuntu/` immediately revealed `.env.resend`
