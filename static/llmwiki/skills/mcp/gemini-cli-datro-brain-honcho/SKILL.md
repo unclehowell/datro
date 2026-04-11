@@ -6,7 +6,7 @@ trigger:
   - "configure gemini cli settings.json"
   - "gemini cli includeDirectories"
   - "gemini cli + honcho mcp"
-  - "gemini cli use datro/static/brain"
+  - "gemini cli use datro/static/llmwiki"
   - "gemini mcpServers"
 prerequisites:
   - Ubuntu/Debian Linux with Node.js >= 18

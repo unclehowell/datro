@@ -1,0 +1,24 @@
+{
+  "name": "datro-flywheel",
+  "version": "1.0.0",
+  "interval_seconds": 43200,
+  "branch_prefix": "auto/fix",
+  "max_issues_per_scan": 50,
+  "target_branch": "gh-pages",
+  "validation": {
+    "enabled": true,
+    "commands": ["npm install --silent", "npm run build"]
+  },
+  "safety": {
+    "never_push_to_main": true,
+    "abort_on_test_fail": true,
+    "max_file_edits": 10
+  },
+  "exclusions": [
+    "*.env",
+    ".env*",
+    "secrets",
+    "credentials",
+    "**/node_modules/**"
+  ]
+}
