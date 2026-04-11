@@ -33,7 +33,9 @@ User → nginx → index.html (passphrase gate) → iframes load inner pages
 
 All visitors see a login wall before the UI appears. The gate is client-side only (sessionStorage).
 
-**Passphrase:** `certacito`
+**Passphrase:** Set via environment variable `DATRO_PASSPHRASE` (not stored in repo)
+
+The passphrase is loaded at runtime from environment variable. Check `.env` or `.env.example` for `DATRO_PASSPHRASE`. Never commit the actual passphrase - it should only exist in the server's environment.
 
 **Implementation** (in `/home/ubuntu/datro/static/ui/index.html`):
 - `#login-overlay` div covers the full viewport with password input and "Reply by logging in" subtitle text
@@ -43,7 +45,7 @@ All visitors see a login wall before the UI appears. The gate is client-side onl
 
 **PITFALL — CSS Specificity:** Do NOT use `#body:not(.authenticated)` selectors to hide body children. The `#body` ID selector has higher specificity than `.authenticated` class, and `!important` won't reliably override it. Use a full-viewport overlay with higher z-index instead, hide it with direct JS `style.display = "none"` on success.
 
-**To change passphrase:** Find the `var PASS = "certacito"` line in the login gate script block.
+**To change passphrase:** Update `DATRO_PASSPHRASE` environment variable and restart the web server. The UI reads this from the server-side config, not hardcoded in the HTML.
 
 ## Default Landing Page (After Login)
 
@@ -377,10 +379,7 @@ Comma-separated list. The masking you see in tool output (showing `****`) is dis
 
 Script: `~/paperclip-fix/update_currency.js`
 
-```js
-const { Client } = require('pg');
-const client = new Client({ host: '127.0.0.1', port: 54329, user: 'paperclip', password: 'paperclip', database: 'paperclip' });
-```
+Database credentials should come from environment variables (`PAPERCLIP_DB_HOST`, `PAPERCLIP_DB_USER`, `PAPERCLIP_DB_PASSWORD`, `PAPERCLIP_DB_NAME`). Never hardcode credentials in scripts - check `.env` for the actual values.
 
 **Steps (already in the script):**
 1. `ALTER TABLE companies ADD COLUMN currency text NOT NULL DEFAULT 'GBP'` (if not exists)
