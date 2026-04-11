@@ -39,7 +39,9 @@ wayback/
 .netlify
 /static/library/**/*.log
 .aider*
-# Cloudflare credentials (never commit)
+# Environment variables (never commit)
+.env
+.env.*
 CLOUDFLARE_API_KEY
 CLOUDFLARE_EMAIL
 CLOUDFLARE_API_TOKEN
