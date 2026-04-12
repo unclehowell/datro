@@ -26,29 +26,22 @@ import {
   X,
   ArrowRight,
   Lock,
-  CheckCircle2
+  CheckCircle2,
+  Search,
+  Zap,
+  MessageCircle,
+  Send
 } from 'lucide-react';
 
-interface DashboardProps {
-  onSignOut: () => void;
-  onClose?: () => void;
-  variant?: 'mobile' | 'full';
-  forceConnect?: boolean;
-  onConnectAttempt?: () => void;
-  onAuthorize?: (amount: number) => void;
-  initialBalance?: number;
-  guideStep?: number;
-  onGuideStepChange?: (step: number) => void;
-  reloadKey?: number;
-}
-
-export default function Dashboard({ 
+const Dashboard = ({ 
   onSignOut, 
   onClose,
   variant = 'full', 
   forceConnect = false,
   onConnectAttempt,
   onAuthorize,
+  onNavigate,
+  onAuthRequired,
   initialBalance,
   guideStep,
   onGuideStepChange,
@@ -60,23 +53,19 @@ export default function Dashboard({
   const [orientation, setOrientation] = useState<'portrait' | 'landscape'>('landscape');
   const [walletBalance, setWalletBalance] = useState(initialBalance ?? 0.00);
   const [tourStep, setTourStep] = useState(0);
-  const [activeOAuth, setActiveOAuth] = useState<{ platform: string, icon: any } | null>(null);
-  const [isOAuthLoading, setIsOAuthLoading] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
   
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    if (forceConnect) {
-      setIsMenuOpen(true);
-      setExpandedCategory('social');
-      setTourStep(0);
+    if (forceConnect && onConnectAttempt) {
+      onConnectAttempt();
     }
   }, [forceConnect]);
 
   useEffect(() => {
-    // Initialize audio - Money/Coin sound
-    audioRef.current = new Audio('https://assets.mixkit.co/active_storage/sfx/1071/1071-preview.mp3');
+    // Initialize audio - Bank app notification sound
+    audioRef.current = new Audio('https://assets.mixkit.co/active_storage/sfx/2017/2017-preview.mp3');
     
     // Start tour after 2 seconds
     const timer = setTimeout(() => {
@@ -94,32 +83,9 @@ export default function Dashboard({
   };
 
   const handleConnect = (platform: string, icon: any) => {
-    if (variant === 'mobile' && onConnectAttempt && !forceConnect) {
+    if (onConnectAttempt) {
       onConnectAttempt();
-      return;
     }
-    setActiveOAuth({ platform, icon });
-    setTourStep(0); // Hide tour during OAuth
-    if (guideStep === 2 && platform === 'Gmail') onGuideStepChange?.(3);
-  };
-
-  const completeOAuth = () => {
-    setIsOAuthLoading(true);
-    // Play chime sound when authorization starts/is selected
-    playSuccessSound();
-    
-    setTimeout(() => {
-      const reward = 2.33; // Fixed reward per user request
-      if (onAuthorize) {
-        onAuthorize(reward);
-      }
-      setWalletBalance(prev => prev + reward);
-      setIsOAuthLoading(false);
-      setActiveOAuth(null);
-      setHasInteracted(true);
-      // Show reward notification
-      setTourStep(3);
-    }, 1500);
   };
 
   const connectionCategories = [
@@ -291,9 +257,16 @@ export default function Dashboard({
             <div 
               className="flex items-center gap-2 text-accent group-hover:text-paper"
               onClick={(e) => {
-                if (variant === 'mobile' || hasInteracted) {
+                if (walletBalance > 0 && onNavigate) {
                   e.stopPropagation();
-                  alert('Sign in or Register to withdraw funds');
+                  onNavigate('exchange');
+                } else if (variant === 'mobile' || hasInteracted) {
+                  e.stopPropagation();
+                  if (onAuthRequired) {
+                    onAuthRequired();
+                  } else {
+                    alert('Sign in or Register to withdraw funds');
+                  }
                 }
               }}
             >
@@ -363,8 +336,6 @@ export default function Dashboard({
                 title="Agent Dashboard"
                 allow="geolocation"
               />
-
-              {/* Floating Menu Removed */}
             </div>
 
             {/* Home Indicator */}
@@ -406,97 +377,7 @@ export default function Dashboard({
       </div>
       )}
 
-      {/* Simulated OAuth Modal */}
-      <AnimatePresence>
-        {activeOAuth && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[500] flex items-center justify-center p-6 bg-black/80 backdrop-blur-md"
-          >
-            <motion.div 
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="w-full max-w-md bg-paper border border-border p-10 space-y-8 shadow-2xl frame"
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4 relative">
-                  <div className="w-12 h-12 bg-accent/10 text-accent flex items-center justify-center rounded-xl">
-                    {activeOAuth.icon}
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-xl text-ink">Connect {activeOAuth.platform}</h3>
-                    <p className="text-[10px] text-ink/40 uppercase font-bold tracking-widest">Grant Agent Permissions</p>
-                  </div>
-                  {guideStep === 3 && (
-                    <div className="absolute -left-12 top-1/2 -translate-y-1/2 w-6 h-6 bg-accent text-white rounded-full flex items-center justify-center text-[10px] font-bold animate-bounce shadow-lg z-50">Step 4</div>
-                  )}
-                </div>
-                <button onClick={() => setActiveOAuth(null)} className="text-ink/20 hover:text-ink">
-                  <X size={20} />
-                </button>
-              </div>
-
-              <div className="space-y-6">
-                <div className="p-6 bg-accent/5 border border-accent/10 space-y-4">
-                  <div className="flex items-center gap-3 text-accent">
-                    <Shield size={18} />
-                    <span className="text-[10px] font-bold uppercase tracking-widest">Secure Connection</span>
-                  </div>
-                  <p className="text-xs text-ink/60 leading-relaxed">
-                    This agent requires permission to analyze your {activeOAuth.platform} distribution footprint to optimize affiliate campaigns.
-                  </p>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-ink/30">Username</label>
-                    <input 
-                      type="text" 
-                      value="demo" 
-                      readOnly 
-                      className="w-full bg-card border border-border px-4 py-3 text-sm font-medium focus:outline-none"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-ink/30">Password</label>
-                    <input 
-                      type="password" 
-                      value="demo" 
-                      readOnly 
-                      className="w-full bg-card border border-border px-4 py-3 text-sm font-medium focus:outline-none"
-                    />
-                  </div>
-                </div>
-
-                <div className="relative">
-                  <button 
-                    onClick={() => {
-                      completeOAuth();
-                      if (guideStep === 5) onGuideStepChange?.(6);
-                    }}
-                    disabled={isOAuthLoading}
-                    className="w-full bg-ink text-paper font-bold py-5 uppercase tracking-widest text-sm hover:bg-accent transition-all flex items-center justify-center gap-3 disabled:opacity-50"
-                  >
-                    {isOAuthLoading ? (
-                      <div className="w-5 h-5 border-2 border-paper/30 border-t-paper rounded-full animate-spin" />
-                    ) : (
-                      <>
-                        Authorize Agent
-                        <ArrowRight size={18} />
-                      </>
-                    )}
-                  </button>
-                  {guideStep === 5 && (
-                    <div className="absolute -right-8 top-1/2 -translate-y-1/2 w-6 h-6 bg-accent text-white rounded-full flex items-center justify-center text-[10px] font-bold animate-bounce">5</div>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Simulated OAuth Modal Removed - Handled by App.tsx */}
 
       {/* Reward Notification */}
       <AnimatePresence>

@@ -6,9 +6,10 @@ interface ExchangeProps {
   onBack: () => void;
   balance?: number;
   onboardingStep?: number;
+  onAuthRequired?: () => void;
 }
 
-export default function Exchange({ onBack, balance = 0, onboardingStep = 0 }: ExchangeProps) {
+export default function Exchange({ onBack, balance = 0, onboardingStep = 0, onAuthRequired }: ExchangeProps) {
   const [amount, setAmount] = useState<string>(onboardingStep >= 4 ? '2.33' : '');
   const [isSwapped, setIsSwapped] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
@@ -222,7 +223,10 @@ export default function Exchange({ onBack, balance = 0, onboardingStep = 0 }: Ex
                     </div>
                   </div>
 
-                  <button className="w-full bg-ink text-paper font-bold text-lg sm:text-xl py-6 sm:py-8 uppercase tracking-[0.2em] hover:bg-accent transition-all shadow-2xl shadow-accent/10 flex items-center justify-center gap-3 sm:gap-4">
+                  <button 
+                    onClick={() => onAuthRequired?.()}
+                    className="w-full bg-ink text-paper font-bold text-lg sm:text-xl py-6 sm:py-8 uppercase tracking-[0.2em] hover:bg-accent transition-all shadow-2xl shadow-accent/10 flex items-center justify-center gap-3 sm:gap-4"
+                  >
                     Confirm Exchange
                     <ArrowUpRight size={24} className="sm:w-7 sm:h-7" />
                   </button>

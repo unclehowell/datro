@@ -45,10 +45,62 @@ import Exchange from './components/Exchange';
 import AuthModal from './components/Auth/AuthModal';
 import ForgotPassword from './components/Auth/ForgotPassword';
 import Dashboard from './components/Dashboard';
+import ConnectionsModal from './components/ConnectionsModal';
 import { Smartphone, Apple as AppleIcon, Monitor, PlayCircle, CreditCard } from 'lucide-react';
 import { loadStripe } from '@stripe/stripe-js';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || '');
+
+const SineWave = () => (
+  <div className="flex items-center justify-center gap-1.5 h-12">
+    {[...Array(6)].map((_, i) => (
+      <motion.div
+        key={i}
+        className="w-1.5 bg-accent rounded-full"
+        animate={{
+          height: [8, 32, 8],
+          opacity: [0.3, 1, 0.3]
+        }}
+        transition={{
+          duration: 1.5,
+          repeat: Infinity,
+          delay: i * 0.15,
+          ease: "easeInOut"
+        }}
+      />
+    ))}
+  </div>
+);
+
+const RingingPhone = () => (
+  <div className="relative flex items-center justify-center w-full h-full">
+    <motion.div
+      className="absolute inset-0 bg-accent/20 rounded-full"
+      animate={{
+        scale: [1, 1.5, 1],
+        opacity: [0.5, 0, 0.5]
+      }}
+      transition={{
+        duration: 2,
+        repeat: Infinity,
+        ease: "easeOut"
+      }}
+    />
+    <motion.div
+      animate={{
+        rotate: [-10, 10, -10, 10, 0],
+        scale: [1, 1.1, 1]
+      }}
+      transition={{
+        duration: 0.5,
+        repeat: Infinity,
+        repeatDelay: 1
+      }}
+    >
+      <Smartphone size={40} className="sm:size-[60px] text-accent" />
+    </motion.div>
+  </div>
+);
 
 export default function App() {
   const [lang, setLang] = useState<Language>('en');
@@ -61,6 +113,9 @@ export default function App() {
   const [showContactModal, setShowContactModal] = useState(false);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [showConnectionsModal, setShowConnectionsModal] = useState(false);
+  const [activeOAuth, setActiveOAuth] = useState<{ platform: string, icon: any } | null>(null);
+  const [isOAuthLoading, setIsOAuthLoading] = useState(false);
   const [authModalTab, setAuthModalTab] = useState<'signin' | 'signup'>('signin');
   const [showLogoutWarning, setShowLogoutWarning] = useState(false);
   const [timeLeft, setTimeLeft] = useState(90);
@@ -95,12 +150,12 @@ export default function App() {
     return () => clearInterval(timer);
   }, [isDemo]);
   const [showWalletNotice, setShowWalletNotice] = useState(false);
-  const [demoAgents, setDemoAgents] = useState<{id: number, isOpen: boolean, balance: number, hasInteracted: boolean, title: string, isSpawned: boolean}[]>([
-    { id: 1, isOpen: false, balance: 0, hasInteracted: false, title: 'CEO', isSpawned: true },
-    { id: 2, isOpen: false, balance: 0, hasInteracted: false, title: 'Employee 1', isSpawned: false },
-    { id: 3, isOpen: false, balance: 0, hasInteracted: false, title: 'Employee 2', isSpawned: false },
-    { id: 4, isOpen: false, balance: 0, hasInteracted: false, title: 'Employee 3', isSpawned: false },
-    { id: 5, isOpen: false, balance: 0, hasInteracted: false, title: 'Employee 4', isSpawned: false }
+  const [demoAgents, setDemoAgents] = useState<{id: number, isOpen: boolean, balance: number, hasInteracted: boolean, title: string, isSpawned: boolean, isAnswered: boolean}[]>([
+    { id: 1, isOpen: false, balance: 0, hasInteracted: false, title: 'CEO', isSpawned: true, isAnswered: false },
+    { id: 2, isOpen: false, balance: 0, hasInteracted: false, title: 'Employee 1', isSpawned: false, isAnswered: false },
+    { id: 3, isOpen: false, balance: 0, hasInteracted: false, title: 'Employee 2', isSpawned: false, isAnswered: false },
+    { id: 4, isOpen: false, balance: 0, hasInteracted: false, title: 'Employee 3', isSpawned: false, isAnswered: false },
+    { id: 5, isOpen: false, balance: 0, hasInteracted: false, title: 'Employee 4', isSpawned: false, isAnswered: false }
   ]);
   const [showSpawnModal, setShowSpawnModal] = useState(false);
   const [spawnType, setSpawnType] = useState<'friend' | 'employee' | null>(null);
@@ -137,7 +192,8 @@ export default function App() {
 
     const nextAgent = demoAgents.find(a => !a.isSpawned);
     if (!nextAgent) {
-      setDemoPrompt('Sign in with the demo account to see more');
+      setAuthModalTab('signup');
+      setShowAuthModal(true);
       setShowSpawnModal(false);
       return;
     }
@@ -164,10 +220,11 @@ export default function App() {
   const handleOpenAgent = (id: number) => {
     // Only allow opening the first agent (id 1) in demo
     if (id !== 1 && demoAgents.find(a => a.id === id)) {
-      setDemoPrompt('Sign in with the demo account to see more');
+      setAuthModalTab('signup');
+      setShowAuthModal(true);
       return;
     }
-    setDemoAgents(prev => prev.map(a => ({ ...a, isOpen: a.id === id })));
+    setDemoAgents(prev => prev.map(a => ({ ...a, isOpen: a.id === id, isAnswered: a.id === id ? true : a.isAnswered })));
     setActiveAgentId(id);
     setHasSelectedAgent(true);
     if (onboardingStep === 0) setOnboardingStep(1);
@@ -175,32 +232,37 @@ export default function App() {
 
   const handleConnectAgent = (id: number) => {
     if (id !== 1) {
-      setDemoPrompt('Sign in with the demo account to see more');
+      setAuthModalTab('signup');
+      setShowAuthModal(true);
       return;
     }
-    handleOpenAgent(id);
-    setForceConnect(true);
+    setActiveAgentId(id);
+    setShowConnectionsModal(true);
     if (onboardingStep === 1) setOnboardingStep(2);
   };
 
   const playDing = () => {
-    const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/1071/1071-preview.mp3');
+    const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2017/2017-preview.mp3');
     audio.play().catch(() => {});
   };
 
   const handleAgentAuthorize = (id: number, amount: number) => {
-    setDemoAgents(prev => prev.map(a => 
-      a.id === id ? { ...a, balance: a.balance + amount, hasInteracted: true } : a
-    ));
-    setWalletBalance(prev => {
-      const newBalance = prev + amount;
-      playDing();
-      return newBalance;
-    });
-    setForceConnect(false);
-    if (onboardingStep === 3) {
-      setOnboardingStep(4);
-    }
+    setIsOAuthLoading(true);
+    setTimeout(() => {
+      setDemoAgents(prev => prev.map(a => 
+        a.id === id ? { ...a, balance: a.balance + amount, hasInteracted: true } : a
+      ));
+      setWalletBalance(prev => {
+        const newBalance = prev + amount;
+        playDing();
+        return newBalance;
+      });
+      setIsOAuthLoading(false);
+      setActiveOAuth(null);
+      if (onboardingStep === 3) {
+        setOnboardingStep(4);
+      }
+    }, 1500);
   };
 
   const isDemoUser = user?.email === 'demo';
@@ -400,22 +462,13 @@ export default function App() {
                     )}
                     
                     {!user ? (
-                      <>
-                        <button 
-                          onClick={() => { setAuthModalTab('signin'); setShowAuthModal(true); setIsWalletMenuOpen(false); }}
-                          className="w-full flex items-center gap-3 p-3 hover:bg-card transition-colors text-xs font-bold text-ink/70"
-                        >
-                          <User size={16} />
-                          Sign In
-                        </button>
-                        <button 
-                          onClick={() => { setAuthModalTab('signup'); setShowAuthModal(true); setIsWalletMenuOpen(false); }}
-                          className="w-full flex items-center gap-3 p-3 hover:bg-card transition-colors text-xs font-bold text-ink/70"
-                        >
-                          <Users size={16} />
-                          Register
-                        </button>
-                      </>
+                      <button 
+                        onClick={() => { setAuthModalTab('signin'); setShowAuthModal(true); setIsWalletMenuOpen(false); }}
+                        className="w-full flex items-center gap-3 p-3 hover:bg-card transition-colors text-xs font-bold text-ink/70"
+                      >
+                        <User size={16} />
+                        Sign In / Register
+                      </button>
                     ) : (
                       <button 
                         onClick={() => setUser(null)}
@@ -481,6 +534,10 @@ export default function App() {
             onBack={() => setCurrentPage('home')} 
             balance={walletBalance}
             onboardingStep={onboardingStep}
+            onAuthRequired={() => {
+              setAuthModalTab('signup');
+              setShowAuthModal(true);
+            }}
           />
         ) : currentPage === 'docs' ? (
           <div className="max-w-4xl mx-auto p-12 lg:p-24 space-y-16">
@@ -553,7 +610,7 @@ export default function App() {
                           onClick={() => handleOpenAgent(1)}
                           className={`w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-[#0a0a0a] border-4 border-[#1a1a1a] relative overflow-hidden shadow-2xl transition-all flex items-center justify-center hover:border-accent/50`}
                         >
-                          <User size={40} className="sm:size-[60px] text-accent/20" />
+                          {demoAgents[0].isAnswered ? <SineWave /> : <RingingPhone />}
                           {onboardingStep === 0 && !user && (
                             <div className="absolute inset-0 z-50 flex items-center justify-center bg-accent/20 backdrop-blur-[2px]">
                               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent text-white rounded-full flex items-center justify-center text-[8px] sm:text-[10px] font-bold animate-bounce shadow-2xl">Step 1</div>
@@ -598,33 +655,50 @@ export default function App() {
                           <div className="text-[12px] font-bold uppercase tracking-[0.2em] text-ink/80 truncate whitespace-nowrap">CEO</div>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-2 w-full">
-                          <button 
-                            onClick={() => handleConnectAgent(1)}
-                            className="flex items-center justify-center gap-2 bg-card border border-border py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/40 hover:text-accent hover:border-accent transition-all"
-                          >
-                            <Zap size={12} />
-                            Connect
-                          </button>
-                          <button className="flex items-center justify-center gap-2 bg-card border border-border py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/40 hover:text-accent hover:border-accent transition-all">
-                            <Coins size={12} />
-                            {demoAgents[0].balance.toFixed(2)}
-                          </button>
-                          <button 
-                            onClick={handleSpawn}
-                            className="flex items-center justify-center gap-2 bg-card border border-border py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/40 hover:text-accent hover:border-accent transition-all"
-                          >
-                            <Plus size={12} />
-                            Spawn
-                          </button>
-                          <button 
-                            onClick={() => handleRemoveAgent(1)}
-                            className="flex items-center justify-center gap-2 bg-card border border-border py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/40 hover:text-accent hover:border-accent transition-all"
-                          >
-                            <X size={12} />
-                            Remove
-                          </button>
-                        </div>
+                          <div className="grid grid-cols-2 gap-2 w-full">
+                            <button 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleConnectAgent(1);
+                              }}
+                              className="flex items-center justify-center gap-2 bg-accent text-white py-3 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-ink transition-all shadow-lg active:scale-95 pointer-events-auto"
+                            >
+                              <Zap size={14} />
+                              Connect
+                            </button>
+                            <button 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                if (demoAgents[0].balance > 0) {
+                                  setCurrentPage('exchange');
+                                }
+                              }}
+                              className="flex items-center justify-center gap-2 bg-card border border-border py-3 rounded-lg text-[10px] font-bold uppercase tracking-widest text-ink/40 hover:text-accent hover:border-accent transition-all pointer-events-auto"
+                            >
+                              <Coins size={14} />
+                              {demoAgents[0].balance.toFixed(2)}
+                            </button>
+                            <button 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleSpawn();
+                              }}
+                              className="flex items-center justify-center gap-2 bg-card border border-border py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/40 hover:text-accent hover:border-accent transition-all pointer-events-auto"
+                            >
+                              <Plus size={12} />
+                              Spawn
+                            </button>
+                            <button 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleRemoveAgent(1);
+                              }}
+                              className="flex items-center justify-center gap-2 bg-card border border-border py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/40 hover:text-accent hover:border-accent transition-all pointer-events-auto"
+                            >
+                              <X size={12} />
+                              Remove
+                            </button>
+                          </div>
                       </div>
                     </div>
 
@@ -648,14 +722,18 @@ export default function App() {
                                 setDemoAgents(prev => prev.map(a => a.id === id ? { ...a, isOpen: true } : a));
                               }
                             }}
-                            className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-[#0a0a0a]/30 border-4 border-[#1a1a1a] border-dashed relative overflow-hidden shadow-xl transition-all flex items-center justify-center hover:border-accent/50 group"
+                            className={`w-24 h-24 sm:w-32 sm:h-32 rounded-full ${demoAgents.find(a => a.id === id)?.isSpawned ? 'bg-[#0a0a0a]' : 'bg-[#0a0a0a]/30 border-dashed'} border-4 border-[#1a1a1a] relative overflow-hidden shadow-xl transition-all flex items-center justify-center hover:border-accent/50 group`}
                           >
-                            <div className="relative">
-                              <User size={40} className="sm:size-[60px] text-accent/5 opacity-20" />
-                              <div className="absolute inset-0 flex items-center justify-center">
-                                <Plus size={20} className="sm:size-[24px] text-accent/40 group-hover:text-accent transition-colors" />
+                            {demoAgents.find(a => a.id === id)?.isSpawned ? (
+                              demoAgents.find(a => a.id === id)?.isAnswered ? <SineWave /> : <RingingPhone />
+                            ) : (
+                              <div className="relative">
+                                <User size={40} className="sm:size-[60px] text-accent/5 opacity-20" />
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                  <Plus size={20} className="sm:size-[24px] text-accent/40 group-hover:text-accent transition-colors" />
+                                </div>
                               </div>
-                            </div>
+                            )}
                           </motion.button>
                         </div>
 
@@ -691,26 +769,44 @@ export default function App() {
 
                           <div className="grid grid-cols-2 gap-2 w-full">
                             <button 
-                              onClick={() => handleConnectAgent(id)}
-                              className="flex items-center justify-center gap-2 bg-card/50 border border-border/50 py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/20 hover:text-accent hover:border-accent transition-all"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleConnectAgent(id);
+                              }}
+                              className="flex items-center justify-center gap-2 bg-card/50 border border-border/50 py-3 rounded-lg text-[10px] font-bold uppercase tracking-widest text-ink/20 hover:text-accent hover:border-accent transition-all pointer-events-auto"
                             >
-                              <Zap size={12} />
+                              <Zap size={14} />
                               Connect
                             </button>
-                            <button className="flex items-center justify-center gap-2 bg-card/50 border border-border/50 py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/20">
-                              <Coins size={12} />
+                            <button 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                const agent = demoAgents.find(a => a.id === id);
+                                if (agent && agent.balance > 0) {
+                                  setCurrentPage('exchange');
+                                }
+                              }}
+                              className="flex items-center justify-center gap-2 bg-card/50 border border-border/50 py-3 rounded-lg text-[10px] font-bold uppercase tracking-widest text-ink/20 pointer-events-auto"
+                            >
+                              <Coins size={14} />
                               {demoAgents.find(a => a.id === id)?.balance.toFixed(2) || '0.00'}
                             </button>
                             <button 
-                              onClick={handleSpawn}
-                              className="flex items-center justify-center gap-2 bg-card/50 border border-border/50 py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/20 hover:text-accent hover:border-accent transition-all"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleSpawn();
+                              }}
+                              className="flex items-center justify-center gap-2 bg-card/50 border border-border/50 py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/20 hover:text-accent hover:border-accent transition-all pointer-events-auto"
                             >
                               <Plus size={12} />
                               Spawn
                             </button>
                             <button 
-                              onClick={() => handleRemoveAgent(id)}
-                              className="flex items-center justify-center gap-2 bg-card/50 border border-border/50 py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/20 hover:text-red-500 hover:border-red-500 transition-all"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleRemoveAgent(id);
+                              }}
+                              className="flex items-center justify-center gap-2 bg-card/50 border border-border/50 py-2 rounded-lg text-[8px] font-bold uppercase tracking-widest text-ink/20 hover:text-red-500 hover:border-red-500 transition-all pointer-events-auto"
                             >
                               <X size={12} />
                               Remove
@@ -723,7 +819,103 @@ export default function App() {
                 </div>
               </div>
 
-              <AuthModal 
+              <ConnectionsModal 
+            isOpen={showConnectionsModal}
+            onClose={() => setShowConnectionsModal(false)}
+            onSelect={(platform, icon) => {
+              setShowConnectionsModal(false);
+              setActiveOAuth({ platform, icon });
+            }}
+          />
+
+          {/* Simulated OAuth Modal */}
+          <AnimatePresence>
+            {activeOAuth && (
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-[1100] flex items-center justify-center p-6 bg-black/80 backdrop-blur-md"
+              >
+                <motion.div 
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  className="w-full max-w-md bg-paper border border-border p-10 space-y-8 shadow-2xl frame"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4 relative">
+                      <div className="w-12 h-12 bg-accent/10 text-accent flex items-center justify-center rounded-xl">
+                        {activeOAuth.icon}
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-xl text-ink">Connect {activeOAuth.platform}</h3>
+                        <p className="text-[10px] text-ink/40 uppercase font-bold tracking-widest">Grant Agent Permissions</p>
+                      </div>
+                    </div>
+                    <button onClick={() => setActiveOAuth(null)} className="text-ink/20 hover:text-ink">
+                      <X size={20} />
+                    </button>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="p-6 bg-accent/5 border border-accent/10 space-y-4">
+                      <div className="flex items-center gap-3 text-accent">
+                        <Shield size={18} />
+                        <span className="text-[10px] font-bold uppercase tracking-widest">Secure Connection</span>
+                      </div>
+                      <p className="text-xs text-ink/60 leading-relaxed">
+                        This agent requires permission to analyze your {activeOAuth.platform} distribution footprint to optimize affiliate campaigns.
+                      </p>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold uppercase tracking-widest text-ink/30">Username</label>
+                        <input 
+                          type="text" 
+                          value="demo" 
+                          readOnly 
+                          className="w-full bg-card border border-border px-4 py-3 text-sm font-medium focus:outline-none"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold uppercase tracking-widest text-ink/30">Password</label>
+                        <input 
+                          type="password" 
+                          value="demo" 
+                          readOnly 
+                          className="w-full bg-card border border-border px-4 py-3 text-sm font-medium focus:outline-none"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="relative">
+                      <button 
+                        onClick={() => {
+                          if (activeAgentId) {
+                            handleAgentAuthorize(activeAgentId, 2.33);
+                          }
+                        }}
+                        disabled={isOAuthLoading}
+                        className="w-full bg-ink text-paper font-bold py-5 uppercase tracking-widest text-sm hover:bg-accent transition-all flex items-center justify-center gap-3 disabled:opacity-50"
+                      >
+                        {isOAuthLoading ? (
+                          <div className="w-5 h-5 border-2 border-paper/30 border-t-paper rounded-full animate-spin" />
+                        ) : (
+                          <>
+                            Authorize Agent
+                            <ArrowRight size={18} />
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <AuthModal 
                 isOpen={showAuthModal}
                 onClose={() => setShowAuthModal(false)}
                 initialTab={authModalTab}
@@ -791,6 +983,11 @@ export default function App() {
                     setDemoAgents(prev => prev.map(a => ({ ...a, isOpen: false })));
                     setForceConnect(false);
                   }}
+                  onNavigate={(page) => setCurrentPage(page)}
+                  onAuthRequired={() => {
+                    setAuthModalTab('signup');
+                    setShowAuthModal(true);
+                  }}
                   variant="mobile" 
                   forceConnect={forceConnect}
                   initialBalance={demoAgents.find(a => a.id === activeAgentId)?.balance}
@@ -798,7 +995,8 @@ export default function App() {
                   guideStep={onboardingStep}
                   onGuideStepChange={setOnboardingStep}
                   onConnectAttempt={() => {
-                    setDemoPrompt('Sign in with the demo account to see more');
+                    setAuthModalTab('signup');
+                    setShowAuthModal(true);
                     setForceConnect(false);
                   }}
                 />
@@ -850,10 +1048,14 @@ export default function App() {
                 <h3 className="text-xl font-bold text-ink">Sign in to speak to your free agent</h3>
               </div>
               <button 
-                onClick={() => setShowContactModal(false)}
+                onClick={() => {
+                  setShowContactModal(false);
+                  setAuthModalTab('signin');
+                  setShowAuthModal(true);
+                }}
                 className="w-full bg-ink text-paper font-bold py-4 uppercase tracking-widest text-xs hover:bg-accent transition-all"
               >
-                Close
+                Sign In / Register
               </button>
             </motion.div>
           </motion.div>
