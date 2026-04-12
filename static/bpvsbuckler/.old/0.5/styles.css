@@ -1,0 +1,61 @@
+/* Completely new site design styles (offline friendly) */
+:root{
+  --bg: #0b1020; /* deep indigo */
+  --bg-gradient-start: #0b1020;
+  --bg-gradient-end: #1e3a8a; /* blue-ish */
+  --card: #111827; /* gray-900 */
+  --surface: #0b1220;
+  --text: #e5e7eb; /* gray-200 */
+  --muted: #9ca3af; /* gray-400 */
+  --brand: #1e40af; /* blue-700 */
+  --accent: #f87171; /* red-400 */
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, "Helvetica Neue", sans-serif;
+  color: var(--text);
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, #1e1e2a 60%, #0b1020 100%);
+}
+
+/* Global helpers */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+.spacer { height: 1rem; }
+.brand {
+  color: #fff; text-decoration: none; font-family: Georgia, serif; font-weight: 700; letter-spacing: .5px;
+}
+.brand .accent { color: #93c5fd; }
+
+/* Navbar rewrite (basic, stable across offline) */
+.site-header { position: sticky; top: 0; z-index: 50; background: rgba(15,23,42,.95); border-bottom: 1px solid rgba(255,255,255,.08); }
+.site-nav { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 0; }
+.nav-left { display: flex; align-items: center; gap: 12px; }
+.logo { width: 28px; height: 28px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; background: #991b1b; color: #fff; font-weight: 700; font-family: monospace; }
+.nav-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.nav-links a { color: #cbd5e1; text-decoration: none; font-size: 12px; padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
+.nav-links a.active { background: #1f2937; color: #fff; border-color: rgba(255,255,255,.25); }
+.cta { color: #cbd5e1; border: 1px solid rgba(255,255,255,.25); padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 12px; }
+.cta:hover { color: #fff; background: rgba(255,255,255,.08); }
+
+/* Hero / landing area */
+.hero { padding: 48px 0 24px; background: linear-gradient(135deg, rgba(14, 30, 62, .6), rgba(14, 30, 62, 0.0)); }
+.hero-title { font-family: Georgia, serif; font-weight: 700; font-size: 54px; line-height: 1.05; margin: 0 0 8px; color: #fff; letter-spacing: .5px; }
+.hero-sub { color: #d1d5db; font-size: 18px; max-width: 700px; }
+.card { background: rgba(2,6,23,.6); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.3); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.card h3 { margin: 0 0 6px; font-size: 16px; }
+.card p { margin: 0; color: #cbd5e1; font-size: 13px; }
+.section { padding: 20px; border-radius: 12px; background: rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); }
+
+/* Editor container (Puck) */
+.puck-editor-container { padding: 20px; border-radius: 12px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); margin: 20px 0; }
+
+/* Tiny utility helpers for typography */
+.lead { font-size: 15px; color: #cbd5e1; }
+
+/* Responsive tweaks */
+@media (max-width: 768px){
+  .hero-title { font-size: 38px; }
+}

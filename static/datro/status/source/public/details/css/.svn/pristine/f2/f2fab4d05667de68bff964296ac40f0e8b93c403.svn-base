@@ -1,0 +1,482 @@
+/**
+ * Grid
+ *
+ * The grid system in Freelancer is a 12 column based Flexbox grid system.
+ *
+ * The grid system follows the same concept as Bootstrap 4's implementation
+ * of the grid system in flexbox. If you're familiar with the Bootstrap's
+ * grid system usage, then you'll be able to pick up the concepts of the grid
+ * system in no time.
+ *
+ * Styleguide Grid System - Grid
+ */
+
+/**
+ * Parent Container and Basic Grid Usage
+ *
+ * Every usage of the Grid needs to start off with a `.Grid` class first to
+ * encapsulate all the columns inside.
+ *
+ * Columns use `.Grid-col` combined with the size of the column from 1 to 12
+ * using `.Grid-col--[column size]`. Bear in mind all columns are 12 columns
+ * in width by default if you don't specify the size.
+ *
+ * Columns also overflow to the next row with the columns filling in from
+ * left to right.
+ *
+ * Markup: grid-simple.html
+ *
+ * Styleguide Grid System - Grid - Basic
+ */
+
+/**
+ * Grid Columns in Different Breakpoints
+ *
+ * Just like the Bootstrap grid system, we have different classes to set
+ * different column sizes on different breakpoints.
+ *
+ * The syntax is `.Grid-col--[breakpoint name]-[column size]` where
+ * the breakpoint name is a camel case version of the naming convention we
+ * have for breakpoints.
+ *
+ * You can stack the breakpoint classes together to get different behaviours
+ * on different breakpoints.
+ *
+ * Try resizing the browser to see the behaviours below.
+ *
+ * Markup: grid-breakpoints.html
+ *
+ * Styleguide Grid System - Grid - Breakpoints
+ */
+
+/**
+ * Grid Container Modifiers
+ *
+ * The grid container `.Grid` class allow modifiers as well.
+ *
+ * * `.Grid--horizontalCenter`: allows you to center the grid. This is useful
+ *   when you want to center the grid in general. Usually with Bootstrap you
+ *   offsset the grid but this modifier eliminates the use of offsets entirely.
+ * * `.Grid--horizontalRight`: puts the whole grid to the right side.
+ * * `.Grid--verticalCenter`: centers the whole grid vertically.
+ * * `.Grid--verticalStretch`: stretches the grid columns vertically so they
+ *   are the same height.
+ * * `.Grid--overflow`: makes the grid not overflow to the next row. Rarely
+ *   you want to use this.
+ *
+ * Markup: grid-container-modifiers.html
+ *
+ * Styleguide Grid System - Grid - Container Modifiers
+ */
+
+/**
+ * Grid Column Modifiers
+ *
+ * The grid columns have modifiers for other things apart from the column sizes.
+ *
+ * * `.Grid-col--flushRight`: puts the grid column flush to the right, adding
+ *   as much space as possible between the column and the column before it.
+ * * `.Grid-col--flushLeft`: same as `.Grid-col--flushRight` but flushes to the
+ *   left instead. Useful for reversed layouts.
+ * * `.Grid-col--flexContainer`: makes the grid column a flex container.
+ *
+ * Markup: grid-column-modifiers.html
+ *
+ * Styleguide Grid System - Grid - Grid Column Modifiers
+ */
+
+/**
+ * Grid Full Frame
+ *
+ * The grid system can stretch to the entire browser viewport with
+ * `.Grid--frame`.
+ *
+ * Markup: grid-full-frame.html
+ *
+ * Styleguide Grid System - Grid - Grid Full Frame
+ */
+
+@import (reference) "theme/variables.less";
+
+.Grid {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    margin: 0 -@spacing-xsmall;
+
+    @media (min-width: @breakpoint-tablet) {
+        margin: 0 -@spacing-mid / 2;
+    }
+
+    &--horizontalCenter {
+        justify-content: center;
+    }
+
+    &--horizontalRight {
+        justify-content: flex-end;
+
+        &.Grid--overflow > .Grid-col {
+            /* IE sucks at overflowing a justify-content: flex-end to the right,
+               instead doing it to the left. Let's do a graceful fallback to
+               shrink the columns so it fits instead. */
+            -ms-flex-negative: 1;
+        }
+    }
+
+    &--verticalBottom {
+        align-items: flex-end;
+    }
+
+    &--verticalCenter {
+        align-items: center;
+    }
+
+    &--verticalStretch {
+        align-items: stretch;
+    }
+
+    &--overflow {
+        flex-flow: row nowrap;
+    }
+
+    &--frame {
+        width: 100vw;
+        min-height: 100vh;
+    }
+
+    /* Columns */
+    &-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 0 @spacing-xsmall;
+
+        @media (min-width: @breakpoint-tablet) {
+            padding: 0 @spacing-mid / 2;
+        }
+
+        &--1 {
+            flex-basis: (100% / 12 * 1);
+            max-width: (100% / 12 * 1);
+        }
+
+        &--2 {
+            flex-basis: (100% / 12 * 2);
+            max-width: (100% / 12 * 2);
+        }
+
+        &--3 {
+            flex-basis: (100% / 12 * 3);
+            max-width: (100% / 12 * 3);
+        }
+
+        &--4 {
+            flex-basis: (100% / 12 * 4);
+            max-width: (100% / 12 * 4);
+        }
+
+        &--5 {
+            flex-basis: (100% / 12 * 5);
+            max-width: (100% / 12 * 5);
+        }
+
+        &--6 {
+            flex-basis: (100% / 12 * 6);
+            max-width: (100% / 12 * 6);
+        }
+
+        &--7 {
+            flex-basis: (100% / 12 * 7);
+            max-width: (100% / 12 * 7);
+        }
+
+        &--8 {
+            flex-basis: (100% / 12 * 8);
+            max-width: (100% / 12 * 8);
+        }
+
+        &--9 {
+            flex-basis: (100% / 12 * 9);
+            max-width: (100% / 12 * 9);
+        }
+
+        &--10 {
+            flex-basis: (100% / 12 * 10);
+            max-width: (100% / 12 * 10);
+        }
+
+        &--11 {
+            flex-basis: (100% / 12 * 11);
+            max-width: (100% / 12 * 11);
+        }
+
+        &--12 {
+            flex-basis: (100% / 12 * 12);
+            max-width: (100% / 12 * 12);
+        }
+
+        /* Column ordering */
+        &--order-1 {
+            order: 1;
+        }
+
+        &--order-2 {
+            order: 2;
+        }
+
+        &--order-3 {
+            order: 3;
+        }
+
+        /* Tablet breakpoint columns */
+        @media (min-width: @breakpoint-tablet) {
+            &--tablet {
+                &-1 {
+                    flex-basis: (100% / 12 * 1);
+                    max-width: (100% / 12 * 1);
+                }
+
+                &-2 {
+                    flex-basis: (100% / 12 * 2);
+                    max-width: (100% / 12 * 2);
+                }
+
+                &-3 {
+                    flex-basis: (100% / 12 * 3);
+                    max-width: (100% / 12 * 3);
+                }
+
+                &-4 {
+                    flex-basis: (100% / 12 * 4);
+                    max-width: (100% / 12 * 4);
+                }
+
+                &-5 {
+                    flex-basis: (100% / 12 * 5);
+                    max-width: (100% / 12 * 5);
+                }
+
+                &-6 {
+                    flex-basis: (100% / 12 * 6);
+                    max-width: (100% / 12 * 6);
+                }
+
+                &-7 {
+                    flex-basis: (100% / 12 * 7);
+                    max-width: (100% / 12 * 7);
+                }
+
+                &-8 {
+                    flex-basis: (100% / 12 * 8);
+                    max-width: (100% / 12 * 8);
+                }
+
+                &-9 {
+                    flex-basis: (100% / 12 * 9);
+                    max-width: (100% / 12 * 9);
+                }
+
+                &-10 {
+                    flex-basis: (100% / 12 * 10);
+                    max-width: (100% / 12 * 10);
+                }
+
+                &-11 {
+                    flex-basis: (100% / 12 * 11);
+                    max-width: (100% / 12 * 11);
+                }
+
+                &-12 {
+                    flex-basis: (100% / 12 * 12);
+                    max-width: (100% / 12 * 12);
+                }
+            }
+
+            /* Column ordering */
+            &--tabletOrder {
+                &-1 {
+                    order: 1;
+                }
+
+                &-2 {
+                    order: 2;
+                }
+
+                &-3 {
+                    order: 3;
+                }
+            }
+        }
+
+        /* Desktop small breakpoint columns */
+        @media (min-width: @breakpoint-desktop-small) {
+            &--desktopSmall {
+                &-1 {
+                    flex-basis: (100% / 12 * 1);
+                    max-width: (100% / 12 * 1);
+                }
+
+                &-2 {
+                    flex-basis: (100% / 12 * 2);
+                    max-width: (100% / 12 * 2);
+                }
+
+                &-3 {
+                    flex-basis: (100% / 12 * 3);
+                    max-width: (100% / 12 * 3);
+                }
+
+                &-4 {
+                    flex-basis: (100% / 12 * 4);
+                    max-width: (100% / 12 * 4);
+                }
+
+                &-5 {
+                    flex-basis: (100% / 12 * 5);
+                    max-width: (100% / 12 * 5);
+                }
+
+                &-6 {
+                    flex-basis: (100% / 12 * 6);
+                    max-width: (100% / 12 * 6);
+                }
+
+                &-7 {
+                    flex-basis: (100% / 12 * 7);
+                    max-width: (100% / 12 * 7);
+                }
+
+                &-8 {
+                    flex-basis: (100% / 12 * 8);
+                    max-width: (100% / 12 * 8);
+                }
+
+                &-9 {
+                    flex-basis: (100% / 12 * 9);
+                    max-width: (100% / 12 * 9);
+                }
+
+                &-10 {
+                    flex-basis: (100% / 12 * 10);
+                    max-width: (100% / 12 * 10);
+                }
+
+                &-11 {
+                    flex-basis: (100% / 12 * 11);
+                    max-width: (100% / 12 * 11);
+                }
+
+                &-12 {
+                    flex-basis: (100% / 12 * 12);
+                    max-width: (100% / 12 * 12);
+                }
+            }
+
+            /* Column ordering */
+            &--desktopSmallOrder {
+                &-1 {
+                    order: 1;
+                }
+
+                &-2 {
+                    order: 2;
+                }
+
+                &-3 {
+                    order: 3;
+                }
+            }
+        }
+
+        /* Desktop large breakpoint columns */
+        @media (min-width: @breakpoint-desktop-large) {
+            &--desktopLarge {
+                &-1 {
+                    flex-basis: (100% / 12 * 1);
+                    max-width: (100% / 12 * 1);
+                }
+
+                &-2 {
+                    flex-basis: (100% / 12 * 2);
+                    max-width: (100% / 12 * 2);
+                }
+
+                &-3 {
+                    flex-basis: (100% / 12 * 3);
+                    max-width: (100% / 12 * 3);
+                }
+
+                &-4 {
+                    flex-basis: (100% / 12 * 4);
+                    max-width: (100% / 12 * 4);
+                }
+
+                &-5 {
+                    flex-basis: (100% / 12 * 5);
+                    max-width: (100% / 12 * 5);
+                }
+
+                &-6 {
+                    flex-basis: (100% / 12 * 6);
+                    max-width: (100% / 12 * 6);
+                }
+
+                &-7 {
+                    flex-basis: (100% / 12 * 7);
+                    max-width: (100% / 12 * 7);
+                }
+
+                &-8 {
+                    flex-basis: (100% / 12 * 8);
+                    max-width: (100% / 12 * 8);
+                }
+
+                &-9 {
+                    flex-basis: (100% / 12 * 9);
+                    max-width: (100% / 12 * 9);
+                }
+
+                &-10 {
+                    flex-basis: (100% / 12 * 10);
+                    max-width: (100% / 12 * 10);
+                }
+
+                &-11 {
+                    flex-basis: (100% / 12 * 11);
+                    max-width: (100% / 12 * 11);
+                }
+
+                &-12 {
+                    flex-basis: (100% / 12 * 12);
+                    max-width: (100% / 12 * 12);
+                }
+            }
+
+            /* Column ordering */
+            &--desktopLargeOrder {
+                &-1 {
+                    order: 1;
+                }
+
+                &-2 {
+                    order: 2;
+                }
+
+                &-3 {
+                    order: 3;
+                }
+            }
+        }
+
+        &--flushRight {
+            margin-left: auto;
+        }
+
+        &--flushLeft {
+            margin-right: auto;
+        }
+
+        &--flexContainer {
+            display: flex;
+        }
+    }
+}

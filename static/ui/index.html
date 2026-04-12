@@ -119,13 +119,13 @@
             <a href="dashboard/screen-lookups/001-lookup.html" onclick="setIframeSrc('framez', this.href); return false" target="framez">AI+Chat</a>
         </li>
         <li>
-            <a href="dashboard/screen-lookups/002-lookup.html" onclick="setIframeSrc('framez', this.href); return false" target="framez">Media</a>
+            <a href="https://ai.financecheque.uk/jellyfin/" onclick="setIframeSrc('framez', this.href); return false" target="framez">Media</a>
         </li>
         <li>
-            <a href="dashboard/screen-lookups/003-lookup.html" onclick="setIframeSrc('framez', this.href); return false" target="framez">Brain</a>
+            <a href="https://ai.financecheque.uk/paperclip/" onclick="setIframeSrc('framez', this.href); return false" target="framez">Brain</a>
         </li>
         <li>
-            <a href="dashboard/screen-lookups/004-lookup.html" onclick="setIframeSrc('framez', this.href); return false" target="framez">Stats</a>
+            <a href="https://ai.financecheque.uk/netdata/" onclick="setIframeSrc('framez', this.href); return false" target="framez">Stats</a>
         </li>
         <li>
             <a href="dashboard/screen-lookups/005-lookup.html" onclick="setIframeSrc('framez', this.href); return false" target="framez">Settings</a>
@@ -163,9 +163,9 @@
       if (!isLoggedIn) {
         // Map URLs to illustration views
         var view = 'ai-chat'; // default
-        if (url.includes('002')) view = 'media';
-        else if (url.includes('003')) view = 'brain';
-        else if (url.includes('004')) view = 'stats';
+        if (url.includes('paperclip') || url.includes('003')) view = 'brain';
+        else if (url.includes('netdata') || url.includes('004')) view = 'stats';
+        else if (url.includes('jellyfin') || url.includes('002')) view = 'media';
         else if (url.includes('005')) view = 'settings';
         else if (url.includes('006')) view = 'oakesy';
         

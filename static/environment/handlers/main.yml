@@ -1,0 +1,10 @@
+---
+# Handlers
+
+- name: apt clean
+  command: apt-get clean
+
+- name: restart docker
+  systemd:
+    name: docker
+    state: restarted

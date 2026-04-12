@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Not Available</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            background-color: #454545; /* Dashboard grey background */
+            color: white;
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .error-box {
+            background: rgba(0,0,0,0.3);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        h1 {
+            font-size: 7rem;
+            margin: 0;
+            color: #ff6b6b;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        a {
+            color: white;
+            text-decoration: underline;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border: 1px solid white;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        .install-reinstall-btn {
+            background-color: #6a0dad; /* Purple for emphasis */
+            border-color: #6a0dad;
+        }
+        .install-reinstall-btn:hover {
+            background-color: #8a2be2;
+            border-color: #8a2be2;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-box">
+        <h1>!</h1>
+        <p>App not available</p>
+        <p>This app doesn't appear to be installed or running on your localhost.</p>
+        <a href="#" id="goBackBtn">← Go Back</a>
+        <a href="#" id="installReinstallBtn" class="install-reinstall-btn" style="display: none;">Install / Reinstall this app now</a>
+    </div>
+
+    <script>
+        // Function to get the last visited page from localStorage
+        function getLastVisitedPage() {
+            const visitedPages = JSON.parse(localStorage.getItem('visitedPages')) || [];
+            // Return the second to last page if available, otherwise the last page
+            return visitedPages.length > 1 ? visitedPages[visitedPages.length - 2] : visitedPages[visitedPages.length - 1];
+        }
+
+        // Function to get the appId that caused the error (needs to be passed or stored)
+        function getErrorAppId() {
+            // This is a placeholder. In a real scenario, appId would be passed via URL params or localStorage.
+            // For now, let's assume it's '004-001' for demonstration.
+            // A more robust solution would involve passing the appId as a URL parameter to app-error.html
+            // Example: app-error.html?appId=004-001
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('appId') || '004-001'; // Default to '004-001' if not provided
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const goBackBtn = document.getElementById('goBackBtn');
+            const installReinstallBtn = document.getElementById('installReinstallBtn');
+
+            // Handle "Go Back" button
+            const lastPage = getLastVisitedPage();
+            if (goBackBtn) {
+                if (lastPage) {
+                    goBackBtn.href = lastPage;
+                } else {
+                    // Fallback if no history is found
+                    goBackBtn.href = '000.html'; // Default to app store main page
+                }
+            }
+
+            // Handle "Install / Reinstall this app now" button
+            const appId = getErrorAppId();
+            if (installReinstallBtn && appId) {
+                // Construct the app detail page URL
+                // Assuming app detail pages are like app-store/app-description-APPID.html
+                installReinstallBtn.href = `../app-store/app-description-${appId}.html`;
+                installReinstallBtn.style.display = 'inline-block';
+            }
+        });
+
+        // Script to track visited pages (should ideally be in a global JS file)
+        // For now, adding it here for demonstration.
+        document.addEventListener('DOMContentLoaded', function() {
+            const visitedPages = JSON.parse(localStorage.getItem('visitedPages')) || [];
+            const currentPage = window.location.href;
+
+            // Add current page to history, limit to last 2 pages
+            visitedPages.push(currentPage);
+            if (visitedPages.length > 2) {
+                visitedPages.shift(); // Remove the oldest page
+            }
+            localStorage.setItem('visitedPages', JSON.stringify(visitedPages));
+        });
+    </script>
+</body>
+</html>

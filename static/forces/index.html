@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Casualty Escort Officer Application - Zero-knowledge mobile application tender.">
+    <title>Casualty Escort Officer Application | DATRO Consortium</title>
+   
+    <!-- Google Fonts for High-Tech/Security Look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent: #6366f1; /* Indigo */
+            --accent-hover: #4f46e5;
+            --alert: #fbbf24; /* Amber */
+            --nav-bg: rgba(15, 23, 42, 0.95);
+            --success: #10b981;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+            overflow-x: hidden;
+        }
+        /* --- Navigation --- */
+        nav {
+            background-color: var(--nav-bg);
+            border-bottom: 1px solid #334155;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            backdrop-filter: blur(10px);
+        }
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        /* --- Header & Timer --- */
+        header {
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+            text-align: center;
+            padding: 4rem 20px 2rem;
+            border-bottom: 1px solid #334155;
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            margin: 0 0 1.5rem 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        .timer-container {
+            background: rgba(0, 0, 0, 0.3);
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 25px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+        .timer-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        #timer {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        /* --- Layout & Typography --- */
+        section {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 20px;
+        }
+        .card {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+            margin-bottom: 2rem;
+            border: 1px solid #334155;
+        }
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+        h3 {
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        ul {
+            color: var(--text-main);
+            padding-left: 20px;
+            margin-bottom: 1.5rem;
+        }
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        a:hover {
+            color: #818cf8;
+            text-decoration: underline;
+        }
+        /* --- Progress Bar --- */
+        .progress-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .progress-bar {
+            background: #334155;
+            border-radius: 8px;
+            height: 20px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-fill {
+            background: var(--success);
+            height: 100%;
+            transition: width 1s ease;
+        }
+        .progress-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        /* --- Payment Columns --- */
+        .payment-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .payment-column {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .payment-column h4 {
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        .raised-amount {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--success);
+            margin: 1rem 0;
+        }
+        /* --- Video --- */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #000;
+            border: 1px solid #334155;
+            margin-bottom: 2rem;
+        }
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        /* --- Crypto Box --- */
+        .crypto-box {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--alert);
+        }
+        .wallet-address-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #0f172a;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .wallet-address {
+            font-family: monospace;
+            color: var(--alert);
+            word-break: break-all;
+            flex-grow: 1;
+        }
+        .copy-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        .copy-btn:hover {
+            background-color: var(--accent-hover);
+        }
+        /* --- Contact Details --- */
+        .contact-details {
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        /* --- Footer --- */
+        footer {
+            background-color: var(--nav-bg);
+            border-top: 1px solid #334155;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            background: #334155;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-top: 1rem;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .contact-btn:hover {
+            background: #475569;
+            text-decoration: none;
+            color: white;
+        }
+        .contact-btn img {
+            filter: invert(100%);
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        /* --- Mobile --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            .nav-links { display: none; }
+            .nav-container { justify-content: center; }
+            .card { padding: 1.5rem; }
+            .payment-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <!-- Stripe Script -->
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">DATRO CONSORTIUM</a>
+            <div class="nav-links">
+                <a href="#about">Mission</a>
+                <a href="#video">Intelligence</a>
+                <a href="#register">Co-Fund</a>
+                <a href="#zero-knowledge">Tech</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header with Timer -->
+    <header>
+        <h1>Casualty Escort Officer App</h1>
+        <div class="timer-container">
+            <span class="timer-label">Public Co-ownership Deadline</span>
+            <div id="timer">Calculating...</div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="card">
+            <h2>Mission Statement</h2>
+            <h3>By Sion Buckler, Director of DATRO Consortium Ltd</h3>
+            <p>This is a tender to the public for my <a href="https://find-and-update.company-information.service.gov.uk/company/13775817" target="_blank">Private Security Group</a> to build you a <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof" target="_blank">zero-knowledge</a> mobile application. Upon mutually-agreed, consensual invitation from bereaved families, this app empowers willing off-duty and former military personnel to attend funerals and salute the fallen.</p>
+            <p>We honor the Welsh, Scottish, Irish, and English nationals whose lives are being taken prematurely in unexplained circumstances—ways which may later be identified as hybrid war crimes perpetrated by UK state bad actors.</p>
+            <p>This project's mission is to assert a firm line of integrity and honour by ensuring a respectful presence of those who have served. Once this line is established, it can advance forward in unison through our civil society until we identify, suppress, and stop this harm at the source. This initiative aims to ensure families see justice, closure, and dignity, starting at the graves.</p>
+           
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://wayback.datro.xyz/2025-09-10_taking_chance_web_app_v0.0.1_en.pdf" target="_blank" class="btn-main">
+                    View Project Summary PDF
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="video">
+        <div class="card">
+            <h2>Intelligence Briefing</h2>
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="https://wayback.datro.xyz/2025-08-09_service-v0.0.1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <p>Credible intelligence indicates that the UK regime seeks to ruthlessly exploit human potential and resources, orchestrating unchecked manipulation and control of populations without regulatory oversight. Crimes may be deliberately maintained to fabricate an environment for maximizing the extraction of human potential.</p>
+            <p>Historical aggregation of data validation, combined with permanent record-keeping on a decentralized blockchain and physical network, will enable proper determination and monitoring of state engagement in persecution and unlawful population reduction.</p>
+        </div>
+    </section>
+
+    <!-- Register/Fund Section -->
+    <section id="register">
+        <div class="card">
+            <h2>Get Involved</h2>
+            <p style="font-size: 1.2rem; color: #fff; text-align: center;"><strong>Co-fund this project (Goal = £10,000 GBP)</strong></p>
+
+            <div class="progress-container">
+                <div class="progress-text" id="progress-text">Raised: £0.00 / £10,000 (0.0%)</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
+                </div>
+            </div>
+
+            <p style="text-align: center;">By contributing, you help bring this zero-knowledge application to life and become part of a groundbreaking decentralized ownership model.</p>
+           
+            <div class="payment-columns">
+                <!-- Stripe Column -->
+                <div class="payment-column">
+                    <h4>Co-Fund with Credit/Debit Card</h4>
+                    <div class="raised-amount" id="stripe-raised">Loading...</div>
+                    
+                    <div style="margin: 20px 0;">
+                        <stripe-buy-button
+                            buy-button-id="buy_btn_1RuDNARibisCfpBQBMKwrMVc"
+                            publishable-key="pk_live_51OqlLnRibisCfpBQQsDU3l2hhMLoKwTcdiokINqNA4wWaLeBM5qkMyJDV3B6TIToBOKCh4WhEzff7isJCLYIJaUB0088uetffQ">
+                        </stripe-buy-button>
+                    </div>
+                </div>
+
+                <!-- Bitcoin Column -->
+                <div class="payment-column">
+                    <h4>Pay with Bitcoin (BTC)</h4>
+                    <div class="raised-amount" id="btc-raised">£0.00 equivalent raised</div>
+                    <div class="crypto-box">
+                        <div class="wallet-address-container">
+                            <span id="btc-address" class="wallet-address">bc1qddlu48vwmq0zrey0pgc8h02q9edq3jd8pwe3am</span>
+                            <button class="copy-btn" onclick="copyToClipboard()">Copy</button>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.9rem; margin-top: 1rem; color: var(--text-muted);">View transactions on <a href="https://mempool.space/address/bc1qddlu48vwmq0zrey0pgc8h02q9edq3jd8pwe3am" target="_blank">mempool.space</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="zero-knowledge">
+        <div class="card">
+            <h2>Technology Stack</h2>
+            
+            <h3>Decentralized Co-Ownership Model</h3>
+            <p>This project introduces a novel DAO structure for truly decentralized ownership and control of the source code for a zero-knowledge-enabled smart contract application.</p>
+            
+            <p>The complete source code is divided into 10,000 independent blocks (shards), each stored as a base64-encoded string on IPFS for immutable, decentralized storage. Naming and resolution are handled via ENS (Ethereum Name Service) or Handshake for user-friendly access.</p>
+            
+            <p>Each block is associated with a unique co-ownership key, represented as an ERC-721 NFT (or equivalent token). Holders of these keys have direct control over their specific block:</p>
+            <ul>
+                <li>They can propose alterations to the code in their block.</li>
+                <li>They can vote to delete or replace their block if needed.</li>
+            </ul>
+            
+            <p>To prevent unilateral changes from compromising the overall codebase, updates to the assembled application (e.g., merging changes or publishing new versions) are secured by a BLS-based t-of-n threshold signature scheme. A minimum threshold (t) of key holders must collectively sign off on any global update, ensuring community consensus while distributing power across all 10,000 owners.</p>
+            
+            <p>This model achieves unprecedented decentralization: no single entity or small group can alter or delete parts of the code without broader agreement, while individual owners retain meaningful control over their shard.</p>
+            
+            <p>The full codebase can be reassembled and verified by anyone using the public IPFS references and threshold-verified updates.</p>
+            
+            <p><strong>Security Note:</strong> Your co-ownership key grants real control over a portion of the source code. Treat it as a valuable asset—store it securely and be cautious when transferring, as it could impact the project's integrity if acquired by malicious actors.</p>
+
+            <h3>Zero-Knowledge (ZK) Smart Contracts</h3>
+            <p>These embody a framework prioritizing privacy, autonomy, and trustless accountability. They enable proofs without exposing sensitive information, challenging centralized control.</p>
+            <ul>
+                <li><strong>Privacy:</strong> Engaging in transactions without exposing data.</li>
+                <li><strong>Decentralization:</strong> Rejecting intermediaries and authoritarian oversight.</li>
+                <li><strong>Immutability:</strong> Permanent records ensuring historical accountability for state actions.</li>
+                <li><strong>Empowerment:</strong> Utilizing ZK frameworks (Circom / Plonky2 / Halo2) to allow bereaved families to seek justice while safeguarding dignity.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="card" style="text-align: center;">
+            <h2>Contact Us</h2>
+            <p>For inquiries, please contact the private security group:</p>
+            <a href="tel:+442031377118" class="contact-btn">
+                <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Phone Icon">
+                +44 20 313 77 118
+            </a>
+
+            <div class="contact-details">
+                <p>Unit 29 Highcroft Industrial Estate<br>
+                Enterprise Road<br>
+                Waterlooville<br>
+                England<br>
+                PO8 0BT</p>
+                <p>Company number 13775817</p>
+            </div>
+
+            <h3 style="margin-top: 2rem; color: #fff;">Thank You</h3>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 DATRO Consortium Ltd. All rights reserved.</p>
+    </footer>
+
+    <!-- Logic Scripts -->
+    <script>
+        // --- Timer Logic ---
+        const targetDate = new Date('2026-10-09T12:00:00Z');
+        function updateTimer() {
+            const now = new Date();
+            const timeDiff = Math.floor((targetDate - now) / 1000);
+            const timerElement = document.getElementById('timer');
+            if (timeDiff <= 0) {
+                timerElement.textContent = "Deadline Passed";
+                clearInterval(timerInterval);
+                return;
+            }
+            const days = Math.floor(timeDiff / (3600 * 24));
+            const hours = Math.floor((timeDiff % (3600 * 24)) / 3600);
+            const minutes = Math.floor((timeDiff % 3600) / 60);
+            const seconds = timeDiff % 60;
+            timerElement.textContent =
+                `${days}d ${hours.toString().padStart(2, '0')}h ` +
+                `${minutes.toString().padStart(2, '0')}m ` +
+                `${seconds.toString().padStart(2, '0')}s`;
+        }
+        const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // --- Copy to Clipboard Logic ---
+        function copyToClipboard() {
+            const addressText = document.getElementById('btc-address').innerText;
+            navigator.clipboard.writeText(addressText).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                const originalText = btn.innerText;
+                btn.innerText = "Copied!";
+                btn.style.backgroundColor = "#10b981";
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.backgroundColor = "";
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        // --- Stripe Revenue Display Logic ---
+        async function fetchStripeRevenue() {
+            const stripeRaisedEl = document.getElementById('stripe-raised');
+            
+            try {
+                const response = await fetch('stripe-revenue.json?' + Date.now());
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // Convert pence to pounds
+                const revenueGBP = (data.totalRevenue / 100).toFixed(2);
+                
+                stripeRaisedEl.textContent = `£${revenueGBP} raised via card`;
+                
+                return parseFloat(revenueGBP);
+                
+            } catch (error) {
+                console.error('Error fetching Stripe revenue:', error);
+                stripeRaisedEl.textContent = 'Error loading';
+                return 0;
+            }
+        }
+
+        // --- Fundraising Progress (BTC + Stripe) ---
+        const GOAL_GBP = 10000;
+        async function updateProgress() {
+            try {
+                // Fetch BTC received
+                const response = await fetch('https://blockchain.info/rawaddr/bc1qddlu48vwmq0zrey0pgc8h02q9edq3jd8pwe3am');
+                const data = await response.json();
+                const totalReceivedBTC = data.total_received / 100000000;
+
+                // Fetch current BTC price in GBP
+                const priceResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=gbp');
+                const priceData = await priceResponse.json();
+                const btcPriceGBP = priceData.bitcoin.gbp;
+
+                const raisedBTC_GBP = totalReceivedBTC * btcPriceGBP;
+
+                // Fetch Stripe revenue
+                const stripeGBP = await fetchStripeRevenue();
+
+                // Combined total
+                const totalRaised = raisedBTC_GBP + stripeGBP;
+
+                // Update UI
+                document.getElementById('progress-text').textContent = `Raised: £${totalRaised.toFixed(2)} / £${GOAL_GBP} (${((totalRaised / GOAL_GBP) * 100).toFixed(1)}%)`;
+                document.getElementById('progress-fill').style.width = `${Math.min((totalRaised / GOAL_GBP) * 100, 100)}%`;
+
+                document.getElementById('btc-raised').textContent = `£${raisedBTC_GBP.toFixed(2)} equivalent raised`;
+            } catch (err) {
+                console.error('Error updating progress:', err);
+                document.getElementById('progress-text').textContent = 'Progress update failed – check manually';
+            }
+        }
+
+        // Update on load and every 5 minutes
+        updateProgress();
+        setInterval(updateProgress, 300000);
+    </script>
+</body>
+</html>

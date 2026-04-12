@@ -1,0 +1,111 @@
+---
+# System configuration including fstab for SD card as home
+
+- name: Get UUID of SD card partition
+  command: blkid -s UUID -o value /dev/mmcblk0p1
+  register: sdcard_uuid
+  changed_when: false
+  failed_when: false
+
+- name: Create mount point for SD card
+  file:
+    path: /mnt/sdcard
+    state: directory
+    mode: '0755'
+
+- name: Mount SD card temporarily
+  mount:
+    src: UUID={{ sdcard_uuid.stdout }}
+    path: /mnt/sdcard
+    fstype: ext4
+    state: mounted
+  when: sdcard_uuid.stdout | length > 0
+
+- name: Configure fstab for SD card as home
+  template:
+    src: fstab.j2
+    dest: /etc/fstab
+    mode: '0644'
+  backup: yes
+  when: sdcard_uuid.stdout | length > 0
+
+- name: Create home directory symlink
+  file:
+    src: /mnt/sdcard/home
+    dest: "{{ ansible_user_dir }}"
+    state: link
+    force: yes
+  when: sdcard_uuid.stdout | length > 0
+
+- name: Create user home on SD card if it doesn't exist
+  file:
+    path: /mnt/sdcard/home/{{ ansible_user }}
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0755'
+  when: sdcard_uuid.stdout | length > 0
+
+- name: Configure system limits
+  copy:
+    content: |
+      *               soft    nofile          65536
+      *               hard    nofile          65536
+      root            soft    nofile          65536
+      root            hard    nofile          65536
+    dest: /etc/security/limits.conf
+    mode: '0644'
+
+- name: Enable core dumps
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: present
+    reload: yes
+  loop:
+    - { name: 'kernel.core_pattern', value: '/tmp/core-%e-%p-%t' }
+    - { name: 'fs.suid_dumpable', value: '2' }
+
+- name: Configure system timezone
+  timezone:
+    name: UTC
+
+- name: Disable unnecessary services
+  systemd:
+    name: "{{ item }}"
+    state: stopped
+    enabled: no
+  loop:
+    - snapd
+  failed_when: false
+
+- name: Enable essential services
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  loop:
+    - docker
+    - cron
+    - chrony
+
+- name: Configure Docker daemon
+  copy:
+    content: |
+      {
+        "log-driver": "json-file",
+        "log-opts": {
+          "max-size": "10m",
+          "max-file": "3"
+        },
+        "storage-driver": "overlay2"
+      }
+    dest: /etc/docker/daemon.json
+    mode: '0644'
+  notify: restart docker
+
+- name: Add user to docker group
+  user:
+    name: "{{ ansible_user }}"
+    groups: docker
+    append: yes

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Links - App Store</title>
+        <link href="../dashboard/media/css/breadcrumb.css" rel="stylesheet">
+        <link href="../dashboard/media/css/appstore.css" rel="stylesheet">
+        <link href="css/font-awesome.css" rel="stylesheet">
+        <style>
+            body {
+                background: rgb(44,12,33)!important;
+            }
+            .square {
+                border:solid rgba(255,255,255,0.3) 1.5px;
+            }
+            .app-description-container {
+                max-width: 800px;
+                margin: 50px auto;
+                padding: 30px;
+                padding-top: 100px;
+                background: rgba(255,255,255,0.05);
+                border-radius: 10px;
+                border: 1px solid rgba(255,255,255,0.1);
+            }
+            .app-description-header {
+                display: flex;
+                align-items: center;
+                margin-bottom: 30px;
+            }
+            .app-description-icon {
+                width: 80px;
+                height: 80px;
+                margin-right: 20px;
+                border-radius: 15px;
+                object-fit: contain;
+            }
+            .app-description-title {
+                font-size: 2.5rem;
+                font-weight: bold;
+                color: rgba(255,255,255,0.9);
+            }
+            .app-description-category {
+                font-size: 1.2rem;
+                color: rgba(255,255,255,0.6);
+                margin-top: 5px;
+            }
+            .app-description-content {
+                font-size: 1.1rem;
+                color: rgba(255,255,255,0.7);
+                line-height: 1.6;
+            }
+            .app-description-content p {
+                margin-bottom: 15px;
+            }
+            .app-toggle-container {
+                margin-top: 30px;
+                text-align: center;
+            }
+            .breadcrumb li a {
+                pointer-events: auto;
+            }
+        </style>
+</head>
+<body onload="document.body.classList.add('loaded');">
+        <div class="container">
+                <div class="box">
+                        <div class="box-row">
+                                <div class="box-cell box1">
+                                        <ul class="breadcrumb"></ul>
+                                        <script src="js/dynamic-breadcrumb.js"></script>
+                                </div>
+                        </div>
+                </div>
+        </div>
+
+        <div class="app-description-container">
+            <div class="app-description-header">
+                <img class="app-description-icon" src="apps/005-004/logo.png" alt="Links icon">
+                <div>
+                    <h1 class="app-description-title">Links</h1>
+                    <p class="app-description-category">Category: Utilities</p>
+                </div>
+            </div>
+            <div class="app-description-content">
+                <p>Links provides quick access to your frequently used URLs and resources. Stay connected with your important links.</p>
+            </div>
+            <div class="app-toggle-container">
+                <input class="app-checkbox" id="005-004" type="checkbox">
+                <label class="app-label install" for="005-004"><span class="thumb"></span></label>
+            </div>
+        </div>
+
+        <script src="js/app-toggle.js"></script>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            const appId = '005-004';
+            const checkbox = document.getElementById(appId);
+            const storedValue = localStorage.getItem(appId);
+            if (checkbox) {
+                checkbox.checked = storedValue === 'added';
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        localStorage.setItem(appId, 'added');
+                    } else {
+                        localStorage.removeItem(appId);
+                    }
+                });
+            }
+          });
+        </script>
+</body>
+</html>

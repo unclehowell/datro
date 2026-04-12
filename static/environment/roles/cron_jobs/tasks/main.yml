@@ -1,0 +1,49 @@
+---
+# Cron jobs configuration
+
+- name: Add user crontab entry for memory cleanup
+  cron:
+    name: Memory cleanup and cache cleaning
+    job: "sync; echo 3 > /proc/sys/vm/drop_caches && apt-get clean && journalctl --vacuum-time=3d"
+    minute: "0"
+    hour: "3"
+    user: "{{ ansible_user }}"
+    state: present
+
+- name: Create system cron directory
+  file:
+    path: /etc/cron.d
+    state: directory
+    mode: '0755'
+
+- name: Add system optimizer cron job
+  copy:
+    content: |
+      # System Optimizer Cron Jobs
+      SHELL=/bin/bash
+      PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+      # Run system optimizer daily at 2 AM
+      0 2 * * * root /usr/local/bin/system-optimizer.sh >> /var/log/cron.log 2>&1
+
+      # Run health check every 30 minutes
+      */30 * * * * root /usr/local/bin/health-monitor.sh
+
+      # Clean thumbnails weekly
+      0 3 * * 0 root find ~/.cache/thumbnails -type f -atime +7 -delete 2>/dev/null || true
+
+      # Update package lists daily (but don't auto-upgrade)
+      0 1 * * * root apt-get update -qq >> /var/log/cron.log 2>&1
+
+      # Rotate logs weekly
+      0 4 * * 0 root /usr/sbin/logrotate -f /etc/logrotate.conf >> /var/log/cron.log 2>&1
+    dest: /etc/cron.d/system-optimizer
+    mode: '0644'
+    owner: root
+    group: root
+
+- name: Ensure cron service is running
+  systemd:
+    name: cron
+    state: started
+    enabled: yes

@@ -1,0 +1,108 @@
+/*  2020 Copyleft - DATRO Consortium
+                 ..
+..   ..          ..   ........                     .........     .......     ........                      .........    ......................
+..   ...           ..  ........                   .........     .........     ........                    .........    ......................
+ .......         .....  ........                 .........     ...........     ........                  .........    ......................
+ .......       ........  ........               .........     .............     ........                .........    ......................
+ .......       ...        ........             .........     ...............     ........              .........    .......
+  ......       ........   .........           .........     ........   ......     ........            .........    .......
+  ......       .......   ...........         .........     ........     ......     ........          .........    .................
+   .....        .....   .............       .........     .......    .   ......     ........        .........    .................
+   .........    ....   ...............     .........     .......   .....  ......     ........      .........    .................
+    .......... . ..   ......   ........   .........     .........................     ........    .........    .................
+       ......... .   ......     ..................     ........     ...     ......     ...................    ........
+        .........   ......       ................     ........       .       ......     .................    ........
+          ......   ......         ..............     ........                 ......     ...............    ...........................
+            ...   ......           ............     ........                   ......     .............    ...........................
+             .   ......             ..........     ........                     ......     ...........    ...........................
+
+
+						 ............................................................................................
+						             DATRO by Unclehowell -  DATRO CONSORTIUM 2020  - All Wrongs Reserved
+					     ............................................................................................
+                           GitHub:https://github.com/unclehowell/datro -  Website:https://datro.xyz
+					     ..........................................................................................   */
+
+/*  Classes:     A. .container {}
+				 B. .carousel-maintitle {}
+				 C. .carousel-maintitle-link {}
+				 D. .carousel-maintitle-link:hover {}
+				 E. .carousel-title {}
+				 F. .carousel-title-link {}
+				 G. .carousel-title-link:hover {}
+				 H. .carousel-subtitle {}
+				 I. .carousel-item {}
+				 J. .appstore-img-button-play {}
+				 K. .appstore-img-button-apple  {}
+				 L. .payment-button-img-paypal {}
+				 M. .button-text-paypal {}
+				 N. .payment-button-img-stripe {}
+				 O. .button-text-stripe {}
+				 P. .button-block {}
+				 Q. .button-block-left {}
+				 R. .button-block-right {}
+				 S. .tick-box-holder {}
+				 T. .tick-box {}
+				 U. .moreinfo {}
+				 V.  #image1>img,#image2>img,#image3>img,#image4>img,#image4>img {}
+
+	Structure:  01. .class-1 {}  .class-2 {} ... etc
+				02. @media all and (min-width:1024px) 							                       {.class-1 {}.class-2 {} ... etc}
+				03. @media all and (min-width:960px) 												   {.class-1 {}.class-2 {} ... etc}
+				04. @media all and (min-width:960px) and (max-width:1123px)							   {.class-1 {}.class-2 {} ... etc}
+				05. @media all and (min-width:960px) and (max-width:1123px)and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
+				06. @media all and (min-width:960px) and (max-width:1123px)and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
+				07. @media all and (min-width:768px)												   {.class-1 {}.class-2 {} ... etc}
+				08. @media all and (min-width:768px) and (max-width:959px)  						   {.class-1 {}.class-2 {} ... etc}
+				09. @media all and (min-width:768px) and (max-width:959px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
+				10. @media all and (min-width:768px) and (max-width:959px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
+				11. @media all and (min-width:480px) 					 							   {.class-1 {}.class-2 {} ... etc}
+				12. @media all and (min-width:480px) and (max-width:767px) 							   {.class-1 {}.class-2 {} ... etc}
+				13. @media all and (min-width:480px) and (max-width:767px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
+				14. @media all and (min-width:480px) and (max-width:767px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
+				15. 					  @media all and (max-width:479px)                             {.class-1 {}.class-2 {} ... etc}
+				16. 			       	  @media all and (max-width:479px) and  (orientation:portrait) {.class-1 {}.class-2 {} ... etc}
+				17. 					  @media all and (max-width:479px) and (orientation:landscape) {.class-1 {}.class-2 {} ... etc}
+				18. @media(-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:3/2), (min-resolution:1.5dppx) {}
+				19. @media print {}
+    01:> */
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+
+	.demo-all-divs {margin:10vw;}
+
+	body { top: 0; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; background-color: rgba(51,51,102,0.9); max-width: 100vw; text-align: center; right: 0; padding: 0.5rem; margin: 0.5rem;}
+	html {overflow-y: scroll!important; overflow: hidden; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; max-width: 100%;}
+	.title {background-color: transparent; font-weight: 200; opacity: 1; color: white; display: content; /* was flex, but 'made by Sony' didn't like it */ object-position: center; text-underline-position: auto; justify-content: center; align-items: center; text-align: center; padding: 1rem; line-height:2.5rem; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; }
+	.paragraph-textarea {font-weight: 200; opacity: 1; background: transparent; border-radius: 45px 45px 45px 45px; text-align: center; margin: 2.5vw; left: 0; top: 0; text-rendering: optimizeLegibility; max-width:100%; display: inline-block; align-items: center!important; object-position: center!important; justify-content: center!important; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
+	.paragraph-title {background-color: transparent; font-weight: 200; opacity: 1; color: white; display: flex; object-position: left; text-underline-position: auto; justify-content: left; text-align: left; margin-top: 1.5rem; padding: 0.5rem; line-height: normal!important; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
+	.paragraph-content {text-align: justify; word-spacing: normal; letter-spacing: normal; line-height: normal; font-weight: 200; color: white; padding: 0.5rem 1rem 0.5rem 1rem; margin: 0.25rem; border-radius: 0.5rem; border: 0.05rem solid rgba(255,255,255,0.15); font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
+	.main-image {padding: 0rem!Important; margin: 0 0 1.5rem 0rem!important; max-width: 80vw!important; display: inline-flex; object-position: center; position: static!important; white-space: nowrap; justify-content: center; align-items: center; filter: invert(0%)!important; max-height: 45vh;}
+	.main-image2 {content:"image"; text-align:center; margin-top:2rem; height:auto; width: calc(50vw); max-width: 470px; min-width: 232px; position:static!important; border-radius: calc(10vw - 7.5rem); brightness:(1.05); border-radius: 30px; border-style: outset; overflow:hidden!important; margin-bottom:2rem; opacity:1;}
+	.demo-all-divs {background-size:100.5%!important; border:0px solid transparent!important;}
+
+@media all and (min-width:1024px) {
+	.paragraph-textarea {}
+	.paragraph-content {padding: 1rem 2rem 1rem 2rem;}
+	.title {font-size:4rem!important;}
+}
+
+
+@media all and (min-width: 960px) and (max-width: 1123px) {
+}
+
+@media all and (min-width: 768px) and (max-width: 959px) {
+}
+
+@media all and (min-width: 480px)and (max-width: 767px) {
+	.paragraph-content {font-size: 125%!important; padding-left: 1.5rem; padding-right: 1.5rem; word-spacing:0.2rem;}
+	.main-image {max-height: calc(30vh);}
+}
+
+@media all and (max-width: 479px) {
+	.main-image {max-height: calc(30vh);}
+}
+
+@media(-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:3/2), (min-resolution:1.5dppx) {
+
+}
