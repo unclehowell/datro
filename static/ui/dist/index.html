@@ -51,11 +51,15 @@
        window.location.protocol = "https";
     }
 </script>
+<script src="dashboard/js/jquery-2.1.1.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $("body").css("display", "none");
         $("body").fadeIn(2000);
     });
+    function resizebody(obj) {
+        obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+    }
 </script>
 <script src="dashboard/js/iframeResizer.min.js"></script>
 </head>
@@ -119,7 +123,6 @@
 </nav>
 
 <script src="dashboard/js/jquery.squirrel.min.js"></script>
-<script src="dashboard/js/jquery-2.1.1.js"></script>
 <script src="dashboard/js/main.js"></script>
 <a href="#" style="margin-top: 0.1rem; float: left; zoom:0.1; height: -0.1rem; background-color: rgba(10,10,0,0.4); color: rgba(10,10,0,0); width: 1px; height: 1px;" id="anchor"></a>
 <script>
