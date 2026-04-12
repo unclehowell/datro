@@ -1,40 +1,43 @@
 # FCUK Clone Workflow
 
-**Date:** 2026-04-11
+**Date:** 2026-04-12
 
 ## Summary
-Clone GitHub repo `unclehowell/fcuk` into `datro/static/fcuk`, rename old folder to `.old`, update titles, add Cloudflare deployment files, push.
+Clone GitHub repo `unclehowell/fcuk` into `datro/static/fcuk`, rename old folder to backup, update title, deploy using wrangler.
 
-## Commands
-
+## Backup First (Important!)
 ```bash
-# 1. Rename old folder
-cd datro/static/
-mv fcuk fcuk.old
+cd ~/datro/static/
+cp -r fcuk fcuk.backup  # or mv fcuk fcuk.backup
+```
 
-# 2. Clone new repo
+## Clone New FCUK
+```bash
 git clone https://github.com/unclehowell/fcuk
+cd fcuk && npm install
+```
 
-# 3. Install deps
-cd datro/static/fcuk && npm install
+## Update Title
+Edit `index.html`: change `<title>Google AI Studio...</title>` to `<title>Car Finance UK</title>`
 
-# 4. Update title and add _redirects
-# Edit index.html: <title>Finance Cheque UK</title>
-# Create _redirects: /*  https://www.financecheque.uk/:splat  301
-
-# 5. Push fcuk
-cd datro/static/fcuk && git add -A && git commit -m "..." && git push
-
-# 6. Push datro
-cd datro && git add static/fcuk && git commit -m "..." && git push origin HEAD:gh-pages --force
+## Deploy to Cloudflare (wrangler)
+```bash
+cd ~/datro
+npx wrangler pages deploy static/fcuk/ --project-name financecheque
 ```
 
 ## Run Locally
 ```bash
-cd datro/static/fcuk && npm run dev
+cd ~/datro/static/fcuk
+npm run dev
 ```
 
-## Notes
+## Cloudflare Project
+- **Project name:** financecheque
+- **Domain:** www.financecheque.uk
+- **NOT auto-deploy** - requires wrangler deploy each time
+
+## Key Points
 - Uses Vite + React + Express
-- Cloudflare needs `_redirects` file for redirect from `financecheque.uk` to `www.financecheque.uk`
-- Local dev listens on port 3000
+- Deploy with wrangler to `financecheque` project (NOT carfinance-uk!)
+- Separate from pcp2 which uses carfinance-uk project
